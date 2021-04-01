@@ -3,7 +3,7 @@ title: Important Links
 description: If you're new to Moonbeam or the Polkadot network, here are some important links to review, including compatible Ethereum tools.
 ---
 
-#Links
+# Links
 
 * [Substrate.dev](https://substrate.dev/) - Starting point for learning about [Substrate](/resources/glossary/#substrate), a Rust-based framework for developing blockchains.  Moonbeam is developed using Substrate and uses many of the modules that come with it.
 * [Polkadot.network](https://polkadot.network/) - Learn about Polkadot, including the vision behind the network and how the system works, i.e., staking, governance, etc.

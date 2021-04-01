@@ -49,8 +49,8 @@ As of writing of this guide, the versions used were 15.7.0 and 7.4.3, respective
 
 Also, you will need the following:
 
--  Have MetaMask installed and [connected to Moonbase](/getting-started/testnet/metamask/)
--  Have an account with funds, which you can get from [Mission Control](/getting-started/testnet/faucet/)
+ - Have MetaMask installed and [connected to Moonbase](/getting-started/testnet/metamask/)
+ - Have an account with funds, which you can get from [Mission Control](/getting-started/testnet/faucet/)
 
 Once all requirements have been met, you are ready to build with Hardhat.
 
