@@ -1,47 +1,49 @@
 ---
-title: Docs Home
-description: Welcome to the documentation website for the Moonbeam smart contract platform, a parachain on Polkadot that is fully Ethereum compatible.
+title: 主页
+description: 欢迎访问Moonbeam资料库，Moonbeam是Polkadot上兼容以太坊的智能合约平行链。
 ---
 
-# Welcome to Moonbeam
+# 欢迎访问Moonbeam
 
 ![Main Page Banner](/images/main-banner.png)
 
-This site provides documentation for Moonbeam, a smart contract parachain on the Polkadot network that is fully Ethereum Compatible.  Here, you'll find both high-level and technical information for developers, collators, end-users, and other Moonbeam network participants.
+Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生态的智能合约平行链。本网站为Moonbeam资料库，在这里，您可自由浏览关于开发人员，信息收集者，终端用户和其他Moonbeam网络节点的第一手资料。
 
-This site will grow and be refined over time as Moonbeam is developed.  We welcome you to join the Moonbeam community and contribute to this site and to the project.
+本网站信息将随着Moonbeam社区的发展而实时更新。 
 
----
-
-## What is Moonbeam? 
-
-Moonbeam is a developer-oriented blockchain that strives to provide compatibility with the existing Ethereum developer toolchain and network.  It does this by providing a full EVM implementation, a Web3-compatible API, and bridges that connect Moonbeam to existing Ethereum networks.  This allows developers to deploy existing Solidity smart contracts and DApp frontends to Moonbeam with minimal changes.
-
-Moonbeam will also be a parachain on the Polkadot network. That means it will get shared security from the Polkadot relay chain and will be able to integrate with other chains that are connected to Polkadot (once that functionality is available on Polkadot).
+欢迎您加入Moonbeam社区，期待与您携手打造去中心化跨链世界。 
 
 ---
 
-## How to Get Started with Moonbeam
+## 什么是Moonbeam？
 
-### Networks
+Moonbeam是开发者友好型区块链，可实现完全兼容EVM、Web3的API兼容以及将Moonbeam连接到现有的以太坊网络的网桥。开发者可借助Moonbeam，利用现有的以太坊开发者工具和网络，轻松实现跨链兼容。开发者只需基于自身开发成果稍作修改，即可轻松将现有的Solidity智能合约和DApp前端部署到Moonbeam。
 
-Currently, there are two ways you can start building on Moonbeam: 
+Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbeam不仅能从Polkadot中继链中获得共享的安全性，还能同时集成链接到波卡（Polkadot）的其他链（Polkadot需先实现相关功能）。
 
- - Build your own Moonbeam instance as a [standalone node](/getting-started/local-node/setting-up-a-node/)
- - [Connect](/getting-started/testnet/connect/) to the [Moonbase Alpha TestNet](/networks/testnet/)
+---
 
-### Wallets
+## 如何参与Moonbeam？
 
-Currently, we have tested Moonbeam with the following wallets:
+### 网络
+
+目前，任选以下一种方式，助您轻松参与Moonbeam构建：
+
+ - 将您的Moonbeam实体构建为[独立节点](/getting-started/local-node/setting-up-a-node/)
+ - [连接](/getting-started/testnet/connect/)到[Moonbase Alpha TestNet](/networks/testnet/) 
+
+### 钱包
+
+目前，我们成功测试以下钱包可使用Moonbeam网络：
 
  - [MetaMask](/integrations/wallets/metamask/)
  - [MathWallet](/integrations/wallets/mathwallet/)
 
-However, any wallet that works with an Ethereum custom network should work with Moonbeam as well!
+请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
 
-### Tools
+### 开发工具
 
-Because of Moonbeam's Ethereum compatibility features, you can use the development tools you know and love:
+由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具：
 
  - [Remix](/integrations/remix/)
  - [Truffle](/integrations/trufflebox/)
@@ -50,43 +52,50 @@ Because of Moonbeam's Ethereum compatibility features, you can use the developme
  - [Ethers.js](/integrations/ethlibraries/etherjs/)
  - [Web3.py](/integrations/ethlibraries/web3py/)
 
- Want another Ethereum tool listed here? [Let us know!](https://discord.gg/PfpUATX)
+有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
 
-### Oracles
+### 预言机
 
- We also have a number of Oracles that can serve as data feed to your smart contracts:
+我们提供多个预言机选项，实现智能合约数据喂价：
 
  - [Chainlink](/integrations/oracles/chainlink/)
  - [Band Protocol](/integrations/oracles/band-protocol/)
  - [Razor Network](/integrations/oracles/razor-network/)
 
-### Bridges
+### 桥服务
 
-Currently, we have a fully functioning bridge implementation that connects Ethereum's Rinkeby/Kovan TestNets and Moonbase Alpha:
+目前，我们可提供功能齐全的桥服务，实现连接以太坊Rinkeby/Kovan测试网和Moonbase Alpha测试网：
 
  - [ChainBridge](/integrations/bridges/ethereum/chainbridge/)
 
 ---
 
-## How to Engage With the Moonbeam Community  
+## 如何参与Moonbeam社区互动
 
 ### :fontawesome-brands-discord:  Discord  
-Instructions for our TestNet and other development-focused conversation is found on our [Discord channel](https://discord.gg/PfpUATX).
+
+如需获取关于测试网和开发相关的最新内容，欢迎加入Moonbeam [Discord](https://discord.gg/PfpUATX)群组。
 
 ### :moonbeam-element:  Element  
-Technical discussions and support are encouraged in our Element (formerly Riot) room that can be found [here](https://app.element.io/#/room/#moonbeam:matrix.org).
+
+想要与开发人士讨论技术或分享经验，欢迎加入[Moonbeam Element（原名为Riot）](https://app.element.io/#/room/#moonbeam:matrix.org)。
 
 ### :fontawesome-brands-telegram-plane:  Telegram  
-General information and other non-technical topics can be discussed in our Telegram group [here](https://t.me/Moonbeam_Official).
+
+了解常规项目信息或其他非技术性内容，欢迎加入[Moonbeam Telegram](https://t.me/Moonbeam_Official)。
 
 ### :fontawesome-brands-twitter:  Twitter  
-Follow us on Twitter for regular updates: [@MoonbeamNetwork](https://twitter.com/MoonbeamNetwork).
+
+关注 [Moonbeam Twitter推特](https://twitter.com/MoonbeamNetwork)，了解Moonbeam最新资讯。
 
 ### :fontawesome-brands-youtube:  YouTube  
-For video-tutorials and related content, subscribe to our YouTube channel [here](https://www.youtube.com/c/MoonbeamNetwork).
+
+订阅 [Moonbeam YouTube](https://www.youtube.com/c/MoonbeamNetwork)频道，获取全部视频教程及相关内容。
 
 ### :fontawesome-solid-envelope:  Newsletter  
-We send a monthly newsletter with project updates that you can sign up for [here](https://moonbeam.network/newsletter/).
 
-## About This Site
-This site is generated using [mkdocs](https://www.mkdocs.org/) and is based on content in the moonbeam-docs repo, which can be found [on :fontawesome-brands-github: GitHub](https://github.com/PureStake/moonbeam-docs).
+订阅 [Moonbeam 电子月报](https://moonbeam.network/newsletter/)，获取每月Moonbeam进展总结。
+
+## 关于Moonbeam资料库
+
+本资料库生成自[mkdocs](https://www.mkdocs.org/)，所有内容均来源于moonbeam-docs，且可在 [on :fontawesome-brands-github: GitHub](https://github.com/PureStake/moonbeam-docs)同步找到。
