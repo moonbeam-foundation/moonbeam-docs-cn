@@ -1,15 +1,20 @@
 ---
 title: Overview
 description: Moonbeam provides staking features where token holders nominate collators with their tokens and earn rewards
+Moonbeam提供了stake功能，代币持有者可以用他们的代币提名收集人(collators)并获得奖励
 ---
 
 # Staking in Moonbeam
+# 在Moonbeam进行Staking
 
 ![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
 
 ## Introduction
 
 Moonbeam uses a block production mechanism based on [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/en/learn-consensus) where there are collators and validators. [Collators](https://wiki.polkadot.network/docs/en/learn-collator) maintain parachains (in this case, Moonbeam) by collecting transactions from users and producing state transition proofs for the Relay Chain [validators](https://wiki.polkadot.network/docs/en/learn-validator).
+
+Moonbeam使用[波卡的POS](https://wiki.polkadot.network/docs/en/learn-consensus)模式来产生块,在这模式中有收集人和验证人。[]
+
 
 The collators' set (nodes that produce blocks) are selected based on their stake in the network. And here is where staking comes in.
 
