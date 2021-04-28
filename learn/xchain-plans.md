@@ -17,7 +17,8 @@ Recall the old Unix philosophy, where users build tools that do one job and do i
 
 It may be the case that projects start as one or more Moonbeam smart contracts and migrate over time to be “native applications” — which could be parathreads or parachains in the Polkadot context — if they need more performance or more direct control over their economies.
 
-##Integration with Other Polkadot-Based Chains
+## Integration with Other Polkadot-Based Chains
+
 The initial scenario we are most interested in is to allow for the movement of tokens from other chains into Moonbeam-based tokens, such that they can be used within DeFi and other applications on the platform. Once their work is done, these assets can then move back or out to other chains.
 
 As the integration features of the Polkadot network evolve, we will continue to provide ways for developers to access those integrations from smart contracts and to compose features across chains in Moonbeam smart contracts.

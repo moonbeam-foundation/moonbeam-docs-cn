@@ -93,7 +93,9 @@ Now, execute the docker run command. Note that you have to:
 !!! note
     If you are setting up a collator node, make sure to follow the code snippets for "Collator".
 
-=== "Full Node"
+### Full Node
+
+=== "Ubuntu"
     ```
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -107,12 +109,36 @@ Now, execute the docker run command. Note that you have to:
     --in-peers 200 \
     --out-peers 200 \
     --pruning archive \
+    --state-cache-size 1 \
     -- \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
-=== "Collator"
+=== "MacOS"
+    ```
+    docker run -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} -v "{{ networks.moonbase.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    purestake/moonbeam:{{ networks.moonbase.parachain_docker_tag }} \
+    --ws-external \
+    --rpc-external \
+    --rpc-cors all \
+    --base-path=/data \
+    --chain alphanet \
+    --name="YOUR-NODE-NAME" \
+    --execution wasm \
+    --wasm-execution compiled \
+    --in-peers 200 \
+    --out-peers 200 \
+    --pruning archive \
+    --state-cache-size 1 \
+    -- \
+    --pruning archive \
+    --name="YOUR-NODE-NAME (Embedded Relay)"
+    ```
+### Collator
+
+=== "Ubuntu"
     ```
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -127,6 +153,30 @@ Now, execute the docker run command. Note that you have to:
     --in-peers 200 \
     --out-peers 200 \
     --pruning archive \
+    --state-cache-size 1 \
+    -- \
+    --pruning archive \
+    --name="YOUR-NODE-NAME (Embedded Relay)"
+    ```
+
+=== "MacOS"
+    ```
+    docker run -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} -v "{{ networks.moonbase.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    purestake/moonbeam:{{ networks.moonbase.parachain_docker_tag }} \
+    --ws-external \
+    --rpc-external \
+    --base-path=/data \
+    --chain alphanet \
+    --name="YOUR-NODE-NAME" \
+    --collator \
+    --author-id PUBLIC_KEY \
+    --execution wasm \
+    --wasm-execution compiled \
+    --in-peers 200 \
+    --out-peers 200 \
+    --pruning archive \
+    --state-cache-size 1 \
     -- \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -178,13 +228,7 @@ git checkout tags/$(git tag | tail -1)
 Next, install Substrate and all its prerequisites, including Rust, by executing:
 
 ```
---8<-- 'code/setting-up-local/substrate.md'
-```
-
-Now, make some checks (correct version of Rust nightly) with the initialization script:
-
-```
---8<-- 'code/setting-up-local/initscript.md'
+--8<-- 'code/setting-up-node/substrate.md'
 ```
 
 Lastly, build parachain binary:
@@ -198,7 +242,7 @@ cargo build --release
 If a _cargo not found error_ shows up in the terminal, manually add Rust to your system path or restart your system:
 
 ```
---8<-- 'code/setting-up-local/cargoerror.md'
+--8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
 ### Running the Systemd Service
@@ -259,6 +303,7 @@ The next step is to create the systemd configuration file. Note that you have to
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --pruning=archive \
+         --state-cache-size 1 \
          --unsafe-rpc-external \
          --unsafe-ws-external \
          --rpc-methods=Safe \
@@ -303,6 +348,7 @@ The next step is to create the systemd configuration file. Note that you have to
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --pruning=archive \
+         --state-cache-size 1 \
          --unsafe-rpc-external \
          --unsafe-ws-external \
          --rpc-methods=Safe \
@@ -352,6 +398,10 @@ journalctl -f -u moonbeam.service
 
 ![Service Logs](/images/fullnode/fullnode-binary3.png)
 
+## Advanced Flags and Options
+
+--8<-- 'text/setting-up-node/advanced-flags.md'
+
 ## Updating the Client
 
 As Moonbeam development continues, it will sometimes be necessary to upgrade your node software. Node operators will be notified on our [Discord channel](https://discord.gg/PfpUATX) when upgrades are available and whether they are necessary (some client upgrades are optional). The upgrade process is straightforward and is the same for a full node or collator.
@@ -397,9 +447,6 @@ Also, you can see current Moonbase Alpha telemetry information visiting [this li
 ## Logs and Troubleshooting
 
 You will see logs from both the relay chain as well as the parachain. The relay chain will be prefixed by `[Relaychain]`, while the parachain has no prefix.
-
-!!! note
-    There is currently a [bug in cumulus](https://github.com/paritytech/cumulus/issues/257) regarding the naming issue.
 
 ### P2P Ports Not Open
 

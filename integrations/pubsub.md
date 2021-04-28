@@ -15,23 +15,7 @@ The examples in this guide are based on an Ubuntu 18.04 environment. You will al
  - Have an account with funds. You can get this from [Mission Control](/getting-started/testnet/faucet/)
  - Deploy your own ERC-20 token on Moonbase. You can do following [our Remix tutorial](/getting-started/local-node/using-remix/), while first pointing MetaMask to Moonbase
 
-In addition, we need to install Node.js (we'll use v14.x) and npm. You can do this by running in your terminal:
-
-```
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-```
-```
-sudo apt install -y nodejs
-```
-
-We can verify that everything is installed correctly by querying the version for each package:
-
-```
-node -v
-```
-```
-npm -v
-```
+--8<-- 'text/common/install-nodejs.md'
 
 As of writing this guide, the versions used were 14.6.0 and 6.14.6, respectively. We will also need to install the Web3 package by executing:
 
@@ -83,7 +67,7 @@ Next, an ERC-20 token transfer will be sent with the following parameters:
 
  - From address: 0x44236223aB4291b93EEd10E4B511B37a398DEE55
  - To address: 0x8841701Dba3639B254D9CEe712E49D188A1e941e
- - Value (tokens): 1000000000000000000  - hat is 1 with 18 zeros
+ - Value (tokens): 1000000000000000000 - that is 1 with 18 zeros
 
 Once we send the transaction, the log of the event emitted by the transaction will appear in the terminal:
 

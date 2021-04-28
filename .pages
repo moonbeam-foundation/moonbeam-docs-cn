@@ -1,4 +1,12 @@
-title: Staking
 arrange:
-  - overview.md
-  - stake.md
+  - README.md
+  - overview
+  - getting-started
+  - networks
+  - governance
+  - staking
+  - integrations
+  - dapps-list
+  - node-operators
+  - learn
+  - resources

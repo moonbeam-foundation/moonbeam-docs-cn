@@ -43,7 +43,8 @@ Moonbeam also uses the Cumulus library to provide integration to the Polkadot re
 
 In addition to these Substrate Frame Pallets, we will be implementing modules with Moonbeam-specific functionality, including collator mechanics and rewards and other developer building blocks.
 
-##Ethereum Compatibility Architecture
+## Ethereum Compatibility Architecture
+
 Smart contracts on Moonbeam can be implemented using Solidity, Vyper, and any other language which can compile smart contracts to EVM-compatible bytecode.  Moonbean aims to provide a low-friction and secure environment for the development, testing, and execution of smart contracts that is compatible with the existing Ethereum developer toolchain.  
 
 The execution behavior and semantics of Moonbeam-based smart contracts will strive to be as close to Ethereum Layer 1 as possible.  Moonbeam is a single shard, so cross-contract calls have the same synchronous execution semantics as on Ethereum Layer 1.

@@ -3,13 +3,13 @@ title: TestNet
 description: An overview of the current configuration of the Moonbeam TestNet, Moonbase Alpha, and information on how to start building on it using Solidity.
 ---
 
-# Moonbase Alpha, The Moonbeam TestNet
+# The Moonbase Alpha TestNet
 
-_Updated February 18, 2020_
+_Updated April 5, 2021_
 
 ## Goal
 
-The first Moonbeam TestNet, named Moonbase Alpha, aims to provide developers with a place to start experimenting and building on Moonbeam in a shared environment. Since Moonbeam will be deployed as a parachain on Kusama and Polkadot, we want our TestNet to reflect our production configuration. For this reason, we decided that it needed to be a parachain-based configuration rather than a Substrate standalone setup.
+The first Moonbeam TestNet, named Moonbase Alpha, aims to provide developers with a place to start experimenting and building on Moonbeam in a shared environment. Since Moonbeam will be deployed as a parachain on Kusama and Polkadot, we want our TestNet to reflect our production configuration. For this reason, we decided that it needed to be a parachain-based configuration rather than a Substrate development setup.
 
 In order to collect as much feedback as possible and provide fast issue resolution, we have set up a [Discord with a dedicated Moonbase AlphaNet channel](https://discord.gg/PfpUATX).
 
@@ -18,11 +18,11 @@ In order to collect as much feedback as possible and provide fast issue resoluti
 Moonbase Alpha has the following configuration:
 
  - Moonbeam runs as a parachain connected to a relay chain
- - The parachain has two collators (hosted by PureStake) that are collating blocks
+ - The parachain has two collators (hosted by PureStake) that are collating blocks. External collators can join the network. Only the top {{ networks.moonbase.collator_slots }} collator nodes by stake are chosen in the active set
  - The relay chain hosts three validators (hosted by PureStake) to finalize relay chain blocks. One of them is selected to finalize each block collated by Moonbeam's collators. This setup provides room to expand to a two-parachain configuration in the future
  - There are two RPC endpoints (hosted by PureStake). People can run full nodes to access their own private RPC endpoints
 
-![TestNet Diagram](/images/testnet/Moonbase-Alpha-v5.png)
+![TestNet Diagram](/images/testnet/Moonbase-Alpha-v7.png)
 
 ## Features
 
@@ -48,7 +48,6 @@ The following features are available:
         * Event subscription ID now returns an Ethereum-styled subscription ID
         * Fixed gas estimation issues for specific usecases
         * Added support for revert reason message
-        * Event subscription ID now returns an Ethereum-styled subscription ID
         * Support for Ethereum transactions without ChainId
 
 ??? release v5 "_January 2021_"      
@@ -64,6 +63,13 @@ The following features are available:
     - Updated to the latest version of [Frontier RPC](https://github.com/paritytech/frontier), which increases EVM execution efficiency by a factor of 5
     - The gas limit has been bump to 15M per block, with a 13M per transaction limit
 
+??? release v7 "_April 2021_"      
+    - Added support for Ethereum debug/tracing modules. These are turned off by default, to use them you need to spin up a full-node and turn on the feature
+    - Fixed block propagation issues so that is not longer limited to collators, improving network stability
+    - Added Councils and Technical Committee, expanding governance features
+    - Staking module has been refactored, with new names to improve the end-user experience
+    - Added three new precompiles: [Bn128Add](https://eips.ethereum.org/EIPS/eip-196), [Bn128Mul](https://eips.ethereum.org/EIPS/eip-196) and [Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
+
 ### Release Notes
 
 For more details regarding the updates of Moonbase Alpha, please refer to the following release notes:
@@ -73,12 +79,12 @@ For more details regarding the updates of Moonbase Alpha, please refer to the fo
  - [Moonbase Alpha v4](https://github.com/PureStake/moonbeam/releases/tag/v0.4.0)
  - [Moonbase Alpha v5](https://github.com/PureStake/moonbeam/releases/tag/v0.5.0)
  - [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)
+ - [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)
 
 ### Future Releases
 
 Features that may be implemented in the future:
 
- - Expand on-chain governance features by introducing the [Council](https://wiki.polkadot.network/docs/en/learn-governance#council)
  - Treasury features ([Treasury pallet](https://github.com/paritytech/substrate/tree/master/frame/treasury))
 
 ## Get Started
