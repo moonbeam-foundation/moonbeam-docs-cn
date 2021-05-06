@@ -1,69 +1,69 @@
 ---
-title: Code Snippets
-description: In order to make it easier to get started with Moonbeam, here are code snippets for each of the tutorials we’ve created.
+title: 代码段
+description: 本文包含资料库所有教程中出现的代码段合集，以便您更好地参与Moonbeam。
 ---
 
-# Code Snippets
+# 代码段
 
-## Setting up a Local Moonbeam Node
+## 设置本地Moonbeam节点
 
-**Clone moonbeam-tutorials repo:**
+**克隆Moonbeam教程的Repo：**
 
 ```
 git clone -b {{ networks.development.build_tag }} https://github.com/PureStake/moonbeam
 cd moonbeam
 ```
 
-**Install substrate and its pre-requisites:**
+**安装Substract及其基础要求：**
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-**Add Rust to system path:**
+**将Rust添加到系统路径：**
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-**Build the development node:**
+**构建独立节点：**
 
 ```
 --8<-- 'code/setting-up-node/build.md'
 ```
 
-**Run node in dev mode:**
+**在dev模式下运行节点：**
 
 ```
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
-**Purge chain, clean up any old data from running a ‘dev’ node in the past:**
+**清除链，清除过去运行“dev”节点的所有旧数据：**
 
 ```
 ./target/release/moonbeam-development purge-chain --dev
 ```
 
-**Run node in dev mode suppressing block information but prints errors in console:**
+**以dev模式运行节点可禁止显示块信息，但会在控制台中显示错误：**
 
 ```
 ./target/release/moonbeam-development --dev -lerror
 ```
 
-## Genesis Account
+## 创世账户
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-## Development Accounts
+## 开发账户
 
 --8<-- 'text/setting-up-node/dev-accounts.md'
 
 ## MetaMask
 
-**Moonbeam Development node details:**
+**Moonbeam开发节点参数：**
 
 --8<-- 'text/metamask-local/development-node-details.md'
 
-**Moonbase Alpha TestNet:**
+**Moonbase Alpha测试网：**
 
 --8<-- 'text/testnet/testnet-details.md'

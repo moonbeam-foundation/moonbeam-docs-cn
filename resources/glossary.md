@@ -1,56 +1,56 @@
 ---
-title: Glossary
-description: We've compiled a glossary of terms related to Polkadot that'll make it easier to learn more about the ecosystem.
+title: 专业术语
+description: 我们整理了与波卡（Polkadot）相关的中英对照术语表，助您了解更多区块链生态的相关信息。
 ---
 
-# Glossary
+# 专业术语
 
-There's a great deal of terminology that's specific to Polkadot, Substrate, and the emerging Parity/Web3 ecosystem. We've compiled a list of terms we think you'll want to know as you review the Moonbeam documentation, plans, and tutorials.
+事实上已经有很多关于波卡（Polkadot）、Substrate和新兴的Parity / Web3生态系统的专业术语。 我们对此进行了汇总，助您更好地理解Moonbeam文档、项目计划和操作教程。
 
-### Collators
+### 收集人（Collators）
 
-One of the key network participants needed to support parachains within the Polkadot Network.  In Moonbeam, collators are the nodes that are responsible for block production and for submitting produced blocks up to the Polkadot Relay Chain for finalization.
+收集人是支持波卡（Polkadot）网络内平行链网络的主要参与者之一。 在Moonbeam，收集人负责产生区块，并将所产生的区块提交到波卡（Polkadot）中继链进行最终确定的节点。
 
-### Nominators
+### 提名人（Nominators）
 
-Token holders who select to "back" a validator. They can receive part of the validator's reward, but are subject to slashing of their staked tokens in case the validator misbehaves. A nominator can back up to 16 validators, and their bond is fully distributed between the backed validators that were selected for the validator set. If you want to nominate PureStake for both Polkadot and/or Kusama, please follow [this guide](https://www.purestake.com/technology/polkadot-validator/).
+提名人是代币持有者，可选择其“支持”的验证人。 提名人可以收到验证人的部分奖励，如果验证人行为不当，则可能会削减提名人已抵押的代币。 提名人最多可以提名16位验证人作为受信任的验证节点候选人，出块奖励会均分给当前的所有验证人，扣除验证人自己的奖励后，剩余奖励按比例分配给所有提名人。如果您希望在波卡（Polkadot）和/或Kusama上提名PureStake，请查看[此教程](https://www.purestake.com/technology/polkadot-validator/)。
 
-### Nomitated Proof of Stake
+### 提名权益证明（Nomitated Proof of Stake
 
-The mechanism used by Polkadot for selecting its block validator set to maximize chain security. At its core, it is a Proof-of-Stake system (PoS) in which nominators back validators. The latter with the highest backing are selected to be part of the validator set for a session. The stake of a validator is slashed in case of misbehavior. Thus, nominators are expected to do due diligence on the validators they nominate. If you want to nominate PureStake for both Polkadot and/or Kusama, please follow [this guide](https://www.purestake.com/technology/polkadot-validator/).
+NPoS共识机制（提名权益证明）机制通过选择验证人集合，实现最强化的Polkadot链上安全。该机制的核心是权益证明系统（PoS），即提名人支持验证人。 获得最多支持的候选验证人可选举成为验证节点之一。 如果验证人行为不当，将大幅削减其已质押的代币。 因此，提名人应对他们提名的验证人进行尽职调查。如果您希望在波卡（Polkadot）和/或Kusama上提名PureStake，请查看[此教程](https://www.purestake.com/technology/polkadot-validator/)。
 
-### Parachains
+### 平行链（Parachains）
 
-A blockchain which has a slot and is connected to Polkadot.  Parachains receive shared security from Polkadot and the ability to interact with other parachains on the Polkadot network. They must lock DOT, the native relay chain token, to secure a slot for a specific period (up two years).
+平行链是基于波卡（Polkadot）运行的区块链。 平行链在波卡（Polkadot）获得共享的安全性，并实现集成波卡（Polkadot）网络的各类项目。这些项目需在特定时期（长达两年）内质押DOT（中继链的原生代币）来获得平行链插槽。
 
-### Parathreads
+### 平行线程（Parathreads）
 
-A blockchain which can connect to Polkadot.  Parathreads are able to interact with other members of the Polkadot network, but they bid for block finalization (in DOT) on a block-to-block basis. They compete with other parathreads for block finalization, meaning that the block with the highest bid is selected to be finalize in that round.
+平行线程是连接到波卡（Polkadot）的区块链（是平行链的临时版）。通过逐个区块竞争完成区块（在DOT）， 平行线程能与波卡（Polkadot）网络的其他项目进行交互。 它们通过与其他的平行线程竞争完成出块，这意味着出价最高的块将在该回合中完成交互。
 
-### Polkadot
+### 波卡（Polkadot）
 
-A network of connected blockchains that provides shared security and the ability to interact between chains.  Polkadot is built using the Substrate development framework.  Chains that connect to Polkadot are called parachains.
+波卡（Polkadot）构建了一个允许不同区块链在公共安全保障下，进行信息交换的网络。 波卡（Polkadot）使用Substrate开发框架构建。 连接到波卡的链称之为平行链。
 
-### Relay Chain
+### 中继链（Relay Chain）
 
-The backbone blockchain supporting the Polkadot network.  Parachains connect to the Relay Chain and use it for shared security and message passing.  Validators on the Relay Chain help secure the parachains.
+中继链是波卡（Polkadot）网络的中心链。平行链连接到中继链，并将其用于共享安全性和消息传递。中继链上的验证人有助于保护平行链。
 
-### Smart Contract
+### 智能合约（Smart Contract）
 
-A smart contract is a computer program or a transaction protocol that is intended to automatically execute, control, or document legally relevant events and actions according to the terms of a contract or an agreement. Smart contracts intend to reduce the need for trusted intermediators, arbitrations, and enforcement costs, as well as reduce fraud losses and malicious and accidental exceptions. [Learn more](https://en.wikipedia.org/wiki/Smart_contract).
+智能合约是一种计算机程序或交易协议，旨在自动执行合约或协议的条款，控制或记录与法律相关的事件和动作。智能合约的总体目标是满足共同的合同条件（例如付款项、留置权、保密性，甚至强制执行），最大限度地减少异常以及对可信中介的需求。 相关的经济目标包括减少欺诈损失、仲裁、执行成本以及其他交易成本。[点击此处了解更多](https://en.wikipedia.org/wiki/Smart_contract)。
 
 ### Substrate
 
-A Rust-based blockchain development framework created by Parity Technologies based on their experience implementing multiple blockchain clients.  Substrate comes with many modules and functionalities that are needed when building a blockchain, including P2P networking, consensus mechanisms, staking, cryptocurrency, on-chain governance modules, and more.  It dramatically reduces the time and engineering effort required to implement a blockchain. 
+Substract是由Parity Technologies根据其执行的多个区块链客户端的经验而创建的基于Rust的区块链开发框架。 该框架具有构建区块链所需的多个模块和功能，包括P2P网络、共识机制、质押、加密货币、链上治理模块等，极大地减少了执行区块链所需的时间和工程量。
 
 ### Substrate Frame Pallets
 
-Substrate Frame Pallets are a collection of Rust-based modules, providing the functionality required for building a blockchain.  
+Substrate Frame Pallets基于Rust的模块的集合，提供构建区块链所需的功能。
 
-### Validators
+### 验证人（Validators）
 
-A node that secures the Polkadot Relay Chain by staking DOT in the network, which is slashed if they misbehave. They finalize blocks from collators on parachains and also participate on consensus for the next Relay Chain block with other validators.
+验证人是在网络中质押DOT保护波卡（Polkadot）中继链的节点，如果验证人行为不当，DOT数量则会被削减。 验证人最终确定了平行链上来自收集人的区块，并与其他验证人一起就下一个中继链区块达成共识。
 
 ### WebAssembly/Wasm
 
-WebAssembly is an open standard that defines a portable binary code format. It is supported by different programming languages, compilers, and browsers.
+WebAssembly（缩写为Wasm）是基于堆栈虚拟机的二进制指令格式。Wasm被设计为编程语言的可移植编译目标，从而在 Web 上为客户端和服务器应用程序进行部署。
