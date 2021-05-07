@@ -14,7 +14,7 @@ git clone -b {{ networks.development.build_tag }} https://github.com/PureStake/m
 cd moonbeam
 ```
 
-**安装Substract及其基础要求：**
+**安装Substrate及其基础要求：**
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
@@ -57,6 +57,8 @@ cd moonbeam
 ## 开发账户
 
 --8<-- 'text/setting-up-node/dev-accounts.md'
+
+--8<-- 'code/setting-up-node/dev-testing-account.md'
 
 ## MetaMask
 

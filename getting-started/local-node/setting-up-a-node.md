@@ -202,6 +202,8 @@ cd moonbeam
 bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
-查阅[使用 MetaMask](https://docs.moonbeam.network/getting-started/local-node/using-metamask/)页面，开始与您的帐户进行交互：
+查阅[使用 MetaMask](https://docs.moonbeam.network/getting-started/local-node/using-metamask/)页面，开始与您的帐户进行交互。
+
+另外，开发节点中还包括一个用于可测试的预注资帐户：
 
 --8<-- 'text/setting-up-node/dev-accounts.md'

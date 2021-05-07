@@ -1,15 +1,15 @@
 ---
-title: Roadmap
-description: Moonbeam launched its first TestNet in September 2020, with a BetaNet on Kusama and MainNet on Polkadot to follow in early 2021.
+title: 产品路线图
+description: 2020年9月，Moonbeam发布了第一版测试网。2021年初，Moonbeam在Kusama发布了Beta版主网，并即将在波卡（Polkadot）发布主网。
 ---
 
-# Roadmap
+# 产品路线图
 
-Moonbeam is still being actively developed. 
+Moonbeam一直处于密集开发阶段。
 
-On September 2020, we launched our [TestNet](/networks/overview/). Since then we have performed significants upgrades on almost a monthly basis. You can check the milestones achieved by each update in their corresponding [release notes](/networks/testnet/#release-notes).
+2020年9月，我们上线了第一版[测试网](/networks/overview/)。从那时起，我们几乎每个月都进行重大升级。 您可在[版本发布通知](/networks/testnet/#release-notes)中查看每次更新的详情。
 
 
-The rough roadmap beyond that is to launch Moonriver, our Kusama deployment, by the end of Q1 2021, and Moonbeam on the Polkadot MainNet in Q2 2021.
+预计在2021年第一季度末，我们将在Kusama启动Moonriver，2021年第二季度，我们将在波卡（Polkadot）主网上正式上线Moonbeam。
 
-Our current focus is to make sure the Moonbeam EVM and Web3 compatibility features are feature-complete. A big part of this effort was completing the Web3 grant we received to implement a Web3-compatible RPC API. Details of the grant can be found [here](https://github.com/w3f/Open-Grants-Program/blob/master/applications/web3-compatible-api.md).  The work we did for this grant was completed and [approved in August 2020](https://www.purestake.com/news/purestake-awarded-web3-foundation-grant-moonbeam/).
+目前，我们的重点是确保Moonbeam的功能完整性，即完全兼容EVM和Web3的API兼容。让Web3基金会的Grant资助用在实处，打造与Web3兼容的RPC API。您可在[此处](https://github.com/w3f/Open-Grants-Program/blob/master/applications/web3-compatible-api.md)查阅更多关于Grant资助的详细信息。Moonbeam已于2020年8月[获得Web3基金会的Grant资助](https://www.purestake.com/news/purestake-awarded-web3-foundation-grant-moonbeam/)。
