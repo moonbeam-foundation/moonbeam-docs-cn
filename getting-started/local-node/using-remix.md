@@ -1,123 +1,121 @@
 ---
-title: Using Remix
-description: Learn how to use one of the most popular Ethereum developer tools, the Remix IDE, to interact with a local Moonbeam node.
+title: Remix使用教程
+description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE交互Moonbeam本地节点。
 ---
 
-# Interacting with Moonbeam Using Remix
+# 如何使用Remix交互Moonbeam
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//RT_f1-ga_n4' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}/resources/code-snippets/">code snippets page</a></div>
 
-## Introduction
+## 概览
 
-Remix is one of the commonly used development environments for smart contracts on Ethereum. Given Moonbeam’s Ethereum compatibility features, Remix can be used directly with a Moonbeam development node or the Moonbase Alpha TestNet.
+Remix是目前以太坊上最常被使用的智能合约开发环境之一。基于Moonbeam兼容以太坊的特性，Remix可与Moonbeam开发节点或Moonbase Alpha测试网一起直接使用。
 
-This guide walks through the process of creating and deploying a Solidity-based smart contract to a Moonbeam development node using the [Remix IDE](https://remix.ethereum.org/). 
+本教程介绍了如何使用[Remix IDE](https://remix.ethereum.org/)将基于Solidity的智能合约搭建和部署到独立的Moonbeam节点。
 
-!!! note
-    This tutorial was created using the {{ networks.development.build_tag}} tag which is based on the {{ networks.moonbase.version }} release of [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}). The Moonbeam platform and the [Frontier](https://github.com/paritytech/frontier) components it relies on for Substrate-based Ethereum compatibility are still under very active development.
+!!! 注意事项
+    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/v0.3.0)的tutorial-v7标签建立。为实现与以太坊的全面兼容，SMoonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件均基于Substrate，两者正处于积极开发阶段。本教程示例为Ubuntu 18.04的环境，用户需根据其所使用的MacOS和Windows版本进行微调
 
-This guide assumes that you have a local Moonbeam node running in `--dev` mode and that you have a [MetaMask](https://metamask.io/) installation configured to use this local node. You can find instructions for running a local Moonbeam node [here](/getting-started/local-node/setting-up-a-node/) and instructions to connect MetaMask to it [here](/getting-started/local-node/using-metamask/).
-## Checking Prerequisites
+本教程假设您有一个在`--dev`模式下运行的本地Moonbeam节点，并且安装且配置了[MetaMask](https://metamask.io/)。如果未完成以上配置，您可以在[这里](/getting-started/local-node/setting-up-a-node/)查看如何创建一个Moonbeam节点，在[这里](/getting-started/local-node/using-metamask/)查看如何连接MetaMask。
+## 查看先决条件
 
-If you followed the guides above, you should have a local Moonbeam node which will begin to author blocks as transactions arrive:
+如果您已遵循上述教程，您将会拥有一个正在生产区块的本地Moonbeam节点，如下图所示：
 
 ![Local Moonbeam node producing blocks](/images/remix/using-remix-1.png)
 
-And you should have a MetaMask installation connected to your local Moonbeam dev node with at least one account that has a balance. It should look something like this (expanded view):
+另外，您也需要成功安装MetaMask，并且通过至少一个拥有余额的账户以开发者模式连接至您的本地Moonbeam节点。如下图所示：
 
 ![MetaMask installation with a balance](/images/remix/using-remix-2.png)
 
-!!! note
-    Make sure you are connected to your Moonbeam node and not another network!
+!!! 注意事项
+    请确保您所连接到的是Moonbeam节点而非其他网络！
 
-## Getting Started with Remix
+## 如何开始使用Remix
 
-Now, let’s fire up Remix to exercise more advanced functionalities in Moonbeam.
+现在，我们可以开始启动Remix来使用更多Moonbeam的进阶功能。
 
-Launch Remix by navigating to [https://remix.ethereum.org/](https://remix.ethereum.org/). In the main screen, under Environments, select Solidity to configure Remix for Solidity development, then navigate to the File Explorers view:
+首先我们开启一个新标签页，输入[https://remix.ethereum.org/](https://remix.ethereum.org/) 打开Remix。在主画面中，点击Environments，选取Solidity配置Remix来进行Solidity的开发，最后打开File Explorers的画面，如下图所示：
 
 ![File explorer](/images/remix/using-remix-3.png)
 
-We will create a new file to save the Solidity smart contract. Hit the + button under File Explorers and enter the name "MyToken.sol" in the popup dialog:
+我们需要创建一个新的文件夹来储存Solidity智能合约。点击File Explorers下面的 “+” 按钮，接着在弹窗内输入 “MyToken.sol“：
 
 ![Create a new file for your Solidity contract](/images/remix/using-remix-4.png)
 
-Next, let's paste the following smart contract into the editor tab that comes up:
+然后，将以下智能合约黏贴至弹出的编辑视窗：
 
 ```solidity
 --8<-- 'code/remix-local/contract.md'
 ```
 
-This is a simple ERC-20 contract based on the current Open Zeppelin ERC-20 template. It creates MyToken with symbol MYTOK and mints the entirety of the initial supply to the creator of the contract.
+这是一个基于当前OpenZepplin ERC-20模版编写的简易版ERC-20合约。该合约使用"MYTOK" 符号，并为合约创建者分配初始代币。
 
-Once you have pasted the contract into the editor, it should look like this:
+当您将合约粘贴至编辑器之后会形成下图：
 
 ![Paste the contract into the editor](/images/remix/using-remix-5.png)
 
-Now, navigate to the compile sidebar option to press the “Compile MyToken.sol” button:
+接下来，在编辑器左侧选项，选择并点击“Compile MyToken.sol” 按钮：
 
 ![Compile MyToken.sol](/images/remix/using-remix-6.png)
 
-You will see Remix download all of the Open Zeppelin dependencies and compile the contract.
+点击之后，您会看到Remix已经下载所有Open Zeppelin的附属程式并完成了合约编写。
 
-## Deploying a Contract to Moonbeam Using Remix
+## 如何在Moonbeam上使用Remix部署合约
 
-Now we can deploy the contract by navigating to the Deployment sidebar option. You need to change the topmost “Environment” dropdown from “JavaScript VM” to “Injected Web3.” This tells Remix to use the MetaMask injected provider, which will point it to your Moonbeam development node. If you wanted to try this using the Moonbase Alpha TestNet, you would have to connect MetaMask to the TestNet instead of your local development node.
+现在我们可以通过侧边的Deployment选项来部署合约。您需要将顶端的 “Environment” 从“JavaScript VM”向下拉至“Injected Web3”。如此一来，Remix会使用MetaMask导入的账户并指向一个已导入的Moonbeam独立节点。如果您想要使用Moonbase Alpha TestNet尝试此操作，请确保将MetaMask连接到TestNet而非本地开发节点。
 
-As soon as you select "Injected Web3", you will be prompted to allow Remix to connect to your MetaMask account.
+当您选择“Injected Web3”选项时，您需授权Remix连接您的MetaMask账户。
 
 ![Replace](/images/remix/using-remix-7.png)
 
-Press “Next” in Metamask to allow Remix to access the selected account.
+请在MetaMask点击“下一步”授权Remix使用您所选取的账户。
 
-Back on Remix, you should see that the account you wish to use for deployment is now managed by MetaMask. Next to the Deploy button, let’s specify an initial supply of 8M tokens. Since this contract uses the default of 18 decimals, the value to put in the box is `8000000000000000000000000`.
+接着返回Remix界面，您会看到您想要用来部署的账户已经通过MetaMask授权登入。另外，您可以在Deploy按键的旁边输入代币数额，我们假设现在想要部署800万的代币。但由于此合约默认位数为小数点后18位，因此您需要在栏内输入`8000000000000000000000000` ，请参考下图。
 
-Once you have entered this value, select "Deploy."
+确认数值输入无误之后，请点击“Deploy”。
 
 ![Enter an account balance and deploy](/images/remix/using-remix-8.png)
 
-You will be prompted in MetaMask to confirm the contract deployment transaction.
+随后，将弹出MetaMask对话框，以确认此次部署合约的交易。
 
 ![Confirm the transaction message](/images/remix/using-remix-9.png)
 
-!!! note
-    If you have problems deploying any specific contract, you can try manually increasing the gas limit. You can do this under Settings -> Advanced -> Advanced Gas Controls = ON.
+!!! 注意事项
+    若您在部署任意合约时遇到问题，可通过以下操作手动提高Gas限制。设置 -> 高级 -> 高级Gas控制 = 启用。
 
-After you press confirm and the deployment is complete, you will see the transaction listed in MetaMask. The contract will appear under Deployed Contracts in Remix.
+完成确认后，部署也随之完成，您将会在MetaMask上看到您的交易记录。与此同时，合约也会出现在Remix的Deployed Contracts一栏内。
 
 ![Confirmed label on a transaction](/images/remix/using-remix-10.png)
 
-Once the contract is deployed, you can interact with it from within Remix.
+成功部署合约之后，您便可通过Remix与智能合约进行交互。
 
-Drill down on the contract under “Deployed Contracts.” Clicking on name, symbol, and totalSupply should return “MyToken,” “MYTOK,” and “8000000000000000000000000” respectively. If you copy the address from which you deployed the contract and paste it into the balanceOf field, you should see the entirety of the balance of the ERC20 as belonging to that user. Copy the contract address by clicking the button next to the contract name and address.
+将左侧页面往下滑，找到“Deployed Contracts”，点击name，symbol，以及totalSupply，将会分别出现“MyToken”，“MYTOK”，以及“8000000000000000000000000“。如果您复制合约地址并将它粘贴在balanceOf的空格中，您可以看到用户ERC20地址上的账户全部余额，请参考下图。
 
 ![Interact with the contract from Remix](/images/remix/using-remix-11.png)
 
-## Interacting with a Moonbeam-based ERC-20 from MetaMask
+## 如何通过MetaMask与基于Moonbeam的ERC-20进行交互
 
-Now, open MetaMask to add the newly deployed ERC-20 tokens. Before doing so, make sure you have copied the contract's address from Remix. Back in MetaMask, click on “Add Token” as shown below. Make sure you are in the account that deployed the token contract.
+打开MetaMask添加刚部署的ERC-20代币。首先，请确认您已在Remix上复制了合约地址。然后，在MetaMask上点击“添加代币”，请参考下图。（请确保您现在所操作的账户为已部署合约的账户）。
 
 ![Add a token](/images/remix/using-remix-12.png)
 
-Paste the copied contract address into the “Custom Token” field. The “Token Symbol” and “Decimals of Precision” fields should be automatically populated.
+将已复制的地址粘贴至“自定义代币”的代币合约地址空格内，与此同时”代币符号“和”小数精度“会自动填充。
 
 ![Paste the copied contract address](/images/remix/using-remix-13.png)
 
-After hitting “Next,” you will need to confirm that you want to add these tokens to your MetaMask account. Hit “Add Token” and you should see a balance of 8M MyTokens in MetaMask:
+点击“下一步”，您需再次确认是否要将这些代币加入至您的MetaMask账户。点击“添加代币”后，您会看到800万的MyTokens已成功加入您的账户：
 
 ![Add the tokens to your MetaMask account](/images/remix/using-remix-14.png)
 
-Now we can send some of these ERC-20 tokens to the other account that we have set up in MetaMask. Hit “send” to initiate the transfer of 500 MyTokens and select the destination account.
+现在我们可以通过MetaMask将这些ERC-20代币转至其他设定好的账户。您只需点击“发送”就可以将500 个MyTokens转移至您所选取的目标账户。
 
-After hitting “next,” you will be asked to confirm (similar to what is pictured below).
+点击“下一步”，您需再次确认交易（如下图所示）。
 
 ![Confirmation of the token transfer](/images/remix/using-remix-15.png)
 
-Hit “Confirm” and, after the transaction is complete, you will see a confirmation and a reduction of the MyToken account balance from the sender account in MetaMask:
+点击“确认”，交易完成之后，您将会在MetaMask账户上看到交易记录以及账户余额：
 
 ![Verify the reduction in account balance](/images/remix/using-remix-16.png)
 
-If you own the account that you sent the tokens to, you can add the token asset to verify that the transfer arrived.
-
---8<-- 'text/common/we-want-to-hear-from-you.md'
+如果您拥有收款的账户，您也可以通过查看账户余额来确认转账是否成功。

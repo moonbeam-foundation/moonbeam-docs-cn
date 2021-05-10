@@ -1,45 +1,45 @@
 ---
-title: Send a Transaction
-description: Learn how to create and send transactions on Moonbeam’s Ethereum-compatible network with a simple script using web3.js, ethers.js, or web3.py.
+title: 发送交易
+description: 学习如何使用web.js、 esthers.js和web3.py编写基础脚本在兼容以太坊网络的Moonbeam上创建并发送交易。
 ---
 
-# Using Ethereum Libraries to Send Transactions on Moonbeam
+# 如何通过以太坊库在Moonbeam发送交易
 
 ![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
 
-## Introduction
+## 概览
 
-This guide walks through using three different Ethereum libraries to manually sign and send a transaction on Moonbeam. The three libraries covered in this tutorial are:
+本教程将按步骤介绍如何使用三个不同的以太坊库在Moonbeam手动签署并发送交易。以下为本教程使用的三个库：
 
  - [Web3.js](https://web3js.readthedocs.io/)
  - [Ethers.js](https://docs.ethers.io/)
  - [Web3.py](https://web3py.readthedocs.io/)
 
-!!! note
+!!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-## Checking Prerequisites
+## 检查先决条件
 
-The examples using both web3.js and ethers.js require previous installation of Node.js and NPM. The example using web3.py requires Python and PIP. As of the writing of this guide, the versions used were:
+若需使用基于web3.js和ethers.js的例程，您需要提前安装Node.js和NPM。若需使用基于web3.py的例程，您需要安装Python和PIP。以下为本教程所使用的版本（截止至本文撰写时）：
 
  - Node.js v15.10.0
  - NPM v7.5.3
  - Python v3.6.9 (web3 requires Python >= 3.5.3 and < 4)
  - PIP3 v9.0.1
 
-Next, create a directory to store all of the relevant files:
+现在，我们可以使用以下命令创建一个目录来储存所有相关文件：
 
 ```
 mkdir transaction && cd transaction/
 ```
 
-For the JavaScript libraries, you can first create a simple `package.json` file (not required):
+如果您使用的是JavaScript库，您可先创建一个简单的`package.json`文件（非强制）：
 
 ```
 npm init --yes
 ```
 
-In the directory, install the library to be used (web3.py is installed in the default directory of PIP3):
+在目录中，通过以下命令安装要使用的库（web3.py会被安装到PIP3的默认目录中）：
 
 === "Web3.js"
     ```
@@ -56,23 +56,23 @@ In the directory, install the library to be used (web3.py is installed in the de
     pip3 install web3
     ```
 
-The versions used as of publishing this guide were:
+我们撰写本教程时，使用的各版本如下：
 
  - Web3.js v1.33 (`npm ls web3`)
  - Ethers.js v5.0.31 (`npm ls ethers`)
  - Web3.py v5.17.0 (`pip3 show web3`)
 
-## The Transaction File
+## 交易文件
 
-Only one file is needed to execute a transaction between accounts. The script shown in this section will transfer 1 Token from an origin address (from which you hold the private key), to another address. You can find the code snippet for each library here (they were arbritarly named `transaction.*`):
+只需一个文件即可执行帐户之间的交易。我们会示范如何通过以下脚本，从拥有私钥的初始地址转账1个代币至另一个指定地址。您可以通过以下链接找到对应库的代码片段（文件被命名为`transaction.*`）：
 
  - Web3.js: [_transaction.js_](/snippets/code/web3-tx-local/transaction.js)
  - Ethers.js: [_transaction.js_](/snippets/code/ethers-tx-local/transaction.js)
  - Web3.py: [_transaction.py_](/snippets/code/web3py-tx/transaction.py)
 
-Each of the files, regardless of the library used, has been divided into three sections. In the first section ("Define Provider & Variables"), the library to use is imported, and the provider and other variables are defined (variables depend on the library). Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+无论使用哪个库，每个文件都被分为三个部分：第一部分（“Define Provider & Variables”），导入需使用的库，被定义的提供者以及其他变量（变量会随着库的改变而改变）。请注意，`providerRPC`同时拥有标准独立节点RPC端点和[Moonbase Alpha](/networks/testnet/)的端点。
 
-The second section ("Create and Deploy Transaction") outlines the functions needed to send the transaction itself. Some of the key takeaways are discussed next.
+第二部分（“Create and Deploy Transaction”），概述了传送交易所需要的函数。其中部分关键要点我们将会在后面展开讨论。
 
 === "Web3.js"
     ```
@@ -91,57 +91,57 @@ The second section ("Create and Deploy Transaction") outlines the functions need
 
 ### Web3.js
 
-In the first section of [the script](/snippets/code/web3-tx-local/transaction.js), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+[脚本](/code-snippets/web3-tx-local/transaction.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到哪个网络。
 
-The private key, and the public address associated with it, are defined for signing the transaction and logging purposes, respectively. Only the private key is required.
+私钥及其关联的公共地址分别用于交易签名及日志记录。仅需提供私钥即可。
 
-The `addressTo`, where the transaction will be sent, is also defined here, and it is required.
+还有一点必不可少，定义`addressTo`，即交易接收地址。
 
-In the second section, the transaction object is created with the `to`, `value`, and `gas` fields. These describe the recipient, the amount to send, and the gas consumed by the transaction (21000 in this case). You can use the `web3.utils.toWei()` function to input the value in ETH (for example) and get the output in WEI. The transaction is signed with the private key using the `web3.eth.accounts.signTransaction()` method. Note that this returns a promise that needs to be resolved.
+第二部分，使用`to`、`value`和`gas`字段创建交易对象。这些字段分别描述了交易接收地址，交易金额，以及交易消耗的Gas（本示例中为21000）。比如，您可以通过使用`web3.utils.toWei()`函数输入需要交易的ETH数量并转换成以WEI为单位的输出。调用`web3.eth.accounts.signTransaction()`方法对交易进行私钥签名。请注意，这里您需要解决一个「返回请求」。
 
-Next, with the transaction signed (you can `console.log(createTransaction)` to see the v-r-s values), you can send it using the `web3.eth.sendSignedTransaction()` method, providing the signed transaction located in `createTransaction.rawTransaction`.
+接下来，您可以调用 `web3.eth.sendSignedTransaction()`发送签名后的交易（通过`console.log(createTransaction)`查看v-r-s价值），需要提供位于`createTransaction.rawTransaction`的已签名交易。
 
-Lastly, run the asynchronous deploy function.
+最后，请运行异步部署函数。
 
 ### Ethers.js
 
-In the first section of [the script](/snippets/code/ethers-tx-local/transaction.js), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+[脚本](/code-snippets/ethers-tx-local/transaction.js)的第一部分，您可以使用名字、RPC URL（必需）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
-The private key is defined to create a wallet instance, which also requires the provider from the previous step. The wallet instance is used to sign transactions.
+私钥可用于创建钱包实例，需要上一步内提及的提供者辅助。钱包实例可用于对交易进行签名。
 
-The `addressTo`, where the transaction will be sent, is also defined here, and it is required.
+还有一点必不可少，定义`addressTo`，即交易接收地址。
 
-In the second section, an asynchronous function wraps the `wallet.sendTransaction(txObject)` method. The transaction object is quite simple. It only requires the recipient's address and the amount to send. Note that `ethers.utils.parseEther()` can be used, which handles the necessary unit conversions from ETH to WEI - similar to using `ethers.utils.parseUnits(value,'ether')`.
+在第二部分，用异步函数封装`wallet.sendTransaction(txObject)`的方法。交易对象相对简单，只需提供接收者的地址以及转账数量即可。请注意，您也可以使用`ethers.utils.parseEther()`来控制ETH与WEI之间的单位转换，这与使用`ethers.utils.parseUnits(value,'ether')`相似。
 
-Once the transaction is sent, you can get the transaction response (named `createReceipt` in this example), which has a few properties. For instance, you can call the `createReceipt.wait()` method to wait until the transaction is processed (receipt status is OK).
+当交易发送成功，您会收到具有一些属性的交易回复（在该示例中被命名为`createReceipt`）。比如，您可以调用`createReceipt.wait()`方法来等待交易处理完毕（当接收状态为「OK」，即表示交易处理完毕）。
 
-Lastly, run the asynchronous deploy function.
+最后，请运行异步部署函数。
 
 ### Web3.py
 
-In the first section of [the script](/snippets/code/web3py-tx/transaction.py), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+在[脚本](/code-snippets/web3py-tx/transaction.py)的第一部分， `web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`所创建的。您可以通过改变提供者RPC，选择要将交易发送到哪个网络。
 
-The private key and the public address associated with it are defined for signing the transaction and logging purposes. The public address is not required.
+私钥及其关联的公共地址分别用于交易签名及日志记录。无需提供公共地址。
 
-The `addressTo`, where the transaction will be sent, is also defined here, and it is required.
+还有一点必不可少，定义`addressTo`，即交易接收地址。
 
-In the second section, the transaction object is created with the `nonce`, `gasPrice`, `gas`, `to`, and `value` fields. These describe the transaction count, gas price (0 for development and Moonbase Alpha), gas (21000 in this case), the recipient, and the amount to send. Note that the transaction count can be obtained with the `web3.eth.getTransactionCount(address)` method. Also, you can use the `web3.toWei()` function to input the value in ETH (for example) and get the output in WEI. The transaction is signed with the private key using the `web3.eth.account.signTransaction()` method.
+在第二部分，使用`nonce`、 `gasPrice`、 `gas`、 `to`和`value`字段创建交易对象。这些字段分别描述了交易数量、gas价格（Moonbase Alpha与独立节点之间的gas价格为0）、交易消耗的gas（本示例中为21000）、交易接收地址及交易金额。请注意，您可通过`web3.eth.getTransactionCount(address)`查阅交易数量。比如，您可通过`web3.utils.toWei()`函数，输入需要交易的ETH数量并转换成以WEI为单位的输出。调用`web3.eth.account.signTransaction()`方法对交易进行私钥签名。
 
-Next, with the transaction signed, you can send it by using the `web3.eth.sendSignedTransaction()` method, providing the signed transaction located in `createTransaction.rawTransaction`.
+交易签名成功后，您可调用`web3.eth.sendSignedTransaction()`进行交易，需要提供位于`createTransaction.rawTransaction`的已签名交易。
 
-## The Balance File
+## 余额文件
 
-Before running the script, another file checks the balances of both addresses before and after the transaction is needed. This can be easily done by a simple query of an account balance.
+在运行脚本之前，您需要在交易前和交易后检查您的余额文件。您可通过简单的查询账户余额来进行检查。
 
-You can find the code snippet for each library here (files were arbitrarily named `balances.*`):
+您可通过以下链接找到对应库的代码段（文件被命名为`balances.*`）：
 
  - Web3.js: [_balances.js_](/snippets/code/web3-tx-local/balances.js)
  - Ethers.js: [_balances.js_](/snippets/code/ethers-tx-local/balances.js)
  - Web3.py: [_balances.py_](/snippets/code/web3py-tx/balances.py)
 
-For simplicity, the balance file is composed of two sections. As before, in the first section ("Define Provider & Variables"), the library to use is imported, and the provider and address from/to (to check the balances) are defined.
+简单起见，余额文件由两个部分组成。如同前例，您要使用的库会在第一部分（“Define Provider & Variables”）被导入，提供者和发送/接收地址（查询余额）也会被定义。
 
-The second section ("Balance Call Function") outlines the functions needed to fetch the balances of the accounts previously defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/). Some of the key takeaways are discussed next.
+第二部分（“Balance Call Function”）概述了获取先前定义的账户余额的所需函数。请注意，`providerRPC`同时拥有标准独立节点的RPC端点和[Moonbase Alpha](/networks/testnet/)的端点。其中的关键要点我们将会在后面展开讨论。
 
 === "Web3.js"
     ```
@@ -160,29 +160,29 @@ The second section ("Balance Call Function") outlines the functions needed to fe
 
 ### Web3.js
 
-The first section of [the script](/snippets/code/web3-tx-local/balances.js) is very similar to the one in [transaction file](/getting-started/local-node/send-transaction/#web3js). The main difference is that no private key is needed because there is no need to send a transaction.
+[此脚本](/code-snippets/web3-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#web3js)非常相似，最大的不同是没有发送交易的需求，此脚本不需要您的私钥。
 
-In the second section, an asynchronous function wraps the web3 method used to fetch the balance of an address, `web3.eth.getBalance(address)`. Once again, you can leverage the `web3.utils.fromWei()` function to transform the balance into a more readable number in ETH.
+第二部分中，调用封装了web3方法的异步函数`web3.eth.getBalance(address)`来获取地址余额。同时，您可以使用`web3.utils.fromWei()`函数将余额转换成更容易识别ETH数量的计量单位。
 
 ### Ethers.js
 
-The first section of [the script](/snippets/code/ethers-tx-local/balances.js) is very similar to the one in [transaction file](/getting-started/local-node/send-transaction/#ethersjs). The main difference is that no private key is needed because there is no need to send a transaction. On the contrary, the `addressFrom` needs to be defined.
+[此脚本](/code-snippets/ethers-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#ethersjs)非常相似，最大的不同是无需私钥传送交易需求。但是，您仅需要定义`addressFrom`。
 
-In the second section, an asynchronous function wraps the provider method used to fetch the balance of an address, which is `provider.getBalance(address)`. Once again, you can leverage the `ethers.utils.formatEther()` function to transform the balance into a more readable number in ETH.
+在第二部分中，通过调用封装了提供者方法的异步函数`provider.getBalance(address)`获取地址余额。同时，您也可以使用`ethers.utils.formatEther()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ### Web3.py
 
-The first section of [the script](/snippets/code/web3py-tx/balances.py) is very similar to the one in [transaction file](/getting-started/local-node/send-transaction/#web3py). The main difference is that no private key is needed because there is no need to send a transaction.
+[此脚本](/code-snippets/web3py-tx/balances.py)的第一个部分与[交易文件](/getting-started/local-node/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
 
-In the second section, the `web3.eth.getBalance(address)` method is used to fetch a target address's balance. Once again, you can leverage the `eb3.fromWei()` function to transform the balance into a more readable number in ETH.
+第二部分中，调用`web3.eth.getBalance(address)`来获取接收地址的余额。同时，您也可以使用`eb3.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
-## Running the Scripts
+## 如何运行脚本
 
-For this section, the code shown before was adapted to target a development node, which you can run by following [this tutorial](/getting-started/local-node/setting-up-a-node/). Also, each transaction was sent from the pre-funded account that comes with the node:
+在这个部分，之前所显示的代码已针对独立节点进行了调整，您可以根据以下[教程](/getting-started/local-node/setting-up-a-node/)来运行。与此同时，每笔交易均从节点随附的预付款帐户发送。
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-First, check the balances of both of the addresses before the transaction by running (note that the directory was renamed for each library):
+首先，在交易前使用以下命令检查双方的余额（注：目录已为每个库重命名）：
 
 === "Web3.js"
     ```
@@ -199,7 +199,7 @@ First, check the balances of both of the addresses before the transaction by run
     python3 balances.py
     ```
 
-Next, run the _transaction.\*_ script to execute the transaction:
+接着，运行_transaction.*_ 脚本来执行此项交易：
 
 === "Web3.js"
     ```
@@ -216,7 +216,7 @@ Next, run the _transaction.\*_ script to execute the transaction:
     python3 transaction.py
     ```
 
-And lastly, recheck the balance to make sure the transfer was successful. The entire execution should look like this:
+最后，再次检查账户余额以确认转账是否成功，如下图所示：
 
 === "Web3.js"
     ![Send Tx Web3js](/images/sendtx/sendtx-web3js.png)
@@ -226,5 +226,3 @@ And lastly, recheck the balance to make sure the transfer was successful. The en
 
 === "Web3.py"
     ![Send Tx Web3py](/images/sendtx/sendtx-web3py.png)
-
---8<-- 'text/common/we-want-to-hear-from-you.md'

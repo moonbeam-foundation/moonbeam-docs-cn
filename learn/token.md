@@ -1,33 +1,33 @@
 ---
-title: Tokens
-description: Like all smart contract platforms, the Moonbeam Network will require a utility token to function, which is called Glimmer (GLMR) for Polkadot, and River (RIVER) for Kusama.
+title: 代币
+description: 和所有的智能合约平台一样，Moonbeam Network也需要发行实用性代币让生态有效运转。发行在Polkadot平台上的代币为Glimmer（GLMR），在Kusama上的代币称作River（RIVER）。
 ---
 
-# Introduction
+# 概览
 
-As a decentralized smart contract platform, Moonbeam requires a utility token to function.  
+作为一个去中心化的智能合约平台，Moonbeam需要发行实用性代币让生态有效运转。
 
-This token is central to the design of Moonbeam and cannot be removed without sacrificing essential functionality. The Moonbeam token uses include:
+实用性代币对Moonbeam整体设计的重要组成部分，是保持Moonbeam运转的基本功能。Moonbeam实用性代币的用途包括：
 
- - Supporting the gas metering of smart contract execution
- - Incentivizing collators and powering the mechanics around the creation of a decentralized node infrastructure on which the platform can run
- - Facilitating the on-chain governance mechanism, including proposing referenda, electing council members, voting, etc.
- - Paying for network transaction fees
+ - 支付智能合约执行的Gas费；
+ - 协作者（Collator）的经济激励，作为去中心化节点基础架构平台运行的燃料；
+ - 促进链上治理机制，包含公投提案、理事会成员选举、投票等；
+ - 用于支付网络交易费用。
 
 ## Glimmer Token
 
-In the Moonbeam deployment on Polkadot MainNet, this token will be called Glimmer, as in, “that smart contract call will cost 3 Glimmer.”  The token symbol will be GLMR.
+部署在Polkadot上的Moonbeam代币称为Glimmer（GLMR）。代币应用举例：“调用这个智能合约将花费3个Glimmer（GLMR）“。
 
-You can find more information about Glimmer [here](https://moonbeam.network/networks/moonbeam/glimmer-token/).
+更多关于Glimmer的资讯请点击[这里](https://moonbeam.network/networks/moonbeam/glimmer-token/)。
 
 ## River Token
 
-In the Moonbeam deployment on Kusama (called Moonriver), this token will be called River, as in, “that smart contract call will cost 3 River.”  The token symbol will be RIVER.
+部署在Kusama上的Moonbeam网络是Moonriver，它的实用性代币为River（RIVER），代币应用举例：“调用这个智能合约将花费3个River（RIVER）”。
 
-You can find more information about River [here](https://moonbeam.network/networks/moonriver/river-token/).
+更多关于River的资讯请点击[这里](https://moonbeam.network/networks/moonriver/river-token/)。
 
 ## DEV Token
 
-In our Moonbeam TestNet (called Moonbase Alpha), the token is called DEV. This token can be acquired freely, as its only purpose is to drive development and testing on Moonbase Alpha.
+Moonbeam测试网Moonbase Alpha的代币为DEV。此代币可免费获取，且仅供Moonbase Alpha上的开发和测试使用。
 
-You can access free DEV tokens from our [faucet](https://docs.moonbeam.network/getting-started/testnet/faucet/).
+您可在[Faucet 水龙头](https://docs.moonbeam.network/getting-started/testnet/faucet/)免费获取DEV代币。

@@ -1,50 +1,50 @@
 ---
-title: Deploy a Contract
-description: Learn how to deploy unmodified and unchanged Solidity-based smart contracts to a Moonbeam node with a simple script using Web3.js, Ethers.js, or Web3.py.
+title: 部署合约
+description: 学习如何使用Web3.js、Ethers.js或Web3.py，通过简单脚本将未经改动的基于Solidity的智能合约部署到Moonbeam节点。
 ---
 
-# Using Ethereum Libraries to Deploy Smart Contracts on Moonbeam
+# 如何使用以太坊库Moonbeam部署合约
 
 ![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
 
-## Introduction
+## 概览
 
-This guide walks through using the Solidity compiler and three different Ethereum libraries to sign and send a transaction on Moonbeam manually. The three libraries covered by this tutorial are:
+本教程将按步骤介绍如何通过Solidity编译器和三个不同的以太坊库，手动在Moonbeam签名并发送交易。以下为本教程所使用的三个库：
 
  - [Web3.js](https://web3js.readthedocs.io/)
  - [Ethers.js](https://docs.ethers.io/)
  - [Web3.py](https://web3py.readthedocs.io/)
 
-Besides, two other libraries will be used to compile the smart contract:
+您也可以使用另外两个库来编译智能合约
 
- - [Solc-js](https://www.npmjs.com/package/solc) to compile Solidity smart contracts using JavaScript
- - [Py-solc-x](https://pypi.org/project/py-solc-x/) to compile Solidity smart contracts using Python
+ - [Solc-js](https://www.npmjs.com/package/solc)是通过JavaScript实现的编译器
+ - [Py-solc-x](https://pypi.org/project/py-solc-x/)是通过Python实现的编译器
 
-!!! note
+!!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-## Checking Prerequisites
+## 检查先决条件
 
-The examples using both web3.js and ethers.js need you to install Node.js and NPM previously. For the web3.py, you need Python and PIP. As of the writing of this guide, the versions used were:
+本教程基于web3.js和ethers.js的以太坊库，您需要提前安装Node.js和NPM。若需参考基于web.py的教程，您需先安装Python和PIP。在撰写本教程时，使用的各版本如下：
 
  - Node.js v15.10.0
  - NPM v7.5.3
  - Python v3.6.9 (web3 requires Python >= 3.5.3 and < 4)
  - PIP3 v9.0.1
 
-Next, create a directory to store all of the relevant files:
+现在，使用以下命令创建一个目录，储存所有相关文件：
 
 ```
 mkdir incrementer && cd incrementer/
 ```
 
-For the JavaScript libraries, first, you can create a simple `package.json` file (not required):
+若您使用JavaScript库，您可先创建一个简单的`package.json`文件（非必要）：
 
 ```
 npm init --yes
 ```
 
-In the directory, install the corresponding library and the Solidity compiler (_web3.py_ and _py-solc-x_ are installed in the default directory of PIP3):
+在目录中，使用以下命令安装需要使用的库和Solidity编译器（_web3.py_和_py-solc-x_已安装在默认PIP3目录中）
 
 === "Web3.js"
     ```
@@ -61,7 +61,7 @@ In the directory, install the corresponding library and the Solidity compiler (_
     pip3 install web3 pip3 install py-solc-x
     ```
 
-The versions used when this guide was published were
+撰写本教程时，所用各版本如下：
 
  - Web3.js v1.33 (`npm ls web3`)
  - Ethers.js v5.0.31 (`npm ls ethers`)
@@ -69,38 +69,38 @@ The versions used when this guide was published were
  - Web3.py v5.17.0 (`pip3 show web3`)
  - Py-solc-x v1.1.0 (`pip3 show py-solc-x`)
 
-The setup for this example will be relatively simple, and it'll contain the following files:
+此案例的设置相对简单，设置包含以下文件：
 
- - **_Incrementer.sol_** — the file with our Solidity code
- - **_compile.\*_** — compiles the contract with the Solidity compiler
- - **_deploy.\*_**: it will handle the deployment to our local Moonbeam node
- - **_get.\*_** — it will make a call to the node to get the current value of the number
- - **_increment.\*_** — it will make a transaction to increment the number stored on the Moonbeam node
- - **_reset.\*_** — the function to call that will reset the number stored to zero
+ - **_Incrementer.sol_** —— 拥有我们Solidity代码的文件
+ - **_compile.\*_** —— 用Solidity编译器编译合约
+ - **_deploy.\*_**: 将处理我们本地Moonbeam节点的部署工作
+ - **_get.\*_** —— 将调用节点来获取「number」的当前值
+ - **_increment.\*_** —— 将进行交易来增加存储在Moonbeam节点上的数量
+ - **_reset.\*_** —— 此功能会将存储的数字重置为零
 
-## The Contract File
+## 合约文件
 
-The contract used is a simple incrementer, arbitrarily named _Incrementer.sol_, which you can find [here](/snippets/code/web3-contract-local/Incrementer.sol). The Solidity code is the following:
+我们将使用一个简单的增量合约，任意为其命名为_Incrementer.sol_，您可在[这里](/code-snippets/web3-contract-local/Incrementer.sol)找到。相关Solidity代码如下：
 
 ```solidity
 --8<-- 'code/web3-contract-local/Incrementer.sol'
 ```
 
-The `constructor` function, which runs when the contract is deployed, sets the initial value of the number variable stored on-chain (default is 0). The `increment` function adds the `_value` provided to the current number, but a transaction needs to be sent, which modifies the stored data. Lastly, the `reset` function resets the stored value to zero.
+`constructor`函数将在合约部署完成时运行，该函数设定储存在链上「number」变量的初始值（默认为0）。 `increment`函数把已经提供的`_value`添加到当前「number」，但需要发送交易，因为这会修改储存的数据。最后，`reset`函数将已储存的值重置归零。
 
-!!! note
-    This contract is a simple example for illustration purposes only and does not handle values wrapping around.
+!!! 注意事项
+    此合约为简单演示，仅作说明用途，无实际价值。
 
-## Compiling the Contract
+## 合约编译
 
-The only purpose of the compile file is to use the Solidity compiler to output the bytecode and interface (ABI) our contract. You can find the code snippet for each library here (they were arbritarly named `compile.*`):
+编译文件的唯一目的是通过Solidity编译器生成合约的字节码和二进制接口（Application Binary Interface (ABI) ）。您可通过以下链接找到对应库的代码片段（文件被命名为`compile.*`）：
 
  - Web3.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
  - Ethers.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
  - Web3.py: [_compile.py_](/snippets/code/web3py-contract/compile.py)
 
-!!! note
-    The compile file for both JavaScript libraries is the same as they share the JavaScript bindings for the Solidity compiler (same package)
+!!! 注意事项
+    两个JavaScript库的编译文件相同，因为他们绑定一个Solidity编译器（相同的包），同时共享JavaScript
 
 === "Web3.js"
     ```
@@ -117,34 +117,34 @@ The only purpose of the compile file is to use the Solidity compiler to output t
     --8<-- 'code/web3py-contract/compile.py'
     ```
 
-### Web3.js and Ethers.js
+### Web3.js和Ethers.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/compile.js), the contract's path is fetched, and its content read.
+在[脚本](/code-snippets/web3-contract-local/compile.js)的第一部分，获取合约的路径，并读取其内容。
 
-Next, the Solidity compiler's input object is built, and it is passed as input to the `solc.compile` function.
+接下来，构建Solidity编译器的输入对象，并将其作为输入传递给`solc.compile`函数。
 
-Lastly, extract the data of the `Incrementer` contract of the `Incrementer.sol` file, and export it so that the deployment script can use it.
+最后，提取并导出`Incrementer.sol`文件的`Incrementer`合约数据，以便部署脚本。
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/compile.py), the contract file is compiled using the `solcx.compile_files` function. Note that the contract file is in the same directory as the compile script.
+在[脚本](/code-snippets/web3py-contract/compile.py)的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
 
-!!! note
-    When running the `compile.py` you might be get an error stating that `Solc` needs to be installed. If so, uncomment the line in the file that executes `solcx.install_solc()` and rerun the compile file again with `python3 compile.py`. More information can be found in [this link](https://pypi.org/project/py-solc-x/).
+!!! 注意事项
+    当运行`compile.py`时，您可能会收到一个需要安装`Solc`的错误提示。如遇此情况，请取消在文件中注释执行`solcx.install_solc()`的行，并用`python3 compile.py`重新运行编译文件。更多信息您可通过[此链接](https://pypi.org/project/py-solc-x/)查看。
 
-Next, and wrapping up the script, the contract data is exported. In this example, only the interface (ABI) and bytecode were defined.
+接下来，结束脚本，导出合约数据。在此例中，仅定义接口（ABI）和字节码。
 
-## Deploying the Contract
+## 合约部署
 
-Regardless of the library, the strategy to deploy the compiled smart contract is somewhat similar. A contract instance is created using its interface (ABI) and bytecode. From this instance, a deployment function is used to send a signed transaction that deploys the contract. You can find the code snippet for each library here (they were arbitrarily named `deploy.*`):
+无论使用哪种库，部署已编译智能合约的策略都有些相似。本合约实例使用其接口（ABI）和字节码所创建。部署功能可通过发送已签名的交易来部署合约。您可以通过以下链接找到对应库的代码片段（文件被命名为`deploy.*`）：
 
  - Web3.js: [_deploy.js_](/snippets/code/web3-contract-local/deploy.js)
  - Ethers.js: [_deploy.js_](/snippets/code/ethers-contract-local/deploy.js)
  - Web3.py: [_deploy.py_](/snippets/code/web3py-contract/deploy.py)
 
-For simplicity, the deploy file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI and bytecode of the contract are imported. Also, the provider and account from (with the private key) are defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+简单起见，部署文件由两个部分组成。如同前例，您使用的库、合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和提供者的帐户（具有私钥）也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
 
-The second section ("Deploy Contract") outlines the actual contract deployment part. Note that for this example, the initial value of the `number` variable was set to 5. Some of the key takeaways are discussed next.
+第二部分（"Deploy Contract"）概述了实际的合约部署。请注意，在此例中，数字变量的初始值设置为5。其中部分关键要点我们将在后面展开讨论。
 
 === "Web3.js"
     ```
@@ -161,56 +161,56 @@ The second section ("Deploy Contract") outlines the actual contract deployment p
     --8<-- 'code/web3py-contract/deploy.py'
     ```
 
-!!! note
-    The _deploy.\*_ script provides the contract address as an output. This comes in handy, as it is used for the contract interaction files.
+!!! 注意事项
+    _deploy.*_ 脚本提供合约地址作为输出结果。 该脚本用于合约交互文件，使用便捷。
 
 ### Web3.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/deploy.js), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+在[此脚本](/code-snippets/web3-contract-local/deploy.js)的第一部分，您可以看到`web3`实例（或提供者（Provider））可通过带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
-The private key, and the public address associated with it, are defined for signing the transaction and logging purposes. Only the private key is required. Also, the contract's bytecode and interface (ABI) are fetched from the compile's export.
+为了交易和日志记录，需定义私钥以及与之关联的地址，此处仅需要私钥。 此外，您可以从编译器的输出中获取字节码和接口（ABI）。
 
-In the second section, a contract instance is created by providing the ABI. Next, the `deploy` function is used, which needs the bytecode and arguments of the constructor function. This will generate the constructor transaction boject.
+第二部分中，演示了如何通过ABI来创建合约实例。使用`deploy`函数生成构造函数交易，该函数需要构造函数的字节码和参数。
 
-Afterwards, the constructor transaction can be signed using the `web3.eth.accounts.signTransaction()` method. The data field corresponds to the bytecode, and the constructor input arguments are encoded together. Note that the value of gas is obtained using `estimateGas()` option inside the constructor transaction.
+接下来，使用`web3.eth.accounts.signTransaction()`方式来签名构造函数交易。数据域对应字节码，与构造函数输入参数一起编码。请注意，使用构造函数中的`estimateGas()`选项来获得gas值。
 
-Lastly, the signed transaction is sent, and the contract's address is displayed in the terminal.
+最后，发送已签名的交易，同时合约地址也会显示。
 
 ### Ethers.js
 
-In the first part of [the script](/snippets/code/ethers-contract-local/deploy.js), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+[此脚本](/code-snippets/ethers-contract-local/deploy.js)的第一部分中，可以使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述 `web3`实例）通过`ethers.providers.StaticJsonRpcProvider` 方式创建。另外还有一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
-The private key is defined to create a wallet instance, which also requires the provider from the previous step. The wallet instance is used to sign transactions. Also, the contract's bytecode and interface (ABI) are fetched from the compile's export.
+需要用到上面提到的提供者 （Provider）和私钥来创建钱包实例，进而签名交易。此外，您可以从编译器的输出中获取字节码和ABI 。
 
-In the second section, a contract instance is created with `ethers.ContractFactory()`, providing the ABI, bytecode, and wallet. Thus, the contract instance already has a signer. Next, the `deploy` function is used, which needs the constructor input arguments. This will send the transaction for contract deployment. To wait for a transaction receipt you can use the `deployed()` method of the contract deployment transaction.
+在第二部分中，我们演示了如何使用ABI，字节码和钱包创建合约实例。因此，合约实例已经有签名器。接下来，使用`deploy`函数发送交易，该函数需要构造函数的输入参数。使用合约部署交易的`deployed()`函数来获取交易回执。
 
-Lastly, the contract's address is displayed in the terminal.
+最后，显示合约地址。
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+在[此脚本](/code-snippets/web3py-contract/deploy.py)的第一部分，您可看到使用带有提供者（Provider）RPC的 `Web3(Web3.HTTPProvider(provider_rpc))`创建`web3`实例（或提供者（Provider））。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
-The private key and the public address associated with it are defined for signing the transaction and establishing the from address.
+私钥和与之关联的公共地址功能：签名交易和建立来源地址。
 
-In the second section, a contract instance is created with `web3.eth.contract()`, providing the ABI and bytecode imported from the compile file. Next, the constructor transaction can be built using the `constructor().buildTransaction()` method of the contract instance. Note that inside the `constructor()`, you need to specify the constructor input arguments. The `from` account needs to be outlined as well. Make sure to use the one associated with the private key. Also, the transaction count can be obtained with the `web3.eth.getTransactionCount(address)` method.
+在第二部分中，演示使用`web3.eth.contract()`创建合约实例，提供从编译文件导入的ABI和字节码。接下来，使用合约实例的`constructor().buildTransaction()`方法建立构造交易。请注意，在 `constructor()`代码中，您需要输入构造函数的所需参数，包含`from`即交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过 `web3.eth.getTransactionCount(address)`方式获得交易个数。
 
-The constructor transaction can be signed using `web3.eth.account.signTransaction()`, passing the constructor transaction and the private key.
+使用`web3.eth.account.signTransaction()`签名交易，同时传输交易及私钥。
 
-Lastly, the signed transaction is sent, and the contract's address is displayed in the terminal.
+最后，发送已签名的交易，同时合约地址也会显示在终端。
 
-## Reading from the Contract (Call Methods)
+## 合约读取（调用程序）
 
-Call methods are the type of interaction that don't modify the contract's storage (change variables), meaning no transaction needs to be sent.
+调用方法不需要修改合约存储（更改变量）的交互类型，这意味着无需发送任何交易。
 
-Let's overview the _get.\*_ file (the simplest of them all), which fetches the current value stored in the contract. You can find the code snippet for each library here (they were arbritarly named `get.*`):
+下面简单介绍 _get.*_ 文件（调用方法中最简单的一种），该文件将获取合约中存储的当前值。您可以通过以下链接找到对应库的代码段（文件被命名为`get.*`):
 
  - Web3.js: [_get.js_](/snippets/code/web3-contract-local/get.js)
  - Ethers.js: [_get.js_](/snippets/code/ethers-contract-local/get.js)
  - Web3.py: [_get.py_](/snippets/code/web3py-contract/get.py)
 
-For simplicity, the get file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI of the contract are imported. Also, the provider and the contract's address are defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
 
-The second section ("Call Function") outlines the actual call to the contract. Regardless of the library, a contract instance is created (linked to the contract's address), from which the call method is queried. Some of the key takeaways are discussed next.
+第二部分（“Call Function”）简述了合约的实际调用。无论使用哪种库，都将创建合约实例（链接到合约地址），并从中查询调用程序。其中部分关键要点我们将会在后面展开讨论。
 
 === "Web3.js"
     ```
@@ -229,47 +229,47 @@ The second section ("Call Function") outlines the actual call to the contract. R
 
 ### Web3.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/get.js), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+在[脚本](/code-snippets/web3-contract-local/get.js)的第一部分，`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+合约接口（ABI）和地址也需要与之交互。
 
-In the second section, a contract instance is created with `web3.eth.Contract()` by providing the ABI and address. Next, the method to call can be queried with the `contract.methods.methodName(_input).call()` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). This promise, when resolved, will return the value requested.
+第二部分，我们演示了通过提供的ABI和合约地址，使用``web3.eth.Contract()``创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为`contract`，`methodName`和`_input`，使用`contract.methods.methodName(_input).call()`函数来查询调用程序。这意味着脚本执行之后将返回值。
 
-Lastly, the value is displayed in the terminal.
+最后，显示返回值。
 
 ### Ethers.js
 
-In the first part of [the script](/snippets/code/ethers-contract-local/get.js), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+[此脚本](/code-snippets/ethers-contract-local/get.js)的第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者(Provider)（类似上述`web3`实例）通过`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+合约接口（ABI）和地址也需要与之交互。
 
-In the second section, a contract instance is created with `ethers.Contract()`, providing its address, ABI, and the provider. Next, the method to call can be queried with the `contract.methodName(_input)` function, replacing `contract` `methodName`, and `_input` with the contract instance, function to call, and input of the function (if necessary). This promise, when resolved, will return the value requested.
+第二部分中，我们演示了通过提供的合约地址、ABI以及提供者（Provider），使用 `ethers.Contract()`创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为 `contract` `methodName`和 `_input` ，使用 `contract.methodName(_input)`函数来查询调用程序。这意味着脚本执行之后将返回值。
 
-Lastly, the value is displayed in the terminal.
+最后，显示返回值。
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/get.py), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+[此脚本](/code-snippets/web3py-contract/get.py)的第一部分中，您可以看到`web3`实例（或者提供者）是由`Web3(Web3.HTTPProvider(provider_rpc))`方式和提供者RPC创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+合约接口（ABI）和地址也需要与之交互。
 
-In the second section, a contract instance is created with `web3.eth.contract()` by providing the ABI and address. Next, the method to call can be queried with the `contract.functions.method_name(input).call()` function, replacing `contract`, `method_name` and `input` with the contract instance, function to call, and input of the function (if necessary). This returns the value requested.
+在第二部分中，我们演示了通过提供ABI和地址，使用 `web3.eth.contract()`创建合约实例。接下来，将合约实例，调用函数和输入（如有必要）替换为 `contract`、 `methodName`和 `_input`，使用``contract.functions.method_name(input).call()`函数来查询调用程序。这意味着脚本执行之后将返回值。
 
-Lastly, the value is displayed in the terminal.
+最后，显示返回值。
 
-## Interacting with the Contract (Send Methods)
+## 合约交互（发送程序）
 
-Send methods are the type of interaction that modify the contract's storage (change variables), meaning a transaction needs to be signed and sent.
+发送程序是修改合约存储（更改变量）的交互类型，也就是需要对交易进行签名和发送。
 
-First, let's overview the _increment.\*_ file, which increments the current number stored in the contract by a given value. You can find the code snippet for each library here (they were arbritarly named `increment.*`):
+首先，概述 _increment.*_ 文件，该文件将合约中存储的当前数字增加给定值。 您可以通过以下链接找到对应库的代码段（文件被命名为`increment。*`）：
 
  - Web3.js: [_increment.js_](/snippets/code/web3-contract-local/increment.js)
  - Ethers.js: [_increment.js_](/snippets/code/ethers-contract-local/increment.js)
  - Web3.py: [_increment.py_](/snippets/code/web3py-contract/increment.py)
 
-For simplicity, the increment file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI of the contract are imported. The provider, the contract's address, and the value of the `increment` function are also defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+简单起见，增量文件由两个部分组成。如同前例，使用的库以及合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者、合约地址和`increment`函数的值也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
 
-The second section ("Send Function") outlines the actual function to be called with the transaction. Regardless of the library, a contract instance is created (linked to the contract's address), from which the function to be used is queried.
+第二部分（“Send Function”）简述了交易要调用的实际函数。无论使用哪种库，都将创建合约实例（链接到合约地址），并从中查询发送程序。
 
 === "Web3.js"
     ```
@@ -286,13 +286,13 @@ The second section ("Send Function") outlines the actual function to be called w
     --8<-- 'code/web3py-contract/increment.py'
     ```
 
-The second file to interact with the contract is the _reset.\*_ file, which resets the number stored in the contract to zero. You can find the code snippet for each library here (they were arbritarly named `reset.*`):
+其次，用来合约交互的文件是 _reset.*_ ，该文件的功能是将合约中存储的数字重置归零。您可以通过以下链接找到对应库的代码段（文件被命名为`reset.*`）：
 
  - Web3.js: [_reset.js_](/snippets/code/web3-contract-local/reset.js)
  - Ethers.js: [_reset.js_](/snippets/code/ethers-contract-local/reset.js)
  - Web3.py: [_reset.py_](/snippets/code/web3py-contract/reset.py)
 
-Each file's structure is very similar to his _increment.\*_ counterpart for each library. The main difference is the method being called.
+每个文件的结构与每个库的 _increment.*_ 对应结构类似，主要区别在于调用程序。
 
 === "Web3.js"
     ```
@@ -311,45 +311,45 @@ Each file's structure is very similar to his _increment.\*_ counterpart for each
 
 ### Web3.js
 
-In the first part of the script ([increment](/snippets/code/web3-contract-local/increment.js) or [reset](/snippets/code/web3-contract-local/reset.js) files), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+在此脚本（[increment](/code-snippets/web3-contract-local/increment.js)或者[reset](/code-snippets/web3-contract-local/reset.js)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，将交易发送到您指定的网络。
 
-The private key, and the public address associated with it, are defined for signing the transaction and logging purposes. Only the private key is required. Also, the contract's interface (ABI) and address are needed to interact with it. If necessary, you can define any variable required as input to the function you are going to interact with.
+定义私钥和与之关联的地址是为了交易和日志记录。此处仅需要私钥。 此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
-In the second section, a contract instance is created with `web3.eth.Contract()` by providing the ABI and address. Next, you can build the transaction object with the `contract.methods.methodName(_input)` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary).
+在第二部分中，演示了通过提供ABI和地址，使用`web3.eth.Contract()`创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为`contract`，`methodName`和`_input`，使用`contract.methods.methodName(_input)`函数来构造交易对象。
 
-Afterwards, the transaction can be signed using the `web3.eth.accounts.signTransaction()` method. The data field corresponds to the transaction object from the previous step. Note that the value of gas is obtained using `estimateGas()` option inside the transaction object.
+接下来，使用`web3.eth.accounts.signTransaction()`方式来签名交易。数据域对应字节码，与构造函数输入参数一起编码。请注意，使用交易对象中的`estimateGas()`选项来获得gas值。
 
-Lastly, the signed transaction is sent, and the transaction hash is displayed in the terminal.
+最后，发送已签名的交易，交易哈希也会同步显示。
 
 ### Ethers.js
 
-In the first part of the script ([increment](/snippets/code/ethers-contract-local/increment.js) or [reset](/snippets/code/ethers-contract-local/reset.js) files), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+在此脚本（[increment](/code-snippets/ethers-contract-local/increment.js)或者[reset](/code-snippets/ethers-contract-local/reset.js)文件）第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述`web3`实例）由`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
-The private key is defined to create a wallet instance, which also requires the provider from the previous step. The wallet instance is used to sign transactions. Also, the contract's interface (ABI) and address are needed to interact with it. If necessary, you can define any variable required as input to the function you are going to interact with.
+定义私钥是为了创建钱包实例，同样也需要前文提到的提供者（Provider）辅助。钱包实例的功能室签名交易。此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
-In the second section, a contract instance is created with `ethers.Contract()`, providing its address, ABI, and wallet. Thus, the contract instance already has a signer. Next, transaction corresponding to a specific function can be send with the `contract.methodName(_input)` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). To wait for a transaction receipt, you can use the `wait()` method of the contract deployment transaction.
+在第二部分中，我们演示了通过ABI、地址以及钱包，通过`ethers.Contract()`创建合约实例。因此，合约实例已经有签名器。接下来，将合约实例，调用函数和输入（如有必要）替换 为`contract`、 `methodName`和`_input`，使用`contract.methodName(_input)`函数来发送与特定函数相对应的交易。使用合约部署交易的`wait()`函数来获取交易回执。
 
-Lastly, the transaction hash is displayed in the terminal.
+最后，交易哈希值可在终端显示。
 
 ### Web3.py
 
-In the first part of the script ([increment](/snippets/code/web3py-contract/increment.py) or [reset](/snippets/code/web3py-contract/reset.py) files), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+在此脚本（[increment](/code-snippets/web3py-contract/increment.py)或者[reset](/code-snippets/web3py-contract/reset.py)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
-The private key and the public address associated with it are defined for signing the transaction and establishing the from address. Also, the contract's interface (ABI) and address are needed as well to interact with it.
+定义私钥和与之关联的地址是为了签名交易和创立发送地址。 此外，合约接口（ABI）和地址也需要与之交互。
 
-In the second section, a contract instance is created with `web3.eth.contract()` by providing the ABI and address. Next, you can build the transaction object with the `contract.functions.methodName(_input).buildTransaction` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). Inside `buildTransaction()`, the `from` account needs to be outlined. Make sure to use the one associated with the private key. Also, the transaction count can be obtained with the `web3.eth.getTransactionCount(address)` method.
+在第二部分中，我们演示了通过提供ABI和地址，使用`web3.eth.contract()`创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为`contract`、`methodName`和`_input`，使用`contract.functions.methodName(_input).buildTransaction`函数来构建交易对象。在`buildTransaction()`代码中，您需要输入`from`交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过`web3.eth.getTransactionCount(address)` 方式获得交易个数。
 
-The transaction can be signed using `web3.eth.account.signTransaction()`, passing the transaction object of the previous step and the private key.
+使用`web3.eth.account.signTransaction()`签名交易，同时传输上面步骤提到的交易对象及私钥。
 
-Lastly, the transaction hash is displayed in the terminal.
+最后，交易哈希值可在终端显示。
 
 ## Running the Scripts
 
-For this section, the code shown before was adapted to target a development node, which you can run by following [this tutorial](/getting-started/local-node/setting-up-a-node/). Also, each transaction was sent from the pre-funded account that comes with the node:
+在本小节，您可以按照[本教程](/getting-started/local-node/setting-up-a-node/)运行适用于独立节点的代码。此外，每笔交易都是从节点随附的预付款帐户发送：
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-First, deploy the contract by running (note that the directory was renamed for each library):
+首先，运行部署合同（请注意，此处已为每个库重命名目录）：
 
 === "Web3.js"
     ```
@@ -366,7 +366,7 @@ First, deploy the contract by running (note that the directory was renamed for e
     python3 deploy.py
     ```
 
-This will deploy the contract and return the address:
+这将部署合同并返回地址：
 
 === "Web3.js"
     ![Deploy Contract Web3js](/images/deploycontract/contract-deploy-web3js.png)
@@ -377,7 +377,7 @@ This will deploy the contract and return the address:
 === "Web3.py"
     ![Deploy Contract Web3py](/images/deploycontract/contract-deploy-web3py.png)
 
-Next, run the increment file. You can use the get file to verify the value of the number stored in the contract before and after increment it:
+接下来，运行增量文件。 您可以使用「get」文件在递增之前和之后验证合约中存储的数字值：
 
 === "Web3.js"
     ```
@@ -394,7 +394,7 @@ Next, run the increment file. You can use the get file to verify the value of th
     python3 get.py python3 increment.py python3 get.py
     ```
 
-This will display the value before the increment transaction, the hash of the transaction, and the value after:
+这将显示增量交易之前的值，交易哈希以及增量之后的值：
 
 === "Web3.js"
     ![Increment Contract Web3js](/images/deploycontract/contract-increment-web3js.png)
@@ -405,7 +405,7 @@ This will display the value before the increment transaction, the hash of the tr
 === "Web3.py"
     ![Increment Contract Web3py](/images/deploycontract/contract-increment-web3py.png)
 
-Lastly, run the reset file. Once again, you can use the get file to verify the value of the number stored in the contract before and after resetting it:
+最后，运行重置（reset）文件。再一次，您可使用get文件在递增之前和之后验证合约中存储的数字值：
 
 === "Web3.js"
     ```
@@ -422,7 +422,7 @@ Lastly, run the reset file. Once again, you can use the get file to verify the v
     python3 get.py python3 reset.py python3 get.py
     ```
 
-This will display the value before the reset transaction, the hash of the transaction, and the value after:
+这将显示重置交易之前的值，交易哈希以及重置之后的值：
 
 === "Web3.js"
     ![Reset Contract Web3js](/images/deploycontract/contract-reset-web3js.png)
@@ -432,5 +432,3 @@ This will display the value before the reset transaction, the hash of the transa
 
 === "Web3.py"
     ![Reset Contract Web3py](/images/deploycontract/contract-reset-web3py.png)
-
---8<-- 'text/common/we-want-to-hear-from-you.md'
