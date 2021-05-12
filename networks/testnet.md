@@ -1,78 +1,78 @@
 ---
-title: TestNet
-description: An overview of the current configuration of the Moonbeam TestNet, Moonbase Alpha, and information on how to start building on it using Solidity.
+title: 测试网
+description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及如何使用Solidity开始在其上进行构建。
 ---
 
-# The Moonbase Alpha TestNet
+# Moonbeam测试网（Moonbase Alpha）
 
-_Updated April 5, 2021_
+*更新于2021年4月5日*
 
-## Goal
+## 目标
 
-The first Moonbeam TestNet, named Moonbase Alpha, aims to provide developers with a place to start experimenting and building on Moonbeam in a shared environment. Since Moonbeam will be deployed as a parachain on Kusama and Polkadot, we want our TestNet to reflect our production configuration. For this reason, we decided that it needed to be a parachain-based configuration rather than a Substrate development setup.
+首个Moonbeam测试网（又称Moonbase Alpha）旨在向开发者们提供一个在共享环境下，能够在Moonbeam上进行开发或部署的平台。由于Moonbeam将作为平行链部署在Kusama和Polkadot上，因此我们希望测试网能够直接反映各测试环节的配置。为此，我们决定将测试网开发为一个基于平行链的配置，而非独立的Substrate设置。
 
-In order to collect as much feedback as possible and provide fast issue resolution, we have set up a [Discord with a dedicated Moonbase AlphaNet channel](https://discord.gg/PfpUATX).
+如果您有任何意见或建议，或需要任何技术支持，欢迎加入[Moonbase AlphaNet的专用Discord频道](https://discord.gg/PfpUATX)。
 
-## Initial Configuration
+## 初始配置
 
-Moonbase Alpha has the following configuration:
+Moonbase Alpha具有以下配置：
 
- - Moonbeam runs as a parachain connected to a relay chain
- - The parachain has two collators (hosted by PureStake) that are collating blocks. External collators can join the network. Only the top {{ networks.moonbase.collator_slots }} collator nodes by stake are chosen in the active set
- - The relay chain hosts three validators (hosted by PureStake) to finalize relay chain blocks. One of them is selected to finalize each block collated by Moonbeam's collators. This setup provides room to expand to a two-parachain configuration in the future
- - There are two RPC endpoints (hosted by PureStake). People can run full nodes to access their own private RPC endpoints
+ - Moonbeam会以平行链方式接入中继链运行
+ - 平行链上将会有两个收集者节点（由PureStake主导）以收集区块。外部收集节点可以加入网络。只有质押前{{ networks.moonbase.collator_slots }}名收集人节点将被选为活跃收集人群体
+ - 中继链上会有三个验证者节点（由PureStake主导）来决定中继链上的区块。其中一个会被选来敲定每一个由Moonbeam的收集者收集来的区块。此设定为将来扩展为两个平行链配置提供了空间。
+ - 将会有两个RPC端点（由PureStake主导）。同时，用户可以运行全节点来使用他们的私人RPC节点。
 
 ![TestNet Diagram](/images/testnet/Moonbase-Alpha-v7.png)
 
-## Features
+## 版本特色
 
-The following features are available:
+以下为本系统的特色：
 
 ??? release v1 "_September 2020_"
-    - Fully-emulated Ethereum block production in Substrate (Ethereum pallet)
-    - Dispatchable functions to interact with the Rust EVM implementation ([EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/))
-    - Native Ethereum RPC support (Web3) in Substrate ([Frontier](https://github.com/paritytech/frontier)). This provides compatibility with Ethereum developer tools such as MetaMask, Remix, and Truffle 
+    - 在Substrate中完全模拟以太坊区块的生产（以太坊pallet）
+        - 通过可分派功能来与Rust EVM执行互动（[EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/))
+        - 在Substrate（[Frontier](https://github.com/paritytech/frontier)）中由以太坊RPC原生支持（Web3)。此功能提供了与以太坊开发者工具之间的兼容性，包括MetaMask、Remix和Truffle Substrate
 
 ??? release v2 "_October 2020_"
-    - Event subscription support (pub/sub), which is a missing component on the Web3 RPC side and commonly used by DApp developers. You can find a tutorial on how to subscribe to events [here](/integrations/pubsub/)
-    - Support for the following precompile contracts: [ecrecover](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-01-ecrecover-hash-v-r-s), [sha256](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-02-sha-256-data), [ripemd160](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-03-ripemd-160-data) and the [identity function](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data) (or datacopy)
+    - 支持活动订阅功能（pub/sub），这是Web3 RPC端缺少的组件，但经常被DApp开发人员使用。您可以在[这里](/integrations/pubsub/)找到如何订阅活动的教程。
+    - 支持以下的预编合约：[ecrecover](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-01-ecrecover-hash-v-r-s)、[sha256](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-02-sha-256-data)、[ripemd160](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-03-ripemd-160-data)和[身份函数](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data)（或datacopy)。
 
 ??? release v3 "_November 2020_"
-    - Unification of Substrate and Ethereum accounts under the H160 format, an effort we are calling [Unified Accounts](https://medium.com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda). Consequently, there will be only one kind of account in the system represented by a single address
-    - Upgrades to the event subscription support, adding the possibility of using wildcards and conditional formatting for topics. You can find more information [here](https://docs.moonbeam.network/integrations/pubsub/#using-wildcards-and-conditional-formatting)
-    - Polkadot JS Apps now natively supports H160 addresses and ECDSA keys. You can use your Ethereum-style address for Substrate functions (when available) like staking, balances, and governance. You can find more information [here](/integrations/wallets/polkadotjs/)
+    - 将Substrate和以太坊账户统一为H160的形式，我们将这个功能称为[统一账户](https://medium.com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda)。最后，系统内将会只有一种账户并以单一地址来表示
+    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](https://docs.moonbeam.network/integrations/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
+    - Polkadot JS Apps现在原生支持H160地址以及ECDSA密钥。您可以通过您的以太坊的地址来使用Substrate的功能（当可以使用时），例如staking、balances和governance。您可以在[这里](/integrations/wallets/polkadotjs/)找到更多资讯/integrations/wallets/polkadotjs/)
 
 ??? release v4 "_December 2020_"
-    - Updated to the newest version of the Polkadot parachain protocol ([Parachains V1](https://w3f.github.io/parachain-implementers-guide/)), which fixed several issues with node syncing, paving the way to have multiple collators to sync in the same parachain
-    - Multiple improvements to our Etheruem Compatibility features:
-        * Event subscription ID now returns an Ethereum-styled subscription ID
-        * Fixed gas estimation issues for specific usecases
-        * Added support for revert reason message
-        * Support for Ethereum transactions without ChainId
+    - 将Polkadot平行链协议升级至最新版本（[Parachains V1](https://w3f.github.io/parachain-implementers-guide/)），并修补数项问题，包含节点同步，为多个收集者能够在同一个平行链上同步做好准备
+    - 在兼容以太坊的特点上做了几点改进：
+        * 活动订阅ID现在变回以太坊风格的订阅ID
+        * 修复了特定例案的gas估算问题
+        * 添加支持还原原因消息的功能
+        * 支持不需使用ChainId的以太坊交易
 
 ??? release v5 "_January 2021_"      
-    - Added a custom version of the [Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking) (for testing and development purposes only)
-    - Added support for querying pending transactions while they are in the pool 
-    - Fixed some issues when retrieving past events and other minor fixes related to smart contract events
-    - Multiple under-the-hood improvements that include an optimization of the EVM execution time, making it 15-50 times faster
-    - Support for the [modexp](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod) precompile contracts
+    - 添加[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)的定制版本（仅限于测试以及开发用途）
+        - 支持查询池中仍在排队待确认交易的功能
+        - 修复检索过去活动时所出现的问题，以及部分修复关于智能合约的问题
+        - 进行许多本质上的改进，包含EVM执行时间的优化，使其执行速度快上15至50倍
+        - 支持[modexp](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod)预编合约
 
 ??? release v6 "_February 2021_"      
-    - Public release of the custom [Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking). Now token holders can nominate collators and earn rewards
-    - Added the [Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/democracy). Token holders can now [submit proposals](/governance/proposals/) and [vote on them](/governance/voting/)
-    - Updated to the latest version of [Frontier RPC](https://github.com/paritytech/frontier), which increases EVM execution efficiency by a factor of 5
-    - The gas limit has been bump to 15M per block, with a 13M per transaction limit
+    - 公开发布定制的[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)，拥有代币的用户可以提名收集人并获得奖励
+        - 增加[Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/democracy)，拥有代币的用户可以[上传提案](/governance/proposals/)并且[投票](/governance/voting/)
+        - 将[Frontier RPC](https://github.com/paritytech/frontier) 更新至最新版本，提高EVM至少五倍的执行效率
+        - Gas的使用限制提高至一个区块15M以及每一个交易13M的限制
 
 ??? release v7 "_April 2021_"      
-    - Added support for Ethereum debug/tracing modules. These are turned off by default, to use them you need to spin up a full-node and turn on the feature
-    - Fixed block propagation issues so that is not longer limited to collators, improving network stability
-    - Added Councils and Technical Committee, expanding governance features
-    - Staking module has been refactored, with new names to improve the end-user experience
-    - Added three new precompiles: [Bn128Add](https://eips.ethereum.org/EIPS/eip-196), [Bn128Mul](https://eips.ethereum.org/EIPS/eip-196) and [Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
+    -添加对以太坊调试/跟踪模块的支持。这些功能在默认情况下处于关闭状态，需要启动一个完整节点并打开该功能才可使用
+    - 修复区块传播问题，不再仅限于收集人，从而提高网络稳定性
+        - 增加理事会和技术委员会，扩展治理功能
+        - 重构质押模块，使用新名称来改善终端用户体验
+        - 添了三个新的预编译：[Bn128Add](https://eips.ethereum.org/EIPS/eip-196)、[Bn128Mul](https://eips.ethereum.org/EIPS/eip-196)和[Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
 
-### Release Notes
+### 版本发布通知
 
-For more details regarding the updates of Moonbase Alpha, please refer to the following release notes:
+如果您想了解更多关于Moonbase Alpha的更新，请参考以下的发布资料：
 
  - [Moonbase Alpha v2](https://github.com/PureStake/moonbeam/releases/tag/v0.2.0)
  - [Moonbase Alpha v3](https://github.com/PureStake/moonbeam/releases/tag/v0.3.0)
@@ -81,46 +81,46 @@ For more details regarding the updates of Moonbase Alpha, please refer to the fo
  - [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)
  - [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)
 
-### Future Releases
+### 未来版本发布
 
-Features that may be implemented in the future:
+未来版本将会新增以下特点：
 
- - Treasury features ([Treasury pallet](https://github.com/paritytech/substrate/tree/master/frame/treasury))
+ - 财政库特色（[Treasury pallet](https://github.com/paritytech/substrate/tree/master/frame/treasury)）
 
-## Get Started
+## 开始使用
 
 --8<-- 'text/testnet/connect.md'
 
-## Telemetry
+## 遥测功能
 
-You can see current Moonbase Alpha telemetry information visiting [this link](https://telemetry.polkadot.io/#list/Moonbase%20Alpha).
+您可以点击这个[链接](https://telemetry.polkadot.io/#list/Moonbase%20Alpha)来查看及时的Moonbase Alpha遥测资讯。
 
-## Tokens
+## 代币
 
 --8<-- 'text/testnet/faucet.md'
 
-## Early Stage Proof of Stake
+## 初步的持有量证明
 
-With the release of Moonbase Alpha v6, the TestNet is now running with an early stage Proof of Stake system. This means that, for testing purposes, Moonbeam partners will be encouraged to be the first collators in the network.
+随着Moonbase Alpha v6版本的推出，测试网上已正在运行早期阶段的Proof of Stake（权益证明）系统。这意味着在测试的初衷下，Moonbeam的合作者会被激励去成为网络内的首个收集者。
 
-As Moonbase Alpha progresses, we expect to evolve into a fully decentralized Proof of Stake network.
+随着Moonbase Alpha的进展，我们希望能将其发展成完全去中心化的Proof of Stake（权益证明）网络。
 
-## Limitations
+## 限制
 
-This is the first TestNet for Moonbeam, so there are some limitations.
+因为这是Moonbeam的第一个测试网，所以仍然有一些限制。
 
-Some [precompiles](https://docs.klaytn.com/smart-contract/precompiled-contracts) are yet to be included in this release. You can check a list of supported precompiles [here](/integrations/precompiles/). However, all built-in functions are available.
+部分[预编码](https://docs.klaytn.com/smart-contract/precompiled-contracts)尚未加入至此版本内，您可以在[这里](/integrations/precompiles/)查询目前所支持的预编码。除此之外，您还是能够使用所有的内建功能。
 
-Since the release of Moonbase Alpha v6, the maximum gas limit per block has been set to 15M, with a maximum gas limit per transaction of 13M.
+随着Moonbase Alpha v6的版本发布，每一个区块的gas使用上限被设置为15M，每次交易的gas使用上限被设置为13M。
 
-Users only have access to the Moonbeam parachain. In future networks, we will add access to the relay chain so users can test transferring tokens.
+用户目前仅能使用Moonbeam平行链。我们会在未来的网络中加入中继链，向用户提供测试转移代币的功能。
 
-## Chain Purge
+## 链的清理
 
-This network is under active development. Occasionally, chain purges may be needed in order to reset the blockchain to its initial state. This is necessary when doing major TestNet upgrades or maintenance. We will announce when a chain purge will take place via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
+本网络目前仍在开发之中，为了重置区块链至其原本的状态，因此会偶尔会清理掉部分的链。这是为了主要测试网的升级或维护。我们会在破坏链的前24小时内通过[Discord频道](https://discord.gg/PfpUATX)来发布消息，敬请关注。
 
-Please take note that PureStake will not be migrating the chain state. Thus, all data stored in the blockchain will be lost when a chain purge is carried out. However, as there is no gas limit, users can easily recreate their pre-purge state.
+请注意，PureStake不会迁移链的状态。因此当正在执行链的清理的时候，所有储存在区块链上的资料将会遗失。然而，由于目前并没有gas的限制，用户可以轻松的找回清理前的状态。
 
-## We Want to Hear From You
+## 我们期待您的反馈
 
-If you have any feedback regarding Moonbase Alpha or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+如果您对与Moonbase Alpha或是其他Moonbeam相关话题有任何建议或意见，欢迎通过我们开发团队的官方[Discord频道](https://discord.gg/PfpUATX)联系我们。

@@ -1,134 +1,134 @@
 ---
-title: Propose an Action
-description: How to send a proposal to be voted on Moonbeam via governance features
+title: 提案教程
+description: 如何通过治理机制在Moonbeam上发送提案
 ---
 
-# Proposals
+# 提案
 
 ![Governance Moonbeam Banner](/images/governance/governance-proposal-banner.png)
 
-## Introduction
+## 概览
 
-As mentioned in the [governance overview page](/governance/overview/#definitions), a proposal is a submission to the chain in which a token holder suggests for an action to be enacted by the system.
+在Moonbeam[治理概述页面](/governance/overview/#definitions)中提到，提案指的是代币持有者向区块链提出建议，让系统自动执行。
 
-Proposals are one of the core elements of the governance system because they are the main tool for stakeholders to propose actions/changes, which other stakeholders then vote on.
+提案是治理系统的核心组成部分，是代币持有者提出行动或者变化建议的主要工具。提案后，其他代币持有者将对提案进行投票。
 
-In Moonbeam, users will be able to create, second, and vote on proposals using their H160 address and private key, that is, their regular Ethereum account!
+在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）创建提案、附议提案和投票提案。
 
-With the release of [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), users of the network can now submit proposals for public referenda in the TestNet. This guide outlines the process of how to create a proposal. The steps will go from its creation until it reaches public referenda. You can find a guide on how to vote on a proposal [here](/governance/voting/).
+[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，用户现可在测试网上提交提案进行公投。本教程为如何创建提案提供了指引，对从创建提案到进入公投阶段的流程进行了介绍。关于如何进行提案投票，可以点击[这里](/governance/voting/)查看相关教程。
 
-More information can be found in Polkadot's Wiki pages related to [Governance](https://wiki.polkadot.network/docs/en/learn-governance#council) and [Participate in Democracy](https://wiki.polkadot.network/docs/en/maintain-guides-democracy).
+更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/en/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/en/maintain-guides-democracy)页面。
 
-!!! note
-    This guide was done with a customized version of Moonbeam with short Launch/Enactment periods for demonstration purposes only.
+!!! 注意事项
+    本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
 
-## Definitions
+## 定义
 
-Some of the key parameters for this guide are the following:
+本教程中重要参数定义如下：
 
- - **Proposal** — action or items being proposed by users of the network
- - **Second** — other stakeholders can second (approve) a proposal if they agree with it and want to help it reach public referenda. This requires matching the deposit of the original proposer
- - **Preimage hash** — hash of the proposal to be enacted. The first step to make a proposal is to submit a preimage. The hash is just its identifier. The proposer of the preimage can be different than the user that proposes that preimage as a formal proposal
- - **Minimum preimage deposit** — minimum amount of tokens that the proposer needs to pay when submitting a preimage
- - **Minimum proposal deposit** — minimum amount of tokens that the proposer needs to bond when submitting a proposal. Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever). This is true for tokens bonded by both the proposer and users that second the proposal
- - **Launch period** — how often new public referenda are launched
- - **Cool-off period** — duration (in blocks) in which a proposal may not be re-submitted after being vetoed
+ - **提案** —— 网络用户提出的行动方案或事项
+ - **附议** —— 其他持币者可以附议提案，帮助推进到公投阶段。附议人需要质押与提案者相同数量的代币
+ - **原像哈希（Preimage Hash）** —— 要颁布的提案的哈希值。提案的第一步就是提交一个哈希值。哈希值仅作为提案标识符。原像提案者可以与正式提案者不同
+ - **最低原像充值金额** —— 提交原像所需支付的最低代币金额
+ - **最低提案充值金额** —— 提交提案所需支付的最低代币金额。由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。这一规则对提案者和附议人的质押代币同样适用
+ - **发起期** —— 两次公投之间的时间间隔
+ - **冷却期** —— 提案被否决后不能重新提交的时期（以区块数量计算）
 
-Currently, for Moonbase Alpha:
+目前Moonbase Alpha有关参数设置如下：
 
-|         Variable         |     |                                                          Value                                                          |
-| :----------------------: | :-: | :---------------------------------------------------------------------------------------------------------------------: |
-|      Launch Period       |     | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
-|     Cool-off Period      |     |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
-| Minimum Preimage Deposit |     |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
-| Minimum Proposal Deposit |     |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+|      变量      |      |                              值                              |
+| :------------: | :--: | :----------------------------------------------------------: |
+|     发起期     |      | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
+|     冷却期     |      | {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days) |
+| 最低原像存款额 |      |    {{ networks.moonbase.democracy.min_preim_deposit}} DEV    |
+| 最低提案存款额 |      |       {{ networks.moonbase.democracy.min_deposit}} DEV       |
 
-## Roadmap of a Proposal
+## 提案步骤
 
 --8<-- 'text/governance/roadmap.md'
 
-## Proposing an Action
+## 提案示例
 
-This section goes over the process of creating a proposal, from a preimage until it reaches public referenda. Instead of making a generic example, this guide will actually create a real proposal that will serve as a base for this guide and others.
+这一小节将介绍从原像到公投的提案过程。本教程中，我们创建了一个真实提案，而不是提供通用示例，以作为本教程和其它教程的基础。
 
-To make a proposal in the network, you need to use the PolkadotJS Apps interface. To do so, you need import an Ethereum-style account first (H160 address), which you can do following [this guide](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). For this example, three accounts were imported and named with super original names: Alice, Bob, and Charley.
+您需要用到PolkadotJS App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
 ![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
 
-The proposal will set Bob's balance to `1500` via governance!
+本次提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
-### Submitting a Preimage of the Proposal
+### 提交提案原像
 
-The first step is to submit a preimage of the proposal. This is because the storage cost of large preimages can be pretty hefty, as the preimage contains all the information regarding the proposal itself. With this configuration, one account with more funds can submit a preimage and another account can submit the proposal.
+第一步是提交提案原像。这是因为大型原像包含关于提案本身的所有信息，储存成本很高。在这一设置下，资金较多的账户可以负责提交原像，另一个账户提交提案。
 
-Everything related to governance lives under the "Democracy" tab. Once there, click on the "Submit preimage" button.
+所有治理相关操作均在“Democracy”标签下。进入后，点击“Submit preimage”按钮。
 
 ![Submit Preimage](/images/governance/governance-proposal-2.png)
 
-Here, you need to provide the following information:
+此处，您需要提供以下信息：
 
- 1. Select the account from which you want to submit the preimage
- 2. Choose the pallet you want to interact with and the dispatchable function (or action) to propose. The action you choose will determine the fields that need to fill in the following steps. In this case, it is the `democracy` pallet and the `setBalance` function
- 3. Set the address of which you want to change the balance
- 4. Set the new balance that this address will hold. To read more about the types of balances, you can visit [this site](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
- 5. Copy the preimage hash. This represents the proposal. You will use this hash when submitting the actual proposal
- 6. Click the "Submit preimage" button and sign the transaction
+ 1. 选择提交原像的账户
+ 2. 选择希望交互的模块以及可调用的函数（或行动）进行提案。所选行动将决定接下来的步骤中要填写的内容领域。在这一示例中，选择的是`democracy`模块和`setBalance`函数
+ 3. 设置希望修改余额的账户地址
+ 4. 设置新余额。了解更多余额类型，您可访问[这一网页](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
+ 5. 复制原像哈希值。这个数值代表着提案，在提交正式提案时会用到
+ 6. 点击“Submit preimage”按钮并签名确认交易
 
 ![Fill in the Preimage Information](/images/governance/governance-proposal-3.png)
 
-!!! note
-    Make sure you copy the preimage hash, as it is necessary to submit the proposal.
+!!! 注意事项
+    请记得复制原像哈希值，在提交提案时必须用到这一数据。
 
-Note that the storage cost of the preimage is displayed at the bottom left corner of this window. After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface, but nothing will have changed in the main democracy screen. However, don't worry. If the transaction is confirmed, the preimage has been submitted.
+请注意，原像储存成本显示在窗口左下角。交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息，但在“Democracy”页面没有任何变化。请不要担心，如果交易已确认，说明原像已经提交成功。
 
-### Submitting a Proposal
+### 提交提案
 
-Once you have committed the preimage (check the previous section), the roadmap's next major milestone is to submit the proposal related to it. To do so, in the main democracy screen, click on "Submit proposal."
+提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在“Democracy”页面点击“Submit proposal”。
 
 ![Submit proposal](/images/governance/governance-proposal-4.png)
 
-Here, you need to provide the following information:
+此处，您需要提供以下信息：
 
- 1. Select the account from which you want to submit the proposal (in this case, Alice)
- 2. Enter the preimage hash related to the proposal. In this example, it is the hash of the `setBalance` preimage from the previous section
- 3. Set the locked balance. This is the number of tokens the proposer bonds with his proposal. Remember that the proposal with the most amount of tokens locked goes to referendum. The minimum deposit is displayed just below this input tab
- 4. Click the "Submit proposal" button and sign the transaction
+ 1. 选择提交提案的账户（在本示例中为Alice）
+ 2. 输入提案的原像哈希值。在这个示例中为上一小节操作得到的`setBalance`原像哈希值
+ 3. 设置锁定金额。数值应等于提案者锁定的金额。只有锁定量最高的提案才会进入公投阶段。最低充值额显示在“Input”标签正下方
+ 4. 点击“Submit proposal”按钮并签名确认交易
 
 ![Fill in the Proposal Information](/images/governance/governance-proposal-5.png)
 
-!!! note
-    Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever).
+!!! 注意事项
+    由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface. You should also see the proposal listed in the "Proposals" section, displaying the proposer and the amounts of tokens locked, and it is now ready to be seconded!
+交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息。该提案也会进入“Proposals”列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
 
 ![Proposal listed](/images/governance/governance-proposal-6.png)
 
-### Seconding a Proposal
+### 附议
 
-To second a proposal means that you agree with it and want to back it up with your tokens to help it reach public referenda. The amount of tokens to be locked is equal to the proposer's original deposit - no more, no less.
+附议意味着您同意提案内容，并想用代币支持该提案进入公投阶段。附议人锁定的代币量需与提案者锁定的完全相同。
 
-!!! note
-    A single account can second a proposal multiple times. This is by design, as an account could just send tokens to different addresses and use them to second the proposal. What counts is the number of tokens backing up a proposal, not the number of vouches it has received.
+!!! 注意事项
+    一个账户可多次附议同一提案。这是原理上就存在的功能，因为一个账户可以发送代币到不同地址，并使用这些地址来附议提案。提案是否能进入公投阶段看的是代币锁定量，而不是地址数量。
 
-This section outlines the steps to second the proposal made in the previous section. To do so, click the "Second" button that is available for each proposal that shows up in the proposals list.
+上一小节介绍了如何创建提案，本小节则介绍了如何附议提案。在提案列表中选择需要赞成的提案并点击"Second"按钮即可。
 
 ![Proposal listed to Second](/images/governance/governance-proposal-7.png)
 
-Here, you need to provide the following information:
+此处，您需要提供以下信息：
 
- 1. Select the account you want to second the proposal with (in this case, Charley)
- 2. Verify the number of tokens required to second the proposal
- 3. Click the "Second" button and sign the transaction
+ 1. 选择您希望用于附议提案的账户（在本示例中为Charley）
+ 2. 验证附议提案所需代币数量
+ 3. 点击“Second”按钮并签名确认交易
 
 ![Fill in Second Information](/images/governance/governance-proposal-8.png)
 
-!!! note
-    Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever)
+!!! 注意事项
+    由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface. You should also see the proposal listed in the "Proposals" section, displaying the proposer and the amounts of tokens locked and listing the users that have seconded this proposal!
+交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息。您也可以在“Proposals”列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
 
 ![Proposal Seconded](/images/governance/governance-proposal-9.png)
 
-## We Want to Hear From You
+## 我们期待您的反馈
 
-If you have any feedback regarding sending a proposal on Moonbase Alpha or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+如果您对在Moonbase Alpha上发送提案以及其它Moonbeam相关话题有任何建议或意见，欢迎通过开发团队的官方[Discord平台](https://discord.com/invite/PfpUATX)联系我们。

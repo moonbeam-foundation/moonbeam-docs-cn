@@ -1,38 +1,38 @@
 ---
-title: Faucet
-description: Learn how to use the automated faucet bot on Discord to get test tokens for the Moonbeam TestNet, nicknamed Moonbase Alpha.
+title: 水龙头
+description: 学习如何使用Discord上自动化的水龙头机器人来获得Moonbeam测试网（Moonbase Alpha）的测试币。
 ---
 
-# Moonbase Alpha Faucet
+# Moonbase Alpha 水龙头
 
-## Introduction
+## 概览
 
-Tokens on Moonbase Alpha, named DEV, will be issued on demand. Currently, there are two ways to get access to this token: through a Discord bot or manually.
+Moonbase Alpha的代币是DEV，可根据需求来决定发行数量。目前有两种方法来获得此代币：通过Discord机器人或是手动获得。
 
-## Discord - Mission Control
+## 如何通过Discord - Mission Control获得代币
 
-To request tokens automatically, we've created a Discord bot (named Mission Control :sunglasses:) that will automatically send a maximum of 10 DEV tokens every 24 hours (per Discord user) when you enter your address. You can check it out on our [Discord channel](https://discord.gg/PfpUATX).
- 
-Under the category "Miscellaneous," you will find our AlphaNet bot channel. 
+为了让用户们可以自动获得代币，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多10个DEV代币至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
+
+您可以在“Miscellaneous”一栏下面找到我们的AlphaNet机器人频道。
 
 ![Discord1](/images/testnet/testnet-discord1.png)
 
-To check your balance, enter the following message, replacing `<enter-address-here->` with your H160 address:
+如果您想要查询您的余额，请输入以下信息，并将`<enter-address-here->` 替换成您的H160地址。
 
 ```
 !balance <enter-address-here->
 ```
 
-To get DEV tokens, enter the following message, replacing `<enter-address-here->` with your H160 address:
- 
+如果您想要获得DEV代币，请输入以下的信息，并将`<enter-address-here->`替换成您的H160地址。
+
 ```
 !faucet send <enter-address-here->
 ```
 
-Mission Control will send you 10 DEV tokens and display your current account balance. Remember that Mission Control is limited to dispense once every 24 hours per Discord user.
+Mission Control会自动发送10个DEV代币到您的账户，并显示您当前的账户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的代币。
 
 ![Discord2](/images/testnet/testnet-discord2.png)
 
-## Manual Procedure
+## 如何手动获得代币
 
-For token requests of more than the limited account allowed by our Discord bot, contact a moderator directly via our [Discord channel](https://discord.gg/PfpUATX). We are happy to provide the tokens needed to test your applications.
+对于超出Discord机器人设定的代币发行限制的用户，请通过我们的[Discord频道](https://discord.gg/PfpUATX)直接联系我们的管理员。我们非常愿意为您提供代币以测试您的应用程序。
