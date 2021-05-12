@@ -1,160 +1,161 @@
 ---
-title: How to Stake
-description: A guide that shows how you can stake your tokens in Moonbeam by nominating collators
+title: 如何质押
+description: 本教程将展示如何通过提名收集人在Moonbeam质押代币
 ---
 
-# How to Stake your Tokens
+# 如何进行代币质押挖矿
 
 ![Staking Moonbeam Banner](/images/staking/staking-stake-banner.png)
 
-## Introduction
+## 概览
 
-Collators (block producers) with the highest stake in the network join the active pool of collators, from which they are selected to offer a block to the Relay Chain.
+质押最高的权益者（区块生产者）可加入活跃收集人池，入选后将负责为中继链提供区块。
 
-Token holders can add to the collators' stake using their tokens, a process called nomination (also referred to as staking). When they do so, they are vouching for that specific collator, and their nomination is a signal of trust.
+代币持有者可以向收集人质押自己的代币，这一过程称为提名，也称为质押挖矿。通过这种方式，代币持有者可为某个收集人进行担保，而他们的提名则被视为对收集人的信任。
 
-When a collator does not behave appropriately, its stake in the network is slashed, affecting the tokens nominated by users as well (feature currently not available in Moonbase Alpha). If collators act accordingly, they'll receive block rewards as part of the inflationary model. They can share these as staking rewards with their nominators.
+如果收集人行为不当，其网络权益将会被削减，这也会影响到用户用于提名的代币（但Moonbase Alpha目前上仍未上线这一功能）。在通货膨胀的模型下，如果这些收集人行为恰当，则可以获得区块奖励，他们可以将区块奖励作为质押挖矿回报返回给提名者。
 
-With the release of [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), users of the network can now stake their tokens to nominate collators. This guide outlines all the steps to do so.
+[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，网络用户现在可以质押代币并提名收集人。本文将提供相关操作指引。
 
-## General Definitions
+## 一般定义
 
 --8<-- 'text/staking/staking-definitions.md'
 
-Currently, for Moonbase Alpha:
+目前，对于Moonbase Alpha来说，上述参数具体如下：
 
-|             Variable             |     |                         Value                         |
-| :------------------------------: | :-: | :---------------------------------------------------: |
-|     Minimum nomination stake     |     |     {{ networks.moonbase.staking.min_nom_stake }}     |
-|        Minimum nomination        |     |     {{ networks.moonbase.staking.min_nom_amount}}     | | Maximum nominators per collators |     |     {{ networks.moonbase.staking.max_nom_per_col }}   |
-| Maximum collators per nominator  |     |     {{ networks.moonbase.staking.max_col_per_nom }}   |
-|              Round               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
-|          Bond duration           |     |     {{ networks.moonbase.staking.bond_lock }} rounds  |
+|        变量        |      |                              值                              |
+| :----------------: | :--: | :----------------------------------------------------------: |
+|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_nom_stake }}枚代币      |
+|   最低提名持有量   |      |     {{ networks.moonbase.staking.min_nom_amount}}枚代币      |
+| 提名者的收集人限额 |      |       {{ networks.moonbase.staking.max_col_per_nom }}        |
+|        轮次        |      | {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时） |
+|      绑定时长      |      |         {{ networks.moonbase.staking.bond_lock }}轮          |
 
-## Extrinsics Definitions
+## 外部参数定义
 
-There are many extrinsics related to the staking pallet, so all of them are not covered in this guide. However, this list defines all of the extrinsics associated with the nomination process:
+质押挖矿模块有很多外部参数，本教程无法逐一进行介绍。但以下列表已经囊括与提名流程相关的外部参数：
 
-!!! note
-    Extrinsics might change in the future as the staking pallet is updated.
+!!! 注意事项
+    随着质押挖矿模块不断升级，外部参数可能发生变化。
 
- - **nominate** — two inputs: address of collator to nominate and amount. Extrinsic to nominate a collator. The amount must be at least {{ networks.moonbase.staking.min_nom_amount }} tokens
- - **leaveNominators** — no inputs. Extrinsic to leave the set of nominators. Consequently, all ongoing nominations will be revoked
- - **nominatorBondLess** — two inputs: address of a nominated collator and amount. Extrinsic to reduce the amount of staked tokens for an already nominated collator. The amount must not decrease your overall total staked below {{ networks.moonbase.staking.min_nom_stake }} tokens
- - **nominatorBondMore** — two inputs: address of a nominated collator and amount. Extrinsic to increase the amount of staked tokens for an already nominated collator
- - **revokeNomination** — one input: address of a nominated collator. Extrinsic to remove an existing nomination
+ - **nominate** —— 两个输入值：将被提名的收集人地址以及质押数量。提名一个收集人的外部参数。代币数量至少为五个
+ - **leaveNominators** —— 无输入值。离开提名人群体的外部参数。由于该参数，所有现有提名将被撤销
+ - **nominatorBondLess** —— 两个输入值：已提名的收集人地址及质押数量。为已获提名的收集人减少质押代币数量的外部参数。代币质押总量不能少于五个
+ - **nominatorBondMore** —— 两个输入值：已提名的收集人地址及质押数量。为已获提名的收集人增加质押代币数量的外部参数
+ - **revokeNomination** —— 一个输入值：已提名的收集人地址。撤销现有提名的外部参数
 
-## Retrieving the List of Collators
+## 获取收集人名单
 
-Before starting to stake tokens, it is important to retrieve the list of collators available in the network. To do so, navigate to "Chain state" under the "Developer" tab.
+在开始质押代币前，从网络中获取收集人名单至关重要。名单可在“Developer”标签下的“Chain state”进行查看。
 
 ![Staking Account](/images/staking/staking-stake-10.png)
 
-Here, provide the following information:
+在此，请提供以下信息：
 
- 1. Choose the pallet to interact with. In this case, it is the `parachainStaking` pallet
- 2. Choose the state to query. In this case, it is the `selectedCandidates` or `candidatePool` state
- 3. Send the state query by clicking on the "+" button
+ 1. 选择进行交互的模块。在本示例中为`parachainStaking`模块
+ 2. 选择请求状态。在本示例中为`selectedCandidates`或`candidatePool`状态
+ 3. 点击"+"按钮发送状态请求
 
-Each extrinsic provides a different response:
+以下每个外部参数都会返回不同结果：
 
- - **selectedCandidates** — returns the current active set of collators, that is, the top {{ networks.moonbase.staking.max_collators }} collators by total tokens staked (including nominations)
- - **candidatePool** — returns the current list of all the collators, including those that are not in the active set
+ - **selectedCandidates** —— 返回目前处于活跃状态的收集人群体，也就是总代币质押量前八名的收集人（提名人的质押量也包括在内）
+ - **candidatePool** —— 返回目前所有收集人的名单，包括不在活跃收集人群体中的收集人
 
 ![Staking Account](/images/staking/staking-stake-11.png)
 
-## How to Nominate a Collator
+## 如何提名收集人
 
-This section goes over the process of nominating collators. The tutorial will use the following collators as reference:
+本小节将介绍提名收集人的流程。本教程将用以下收集人作为示例：
 
-|  Variable  |     |                      Address                       |
-| :--------: | :-: | :------------------------------------------------: |
-| Collator 1 |     | {{ networks.moonbase.staking.collators.address1 }} |
-| Collator 2 |     | {{ networks.moonbase.staking.collators.address2 }} |
+|  变量   |      |                        地址                        |
+| :-----: | :--: | :------------------------------------------------: |
+| 校对器1 |      | {{ networks.moonbase.staking.collators.address1 }} |
+| 校对器2 |      | {{ networks.moonbase.staking.collators.address2 }} |
 
-To access staking features, you need to use the PolkadotJS Apps interface. To do so, you need to import/create an Ethereum-style account first (H160 address), which you can do by following [this guide](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account).
+使用PolkadotJS Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](https://docs.moonbeam.network/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
-For this example, an account was imported and named with a super original name: Alice.
+在本示例中，我们导入了一个账户，并命名为“Alice”。
 
-Currently, everything related to staking needs to be accessed via the "Extrinsics" menu, under the "Developer" tab:
+目前所有与质押挖矿相关的功能都需要通过“Developer”标签下的“Extrinsics”菜单进入：
 
 ![Staking Account](/images/staking/staking-stake-1.png)
 
-To nominate a collator, provide the following information:
+提名收集人，需要提供以下信息：
 
- 1. Select the account from which you want to stake your tokens
- 2. Choose the pallet you want to interact with. In this case, it is the `parachainStaking` pallet
- 3. Choose the extrinsic method to use for the transaction. This will determine the fields that need to fill in the following steps. In this case, it is the `nominate` extrinsic
- 4. Set the collator's address you want to nominate. In this case, it is set to `{{ networks.moonbase.staking.collators.address1 }}`
- 5. Set the number of tokens you want to stake
- 6. Click the "Submit Transaction" button and sign the transaction
+ 1. 选择希望质押代币的账户
+ 2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
+ 3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`nominate`外部参数
+ 4. 设置您要提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address1 }}`
+ 5. 设置您要质押的代币数量
+ 6. 点击“Submit Transaction”按钮，并签名确认交易
 
 ![Staking Join Nominators Extrinsics](/images/staking/staking-stake-2.png)
 
-Once the transaction is confirmed, you can head back to the "Accounts" tab to verify that you have a reserved balance (equal to the number of tokens staked).
+交易确认后可以返回到“Accounts”标签查看冻结余额（应与质押的代币数量一致）。
 
-To verify a nomination, you can navigate to "Chain state" under the "Developer" tab.
+您可以在“Developer”标签下的“Chain state”中查看是否已成功提名。
 
 ![Staking Account and Chain State](/images/staking/staking-stake-3.png)
 
-Here, provide the following information:
+在此，请提供以下信息：
 
- 1. Choose the pallet you want to interact with. In this case, it is the `parachainStaking` pallet
- 2. Choose the state to query. In this case, it is the `nominators` state
- 3. Make sure to disable the "include option" slider
- 4. Send the state query by clicking on the "+" button
+ 1. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
+ 2. 选择请求状态。在本示例中为`nominators`状态
+ 3. 确保已经关闭“include option”滑块
+ 4. 点击"+"按钮发送状态请求
 
 ![Staking Chain State Query](/images/staking/staking-stake-4.png)
 
-In the response, you should see your account (in this case, Alice's account) with a list of the nominations. Each nomination contains the target address of the collator and the amount.
+在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
-You can follow the same steps as described to nominate other collators in the network. For example, Alice nominated `{{ networks.moonbase.staking.collators.address2 }}` as well.
+您也可以通过以上同样的步骤提名其他的收集人。例如，Alice也提名了 `{{ networks.moonbase.staking.collators.address2 }}` 。
 
-## How to Stop Nominations
+## 如何停止提名
 
-If you are already a nominator, you have two options to stop your nominations: using the `revokeNomination` extrinsic to unstake your tokens from a specific collator, or using the `leaveNominators` extrinsic to revoke all ongoing nominations.
+如果您已经是一个提名者，停止提名有两种方法。使用`revokeNomination`外部参数从特定收集人地址解锁您的代币，或使用`leaveNominators`外部参数撤销所有正在进行中的提名。
 
-This example is a continuation of the previous section, and assumes that you have at least two active nominations.
+本小节继续沿用上一小节的例子。假设您现在有至少两个已激活的提名。
 
-You can remove your nomination from a specific collator by navigating to the "Extrinsics" menu under the "Developer" tab. Here, provide the following information:
+在“Developer”标签下的“Extrinsics”菜单中，您可以移除对某一收集人的提名。在此需要提供以下信息：
 
- 1. Select the account from which you want to remove your nomination
- 2. Choose the pallet you want to interact with. In this case, it is the `parachainStaking` pallet
- 3. Choose the extrinsic method to use for the transaction. This will determine the fields that need to fill in the following steps. In this case, it is the `revokeNomination` extrinsic
- 4. Set the collator's address you want to remove your nomination from. In this case, it is set to `{{ networks.moonbase.staking.collators.address2 }}`
- 5. Click the "Submit Transaction" button and sign the transaction
+ 1. 选择您需要移除提名的代币账户
+ 2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
+ 3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`revokeNomination`外部参数
+ 4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address2 }}`
+ 5. 点击“提交交易”按钮，并签名确认交易
 
 ![Staking Revoke Nomination Extrinsic](/images/staking/staking-stake-7.png)
 
-Once the transaction is confirmed, you can verify that your nomination was removed in the "Chain state" option under the "Developer" tab.
+交易确认后，可以在“Developer”标签下的“Chain state”中查看是否已撤销提名。
 
-Here, provide the following information:
+在此需要提供以下信息：
 
- 1. Choose the pallet you want to interact with. In this case, it is the `parachainStaking` pallet
- 2. Choose the state to query. In this case, it is the `nominatorState` state
- 3. Make sure to disable the "include options" slider
- 4. Send the state query by clicking on the "+" button
+  1. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
+
+  2. 选择请求状态。在本示例中为`nominatorState`状态
+  3. 确保已经关闭“include options”滑块
+  4. 点击"+"按钮发送状态请求
 
 ![Staking Revoke Nomination Cain State](/images/staking/staking-stake-8.png)
 
-In the response, you should see your account (in this case, Alice's account) with a list of the nominations. Each nomination contains the target address of the collator, and the amount.
+在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
-As mentioned before, you can also remove all ongoing nominations with the `leaveNominators` extrinsic (in step 3 of the "Extrinsics" instructions). This extrinsic requires no input:
+通过`leaveNominators`外部参数，您可以继续移除所有正在进行中的提名（“外部参数”指引中的第3步）。这一参数无输入值：
 
 ![Staking Leave Nominatiors Extrinsic](/images/staking/staking-stake-9.png)
 
-Once the transaction is confirmed, your account should not be listed in the `nominatorState` state when queried, and you should have no reserved balance (related to staking).
+确认交易后，您的账户将不会出现在`nominatorState`状态中，同时您（相关质押）的冻结余额也将归零。
 
-## Staking Rewards
+## 质押挖矿奖励
 
-As collators receive rewards from block production, nominators get rewards as well. A brief overview on how the rewards are calculated can be found in [this page](/staking/overview/#reward-distribution).
+收集人通过生产区块获得奖励，提名者也会获得奖励。在[此页面](https://docs.moonbeam.network/staking/overview/#reward-distribution)可以大概了解奖励的计算方式。
 
-In summary, nominators will earn rewards based on their stake of the total nominations for the collator being rewarded (including the collator's stake as well).
+总而言之，收集人获得奖励后（奖励包括收集人本身的权益），将根据占该收集人所有提名者总权益的比例对各个提名人进行奖励分成。
 
-From the previous example, Alice was rewarded with `0.0044` tokens after two payout rounds:
+从上述例子可以看到，在经过两轮支付后，Alice获得了`0.0044`代币作为奖励：
 
 ![Staking Reward Example](/images/staking/staking-stake-10.png)
 
-## We Want to Hear From You
+## 我们期待您的反馈
 
-If you have any feedback regarding how to stake your tokens on Moonbase Alpha or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+如果您对Moonbase Alpha质押挖矿以及其它Moonbeam相关话题有任何意见或建议，欢迎通过我们开发团队的官方[Discord channel](https://discord.gg/PfpUATX)联系我们。

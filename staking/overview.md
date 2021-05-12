@@ -1,59 +1,59 @@
 ---
-title: Overview
-description: Moonbeam provides staking features where token holders nominate collators with their tokens and earn rewards
+title: 概况
+description: Moonbeam提供质押功能，代币持有者可通过使用代币提名收集人并获得奖励
 ---
 
-# Staking in Moonbeam
+# Moonbeam质押挖矿
 
 ![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
 
-## Introduction
+## 概览
 
-Moonbeam uses a block production mechanism based on [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/en/learn-consensus) where there are collators and validators. [Collators](https://wiki.polkadot.network/docs/en/learn-collator) maintain parachains (in this case, Moonbeam) by collecting transactions from users and producing state transition proofs for the Relay Chain [validators](https://wiki.polkadot.network/docs/en/learn-validator).
+Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/en/learn-consensus)进行区块生产，因此区块链上有收集人（Collator）和验证人（Validator）。[收集人（Collator）](https://wiki.polkadot.network/docs/en/learn-collator)通过收集用户的交易并为中继链[验证人（Validator）](https://wiki.polkadot.network/docs/en/learn-validator)生成状态转移证明来维护平行链（在这一例子中为Moonbeam）。
 
-The collators' set (nodes that produce blocks) are selected based on their stake in the network. And here is where staking comes in.
+网络中质押权益的人将入选收集人群体（生产区块的节点）。而质押挖矿在这里起到重要作用。
 
-Collators (and token holders if they nominate) have a stake in the network from which they get slashed if they misbehave. Therefore, the higher the stake, the higher the network security. The higher the stake, the more likely the collator will get selected to produce a block and earn rewards, which they share with their nominators. In such a way, network members are incentivized to stake tokens to improve the overall security.
+收集人（以及参与其提名的代币持有者）在网络中持有权益。但如果行为不当，其权益会被削减。因此权益越高，网络安全性越高，收集人也更有可能入选，进行区块生产并赚取奖励，与其提名人分享收益。这样的机制能够激励网络成员进行质押挖矿，从而提升网络整体安全性。
 
-## General Definitions
+## 般定义
 
 --8<-- 'text/staking/staking-definitions.md'
 
-Currently, for Moonbase Alpha:
+目前，对于Moonbase Alpha来说，上述参数具体如下：
 
-|             Variable             |     |                                                  Value                                                  |
-| :------------------------------: | :-: | :-----------------------------------------------------------------------------------------------------: |
-|     Minimum nomination stake     |     |                          {{ networks.moonbase.staking.min_nom_stake }} tokens                           |
-|        Minimum nomination        |     |                          {{ networks.moonbase.staking.min_nom_amount}} tokens                           |
-| Maximum nominators per collators |     |                             {{ networks.moonbase.staking.max_nom_per_col }}                             |
-| Maximum collators per nominator  |     |                             {{ networks.moonbase.staking.max_col_per_nom }}                             |
-|              Round               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
-|          Bond duration           |     |                            {{ networks.moonbase.staking.bond_lock }} rounds                             |
+|          变量          |      |                              值                              |
+| :--------------------: | :--: | :----------------------------------------------------------: |
+|     最低提名质押量     |      |     {{ networks.moonbase.staking.min_nom_stake }} tokens     |
+|     最低提名持有量     |      |     {{ networks.moonbase.staking.min_nom_amount}} tokens     |
+| 每位收集人的提名者限额 |      |       {{ networks.moonbase.staking.max_nom_per_col }}        |
+| 每位提名者的收集人限额 |      |       {{ networks.moonbase.staking.max_col_per_nom }}        |
+|          轮次          |      | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
+|        绑定时长        |      |       {{ networks.moonbase.staking.bond_lock }} rounds       |
 
-## Reward Distribution
+## 奖励发放
 
-At the end of every round ({{ networks.moonbase.staking.round_blocks }} blocks), collators are rewarded for their work from {{ networks.moonbase.staking.bond_lock }} rounds ago.
+在每个轮次的最后（{{ networks.moonbase.staking.round_blocks }}区块），收集人将获得{{ networks.moonbase.staking.bond_lock }}轮之前的收益奖励。
 
-When collators join the set of collators, they establish a commission to charge their nominators for the service they provide. Therefore, the reward distribution goes as follows:
+收集人加入收集人节点群后，将会对提名人所提供的服务收取佣金，奖励发放遵循以下规则：
 
- - The commission is taken out of the reward to be distributed
- - The collator gets the rewards corresponding to their stake in the network, plus the commission
- - The rest of the rewards are distributed among nominators by stake
+ - 佣金将在发放的奖励中扣除
+ - 收集人的奖励将根据其网络权益加佣金进行发放
+ - 其余奖励将根据权益比例发放给每一个提名人
 
-Mathematically speaking, for collators, the reward would look like this:
+收集人的奖励组成可用下数学公式表示：
 
 ![Staking Collator Reward](/images/staking/staking-overview-1.png)
 
-Where the stake corresponds to the amount of tokens bonded by the collator in respect to the total stake of that collator (accounting nominations).
+公式中的权益等于收集人绑定的代币数量与其总质押代币量之比（会计提名）。
 
-For each nominator, the reward would look like this:
+每个提名人的奖励计算公式如下：
 
 ![Staking Nominator Reward](/images/staking/staking-overview-2.png)
 
-Where the stake corresponds to the amount of tokens bonded by each nominator in respect to the total stake of that collator.
+公式中的权益等于提名人绑定的代币数量与收集人持有总代币量之比。
 
-## Try it on Moonbase Alpha
+## 在Moonbase Alpha上进行尝试
 
-In the Moonbase Alpha TestNet, token holders can stake and earn rewards (to get familiar with the system as the token doesn't have any actual value).
+在Moonbase Alpha测试网上，代币持有者可以进行质押挖矿并赚取奖励，以测试该系统（系统中的代币没有任何实际价值）。
 
-To do so, you can check [this guide](/staking/stake/).
+具体使用方法请查看[此教程](https://docs.moonbeam.network/staking/stake/)。
