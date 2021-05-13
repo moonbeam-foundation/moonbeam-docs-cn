@@ -1,24 +1,24 @@
 ---
 title: Ethers.js
-description: Follow this tutorial to learn how to use the Ethereum EtherJS Library to deploy Solidity smart contracts to Moonbeam.
+description: 通过此教程学习如何使用以太坊的EtherJS库在Moonbeam上部署Solidity智能合约。
 ---
-# Ethers.js JavaScript Library
+# Ethers.js JavaScript 库
 
 ![Intro diagram](/images/integrations/integrations-ethersjs-banner.png)
 
-## Introduction
+## 概览
 
-The [ethers.js](https://docs.ethers.io/) library provides a set of tools to interact with Ethereum Nodes with JavaScript, similar to web3.js. Moonbeam has an Ethereum-like API available that is fully compatible with Ethereum-style JSON RPC invocations. Therefore, developers can leverage this compatibility and use the ethers.js library to interact with a Moonbeam node as if they were doing so on Ethereum. You can read more about ethers.js on this [blog post](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3).
+与web3.js库相似，[ethers.js](https://docs.ethers.io/)库提供一系列的工具，能够通过JavaScript与以太坊节点进行交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容性来使用ethers.js库与Moonbeam节点交互，就如同在以太坊网络上一样。你可以通过此[文章](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3)了解更多关于ethers.js的资讯。
 
-## Setup Ethers.js with Moonbeam
+## 在Moonbeam上设置Ethers.js
 
-To get started with the ethers.js library, install it using the following command:
+在开始使用之前，请使用以下指令安装ethers.js库：
 
 ```
 npm install ethers
 ```
 
-Once done, the simplest setup to start using the library and its methods is the following:
+安装成功之后，请遵循以下指令来最快地开始使用该库以及其方法：
 
 ```js
 const ethers = require('ethers');
@@ -36,18 +36,18 @@ const provider = new ethers.providers.StaticJsonRpcProvider('RPC_URL', {
 let wallet = new ethers.Wallet(privKey, provider);
 ```
 
-Different methods are available inside `provider` and `wallet`. Depending on which network you want to connect to, you can set the `RPC_URL` to the following values:
+除此之外， `provider`和`wallet`内有不同的方法供用户使用。您可以根据您所希望连接的网络，将`RPC_URL`设置为以下的数值：
 
-Moonbeam development node: 
+Moonbeam开发节点：
  - RPC_URL: `http://127.0.0.1:9933`"
  - ChainId: `1281`
  - NETWORK_NAME: `moonbeam-development`
- 
-Moonbase Alpha TestNet: 
+
+Moonbase Alpha测试网：
  - RPC_URL: `https://rpc.testnet.moonbeam.network`
  - ChainId: `1287`
  - NETWORK_NAME: `moonbase-alpha`
 
-## Step-by-step Tutorials
+## 分步教程
 
-If you are interested in a more detailed step-by-step guide, you can go to our specific tutorials on using ethers.js on Moonbeam to [send a transaction](/getting-started/local-node/send-transaction/) or [deploy a contract](/getting-started/local-node/deploy-contract/).
+如果您想获得更加详细的分步教程，您可以查看我们关于如何通过ethers.js在Moonbeam上[传送交易](/getting-started/local-node/send-transaction/)和[部署合约](/getting-started/local-node/deploy-contract/)所撰写的特定教程。

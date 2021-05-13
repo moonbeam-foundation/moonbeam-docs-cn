@@ -1,73 +1,73 @@
 ---
 title: ChainBridge
-description: How to use ChainBridge to connect assets between Ethereum and Moonbeam using smart contracts
+description: 如何使用ChainBridge协议以智能合约形式实现以太坊和Moonbeam之间的链间资产转移。
 ---
-# ChainBridge's Ethereum Moonbeam Bridge
+# ChainBridge协议的以太坊Moonbeam跨链转接桥
 
 ![ChainBridge Moonbeam banner](/images/chainbridge/chainbridge-banner.png)
 
-## Introduction
+## 概览
 
-A bridge allows two economically sovereign and technologically different chains to communicate with each other. They can range from centralized and trusted, to decentralized and trust minimized. One of the currently available solutions is [ChainBridge](https://github.com/ChainSafe/ChainBridge#installation), a modular multi-directional blockchain bridge built by [ChainSafe](https://chainsafe.io/). A ChainBridge implementation is now available in Moonbeam, which connects our Moonbase Alpha TestNet and Ethereum's Kovan/Rinkeby TestNets.
+跨链转接桥是连接两个经济独立、技术相异的区块链，实现链间沟通的解决方案。转接桥可以有两种：一种是中心化的可信协议，另一种是去中心化的无信任协议。[ChainSafe](https://chainsafe.io/)团队推出的模块化的多方向[ChainBridge](https://github.com/ChainSafe/ChainBridge#installation)就是现有的解决方案之一，现已支持Moonbeam部署，连接Moonbase Alpha测试网和以太坊Rinkeby/Kovan测试网。
 
-This guide is broken down into two main sections. In the first part, we'll explain the general workflow of the bridge. In the second part, we'll go through a couple of examples using the bridge to transfer ERC-20 and ERC-721 assets between Moonbase Alpha and Kovan/Rinkeby. 
+本教程共分为两个部分。第一部分，我们将介绍ChainBridge的一般工作流程。第二部分，我们将通过多个示例演示如何在Moonbase Alpha和Rinkeby/Kovan间进行ERC-20和ERC-721资产的转移。
 
- - [How the bridge works](/integrations/bridges/ethereum/chainbridge/#how-the-bridge-works)
-    - [General definitions](/integrations/bridges/ethereum/chainbridge/#general-definitions)
- - [Using the bridge in Moonbase Alpha](/integrations/bridges/ethereum/chainbridge/#try-it-on-moonbase-alpha)
-    - [Transfer ERC-20 tokens](/integrations/bridges/ethereum/chainbridge/#erc-20-token-transfer)
-    - [Transfer ERC-721 tokens](/integrations/bridges/ethereum/chainbridge/#erc-721-token-transfer)
-    - [Generic handler](/integrations/bridges/ethereum/chainbridge/#generic-handler)
- - [Contact us](/integrations/bridges/ethereum/chainbridge/#we-want-to-hear-from-you)
+ - [ChainBridge的运行机制](/integrations/bridges/ethereum/chainbridge/#how-the-bridge-works)
+    - [一般定义](/integrations/bridges/ethereum/chainbridge/#general-definitions)
+ - [使用ChainBridge部署Moonbase Alpha]((/integrations/bridges/ethereum/chainbridge/#try-it-on-moonbase-alpha))
+    - [进行ERC-20代币转移](/integrations/bridges/ethereum/chainbridge/#erc-20-token-transfer)
+    - [进行ERC-721代币转移](/integrations/bridges/ethereum/chainbridge/#erc-721-token-transfer)
+    - [一般应用程序](/integrations/bridges/ethereum/chainbridge/#generic-handler)
+ - [联系我们](/integrations/bridges/ethereum/chainbridge/#we-want-to-hear-from-you)
 
-## How the Bridge Works
+## ChainBridge的运行机制
 
-ChainBridge is, at its core, a message-passing protocol. Events on a source chain are used to send a message that is routed to the destination chain. There are three main roles:
+ChainBridge本质上是一个消息传递协议，利用源链上的事件将消息通过一定路径传递到目标链上。在消息传递的过程中，ChainBridge主要有三个主要功能：
 
- - Listener: extract events from a source chain and construct a message
- - Router: passes the message from the Listener to the Writer
- - Writer: interpret messages and submit transactions to the destination chain
- 
-ChainBridge currently relies on trusted relayers to perform these roles. However, it features a mechanism that prevents any individual relayer from abusing their power and mishandling funds. At a high-level, relayers create proposals in the target chain that are submitted for approval by other relayers. Approval voting happens also in the target chain, and each proposal is only executed after it meets a certain voting threshold. 
+ - 侦听器：从源链中提取事件，并构建消息
+ - 路由器：将侦听器构建的消息传递给写入器
+ - 写入器：进行消息转译，并将交易提交到目标链
 
-On both sides of the bridge, there are a set of smart contracts, where each has a specific function:
+ChainBridge目前依赖于受信任的中继器来执行这些角色。此外，还设置了防止中继器滥用权力、误操作资金的机制。中继器在目标链上创建提案，并提交由部署在源链和目标链上的其它中继器进行投票，提案必须获得一定票数才能进行执行。
 
- - **Bridge contract** — users and relayers interact with this contract. It delegates calls to the handler contracts for deposits, starts a transaction on the source chain, and for executions of the proposals on the target chain
- - **Handler contracts** — validates the parameters provided by the user, creating a deposit/execution record
- - **Target contract** — as the name suggests, this is the contract we are going to interact with on each side of the bridge
+在转接桥的两边部署有不同的智能合约，每个合约都有其特定功能：
 
-### General Workflow
+ - **桥接合约** **–** 这一合约面向用户与中继器，它可以调用处理合约，处理充值请求、在源链发起交易、在目标链执行提案等
+ - **处理程序合约** – 验证用户提交的参数，并创建充值/执行记录
+ - **目标合约** – 正如其名，目标合约就是部署在转接桥两端，完成桥接功能的合约
+
+### 一般工作流程
 
 
-The general workflow is the following (from Chain A to Chain B):
- 
-  - A user initiates a transaction with the _deposit()_ function in the bridge contract of Chain A. Here, the user needs to input the target chain, the resource ID, and the _calldata_ (definitions after the diagram). After a few checks, the _deposit()_  function of the handler contract is called, which executes the corresponding call of the target contract.
-  - After the function of the target contract in Chain A is executed, a _Deposit_ event is emitted by the bridge contract, which holds the necessary data to be executed on Chain B. This is called a proposal. Each proposal can have five status (inactive, active, passed, executed and cancelled). 
-  - Relayers are always listening on both sides of the chain.  Once a relayer picks up the event, he initiates a voting on the proposal, which happens on the bridge contract on Chain B. This sets the state of the proposal from inactive to active.
-  - Relayers must vote on the proposal. Every time a relayer votes, an event is emitted by the bridge contract that updates its status. Once a threshold is met, the status changes from active to passed. A relayer then executes the proposal on Chain B via the bridge contract.
-  - After a few checks, the bridge executes the proposal in the target contract via the handler contract on Chain B. Another event is emitted, which updates the proposal status from passed to executed.
+在ChainBridge模型下，从链A到链B的数据和价值转移的一般工作流程如下：
 
-This workflow is summarized in the following diagram:
+  - 用户通过链A的桥接合约中_deposit()_发起交易。用户需要输入目标链信息、源ID以及_calldata_（定义见示意图后“一般定义”章节）。经过几次检查后，将调用处理程序合约的_deposit()_来执行目标合约的相应调用。
+  - 在执行链A中的目标合约功能后，桥接合约发出*Deposit* 事件消息，该事件包含链B上执行交易所需要的必要信息。这被称为“提案”。 每个提案有五种可能的状态（未激活、已激活、已通过、已执行、已取消）。
+  - 中继器将随时听取区块链两端的消息。当中继器从链A中提取事件，就会发起提案进行投票，投票将在链B的桥接合约上进行。这时，提案状态将从“未激活”变为“已激活”。
+  - 中继器必须就提案进行投票。每当中继器投票时，桥接合约就会发出事件消息，更新提案状态。一旦达到预定义的阀值（票数需达到一定数量才可执行交易），提案状态就会从“已激活”变为“已通过”。中继器将通过桥接合约在链B上执行该提案。
+  - 经过几次检查后，转接桥将通过链B的处理程序合约在目标合约中执行提案，并同时发出另一个事件消息，将提案状态从“已通过”变为“已执行”。
+
+工作流程整体示意图如下所示：
 
 ![ChainBridge Moonbeam diagram](/images/chainbridge/chainbridge-diagram.png)
 
-The two target contracts on each side of the bridge are linked by doing a series of registrations in the corresponding handler contract via the bridge contract. These registrations currently can only be done by the bridge contract admin.
+在转接桥两端的目标合约通过一系列的注册进行连接，注册通过桥接合约在相应的处理程序合约中进行。目前，只有桥接合约管理员可以进行注册。
 
-### General Definitions
+### 一般定义
 
-Here we have put together a list of concepts applicable to the ChainBridge implementation (from Chain A to Chain B):
+以下是ChainBridge从链A到链B的工作流程中所涉及到的一些概念定义：
 
- - **ChainBridge Chain ID** — this is not to be confused with the chain ID of the network. It is a unique network identifier used by the protocol for each chain. It can be different from the actual chain ID of the network itself. For example, for Moonbase Alpha and Rinkeby, we've set the ChainBridge chain ID to 43 and 4 respectively (Kovan was set to 42)
- - **Resource ID** — is a 32 bytes word that is intended to uniquely identify an asset in a cross-chain environment. Note that the least significant byte is reserved for the chainId, so we would have 31 bytes in total to represent an asset of a chain in our bridge. For example, this may express tokenX on Chain A is equivalent to tokenY on Chain B
- - **Calldata** — is the parameter required for the handler that includes the information necessary to execute the proposal on Chain B. The exact serialization is defined for each handler. You can find more information [here](https://chainbridge.chainsafe.io/chains/ethereum/#erc20-erc721-handlers)
+ - **ChainBridge Chain ID** – 与网络Chain ID不同，它是ChainBridge协议在不同链上使用的独特网络标识符，与网络本身的Chain ID不同。例如，Moonbase Alpha 和Rinkeby的ChainBridge Chain ID分别是43和4（Kovan的ChainBridge Chain ID为42）
+ - **Resource ID** – 由32个字节组成，用于在跨链环境中给各种资产提供唯一的标识。其中一个字节是资产的Chain ID，剩下31字节用于在ChainBridge中表示该资产，反映资产以及所在链信息。例如，通过Resource ID，可以表示链A上的代币X就是链B上的代币Y
+ - **Calldata** - 处理合约所需参数，包含在链B执行提案的必要信息。具体的序列化将由处理合约进行定义。更多详情，请见[这里](https://chainbridge.chainsafe.io/chains/ethereum/#erc20-erc721-handlers)
 
-## Try it on Moonbase Alpha
+## 使用ChainBridge部署Moonbase Alpha
 
-We have set up a relayer with the ChainBridge implementation, which is connected to our Moonbase Alpha TestNet and both Ethereum's Rinkeby and Kovan TestNets.
+我们通过部署ChainBridge创建了一个中继器，两端分别与Moonbase Alpha测试网和以太坊Rinkeby、Kovan测试网相连。
 
-ChainSafe has [pre-programmed handlers](https://chainbridge.chainsafe.io/chains/ethereum/#handler-contracts) specific to ERC-20 and ERC-721 interfaces, and these handlers are used to transfer ERC-20 and ERC-721 tokens between chains. In general terms, this is just narrowing down the general-purpose diagram that we've described before, so the handler works only with the specific token functions such as _lock/burn_, and _mint/unlock_. 
+ChainSafe为ERC-20和ERC-721接口[预先编写好了处理合约程序](https://chainbridge.chainsafe.io/chains/ethereum/#handler-contracts)，能够实现不同链之间ERC-20和ERC-721代币的转移。更多详情请见[这里](https://chainbridge.chainsafe.io/chains/ethereum/#handler-contracts)。通过这种做法，我们将上述一般工作流程的范围进行了限定，使得处理合约仅执行某些特定代币功能，如_锁定/销毁_和_铸造/解锁_等。
 
-This guide will go over two different examples of using the bridge to transfer tokens between chains. You will mint ERC-20S and ERC-721 Moon tokens and transfer them over the bridge from Moonbase Alpha to Kovan. The same steps can be followed and applied to Rinkeby. To interact with Moonbase Alpha and Kovan/Rinkeby, you will need the following information:
+本教程将通过两个不同示例来讲解如何通过桥在链间进行代币转移。首先，需铸造ERC-20S和ERC-721 Moon代币，并通过Moonbase Alpha到Kovan的桥进行代币转移。可遵循相同的步骤并将其应用于Rinkeby。要连接到Moonbase Alpha 和Rinkeby/Kovan测试网，您需要以下信息：
 
 ```
 # Kovan/Rinkeby - Moonbase Alpha bridge contract address:
@@ -80,19 +80,19 @@ This guide will go over two different examples of using the bridge to transfer t
     {{ networks.moonbase.chainbridge.ERC721_handler }}
 ```
 
-!!! note
-    The bridge contract, ERC-20 handler contract, and ERC-721 handler contract addresses listed above are applicable for both Kovan and Rinkeby.
+!!! 注意事项
+    上述桥接合约、ERC-20处理程序合约和ERC-721处理程序合约地址均适用于Kovan和Rinkeby。
 
-### ERC-20 Token Transfer
+### 进行ERC-20代币转移
 
-ERC-20 tokens that want to be moved through the bridge need to be registered by the relayers in the handler contract. Therefore, to test the bridge, we've deployed an ERC-20 token (ERC20S) where any user can mint 5 tokens:
+ERC-20代币需要先通过中继器在处理程序合约上进行注册，才能通过转接桥进行转移。因桥接功能测试所需，我们部署了一枚ERC-20代币（ERC20S），所有用户都可以铸造5枚代币：
 
 ```
 # Kovan/Rinkeby - Moonbase Alpha custom ERC-20 sample token:
     {{ networks.moonbase.chainbridge.ERC20S }}
 ```
 
-In similar fashion, interacting directly with the Bridge contract and calling the function `deposit()` with the correct parameters can be intimidating. To ease the process of using the bridge, we've created a modified bridge contract, which builds the necessary inputs to the `deposit()` function:
+同样地，直接使用桥接合约、输入正确参数调用`deposit()`的工作量很大。为简化过程，我们对桥接合约进行了修改，在`deposit()`中提前输入了必要参数：
 
 ```
 # Kovan/Rinkeby - Moonbase Alpha custom bridge contract:
@@ -100,24 +100,24 @@ In similar fashion, interacting directly with the Bridge contract and calling th
 ```
 
 
-In simple terms, the modified contract used to initiate the transfer has the _chainID_ and _resourceID_ predefined for this example. Therefore, it builds the _calldata_ object from the user's input, which is only the recipient address and the value to be sent.
+简单来说，在这个示例中，我们修改了用于发起交易的合约，提前定义好了_chainID_和_resourceID_。用户只需输入接收地址和发送的资产数量，*calldata*对象将自动生成。
 
-The general workflow for this example can be seen in this diagram:
+本示例的一般工作流程示意图如下所示：
 
 ![ChainBridge ERC20 workflow](/images/chainbridge/chainbridge-erc20.png)
 
-To try the bridge with this sample ERC-20 token, we must do the following steps (regardless of the direction of the transfer):
- 
- - Mint tokens in source Chain (this approves the source handler contract as a spender for the amount minted)
- - Use the modified bridge contract to send tokens from source Chain to target Chain
- - Wait until the process is completed
- - Approve the handler contract as a spender to send the tokens back
- - Use the modified bridge contract to send tokens from the target Chain to the source Chain
+无论代币转移方向如何，想要通过示例ERC-20代币尝试桥接功能，还需要完成以下步骤：
 
-!!! note
-    Remember that tokens will be transferred only if the handler contract has enough allowance to spend tokens on behalf of the owner. If the process fails, check the allowance.
+ - 在源链上铸造代币（源链处理程序合约将获得这些代币的使用权）
+ - 使用源链上经过修改的桥接合约发送代币
+ - 等待过程完成
+ - 目标链处理程序合约将获得代币的使用权并返还代币
+ - 使用目标链上经过修改的桥接合约发送代币
 
-Let's send some ERC20S tokens from **Moonbase Alpha** to **Kovan**. If you wanted to try it out with Rinkeby, the steps and addresses are the same. For this, we'll use [Remix](/integrations/remix/). First, we can use the following interface to interact with this contract and mint the tokens:
+!!! 注意事项
+    处理程序合约代表所有者需有足够限额才能进行代币转移。若转移失败，请检查限额。
+
+下面尝试将ERC20S代币从**Moonbase Alpha** 转移到**Kovan**。我们将使用[Remix](https://docs.moonbeam.network/integrations/remix/)完成这一任务。首先，我们可以调用以下合约接口铸造代币：
 
 ```solidity
 pragma solidity ^0.8.1;
@@ -148,19 +148,19 @@ interface ICustomERC20 {
 }
 ```
 
-Note that the ERC-20 token contract's mint function was also modified to approve the corresponding handler contract as a spender when minting tokens.
+请注意，ERC-20代币合约的铸造函数也经过了修改，以允许相应处理程序合约对这些代币的使用权。
 
-After adding the Custom ERC20 contract to Remix and compiling it, the next steps are to mint ERC20S tokens:
+将自定义ERC20合同添加到Remix并进行编译后，创建ERC20S代币：
 
-1. Navigate to the **Deploy & Run Transactions** page on Remix
-2. Select Injected Web3 from the **Environment** dropdown
-3. Load the custom ERC-20 token contract address and click **At Address**
-4. Call the `mintTokens()` function and sign the transaction. 
-5. Once the transaction is confirmed, you should have received 5 ERC20S tokens. You can check your balance by adding the token to [MetaMask](/integrations/wallets/metamask/).
+1. 跳转至Remix的**Deploy & Run Transactions**页面
+2. 从**Environment**下拉列表中选择Injected Web3
+3. 加载自定义ERC-20代币合约地址，然后点击**At Address**
+4. 调用`mintTokens()`函数并进行交易签名
+5. 交易确认后，即可收到5枚ERC20S代币。将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)，即可查看余额
 
 ![ChainBridge ERC20 mint Tokens](/images/chainbridge/chainbridge-image1.png)
 
-Once we have the tokens, we can proceed to send them over the bridge to the target chain. In this case, remember that we do it from **Moonbase Alpha** to **Kovan**. There is a single interface that will allow you to transfer ERC20S and ERC721M tokens. For this example you will use the `sendERC20SToken()` function to initiate the transfer of your minted ERC20S tokens:
+接收到代币后，就可以进行后续步骤，通过转接桥将代币发送到目标链上。在这一示例中，代币将从**Moonbase Alpha**发送到**Kovan**。将会有一个单一接口，可用于传输ERC20S和ERC721M代币。在此示例中，将通过以下接口合约使用`sendERC20SToken()`发起已铸造的ERC20S代币交易：
 
 ```solidity
 pragma solidity 0.8.1;
@@ -191,34 +191,34 @@ interface IBridge {
 }
 ```
 
-After adding the Bridge contract to Remix and compiling it, in order to send ERC20s tokens over the bridge you'll need to:
+将桥接合约添加至Remix并进行编译后，您需要完成以下步骤方可通过桥以发送ERC20代币：
 
-1. Load the bridge contract address and click **At Address**
-2. To call the `sendERC20SToken()` function, enter the destination chain ID (For this example we are using Kovan: `42`)
-3. Enter the recipient address on the other side of the bridge
-4. Add the amount to transfer in WEI
-5. Click **transact** and then MetaMask should pop-up asking you to sign the transaction. 
+1. 加载桥接合约地址并点击**At Address**
+2. 调用`sendERC20SToken()`函数，输入目标Chain ID（在这一示例中为Kovan: `42`）
+3. 在桥的另一侧输入接收地址
+4. 输入需要转移的WEI数量
+5. 点击**transact**，随后MetaMask将弹出窗口以要求签名确认交易
 
-Once the transaction is confirmed, the process can take around 3 minutes to complete, after which you should have received the tokens in Kovan!
+交易确认后，Kovan相应地址将收到转移过来的代币。整个过程需要3分钟左右。
 
 ![ChainBridge ERC20 send Tokens](/images/chainbridge/chainbridge-image2.png)
 
-You can check your balance by adding the token to [MetaMask](/integrations/wallets/metamask/) and connecting it to the target network - in our case Kovan.
+将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
 ![ChainBridge ERC20 balance](/images/chainbridge/chainbridge-image3.png)
 
-Remember that you can also mint ERC20S tokens in Kovan and send them to Moonbase Alpha. To approve a spender or increase its allowance, you can use the `increaseAllowance()` function of the interface provided. To check the allowance of the handler contract in the ERC20 token contract, you can use the `allowance()` function of the interface.
+你也可以在Kovan上铸造ERC20S代币并将其转移至Moonbase Alpha。可以使用接口合约提供的`increaseAllowance()`进行使用许可或提高限额。通过使用接口合约中的`allowance()`，可以在ERC20代币合约中查看处理程序合约的限额。
 
-!!! note
-    Tokens will be transferred only if the handler contract has enough allowance to spend tokens on behalf of the owner. If the process fails, check the allowance.
+!!! 注意事项
+    处理程序合约代表所有者需有足够限额才能进行代币转移。若转移失败，请检查限额。
 
-### ERC-721 Token Transfer
+### 进行ERC-721代币转移
 
-Similar to our previous example, ERC-721 tokens contracts need to be registered by the relayers to enable transfer through the bridge. Therefore, we've customized an ERC-721 token contract so that any user can mint a token to test the bridge out. However, as each token is non-fungible, and consequently unique, the mint function is only available in the Source chain token contract and not in the Target contract. In other words, ERC-721M tokens can only be minted on Moonbase Alpha and then transfered to Rinkeby or Kovan. The following diagram explains the workflow for this example, where it is important to highlight that the token ID and metadata is maintained.
+和上一个示例相似，ERC-721代币合约也需要经过中继器注册才能使用转接桥进行转移。为此，我们创建了一个定制化的ERC-721代币合约，让所有用户都可以铸造代币，用于进行桥接功能的测试。然而，由于每个代币是非同质化且独一无二的，只能在源链代币合约上铸造，无法在目标合约上铸造。因此，我们需要一对ERC-721合约地址才能实现Rinkeby/Kovan和Moonbase Alpha之间两个方向的代币转移。下面是本示例的工作流程示意图，重点需要注意的是代币ID和元数据。
 
 ![ChainBridge ERC721 workflow](/images/chainbridge/chainbridge-erc721.png)
 
-To mint tokens in Moonbase Alpha (named ERC721Moon with symbol ERC721M) and send them back-and-forth to Kovan/Rinkeby, you need the following address:
+在Moonbase Alpha上铸造代币（名称：ERC721Moon，代号：ERC721M）并在Moonbase Alpha和Rinkeby/Kovan之间进行代币转移，需要以下地址信息：
 
 ```
 # Kovan/Rinkeby - Moonbase Alpha ERC-721 Moon tokens (ERC721M),
@@ -226,16 +226,16 @@ To mint tokens in Moonbase Alpha (named ERC721Moon with symbol ERC721M) and send
     {{ networks.moonbase.chainbridge.ERC721M }}
 ```
 
-Instead of interacting with the Bridge contract and calling the function `deposit()`, we've modified the bridge contract to ease the process of using the bridge (same address as in the previous example):
+这次，我们对桥接合约进行了修改，简化了使用过程，不需要与桥接合约进行交互，也不需要调用`deposit()`（地址与上一示例相同）：
 
 ```
 # Kovan/Rinkeby - Moonbase Alpha custom bridge contract:
     {{ networks.moonbase.chainbridge.bridge_address }}
 ```
 
-In simple terms, the modified bridge contract used to initiate the transfer will create the _chainID_ and _resourceID_ for this example based on the destination chain ID that you provide. Therefore, it builds the _calldata_ object from the user's input, which is only the recipient address and the token ID to be sent.
+简单来说，在这个示例中，我们修改了用于发起交易的桥接合约，提前定义好了_chainID_和_resourceID_。用户只需输入接收地址和代币ID，*calldata*对象将自动生成。
 
-Let's send an ERC721M token from **Moonbase Alpha** to **Kovan**. For that, we'll use [Remix](/integrations/remix/). The following interface can be used to interact with the source ERC721M contract and mint the tokens. The `tokenOfOwnerByIndex()` function also can be used to check the token IDs owned by a specific address, passing the address and the index to query (each token ID is stored as an array element associated to the address):
+下面尝试将ERC721M代币从**Kovan** 转移到**Moonbase Alpha**。我们将使用[Remix](https://docs.moonbeam.network/integrations/remix/)完成这一任务。首先，我们可以使用以下接口连接到源链ERC721合约，并铸造代币。`tokenOfOwnerByIndex()`也可以用来检查特定地址持有的代币ID，并传递地址信息和索引到报价请求（每个代币ID作为与地址相关的阵列元素进行储存）：
 
 ```solidity
 pragma solidity ^0.8.1;
@@ -274,19 +274,19 @@ interface ICustomERC721 {
 }
 ```
 
-Note that the ERC-721 token contract's mint function was also modified to approve the corresponding handler contract as a spender when minting tokens.
+请注意，ERC-721代币合约的铸造函数也经过了修改，以允许相应处理程序合约对这些代币的使用权。
 
-After adding the contract to Remix and compiling it, next we'll want to mint an ERC721M token:
+将合约添加至Remix并进行编译后，我们要铸造一个ERC721M代币：
 
-1. Navigate to the **Deploy & Run Transactions** page on Remix
-2. Select Injected Web3 from the **Environment** dropdown
-3. Load the custom ERC721M token contract address and click **At Address**
-4. Call the `mintTokens()` function and sign the transaction. 
-5. Once the transaction is confirmed, you should have received an ERC721M token. You can check your balance by adding the token to [MetaMask](/integrations/wallets/metamask/).
+1. 跳转至Remix的**Deploy & Run Transactions**页面
+2. 从**Environment**下拉列表中选择Injected Web3
+3. 加载自定义ERC721M代币合约地址，然后点击**At Address**
+4. 调用`mintTokens()`函数并进行交易签名
+5. 交易确认后，即可收到1枚ERC721M代币。将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)，即可查看余额
 
 ![ChainBridge ERC721 mint Tokens](/images/chainbridge/chainbridge-image4.png) 
 
-The following interface allows you to use the `sendERC721MoonToken()` function to initiate the transfer of tokens originally minted in Moonbase Alpha (ERC721M).
+可以通过以下接口合约使用`sendERC721MoonToken()`函数发起交易，将最初铸造的代币（ERC721E）转移到Moonbase Alpha。
 
 ```solidity
 pragma solidity 0.8.1;
@@ -317,41 +317,41 @@ interface IBridge {
 }
 ```
 
-Now you can proceed to send the ERC721M token over the bridge to the target chain. In this case, remember that we'll do it from Moonbase Alpha to Kovan. To transfer the ERC721M token over the bridge:
+现在，您可以继续通过转接桥将ERC721M代币发送到目标链上。在这一示例中，代币将从Moonbase Alpha发送到Kovan。通过转接桥转移ERC721M代币，需执行以下操作：
 
-1. Load the bridge contract address and click **At Address**
-2. Call the `sendERC721MoonToken()` function to initiate the transfer of ERC721M tokens originally minted in Moonbase Alpha by providing the destination chain ID (For this example we're using Kovan: `42`)
-3. Enter the recipient address on the other side of the bridge
-4. Add the token ID to transfer
-5. Click **transact** and then MetaMask should pop-up asking you to sign the transaction.
+1. 加载桥接合约地址并点击**At Address**
+2. 调用`sendERC721MoonToken()`函数发起交易，将最初在Moonbase Alpha铸造的ERC721M代币转移至目标链（在这一示例中为Kovan: `42`）
+3. 在桥的另一侧输入接收地址
+4. 输入需要转移的代币ID
+5. 点击**transact**，随后MetaMask将弹出窗口以要求签名确认交易
 
-Once the transaction is confirmed, the process can take around 3 minute to complete, after which you should have received the same token ID in Kovan!
+交易确认后，Kovan相应地址将收到转移过来的代币ID。整个过程需要3分钟左右。
 
 ![ChainBridge ERC721 send Token](/images/chainbridge/chainbridge-image5.png)
 
-You can check your balance by adding the token to [MetaMask](/integrations/wallets/metamask/) and connecting it to the target network, in our case Kovan.
+将代币加入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
 ![ChainBridge ERC721 balance](/images/chainbridge/chainbridge-image6.png)
 
-Remember that ERC721M tokens are only mintable in Moonbase Alpha and then they will be available to send back and forth to Kovan or Rinkeby. It is important to always check the allowance provided to the handler contract in the corresponding ERC721 token contract. You can approve the handler contract to send tokens on your behalf using the `approve()` function provided in the interface. You can check the approval of each of your token IDs with the `getApproved()` function.
+请注意，仅可在Moonbase Alpha上铸造ERC721M代币并转移至Kovan或Rinkey。请一定要先在ERC721代币合约中查看处理程序合约的限额。可以使用接口合约提供的`approve()`许可处理程序合约发送代币。通过`getApproved()`可以查看每个代币ID的许可情况。
 
-!!! note
-    Tokens will be transferred only if the handler contract is approved to transfer tokens on behalf of the owner. If the process fails, check the approval.
+!!! 注意事项
+    处理程序合约只有在获得所有者许可的前提下才能代表所有者进行代币转移。若转移失败，请检查许可情况。
 
-### Generic Handler
+### 一般处理程序
 
-The Generic Handler offers the possibility of executing a function in chain A and creating a proposal to execute another function in chain B (similar to the general workflow diagram). This provides a compelling way of connecting two independent blockchains.
+与一般工作流程相似，一般处理程序可以在链A执行某个函数的同时创建在链B执行另一函数的提案。这为实现两个独立区块链之间的连接提供了极具吸引力的解决方案。
 
-The generic handler address is:
+一般处理程序地址为：
 ```
 {{ networks.moonbase.chainbridge.generic_handler }}
 ```
 
-If you are interested in implementing this functionality, you can reach out directly to us via our [Discord server](https://discord.com/invite/PfpUATX). We'll be happy to discuss this implementation.
+如果你有兴趣部署这一功能，可以直接通过我们的[Discord server](https://discord.com/invite/PfpUATX)联系我们。我们非常乐意商讨部署事宜。
 
-### Moonbase Alpha ChainBridge UI
+### Moonbase Alpha ChainBridge用户界面
 
-If you want to play around with transferring ERC20S tokens from Moonbase Alpha to Kovan or Rinkeby without having to set up the contracts in Remix, you can checkout our [Moonbase Alpha ChainBridge UI](https://moonbase-chainbridge.netlify.app/transfer).
-## We Want to Hear From You
+使用[Moonbase Alpha ChainBridge用户界面](https://moonbase-chainbridge.netlify.app/)，无需设置Remix合约即可体验将ERC20S代币从Moonbase Alpha转移到Kovan或Rinkeby的操作过程。
+## 我们期待您的反馈
 
-If you have any feedback regarding implementing ChainBridge on your project or any other Moonbeam-related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+如果您对ChainBridge部署以及其它Moonbeam相关话题有任何意见或建议，欢迎通过我们开发团队的官方[Discord server](https://discord.com/invite/PfpUATX)联系我们。

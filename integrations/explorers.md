@@ -1,69 +1,66 @@
 ---
-title: Block Explorers
-description: An overview of the currently available block explorers that may be used to navigate the Substrate and Ethereum layers of the Moonbeam TestNet.
+title: 区块浏览器
+description: 目前在Moonbeam测试网上支持导航Substrate和以太坊层的区块浏览器。
 ---
-# Block Explorers
+# 区块浏览器
 
 ![Explorer Banner](/images/explorers/explorers-banner.png)
 
-## Introduction 
+## 概览 
 
-Block explorers can be thought of as search engines for the blockchain. They allow users to search information such as balances, contracts, and transactions. More advanced block explorers even offer indexing capabilities, which enable them to provide a complete set of information, such as ERC20 tokens in the network. They might even offer API services to access it via external services.
+区块浏览器就如同区块链的搜寻引擎，可以让用户搜索像是余额、合约和交易等等的资讯。进阶版的区块浏览器还提供索引编辑的功能，让用户能够在网络中直接提供像是ERC20代币一样完整的一套信息，甚至还有可能提供API服务，可直接通过外部设备连接。
 
-Moonbeam provides two different sets of explorers: one to query the Ethereum API, and one for the Substrate API.
+Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，另一个为查询Substrate API。
 
 !!! note
-    If you are using Brave Browser and your explorer is not connecting to the Moonbeam instance you are pointing it to, try disabling Brave Shield.
+    如果您使用的是Brave Browser，但您并没有连接至您导向的Moonbeam Instance，请尝试将Brave Shield关闭。
 
-## Ethereum API
+## 以太坊API
 
-### Expedition (Dev Node - TestNet)
+### Expedition（Dev节点 - 测试网）
 
-A Moonbeam-themed version of the [Expedition](https://github.com/etclabscore/expedition) explorer can be found in [this link](https://moonbeam-explorer.netlify.app/).
+您可以通过[此链接](https://moonbeam-explorer.netlify.app/)找到一个Moonbeam主题的[Expedition](https://github.com/etclabscore/expedition)浏览器。
 
-By default, the explorer is connected to the Moonbase Alpha TestNet. However, you can connect it following the next steps:
+在默认设置中，浏览器已经连接至Moonbase Alpha测试网，然而，您可以通过以下步骤来进行设定：
 
- 1. Click on the gear icon in the top right corner
- 2. Select "Development" if you have a node running on `http://localhost:9933` (default RPC location of a Moonbeam node running with `--dev`flag). You can also switch back to "Moonbase Alpha"
- 3. In the case you want to connect to a specific RPC URL, select "Custom RPC" and enter the URL. For example, `http://localhost:9937`
+ 1. 点击右上角的齿轮图示
+ 2. 如果您有正在`http://localhost:9933`上运行的节点（运行`--dev`标示的Moonbeam节点的默认RPC位置），请选取“Development”。或者您可切换回“Moonbase Alpha”
+ 3. 如果您先要连接至特定的RPC URL，请选取“Custom RPC“并输入URL。举例来说：`http://localhost:9937`  
 
 ![Expedition Explorer](/images/explorers/explorers-images-1.png)
 
-### Blockscout (TestNet)
+### Blockscout（测试网）
 
-Blockscout provides an easy-to-use interface for users to inspect and confirm transactions on EVM blockchains, including Moonbeam. It allows you to search transactions, view accounts, and balances, and verify smart contracts. More information can be found in their [documentation site](https://docs.blockscout.com/).
+Blockscout提供对用户友好的界面，让用户能够检查并确认包含如Moonbeam的，在EVM区块链上的交易。让您能够搜寻交易、查看账户和余额，并确认智能合约。您可以在他们的[文件网站](https://docs.blockscout.com/)查看更多资讯。
 
-As main features, Blockscout offers:
+如同主要的特色，Blockscout提供：
 
- - Open source development, meaning all code is open to the community to explore and improve. You can find the code [here](https://github.com/blockscout/blockscout)
- - Real-time transaction tracking
- - Smart contract interaction
- - ERC20 and ERC721 token support, listing all available token contract in a friendly interface
- - Full-featured API with GraphQL, where users can test API calls directly from a web interface
+ - 开源开发，意味着所有的代码都对社群开源或是改进。您可以在[这里](https://github.com/blockscout/blockscout)找到代码。
+ - 实时交易追踪
+ - 智能合约互动
+ - 支持ERC和ERC721代币，在友好型界面中列出所有能使用的代币合约
+ - 带有GraphQL的功能齐全的API，用户可以通过网络界面直接测试API调用。
 
-An instance of Blockscout running against the Moonbase Alpha TestNet can be found in [this link](https://moonbase-blockscout.testnet.moonbeam.network/).
+您可以在[这里](https://moonbase-blockscout.testnet.moonbeam.network/)找到针对Moonbase Alpha测试网运行的Blockscout instance。
 
 ![Blockscout Explorer](/images/explorers/explorers-images-2.png)
 
 ## Substrate API
 
-### PolkadotJS (Dev Node - TestNet)
+### PolkadotJS（开发者节点 - 测试网）
 
-Polkadot JS Apps uses the WebSocket endpoint to interact with the Network. To connect it to a Moonbeam development node, you can follow the steps in [this tutorial](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node). The default port for this is `9944`.
+Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
 
 ![Polkadot JS Local Node](/images/explorers/explorers-images-3.png)
 
-To view and interact with Moonbase Alpha's substrate layer, go to [this URL](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer). This is the Polkadot JS Apps pointing to the TestNet. You can find more information in [this page](/integrations/wallets/polkadotjs/).
+如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot JS Apps。您可以在[此网页](https://docs.moonbeam.network/integrations/wallets/polkadotjs/)找到更多资讯。
 
 ![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
 
 ### Subscan
 
-Subscan provides blockchain explorer capabilities for Substrate-based chains. It is capable of parsing standard or custom modules. For example, this is useful to display information regarding the Staking, Governance, and EVM pallets (or modules). Code is all open-source and can be found [here](https://github.com/itering/subscan-essentials).
+Subscan为基于Sebstrate的链提供区块链浏览器的功能，它能够解析标准或定制的模块。举例而言，这个功能对展示关于Staking、Governance和EVM pallet（或是模块）非常有帮助。
 
-An instance of Subscan running against the Moonbase Alpha TestNet can be found in [this link](https://moonbase.subscan.io/).
+同时，所有代码都是开源的，并且可以在[此链接](https://github.com/itering/subscan-essentials)找到。
 
 ![Subscan Moonbase Alpha](/images/explorers/explorers-images-5.png)
-## We Want to Hear From You
-
-If you have any feedback regarding block explorers or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).

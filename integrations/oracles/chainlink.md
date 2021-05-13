@@ -1,32 +1,32 @@
 ---
 title: Chainlink
-description: How to use request data from a Chainlink Oracle in your Moonbeam Ethereum Dapp using smart contracts or Javascript
+description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Chainlink预言机喂价
 ---
 
-# Chainlink Oracle
+# Chainlink预言机
 
 ![Chainlink Moonbeam Banner](/images/chainlink/chainlink-banner.png)
 
-## Introduction
+## 概览
 
-Developers can now use [Chainlink's decentralized Oracle network](https://chain.link/) to fetch data in the Moonbase Alpha TestNet. This tutorial goes through two different ways of using Chainlink Oracles:
+开发者现在可以使用[Chainlink去中心化的预言机网络](https://chain.link/)在Moonbase Alpha测试网中获取数据。本教程将介绍Chainlink预言机两种不同的使用方法：
 
- - [Basic Request Model](https://docs.chain.link/docs/architecture-request-model), where the end-user sends a request to an Oracle provider, which fetches the data through an API, and fulfils the request storing this data on-chain
- - [Price Feeds](https://docs.chain.link/docs/architecture-decentralized-model), where data is continuously updated by Oracle operators in a smart contract so that other smart contracts can fetch it
+ - [基本请求模型](https://docs.chain.link/docs/architecture-request-model)，终端用户向预言机数据提供方发送请求，数据提供方通过API获取数据，然后将该数据存储在链上，从而完成请求。
+ - [喂价](https://docs.chain.link/docs/architecture-decentralized-model)，预言机节点运营商通过智能合约持续更新数据，以便另外一个智能合约获取其数据。
 
-## Basic Request Model
+## 基本请求模型
 
-Before we go into fetching the data itself, it is important to understand the basics of the "basic request model."
+在介绍获取数据本身之前，我们需要先了解“基本请求模型”的基本情况。
 
 --8<-- 'text/chainlink/chainlink-brm.md'
 
-### The Client Contract
+### 客户合约
 
-The Client contract is the element that starts the communication with the Oracle by sending a request. As shown in the diagram, it calls the _transferAndCall_ method from the LINK token contract, but there is more processing that is needed to track the request to the Oracle. For this example, you can use the code in [this file](/snippets/code/chainlink/Client.sol), and deploy it on [Remix](/integrations/remix/) to try it out. Let's look at the core functions of the contract:
+客户合约通过发送请求与预言机建立通信。如上图所示，客户合约从LINK代币合约调用*transferAndCall*，但将请求发送到预言机还需要进行更多处理。在这个示例中，您可以使用[此文档](/code-snippets/chainlink/Client.sol)中的代码，将其部署到[Remix](/integrations/remix/)进行测试。下面来看一下合约中的关键函数：
 
- - _constructor_: runs when the contract is deployed. It sets the address of the LINK token and the owner of the contract
- - _requestPrice_: needs the Oracle contract address, the job ID, and the payment (in LINK) tokens to the fulfiller of the request. Builds the new request that is sent using the _sendChainlinkRequestTo_ function from the _ChainlinkClient.sol_ import
- - _fulfill_: callback used by the Oracle node to fulfill the request by storing the queried information in the contract
+ - _constructor_：合约部署后运行，负责设置LINK代币和合约所有者的地址
+ - _requestPrice_：需要预言机合约地址、Job ID，以及向请求执行者支付的LINK代币。使用从*ChainlinkClient.sol* 导入的*sendChainlinkRequestTo*函数创建并发送新请求
+ - _fulfill_：预言机节点通过回调完成请求，将请求数据储存在合约中
 
 ```solidity
 pragma solidity ^0.6.6;
@@ -63,13 +63,13 @@ contract Client is ChainlinkClient {
 }
 ```
 
-Note that the Client contract must have a LINK tokens balance to be able to pay for this request. However, if you deploy your setup, you can set the LINK value to 0 in your `ChainlinkClient.sol` contract, but you still need to have the LINK token contract deployed.
+请注意，客户合约需要持有一定数量的LINK代币才能创建请求。在部署设置时，可以将`ChainlinkClient.sol`合约中的LINK金额设置为0，但仍需要部署LINK代币合约。
 
-### Try it on Moonbase Alpha
+### 在Moonbase Alpha上进行测试
 
-If you want to skip the hurdles of deploying all contracts, setting up your Oracle node, creating job IDs, and so on, we've got you covered.
+如果您想跳过合约部署、预言机节点设置、Job ID创建等步骤，我们也为您提供了以下捷径。
 
-A custom Client contract on Moonbase Alpha that makes all requests to our Oracle contract, with a 0 LINK token payment, is available. These requests are fulfilled by an Oracle node that we are running. You can try it out with the following interface contract and the custom Client contract deployed at `{{ networks.moonbase.chainlink.client_contract }}`:
+我们在Moonbase Alpha上部署了定制化的客户合约，可直接向预言机合约发送所有请求，并设置了0 LINK支付。我们运营的预言机节点将完成所有这些请求。您可以通过以下接口合约和部署在`{{ networks.moonbase.chainlink.client_contract }}`的定制客户合约进行测试：
 
 ```solidity
 pragma solidity ^0.6.6;
@@ -94,65 +94,65 @@ interface ChainlinkInterface {
 }
 ```
 
-This provides two functions. `requestPrice()` only needs the job ID of the data you want to query. This function starts the chain of events explained before. `currentPrice()` is a view function that returns the latest price stored in the contract.
+这个合约有两个函数。`requestPrice()`函数只需要所请求数据的Job ID即可，该函数启动我们此前所提到的事件链。`currentPrice()`是视图函数，负责返回存储在合约上的最新价格。
 
-Currently, the Oracle node has a set of Job IDs for different price datas for the following pairs:
+目前，该预言机节点设置了一系列的Job ID，用于获取以下报价对的价格数据：
 
-|  Base/Quote  |     |                 Job ID Reference                  |
-| :----------: | --- | :-----------------------------------------------: |
-|  BTC to USD  |     |  {{ networks.moonbase.chainlink.basic.btc_usd }}  |
-|  ETH to USD  |     |  {{ networks.moonbase.chainlink.basic.eth_usd }}  |
-|  DOT to USD  |     |  {{ networks.moonbase.chainlink.basic.dot_usd }}  |
-|  KSM to USD  |     |  {{ networks.moonbase.chainlink.basic.ksm_usd }}  |
-| AAVE to USD  |     | {{ networks.moonbase.chainlink.basic.aave_usd }}  |
-| ALGO to USD  |     | {{ networks.moonbase.chainlink.basic.algo_usd }}  |
-| BAND to USD  |     | {{ networks.moonbase.chainlink.basic.band_usd }}  |
-| LINK to USD  |     | {{ networks.moonbase.chainlink.basic.link_usd }}  |
-| SUSHI to USD |     | {{ networks.moonbase.chainlink.basic.sushi_usd }} |
-|  UNI to USD  |     |  {{ networks.moonbase.chainlink.basic.uni_usd }}  |
+| 基础货币/报价货币 |      |                    Job ID参考                     |
+| :---------------: | ---- | :-----------------------------------------------: |
+|    BTC to USD     |      |  {{ networks.moonbase.chainlink.basic.btc_usd }}  |
+|    ETH to USD     |      |  {{ networks.moonbase.chainlink.basic.eth_usd }}  |
+|    DOT to USD     |      |  {{ networks.moonbase.chainlink.basic.dot_usd }}  |
+|    KSM to USD     |      |  {{ networks.moonbase.chainlink.basic.ksm_usd }}  |
+|    AAVE to USD    |      | {{ networks.moonbase.chainlink.basic.aave_usd }}  |
+|    ALGO to USD    |      | {{ networks.moonbase.chainlink.basic.algo_usd }}  |
+|    BAND to USD    |      | {{ networks.moonbase.chainlink.basic.band_usd }}  |
+|    LINK to USD    |      | {{ networks.moonbase.chainlink.basic.link_usd }}  |
+|   SUSHI to USD    |      | {{ networks.moonbase.chainlink.basic.sushi_usd }} |
+|    UNI to USD     |      |  {{ networks.moonbase.chainlink.basic.uni_usd }}  |
 
-Let's go ahead and use the interface contract with the `BTC to USD` Job ID in [Remix](/integrations/remix/).
+接下来，我们尝试在[Remix](/integrations/remix/)上使用`BTC to USD` Job ID和接口合约。
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the Client contract address, and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so you are connected to Moonbase Alpha. This will create an instance of the Client contract that you can interact with. Use the function `requestPrice()` to query the data of the corresponding Job ID. Once the transaction is confirmed, we have to wait until the whole process explained before occurs. We can check the price using the view function `currentPrice()`.
+在创建文件和编译合约后，进入“Deploy and Run Transactions”标签，输入客户合约地址，点击“At Address”。将“Environment”设置为“Injected Web3”，来确保您已经与Moonbase Alpha连接。通过这一方法，您将创建一个可以进行交互的客户合约实例。使用 `requestPrice()` 函数即可请求相应Job ID的数据。交易确认后，需要等待此前所述的流程全部完成。最后可以通过 `currentPrice()`视图函数来查看价格。
 
 ![Chainlink Basic Request on Moonbase Alpha](/images/chainlink/chainlink-image1.png)
 
-If there is any specific pair you want us to include, feel free to reach out to us through our [Discord server](https://discord.com/invite/PfpUATX).
+如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX)联系我们。
 
-### Run your Client Contract
+### 运行客户合约
 
-If you want to run your Client contract but use our Oracle node, you can do so with the following information:
+您可以使用以下信息来通过我们的预言机节点运行自己的客户合约：
 
-|  Contract Type  |     |                      Address                      |
-| :-------------: | --- | :-----------------------------------------------: |
-| Oracle Contract |     | {{ networks.moonbase.chainlink.oracle_contract }} |
-|   LINK Token    |     |  {{ networks.moonbase.chainlink.link_contract }}  |
+|  合约类型  |      |                       地址                        |
+| :--------: | ---- | :-----------------------------------------------: |
+| 预言机合约 |      | {{ networks.moonbase.chainlink.oracle_contract }} |
+|  LINK代币  |      |  {{ networks.moonbase.chainlink.link_contract }}  |
 
-Remember that the LINK token payment is set to zero.
+请注意LINK代币支付金额已设置为0。
 
-### Other Requests
+### 其它请求
 
-Chainlink's Oracles can tentatively provide many different types of data feeds with the use of external adapters. However, for simplicity, our Oracle node is configured to deliver only price feeds.
+Chainlink预言机可以通过外部适配器获取多种类型的数据，但为了简化，我们的预言机节点仅提供喂价。
 
-If you are interested in running your own Oracle node in Moonbeam, please visit [this guide](/node-operators/oracles/node-chainlink/). Also, we recommend going through [Chainlink's documentation site](https://docs.chain.link/docs).
+如果您有兴趣在Moonbeam上运营自己的预言机节点，请查看[此教程](/node-operators/oracles/node-chainlink/)。同时，我们也推荐您阅读[Chainlink文档](https://docs.chain.link/docs)。
 
-## Price Feeds
+## 喂价
 
-Before we go into fetching the data itself, it is important to understand the basics of price feeds.
+在介绍获取数据本身之前，您需要先了解“喂价”的基本情况。
 
-In a standard configuration, each price feed is updated by a decentralized Oracle network. Each Oracle node is rewarded for publishing the price data to the Aggregator contract. However, the information is only updated if a minimum number of responses from Oracle nodes are received (during an aggregation round).
+在标准配置下，每次喂价是由去中心化预言机网络进行数据更新。每个预言机节点向聚合合约发布价格数据，而后获得奖励。但在每一轮聚合中，只有预言机节点收到超过一定数量的响应才会更新数据。
 
-The end-user can retrieve price feeds with read-only operations via a Consumer contract, referencing the correct Aggregator interface (Proxy contract). The Proxy acts as a middleware to provide the Consumer with the most up-to-date Aggregator for a particular price feed.
+终端用户可以通过消费者合约的只读操作索引到相应的聚合接口（代理合约）进行喂价检索。代理作为中间件为消费者提供最新聚合出的喂价信息。
 
 ![Price Feed Diagram](/images/chainlink/chainlink-pricefeed.png)
 
-### Try it on Moonbase Alpha
+### 在Moonbase Alpha上进行测试
 
-If you want to skip the hurdles of deploying all the contracts, setting up your Oracle node, creating job IDs, and so on, we've got you covered.
+如果您想跳过合约部署、预言机节点设置、Job ID创建等步骤，我们也为您提供了以下捷径。
 
-We've deployed all the necessary contracts on Moonbase Alpha to simplify the process of requesting price feeds. In our current configuration, we are running only one Oracle node that fetches the price from a single API source. Price data is checked every minute and updated in the smart contracts every hour unless there is a price deviation of 1 %.
+我们在Moonbase Alpha上部署了所有必要的合约，以简化请求喂价的流程。在现有设置下，我们只运营一个预言机节点，通过单一API来源获取数据。价格数据每分钟查看一次，每小时通过智能合约更新一次，另外在价格变动超过1%时也会进行更新。
 
-The data lives in a series of smart contracts (one per price feed) and can be fetched with the following interface:
+数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过以下接口获取：
 
 ```solidity
 pragma solidity ^0.6.6;
@@ -175,35 +175,31 @@ interface ConsumerV3Interface {
 }
 ```
 
-This provides three functions. `getLatestPrice()` will read the latest price data available in the Aggregator contract via the Proxy. We've added the `decimals()` function, which returns the number of decimals of the data and the `description()` function, which returns a brief description of the price feed available in the Aggregator contract being queried.
+这一合约有三个函数。`getLatestPrice()`函数通过代理读取聚合合约中的最新价格数据。我们加入了`decimals()`函数，可以返回数据的保留小数的数字，以及`description()`函数，可以返回所请求聚合合约中喂价的简要描述。
 
-Currently, there is an Consumer contract for the the following price pairs:
+目前，我们部署了以下报价对的消费者合约：
 
-|  Base/Quote  |     |                     Consumer Contract                     |
-| :----------: | --- | :-------------------------------------------------------: |
-|  BTC to USD  |     |  {{ networks.moonbase.chainlink.feed.consumer.btc_usd }}  |
-|  ETH to USD  |     |  {{ networks.moonbase.chainlink.feed.consumer.eth_usd }}  |
-|  DOT to USD  |     |  {{ networks.moonbase.chainlink.feed.consumer.dot_usd }}  |
-|  KSM to USD  |     |  {{ networks.moonbase.chainlink.feed.consumer.ksm_usd }}  |
-| AAVE to USD  |     | {{ networks.moonbase.chainlink.feed.consumer.aave_usd }}  |
-| ALGO to USD  |     | {{ networks.moonbase.chainlink.feed.consumer.algo_usd }}  |
-| BAND to USD  |     | {{ networks.moonbase.chainlink.feed.consumer.band_usd }}  |
-| LINK to USD  |     | {{ networks.moonbase.chainlink.feed.consumer.link_usd }}  |
-| SUSHI to USD |     | {{ networks.moonbase.chainlink.feed.consumer.sushi_usd }} |
-|  UNI to USD  |     |  {{ networks.moonbase.chainlink.feed.consumer.uni_usd }}  |
+| 基础货币/报价货币 |      |                        消费者合约                         |
+| :---------------: | ---- | :-------------------------------------------------------: |
+|    BTC to USD     |      |  {{ networks.moonbase.chainlink.feed.consumer.btc_usd }}  |
+|    ETH to USD     |      |  {{ networks.moonbase.chainlink.feed.consumer.eth_usd }}  |
+|    DOT to USD     |      |  {{ networks.moonbase.chainlink.feed.consumer.dot_usd }}  |
+|    KSM to USD     |      |  {{ networks.moonbase.chainlink.feed.consumer.ksm_usd }}  |
+|    AAVE to USD    |      | {{ networks.moonbase.chainlink.feed.consumer.aave_usd }}  |
+|    ALGO to USD    |      | {{ networks.moonbase.chainlink.feed.consumer.algo_usd }}  |
+|    BAND to USD    |      | {{ networks.moonbase.chainlink.feed.consumer.band_usd }}  |
+|    LINK to USD    |      | {{ networks.moonbase.chainlink.feed.consumer.link_usd }}  |
+|   SUSHI to USD    |      | {{ networks.moonbase.chainlink.feed.consumer.sushi_usd }} |
+|    UNI to USD     |      |  {{ networks.moonbase.chainlink.feed.consumer.uni_usd }}  |
 
-Let's go ahead and use the interface contract to fetch the price feed of `BTC to USD` using [Remix](/integrations/remix/).
+接下来，我们尝试在[Remix](/integrations/remix/)上使用接口合约获取`BTC to USD`喂价。
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the Consumer contract address corresponding to `BTC to USD`, and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so you are connected to Moonbase Alpha.
+创建文件和编译合约后，进入“Deploy and Run Transactions”标签，输入`BTC to USD`相应的消费者合约地址，点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接。
 
-This will create an instance of the Consumer contract that you can interact with. Use the function `getLatestPrice()` to query the data of the corresponding price feed.
+通过这一方法，你将创建一个可以进行交互的消费者合约实例。使用`getLatestPrice()`函数即可请求相应喂价数据。
 
 ![Chainlink Price Feeds on Moonbase Alpha](/images/chainlink/chainlink-image2.png)
 
-Note that to obtain the real price, you must account for the decimals of the price feed, available with the `decimals()` method.
+请注意，必须用`decimals()`了解喂价的小数位的数字才能获取真实价格。
 
-If there is any specific pair you want us to include, feel free to reach out to us through our [Discord server](https://discord.com/invite/PfpUATX).
-
-## We Want to Hear From You
-
-If you have any feedback regarding implementing Chainlink on your project or any other Moonbeam-related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX)联系我们。

@@ -1,46 +1,46 @@
 ---
 title: Band Protocol
-description: How to use request data from a Band Protocol Oracle in your Moonbeam Ethereum DApp using smart contracts or javascript
+description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocal预言机喂价
 ---
-# Band Protocol Oracle
+# Band Protocol预言机
 
 ![Band Protocol Moonbeam Diagram](/images/band/band-banner.png)
 
-## Introduction
-Developers have two ways to fetch prices from Band’s oracle infrastructure. On one hand, they can use Band’s smart contracts on Moonbeam. Doing so, they access data that is on-chain and is updated either at regular intervals or when price slippage is more than a target amount (different for each token). On the other hand, devs can use the Javascript helper library, which uses an API endpoint to fetch the data using similar functions as those from the smart contracts, but this implementation bypasses the blockchain entirely.  This can be useful if your DApp front-end needs direct access to the data.
+## 概览
+开发者可通过两种方法从Band预言机获取价格。第一，可以通过Moonbeam上的Band智能合约在固定时间段或价格滑点大于目标值（不同代币的目标值不同）时获取链上最新数据。第二，使用JavaScript辅助库，该库绕过区块链直接从Band Protocol API（与智能合约相似的函数）中获取数据。如果DApp前端需要直接获取数据，则可以使用这种方法。
 
-The Aggregator Contract address can be found in the following table:
+聚合合约地址可以在以下列表找到：
 
-|     Network    | |         Aggregator Contract Address        |
-|:--------------:|-|:------------------------------------------:|
-| Moonbase Alpha | | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
+|      网络      |      |                聚合合约地址                |
+| :------------: | ---- | :----------------------------------------: |
+| Moonbase Alpha |      | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
 
-## Supported Token
-Price queries with any denomination are available as long as the base and quote symbols are supported (_base_/_quote_). For example:
+## 支持的代币
+只要是平台支持的基础货币和报价货币（_报价对显示方式：基础货币代码_/_报价货币代码_），您都可以获取其报价。例如：
 
  - `BTC/USD`
  - `BTC/ETH`
  - `ETH/EUR`
 
-At the time of writing, the list of supported symbols can be found by following [this link](https://data.bandprotocol.com). There are more than 146 price pairs available to query.
+您可通过此[链接](https://data.bandprotocol.com)查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
-## Querying Prices
-As stated before, developers can leverage two methods to query prices from Band's oracle: 
+## 获取报价
+如上所述，开发者可以通过两种方法从Band预言机获取报价：
 
- - Band's smart contract on Moonbeam (deployed to Moonbase Alpha TestNet for now)
- - Javascript helper library
+ - Moonbeam上的Band智能合约（目前已部署在Moonbase Alpha测试网上）
+ - Javascript辅助库
 
-## Get Data Using Smart Contracts
-Contracts can query on-chain data, such as token prices, from Band's oracle by implementing the interface of the `StdReference` contract, which exposes the `getReferenceData` and `getReferenceDataBulk` functions.
+## 通过智能合约获取数据
+Moonbeam上的Band Protocol智能合约可通过实现`StdReference`合约接口从而查询链上数据（例如代币价格），该接口公开了`getReferenceData`和`getReferenceDataBulk`函数。
 
-The first function, `getReferenceData`, takes two strings (the base and the quote symbol) as the inputs. The function queries the `StdReference` contract for the latest rates available for those two tokens. It returns a `ReferenceData` struct.
+第一个函数`getReferenceData`输入两串字符（基础货币和报价货币的代码），通过向`StdReference`合约发送请求来获取这两种货币之间的最新汇率，并以`ReferenceData`结构返回。
 
-The `ReferenceData` struct has the following elements:
+`ReferenceData`结构由以下元素组成：
 
- - Rate: the exchange rate in terms of _base/quote_. The value returned is multiplied by 10<sup>18</sup>
- - Last updated base: the last time when the base price was updated (since UNIX epoch)
- - Last updated quote: the last time when the quoted price was updated (since UNIX epoch)
- 
+ - 汇率：基础货币/报价货币汇率，返回值是真实汇率的 10<sup>18</sup>倍
+ - 基础货币价格最后更新时间（UNIX时间戳）
+ - 报价货币价格最后更新时间（UNIX时间戳）
+
 ```
 struct ReferenceData {
    uint256 rate; 
@@ -49,15 +49,15 @@ struct ReferenceData {
 }
 ```
 
-The second function, `getReferenceDataBulk`, takes information as data arrays. For example, if we pass in `['BTC','BTC','ETH']` as base and `['USD','ETH','EUR']` as quote, the `ReferenceData`returned array contains the information regarding the following pairs:
+第二个函数`getReferenceDataBulk`输入数据阵列信息。例如，基础货币输入`['BTC','BTC','ETH']`，报价货币输入`['USD','ETH','EUR']` ，`ReferenceData`函数就会返回包含以下货币对的数据阵列：
 
  - `BTC/USD`
  - `BTC/ETH`
  - `ETH/EUR`
 
-### Example Contract
+### 合约示例
 
-The following smart contract code provides some simple examples of the `StdReference` contract and the `getReferenceData` function - these are not meant for production. The `IStdReference.sol` interface defines ReferenceData structure and the functions available to make the queries.
+以下智能合约代码以简单的示例展示了`StdReference`合约和`getReferenceData`函数。合约仅为举例，不作实际之用。`IStdReference.sol`接口明确了ReferenceData结构和可用于获取报价的函数。
 
 ```sol
 pragma solidity 0.6.11;
@@ -84,14 +84,14 @@ interface IStdReference {
         returns (ReferenceData[] memory);
 }
 ```
-Next, we can use the following `DemoOracle` script. It provides four functions:
+接下来可以使用`DemoOracle`脚本。该脚本含有4个函数：
 
- - getPrice: a _view_ function that queries a single base. In this example, the price of `BTC` quoted in `USD`
- - getMultiPrices: a _view_ function that queries multiple bases. In this example, the price of `BTC` and `ETH`, both quoted in `USD`
- - savePrice: a _public_ function that queries the _base/quote_ pair. Each element is provided as separate strings, for example `_base = "BTC", _quotes = "USD"`. This sends a transaction and modifies the `price` variable stored in the contract
- - saveMultiPrices: a _public_  function that queries each _base/quote_ pair. Each element is provided as a string array. For example, `_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`. This sends a transaction and modifies the `prices` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
+ - getPrice：请求单一基础货币报价的_视图_函数。在此示例中，`BTC`以`USD`为报价单位
+ - getMultiPrices：请求多个基础货币报价的_视图_函数。在此示例中，`BTC`和`ETH`均以`USD`为报价单位
+ - savePrice：请求_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串输入，如 `_base = "BTC", _quotes = "USD"`。函数将发送交易并修改储存在合约中的`price`变量
+ - saveMultiPrices：一个请求多个_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串阵列输入，如`_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`。函数将发送交易并修改储存在合约中的`prices`阵列，阵列将按照输入顺序显示每个报价对的价格。
 
- When deployed, the constructor function needs the Aggregator Contract address for the target network.
+部署时，构造函数需要聚合合约地址以连接到目标网络。
 
 ```sol
 pragma solidity 0.6.11;
@@ -149,9 +149,9 @@ contract DemoOracle {
 }
 ```
 
-### Try it in Moonbase Alpha
+### 在Moonbase Alpha上进行测试
 
-We've deployed a contract available in the Moonbase Alpha TestNet (at address `0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) so you can easily check the information fed from Band Protocol's oracle. To do so, you need the following interface contract:
+我们已经在Moonbase Alpha测试网部署了一个合约（地址为`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`），方便开发者查看Band Protocol预言机的喂价信息。为此，您需要部署以下接口合约：
 
 ```sol
 pragma solidity 0.6.11;
@@ -164,36 +164,36 @@ interface TestInterface {
 }
 ```
 
-With it, you will have two view functions available - very similar to our previous examples:
+通过这一合约将创建两个视图函数，以下示例与上述示例非常相似：
 
- - getPrice: provides the price feed for a single base/quote pair that is given as input to the function, that is, "BTC", "USD"
- - getMultiPrices: provides the price feed for a multiple base/quote pairs that are given as input to the function, that is, ["BTC", "ETH", "ETH"], ["USD", "USD", "EUR"]
+ - getPrice: 根据函数中对应输入的数据，提供单一基础货币/报价货币对喂价，即BTC/USD
+ - getMultiPrices: 根据函数中对应输入的数据，提供多种基础货币/报价货币对喂价，即BTC/USD、ETH/USD、ETH/EUR
 
-For example, using [Remix](/integrations/remix/), we can easily query the `BTC/USD` price pair using this interface.
+例如，使用[Remix](/integrations/remix/)接口可以方便地获取BTC/USD价格对。
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the contract address (`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so you are connected to Moonbase Alpha. 
+创建文档及编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接。
 
 ![Band Protocol Remix deploy](/images/band/band-demo1.png)
 
-This will create an instance of the demo contract that you can interact with. Use the functions `getPrice()` and `getMultiPrices()` to query the data of the corresponding pair.
+通过这一方法，你将创建一个可以进行交互的合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
 ![Band Protocol Remix check price](/images/band/band-demo2.png)
 
-## BandChain.js Javascript Helper Library
+## BandChain.js Javascript辅助库
 
-The helper library also supports a similar `getReferenceData` function. To get started, the library needs to be installed:
+辅助库也支持相似的`getReferenceData`函数。使用此方法，首先要根据以下指令安装辅助库：
 
 ```
 npm install @bandprotocol/bandchain.js
 ```
 
-The library provides a constructor function that requires an endpoint to point to. This returns an instance that then enables all the necessary methods, such as the `getReferenceData` function.  When querying for information, the function accepts an array where each element is the _base/quote_ pair needed. For example:
+该辅助库提供了需要一个可以指向终端的构造函数。这将返回一个实例，支持所有必要的方法，如 `getReferenceData`函数。在获取信息时，向函数输入数据阵列，阵列中每个元素就是需要报价的基础货币/报价货币对。例如：
 
 ```
 getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 ```
 
-Then, it returns an array object with the following structure:
+然后，函数将返回以下结构的数据阵列：
 
 ```
 [
@@ -214,11 +214,11 @@ Then, it returns an array object with the following structure:
   }
 ]
 ```
-Where `lastUpdatedBase` and `lastUpdatedQuote` are the last time when the base and quote prices were updated respectively (since UNIX epoch).
+`lastUpdatedBase`和`lastUpdatedQuote`显示的是基础货币和报价货币各自价格的最后更新时间（UNIX时间戳）。
 
-### Example Usage
+### 应用示例
 
-The following Javascript script provides a simple example of the `getReferenceData` function.
+下面这个Javascript脚本是`getReferenceData`函数的一个简单示例。
 
 ```js
 const BandChain = require('@bandprotocol/bandchain.js');
@@ -234,12 +234,8 @@ const queryData = async () => {
 queryData();
 ```
 
-We can execute this code with a node, and the following `dataQuery` output should look like this:
+这段代码可以通过节点来执行，其`dataQuery`输出值应该如下所示：
 
 ![Band Protocol JavaScript Library](/images/band/band-console.png)
 
-Note that compared to the request done via smart contracts, the result is given directly in the correct units.
-
-## We Want to Hear From You
-
-If you have any feedback regarding implementing Band Protocol on your project or any other Moonbeam-related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+请注意，与通过智能合约获取报价相比，通过这种方法获得的返回结果将直接在正确的单位中显示。

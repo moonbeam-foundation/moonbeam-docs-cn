@@ -1,72 +1,68 @@
 ---
 title: Polkadot JS Apps
-description: Follow this quick tutorial to learn how to use Moonbeam’s Ethereum-standard H160 addresses with Substrate-based apps like Polkadot JS.
+description: 根据此教程快速学习如何使用基于Substrate的应用程序，如Polkadot JS与Moonbeam的标准以太坊H160地址进行交互。
 ---
 # Polkadot JS Apps
 
 ![Intro diagram](/images/polkadotjs/polkadotjs-banner.png)
 
-## Introduction
+## 概览
 
-With the [release of the v3 upgrade](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/) for the Moonbase Alpha TestNet, we have made significant updates to the underlying account system on Moonbeam, replacing the default Substrate-style accounts and keys with Ethereum-style accounts and keys.
+[Moonbase Alpha测试网 v3升级发布后](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们对Moonbeam底层账户系统进行了重大升级，使用以太坊式账户和私钥替换了默认的Substrate式账户和私钥。
 
-The Polkadot JS Apps interface was updated as well so that it natively supports H160 addresses and ECDSA keys. So, in this tutorial lets check this new integration of Ethereum-based accounts on the Polkadot JS Apps site.
+同时，Polkadot JS App交互界面也进行了升级，现已原生支持H160地址和ECDSA密钥。本教程将带领大家了解Polkadot JS App网站与基于以太坊的账户整合。
 
-## Connecting to Moonbase Alpha
+## 连接至Moonbase Alpha
 
-First, we need to connect it to the Moonbase Alpha TestNet by clicking the top left corner logo and selecting Moonbase Alpha (under Test Networks).
+首先，我们需要连接到Moonbase Alpha测试网。请点击左上角logo，在Test Network一栏中选择Moonbase Alpha。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app1.png)
 
-After switching, the Polkadot JS site will not only connect to Moonbase Alpha, but also change its styling to make a perfect match.
+成功切换后，Polkadot JS网站会连接到Moonbase Alpha，并相应地切换样式以便成功连接。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app2.png)
 
-## Creating or Importing an H160 Account
+## 创建或导入H160账户
 
-Let's see how we can create a new account, or import an already existing MetaMask account to Polkadot JS Apps. First, navigate to the accounts section, and click in the add account button.
+接下来是如何在Polkadot JS App创建新账户，或导入已有的MetaMask账户。首先，在“Account”一栏，点击“Add Account”按钮。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app3.png)
 
-This will open a wizard pop-up that will guide you through the process of adding an account to the Polkadot JS Apps interface. Make sure you click on the drop-down menu and change from Mnemonic to Raw seed, this allows you to add an account through a private key.
+接着会弹出窗口，根据指示完成在Polkadot JS App界面新增账户的整个流程。请确保您在下拉菜单中将Mnemonic改为Raw seed，然后您就能通过私钥新增账户。
 
-!!! note
-    Currently, you can only create or import accounts in PolkadotJS via a private key. Doing so with the mnemonic will result in a different public address if you later try to import this account to an Ethereum wallet such as MetaMask. This is because PolkadotJS uses BIP39, whereas Ethereum uses BIP32 or BIP44.
+!!! 注意事项
+    您目前只能通过私钥在PolkadotJS创建或导入账户。如果通过助记词操作，稍后导入账户到MetaMask等以太坊钱包时就会出现不同的公共地址。这是因为PolkadotJS使用的是BIP39，而以太坊使用的是BIP32或BIP44。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app4.png)
 
-Next, if you want to create a new account make sure you store the private key displayed by the wizard. If you want to import an existing account, enter your private key that you can export from MetaMask, in this case we are importing the following account:
+接下来，如果要创建新账户，您要确保已储存好弹窗所显示的私钥。如果要导入现有账户，请输入MetaMask导出的私钥。在本示例中，我们将导入以下账户：
 
-- Private key: `28194e8ddb4a2f2b110ee69eaba1ee1f35e88da2222b5a7d6e3afa14cf7a3347`
-- Public address: `0x44236223aB4291b93EEd10E4B511B37a398DEE55` 
+- 私钥: `28194e8ddb4a2f2b110ee69eaba1ee1f35e88da2222b5a7d6e3afa14cf7a3347`
+- 公共地址: `0x44236223aB4291b93EEd10E4B511B37a398DEE55` 
 
-!!! note
-    Never reveal your private keys as they give direct access to your funds. The steps in this guide are for demostration purposes only. 
+!!! 注意事项 
+    由于通过私钥可直接获取资金，请不要向任何人透露您的私钥。本教程各步骤仅作演示用途。
     
-Make sure to include the prefix in the private key, i.e., `0x`. If you entered the information correctly, the corresponding public address should appear in the upper left corner of the window.
+请确保输入私钥前缀，如`0x`等。如果输入正确的信息，窗口左上角就会出现相应公共地址。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app5.png)
 
-Click next and finish the wizard by setting an account name and password. After a confirmation message, you should see in the main Accounts tab the address with the corresponding balance: in our case, Bob's address. Moreover, we can overlay the MetaMask extension to see that both balances are the same.
+点击“Next”，设置账户名和密码后关闭设置向导的弹窗。收到确认消息后，您会在Accounts标签中看到相应地址和余额（在本示例中为Bob的地址）。除此之外，我们还可以覆盖MetaMask扩展，可以看到两个余额是相同的。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app6.png)
 
-## Sending a Transaction Through Substrate's API
+## 通过Substrate API发送交易
 
-Now, let's demonstrate the potential of Moonbeam's Unified Accounts scheme by making a transfer through the Substrate API using the Polkadot JS Apps. Remember that we are interacting with Substrate using an Ethereum-style H160 address. To do so, we've imported another account named Charley with 5 `DEV` tokens.
+现在，我们将演示Moonbeam Unified Accounts方案。通过Substrate API使用Polkadot JS App来创建交易。请注意，我们使用的是以太坊式H160地址来和Substrate交互。为此，我们导入了另一个名为Charley的账户，该账户中有5枚`DEV`代币。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app7.png)
 
-Next, click on Bob's send button, which opens another wizard that guides you through the process of sending a transaction. Set the send to address and the amount, which for our example is 5 DEV tokens. When ready, click on the "Make Transfer" button.
+下一步，点击“send”按钮，随后会出现一个弹窗，指引您按照操作发送交易。设置发送地址和金额，在本示例中为5个DEV代币。一切就绪后，就可以点击“Make Transfer”按钮。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app8.png)
 
-After the transaction is signed using the password, Polkadot JS will display some messages on the top right corner while it's being processed. Once confirmed, you should see the balances updated for each account.
+在使用密码进行交易签名后，交易将会被即刻执行。执行过程中，Polkadot JS右上角会显示一些消息。交易确认后，即可看到各个账户的最新余额。
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app8.png)
 
-And that is it! We are excited about being able to support H160 accounts in Polkadot JS Apps, as we believe this will greatly enhance the user experience in the Moonbeam Network and its Ethereum compatibility features.
-
-## We Want to Hear From You
-
-If you have any feedback regarding the Polkadot JS Apps, the Unified Accounts integration, or any other Moonbeam-related topics, feel free to reach out through our official development [Discord server](https://discord.gg/PfpUATX).
+这表明交易已完成！我们非常高兴Polkadot JS App能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam Network的用户体验和以太坊兼容功能。

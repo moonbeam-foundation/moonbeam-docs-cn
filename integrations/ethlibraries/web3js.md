@@ -1,24 +1,24 @@
 ---
 title: Web3.js
-description: Follow this tutorial to learn how to use the Ethereum Web3 JavaScript Library to deploy Solidity smart contracts to Moonbeam.
+description: 通过本教程学习如何使用以太坊Web3 JavaScript库在Moonbeam上部署Solidity智能合约。
 ---
-# Web3.js JavaScript Library
+# Web3.js JavaScript库
 
 ![Intro diagram](/images/integrations/integrations-web3js-banner.png)
 
-## Introduction
+## 概览
 
-[Web3.js](https://web3js.readthedocs.io/) is a set of libraries that allow developers to interact with Ethereum nodes using HTTP, IPC, or WebSocket protocols with JavaScript. Moonbeam has an Ethereum-like API available that is fully compatible with Ethereum-style JSON RPC invocations. Therefore, developers can leverage this compatibility and use the web3.js library to interact with a Moonbeam node as if they were doing so on Ethereum.
+[Web3.js](https://web3js.readthedocs.io/)可供开发人员使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互的一组代码库。Moonbeam拥有与以太坊相似的API供用户使用，其和以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用这个兼容性来使用web3.js库与Moonbeam节点交互，就如同在使用以太坊时一样。
 
-## Setup Web3.js with Moonbeam
+## 在Moonbeam上设置Web3.js
 
-To get started with the web3.js library, we first need to install it using the following command:
+在开始使用之前，请使用以下指令来安装web3.js库：
 
 ```
 npm install web3
 ```
 
-Once done, the simplest setup to start using the library and its methods is the following:
+安装完成后，请遵循以下指令来最快地开始使用该库以及其方法：
 
 ```js
 const Web3 = require('web3');
@@ -27,12 +27,12 @@ const Web3 = require('web3');
 const web3 = new Web3('RPC_URL');
 ```
 
-Depending on which network you want to connect to, you can set the `RPC_URL` to the following values:
+您可以根据您希望连接的网络，将`RPC_URL`设置为以下的数值：
 
- - Moonbeam development node: `http://127.0.0.1:9933`
- - Moonbase Alpha TestNet: `https://rpc.testnet.moonbeam.network`
+ - Moonbeam开发节点： `http://127.0.0.1:9933`
+ - Moonbase Alpha测试网: `https://rpc.testnet.moonbeam.network`
 
-## Step-by-step Tutorials
+## 分步教程
 
-If you are interested in a more detailed step-by-step guide, go to our specific tutorials about using web3.js on Moonbeam to [send a transaction](/getting-started/local-node/send-transaction/) or [deploy a contract](/getting-started/local-node/deploy-contract/).
+如果您想获得更加详细的分步教程，您可以查看我们关于如何通过web3.js在Moonbeam上[传送交易](/getting-started/local-node/send-transaction/)和[部署合约](/getting-started/local-node/deploy-contract/)所撰写的特定教程。
 

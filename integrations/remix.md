@@ -1,18 +1,18 @@
 ---
 title: Remix IDE
-description: Learn how to use one of the most popular Ethereum developer tools, the Remix IDE, to interact with Moonbeam.
+description: 通过此教程学习如何使用主流的以太坊开发人员工具之一Remix IDE与Moonbeam进行交互。
 ---
 
-# Interacting with Moonbeam Using Remix
+# 使用Remix与Moonbeam进行交互
 
 ![Intro diagram](/images/integrations/integrations-remix-banner.png)
 
-## Introduction
+## 概览
 
-Another tool developers can use to interact with Moonbeam is the [Remix IDE](https://remix.ethereum.org/), one of the most commonly used development environments for smart contracts on Ethereum. It provides a web-based solution to quickly compile and deploy Solidity and Vyper based code to either a local VM or, more interestingly, an external Web3 provider, such as MetaMask. By combining both tools, one can get started very swiftly with Moonbeam.
-## Deploying a Contract to Moonbeam
+开发者还可使用[Remix IDE](https://remix.ethereum.org/)来与Moonbeam进行交互。Remix IDE是以太坊智能合约最常用的开发环境之一，可提供基于网络的解决方案以实现在本地VM或外部Web3提供者（例如MetaMask）上快速编译和部署Solidity和Vyper代码。通过将两种工具结合，开发者可以快速启动在Moonbeam上的部署。
+## 在Moonbeam上部署合约
 
-To demonstrate how you can leverage [Remix](https://remix.ethereum.org/) to deploy smart contracts to Moonbeam, we will use the following basic contract:
+我们将通过以下基础合约展示如何使用[Remix](https://remix.ethereum.org/)在Moonbeam上部署智能合约：
 
 ```solidity
 pragma solidity ^0.7.5;
@@ -26,16 +26,16 @@ contract SimpleContract{
 }
 ```
 
-Once compiled, we can navigate to the "Deploy & Run Transactions" tab. We need first to set our environment to "Injected Web3." This uses the provider injected by MetaMask, which allows us to deploy contracts to the network it is connected to - in this case, the Moonbase Alpha TestNet. 
+编译完成后，我们可以来到“Deploy & Run Transactions”标签下。首先需要将环境设置为"Injected Web3."，需要使用MetaMask导入的提供者，通过提供者把合约部署到与其相连的网络上，在本示例中为Moonbase Alpha测试网。
 
-For this example, we'll be deploying the contract from a funded MetaMask account. You can use our [TestNet faucet](/getting-started/testnet/faucet/) to fund your account for deployments on Moonbase Alpha. Next, pass in `Test Contract` as input to our contructor function and hit deploy. A MetaMask pop-up will show the information regarding the transaction, which we'll need to sign by clicking "confirm."
+我们将使用一个存有资产余额的MetaMask账户来部署合约。可以通过我们的[测试网水龙头](https://docs.moonbeam.network/getting-started/testnet/faucet/)充值，然后在Moonbase Alpha上部署。接下来，在构造函数中输入`Test Contract`，然后点击“部署”。MetaMask弹窗将显示交易相关信息，我们需要点击“确认”进行签名。
 
 ![Deploying Contract](/images/remix/integrations-remix-1.png)
 
-Once the transaction is included, the contract appears in the "Deployed Contracts" section on Remix. In there, we can interact with the functions available from our contract.
+交易确认后，合约将出现在Remix的“Deployed Contracts”栏目中。从这里即可与合约功能进行交互。
 
 ![Interact with Contract](/images/remix/integrations-remix-2.png)
 
-## Step-by-step Tutorials
-If you are interested in a more detailed step-by-step guide, go to our specific tutorials on using [Remix on a Moonbeam development node](/getting-started/local-node/using-remix/). The steps can also be adapted to deploy on the Moonbase Alpha TestNet by [connecting MetaMask to it](/getting-started/testnet/metamask/).
+## 分步教程
+如果您想获得更加详细的分步教程，请阅读[在Moonbeam开发节点上使用Remix](https://docs.moonbeam.network/getting-started/local-node/using-remix/)。只需修改这些步骤，并将MetaMask[与Moonbase Alpha测试网相连](https://docs.moonbeam.network/getting-started/testnet/metamask/)，即可在Moonbase Alpha测试网上部署。
 

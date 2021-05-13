@@ -1,36 +1,36 @@
 ---
 title: Razor Network
-description: How to use request data from a Razor Network Oracle in your Moonbeam Ethereum DApp using smart contracts
+description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network预言机喂价
 ---
-# Razor Network Oracle
+# Razor Network预言机
 
 ![Razor Network Moonbeam Diagram](/images/razor/razor-banner.png)
 
-## Introduction
+## 概览
 
-Developers can now fetch prices from Razor Network’s oracle using a Bridge contract deployed on the Moonbase Alpha TestNet. This Bridge acts as middleware, and events emitted by it are fetched by the Razor Network's oracle infrastructure, sending prices to the Bridge contract.
+开发者现在可以使用Razor Network预言机在Moonbase Alpha测试网上部署桥接合约，从而获取价格信息。桥接合约作为中间件发出事件信息，该信息被Razor Network预言机基础设施获取，并向桥接合约发送报价。
 
-To access these price feeds, we need to interact with the Bridge contract address, which can be found in the following table:
+要想获取喂价，就需要与下表中的桥接合约地址进行交互：
 
-|     Network    | |         Contract Address        |
+|   网络    | |     合约地址        |
 |:--------------:|-|:------------------------------------------:|
 | Moonbase Alpha | | 0xa7f180fb18EF0d65049fE03d4308bA33a28b6513 |
 
 ## Jobs
 
-Each data-feed has a Job ID attached to it. For example:
+每个喂价数据都与一个Job ID相对应，例如：
 
-|    Job ID    | |    Underlying Price [USD]  |
-|:------------:|-|:--------------------------:|
-|       1      | |            ETH             |
-|       2      | |            BTC             |
-|       3      | |      Microsoft Stocks      |
+| Job ID |      |  标的报价[美元]  |
+| :----: | ---- | :--------------: |
+|   1    |      |       ETH        |
+|   2    |      |       BTC        |
+|   3    |      | Microsoft Stocks |
 
-You can check Job IDs for each data-feed at the following [link](https://razorscan.io/#/custom). Price feeds are updated every 5 minutes. More information can be found in [Razor's documentation website][https://docs.razor.network/].
+通过[此链接](https://razorscan.io/#/custom)可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档][https://docs.razor.network/]。
 
-## Get Data From Bridge Contract
+## 从桥接合约获取数据
 
-Contracts can query on-chain data such as token prices, from Razor Network's oracle by implementing the interface of the Bridge contract, which exposes the `getResult` and `getJob` functions.
+合约通过执行桥接合约接口可调用`getResult`和`getJob`函数以使用Razor Network预言机来获取代币价格等链上数据。
 
 ```
 pragma solidity 0.6.11;
@@ -43,23 +43,23 @@ interface Razor {
 }
 ```
 
-The first function, `getResult`, takes the Job ID associated with the data-feed and fetches the price. For example, if we pass in `1`, we will receive the price of the data-feed related to the Job ID.
+第一个函数`getResult`使用对应Job ID的数据源来获取报价。例如，输入`1`就会收到Job ID为 `1`的相应报价。
 
-The second function, `getJob`, takes the Job ID associated with the data-feed and fetches the general information regarding the data-feed, such as the name of the data-feed, the price, and the URL being used to fetch the prices.
+第二个函数`getJob`使用对应Job ID的数据源来获取关于数据源的基本信息，如名称、价格、获取价格的URL等。
 
-### Example Contract
+### 合约示例
 
-We've deployed the bridge contract in the Moonbase Alpha TestNet (at address `{{ networks.moonbase.razor.bridge_address }}`) so you can quickly check the information fed from Razor Network's oracle. 
+我们在Moonbase Alpha测试网上部署了桥接合约（地址为`{{ networks.moonbase.razor.bridge_address }}`），方便您快速查看Razor Network预言机的喂价信息。
 
-The only requirement is the Bridge interface, which defines `getResult` structure and makes the functions available to the contract for queries.
+您只需要桥接合约接口，该接口可调出`getResult`结构，让合约可以调用函数进行报价请求。
 
 
-We can use the following `Demo` script. It provides various functions:
+我们可以使用以下`Demo`脚本，它包括了多个函数：
 
- - fetchPrice: a _view_ function that queries a single Job ID. For example, to fetch the price of `ETH` in `USD`, we will need to send the Job ID `1`
- - fetchMultiPrices: a _view_ function that queries multiple Job IDs. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the Job IDs `[1,2]`
- - savePrice: a _public_ function that queries a single Job ID. This sends a transaction and modifies the `price` variable stored in the contract.
- - saveMultiPrices: a _public_ function that queries multiple Job IDs. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the Job IDs `[1,2]`. This sends a transaction and modifies the `pricesArr` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
+ - fetchPrice：一个请求单一Job ID的_视图_函数。例如，输入任务ID`1`即可获取`ETH`/`USD`报价。
+ - fetchMultiPrices：一个请求多个Job ID的_视图_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/ `USD`报价。
+ - savePrice：一个请求单一Job ID的_公有_函数。函数将发送交易并修改储存在合约中的`price`变量。
+ - saveMultiPrices：一个请求多个Job ID的_公有_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/`USD`报价。函数将发送交易并修改储存在合约中的`pricesArr`阵列，阵列将按照输入顺序显示每个报价对的价格。
 
 ```sol
 pragma solidity 0.6.11;
@@ -109,9 +109,9 @@ contract Demo {
 }
 ```
 
-### Try it on Moonbase Alpha
+### 在Moonbase Alpha上进行测试
 
-The easiest way to try their Oracle implementation is by pointing the interface to the Bridge contract deployed at address `{{ networks.moonbase.razor.bridge_address }}`:
+测试预言机功能最简单的方式就是将接口指向部署在`{{ networks.moonbase.razor.bridge_address }}`的桥接合约：
 
 ```sol
 pragma solidity 0.6.11;
@@ -122,20 +122,17 @@ interface Razor {
 }
 ```
 
-With it, you will have two view functions available, very similar to our previous examples:
+完成后，您将获得两个视图函数，和此前的示例非常相似：
 
- - getPrice: provides the price feed for a single job ID given as input to the function. For example, to fetch the price of `ETH` in `USD`, we will need to send the Job ID `1`
- - getMultiPrices: provides the price feed for multiple Job IDs given as an array input to the function. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the job IDs `[1,2]`
+ - getPrice：根据函数中对应输入的数据，提供单一Job ID喂价。例如，输入任务ID`1`就会收到`ETH`/`USD`的报价。
+ - getMultiPrice：根据函数中对应输入的阵列，提供多个Job ID喂价。例如，输入Job ID`[1,2]`就会收到`ETH`/`USD`和`BTC`/`USD`的报价。
 
-Let's use [Remix](/integrations/remix/) to fetch the `BTC` price in `USD`.
+下面让我们尝试通过[Remix](/integrations/remix/)获取`BTC`/ `USD` 的报价。
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the contract address (`{{ networks.moonbase.razor.bridge_address }}`), and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so that you are connected to Moonbase Alpha (through the Web3 provider of the wallet). 
+创建文件和编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`{{ networks.moonbase.razor.bridge_address }}`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接（通过Web3 提供者的钱包）。
 
 ![Razor Remix deploy](/images/razor/razor-demo1.png)
 
-This will create an instance of the demo contract that you can interact with. Use the functions `getPrice()` and `getMultiPrices()` to query the data of the corresponding pair.
+通过这一方法，您将创建一个可以进行交互的demo合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
 ![Razor check price](/images/razor/razor-demo2.png)
-
-## Contact Us
-If you have any feedback regarding implementing the Razor Network Oracle on your project or any other Moonbeam related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
