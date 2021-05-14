@@ -1,62 +1,62 @@
 ---
-title: Graph Node
-description: Build APIs using The Graph indexing protocol on Moonbeam
+title: Graph节点
+description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
 ---
 
-# Running a Graph Node on Moonbeam
+# 在Moonbeam上运行Graph节点
 
 ![The Graph Node on Moonbeam](/images/thegraph/thegraphnode-banner.png)
 
-## Introduction
+## 概览
 
-A Graph Node sources events from a blockchain to deterministically update a data store that can be then queried via a GraphQL endpoint.
+Graph节点负责从区块链上获取事件消息，并精准更新数据存储。数据存储可通过GraphQL终端请求进行访问。
 
-There are two ways you can set up a Graph Node: you can use Docker to run an all-in-one image, or you can run their [Rust implementation](https://github.com/graphprotocol/graph-node). The steps described in this guide will only cover the Docker alternative, as it is more convenient, and you can set up a Graph Node very quickly.
+设置Graph节点有两种途径：可以使用Docker运行多合一的镜像，也可以采用[Rust部署](https://github.com/graphprotocol/graph-node)。本教程将介绍第一种方法。此方法更为便捷，且能帮助您快速创建Graph节点。
 
-!!! note
-    The steps described in this guide have been tested in both Ubuntu 18.04-based and MacOs environments, and they will need to be adapted accordingly for other systems.
+!!! 注意事项
+    本教程示例基于Ubuntu 18.04和MacOS的环境，用户需根据其所使用其他系统进行微调。
 
-## Checking Prerequisites
+## 查看先决条件
 
-Before diving into setting up a Graph Node, you neeed to have the following installed on your system:
+在创建Graph节点之前，请确保系统上已安装以下工具：
 
  - [Docker](https://docs.docker.com/get-docker/)
  - [Docker Compose](https://docs.docker.com/compose/install/)
  - [JQ](https://stedolan.github.io/jq/download/)
 
-In addition, you need to have a node running with the `--ethapi=trace` option enabled. Currently, you can spin up two different kinds of nodes:
+此外，您还需要有一个已启用`--ethapi=trace`选项且正在运行的节点。当前，有以下两种不同类型的节点供您选择：
 
- - **Moonbeam development node** — run your own Moonbeam instance in your private environment. To do so, you can follow [this guide](/getting-started/local-node/setting-up-a-node/). Make sure to check the [advanced flags section](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha node** — run a full node of the TestNet and access your own private endpoints. To do so, you can follow [this guide](/node-operators/networks/full-node/). Make sure to check the [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
+ - **Moonbeam**开发节点 —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](https://docs.moonbeam.network/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记章节](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
+ - **Moonbase Alpha**节点 —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](https://docs.moonbeam.network/node-operators/networks/full-node/)。请务必查看[高级标记章节](/node-operators/networks/full-node/#advanced-flags-and-options)
 
-In this guide, a Graph Node runs against a Moonbase Alpha full node with the `--ethapi=trace` flag.
+在教程中，我们将用`--ethapi=trace`标记Graph节点，对应Moonbase Alpha完整节点运行。
 
-## Running a Graph Node
+## 运行Graph节点
 
-The first step is to clone the [Graph Node repository](https://github.com/graphprotocol/graph-node/):
+首先，克隆[Graph节点代码库](https://github.com/graphprotocol/graph-node/)：
 
 ```
 git clone https://github.com/graphprotocol/graph-node/ \
 && cd graph-node/docker
 ```
 
-Next, execute the `setup.sh` file. This will pull all the necessary Docker images and write the necessary information in the `docker-compose.yml` file.
+接下来，执行`setup.sh`文档。这一步将拉出所有必要的Docker镜像，并在`docker-compose.yml`文档中写入必要信息。
 
 ```
 ./setup.sh
 ```
 
-The tail end from the logs of the previous command should look something similar to:
+上一条指令的日志尾端应与以下内容相似：
 
 ![Graph Node setup](/images/thegraph/thegraphnode-images1.png)
 
-Once everything is set up, you need to modify the "Ethereum environment" inside the `docker-compose.yml` file, so that it points to the endpoint of the node you are running this Graph Node against. Note that the `setup.sh` file detects the `Host IP` and writes its value, so you'll need to modify it accordingly.
+设置好所有相关内容后，需要在`docker-compose.yml`文档中修改“Ethereum environment”，让其指向运行该Graph节点的节点终端。请注意，`setup.sh`文档会检测`Host IP`并写入一个值，因此您需要进行相应修改。
 
 ```
 ethereum: 'mbase:http://localhost:9933'
 ```
 
-The entire `docker-compose.yml` file should look something similar to:
+整个`docker-compose.yml`文档应与以下内容相似：
 
 ```
 version: '3'
@@ -99,7 +99,7 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
 ```
 
-Lastly, to run the Graph Node, just run the following command:
+最后，只需运行以下指令即可运行Graph节点：
 
 ```
 docker-compose up
@@ -107,12 +107,8 @@ docker-compose up
 
 ![Graph Node compose up](/images/thegraph/thegraphnode-images2.png)
 
-After a while, you should see logs related to the Graph Node syncing with the latest available block in the network:
+稍后您就可以看到Graph节点与网络中最新可用区块同步的日志：
 
 ![Graph Node logs](/images/thegraph/thegraphnode-images3.png)
 
-And that is it! You have a Graph Node running against the Moonbase Alpha TestNet. Feel free to adapt this example to a Moonbeam development node as well.
-
-## We Want to Hear From You
-
-If you have any feedback regarding running a Graph Node in Moonbeam or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam开发节点。

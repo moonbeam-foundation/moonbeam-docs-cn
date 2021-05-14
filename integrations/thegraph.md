@@ -1,94 +1,94 @@
 ---
 title: The Graph
-description: Build APIs using The Graph indexing protocol on Moonbeam
+description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
 ---
 
-# Using The Graph on Moonbeam
+# 在Moonbeam上使用The Graph
 
 ![The Graph on Moonbeam](/images/thegraph/thegraph-banner.png)
 
-## Introduction
+## 概览
 
-Indexing protocols organize information in a way that applications can access it more efficiently. For example, Google indexes the entire internet to provide information rapidly when you search for something.
+索引协议可以更有效地组织信息，便于应用程序访问及使用。例如，Google就是通过索引整个互联网的信息，快速为搜索者提供所需信息。
 
-The Graph is a decentralized and open-source indexing protocol for querying networks like Ethereum. In short, it provides a way to efficiently store data emitted by events from smart contracts so that other projects or dApps can access it easily.
+The Graph是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或dApp都可以便捷地利用这些数据。
 
-Furthermore, developers can build APIs, called Subgraphs. Users or other developers can use Subgraphs to query data specific to a set of smart contracts. Data is fetched with a standard GraphQL API. You can visit [their documentation](https://thegraph.com/docs/introduction#what-the-graph-is) to read more about The Graph protocol.
+此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/introduction#what-the-graph-is)了解更多关于The Graph协议的信息。
 
-With the introduction of Ethereum tracing modules in [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0), The Graph is capable of indexing blockchain data in Moonbeam.
+[Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)版本新增了以太坊跟踪模块，因此The Graph可以索引Moonbeam上的区块链数据。
 
-This guide takes you through the creation of a simple subgraph for a Lottery contract on Moonbase Alpha.
+本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。
 
-## Checking Prerequisites
+## 查看先决条件
 
-To use The Graph on Moonbase Alpha you have two options:
+在Moonbase Alpha上使用The Graph有两种方式：
 
- - Run a Graph Node against Moonbase Alpha and point your Subgraph to it. To do so, you can follow [this tutorial](/node-operators/indexers/thegraph-node/)
- - Point your Subgraph to The Graph API via the [Graph Explorer website](https://thegraph.com/explorer/). To do so you need to create an account and have an access token
- 
-## The Lottery Contract
+ - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](https://docs.moonbeam.network/node-operators/indexers/thegraph-node/)
+ - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币
 
-For this example, a simple Lottery contract is be used. You can find the Solidity file in [this link](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol). 
+## 彩票合约
 
-The contract hosts a lottery where players can buy ticket for themselves, or gift one to another user. When 1 hour has passed, if there are 10 participants, the next player that joins the lottery will execute a function that picks the winner. All the funds stored in the contract are sent to the winner, after which a new round starts.
+我们将使用一个简单的彩票合约作为示例。您可以通过[此链接](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol)找到其Solidity文档。
 
-The main functions of the contract are the following:
+合约玩家可以通过这个合约为自己购买彩票，也可以送给另外一位用户。一个小时后，如果参与者达到了十位，并且下一位玩家进入后，就会触发某一函数决定中奖者。所有储存在合约中的资金将发送到中奖者的地址上，然后游戏进入下一轮。
 
- - **joinLottery** — no inputs. Function to enter the lottery's current round, the value (amount of tokens) sent to the contract need to be equal to the ticket price
- - **giftTicket** —  one input: ticket's recipient address. Similar to `joinLottery` but the ticket's owner can be set to a different address
- - **enterLottery** — one input: ticket's owner address. An internal function that handles the lottery's tickets logic. If an hour has passed and there are at least 10 participants, it calls the `pickWinner` function
- - **pickWinner** — no inputs. An internal function that selects the lottery winner with a pseudo-random number generator (not safe, only for demonstration purposes). It handles the logic of transferring funds and resetting variable for the next lottery round
+该合约的主要函数有：
 
-### Events of the Lottery Contract
+ - **joinLottery** —— 没有输入值。进入本轮抽奖的函数，发送到合约的值（代币数量）需要与彩票价格相等
+ - **giftTicket** —— 一个输入值：彩票接收者的地址。与`joinLottery`函数相似，但彩票持有者可以和彩票购买者为不同的地址
+ - **enterLottery** —— 一个输入值：彩票持有者的地址。为内部函数，处理彩票逻辑。一个小时后，若参与者达到十人或更多，即调用`pickWinner`函数
+ - **pickWinner** —— 没有输入值。为内部函数，通过伪随机数发生器（仅作演示用途）选择中奖者。该函数负责处理资金转移和重新设定下一轮彩票变量的逻辑
 
-The Graph uses the events emitted by the contract to index data. The lottery contract emits only two events:
+### 彩票合约事件
 
- - **PlayerJoined** — in the `enterLottery` function. It provides information related to the latest lottery entry, such as the address of the player, current lottery round, if the ticket was gifted, and the prize amount of the current round
- - **LotteryResult** — in the `pickWinner` function. It provides information to the draw of an ongoing round, such as the address of the winner, current lottery round, if the winning ticket was a gift, amount of the prize, and timestamp of the draw
+The Graph使用彩票合约发出的事件消息进行数据索引。彩票合约仅发出两种事件消息：
 
-## Creating a Subgraph
+ - **PlayerJoined** —— 在`enterLottery`函数内，提供最后一个加入玩家相关的信息，例如玩家地址、本轮轮次、彩票是否已经送出，以及本轮的奖金数额等
+ - **LotteryResult** —在`pickWinner`函数内，提供进行中轮次抽奖的相关信息，例如中奖者地址、本轮轮次、中奖者持有的奖券是否为赠予、彩票奖金数额大小以及抽奖时间戳等
 
-This section goes through the process of creating a Subgraph. For the Lottery Subgraph, a [GitHub repository](https://github.com/PureStake/moonlotto-subgraph) was prepared with everything you need to help you get started. The repo also includes the Lottery contract, as well as a Hardhat configuration file and deployment script. If you are not familiar with it, you can check our [Hardhat integration guide](/integrations/hardhat/). 
+## 创建Subgraph
 
-To get started, first clone the repo and install the dependencies:
+本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/PureStake/moonlotto-subgraph)有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您还不熟悉，可以查看[Hardhat集成教程](/integrations/hardhat/)。
+
+第一步，克隆代码库并安装附带程序：
 
 ```
 git clone https://github.com/PureStake/moonlotto-subgraph \
 && cd moonlotto-subgraph && yarn
 ```
 
-Now, you can create the TypeScript types for The Graph by running:
+运行以下代码为The Graph创建TypeScript类型：
 
 ```
 npx graph codegen --output-dir src/types/
 ```
 
-!!! note
-    Creating the types requires you to have the ABI files specified in the `subgraph.yaml` file. This sample repository has the file already, but this is usually obtained after compiling the contract. Check the [Moonlotto repo](https://github.com/PureStake/moonlotto-subgraph) for more information.
+!!! 注意事项
+    创建类型需要您在`subgraph.yaml`文档中指定ABI文档。在本示例的代码库中已经存在该文档，但在一般操作过程中，这是在编译好合约之后才获得的。如需了解更多信息，访问[Moonlotto代码库](https://github.com/PureStake/moonlotto-subgraph)。
 
-The `codegen` command can also be executed using `yarn codegen`.
+`codegen`命令也可使用`yarn codegen`执行。
 
-For this example, the contract was deployed to `{{ networks.moonbase.thegraph.lotto_contract }}`. You can find more information on how to deploy a contract with Hardhat in our [integrations tutorial](/integrations/hardhat/). Also, the "README" file in the [Moonloto repository](https://github.com/PureStake/moonlotto-subgraph) has the steps necessary to compile and deploy the contract if required.
+在本示例中，合约的部署地址为`{{ networks.moonbase.thegraph.lotto_contract }}`。如果您想了解如何使用Hardhat部署合约，可查看[此集成教程](/integrations/hardhat/)。此外，[Moonloto代码库](https://github.com/PureStake/moonlotto-subgraph)中的"README"文档也有合约编译与部署的必要步骤指引。
 
-### Subgraphs Core Structure
+### Subgraph核心架构
 
-In general terms, Subgraphs define the data that The Graph will index from the blockchain and the way it is stored. Subgraphs tend to have some of the following files:
+一般而言，Subgraph定义了The Graph将从区块链上索引的数据以及其存储方式。Subgraph一般含有以下文档：
 
- - **subgraph.yaml** — is a YAML file that contains the [Subgraph's manifest](https://thegraph.com/docs/define-a-subgraph#the-subgraph-manifest), that is, information related to the smart contracts being indexed by the Subgraph
- - **schema.graphql** — is a [GraphQL schema](https://thegraph.com/docs/define-a-subgraph#the-graphql-schema) file that defines the data store for the Subgraph being created and its structure. It is written using [GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language)
- - **AssemblyScript mappings** — code in TypeScript (then compiled to [AssemblyScript](https://github.com/AssemblyScript/assemblyscript)) that is used to translate event data from the contract to the entities defined in the schema
+ - **subgraph.yaml** —— 包含着[Subgraph manifest](https://thegraph.com/docs/define-a-subgraph#the-subgraph-manifest)文件的YAML文档，也就是与Subgraph索引的智能合约相关的信息
+ - **schema.graphql** —— [GraphQL schema](https://thegraph.com/docs/define-a-subgraph#the-graphql-schema)文档，定义正在创建的Subgraph的数据储存及其架构。通过[GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language)编写。https://graphql.org/learn/schema/#type-language)
+ - **AssemblyScript mappings** —— TypeScript中的代码（接下来编译为[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)），用于将合约中的事件数据翻译成schema中定义的实体
 
-There is no particular order to follow when modifying the files to create a Subgraph.
+创建Subgraph需要对文档进行修改，文档的修改没有特定顺序。
 
 ### Schema.graphql
 
-It is important to outline what data needs to be extracted from the events of the contract before modifying the `schema.graphql`. Schemas need to be defined considering the requirements of the dApp itself. For this example, although there is no dApp associated with the lottery, four entities are defined:
+在对`schema.graphql`进行修改之前，需要先列明要从合约事件中抽取的数据。需要根据dApp本身的要求对schema进行定义。本示例中虽然没有与彩票相关的dApp，但我们定义了四个实体：
 
- - **Round** — refers to a lottery round. It stores an index of the round, the prize awarded, the timestamp of when the round started, the timestamp of when the winner was drawn, and information regarding the participating tickets, which is derived from the `Ticket` entity
- - **Player** — refers to a player that has participated in at least one round. It stores its address and information from all its participating tickets, which is derived from the `Ticket` entity
- - **Ticket** — refers to a ticket to enter a lottery round. It stores if the ticket was gifted, the owner's address, the round from which the ticket is valid, and if it was a winning ticket
+ - **Round** —— 一轮彩票抽奖活动。它将储存以下索引：轮次、发出奖金、轮次开始的时间戳、中奖者、结果出炉的时间以及参与彩票（从`Ticket`实体中获取）等相关信息
+ - **Player** —— 参加了至少一轮的玩家。它将存储玩家地址和所有参与彩票（从`Ticket`实体中获取）的相关信息
+ - **Ticket** —— 指的是参与一轮彩票抽奖活动的奖券。它将存储以下相关信息：奖券是否为赠予、持有者地址、奖券生效的轮次，以及奖券是否为最终中奖等
 
-In short, the `schema.graphql` should look like the following snippet:
+简而言之，`schema.graphql`函数的显示应与以下代码段相似：
 
 ```
 type Round @entity {
@@ -115,28 +115,28 @@ type Ticket @entity {
 }
 ```
 
-### Subgraph Manifest
+### Subgraph清单文件
 
-The `subgraph.yaml` file, or Subgraph's manifest, contains the information related to the smart contract being indexed, including the events which have the data needed to be mapped. That data is then stored by Graph nodes, allowing applications to query it.
+`subgraph.yaml`文档（或Subgraph的清单文件）包含与所索引智能合约相关的信息，其中包括映射所需的数据。数据将由Graph节点储存，应用程序可请求获取。
 
-Some of the most important parameters in the `subgraph.yaml` file are:
+`subgraph.yaml`文档中一些重要参数有：
 
- - **repository** — refers to the Github repo of the subgraph
- - **schema/file** — refers to the location of the `schema.graphql` file
- - **dataSources/name** — refers to the name of the Subgraph
- - **network** — refers to the network name. This value **must** be set to `mbase` for any Subgraph being deployed to Moonbase Alpha
- - **dataSources/source/address** — refers to the address of the contract of interest
- - **dataSources/source/abi** — refers to where the interface of the contract is stored inside the `types` folder created with the `codegen` command
- - **dataSources/source/startBlock** — refers to the start block from which the indexing will start. Ideally, this value should be close to the block the contract was created in. You can use [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/) to get this information by providing the contract address. For this example, the contract was created at block `{{ networks.moonbase.thegraph.block_number }}`
- - **dataSources/mapping/file** — refers to the location of the mapping file
- - **dataSources/mapping/entities** — refers to the definitions of the entities in the `schema.graphql` file
- - **dataSources/abis/name** — refers to where the interface of the contract is stored inside the `types/dataSources/name`
- - **dataSources/abis/file** — refers to the location where the `.json` file with the contract's ABI is stored
- - **dataSources/eventHandlers** — no value needs to be defined here, but this section refers to all the events that The Graph will index
- - **dataSources/eventHandlers/event** — refers to the structure of an event to be tracked inside the contract. You need to provide the event name and its type of variables
- - **dataSources/eventHandlers/handler** — refers to the name of the function inside the `mapping.ts` file which handles the event data
- 
-In short, the `subgraph.yaml` should look like the following snippet:
+ - **repository** —— subgraph的Github代码库
+ - **schema/file** —— `schema.graphql`文档的位置
+ - **dataSources/name** —— Subgraph的名称
+ - **network** —— 网络名称。对于所有在Moonbase Alpha上部署的Subgraph，这一值**必须**设置为`mbase` 
+ - **dataSources/source/address** —— 利息合约地址
+ - **dataSources/source/abi** —— 合约界面在以`codegen`命令创建的`types`文件夹中储存的位置
+ - **dataSources/source/startBlock** —— 索引开始的第一个区块。在理想的情况下，这个数值和合约创建区块接近。在[Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)上提供合约地址即可获取这一信息。在本示例中，合约的创建区块为`{{ networks.moonbase.thegraph.block_number }}`
+ - **dataSources/mapping/file** —— 映射文档的位置
+ - **dataSources/mapping/entities** —— 在`schema.graphql`文档中实体的定义
+ - **dataSources/abis/name** —— 合约界面在`types/dataSources/name`文档中的储存位置
+ - **dataSources/abis/file** —— 带有合约ABI的`.json`文档的储存位置
+ - **dataSources/eventHandlers** —— 不定义任何数值，但在这一章节指的是The Graph即将索引的所有事件
+ - **dataSources/eventHandlers/event** —— 即将被合约跟踪的事件的结构。需要提供事件名称及其变量类型
+ - **dataSources/eventHandlers/handler** —— 处理事件数据的`mapping.ts`文档中的函数名称
+
+简而言之，`subgraph.yaml`函数的显示应与以下代码段相似：
 
 ```
 specVersion: 0.0.2
@@ -172,13 +172,13 @@ dataSources:
           handler: handleLotteryResult
 ```
 
-### Mappings
+### 映射
 
-Mappings files are what transform the blockchain data into entities defined in the schema file. Each event handler inside the `subgraph.yaml` file needs to have a subsequent function in the mapping.
+映射文档是将区块链数据转换为在schema文档中定义的实体。`subgraph.yaml`文档中的每一个事件处理函数都需要在映射中有一个后续函数。
 
-The mapping file used for the Lottery example can be found in [this link](https://github.com/PureStake/moonlotto-subgraph/blob/main/src/mapping.ts).
+彩票合约示例中所用的映射文档可以在[此链接](https://github.com/PureStake/moonlotto-subgraph/blob/main/src/mapping.ts)中找到。
 
-In general, the strategy of each handler function is to load the event data, check if an entry already exists, arrange the data as desired, and save the entry. For example, the handler function for the `PlayerJoined` event is as follows:
+一般而言，处理函数的工作流程是：加载事件数据，检查是否已存在，以最优方式排列数据，并进行保存。例如， `PlayerJoined`事件的处理函数如下：
 
 ```
 export function handlePlayerJoined(event: PlayerJoined): void {
@@ -225,30 +225,30 @@ export function handlePlayerJoined(event: PlayerJoined): void {
 }
 ```
 
-## Deploying a Subgraph
+## 部署Subgraph
 
-If you are going to use The Graph API (hosted service), you need to:
+如果您准备使用The Graph API（托管式服务），您需要进行以下步骤：
 
- - Create a [Graph Explorer](https://thegraph.com/explorer/) account, you will need a Github account
- - Go to your dashboard and write down the access token
- - Create your Subgraph via the "Add Subgraph" button in the Graph Explorer site. Write down the Subgraph name
+ - 首先您需要有Github账户，创建[Graph Explorer](https://thegraph.com/explorer/) 账户
+ - 进入主面板，并输入访问代币
+ - 在Graph Explorer网页点击“Add Subgraph”按钮，创建Subgraph。输入Subgraph名称。
 
-!!! note
-    All steps can be found in [this link](https://thegraph.com/docs/deploy-a-subgraph).
- 
-If using a local Graph Node, you can create your Subgraph executing the following code:
+!!! 注意事项
+    以上步骤均可在[此链接](https://thegraph.com/docs/deploy-a-subgraph)中找到。
+
+如果您使用的是本地Graph节点，可以通过执行以下代码创建Subgraph：
 
 ```
 npx graph create <username>/<subgraphName> --node <graph-node>
 ```
 
-Where:
+在以上代码中：
 
- - **username** — refers to the username related to the Subgraph being created
- - **subgraphName** — refers to the Subgraph name
- - **graph-node** — refers to the URL of the hosted service to use. Typically, for a local Graph Node is `http://127.0.0.1:8020`
+ - **username** —— 即将创建的Subgraph相关的用户名
+ - **subgraphName** —— Subgraph名称
+ - **graph-node** —— 使用托管式服务的URL。一般而言，本地Graph节点是`http://127.0.0.1:8020`
 
-Once created, you can deploy your Subgraph by running the following command with the same parameters as before:
+一旦创建完成后即可运行以下命令，用与此前相同的参数进行Subgraph部署：
 
 ```
 npx graph deploy <username>/<subgraphName> \
@@ -257,20 +257,16 @@ npx graph deploy <username>/<subgraphName> \
 --access-token <access-token>
 ```
 
-Where:
+在以上命令中：
 
- - **username** — refers to the username used when creating the Subgraph
- - **subraphName** — refers to the Subgraph name defined when creating the Subgraph
- - **ifps-url**  — refers to the URL for IFPS. If using The Graph API you can use `https://api.thegraph.com/ipfs/`. For your local Graph Node, the default value is `http://localhost:5001`
- - **graph-node** — refers to the URL of the hosted service to use. If using The Graph API you can use `https://api.thegraph.com/deploy/`. For your local Graph Node, the default value is `http://localhost:8020`
- - **access-token** — refers to the access token to use The Graph API. If you are using a local Graph Node this parameter is not necessary
+ - **username** —— 创建Subgraph时所使用的用户名
+ - **subraphName**  —— 创建Subgraph时所定义的Subgraph名称
+ - **ifps-url** —— IFPS 的URL。如果使用的是The Graph API，可以使用`https://api.thegraph.com/ipfs/`地址。如果运行的是本地Graph节点，默认值为`http://localhost:5001`
+ - **graph-node** —— 所使用的托管式服务的URL。如果使用的是The Graph API，可以使用 `https://api.thegraph.com/deploy/`。如果运行的是本地Graph节点，默认值为 `http://localhost:8020`
+ - **access-token** —— 使用The Graph API的访问代币。如果使用的是本地Graph节点，那么这一参数为非必要参数
 
-The logs from the previous command should look similar to:
+上述命令的日志应与以下内容相似：
 
 ![The Graph deployed](/images/thegraph/thegraph-images1.png)
 
-DApps can now use the Subgraph endpoints to fetch the data indexed by The Graph protocol.
-
-## We Want to Hear From You
-
-If you have any feedback regarding creating a Subgraph in Moonbeam or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据

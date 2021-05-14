@@ -1,57 +1,57 @@
 ---
-title: Debug & Trace
-description:  Learn how to leverage the Geth Debug API and OpenEthereum Trace module on Moonbeam
+title: 调试及跟踪
+description:  通过此教程学习如何在Moonbeam上使用Geth调试API及OpenEthereum跟踪模块
 ---
 
-# Debug API & Trace Module
+# 调试（Debug）API与跟踪（Trace）模块
 
 ![Full Node Moonbeam Banner](/images/debugtrace/debugtrace-banner.png)
 
-## Introduction
+## 概览
 
-Both Geth's debug API and OpenEthereum's trace module provide non-standard RPC methods for getting a deeper insight into transaction processing.
+Geth的调试API和OpenEthereum的跟踪模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。
 
-With the release of Moonbase Alpha v7, as part of Moonbeam's goal of providing a seamless Ethereum experience for developers, both `debug_traceTransaction` and `trace_filter` RPC methods are now available.
+随着Moonbase Alpha v7版本的发布，为开发者进一步提供以太坊无缝体验，Moonbeam开始启用 `debug_traceTransaction`和`trace_filter`RPC方法。
 
-Supporting both RPC methods is an important milestone because many projects, such as [The Graph](https://thegraph.com/) or [Blockscout](https://docs.blockscout.com/), rely on them to index blockchain data.
+这两个RPC方法的启用是Moonbeam发展中的一个重要的里程碑，因为像[The Graph](https://thegraph.com/)和[Blockscout](https://docs.blockscout.com/)等很多项目都依赖于这两个方法来索引区块链数据。
 
-Both calls are quite heavy on the node's side. Therefore, it is required to make this RPC against a locally running node with either the `--ethapi=debug` flag for `debug_traceTransaction`, and/or the `--ethapi=trace` flag for `trace_filter`. Currently, you can spin up two different kinds of nodes:
+两种方法的调用对节点来说会造成非常大的荷载，因此需要分别使用带有`debug_traceTransaction`的`--ethapi=debug`标记和/或者带有`trace_filter`的`--ethapi=trace`标记，以便本地运行节点进行RPC。目前用户可以创建以下两种不同节点：
 
- - **Moonbeam development node** — run your own Moonbeam instance in your private environment. To do so, you can follow [this guide](/getting-started/local-node/setting-up-a-node/). Make sure to check the [advanced flags section](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha node** — run a full node of the TestNet and access your own private endpoints. To do so, you can follow [this guide](/node-operators/networks/full-node/). Make sure to check the [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
+ - **Moonbeam开发节点** —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
+ - **Moonbase Alpha节点** —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](/node-operators/networks/full-node/)。请务必查看[高级标记](/node-operators/networks/full-node/#advanced-flags-and-options)
 
-## Geth Debug API
+## Geth调试API
 
-The `debug_traceTransaction` RPC implementation follows [Geth's debug API guidelines](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
+有关`debug_traceTransaction`RPC的具体执行操作，请见[Geth调试API教程](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction)。
 
-The RPC method requires the transaction hash to run. As optional parameters you can provide the following:
+运行这一RPC方法需要先提供交易的哈希值。此外，还可提供以下可选参数：
 
- - **disableStorage** — one input: boolean (default: _false_). Setting this to true disables storage capture
- - **disableMemory** — one input: boolean (default: _false_). Setting this to true disables memory capture
- - **disableStack** — one input: boolean (default: _false_). Setting this to true disables stack capture
+ - **disableStorage** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则内存捕获功能将关闭
+ - **disableMemory** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则存储捕获功能将关闭
+ - **disableStack** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则堆栈捕获功能将关闭
 
-JavaScript based transaction tracing is not supported at the moment.
+目前暂不支持基于JavaScript的交易跟踪。
 
-## Trace Module
+## 跟踪模块
 
-The `trace_filter` RPC implementation follows [OpenEthereum's trace module guidelines](https://openethereum.github.io/JSONRPC-trace-module#trace_filter).
+有关`trace_filter`的具体执行操作，请见[OpenEthereum追踪模块教程](https://openethereum.github.io/JSONRPC-trace-module#trace_filter)。
 
-The RPC method requires any of the following optional parameters:
+运行这一RPC方法需要以下任一可选参数：
 
- - **fromBlock** — one input: either block number (`hex`), `earliest` which is the genesis block or `latest` (default) best block available. Trace starting block
- - **toBlock** — one input: either block number (`hex`), `earliest` which is the genesis block or `latest` best block available. Trace ending block
- - **fromAddress** — one input: array of addresses. Filter transactions done from these addresses only. If an empty array is provided, no filtering is done with this field
- - **toAddress** — one input: array of addresses. Filter transactions done from these addresses only. If an empty array is provided, no filtering is done with this field
- - **after** — one input: offset (`uint`), default is `0`. Trace offset (or starting) number
- - **count** — one input: number of traces (`uint`). Number of traces to display in a batch
+ - **fromBlock** —— 一个输入值：可输入区块号(`hex`)， 创世区块`earliest` ，或者输入可用最佳区块`latest` （默认）。跟踪第一个区块
+ - **toBlock** —— 一个输入值：可输入区块号(`hex`)，创世区块`earliest` ，或者输入可用最佳区块`latest` （默认）。跟踪最后一个区块
+ - **fromAddress** —— 一个输入值：由地址组成的阵列。仅过滤这些地址发出的交易。如果输入的为空阵列，将不会进行过滤
+ - **toAddress** ——  一个输入值：由地址组成的阵列。仅过滤这些地址接收的交易。如果输入的为空阵列，将不会进行过滤
+ - **after** —— 一个输入值：偏移量（`uint`），默认为0。跟踪偏移号或起始号
+ - **count** —— 一个输入值：跟踪次数（`uint`）。跟踪次数将以一连串的数字显示
 
-## Try it on Moonbase Alpha
+## 在Moonbase Alpha上进行测试
 
-As mentioned before, to use both features you need to have a node running with the `debug` and `trace` flags. For this example, a local Moonbase Alpha full node is used, with the RPC HTTP endpoint at `http://127.0.0.1:9933`. If you have a running node, you should see a similar terminal log:
+如上所述，要使用这两种功能需要有运行`debug`和`trace`标记的节点。在这个示例中，我们使用的是Moonbase Alpha本地完整节点，RPC HTTP终端为`http://127.0.0.1:9933`。如果您已有运行的节点，也会看到相似的终端日志：
 
 ![Debug API](/images/debugtrace/debugtrace-images1.png)
 
-For example, for the `debug_traceTransaction` call, you can make the following JSON RPC request in your terminal (in this case, for the transaction hash `0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`):
+例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`)：
 
 ```
 curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
@@ -63,11 +63,11 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
   }'
 ```
 
-The node responds with the step-by-step replayed transaction information (response was cropped as it is quite long):
+节点将返回交易从始至终的每一个步骤信息（因篇幅过长，此处返回内容有所删减）：
 
 ![Trace Debug Node Running](/images/debugtrace/debugtrace-images2.png)
 
-For the `trace_filter` call, you can make the following JSON RPC request in your terminal (in this case, the filter is from block 20000 to 25000, only for transactions where the recipient is  `0x4E0078423a39EfBC1F8B5104540aC2650a756577`, it will start with a zero offset and provide the first 20 traces):
+调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条跟踪结果）：
 
 ```
 curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
@@ -78,10 +78,6 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
   }'
 ```
 
-The node responds with the trace information corresponding to the filter (response was cropped as it is quite long).
+节点将返回过滤后的跟踪信息结果（因篇幅过长，此处返回内容有所删减）。
 
 ![Trace Filter Node Running](/images/debugtrace/debugtrace-images3.png)
-
-## We Want to Hear From You
-
-If you have any feedback regarding using the Debug API or the Trace module, or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).

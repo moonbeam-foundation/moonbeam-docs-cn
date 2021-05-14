@@ -1,39 +1,39 @@
 ---
-title: Unified Accounts
-description: Moonbeam now uses the Ethereum based H160 account system natively and is supported by Polkadot JS Apps
+title: 统一账户
+description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获得Polkadot JS Apps的支持。
 ---
-# Unified Accounts
+# 统一账户
 
 ![Intro diagram](/images/learn/unifiedaccounts-banner.png)
 
-## Introduction
+## 概览
 
-With the [release of the v3 upgrade](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/) for the Moonbase Alpha TestNet, we have made significant updates to the underlying account system on Moonbeam, replacing the default Substrate-style accounts and keys with Ethereum-style accounts and keys.
+随着[Moonbase Alpha测试网v3升级版本的发布](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们已对Moonbeam底层账户系统进行重大升级，将默认的Substrate式账户和密钥替换为以太坊式账户和密钥。
 
-The Polkadot JS Apps interface was updated as well so that it natively supports H160 addresses and ECDSA keys. You can check out [this tutorial](/integrations/wallets/polkadotjs/) to see more about this integration.
+同时我们也升级了Polkadot JS Apps交互界面，以实现对H160地址和ECDSA密钥的原生支持。您可参考[此教程](/integrations/wallets/polkadotjs/)获取更多信息。
 
-## Substrate EVM Compatible Blockchain
+## Substrate EVM兼容的区块链
 
-Any parachain in the Polkadot ecosystem can offer a full EVM implementation, which provides the possibility of executing Solidity-based smart contracts with minimal to no changes. Substrate makes this integration possible - just plug the [EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/) into your runtime for EVM support, and the [Ethereum Pallet with Frontier](https://github.com/paritytech/frontier) to have Ethereum RPC compatibility. The availability of these open-source modules that Moonbeam has developed with Parity has led multiple parachains to offer Ethereum compatibility on their chains.
+波卡（Polkadot）生态系统中所有平行链都可实现完全兼容EVM，让Solidity智能合约仅需稍作修改甚至不需要修改即可执行。Substrate让这一集成成为可能——只需将[EVM模块](https://docs.rs/pallet-evm/2.0.1/pallet_evm/)插入运行时间，以获取EVM支持，并且插入[Ethereum Pallet with Frontier](https://github.com/paritytech/frontier)获得以太坊RPC兼容性。Moonbeam和Parity共同开发了这些开源模块，让许多平行链能够兼容以太坊。
 
-But there is an important catch. With the configuration described above, a user (let’s say Alice) can have an Ethereum-style address (H160 format), which is 40+2 hex-characters long, in a Substrate based chain. This address matches a private key, which can be used to sign transactions in the Ethereum side of the chain. Furthermore, the address is mapped into a storage slot inside the Substrate Balance pallet to a Substrate-style address (H256 format). 
+但还有重要的一点需要注意。通过上述配置，用户（假设名字为Alice）可以拥有以太坊式地址（H160格式），这个地址在Substrate链上长度是40+2十六进制字符。与此地址相配的还有一个私钥，可以在链上的以太坊一侧用于签名确认交易。此外，这一地址也被映射到Substrate Balance模块下的Substrate式地址的储存槽中（H256格式）。
 
-However, Alice only knows the private key of the H160 address, and not of the mapped version. Therefore, she is unable to send transactions with her H256 address and is limited only to do read-only operations through Substrate’s API. As a consequence, Alice needs another H256 address matching a different private key to be able to operate in the Substrate side of the chain, which include, among others, staking, balances, and governance. 
+但是，Alice只知道H160地址的私钥，而不是知道其映射版本。因此，她不能使用H256地址发送交易，只能通过API进行只读操作。所以，她需要另一个H256地址来配对不同的私钥，才能在区块链的Substrate侧进行质押挖矿、管理余额、参与治理等操作。
 
-The following diagram illustrates this configuration.
+以下图表阐释了这一配置。
 
 ![Old account system diagram](/images/learn/unifiedaccounts-images-1.png)
 
-This can creates friction and a poor user experience for Alice. First, she has to move tokens to her H160 mapped H256 address to be able to make transactions and deploy contracts through the EVM. Second, she also needs to hold a balance in her other H256 address (which she has a different private key for) to use Substrate-based features. So in short, Alice needs a minimum of two private keys to have the best of both worlds.
+然而这样一来，Alice的用户体验可能非常差。首先，她需要先将代币转移到H160映射的H256地址上才能进行交易，并通过EVM部署合约。其次，她还需要在另外一个H256地址（她有不同的私钥）上持有一定的余额，才能使用Substrate功能。简而言之，Alice需要至少两个私钥才能同时使用Substrate和EVM上的全部功能。
 
-## Moonbeam Unified Accounts
+## Moonbeam统一账户
 
-Moonbeam’s focus is to create a fully Ethereum-compatible environment on Polkadot with the best user experience possible. This extends beyond the base Ethereum feature set, with additional features such as on-chain governance, staking, and cross-chain integrations.
+Moonbeam致力于在Polkadot上创造一个完全兼容以太坊的环境，并提供最好的用户体验。除了基本的以太坊功能以外，还提供了链上治理、质押挖矿、跨链整合等额外功能。
 
-With Unified Accounts, a user (let's call him Bob) will only need a single H160 address, with its corresponding private key, to do everything we mentioned above including both EVM and Substrate functions.
+有了统一账户，用户（假设名字叫Bob）只需要一个H160地址就能够使用包括EVM和Substrate在内的所有功能。
 
-The diagram for this new configuration looks as follows.
+以下图表阐释了这一新的配置。
 
 ![New account system diagram](/images/learn/unifiedaccounts-images-2.png)
 
-That is it, Bob only holds one private key that matches one address. He does not need to move balances between 2 different accounts and is able to access all the features with a single account and private key. We have standardized this single account to conform to the Ethereum-style H160 address and ECDSA key standards.
+可以看到，Bob仅有一个配对地址的私钥。他不需要在两个不同账户之间转移余额，只需通过一个账户和一个私钥就可以获取所有功能。Moonbeam对单一账户进行了标准化调整，以符合以太坊式H160地址和ECDSA密钥标准。
