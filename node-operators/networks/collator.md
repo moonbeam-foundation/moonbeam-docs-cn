@@ -1,87 +1,82 @@
 ---
-title: Collators
-description: Instructions on how to become a collator in the Moonbeam Network once you are running a node
+title: 收集人
+description: 通过此教程学习运行节点后在Moonbeam网络上成为收集人
 ---
 
-# Run a Collator on Moonbeam
+# 在Moonbeam上运行收集人节点
 
 ![Collator Moonbeam Banner](/images/fullnode/collator-banner.png)
 
-## Introduction
+## 概览
 
-Collators are members of the network that maintain the parachains they take part in. They run a full node (for both their particular parachain and the relay chain), and they produce the state transition proof for relay chain validators.
+收集人在网络上维护其所参与的平行链。他们运行（所在平行链及中继链的）完整节点，并为中继链验证人创建状态转移证明。
 
-With the release of Moonbase Alpha v6, users can spin up not only full nodes but they can also activate the `collate` feature and participate in the ecosystem as collators.
+Moonbase Alpha v6版本发布后，用户不仅可以创建完整节点。也可以调用`collate`功能，并作为收集人参与生态系统的运行。
 
-This guide will take you through the steps of spinning up your collator node, which is an extension of a full node.
+本教程将介绍如何创建自己的收集人节点。收集人节点是完整节点的延伸。
 
-## Tech Requirements
+## 技术要求
 
-From a technical perspective, collators must meet the following requirements:
+收集人必须满足以下技术要求：
 
- - Have a full node running with the collation options. To do so, follow [this tutorial](/node-operators/networks/full-node/) considering the specific code snippets for collators
- - Enable the telemetry server for your full node. To do so, follow [this tutorial](/node-operators/networks/telemetry/)
+ - 必须运行带有验证选项的完整节点。可根据[此教程](https://docs.moonbeam.network/node-operators/networks/full-node/)选择收集人的特定代码段
+ - 启动完整节点的telemetry服务器。具体操作步骤请见[此教程](/node-operators/networks/telemetry/)
 
-## Account and Staking Requirements
+## 账户与质押要求
 
-Similar to Polkadot validators, you need to create an account (although in this case, it's an H160 account) and have a nominated stake (DEV tokens) in order to collate. The slots are currently limited to {{ networks.moonbase.collators_slots }}, but may be increased over time.  
+和波卡（Polkadot）验证人相似，收集人也需要创建账户（本示例使用的是H160账户），并拥有提名质押量（DEV代币）才能够参与验证。目前收集人插槽数量有限，但未来可能会有所增加。
 
-Collators need to have a minimum of {{ networks.moonbase.staking.collator_min_stake }} DEV to be considered eligible (become a candidate). Only the top {{ networks.moonbase.collator_slots }} collators by nominated stake will be in the active set.  
+收集人需要有至少{{ networks.moonbase.collator_min_stake }}DEV才有资格成为候选收集人。只有提名质押量最高的{{ networks.moonbase.collator_slots }}个收集人才会进入活跃收集人群体。
 
-!!! note
-    Currently, creating or importing an account in PolkadotJS via a mnemonic seed will result in a different public address if you later try to import this account to an Ethereum wallet such as MetaMask. This is because PolkadotJS uses BIP39, whereas Ethereum uses BIP32 or BIP44. 
+!!! 注意事项
+    目前，通过助记词创建或从PolkadotJS导入账户，再将账户导入到MetaMask等以太坊钱包时，会产生不同公共地址。这是因为PolkadotJS使用的是BIP39格式，而以太坊则使用的是BIP32或BIP44格式。
 
-## Account in PolkadotJS
+## PolkadotJS账户
 
-A collator has an account associated with its collation activities. This account is used to identify him as a block producer and send the payouts from block rewards.
+每个收集人都有一个与收集活动相关的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-Currently, you have two ways of proceeding in regards having an account in [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
+目前，创建[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
 
- - Importing an existing (or create a new) H160 account from external wallets or services such as [MetaMask](/integrations/wallets/metamask/) and [MathWallet](/integrations/wallets/mathwallet/)
- - Create a new H160 account with [PolkadotJS](/integrations/wallets/polkadotjs/)
+ - 从[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)或[MathWallet](https://docs.moonbeam.network/integrations/wallets/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
+ - 使用[PolkadotJS](https://docs.moonbeam.network/integrations/wallets/polkadotjs/)创建新的H160账户/integrations/wallets/polkadotjs/)
 
-Once you have an H160 account imported to PolkadotJS, you should see it under the "Accounts" tab. Make sure you have your public address at hand (`PUBLIC_KEY`), as it is needed to configure your [deploy your full node](/node-operators/networks/full-node/) with the collation options.
+将H160账户导入到PolkadotJS后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署完整节点](https://docs.moonbeam.network/node-operators/networks/full-node/)的收集选项时需要用到它。
 
 ![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
 
-## Become a Collator Candidate
+## 成为候选收集人
 
-Once your node is running, and in sync with the network, you become a collator candidate by following the steps below in [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
+节点开始运行并同步网络后，在[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人：
 
- 1. Navigate to the "Developers" tab and click on "Extrinsics"
- 2. Select the account you want associated with your collation activities
- 3. Confirm your collator account is funded with at least {{ networks.moonbase.staking.collator_min_stake }} DEV tokens plus some extra for transaction fees 
- 4. Select `parachainStaking` pallet under the "submit the following extrinsics" menu
- 5. Open the drop-down menu, which lists all the possible extrinsics related to staking, and select the `joinCandidates()` function
- 6. Set the bond to at least {{ networks.moonbase.staking.collator_min_stake }}, which is the minimum amount to be considered a collator candidate. Only collator bond counts for this check. Additional nominations do not count
- 7. Submit the transaction. Follow the wizard and sign the transaction using the password you set for the account
+ 1. 进入“Developers”标签，点击“Extrinsics”
+ 2. 选择您用于参与收集活动的账户
+ 3. 确认您的收集人账户已充值至少{{ networks.moonbase.collator_min_stake }}DEV代币，并有多余金额用于支付交易费
+ 4. 在“submit the following extrinsics”菜单中选择`parachainStaking`模块
+ 5. 打开下拉菜单，在质押相关的所有外部参数中，选择`joinCandidates()`函数
+ 6. 将绑定金额设置到至少{{ networks.moonbase.collator_min_stake }}（即成为候选收集人所需最低数量）。这里仅考虑收集人本身的绑定数量，其他提名质押量不计入
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs2.png)
 
-!!! note
-    Function names and the minimum bond requirement are subject to change in future releases.
+!!! 注意事项
+    函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
 
-As mentioned before, only the top {{ networks.moonbase.collator_slots }} collators by nominated stake will be in the active set. 
+如上所述，只有提名质押量最高的{{ networks.moonbase.collator_slots }}个收集人才可以进入活跃收集人群体。
 
-## Stop Collating
+## 停止参与收集活动
 
-Similar to Polkadot's `chill()` function, to leave the collator's candidate pool, follow the same steps as before but select the `leaveCandidates()` function in step 5.
-
-
-## Timings
-
-The following table presents some of the timings in regards to different actions related to collation activities:
-
-|                Action               |   |   Rounds  |   |   Hours  |
-|:-----------------------------------:|:-:|:---------:|:-:|:--------:|
-|  Join/leave collator candidates     |   |     2     |   |    4     |
-|      Add/remove nominations         |   |     1     |   |    2     |
-|Rewards payouts (after current round)|   |     2     |   |    4     |
+与Polkadot的`chill()`函数相似，按照前述相同步骤进行操作，便可离开候选收集人池，但在第5步时需要选择`leaveCandidates()`函数。
 
 
-!!! note 
-    The values presented in the previous table are subject to change in future releases.
+## 相关时长
 
-## We Want to Hear From You
+下表列出了收集相关活动所需时长：
 
-If you have any feedback regarding running a collator or any other Moonbeam related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+|           活动           |      | 轮次 |      | 市场 |
+| :----------------------: | :--: | :--: | :--: | :--: |
+|  加入/离开候选收集人池   |      |  2   |      |  4   |
+|      新增/移除提名       |      |  1   |      |  2   |
+| 奖励支付（在本轮结束后） |      |  2   |      |  4   |
+
+!!! 注意事项 
+    上表所列值可能会在未来发布新版本时有所调整。

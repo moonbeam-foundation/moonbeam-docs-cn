@@ -1,38 +1,38 @@
 ---
-title: Events Subscription
-description: Use Ethereum-like publish-subscribe functionality to subscribe to specific events on Moonbeam's Ethereum-compatible chain.
+title: 事件订阅
+description: 使用类似于以太坊的发布-订阅功能来订阅Moonbeam兼容以太坊的链上特定事件。
 ---
 
-# Subscribe to Events in Moonbase Alpha
+# Moonbase Alpha事件订阅
 
-## Introduction
-The ability to subscribe to Ethereum-style events was added with the [release of Moonbase Alpha v2](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v2/). In this guide, we will outline the subscription types available and current limitations.
+## 概览
+[Moonbase Alpha v2](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v2/)版本发布后，我们新增了以太坊式的事件订阅功能。在本教程中，我们将介绍订阅类型以及目前的功能限制。
 
-## Checking Prerequisites
-The examples in this guide are based on an Ubuntu 18.04 environment. You will also need the following:
+## 查看先决条件
+本教程所使用的示例基于Ubuntu 18.04的环境。除此之外，还需要进行以下操作：
 
- - Have MetaMask installed and [connected to Moonbase](/getting-started/testnet/metamask/)
- - Have an account with funds. You can get this from [Mission Control](/getting-started/testnet/faucet/)
- - Deploy your own ERC-20 token on Moonbase. You can do following [our Remix tutorial](/getting-started/local-node/using-remix/), while first pointing MetaMask to Moonbase
+ - 安装MetaMask并[连接到Moonbase](https://docs.moonbeam.network/getting-started/testnet/metamask/)
+ - 建立账户并充值资金。可以从[Mission Control](https://docs.moonbeam.network/getting-started/testnet/faucet/)获取相关操作教程/getting-started/testnet/faucet/)
+ - 在Moonbase上部署您的ERC-20代币。您可以根据我们的[Remix教程](https://docs.moonbeam.network/getting-started/local-node/using-remix/)进行操作，但首先要确保MetaMask指向Moonbase
 
 --8<-- 'text/common/install-nodejs.md'
 
-As of writing this guide, the versions used were 14.6.0 and 6.14.6, respectively. We will also need to install the Web3 package by executing:
+在撰写本教程时，所用版本分别为14.6.0 和6.14.6版本。此外，还需执行以下命令安装Web3安装包：
 
 ```
 npm install --save web3
 ```
 
-To verify the installed version of Web3, you can use the `ls` command:
+您也可以通过`ls`指令验证Web3安装版本：
 
 ```
 npm ls web3
 ```
 
-As of writing this guide, the version used was 1.3.0. 
+在撰写本教程时，所用版本为1.3.0版本。
 
-## Subscribing to Event Logs in Moonbase Alpha
-Any contract that follows the ERC-20 token standard emits an event related to a transfer of tokens, that is, `event Transfer(address indexed from, address indexed to, uint256 value)`. For this example, we will subscribe to the logs of such events. Using the web3.js library, we need the following piece of code:
+## 在Moonbase Alpha上订阅事件日志
+每个采用ERC-20代币标准的合约都会发送与代币转移相关的事件信息，即`event Transfer(address indexed from, address indexed to, uint256 value)`。在以下示例中，我们将介绍如何订阅这些事件日志。请执行以下代码调用web3.js库：
 
 ```js
 const Web3 = require('web3');
@@ -53,40 +53,40 @@ web3.eth.subscribe('logs', {
     });
 ```
 
-Note that we are connecting to the WebSocket endpoint of Moonbase Alpha. We use the `web3.eth.subscribe(‘logs’,  options [, callback])` method to subscribe to the logs, filtered by the given options. In our case, the options are the contract’s address where the events are emitted from and the topics used to describe the event. More information about topics can be found in [this Medium post](https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378). If no topics are included, you subscribe to all events emitted by the contract. In order to only filter the Transfer event, we need to include the signature of the event, calculated as:
+请注意，我们需连接到Moonbase Alpha的WebSocket终端。调用`web3.eth.subscribe(‘logs’,  options [, callback])`方法订阅过滤后的事件日志。在本示例中，过滤选项有：事件发出的合约地址，以及用于描述事件的主题。更多关于事件主题的信息可以在[这篇Medium文章](https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378)中找到。如果事件没有主题，用户将订阅该合约发出的所有事件信息。如果仅过滤代币转移事件，需要包含通过以下方式计算的事件签名：
 
 ```js
 EventSignature = keccak256(Transfer(address,address,uint256))
 ```
 
-The result of the calculation is shown in the previous code snippet. We’ll return to filtering by topics later on. The rest of the code handles the callback function. Once we execute this code, we’ll get a subscription ID, and the terminal will wait for any event through that subscription:
+计算结果显示在此前的代码段中。稍后我们将回过头来介绍关于过滤主题的内容。剩下代码负责处理的是回调函数。执行该代码后，我们将获得一个任务ID，终端将等待订阅事件的发生：
 
 ![Subscription ID](/images/testnet/testnet-pubsub1.png)
 
-Next, an ERC-20 token transfer will be sent with the following parameters:
+接下来， ERC-20代币转移事件通过以下参数发送：
 
- - From address: 0x44236223aB4291b93EEd10E4B511B37a398DEE55
- - To address: 0x8841701Dba3639B254D9CEe712E49D188A1e941e
- - Value (tokens): 1000000000000000000 - that is 1 with 18 zeros
+ - 原地址: 0x44236223aB4291b93EEd10E4B511B37a398DEE55
+ - 目标地址: 0x8841701Dba3639B254D9CEe712E49D188A1e941e
+ - 价值（代币数量）: 1000000000000000000 - （即1的后面有18个0）
 
-Once we send the transaction, the log of the event emitted by the transaction will appear in the terminal:
+发送该事件后，该事件所发出的事件日志将显示在终端：
 
 ![Log of the transfer event](/images/testnet/testnet-pubsub2.png)
 
-Let's break down the response received. Our target event sends two pieces of indexed information: the `from` and `to` addresses (in that order), which are treated like topics. The other piece of data shared by our event is the number of tokens, which is not indexed. Therefore, there is a total of three topics (the maximum is four), which correspond to the opcode LOG3:
+下面我们来分析返回的内容。我们的目标事件发送了两个索引信息：首先是`from`发送地址，然后是`to`接收地址，这些信息都将作为事件主题。而另一段返回的数据则是代币数量，该信息没有索引。因此，一共返回了三个主题（最多能返回四个）与LOG3操作码相对应：
 
 ![Description of LOG3](/images/testnet/testnet-pubsub3.png)
 
-Consequently, you can see that the `from` and `to` addresses are contained inside the topics returned by the logs. Ethereum addresses are 40 hex characters long (1 hex character is 4 bits, hence 160 bits or H160 format). Thus, the extra 24 zeros are needed to fill the gap to H256, which is 64 hex characters long. 
+我们可以看到，`from`和`to`地址都包含在日志所返回的主题中。以太坊地址的长度为40 hex character（1 hex character等于4比特，所以为160比特或称为H160形式）。因此，要转换成64 hex character长度的H256地址，还需要加上24个0。
 
-Unindexed data is returned in the `data` field of the logs, but this is encoded in bytes32/hex. To decode it we can use, for example, this [online tool](https://web3-type-converter.onbrn.com/), and verify that the `data` is in fact 1 (plus 18 zeros). 
+无索引数据将显示在返回日志的`data`字段，但这一代码形式为bytes32/hex。我们可以使用此[在线工具](https://web3-type-converter.onbrn.com/)对其解码，并且验证这一`data`实际上等于1（加上18个0）。
 
-If the event returns multiple unindexed values, they will be appended one after the other in the same order the event emits them. Therefore, each value is then obtained by deconstructing data into separate 32 bytes (or 64 hex character long) pieces.
+如果事件返回了多个无索引数据，这些数据将根据事件发出顺序，依次附在前一个数据之后。因此每个数据值都会被解码成32字节（或64 hex character长度）的小片段。
 
-### Using Wildcards and Conditional Formatting
-In the v2 release that introduced the subscribing to logs feature, there were some limitations regarding using wildcards and conditional formatting for the topics. Nevertheless, with the release of [Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/), this is now possible.
+### 使用通配符和条件格式
+考虑到通配符和条件格式的应用，v2版本新增的日志订阅功能在用于主题方面还有一些局限。但在[Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)版本中，这些局限已经得到解决。
 
-Using the same example as in the previous section, lets subscribe to the events of the token contract with the following code:
+延续上一小节的例子，我们将尝试通过以下代码订阅代币合约事件：
 
 ```js
 const Web3 = require('web3');
@@ -117,38 +117,33 @@ web3.eth
    });
 ```
 
-Here, by using the wildcard null in place for the event signature, we filter to listen to all events emitted by the contract that we subscribed to. But with this configuration, we can also use a second input field (`topic_1`) to define a filter by address as mentioned before. In the case of our subscription, we are notifying that we want to only receive events where `topic_1` is one of the addresses we are providing. Note that the addresses need to be in H256 format. For example, the address `0x44236223aB4291b93EEd10E4B511B37a398DEE55` needs to be entered as `0x00000000000000000000000044236223aB4291b93EEd10E4B511B37a398DEE55`. As before, the output of this subscription will display the event signature in `topic_0` to tell us which event was emitted by the contract.
+在这里使用通配符null代替事件签名，可以进行过滤并接收所有订阅合约发送的事件信息。但在这一设置下，我们还可以使用另一个（`topic_1`）输入值来定义我们此前提到的地址过滤器。例如在这个例子中，我们要得到的效果是只在当`topic_1`是我们所提供的地址之一时，才接收事件信息。请注意，地址需要以H256形式输入。例如，地址`0x44236223aB4291b93EEd10E4B511B37a398DEE55`需要输入为`0x00000000000000000000000044236223aB4291b93EEd10E4B511B37a398DEE55`。和此前一样，订阅的输出值将在`topic_0`处显示事件签名，告诉我们该合约发出的事件。
 
 ![Conditional Subscription](/images/testnet/testnet-pubsub7.png)
 
-As shown, after we provided the two addresses with conditional formatting, we received two logs with the same subscription ID. Events emitted by transactions from different addresses will not throw any logs to this subscription.
+如上所示，当我们使用条件格式分别输入两个地址后，会获得具有相同订阅ID的两个日志。不同地址发出的交易事件将不会记载到这个订阅日志。
 
-This example showed how we could subscribe to just the event logs of a specific contract, but the web3.js library provides other subscription types that we’ll go over in the following sections.
+这个例子说明，我们可以仅订阅某个特定合约的事件日志。但是，web3.js库也提供其他订阅类型，我们将在下节展开介绍。
 
-## Subscribe to Incoming Pending Transactions
-In order to subscribe to pending transactions, we can use the `web3.eth.subscribe(‘pendingTransactions’, [, callback])` method, implementing the same callback function to check for the response. This is much simpler than our previous example, and it returns the transaction hash of the pending transactions.
+## 订阅收到的待处理交易信息
+我们可以调用`web3.eth.subscribe(‘pendingTransactions’, [, callback])`方法订阅待处理交易信息，并用相同的回调函数来检查返回值。这种方法比此前例子中的方法要简单很多，它返回的是待处理交易的哈希值。
 
 ![Subscribe pending transactions response](/images/testnet/testnet-pubsub4.png)
 
-We can verify that this transaction hash is the same as that shown in MetaMask (or Remix).
+我们可以验证，该笔交易的哈希值与MetaMask（或Remix）上显示的一致。
 
-## Subscribe to Incoming Block Headers
-Another type available under the Web3.js library is to subscribe to new block headers. To do so, we use the `web3.eth.subscribe('newBlockHeaders' [, callback])` method, implementing the same callback function to check for the response. This subscription provides incoming block headers and can be used to track changes in the blockchain.
+## 订阅收到的区块头
+使用Web3.js库还可以订阅新区块头。我们可以调用`web3.eth.subscribe('newBlockHeaders' [, callback])`方法进行订阅，并调用同样的回调函数检查返回值。通过这种方法，可以订阅刚收到的区块头，也可以追踪区块链的变化。
 
 ![Subscribe to block headers response](/images/testnet/testnet-pubsub5.png)
 
-Note that only one block header is shown in the image. These messages are displayed for every block produced so they can fill up the terminal quite fast.
+请注意，图片中只显示了一个区块头，但在实际操作过程中，会显示所有产生区块的相关信息，所以区块信息很快会占满整个终端屏幕。
 
-## Check if a Node is Synchronized with the Network
-With pub/sub it is also possible to check whether a particular node you are subscribed to is currently synchronized with the network. For that, we can leverage the `web3.eth.subscribe(‘syncing' [, callback])` method, implementing the same callback function to check for the response. This subscription will return an object when the node is synced with the network.
+## 检查节点是否与网络同步
+通过发布/订阅功能，还可以检查某个订阅的特定节点是否与网络同步。可以调用`web3.eth.subscribe(‘syncing' [, callback])`方法，并通过相同的回调函数检查返回值。当节点与网络同步时，订阅将返回相关对象。
 
 ![Subscribe to syncing response](/images/testnet/testnet-pubsub6.png)
 
-## Current Limitations
-The pub/sub implementation in [Frontier](https://github.com/paritytech/frontier) is still in active development. This first version allows DApp developers (or users in general) to subscribe to specific event types, but there are still some limitations. You may have noticed from previous examples that some of the fields are not showing proper information with the current version released, and that is because certain properties are yet to be supported by Frontier.
-
-## We Want to Hear From You
-If you have any feedback regarding Moonbase Alpha, event subscription, or other Moonbeam-related topics, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
-
-
+## 目前的局限
+[Frontier](https://github.com/paritytech/frontier)的发布/订阅功能目前还在开发中。在首个版本中，DApp开发者（或一般用户）可以订阅特定的事件类型，但也有一些局限。您可能已经从此前例子中注意到，在当前版本中，一些信息并不能正确显示，这是因为Frontier尚未支持某些功能。
 

@@ -1,59 +1,59 @@
 ---
-title: Run a Node
-description: How to run a full Parachain node for the Moonbeam Network to have your RPC Endpoint or produce blocks
+title: 运行节点
+description: 如何通过Moonbeam网络运行完整的平行链节点以拥有RPC端点或产生区块。
 ---
 
-# Run a Node on Moonbeam
+# 在Moonbeam上运行节点
 
 ![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
 
-## Introduction
+## 概览
 
-With the release of Moonbase Alpha v6, you can spin up a node that connects to the Moonbase Alpha TestNet, syncs with a bootnode, provides local access your RPC endpoints, and even authors blocks on the parachain.
+Moonbase Alpha v6版本发布后，用户可以启动一个节点。该节点不仅与Moonbase Alpha测试网相连，还与bootnode节点同步，且提供对RPC终端的本地访问，甚至可以在平行链上创建区块。
 
-In our TestNet, the relay chain is hosted and run by PureStake. But as development progresses, there will also be deployments in Kusama and then Polkadot. Here's how these upcoming environments will be named and their corresponding [chain specification files](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec) name:
+在我们的测试网上，中继链由PureStake托管并运行。但随着区块链的发展，在Kusama以及后续在波卡（Polkadot）上都将会有更多部署。以下是未来即将推出的网络名称及其相应的[区块链参数文档](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec)名称：
 
-|    Network     |     | Hosted By |     |   Chain Name    |
-| :------------: | :-: | :-------: | :-: | :-------------: |
-| Moonbase Alpha |     | PureStake |     |    alphanet     |
-|   Moonriver    |     |  Kusama   |     | _not available_ |
-|    Moonbeam    |     | Polkadot  |     | _not available_ |
+|      网络      |      |      托管方      |      | 区块链名称 |
+| :------------: | :--: | :--------------: | :--: | :--------: |
+| Moonbase Alpha |      |    PureStake     |      |  alphanet  |
+|   Moonriver    |      |      Kusama      |      |    _无_    |
+|    Moonbeam    |      | 波卡（Polkadot） |      |    _无_    |
 
-This guide is meant for people with experience running [Substrate](https://substrate.dev/) based chains. Running a parachain is similar to running a Substrate node with a few differences. A Substrate parachain node will run two processes: one to sync the relay chain and one to sync the parachain. As such, many things are doubled, for example, the database directory, the ports used, the log lines, and more.
+本教程的目标人群是有基于[Substrate](https://substrate.dev/)创建区块链经验的用户。运行平行链和运行Substrate节点大致相似，仅有几个不同之处。Substrate平行链节点会运行两个流程：分别与中继链和平行链同步。因此很多操作都需要进行两次，例如数据库目录、所使用端口、日志记录等。
 
-!!! note
-    Moonbase Alpha is still considered an Alphanet, and as such _will not_ have 100% uptime. The parachain _will_ be purged from time to time. During the development of your application, make sure you implement a method to redeploy your contracts and accounts to a fresh parachain quickly. Chain purges will be announced via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
+!!! 注意事项
+    Moonbase Alpha仍被视为是一个Alpha网络，因此其正常运行时间*不会*达到100%。平行链*将*不时地进行清理。在开发自己的应用程序时，请确保您已采取方法，可重新快速地将合约与账户部署到新的平行链。[Discord channel](https://discord.gg/PfpUATX)会提前24小时发布将要清理区块链的通知。
 
-## Requirements
+## 要求
 
-The minimum specs recommended to run a node are shown in the following table. For our Kusama and Polkadot MainNet deployments, disk requirements will be higher as the network grows.
+下表列出了运行节点所需的最低建议参数。随着网络的发展，在Kusama和波卡（Polkadot）主网上的部署对磁盘的要求将会更高。
 
-|  Component   |     | Requirement                                                                                                                |
-| :----------: | :-: | :------------------------------------------------------------------------------------------------------------------------- |
-|   **CPU**    |     | 8 Cores (early development phase - not optimized yet)                                                                      |
-|   **RAM**    |     | 16 GB (early development phase - not optimized yet)                                                                        |
-|   **SSD**    |     | 50 GB (to start in our TestNet)                                                                                            |
-| **Firewall** |     | P2P port must be open to incoming traffic:<br>&nbsp; &nbsp; - Source: Any<br>&nbsp; &nbsp; - Destination: 30333, 30334 TCP |
+|      组件      |      | 最低参数要求                                                 |
+| :------------: | :--: | :----------------------------------------------------------- |
+| **中央处理器** |      | 8核（早期开发阶段，未经过优化）                              |
+|    **内存**    |      | 16 GB（早期开发阶段，未经过优化）                            |
+|  **固态硬盘**  |      | 50 GB（测试网最低要求）                                      |
+|   **防火墙**   |      | 必须向流入流量开放P2P端口：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333、30334 TCP |
 
-!!! note
-    If you don't see an `Imported` message (without the `[Relaychain]` tag) when running a node, you might need to double-check your port configuration.
+!!! 注意事项
+    如果在节点运行时没有看到`Imported`消息（没有`[Relaychain]`标签），您可能需要重新检查端口配置。
 
-## Running Ports
+## 运行端口
 
-As stated before, the relay/parachain nodes will listen on multiple ports. The default Substrate ports are used in the parachain, while the relay chain will listen on the next higher port.
+如上所述，中继链/平行链节点将从多个端口获取信息。默认Substrate端口用于平行链，而中继链则负责获取下一个更高端口的消息。
 
-The only ports that need to be open for incoming traffic are those designated for P2P.
+只有指定P2P端口才需要对流入流量开放。
 
-### Default Ports for a Parachain Full-Node
+### 平行链全节点的默认端口
 
-|  Description   |     |                Port                 |
-| :------------: | :-: | :---------------------------------: |
-|    **P2P**     |     | {{ networks.parachain.p2p }} (TCP)  |
-|    **RPC**     |     |    {{ networks.parachain.rpc }}     |
-|     **WS**     |     |     {{ networks.parachain.ws }}     |
-| **Prometheus** |     | {{ networks.parachain.prometheus }} |
+|      描述      |      |                端口                 |
+| :------------: | :--: | :---------------------------------: |
+|    **P2P**     |      | {{ networks.parachain.p2p }} (TCP)  |
+|    **RPC**     |      |    {{ networks.parachain.rpc }}     |
+|     **WS**     |      |     {{ networks.parachain.ws }}     |
+| **Prometheus** |      | {{ networks.parachain.prometheus }} |
 
-### Default Ports of Embedded Relay Chain
+### 嵌入式中继链默认端口
 
 |  Description   |     |                 Port                  |
 | :------------: | :-: | :-----------------------------------: |
@@ -62,17 +62,17 @@ The only ports that need to be open for incoming traffic are those designated fo
 |     **WS**     |     |     {{ networks.relay_chain.ws }}     |
 | **Prometheus** |     | {{ networks.relay_chain.prometheus }} |
 
-## Installation Instructions - Docker
+## Docker安装指引
 
-A Moonbase Alpha node can be spun up quickly using Docker. For more information on installing Docker, please visit [this page](https://docs.docker.com/get-docker/). At the time of writing, the Docker version used was 19.03.6.
+使用Docker可以快速创建Moonbase Alpha节点。关于Docker安装的更多详情，请访问[这一页面](https://docs.docker.com/get-docker/)。截至本文撰写时，所使用的Docker版本为19.03.6版本。
 
-First, create a local directory to store the chain data:
+首先创建本地目录，用于储存链上数据：
 
 ```
 mkdir {{ networks.moonbase.node_directory }}
 ```
 
-Next, set the necessary permissions either for a specific or current user (replace `DOCKER_USER` for the actual user that will run the `docker` command):
+下一步，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换`DOCKER_USER`）：
 
 ```
 # chown to a specific user
@@ -82,18 +82,18 @@ chown DOCKER_USER {{ networks.moonbase.node_directory }}
 sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
 ```
 
-!!! note
-    Make sure you set the ownership and permissions accordingly for the local directory that stores the chain data.
+!!! 注意事项
+    请确保已设置好储存链上数据本地目录的相应所有权和权限。
 
-Now, execute the docker run command. Note that you have to:
+下一步，执行docker run指令。请注意，您在这里需要：
 
- - Replace `YOUR-NODE-NAME` in two different places.
- - For collators, replace `PUBLIC_KEY` with the public address that will be associated with collation activities.
+ - 替换两处`YOUR-NODE-NAME`。
+ - 对于收集人，需要将`PUBLIC_KEY`替换成与收集活动相关的公共地址。
 
-!!! note
-    If you are setting up a collator node, make sure to follow the code snippets for "Collator".
+!!! 注意事项
+   如果您设置的是收集人节点，请确保根据“收集人”代码段进行操作。
 
-### Full Node
+### 全节点
 
 === "Ubuntu"
     ```
@@ -136,7 +136,7 @@ Now, execute the docker run command. Note that you have to:
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
-### Collator
+### 收集人
 
 === "Ubuntu"
     ```
@@ -182,56 +182,56 @@ Now, execute the docker run command. Note that you have to:
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
-Once Docker pulls the necessary images, your Moonbase Alpha full node will start, displaying lots of information, such as the chain specification, node name, role, genesis state, and more:
+在Docker拉取必要的镜像后，Moonbase Alpha全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等：
 
 ![Full Node Starting](/images/fullnode/fullnode-docker1.png)
 
-!!! note
-    If you are having issues with the default telemetry, you can add the flag `--no-telemetry` to run the full node without telemetry activated.
+!!! 注意事项
+    如果默认telemetry有问题，您可以增加`--no-telemetry`，在不激活telemetry的情况下可运行全节点。
 
-!!! note
-    You can specify a custom Prometheus port with the `--promethues-port XXXX` flag (replacing `XXXX` with the actual port number). This is possible for both the parachain and embedded relay chain.
+!!! 注意事项
+    您可使用`--promethues-port XXXX`标记（将`XXXX`替换成真实的接口序号）指定个性化Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
-The command above will enable all exposed ports, including the P2P, RPC, and Prometheus (telemetry) ports. This command is compatible to use with the Gantree Node Watchdog telemetry. If you want to expose specific ports, enable those on the Docker run command line as shown below. However, doing so will block the Gantree Node Watchdog (telemetry) container from accessing the moonbeam container, so don't do this when running a collator unless you understand [docker networking](https://docs.docker.com/network/).
+以上命令将激活所有已开放的端口，包括P2P、RPC和Prometheus (telemetry) 端口。该命令也可与Gantree Node Watchdog telemetry兼容使用。如果您要开放特定端口，请运行以下Docker run命令进行激活。但这样做会阻止Gantree Node Watchdog (telemetry) 容器获取moonbeam容器的数据。因此，除非您懂得如何进行[Docker连接](https://docs.docker.com/network/)，否则在运行收集人时请不要采用这种操作方式。
 
 ```
 docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} #rest of code goes here
 ```
 
-During the syncing process, you will see messages from both the embedded relay chain and the parachain (without a tag). These messages display a target block (TestNet) and a best block (local node synced state).
+在同步过程中，您可以看到嵌入式中继链和平行链的消息（无标签）。这些消息将显示目标区块（测试网）和最佳区块（本地节点同步状态）。
 
 ![Full Node Starting](/images/fullnode/fullnode-docker2.png)
 
-Once synced, you have a node of the Moonbase Alpha TestNet running locally!
+同步完成后，Moonbase Alpha测试网节点即进入本地运行！
 
-## Installation Instructions - Binary
+## 二进制文档安装指引
 
-This section goes through the process of compiling the binary and running a Moonbeam full node as a systemd service. The following steps were tested on an Ubuntu 18.04 installation. Moonbase Alpha may work with other Linux flavors, but Ubuntu is currently the only tested version.
+本小节将介绍二进制文档编译以及作为systemd服务运行Moonbeam全节点的流程。本教程所使用的示例基于Ubuntu 18.04的环境。Moonbase Alpha也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu 18.04版本。
 
-### Compiling the Binary
+### 编译二进制文档
 
-The following commands will build the latest release of the Moonbeam parachain.
+通过以下指令可以创建最新版本的Moonbeam平行链。
 
-First, let's start by cloning the moonbeam repo.
+首先，克隆moonbeam repo。
 
 ```
 git clone https://github.com/PureStake/moonbeam
 cd moonbeam
 ```
 
-Let's check out the latest release:
+检查最新版本：
 
 ```
 git checkout tags/$(git tag | tail -1)
 ```
 
-Next, install Substrate and all its prerequisites, including Rust, by executing:
+下一步，执行以下命令安装Substrate和所有必要的操作环境，包括Rust：
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-Lastly, build parachain binary:
+最后，创建平行链二进制文档：
 
 ```
 cargo build --release
@@ -239,55 +239,56 @@ cargo build --release
 
 ![Compiling Binary](/images/fullnode/fullnode-binary1.png)
 
-If a _cargo not found error_ shows up in the terminal, manually add Rust to your system path or restart your system:
+如果终端显示*cargo not found error*，请在系统路径中手动加入Rust，或重启系统：
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-### Running the Systemd Service
+### 运行Systemd服务
 
-The following commands will set up everything regarding running the service.
+通过以下指令完成所有与服务运行相关的设置。
 
-First, let's create a service account to run the service:
+首先，创建服务账户：
 
 ```
 adduser moonbase_service --system --no-create-home
 ```
 
-Next, create a directory to store the binary and data and set the necessary permissions:
+下一步，创建目录用于储存二进制文档和数据，并设置必要的权限：
 
 ```
 mkdir {{ networks.moonbase.node_directory }}
 chown moonbase_service {{ networks.moonbase.node_directory }}
 ```
 
-!!! note
-    Make sure you set the ownership and permissions accordingly for the local directory that stores the chain data.
+!!! 注意事项
+    请确保已设置好储存链上数据的本地目录相应所有权和权限。
 
-Now, copy the binary built in the last section to the created folder:
+下一步，复制上一小节所创建的二进制文档到以下新建文件夹：
 
 ```
 cp ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
 ```
 
-The next step is to create the systemd configuration file. Note that you have to:
+下一步，创建systemd配置文档。请注意，在这里需要：
 
- - Replace `YOUR-NODE-NAME` in two different places
- - Double-check that the binary is in the proper path as described below (_ExecStart_)
- - Double-check the base path if you've used a different directory
- - For collators, replace `PUBLIC-KEY` with the public key of your H160 Ethereum address created above
- - Name the file `/etc/systemd/system/moonbeam.service`
+ - 替换两处`YOUR-NODE-NAME`
+ - 再次检查确认二进制文档是否位于以下正确路径 (*ExecStart*)
+ - 如果您使用不同目录，请再次检查基本路径
+ - 对收集人，需要将`PUBLIC-KEY`改为上述步骤中所创建的H160以太坊地址公钥
+ - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
-!!! note
-    If you are setting up a collator node, make sure to follow the code snippets for "Collator".
+!!! 注意事项
+    如果您设置的是收集人节点，请确保根据“收集人”代码段进行操作。
 
-=== "Full Node"
+=== "全节点"
     ```
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
     StartLimitIntervalSec=0
+    ```
 
     [Service]
     Type=simple
@@ -320,17 +321,18 @@ The next step is to create the systemd configuration file. Note that you have to
          --ws-port {{ networks.relay_chain.ws }} \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
-
+    
     [Install]
     WantedBy=multi-user.target
     ```
 
-=== "Collator"
+=== "收集人"
     ```
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
     StartLimitIntervalSec=0
+    ```
 
     [Service]
     Type=simple
@@ -364,25 +366,25 @@ The next step is to create the systemd configuration file. Note that you have to
          --ws-port {{ networks.relay_chain.ws }} \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
-
+    
     [Install]
     WantedBy=multi-user.target
     ```
 
-!!! note
-    If you are having issues with the default telemetry, you can add the flag `--no-telemetry` to run the full node without telemetry activated.
+!!! 注意事项
+    如果默认telemetry有问题，您可以增加`--no-telemetry`，在不激活telemetry的情况下可运行全节点。
 
-!!! note
-    You can specify a custom Prometheus port with the `--promethues-port XXXX` flag (replacing `XXXX` with the actual port number). This is possible for both the parachain and embedded relay chain.
+!!! 注意事项
+    您可使用`--promethues-port XXXX`标记（将`XXXX`替换成真实的接口序号）指定个性化Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
-Almost there! Register and start the service by running:
+运行以下命令即可注册并开始服务：
 
 ```
 systemctl enable moonbeam.service
 systemctl start moonbeam.service
 ```
 
-And lastly, verify the service is running:
+最后一步，验证服务正在运行：
 
 ```
 systemctl status moonbeam.service
@@ -390,7 +392,7 @@ systemctl status moonbeam.service
 
 ![Service Status](/images/fullnode/fullnode-binary2.png)
 
-You can also check the logs by executing:
+您也可以执行以下命令检查日志：
 
 ```
 journalctl -f -u moonbeam.service
@@ -398,29 +400,15 @@ journalctl -f -u moonbeam.service
 
 ![Service Logs](/images/fullnode/fullnode-binary3.png)
 
-## Advanced Flags and Options
+## 高级标记及选项
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
-## Updating the Client
+## 客户端升级
 
-As Moonbeam development continues, it will sometimes be necessary to upgrade your node software. Node operators will be notified on our [Discord channel](https://discord.gg/PfpUATX) when upgrades are available and whether they are necessary (some client upgrades are optional). The upgrade process is straightforward and is the same for a full node or collator.
+随着Moonbeam网络不断发展，有时需要升级节点软件。升级版本发布后，我们将通过[Discord channel](https://discord.gg/PfpUATX)通知节点运营者，并告知这些升级是否为必要升级（一些客户端升级为可选操作）。升级过程简单直接，并且对于全节点及收集人，其升级过程一样。
 
-First, stop the docker container or systemd service:
-
-```
-sudo docker stop `CONTAINER_ID`
-# or
-sudo systemctl stop moonbeam
-```
-
-Then, install the new version by repeating the steps described before, making sure that you are using the latest tag available. After updating, you can start the service again.
-
-### Purging the Chain
-
-Occasionally Moonbase Alpha might be purged and reset around major upgrades. As always, node operators will be notified in advance (via our [Discord channel](https://discord.gg/PfpUATX)) if this upgrade is accompanied by a purge. You can also purge your node if your individual data directory becomes corrupted.
-
-To do so, first stop the docker container or systemd service:
+首先停止docker容器或systemd服务：
 
 ```
 sudo docker stop `CONTAINER_ID`
@@ -428,47 +416,57 @@ sudo docker stop `CONTAINER_ID`
 sudo systemctl stop moonbeam
 ```
 
-Next, remove the content of the folder where the chain data is stored (both for the parachain and relay chain):
+下一步，重复前述步骤安装新版本。请确保您使用的是最新标签。升级后可再次启动服务。
+
+### 区块链清理
+
+在重大升级前后，Moonbase Alpha有时会进行清理和重置。如果升级后还有清理环节，我们也会（通过[Discord channel](https://discord.gg/PfpUATX)）提前通知节点运营者。如果您的个人数据目录崩溃，也可以清理节点。
+
+第一步，停止docker容器或systemd服务：
+
+```
+sudo docker stop `CONTAINER_ID`
+# or
+sudo systemctl stop moonbeam
+```
+
+下一步，移除链上数据储存文件夹内容（包括平行链和中继链）：
 
 ```
 sudo rm -rf {{ networks.moonbase.node_directory }}/*
 ```
 
-Lastly, install the newest version by repeating the steps described before, making sure you are using the latest tag available. If so, you can start a new node with a fresh data directory.
+最后，重复前述步骤安装最新版本，请确保您使用的是最新标签。完成后即可运行全新节点，使用全新数据目录。
 
 ## Telemetry
 
-To enable your Moonbase Alpha node's telemetry server, you can follow [this tutorial](/node-operators/networks/telemetry/).
+请按照[本教程](https://docs.moonbeam.network/node-operators/networks/telemetry/)激活Moonbase Alpha节点telemetry服务器。
 
-Running telemetry on a full node is not necessary. However, it is a requirement to do so for collators.
+运行telemetry对全节点而言并不是必要的，但对收集人而言是必要的。
 
-Also, you can see current Moonbase Alpha telemetry information visiting [this link](https://telemetry.polkadot.io/#list/Moonbase%20Alpha).
+您可访问[此链接](https://telemetry.波卡（Polkadot）.io/#list/Moonbase Alpha)了解目前Moonbase Alpha telemetry信息。
 
-## Logs and Troubleshooting
+## 日志与故障检测
 
-You will see logs from both the relay chain as well as the parachain. The relay chain will be prefixed by `[Relaychain]`, while the parachain has no prefix.
+您可以查看中继链和平行链的日志。中继链日志将以`[Relaychain]`为前缀，而平行链日志没有前缀。
 
-### P2P Ports Not Open
+### P2P端口不开放
 
-If you don't see an `Imported` message (without the `[Relaychain]` tag), you need to check the P2P port configuration. P2P port must be open to incoming traffic.
+如果您没有看到`Imported`消息（没有`[Relaychain]`标签），则需要检查P2P端口配置。P2P端口必须向流入流量开放。
 
-### In Sync
+### 同步
 
-Both chains must be in sync at all times, and you should see either `Imported` or `Idle` messages and have connected peers.
+两个区块链必须保持随时同步。在正常情况下您能够看到`Imported`或`Idle`消息，以及已连接的其他节点。
 
-### Genesis Mismatching
+### 创世错配
 
-The Moonbase Alpha TestNet is often upgraded. Consequently, you may see the following message:
+Moonbase Alpha测试网会频繁进行升级。因此，您可能会看到以下消息：
 
 ```
 DATE [Relaychain] Bootnode with peer id `ID` is on a different
 chain (our genesis: GENESIS_ID theirs: OTHER_GENESIS_ID)
 ```
 
-This typically means that you are running an older version and will need to upgrade.
+这个消息通常意味着您运行的版本已经过旧，需要进行升级。
 
-We announce the upgrades (and corresponding chain purge) via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
-
-## We Want to Hear From You
-
-If you have any feedback regarding running a full node or any other Moonbeam-related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+每次升级（以及相应的区块链清理）我们都将提前至少24小时通过[Discord channel](https://discord.gg/PfpUATX)宣布。

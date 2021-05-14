@@ -1,45 +1,45 @@
 ---
 title: Telemetry
-description: How to run telemetry for a full Parachain node for the Moonbeam Network
+description: 网络上如何运行telemetry来设置平行链全节点
 ---
 
-# Telemetry for a Full Node
+# 运行Telemetry设置全节点
 
 ![Telemetry Moonbeam Banner](/images/fullnode/telemetry-banner.png)
 
-## Introduction
+## 概览
 
-With the release of Moonbase Alpha v6, you can spin up a node that connects to the Moonbase Alpha TestNet. You can check those steps in [this tutorial](/node-operators/networks/full-node/).
+Moonbase Alpha v6版本发布后，用户可以创建节点并连接到Moonbase Alpha测试网。具体操作步骤，请查阅[此教程](/node-operators/networks/full-node/)。
 
-This guide will provide the necessary steps to enable the telemetry server for your Moonbase Alpha node.
+本教程将介绍激活Moonbase Alpha节点telemetry服务器的必要步骤。
 
-!!! note
-    The steps described in this guide are for a telemetry instance different than the standard Polkadot telemetry enabled by default (you can run nodes with no telemetry by using the `--no-telemetry` flag). The steps described in this guide are mandatory only for collator nodes.
+!!! 注意事项
+    以下步骤适用于与默认启用的标准波卡（Polkadot）telemetry（您可利用`--no-telemetry`标记在不激活telemetry的情况下运行节点）不同的telemetry实例。请知悉，本教程中的步骤仅对收集人节点是强制性的。
 
-## Telemetry Exporter Summary
+## Telemetry Exporter简介
 
-Moonbeam will run a telemetry server that collects Prometheus metrics from all the Moonbeam parachain nodes on the network. Running this will be a great help to us during our development phase.  
+Moonbeam将运行一个telemetry服务器，收集来自网络中所有Moonbeam平行链节点Prometheus参数。运行这一服务器对我们的开发阶段将起到重要的帮助作用。 
 
-The metrics exporter can run either as a kubernetes sidecar, or as a local binary if you are running a VM. It will push data out to our servers, so you do not have to enable any incoming ports for this service.
+指标exporter可以作为kubernetes sidecar运行，或作为VM的本地二进制文档运行。它会向服务器推送数据，因此您不需要针对这一服务激活任何输入端口。
 
-We are using a service called [Gantree Node Watchdog](https://github.com/gantree-io/gantree-node-watchdog) to upload telemetry automatically.  Once you enable telemetry, you can also access a Prometheus/Grafana server from the [Gantree App](https://app.gantree.io/).  There are detailed instructions on the GitHub repository. If you need more info, here is a quick start. 
+目前我们使用[Gantree Node Watchdog](https://github.com/gantree-io/gantree-node-watchdog)服务自动上传telemetry。激活telemetry后，还可以从[Gantree App](https://app.gantree.io/)进入Prometheus/Grafana服务器。具体操作可在GitHub repository中找到。如果您需要更多信息，请见以下简单指引。
 
-For now, we need to run two node watchdogs, one for the parachain and one for the relay chain.  This will be updated in a future release. 
+目前我们需要运行两个节点看门狗，一个用于平行链，另一个用于中继链。未来发布版本将对这一功能进行升级。
 
-For help, contact our [Discord server](https://discord.gg/FQXm74UQ7V) or the [Gantree Discord](https://discord.gg/N95McPjHZ2). 
- 
-## Checking Prerequisites
+如需获取帮助，请联系的[Discord server](https://discord.gg/FQXm74UQ7V)或[Gantree Discord](https://discord.gg/N95McPjHZ2)。
 
-Before following this tutorial, you need to:
+## 查看先决条件
 
- 1. Log in to [https://app.gantree.io](https://app.gantree.io) and create an account.  Navigate to API keys and copy your API key. 
- 2. Request a PCK key in our [Discord server](https://discord.gg/FQXm74UQ7V)
-   
-## Telemetry Exporter with Docker
+在按照本教程进行操作前，您需要：
 
-We will run two instances of the Gantree node watchdog using Docker: one for the parachain and one for the relay chain.  
+ 1. 登录[https://app.gantree.io](https://app.gantree.io/)并创建账户。找到API密钥并进行复制。
+ 2. 通过我们的[Discord server](https://discord.gg/FQXm74UQ7V)请求获取PCK密钥
 
-### Required Configuration Information
+## 通过Docker容器运行Telemetry Exporter
+
+下面我们将通过Docker容器运行两个Gantree节点看门狗实例，一个用于平行链，另一个用于中继链。
+
+### 所需配置信息
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -47,9 +47,9 @@ We will run two instances of the Gantree node watchdog using Docker: one for the
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### Instructions
+### 操作指引
 
-First, clone the instance monitoring client repository and build the docker image:
+首先，克隆实例的监测客户端代码库，并创建镜像：
 
 ```
 git clone https://github.com/gantree-io/gantree-node-watchdog
@@ -61,12 +61,12 @@ docker build .
 docker images
 ```
 
-Next, let's run the docker container (parachain Gantree node watchdog). Note that you need to replace the following fields:
+接下来，运行docker容器（平行链Gantree节点看门狗）。请注意，需要替换以下内容：
 
-  - `IMAGE-NAME` witch the one fetched in the previous step
-  - `YOUR-API-KEY` with the one provided by [https://app.gantree.io](https://app.gantree.io)
+  - 将`IMAGE-NAME`替换为在上一步所获取的名称
+  - 将`YOUR-API-KEY`替换为[https://app.gantree.io](https://app.gantree.io/)提供的API密钥
   - `YOUR-SERVER-NAME`
-  - `YOUR-PCK-KEY` with the one requested in our Discord server
+  - 将`YOUR-PCK-KEY`替换为通过Discord server请求获取的PCK密钥
 
 ```
 docker run -it --network="host" \
@@ -78,7 +78,7 @@ docker run -it --network="host" \
 --name gantree_watchdog_parachain IMAGE-NAME
 ```
 
-Now, we need to run the relay Gantree node watchdog. Note that you need to replace the same information as in the previous step.
+接下来，运行中继链Gantree节点看门狗。请注意，需要替换与上一步相同的信息。
 
 ```
 docker run -it --network="host" \
@@ -90,15 +90,15 @@ docker run -it --network="host" \
 --name gantree_watchdog_relay IMAGE-NAME
 ```
 
-You should see waiting for provisioning in the logs.  Once it's complete, you can log into the [https://app.gantree.io](https://app.gantree.io) and select networks. You will see a `View Monitoring Dashboard` link to your custom Prometheus / Grafana dashboard which you can customize to your needs.  
+在日志中可以看到“waiting for provisioning”消息。完成后，可以登录[https://app.gantree.io](https://app.gantree.io/)并选择网络。您会看到`View Monitoring Dashboard`链接，点击将跳转到您的定制Prometheus / Grafana面板，在那里可以按照您的需求进行个性化设置。
 
-Once things are working well, you can update the commands to run in daemon mode.  Remove `-it` and add `-d` to the command above.  
+一切就绪后就可以更新指令，以daemon模式运行。将上述指令中的`-it`移除，并增加`-d`。
 
-## Telemetry Exporter with Systemd
+## 通过Systemd运行Telemetry Exporter
 
-We will run two instances of the Gantree node watchdog: one for the parachain and one for the relay chain.  
+下面我们将通过Systemd运行两个Gantree节点看门狗实例，一个用于平行链，另一个用于中继链。 
 
-### Required Configuration Information
+### 所需配置信息
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -106,24 +106,24 @@ We will run two instances of the Gantree node watchdog: one for the parachain an
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### Instructions
+### 操作指引
 
-First, we need to download the Gantree node watchdog binary from the [release page](https://github.com/gantree-io/gantree-node-watchdog/releases), and extract it to a folder, for example, `/usr/local/bin`.
+首先，在这个[发布页面](https://github.com/gantree-io/gantree-node-watchdog/releases)下载Gantree节点看门狗二进制文档，并解压到文件夹，例如`/usr/local/bin`。
 
-Next, let's create two folders for the configuration files:
+下一步，为配置文档创建两个文件夹：
 
 ```
 mkdir -p /var/lib/gantree/parachain
 mkdir -p /var/lib/gantree/relay
 ```
 
-Now, we need to generate the configuration files, place each in the folders created in the previous step. Note that you need to replace the following fields:
+下一步，生成配置文档，将每个文档放进上一步创建的文件夹中。请注意，需要替换以下信息：
 
-  - `YOUR-API-KEY` with the one provided by [https://app.gantree.io](https://app.gantree.io)
+  - 将`YOUR-API-KEY`替换成[https://app.gantree.io](https://app.gantree.io/)所提供的API密钥https://app.gantree.io)
   - `YOUR-SERVER-NAME`
-  - `YOUR-PCK-KEY` with the one requested in our Discord server
+  - 将`YOUR-PCK-KEY`替换为通过Discord server请求获取的PCK密钥
 
-Parachain:
+平行链：
 
 ```
 # Contents of /var/lib/gantree/parachain/.gnw_config.json
@@ -136,7 +136,7 @@ Parachain:
 }
 ```
 
-Embedded relay chain:
+嵌入式中继链：
 
 ```
 # Contents of /var/lib/gantree/relay/.gnw_config.json
@@ -149,9 +149,9 @@ Embedded relay chain:
 }
 ```
 
-The next step is to generate your systemd configuration file.
+下一步，创建systemd配置文档：
 
-Parachain:
+平行链：
 
 ```
 # Contents of /etc/systemd/system/gantree-parachain.service
@@ -170,7 +170,7 @@ ExecStart=/usr/local/bin/gantree_node_watchdog
 WantedBy=multi-user.target
 ```
 
-Embedded relay chain:
+嵌入式中继链：
 
 ```
 # Contents of /etc/systemd/system/gantree-relay.service
@@ -189,7 +189,7 @@ ExecStart=/usr/local/bin/gantree_node_watchdog
 WantedBy=multi-user.target
 ```
 
-We are almost there! Now, let's enable and start the systemd services, monitor logs for errors:
+现在激活并启动systemd服务，检测日志错误：
 
 ```
 sudo systemctl enable gantree-parachain
@@ -199,8 +199,8 @@ sudo systemctl enable gantree-relay
 sudo systemctl start gantree-relay && journalctl -f -u gantree-relay
 ```
 
-You should see waiting for provisioning in the logs.  Once it's complete, you can log into the [https://app.gantree.io](https://app.gantree.io) and select networks. You will see a `View Monitoring Dashboard` link to your custom Prometheus / Grafana dashboard which you can customize to your needs.  
+在日志中可以看到“waiting for provisioning”消息。完成后，可以登录[https://app.gantree.io](https://app.gantree.io/) 并选择网络。您会看到`View Monitoring Dashboard`链接，点击将跳转到您的定制Prometheus / Grafana面板，在那里可以按照您的需求进行个性化设置。
 
-## Contact Us
+## 我们期待您的反馈
 
-If you have any feedback regarding running a full node with telemetry, or any other Moonbeam related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+如果您对使用telemetry运营完整节点以及其它Moonbeam相关话题有任何意见或建议，欢迎通过我们开发团队的官方[Discord channel](https://discord.gg/PfpUATX)联系我们。

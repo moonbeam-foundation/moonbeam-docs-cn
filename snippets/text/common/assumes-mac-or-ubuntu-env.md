@@ -1,1 +1,2 @@
-The examples in this guide assumes you have a MacOS or Ubuntu 18.04-based environment and will need to be adapted accordingly for Windows.
+本教程示例基于Ubuntu 18.04和MacOS的环境，用户需根据其所使用的Windows版本进行微调。
+

@@ -1,8 +1,8 @@
-We need to install Node.js (we'll use v15.x) and the npm package manager. You can download directly from [Node.js](https://nodejs.org/en/download/) or in your terminal:
+本教程操作需安装Node.js（我们将使用v15.x）和「npm package manager」。您可通过[Node.js](https://nodejs.org/en/download/)下载或自行运行以下代码完成安装
 
 --8<-- 'code/common/install-nodejs-commands.md'
 
-We can verify that everything is installed correctly by querying the version for each package:
+您可以通过请求每个安装包的版本来验证是否安装正确：
 
 ```
 node -v

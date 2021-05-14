@@ -1,40 +1,40 @@
 ---
-title: Precompiled Contracts
-description:  Learn how to use precompiled contracts on Moonbase Alpha, the Moonbeam Network TestNet that is unique for its complete Ethereum compatibility. 
+title: 预编译合约
+description:  通过此教程学习如何在Moonbeam测试网Moonbase Alpha上使用完全兼容以太坊的预编译合约。
 ---
 
-# Precompiled Contracts on Moonbase Alpha
+# Moonbase Alpha预编译合约
 
-## Introduction
+## 概览
 
-Another feature added with the [release of Moonbase Alpha v2](https://moonbeam.network/announcements/moonbase-alpha-v2-contract-events-pub-sub-capabilities/) is the inclusion of some [precompiled contracts](https://docs.klaytn.com/smart-contract/precompiled-contracts) that are natively available on Ethereum. 
+[Moonbase Alpha v2](https://moonbeam.network/announcements/moonbase-alpha-v2-contract-events-pub-sub-capabilities/)版本中新增的另外一个功能，就是提供以太坊上的一些原生[预编译合约](https://docs.klaytn.com/smart-contract/precompiled-contracts)。
 
-Five precompiles are currently included, including: ecrecover, sha256, ripemd-160, the identity function, and the modular exponentiation.
+目前这一功能包括了五个预编译合约：ecrecover、sha256、ripemd-160、恒等函数和模幂运算函数。
 
-In this guide, we will explain how to use and/or verify these precompiles.
+在本教程中，我们将介绍这些预编译函数的使用和/或验证方法。
 
-## Checking Prerequisites
+## 查看先决条件
 
 --8<-- 'text/common/install-nodejs.md'
 
-As of writing this guide, the versions used were 15.2.1 and 7.0.8, respectively. We will also need to install the Web3 package by executing:
+在撰写本教程时，所用版本分别为15.2.1和7.0.8版本。此外，您还需要进行以下指令安装Web3包：
 
 ```
 npm install --save web3
 ```
 
-To verify the installed version of Web3, you can use the `ls` command:
+可以通过`ls`指令验证Web3安装版本：
 
 ```
 npm ls web3
 ```
-As of writing this guide, the version used was 1.3.0. We will be also using [Remix](/integrations/remix/), connecting it to the Moonbase Alpha TestNet via [MetaMask](/integrations/wallets/metamask/).
+在撰写本教程时，所用版本为1.3.0版本。此外，我们还将使用[Remix](https://docs.moonbeam.network/integrations/remix/)，并通过[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)将其连接到Moonbase Alpha测试网。
 
-## Verify Signatures with ECRECOVER
+## 使用ECRECOVER进行签名验证
 
-The main function of this precompile is to verify the signature of a message. In general terms, you feed `ecrecover` the transaction's signature values and it returns an address. The signature is verified if the address returned is the same as the public address that sent the transaction.
+这一预编译合约的主要功能是验证消息签名。一般来说，将某笔交易的签名值输入到`ecrecover`中，将会返回一个地址，如果该地址与发送该交易的公共地址相同，则签名通过验证。
 
-Let's jump into a small example to showcase how to leverage this precompiled function. To do so we need to retrieve the transaction's signature values (v, r, s). Therefore, we'll sign and retrieve the signed message where these values are:
+我们用一个简单的例子来说明如何利用这一预编译合约。我们需要进行签名，然后获取包含这些数值的已签名消息，从而获得交易签名值（v, r, s）：
 
 ```solidity
 const Web3 = require('web3');
@@ -60,7 +60,7 @@ async function signMessage(pk) {
 signMessage(pk1);
 ```
 
-This code will return the following object in the terminal:
+这一代码将在终端返回以下对象：
 
 ```js
 {
@@ -72,7 +72,7 @@ This code will return the following object in the terminal:
   signature: '0x44287513919034a471a7dc2b2ed121f95984ae23b20f9637ba8dff471b6719ef7d7dc30309a3baffbfd9342b97d0e804092c0aeb5821319aa732bc09146eafb41b'
 }
 ```
-With the necessary values, we can go to Remix to test the precompiled contract. Note that this can also be verified with the Web3 JS library, but in our case, we'll go to Remix to be sure that it is using the precompiled contract on the blockchain. The Solidity code we can use to verify the signature is the following:
+有了这些必要数值，我们就可以来到Remix测试预编译合约。请注意，签名验证也可以通过Web3 JS库来实现，但在本示例中，我们会使用Remix，以确保它使用的是区块链上的预编译合约。我们可以使用以下Solidity代码进行签名验证：
 
 ```solidity
 pragma solidity ^0.7.0;
@@ -92,11 +92,11 @@ contract ECRECOVER{
 }
 ```
 
-Using the [Remix compiler and deployment](/getting-started/local-node/using-remix/) and with [MetaMask pointing to Moonbase Alpha](/getting-started/testnet/metamask/), we can deploy the contract and call the `verify()` method that returns _true_ if the address returned by `ecrecover` is equal to the address used to sign the message (related to the private key and needs to be manually set in the contract).
+使用[Remix编译器与部署](https://docs.moonbeam.network/getting-started/local-node/using-remix/)并将[MetaMask指向Moonbase Alpha](https://docs.moonbeam.network/getting-started/testnet/metamask/)，即可部署合约，并调用`verify()`方法进行验证。如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，就会返回*true*。
 
-## Hashing with SHA256
+## 使用SHA256函数获取哈希值
 
-This hashing function returns the SHA256 hash from the given data. To test this precompile, you can use this [online tool](https://md5calc.com/hash/sha256) to calculate the SHA256 hash of any string you want. In our case, we'll do so with `Hello World!`. We can head directly to Remix and deploy the following code, where the calculated hash is set for the `expectedHash` variable:
+向这一函数输入数据可返回其SHA256哈希值。测试这一预编译合约，可以使用此[在线工具](https://md5calc.com/hash/sha256)来计算任何字符串的SHA256哈希值。在本示例中，我们将使用`Hello World!`的哈希值。直接进入Remix并部署以下代码，计算出来的哈希值将在`expectedHash`变量中显示：
 
 ```solidity
 pragma solidity ^0.7.0;
@@ -117,11 +117,11 @@ contract Hash256{
 }
 
 ```
-Once the contract is deployed, we can call the `checkHash()` method that returns _true_ if the hash returned by `calculateHash()` is equal to the hash provided.
+合约部署后，就可以调用`checkHash()`方法进行验证。如果`calculateHash()`返回的哈希值与所提供的哈希值一致，即返回*true* 。
 
-## Hashing with RIPEMD-160
+## 使用RIPEMD-160函数获取哈希值
 
-This hashing function returns a RIPEMD-160 hash from the given data. To test this precompile, you can use this [online tool](https://md5calc.com/hash/ripemd160) to calculate the RIPEMD-160 hash of any string. In our case, we'll do so again with `Hello World!`. We'll reuse the same code as before, but use the `ripemd160` function. Note that it returns a `bytes20` type variable:
+向这一函数输入数据可返回其RIPEMD-160哈希值。测试这一预编译合约，可以使用这个[在线工具](https://md5calc.com/hash/ripemd160)来计算任何字符串的RIPEMD-160哈希值。在本示例中，我们仍使用`Hello World!`的哈希值。我们将使用相同的代码，但使用另一个函数：`ripemd160`函数。请注意，这个函数返回的是`bytes20`类型的变量：
 
 ```solidity
 pragma solidity ^0.7.0;
@@ -141,11 +141,11 @@ contract HashRipmd160{
     }
 }
 ```
-With the contract deployed, we can call the `checkHash()` method that returns _true_ if the hash returned by `calculateHash()` is equal to the hash provided.
+合约部署后，就可以调用`checkHash()`方法进行验证。如果`calculateHash()`返回的哈希值与所提供的哈希值一致，即返回*true* 。
 
-## The Identity Function
+## 恒等函数
 
-Also known as datacopy, this function serves as a cheaper way to copy data in memory. The Solidity compiler does not support it, so it needs to be called with inline assembly. The [following code](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data) (adapted to Solidity), can be used to call this precompiled contract. We can use this [online tool](https://web3-type-converter.onbrn.com/) to get bytes from any string, as this is the input of the method `callDataCopy()`.
+这一函数也被称为“数据复制”函数，是复制内存数据性价比较高的方法。Solidity编译器不支持这一函数，因此需要内联汇编。可以使用[以下代码](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data)（经修改已适应Solidity）调用这个预编译合约。我们可以使用此[在线工具](https://web3-type-converter.onbrn.com/)来获取任何字符串的字节码，因为它是`callDataCopy()`方法的输入值。
 
 ```solidity
 pragma solidity ^0.7.0;
@@ -169,13 +169,13 @@ contract Identity{
     }
 }
 ```
-With the contract deployed, we can call the `callDataCopy()` method and verify if `memoryStored` matches the bytes that you pass in as an input of the function.
+合约部署后，就可以调用`callDataCopy()`方法来验证`memoryStored`是否与您在函数中所输入的字节码相符。
 
-## Modular Exponentiation
+## 模幂运算函数
 
-This fifth precompile calculates the remainder when an integer _b_ (base) is raised to the _e_-th power (the exponent), and is divided by a positive integer _m_ (the modulus).
+我们要介绍的第五个预编译合约主要用于计算整数*b*（基数）乘以*e*次方（指数）并除以一个正整数*m*（除数）后的余数。
 
-The Solidity compiler does not support it, so it needs to be called with inline assembly. The [following code](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod) was simplified to show the functionality of this precompile. 
+Solidity编译器并不支持这一函数，因此需要内联汇编。[以下代码](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod)经过了简化，能更好地呈现这一预编译合约的功能。
 
 ```solidity
 pragma solidity ^0.7.0;
@@ -213,8 +213,4 @@ contract ModularCheck {
 }
 ```
 
-You can try this in [Remix](/integrations/remix/). Use the function `verify()`, passing the base, exponent, and modulus. The function will store the value in the `checkResult` variable. 
-
-## We Want to Hear From You
-
-If you have any feedback regarding Moonbase Alpha, the precompiled contracts, or any other Moonbeam-related topic, feel free to reach out through our official development [Discord channel](https://discord.gg/PfpUATX).
+您也可以在[Remix](https://docs.moonbeam.network/integrations/remix/)环境中尝试使用这一合约。调用`verify()`函数，输入基数、指数和除数，结果将储存在函数的`checkResult`变量中。

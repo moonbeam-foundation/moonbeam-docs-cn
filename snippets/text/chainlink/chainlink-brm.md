@@ -1,9 +1,10 @@
-An Oracle node has a set of job IDs, where each corresponds to a task that can be requested by a user, for example, fetch a price feed. To do so, the user needs to send a request through a contract, we'll name it the _Client_ contract, passing in the following information:
+一个预言机节点有一系列Job ID，每个ID对应用户可发起的任务。例如，使用Chainlink的喂价获取价格数据，用户需要通过*客户*合约发送请求，传递以下信息：
 
- - Oracle address: address of the contract deployed by the Oracle node
- - Job ID: task to be executed
- - Payment: payment in LINK tokens that the Oracle will receive for fulfiling the request
+ - 预言机地址：预言机节点部署的合约地址
+ - Job ID：需要执行的任务
+ - 支付：预言机在收到LINK代币支付后，将完成请求
 
-This request actually sends a _transferAndCall_ to the LINK token contract, which handles the payment and relays the request to the Oracle contract. Here, an event is emited with the request, which is picked up by the Oracle node. Next, the node fetches the necessary data and executes the _fulfilOracleRequest_ function, which executes a callback that stores the requested information in the Client contract. The following diagram explains this workflow.
+这一请求实际上会向LINK代币合约发送*transferAndCall*指令，由该合约进行支付处理，并且将该请求传输给预言机合约。随同该请求一并发出的还有事件信息，后者会被预言机节点拾取。接下来，节点就会获取必要数据并执行*fulfilOracleRequest*函数，这一函数将执行回调，将请求的信息储存在客户合约中。具体工作流程如下图所示。
 
 ![Basic Request Diagram](/images/chainlink/chainlink-basicrequest.png)
+

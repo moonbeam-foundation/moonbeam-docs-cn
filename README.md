@@ -74,7 +74,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 ### :fontawesome-brands-discord:  Discord  
 
-如需获取关于测试网和开发相关的最新内容，欢迎加入Moonbeam [Discord](https://discord.gg/PfpUATX)群组。
+如需获取关于测试网和开发相关的最新内容，欢迎加入[ Moonbeam Discord](https://discord.gg/PfpUATX)群组。
 
 ### :moonbeam-element:  Element  
 
@@ -90,7 +90,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 ### :fontawesome-brands-youtube:  YouTube  
 
-订阅 [Moonbeam YouTube](https://www.youtube.com/c/MoonbeamNetwork)频道，获取全部视频教程及相关内容。
+订阅 [Moonbeam YouTube频道](https://www.youtube.com/c/MoonbeamNetwork)，获取全部视频教程及相关内容。
 
 ### :fontawesome-solid-envelope:  Newsletter  
 

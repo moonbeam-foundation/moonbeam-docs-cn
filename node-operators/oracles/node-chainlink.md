@@ -1,64 +1,64 @@
 ---
-title: Chainlink Node
-description: How to set up a Chainlink Oracle node for the Moonbeam Network to feed data on-chain to be used by Smart Contracts
+title: Chainlink节点
+description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合约提供链上数据
 ---
 
-# Run a Chainlink Oracle Node on Moonbeam
+# 在Moonbeam上运行Chainlink预言机节点
 
 ![Chainlink Moonbeam Banner](/images/chainlink/chainlinknode-banner.png)
 
-## Introduction
+## 概览
 
-As an open, permissionless network, anyone may choose to operate an Oracle providing data to smart contracts running on Moonbeam.
+作为一个开放、无许可的网络，任何人都可以在Moonbeam上运行预言机，为智能合约提供数据。
 
-This article provides an overview in regards to setting up a Chainlink Oracle on Moonbase Alpha.
+本文概述了在Moonbase Alpha上设置Chainlink预言机的流程。
 
-!!! note
-    The examples provided are for demonstration purposes only. Passwords **MUST** be managed securely and never stored in plaintext. These examples assume an Ubuntu 18.04-based environment, but call-outs for MacOs are included. This guide is for a development setup only, do not use this for a production environment.
+!!! 注意事项
+    文中所用示例仅作演示用途。请**务必**妥善管理密码，请勿将密码储存在纯文本中。文中示例均在Ubuntu 18.04环境下运行，但也有包含了MacOs的调用。本教程仅适用于开发设置，并不适用于生产环境。
 
-## Basic Request Model
+## 基本请求模型
 
-Before we go dive into how to get started, it is important to understand the basics of the "basic request model."
+在开始之前，我们需要先了解“基本请求模型”的基本知识。
 
 --8<-- 'text/chainlink/chainlink-brm.md'
 
-## Advanced Users
+## 高级用户
 
-If you are familiar with running Chainlink Oracle nodes, this information will get you started on the Moonbase Alpha TestNet quickly:
+如果您已经熟悉如何运行Chainlink预言机节点，可以通过以下信息快速进行Moonbase Alpha测试网部署：
 
- - Chainlink documentation, which can be found [here](https://docs.chain.link/docs/running-a-chainlink-node)
+ - [Chainlink文档](https://docs.chain.link/docs/running-a-chainlink-node)
  - Moonbase Alpha WSS EndPoint: `wss://wss.testnet.moonbeam.network`
  - Moonbase Alpha ChainId: `1287`
- - LINK Token on Moonbase Alpha: `0xa36085F69e2889c224210F603D836748e7dC0088`
- - Get Moonbase Alpha tokens from [our Faucet](/getting-started/testnet/faucet/)
+ - Moonbase Alpha上的LINK代币地址：`0xa36085F69e2889c224210F603D836748e7dC0088`
+ - 从我们的[水龙头](/getting-started/testnet/faucet/)获取Moonbase Alpha代币
 
-## Getting Started
+## 如何操作
 
-This guide will walk through the process of setting up the Oracle node, summarized as:
+本教程将介绍设置预言机节点的步骤，简单概括如下：
 
- - Setup a Chainlink node connected to Moonbase Alpha
- - Fund node
- - Deploy an Oracle contract
- - Create a job on the Chainlink node
- - Bond node and Oracle
- - Test using a client contract
+ - 设置一个与Moonbase Alpha连接的Chainlink节点
+ - 资金节点
+ - 部署预言机合约
+ - 在Chainlink节点上创建任务
+ - 绑定节点与预言机
+ - 使用客户合约进行测试
 
-The basic requirements are:
+操作需要满足以下基本要求：
 
- - Docker for running Postgres DB and ChainLink node containers. For more information on installing Docker, please visit [this page](https://docs.docker.com/get-docker/)
- - An account with funds. You can create one with [Metamask](/integrations/wallets/metamask/), which can be funded via [our Faucet](https://docs.moonbeam.network/getting-started/testnet/faucet/)
- - Access to the Remix IDE in case you want to use it to deploy the Oracle contract. You can find more information about Remix on Moonbeam [here](/integrations/remix/)
+ - 有运行Postgres DB和ChainLink节点的Docker容器。如您想了解关于安装Docker的更多详情，请访问[这一页面](https://docs.docker.com/get-docker/)
+ - 账户中需有一定余额。您可以通过[Metamask](/integrations/wallets/metamask/)创建账户，并通过我们的[水龙头](https://docs.moonbeam.network/getting-started/testnet/faucet/)充值资金
+ - 能够使用Remix IDE，以满足部署预言机合约的需求。如您想了解关于Moonbeam 上的Remix运行环境，请访问[这一页面](/integrations/remix/)
 
-## Node Setup
+## 节点设置
 
-First, let's create a new directory to place all the necessary files. For example:
+首先创建一个新目录，将所有必要文档放入目录内，例如：
 
 ```
 mkdir -p ~/.chainlink-moonbeam //
 cd ~/.chainlink-moonbeam
 ```
 
-Next, lets create a Postgres DB with Docker. To do so, execute the following command (MacOs users may replace `--network host \` with `-p 5432:5432`):
+下一步使用Docker创建Postgres DB。请执行以下命令（MacOs用户请将`--network host \`替换为`-p 5432:5432`）：
 
 ```
 docker run -d --name chainlink_postgres_db \
@@ -69,12 +69,12 @@ docker run -d --name chainlink_postgres_db \
     -t postgres:11
 ```
 
-Make sure to replace `{YOU_PASSWORD_HERE}` with an actual password.
+请确保将`{YOU_PASSWORD_HERE}`替换为真实的密码。
 
-!!! note
-    Reminder, do not store any production passwords in a plaintext file. The examples provided are for demonstration purposes only.
+!!! 注意事项
+    请记住，请勿将真实密码储存在纯文本中。以上示例仅作演示用途。
 
-Docker will proceed to download the necessary images if they are not available. Now, we need to create an environment file for Chainlink in the newly-created directory. This file is read on the creation of the Chainlink container. MacOs users may replace `localhost` with `host.docker.internal`.
+如果镜像失效，Docker将继续下载必要的镜像。下一步，在新创建目录下创建Chainlink环境文档，该文档将在Chainlink容器创建过程中被读取。MacOs用户请将`localhost`替换成`host.docker.internal`。
 
 ```
 echo "ROOT=/chainlink
@@ -91,20 +91,20 @@ DATABASE_URL=postgresql://chainlink:{YOUR_PASSWORD_HERE}@localhost:5432/chainlin
 MINIMUM_CONTRACT_PAYMENT=0" > ~/.chainlink-moonbeam/.env
 ```
 
-Here, besides the password (`{YOUR_PASSWORD_HERE}`), we need to provide the Link token contract (`{LINK TOKEN CONTRACT ADDRESS}`). After we've created the environment file, we also need an `.api` file that stores the user and password used to access the node's API, the node's operator UI,and the Chainlink command line.
+除了密码（`{YOUR_PASSWORD_HERE}`）以外，还需要提供Link代币合约（`{LINK TOKEN CONTRACT ADDRESS}`）。创建环境文档后，还需要`.api`文档来储存用户和密码，用于进入节点API、节点运营用户界面以及Chainlink命令模式。
 
 ```
 echo "{AN_EMAIL_ADDRESS}" >  ~/.chainlink-moonbeam/.api
 echo "{ANOTHER_PASSWORD}"   >> ~/.chainlink-moonbeam/.api
 ```
 
-Set both an email address and another password. Lastly, we need another file that stores the wallet password for the node's address:
+设置一个邮件地址和另一个密码。最后，还需要另一个文档来储存节点地址的钱包密码：
 
 ```
 echo "{THIRD_PASSWORD}" > ~/.chainlink-moonbeam/.password
 ```
 
-Now that we have finished creating all necessary files, we can launch the containers with the following command (MacOs users may replace `--network host \` with `-p 6688:6688`):
+在创建好所有必要文档后，请执行以下命令（MacOs用户请将`--network host \`替换成`-p 6688:6688`）激活容器：
 
 ```
 docker run -d --name chainlink_oracle_node \
@@ -117,7 +117,7 @@ docker run -d --name chainlink_oracle_node \
         -a /chainlink/.api
 ```
 
-To verify everything is running and that the logs are progressing use:
+通过以下命令来验证运行是否正常，以及日志是否持续记录：
 
 ```
 docker ps #Containers Running
@@ -126,21 +126,21 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 ![Docker logs](/images/chainlink/chainlinknode-image1.png)
 
-## Contract Setup
+## 合约设置
 
-With the Oracle node running, let's configure the smart contract side of things.
+预言机节点进入运行后，接着设置智能合约。
 
-First, we need to retrieve the address that the Oracle node will use to send transactions and write data on-chain. To retrieve the address, log into the [ChainLink node's UI](http://localhost:6688/) (located at `http://localhost:6688/`) using the credentials from the `.api` file.
+首先，我们需要获取预言机节点地址，用于发送交易和写入链上数据。请登录[ChainLink节点用户界面](http://localhost:6688/)，使用`.api`文档中的证书来获取地址。如下图所示：
 
 ![Chainlink login](/images/chainlink/chainlinknode-image2.png)
 
-Go to the 'Configuration Page` and copy the node address. Use the [Moonbeam Faucet](https://docs.moonbeam.network/getting-started/testnet/faucet/) to fund it.
+进入“Configuration Page”页面，并复制节点地址。通过[Moonbeam水龙头](https://docs.moonbeam.network/getting-started/testnet/faucet/)注入资金。
 
 ![Chainlink address](/images/chainlink/chainlinknode-image3.png)
 
-Next, we need to deploy the Oracle contract, which is the middleware between the chain and the node. The contract emits an event with all the necessary information, which is read by the Oracle node. Then, the node fulfills the request and writes the requested data in the caller's contract.
+下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。
 
-The source code of the Oracle contract can be found in Chainlink's official GitHub repository [here](https://github.com/smartcontractkit/chainlink/tree/develop/evm-contracts/src/v0.6). For this example, we'll use Remix to interact with Moonbase Alpha and deploy the contract. In Remix, we can copy the following code:
+预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/evm-contracts/src/v0.6)中找到。在本示例中，我们将使用Remix来与Moonbase Alpha交互并部署合约。在Remix环境下，可以复制以下代码：
 
 ```
 pragma solidity ^0.6.6;
@@ -148,32 +148,32 @@ pragma solidity ^0.6.6;
 import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Oracle.sol";
 ```
 
-After compiling the contract, head to the "Deploy and Run Transactions" tab, enter the Link token address and deploy the contract. Once deployed, copy the address of the contract.
+编译好合约后，进入“Deploy and Run Transactions”标签，输入Link代币地址，并部署合约。部署完成后，复制合约地址。
 
 ![Deploy Oracle using Remix](/images/chainlink/chainlinknode-image4.png)
 
-Lastly, we have to bond the Oracle node and the Oracle smart contract. A node can listen to the requests sent to a certain Oracle contract, but only authorized (aka. bonded) nodes can fulfill the request with a result.
+最后，绑定预言机节点和预言机智能合约。节点可以捕获发送到特定预言机合约的请求，但只有被授权（即绑定）的节点才能完成这一任务。
 
-To set this authorization, we can use the function `setFulfillmentPermission()` from the Oracle contract. This needs two parameters:
+使用预言机合约中的`setFulfillmentPermission()`函数进行授权，这一操作需要两个参数：
 
- - The address of the node that we want to bond to the contract (which we did in a previous step)
- - A boolean indicating the status of the bond. In this case, we set it to `true`
+ - 需要绑定到合约的节点地址（即上一步的内容）
+ - 设置绑定状态下的布尔值，在本示例中设置为`true`
 
-We can use the instance of the contract deployed on Remix to do so, and check the Oracle node is authorized with the view function `getAuthorizationStatus()`, passing in the Oracle node address.
+我们可以使用在Remix上部署的合约实例来完成这一操作，并在视图函数`getAuthorizationStatus()`中输入预言机节点地址，检查预言机节点是否获得授权。
 
 ![Authorize Chainlink Oracle Node](/images/chainlink/chainlinknode-image5.png)
 
-## Create Job on the Oracle node
+## 在预言机节点上创建任务
 
-The last step to have a fully configured Chainlink Oracle is to create a Job. Referring to [Chainlink’s official documentation](https://docs.chain.link/docs/job-specifications):
+Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink官方文档](https://docs.chain.link/docs/job-specifications)：
 
-> A Job specifications, or specs, contain the sequential tasks that the node must perform to produce a final result. A spec contains at least one initiator and one task, which are discussed in detail below. Specs are defined using standard JSON so that they are human-readable and can be easily parsed by the Chainlink node.
+> 任务参数包含了一系列任务，节点必须执行这些任务才能获得最终结果。一条参数包含至少一个启动程序和一个任务（此前已详细讨论）。参数使用标准化JSON进行定义，实现人类可读，并能够轻易被Chainlink节点所分析。
 
-Seeing an Oracle as an API service, a Job here would be one of the functions that we can call and that will return a result. To create our first Job, go to the [Jobs sections of your node](http://localhost:6688/jobs) and click on "New Job."
+如果将预言机看作API服务，那么任务就是其中一个函数，我们调用这个函数并获得返回结果。创建第一个任务，请来到节点的[“Jobs”板块](http://localhost:6688/jobs)，并点击“New Job”。
 
 ![Chainlink Oracle New Job](/images/chainlink/chainlinknode-image6.png)
 
-Next, paste the following JSON. This will create a Job that will request the current ETH price in USD. Make sure you enter your Oracle contract address (`YOUR_ORACLE_CONTRACT_ADDRESS`).
+下一步，粘贴以下JSON代码。创建的任务将请求ETH目前的的美金价格。请务必输入您的预言机合约地址（`YOUR_ORACLE_CONTRACT_ADDRESS`）。
 
 ```
 {
@@ -204,12 +204,8 @@ Next, paste the following JSON. This will create a Job that will request the cur
 
 ![Chainlink New Job JSON Blob](/images/chainlink/chainlinknode-image7.png)
 
-And that is it! You have fully set up a Chainlink Oracle node that is running on Moonbase Alpha.
+成功！现在，Chainlink预言机节点已经设置成功，并且该节点已经在Moonbase Alpha上运行。
 
-## Test the Oracle
+## 预言机测试
 
-To verify the Oracle is up and answering requests, follow our [using an Oracle](/integrations/oracles/chainlink/) tutorial. The main idea is to deploy a client contract that requests to the Oracle, and the Oracle writes the requested data into the contract's storage.
-
-## We Want to Hear From You
-
-If you have any feedback regarding implementing Chainlink on your project or any other Moonbeam-related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+要验证预言机的在线状态以及是否能正常完成请求，请参阅[预言机使用教程](/integrations/oracles/chainlink/)进行操作。主要步骤是：部署一个客户合约，向预言机发送请求，并使预言机向客户合约中写入所请求的数据。
