@@ -1,4 +1,4 @@
 title: 开始
 arrange:
- - 本地节点
- - 测试网
+ - local-node
+ - testnet
