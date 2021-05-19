@@ -440,7 +440,7 @@ sudo rm -rf {{ networks.moonbase.node_directory }}/*
 
 ## Telemetry
 
-请按照[本教程](https://docs.moonbeam.network/node-operators/networks/telemetry/)激活Moonbase Alpha节点telemetry服务器。
+请按照[本教程](/node-operators/networks/telemetry/)激活Moonbase Alpha节点telemetry服务器。
 
 运行telemetry对全节点而言并不是必要的，但对收集人而言是必要的。
 

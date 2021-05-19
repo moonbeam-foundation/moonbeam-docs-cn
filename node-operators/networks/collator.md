@@ -19,7 +19,7 @@ Moonbase Alpha v6版本发布后，用户不仅可以创建完整节点。也可
 
 收集人必须满足以下技术要求：
 
- - 必须运行带有验证选项的完整节点。可根据[此教程](https://docs.moonbeam.network/node-operators/networks/full-node/)选择收集人的特定代码段
+ - 必须运行带有验证选项的完整节点。可根据[此教程](/node-operators/networks/full-node/)选择收集人的特定代码段
  - 启动完整节点的telemetry服务器。具体操作步骤请见[此教程](/node-operators/networks/telemetry/)
 
 ## 账户与质押要求
@@ -37,10 +37,10 @@ Moonbase Alpha v6版本发布后，用户不仅可以创建完整节点。也可
 
 目前，创建[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
 
- - 从[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)或[MathWallet](https://docs.moonbeam.network/integrations/wallets/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
- - 使用[PolkadotJS](https://docs.moonbeam.network/integrations/wallets/polkadotjs/)创建新的H160账户/integrations/wallets/polkadotjs/)
+ - 从[MetaMask](/integrations/wallets/metamask/)或[MathWallet](/integrations/wallets/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
+ - 使用[PolkadotJS](/integrations/wallets/polkadotjs/)创建新的H160账户/integrations/wallets/polkadotjs/)
 
-将H160账户导入到PolkadotJS后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署完整节点](https://docs.moonbeam.network/node-operators/networks/full-node/)的收集选项时需要用到它。
+将H160账户导入到PolkadotJS后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署完整节点](/node-operators/networks/full-node/)的收集选项时需要用到它。
 
 ![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
 

@@ -56,4 +56,4 @@ Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/en
 
 在Moonbase Alpha测试网上，代币持有者可以进行质押挖矿并赚取奖励，以测试该系统（系统中的代币没有任何实际价值）。
 
-具体使用方法请查看[此教程](https://docs.moonbeam.network/staking/stake/)。
+具体使用方法请查看[此教程](/staking/stake/)。

@@ -21,8 +21,8 @@ Hardhat是一种以太坊开发环境，帮助开发者管理并实现智能合�
 
 此外，您还需要进行以下操作：
 
- - 安装MetaMask并[连接到Moonbase](https://docs.moonbeam.network/getting-started/testnet/metamask/)
- - 创建账户并充值资金。您可以从[Mission Control](https://docs.moonbeam.network/getting-started/testnet/faucet/)获取相关操作指引
+ - 安装MetaMask并[连接到Moonbase](/getting-started/testnet/metamask/)
+ - 创建账户并充值资金。您可以从[Mission Control](/getting-started/testnet/faucet/)获取相关操作指引
 
 满足所有以上要求后就可以开始使用Hardhat进行开发了。
 
@@ -102,7 +102,7 @@ contract Box {
 
 下面对Hardhat配置文档进行调整，然后编写合约并进行Moonbase Alpha部署。
 
-如果还未创建合约，请先创建MetaMask账户，[连接到Moonbase Alpha](https://docs.moonbeam.network/getting-started/testnet/metamask/)，然后通过[Mission Control](https://docs.moonbeam.network/getting-started/testnet/faucet/)进行充值。我们将使用创建的账户密钥进行合约部署。
+如果还未创建合约，请先创建MetaMask账户，[连接到Moonbase Alpha](/getting-started/testnet/metamask/)，然后通过[Mission Control](/getting-started/testnet/faucet/)进行充值。我们将使用创建的账户密钥进行合约部署。
 
 首先请求[ethers插件](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html)调用[ethers.js][/integrations/ethers/]库，简化区块链交互过程。运行以下代码安装`ethers`插件：
 
@@ -182,7 +182,7 @@ mkdir scripts && cd scripts
 touch deploy.js
 ```
 
-然后使用`ethers`来编写部署脚本。由于我们将用Hardhat来运行脚本，因此不需要导入任何库。该脚本是[此教程](https://docs.moonbeam.network/getting-started/local-node/deploy-contract/#deploying-the-contract)中使用的简化版本。
+然后使用`ethers`来编写部署脚本。由于我们将用Hardhat来运行脚本，因此不需要导入任何库。该脚本是[此教程](/getting-started/local-node/deploy-contract/#deploying-the-contract)中使用的简化版本。
 
 首先，通过`getContractFactory()`方法创建一个合约的本地实例。接着，使用实例中包含的`deploy()`方法发起智能合约。最后，使用`deployed()`等待部署完成。合约部署完毕后，就可以在Box实例中获取合约地址。
 

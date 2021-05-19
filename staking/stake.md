@@ -72,7 +72,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 | 校对器1 |      | {{ networks.moonbase.staking.collators.address1 }} |
 | 校对器2 |      | {{ networks.moonbase.staking.collators.address2 }} |
 
-使用PolkadotJS Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](https://docs.moonbeam.network/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
+使用PolkadotJS Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
 在本示例中，我们导入了一个账户，并命名为“Alice”。
 
@@ -148,7 +148,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 ## 质押挖矿奖励
 
-收集人通过生产区块获得奖励，提名者也会获得奖励。在[此页面](https://docs.moonbeam.network/staking/overview/#reward-distribution)可以大概了解奖励的计算方式。
+收集人通过生产区块获得奖励，提名者也会获得奖励。在[此页面](/staking/overview/#reward-distribution)可以大概了解奖励的计算方式。
 
 总而言之，收集人获得奖励后（奖励包括收集人本身的权益），将根据占该收集人所有提名者总权益的比例对各个提名人进行奖励分成。
 

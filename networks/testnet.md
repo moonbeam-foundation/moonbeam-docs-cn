@@ -39,7 +39,7 @@ Moonbase Alpha具有以下配置：
 
 ??? release v3 "_November 2020_"
     - 将Substrate和以太坊账户统一为H160的形式，我们将这个功能称为[统一账户](https://medium.com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda)。最后，系统内将会只有一种账户并以单一地址来表示
-    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](https://docs.moonbeam.network/integrations/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
+    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](/integrations/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
     - Polkadot JS Apps现在原生支持H160地址以及ECDSA密钥。您可以通过您的以太坊的地址来使用Substrate的功能（当可以使用时），例如staking、balances和governance。您可以在[这里](/integrations/wallets/polkadotjs/)找到更多资讯/integrations/wallets/polkadotjs/)
 
 ??? release v4 "_December 2020_"

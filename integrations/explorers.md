@@ -53,7 +53,7 @@ Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至�
 
 ![Polkadot JS Local Node](/images/explorers/explorers-images-3.png)
 
-如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot JS Apps。您可以在[此网页](https://docs.moonbeam.network/integrations/wallets/polkadotjs/)找到更多资讯。
+如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot JS Apps。您可以在[此网页](/integrations/wallets/polkadotjs/)找到更多资讯。
 
 ![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
 

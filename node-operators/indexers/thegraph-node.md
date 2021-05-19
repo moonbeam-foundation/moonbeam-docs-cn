@@ -26,8 +26,8 @@ Graph节点负责从区块链上获取事件消息，并精准更新数据存储
 
 此外，您还需要有一个已启用`--ethapi=trace`选项且正在运行的节点。当前，有以下两种不同类型的节点供您选择：
 
- - **Moonbeam**开发节点 —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](https://docs.moonbeam.network/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记章节](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha**节点 —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](https://docs.moonbeam.network/node-operators/networks/full-node/)。请务必查看[高级标记章节](/node-operators/networks/full-node/#advanced-flags-and-options)
+ - **Moonbeam**开发节点 —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记章节](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
+ - **Moonbase Alpha**节点 —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](/node-operators/networks/full-node/)。请务必查看[高级标记章节](/node-operators/networks/full-node/#advanced-flags-and-options)
 
 在教程中，我们将用`--ethapi=trace`标记Graph节点，对应Moonbase Alpha完整节点运行。
 

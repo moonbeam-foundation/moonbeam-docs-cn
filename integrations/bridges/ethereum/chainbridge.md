@@ -117,7 +117,7 @@ ERC-20代币需要先通过中继器在处理程序合约上进行注册，才�
 !!! 注意事项
     处理程序合约代表所有者需有足够限额才能进行代币转移。若转移失败，请检查限额。
 
-下面尝试将ERC20S代币从**Moonbase Alpha** 转移到**Kovan**。我们将使用[Remix](https://docs.moonbeam.network/integrations/remix/)完成这一任务。首先，我们可以调用以下合约接口铸造代币：
+下面尝试将ERC20S代币从**Moonbase Alpha** 转移到**Kovan**。我们将使用[Remix](/integrations/remix/)完成这一任务。首先，我们可以调用以下合约接口铸造代币：
 
 ```solidity
 pragma solidity ^0.8.1;
@@ -156,7 +156,7 @@ interface ICustomERC20 {
 2. 从**Environment**下拉列表中选择Injected Web3
 3. 加载自定义ERC-20代币合约地址，然后点击**At Address**
 4. 调用`mintTokens()`函数并进行交易签名
-5. 交易确认后，即可收到5枚ERC20S代币。将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)，即可查看余额
+5. 交易确认后，即可收到5枚ERC20S代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
 
 ![ChainBridge ERC20 mint Tokens](/images/chainbridge/chainbridge-image1.png)
 
@@ -203,7 +203,7 @@ interface IBridge {
 
 ![ChainBridge ERC20 send Tokens](/images/chainbridge/chainbridge-image2.png)
 
-将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
+将代币转入[MetaMask](/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
 ![ChainBridge ERC20 balance](/images/chainbridge/chainbridge-image3.png)
 
@@ -235,7 +235,7 @@ interface IBridge {
 
 简单来说，在这个示例中，我们修改了用于发起交易的桥接合约，提前定义好了_chainID_和_resourceID_。用户只需输入接收地址和代币ID，*calldata*对象将自动生成。
 
-下面尝试将ERC721M代币从**Kovan** 转移到**Moonbase Alpha**。我们将使用[Remix](https://docs.moonbeam.network/integrations/remix/)完成这一任务。首先，我们可以使用以下接口连接到源链ERC721合约，并铸造代币。`tokenOfOwnerByIndex()`也可以用来检查特定地址持有的代币ID，并传递地址信息和索引到报价请求（每个代币ID作为与地址相关的阵列元素进行储存）：
+下面尝试将ERC721M代币从**Kovan** 转移到**Moonbase Alpha**。我们将使用[Remix](/integrations/remix/)完成这一任务。首先，我们可以使用以下接口连接到源链ERC721合约，并铸造代币。`tokenOfOwnerByIndex()`也可以用来检查特定地址持有的代币ID，并传递地址信息和索引到报价请求（每个代币ID作为与地址相关的阵列元素进行储存）：
 
 ```solidity
 pragma solidity ^0.8.1;
@@ -282,7 +282,7 @@ interface ICustomERC721 {
 2. 从**Environment**下拉列表中选择Injected Web3
 3. 加载自定义ERC721M代币合约地址，然后点击**At Address**
 4. 调用`mintTokens()`函数并进行交易签名
-5. 交易确认后，即可收到1枚ERC721M代币。将代币转入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)，即可查看余额
+5. 交易确认后，即可收到1枚ERC721M代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
 
 ![ChainBridge ERC721 mint Tokens](/images/chainbridge/chainbridge-image4.png) 
 
@@ -329,7 +329,7 @@ interface IBridge {
 
 ![ChainBridge ERC721 send Token](/images/chainbridge/chainbridge-image5.png)
 
-将代币加入[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
+将代币加入[MetaMask](/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
 ![ChainBridge ERC721 balance](/images/chainbridge/chainbridge-image6.png)
 

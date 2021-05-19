@@ -23,7 +23,7 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 在Moonbase Alpha上使用The Graph有两种方式：
 
- - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](https://docs.moonbeam.network/node-operators/indexers/thegraph-node/)
+ - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
  - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币
 
 ## 彩票合约

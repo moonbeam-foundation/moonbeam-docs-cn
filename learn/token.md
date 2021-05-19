@@ -30,4 +30,4 @@ description: 和所有的智能合约平台一样，Moonbeam Network也需要发
 
 Moonbeam测试网Moonbase Alpha的代币为DEV。此代币可免费获取，且仅供Moonbase Alpha上的开发和测试使用。
 
-您可在[Faucet 水龙头](https://docs.moonbeam.network/getting-started/testnet/faucet/)免费获取DEV代币。
+您可在[Faucet 水龙头](/getting-started/testnet/faucet/)免费获取DEV代币。

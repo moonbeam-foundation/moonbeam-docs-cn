@@ -28,7 +28,7 @@ npm install --save web3
 ```
 npm ls web3
 ```
-在撰写本教程时，所用版本为1.3.0版本。此外，我们还将使用[Remix](https://docs.moonbeam.network/integrations/remix/)，并通过[MetaMask](https://docs.moonbeam.network/integrations/wallets/metamask/)将其连接到Moonbase Alpha测试网。
+在撰写本教程时，所用版本为1.3.0版本。此外，我们还将使用[Remix](/integrations/remix/)，并通过[MetaMask](/integrations/wallets/metamask/)将其连接到Moonbase Alpha测试网。
 
 ## 使用ECRECOVER进行签名验证
 
@@ -92,7 +92,7 @@ contract ECRECOVER{
 }
 ```
 
-使用[Remix编译器与部署](https://docs.moonbeam.network/getting-started/local-node/using-remix/)并将[MetaMask指向Moonbase Alpha](https://docs.moonbeam.network/getting-started/testnet/metamask/)，即可部署合约，并调用`verify()`方法进行验证。如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，就会返回*true*。
+使用[Remix编译器与部署](/getting-started/local-node/using-remix/)并将[MetaMask指向Moonbase Alpha](/getting-started/testnet/metamask/)，即可部署合约，并调用`verify()`方法进行验证。如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，就会返回*true*。
 
 ## 使用SHA256函数获取哈希值
 
@@ -213,4 +213,4 @@ contract ModularCheck {
 }
 ```
 
-您也可以在[Remix](https://docs.moonbeam.network/integrations/remix/)环境中尝试使用这一合约。调用`verify()`函数，输入基数、指数和除数，结果将储存在函数的`checkResult`变量中。
+您也可以在[Remix](/integrations/remix/)环境中尝试使用这一合约。调用`verify()`函数，输入基数、指数和除数，结果将储存在函数的`checkResult`变量中。
