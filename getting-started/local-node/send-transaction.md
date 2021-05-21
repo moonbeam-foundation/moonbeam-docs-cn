@@ -91,7 +91,7 @@ npm init --yes
 
 ### Web3.js
 
-[脚本](/code-snippets/web3-tx-local/transaction.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到哪个网络。
+[脚本](/code/web3-tx-local/transaction.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到哪个网络。
 
 私钥及其关联的公共地址分别用于交易签名及日志记录。仅需提供私钥即可。
 
@@ -105,7 +105,7 @@ npm init --yes
 
 ### Ethers.js
 
-[脚本](/code-snippets/ethers-tx-local/transaction.js)的第一部分，您可以使用名字、RPC URL（必需）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
+[脚本](/code/ethers-tx-local/transaction.js)的第一部分，您可以使用名字、RPC URL（必需）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
 私钥可用于创建钱包实例，需要上一步内提及的提供者辅助。钱包实例可用于对交易进行签名。
 
@@ -119,7 +119,7 @@ npm init --yes
 
 ### Web3.py
 
-在[脚本](/code-snippets/web3py-tx/transaction.py)的第一部分， `web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`所创建的。您可以通过改变提供者RPC，选择要将交易发送到哪个网络。
+在[脚本](/code/web3py-tx/transaction.py)的第一部分， `web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`所创建的。您可以通过改变提供者RPC，选择要将交易发送到哪个网络。
 
 私钥及其关联的公共地址分别用于交易签名及日志记录。无需提供公共地址。
 
@@ -160,19 +160,19 @@ npm init --yes
 
 ### Web3.js
 
-[此脚本](/code-snippets/web3-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#web3js)非常相似，最大的不同是没有发送交易的需求，此脚本不需要您的私钥。
+[此脚本](/code/web3-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#web3js)非常相似，最大的不同是没有发送交易的需求，此脚本不需要您的私钥。
 
 第二部分中，调用封装了web3方法的异步函数`web3.eth.getBalance(address)`来获取地址余额。同时，您可以使用`web3.utils.fromWei()`函数将余额转换成更容易识别ETH数量的计量单位。
 
 ### Ethers.js
 
-[此脚本](/code-snippets/ethers-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#ethersjs)非常相似，最大的不同是无需私钥传送交易需求。但是，您仅需要定义`addressFrom`。
+[此脚本](/code/ethers-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#ethersjs)非常相似，最大的不同是无需私钥传送交易需求。但是，您仅需要定义`addressFrom`。
 
 在第二部分中，通过调用封装了提供者方法的异步函数`provider.getBalance(address)`获取地址余额。同时，您也可以使用`ethers.utils.formatEther()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ### Web3.py
 
-[此脚本](/code-snippets/web3py-tx/balances.py)的第一个部分与[交易文件](/getting-started/local-node/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
+[此脚本](/code/web3py-tx/balances.py)的第一个部分与[交易文件](/getting-started/local-node/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
 
 第二部分中，调用`web3.eth.getBalance(address)`来获取接收地址的余额。同时，您也可以使用`eb3.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
