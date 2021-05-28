@@ -1,33 +1,33 @@
 ---
-title: Overview
-description:  Learn how to use OpenZeppelin products on Moonbeam thanks to its Ethereum compatibility features
+title: 概览
+description:  通过此教程学习如何利用Moonbeam以太坊兼容性功能使用OpenZeppelin产品。
 ---
 
 # OpenZeppelin
 
 ![OpenZeppelin Banner](/images/openzeppelin/openzeppelin-banner.png)
 
-## Introduction
+## 概览
 
-OpenZeppelin is well known in the Ethereum developer community as their set of audited smart contracts and libraries are a standard in the industry. For example, most of the tutorials that show developers how to deploy an ERC20 token use OpenZeppelin contracts.
+OpenZeppelin在以太坊开发者社群中极为出名，因其经过审核的智能合约和库代表着产业标准。举例而言，几乎所有关于开发者如何部署ERC20代币的教程都是使用OpenZeppelin合约作为范例。
 
-You can find more information about OpenZeppelin in their [website](https://openzeppelin.com/) or [documentation site](https://docs.openzeppelin.com/openzeppelin/).
+您可以在OppenZeppelin的[官网](https://openzeppelin.com/)和[官方文档网站](https://docs.openzeppelin.com/openzeppelin/)获得更多资讯。
 
-As part of its Ethereum compatibility features, OpenZeppelin products can be seamlessly used on Moonbeam. This page will provide information on different OpenZeppelin solutions that you can test.
+因为同样具有以太坊兼容性的特色，OpenZeppelin的产品可以无缝在Moonbeam使用。本页面将会提供不同OpenZeppelin解决方案的相关资讯供您测试。
 
-## OpenZeppelin on Moonbeam
+## 在Moonbeam上使用OpenZeppelin
 
-Currently, the following OpenZeppelin products/solutions work on the different networks available on Moonbeam:
+截至目前，以下适用于不同网络的OpenZeppelin产品/解决方案可在Moonbeam上运行：
 
-|      **Product**      |     |**Moonbeam Dev Node**|     |**Moonbase Alpha**|
+|      **产品**      |     |**Moonbeam开发节点**|     |**Moonbase Alpha**|
 | :-------------------: | :-: | :-----------------: | :-: | :--------------: |
-| Contracts & Libraries |     |          ✓          |     |         ✓       |
+| 合约&库 |     |          ✓          |     |         ✓       |
 |    Contract Wizard    |     |          ✓          |     |         ✓       |
 |       Defender        |     |          X          |     |         ✓       |
 
-You will find a corresponding tutorial for each product in the following links:
+您可以在以下的连接找到每个产品相应的教程：
 
- - [**Contract Wizard**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) — where you'll find a guide on how to use OpenZeppelin web-based wizard to create different token contracts with different functionalities
- - [**Contracts & Libraries**](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam) — where you'll find tutorials to deploy the most common token contracts using OpenZeppelin's templates: ERC20, ERC721 and ERC1155
- - [**Defender**](/integrations/openzeppelin/defender/) — where you'll find a guide on how to use OpenZeppelin Defender to manage your smart contracts in the Moonbase Alpha TestNet
+ - [**Contract Wizard**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) —— 关于如何利用OpenZeppelin网页版教程构建不同功能的智能合约。
+ - **[合约&库](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam)** —— 关于如何使用OpenZeppelin的模版部署常见的代币合约，如ERC20、ERC721和ERC1155
+ - [**Defender**](/integrations/openzeppelin/defender/) —— 关于如何利用OpenZeppelin Defender管理您在Moonbase Alpha测试网上的智能合约。
 

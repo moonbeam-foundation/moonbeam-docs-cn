@@ -1,76 +1,76 @@
 ---
-title: Contracts & Libraries
-description:  Learn how to create common OpenZeppelin contracts with their Contracts Wizard easily and how to deploy them on Moonbeam thanks to its Ethereum compatibility features
+title: 合约&库
+description:  通过此教程学习如何使用OpenZeppelin的智能合约交互式工具“Contracts Wizard”轻松创建常见的OpenZeppelin合约，以及如何利用Moonbeam以太坊兼容性功能将OpenZeppelin合约部署至Moonbeam。
 ---
 
-# OpenZeppelin Contracts & Libraries
+# OpenZeppelin合约&库
 
 ![OpenZeppelin Contracts Banner](/images/openzeppelin/ozcontracts-banner.png)
 
-## Introduction
+## 概览
 
-OpenZeppelin contracts and libraries have become a standard in the industry. They help developers minimize risk, as their open-source code templates are battle-tested for Ethereum and other blockchains. Their code includes the most used implementations of ERC standards and add-ons and often appears in guides and tutorials around the community.
+OpenZeppelin合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 
 
-Because Moonbeam is fully Ethereum compatible, all of OpenZeppelin's contracts and libraries can be implemented without any changes.
+由于Moonbeam是完全兼容以太坊的区块链，OpenZeppelin所有合约和库都无需经过任何修改就能在Moonbeam上部署。
 
-This guide is divided into two sections. The first part describes the OpenZeppelin Contracts Wizard, a great online tool to help you create smart contracts using OpenZeppelin code. The second section provides a step-by-step guide on how you can deploy these contracts on Moonbeam.
+本教程分为两部分，第一部分介绍使用OpenZeppelin代码创建智能合约的线上工具OpenZeppelin Contracts Wizard；第二部分则为Moonbeam上的合约部署提供步骤指引。
 
 ## OpenZeppelin Contract Wizard
 
-OpenZeppelin has developed an online web-based interactive contract generator tool that is probably the easiest and fastest way to write your smart contract using OpenZeppelin code. The tool is called Contracts Wizard, and you can find it on their [documentation site](https://docs.openzeppelin.com/contracts/4.x/wizard).
+OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为Contracts Wizard，可以在[OpenZeppelin文档页面](https://docs.openzeppelin.com/contracts/4.x/wizard)找到。
 
-Currently, the Contracts Wizard support the following ERC standards:
+目前Contracts Wizard支持以下ERC标准：
 
- - [**ERC20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) — a fungible token standard that follows [EIP-20](https://eips.ethereum.org/EIPS/eip-20). Fungible means that all tokens are equivalent and interchangeable that is, of equal value. One typical example of fungible tokens is fiat currencies, where each equal-denomination bill has the same value.
- - [**ERC721**](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) — a non-fungible token contract that follows [EIP-721](https://eips.ethereum.org/EIPS/eip-721). Non-fungible means that each token is different, and therefore, unique. An ERC721 token can represent ownership of that unique item, whether it is a collectible item in a game, real state, and so on. 
- - [**ERC1155**](https://docs.openzeppelin.com/contracts/4.x/erc1155) — also known as the multi-token contract, because it can represent both fungible and non-fungible tokens in a single smart contract. It follows [EIP-1155](https://eips.ethereum.org/EIPS/eip-1155)
+ - [**ERC20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) —— 遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20)的同质化代币标准。同质化指的是所有代币均相同，并可互换，也就是说它们具有相同的价值。同质化代币的一个典型例子就是法币，面值相等的纸币其价值相等。
+ - [**ERC721**](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) —— 遵守[EIP-721](https://eips.ethereum.org/EIPS/eip-721)的非同质化代币合约。非同质化指的是每一枚代币都不一样，因此独一无二。ERC721代币可以用于代表某一特定物品的所有权，例如游戏、房地产中的收藏品等。
+ - [**ERC1155**](https://docs.openzeppelin.com/contracts/4.x/erc1155) —— 遵守[EIP-1155](https://eips.ethereum.org/EIPS/eip-1155)标准，也被称为多代币合约，因为同一个智能合约可以同时代表同质化和非同质化代币。
 
-The wizard is comprised of the following sections:
+Contracts Wizard由以下环节组成：
 
- 1. **Token standard selection** — shows all the different standards supported by the wizard
- 2. **Settings** — provides the baseline settings for each token standard, such as token name, symbol, pre-mint (token supply when the contract is deployed), and URI (for non-fungible tokens)
- 3. **Features** — list of all features available for each token standard. You can find more information about the different features in the following links:
+ 1. **代币标准选择** —— 显示Contracts Wizard所支持的所有标准
+ 2. **设置** —— 为每一种代币标准提供基准线设置，例如代币名称、代码、预铸造（合约部署时的代币供应量）以及URI（非同质化代币）
+ 3. **功能** —— 显示每一种代币标准的所有功能列表。可以再通过以下链接获取各功能的更多信息：
      - [ERC20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20)
      - [ERC721](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
      - [ERC1155](https://docs.openzeppelin.com/contracts/4.x/api/token/erc1155)
- 4. **Access Control** — list of all the available [access control mechanisms](https://docs.openzeppelin.com/contracts/4.x/access-control) for each token standard
- 5. **Interactive code display** — shows the smart contract code with the configuration as set by the user
+ 4. **访问控制** —— 每种代币标准所有可用的[访问控制机制](https://docs.openzeppelin.com/contracts/4.x/access-control)列表
+ 5. **交互代码显示** —— 显示用户设置下的智能合约代码
 
 ![OpenZeppelin Contracts Wizard](/images/openzeppelin/ozwizard-images1.png)
 
-Once you have set up your contract with all the settings and features, it is just as easy as copying and pasting the code into your contract file.
+完成设置和功能准备后，只需要复制粘贴代码到合约文件即可。
 
-## Deploying OpenZeppelin Contracts on Moonbeam
+## 在Moonbeam上部署OpenZeppelin合约
 
-This section goes through the steps for deploying OpenZeppelin contracts on Moonbeam. It covers the following contracts:
+本小节将介绍在Moonbeam上部署OpenZeppelin合约的步骤，适用于以下合约：
 
- - ERC20 (fungible tokens)
- - ERC721 (non-fungible tokens)
- - ERC1155 (multi-token standard)
+ - ERC20（同质化代币）
+ - ERC721（非同质化代币）
+ - ERC1155（多代币标准）
 
-All the code of the contracts was obtained using OpenZeppelin [Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard).
- 
-### Checking Prerequisites
+所有合约代码均通过OpenZeppelin的[Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard)获取。
 
-The steps described in this section assume you have [MetaMask](https://metamask.io/) installed and connected to the Moonbase Alpha TestNet. Contract deployment is done using the [Remix IDE](https://remix.ethereum.org/) via the "Injected Web3" environment. You can find corresponding tutorials in the following links:
+### 检查先决条件
 
- - [Interacting with Moonbeam using MetaMask](/integrations/wallets/metamask/)
- - [Interacting with Moonbeam using Remix](/integrations/remix/)
+请确保安装[MetaMask](https://metamask.io/)，并已连接至Moonbase Alpha测试网。我们将在"Injected Web3"环境下使用[Remix IDE](https://remix.ethereum.org/)进行合约部署。相关指引请点击以下链接：
 
-### Deploying an ERC20 Token
+ - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/)
+ - [使用Remix与Moonbeam进行交互](/integrations/remix/)
 
-For this example, an ERC20 token will be deployed to Moonbase Alpha. The final code used combines different contracts from OpenZeppelin:
+### 部署ERC20代币
 
- - **ERC20.sol** — ERC20 token implementation with the optional features from the base interface. Includes the supply mechanism with a `mint` function but needs to be explicitly called from within the main contract
- - **Ownable.sol** — extension to restrict access to certain functions
+在本示例中，我们将在Moonbase Alpha上部署一枚ERC20代币，最终使用的代码结合了OpenZeppelin中的不同合约：
 
-The mintable ERC20 OpenZeppelin token contract provides a `mint` function that the owner of the contract can only call. By default, the owner is the contract's deployer address. There is also a premint of `1000` tokens sent to the contract's deployer configured in the `constructor` function.
+ - **ERC20.sol** —— 通过基础界面的可选功能进行ERC20代币部署。包括带有`mint`函数的供应机制，但仅能从主合约中调用
+ - **Ownable.sol** —— 拓展组件，能够限制对某种特定函数的调用
 
-The first step is to go to [Remix](https://remix.ethereum.org/) and take the following steps:
+可铸造的ERC20 OpenZeppelin代币合约有一个`mint`函数，合约持有者仅可以调用这一函数。默认设置下，合约所有者即为合约的部署者地址。此外，还会有预先铸造的`1000`枚代币被发送到在`constructor`函数中设置的合约部署者地址。
 
- 1. Click on the "Create New File" icon and set a file name. For this example, it was set to `ERC20.sol`
- 2. Make sure the file was created successfully. Click on the file to open it up in the text editor
- 3. Write your smart contract using the file editor. For this example, the following code was used:
+首先，我们需要进入[Remix](https://remix.ethereum.org/) ，并进行以下操作：
+
+ 1. 点击“Create New File（新建文档）”图标，并设置文档名称。在本示例中设置为`ERC20.sol`
+ 2. 确保文档已创建成功。点击文档，利用文本编辑器打开文档
+ 3. 使用文档编辑器编写智能合约。在本示例中，我们使用了以下代码：
 
 ```sol
 pragma solidity ^0.8.0;
@@ -89,44 +89,44 @@ contract MyToken is ERC20, Ownable {
 }
 ```
 
-This ERC20 token smart contract was extracted from the [Contract Wizard](#openzeppelin-contract-wizard), setting a premint of `1000` tokens and activating the `Mintable` feature.
+我们从[Contract Wizard](https://docs.moonbeam.network/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC20代币智能合约，并设置预先铸造1000枚代币，激活`Mintable`功能。
 
 ![Getting Started with Remix](/images/openzeppelin/ozcontracts-images1.png)
 
-Once your smart contract is written, you can compile it by taking the following steps:
+写好智能合约后，就可以根据以下步骤进行编译：
 
- 1. Head to the "Solidity Compiler`
- 2. Click on the compile button
- 3. Alternatively, you can check the "Auto compile" feature
+ 1. 进入“Solidity Compiler（Solidity 编译器）”
+ 2. 点击“compile（编译）”按钮
+ 3. 您还可以尝试使用“Auto compile（自动编译）”功能
 
 ![Compile ERC20 Contract with Remix](/images/openzeppelin/ozcontracts-images2.png)
 
-With the contract compiled, you are ready to deploy it taking the following steps: 
+合约编译完成后，就可以通过以下步骤进行部署：
 
- 1. Head to the "Deploy & Run Transactions" tab
- 2. Change the environment to "Injected Web3". This will use MetaMask's injected provider. Consequently, the contract will be deployed to whatever network MetaMask is connected to. MetaMask might show a pop-up outlining that Remix is trying to connect to your wallet
- 3. Select the proper contract to deploy. In this example, it is the `MyToken` contract inside the `ERC20.sol` file
- 4. If everything is ready, click on the "Deploy" button. Review the transaction information in MetaMask and confirm it
- 5. After a few seconds, the transaction should get confirmed, and you should see your contract under "Deployed Contracts"
+ 1. 进入“Deploy & Run Transactions（部署与运行交易）”标签
+ 2. 使用MetaMask的注入提供者将环境改为"Injected Web3"。此后，合约将被部署到MetaMask所连接到的网络中。MetaMask可能会出现弹窗，显示Remix正在尝试连接到您的钱包
+ 3. 选择需要部署的合约。在本示例中为`ERC20.sol`文档中的`MyToken`合约
+ 4. 一切就绪后，点击“Deploy（部署）”按钮。在MetaMask中检查交易信息并进行确认
+ 5. 几秒钟后，交易便可确认完成。然后可以在“Deployed Contracts（已部署合约）”中看到您的合约
 
 ![Deploy ERC20 Contract with Remix](/images/openzeppelin/ozcontracts-images3.png)
 
-And that is it! You've deployed an ERC20 token contract using OpenZeppelin's contracts and libraries. Next, you can interact with your token contract via Remix, or add it to MetaMask.
+至此，我们已经使用OpenZeppelin合约和库完成了ERC20代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
-### Deploying an ERC721 Token
+### 部署ERC721代币
 
-For this example, an ERC721 token will be deployed to Moonbase Alpha. The final code used combines different contracts from OpenZeppelin:
+在本示例中，我们将向Moonbase Alpha部署一枚ERC721代币。最终我们所使用的代码结合了从OpenZeppelin中抽取的不同合约：
 
- - **ERC721** — ERC721 token implementation with the optional features from the base interface. Includes the supply mechanism with a `_mint` function but needs to be explicitly called from within the main contract
- - **Burnable** — extension to allow tokens to be destroyed by their owners (or approved addresses)
- - **Enumerable** — extension to allow on-chain enumeration of tokens
- - **Ownable.sol** — extension to restrict access to certain functions
+ - **ERC721** —— 通过基础界面的可选功能进行ERC721代币部署。包括带有`_mint`函数的供应机制，但仅能从主合约中调用
+ - **Burnable** —— 拓展组件，使得代币所有者（或授权地址）可以对代币进行销毁
+ - **Enumerable** —— 拓展组件，可实现代币的链上枚举
+ - **Ownable.sol** —— 拓展组件，能够限制对某种特定函数的调用
 
-The mintable ERC721 OpenZeppelin token contract provides a `mint` function that can only be called by the owner of the contract. By default, the owner is the contract's deployer address.
+可铸造的ERC721 OpenZeppelin代币合约有一个`mint`函数，只有合约持有者可以调用这一函数。默认设置下，合约所有者即为合约的部署者地址。
 
-As with the [ERC20 contract](#deploying-an-erc20-token), the first step is to go to [Remix](https://remix.ethereum.org/) and create a new file. For this example, the file name will be `ERC721.sol`.
+和[ERC20合约](https://docs.moonbeam.network/integrations/openzeppelin/contracts/#deploying-an-erc20-token)的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/)并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
 
-Next, you'll need to write the smart contract and compile it. For this example, the following code is used:
+下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
 ```sol
 pragma solidity ^0.8.0;
@@ -165,32 +165,32 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 }
 ```
 
-This ERC721 token smart contract was extracted from the [Contract Wizard](#openzeppelin-contract-wizard), setting the `Base URI` as `Test` and activating the `Mintable`, `Burnable`, and `Enumerable` features.
+我们从[Contract Wizard](https://docs.moonbeam.network/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC721代币智能合约，将`Base URI`设为`Test`，并激活`Mintable`、`Burnable`以及`Enumerable`功能。
 
-With the contract compiled, head to the "Deploy & Run Transactions" tab. In here, you need to:
+合约编译完成后，进入“Deploy & Run Transactions（部署与运行交易）”标签。在这里，您需要：
 
- 1. Change the environment to "Injected Web3". This will use MetaMask's injected provider. Consequently, the contract will be deployed to whatever network MetaMask is connected to. MetaMask might show a pop-up outlining that Remix is trying to connect to your wallet
- 2. Select the proper contract to deploy. In this example, it is the `MyToken` contract inside the `ERC721.sol` file
- 3. If everything is ready, click on the "Deploy" button. Review the transaction information in MetaMask and confirm it
- 4. After a few seconds, the transaction should get confirmed, and you should see your contract under "Deployed Contracts"
+ 1. 使用MetaMask的注入提供者将环境改为"Injected Web3"。此后，合约将被部署到MetaMask所连接到的网络中。MetaMask可能会出现弹窗，显示Remix正在尝试连接到您的钱包
+ 2. 选择需要部署的合约。在本示例中为`ERC721.sol`文档中的`MyToken`合约
+ 3. 一切就绪后，点击“部署”按钮。在MetaMask中检查交易信息并进行确认
+ 4. 几秒钟后，交易便可确认完成。然后可以在“已部署合约”中看到您的合约
 
 ![Deploy ERC721 Contract with Remix](/images/openzeppelin/ozcontracts-images4.png)
 
-And that is it! You've deployed an ERC721 token contract using OpenZeppelin's contracts and libraries. Next, you can interact with your token contract via Remix, or add it to MetaMask.
+至此，我们已经使用OpenZeppelin合约和库完成了ERC721代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
-### Deploying an ERC1155 Token
+### 部署ERC1155代币
 
-For this example, an ERC1155 token will be deployed to Moonbase Alpha. The final code used combines different contracts from OpenZeppelin:
+在本示例中，我们将向Moonbase Alpha部署一枚ERC1155代币。最终我们所使用的代码结合了从OpenZeppelin中抽取的不同合约：
 
- - **ERC1155** — ERC1155 token implementation with the optional features from the base interface. Includes the supply mechanism with a `_mint` function but needs to be explicitly called from within the main contract
- - **Pausable** — extension to allows pausing tokens transfer, mintings and burnings
- - **Ownable.sol** — extension to restrict access to certain functions
+ - **ERC1155** —— 通过基础界面的可选功能进行ERC1155代币部署。包括带有`_mint`函数的供应机制，但仅能从主合约中调用
+ - **Pausable** —— 拓展组件，能够暂停代币转移、铸造及销毁
+ - **Ownable.sol** —— 拓展组件，能够限制对某些特定函数的调用
 
-OpenZeppelin's ERC1155 token contract provides a `_mint` function that can only be called in the `constructor` function. Therefore, this example creates 1000 tokens with an ID of `0`, and 1 unique token with an ID of `1`.
+OpenZeppelin的ERC1155代币合约提供只能在`constructor`函数中调用的`_mint`函数。因此在本示例中，我们将创建1000枚ID为`0`的代币以及一枚ID为`1`的独特代币。
 
-The first step is to go to [Remix](https://remix.ethereum.org/) and create a new file. For this example, the file name will be `ERC1155.sol`.
+第一步是进入[Remix](https://remix.ethereum.org/) 并创建新文档。在本示例中，文档命名为`ERC1155.sol`。
 
-As shown for the [ERC20 token](#deploying-an-erc20-token), you'll need to write the smart contract and compile it. For this example, the following code is used:
+和[ERC20](https://docs.moonbeam.network/integrations/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
 ```sol
 pragma solidity ^0.8.0;
@@ -227,15 +227,15 @@ contract MyToken is ERC1155, Ownable, Pausable {
 }
 ```
 
-This ERC1155 token smart contract was extracted from the [Contract Wizard](#openzeppelin-contract-wizard), setting no `Base URI` and activating `Pausable` feature. The constructor function was modified to include the minting of both a fungible and a non-fungible token.
+我们从[Contract Wizard](https://docs.moonbeam.network/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC1155代币智能合约，设置为无`Base URI`，并激活`Pausable`功能。我们对constructor函数进行了修改，可同时铸造同质化和非同质化代币。
 
-With the contract compiled, head to the "Deploy & Run Transactions" tab. In here, you need to:
+合约编译完成后，进入“Deploy & Run Transactions（部署与运行交易）”标签。在这里，您需要：
 
- 1. Change the environment to "Injected Web3". This will use MetaMask's injected provider. Consequently, the contract will be deployed to whatever network MetaMask is connected to. MetaMask might show a pop-up outlining that Remix is trying to connect to your wallet
- 2. Select the proper contract to deploy. In this example, it is the `MyToken` contract inside the `ERC1155.sol` file
- 3. If everything is ready, click on the "Deploy" button. Review the transaction information in MetaMask and confirm it
- 4. After a few seconds, the transaction should get confirmed, and you should see your contract under "Deployed Contracts"
+ 1. 使用MetaMask的注入提供者将环境改为"Injected Web3"。此后，合约将被部署到MetaMask所连接到的网络中。MetaMask可能会出现弹窗，显示Remix正在尝试连接到您的钱包
+ 2. 选择需要部署的合约。在本示例中为`ERC1155.sol`文档中的`MyToken`合约
+ 3. 一切就绪后，点击“Deploy（部署）”按钮。在MetaMask中检查交易信息并进行确认
+ 4. 几秒钟后，交易便可确认完成。然后可以在“Deployed Contracts（已部署合约）”中看到您的合约
 
 ![Deploy ERC1155 Contract with Remix](/images/openzeppelin/ozcontracts-images5.png)
 
-And that is it! You've deployed an ERC1155 token contract using OpenZeppelin's contracts and libraries. Next, you can interact with your token contract via Remix.
+至此，我们已经使用OpenZeppelin合约和库完成了ERC1155代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互。

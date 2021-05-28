@@ -55,12 +55,12 @@ Moonbase Alpha v6版本发布后，用户可以启动一个节点。该节点不
 
 ### 嵌入式中继链默认端口
 
-|  Description   |     |                 Port                  |
-| :------------: | :-: | :-----------------------------------: |
-|    **P2P**     |     | {{ networks.relay_chain.p2p }} (TCP)  |
-|    **RPC**     |     |    {{ networks.relay_chain.rpc }}     |
-|     **WS**     |     |     {{ networks.relay_chain.ws }}     |
-| **Prometheus** |     | {{ networks.relay_chain.prometheus }} |
+|      描述      |      |                 Port                  |
+| :------------: | :--: | :-----------------------------------: |
+|    **P2P**     |      | {{ networks.relay_chain.p2p }} (TCP)  |
+|    **RPC**     |      |    {{ networks.relay_chain.rpc }}     |
+|     **WS**     |      |     {{ networks.relay_chain.ws }}     |
+| **Prometheus** |      | {{ networks.relay_chain.prometheus }} |
 
 ## Docker安装指引
 
