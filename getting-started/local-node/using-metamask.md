@@ -78,6 +78,6 @@ Moonbase Alpha测试网：
 
 ![Moonbeam Development Node](/images/metamask/using-metamask-9.png)
 
-!!! note
+!!! 注意事项
     如果您最终使用Substrate purge-chain命令重置独立节点，您需要通过设置 -> 高级 -> 重设账户这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。
 

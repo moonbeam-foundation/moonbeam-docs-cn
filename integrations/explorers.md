@@ -12,7 +12,7 @@ description: 目前在Moonbeam测试网上支持导航Substrate和以太坊层�
 
 Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，另一个为查询Substrate API。
 
-!!! note
+!!! 注意事项
     如果您使用的是Brave Browser，但您并没有连接至您导向的Moonbeam Instance，请尝试将Brave Shield关闭。
 
 ## 以太坊API
