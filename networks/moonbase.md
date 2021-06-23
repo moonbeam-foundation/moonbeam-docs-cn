@@ -8,7 +8,7 @@ description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及
 更新于2021年5月27日
 
 !!! 注意事项 
-​    随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
+    随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)版本的发    布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的    话，这对您来说可能是突破性的变化。
 
 ## 目标
 
