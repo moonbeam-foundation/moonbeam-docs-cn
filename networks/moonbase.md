@@ -8,7 +8,6 @@ description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及
 更新于2021年5月27日
 
 !!! 注意事项 
-
 ​    随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
 
 ## 目标
@@ -33,98 +32,61 @@ Moonbase Alpha具有以下配置：
 以下为本系统的特色：
 
 ??? release v1 "_2020年9月_" 
-
-- Substrate中完全模拟以太坊区块的生产（以太坊pallet）
-
-- 通过可分派功能与Rust EVM实现交互（[EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/))
-
-- 在Substrate（[Frontier](https://github.com/paritytech/frontier)）中由以太坊RPC原生支持（Web3)。此功能提供了与以太坊开发者工具之间的兼容性，包括MetaMask、Remix和Truffle Substrate
+    - Substrate中完全模拟以太坊区块的生产（以太坊pallet）
+    - 通过可分派功能与Rust EVM实现交互（[EVM pallet](https://docs.rs/pallet-evm/2.0.1/    pallet_evm/))
+    - 在Substrate（[Frontier](https://github.com/paritytech/frontier)）中由以太坊RPC原生支持（Web3)。此功能提供了与以太坊开发者工具之间的兼容性，包括MetaMask、Remix和Truffle Substrate
 
 
 ??? release v2 "_2020年10月_"
-
-   - 支持活动订阅功能（pub/sub），这是Web3 RPC端缺少的组件，但经常被DApp开发人员使用。您可以在[这里](/integrations/pubsub/)找到如何订阅活动的教程。
-
-   - 支持以下的预编合约：[ecrecover](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-01-ecrecover-hash-v-r-s)、[sha256](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-02-sha-256-data)、[ripemd160](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-03-ripemd-160-data)和[身份函数](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data)（或datacopy)。
+    - 支持活动订阅功能（pub/sub），这是Web3 RPC端缺少的组件，但经常被DApp开发人员使用。您可以    [这里](/integrations/pubsub/)找到如何订阅活动的教程。
+    - 支持以下的预编合约：[ecrecover](https://docs.klaytn.com/smart-contract    precompiled-contracts#address-0x-01-ecrecover-hash-v-r-s)、[sha256](https://docs    klaytn.com/smart-contract/precompiled-contracts#address-0x-02-sha-256-data)    [ripemd160](https://docs.klaytn.com/smart-contract    precompiled-contracts#address-0x-03-ripemd-160-data)和[身份函数](https://docs.klaytn    com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data)（或datacopy)。
 
 
 ??? release v3 "_2020年11月_" 
-
-   - 将Substrate和以太坊账户统一为H160的形式，我们将这个功能称为[统一账户](https://medium.com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda)。最后，系统内将会只有一种账户并以单一地址来表示
-
-   - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](/integrations/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
-
-   - Polkadot JS Apps现在原生支持H160地址以及ECDSA密钥。您可以通过您的以太坊地址来使用Substrate的功能（当可以使用时），例如staking、balances和governance。您可以在[这里](/integrations/wallets/polkadotjs/)找到更多资讯
+    - 将Substrate和以太坊账户统一为H160的形式，我们将这个功能称为[统一账户](https://medium    com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda)。    后，系统内将会只有一种账户并以单一地址来表示
+    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](/integrations    pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
+    - Polkadot JS Apps现在原生支持H160地址以及ECDSA密钥。您可以通过您的以太坊地址来使    Substrate的功能（当可以使用时），例如staking、balances和governance。您可以在[这里](    integrations/wallets/polkadotjs/)找到更多资讯
 
 
 ??? release v4 "_2020年12月_"
-
-        将波卡（Polkadot）平行链协议升级至最新版本（[Parachains V1](https://w3f.github.io/parachain-implementers-guide/)），并修补数项问题，包含节点同步，为多个收集人能够在同一个平行链上同步做好准备
-        
-        - 在兼容以太坊的特点上做了几点改进：
-        
+    - 将波卡（Polkadot）平行链协议升级至最新版本（[Parachains V1](https://w3f.github.    parachain-implementers-guide/)），并修补数项问题，包含节点同步，为多个收集人能够    个平行链上同步做好准备
+    - 在兼容以太坊的特点上做了几点改进：
         * 活动订阅ID现在变回以太坊式订阅ID
-        
         * 修复了特定例案的Gas估算问题
-        
         * 添加支持还原原因消息的功能
-        
-        * 支持不需使用ChainId的以太坊交易
+        * 支持不需使用ChainId的以太坊
 
 ??? release v5 "_2021年1月_"
-
-- 添加[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)的定制版本（仅限于测试以及开发用途）
-
-- 支持查询池中仍在排队待确认交易的功能
-
-- 修复检索过去活动时所出现的问题，以及部分修复关于智能合约的问题
-
-- 进行许多本质上的改进，包含EVM执行时间的优化，使其执行速度快上15至50倍
-
-- 支持[modexp](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod)预编合约
+    - 添加[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)的定制版本（仅    限于测试以及开发用途）
+    - 支持查询池中仍在排队待确认交易的功能
+    - 修复检索过去活动时所出现的问题，以及部分修复关于智能合约的问题
+    - 进行许多本质上的改进，包含EVM执行时间的优化，使其执行速度快上15至50倍
+    - 支持[modexp](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod)预编合约
 
 
 ??? release v6 "_2021年2月_"
-
-- 公开发布定制的[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)，拥有代币的用户可以提名收集人并获得奖励
-
-- 增加[Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/democracy)，拥有代币的用户可以[上传提案](/governance/proposals/)并且[投票](/governance/voting/)
-
-- 将[Frontier RPC](https://github.com/paritytech/frontier)更新至最新版本，提高EVM至少五倍的执行效率
-
-- Gas的使用限制提高至一个区块15M以及每一个交易13M的限制
-
+    - 公开发布定制的[Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking)，拥    有代币的用户可以提名收集人并获得奖励
+    - 增加[Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/    democracy)，拥有代币的用户可以[上传提案](/governance/proposals/)并且[投票](/governance/    voting/)
+    - 将[Frontier RPC](https://github.com/paritytech/frontier)更新至最新版本，提高EVM至少五倍的    执行效率
+    - Gas的使用限制提高至一个区块15M以及每一个交易13M的限制
 
 ??? release v7 "_2021年4月_"
-
-- 添加对以太坊调试/跟踪模块的支持。这些功能在默认情况下处于关闭状态，需要启动一个完整节点并打开该功能才可使用
-
-- 修复区块传播问题，不再仅限于收集人，从而提高网络稳定性
-
-- 增加理事会和技术委员会，扩展治理功能
-
-- 重构质押模块，使用新名称来改善终端用户体验
-
-- 添了三个新的预编译：[Bn128Add](https://eips.ethereum.org/EIPS/eip-196)、[Bn128Mul](https://eips.ethereum.org/EIPS/eip-196)和[Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
+    - 添加对以太坊调试/跟踪模块的支持。这些功能在默认情况下处于关闭状态，需要启动一个完整节点并打开该    功能才可使用
+    - 修复区块传播问题，不再仅限于收集人，从而提高网络稳定性
+    - 增加理事会和技术委员会，扩展治理功能
+    - 重构质押模块，使用新名称来改善终端用户体验
+    - 添了三个新的预编译：[Bn128Add](https://eips.ethereum.org/EIPS/eip-196)、[Bn128Mul](https://eips.ethereum.org/EIPS/eip-196)和[Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
 
 
 ??? release v8 "_2021年5月_" 
-
-- 增加[财政库pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_treasury/index.html)，为Moonbase Alpha新增财政库功能。两个财政库已被加入至网络当中，一个财政库将会获得 20% 的交易费并由民众和议会治理。另一个财政库将会获得 30% 的区块奖励，并负责收集资金为未来的平行链插槽做准备。
-
-- 增加[代理pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_proxy/index.html)，可在Moonbase Alpha上使用[代理账户](https://wiki.polkadot.network/docs/en/learn-proxies)https://wiki.polkadot.network/docs/en/learn-proxies)
-
-- 引入新的共识机制Nimbus。Nimbus通过提供不同的过滤器，随机选择活跃收集人池的一部分来进行下一个区块生产。此外，区块作者将使用可以映射到每个收集人的 H160 地址的会话密钥进行奖励支付。您可在[这里](/learn/consensus/)阅读更多关于Nimbus资讯。
-
-- 在地址`{{ networks.moonbase.staking.precompile_address }}`处增加[质押预编译合约](https://github.com/PureStake/moonbeam/pull/358)。您可在[此链接](https://raw.githubusercontent.com/PureStake/moonbeam/master/runtime/precompiles/src/StakingInterface.sol)找到如何与合约交互。
-
-- 增加初步日志布隆过滤器（Bloom Filter），以匹配通过Frontier的用户请求。进一步优化了此功能，以实现更快的响应时间和更可预测的性能
-
-- 增加[平行链众贷pallet](https://github.com/paritytech/polkadot/blob/master/runtime/common/src/crowdloan.rs)，以测试众贷奖励分配
-
-- 众多升级以加强网络稳定性
-
-- 最低Gas价格设定为1 GDEV（类似于与以太坊上的GWei）
+    - 增加[财政库pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_treasury/index.html)，为    Moonbase Alpha新增财政库功能。两个财政库已被加入至网络当中，一个财政库将会获得 20% 的交易费并由    民众和议会治理。另一个财政库将会获得 30% 的区块奖励，并负责收集资金为未来的平行链插槽做准备。
+    - 增加[代理pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_proxy/index.html)，可在    Moonbase Alpha上使用[代理账户](https://wiki.polkadot.network/docs/en/learn-proxies)https:/    /wiki.polkadot.network/docs/en/learn-proxies)
+    - 引入新的共识机制Nimbus。Nimbus通过提供不同的过滤器，随机选择活跃收集人池的一部分来进行下一个区    块生产。此外，区块作者将使用可以映射到每个收集人的 H160 地址的会话密钥进行奖励支付。您可在[这里]    (/learn/consensus/)阅读更多关于Nimbus资讯。
+    - 在地址`{{ networks.moonbase.staking.precompile_address }}`处增加[质押预编译合约](https://    github.com/PureStake/moonbeam/pull/358)。您可在[此链接](https://raw.githubusercontent.com/    PureStake/moonbeam/master/runtime/precompiles/src/StakingInterface.sol)找到如何与合约交    互。
+    - 增加初步日志布隆过滤器（Bloom Filter），以匹配通过Frontier的用户请求。进一步优化了此功能，以    实现更快的响应时间和更可预测的性能
+    - 增加[平行链众贷pallet](https://github.com/paritytech/polkadot/blob/master/runtime/    common/src/crowdloan.rs)，以测试众贷奖励分配
+    - 众多升级以加强网络稳定性
+    - 最低Gas价格设定为1 GDEV（类似于与以太坊上的GWei）
 
 
 ### 版本发布通知

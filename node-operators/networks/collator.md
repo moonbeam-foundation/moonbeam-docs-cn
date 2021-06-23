@@ -73,7 +73,6 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 ![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs2.png)
 
 !!! 注意事项
-
 ​    函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
 
 如上所述，只有提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人才可以进入活跃「收集人集」。
@@ -93,7 +92,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 |      新增/移除提名       |      |  1   |      |      2       |
 | 奖励支付（在本轮结束后） |      |  2   |      |      4       |
 
-!!!  注意事项
+!!! 注意事项
     上表所列值可能会在未来发布新版本时有所调整。
 
 ## 会话密钥
