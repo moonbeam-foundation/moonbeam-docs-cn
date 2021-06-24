@@ -38,8 +38,8 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
  - [MetaMask](/integrations/wallets/metamask/)
  - [MathWallet](/integrations/wallets/mathwallet/)
- - [Ledger](/intergrations/wallets/ledger/)
- - [Trezor](/intergrations/wallets/trezor/)
+ - [Ledger](/integrations/wallets/ledger/)
+ - [Trezor](/integrations/wallets/trezor/)
 
 请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
 
