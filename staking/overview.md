@@ -9,7 +9,7 @@ description: Moonbeam提供质押功能，代币持有者可通过使用代币�
 
 ## 概览
 
-Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/en/learn-consensus)进行区块生产，因此区块链上有收集人（Collator）和验证人（Validator）。[收集人（Collator）](https://wiki.polkadot.network/docs/en/learn-collator)通过收集用户的交易并为中继链[验证人（Validator）](https://wiki.polkadot.network/docs/en/learn-validator)生成状态转移证明来维护平行链（在这一例子中为Moonbeam）。
+Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/learn-consensus)进行区块生产，因此区块链上有收集人（Collator）和验证人（Validator）。[收集人（Collator）](https://wiki.polkadot.network/docs/learn-collator)通过收集用户的交易并为中继链[验证人（Validator）](https://wiki.polkadot.network/docs/learn-validator)生成状态转移证明来维护平行链（在这一例子中为Moonbeam）。
 
 网络中质押权益的人将入选收集人群体（生产区块的节点）。而质押挖矿在这里起到重要作用。
 

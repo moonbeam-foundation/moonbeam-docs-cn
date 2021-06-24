@@ -84,7 +84,7 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 如果事件返回了多个无索引数据，这些数据将根据事件发出顺序，依次附在前一个数据之后。因此每个数据值都会被解码成32字节（或64 hex character长度）的小片段。
 
 ### 使用通配符和条件格式
-考虑到通配符和条件格式的应用，v2版本新增的日志订阅功能在用于主题方面还有一些局限。但在[Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)版本中，这些局限已经得到解决。
+考虑到通配符和条件格式的应用，v2版本新增的日志订阅功能在用于主题方面还有一些局限。但在[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)版本中，这些局限已经得到解决。
 
 延续上一小节的例子，我们将尝试通过以下代码订阅代币合约事件：
 

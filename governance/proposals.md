@@ -17,7 +17,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，用户现可在测试网上提交提案进行公投。本教程为如何创建提案提供了指引，对从创建提案到进入公投阶段的流程进行了介绍。关于如何进行提案投票，可以点击[这里](/governance/voting/)查看相关教程。
 
-更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/en/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/en/maintain-guides-democracy)页面。
+更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/maintain-guides-democracy)页面。
 
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
@@ -70,7 +70,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
  1. 选择提交原像的账户
  2. 选择希望交互的模块以及可调用的函数（或行动）进行提案。所选行动将决定接下来的步骤中要填写的内容领域。在这一示例中，选择的是`democracy`模块和`setBalance`函数
  3. 设置希望修改余额的账户地址
- 4. 设置新余额。了解更多余额类型，您可访问[这一网页](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
+ 4. 设置新余额。了解更多余额类型，您可访问[这一网页](https://wiki.polkadot.network/docs/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
  5. 复制原像哈希值。这个数值代表着提案，在提交正式提案时会用到
  6. 点击“Submit preimage”按钮并签名确认交易
 

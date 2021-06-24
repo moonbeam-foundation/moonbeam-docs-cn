@@ -50,7 +50,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主
  - **理事会** —— 由用户投票产生，在系统中有特殊投票权。理事会成员的职责是提出公投，并对公众提案的公投有一票否决权。理事会成员通过滚动选举的方式选出，GLMR持有者可以对新任和现任委员会成员投票
  - **财政库**—— 一系列的资金，提交提案并充值后即可进行支出。消费提案必须经过委员会同意。若提案遭到拒绝，提案者将失去充值的资金
 
-更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/)和[wiki博客](https://wiki.polkadot.network/docs/en/learn-governance)。
+更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/)和[wiki博客](https://wiki.polkadot.network/docs/learn-governance)。
 
 ## 在Moonbase Alpha上进行测试
 

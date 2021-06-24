@@ -444,7 +444,7 @@ sudo rm -rf {{ networks.moonbase.node_directory }}/*
 
 运行telemetry对全节点而言并不是必要的，但对收集人而言是必要的。
 
-您可访问[此链接](https://telemetry.波卡（Polkadot）.io/#list/Moonbase Alpha)了解目前Moonbase Alpha telemetry信息。
+您可访问[此链接](https://telemetry.polkadot.io/#list/Moonbase%20Alpha)了解目前Moonbase Alpha telemetry信息。
 
 ## 日志与故障检测
 

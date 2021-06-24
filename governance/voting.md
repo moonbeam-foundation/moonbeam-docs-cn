@@ -17,7 +17,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 随着[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)的发布，网络用户现可提交提案进行公投。本教程为已经到公投阶段的提案提供如何进行投票的指引。关于如何提交提案，可以点击[这里](/governance/proposals/)查看相关教程。
 
-更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/en/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/en/maintain-guides-democracy)页面。
+更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/maintain-guides-democracy)页面。
 
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
@@ -142,13 +142,13 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
  - 如果持币者想要撤销委托，但委托权重已经在公投中使用了，那么这些权重将在最终票数中移除
  - 进行委托的代币持有者也要遵守锁定期规则。也就是说，如果被委托者赢得了投票，委托者的委托代币也会进入相应的锁定期
- - 已委托的代币不再属于代币持有者的自由余额。如需了解更多余额类型，可以访问[这一页面](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
+ - 已委托的代币不再属于代币持有者的自由余额。如需了解更多余额类型，可以访问[这一页面](https://wiki.polkadot.network/docs/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
  - 已经委托他人的代币持有者自己不能再参与公投。如要参与，需先撤销委托
  - 请记下公投指数，锁定期结束后，已委托他人的持币者需要手动解锁代币
 
 ### 解锁代币
 
-代币持有者在进行投票时，使用的代币将被锁定且不能进行转移。您可以在“Accounts”标签下展开账户详情查看代币锁定情况。在详情中可以看到不同的余额类型（更多余额类型详情请看[这里](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)）。如果光标在“democracy”右侧图标上移动，就会出现目前锁定状态的信息面板。其中不同的锁定状态有：
+代币持有者在进行投票时，使用的代币将被锁定且不能进行转移。您可以在“Accounts”标签下展开账户详情查看代币锁定情况。在详情中可以看到不同的余额类型（更多余额类型详情请看[这里](https://wiki.polkadot.network/docs/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)）。如果光标在“democracy”右侧图标上移动，就会出现目前锁定状态的信息面板。其中不同的锁定状态有：
 
  - 因公投进行中而锁定，意味着您已经使用了代币，即使您并没有选择锁定，也必须等到公投结束才能解锁
  - 根据信念值乘数进行锁定，会显示剩余区块数量和时间

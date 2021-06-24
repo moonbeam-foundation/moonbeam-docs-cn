@@ -313,7 +313,7 @@ describe ('MyToken', () => {
 
 --8<-- 'text/testnet/testnet-details.md'
 
-部署将分为三个部分：[生成工件](#generate-artifacts)、[创建部署脚本](#create-a-deployment-script)和[使用Mars部署]()。
+部署将分为三个部分：[生成工件](#generate-artifacts)、[创建部署脚本](#create-a-deployment-script)和[使用Mars部署](#deploy-with-mars)。
 
 ### 生成工件
 

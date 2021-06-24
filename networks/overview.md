@@ -32,7 +32,7 @@ description: 本文将简要描述Moonbeam计划建立的网络，一个位于Po
 
 在部署于Polkadot主网之前，Moonbeam将会以平行链的形式发布在Kusama的网络上（[更多细节](https://www.purestake.com/news/moonbeam-on-kusama/)）。这需要平行链功能在Kusama上开通。
 
-我们计划在一些功能开通之后，在Moonriver上执行包括像[Crowdloan](https://wiki.polkadot.network/docs/en/learn-crowdloans)、[XCMP](https://wiki.polkadot.network/docs/en/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/en/learn-crosschain)的平行链相关的功能。
+我们计划在一些功能开通之后，在Moonriver上执行包括像[Crowdloan](https://wiki.polkadot.network/docs/learn-crowdloans)、[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)的平行链相关的功能。
 
 ## Moonbeam的Polkadot主网
 

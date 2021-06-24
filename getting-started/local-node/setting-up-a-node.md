@@ -5,8 +5,8 @@ description: 此教程将帮助您学习如何设置您的第一个Moonbeam节�
 
 # 如何设置Moonbeam节点并连接至Polkadot JS GUI
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
-<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code/">code snippets page</a></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
+<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
 ## 概览
 
@@ -138,7 +138,7 @@ cd moonbeam
 
 ## 如何查询账户状态
 
-随着[Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在单一账户的模式下运行，该模式为以太坊的H160并且已被Polkadot JS Apps支持。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
+随着[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在单一账户的模式下运行，该模式为以太坊的H160并且已被Polkadot JS Apps支持。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
 
 您也可以利用Moonbeam完整的以太坊RPC功能，使用[MetaMask](/getting-started/local-node/using-metamask/)查询账户的余额。除此之外，您还可以利用其他的开发工具，如[Remix](/getting-started/local-node/using-remix/)和[Truffle](/getting-started/local-node/using-truffle/) 等等。
 

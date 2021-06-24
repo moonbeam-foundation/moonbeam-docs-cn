@@ -14,7 +14,7 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
 
  - [ChainBridge的运行机制](/integrations/bridges/ethereum/chainbridge/#how-the-bridge-works)
     - [一般定义](/integrations/bridges/ethereum/chainbridge/#general-definitions)
- - [使用ChainBridge部署Moonbase Alpha]((/integrations/bridges/ethereum/chainbridge/#try-it-on-moonbase-alpha))
+ - [使用ChainBridge部署Moonbase Alpha](/integrations/bridges/ethereum/chainbridge/#try-it-on-moonbase-alpha)
     - [进行ERC-20代币转移](/integrations/bridges/ethereum/chainbridge/#erc-20-token-transfer)
     - [进行ERC-721代币转移](/integrations/bridges/ethereum/chainbridge/#erc-721-token-transfer)
     - [一般应用程序](/integrations/bridges/ethereum/chainbridge/#generic-handler)

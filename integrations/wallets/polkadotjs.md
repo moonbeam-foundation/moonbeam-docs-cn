@@ -8,7 +8,7 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 
 ## 概览
 
-[Moonbase Alpha测试网 v3升级发布后](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们对Moonbeam底层账户系统进行了重大升级，使用以太坊式账户和私钥替换了默认的Substrate式账户和私钥。
+[Moonbase Alpha测试网 v3升级发布后](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们对Moonbeam底层账户系统进行了重大升级，使用以太坊式账户和私钥替换了默认的Substrate式账户和私钥。
 
 同时，Polkadot JS App交互界面也进行了升级，现已原生支持H160地址和ECDSA密钥。本教程将带领大家了解Polkadot JS App网站与基于以太坊的账户整合。
 

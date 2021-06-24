@@ -22,7 +22,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 ### 客户合约
 
-客户合约通过发送请求与预言机建立通信。如上图所示，客户合约从LINK代币合约调用*transferAndCall*，但将请求发送到预言机还需要进行更多处理。在这个示例中，您可以使用[此文档](/code/chainlink/Client.sol)中的代码，将其部署到[Remix](/integrations/remix/)进行测试。下面来看一下合约中的关键函数：
+客户合约通过发送请求与预言机建立通信。如上图所示，客户合约从LINK代币合约调用*transferAndCall*，但将请求发送到预言机还需要进行更多处理。在这个示例中，您可以使用[此文档](/snippets/code/chainlink/Client.sol)中的代码，将其部署到[Remix](/integrations/remix/)进行测试。下面来看一下合约中的关键函数：
 
  - _constructor_：合约部署后运行，负责设置LINK代币和合约所有者的地址
  - _requestPrice_：需要预言机合约地址、Job ID，以及向请求执行者支付的LINK代币。使用从*ChainlinkClient.sol* 导入的*sendChainlinkRequestTo*函数创建并发送新请求

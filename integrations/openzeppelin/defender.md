@@ -27,7 +27,7 @@ OpenZeppelin Defender现已上线Moonbase Alpha测试网。本教程将介绍如
 
 ### 检查先决条件
 
-请确保安装[MetaMask](https://metamask.io/)，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](https://docs.moonbeam.network/integrations/wallets/metamask/)进行操作。
+请确保安装[MetaMask](https://metamask.io/)，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/integrations/wallets/metamask/)进行操作。
 
 此外，您还需要登录[Defender](https://defender.openzeppelin.com/)网站并注册OpenZeppelin免费账户。
 
@@ -75,7 +75,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ### 将Defender连接到Moonbase Alpha
 
-注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](https://docs.moonbeam.network/getting-started/testnet/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
+注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/testnet/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
 
 ![OpenZeppelin Defender Connect](/images/openzeppelin/ozdefender-images1.png)
 
@@ -92,7 +92,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. 设置合约名称（仅用于显示）
  2. 选择需管理合约所在的网络。如果该合约已经以相同地址部署到多个网络中，这一步将尤其有用。在这一示例中，输入`Moonbase Alpha`
  3. 输入合约地址
- 4. 粘贴合约ABI。可以通过[Remix](https://docs.moonbeam.network/integrations/remix/)或者在编译过程（例如在Truffle或HardHat）中创建的`.json`文件中找到
+ 4. 粘贴合约ABI。可以通过[Remix](/integrations/remix/)或者在编译过程（例如在Truffle或HardHat）中创建的`.json`文件中找到
  5. 检查合约功能是否被正确识别
  6. 检查所有信息后，点击“Add（添加）”按钮
 

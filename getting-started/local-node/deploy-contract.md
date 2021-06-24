@@ -80,7 +80,7 @@ npm init --yes
 
 ## 合约文件
 
-我们将使用一个简单的增量合约，任意为其命名为_Incrementer.sol_，您可在[这里](/code/web3-contract-local/Incrementer.sol)找到。相关Solidity代码如下：
+我们将使用一个简单的增量合约，任意为其命名为_Incrementer.sol_，您可在[这里](/snippets/code/web3-contract-local/Incrementer.sol)找到。相关Solidity代码如下：
 
 ```solidity
 --8<-- 'code/web3-contract-local/Incrementer.sol'
@@ -119,7 +119,7 @@ npm init --yes
 
 ### Web3.js和Ethers.js
 
-在[脚本](/code/web3-contract-local/compile.js)的第一部分，获取合约的路径，并读取其内容。
+在[脚本](/snippets/code/web3-contract-local/compile.js)的第一部分，获取合约的路径，并读取其内容。
 
 接下来，构建Solidity编译器的输入对象，并将其作为输入传递给`solc.compile`函数。
 
@@ -127,7 +127,7 @@ npm init --yes
 
 ### Web3.py
 
-在[脚本](/code/web3py-contract/compile.py)的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
+在[脚本](/snippets/code/web3py-contract/compile.py)的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
 
 !!! 注意事项
     当运行`compile.py`时，您可能会收到一个需要安装`Solc`的错误提示。如遇此情况，请取消在文件中注释执行`solcx.install_solc()`的行，并用`python3 compile.py`重新运行编译文件。更多信息您可通过[此链接](https://pypi.org/project/py-solc-x/)查看。
@@ -166,7 +166,7 @@ npm init --yes
 
 ### Web3.js
 
-在[此脚本](/code/web3-contract-local/deploy.js)的第一部分，您可以看到`web3`实例（或提供者（Provider））可通过带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
+在[此脚本](/snippets/code/web3-contract-local/deploy.js)的第一部分，您可以看到`web3`实例（或提供者（Provider））可通过带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
 为了交易和日志记录，需定义私钥以及与之关联的地址，此处仅需要私钥。 此外，您可以从编译器的输出中获取字节码和接口（ABI）。
 
@@ -178,7 +178,7 @@ npm init --yes
 
 ### Ethers.js
 
-[此脚本](/code/ethers-contract-local/deploy.js)的第一部分中，可以使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述 `web3`实例）通过`ethers.providers.StaticJsonRpcProvider` 方式创建。另外还有一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
+[此脚本](/snippets/code/ethers-contract-local/deploy.js)的第一部分中，可以使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述 `web3`实例）通过`ethers.providers.StaticJsonRpcProvider` 方式创建。另外还有一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
 需要用到上面提到的提供者 （Provider）和私钥来创建钱包实例，进而签名交易。此外，您可以从编译器的输出中获取字节码和ABI 。
 
@@ -188,7 +188,7 @@ npm init --yes
 
 ### Web3.py
 
-在[此脚本](/code/web3py-contract/deploy.py)的第一部分，您可看到使用带有提供者（Provider）RPC的 `Web3(Web3.HTTPProvider(provider_rpc))`创建`web3`实例（或提供者（Provider））。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
+在[此脚本](/snippets/code/web3py-contract/deploy.py)的第一部分，您可看到使用带有提供者（Provider）RPC的 `Web3(Web3.HTTPProvider(provider_rpc))`创建`web3`实例（或提供者（Provider））。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
 私钥和与之关联的公共地址功能：签名交易和建立来源地址。
 
@@ -229,7 +229,7 @@ npm init --yes
 
 ### Web3.js
 
-在[脚本](/code/web3-contract-local/get.js)的第一部分，`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
+在[脚本](/snippets/code/web3-contract-local/get.js)的第一部分，`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -239,7 +239,7 @@ npm init --yes
 
 ### Ethers.js
 
-[此脚本](/code/ethers-contract-local/get.js)的第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者(Provider)（类似上述`web3`实例）通过`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
+[此脚本](/snippets/code/ethers-contract-local/get.js)的第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者(Provider)（类似上述`web3`实例）通过`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -249,7 +249,7 @@ npm init --yes
 
 ### Web3.py
 
-[此脚本](/code/web3py-contract/get.py)的第一部分中，您可以看到`web3`实例（或者提供者）是由`Web3(Web3.HTTPProvider(provider_rpc))`方式和提供者RPC创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
+[此脚本](/snippets/code/web3py-contract/get.py)的第一部分中，您可以看到`web3`实例（或者提供者）是由`Web3(Web3.HTTPProvider(provider_rpc))`方式和提供者RPC创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -311,7 +311,7 @@ npm init --yes
 
 ### Web3.js
 
-在此脚本（[increment](/code/web3-contract-local/increment.js)或者[reset](/code/web3-contract-local/reset.js)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，将交易发送到您指定的网络。
+在此脚本（[increment](/snippets/code/web3-contract-local/increment.js)或者[reset](/snippets/code/web3-contract-local/reset.js)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，将交易发送到您指定的网络。
 
 定义私钥和与之关联的地址是为了交易和日志记录。此处仅需要私钥。 此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
@@ -323,7 +323,7 @@ npm init --yes
 
 ### Ethers.js
 
-在此脚本（[increment](/code/ethers-contract-local/increment.js)或者[reset](/code/ethers-contract-local/reset.js)文件）第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述`web3`实例）由`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
+在此脚本（[increment](/snippets/code/ethers-contract-local/increment.js)或者[reset](/snippets/code/ethers-contract-local/reset.js)文件）第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述`web3`实例）由`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
 定义私钥是为了创建钱包实例，同样也需要前文提到的提供者（Provider）辅助。钱包实例的功能室签名交易。此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
@@ -333,7 +333,7 @@ npm init --yes
 
 ### Web3.py
 
-在此脚本（[increment](/code/web3py-contract/increment.py)或者[reset](/code/web3py-contract/reset.py)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
+在此脚本（[increment](/snippets/code/web3py-contract/increment.py)或者[reset](/snippets/code/web3py-contract/reset.py)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
 定义私钥和与之关联的地址是为了签名交易和创立发送地址。 此外，合约接口（ABI）和地址也需要与之交互。
 
