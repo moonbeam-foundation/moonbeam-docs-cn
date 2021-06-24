@@ -142,7 +142,7 @@ npm init --yes
  - Ethers.js: [_deploy.js_](/snippets/code/ethers-contract-local/deploy.js)
  - Web3.py: [_deploy.py_](/snippets/code/web3py-contract/deploy.py)
 
-简单起见，部署文件由两个部分组成。如同前例，您使用的库、合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和提供者的帐户（具有私钥）也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
+简单起见，部署文件由两个部分组成。如同前例，您使用的库、合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和提供者的帐户（具有私钥）也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/moonbase/)的终端。
 
 第二部分（"Deploy Contract"）概述了实际的合约部署。请注意，在此例中，数字变量的初始值设置为5。其中部分关键要点我们将在后面展开讨论。
 
@@ -208,7 +208,7 @@ npm init --yes
  - Ethers.js: [_get.js_](/snippets/code/ethers-contract-local/get.js)
  - Web3.py: [_get.py_](/snippets/code/web3py-contract/get.py)
 
-简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
+简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/moonbase/)的终端。
 
 第二部分（“Call Function”）简述了合约的实际调用。无论使用哪种库，都将创建合约实例（链接到合约地址），并从中查询调用程序。其中部分关键要点我们将会在后面展开讨论。
 
@@ -267,7 +267,7 @@ npm init --yes
  - Ethers.js: [_increment.js_](/snippets/code/ethers-contract-local/increment.js)
  - Web3.py: [_increment.py_](/snippets/code/web3py-contract/increment.py)
 
-简单起见，增量文件由两个部分组成。如同前例，使用的库以及合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者、合约地址和`increment`函数的值也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/testnet/)的终端。
+简单起见，增量文件由两个部分组成。如同前例，使用的库以及合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者、合约地址和`increment`函数的值也会被定义。请注意，`providerRPC`同时拥有标准独立节点的RPC终端和[Moonbase Alpha](/networks/moonbase/)的终端。
 
 第二部分（“Send Function”）简述了交易要调用的实际函数。无论使用哪种库，都将创建合约实例（链接到合约地址），并从中查询发送程序。
 

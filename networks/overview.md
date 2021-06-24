@@ -20,7 +20,7 @@ description: 本文将简要描述Moonbeam计划建立的网络，一个位于Po
 
 这个测试网由PureStake所主导，其特色是使用平行链以及中继链方案。目标是让开发者在不用运行自己的节点或是网络的前提下，能够在一个共享平行链的环境中，测试Moonbeam与以太坊的兼容性。
 
-[在这里了解更多Moonbase Alpha的资讯](/networks/testnet/)
+[在这里了解更多Moonbase Alpha的资讯](/networks/moonbase/)
 
 ## Moonrock  
 

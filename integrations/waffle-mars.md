@@ -22,9 +22,9 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
 在撰写本教程时，所用版本分别为15.12.0和7.6.3版本。
 
-Waffle和Mars可与本地运行的Moonbeam开发节点一起使用，但就本教程而言，您将部署至 Moonbase Alpha。因此，您需确保用开发的账户有充足资金。您可以[使用MetaMask创建帐户](/getting-started/testnet/metamask/#creating-a-wallet)或[使用PolkadotJS Apps创建帐户](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
+Waffle和Mars可与本地运行的Moonbeam开发节点一起使用，但就本教程而言，您将部署至 Moonbase Alpha。因此，您需确保用开发的账户有充足资金。您可以[使用MetaMask创建帐户](/getting-started/moonbase/metamask/#creating-a-wallet)或[使用PolkadotJS Apps创建帐户](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
-创建帐户后，导出本教程中所需要使用的私钥，并确保您的帐户有资金。如果需要，可以在[水龙头faucet](/getting-started/testnet/faucet/)获取“DEV”代币。
+创建帐户后，导出本教程中所需要使用的私钥，并确保您的帐户有资金。如果需要，可以在[水龙头faucet](/getting-started/moonbase/faucet/)获取“DEV”代币。
 
 ## 使用Waffle和Mars创建TypeScript项目
 

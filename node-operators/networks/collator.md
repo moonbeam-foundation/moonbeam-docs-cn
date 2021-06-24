@@ -97,7 +97,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 
 ## 会话密钥
 
-随着[Moonbase Alpha v8](/networks/testnet/)版本的发布，收集人将使用author ID（基本上是[会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys)）签名区块。为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from)。本教程将向您展示如何创建/转换与收集人节点相关的会话密钥。
+随着[Moonbase Alpha v8](/networks/moonbase/)版本的发布，收集人将使用author ID（基本上是[会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys)）签名区块。为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from)。本教程将向您展示如何创建/转换与收集人节点相关的会话密钥。
 
 首先，请确保您正在[运行收集人节点](/node-operators/networks/full-node/)并已公开RPC端口。一旦您开始运行收集人节点，您的终端应出现类似以下日志：
 

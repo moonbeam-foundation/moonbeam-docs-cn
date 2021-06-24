@@ -28,7 +28,7 @@ contract SimpleContract{
 
 编译完成后，我们可以来到“Deploy & Run Transactions”标签下。首先需要将环境设置为"Injected Web3."，需要使用MetaMask导入的提供者，通过提供者把合约部署到与其相连的网络上，在本示例中为Moonbase Alpha测试网。
 
-我们将使用一个存有资产余额的MetaMask账户来部署合约。可以通过我们的[测试网水龙头](/getting-started/testnet/faucet/)充值，然后在Moonbase Alpha上部署。接下来，在构造函数中输入`Test Contract`，然后点击“部署”。MetaMask弹窗将显示交易相关信息，我们需要点击“确认”进行签名。
+我们将使用一个存有资产余额的MetaMask账户来部署合约。可以通过我们的[测试网水龙头](/getting-started/moonbase/faucet/)充值，然后在Moonbase Alpha上部署。接下来，在构造函数中输入`Test Contract`，然后点击“部署”。MetaMask弹窗将显示交易相关信息，我们需要点击“确认”进行签名。
 
 ![Deploying Contract](/images/remix/integrations-remix-1.png)
 
@@ -37,5 +37,5 @@ contract SimpleContract{
 ![Interact with Contract](/images/remix/integrations-remix-2.png)
 
 ## 分步教程
-如果您想获得更加详细的分步教程，请阅读[在Moonbeam开发节点上使用Remix](/getting-started/local-node/using-remix/)。只需修改这些步骤，并将MetaMask[与Moonbase Alpha测试网相连](/getting-started/testnet/metamask/)，即可在Moonbase Alpha测试网上部署。
+如果您想获得更加详细的分步教程，请阅读[在Moonbeam开发节点上使用Remix](/getting-started/local-node/using-remix/)。只需修改这些步骤，并将MetaMask[与Moonbase Alpha测试网相连](/getting-started/moonbase/metamask/)，即可在Moonbase Alpha测试网上部署。
 

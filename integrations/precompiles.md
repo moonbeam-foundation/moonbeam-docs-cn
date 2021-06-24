@@ -92,7 +92,7 @@ contract ECRECOVER{
 }
 ```
 
-使用[Remix编译器与部署](/getting-started/local-node/using-remix/)并将[MetaMask指向Moonbase Alpha](/getting-started/testnet/metamask/)，即可部署合约，并调用`verify()`方法进行验证。如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，就会返回*true*。
+使用[Remix编译器与部署](/getting-started/local-node/using-remix/)并将[MetaMask指向Moonbase Alpha](/getting-started/moonbase/metamask/)，即可部署合约，并调用`verify()`方法进行验证。如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，就会返回*true*。
 
 ## 使用SHA256函数获取哈希值
 

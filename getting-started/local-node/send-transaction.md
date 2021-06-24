@@ -70,7 +70,7 @@ npm init --yes
  - Ethers.js: [_transaction.js_](/snippets/code/ethers-tx-local/transaction.js)
  - Web3.py: [_transaction.py_](/snippets/code/web3py-tx/transaction.py)
 
-无论使用哪个库，每个文件都被分为三个部分：第一部分（“Define Provider & Variables”），导入需使用的库，被定义的提供者以及其他变量（变量会随着库的改变而改变）。请注意，`providerRPC`同时拥有标准独立节点RPC端点和[Moonbase Alpha](/networks/testnet/)的端点。
+无论使用哪个库，每个文件都被分为三个部分：第一部分（“Define Provider & Variables”），导入需使用的库，被定义的提供者以及其他变量（变量会随着库的改变而改变）。请注意，`providerRPC`同时拥有标准独立节点RPC端点和[Moonbase Alpha](/networks/moonbase/)的端点。
 
 第二部分（“Create and Deploy Transaction”），概述了传送交易所需要的函数。其中部分关键要点我们将会在后面展开讨论。
 
@@ -141,7 +141,7 @@ npm init --yes
 
 简单起见，余额文件由两个部分组成。如同前例，您要使用的库会在第一部分（“Define Provider & Variables”）被导入，提供者和发送/接收地址（查询余额）也会被定义。
 
-第二部分（“Balance Call Function”）概述了获取先前定义的账户余额的所需函数。请注意，`providerRPC`同时拥有标准独立节点的RPC端点和[Moonbase Alpha](/networks/testnet/)的端点。其中的关键要点我们将会在后面展开讨论。
+第二部分（“Balance Call Function”）概述了获取先前定义的账户余额的所需函数。请注意，`providerRPC`同时拥有标准独立节点的RPC端点和[Moonbase Alpha](/networks/moonbase/)的端点。其中的关键要点我们将会在后面展开讨论。
 
 === "Web3.js"
     ```

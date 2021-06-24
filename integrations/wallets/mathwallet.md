@@ -9,7 +9,7 @@ description: 通过此教程学习如何将Mathwallet（浏览器版）钱包连
 
 ## 概览
 
-MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持[Moonbase Alpha测试网](/networks/testnet/)，意味着用户现在能通过除了MetaMask以外的钱包来与Moonbase Alpha进行交互。
+MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持[Moonbase Alpha测试网](/networks/moonbase/)，意味着用户现在能通过除了MetaMask以外的钱包来与Moonbase Alpha进行交互。
 
 在本教程中，我们将带您了解如何设置MathWallet，使其能够连接到我们的测试网。除此之外，我们也会提供一个简短的例子，来说明如何在其他工具中，譬如[Remix](/integrations/remix/)，将MathWallet当作一个Web3的提供者来使用。
 

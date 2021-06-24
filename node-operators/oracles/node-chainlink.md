@@ -30,7 +30,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha WSS EndPoint: `wss://wss.testnet.moonbeam.network`
  - Moonbase Alpha ChainId: `1287`
  - Moonbase Alpha上的LINK代币地址：`0xa36085F69e2889c224210F603D836748e7dC0088`
- - 从我们的[水龙头](/getting-started/testnet/faucet/)获取Moonbase Alpha代币
+ - 从我们的[水龙头](/getting-started/moonbase/faucet/)获取Moonbase Alpha代币
 
 ## 如何操作
 
@@ -46,7 +46,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 操作需要满足以下基本要求：
 
  - 有运行Postgres DB和ChainLink节点的Docker容器。如您想了解关于安装Docker的更多详情，请访问[这一页面](https://docs.docker.com/get-docker/)
- - 账户中需有一定余额。您可以通过[Metamask](/integrations/wallets/metamask/)创建账户，并通过我们的[水龙头](/getting-started/testnet/faucet/)充值资金
+ - 账户中需有一定余额。您可以通过[Metamask](/integrations/wallets/metamask/)创建账户，并通过我们的[水龙头](/getting-started/moonbase/faucet/)充值资金
  - 能够使用Remix IDE，以满足部署预言机合约的需求。如您想了解关于Moonbeam 上的Remix运行环境，请访问[这一页面](/integrations/remix/)
 
 ## 节点设置
@@ -134,7 +134,7 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 ![Chainlink login](/images/chainlink/chainlinknode-image2.png)
 
-进入“Configuration Page”页面，并复制节点地址。通过[Moonbeam水龙头](/getting-started/testnet/faucet/)注入资金。
+进入“Configuration Page”页面，并复制节点地址。通过[Moonbeam水龙头](/getting-started/moonbase/faucet/)注入资金。
 
 ![Chainlink address](/images/chainlink/chainlinknode-image3.png)
 

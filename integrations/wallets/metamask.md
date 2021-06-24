@@ -47,5 +47,5 @@ Moonbase Alpha测试网：
 如果您想获得更加详细的分步教程，你可以查看以下的特定教程：
 
  - [Moonbeam开发节点](/getting-started/local-node/using-metamask/)上的MetaMask
- - [Moonbase Alpha](/getting-started/testnet/metamask/)上的MetaMask
+ - [Moonbase Alpha](/getting-started/moonbase/metamask/)上的MetaMask
 

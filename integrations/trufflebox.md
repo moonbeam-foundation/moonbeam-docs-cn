@@ -107,7 +107,7 @@ module.exports = {
 };
 ```
 
-`truffle-config.js`文档也包含了独立节点的创始账户私钥。与这一私钥关联的地址会持有这一开发环境下的所有代币。假如要在Moonbase Alpha测试网上部署，您就需要提供持有资金的地址私钥。为此，您可以创建一个MetaMask账户，通过[TestNet水龙头](/getting-started/testnet/faucet/)注入资金，并输出其私钥。
+`truffle-config.js`文档也包含了独立节点的创始账户私钥。与这一私钥关联的地址会持有这一开发环境下的所有代币。假如要在Moonbase Alpha测试网上部署，您就需要提供持有资金的地址私钥。为此，您可以创建一个MetaMask账户，通过[TestNet水龙头](/getting-started/moonbase/faucet/)注入资金，并输出其私钥。
 
 和在以太坊网络上使用Truffle一样，在Moonbeam上您也可以运行一般指令来创建、测试和部署智能合约。例如，可以用内置的ERC20代币合约尝试以下指令：
 

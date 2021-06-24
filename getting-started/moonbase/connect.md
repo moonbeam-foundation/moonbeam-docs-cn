@@ -13,4 +13,4 @@ Moonbase Alpha有两个端点提供给使用者连接：一个为HTTPS，另一�
 
 ## 如何获得代币
 
-如果您想在Moonbase Alpha上部署，您可以在我们的[Faucet 水龙头](/getting-started/testnet/faucet/)获得DEV代币。
+如果您想在Moonbase Alpha上部署，您可以在我们的[Faucet 水龙头](/getting-started/moonbase/faucet/)获得DEV代币。

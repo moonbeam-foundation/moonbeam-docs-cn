@@ -2,7 +2,7 @@ Moonbase Alpha的代币是DEV，可根据需求来决定发行数量。目前有
 
 ### 如何通过Discord - Mission Control获得代币
 
-为了让用户们可以自动获得代币，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多10个DEV代币至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。获取更多信息，请访问[此网站](/getting-started/testnet/faucet)。
+为了让用户们可以自动获得代币，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多10个DEV代币至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。获取更多信息，请访问[此网站](/getting-started/moonbase/faucet)。
 
 您可以在“Miscellaneous”一栏下面找到我们的AlphaNet机器人频道。请输入以下信息，并将`<enter-address-here->` 替换成您的H160地址。
 

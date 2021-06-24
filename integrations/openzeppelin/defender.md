@@ -75,7 +75,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ### 将Defender连接到Moonbase Alpha
 
-注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/testnet/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
+注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/moonbase/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
 
 ![OpenZeppelin Defender Connect](/images/openzeppelin/ozdefender-images1.png)
 
