@@ -3,5 +3,5 @@ dapps-list
 .gitmodules
 images
 js
-code
+snippets/code
 variables.yml
