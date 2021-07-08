@@ -2,6 +2,7 @@ title: 集成
 arrange:
   - bridges
   - ethlibraries
+  - indexers
   - openzeppelin
   - oracles
   - wallets
