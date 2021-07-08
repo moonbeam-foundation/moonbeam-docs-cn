@@ -15,15 +15,15 @@ Moonbase Alpha v6版本发布后，用户不仅可以创建完整节点，也可
 
 Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两步过滤器将收集人分配到区块生产插槽：
 
- - 平行链质押过滤器根据网络中的代币质押量挑选前{{ networks.moonbase.staking.max_collators }}的收集人。这个过滤后的池被称为“精选候选池”。每一轮这个池中的候选收集人都会进行更新。
+ - 平行链质押过滤器根据网络中的代币质押量挑选前{{ networks.moonbase.staking.max_collators }}名收集人。这个过滤后的池被称为“精选候选池”。每一轮这个池中的候选收集人都会进行更新。
  - 固定规模子集过滤法在第一次过滤的基础之上对每个区块生产插槽进行伪随机的子集选择。
 
 此教程将带您完成以下步骤：
 
- - **[技术要求](#technical-requirements)**——展示如何从技术角度满足技术标准
- - **[账户与质押要求](#accounts-and-staking-requirements)**——如何完成您的帐户设置并绑定代币成为候选收集人
- - **[生成会话密钥](#generate-session-keys)**——解释说明如何生成会话密钥（用于将您的author ID映射到您的H160帐户）
- - **[映射author ID至您的账户](#map-author-id-to-your-account)**——概述如何将您的公共会话密钥映射到您的 H160 帐户（用于接收区块奖励）
+ - **[技术要求](#technical-requirements)** —— 展示如何从技术角度满足技术标准
+ - **[账户与质押要求](#accounts-and-staking-requirements)** —— 如何完成您的帐户设置并绑定代币成为候选收集人
+ - **[生成会话密钥](#generate-session-keys)** —— 解释说明如何生成会话密钥（用于将您的author ID映射到您的H160帐户）
+ - **[映射author ID至您的账户](#map-author-id-to-your-account)** —— 概述如何将您的公共会话密钥映射到您的 H160帐户（用于接收区块奖励）
 
 ## 技术要求
 
@@ -34,7 +34,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 
 ## 账户与质押要求
 
-和波卡（Polkadot）验证人相似，收集人也需要创建账户（本示例使用的是H160账户），并拥有提名质押量（DEV代币）才能够参与验证。目前收集人插槽数量有限，但未来可能会有所增加。 
+和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或者基本的以太坊式账户。另外，需要拥有提名质押量（DEV代币）才能够参与验证。目前收集人插槽数量有限，但未来可能会有所增加。 
 
 收集人需要有至少{{ networks.moonbase.staking.collator_min_stake }}个DEV才有资格成为候选收集人。只有提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人才会进入活跃「收集人集」。
 
@@ -51,26 +51,43 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 
 ![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
 
-### 成为候选收集人
+## 成为候选收集人
 
-节点开始运行并同步网络后，在[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人：
+### 获取候选池的大小
 
-  1. 进入“Developers”标签，点击“Extrinsics”
+First, you need to get the `candidatePool` size (this can change thru governance) as you'll need to submit this parameter in a later transaction. To do so, you'll have to run the following JavaScript code snippet from within [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js):
 
-  2. 选择您用于参与收集活动的账户
+首先，您需要获取 `candidatePool`的大小（可通过治理更改），该参数将用于后续的交易中。为此，您必须从[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network# 中运行以下 JavaScript 代码片段/js)中运行以下JavaScript代码段:
 
-  3. 确认您的收集人账户已充值至少{{ networks.moonbase.staking.collator_min_stake }} 个DEV代币，并有多余金额用于支付交易费 
+```
+// Simple script to get candidate pool size
+const candidatePool = await api.query.parachainStaking.candidatePool();
+console.log(`Candidate pool size is: ${candidatePool.length}`);
+```
 
-  4. 在“submit the following extrinsics”菜单中选择`parachainStaking`模块
+1. 进入“Developers”标签
+2. 点击"JavaScript"
+3. 复制上述代码段并粘贴至编辑框内
+4. （可选）点击保存图标，并为代码段设置一个名称，如”Get candidatePool size“。这将在本地保存代码段
+5. 点击运行图标，以执行编辑框内的代码
+6. 点击复制图标复制结果，将在加入候选人池时使用
 
-  5. 打开下拉菜单，在质押相关的所有外部参数中，选择`joinCandidates()`函数
+![Get Number of Candidates](/images/fullnode/collator-polkadotjs2.png)
 
-  6. 将绑定金额设置到至少{{ networks.moonbase.staking.collator_min_stake }}（即成为候选收集人所需最低数量）。这里仅考虑收集人本身的绑定数量，其他提名质押量不计入
+### 加入候选人池
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+节点开始运行并同步网络后，在[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人（并加入候选人池）：
 
+    1. 进入“Developers”标签，点击“Extrinsics”
+    2. 选择您用于参与收集活动的账户
+    3. 确认您的收集人账户已充值至少{{ networks.moonbase.staking.collator_min_stake }}个DEV代币，并有多余金额用于支付交易费 
+    4. 在“submit the following extrinsics”菜单中选择`parachainStaking`模块
+    5. 打开下拉菜单，在质押相关的所有外部参数中，选择`joinCandidates()`函数
+    6. 将绑定金额设置到至少{{ networks.moonbase.staking.collator_min_stake }} DEV代币（即成为Moonbase Alpha上候选收集人所需最低数量）。这里仅考虑收集人本身的绑定数量，其他提名质押量不计入
+    7. 设置候选人数量即候选人池大小。如何设置该数值请查看[此文档](https://docs.moonbeam.network/node-operators/networks/collator/#get-the-size-of-the-candidate-pool)
+    8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs2.png)
+![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs3.png)
 
 !!! 注意事项
 ​    函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
@@ -140,44 +157,40 @@ curl http://127.0.0.1:9933 -H \
 
 ### 映射外部信息
 
-如果您想要将您的author ID映射至您的账户，您需要成为候选人池中的一员。当您成功成为候选人，您将需要传送您的映射外部信息（交易）。请注意，每一次注册author ID将会绑定 {{ networks.moonbase.staking.collator_map_bond }} 个DEV代币。请跟随以下步骤来进行操作：
+如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](https://docs.moonbeam.network/node-operators/networks/collator/#become-a-collator-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射外部信息（交易）。请注意，每一次注册author ID将会绑定{{ networks.moonbase.staking.collator_map_bond }}个DEV代币。请跟随以下步骤来进行操作：
 
-    1. 进入“Developer“标签
+1. 进入“Developer“标签
 
-    2. 选择”Extrinsics”
+2. 选择”Extrinsics”
 
-    3. 选取您想要映射author ID的目标账户（用于签署此交易）。
+3. 选取您想要映射author ID的目标账户（用于签署此交易）。
 
-    4. 选取`authorMapping`外部信息
+4. 选取`authorMapping`外部信息
 
-    5. 将方法设置为`addAssociation()` 
+5. 将方法设置为`addAssociation()` 
 
-    6. 输入author ID。在这个情况下，这在前一个部分通过RPC调用`author_rotateKeys`获得
+6. 输入author ID。在这个情况下，这在前一个部分通过RPC调用`author_rotateKeys`获得
 
-    7. 点击“Submit Transaction”
+7. 点击“Submit Transaction”
 
+![Author ID Mapping to Account Extrinsic](/images/fullnode/collator-polkadotjs4.png)
 
-![Author ID Mapping to Account Extrinsic](/images/fullnode/collator-polkadotjs3.png)
+如果交易成功，您将在您的屏幕上看到确认通知。相反，请确认您是否加入[候选人池](https://docs.moonbeam.network/node-operators/networks/collator/#become-a-collator-candidate)。
 
-如果交易成功，您将在您的屏幕上看到确认通知。相反，请确认您是否为获选的候选人。
-
-![Author ID Mapping to Account Extrinsic Successful](/images/fullnode/collator-polkadotjs4.png)
+![Author ID Mapping to Account Extrinsic Successful](/images/fullnode/collator-polkadotjs5.png)
 
 ### 检查映射设定
 
 您也可以通过验证链上状态来确认目前的链上映射情况，请根据以下步骤进行操作：
 
-  1. 进入“Developer”标签
-
-  2. 选择“Chain State”
-
-  3. 选择`authorMapping`作为查询状态。目前只有一个方法能够使用（`mapping` ）
-
-  4. 您同样也可以提供author ID进行查询，或是按动滑块来检索所有链上的映射情况。
-
-  5. 点击“+”按钮来传送RPC调用
+    1. 进入“Developer”标签
+    2. 选择“Chain State”
+    3. 选择`authorMapping`作为查询状态
+    4. 选择`mapping`方法
+    5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况。
+    6. 点击“+”按钮来传送RPC调用
 
 
-![Author ID Mapping Chain State](/images/fullnode/collator-polkadotjs5.png)
+![Author ID Mapping Chain State](/Users/tyler/Downloads/images/fullnode/collator-polkadotjs6.png)
 
 如果没有特定的author ID，将会显示所有储存在链上的映射，您可以通过映射您的H160账户来验证您的author ID。
