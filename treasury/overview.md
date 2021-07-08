@@ -1,59 +1,61 @@
 ---
-title: Overview
-description: As a Polkadot parachain, Moonbeam will use an on-chain treasury controlled by council members, that allows for stakeholders to submit proposals to further the network.
+title: 概览
+description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会成员控制的链上财政库，允许利益相关者提交提案以进一步发展网络。
 ---
 
-# Treasury in Moonbeam
+# **Moonbeam**财政库
 
 ![Treasury Moonbeam Banner](/images/treasury/treasury-overview-banner.png)
 
-## Introduction
+## 概览
 
-A treasury is an on-chain managed collection of funds. Moonbeam will have a community treasury for supporting network initiatives to further the network. This treasury will be funded by a percentage of transaction fees of the network and will be managed by the Council.
+财政库是用于链上资金的管理。Moonbeam将设立一个社区财政库，用于支持网络计划以促进未来网络的发展。网络交易费用的一部分将被存储于财政库，并由理事会管理。
 
-Each Moonbeam-based network will have it's own treasury. In other words, the Moonbase Alpha TestNet, Moonshadow on Westend, Moonriver on Kusama, and Moonbeam on Polkadot will each have their own respective treasury. 
+每个基于Moonbeam的网络都将拥有自己的财政库。换句话说，Moonbase Alpha测试网、Westend的Moonshadow网络、Kusama上的的Moonriver网络和波卡（Polkadot）上的Moonbeam都将拥有各自的财政库。
 
-## General Definitions
+## 般定义
 
-Some important terminology to understand in regards to treasuries:
+关于财政库的一些专业术语如下：
 
-- **Council** — a group of elected individuals that control how treasury funds will be spent
-- **Proposal** — a plan or suggestion to further the network that is put forth by stakeholders to be approved by the council
-- **Proposal bond** — a deposit equal to a percentage of the total proposal spend amount
-- **Proposal bond minimum** — minimum amount for a proposal bond. This amount must be paid as the bond if it is higher than the deposit percentage
-- **Spend period** — the amount of days, in blocks, during which the treasury funds as many proposals as possible without exceeding the maximum
-- **Maximum approved proposals** — the maximum amount of proposals that can wait in the spending queue
+- **理事会** —— 一个掌控财政库资金的被选举人群体
+- **提案** —— 由利益相关者提出，并由理事会批准的促进网络的计划或建议
+- **提案保证金** —— 一笔与提案总支出金额的一定比例等值的存款
+- **最低提案保证金** —— 提案保证金的最低金额。当该金额高于存款百分比，则必须作为保证金支付
+- **支出期** —— 以区块为单位的天数，在此期间，财政库为各类提案提供资金，但不超过最大值
+- **最多批准提案数** —— 最多可以在待支出列队中的提案数量
 
-Currently, the Treasury values are as follows:
+目前，财政库的价值如下：
 
 === "Moonbase Alpha"
-    |             Variable             |     |                                                             Value                                                      |
-    | :------------------------------: | :-: | :--------------------------------------------------------------------------------------------------------------------: |
-    |           Proposal bond          |     |                            {{ networks.moonbase.treasury.proposal_bond }}% of the proposed spend                       |
-    |       Proposal bond minimum      |     |                                  {{ networks.moonbase.treasury.proposal_bond_min }} DEV                              |
-    |           Spend period           |     |  {{ networks.moonbase.treasury.spend_period_blocks }} blocks ({{ networks.moonbase.treasury.spend_period_days}} days)  |
-    |     Maximum approved proposals   |     |                                  {{ networks.moonbase.treasury.max_approved_proposals }}                               |
-    |     % of transaction fees allocated   |     |                                  {{ networks.moonbase.treasury.tx_fees_allocated }}                               |
+
+|      变量      |      |                              值                              |
+| :------------: | :--: | :----------------------------------------------------------: |
+|   提案保证金   |      | {{ networks.moonbase.treasury.proposal_bond }}%提案支出的{{ networks.moonriver.treasury.proposal_bond }}% |
+| 最低提案保证金 |      |    {{ networks.moonbase.treasury.proposal_bond_min }} DEV    |
+|     支出期     |      | {{ networks.moonbase.treasury.spend_period_blocks }} 区块 ({{ networks.moonbase.treasury.spend_period_days}} 天) |
+|  最高批准提案  |      |   {{ networks.moonbase.treasury.max_approved_proposals }}    |
+| %的交易费分配  |      |      {{ networks.moonbase.treasury.tx_fees_allocated }}      |
 
 === "Moonriver"
-    |             Variable             |     |                                                             Value                                                      |
-    | :------------------------------: | :-: | :--------------------------------------------------------------------------------------------------------------------: |
-    |           Proposal bond          |     |                            {{ networks.moonriver.treasury.proposal_bond }}% of the proposed spend                       |
-    |       Proposal bond minimum      |     |                                  {{ networks.moonriver.treasury.proposal_bond_min }} MOVR                              |
-    |           Spend period           |     |  {{ networks.moonriver.treasury.spend_period_blocks }} blocks ({{ networks.moonriver.treasury.spend_period_days}} days)  |
-    |     Maximum approved proposals   |     |                                  {{ networks.moonriver.treasury.max_approved_proposals }}                               |
-     |     % of transaction fees allocated   |     |                                  {{ networks.moonriver.treasury.tx_fees_allocated }}                               |
 
-## Community Treasury
+|      变量      |      |                              值                              |
+| :------------: | :--: | :----------------------------------------------------------: |
+|   提案保证金   |      | {{ networks.moonriver.treasury.proposal_bond }}%提案支出的{{ networks.moonriver.treasury.proposal_bond }}% |
+| 最低提案保证金 |      |   {{ networks.moonriver.treasury.proposal_bond_min }} MOVR   |
+|     支出期     |      | {{ networks.moonriver.treasury.spend_period_blocks }} 区块 ({{ networks.moonriver.treasury.spend_period_days}} 天) |
+|  最高批准提案  |      |   {{ networks.moonriver.treasury.max_approved_proposals }}   |
+| %的交易费分配  |      |     {{ networks.moonriver.treasury.tx_fees_allocated }}      |
 
-To fund the Treasury, a percentage of each block's transactions fees will be allocated to it. The remaining percentage of the fees are burned (check table above). The Treasury allows stakeholders to submit spending proposals to be reviewed and voted on by the Council. These spending proposals should include initiatives to further the network or boost network engagement. Some network initiatives could include funding integrations or collaborations, community events, network outreach, and more. 
+## 社区财政库
 
-To deter spam, proposals must be submitted with a deposit, also known as a proposal bond.The proposal bond needs to be higher than the minimum amount, known as the proposal bond minimum, which can be changed by a governance proposal. So, any token holder that has enough tokens to cover the deposit can submit a proposal. If the proposer doesn't have enough funds to cover the deposit, the extrinsic will fail due to insufficient funds, but transaction fees will still be deducted. 
+每个区块交易费用的一部分将作为资金存入财政库。剩余部分将被销毁（详情见上表）。财政库允许利益相关者提交资金支出提案，以供理事会审查和投票。这些支出提案建议包括促进网络或提高网络参与度的举措。一些网络计划应包括集成、合作、社区活动、网络扩展等。
 
-Once a proposal has been submitted, is subject to governance, and the council votes on it. If the proposal gets rejected, the deposit will be lost and transfered to the treasury pot. If approved by the council, the proposal enters a queue to be placed into a spend period. If the spending queue happens to contain the number of maximum approved proposals, the proposal submission will fail similarly to how it would if the proposer's balance is too low.
+为了阻止垃圾提案，提案必须与保证金一起提交，也称为提案保证金。提案保证金必须高于最低金额，即最低提案保证金，可通过治理提案更改。因此，任何拥有足够代币来支付保证金的代币持有者都可以提交提案。 如果提议者没有足够的资金来支付保证金，则外部会因资金不足而失败，但仍会扣除交易费用。
 
-Once the proposal is in a spend period, the funds will get distributed to the beneficiary and the original deposit will be returned to the proposer. If the treasury runs out of funds, the remaining approved proposals will remain in storage until the next spend period when the Treasury has enough funds again.
+提案提交后，即受治理，理事会对其进行投票。 如果提案被拒绝，保证金将转移到财政库。 如果获得理事会批准，该提案将进入等待队列，随后进入支出期。 如果等待支出的队列恰好达到了最大批准提案数，则提案提交失败，类似于提案人余额过低的情况。
 
-The happy path for a treasury proposal is shown in the following diagram:
+一旦提案进入支出期，资金将分配给受益人，原始保证金将退还给提案人。 如果财政部的资金用完，剩余的批准提案将一直保存到下一个支出期，届时财政部再次拥有足够的资金。
+
+财政库提案流程如下图所示：
 
 ![Treasury Proposal Happy Path Diagram](/images/treasury/treasury-proposal-roadmap.png)

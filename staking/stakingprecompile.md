@@ -1,100 +1,100 @@
 ---
-title: Staking Precompile
-description: Moonbeam Parachain Staking Ethereum Solidity Precompile Interface Demo
+title: 质押预编译
+description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 ---
 
-# Staking Precompile
+# 质押预编译
 
 ![Staking Moonbeam Banner](/images/staking/staking-precompile-banner.png)
 
-## Introduction
+## 概览
 
-A delegated proof of stake pallet recently debuted called [Parachain-Staking](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src), allowing token holders (nominators) to express exactly which collator candidates they would like to support and with what quantity of stake. The design of the Parachain-Staking pallet is such that it enforces shared risk/reward on chain between delegators and collators.
+最近推出一种名为[平行链质押](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src)的委托权益证明pallet，使token持有者（提名人）能够准确表达他们愿意支持的候选收集人以及希望质押的数量。除此之外，平行链质押pallet的设计也将使链上的委托人和收集人共享风险与回报。
 
-The Staking module is coded in Rust and it is part of a pallet that is normally not accessible from the Ethereum side of Moonbeam. However, a Staking Precompile allows developers to access the staking features using the Ethereum API in a precompiled contract located at address `{{networks.moonbase.staking.precompile_address}}`. The Staking Precompile was first released in the [Moonbase Alpha v8 release](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v8/).
+质押模块是使用Rust进行编码的，它同时也是pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于地址`{{networks.moonbase.staking.precompile_address}}`的预编译合约中的以太坊API使用质押功能。质押预编译功能在发布[Moonbase Alpha v8 release](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v8/)时首次推出。
 
-## The Parachain-Staking Solidity Interface
+## 平行链质押Solidity接口
 
-[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol) is an interface through which solidity contracts can interact with Parachain-Staking. The beauty is that solidity developers don’t have to learn the Substrate API. Instead, they can interact with staking functions using the Ethereum interface they are familiar with.
+[质押接口.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)是一个接口，通过Solidity合约与平行链质押互操作。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
 
-The interface includes the following functions:
+接口包含以下的函数：
 
- - **is_nominator**(*address* collator) — read-only function that checks whether the specified address is currently a staking nominator
- - **is_candidate**(*address* collator) — read-only function that checks whether the specified address is currently a collator candidate
- - **min_nomination**() — read-only function that gets the minimum nomination amount
- - **join_candidates**(*uint256* amount) — allows the account to join the set of collator candidates with a specified bond amount
- - **leave_candidates**() — immediately removes the account from the candidate pool to prevent others from selecting it as a collator and triggers unbonding after BondDuration rounds have elapsed
- - **go_offline**() — temporarily leave the set of collator candidates without unbonding
- - **go_online**() — rejoin the set of collator candidates after previously calling go_offline()
- - **candidate_bond_more**(*uint256* more) — collator candidate increases bond by specified amount
- - **candidate_bond_less**(*uint256* less) — collator candidate decreases bond by specified amount
- - **nominate**(*address* collator, *uint256* amount) — if the caller is not a nominator, this function adds them to the set of nominators. If the caller is already a nominator, then it adjusts their nomination amount
- - **leave_nominators**() — leave the set of nominators and revoke all ongoing nominations
- - **revoke_nominations**(*address* collator) — revoke a specific nomination
- - **nominator_bond_more**(*address* collator, *uint256* more) — nominator increases bond to a collator by specified amount
- - **nominator_bond_less**(*address* collator, *uint256* less) — nominator decreases bond to a collator by specified amount
+ - **is_nominator**(*address* collator) —— 检查指定地址当前是否为质押提名人的只读函数
+ - **is_candidate**(*address* collator) —— 检查指定地址当前是否为收集人候选者的只读函数
+ - **min_nomination**() —— 获得最小提名数量的只读函数
+ - **join_candidates**(*unit256* amount) —— 允许账户加入拥有指定保证金金额的候选收集人集
+ - **leave_candidates**() —— 立即从候选人池中移除账户防止其他人将其选为收集人，并在BondDuration轮次结束后触发解绑
+ - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集
+ - **go_online**() —— 在先前调用go_offline()后，重新加入候选收集人集
+ - **candidate_bond_more**(*uint256* more) —— 候选收集人根据特定金额增加保证金
+ - **candidate_bond_less**(*uint256* less) —— 候选收集人根据特定金额减少保证金
+ - **nominate**(*address* collator, *uint256* amount) —— 如果操作人并不是提名人，此函数将会将其加入提名人集。如果操作人已经是提名人，此函数将会修改其提名数量
+ - **leave_nominators**() —— 离开提名人集并撤销所有正在进行中的提名
+ - **revoke_nominations**(*address* collator) —— 撤销特定提名
+ - **nominator_bond_more**(*address* collator, *uint256* more) —— 提名人根据特定金额为指定收集人提高保证金数量
+ - **nominator_bond_less**(*address* collator, *uint256* less) —— 提名人根据特定金额为指定收集人减少保证金数量
 
-## Interacting with the Staking Precompile
+## 操作质押预编译
 
-### Checking Prerequisites
-The below example is demonstrated on Moonbase Alpha, however, it is compatible with all networks including Moonriver and Moonbeam.
+### 查看先决条件
+以下的示例将会在Moonbase Alpha上演示，然而这同样适用于其他网络，包括Moonriver和Moonbeam。
 
- - Have MetaMask installed and [connected to Moonbase Alpha](/getting-started/moonbase/metamask/)
- - Have an account with over `{{networks.moonbase.staking.min_nom_stake}}` tokens. You can get this from [Mission Control](/getting-started/moonbase/faucet/)
+ - 安装MetaMask并将其[连接至Moonbase Alpha](/getting-started/moonbase/metamask/)
+ - 拥有一个超过`{{networks.moonbase.staking.min_nom_stake}}`枚token的账户。您可以通过[Mission Control](/getting-started/moonbase/faucet/)获得。/getting-started/moonbase/faucet/)
 
-!!! note
-    The example below requires more than `{{networks.moonbase.staking.min_nom_stake}}` tokens due to the minimum nomination amount plus gas fees. If you need more than the faucet dispenses, please contact us on Discord and we will be happy to help you. 
+!!! 注意事项
+    由于需要最低的提名数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_nom_stake}}`枚tokens才可进行操作。若想获取更多超过水龙头分配的token，请随时通过Discord联系我们，我们很高兴为您提供帮助。
 
-### Remix Set Up
-1. Get a copy of [StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
-2. Copy and paste the file contents into a Remix file named StakingInterface.sol
+### Remix设置
+1. 获得[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的复制文档
+2. 复制并贴上文档内容至名为StakingInterface.sol的Remix文档
 
 ![Copying and Pasting the Staking Interface into Remix](/images/staking/staking-precompile-1.png)
 
-### Compile the Contract
-1. Click on the Compile tab, second from top
-2. Compile [Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
+### 编译合约
+1. 点击（从上至下）的第二个Compile标签
+2. 编译[Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
 
 ![Compiling StakingInteface.sol](/images/staking/staking-precompile-2.png)
 
-### Access the Contract
-1. Click on the Deploy and Run tab, directly below the Compile tab in Remix. **Note**: we are not deploying a contract here, instead we are accessing a precompiled contract that is already deployed
-2. Make sure "Injected Web3" is selected in the Environment drop down
-3. Ensure “ParachainStaking - StakingInterface.sol” is selected in the Contract dropdown. Since this is a precompiled contract there is no need to deploy, instead we are going to provide the address of the precompile in the “At Address” Field
-4. Provide the address of the Staking precompile: `{{networks.moonbase.staking.precompile_address}}` and click “At Address”
+### 读取合约
+1. 点击Remix界面中Compile标签正下方的Deploy and Run标签。**注意：**我们现在并不是在这里部署合约，而是使用先前部署的预编译合约。
+2. 确认已选取Environment下拉菜单中的“Injected Web3”。
+3. 确认已在Contract下拉菜单中勾选”ParachainStaking - Stakinginterface.sol“。另外，因为这是一个预编译合约，无需进行部署。相反地，我们将会在“At Address”区块提供预编译的地址。
+4. 提供质押预编译的地址：`{{networks.moonbase.staking.precompile_address}}`并点击“At Address”。
 
 ![Provide the address](/images/staking/staking-precompile-3.png)
 
-### Nominate a Collator
-For this example, we are going to be nominating a collator. Nominators are token holders who stake tokens, vouching for specific collators. Any user that holds a minimum amount of {{networks.moonbase.staking.min_nom_stake}} tokens as free balance can become a nominator. 
+### 提名一个收集人
+在这个示例中，我们需要提名一个收集人。提名人持有token，并为担保的收集人质押。所有用户只要持有超过 `{{networks.moonbase.staking.min_nom_stake}}`枚token皆可成为提名人。
 
-1. Expand the panel with the contract address. Locate the nominate function and expand the panel to see the parameters
-2. Provide the address of a collator such as `{{ networks.moonbase.staking.collators.address1 }}`
-3. Provide the amount to nominate in WEI. There is a minimum of `{{networks.moonbase.staking.min_nom_stake}}` tokens to nominate, so the lowest amount in WEI is `5000000000000000000`
-4. Press "transact" and confirm the transaction in Metamask
+1. 使用合约地址扩充面板。找到提名函数并展开面板以查看函数
+2. 提供收集人的地址，如`{{ networks.moonbase.staking.collators.address1 }}`
+3. 提供在WEI中提名的数量。最低提名的token数量为`{{networks.moonbase.staking.min_nom_stake}}` ，所以WEI中最低的数量是`5000000000000000000`
+4. 点击“transact”并在MetaMask确认交易
 
 ![Nominate a Collator](/images/staking/staking-precompile-4.png)
 
-### Verify Nomination
-To verify your nomination was successful, you can check the chain state in Polkadot.js Apps. First, add your metamask address to the [address book in Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/addresses). If you've already completed this step you can skip ahead to the next section. 
+### 验证提名
+如果您想要验证您的提名是否成功，您能够在Polkadot.js应用查看链状态。首先，[将Metamask地址加入Polkadot.js应用的地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入下个部分。
 
-#### Add Metamask Address to Address Book
-1. Navigate to Accounts -> Address Book 
-2. Click on "Add contact"
-3. Add your Metamask Address
-4. Provide a nickname for the account
+#### 将MetaMask地址加入地址簿
+1. 导向至Accounts -> Address Book
+2. 点击“Add contact”
+3. 加入您的Metamask地址
+4. 提供一个账户的昵称
 
 ![Add to Address Book](/images/staking/staking-precompile-5.png)
 
-#### Verify Nominator State
-1. To verify your nomination was successful, head to [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate) and navigate to Developer -> Chain State
-2. Select the "parachainStaking" pallet
-3. Select the "nominatorState" query
-4. Click the "Plus" Button to return the results and verify your nomination
+#### 验证提名人状态
+1. 为了验证您已成功提名，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)导向至Developer -> Chain State
+2. 选取“parachainStaking” pallet
+3. 选取“nominatorState”查询
+4. 点击“Plus”按钮以获得结果并验证您的提名
 
 ![Verify Nomination](/images/staking/staking-precompile-6.png)
 
-### Revoking a Nomination
-To revoke a nomination and receive your tokens back, call the `revoke_nomination` method, providing the same address you started the nomination with above. You can check your nominator state again on Polkadot.js Apps to confirm.
+### 撤销一个提名
+如果您想撤销提名并拿回您的token，使用`revoke_nomination`并且输入提名时所提供的地址。您可以再次在Polkadot.js Apps检查您的提名人状态以确认。
 
 ![Revoke Nomination](/images/staking/staking-precompile-7.png)
