@@ -1,6 +1,6 @@
 ---
 title: 代币
-description: 和所有的智能合约平台一样，Moonbeam Network也需要发行实用性代币让生态有效运转。发行在Polkadot平台上的代币为Glimmer（GLMR），在Kusama上的代币称作River（RIVER）。
+description: 和所有的智能合约平台一样，Moonbeam Network也需要发行实用性代币让生态有效运转。发行在Polkadot平台上的代币为Glimmer（GLMR），在Kusama上的代币称作Moonriver（MOVR）。
 ---
 
 # 概览
@@ -20,11 +20,11 @@ description: 和所有的智能合约平台一样，Moonbeam Network也需要发
 
 更多关于Glimmer的资讯请点击[这里](https://moonbeam.network/networks/moonbeam/glimmer-token/)。
 
-## River Token
+## Moonriver Token
 
-部署在Kusama上的Moonbeam网络是Moonriver，它的实用性代币为River（RIVER），代币应用举例：“调用这个智能合约将花费3个River（RIVER）”。
+部署在Kusama上的Moonbeam网络是Moonriver，它的实用性代币为Moonriver（MOVR），代币应用举例：“调用这个智能合约将花费3个Moonriver（MOVR）”。
 
-更多关于River的资讯请点击[这里](https://moonbeam.network/networks/moonriver/river-token/)。
+更多关于Moonriver的资讯请点击[这里](https://moonbeam.network/networks/moonriver/river-token/)。
 
 ## DEV Token
 
