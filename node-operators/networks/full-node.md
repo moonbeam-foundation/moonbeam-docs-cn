@@ -73,7 +73,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 
 ## Docker安装指引
 
-使用Docker可以快速创建Moonbase Alpha节点。关于安装Docker的更多资讯，请访问[这一页面](https://docs.docker.com/get-docker/)。截至本文撰写时，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver将需要数天的时间同步Kusama中继链内嵌入的数据。请确认您的系统符合以下[要求](#requirements)。
+使用Docker可以快速创建Moonbase Alpha节点。关于安装Docker的更多资讯，请访问[这一页面](https://docs.docker.com/get-docker/)。截至本文撰写时，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver将需要数天的时间同步Kusama中继链内嵌入的数据。请确认您的系统符合以下[要求](#需求)。
 
 创建一个本地目录以储存链上数据：
 
@@ -206,7 +206,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 ![Full Node Starting](/images/fullnode/fullnode-docker2.png)
 
 !!! 注意事项
-    同步Kusama的内嵌中继链需要数天的时间，请注意您的系统符合[要求](#requirements)。
+    同步Kusama的内嵌中继链需要数天的时间，请注意您的系统符合[要求](#需求)。
 
 如果您跟随的是Moonbase Alpha的节点教程，当同步完成，您将获得一个在本地运行的Moonbase Alpha测试网节点！
 
