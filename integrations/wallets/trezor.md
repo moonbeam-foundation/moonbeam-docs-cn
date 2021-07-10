@@ -78,11 +78,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 ![MetaMask Successfully Imported Trezor Account](/images/trezor/trezor-images8.png)
 
-您现在已成功从Trezor设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#signing-a-transaction-using-your-trezor)。
+您现在已成功从Trezor设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#使用您的Trezor签署交易)。
 
 ## 使用您的Trezor签署交易
 
-如果您已成功[将您的Trezor账户导入MetaMask](#importing-your-trezor-account-to-metamask)，并准备好使用您的Trezor设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
+如果您已成功[将您的Trezor账户导入MetaMask](#将您的Trezor账户导入MetaMask)，并准备好使用您的Trezor设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
 
 首先，确保您的Trezor账户[有足够的DEV Token](/getting-started/moonbase/faucet/)。接着，点击“发送”按钮。
 
