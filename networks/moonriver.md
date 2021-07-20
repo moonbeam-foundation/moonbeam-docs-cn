@@ -1,81 +1,82 @@
 ---
 title: Moonriver
-description: An overview of the current configuration of the Moonbeam deployment on Kusama, Moonriver, and information on how to start building on it using Solidity.
+description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配置情况，以及如何使用Solidity进行开发。
 ---
 
 # Moonriver
 
-_Updated July 9th, 2021_
+_更新至2021年6月30日_
 
-## Goal
+## 目标
 
-In June 2021, Moonriver first launched as a parachain on the Kusama network. Moonriver is a sister network of Moonbeam, and provides an environment to test new code under real economic conditions. Developers now have access to start experimenting and building on an incentivized canary network connected to Kusama. 
+2021年6月，Moonriver首度作为平行链在Kusama网络启动。Moonriver是Moonbeam的姐妹网络，提供一个据有真实经济条件的代码测试环境。开发者现在可以直接访问连接至Kusama的试验性网络进行探索与开发。
 
-In order to collect as much feedback as possible and provide fast issue resolution, we have set up a [Discord with a dedicated Moonriver channel](https://discord.gg/5TaUvbRvgM).
+为了尽可能多地收集用户反馈并快速提供问题解决方案，我们建立一个[专为Moonriver服务的Discord社群](https://discord.gg/5TaUvbRvgM)。
 
-## Initial Configurations
+## 初始配置
 
-Moonriver is scheduled to follow a [5-phase launch process](https://moonbeam.network/networks/moonriver/launch/). Currently, Moonriver is in Phase 0 of the launch process and has the following configurations:
+Moonriver预先设定了[5个阶段的部署过程](https://moonbeam.network/networks/moonriver/launch/)。目前，Moonriver处于第0阶段并有以下配置：
 
-- Runs as a parachain connected to the Kusama relay chain
-- Has an active set of {{ networks.moonriver.staking.max_collators }} collators, all hosted by PureStake on behalf of the Moonbeam Foundation. There will be an initial collator election in Phase 1 to expand the collator set to parties outside of the Moonbeam team
-- There are two RPC endpoints (hosted by PureStake). People can run full nodes to access their own private RPC endpoints
+- 以平行链的形式运行并连接至Kusama中继链
+- 拥有一个由PureStake代表Moonbeam基金会运营并含有{{ networks.moonriver.staking.max_collators }}位收集人的有效集。将会在第1阶段举行一次初始收集人选举，以扩展Moonbeam团队以外的收集人集。
+- 两个由PureStake运营的RPC端点。用户可以运行全节点以访问其所有的私人RPC端点。
 
 ![Moonriver Diagram](/images/moonriver/moonriver-diagram.png)
 
-Some important variables/configurations to note include:
+需要注意的重要变量：
 
-=== "General"
-    |       Variable        |                                               Value                                           |
-    |:---------------------:|    :-----------------------------------------------------------------------------------------:|
-    |   Minimum gas price   | {{ networks.moonriver.min_gas_price }} Gsed*  |
-    |   Target block time   |          {{ networks.moonriver.block_time }} seconds (expected to be 6     seconds)           |
-    |    Block gas limit    |         {{ networks.moonriver.gas_block }} (expected to increase by at     least 4x)          |
-    | Transaction gas limit |           {{ networks.moonriver.gas_tx }} (expected to increase by at     least 4x)           |
-    |     RPC endpoint      |                             {{ networks.moonriver.rpc_url }}    }                              |
-    |     WSS endpoint      |                             {{ networks.moonriver.wss_url }}                              |
+### 一般配置
 
-=== "Governance"
-    |         Variable         |                                                                  Value                                                              |
-    |:------------------------:|    :---------------------------------------------------------------------------------------------------    ----------------------------:|
-    |      Voting Period       |      {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{     networks.moonriver.democracy.vote_period.days}} days)      |
-    | Fast-Track Voting Period | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{     networks.moonriver.democracy.fast_vote_period.days}} days) |
-    |     Enactment Period     |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{     networks.moonriver.democracy.enact_period.days}} day)      |
-    |     Cool-off Period      |      {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{     networks.moonriver.democracy.cool_period.days}} days)      |
-    |     Minimum Deposit      |                                       {{ networks.moonriver.democracy.    min_deposit }} MOVR                                       |
-    |      Maximum Votes       |                                          {{ networks.moonriver.    democracy.max_votes }}                                           |
-    |    Maximum Proposals     |                                        {{ networks.moonriver.democracy.    max_proposals }}                                         |
+|       变量       |                         数值                          |
+| :--------------: | :---------------------------------------------------: |
+|    最小Gas费     |     {{ networks.moonriver.min_gas_price }} Gsed*      |
+| 目标区块生产时间 |   {{ networks.moonriver.block_time }}秒（预计6秒）    |
+|   区块Gas上限    | {{ networks.moonriver.gas_block }}（预计提升至少4倍） |
+|  交易Gas费上限   |  {{ networks.moonriver.gas_tx }}（预计提升至少4倍）   |
+|     RPC端点      |           {{ networks.moonriver.rpc_url }}            |
+|     WSS 端点     |           {{ networks.moonriver.wss_url }}            |
 
-=== "Staking"
-    |             Variable             |                                                       Value                                                   |
-    |:--------------------------------:|    :---------------------------------------------------------------------------------------------------    ------:|
-    |     Minimum nomination stake     |                           {{ networks.moonriver.staking.    min_nom_stake }} tokens                           |
-    |        Minimum nomination        |                           {{ networks.moonriver.staking.    min_nom_amount}} tokens                           |
-    | Maximum nominators per collators |                             {{ networks.moonriver.staking.    max_nom_per_col }}                              |
-    | Maximum collators per nominator  |                             {{ networks.moonriver.staking.    max_col_per_nom }}                              |
-    |              Round               | {{ networks.moonriver.staking.round_blocks }} blocks ({{     networks.moonriver.staking.round_hours }} hours) |
-    |          Bond duration           |                             {{ networks.moonriver.staking.    bond_lock }} rounds                             |
+### 治理配置
 
-_*Read more about [token denominations](#token-denominations)_
+|    变量    |                             数值                             |
+| :--------: | :----------------------------------------------------------: |
+|   投票期   | {{ networks.moonriver.democracy.vote_period.blocks}}区块（{{ networks.moonriver.democracy.vote_period.days}}天） |
+| 快速投票期 | {{ networks.moonriver.democracy.fast_vote_period.blocks}}区块（{{ networks.moonriver.democracy.fast_vote_period.days}}天） |
+|   颁布期   | {{ networks.moonriver.democracy.enact_period.blocks}}区块（{{ networks.moonriver.democracy.enact_period.days}}天） |
+|   冷却期   | {{ networks.moonriver.democracy.cool_period.blocks}}区块（{{ networks.moonriver.democracy.cool_period.days}}天） |
+| 最低保证金 |     {{ networks.moonriver.democracy.min_deposit }} MOVR      |
+| 最高投票数 |         {{ networks.moonriver.democracy.max_votes }}         |
+| 最高提案数 |       {{ networks.moonriver.democracy.max_proposals }}       |
 
-## Get Started
+### 质押配置
+
+|            变量            |                             数值                             |
+| :------------------------: | :----------------------------------------------------------: |
+|      最低提名质押数量      |    {{ networks.moonriver.staking.min_nom_stake }}枚Token     |
+|        最低提名数量        |    {{ networks.moonriver.staking.min_nom_amount}}枚token     |
+| 收集人可获得最高的提名人数 |       {{ networks.moonriver.staking.max_nom_per_col }}       |
+| 提名人可提名的最高收集人数 |       {{ networks.moonriver.staking.max_col_per_nom }}       |
+|            轮次            | {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时） |
+|           绑定期           |        {{ networks.moonriver.staking.bond_lock }}轮次        |
+
+## 开始使用
 
 --8<-- 'text/moonriver/connect.md'
 
 ## Telemetry
 
-You can see current Moonriver telemetry information visiting [this link](https://telemetry.polkadot.io/#list/Moonriver).
+你可以访问[此页面](https://telemetry.polkadot.io/#list/Moonriver)查看当前Moonriver telemetry资讯。
 
 ## Tokens
 
-The tokens on Moonriver will also be called Moonriver (MOVR). Check out the Moonbeam Foundation site for more information on the [Moonriver token](https://moonbeam.foundation/moonriver-token/). 
+Moonriver的Token被称为Moonriver（MOVR）。如果您想获得更多资讯，请查看Moonbeam基金会官网[Moonriver Token页面](https://moonbeam.foundation/moonriver-token/)。
 
-### Token Denominations
+### Token面额
 
-The smallest unit of Moonriver is called a Sediment (Sed). It takes 10^18 Sediment to make one Moonriver. The denominations are as follows:
+Moonriver的最小单位是Sediment（Sed），需要10^18个Sediment以组成一个Moonriver，面额如下所示：
 
-|      Unit      |   Moonriver (MOVR)   |        Sediment (Sed)         |
-|:--------------:|:--------------------:|:-----------------------------:|
+|      单位      |   Moonriver (MOVR)   |        Sediment (Sed)         |
+| :------------: | :------------------: | :---------------------------: |
 | Sediment (Sed) | 0.000000000000000001 |               1               |
 |    Kilosed     |  0.000000000000001   |             1,000             |
 |    Megased     |    0.000000000001    |           1,000,000           |
@@ -85,13 +86,13 @@ The smallest unit of Moonriver is called a Sediment (Sed). It takes 10^18 Sedime
 |   Moonriver    |          1           |   1,000,000,000,000,000,000   |
 | Kilomoonriver  |        1,000         | 1,000,000,000,000,000,000,000 |
 
-## Proof of Stake
+## 权益证明（PoS）
 
-Over the course of the 5-phase Moonriver launch, the network will progressively be updated to a fully decentralized Proof of Stake network. For a breakdown of what will occur during each phase, check out the [Network Launch Status](https://moonbeam.network/networks/moonriver/launch/) page.
+Moonriver通过其5个阶段的上线过程后，网络将会更新成为一个完全去中心化的权益证明网络。如果您想了解每个阶段的最新内容，请访问[网络上线状态](https://moonbeam.network/networks/moonriver/launch/)页面。
 
-In Phase 1, there will be an initial collator election and the active collator set will start at 32 collators. Once governance is enabled in Phase 2, the number of collators in the active set will be subject to governance. The active set will consist of the top collators by stake, including nominations.
+在第1阶段，将会举行一次初始收集人选举，同时收集人有效集的初始集元数量将会是32个。当在第2阶段开启治理功能后，收集人有效集中的集元数量将会由治理决定。有效集的集元组成将由质押（包括提名）排名决定。
 
-## Limitations
+## 限制
 
-Some [precompiles](https://docs.klaytn.com/smart-contract/precompiled-contracts) are yet to be included. You can check a list of supported precompiles [here](/integrations/precompiles/). However, all built-in functions are available.
+部分[预编译](https://docs.klaytn.com/smart-contract/precompiled-contracts)功能目前仍无法使用，其余内建的功能皆可使用。您可在[此页面](/integrations/precompiles/)查看当前可使用的预编译方案。
 
