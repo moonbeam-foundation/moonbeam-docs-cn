@@ -8,21 +8,21 @@ description: 此教程将帮助您学习如何设置您的第一个Moonbeam节�
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## 概览
+## 概览 {: #introduction }
 
 本教程将指导您如何设置一个独立的Moonbeam本地节点，并测试Moonbeam与以太坊之间的兼容性与功能性。
 
 !!! 注意事项 
-    本教程使用[Moonbase Alpha](https://github.com/PureStake/moonbeam)的tutorial-v7标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。本教程示例基于Ubuntu 18.04的环境，用户需根据其所使用的MacOS和Windows版本进行微调。
+    本教程使用[Moonbase Alpha](https://github.com/PureStake/moonbeam)的tutorial-v7标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 Moonbeam开发节点是基于您的个人开发环境，在Moonbeam上构建和测试应用程序，相当于以太坊开发人员使用的Ganache。Moonbeam助您快速轻松地上手，无需承担中继链的成本。您可以使用 `--sealing` 选项，立即启动节点来创建区块，或者在交易完成后的自定义时间段创建区块。默认情况下，收到交易意味着一个区块即被创建，类似于Ganache的instamine功能。
 
-如您参考本教程指示操作，您可顺利连接至默认的Polkadot JS GUI的Moonbeam节点，同时获得10个 [预注资的账户](/getting-started/local-node/setting-up-a-node/#pre-funded-development-accounts)，该节点可在本地环境运行。
+如您参考本教程指示操作，您可顺利在本地环境运行Moonbeam开发节点，同时获得10个[预注资的账户](#prefunded-development-accounts)，并且可以使用Polkadot JS GUI与节点交互。
 
-另有两种方法助您运行Moonbeam节点：使用[Docker来执行预建二进制](/getting-started/local-node/setting-up-a-node/#getting-started-with-docker)，或[在本地编译二进制](/getting-started/local-node/setting-up-a-node/#getting-started-with-the-binary-file)设置开发节点。点击此处便可安装[Docker](https://docs.docker.com/get-docker/)。Docker更为快速便捷，您无需安装Substrate，所有辅助项，且无需构建节点即可运行。另一方面，如果您仍希望体验构建节点进程，则需要大约30分钟或更长时间完成，具体情况取决于您的硬件设备。
+目前有两种方式在本地运行Moonbeam节点：使用[Docker来执行预建二进制](#getting-started-with-docker)，或[在本地编译二进制](#getting-started-with-the-binary-file)设置开发节点。点击此处便可安装[Docker](https://docs.docker.com/get-docker/)。Docker更为快速便捷，您无需安装Substrate，所有辅助项，且无需构建节点即可运行。另一方面，如果您仍希望体验构建节点进程，则需要大约30分钟或更长时间完成，具体情况取决于您的硬件设备。
 
-## 使用Docker进行安装与设置
+## 使用Docker进行安装与设置 {: #getting-started-with-docker }
 
 使用Docker可让您可以在几秒钟内启动节点。安装Docker后，您可执行下列指令来下载相关图像：
 
@@ -54,7 +54,7 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 ![Docker - output shows blocks being produced](/images/setting-up-a-node/setting-up-node-2.png)
 
-您可点击[一般标识及选项](/getting-started/local-node/setting-up-a-node/#common-flags-and-options)来查阅更多实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
+您可点击[常用标识及选项](#common-commands-flags-and-options)来查阅更多实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
 ```
 docker run --rm --name {{ networks.development.container_name }} \
@@ -62,8 +62,8 @@ purestake/moonbeam \
 --help
 ```
 
-如果您已经使用Docker来启动节点，则可以跳过下一部分的教程，直接进入[设置Moonbeam节点并连接至Polkadot JS GUI](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
-## 安装与预设  
+如果您已经使用Docker来启动节点，则可以跳过下一部分的教程，直接进入[设置Moonbeam节点并连接至Polkadot JS GUI](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
+## 使用源码编译，安装与设置  {: #getting-started-with-the-binary-file }
 
 第一步，我们通过下列链接来克隆一个Moonbeam Repo的特定标签：
 
@@ -112,14 +112,14 @@ cd moonbeam
 
 ![Output shows blocks being produced](/images/setting-up-a-node/setting-up-node-4.png)
 
-您可点击[一般标识及选项](/getting-started/local-node/setting-up-a-node/#common-flags-and-options)来查阅更多用于实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
+您可点击[常用标识及选项](#common-commands-flags-and-options)来查阅更多用于实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
 ```
 ./target/release/moonbeam --help
 ```
-## 如何将Polkadot JS Apps 连接至本地Moonbeam节点
+## 如何将Polkadot JS Apps 连接至本地Moonbeam节点 {: #connecting-polkadot-js-apps-to-a-local-moonbeam-node :}
 
-发展节点是Substrate-based的节点，您可使用标准的Substrate工具来与之交互。两个可使用的RPC终端是：
+开发节点是基于Substrate框架的节点，您可使用标准的Substrate工具来与之交互。两个可使用的RPC终端是：
 
  - HTTP: `http://127.0.0.1:9933`
  - WS: `ws://127.0.0.1:9944` 
@@ -136,15 +136,15 @@ cd moonbeam
 
 ![Select Local Node](/images/setting-up-a-node/setting-up-node-7.png)
 
-## 如何查询账户状态
+## 如何查询账户状态 {: #querying-account-state }
 
-随着[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在单一账户的模式下运行，该模式为以太坊的H160并且已被Polkadot JS Apps支持。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
+随着[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在统一账户模式下运行，该模式支持以太坊的H160账户格式并且已与Polkadot JS Apps兼容。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
 
 您也可以利用Moonbeam完整的以太坊RPC功能，使用[MetaMask](/getting-started/local-node/using-metamask/)查询账户的余额。除此之外，您还可以利用其他的开发工具，如[Remix](/getting-started/local-node/using-remix/)和[Truffle](/getting-started/local-node/using-truffle/) 等等。
 
-## 一般命令、标识及选项
+## 常用命令、标识及选项 {: #common-commands-flags-and-options }
 
-### 清除数据
+### 清除数据 {: #purging-the-chain }
 
 通过二进制文件运行节点时，数据存储在本地目录中，该目录通常位于`~/.local/shared/moonbeam/chains/development/db`。如果要启动该节点的新实例，您可以删除该文件夹的内容，或者在`moonbeam`文件夹中运行以下命令：
 
@@ -155,7 +155,7 @@ cd moonbeam
 这将删除数据文件夹，请注意，所有链数据均已丢失。
 
 如果您使用Docker，则数据文件夹与Docker容器本身关联。
-### 节点标识
+### 节点标识 {: #node-flags }
 
 标识不带参数。 要使用标识，请将其添加到命令末尾。例如：
 
@@ -169,7 +169,7 @@ cd moonbeam
 - `--rpc-external`: 监听所有RPC接口
 - `--ws-external`: 监听所有Websocket接口
 
-### 节点选项
+### 节点选项 {: #node-options }
 
 选项接受选项右侧的参数。例如：
 
@@ -184,7 +184,7 @@ cd moonbeam
 
 如需标志和选项的完整列表，请在命令末尾添加 `--help` 来启动Moonbeam开发节点。
 
-## 高级标志和选项
+## 高级标志和选项 {: #advanced-flags-and-options }
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
@@ -194,7 +194,7 @@ cd moonbeam
 ./target/release/moonbeam --dev --execution=Native --ethapi=debug,trace
 ```
 
-## 预注资开发账户
+## 预注资开发账户 {: #prefunded-development-accounts }
 
 您的Moonbeam开发节点带有十个预注资的开发帐户。这些地址源自于Substrate的规范开发助记符：
 
