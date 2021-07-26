@@ -3,11 +3,11 @@ title: 主页
 description: 欢迎访问Moonbeam资料库，Moonbeam是Polkadot上兼容以太坊的智能合约平行链。
 ---
 
-# 欢迎访问Moonbeam
+# 欢迎访问Moonbeam 
 
 ![Main Page Banner Image](/images/main-banner.png)
 
-Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生态的智能合约平行链。本网站为Moonbeam资料库，在这里，您可自由浏览关于开发人员，信息收集者，终端用户和其他Moonbeam网络节点的第一手资料。
+Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生态的智能合约平行链。本网站为Moonbeam资料库，在这里，无论您是开发人员，信息收集者，或终端用户都可自由浏览关于Moonbeam网络平台的第一手资料。
 
 本网站信息将随着Moonbeam社区的发展而实时更新。 
 
@@ -15,7 +15,7 @@ Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生�
 
 ---
 
-## 什么是Moonbeam？
+## 什么是Moonbeam？ {: #what-is-moonbeam }
 
 Moonbeam是开发者友好型区块链，可实现完全兼容EVM、Web3的API兼容以及将Moonbeam连接到现有的以太坊网络的网桥。开发者可借助Moonbeam，利用现有的以太坊开发者工具和网络，轻松实现跨链兼容。开发者只需基于自身开发成果稍作修改，即可轻松将现有的Solidity智能合约和DApp前端部署到Moonbeam。
 
@@ -23,16 +23,16 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 ---
 
-## 如何参与Moonbeam？
+## 如何参与Moonbeam？ {: #how-to-get-started-with-moonbeam }
 
-### 网络
+### 网络 {: #networks }
 
 目前，任选以下一种方式，助您轻松参与Moonbeam构建：
 
- - 将您的Moonbeam实体构建为[独立节点](/getting-started/local-node/setting-up-a-node/)
+ - 将您的Moonbeam实例构建为[独立节点](/getting-started/local-node/setting-up-a-node/)
  - [连接](/getting-started/moonbase/connect/)到[Moonbase Alpha TestNet](/networks/moonbase/) 
 
-### 钱包
+### 钱包 {: #wallets }
 
 目前，我们成功测试以下钱包可使用Moonbeam网络：
 
@@ -43,7 +43,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
 
-### 开发工具
+### 开发工具 {: #tools }
 
 由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具：
 
@@ -59,7 +59,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
 
-### 预言机
+### 预言机 {: #oracles }
 
 我们提供多个预言机选项，实现智能合约数据喂价：
 
@@ -67,7 +67,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
  - [Band Protocol](/integrations/oracles/band-protocol/)
  - [Razor Network](/integrations/oracles/razor-network/)
 
-### 桥服务
+### 桥服务 {: #bridges }
 
 目前，我们可提供功能齐全的桥服务，实现连接以太坊Rinkeby/Kovan测试网和Moonbase Alpha测试网：
 
@@ -75,7 +75,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 ---
 
-## 如何参与Moonbeam社区互动
+## 如何参与Moonbeam社区互动 {: #how-to-engage-with-the-moonbeam-community }
 
 ### :fontawesome-brands-discord:  Discord  
 
@@ -101,6 +101,6 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 订阅 [Moonbeam 电子月报](https://moonbeam.network/newsletter/)，获取每月Moonbeam进展总结。
 
-## 关于Moonbeam资料库
+## 关于Moonbeam资料库 {: #about-this-site }
 
 本资料库生成自[mkdocs](https://www.mkdocs.org/)，所有内容均来源于moonbeam-docs，且可在 [on :fontawesome-brands-github: GitHub](https://github.com/PureStake/moonbeam-docs)同步找到。
