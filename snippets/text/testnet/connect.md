@@ -34,7 +34,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 ### WSS DNS
 
-如果想使用WebSocket连接，你可以使用以下的DNS：
+如果想使用WebSocket连接，您可以使用以下的DNS：
 
 ```
 wss://wss.testnet.moonbeam.network
