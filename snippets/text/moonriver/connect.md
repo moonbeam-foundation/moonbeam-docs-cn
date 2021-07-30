@@ -1,17 +1,17 @@
-The Moonriver RPC and WSS endpoints hosted by PureStake are for development purposes only and are not meant to be used in production applications. The following are alternative endpoint providers:
+Moonriver的RPC和WSS端点目前由PureStake提供，仅为开发环境应同使用，而不为生产环境应用使用。以下为其他端点服务供应者:
 
 - [OnFinality](https://onfinality.io/)
 - [Elara](https://elara.patract.io/)
 
 ### HTTPS DNS
 
-To connect to Moonriver via HTTPS, simply point your provider to the following RPC DNS:
+如果您想使用HTTPS连接至Moonriver， 您只需将您的provider（提供者）导至以下的RPC DNS：
 
 ```
 https://rpc.moonriver.moonbeam.network
 ```
 
-For the web3.js library, you can create a local Web3 instance and set the provider to connect to Moonriver (both HTTP and WS are supported):
+如果使用的是web3.js库，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonriver（同时支持HTTP和WS）：
 
 ```js
 const Web3 = require('web3'); //Load Web3 library
@@ -21,7 +21,7 @@ const Web3 = require('web3'); //Load Web3 library
 //Create local Web3 instance - set Moonriver as provider
 const web3 = new Web3("https://rpc.moonriver.moonbeam.network"); 
 ```
-For the ethers.js library, define the provider by using `ethers.providers.StaticJsonRpcProvider(providerURL, {object})` and setting the provider URL to Moonriver:
+如果使用的是ethers.js库，您可以使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})` 来定义开发者，并且将provider（提供者）URL设定至Moonriver：
 
 ```js
 const ethers = require('ethers');
@@ -35,11 +35,11 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 });
 ```
 
-Any Ethereum wallet should be able to generate a valid address for Moonbeam (for example, [MetaMask](https://metamask.io/)).
+任何以太坊钱包都应当能够生成可以使用Moonbeam的地址（例如：[MetaMask](https://metamask.io/)）。
 
 ### WSS DNS
 
-For WebSocket connections, you can use the following DNS:
+如果想使用WebSocket连接，你可以使用以下的DNS：
 
 ```
 wss://wss.moonriver.moonbeam.network
@@ -47,4 +47,4 @@ wss://wss.moonriver.moonbeam.network
 
 ### Chain ID
 
-The Moonriver chain ID is: `1285`
+Moonriver的Chain ID为: `1285`
