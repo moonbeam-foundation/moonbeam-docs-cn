@@ -44,7 +44,7 @@ wss://wss.testnet.moonbeam.network
 
 Moonbase Alpha测试网的Chain ID为：`1287 `
 
-### 中继链
+### 中继链 {: #relay-chain }
 
 想要链接至由PureStake管理的Moonbase Alpha中继链，可使用以下WS终端：
 
