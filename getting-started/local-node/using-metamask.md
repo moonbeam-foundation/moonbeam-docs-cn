@@ -8,19 +8,19 @@ description: 本教程将指导您如何通过谷歌浏览器上的MetaMask插�
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/hrpBd2-a7as' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## 概览
+## 概览 {: #introduction }
 
 通过Moonbase Alpha测试网或本地运行的Moonbeam开发节点，开发者可使用MetaMask连接到Moonbeam网络。
 
 本教程展示了将MetaMask连接到自主运行的Moonbeam独立节点，以及在各个帐户之间转移代币的详细步骤。如果您尚未设置本地开发节点，请参考[本教程](/getting-started/local-node/setting-up-a-node/), 或按照[GitHub资料库](https://github.com/PureStake/moonbeam/)的说明操作。
 
 !!! 注意事项
-    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/v0.3.0)的tutorial-v7标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。本教程示例基于Ubuntu 18.04的环境，用户需根据其所使用的MacOS和Windows版本进行微调。 
+    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/v0.3.0)的tutorial-v7标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-您有两种方式交互Moonbeam：使用Substrate的RPC终端口或使用与Web3兼容的RPC终端口。后者目前正在为与Substrate RPCs相同的RPC服务器提供服务。本教程中，我们将使用Web3 RPC终端口与Moonbeam进行交互
+您有两种方式交互Moonbeam：使用Substrate的RPC终端口或使用与Web3兼容的RPC终端口，两组终端均在同一个RPC服务器。本教程中，我们将使用Web3 RPC终端口与Moonbeam进行交互
 
-## MetaMask插件安装教程
+## MetaMask插件安装教程 {: #install-the-metamask-extension }
 
 首先，从谷歌Chrome浏览器的网上应用商店安装[MetaMask](https://metamask.io/)。在下载、安装、初始化该扩展程序之后，遵循“Get Started”指南进行设置。您需要创建一个MetaMask钱包，设置登录密码并生成助记词（可用于账户资金的管理。请保存好助记词并确保其存放在安全的地方）。完成后，我们将导入帐户：
 
@@ -36,7 +36,7 @@ description: 本教程将指导您如何通过谷歌浏览器上的MetaMask插�
 
 ![MetaMask displaying your new Account 2](/images/metamask/using-metamask-3.png)
 
-## 连接MetaMask至Moonbeam
+## 连接MetaMask至Moonbeam {: #connecting-metamask-to-moonbeam }
 
 将MetaMask连接到本地开发节点或Moonbase Alpha测试网。
 
@@ -58,7 +58,7 @@ Moonbase Alpha测试网：
 
 ![Your new Moonbeam account with a balance of 1207925.8196](/images/metamask/using-metamask-5.png)
 
-## 进行首笔交易
+## 进行首笔交易 {: #initiating-a-transfer }
 
 尝试通过MetaMask发送一些DEV代币。
 

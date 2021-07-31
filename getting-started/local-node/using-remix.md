@@ -8,7 +8,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/RT_f1-ga_n4' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## 概览
+## 概览 {: #introduction }
 
 Remix是目前以太坊上最常被使用的智能合约开发环境之一。基于Moonbeam兼容以太坊的特性，Remix可与Moonbeam开发节点或Moonbase Alpha测试网一起直接使用。
 
@@ -18,7 +18,8 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
     本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/v0.3.0)的tutorial-v7标签建立。为实现与以太坊的全面兼容，SMoonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件均基于Substrate，两者正处于积极开发阶段。本教程示例为Ubuntu 18.04的环境，用户需根据其所使用的MacOS和Windows版本进行微调
 
 本教程假设您有一个在`--dev`模式下运行的本地Moonbeam节点，并且安装且配置了[MetaMask](https://metamask.io/)。如果未完成以上配置，您可以在[这里](/getting-started/local-node/setting-up-a-node/)查看如何创建一个Moonbeam节点，在[这里](/getting-started/local-node/using-metamask/)查看如何连接MetaMask。
-## 查看先决条件
+
+## 查看先决条件 {: #checking-prerequisites }
 
 如果您已遵循上述教程，您将会拥有一个正在生产区块的本地Moonbeam节点，如下图所示：
 
@@ -31,7 +32,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 !!! 注意事项
     请确保您所连接到的是Moonbeam节点而非其他网络！
 
-## 如何开始使用Remix
+## 如何开始使用Remix {: #getting-started-with-remix }
 
 现在，我们可以开始启动Remix来使用更多Moonbeam的进阶功能。
 
@@ -61,7 +62,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 点击之后，您会看到Remix已经下载所有Open Zeppelin的附属程式并完成了合约编写。
 
-## 如何在Moonbeam上使用Remix部署合约
+## 如何在Moonbeam上使用Remix部署合约 {: #deploying-a-contract-to-moonbeam-using-remix }
 
 现在我们可以通过侧边的Deployment选项来部署合约。您需要将顶端的 “Environment” 从“JavaScript VM”向下拉至“Injected Web3”。如此一来，Remix会使用MetaMask导入的账户并指向一个已导入的Moonbeam独立节点。如果您想要使用Moonbase Alpha TestNet尝试此操作，请确保将MetaMask连接到TestNet而非本地开发节点。
 
@@ -94,7 +95,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 ![Interact with the contract from Remix](/images/remix/using-remix-11.png)
 
-## 如何通过MetaMask与基于Moonbeam的ERC-20进行交互
+## 如何通过MetaMask与基于Moonbeam的ERC-20进行交互 {: #interacting-with-a-moonbeam-based-erc-20-from-metamask }
 
 打开MetaMask添加刚部署的ERC-20代币。首先，请确认您已在Remix上复制了合约地址。然后，在MetaMask上点击“添加代币”，请参考下图。（请确保您现在所操作的账户为已部署合约的账户）。
 

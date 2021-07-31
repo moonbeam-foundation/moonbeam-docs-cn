@@ -34,7 +34,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 ### WSS DNS
 
-如果想使用WebSocket连接，你可以使用以下的DNS：
+如果想使用WebSocket连接，您可以使用以下的DNS：
 
 ```
 wss://wss.testnet.moonbeam.network
@@ -44,7 +44,7 @@ wss://wss.testnet.moonbeam.network
 
 Moonbase Alpha测试网的Chain ID为：`1287 `
 
-### 中继链
+### 中继链 {: #relay-chain }
 
 想要链接至由PureStake管理的Moonbase Alpha中继链，可使用以下WS终端：
 
