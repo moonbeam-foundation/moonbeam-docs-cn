@@ -7,7 +7,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ![Moonbeam Consensus Banner](/images/consensus/consensus-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 波卡（Polkadot）依赖于一种[混合共识模型](https://wiki.polkadot.network/docs/learn-consensus)。根据这一方案，区块终结工具以及区块生产机制是分开的。因此，平行链只需要考虑区块生产即可，中继链则负责验证区块状态的转变。
 
@@ -26,7 +26,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 下面两个小节将介绍Moonbeam目前所使用的过滤策略。
 
-## 平行链质押过滤
+## 平行链质押过滤 {: #parachain-staking-filtering } 
 
 收集人可以通过外部函数直接绑定代币加入候选收集人池。加入候选池后，代币持有者可以通过在平行链层提名增加对该收集人的质押量（也被称为质押）。
 
@@ -38,7 +38,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 如需了解更多质押相关的信息，请访问我们的[质押文档](/staking/overview/)。
 
-## 固定规模子集过滤法
+## 固定规模子集过滤法 {: #fixed-size-subset-filtering } 
 
 平行链质押挖矿过滤器启动应用后，将返回精选出的候选收集人，接下来第二个过滤器将按区块逐个启动应用，进一步选出更少的候选收集人，这些最终获选的收集人将有资格使用下一个区块生产插槽。
 
@@ -52,7 +52,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ![Nimbus Parachain Staking Filter](/images/consensus/consensus-images2.png)
 
-## 为何选择Nimbus？
+## 为何选择Nimbus？{: #why-nimbus? } 
 
 您可能会问自己：为什么要选择Nimbus？在Moonbeam最初进行开发的时候，我们都没有预料到这一点。但随着Moonbeam日益发展，我们似乎越来越需要一个可定制的且直接了当的平行链共识机制。由于目前的可用模式有一些问题或技术上的限制，这一需求变得越来越明朗。
 
@@ -64,7 +64,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 下面我们将来介绍Nimbus带来的一些技术效益。
 
-### 权重和冗余执行
+### 权重和冗余执行 {: #weight-and-extra-execution } 
 
 Nimbus将生产者验证执行代码放在一个[Substrate模块](https://substrate.dev/docs/en/knowledgebase/runtime/pallets)中，看上去似乎为一个区块增加了很多执行负担（和链下验证相比）。但如果从验证人的角度来考虑：
 
@@ -72,13 +72,13 @@ Nimbus将生产者验证执行代码放在一个[Substrate模块](https://substr
 
 在实际运行中，这一验证将非常快，执行时间一般不会超过极限。但从理论的角度来看，考虑其权重对于部署任务更好。
 
-### 可重用性
+### 可重用性 {: #reusability } 
 
 将生产者验证执行放进一个模块里还有另一个好处。与定制的执行器不同，这个单一的执行器可以重新用于在Nimbus框架下的共识机制中。这就是基于插槽的签名算法。
 
 例如，[由中继链提供的共识算法](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs) [AuRa](https://crates.io/crates/sc-consensus-aura)和[BABE](https://crates.io/crates/sc-consensus-babe)都有他们自己的定制化执行器，而在Nimbus之中，这些共识机制可以重复使用同一个执行器。通过Nimbus实现的AuRa已经落地，其代码少于100行，充分体现了Nimbus强大的可重用性。
 
-### 热插拔共识机制
+### 热插拔共识机制 {: #hotswapping-consensus } 
 
 平行链开发团队有时可能需要对共识机制进行修改、调整。如果没有Nimbus插拔共识机制，修改和调整可能需要通过客户端升级和硬分叉才能完成。
 

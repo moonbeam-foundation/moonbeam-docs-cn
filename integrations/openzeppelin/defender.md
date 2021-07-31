@@ -7,7 +7,7 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 ![OpenZeppelin Defender Banner](/images/openzeppelin/ozdefender-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 OpenZeppelin Defender是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：
 
@@ -21,11 +21,11 @@ OpenZeppelin Defender现已上线Moonbase Alpha测试网。本教程将介绍如
 
 如需了解更多信息，请参阅OpenZeppelin团队撰写的Defender[文档页面](https://docs.openzeppelin.com/defender/)。
 
-## 开始在Moonbase Alpha上使用Defender
+## 开始在Moonbase Alpha上使用Defender {: #getting-started-with-defender-on-moonbase-alpha } 
 
 本小节将介绍在Moonbase Alpha上开始使用OpenZeppelin的步骤。
 
-### 检查先决条件
+### 检查先决条件 {: #checking-prerequisites } 
 
 请确保安装[MetaMask](https://metamask.io/)，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/integrations/wallets/metamask/)进行操作。
 
@@ -73,7 +73,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 }
 ```
 
-### 将Defender连接到Moonbase Alpha
+### 将Defender连接到Moonbase Alpha {: #connecting-defender-to-moonbase-alpha } 
 
 注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/moonbase/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
 
@@ -81,11 +81,11 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 如果操作成功，您可以看到自己的地址，并显示“Connected to Moonbase Alpha（已连接到Moonbase Alpha）”。
 
-## 使用Admin组件
+## 使用Admin组件 {: #using-the-admin-component } 
 
 本小节将介绍如何使用OpenZeppelin Defender Admin组件管理Moonbase Alpha上的智能合约。
 
-### 导入合约
+### 导入合约 {: #importing-your-contract } 
 
 使用Defender Admin的第一步是添加需管理的合约。点击右上角附近的“Add contract（添加合约）”按钮，进入“import contract（导入合约）”页面，然后进行以下操作：
 
@@ -102,7 +102,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ![OpenZeppelin Defender Admin Contract Added](/images/openzeppelin/ozdefender-images3.png)
 
-### 创建合约提案
+### 创建合约提案 {: #create-a-contract-proposal } 
 
 提案指的是合约即将执行的行动。截至本文撰写时，该合约已产生三个主要提案/行动：
 
@@ -130,7 +130,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ![OpenZeppelin Defender Admin Contract Proposal List](/images/openzeppelin/ozdefender-images6.png)
 
-### 同意合约提案
+### 同意合约提案 {: #approve-a-contract-proposal } 
 
 创建合约提案后，下一步是同意并执行提案。进入提案，并点击“Approve and Execute（同意并执行）”。
 

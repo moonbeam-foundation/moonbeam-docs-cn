@@ -6,13 +6,13 @@ description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获�
 
 ![Intro diagram](/images/learn/unifiedaccounts-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 随着[Moonbase Alpha测试网v3升级版本的发布](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们已对Moonbeam底层账户系统进行重大升级，将默认的Substrate式账户和密钥替换为以太坊式账户和密钥。
 
 同时我们也升级了Polkadot JS Apps交互界面，以实现对H160地址和ECDSA密钥的原生支持。您可参考[此教程](/integrations/wallets/polkadotjs/)获取更多信息。
 
-## Substrate EVM兼容的区块链
+## Substrate EVM兼容的区块链 {: #substrate-evm-compatible-blockchain } 
 
 波卡（Polkadot）生态系统中所有平行链都可实现完全兼容EVM，让Solidity智能合约仅需稍作修改甚至不需要修改即可执行。Substrate让这一集成成为可能——只需将[EVM模块](https://docs.rs/pallet-evm/2.0.1/pallet_evm/)插入运行时间，以获取EVM支持，并且插入[Ethereum Pallet with Frontier](https://github.com/paritytech/frontier)获得以太坊RPC兼容性。Moonbeam和Parity共同开发了这些开源模块，让许多平行链能够兼容以太坊。
 
@@ -26,7 +26,7 @@ description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获�
 
 然而这样一来，Alice的用户体验可能非常差。首先，她需要先将代币转移到H160映射的H256地址上才能进行交易，并通过EVM部署合约。其次，她还需要在另外一个H256地址（她有不同的私钥）上持有一定的余额，才能使用Substrate功能。简而言之，Alice需要至少两个私钥才能同时使用Substrate和EVM上的全部功能。
 
-## Moonbeam统一账户
+## Moonbeam统一账户 {: #moonbeam-unified-accounts } 
 
 Moonbeam致力于在Polkadot上创造一个完全兼容以太坊的环境，并提供最好的用户体验。除了基本的以太坊功能以外，还提供了链上治理、质押挖矿、跨链整合等额外功能。
 

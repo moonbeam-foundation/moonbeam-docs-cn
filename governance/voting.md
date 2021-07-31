@@ -7,7 +7,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 ![Governance Moonbeam Banner](/images/governance/governance-voting-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 提案进入公投阶段后，代币持有者可以使用持有的代币进行投票。影响投票权重的因素有两个：代币锁定量和锁定期（称为“信念值”）。这可以从经济利益上确保不会出现兜售投票权的现象。因此，锁定期越长，投票权重越高。用户也可以选择不锁定代币，但投票权重会大大下降。
 
@@ -22,7 +22,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
 
-## 定义
+## 定义 {: #definitions } 
 
 本教程中重要参数定义如下：
 
@@ -43,11 +43,11 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 |  执行期  |      | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
 | 最高票数 |      |          {{ networks.moonbase.democracy.max_votes}}          |
 
-## 提案步骤
+## 提案步骤 {: #roadmap-of-a-proposal } 
 
 --8<-- 'text/governance/roadmap.md'
 
-## 参与公投
+## 参与公投 {: #voting-on-a-referendum } 
 
 这一小节将介绍公投流程。本教程使用已经创建的公投进行讲解（公投创建指南请参阅[这里](/governance/proposals/)）。
 
@@ -57,7 +57,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 本次进行投票的提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
-### 如何投票
+### 如何投票 {: #how-to-vote } 
 
 在Moonbeam上进行投票非常简单。所有治理相关功能都在“Democracy”标签下。如下图所示，可以看到有一个数字`1`，说明有一项民主事项正在进行中（可能是提案或公投）。点击描述旁的箭头，就可以看到您要投票的公投情况。行动和描述旁的数字称为“公投指数”（在本示例中为0）。就绪后，点击“Vote”按钮。
 
@@ -107,7 +107,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 ![Proposal Result](/images/governance/governance-vote-5.png)
 
-### 委托投票
+### 委托投票 {: #delegate-voting } 
 
 代币持有者可以选择将投票权委托给其它信任的账户。受委托的账户不需要进行额外的操作。在受委托账户进行投票时，委托账户的投票权重（委托者锁定的代币数量乘以委托者选择的信念值乘数）会直接加到受委托账户的权重中。
 
@@ -146,7 +146,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  - 已经委托他人的代币持有者自己不能再参与公投。如要参与，需先撤销委托
  - 请记下公投指数，锁定期结束后，已委托他人的持币者需要手动解锁代币
 
-### 解锁代币
+### 解锁代币 {: #unlocking-locked-tokens } 
 
 代币持有者在进行投票时，使用的代币将被锁定且不能进行转移。您可以在“Accounts”标签下展开账户详情查看代币锁定情况。在详情中可以看到不同的余额类型（更多余额类型详情请看[这里](https://wiki.polkadot.network/docs/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)）。如果光标在“democracy”右侧图标上移动，就会出现目前锁定状态的信息面板。其中不同的锁定状态有：
 
@@ -184,7 +184,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 ![Check Balance](/images/governance/governance-vote-13.png)
 
-## 正向偏向投票机制
+## 正向偏向投票机制 {: #positive-turnout-bias } 
 
 公投采用正向偏向投票机制，即绝对多数赞成制。该模式的方程式如下：
 

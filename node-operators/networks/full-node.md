@@ -7,7 +7,7 @@ description: 如何为Moonbeam网络运行一个完整的平行链节点、拥�
 
 ![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 在基于Moonbeam的网络运行一个全节点使你能够连接至网络，与bootnode节点同步，获得RPC终端的本地访问，在平行链上创建区块，以及更多其他不同的功能。
 
@@ -24,7 +24,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 !!! 注意事项
     Moonbase Alpha仍被视为是一个Alpha网络，因此其正常运行时间不会达到100%。平行链将不时地进行清理。在开发自己的应用程序时，请确保您已采取方法，可重新快速地将合约与账户部署到新的平行链。[Discord channel](https://discord.gg/PfpUATX)会提前24小时发布将清理区块链的通知。
 
-## 需求
+## 需求 {: #requirements } 
 
 下表列出了运行节点所需的最低建议参数。随着网络的发展，在Kusama和波卡（Polkadot）主网上的部署对磁盘的要求将会更高。
 
@@ -47,13 +47,13 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 !!! 注意事项
     如果在节点运行时没有看到`Imported`消息（没有`[Relaychain]`标签），您可能需要重新检查端口配置。
 
-## 运行端口
+## 运行端口 {: #running-ports } 
 
 如上所述，中继链/平行链节点将从多个端口获取信息。默认Substrate端口用于平行链，而中继链则获取下一个更高端口的消息。
 
 只有指定P2P端口才需要对流入流量开放。
 
-### 平行链全节点的默认端口
+### 平行链全节点的默认端口 {: #default-ports-for-a-parachain-fullnode } 
 
 |      描述      |      |                端口                 |
 | :------------: | :--: | :---------------------------------: |
@@ -62,7 +62,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 |     **WS**     |      |     {{ networks.parachain.ws }}     |
 | **Prometheus** |      | {{ networks.parachain.prometheus }} |
 
-### 嵌入式中继链默认端口
+### 嵌入式中继链默认端口 {: #default-ports-of-embedded-relay-chain } 
 
 |      描述      |      |                 端口                  |
 | :------------: | :--: | :-----------------------------------: |
@@ -71,7 +71,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 |     **WS**     |      |     {{ networks.relay_chain.ws }}     |
 | **Prometheus** |      | {{ networks.relay_chain.prometheus }} |
 
-## Docker安装指引
+## Docker安装指引 {: #installation-instructions-docker } 
 
 使用Docker可以快速创建Moonbase Alpha节点。关于安装Docker的更多资讯，请访问[这一页面](https://docs.docker.com/get-docker/)。截至本文撰写时，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver将需要数天的时间同步Kusama中继链内嵌入的数据。请确认您的系统符合以下[要求](#需求)。
 
@@ -109,7 +109,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 
 下一步，执行docker run指令。如果您设定的是收集人节点，请确认您使用的是“收集人”的代码段。请注意，您需要替换两处`YOUR-NODE-NAME`。
 
-### 全节点
+### 全节点 {: #full-node } 
 
 === "Moonbase Alpha"
     ```
@@ -145,7 +145,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
-### 收集人
+### 收集人 {: #collator } 
 
 === "Moonbase Alpha"
     ```
@@ -212,13 +212,13 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 如果您按照Moonrive的节点教程，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver网络上生产的区块！请注意，在这个部分将会需要数天来同步Kusama的中继链数据。
 
-## 二进制文档安装指引
+## 二进制文档安装指引 {: #installation-instructions-binary } 
 
 本小节将介绍使用发布的二进制文档以及作为systemd服务运行Moonbeam全节点的流程。本教程所使用的示例基于Ubuntu 18.04的环境。Moonbeam也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu 18.04版本。
 
 如果您想要自己建立二进制文档，请查看编译[二进制文档](/node-operators/networks/compile-binary)教程。
 
-### 使用发布的二进制文档
+### 使用发布的二进制文档 {: #use-the-release-binary } 
 
 有许多方式能够开始操作Moonbeam的二进制文档。您可以自己编译二进制文档，但整个过程需要大约30分钟来安装依赖项和编译文档。如果您对这个路线有兴趣，您可以在文档内查看编译二进制的页面。
 
@@ -251,7 +251,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 当您检索到二进制文档，您可以使用它来运行systemd服务。
 
-### 运行Systemd服务
+### 运行Systemd服务 {: #running-the-systemd-service } 
 
 通过以下指令完成所有与服务运行相关的设置。
 
@@ -300,7 +300,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
-#### 全节点
+#### 全节点 {: #full-node } 
 
 === "Moonbase Alpha"
     ```
@@ -373,7 +373,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
     WantedBy=multi-user.target
     ```
 
-#### 收集人
+#### 收集人 {: #collator } 
 
 === "Moonbase Alpha"
     ```
@@ -473,11 +473,11 @@ journalctl -f -u moonbeam.service
 
 ![Service Logs](/images/fullnode/fullnode-binary2.png)
 
-## 高级标记及选项
+## 高级标记及选项 {: #advanced-flags-and-options } 
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
-## 客户端升级
+## 客户端升级 {: #updating-the-client } 
 
 随着Moonbeam网络不断发展，有时需要升级节点软件。升级版本发布后，我们将通过[Discord channel](https://discord.gg/PfpUATX)通知节点运营者，并告知这些升级是否为必要升级（一些客户端升级为可选操作）。升级过程简单直接，并且对于全节点及收集人，其升级过程一样。
 
@@ -491,7 +491,7 @@ sudo systemctl stop moonbeam
 
 下一步，重复前述步骤安装新版本。请确保您使用的是最新标签。升级后可再次启动服务。
 
-### 区块链清理
+### 区块链清理 {: #purging-the-chain } 
 
 在重大升级前后，Moonbase Alpha通常会进行清理和重置。如果升级后还有清理环节，我们也会（通过[Discord channel](https://discord.gg/PfpUATX)）提前通知节点运营者。如果您的个人数据目录崩溃，也可以清理节点。
 
@@ -511,7 +511,7 @@ sudo rm -rf {{ networks.moonbase.node_directory }}/*
 
 最后，重复前述步骤安装最新版本，请确保您使用的是最新标签。完成后即可运行全新节点，使用全新数据目录。
 
-## Telemetry
+## Telemetry {: #telemetry } 
 
 请按照[本教程](/node-operators/networks/telemetry/)激活Moonbase Alpha或是Moonriver节点telemetry服务器。
 
@@ -519,19 +519,19 @@ sudo rm -rf {{ networks.moonbase.node_directory }}/*
 
 您可访问最新的[Moonbase Alpha telemetry](https://telemetry.polkadot.io/#list/Moonbase%20Alpha)和[Moonriver telmetry](https://telemetry.polkadot.io/#list/Moonriver)数据。
 
-## 日志与故障检测
+## 日志与故障检测 {: #logs-and-troubleshooting } 
 
 您可以查看中继链和平行链的日志。中继链日志将以`[Relaychain]`为前缀，而平行链日志没有前缀。
 
-### P2P端口不开放
+### P2P端口不开放 {: #p2p-ports-not-open } 
 
 如果您没有看到`Imported`消息（没有`[Relaychain]`标签），则需要检查P2P端口配置。P2P端口必须向流入流量开放。
 
-### 同步
+### 同步 {: #in-sync } 
 
 两个区块链必须保持随时同步。在正常情况下您能够看到`Imported`或`Idle`消息，以及已连接的其他节点。
 
-### 创世错配
+### 创世错配 {: #genesis-mismatching } 
 
 Moonbase Alpha测试网会频繁进行升级。因此，您可能会看到以下消息：
 

@@ -7,10 +7,10 @@ description: 通过此教程学习如何使用主流的以太坊开发人员工�
 
 ![Intro diagram](/images/integrations/integrations-remix-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 开发者还可使用[Remix IDE](https://remix.ethereum.org/)来与Moonbeam进行交互。Remix IDE是以太坊智能合约最常用的开发环境之一，可提供基于网络的解决方案以实现在本地VM或外部Web3提供者（例如MetaMask）上快速编译和部署Solidity和Vyper代码。通过将两种工具结合，开发者可以快速启动在Moonbeam上的部署。
-## 在Moonbeam上部署合约
+## 在Moonbeam上部署合约 {: #deploying-a-contract-to-moonbeam } 
 
 我们将通过以下基础合约展示如何使用[Remix](https://remix.ethereum.org/)在Moonbeam上部署智能合约：
 
@@ -36,6 +36,6 @@ contract SimpleContract{
 
 ![Interact with Contract](/images/remix/integrations-remix-2.png)
 
-## 分步教程
+## 分步教程 {: #stepbystep-tutorials }
 如果您想获得更加详细的分步教程，请阅读[在Moonbeam开发节点上使用Remix](/getting-started/local-node/using-remix/)。只需修改这些步骤，并将MetaMask[与Moonbase Alpha测试网相连](/getting-started/moonbase/metamask/)，即可在Moonbase Alpha测试网上部署。
 

@@ -7,7 +7,7 @@ description:  通过此教程学习如何使用OpenZeppelin的智能合约交互
 
 ![OpenZeppelin Contracts Banner](/images/openzeppelin/ozcontracts-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 OpenZeppelin合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 
 
@@ -15,7 +15,7 @@ OpenZeppelin合约和库已成为行业标准，其开源代码模板经历了�
 
 本教程分为两部分，第一部分介绍使用OpenZeppelin代码创建智能合约的线上工具OpenZeppelin Contracts Wizard；第二部分则为Moonbeam上的合约部署提供步骤指引。
 
-## OpenZeppelin Contract Wizard
+## OpenZeppelin Contract Wizard {: #openzeppelin-contract-wizard } 
 
 OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为Contracts Wizard，可以在[OpenZeppelin文档页面](https://docs.openzeppelin.com/contracts/4.x/wizard)找到。
 
@@ -40,7 +40,7 @@ Contracts Wizard由以下环节组成：
 
 完成设置和功能准备后，只需要复制粘贴代码到合约文件即可。
 
-## 在Moonbeam上部署OpenZeppelin合约
+## 在Moonbeam上部署OpenZeppelin合约  {: #deploying-openzeppelin-contracts-on-moonbeam } 
 
 本小节将介绍在Moonbeam上部署OpenZeppelin合约的步骤，适用于以下合约：
 
@@ -50,14 +50,14 @@ Contracts Wizard由以下环节组成：
 
 所有合约代码均通过OpenZeppelin的[Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard)获取。
 
-### 检查先决条件
+### 检查先决条件  {: #checking-prerequisites } 
 
 请确保安装[MetaMask](https://metamask.io/)，并已连接至Moonbase Alpha测试网。我们将在"Injected Web3"环境下使用[Remix IDE](https://remix.ethereum.org/)进行合约部署。相关指引请点击以下链接：
 
  - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/)
  - [使用Remix与Moonbeam进行交互](/integrations/remix/)
 
-### 部署ERC20代币
+### 部署ERC20代币 {: #deploying-an-erc20-token } 
 
 在本示例中，我们将在Moonbase Alpha上部署一枚ERC20代币，最终使用的代码结合了OpenZeppelin中的不同合约：
 
@@ -113,7 +113,7 @@ contract MyToken is ERC20, Ownable {
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC20代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
-### 部署ERC721代币
+### 部署ERC721代币 {: #deploying-an-erc721-token } 
 
 在本示例中，我们将向Moonbase Alpha部署一枚ERC721代币。最终我们所使用的代码结合了从OpenZeppelin中抽取的不同合约：
 
@@ -178,7 +178,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC721代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
-### 部署ERC1155代币
+### 部署ERC1155代币 {: #deploying-an-erc1155-token } 
 
 在本示例中，我们将向Moonbase Alpha部署一枚ERC1155代币。最终我们所使用的代码结合了从OpenZeppelin中抽取的不同合约：
 

@@ -7,7 +7,7 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
 
 ![The Graph on Moonbeam](/images/thegraph/thegraph-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 索引协议可以更有效地组织信息，便于应用程序访问及使用。例如，Google就是通过索引整个互联网的信息，快速为搜索者提供所需信息。
 
@@ -19,14 +19,14 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 在Moonbase Alpha上使用The Graph有两种方式：
 
  - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
  - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币
 
-## 彩票合约
+## 彩票合约 {: #the-lottery-contract } 
 
 我们将使用一个简单的彩票合约作为示例。您可以通过[此链接](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol)找到其Solidity文档。
 
@@ -39,14 +39,14 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
  - **enterLottery** —— 一个输入值：彩票持有者的地址。为内部函数，处理彩票逻辑。一个小时后，若参与者达到十人或更多，即调用`pickWinner`函数
  - **pickWinner** —— 没有输入值。为内部函数，通过伪随机数发生器（仅作演示用途）选择中奖者。该函数负责处理资金转移和重新设定下一轮彩票变量的逻辑
 
-### 彩票合约事件
+### 彩票合约事件 {: #events-of-the-lottery-contract } 
 
 The Graph使用彩票合约发出的事件消息进行数据索引。彩票合约仅发出两种事件消息：
 
  - **PlayerJoined** —— 在`enterLottery`函数内，提供最后一个加入玩家相关的信息，例如玩家地址、本轮轮次、彩票是否已经送出，以及本轮的奖金数额等
  - **LotteryResult** —在`pickWinner`函数内，提供进行中轮次抽奖的相关信息，例如中奖者地址、本轮轮次、中奖者持有的奖券是否为赠予、彩票奖金数额大小以及抽奖时间戳等
 
-## 创建Subgraph
+## 创建Subgraph {: #creating-a-subgraph } 
 
 本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/PureStake/moonlotto-subgraph)有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您还不熟悉，可以查看[Hardhat集成教程](/integrations/hardhat/)。
 
@@ -70,7 +70,7 @@ npx graph codegen --output-dir src/types/
 
 在本示例中，合约的部署地址为`{{ networks.moonbase.thegraph.lotto_contract }}`。如果您想了解如何使用Hardhat部署合约，可查看[此集成教程](/integrations/hardhat/)。此外，[Moonloto代码库](https://github.com/PureStake/moonlotto-subgraph)中的"README"文档也有合约编译与部署的必要步骤指引。
 
-### Subgraph核心架构
+### Subgraph核心架构 {: #subgraphs-core-structure } 
 
 一般而言，Subgraph定义了The Graph将从区块链上索引的数据以及其存储方式。Subgraph一般含有以下文档：
 
@@ -80,7 +80,7 @@ npx graph codegen --output-dir src/types/
 
 创建Subgraph需要对文档进行修改，文档的修改没有特定顺序。
 
-### Schema.graphql
+### Schema.graphql {: #schemagraphql } 
 
 在对`schema.graphql`进行修改之前，需要先列明要从合约事件中抽取的数据。需要根据dApp本身的要求对schema进行定义。本示例中虽然没有与彩票相关的dApp，但我们定义了四个实体：
 
@@ -115,7 +115,7 @@ type Ticket @entity {
 }
 ```
 
-### Subgraph清单文件
+### Subgraph清单文件 {: #subgraph-manifest } 
 
 `subgraph.yaml`文档（或Subgraph的清单文件）包含与所索引智能合约相关的信息，其中包括映射所需的数据。数据将由Graph节点储存，应用程序可请求获取。
 
@@ -172,7 +172,7 @@ dataSources:
           handler: handleLotteryResult
 ```
 
-### 映射
+### 映射 {: #mappings } 
 
 映射文档是将区块链数据转换为在schema文档中定义的实体。`subgraph.yaml`文档中的每一个事件处理函数都需要在映射中有一个后续函数。
 
@@ -225,7 +225,7 @@ export function handlePlayerJoined(event: PlayerJoined): void {
 }
 ```
 
-## 部署Subgraph
+## 部署Subgraph {: #deploying-a-subgraph }
 
 如果您准备使用The Graph API（托管式服务），您需要进行以下步骤：
 

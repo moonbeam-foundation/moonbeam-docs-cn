@@ -6,7 +6,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 ![Band Protocol Moonbeam Diagram](/images/band/band-banner.png)
 
-## 概览
+## 概览 {: #introduction }
 开发者可通过两种方法从Band预言机获取价格。第一，可以通过Moonbeam上的Band智能合约在固定时间段或价格滑点大于目标值（不同代币的目标值不同）时获取链上最新数据。第二，使用JavaScript辅助库，该库绕过区块链直接从Band Protocol API（与智能合约相似的函数）中获取数据。如果DApp前端需要直接获取数据，则可以使用这种方法。
 
 聚合合约地址可以在以下列表找到：
@@ -15,7 +15,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 | :------------: | ---- | :----------------------------------------: |
 | Moonbase Alpha |      | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
 
-## 支持的代币
+## 支持的代币 {: #supported-token } 
 只要是平台支持的基础货币和报价货币（_报价对显示方式：基础货币代码_/_报价货币代码_），您都可以获取其报价。例如：
 
  - `BTC/USD`
@@ -24,13 +24,13 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 您可通过此[链接](https://data.bandprotocol.com)查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
-## 获取报价
+## 获取报价 {: #querying-prices } 
 如上所述，开发者可以通过两种方法从Band预言机获取报价：
 
  - Moonbeam上的Band智能合约（目前已部署在Moonbase Alpha测试网上）
  - Javascript辅助库
 
-## 通过智能合约获取数据
+## 通过智能合约获取数据 {: #get-data-using-smart-contracts }
 Moonbeam上的Band Protocol智能合约可通过实现`StdReference`合约接口从而查询链上数据（例如代币价格），该接口公开了`getReferenceData`和`getReferenceDataBulk`函数。
 
 第一个函数`getReferenceData`输入两串字符（基础货币和报价货币的代码），通过向`StdReference`合约发送请求来获取这两种货币之间的最新汇率，并以`ReferenceData`结构返回。
@@ -55,7 +55,7 @@ struct ReferenceData {
  - `BTC/ETH`
  - `ETH/EUR`
 
-### 合约示例
+### 合约示例 {: #example-contract } 
 
 以下智能合约代码以简单的示例展示了`StdReference`合约和`getReferenceData`函数。合约仅为举例，不作实际之用。`IStdReference.sol`接口明确了ReferenceData结构和可用于获取报价的函数。
 
@@ -149,7 +149,7 @@ contract DemoOracle {
 }
 ```
 
-### 在Moonbase Alpha上进行测试
+### 在Moonbase Alpha上进行测试 {: #try-it-in-moonbase alpha } 
 
 我们已经在Moonbase Alpha测试网部署了一个合约（地址为`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`），方便开发者查看Band Protocol预言机的喂价信息。为此，您需要部署以下接口合约：
 
@@ -179,7 +179,7 @@ interface TestInterface {
 
 ![Band Protocol Remix check price](/images/band/band-demo2.png)
 
-## BandChain.js Javascript辅助库
+## BandChain.js Javascript辅助库 {: #bandchainjs-javascript-helper-library } 
 
 辅助库也支持相似的`getReferenceData`函数。使用此方法，首先要根据以下指令安装辅助库：
 
@@ -216,7 +216,7 @@ getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 ```
 `lastUpdatedBase`和`lastUpdatedQuote`显示的是基础货币和报价货币各自价格的最后更新时间（UNIX时间戳）。
 
-### 应用示例
+### 应用示例 {: #example-usage } 
 
 下面这个Javascript脚本是`getReferenceData`函数的一个简单示例。
 

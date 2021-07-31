@@ -6,13 +6,13 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 
 ![Intro diagram](/images/polkadotjs/polkadotjs-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 [Moonbase Alpha测试网 v3升级发布后](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们对Moonbeam底层账户系统进行了重大升级，使用以太坊式账户和私钥替换了默认的Substrate式账户和私钥。
 
 同时，Polkadot JS App交互界面也进行了升级，现已原生支持H160地址和ECDSA密钥。本教程将带领大家了解Polkadot JS App网站与基于以太坊的账户整合。
 
-## 连接至Moonbase Alpha
+## 连接至Moonbase Alpha {: #connecting-to-moonbase-alpha } 
 
 首先，我们需要连接到Moonbase Alpha测试网。请点击左上角logo，在Test Network一栏中选择Moonbase Alpha。
 
@@ -22,7 +22,7 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app2.png)
 
-## 创建或导入H160账户
+## 创建或导入H160账户 {: #creating-or-importing-an-h160-account } 
 
 接下来是如何在Polkadot JS App创建新账户，或导入已有的MetaMask账户。首先，在“Account”一栏，点击“Add Account”按钮。
 
@@ -51,7 +51,7 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 
 ![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app6.png)
 
-## 通过Substrate API发送交易
+## 通过Substrate API发送交易 {: #sending-a-transaction-through-substrates-api } 
 
 现在，我们将演示Moonbeam Unified Accounts方案。通过Substrate API使用Polkadot JS App来创建交易。请注意，我们使用的是以太坊式H160地址来和Substrate交互。为此，我们导入了另一个名为Charley的账户，该账户中有5枚`DEV`代币。
 

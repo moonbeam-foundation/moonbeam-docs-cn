@@ -7,13 +7,13 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会
 
 ![Treasury Moonbeam Banner](/images/treasury/treasury-overview-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 财政库是用于链上资金的管理。Moonbeam将设立一个社区财政库，用于支持网络计划以促进未来网络的发展。网络交易费用的一部分将被存储于财政库，并由理事会管理。
 
 每个基于Moonbeam的网络都将拥有自己的财政库。换句话说，Moonbase Alpha测试网、Westend的Moonshadow网络、Kusama上的的Moonriver网络和波卡（Polkadot）上的Moonbeam都将拥有各自的财政库。
 
-## 般定义
+## 般定义 {: #general-definitions } 
 
 关于财政库的一些专业术语如下：
 
@@ -46,7 +46,7 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会
 |  最高批准提案  |      |   {{ networks.moonriver.treasury.max_approved_proposals }}   |
 | %的交易费分配  |      |     {{ networks.moonriver.treasury.tx_fees_allocated }}      |
 
-## 社区财政库
+## 社区财政库  {: #community-treasury } 
 
 每个区块交易费用的一部分将作为资金存入财政库。剩余部分将被销毁（详情见上表）。财政库允许利益相关者提交资金支出提案，以供理事会审查和投票。这些支出提案建议包括促进网络或提高网络参与度的举措。一些网络计划应包括集成、合作、社区活动、网络扩展等。
 

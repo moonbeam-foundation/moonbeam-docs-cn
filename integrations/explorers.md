@@ -6,7 +6,7 @@ description: 目前在Moonbeam测试网上支持导航Substrate和以太坊层�
 
 ![Explorer Banner](/images/explorers/explorers-banner.png)
 
-## 概览 
+## 概览 {: #introduction } 
 
 区块浏览器就如同区块链的搜寻引擎，可以让用户搜索像是余额、合约和交易等等的资讯。进阶版的区块浏览器还提供索引编辑的功能，让用户能够在网络中直接提供像是ERC20代币一样完整的一套信息，甚至还有可能提供API服务，可直接通过外部设备连接。
 
@@ -15,9 +15,9 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
 !!! 注意事项
     如果您使用的是Brave Browser，但您并没有连接至您导向的Moonbeam Instance，请尝试将Brave Shield关闭。
 
-## 以太坊API
+## 以太坊API {: #ethereum-api } 
 
-### Expedition（Dev节点 - 测试网）
+### Expedition（Dev节点 - 测试网）{: #expedition-dev-node-testnet } 
 
 您可以通过[此链接](https://moonbeam-explorer.netlify.app/)找到一个Moonbeam主题的[Expedition](https://github.com/etclabscore/expedition)浏览器。
 
@@ -29,7 +29,7 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
 
 ![Expedition Explorer](/images/explorers/explorers-images-1.png)
 
-### Blockscout（测试网）
+### Blockscout（测试网 {: #blockscout-testnet } 
 
 Blockscout提供对用户友好的界面，让用户能够检查并确认包含如Moonbeam的，在EVM区块链上的交易。让您能够搜寻交易、查看账户和余额，并确认智能合约。您可以在他们的[文件网站](https://docs.blockscout.com/)查看更多资讯。
 
@@ -45,9 +45,9 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
 
 ![Blockscout Explorer](/images/explorers/explorers-images-2.png)
 
-## Substrate API
+## Substrate API {: #substrate-api } 
 
-### PolkadotJS（开发者节点 - 测试网）
+### PolkadotJS（开发者节点 - 测试网 {: #polkadotjs-dev-node-testnet } 
 
 Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
 
@@ -57,7 +57,7 @@ Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至�
 
 ![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
 
-### Subscan
+### Subscan {: #subscan } 
 
 Subscan为基于Sebstrate的链提供区块链浏览器的功能，它能够解析标准或定制的模块。举例而言，这个功能对展示关于Staking、Governance和EVM pallet（或是模块）非常有帮助。
 

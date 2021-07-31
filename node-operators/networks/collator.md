@@ -7,7 +7,7 @@ description: 通过此教程学习运行节点后在Moonbeam网络上成为收�
 
 ![Collator Moonbeam Banner](/images/fullnode/collator-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 收集人在网络上维护其所参与的平行链。他们运行（所在平行链及中继链的）完整节点，并为中继链验证人创建状态转移证明。
 
@@ -25,20 +25,20 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
  - **[生成会话密钥](#会话密钥)** —— 解释说明如何生成会话密钥（用于将您的author ID映射到您的H160帐户）
  - **[映射author ID至您的账户](#映射AuthorID到您的账户)** —— 概述如何将您的公共会话密钥映射到您的 H160帐户（用于接收区块奖励）
 
-## 技术要求
+## 技术要求 {: #technical-requirements } 
 
 收集人必须满足以下技术要求：
 
  - 必须运行带有验证选项的完整节点。可根据[此教程](/node-operators/networks/full-node/)选择收集人的特定代码段
  - 启动完整节点的telemetry服务器。具体操作步骤请见[此教程](/node-operators/networks/telemetry/)
 
-## 账户与质押要求
+## 账户与质押要求 {: #accounts-and-staking-requirements } 
 
 和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或者基本的以太坊式账户。另外，需要拥有提名质押量（DEV代币）才能够参与验证。目前收集人插槽数量有限，但未来可能会有所增加。 
 
 收集人需要有至少{{ networks.moonbase.staking.collator_min_stake }}个DEV才有资格成为候选收集人。只有提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人才会进入活跃「收集人集」。
 
-### PolkadotJS账户
+### PolkadotJS账户 {: #account-in-polkadotjs } 
 
 每个收集人都有一个与收集活动相关的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
@@ -51,9 +51,9 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 
 ![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
 
-## 成为候选收集人
+## 成为候选收集人  {: #become-a-collator-candidate } 
 
-### 获取候选池的大小
+### 获取候选池的大小  {: #get-the-size-of-the-candidate-pool } 
 
 首先，您需要获取 `candidatePool`的大小（可通过治理更改），该参数将用于后续的交易中。为此，您必须从[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network# 中运行以下 JavaScript 代码片段/js)中运行以下JavaScript代码段:
 
@@ -72,7 +72,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ![Get Number of Candidates](/images/fullnode/collator-polkadotjs2.png)
 
-### 加入候选人池
+### 加入候选人池 {: #join-the-candidate-pool } 
 
 节点开始运行并同步网络后，在[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人（并加入候选人池）：
 
@@ -92,12 +92,12 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 如上所述，只有提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人才可以进入活跃「收集人集」。
 
-### 停止参与收集活动
+### 停止参与收集活动 {: #stop-collating } 
 
 与波卡（Polkadot）的`chill()`函数相似，按照前述相同步骤进行操作，便可离开候选收集人池，但在第5步时需要选择`leaveCandidates()`函数。
 
 
-### 相关时长
+### 相关时长 {: #session-keys } 
 
 下表列出了收集相关活动所需时长：
 
@@ -137,7 +137,7 @@ curl http://127.0.0.1:9933 -H \
 
 请确保您已记下author ID的公钥。接下来，这将被映射到H160以太坊式地址（用于接收区块奖励）。
 
-## 映射Author ID到您的账户
+## 映射Author ID到您的账户 {: #map-author-id-to-your-account } 
 
 生成author ID（会话密钥）后，将其映射到您的H160帐户（以太坊式地址）。该账户将用于接收区块奖励，请确保您拥有其私钥。
 
@@ -153,7 +153,7 @@ curl http://127.0.0.1:9933 -H \
 
 - **mapping** — 一个自选输入值：author ID。将显示所有储存在链上的映射内容，或是根据您的输入显示相关内容。
 
-### 映射外部信息
+### 映射外部信息 {: #mapping-extrinsic } 
 
 如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](https://docs.moonbeam.network/node-operators/networks/collator/#become-a-collator-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射外部信息（交易）。请注意，每一次注册author ID将会绑定{{ networks.moonbase.staking.collator_map_bond }}个DEV代币。请跟随以下步骤来进行操作：
 
@@ -171,7 +171,7 @@ curl http://127.0.0.1:9933 -H \
 
 ![Author ID Mapping to Account Extrinsic Successful](/images/fullnode/collator-polkadotjs5.png)
 
-### 检查映射设定
+### 检查映射设定 {: #checking-the-mappings } 
 
 您也可以通过验证链上状态来确认目前的链上映射情况，请根据以下步骤进行操作：
 

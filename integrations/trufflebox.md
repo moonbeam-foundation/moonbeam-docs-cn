@@ -6,7 +6,7 @@ description: 学习如何使用预置的Moonbeam Truffle Box快速在Mooonbeam�
 
 ![Intro diagram](/images/integrations/integrations-trufflebox-banner.png)
 
-##概览
+## 概览 {: #introduction}
 为帮助更多开发者在Moonbeam上进行部署，我们[推出了Moonbeam Truffle box](https://moonbeam.network/announcements/moonbeam-truffle-box-available-solidity-developers/)。有了Moonbeam Truffle box，开发者就可以获得模板设置，并且能迅速在Moonbeam上部署智能合约。此外，我们还整合了Moonbeam Truffle插件，导入了可以作为镜像独立运行本地节点的指令。通过这一方式，开发者无需设置本地节点（此前可能需要40分钟来编写二进制文件），从而为本地开发提供了快捷简单的解决方案。
 
 本教程将全程指导您进行box设置，使用Moonbeam Truffle插件，并且在独立Moonbeam节点和Moonbase Alpha上使用box基本配置的Truffle来部署合约。
@@ -14,7 +14,7 @@ description: 学习如何使用预置的Moonbeam Truffle Box快速在Mooonbeam�
 !!! 注意事项
     本教程操作均基于Ubuntu 18.04系统。截至发稿时，所使用的Node.js和npm版本分别为15.2.1和7.0.8版本（Node.js版本需要高于10.23.0）。另外我们也注意到使用npm 7.0.15版本进行安装会出现错误。您可以通过`npm install -g npm@version`将npm降级到所需版本解决这一问题。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 --8<-- 'text/common/install-nodejs.md'
 
@@ -27,7 +27,7 @@ npm install -g truffle
 
 截至发稿时，所用版本为5.1.51版本。
 
-## 下载并安装Truffle Box
+## 下载并安装Truffle Box {: #downloading-and-setting-up-the-truffle-box } 
 
 如果您已经全面安装了Truffle，那么只需执行以下指令即可启动Moonbeam Truffle box：
 
@@ -56,7 +56,7 @@ npm install
 
 完成以上所有步骤后，运行Moonbeam Truffle box的所需环境就已经设置完毕。
 
-## 基本功能
+## 基本功能 {: #basic-functionalities } 
 
 Box预先设置了两个网络：`dev`（服务于独立节点）和`moonbase`（服务于Moonbeam测试网）。此外还包含一个ERC20代币合约和一个简单的测试脚本。Solidity编译器的默认设置为`^0.7.0`，可以按需求修改。如果您有使用Truffle的经验，您将会熟悉整个设置过程。
 
@@ -122,7 +122,7 @@ truffle migrate --network network_name  #deploys to the specified network
 !!! 注意事项
     如果您没有全面安装Truffle，则可以使用 `npx truffle`或`./node_modules/.bin/truffle` 来代替 `truffle` 。
 
-## Moonbeam Truffle插件
+## Moonbeam Truffle插件 {: #the-moonbeam-truffle-plugin } 
 
 要创建独立Moonbeam节点，也可以跟随[此指南](/getting-started/local-node/setting-up-a-node/)进行操作。整个过程大概需要40分钟，并且您需要安装Substrate和所有附带程序。Moonbeam Truffle插件则可以加速独立节点部署，且只需要安装镜像（截至发稿时，所用镜像版本为19.03.6版本）。关于安装镜像的更多信息，请访问[这个页面](https://docs.docker.com/get-docker/)。下载镜像文件，请运行以下代码：
 
@@ -161,7 +161,7 @@ truffle run moonbeam remove
 
 如果您对Docker很熟悉，可以跳过插件指令，直接与Docker镜像交互。
 
-## 测试Moonbeam Truffle Box
+## 测试Moonbeam Truffle Box {: #testing-the-moonbeam-truffle-box } 
 
 Box已经符合初始的最低启动要求。首先，我们可以运行以下指令创建合约：
 

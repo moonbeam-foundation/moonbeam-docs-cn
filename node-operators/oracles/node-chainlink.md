@@ -7,7 +7,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 ![Chainlink Moonbeam Banner](/images/chainlink/chainlinknode-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 作为一个开放、无许可的网络，任何人都可以在Moonbeam上运行预言机，为智能合约提供数据。
 
@@ -16,13 +16,13 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 !!! 注意事项
     文中所用示例仅作演示用途。请**务必**妥善管理密码，请勿将密码储存在纯文本中。文中示例均在Ubuntu 18.04环境下运行，但也有包含了MacOs的调用。本教程仅适用于开发设置，并不适用于生产环境。
 
-## 基本请求模型
+## 基本请求模型 {: #basic-request-model } 
 
 在开始之前，我们需要先了解“基本请求模型”的基本知识。
 
 --8<-- 'text/chainlink/chainlink-brm.md'
 
-## 高级用户
+## 高级用户 {: #advanced-users } 
 
 如果您已经熟悉如何运行Chainlink预言机节点，可以通过以下信息快速进行Moonbase Alpha测试网部署：
 
@@ -32,7 +32,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha上的LINK代币地址：`0xa36085F69e2889c224210F603D836748e7dC0088`
  - 从我们的[水龙头](/getting-started/moonbase/faucet/)获取Moonbase Alpha代币
 
-## 如何操作
+## 如何操作 {: #getting-started } 
 
 本教程将介绍设置预言机节点的步骤，简单概括如下：
 
@@ -49,7 +49,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - 账户中需有一定余额。您可以通过[Metamask](/integrations/wallets/metamask/)创建账户，并通过我们的[水龙头](/getting-started/moonbase/faucet/)充值资金
  - 能够使用Remix IDE，以满足部署预言机合约的需求。如您想了解关于Moonbeam 上的Remix运行环境，请访问[这一页面](/integrations/remix/)
 
-## 节点设置
+## 节点设置 {: #node-setup } 
 
 首先创建一个新目录，将所有必要文档放入目录内，例如：
 
@@ -126,7 +126,7 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 ![Docker logs](/images/chainlink/chainlinknode-image1.png)
 
-## 合约设置
+## 合约设置 {: #contract-setup } 
 
 预言机节点进入运行后，接着设置智能合约。
 
@@ -163,7 +163,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 ![Authorize Chainlink Oracle Node](/images/chainlink/chainlinknode-image5.png)
 
-## 在预言机节点上创建任务
+## 在预言机节点上创建任务 {: #create-job-on-the-oracle-node } 
 
 Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink官方文档](https://docs.chain.link/docs/job-specifications)：
 
@@ -206,6 +206,8 @@ Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink�
 
 成功！现在，Chainlink预言机节点已经设置成功，并且该节点已经在Moonbase Alpha上运行。
 
-## 预言机测试
+## 预言机测试 {: #test-the-oracle } 
+
+To verify the Oracle is up and answering requests, follow our [using an Oracle](/integrations/oracles/chainlink/) tutorial. The main idea is to deploy a client contract that requests to the Oracle, and the Oracle writes the requested data into the contract's storage.
 
 要验证预言机的在线状态以及是否能正常完成请求，请参阅[预言机使用教程](/integrations/oracles/chainlink/)进行操作。主要步骤是：部署一个客户合约，向预言机发送请求，并使预言机向客户合约中写入所请求的数据。
