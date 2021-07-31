@@ -52,7 +52,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ![Nimbus Parachain Staking Filter](/images/consensus/consensus-images2.png)
 
-## 为何选择Nimbus？{: #why-nimbus? } 
+## 为何选择Nimbus？{: #why-nimbus } 
 
 您可能会问自己：为什么要选择Nimbus？在Moonbeam最初进行开发的时候，我们都没有预料到这一点。但随着Moonbeam日益发展，我们似乎越来越需要一个可定制的且直接了当的平行链共识机制。由于目前的可用模式有一些问题或技术上的限制，这一需求变得越来越明朗。
 

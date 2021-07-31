@@ -148,6 +148,6 @@ web3.eth
 
 ![Subscribe to syncing response](/images/testnet/testnet-pubsub6.png)
 
-## 目前的局限  {: #current-limitations } 
+## 目前的局限 {: #current-limitations } 
 [Frontier](https://github.com/paritytech/frontier)的发布/订阅功能目前还在开发中。在首个版本中，DApp开发者（或一般用户）可以订阅特定的事件类型，但也有一些局限。您可能已经从此前例子中注意到，在当前版本中，一些信息并不能正确显示，这是因为Frontier尚未支持某些功能。
 
