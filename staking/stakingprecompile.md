@@ -13,7 +13,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 质押模块是使用Rust进行编码的，它同时也是pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于地址`{{networks.moonbase.staking.precompile_address}}`的预编译合约中的以太坊API使用质押功能。质押预编译功能在发布[Moonbase Alpha v8 release](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v8/)时首次推出。
 
-## 平行链质押Solidity接口  {: #the-parachainstaking-solidity-interface } 
+## 平行链质押Solidity接口  {: #the-parachain-staking-solidity-interface } 
 
 [质押接口.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)是一个接口，通过Solidity合约与平行链质押互操作。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
 

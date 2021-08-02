@@ -9,7 +9,7 @@ Moonbeam所规划的重要功能之一，就是为开发人员人员提供更便
 
 波卡（Polkadot）定义了低层级的集成协议，即“跨链消息传递 ”（XCMP）。通过 XCMP可达到波卡（Polkadot）网络各平行链之间的信息交互，共享可信逻辑，即“共享受保护的运行时执行飞地”模块（SPREE ）。截至本文撰写时（2020年7月），Parity已经在进行实施XCMP和SPREE的设计。在波卡（Polkadot）主网上线之后，XCMP结构和SPREE模块将作为波卡（Polkadot）中继链的升级功能发布，Moonbeam计划在这些协议功能生效后，即可对各种集成场景执行并支持。
 
-## 与波卡（Polkadot）平行链的集成 {: #an-analogy:-the-"bash-of-polkadot" } 
+## 与波卡（Polkadot）平行链的集成 {: #an-analogy-the-bash-of-polkadot } 
 
 波卡（Polkadot）将起到与Linux系统相似的功能。这两个系统都是以开发人员为中心的平台，通过各种库来使应用程序开发变得更为便捷。
 
@@ -17,7 +17,7 @@ Moonbeam所规划的重要功能之一，就是为开发人员人员提供更便
 
 目前来看，各个项目可能从一个或多个智能合约开始逐步迁移到Moonbeam，最终成为Moonbeam网络上的“原生应用程序”。如果这些项目需要更多的曝光或者想要直接控制自己的经济环境，那么还有可能成为波卡（Polkadot）系统中的平行线程或平行链。
 
-## 与基于波卡（Polkadot）网络各类项目的集成 {: #integration-with-other-polkadotbased-chains } 
+## 与基于波卡（Polkadot）网络各类项目的集成 {: #integration-with-other-polkadot-based-chains } 
 
 我们最初希望实现的是能将其他链上的代币转换成Moonbeam平台上的代币，并在平台的DeFi和其他应用程序中使用。完成相应任务后，这些代币又可以重新转回或者转移到其他链。
 

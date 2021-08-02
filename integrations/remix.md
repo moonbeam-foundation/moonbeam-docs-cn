@@ -36,6 +36,6 @@ contract SimpleContract{
 
 ![Interact with Contract](/images/remix/integrations-remix-2.png)
 
-## 分步教程 {: #stepbystep-tutorials }
+## 分步教程 {: #step-by-step-tutorials }
 如果您想获得更加详细的分步教程，请阅读[在Moonbeam开发节点上使用Remix](/getting-started/local-node/using-remix/)。只需修改这些步骤，并将MetaMask[与Moonbase Alpha测试网相连](/getting-started/moonbase/metamask/)，即可在Moonbase Alpha测试网上部署。
 

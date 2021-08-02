@@ -32,7 +32,7 @@ const web3 = new Web3('RPC_URL');
  - Moonbeam开发节点： `http://127.0.0.1:9933`
  - Moonbase Alpha测试网: `https://rpc.testnet.moonbeam.network`
 
-## 分步教程 {: #stepbystep-tutorials } 
+## 分步教程 {: #step-by-step-tutorials } 
 
 如果您想获得更加详细的分步教程，您可以查看我们关于如何通过web3.js在Moonbeam上[传送交易](/getting-started/local-node/send-transaction/)和[部署合约](/getting-started/local-node/deploy-contract/)所撰写的特定教程。
 

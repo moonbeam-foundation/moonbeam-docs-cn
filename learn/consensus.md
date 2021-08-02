@@ -78,7 +78,7 @@ Nimbus将生产者验证执行代码放在一个[Substrate模块](https://substr
 
 例如，[由中继链提供的共识算法](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs) [AuRa](https://crates.io/crates/sc-consensus-aura)和[BABE](https://crates.io/crates/sc-consensus-babe)都有他们自己的定制化执行器，而在Nimbus之中，这些共识机制可以重复使用同一个执行器。通过Nimbus实现的AuRa已经落地，其代码少于100行，充分体现了Nimbus强大的可重用性。
 
-### 热插拔共识机制 {: #hotswapping-consensus } 
+### 热插拔共识机制 {: #hot-swapping-consensus } 
 
 平行链开发团队有时可能需要对共识机制进行修改、调整。如果没有Nimbus插拔共识机制，修改和调整可能需要通过客户端升级和硬分叉才能完成。
 

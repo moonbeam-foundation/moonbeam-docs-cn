@@ -119,7 +119,7 @@ contract Hash256{
 ```
 合约部署后，就可以调用`checkHash()`方法进行验证。如果`calculateHash()`返回的哈希值与所提供的哈希值一致，即返回*true* 。
 
-## 使用RIPEMD-160函数获取哈希值 {: #hashing-with-ripemd160 } 
+## 使用RIPEMD-160函数获取哈希值 {: #hashing-with-ripemd-160 } 
 
 向这一函数输入数据可返回其RIPEMD-160哈希值。测试这一预编译合约，可以使用这个[在线工具](https://md5calc.com/hash/ripemd160)来计算任何字符串的RIPEMD-160哈希值。在本示例中，我们仍使用`Hello World!`的哈希值。我们将使用相同的代码，但使用另一个函数：`ripemd160`函数。请注意，这个函数返回的是`bytes20`类型的变量：
 

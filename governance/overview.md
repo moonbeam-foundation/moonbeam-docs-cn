@@ -39,7 +39,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
 
 以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[尤其是这一篇](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434)。
 
-## 链上治理机制 {: #onchain-governance-mechanics } 
+## 链上治理机制 {: #on-chain-governance-mechanics } 
 
 Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets)，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
 

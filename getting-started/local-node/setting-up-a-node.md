@@ -194,7 +194,7 @@ cd moonbeam
 ./target/release/moonbeam --dev --execution=Native --ethapi=debug,trace
 ```
 
-## 预注资开发账户 {: #prefunded-development-accounts }
+## 预注资开发账户 {: #pre-funded-development-accounts }
 
 您的Moonbeam开发节点带有十个预注资的开发帐户。这些地址源自于Substrate的规范开发助记符：
 
