@@ -77,27 +77,27 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 ## 如何参与Moonbeam社区互动 {: #how-to-engage-with-the-moonbeam-community }
 
-### :fontawesome-brands-discord:  Discord {: #:fontawesome-brands-discord-discord } 
+### :fontawesome-brands-discord:  Discord {: #fontawesome-brands-discord-discord } 
 
 如需获取关于测试网和开发相关的最新内容，欢迎加入[ Moonbeam Discord](https://discord.gg/PfpUATX)群组。
 
-### :moonbeam-element:  Element  {: #:moonbeamelement:-element } 
+### :moonbeam-element:  Element  {: #moonbeamelement:-element } 
 
 想要与开发人士讨论技术或分享经验，欢迎加入[Moonbeam Element（原名为Riot）](https://app.element.io/#/room/#moonbeam:matrix.org)。
 
-### :fontawesome-brands-telegram-plane:  Telegram {: #:fontawesome-brands-telegramplane-telegram } 
+### :fontawesome-brands-telegram-plane:  Telegram {: #fontawesome-brands-telegramplane-telegram } 
 
 了解常规项目信息或其他非技术性内容，欢迎加入[Moonbeam Telegram](https://t.me/Moonbeam_Official)。
 
-### :fontawesome-brands-twitter:  Twitter {: #:fontawesome-brands-twitter-twitter } 
+### :fontawesome-brands-twitter:  Twitter {: #fontawesome-brands-twitter-twitter } 
 
 关注 [Moonbeam Twitter推特](https://twitter.com/MoonbeamNetwork)，了解Moonbeam最新资讯。
 
-### :fontawesome-brands-youtube:  YouTube {: #:fontawesome-brands-youtube-youtube }  
+### :fontawesome-brands-youtube:  YouTube {: #fontawesome-brands-youtube-youtube }  
 
 订阅 [Moonbeam YouTube频道](https://www.youtube.com/c/MoonbeamNetwork)，获取全部视频教程及相关内容。
 
-### :fontawesome-solid-envelope:  Newsletter {: #:fontawesome-solid-envelope-newsletter } 
+### :fontawesome-solid-envelope:  Newsletter {: #fontawesome-solid-envelope-newsletter } 
 
 订阅 [Moonbeam 电子月报](https://moonbeam.network/newsletter/)，获取每月Moonbeam进展总结。
 

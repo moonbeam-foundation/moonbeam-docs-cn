@@ -52,7 +52,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主
 
 更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/)和[wiki博客](https://wiki.polkadot.network/docs/learn-governance)。
 
-## 在Moonbase Alpha上进行测试 {: #try-it-out } 
+## 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
 
 目前，Moonbase Alpha测试网上的代币持有者可以提交提案并进行投票。具体步骤请查阅以下教程：
 

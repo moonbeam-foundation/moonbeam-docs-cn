@@ -52,7 +52,7 @@ Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/le
 
 公式中的权益等于提名人绑定的代币数量与收集人持有总代币量之比。
 
-## 在Moonbase Alpha上进行尝试 {: #try-it-out } 
+## 在Moonbase Alpha上进行尝试 {: #try-it-on-moonbase-alpha } 
 
 在Moonbase Alpha测试网上，代币持有者可以进行质押挖矿并赚取奖励，以测试该系统（系统中的代币没有任何实际价值）。
 
