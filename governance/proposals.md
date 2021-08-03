@@ -7,7 +7,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 ![Governance Moonbeam Banner](/images/governance/governance-proposal-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 在Moonbeam[治理概述页面](/governance/overview/#definitions)中提到，提案指的是代币持有者向区块链提出建议，让系统自动执行。
 
@@ -22,7 +22,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
 
-## 定义
+## 定义 {: #definitions } 
 
 本教程中重要参数定义如下：
 
@@ -43,11 +43,11 @@ description: 如何通过治理机制在Moonbeam上发送提案
 | 最低原像存款额 |      |    {{ networks.moonbase.democracy.min_preim_deposit}} DEV    |
 | 最低提案存款额 |      |       {{ networks.moonbase.democracy.min_deposit}} DEV       |
 
-## 提案步骤
+## 提案步骤 {: #roadmap-of-a-proposal } 
 
 --8<-- 'text/governance/roadmap.md'
 
-## 提案示例
+## 提案示例 {: #proposing-an-action } 
 
 这一小节将介绍从原像到公投的提案过程。本教程中，我们创建了一个真实提案，而不是提供通用示例，以作为本教程和其它教程的基础。
 
@@ -57,7 +57,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 本次提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
-### 提交提案原像
+### 提交提案原像 {: #submitting-a-preimage-of-the-proposal } 
 
 第一步是提交提案原像。这是因为大型原像包含关于提案本身的所有信息，储存成本很高。在这一设置下，资金较多的账户可以负责提交原像，另一个账户提交提案。
 
@@ -81,7 +81,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 请注意，原像储存成本显示在窗口左下角。交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息，但在“Democracy”页面没有任何变化。请不要担心，如果交易已确认，说明原像已经提交成功。
 
-### 提交提案
+### 提交提案 {: #submitting-a-proposal } 
 
 提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在“Democracy”页面点击“Submit proposal”。
 
@@ -103,7 +103,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 ![Proposal listed](/images/governance/governance-proposal-6.png)
 
-### 附议
+### 附议 {: #seconding-a-proposal }
 
 附议意味着您同意提案内容，并想用代币支持该提案进入公投阶段。附议人锁定的代币量需与提案者锁定的完全相同。
 
@@ -128,7 +128,3 @@ description: 如何通过治理机制在Moonbeam上发送提案
 交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息。您也可以在“Proposals”列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
 
 ![Proposal Seconded](/images/governance/governance-proposal-9.png)
-
-## 我们期待您的反馈
-
-如果您对在Moonbase Alpha上发送提案以及其它Moonbeam相关话题有任何建议或意见，欢迎通过开发团队的官方[Discord平台](https://discord.com/invite/PfpUATX)联系我们。

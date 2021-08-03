@@ -7,13 +7,13 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将通过链上治理
 
 ![Governance Moonbeam Banner](/images/governance/governance-overview-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者、校验者、用户及其它贡献者等代币持有者社区进行治理。
 
 我们致力于鼓励这些领域的代币持有者参与网络上线过程。
 
-## 般定义
+## 般定义 {: #general-definitions } 
 
 权力越大，责任越大。在参与Moonbeam治理之前，请先了解一些重要参数：
 
@@ -26,7 +26,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
  - **锁定期** —— 赢得投票用户的代币锁定期（提案执行后）。在此期间，用户仍可使用锁定代币进行质押或投票
  - **委托** —— 将自己的投票权委托给其他账户，以积累一定信念值的行为
 
-## 原则
+## 原则 {: #principles } 
 
 在参与Moonbeam治理流程中，我们还希望用户做到以下几点：
 
@@ -39,7 +39,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
 
 以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[尤其是这一篇](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434)。
 
-## 链上治理机制
+## 链上治理机制 {: #on-chain-governance-mechanics } 
 
 Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets)，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
 
@@ -52,7 +52,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主
 
 更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/)和[wiki博客](https://wiki.polkadot.network/docs/learn-governance)。
 
-## 在Moonbase Alpha上进行测试
+## 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
 
 目前，Moonbase Alpha测试网上的代币持有者可以提交提案并进行投票。具体步骤请查阅以下教程：
 

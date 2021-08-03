@@ -7,7 +7,7 @@ description: Moonbeam提供质押功能，代币持有者可通过使用代币�
 
 ![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/learn-consensus)进行区块生产，因此区块链上有收集人（Collator）和验证人（Validator）。[收集人（Collator）](https://wiki.polkadot.network/docs/learn-collator)通过收集用户的交易并为中继链[验证人（Validator）](https://wiki.polkadot.network/docs/learn-validator)生成状态转移证明来维护平行链（在这一例子中为Moonbeam）。
 
@@ -15,7 +15,7 @@ Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/le
 
 收集人（以及参与其提名的代币持有者）在网络中持有权益。但如果行为不当，其权益会被削减。因此权益越高，网络安全性越高，收集人也更有可能入选，进行区块生产并赚取奖励，与其提名人分享收益。这样的机制能够激励网络成员进行质押挖矿，从而提升网络整体安全性。
 
-## 般定义
+## 般定义 {: #general-definitions } 
 
 --8<-- 'text/staking/staking-definitions.md'
 
@@ -30,7 +30,7 @@ Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/le
 |          轮次          |      | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
 |        绑定时长        |      |       {{ networks.moonbase.staking.bond_lock }} rounds       |
 
-## 奖励发放
+## 奖励发放 {: #reward-distribution } 
 
 在每个轮次的最后（{{ networks.moonbase.staking.round_blocks }}区块），收集人将获得{{ networks.moonbase.staking.bond_lock }}轮之前的收益奖励。
 
@@ -52,7 +52,7 @@ Moonbeam基于[Polkadot权益证明模型](https://wiki.polkadot.network/docs/le
 
 公式中的权益等于提名人绑定的代币数量与收集人持有总代币量之比。
 
-## 在Moonbase Alpha上进行尝试
+## 在Moonbase Alpha上进行尝试 {: #try-it-on-moonbase-alpha } 
 
 在Moonbase Alpha测试网上，代币持有者可以进行质押挖矿并赚取奖励，以测试该系统（系统中的代币没有任何实际价值）。
 

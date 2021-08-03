@@ -7,7 +7,7 @@ description: 通过此教程学习如何使用Waffle和Mars在Moonbeam上编写�
 
 ![Waffle and Mars on Moonbeam](/images/waffle-mars/waffle-mars-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 [Waffle](https://getwaffle.io/)是编译和测试智能合约的库，[Mars](https://github.com/EthWorks/Mars)是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到Moonbeam开发节点或Moonbase Alpha测试网。
 
@@ -16,7 +16,7 @@ Waffle使用最少的依赖项，具有易于学习和扩展的编写语法，�
 Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级部署脚本并与状态更改保持同步。 Mars专注于「基础设施即代码」，允许开发人员指定该如何部署他们的智能合约，然后使用这些规范自动处理状态更改及部署。
 
 在本教程中，您需先创建一个TypeScript项目，然后使用Waffle编写、编译和测试智能合约，接着使用Mars将其部署到Moonbase Alpha测试网上。
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 --8<-- 'text/common/install-nodejs.md'
 
@@ -26,7 +26,7 @@ Waffle和Mars可与本地运行的Moonbeam开发节点一起使用，但就本�
 
 创建帐户后，导出本教程中所需要使用的私钥，并确保您的帐户有资金。如果需要，可以在[水龙头faucet](/getting-started/moonbase/faucet/)获取“DEV”代币。
 
-## 使用Waffle和Mars创建TypeScript项目
+## 使用Waffle和Mars创建TypeScript项目 {: #create-a-typescript-project-with-waffle-mars } 
 
 首先，您需创建一个TypeScript项目并安装和配置一些依赖项。
 
@@ -81,7 +81,7 @@ touch tsconfig.json
 ```
 
 现在，您应该有一个基本的TypeScript项目，其中包含使用Waffle和Mars进行构建所需的依赖项。
-## 添加合约
+## 添加合约  {: #add-a-contract } 
 
 在本教程中，您将创建一个ERC-20合约，该合约基于Open Zeppelin的ERC-20模板向合约创建者铸造指定数量的代币。
 
@@ -107,9 +107,9 @@ contract MyToken is ERC20 {
 
 在此合约中，您正在创建一个名为MyToken的ERC20代币，其符号为MYTOK，作为合约的创建者，您可根据需求设置MYTOK的铸造数量。
 
-## 使用Waffle编译和测试
+## 使用Waffle编译和测试 {: #use-waffle-to-compile-and-test } 
 
-### 使用Waffle编译
+### 使用Waffle编译 {: #compile-with-waffle } 
 
 首先，您有一个编写好的智能合约，下一步就是使用Waffle来编译它。在编译之前，您需先配置 Waffle。
 
@@ -152,7 +152,7 @@ npm run build
 
 编译合约后，Waffle将JSON输出存储在`build`目录中。本教程中的合约基于Open Zeppelin的 ERC-20模板，因此相关的ERC-20 JSON文件也会出现在`build`目录中。
 
-### 使用Waffle测试
+### 使用Waffle测试 {: #test-with-waffle } 
 
 在部署合约并将其对外发送之前，需先对其进行测试。 Waffle提供了一个高级测试框架，并提供了许多工具来帮助您进行测试。
 
@@ -305,7 +305,7 @@ describe ('MyToken', () => {
 
 如果您想自己编写更多测试用例，您可以考虑测试从没有任何资金的账户转账或从没有足够资金的账户转账。
 
-## 使用Mars在Moonbase Alpha上部署
+## 使用Mars在Moonbase Alpha上部署 {: #use-mars-to-deploy-to-moonbase-alpha } 
 
 在编译合约之后并准备部署合约之前，您必须为Mars生成合约工件。 Mars使用合约工件在部署中进行类型检查。然后您需要创建一个部署脚本并部署`MyToken`智能合约。
 
@@ -315,7 +315,7 @@ describe ('MyToken', () => {
 
 部署将分为三个部分：[生成工件](#生成工件)、[创建部署脚本](#创建部署脚本)和[使用Mars部署](#使用Mars进行部署)。
 
-### 生成工件
+### 生成工件 {: #generate-artifacts } 
 
 您需要为Mars生成工件，以便在部署脚本中启用类型检查。
 
@@ -335,7 +335,7 @@ npm run build
 
 如果您打开`build`目录，可以看到一个`artifacts.ts`文件，其中包含部署所需的工件数据。您需要编写部署脚本，才能继续进行部署。部署脚本将用于说明Mars部署哪个合约，部署到哪个网络，以及使用哪个帐户来触发部署。
 
-### 创建部署脚本
+### 创建部署脚本 {: #create-a-deployment-script } 
 
 现在，您需要为Moonbase Alpha测试网配置`MyToken`合约的部署。
 
@@ -379,7 +379,7 @@ deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey}, () => {
 
 到目前为止，您应该已经在`deploy.ts`中创建了一个部署脚本，用于将`MyToken`合约部署至Moonbase Alpha，并添加了轻松调用脚本和部署合约的功能。
 
-### 使用Mars进行部署
+### 使用Mars进行部署 {: #deploy-with-mars } 
 
 若您已配置了部署，现在可以真正部署至Moonbase Alpha了。
 
@@ -397,6 +397,6 @@ npm run deploy
 
 恭喜！您已经成功通过Waffle和Mars在Moonbase Alpha上部署合约了！
 
-## 示例项目
+## 示例项目 {: #example-project } 
 
 如果您想在Moonbeam上查看Waffle和Mars项目的完整示例，请查看以下由EthWorks（Waffle和Mars背后的团队）成员创建的[moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example)。

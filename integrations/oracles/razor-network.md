@@ -6,7 +6,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 
 ![Razor Network Moonbeam Diagram](/images/razor/razor-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 开发者现在可以使用Razor Network预言机在Moonbase Alpha测试网上部署桥接合约，从而获取价格信息。桥接合约作为中间件发出事件信息，该信息被Razor Network预言机基础设施获取，并向桥接合约发送报价。
 
@@ -16,7 +16,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 |:--------------:|-|:------------------------------------------:|
 | Moonbase Alpha | | 0xa7f180fb18EF0d65049fE03d4308bA33a28b6513 |
 
-## Jobs
+## Jobs {: #jobs } 
 
 每个喂价数据都与一个Job ID相对应，例如：
 
@@ -28,7 +28,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 
 通过[此链接](https://razorscan.io/#/custom)可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档][https://docs.razor.network/]。
 
-## 从桥接合约获取数据
+## 从桥接合约获取数据 {: #get-data-from-bridge-contract } 
 
 合约通过执行桥接合约接口可调用`getResult`和`getJob`函数以使用Razor Network预言机来获取代币价格等链上数据。
 
@@ -47,7 +47,7 @@ interface Razor {
 
 第二个函数`getJob`使用对应Job ID的数据源来获取关于数据源的基本信息，如名称、价格、获取价格的URL等。
 
-### 合约示例
+### 合约示例 {: #example-contract } 
 
 我们在Moonbase Alpha测试网上部署了桥接合约（地址为`{{ networks.moonbase.razor.bridge_address }}`），方便您快速查看Razor Network预言机的喂价信息。
 
@@ -109,7 +109,7 @@ contract Demo {
 }
 ```
 
-### 在Moonbase Alpha上进行测试
+### 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
 
 测试预言机功能最简单的方式就是将接口指向部署在`{{ networks.moonbase.razor.bridge_address }}`的桥接合约：
 

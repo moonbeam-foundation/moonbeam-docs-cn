@@ -7,13 +7,13 @@ description: 通过此教程学习如何将Mathwallet（浏览器版）钱包连
 
 ![Intro banner](/images/mathwallet/mathwallet-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持[Moonbase Alpha测试网](/networks/moonbase/)，意味着用户现在能通过除了MetaMask以外的钱包来与Moonbase Alpha进行交互。
 
 在本教程中，我们将带您了解如何设置MathWallet，使其能够连接到我们的测试网。除此之外，我们也会提供一个简短的例子，来说明如何在其他工具中，譬如[Remix](/integrations/remix/)，将MathWallet当作一个Web3的提供者来使用。
 
-## 将MathWallet连接至Moonbeam
+## 将MathWallet连接至Moonbeam {: #checking-prerequisites } 
 
 在这个部分，我们将会演示如何将MathWallet连接至Moonbase Alpha。
 
@@ -35,7 +35,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ![Wallet Connected to Moonbase Alpha](/images/mathwallet/mathwallet-images-4.png)
 
-## 如何新增钱包
+## 如何新增钱包 {: #adding-a-wallet }
 
 现在我们已经成功地将MathWallet连接至Moonbase Alpha了，我们可以创建一个钱包来获得一个账户并开始与测试网交互。到目前为止，有三个方法能够新增钱包：
 
@@ -43,7 +43,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
  - 使用助记词或私钥来导入一个已存在的钱包
 - 连接硬钱包（_目前尚未支持_）
 
-### 创建一个钱包
+### 创建一个钱包 {: #create-a-wallet}
 
 如果希望建立一个新的钱包，请点击"Moonbase Alpha"左边的:heavy_plus_sign:图示并且选取"Create Wallet"。
 
@@ -53,7 +53,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ![MathWallet wallet created](/images/mathwallet/mathwallet-images-6.png)
 
-### 导入一个钱包
+### 导入一个钱包 {: #import-a-wallet } 
 
 如果希望建立一个新的钱包，请点击"Moonbase Alpha"左边的:heavy_plus_sign:图示并且选取"Import Wallet"。
 
@@ -67,7 +67,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ![MathWallet imported wallet](/images/mathwallet/mathwallet-images-9.png)
 
-## 如何使用MathWallet
+## 如何使用MathWallet {: #using-mathwallet } 
 
 在类似于[Remix](/integrations/remix/)的工具中，MathWallet扮演着一个Web3提供者的角色。当您成功将MathWallet连接至Moonbase Alpha之后，您就可以像使用MetaMask一般，部署合约，或是签名交易，只是使用的媒介是MathWallet。
 

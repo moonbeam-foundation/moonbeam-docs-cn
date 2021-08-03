@@ -6,11 +6,11 @@ description: 通过此教程学习如何使用以太坊Web3 JavaScript库在Moon
 
 ![Intro diagram](/images/integrations/integrations-web3py-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 [Web3.py](https://web3py.readthedocs.io/)可供开发人员使用Python，并通过HTTP、IPC或WebSocker协议与以太坊节点交互的一组代码库。Moonbeam拥有与以太坊相似的API供用户使用，其和以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用这个兼容性特色来使用web3.py库与Moonbeam节点交互，就如同在使用以太坊时一样。
 
-## 在Moonbeam上设置Web3.py
+## 在Moonbeam上设置Web3.py {: #setup-web3py-with-moonbeam } 
 
 在开始使用之前，请使用以下的指令安装web3.py库：
 
@@ -31,7 +31,7 @@ web3 = Web3(Web3.HTTPProvider('RPC_URL'))
  - Moonbeam开发节点: `http://127.0.0.1:9933`
  - Moonbase Alpha测试网: `https://rpc.testnet.moonbeam.network`
 
-## 分步教程
+## 分步教程 {: #step-by-step-tutorials } 
 
 如果您想获得更加详细的分步教程，您可以查看我们关于如何通过web3.py在Moonbeam上[传送交易](/getting-started/local-node/send-transaction/)和[部署合约](/getting-started/local-node/deploy-contract/)所撰写的特定教程。
 

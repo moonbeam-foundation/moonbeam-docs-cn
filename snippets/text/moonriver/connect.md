@@ -3,7 +3,7 @@ Moonriver的RPC和WSS端点目前由PureStake提供，仅为开发环境应同�
 - [OnFinality](https://onfinality.io/)
 - [Elara](https://elara.patract.io/)
 
-### HTTPS DNS
+### HTTPS DNS {: #https-dns } 
 
 如果您想使用HTTPS连接至Moonriver， 您只需将您的provider（提供者）导至以下的RPC DNS：
 
@@ -37,7 +37,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 任何以太坊钱包都应当能够生成可以使用Moonbeam的地址（例如：[MetaMask](https://metamask.io/)）。
 
-### WSS DNS
+### WSS DNS {: #wss-dns } 
 
 如果想使用WebSocket连接，你可以使用以下的DNS：
 
@@ -45,6 +45,6 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 wss://wss.moonriver.moonbeam.network
 ```
 
-### Chain ID
+### Chain ID {: #chain-id } 
 
 Moonriver的Chain ID为: `1285`

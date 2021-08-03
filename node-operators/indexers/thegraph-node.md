@@ -7,7 +7,7 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
 
 ![The Graph Node on Moonbeam](/images/thegraph/thegraphnode-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 Graph节点负责从区块链上获取事件消息，并精准更新数据存储。数据存储可通过GraphQL终端请求进行访问。
 
@@ -16,7 +16,7 @@ Graph节点负责从区块链上获取事件消息，并精准更新数据存储
 !!! 注意事项
     本教程示例基于Ubuntu 18.04和MacOS的环境，用户需根据其所使用其他系统进行微调。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 在创建Graph节点之前，请确保系统上已安装以下工具：
 
@@ -31,7 +31,7 @@ Graph节点负责从区块链上获取事件消息，并精准更新数据存储
 
 在教程中，我们将用`--ethapi=trace`标记Graph节点，对应Moonbase Alpha完整节点运行。
 
-## 运行Graph节点
+## 运行Graph节点 {: #running-a-graph-node } 
 
 首先，克隆[Graph节点代码库](https://github.com/graphprotocol/graph-node/)：
 

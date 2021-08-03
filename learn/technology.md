@@ -5,21 +5,21 @@ description: 基于Rust语言以及Substrate框架，Moonbeam不仅能够为执�
 
 # 技术
 
-## Moonbeam开发堆栈
+## Moonbeam开发堆栈 {: #the-moonbeam-development-stack } 
 
 Moonbeam是基于Substrate框架用Rust程序设计语言创建的智能合约区块链平台。
 
-### Rust程序设计语言
+### Rust程序设计语言 {: #rust-programming-language } 
 
 Rust非常适用于区块链编程，其拥有和C语言、C++语言一样的高性能。同时还有两者所不具备的内置内存安全功能，在编译过程中这一功能尤其出色，可避免因使用C语言、C++语言编程而遇到的的许多常见漏洞和安全问题。
 
-### Substrate框架
+### Substrate框架 {: #substrate-framework } 
 
 Substrate框架提供了一系列丰富的区块链创建工具，包括能够实现一般状态转移功能时的执行环境，以及实现多种区块链子系统的一系列可插拔的模块设计。
 
 通过多个现有的Substrate框架模块，Moonbeam可提供重要的区块链服务与功能，包括核心区块链数据结构、对等网络、共识机制、账户、资产、余额等。在运行时间内，通过定制化的模块和逻辑可实现例如跨链代币整合等特殊行为和功能。对于已调用的模块，Moonbeam将保持与上游Substrate编码库的密切连接，随时进行漏洞修补、强化功能并且增加新功能。
 
-## 区块链运行时间
+## 区块链运行时间 {: #blockchain-runtime } 
 
 Moonbeam核心运行时间规定了Moonbeam区块链的状态转移功能和行为。Moonbeam运行时间通过[FRAME](/resources/glossary/#substrate-frame-pallets)模块创建，包括数个标准模块以及定制模块。运行时间将编译成[WebAssembly (Wasm)](/resources/glossary/#webassemblywasm) 二进制代码和原生二进制代码，这些编译版本将在波卡（Polkadot）中继链和Moonbeam节点环境中执行。
 
@@ -43,7 +43,7 @@ Moonbeam运行时间使用的关键Substrate Frame Pallets包括：
 
 除了以上这些Substrate Frame Pallets以外，我们还将使用Moonbeam的特殊功能模块，包括收集人机制和奖励，以及其他开发者工具。
 
-## 以太坊兼容性架构
+## 以太坊兼容性架构 {: #ethereum-compatibility-architecture } 
 
 Moonbeam上的智能合约可以使用Solidity、Vyper和任何能够将智能合约编译成EVM兼容字节码的语言执行。Moonbeam旨在提供一个与现有以太坊开发者工具链相兼容的、平滑的、安全的智能合约开发、测试和执行环境。
 

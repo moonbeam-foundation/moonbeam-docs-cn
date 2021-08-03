@@ -125,7 +125,7 @@ npm init --yes
 
 最后，提取并导出`Incrementer.sol`文件的`Incrementer`合约数据，以便部署脚本。
 
-### Web3.py
+### Web3.py {: #web3py } 
 
 在[脚本](/snippets/code/web3py-contract/compile.py)的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
 
@@ -164,7 +164,7 @@ npm init --yes
 !!! 注意事项
     _deploy.*_ 脚本提供合约地址作为输出结果。 该脚本用于合约交互文件，使用便捷。
 
-### Web3.js
+### Web3.js {: #web3js } 
 
 在[此脚本](/snippets/code/web3-contract-local/deploy.js)的第一部分，您可以看到`web3`实例（或提供者（Provider））可通过带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
@@ -176,7 +176,7 @@ npm init --yes
 
 最后，发送已签名的交易，同时合约地址也会显示。
 
-### Ethers.js
+### Ethers.js {: #ethersjs } 
 
 [此脚本](/snippets/code/ethers-contract-local/deploy.js)的第一部分中，可以使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述 `web3`实例）通过`ethers.providers.StaticJsonRpcProvider` 方式创建。另外还有一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
@@ -186,7 +186,7 @@ npm init --yes
 
 最后，显示合约地址。
 
-### Web3.py
+### Web3.py {: #web3py } 
 
 在[此脚本](/snippets/code/web3py-contract/deploy.py)的第一部分，您可看到使用带有提供者（Provider）RPC的 `Web3(Web3.HTTPProvider(provider_rpc))`创建`web3`实例（或提供者（Provider））。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
@@ -227,7 +227,7 @@ npm init --yes
     --8<-- 'code/web3py-contract/get.py'
     ```
 
-### Web3.js
+### Web3.js {: #web3js } 
 
 在[脚本](/snippets/code/web3-contract-local/get.js)的第一部分，`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
@@ -237,7 +237,7 @@ npm init --yes
 
 最后，显示返回值。
 
-### Ethers.js
+### Ethers.js {: #ethersjs } 
 
 [此脚本](/snippets/code/ethers-contract-local/get.js)的第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者(Provider)（类似上述`web3`实例）通过`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种是通过`ethers.providers.JsonRpcProvide(providerRPC)`方式，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
@@ -247,7 +247,7 @@ npm init --yes
 
 最后，显示返回值。
 
-### Web3.py
+### Web3.py {: #web3py } 
 
 [此脚本](/snippets/code/web3py-contract/get.py)的第一部分中，您可以看到`web3`实例（或者提供者）是由`Web3(Web3.HTTPProvider(provider_rpc))`方式和提供者RPC创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 
@@ -309,7 +309,7 @@ npm init --yes
     --8<-- 'code/web3py-contract/reset.py'
     ```
 
-### Web3.js
+### Web3.js {: #web3js } 
 
 在此脚本（[increment](/snippets/code/web3-contract-local/increment.js)或者[reset](/snippets/code/web3-contract-local/reset.js)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））是由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，将交易发送到您指定的网络。
 
@@ -321,7 +321,7 @@ npm init --yes
 
 最后，发送已签名的交易，交易哈希也会同步显示。
 
-### Ethers.js
+### Ethers.js {: #ethersjs } 
 
 在此脚本（[increment](/snippets/code/ethers-contract-local/increment.js)或者[reset](/snippets/code/ethers-contract-local/reset.js)文件）第一部分中，使用名称、RPC URL（必需）和Chain ID来指定不同的网络。提供者（Provider）（类似上述`web3`实例）由`ethers.providers.StaticJsonRpcProvider`方式创建。另外一种方法是通过`ethers.providers.JsonRpcProvide(providerRPC)`，该方式只需要RPC终端地址。但是这种方法可能会产生与单个项目的兼容性问题。
 
@@ -331,7 +331,7 @@ npm init --yes
 
 最后，交易哈希值可在终端显示。
 
-### Web3.py
+### Web3.py {: #web3py } 
 
 在此脚本（[increment](/snippets/code/web3py-contract/increment.py)或者[reset](/snippets/code/web3py-contract/reset.py)文件）的第一部分，您可以看到`web3`实例（或提供者（Provider））由带有提供者（Provider）RPC的`web3`构造创建。您可以通过改变提供者（Provider）RPC，选择要将交易发送到您指定的网络。
 

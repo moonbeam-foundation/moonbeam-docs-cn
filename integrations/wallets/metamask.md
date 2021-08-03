@@ -7,7 +7,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 ![Intro diagram](/images/integrations/integrations-metamask-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 开发人员可以利用Moonbeam与以太坊兼容的特色，将一些如[MetaMask](https://metamask.io/)的工具整合至DApps中。如此一来，就可以使用MetaMask提供的库与要部署的链相交互。
 
@@ -22,7 +22,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
 
-## 如何将MetaMask连接至Moonbeam
+## 如何将MetaMask连接至Moonbeam {: #connect-metamask-to-moonbeam } 
 
 当您成功安装了[MetaMask](https://metamask.io/)，您可以点击右上角的logo和设置来将其连接至Moonbeam。
 
@@ -42,7 +42,7 @@ Moonbase Alpha测试网：
 
 --8<-- 'text/testnet/testnet-details.md'
 
-## 分步教程
+## 分步教程 {: #step-by-step-tutorials }
 
 如果您想获得更加详细的分步教程，你可以查看以下的特定教程：
 

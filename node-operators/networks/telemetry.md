@@ -7,7 +7,7 @@ description: 如何在Moonbeam网络上通过运行Telemetry来设置平行链�
 
 ![Telemetry Moonbeam Banner](/images/fullnode/telemetry-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 Moonbase Alpha v6版本以及近期的Moonriver发布后，用户可以创建节点并连接到Moonbase Alpha测试网或是Kusama上的Moonriver。具体操作步骤，请查阅[此教程](https://github.com/PureStake/moonbeam-docs-cn/blob/master/node-operators/networks/full-node)。
 
@@ -16,7 +16,7 @@ Moonbase Alpha v6版本以及近期的Moonriver发布后，用户可以创建节
 !!! 注意事项
     以下步骤适用于与默认启用的标准波卡（Polkadot）telemetry不同的telemetry实例（您可利用`--no-telemetry`标记在不激活telemetry的情况下运行节点）。请知悉，本教程中的步骤仅对收集人节点是强制性的。
 
-## Telemetry Exporter简介
+## Telemetry Exporter简介 {: #telemetry-exporter-summary } 
 
 Moonbeam将运行一个telemetry服务器，收集来自网络中所有Moonbeam平行链节点Prometheus参数。运行这一服务器对我们的开发阶段将有重要的帮助。
 
@@ -28,7 +28,7 @@ Moonbeam将运行一个telemetry服务器，收集来自网络中所有Moonbeam�
 
 如需获取帮助，请联系的[Discord server](https://discord.gg/FQXm74UQ7V)或[Gantree Discord](https://discord.gg/N95McPjHZ2)。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 在按照本教程进行操作前，您需要：
 
@@ -39,11 +39,11 @@ Moonbeam将运行一个telemetry服务器，收集来自网络中所有Moonbeam�
 
 您可以在所有基于Moonbeam的网络使用相同的PCK密钥，目前包含Moonbase Alpha和Moonriver。
 
-## 通过Docker容器运行Telemetry Exporter
+## 通过Docker容器运行Telemetry Exporter {: #telemetry-exporter-with-docker } 
 
 下面我们将通过Docker容器运行两个Gantree node watchdog实例，一个用于平行链，另一个用于中继链。
 
-### 所需配置信息
+### 所需配置信息 {: #required-configuration-information } 
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -51,7 +51,7 @@ Moonbeam将运行一个telemetry服务器，收集来自网络中所有Moonbeam�
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### 操作指引
+### 操作指引 {: #instructions } 
 
 首先，克隆实例的监测客户端代码库，并创建镜像：
 
@@ -100,11 +100,11 @@ docker run -it --network="host" \
 
 一切正常后，您可以更新命令以在守护程序模式下运行。删除`-it`并在上面的命令中添加`-d`。
 
-## 通过Systemd运行Telemetry Exporter
+## 通过Systemd运行Telemetry Exporter {: #telemetry-exporter-with-systemd } 
 
 下面我们将通过Systemd运行两个Gantree node watchdog实例，一个用于平行链，另一个用于中继链。
 
-### 所需配置信息
+### 所需配置信息 {: #required-configuration-information } 
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -112,7 +112,7 @@ docker run -it --network="host" \
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### 操作指引
+### 操作指引 {: #instructions } 
 
 首先，在这个[发布页面](https://github.com/gantree-io/gantree-node-watchdog/releases)下载Gantree node watchdog二进制文档，并解压到文件夹，例如`/usr/local/bin`。
 

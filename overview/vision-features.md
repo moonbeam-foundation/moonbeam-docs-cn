@@ -15,7 +15,7 @@ Moonbeam的跨链集成功能是通过成为Polkadot网络上的[平行链](/res
 
 Moonbeam的跨链功能可让三类用户受益：
 
-### 现有的基于以太坊开发的项目 {: #existing-ethereum-based-projects }
+### 现有的基于以太坊开发的项目 {: #existing-ethereum-based-projects } 
 
 Moonbeam可解决以太坊面临的成本问题和可扩展性挑战：
 

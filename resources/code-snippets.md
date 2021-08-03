@@ -5,7 +5,7 @@ description: 本文包含资料库所有教程中出现的代码段合集，以�
 
 # 代码段
 
-## 设置本地Moonbeam节点
+## 设置本地Moonbeam节点 {: #setting-up-a-local-moonbeam-node } 
 
 **克隆Moonbeam教程的Repo：**
 
@@ -50,17 +50,17 @@ cd moonbeam
 ./target/release/moonbeam-development --dev -lerror
 ```
 
-## 创世账户
+## 创世账户 {: #genesis-account } 
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-## 开发账户
+## 开发账户 {: #development-accounts } 
 
 --8<-- 'text/setting-up-node/dev-accounts.md'
 
 --8<-- 'code/setting-up-node/dev-testing-account.md'
 
-## MetaMask
+## MetaMask {: #metamask } 
 
 **Moonbeam开发节点参数：**
 

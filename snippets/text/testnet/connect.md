@@ -1,4 +1,4 @@
-### HTTPS DNS
+### HTTPS DNS {: #https-dns } 
 
 如果您想使用HTTPS连接至Moonbase Alpha， 您只需将您的provider（提供者）导至以下的RPC DNS：
 
@@ -32,7 +32,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 任何以太坊钱包都应当能够生成可以使用Moonbeam的地址（例如：[MetaMask](https://metamask.io/)）。
 
-### WSS DNS
+### WSS DNS {: #wss-dns } 
 
 如果想使用WebSocket连接，您可以使用以下的DNS：
 
@@ -40,11 +40,11 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 wss://wss.testnet.moonbeam.network
 ```
 
-### Chain ID
+### Chain ID {: #chain-id } 
 
 Moonbase Alpha测试网的Chain ID为：`1287 `
 
-### 中继链 {: #relay-chain }
+### 中继链 {: #relay-chain } 
 
 想要链接至由PureStake管理的Moonbase Alpha中继链，可使用以下WS终端：
 

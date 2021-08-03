@@ -6,7 +6,7 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
 
 ![ChainBridge Moonbeam banner](/images/chainbridge/chainbridge-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 跨链转接桥是连接两个经济独立、技术相异的区块链，实现链间沟通的解决方案。转接桥可以有两种：一种是中心化的可信协议，另一种是去中心化的无信任协议。[ChainSafe](https://chainsafe.io/)团队推出的模块化的多方向[ChainBridge](https://github.com/ChainSafe/ChainBridge#installation)就是现有的解决方案之一，现已支持Moonbeam部署，连接Moonbase Alpha测试网和以太坊Rinkeby/Kovan测试网。
 
@@ -20,7 +20,7 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
     - [一般应用程序](/integrations/bridges/ethereum/chainbridge/#generic-handler)
  - [联系我们](/integrations/bridges/ethereum/chainbridge/#we-want-to-hear-from-you)
 
-## ChainBridge的运行机制
+## ChainBridge的运行机制 {: #how-the-bridge-works } 
 
 ChainBridge本质上是一个消息传递协议，利用源链上的事件将消息通过一定路径传递到目标链上。在消息传递的过程中，ChainBridge主要有三个主要功能：
 
@@ -36,7 +36,7 @@ ChainBridge目前依赖于受信任的中继器来执行这些角色。此外，
  - **处理程序合约** – 验证用户提交的参数，并创建充值/执行记录
  - **目标合约** – 正如其名，目标合约就是部署在转接桥两端，完成桥接功能的合约
 
-### 一般工作流程
+### 一般工作流程 {: #general-workflow } 
 
 
 在ChainBridge模型下，从链A到链B的数据和价值转移的一般工作流程如下：
@@ -53,7 +53,7 @@ ChainBridge目前依赖于受信任的中继器来执行这些角色。此外，
 
 在转接桥两端的目标合约通过一系列的注册进行连接，注册通过桥接合约在相应的处理程序合约中进行。目前，只有桥接合约管理员可以进行注册。
 
-### 一般定义
+### 一般定义 {: #general-definitions } 
 
 以下是ChainBridge从链A到链B的工作流程中所涉及到的一些概念定义：
 
@@ -61,7 +61,7 @@ ChainBridge目前依赖于受信任的中继器来执行这些角色。此外，
  - **Resource ID** – 由32个字节组成，用于在跨链环境中给各种资产提供唯一的标识。其中一个字节是资产的Chain ID，剩下31字节用于在ChainBridge中表示该资产，反映资产以及所在链信息。例如，通过Resource ID，可以表示链A上的代币X就是链B上的代币Y
  - **Calldata** - 处理合约所需参数，包含在链B执行提案的必要信息。具体的序列化将由处理合约进行定义。更多详情，请见[这里](https://chainbridge.chainsafe.io/chains/ethereum/#erc20-erc721-handlers)
 
-## 使用ChainBridge部署Moonbase Alpha
+## 使用ChainBridge部署Moonbase Alpha {: #try-it-on-moonbase-alpha } 
 
 我们通过部署ChainBridge创建了一个中继器，两端分别与Moonbase Alpha测试网和以太坊Rinkeby、Kovan测试网相连。
 
@@ -83,7 +83,7 @@ ChainSafe为ERC-20和ERC-721接口[预先编写好了处理合约程序](https:/
 !!! 注意事项
     上述桥接合约、ERC-20处理程序合约和ERC-721处理程序合约地址均适用于Kovan和Rinkeby。
 
-### 进行ERC-20代币转移
+### 进行ERC-20代币转移 {: #erc-20-token-transfer } 
 
 ERC-20代币需要先通过中继器在处理程序合约上进行注册，才能通过转接桥进行转移。因桥接功能测试所需，我们部署了一枚ERC-20代币（ERC20S），所有用户都可以铸造5枚代币：
 
@@ -212,7 +212,7 @@ interface IBridge {
 !!! 注意事项
     处理程序合约代表所有者需有足够限额才能进行代币转移。若转移失败，请检查限额。
 
-### 进行ERC-721代币转移
+### 进行ERC-721代币转移 {: #erc-721-token-transfer } 
 
 和上一个示例相似，ERC-721代币合约也需要经过中继器注册才能使用转接桥进行转移。为此，我们创建了一个定制化的ERC-721代币合约，让所有用户都可以铸造代币，用于进行桥接功能的测试。然而，由于每个代币是非同质化且独一无二的，只能在源链代币合约上铸造，无法在目标合约上铸造。因此，我们需要一对ERC-721合约地址才能实现Rinkeby/Kovan和Moonbase Alpha之间两个方向的代币转移。下面是本示例的工作流程示意图，重点需要注意的是代币ID和元数据。
 
@@ -338,7 +338,7 @@ interface IBridge {
 !!! 注意事项
     处理程序合约只有在获得所有者许可的前提下才能代表所有者进行代币转移。若转移失败，请检查许可情况。
 
-### 一般处理程序
+### 一般处理程序 {: #generic-handler } 
 
 与一般工作流程相似，一般处理程序可以在链A执行某个函数的同时创建在链B执行另一函数的提案。这为实现两个独立区块链之间的连接提供了极具吸引力的解决方案。
 
@@ -349,9 +349,6 @@ interface IBridge {
 
 如果你有兴趣部署这一功能，可以直接通过我们的[Discord server](https://discord.com/invite/PfpUATX)联系我们。我们非常乐意商讨部署事宜。
 
-### Moonbase Alpha ChainBridge用户界面
+### Moonbase Alpha ChainBridge用户界面 {: #moonbase-alpha-chainbridge-ui } 
 
 使用[Moonbase Alpha ChainBridge用户界面](https://moonbase-chainbridge.netlify.app/)，无需设置Remix合约即可体验将ERC20S代币从Moonbase Alpha转移到Kovan或Rinkeby的操作过程。
-## 我们期待您的反馈
-
-如果您对ChainBridge部署以及其它Moonbeam相关话题有任何意见或建议，欢迎通过我们开发团队的官方[Discord server](https://discord.com/invite/PfpUATX)联系我们。

@@ -6,11 +6,11 @@ description: 通过本教程学习如何使用以太坊Web3 JavaScript库在Moon
 
 ![Intro diagram](/images/integrations/integrations-web3js-banner.png)
 
-## 概览
+## 概览 {: #introduction } 
 
 [Web3.js](https://web3js.readthedocs.io/)可供开发人员使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互的一组代码库。Moonbeam拥有与以太坊相似的API供用户使用，其和以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用这个兼容性来使用web3.js库与Moonbeam节点交互，就如同在使用以太坊时一样。
 
-## 在Moonbeam上设置Web3.js
+## 在Moonbeam上设置Web3.js {: #setup-web3js-with-moonbeam } 
 
 在开始使用之前，请使用以下指令来安装web3.js库：
 
@@ -32,7 +32,7 @@ const web3 = new Web3('RPC_URL');
  - Moonbeam开发节点： `http://127.0.0.1:9933`
  - Moonbase Alpha测试网: `https://rpc.testnet.moonbeam.network`
 
-## 分步教程
+## 分步教程 {: #step-by-step-tutorials } 
 
 如果您想获得更加详细的分步教程，您可以查看我们关于如何通过web3.js在Moonbeam上[传送交易](/getting-started/local-node/send-transaction/)和[部署合约](/getting-started/local-node/deploy-contract/)所撰写的特定教程。
 

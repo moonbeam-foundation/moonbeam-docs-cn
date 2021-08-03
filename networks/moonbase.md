@@ -10,13 +10,13 @@ description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及
 !!! 注意事项 
     随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
 
-## 目标
+## 目标 {: #goal } 
 
 首个Moonbeam测试网（又称Moonbase Alpha）旨在向开发者们提供一个在共享环境下，能够在Moonbeam上进行开发或部署的平台。由于Moonbeam将作为平行链部署在Kusama和Polkadot上，因此我们希望测试网能够直接反映各测试环节的配置。为此，我们决定将测试网开发为一个基于平行链的配置，而非独立的Substrate设置。
 
 如果您有任何意见或建议，或需要任何技术支持，欢迎加入[Moonbase AlphaNet的专用Discord频道](https://discord.gg/PfpUATX)。
 
-## 初始配置
+## 初始配置 {: #initial-configuration } 
 
 Moonbase Alpha具有以下配置：
 
@@ -27,7 +27,7 @@ Moonbase Alpha具有以下配置：
 
 ![TestNet Diagram](/images/testnet/Moonbase-Alpha-v7.png)
 
-## 版本特色
+## 版本特色 {: #features } 
 
 以下为本系统的特色：
 
@@ -88,7 +88,7 @@ Moonbase Alpha具有以下配置：
         - 最低Gas价格设定为1 GDEV（类似于与以太坊上的GWei）
 
 
-### 版本发布通知
+### 版本发布通知 {: #release-notes } 
 
 如果您想了解更多关于Moonbase Alpha的更新，请参考以下的发布资料：
 
@@ -100,25 +100,25 @@ Moonbase Alpha具有以下配置：
  - [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)
  - [Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)
 
-## 开始使用
+## 开始使用 {: #get-started } 
 
 --8<-- 'text/testnet/connect.md'
 
-## 遥测功能
+## 遥测功能 {: #telemetry } 
 
 您可以点击这个[链接](https://telemetry.polkadot.io/#list/Moonbase%20Alpha)来查看及时的Moonbase Alpha遥测资讯。
 
-## 代币
+## 代币 {: #tokens } 
 
 --8<-- 'text/testnet/faucet.md'
 
-## 早期阶段的权益证明
+## 早期阶段的权益证明 {: #early-stage-proof-of-stake } 
 
 随着Moonbase Alpha v6版本的推出，测试网上已正在运行早期阶段的权益证明（Proof of Stake）系统。这意味着在测试的初衷下，Moonbeam的合作者会被激励去成为网络内的首个收集者。
 
 随着Moonbase Alpha的进展，我们希望能将其发展成完全去中心化的权益证明（Proof of Stake）网络。
 
-## 限制
+## 限制 {: #limitations } 
 
 因为这是Moonbeam的第一个测试网，所以仍然有一些限制。
 
@@ -128,7 +128,7 @@ Moonbase Alpha具有以下配置：
 
 用户目前仅能使用Moonbeam平行链。我们会在未来的网络中加入中继链，向用户提供测试转移代币的功能。
 
-## 链的清理
+## 链的清理 {: #chain-purge } 
 
 本网络目前仍在开发之中，为了重置区块链至其原本的状态，因此会偶尔会清理掉部分的链。这是为了主要测试网的升级或维护。我们会在清理链的前24小时内通过[Discord频道](https://discord.gg/PfpUATX)来发布消息，敬请关注。
 
