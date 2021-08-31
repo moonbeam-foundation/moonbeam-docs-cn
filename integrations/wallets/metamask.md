@@ -16,7 +16,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 若您已安装MetaMask，您可轻松将MetaMask链接至Moonbase Alpha测试网络：
 
 <div class="button-wrapper">
-    <a href="#" class="md-button connectMetaMask">Connect MetaMask</a>
+    <a href="#" class="md-button connectMetaMask" value="moonbase">Connect MetaMask</a>
 </div>
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
