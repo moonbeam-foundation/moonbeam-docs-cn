@@ -1,7 +1,9 @@
 title: 网络
 hide: false
-arrange:
+nav:
+  - index.md
   - full-node.md
   - compile-binary.md
   - collator.md
   - telemetry.md
+  

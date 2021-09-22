@@ -1,13 +1,6 @@
-arrange:
-  - README.md
-  - overview
-  - getting-started
-  - networks
-  - governance
-  - staking
-  - treasury
-  - integrations
-  - dapps-list
-  - node-operators
-  - learn
-  - resources
+nav:
+ - index.md
+ - builders
+ - node-operators
+ - tokens
+ - learn
