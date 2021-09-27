@@ -1,5 +1,5 @@
 ---
-title: Token
+title: Tokens
 template: main.html
 ---
 

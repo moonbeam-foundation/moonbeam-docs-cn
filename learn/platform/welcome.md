@@ -38,26 +38,34 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
  - [MetaMask](/integrations/wallets/metamask/)
  - [MathWallet](/integrations/wallets/mathwallet/)
+ - [Polkadot JS Apps](/tokens/connect/polkadotjs/)
  - [Ledger](/integrations/wallets/ledger/)
  - [Trezor](/integrations/wallets/trezor/)
+ - [Nifty](/tokens/connect/nifty/)
 
 请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
 
-### 开发工具 {: #tools }
+### 部署合约 {: #deploy-a-contract}
 
-由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具：
+由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具部署合约：
 
- - [Remix](/integrations/remix/)
- - [Truffle](/integrations/trufflebox/)
- - [HardHat](/integrations/hardhat/)
+ - [Ethereum Libraries](/builders/interact/eth-libraries/)
+ - [Remix](/builders/interact/remix/)
+ - [OpenZeppelin and Remix](/builders/interact/oz-remix/)
+ - [HardHat](/builders/interact/hardhat/)
+ - [Truffle](/builders/interact/truffle/)
+ - [Waffle and Mars](/builders/interact/waffle-mars/)
+
+有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
+
+### 工具和集成 {: #tools-and-integrations }
+
  - [Web3.js](/integrations/ethlibraries/web3js/)
  - [Ethers.js](/integrations/ethlibraries/etherjs/)
  - [Web3.py](/integrations/ethlibraries/web3py/)
  - [The Graph](/integrations/indexers/thegraph/)
  - [Covalent API](/integrations/indexers/covalent/)
  - [调试及跟踪](/integrations/debug-trace/)
-
-有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
 
 ### 预言机 {: #oracles }
 

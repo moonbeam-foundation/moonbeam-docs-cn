@@ -15,7 +15,7 @@ description: 通过本教程，学习如何通过Truffle将基于Solidity的智�
 !!! 注意事项
     本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}) {{ networks.moonbase.version }}版本的{{ networks.development.build_tag}}标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
 
-​    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+--8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 针对本教程，您需有一个在`--dev`模式下运行的独立Moonbeam节点。您在[这里](/builders/get-started/moonbeam-dev/)查看详细的步骤，也可以使用以下示例中的[Moonbeam Truffle 插件](#using-the-moonbeam-truffle-plugin-to-run-a-node)完成此操作。
 

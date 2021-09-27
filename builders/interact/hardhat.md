@@ -117,15 +117,31 @@ npm install @nomiclabs/hardhat-ethers ethers
 
 在`module.exports`文档中，我们需要提供Solidity版本（根据合约文档为`0.8.1`版本）以及网络的详细信息：
 
- - Network name: `moonbase`
- - URL: `{{ networks.moonbase.rpc_url }}`
- - ChainID: `{{ networks.moonbase.chain_id }}`
+=== "Moonbeam Development Node"
+    ```      
+    dev: {
+        url: 'http://localhost:9933/',
+        chainId: 1281,
+        accounts: [privateKeyDev] // Insert your private key here
+      },
+    ```
+=== "Moonbase Alpha"
+    ```
+    moonbase: {
+        url: `https://rpc.testnet.moonbeam.network`,
+        chainId: 1287,
+        accounts: [privateKeyMoonbase] // Insert your private key here
+      },
+    ```      
 
-如果您想部署到Moonbeam本地开发节点，可以使用以下网络详细信息：
-
- - Network name: `dev`
- - URL: `{{ networks.development.rpc_url }}`
- - ChainID: `{{ networks.development.chain_id }}`
+=== "Moonriver"
+    ```
+    moonriver: {
+        url: `https://rpc.moonriver.moonbeam.network`,
+        chainId: 1285,
+        accounts: [privateKeyMoonriver] // Insert your private key here
+      },
+    ```
 
 Hardhat配置文档将显示如下：
 
