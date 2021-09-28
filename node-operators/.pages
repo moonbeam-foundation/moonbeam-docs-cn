@@ -1,5 +1,7 @@
-title: 节点
+title: 节点运营
 hide: false
-arrange:
+nav:
+  - index.md
   - networks
-  - oracles
+  - oracle-nodes
+  - indexer-nodes
