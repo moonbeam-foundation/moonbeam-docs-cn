@@ -22,10 +22,9 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 
 
 !!! 注意事项
+    MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-​    MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
-
-如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/MetaMask/)指南。
+如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)指南。
 
 ## 获得Token {: #get-tokens }
 
