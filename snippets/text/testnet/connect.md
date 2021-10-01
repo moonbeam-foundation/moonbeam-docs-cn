@@ -42,7 +42,7 @@ wss://wss.testnet.moonbeam.network
 
 ### Chain ID {: #chain-id } 
 
-Moonbase Alpha测试网的Chain ID为：`1287 `
+Moonbase Alpha测试网的Chain ID为：`1287`，hex：`0x507`。
 
 ### 中继链 {: #relay-chain } 
 

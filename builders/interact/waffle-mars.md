@@ -156,7 +156,7 @@ npm run build
 
 在部署合约并将其对外发送之前，需先对其进行测试。 Waffle提供了一个高级测试框架，并提供了许多工具来帮助您进行测试。
 
-您将针对 Moonbase Alpha测试网运行测试，并需要相应的RPC URL来连接至`https://rpc.testnet.moonbeam.network`。由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options)[设置Moonbeam开发节点](/getting-started/local-node/setting-up-a-node/)。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache)可获得的快速迭代体验相似。
+您将针对 Moonbase Alpha测试网运行测试，并需要相应的RPC URL来连接至`{{ networks.moonbase.rpc_url }}`。由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options)[设置Moonbeam开发节点](/getting-started/local-node/setting-up-a-node/)。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache)可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
 ```
@@ -176,7 +176,7 @@ use(solidity);
 
 describe ('MyToken', () => {
   // Use custom provider to connect to Moonbase Alpha
-  let provider: Provider = new ethers.providers.JsonRpcProvider('https://rpc.testnet.moonbeam.network');
+  let provider: Provider = new ethers.providers.JsonRpcProvider('{{ networks.moonbase.rpc_url }}');
   let wallet: Wallet;
   let walletTo: Wallet;
   let token: MyToken;
@@ -278,7 +278,7 @@ import { MyToken, MyTokenFactory } from '../build/types';
 use(solidity);
 
 describe ('MyToken', () => {
-  let provider: Provider = new ethers.providers.JsonRpcProvider('https://rpc.testnet.moonbeam.network');
+  let provider: Provider = new ethers.providers.JsonRpcProvider('{{ networks.moonbase.rpc_url }}');
   let wallet: Wallet;
   let walletTo: Wallet;
   let token: MyToken;
@@ -352,7 +352,7 @@ mkdir src && cd src && touch deploy.ts
 import { deploy } from 'ethereum-mars';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey},(deployer) => {
+deploy({network: '{{ networks.moonbase.rpc_url }}', privateKey},(deployer) => {
   // Deployment logic will go here
 });
 ```
@@ -363,7 +363,7 @@ import { deploy, contract } from 'ethereum-mars';
 import { MyToken } from '../build/artifacts';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey}, () => {
+deploy({network: '{{ networks.moonbase.rpc_url }}', privateKey}, () => {
   contract('myToken', MyToken, [10]);
 });
 ```

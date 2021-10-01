@@ -24,11 +24,11 @@ npm install ethereum-mars
 import { deploy } from 'ethereum-mars';
 const privateKey = "<insert-your-private-key-here>";
 // For Moonbeam development node
-deploy({network: 'http://localhost:9933', privateKey},(deployer) => {
+deploy({network: '{{ networks.development.rpc_url }}', privateKey},(deployer) => {
   // Deployment logic will go here
 });
 // For Moonbase Alpha
-deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey},(deployer) => {
+deploy({network: '{{ networks.moonbase.rpc_url }}', privateKey},(deployer) => {
   // Deployment logic will go here
 });
 ```

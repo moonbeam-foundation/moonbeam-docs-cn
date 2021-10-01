@@ -53,7 +53,7 @@ git clone https://github.com/graphprotocol/graph-node/ \
 设置好所有相关内容后，需要在`docker-compose.yml`文档中修改“Ethereum environment”，让其指向运行该Graph节点的节点终端。请注意，`setup.sh`文档会检测`Host IP`并写入一个值，因此您需要进行相应修改。
 
 ```
-ethereum: 'mbase:http://localhost:9933'
+ethereum: 'mbase:{{ networks.development.rpc_url }}'
 ```
 
 整个`docker-compose.yml`文档应与以下内容相似：
@@ -78,7 +78,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mbase:http://localhost:9933'
+      ethereum: 'mbase:{{ networks.development.rpc_url }}'
       RUST_LOG: info
   ipfs:
     image: ipfs/go-ipfs:v0.4.23

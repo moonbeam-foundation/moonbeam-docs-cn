@@ -39,14 +39,22 @@ let wallet = new ethers.Wallet(privKey, provider);
 除此之外， `provider`和`wallet`内有不同的方法供用户使用。您可以根据您所希望连接的网络，将`RPC_URL`设置为以下的数值：
 
 Moonbeam开发节点：
- - RPC_URL: `http://127.0.0.1:9933`"
- - ChainId: `1281`
- - NETWORK_NAME: `moonbeam-development`
 
+  - RPC_URL: `{{ networks.development.rpc_url }}`
+  - ChainId: `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`)
+  - NETWORK_NAME: `moonbeam-development`
+ 
 Moonbase Alpha测试网：
- - RPC_URL: `https://rpc.testnet.moonbeam.network`
- - ChainId: `1287`
- - NETWORK_NAME: `moonbase-alpha`
+
+  - RPC_URL: `{{ networks.moonbase.rpc_url }}`
+  - ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`)
+  - NETWORK_NAME: `moonbase-alpha`
+
+Moonriver:
+
+  - RPC_URL: `{{ networks.moonriver.rpc_url }}`
+  - ChainID: `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`)
+  - NETWORK_NAME: `{{ networks.moonriver.chain_spec }}`
 
 ## 分步教程  {: #step-by-step-tutorials } 
 

@@ -24,7 +24,7 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
 在默认设置中，浏览器已经连接至Moonbase Alpha测试网，然而，您可以通过以下步骤来进行设定：
 
  1. 点击右上角的齿轮图示
- 2. 如果您有正在`http://localhost:9933`上运行的节点（运行`--dev`标示的Moonbeam节点的默认RPC位置），请选取“Development”。或者您可切换回“Moonbase Alpha”
+ 2. 如果您有正在`{{ networks.development.rpc_url }} `上运行的节点（运行`--dev`标示的Moonbeam节点的默认RPC位置），请选取“Development”。或者您可切换回“Moonbase Alpha”
  3. 如果您先要连接至特定的RPC URL，请选取“Custom RPC“并输入URL。举例来说：`http://localhost:9937`  
 
 ![Expedition Explorer](/images/explorers/explorers-images-1.png)
