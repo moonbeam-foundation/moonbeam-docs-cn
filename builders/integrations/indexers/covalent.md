@@ -56,7 +56,7 @@ Covalent API有两类终端：
 首先确保您已获得以“ckey_”开头的[API密钥](https://www.covalenthq.com/platform/#/auth/register/)。Token Holders终端将返回某一特定代币所有持有者的列表，调用这个API需要执行以下操作：
 
  - 您的API密钥
- - Moonbase Alpha Chain ID: 1287
+ - Moonbase Alpha Chain ID: {{ networks.moonbase.chain_id }} (hex: {{ networks.moonbase.hex_chain_id }})
  - 智能合约（此示例中为ERTH代币）：0x08B40414525687731C23F430CEBb424b332b3d35
 
 ### 使用Curl  {: #using-curl } 
@@ -75,7 +75,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
 
 ## Javascript示例 {: #javascript-examples } 
 
-复制粘贴以下代码块到您选择的环境中，或是[JSFiddle](https://jsfiddle.net/)中。设置好API密钥后，将该地址设置为常用地址。请记住，我们在Moonbase Alpha网络中的链上ID是`1287`。
+复制粘贴以下代码块到您选择的环境中，或是[JSFiddle](https://jsfiddle.net/)中。设置好API密钥后，将该地址设置为常用地址。请记住，我们在Moonbase Alpha网络中的链上ID是`{{ networks.moonbase.chain_id }}`。
 
 === "Using Fetch"
     ```js
@@ -84,7 +84,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
 
 	function getData() {
 	const address = '0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8'; //example
-	const chainId = '1287'; //Moonbeam Testnet (Moonbase Alpha Chain ID)
+	const chainId = '{{ networks.moonbase.chain_id }}'; //Moonbeam Testnet (Moonbase Alpha Chain ID)
 	const url = new URL(`https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/`);
 	
 	url.search = new URLSearchParams({
@@ -110,7 +110,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
     // set your API key
     const APIKEY = 'YOUR API KEY HERE';
 	const address = '0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8'; //example
-	const chainId = '1287'; //Moonbeam Testnet (Moonbase Alpha Chain ID)
+	const chainId = '{{ networks.moonbase.chain_id }}'; //Moonbeam Testnet (Moonbase Alpha Chain ID)
 	const url = new URL(`https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/`);
 
     url.search = new URLSearchParams({

@@ -14,7 +14,7 @@ const Web3 = require('web3'); //Load Web3 library
 .
 .
 //Create local Web3 instance - set Moonbase Alpha as provider
-const web3 = new Web3('https://rpc.testnet.moonbeam.network'); 
+const web3 = new Web3('{{ networks.moonbase.rpc_url }}'); 
 ```
 如果使用的是ethers.js库，您可以使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})` 来定义开发者，并且将provider（提供者）URL设定至Moonbase Alpha：
 
@@ -42,7 +42,7 @@ wss://wss.testnet.moonbeam.network
 
 ### Chain ID {: #chain-id } 
 
-Moonbase Alpha测试网的Chain ID为：`1287 `
+Moonbase Alpha测试网的Chain ID为：`1287`，hex：`0x507`。
 
 ### 中继链 {: #relay-chain } 
 

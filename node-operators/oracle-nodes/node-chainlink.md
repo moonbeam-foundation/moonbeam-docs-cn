@@ -28,7 +28,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
  - [Chainlink文档](https://docs.chain.link/docs/running-a-chainlink-node)
  - Moonbase Alpha WSS EndPoint: `wss://wss.testnet.moonbeam.network`
- - Moonbase Alpha ChainId: `1287`
+ - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK代币地址：`0xa36085F69e2889c224210F603D836748e7dC0088`
  - 从我们的[水龙头](/getting-started/moonbase/faucet/)获取Moonbase Alpha代币
 

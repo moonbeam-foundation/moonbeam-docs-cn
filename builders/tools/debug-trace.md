@@ -54,7 +54,7 @@ Geth的调试API和OpenEthereum的跟踪模块均提供非标准的RPC方法，�
 例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`)：
 
 ```
-curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
+curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
   '{
     "jsonrpc":"2.0",
     "id":1,
@@ -70,7 +70,7 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
 调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条跟踪结果）：
 
 ```
-curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
+curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
   '{
     "jsonrpc":"2.0",
     "id":1,

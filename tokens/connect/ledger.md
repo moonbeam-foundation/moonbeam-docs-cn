@@ -88,7 +88,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 点击按钮以进入下一个画面。您的Ledger设备将会提醒您检查本次交易
  2. 检查将要发送的Token数量。请注意，Token对应于MetaMask所连接的网络。**在这里是DEV Token，不是ETH！**检查完毕后，进入下一个画面
  3. 检查接收方地址后，进入下一个画面
- 4. 检查网络的Chain ID，您可以通过此信息确认MetaMask所连接到的网络。举例而言，Moonbase Alpha的Chain ID是1287，Moonriver是1285（尚未上线），Moonbeam是1284（尚未上线）。检查完毕后，进入下一个页面。
+ 4. 检查网络的Chain ID，您可以通过此信息确认MetaMask所连接到的网络。举例而言，Moonbase Alpha的Chain ID是{{ networks.moonbase.chain_id }} (hex: {{ networks.moonbase.hex_chain_id}})，Moonriver是{{ networks.moonriver.chain_id }} (hex: {{ networks.moonriver.hex_chain_id }})，Moonbeam是1284（尚未上线）。检查完毕后，进入下一个页面。
  5. 检查适用于本次交易的最高费用，由Gas费乘以您在MetaMask设置的Gas限制计算。检查完毕后，进入下一个页面
  6. 如果您同意所有交易的细节则可以通过本次交易。这将会签署交易并通过MetaMask发送。如果您不同意，则进入下一个页面
  7. 如果您不同意所有的交易细节，请拒绝。这将会取消交易而MetaMsk会将本次交易标记为失败。

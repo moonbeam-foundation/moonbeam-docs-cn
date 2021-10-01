@@ -71,7 +71,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 在类似于[Remix](/integrations/remix/)的工具中，MathWallet扮演着一个Web3提供者的角色。当您成功将MathWallet连接至Moonbase Alpha之后，您就可以像使用MetaMask一般，部署合约，或是签名交易，只是使用的媒介是MathWallet。
 
-举例而言，在Remix中，当您在部署一个智能合约时，请记得在"Environment"列表中选取"Injected Web3"的选项。如果您的MathWallet已经连接，您会在box（_1287_）下面看见测试网的Chain ID以及您已经汇入Remix的MathWallet账户。当您在发送交易的时候，应当会看见一个相似的弹出窗口，如下图：
+举例而言，在Remix中，当您在部署一个智能合约时，请记得在"Environment"列表中选取"Injected Web3"的选项。如果您的MathWallet已经连接，您会在box（_{{ networks.moonbase.chain_id }}_）下面看见测试网的Chain ID以及您已经汇入Remix的MathWallet账户。当您在发送交易的时候，应当会看见一个相似的弹出窗口，如下图：
 
 ![MathWallet sign transaction](/images/mathwallet/mathwallet-images-10.png)
 

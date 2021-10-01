@@ -120,16 +120,16 @@ npm install @nomiclabs/hardhat-ethers ethers
 === "Moonbeam Development Node"
     ```      
     dev: {
-        url: 'http://localhost:9933/',
-        chainId: 1281,
+        url: '{{ networks.development.rpc_url }}',
+        chainId: {{ networks.development.chain_id }},  // {{ networks.development.hex_chain_id }} in hex,
         accounts: [privateKeyDev] // Insert your private key here
       },
     ```
 === "Moonbase Alpha"
     ```
     moonbase: {
-        url: `https://rpc.testnet.moonbeam.network`,
-        chainId: 1287,
+        url: '{{ networks.moonbase.rpc_url }}',
+        chainId: {{ networks.moonbase.chain_id }},  // {{ networks.moonbase.hex_chain_id }} in hex,
         accounts: [privateKeyMoonbase] // Insert your private key here
       },
     ```      
@@ -137,8 +137,8 @@ npm install @nomiclabs/hardhat-ethers ethers
 === "Moonriver"
     ```
     moonriver: {
-        url: `https://rpc.moonriver.moonbeam.network`,
-        chainId: 1285,
+        url: '{{ networks.moonriver.rpc_url }}',
+        chainId: {{ networks.moonriver.chain_id }},  // {{ networks.moonriver.hex_chain_id }} in hex,
         accounts: [privateKeyMoonriver] // Insert your private key here
       },
     ```
