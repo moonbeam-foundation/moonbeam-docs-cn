@@ -17,7 +17,7 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
 
 ## 以太坊API {: #ethereum-api } 
 
-### Expedition（Dev节点 - 测试网）{: #expedition-dev-node-testnet } 
+### Expedition（Dev节点 - 测试网） {: #expedition-dev-node-testnet } 
 
 您可以通过[此链接](https://moonbeam-explorer.netlify.app/)找到一个Moonbeam主题的[Expedition](https://github.com/etclabscore/expedition)浏览器。
 
@@ -29,7 +29,7 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
 
 ![Expedition Explorer](/images/explorers/explorers-images-1.png)
 
-### Blockscout（测试网 {: #blockscout-testnet } 
+### Blockscout（测试网） {: #blockscout-testnet } 
 
 Blockscout提供对用户友好的界面，让用户能够检查并确认包含如Moonbeam的，在EVM区块链上的交易。让您能够搜寻交易、查看账户和余额，并确认智能合约。您可以在他们的[文件网站](https://docs.blockscout.com/)查看更多资讯。
 
@@ -47,7 +47,7 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
 
 ## Substrate API {: #substrate-api } 
 
-### PolkadotJS（开发者节点 - 测试网 {: #polkadotjs-dev-node-testnet } 
+### PolkadotJS（开发者节点 - 测试网） {: #polkadotjs-dev-node-testnet } 
 
 Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
 
