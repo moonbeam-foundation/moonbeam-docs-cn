@@ -1,5 +1,5 @@
 ---
-title: 设置节点
+title: Moonbeam开发节点
 description: 此教程将帮助您学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot JS GUI并加以控制。
 ---
 
@@ -207,3 +207,10 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 另外，开发节点中还包括一个用于可测试的预注资帐户：
 
 --8<-- 'text/setting-up-node/dev-accounts.md'
+
+## 区块链浏览器 {: #block-explorers }
+
+您可以使用以下区块链浏览器来浏览Moonbeam开发节点:
+
+ - **基于Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer) WS端口`9944`
+ - **基于以太坊 API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam%20Dev%20Node) HTTP端口`9933`

@@ -11,7 +11,16 @@ Moonriver有以下两个端点可供用户连接：一个用于HTTPS，另一个
 
 --8<-- 'text/moonriver/connect.md'
 
-## 连接到MetaMask
+## 区块链浏览器 {: #block-explorers }
+
+您可以使用以下区块链浏览器来浏览Moonriver:
+
+ - **基于Substrate API** — [Subscan](https://moonriver.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/explorer)
+ - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonriver)
+ - **基于以太坊API和索引** — [Blockscout](https://blockscout.moonriver.moonbeam.network/)
+
+
+## 连接到MetaMask {: #connect-metamask }
 
 如果您已经安装了MetaMask，您可以轻松地将MetaMask连接到Moonriver：
 
@@ -22,3 +31,11 @@ Moonriver有以下两个端点可供用户连接：一个用于HTTPS，另一个
     MetaMask会弹出窗口，请求允许将Moonriver添加为自定义网络。一旦您批准授权，MetaMask将会把您当前的网络切换到Moonriver。
 
 如果您还没有安装MetaMask，请查阅[如何使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)教程。
+
+您也可以使用以下网络信息连接MetaMask：
+
+ - 网络名称： `Moonriver`
+ - RPC URL: `{{ networks.moonriver.rpc_url }}`
+ - ChainID: `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`)
+ - 代币缩写（可选）： `MOVR`
+ - 区块链浏览器（可选）： `{{ networks.moonriver.block_explorer }}`

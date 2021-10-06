@@ -11,6 +11,14 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 
 --8<-- 'text/testnet/connect.md'
 
+## 区块链浏览器 {: #block-explorers }
+
+您可以使用以下区块链浏览器来浏览Moonbase Alpha:
+
+ - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)
+ - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbase%20Alpha)
+ - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
+
 ## 连接MetaMask
 
 如果您已经安装了MetaMask，您可以轻松地将MetaMask连接至Moonbase Alpha测试网：
@@ -25,6 +33,14 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
 如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)指南。
+
+您也可以使用以下网络信息连接MetaMask：
+
+ - 网络名称： `Moonbase Alpha`
+ - RPC URL: `{{ networks.moonbase.rpc_url }}`
+ - ChainID: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`)
+ - 代币缩写（可选）： `DEV`
+ - 区块链浏览器（可选）： `{{ networks.moonbase.block_explorer }}`
 
 ## 获得Token {: #get-tokens }
 
@@ -53,8 +69,4 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 Mission Control将会发送5个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的代币。
 
 ![Discord2](/images/testnet/testnet-discord2.png)
-
-### 如何手动获得代币 {: #manual-procedure } 
-
-对于超出Discord机器人设定的Token发行限制的用户，请通过我们的[Discord频道](https://discord.gg/PfpUATX)直接联系我们的管理员。我们很乐意提供测试应用程序所需的Token。
 

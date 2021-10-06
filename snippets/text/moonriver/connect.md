@@ -47,4 +47,4 @@ wss://wss.moonriver.moonbeam.network
 
 ### Chain ID {: #chain-id } 
 
-Moonriver的Chain ID为： `1287`，hex：`0x505`。
+Moonriver的Chain ID为： `1285`，hex：`0x505`。
