@@ -5,7 +5,7 @@ description: 如何为Moonbeam网络运行一个完整的平行链节点、拥�
 
 # 在Moonbeam上运行节点
 
-![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
+![Full Node Moonbeam Banner](/images/node-operators/networks/full-node/full-node-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -187,7 +187,7 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 
 在Docker拉取必要的镜像后，Moonbeam（或Moonriver）节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等：
 
-![Full Node Starting](/images/fullnode/fullnode-docker1.png)
+![Full Node Starting](/images/node-operators/networks/full-node/full-node-docker-1.png)
 
 !!! 注意事项
     如果您想要运行RPC端点、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`或是 `--unsafe-ws-external`来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。
@@ -203,7 +203,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 在同步过程中，您可以看到嵌入式中继链和平行链的消息（无标签）。这些消息将显示目标区块（实时网络状态）和最佳区块（本地节点同步状态）。
 
-![Full Node Starting](/images/fullnode/fullnode-docker2.png)
+![Full Node Starting](/images/node-operators/networks/full-node/full-node-docker-2.png)
 
 !!! 注意事项
     同步Kusama的内嵌中继链需要数天的时间，请注意您的系统符合[要求](#需求)。
@@ -463,7 +463,7 @@ systemctl start moonbeam.service
 systemctl status moonbeam.service
 ```
 
-![Service Status](/images/fullnode/fullnode-binary1.png)
+![Service Status](/images/node-operators/networks/full-node/full-node-binary-1.png)
 
 您也可以执行以下命令检查日志：
 
@@ -471,7 +471,7 @@ systemctl status moonbeam.service
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/fullnode/fullnode-binary2.png)
+![Service Logs](/images/node-operators/networks/full-node/full-node-binary-2.png)
 
 ## 高级标记及选项 {: #advanced-flags-and-options } 
 

@@ -5,7 +5,7 @@ description:  通过此教程学习如何使用OpenZeppelin的智能合约交互
 
 # OpenZeppelin合约&库
 
-![OpenZeppelin Contracts Banner](/images/openzeppelin/ozcontracts-banner.png)
+![OpenZeppelin Contracts Banner](/images/builders/interact/oz-remix/oz-contracts-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -36,7 +36,7 @@ Contracts Wizard由以下环节组成：
  4. **访问控制** —— 每种代币标准所有可用的[访问控制机制](https://docs.openzeppelin.com/contracts/4.x/access-control)列表
  5. **交互代码显示** —— 显示用户设置下的智能合约代码
 
-![OpenZeppelin Contracts Wizard](/images/openzeppelin/ozwizard-images1.png)
+![OpenZeppelin Contracts Wizard](/images/builders/interact/oz-remix/oz-wizard-1.png)
 
 完成设置和功能准备后，只需要复制粘贴代码到合约文件即可。
 
@@ -91,7 +91,7 @@ contract MyToken is ERC20, Ownable {
 
 我们从[Contract Wizard](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC20代币智能合约，并设置预先铸造1000枚代币，激活`Mintable`功能。
 
-![Getting Started with Remix](/images/openzeppelin/ozcontracts-images1.png)
+![Getting Started with Remix](/images/builders/interact/oz-remix/oz-contracts-1.png)
 
 写好智能合约后，就可以根据以下步骤进行编译：
 
@@ -99,7 +99,7 @@ contract MyToken is ERC20, Ownable {
  2. 点击“compile（编译）”按钮
  3. 您还可以尝试使用“Auto compile（自动编译）”功能
 
-![Compile ERC20 Contract with Remix](/images/openzeppelin/ozcontracts-images2.png)
+![Compile ERC20 Contract with Remix](/images/builders/interact/oz-remix/oz-contracts-2.png)
 
 合约编译完成后，就可以通过以下步骤进行部署：
 
@@ -109,7 +109,7 @@ contract MyToken is ERC20, Ownable {
  4. 一切就绪后，点击“Deploy（部署）”按钮。在MetaMask中检查交易信息并进行确认
  5. 几秒钟后，交易便可确认完成。然后可以在“Deployed Contracts（已部署合约）”中看到您的合约
 
-![Deploy ERC20 Contract with Remix](/images/openzeppelin/ozcontracts-images3.png)
+![Deploy ERC20 Contract with Remix](/images/builders/interact/oz-remix/oz-contracts-3.png)
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC20代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
@@ -174,7 +174,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
  3. 一切就绪后，点击“部署”按钮。在MetaMask中检查交易信息并进行确认
  4. 几秒钟后，交易便可确认完成。然后可以在“已部署合约”中看到您的合约
 
-![Deploy ERC721 Contract with Remix](/images/openzeppelin/ozcontracts-images4.png)
+![Deploy ERC721 Contract with Remix](/images/builders/interact/oz-remix/oz-contracts-4.png)
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC721代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互，或者将合约添加到MetaMask。
 
@@ -236,6 +236,6 @@ contract MyToken is ERC1155, Ownable, Pausable {
  3. 一切就绪后，点击“Deploy（部署）”按钮。在MetaMask中检查交易信息并进行确认
  4. 几秒钟后，交易便可确认完成。然后可以在“Deployed Contracts（已部署合约）”中看到您的合约
 
-![Deploy ERC1155 Contract with Remix](/images/openzeppelin/ozcontracts-images5.png)
+![Deploy ERC1155 Contract with Remix](/images/builders/interact/oz-remix/oz-contracts-5.png)
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC1155代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互。

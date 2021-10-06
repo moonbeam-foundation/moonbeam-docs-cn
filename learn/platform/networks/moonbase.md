@@ -25,7 +25,7 @@ Moonbase Alpha具有以下配置：
  - 中继链上会有三个验证者节点（由PureStake主导）来决定中继链上的区块。其中一个会被选来敲定每一个由Moonbeam收集者收集来的区块。此设定为将来扩展为两个平行链配置提供了空间。
  - 将会有两个RPC端点（由PureStake主导）。同时，用户可以运行全节点来使用他们的私人RPC节点。
 
-![TestNet Diagram](/images/testnet/Moonbase-Alpha-v7.png)
+![TestNet Diagram](/images/learn/platform/networks/moonbase-diagram-v7.png)
 
 ## 版本特色 {: #features } 
 

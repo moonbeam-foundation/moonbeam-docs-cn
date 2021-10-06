@@ -21,7 +21,7 @@ Moonriver预先设定了[5个阶段的部署过程](https://moonbeam.network/net
 - 拥有一个由PureStake代表Moonbeam基金会运营并含有{{ networks.moonriver.staking.max_collators }}位收集人的有效集。将会在第1阶段举行一次初始收集人选举，以扩展Moonbeam团队以外的收集人集。
 - 两个由PureStake运营的RPC端点。用户可以运行全节点以访问其所有的私人RPC端点。
 
-![Moonriver Diagram](/images/moonriver/moonriver-diagram.png)
+![Moonriver Diagram](/images/learn/platform/networks/moonriver-diagram.png)
 
 需要注意的重要变量：
 

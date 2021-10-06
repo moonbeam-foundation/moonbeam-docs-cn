@@ -47,11 +47,11 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 [MetaMask](https://metamask.io)安装完毕后，将会跳出一个欢迎页面。点击“开始”进行设置过程。
 
-![MetaMask1](/images/metamask/metamask-1.png)
+![MetaMask1](/images/tokens/connect/metamask/metamask-1.png)
 
 根据提示，选择使用账户助记词导入钱包或创建钱包。在本教程中，以创建新的钱包为例。
 
-![MetaMask2](/images/metamask/metamask-2.png)
+![MetaMask2](/images/tokens/connect/metamask/metamask-2.png)
 
 ## 导入账户 {: #import-accounts }
 
@@ -77,11 +77,11 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 当您完成安装[MetaMask](https://metamask.io/)，并创建或导入账户后，您可以通过点击右上角的头像打开设置后将其连接至Moonbeam。
 
-![MetaMask3](/images/metamask/metamask-6.png)
+![MetaMask3](/images/tokens/connect/metamask/metamask-6.png)
 
 接下来，找到网络一栏，点击“添加网络”按钮。
 
-![MetaMask4](/images/metamask/metamask-7.png)
+![MetaMask4](/images/tokens/connect/metamask/metamask-7.png)
 
 您可在此处使用以下网络为MetaMask进行配置：
 
@@ -109,7 +109,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     - Symbol (Optional): `MOVR`
     - Block Explorer (Optional): `{{ networks.moonriver.block_explorer }}`
 
-![MetaMask5](/images/metamask/metamask-8.png)
+![MetaMask5](/images/tokens/connect/metamask/metamask-8.png)
 
 ## 进行首笔交易 {: #initiate-a-transfer }
 
@@ -123,7 +123,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 请注意，Account 2的余额减去了已转移的金额以及gas费。切换到Account 1，我们看到已转移的100个Token已经到账：
 
-![New balance in Account 1](/images/metamask/metamask-11.png)
+![New balance in Account 1](/images/tokens/connect/metamask/metamask-11.png)
 
 如果您回到运行Moonbeam节点的终端，可以在交易到达时看到正在编写的区块：
 

@@ -5,7 +5,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 # Chainlink预言机
 
-![Chainlink Moonbeam Banner](/images/chainlink/chainlink-banner.png)
+![Chainlink Moonbeam Banner](/images/builders/integrations/oracles/chainlink/chainlink-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -115,7 +115,7 @@ interface ChainlinkInterface {
 
 在创建文件和编译合约后，进入“Deploy and Run Transactions”标签，输入客户合约地址，点击“At Address”。将“Environment”设置为“Injected Web3”，来确保您已经与Moonbase Alpha连接。通过这一方法，您将创建一个可以进行交互的客户合约实例。使用 `requestPrice()` 函数即可请求相应Job ID的数据。交易确认后，需要等待此前所述的流程全部完成。最后可以通过 `currentPrice()`视图函数来查看价格。
 
-![Chainlink Basic Request on Moonbase Alpha](/images/chainlink/chainlink-image1.png)
+![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.png)
 
 如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX)联系我们。
 
@@ -144,7 +144,7 @@ Chainlink预言机可以通过外部适配器获取多种类型的数据，但�
 
 终端用户可以通过消费者合约的只读操作索引到相应的聚合接口（代理合约）进行喂价检索。代理作为中间件为消费者提供最新聚合出的喂价信息。
 
-![Price Feed Diagram](/images/chainlink/chainlink-pricefeed.png)
+![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.png)
 
 ### 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
 
@@ -198,7 +198,7 @@ interface ConsumerV3Interface {
 
 通过这一方法，你将创建一个可以进行交互的消费者合约实例。使用`getLatestPrice()`函数即可请求相应喂价数据。
 
-![Chainlink Price Feeds on Moonbase Alpha](/images/chainlink/chainlink-image2.png)
+![Chainlink Price Feeds on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
 
 请注意，必须用`decimals()`了解喂价的小数位的数字才能获取真实价格。
 

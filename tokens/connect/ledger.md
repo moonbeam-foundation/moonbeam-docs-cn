@@ -5,7 +5,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 # Ledger硬件钱包
 
-![Intro diagram](/images/ledger/ledger-banner.png)
+![Intro diagram](/images/tokens/connect/ledger/ledger-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -39,14 +39,14 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 点击右上角的logo展开使用菜单
  2. 选取“连接硬件钱包“
 
-![MetaMask Connect Hardware Wallet](/images/ledger/ledger-images1.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-1.png)
 
 进入下个页面后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
  1. 点选Ledger logo
  2. 点击“继续”
 
-![MetaMask Select Ledger Hardware Wallet](/images/ledger/ledger-images2.png)
+![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
 
 如果MetaMask已经成功连接至您的Ledger设备，您将能看到五个以太坊式的账户。相反地，如果您没有看到账户的画面，请在此确认您已经将Ledger Live关闭，Ledger设备已成功连接至电脑并解锁，且已开启以太坊应用。如果您使用的是谷歌浏览器，请查看这些[额外步骤](#谷歌浏览器)。
 
@@ -55,11 +55,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 选取您想从您Ledger设备导入的账户
  2. 点击“解锁”
 
-![MetaMask Select Ethereum Accounts to Import](/images/ledger/ledger-images3.png)
+![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/ledger-3.png)
 
 如果您成功将您Ledger的以太坊式账户导入MetaMask，您将能在MetaMask主页看到以下画面：
 
-![MetaMask Successfully Imported Ledger Account](/images/ledger/ledger-images4.png)
+![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/ledger-4.png)
 
 您现在已成功从Ledger设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#使用您的Ledger签署交易)。
 
@@ -81,7 +81,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 首先，确保您的Ledger账户[有足够的DEV Token](/getting-started/moonbase/faucet/)。接着，点击“发送”按钮。
 
-![MetaMask Ledger Account Funded](/images/ledger/ledger-images5.png)
+![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/ledger-5.png)
 
 如同操作一个标准的交易，您要设置接收方的地址，输入您想发送的Token数量，确认交易细节后点击确认。这会在您的Ledger设备开启一个交易签署指示，您可以跟随以下步骤进行操作：
 
@@ -96,11 +96,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 !!! 注意事项
     截至本教程撰写时所显示的Token一直是`ETH`。请注意，所使用的Token是对应与MetaMask所连接的网络。
 
-![MetaMask Ledger Transaction Wizard](/images/ledger/ledger-images6.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-6.png)
 
 在您通过交易之后，MetaMask会将其发送至网络。当交易确认完成，MetaMask的主画面将会显示“发送”。
 
-![MetaMask Ledger Transaction Wizard](/images/ledger/ledger-images7.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-7.png)
 
 就这样！您已经成功在Moonbase Alpha使用您的Ledger硬件钱包签署交易！
 
@@ -118,4 +118,4 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 !!! 注意事项
     此选项对于您的Ledger设备与可能存在于Moonbeam生态系统的ERC20 Token合约之间的交互是必要的。
 
-![MetaMask Ledger Allow Contracts Tx](/images/ledger/ledger-images8.png)
+![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ledger-8.png)

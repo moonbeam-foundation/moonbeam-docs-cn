@@ -4,7 +4,7 @@ description: 通过此教程学习如何使用以太坊的EtherJS库在Moonbeam�
 ---
 # Ethers.js JavaScript 库
 
-![Intro diagram](/images/integrations/integrations-ethersjs-banner.png)
+![Intro diagram](/images/builders/tools/eth-libraries/ethersjs-banner.png)
 
 ## 概览 {: #introduction } 
 

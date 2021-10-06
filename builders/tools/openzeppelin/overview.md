@@ -5,7 +5,7 @@ description:  通过此教程学习如何利用Moonbeam以太坊兼容性功能�
 
 # OpenZeppelin
 
-![OpenZeppelin Banner](/images/openzeppelin/openzeppelin-banner.png)
+![OpenZeppelin Banner](/images/builders/tools/openzeppelin/openzeppelin-banner.png)
 
 ## 概览 {: #introduction } 
 

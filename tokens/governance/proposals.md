@@ -5,7 +5,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 # 提案
 
-![Governance Moonbeam Banner](/images/governance/governance-proposal-banner.png)
+![Governance Moonbeam Banner](/images/tokens/governance/proposals/governance-proposal-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -63,7 +63,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 所有治理相关操作均在“Democracy”标签下。进入后，点击“Submit preimage”按钮。
 
-![Submit Preimage](/images/governance/governance-proposal-2.png)
+![Submit Preimage](/images/tokens/governance/proposals/proposals-2.png)
 
 此处，您需要提供以下信息：
 
@@ -85,7 +85,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在“Democracy”页面点击“Submit proposal”。
 
-![Submit proposal](/images/governance/governance-proposal-4.png)
+![Submit proposal](/images/tokens/governance/proposals/proposals-4.png)
 
 此处，您需要提供以下信息：
 

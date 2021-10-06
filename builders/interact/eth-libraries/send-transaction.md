@@ -5,7 +5,7 @@ description: 通过此教程学习如何使用web.js、 esthers.js和web3.py编�
 
 # 使用以太坊库在Moonbeam上发送交易
 
-![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
+![Ethereum Libraries Integrations Moonbeam](/images/builders/interact/eth-libraries/web3-libraries-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -219,10 +219,10 @@ npm init --yes
 最后，再次检查账户余额以确认转账是否成功，如下图所示：
 
 === "Web3.js"
-    ![Send Tx Web3js](/images/sendtx/sendtx-web3js.png)
+    ![Send Tx Web3js](/images/builders/interact/eth-libraries/send-tx/sendtx-web3js.png)
 
 === "Ethers.js"
-    ![Send Tx Etherjs](/images/sendtx/sendtx-ethers.png)
+    ![Send Tx Etherjs](/images/builders/interact/eth-libraries/send-tx/sendtx-ethers.png)
 
 === "Web3.py"
-    ![Send Tx Web3py](/images/sendtx/sendtx-web3py.png)
+    ![Send Tx Web3py](/images/builders/interact/eth-libraries/send-tx/sendtx-web3py.png)

@@ -4,7 +4,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 ---
 # Razor Network预言机
 
-![Razor Network Moonbeam Diagram](/images/razor/razor-banner.png)
+![Razor Network Moonbeam Diagram](/images/builders/integrations/oracles/razor/razor-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -131,8 +131,8 @@ interface Razor {
 
 创建文件和编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`{{ networks.moonbase.razor.bridge_address }}`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接（通过Web3 提供者的钱包）。
 
-![Razor Remix deploy](/images/razor/razor-demo1.png)
+![Razor Remix deploy](/images/builders/integrations/oracles/razor/razor-demo-1.png)
 
 通过这一方法，您将创建一个可以进行交互的demo合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
-![Razor check price](/images/razor/razor-demo2.png)
+![Razor check price](/images/builders/integrations/oracles/razor/razor-demo-2.png)

@@ -5,7 +5,7 @@ description: 通过此教程学习如何使用Web3.js、Ethers.js或Web3.py的�
 
 # 使用以太坊库部署至Moonbeam
 
-![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
+![Ethereum Libraries Integrations Moonbeam](/images/builders/interact/eth-libraries/web3-libraries-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -373,13 +373,13 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 这将部署合同并返回地址：
 
 === "Web3.js"
-    ![Deploy Contract Web3js](/images/deploycontract/contract-deploy-web3js.png)
+    ![Deploy Contract Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-web3js.png)
 
 === "Ethers.js"
-    ![Deploy Contract Etherjs](/images/deploycontract/contract-deploy-ethers.png)
+    ![Deploy Contract Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-ethers.png)
 
 === "Web3.py"
-    ![Deploy Contract Web3py](/images/deploycontract/contract-deploy-web3py.png)
+    ![Deploy Contract Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-web3py.png)
 
 接下来，运行增量文件。 您可以使用「get」文件在递增之前和之后的验证合约中存储的数字值：
 
@@ -416,13 +416,13 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 这将显示增量交易之前的值，交易哈希以及增量之后的值：
 
 === "Web3.js"
-    ![Increment Contract Web3js](/images/deploycontract/contract-increment-web3js.png)
+    ![Increment Contract Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-web3js.png)
 
 === "Ethers.js"
-    ![Increment Contract Etherjs](/images/deploycontract/contract-increment-ethers.png)
+    ![Increment Contract Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-ethers.png)
 
 === "Web3.py"
-    ![Increment Contract Web3py](/images/deploycontract/contract-increment-web3py.png)
+    ![Increment Contract Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-web3py.png)
 
 最后，运行重置（reset）文件。再一次，您可使用get文件在递增之前和之后的验证合约中存储的数字值：
 
@@ -459,10 +459,10 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 这将显示重置交易之前的值，交易哈希以及重置之后的值：
 
 === "Web3.js"
-    ![Reset Contract Web3js](/images/deploycontract/contract-reset-web3js.png)
+    ![Reset Contract Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-web3js.png)
 
 === "Ethers.js"
-    ![Reset Contract Etherjs](/images/deploycontract/contract-reset-ethers.png)
+    ![Reset Contract Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-ethers.png)
 
 === "Web3.py"
-    ![Reset Contract Web3py](/images/deploycontract/contract-reset-web3py.png)
+    ![Reset Contract Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-web3py.png)

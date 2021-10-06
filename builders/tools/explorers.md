@@ -4,7 +4,7 @@ description: 目前在Moonbeam测试网上支持导航Substrate和以太坊层�
 ---
 # 区块浏览器
 
-![Explorer Banner](/images/explorers/explorers-banner.png)
+![Explorer Banner](/images/builders/tools/explorers/explorers-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -27,7 +27,7 @@ Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，
  2. 如果您有正在`{{ networks.development.rpc_url }} `上运行的节点（运行`--dev`标示的Moonbeam节点的默认RPC位置），请选取“Development”。或者您可切换回“Moonbase Alpha”
  3. 如果您先要连接至特定的RPC URL，请选取“Custom RPC“并输入URL。举例来说：`http://localhost:9937`  
 
-![Expedition Explorer](/images/explorers/explorers-images-1.png)
+![Expedition Explorer](/images/builders/tools/explorers/explorers-1.png)
 
 ### Blockscout（测试网 {: #blockscout-testnet } 
 
@@ -43,7 +43,7 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
 
 您可以在[这里](https://moonbase-blockscout.testnet.moonbeam.network/)找到针对Moonbase Alpha测试网运行的Blockscout instance。
 
-![Blockscout Explorer](/images/explorers/explorers-images-2.png)
+![Blockscout Explorer](/images/builders/tools/explorers/explorers-2.png)
 
 ## Substrate API {: #substrate-api } 
 
@@ -51,11 +51,11 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
 
 Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
 
-![Polkadot JS Local Node](/images/explorers/explorers-images-3.png)
+![Polkadot JS Local Node](/images/builders/tools/explorers/explorers-3.png)
 
 如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot JS Apps。您可以在[此网页](/integrations/wallets/polkadotjs/)找到更多资讯。
 
-![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
+![Polkadot JS Moonbase Alpha](/images/builders/tools/explorers/explorers-4.png)
 
 ### Subscan {: #subscan } 
 
@@ -63,4 +63,4 @@ Subscan为基于Sebstrate的链提供区块链浏览器的功能，它能够解�
 
 同时，所有代码都是开源的，并且可以在[此链接](https://github.com/itering/subscan-essentials)找到。
 
-![Subscan Moonbase Alpha](/images/explorers/explorers-images-5.png)
+![Subscan Moonbase Alpha](/images/builders/tools/explorers/explorers-5.png)

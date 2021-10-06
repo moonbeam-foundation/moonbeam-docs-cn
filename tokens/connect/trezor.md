@@ -5,7 +5,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 # Trezor硬件钱包
 
-![Intro diagram](/images/trezor/trezor-banner.png)
+![Intro diagram](/images/tokens/connect/trezor/trezor-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -36,18 +36,18 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 点击右上角的logo展开使用菜单
  2. 选取“连接硬件钱包“
 
-![MetaMask Connect Hardware Wallet](/images/ledger/ledger-images1.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-1.png)
 
 进入下个页面之后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
  1. 点选Trezor logo
  2. 点击“继续”
 
-![MetaMask Select Trezor Hardware Wallet](/images/trezor/trezor-images2.png)
+![MetaMask Select Trezor Hardware Wallet](/images/tokens/connect/trezor/trezor-2.png)
 
 点击按钮之后，将会出现一个名为`TrezorConnect`的页面，您需要在这里配对您的设备。如果您已经打开Trezor Suite且设备已经连接成功，则不需要此步骤。在这里，请点击“配对设备”。
 
-![Trezor Hardware Wallet Connect Pair Device](/images/trezor/trezor-images3.png)
+![Trezor Hardware Wallet Connect Pair Device](/images/tokens/connect/trezor/trezor-3.png)
 
 跳转到下个页面，您可以跟随以下步骤操作：
 
@@ -55,15 +55,15 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  2. 选取您想要使用的Trezor设备
  3. 点击“连接”
 
-![Trezor Hardware Wallet Connect Wizard Select and Connect Device](/images/trezor/trezor-images4.png)
+![Trezor Hardware Wallet Connect Wizard Select and Connect Device](/images/tokens/connect/trezor/trezor-4.png)
 
 当您的设备已成功连接，您需要允许MetaMask读取其公钥。因此，请点击“允许本次使用“。您也可以勾选“不要再询问我”选项。
 
-![Trezor Hardware Wallet Connect Wizard Allow Read Public Keys](/images/trezor/trezor-images5.png)
+![Trezor Hardware Wallet Connect Wizard Allow Read Public Keys](/images/tokens/connect/trezor/trezor-5.png)
 
 接着，您会被询问是否要导出您以太坊账户的公钥（如下图1）。点击之后，会跳出一个画面请您输入密码的选项（如下图2）。如果您想要使用默认钱包，可以直接点击“进入”。相反地，请跟随[关于密码钱包的Trezor wiki文章](https://wiki.trezor.io/Passphrase)。
 
-![Trezor Hardware Wallet Connect Wizard Allow Export and Passphrase](/images/trezor/trezor-images6.png)
+![Trezor Hardware Wallet Connect Wizard Allow Export and Passphrase](/images/tokens/connect/trezor/trezor-6.png)
 
 如果MetaMask已经成功连接至您的Trezor设备，您可以看到具有5个以太坊式账户的列表。如果您没有看到，请再次检查您是否已经成功将您的Trezor设备连接至电脑且已成功解锁。您同样也可以打开Trezor Suite应用并重新尝试这个过程。
 
@@ -72,11 +72,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 选取您想要从Trezor设备导入的账户
  2. 点击“解锁”
 
-![Trezor Select Ethereum Accounts to Import](/images/trezor/trezor-images7.png)
+![Trezor Select Ethereum Accounts to Import](/images/tokens/connect/trezor/trezor-7.png)
 
 如果您成功导入您Trezor的以太坊式账户，您会在MetaMask的主画面看到以下的画面：
 
-![MetaMask Successfully Imported Trezor Account](/images/trezor/trezor-images8.png)
+![MetaMask Successfully Imported Trezor Account](/images/tokens/connect/trezor/trezor-8.png)
 
 您现在已成功从Trezor设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#使用您的Trezor签署交易)。
 
@@ -86,11 +86,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 首先，确保您的Trezor账户[有足够的DEV Token](/getting-started/moonbase/faucet/)。接着，点击“发送”按钮。
 
-![MetaMask Trezor Account Funded](/images/trezor/trezor-images9.png)
+![MetaMask Trezor Account Funded](/images/tokens/connect/trezor/trezor-9.png)
 
 接着，将会出现一个名为`TrezorConnect` 的页面，它将会要求您允许从您的设备读取公钥的权限并为您的Trezor准备能够交易和数据签署。当您准备好，请点击“允许本次使用”，同样您也可以勾选“不要再询问我”的选项。
 
-![Trezor Hardware Wallet Allow Read Public Keys and Signing](/images/trezor/trezor-images10.png)
+![Trezor Hardware Wallet Allow Read Public Keys and Signing](/images/tokens/connect/trezor/trezor-10.png)
 
 如同操作一个标准的交易，您需要设定接收方地址，输入您想要发送的Token数量，确认交易细节后点击确认。这将会在您Trezor设备开启一个交易签署指示，您可以跟随以下的步骤进行操作：
 
@@ -100,11 +100,11 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 !!! 注意事项
     截至本教程撰写时，代表Moonbeam相关网络的Token名字是`UNKN`。请注意，使用的Token对应于MetaMask所连接的网络。
 
-![Trezor Hardware Wallet Sign Transaction](/images/trezor/trezor-images11.png)
+![Trezor Hardware Wallet Sign Transaction](/images/tokens/connect/trezor/trezor-11.png)
 
 在您通过交易之后，MetaMask会将交易传送至网络。当交易确认完成，MetaMask的主画面将会显示“发送”。
 
-![MetaMask Trezor Transaction Wizard](/images/trezor/trezor-images12.png)
+![MetaMask Trezor Transaction Wizard](/images/tokens/connect/trezor/trezor-12.png)
 
 就这样！您已经成功在Moonbase Alpha使用您的Trezor硬件钱包签署交易！
 

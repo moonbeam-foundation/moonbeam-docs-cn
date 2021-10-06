@@ -5,7 +5,7 @@ description: 欢迎访问Moonbeam资料库，Moonbeam是Polkadot上兼容以太�
 
 # 欢迎访问Moonbeam 
 
-![Main Page Banner Image](/images/main-banner.png)
+![Main Page Banner Image](/images/learn/platform/main-banner.png)
 
 Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生态的智能合约平行链。本网站为Moonbeam资料库，在这里，无论您是开发人员，信息收集者，或终端用户都可自由浏览关于Moonbeam网络平台的第一手资料。
 

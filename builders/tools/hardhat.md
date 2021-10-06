@@ -5,7 +5,7 @@ description: 通过此教程学习如何配置Hardhat将本地Moonbeam开发节�
 
 # Hardhat
 
-![Hardhat Create Project](/images/hardhat/hardhat-banner.png)
+![Hardhat Create Project](/images/builders/interact/hardhat/hardhat-banner.png)
 
 ## 概览 {: #introduction }
 

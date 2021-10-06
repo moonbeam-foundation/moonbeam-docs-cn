@@ -5,7 +5,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 # 如何进行代币质押挖矿
 
-![Staking Moonbeam Banner](/images/staking/staking-stake-banner.png)
+![Staking Moonbeam Banner](/images/tokens/staking/stake/stake-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -48,7 +48,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 在开始质押代币前，从网络中获取收集人名单至关重要。名单可在“Developer”标签下的“Chain state”进行查看。
 
-![Staking Account](/images/staking/staking-stake-10.png)
+![Staking Account](/images/tokens/staking/stake/stake-10.png)
 
 在此，请提供以下信息：
 
@@ -79,7 +79,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 目前所有与质押挖矿相关的功能都需要通过“Developer”标签下的“Extrinsics”菜单进入：
 
-![Staking Account](/images/staking/staking-stake-1.png)
+![Staking Account](/images/tokens/staking/stake/stake-1.png)
 
 提名收集人，需要提供以下信息：
 
@@ -90,13 +90,13 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
  5. 设置您要质押的代币数量
  6. 点击“Submit Transaction”按钮，并签名确认交易
 
-![Staking Join Nominators Extrinsics](/images/staking/staking-stake-2.png)
+![Staking Join Nominators Extrinsics](/images/tokens/staking/stake/stake-2.png)
 
 交易确认后可以返回到“Accounts”标签查看冻结余额（应与质押的代币数量一致）。
 
 您可以在“Developer”标签下的“Chain state”中查看是否已成功提名。
 
-![Staking Account and Chain State](/images/staking/staking-stake-3.png)
+![Staking Account and Chain State](/images/tokens/staking/stake/stake-3.png)
 
 在此，请提供以下信息：
 
@@ -105,7 +105,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
  3. 确保已经关闭“include option”滑块
  4. 点击"+"按钮发送状态请求
 
-![Staking Chain State Query](/images/staking/staking-stake-4.png)
+![Staking Chain State Query](/images/tokens/staking/stake/stake-4.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
@@ -125,7 +125,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
  4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address2 }}`
  5. 点击“提交交易”按钮，并签名确认交易
 
-![Staking Revoke Nomination Extrinsic](/images/staking/staking-stake-7.png)
+![Staking Revoke Nomination Extrinsic](/images/tokens/staking/stake/stake-7.png)
 
 交易确认后，可以在“Developer”标签下的“Chain state”中查看是否已撤销提名。
 
@@ -137,13 +137,13 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
   3. 确保已经关闭“include options”滑块
   4. 点击"+"按钮发送状态请求
 
-![Staking Revoke Nomination Cain State](/images/staking/staking-stake-8.png)
+![Staking Revoke Nomination Cain State](/images/tokens/staking/stake/stake-8.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
 通过`leaveNominators`外部参数，您可以继续移除所有正在进行中的提名（“外部参数”指引中的第3步）。这一参数无输入值：
 
-![Staking Leave Nominatiors Extrinsic](/images/staking/staking-stake-9.png)
+![Staking Leave Nominatiors Extrinsic](/images/tokens/staking/stake/stake-9.png)
 
 确认交易后，您的账户将不会出现在`nominatorState`状态中，同时您（相关质押）的冻结余额也将归零。
 
@@ -155,4 +155,4 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 从上述例子可以看到，在经过两轮支付后，Alice获得了`0.0044`代币作为奖励：
 
-![Staking Reward Example](/images/staking/staking-stake-10.png)
+![Staking Reward Example](/images/tokens/staking/stake/stake-10.png)

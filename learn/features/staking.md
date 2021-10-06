@@ -5,7 +5,7 @@ description: Moonbeam为用户提供质押功能，用于提名收集人并获�
 
 # 在Moonbeam网络质押
 
-![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
+![Staking Moonbeam Banner](/images/learn/features/staking/staking-overview-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -67,13 +67,13 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
 
 从数学上来讲，对于收集人来说，提议和最终确定每个区块的奖励分配应如下所示：
 
-![Staking Collator Reward](/images/staking/staking-overview-1.png)
+![Staking Collator Reward](/images/learn/features/staking/staking-overview-1.png)
 
 其中，`amount_due`指在每个特定区块分配的相应通胀，`stake`对应由收集人绑定的Token数量，相对于该收集人的总质押量（统计提名数）。
 
 对于每个提名人来说，奖励分配（由提名收集人提议和最终确定每个区块）应如下所示：
 
-![Staking Nominator Reward](/images/staking/staking-overview-2.png)
+![Staking Nominator Reward](/images/learn/features/staking/staking-overview-2.png)
 
 其中，`amount_due`指在每个特定区块分配的相应通胀，`stake`对应由每个提名人在收集人中绑定的Token数量，相对于该收集人的总质押量。
 

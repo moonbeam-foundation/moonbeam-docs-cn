@@ -5,7 +5,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 # 投票
 
-![Governance Moonbeam Banner](/images/governance/governance-voting-banner.png)
+![Governance Moonbeam Banner](/images/tokens/governance/voting/voting-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -101,7 +101,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 投票期结束后，已通过的提案可以在“Dispatch”标签下查看。您也可以在这里看到距离提案执行的时间。
 
-![Proposal Enactment](/images/governance/governance-vote-4.png)
+![Proposal Enactment](/images/tokens/governance/voting/vote-5.png)
 
 在这一示例中，我们通过`setBalance`函数来将Bob的余额设定为1500枚代币。等到提案执行期结束，就可以在“Accounts”标签下查看该提案是否已写入法律。
 
@@ -113,7 +113,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 要进行委托投票，首先要进入“Developer”标签下的“Extrinsics”菜单。
 
-![Extrinsics Menu](/images/governance/governance-vote-6.png)
+![Extrinsics Menu](/images/tokens/governance/voting/vote-6.png)
 
 此处，您需要提供以下信息：
 
@@ -125,7 +125,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  6. 设定委托到此账户的代币数量
  7. 点击“Submit Transaction”按钮并签名确认交易
 
-![Extrinsics Transaction for Delegation](/images/governance/governance-vote-7.png)
+![Extrinsics Transaction for Delegation](/images/tokens/governance/voting/vote-7.png)
 
 在本示例中，Alice委托了1000份投票权重（1000枚代币乘以信念值1）给Charley。
 
@@ -134,7 +134,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 被委托账户开始投票时，总投票权重将自动叠加。在本示例中，Charley决定投票赞成公投中的某一提案。他以800份的投票权重（800枚代币乘以信念值1）进行了投票。但由于Alice向他委托了1000份投票权重，因此他的赞成总投票权重将为1800份。
 
-![Total Votes with Delegation](/images/governance/governance-vote-8.png)
+![Total Votes with Delegation](/images/tokens/governance/voting/vote-9.png)
 
 重复上述步骤也可撤销委托，只需要在第3步选择`undelegate`进行操作即可。
 
@@ -154,11 +154,11 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  - 根据信念值乘数进行锁定，会显示剩余区块数量和时间
  - 锁定期结束，意味着您可以解锁并取回代币
 
-![Account Lock Status](/images/governance/governance-vote-9.png)
+![Account Lock Status](/images/tokens/governance/voting/vote-10.png)
 
 锁定期结束即可取回代币。请在“Developers”标签下的“Extrinsics”菜单中进行操作。
 
-![Extrinsics Menu](/images/governance/governance-vote-10.png)
+![Extrinsics Menu](/images/tokens/governance/voting/vote-11.png)
 
 在此，我们需要进行两个不同的外部操作。首先需要提供以下信息：
 
@@ -168,7 +168,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  4. 输入公投指数。这是“Democracy”标签左手边显示的数字。在本示例中为0
  5. 点击“Submit Transaction”按钮并签名确认交易
 
-![Remove Vote Extrinsics](/images/governance/governance-vote-11.png)
+![Remove Vote Extrinsics](/images/tokens/governance/voting/vote-12.png)
 
 进入下一步，您需要提供以下信息：
 
@@ -178,17 +178,17 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  4. 输入接收解锁代币的目标账户。在本示例中为Alice
  5. 点击“Submit Transaction”按钮并签名确认交易
 
-![Unlock Extrinsics](/images/governance/governance-vote-12.png)
+![Unlock Extrinsics](/images/tokens/governance/voting/vote-13.png)
 
 交易完成后，锁定代币将被解锁。您可以返回到“账户”标签进行检查。在本示例中，可以看到Alice已恢复了原有余额，余额状态显示为“transferable”。
 
-![Check Balance](/images/governance/governance-vote-13.png)
+![Check Balance](/images/tokens/governance/voting/vote-14.png)
 
 ## 正向偏向投票机制 {: #positive-turnout-bias } 
 
 公投采用正向偏向投票机制，即绝对多数赞成制。该模式的方程式如下：
 
-![Positive Turnout Bias](/images/governance/governance-vote-bias.png)
+![Positive Turnout Bias](/images/tokens/governance/voting/vote-bias.png)
 
 方程式中：
 
