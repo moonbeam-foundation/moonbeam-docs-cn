@@ -212,5 +212,5 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 
 您可以使用以下区块链浏览器来浏览Moonbeam开发节点:
 
- - **基于Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/explorer) WS端口`9944`
+ - **基于Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer) WS端口`9944`
  - **基于以太坊 API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam%20Dev%20Node) HTTP端口`9933`

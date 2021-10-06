@@ -36,7 +36,7 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 
 您也可以使用以下网络信息连接MetaMask：
 
- - 网络名称： `Moonbase`
+ - 网络名称： `Moonbase Alpha`
  - RPC URL: `{{ networks.moonbase.rpc_url }}`
  - ChainID: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`)
  - 代币缩写（可选）： `DEV`
