@@ -34,7 +34,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名人奖励池** — 年通胀的{{ networks.moonriver.staking.nominator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
-    - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners/?network=Moonriver)
+    - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver)
     - **管理质押相关操作** — 访问[Moonbeam Network dApp](https://apps.moonbeam.network/moonriver)
 
 === "Moonbase Alpha" 
@@ -50,7 +50,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名人奖励池** — 年通胀的{{ networks.moonbase.staking.nominator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
-    - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonbase.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonbase%20Alpha)
+    - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonbase.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha)
     - **管理质押相关操作** — 访问[Moonbeam Network dApp](https://apps.moonbeam.network/moonbase-alpha)
 
 ## 奖励分配 {: #reward-distribution }

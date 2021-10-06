@@ -16,7 +16,7 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 您可以使用以下区块链浏览器来浏览Moonbase Alpha:
 
  - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)
- - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbase%20Alpha)
+ - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha)
  - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
 
 ## 连接MetaMask
