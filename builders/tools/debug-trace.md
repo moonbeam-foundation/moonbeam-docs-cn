@@ -5,7 +5,7 @@ description:  通过此教程学习如何在Moonbeam上使用Geth调试API及Ope
 
 # 调试（Debug）API与跟踪（Trace）模块
 
-![Full Node Moonbeam Banner](/images/debugtrace/debugtrace-banner.png)
+![Full Node Moonbeam Banner](/images/builders/tools/debug-trace/debug-trace-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -49,7 +49,7 @@ Geth的调试API和OpenEthereum的跟踪模块均提供非标准的RPC方法，�
 
 如上所述，要使用这两种功能需要有运行`debug`和`trace`标记的节点。在这个示例中，我们使用的是Moonbase Alpha本地完整节点，RPC HTTP终端为`http://127.0.0.1:9933`。如果您已有运行的节点，也会看到相似的终端日志：
 
-![Debug API](/images/debugtrace/debugtrace-images1.png)
+![Debug API](/images/builders/tools/debug-trace/debug-trace-1.png)
 
 例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`)：
 
@@ -65,7 +65,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 节点将返回交易从始至终的每一个步骤信息（因篇幅过长，此处返回内容有所删减）：
 
-![Trace Debug Node Running](/images/debugtrace/debugtrace-images2.png)
+![Trace Debug Node Running](/images/builders/tools/debug-trace/debug-trace-2.png)
 
 调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条跟踪结果）：
 
@@ -80,4 +80,4 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 节点将返回过滤后的跟踪信息结果（因篇幅过长，此处返回内容有所删减）。
 
-![Trace Filter Node Running](/images/debugtrace/debugtrace-images3.png)
+![Trace Filter Node Running](/images/builders/tools/debug-trace/debug-trace-3.png)

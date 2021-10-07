@@ -23,11 +23,11 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 如果您已遵循上述教程，您将会拥有一个正在生产区块的本地Moonbeam节点，如下图所示：
 
-![Local Moonbeam node producing blocks](/images/remix/using-remix-1.png)
+![Local Moonbeam node producing blocks](/images/tokens/connect/metamask/metamask-12.png)
 
 另外，您也需要成功安装MetaMask，并且通过至少一个拥有余额的账户以开发者模式连接至您的本地Moonbeam开发节点。如下图所示：
 
-![MetaMask installation with a balance](/images/remix/using-remix-2.png)
+![MetaMask installation with a balance](/images/builders/interact/remix/using-remix-2.png)
 
 !!! 注意事项
     请确保您所连接到的是Moonbeam节点而非其他网络！
@@ -38,11 +38,11 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 首先我们开启一个新标签页，输入[https://remix.ethereum.org/](https://remix.ethereum.org/) 打开Remix。在主画面中，点击Environments，选取Solidity配置Remix来进行Solidity的开发，最后打开File Explorers的画面，如下图所示：
 
-![File explorer](/images/remix/using-remix-3.png)
+![File explorer](/images/builders/interact/remix/using-remix-3.png)
 
 我们需要创建一个新的文件夹来储存Solidity智能合约。点击File Explorers下面的 “+” 按钮，接着在弹窗内输入 “MyToken.sol“：
 
-![Create a new file for your Solidity contract](/images/remix/using-remix-4.png)
+![Create a new file for your Solidity contract](/images/builders/interact/remix/using-remix-4.png)
 
 然后，将以下智能合约粘贴至弹窗的编辑框内：
 
@@ -54,11 +54,11 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 当您将合约粘贴至编辑器之后会形成下图：
 
-![Paste the contract into the editor](/images/remix/using-remix-5.png)
+![Paste the contract into the editor](/images/builders/interact/remix/using-remix-5.png)
 
 接下来，在编辑器侧边选项，选择并点击“Compile MyToken.sol” 按钮：
 
-![Compile MyToken.sol](/images/remix/using-remix-6.png)
+![Compile MyToken.sol](/images/builders/interact/remix/using-remix-6.png)
 
 点击之后，您会看到Remix已经下载所有Open Zeppelin的附属程式并完成了合约编写。
 
@@ -68,7 +68,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 当您选择“Injected Web3”选项时，您需授权Remix连接您的MetaMask账户。
 
-![Replace](/images/remix/using-remix-7.png)
+![Replace](/images/builders/interact/remix/using-remix-7.png)
 
 请在MetaMask点击“下一步”授权Remix使用您所选取的账户。
 
@@ -76,48 +76,48 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 确认数值输入无误之后，请点击“Deploy”：
 
-![Enter an account balance and deploy](/images/remix/using-remix-8.png)
+![Enter an account balance and deploy](/images/builders/interact/remix/using-remix-8.png)
 
 随后，将弹出MetaMask对话框，以确认此次部署合约的交易。
 
-![Confirm the transaction message](/images/remix/using-remix-9.png)
+![Confirm the transaction message](/images/builders/interact/remix/using-remix-9.png)
 
 !!! 注意事项
     若您在部署任意合约时遇到问题，可通过以下操作手动提高Gas限制。设置 -> 高级 -> 高级Gas控制 = 启用。
 
 完成确认后，部署也随之完成，您将会在MetaMask上看到您的交易记录。与此同时，合约也会出现在Remix的Deployed Contracts一栏内。
 
-![Confirmed label on a transaction](/images/remix/using-remix-10.png)
+![Confirmed label on a transaction](/images/builders/interact/remix/using-remix-10.png)
 
 成功部署合约之后，您便可通过Remix与智能合约进行交互。
 
 将左侧页面往下滑，找到“Deployed Contracts”，点击name，symbol，以及totalSupply，将会分别出现“MyToken”，“MYTOK”，以及“8000000000000000000000000“。如果您复制合约地址并将它粘贴在balanceOf的空格中，您可以看到用户ERC20地址上的账户全部余额，请参考下图。
 
-![Interact with the contract from Remix](/images/remix/using-remix-11.png)
+![Interact with the contract from Remix](/images/builders/interact/remix/using-remix-11.png)
 
 ## 通过MetaMask与基于Moonbeam的ERC-20进行交互 {: #interacting-with-a-moonbeam-based-erc-20-from-metamask }
 
 打开MetaMask添加刚部署的ERC-20代币。首先，请确认您已在Remix上复制了合约地址。然后，在MetaMask上点击“添加代币”，请参考下图。（请确保您现在所操作的账户为已部署合约的账户）
 
-![Add a token](/images/remix/using-remix-12.png)
+![Add a token](/images/builders/interact/remix/using-remix-12.png)
 
 将已复制的地址粘贴至“自定义代币”的代币合约地址空格内，与此同时”代币符号“和”小数精度“会自动填充。
 
-![Paste the copied contract address](/images/remix/using-remix-13.png)
+![Paste the copied contract address](/images/builders/interact/remix/using-remix-13.png)
 
 点击“下一步”，您需再次确认是否要将这些代币加入至您的MetaMask账户。点击“添加代币”后，您会看到800万的MyTokens已成功加入您的账户：
 
-![Add the tokens to your MetaMask account](/images/remix/using-remix-14.png)
+![Add the tokens to your MetaMask account](/images/builders/interact/remix/using-remix-14.png)
 
 现在我们可以通过MetaMask将这些ERC-20代币转至其他设定好的账户。您只需点击“发送”就可以将500个MyToken转移至您所选取的目标账户。
 
 点击“下一步”，您需再次确认交易（如下图所示）
 
-![Confirmation of the token transfer](/images/remix/using-remix-15.png)
+![Confirmation of the token transfer](/images/builders/interact/remix/using-remix-15.png)
 
 点击“确认”，交易完成之后，您将会在MetaMask账户上看到交易记录以及账户余额：
 
-![Verify the reduction in account balance](/images/remix/using-remix-16.png)
+![Verify the reduction in account balance](/images/builders/interact/remix/using-remix-16.png)
 
 如果您拥有收款的账户，您也可以通过查看账户余额来确认转账是否成功。
 

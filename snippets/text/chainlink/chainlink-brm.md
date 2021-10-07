@@ -6,5 +6,5 @@
 
 这一请求实际上会向LINK代币合约发送*transferAndCall*指令，由该合约进行支付处理，并且将该请求传输给预言机合约。随同该请求一并发出的还有事件信息，后者会被预言机节点拾取。接下来，节点就会获取必要数据并执行*fulfilOracleRequest*函数，这一函数将执行回调，将请求的信息储存在客户合约中。具体工作流程如下图所示。
 
-![Basic Request Diagram](/images/chainlink/chainlink-basicrequest.png)
+![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.png)
 

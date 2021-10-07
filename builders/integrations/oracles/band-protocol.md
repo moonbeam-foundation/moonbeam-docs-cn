@@ -4,7 +4,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 ---
 # Band Protocol预言机
 
-![Band Protocol Moonbeam Diagram](/images/band/band-banner.png)
+![Band Protocol Moonbeam Diagram](/images/builders/integrations/oracles/band/band-banner.png)
 
 ## 概览 {: #introduction }
 开发者可通过两种方法从Band预言机获取价格。第一，可以通过Moonbeam上的Band智能合约在固定时间段或价格滑点大于目标值（不同代币的目标值不同）时获取链上最新数据。第二，使用JavaScript辅助库，该库绕过区块链直接从Band Protocol API（与智能合约相似的函数）中获取数据。如果DApp前端需要直接获取数据，则可以使用这种方法。
@@ -173,11 +173,11 @@ interface TestInterface {
 
 创建文档及编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接。
 
-![Band Protocol Remix deploy](/images/band/band-demo1.png)
+![Band Protocol Remix deploy](/images/builders/integrations/oracles/band/band-demo-1.png)
 
 通过这一方法，你将创建一个可以进行交互的合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
-![Band Protocol Remix check price](/images/band/band-demo2.png)
+![Band Protocol Remix check price](/images/builders/integrations/oracles/band/band-demo-2.png)
 
 ## BandChain.js Javascript辅助库 {: #bandchainjs-javascript-helper-library } 
 
@@ -236,6 +236,6 @@ queryData();
 
 这段代码可以通过节点来执行，其`dataQuery`输出值应该如下所示：
 
-![Band Protocol JavaScript Library](/images/band/band-console.png)
+![Band Protocol JavaScript Library](/images/builders/integrations/oracles/band/band-console.png)
 
 请注意，与通过智能合约获取报价相比，通过这种方法获得的返回结果将直接在正确的单位中显示。

@@ -47,7 +47,7 @@ mkdir moonbeam-truffle-box && cd moonbeam-truffle-box
 truffle unbox PureStake/moonbeam-truffle-box
 ```
 
-![Unbox Moonbeam Truffle box](/images/truffle/truffle-1.png)
+![Unbox Moonbeam Truffle box](/images/builders/interact/truffle/truffle-1.png)
 
 若您不想全网安装Truffle，Moonbeam Truffle box也有Truffle作为依赖项可以使用。在这种情况下，您可以直接克隆以下代码库：
 
@@ -170,7 +170,7 @@ truffle run moonbeam unpause
 
 您可以在下图中看到这些命令的输出：
 
-![Install Moonbeam Truffle box](/images/truffle/truffle-5.png)
+![Install Moonbeam Truffle box](/images/builders/interact/truffle/truffle-5.png)
 
 !!! 注意事项
     如果您熟悉Docker，您可以跳过插件命令，直接与Docker映像交互。

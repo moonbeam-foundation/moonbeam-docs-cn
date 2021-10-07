@@ -5,7 +5,7 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将通过链上治理
 
 # Moonbeam治理
 
-![Governance Moonbeam Banner](/images/governance/governance-overview-banner.png)
+![Governance Moonbeam Banner](/images/learn/features/governance/governance-overview-banner.png)
 
 ## 概览 {: #introduction } 
 

@@ -5,7 +5,7 @@ description: 如何编译Moonbeam二进制文档为Moonbeam网络运行完整的
 
 # 编译Moonbeam二进制文档
 
-![Full Node Moonbeam Banner](/images/fullnode/compile-binary-banner.png)
+![Full Node Moonbeam Banner](/images/node-operators/networks/compile-binary/compile-binary-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -42,7 +42,7 @@ git checkout tags/$(git tag | tail -1)
 cargo build --release
 ```
 
-![Compiling Binary](/images/fullnode/compile-binary1.png)
+![Compiling Binary](/images/node-operators/networks/compile-binary/compile-binary-1.png)
 
 如果终端显示*cargo not found error*，请在系统路径中手动加入Rust，或重启系统：
 

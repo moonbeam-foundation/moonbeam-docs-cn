@@ -5,7 +5,7 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会
 
 # **Moonbeam**财政库
 
-![Treasury Moonbeam Banner](/images/treasury/treasury-overview-banner.png)
+![Treasury Moonbeam Banner](/images/learn/features/treasury/treasury-overview-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -58,4 +58,4 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会
 
 财政库提案流程如下图所示：
 
-![Treasury Proposal Happy Path Diagram](/images/treasury/treasury-proposal-roadmap.png)
+![Treasury Proposal Happy Path Diagram](/images/learn/features/treasury/treasury-proposal-roadmap.png)

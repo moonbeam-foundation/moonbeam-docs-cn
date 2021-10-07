@@ -4,7 +4,7 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 ---
 # Polkadot JS Apps
 
-![Intro diagram](/images/polkadotjs/polkadotjs-banner.png)
+![Intro diagram](/images/tokens/connect/polkadotjs/polkadotjs-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -16,24 +16,24 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 
 首先，我们需要连接到Moonbase Alpha测试网。请点击左上角logo，在Test Network一栏中选择Moonbase Alpha。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app1.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-1.png)
 
 成功切换后，Polkadot JS网站会连接到Moonbase Alpha，并相应地切换样式以便成功连接。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app2.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-2.png)
 
 ## 创建或导入H160账户 {: #creating-or-importing-an-h160-account } 
 
 接下来是如何在Polkadot JS App创建新账户，或导入已有的MetaMask账户。首先，在“Account”一栏，点击“Add Account”按钮。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app3.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-3.png)
 
 接着会弹出窗口，根据指示完成在Polkadot JS App界面新增账户的整个流程。请确保您在下拉菜单中将Mnemonic改为Raw seed，然后您就能通过私钥新增账户。
 
 !!! 注意事项
     您目前只能通过私钥在PolkadotJS创建或导入账户。如果通过助记词操作，稍后导入账户到MetaMask等以太坊钱包时就会出现不同的公共地址。这是因为PolkadotJS使用的是BIP39，而以太坊使用的是BIP32或BIP44。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app4.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-4.png)
 
 接下来，如果要创建新账户，您要确保已储存好弹窗所显示的私钥。如果要导入现有账户，请输入MetaMask导出的私钥。在本示例中，我们将导入以下账户：
 
@@ -45,24 +45,24 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
     
 请确保输入私钥前缀，如`0x`等。如果输入正确的信息，窗口左上角就会出现相应公共地址。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app5.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-5.png)
 
 点击“Next”，设置账户名和密码后关闭设置向导的弹窗。收到确认消息后，您会在Accounts标签中看到相应地址和余额（在本示例中为Bob的地址）。除此之外，我们还可以覆盖MetaMask扩展，可以看到两个余额是相同的。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app6.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-6.png)
 
 ## 通过Substrate API发送交易 {: #sending-a-transaction-through-substrates-api } 
 
 现在，我们将演示Moonbeam Unified Accounts方案。通过Substrate API使用Polkadot JS App来创建交易。请注意，我们使用的是以太坊式H160地址来和Substrate交互。为此，我们导入了另一个名为Charley的账户，该账户中有5枚`DEV`代币。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app7.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-7.png)
 
 下一步，点击“send”按钮，随后会出现一个弹窗，指引您按照操作发送交易。设置发送地址和金额，在本示例中为5个DEV代币。一切就绪后，就可以点击“Make Transfer”按钮。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app8.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-8.png)
 
 在使用密码进行交易签名后，交易将会被即刻执行。执行过程中，Polkadot JS右上角会显示一些消息。交易确认后，即可看到各个账户的最新余额。
 
-![Connect to Moonbase Alpha](/images/polkadotjs/polkadotjs-app8.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-8.png)
 
 这表明交易已完成！我们非常高兴Polkadot JS App能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam Network的用户体验和以太坊兼容功能。

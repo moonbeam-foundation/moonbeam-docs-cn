@@ -5,7 +5,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 # 在Moonbeam上运行Chainlink预言机节点
 
-![Chainlink Moonbeam Banner](/images/chainlink/chainlinknode-banner.png)
+![Chainlink Moonbeam Banner](/images/node-operators/oracle-nodes/chainlink/chainlink-node-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -124,7 +124,7 @@ docker ps #Containers Running
 docker logs --tail 50 {container_id} #Logs progressing
 ```
 
-![Docker logs](/images/chainlink/chainlinknode-image1.png)
+![Docker logs](/images/node-operators/oracle-nodes/chainlink/chainlink-node-1.png)
 
 ## 合约设置 {: #contract-setup } 
 
@@ -132,11 +132,11 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 首先，我们需要获取预言机节点地址，用于发送交易和写入链上数据。请登录[ChainLink节点用户界面](http://localhost:6688/)，使用`.api`文档中的证书来获取地址。如下图所示：
 
-![Chainlink login](/images/chainlink/chainlinknode-image2.png)
+![Chainlink login](/images/node-operators/oracle-nodes/chainlink/chainlink-node-2.png)
 
 进入“Configuration Page”页面，并复制节点地址。通过[Moonbeam水龙头](/getting-started/moonbase/faucet/)注入资金。
 
-![Chainlink address](/images/chainlink/chainlinknode-image3.png)
+![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
 
 下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。
 
@@ -150,7 +150,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 编译好合约后，进入“Deploy and Run Transactions”标签，输入Link代币地址，并部署合约。部署完成后，复制合约地址。
 
-![Deploy Oracle using Remix](/images/chainlink/chainlinknode-image4.png)
+![Deploy Oracle using Remix](/images/node-operators/oracle-nodes/chainlink/chainlink-node-4.png)
 
 最后，绑定预言机节点和预言机智能合约。节点可以捕获发送到特定预言机合约的请求，但只有被授权（即绑定）的节点才能完成这一任务。
 
@@ -161,7 +161,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 我们可以使用在Remix上部署的合约实例来完成这一操作，并在视图函数`getAuthorizationStatus()`中输入预言机节点地址，检查预言机节点是否获得授权。
 
-![Authorize Chainlink Oracle Node](/images/chainlink/chainlinknode-image5.png)
+![Authorize Chainlink Oracle Node](/images/node-operators/oracle-nodes/chainlink/chainlink-node-5.png)
 
 ## 在预言机节点上创建任务 {: #create-job-on-the-oracle-node } 
 
@@ -171,7 +171,7 @@ Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink�
 
 如果将预言机看作API服务，那么任务就是其中一个函数，我们调用这个函数并获得返回结果。创建第一个任务，请来到节点的[“Jobs”板块](http://localhost:6688/jobs)，并点击“New Job”。
 
-![Chainlink Oracle New Job](/images/chainlink/chainlinknode-image6.png)
+![Chainlink Oracle New Job](/images/node-operators/oracle-nodes/chainlink/chainlink-node-6.png)
 
 下一步，粘贴以下JSON代码。创建的任务将请求ETH目前的的美金价格。请务必输入您的预言机合约地址（`YOUR_ORACLE_CONTRACT_ADDRESS`）。
 
@@ -202,7 +202,7 @@ Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink�
 }
 ```
 
-![Chainlink New Job JSON Blob](/images/chainlink/chainlinknode-image7.png)
+![Chainlink New Job JSON Blob](/images/node-operators/oracle-nodes/chainlink/chainlink-node-7.png)
 
 成功！现在，Chainlink预言机节点已经设置成功，并且该节点已经在Moonbase Alpha上运行。
 

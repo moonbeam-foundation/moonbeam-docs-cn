@@ -7,4 +7,4 @@
  - 在公投阶段，代币持有者可以通过锁定代币投“是”或“否”。影响投票权重的因素有两个：代币锁定量和锁定期
  - 如果提案通过，经过一段时间后即被执行
 
-![Proposal Roadmap](/images/governance/governance-proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/proposals/governance-proposal-roadmap.png)

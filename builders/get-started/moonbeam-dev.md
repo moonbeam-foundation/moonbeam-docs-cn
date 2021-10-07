@@ -32,7 +32,7 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 控制台日志的结尾应该与以下图片一致：
 
-![Docker - imaged pulled](/images/setting-up-a-node/setting-up-node-1.png)
+![Docker - imaged pulled](/images/builders/get-started/moonbeam-dev/moonbeam-dev-1.png)
 
 完成Docker镜像下载后，您可以执行以下命令：
 
@@ -52,7 +52,7 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 该命令可通过即时密封模式启动Moonbeam开发节点以进行本地测试，因此收到到交易时区块即被创建。如果节点已经启动，您会见到一个显示区块待创建的空闲状态界面：
 
-![Docker - output shows blocks being produced](/images/setting-up-a-node/setting-up-node-2.png)
+![Docker - output shows blocks being produced](/images/builders/get-started/moonbeam-dev/moonbeam-dev-2.png)
 
 您可点击[常用标识及选项](#common-commands-flags-and-options)来查阅更多实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -97,7 +97,7 @@ cd moonbeam
 
 以下为节点安装完毕后出现的画面：
 
-![End of build output](/images/setting-up-a-node/setting-up-node-3.png)
+![End of build output](/images/builders/get-started/moonbeam-dev/moonbeam-dev-3.png)
 
 然后，您将在开发者模式下运行节点，执行以下命令即可实现：
 
@@ -110,7 +110,7 @@ cd moonbeam
 
 您将看到显示区块待创建的空闲状态界面：
 
-![Output shows blocks being produced](/images/setting-up-a-node/setting-up-node-4.png)
+![Output shows blocks being produced](/images/builders/get-started/moonbeam-dev/moonbeam-dev-4.png)
 
 您可点击[常用标识及选项](#common-commands-flags-and-options)来查阅更多用于实例的标识及选项。如果要查看所有标识、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -126,15 +126,15 @@ cd moonbeam
 
 首先，我们将节点连接至Polkadot JS Apps。打开浏览器并输入链接：[https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer) 。进入网站之后，Polkadot JS Apps将被启动，并自动连接至Polkadot主网。
 
-![Polkadot JS Apps](/images/setting-up-a-node/setting-up-node-5.png)
+![Polkadot JS Apps](/images/builders/get-started/moonbeam-dev/moonbeam-dev-5.png)
 
 然后，点击左上角打开目录，再点击Development子目录，选择“Local Node” 选项，点击该选项后Polkadot JS Apps 将连接至`ws://127.0.0.1:9944` 。点击上面的Switch选项，成功连接您的本地独立Moonbeam节点。
 
-![Select Local Node](/images/setting-up-a-node/setting-up-node-6.png)
+![Select Local Node](/images/builders/get-started/moonbeam-dev/moonbeam-dev-6.png)
 
 连接成功之后，您可以查看独立Moonbeam节点生产区块的情况。
 
-![Select Local Node](/images/setting-up-a-node/setting-up-node-7.png)
+![Select Local Node](/images/builders/get-started/moonbeam-dev/moonbeam-dev-7.png)
 
 ## 如何查询账户状态 {: #querying-account-state }
 

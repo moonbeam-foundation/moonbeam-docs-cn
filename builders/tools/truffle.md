@@ -5,7 +5,7 @@ description: 通过此教程学习如何配置Truffle将本地Moonbeam开发节�
 
 # Truffle
 
-![Intro diagram](/images/integrations/integrations-truffle-banner.png)
+![Intro diagram](/images/builders/tools/truffle-banner.png)
 
 ## 概览 {: #introduction }
 

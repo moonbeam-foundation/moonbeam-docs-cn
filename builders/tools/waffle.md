@@ -5,7 +5,7 @@ description: 通过此教程学习如何配置Waffle在本地运行的Moonbeam�
 
 # Waffle
 
-![Waffle Introduction](/images/waffle-mars/waffle-banner.png)
+![Waffle Introduction](/images/builders/tools/waffle-banner.png)
 ## 概览 {: #introduction } 
 
 [Waffle](https://www.getwaffle.io/)是一个广泛使用的开发框架，用于编译、测试和部署Solidity智能合约。由于Moonbeam兼容以太坊，只需一些额外配置，您就可以如同在以太坊上开发一般，使用Waffle在Moonbeam上进行开发。

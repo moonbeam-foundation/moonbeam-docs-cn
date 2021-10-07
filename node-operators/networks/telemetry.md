@@ -5,7 +5,7 @@ description: 如何在Moonbeam网络上通过运行Telemetry来设置平行链�
 
 # 运行Telemetry设置全节点
 
-![Telemetry Moonbeam Banner](/images/fullnode/telemetry-banner.png)
+![Telemetry Moonbeam Banner](/images/node-operators/networks/telemetry-banner.png)
 
 ## 概览 {: #introduction } 
 

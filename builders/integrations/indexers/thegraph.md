@@ -5,7 +5,7 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
 
 # 在Moonbeam上使用The Graph
 
-![The Graph on Moonbeam](/images/thegraph/thegraph-banner.png)
+![The Graph on Moonbeam](/images/builders/integrations/indexers/the-graph/the-graph-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -267,6 +267,6 @@ npx graph deploy <username>/<subgraphName> \
 
 上述命令的日志应与以下内容相似：
 
-![The Graph deployed](/images/thegraph/thegraph-images1.png)
+![The Graph deployed](/images/builders/integrations/indexers/the-graph/the-graph-1.png)
 
 现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据

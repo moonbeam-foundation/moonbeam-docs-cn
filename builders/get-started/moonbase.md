@@ -52,7 +52,7 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 
 您可以在“Miscellaneous"一栏下面找到我们的Alphanet机器人频道。
 
-![Discord1](/images/testnet/testnet-discord1.png)
+![Discord1](/images/builders/get-started/moonbase/discord-1.png)
 
 如果您想要查询您的余额，请输入以下信息，并将`<enter-address-here->`替换为您的H160地址:
 
@@ -68,5 +68,5 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 
 Mission Control将会发送5个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的代币。
 
-![Discord2](/images/testnet/testnet-discord2.png)
+![Discord2](/images/builders/get-started/moonbase/discord-2.png)
 
