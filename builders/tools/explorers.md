@@ -47,15 +47,15 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
 
 ## Substrate API {: #substrate-api } 
 
-### PolkadotJS（开发者节点 - 测试网） {: #polkadotjs-dev-node-testnet } 
+### Polkadot.js（开发者节点 - 测试网） {: #polkadotjs-dev-node-testnet } 
 
-Polkadot JS Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
+Polkadot.js Apps使用WebSocket端点与网络交互。如果您想要连接至独立的Moonbeam节点，您可以跟随[此教程](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)中的步骤（默认的端口为`9944`）。
 
-![Polkadot JS Local Node](/images/builders/tools/explorers/explorers-3.png)
+![Polkadot.js Local Node](/images/builders/tools/explorers/explorers-3.png)
 
-如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot JS Apps。您可以在[此网页](/integrations/wallets/polkadotjs/)找到更多资讯。
+如果您想要查看并交互Moonbase Alpha的substrate层，请点击[此连接](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)。这是导向测试网的Polkadot.js Apps。您可以在[此网页](/integrations/wallets/polkadotjs/)找到更多资讯。
 
-![Polkadot JS Moonbase Alpha](/images/builders/tools/explorers/explorers-4.png)
+![Polkadot.js Moonbase Alpha](/images/builders/tools/explorers/explorers-4.png)
 
 ### Subscan {: #subscan } 
 

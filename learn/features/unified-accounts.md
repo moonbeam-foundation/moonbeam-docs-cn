@@ -1,6 +1,6 @@
 ---
 title: 统一账户
-description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获得Polkadot JS Apps的支持。
+description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获得Polkadot.js Apps的支持。
 ---
 # 统一账户
 
@@ -10,7 +10,7 @@ description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获�
 
 随着[Moonbase Alpha测试网v3升级版本的发布](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)，我们已对Moonbeam底层账户系统进行重大升级，将默认的Substrate式账户和密钥替换为以太坊式账户和密钥。
 
-同时我们也升级了Polkadot JS Apps交互界面，以实现对H160地址和ECDSA密钥的原生支持。您可参考[此教程](/integrations/wallets/polkadotjs/)获取更多信息。
+同时我们也升级了Polkadot.js Apps交互界面，以实现对H160地址和ECDSA密钥的原生支持。您可参考[此教程](/integrations/wallets/polkadotjs/)获取更多信息。
 
 ## Substrate EVM兼容的区块链 {: #substrate-evm-compatible-blockchain } 
 

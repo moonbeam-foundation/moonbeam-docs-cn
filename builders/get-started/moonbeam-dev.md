@@ -1,9 +1,9 @@
 ---
 title: Moonbeam开发节点
-description: 此教程将帮助您学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot JS GUI并加以控制。
+description: 此教程将帮助您学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot.js GUI并加以控制。
 ---
 
-# 如何设置Moonbeam节点并连接至Polkadot JS GUI
+# 如何设置Moonbeam节点并连接至Polkadot.js GUI
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style>
@@ -18,7 +18,7 @@ description: 此教程将帮助您学习如何设置您的第一个Moonbeam节�
 
 Moonbeam开发节点是基于您的个人开发环境，在Moonbeam上构建和测试应用程序，相当于以太坊开发人员使用的Ganache。Moonbeam助您快速轻松地上手，无需承担中继链的成本。您可以使用 `--sealing` 选项，立即启动节点来创建区块，或者在交易完成后的自定义时间段创建区块。默认情况下，收到交易意味着一个区块即被创建，类似于Ganache的instamine功能。
 
-如您参考本教程指示操作，您可顺利在本地环境运行Moonbeam开发节点，同时获得10个[预注资的账户](#prefunded-development-accounts)，并且可以使用Polkadot JS GUI与节点交互。
+如您参考本教程指示操作，您可顺利在本地环境运行Moonbeam开发节点，同时获得10个[预注资的账户](#prefunded-development-accounts)，并且可以使用Polkadot.js GUI与节点交互。
 
 目前有两种方式在本地运行Moonbeam节点：使用[Docker来执行预建二进制](#getting-started-with-docker)，或[在本地编译二进制](#getting-started-with-the-binary-file)设置开发节点。点击此处便可安装[Docker](https://docs.docker.com/get-docker/)。Docker更为快速便捷，您无需安装Substrate，所有辅助项，且无需构建节点即可运行。另一方面，如果您仍希望体验构建节点进程，则需要大约30分钟或更长时间完成，具体情况取决于您的硬件设备。
 
@@ -62,7 +62,7 @@ purestake/moonbeam \
 --help
 ```
 
-如果您已经使用Docker来启动节点，则可以跳过下一部分的教程，直接进入[设置Moonbeam节点并连接至Polkadot JS GUI](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
+如果您已经使用Docker来启动节点，则可以跳过下一部分的教程，直接进入[设置Moonbeam节点并连接至Polkadot.js GUI](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
 ## 使用源码编译，安装与设置  {: #getting-started-with-the-binary-file }
 
 第一步，我们通过下列链接来克隆一个Moonbeam Repo的特定标签：
@@ -117,18 +117,18 @@ cd moonbeam
 ```
 ./target/release/moonbeam --help
 ```
-## 如何将Polkadot JS Apps 连接至本地Moonbeam节点 {: #connecting-polkadot-js-apps-to-a-local-moonbeam-node :}
+## 如何将Polkadot.js Apps 连接至本地Moonbeam节点 {: #connecting-polkadot-js-apps-to-a-local-moonbeam-node :}
 
 开发节点是基于Substrate框架的节点，您可使用标准的Substrate工具来与之交互。两个可使用的RPC终端是：
 
  - HTTP: `http://127.0.0.1:9933`
  - WS: `ws://127.0.0.1:9944` 
 
-首先，我们将节点连接至Polkadot JS Apps。打开浏览器并输入链接：[https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer) 。进入网站之后，Polkadot JS Apps将被启动，并自动连接至Polkadot主网。
+首先，我们将节点连接至Polkadot.js Apps。打开浏览器并输入链接：[https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer) 。进入网站之后，Polkadot.js Apps将被启动，并自动连接至Polkadot主网。
 
-![Polkadot JS Apps](/images/builders/get-started/moonbeam-dev/moonbeam-dev-5.png)
+![Polkadot.js Apps](/images/builders/get-started/moonbeam-dev/moonbeam-dev-5.png)
 
-然后，点击左上角打开目录，再点击Development子目录，选择“Local Node” 选项，点击该选项后Polkadot JS Apps 将连接至`ws://127.0.0.1:9944` 。点击上面的Switch选项，成功连接您的本地独立Moonbeam节点。
+然后，点击左上角打开目录，再点击Development子目录，选择“Local Node” 选项，点击该选项后Polkadot.js Apps 将连接至`ws://127.0.0.1:9944` 。点击上面的Switch选项，成功连接您的本地独立Moonbeam节点。
 
 ![Select Local Node](/images/builders/get-started/moonbeam-dev/moonbeam-dev-6.png)
 
@@ -138,7 +138,7 @@ cd moonbeam
 
 ## 如何查询账户状态 {: #querying-account-state }
 
-随着[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在统一账户模式下运行，该模式支持以太坊的H160账户格式并且已与Polkadot JS Apps兼容。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
+随着[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在统一账户模式下运行，该模式支持以太坊的H160账户格式并且已与Polkadot.js Apps兼容。如果您想查看账户上的余额，您可直接将您的账户汇入至Accounts。了解更多，请参考[统一账户](/learn/unified-accounts/)页面。
 
 您也可以利用Moonbeam完整的以太坊RPC功能，使用[MetaMask](/getting-started/local-node/using-metamask/)查询账户的余额。除此之外，您还可以利用其他的开发工具，如[Remix](/getting-started/local-node/using-remix/)和[Truffle](/getting-started/local-node/using-truffle/) 等等。
 
