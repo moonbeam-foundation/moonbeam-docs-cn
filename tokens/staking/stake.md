@@ -63,11 +63,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 ## 获取收集人名单 {: #retrieving-the-list-of-collators }
 
-在开始质押代币前，从网络中获取收集人名单至关重要。名单可在“Developer”标签下的“Chain state”进行查看。
-
-![Staking Account](/images/tokens/staking/stake/stake-10.png)
-
-在此，请提供以下信息：
+在开始质押代币前，从网络中获取收集人名单至关重要。您可以通过以下步骤进行查看:
 
  1. 进入"Developer"栏 
  2. 点击"Chain State"
