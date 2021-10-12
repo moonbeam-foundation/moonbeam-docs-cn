@@ -51,9 +51,9 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 这一小节将介绍从原像到公投的提案过程。本教程中，我们创建了一个真实提案，而不是提供通用示例，以作为本教程和其它教程的基础。
 
-您需要用到PolkadotJS App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
+您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
+![Accounts in Polkadot.js](/images/governance/governance-proposal-1.png)
 
 本次提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
@@ -79,7 +79,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 !!! 注意事项
     请记得复制原像哈希值，在提交提案时必须用到这一数据。
 
-请注意，原像储存成本显示在窗口左下角。交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息，但在“Democracy”页面没有任何变化。请不要担心，如果交易已确认，说明原像已经提交成功。
+请注意，原像储存成本显示在窗口左下角。交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息，但在“Democracy”页面没有任何变化。请不要担心，如果交易已确认，说明原像已经提交成功。
 
 ### 提交提案 {: #submitting-a-proposal } 
 
@@ -99,7 +99,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息。该提案也会进入“Proposals”列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
+交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。该提案也会进入“Proposals”列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
 
 ![Proposal listed](/images/governance/governance-proposal-6.png)
 
@@ -125,6 +125,6 @@ description: 如何通过治理机制在Moonbeam上发送提案
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-交易提交后，就会看到右上角PolkadotJS App接口出现一些确认信息。您也可以在“Proposals”列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
+交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。您也可以在“Proposals”列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
 
 ![Proposal Seconded](/images/governance/governance-proposal-9.png)

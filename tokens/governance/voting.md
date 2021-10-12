@@ -51,9 +51,9 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 这一小节将介绍公投流程。本教程使用已经创建的公投进行讲解（公投创建指南请参阅[这里](/governance/proposals/)）。
 
-您需要用到PolkadotJS App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
+您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
+![Accounts in Polkadot.js](/images/governance/governance-proposal-1.png)
 
 本次进行投票的提案内容为：通过治理机制将Bob的余额设定为`1500`！
 

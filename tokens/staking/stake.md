@@ -15,7 +15,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 如果收集人行为不当，其网络权益将会被削减，这也会影响到用户用于提名的代币（但Moonbase Alpha目前上仍未上线这一功能）。在通货膨胀的模型下，如果这些收集人行为恰当，则可以获得区块奖励，他们可以将区块奖励作为质押挖矿回报返回给提名者。
 
-[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，网络用户现在可以质押代币并提名收集人。本文将提供相关操作指引。
+[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，网络用户现在可以质押代币并提名收集人。本文将示范如何在Moonbase Alpha上质押，但Moonriver质押的步骤也是同样的。
 
 ## 一般定义 {: #general-definitions } 
 
@@ -43,6 +43,23 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
  - **nominatorBondLess** —— 两个输入值：已提名的收集人地址及质押数量。为已获提名的收集人减少质押代币数量的外部参数。代币质押总量不能少于五个
  - **nominatorBondMore** —— 两个输入值：已提名的收集人地址及质押数量。为已获提名的收集人增加质押代币数量的外部参数
  - **revokeNomination** —— 一个输入值：已提名的收集人地址。撤销现有提名的外部参数
+
+## 获取质押参数 {: #retrieving-staking-parameters }
+
+您现在可以阅读关于质押的所有参数，如列在[一般定义](#general-definitions)的参数和来自Polkadot.js Apps的参数。
+
+导向至Polkadot.js Apps **Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
+
+接着，请跟随以下步骤检索各种质押参数：
+
+1. 在**Chain State**界面选取**Constants**标签
+2. 在**selected constant query**的下拉选单中选取**parachainStaking**
+3. 选取任何您希望获取数据的参数。举例而言，您可以使用**maxCollatorsPerNominator**，这将会返回您可提名的最大收集人数
+4. 点击**+**以获取数据
+
+![Retrieving staking parameters](/images/staking/staking-stake-parameters.png)
+
+您应当可以看到单个提名人可提名的最大收集人数。截至本文撰写时，在Moonbase Alpha上单个提名人可提名的最大收集人数为100。
 
 ## 获取收集人名单 {: #extrinsics-definitions } 
 
@@ -73,7 +90,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 | 校对器1 |      | {{ networks.moonbase.staking.collators.address1 }} |
 | 校对器2 |      | {{ networks.moonbase.staking.collators.address2 }} |
 
-使用PolkadotJS Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
+使用Polkadot.js Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
 在本示例中，我们导入了一个账户，并命名为“Alice”。
 

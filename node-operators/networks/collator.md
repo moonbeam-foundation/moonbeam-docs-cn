@@ -38,24 +38,24 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/consensus/)，通过一个两
 
 收集人需要有至少{{ networks.moonbase.staking.collator_min_stake }}个DEV才有资格成为候选收集人。只有提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人才会进入活跃「收集人集」。
 
-### PolkadotJS账户 {: #account-in-polkadotjs } 
+### Polkadot.js账户 {: #account-in-polkadotjs } 
 
 每个收集人都有一个与收集活动相关的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-目前，创建[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
+目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
 
  - 从[MetaMask](/integrations/wallets/metamask/)或[MathWallet](/integrations/wallets/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
- - 使用[PolkadotJS](/integrations/wallets/polkadotjs/)创建新的H160账户
+ - 使用[Polkadot.js](/integrations/wallets/polkadotjs/)创建新的H160账户
 
-将H160账户导入到PolkadotJS后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署完整节点](/node-operators/networks/full-node/)的收集选项时需要用到它。
+将H160账户导入到Polkadot.js后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署完整节点](/node-operators/networks/full-node/)的收集选项时需要用到它。
 
-![Account in PolkadotJS](/images/node-operators/networks/collators/collator-polkadotjs-1.png)
+![Account in Polkadot.js](/images/node-operators/networks/collators/collator-polkadotjs-1.png)
 
 ## 成为候选收集人  {: #become-a-collator-candidate } 
 
 ### 获取候选池的大小  {: #get-the-size-of-the-candidate-pool } 
 
-首先，您需要获取 `candidatePool`的大小（可通过治理更改），该参数将用于后续的交易中。为此，您必须从[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network# 中运行以下 JavaScript 代码片段/js)中运行以下JavaScript代码段:
+首先，您需要获取 `candidatePool`的大小（可通过治理更改），该参数将用于后续的交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network# 中运行以下 JavaScript 代码片段/js)中运行以下JavaScript代码段:
 
 ```js
 // Simple script to get candidate pool size
@@ -74,7 +74,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool } 
 
-节点开始运行并同步网络后，在[PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人（并加入候选人池）：
+节点开始运行并同步网络后，在[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)通过以下步骤成为候选收集人（并加入候选人池）：
 
  1. 进入“Developers”标签，点击“Extrinsics”
  2. 选择您用于参与收集活动的账户
@@ -85,7 +85,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  7. 设置候选人数量即候选人池大小。如何设置该数值请查看[此文档](https://docs.moonbeam.network/node-operators/networks/collato #get-the-size-of-the-candidate-pool)
  8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Join Collators pool PolkadotJS](/images/node-operators/networks/collators/collator-polkadotjs-3.png)
+![Join Collators pool Polkadot.js](/images/node-operators/networks/collators/collator-polkadotjs-3.png)
 
 !!! 注意事项
     函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
