@@ -116,7 +116,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 ![Staking Join Nominators Extrinsics](/images/tokens/staking/stake/stake-6.png)
 
-!!! 注意
+!!! 注意事项
     第6步和第7步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数据。 
 
 交易确认后可以返回到“Accounts”标签查看冻结余额（应与质押的代币数量一致）。
