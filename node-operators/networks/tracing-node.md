@@ -60,8 +60,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
   - **`--ethapi=debug`** — 选择性标识，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
   - **`--ethapi=trace`** — 选择性标识，启用`trace_filter` 
-  - **`--ethapi=txpool`** —— 选择性标识，启用`txpool_content`、`txpool_inspect`和`txpool_status`
-  - **`--wasm-runtime-overrides=/moonbeam/<network>-substitutes-tracing`** - 用于追踪指定存储本地WASM runtime路径的**必备**标识。接受网络作为参数`moonbase`（用于开发节点和 Moonbase Alpha）或`moonriver`
+  - **`--ethapi=txpool`** — 选择性标识，启用`txpool_content`、`txpool_inspect`和`txpool_status`
+  - **`--wasm-runtime-overrides=/moonbeam/<network>-substitutes-tracing`** — 用于追踪指定存储本地WASM runtime路径的**必备**标识。接受网络作为参数`moonbase`（用于开发节点和 Moonbase Alpha）或`moonriver`
 
 运行追踪节点的完整命令如以下所示：
 
@@ -120,7 +120,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 !!! 注意事项
-​    如果您希望运行一个RPC终端以连接polkadot.js.org或是运行自有应用，请使用`--unsafe-rpc-external`或是`--unsafe-ws-external`标识以运行一个能够外部访问RPC接口的全节点。更多细节可以通过运行`moonbeam --help`命令获得。
+    ​如果您希望运行一个RPC终端以连接polkadot.js.org或是运行自有应用，请使用`--unsafe-rpc-external`或是`--unsafe-ws-external`标识以运行一个能够外部访问RPC接口的全节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 如果您已经成功运行Moonbase Alpha追踪节点，您应当会见到如下图所示的终端日志：
 
@@ -138,7 +138,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 请求处理的区块会临时存储在缓存中一段时间（初始设置为`300`秒），之后将被删除。您可以使用以下标志设置不同的删除时间：
 
-  - **`-ethapi-trace-cache-duration <uint>`** —— 设置持续时间（以秒为单位），在此之后给定块的`trace_filter`缓存被丢弃
+  - **`-ethapi-trace-cache-duration <uint>`** — 设置持续时间（以秒为单位），在此之后给定块的`trace_filter`缓存被丢弃
 
 ## 使用一个追踪节点 {: #using-a-tracing-node }
 
