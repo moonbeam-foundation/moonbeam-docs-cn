@@ -130,7 +130,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 想要使用作为节点可执行文件的一部分包含的本机runtime而不是存储在链上的Wasm二进制文件，请运行以下命令：
 
-  - **`--execution=native`** —— 设定需要由`native`使用的所有执行内容的执行策略
+  - **`--execution=native`** — 设定需要由`native`使用的所有执行内容的执行策略
 
 一般而言，允许追踪一个`trace_filter`追踪条目返回的最大数量为`500`。超过此限制的请求将会返回错误指示。您可以使用以下标识设置另外一个不同的最大限制：
 
