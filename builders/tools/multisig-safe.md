@@ -147,7 +147,7 @@ contract SetText {
  - **Safe Details** — 允许您更改Safe钱包名称。这是一个无需链上交互的本地操作
  - **Owners** — 允许您发起一个链上提案，从Safe钱包增加/移除所有者
  - **Policies** — 允许您发起一个链上提案，更改多重签名阈值以执行交易
- - **Advanced** —— 允许您从Safe钱包查看其他参数，如自定义交易nonce、模块和事物卫士（Transaction Guard）
+ - **Advanced** — 允许您从Safe钱包查看其他参数，如自定义交易nonce、模块和事物卫士（Transaction Guard）
 
 ## 接收和发送Token
 
