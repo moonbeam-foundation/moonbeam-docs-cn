@@ -120,7 +120,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 !!! 注意事项
-
 ​    如果您希望运行一个RPC终端以连接polkadot.js.org或是运行自有应用，请使用`--unsafe-rpc-external`或是`--unsafe-ws-external`标识以运行一个能够外部访问RPC接口的全节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 如果您已经成功运行Moonbase Alpha追踪节点，您应当会见到如下图所示的终端日志：
