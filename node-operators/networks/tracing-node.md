@@ -58,7 +58,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 您同样需要根据您启用的功能使用以下标识开始您的节点：
 
-  - **`--ethapi=debug`** —— 选择性标识，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
+  - **`--ethapi=debug`** — 选择性标识，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
   - **`--ethapi=trace`** —— 选择性标识，启用`trace_filter` 
   - **`--ethapi=txpool`** —— 选择性标识，启用`txpool_content`、`txpool_inspect`和`txpool_status`
   - **`--wasm-runtime-overrides=/moonbeam/<network>-substitutes-tracing`** - 用于追踪指定存储本地WASM runtime路径的**必备**标识。接受网络作为参数`moonbase`（用于开发节点和 Moonbase Alpha）或`moonriver`
