@@ -4,6 +4,7 @@ nav:
   - index.md
   - full-node.md
   - compile-binary.md
+  - tracing-node.md
   - collator.md
   - telemetry.md
   

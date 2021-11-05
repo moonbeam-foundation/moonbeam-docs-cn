@@ -1,57 +1,85 @@
 ---
-title: 调试及跟踪
-description:  通过此教程学习如何在Moonbeam上使用Geth调试API及OpenEthereum跟踪模块
+title: Debug & Trace
+description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上调用非标准RPC方式
 ---
 
-# 调试（Debug）API与跟踪（Trace）模块
+# Debug API与Trace模块
 
-![Full Node Moonbeam Banner](/images/builders/tools/debug-trace/debug-trace-banner.png)
+![Debug & Trace Moonbeam Banner](/images/builders/tools/debug-trace/debug-trace-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
-Geth的调试API和OpenEthereum的跟踪模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。
+Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/)或[Blockscout](https://docs.blockscout.com/)等项目仰赖这些方法检索区块链数据。
 
-随着Moonbase Alpha v7版本的发布，为开发者进一步提供以太坊无缝体验，Moonbeam开始启用 `debug_traceTransaction`和`trace_filter`RPC方法。
+本教程将介绍Moonbeam上支持的RPC方法，以及如何通过使用curl命令对本地Moonbase Alpha追踪节点来调用这些方法。
 
-这两个RPC方法的启用是Moonbeam发展中的一个重要的里程碑，因为像[The Graph](https://thegraph.com/)和[Blockscout](https://docs.blockscout.com/)等很多项目都依赖于这两个方法来索引区块链数据。
+## 查看先决条件
 
-两种方法的调用对节点来说会造成非常大的荷载，因此需要分别使用带有`debug_traceTransaction`的`--ethapi=debug`标记和/或者带有`trace_filter`的`--ethapi=trace`标记，以便本地运行节点进行RPC。目前用户可以创建以下两种不同节点：
+本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`标识。如果未完成以上配置，请参考[运行追踪节点](/node-operators/networks/tracing-node/)教程。RPC HTTP终端为`http://127.0.0.1:9933`。
 
- - **Moonbeam开发节点** —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha节点** —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](/node-operators/networks/full-node/)。请务必查看[高级标记](/node-operators/networks/full-node/#advanced-flags-and-options)
+## 支持的RPC方法
 
-## Geth调试API {: #geth-debug-api } 
+可用的RPC方法如下：
 
-有关`debug_traceTransaction`RPC的具体执行操作，请见[Geth调试API教程](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction)。
+  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction)
+  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbynumber)
+  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbyhash)
+  - [`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter)
+  - [`txpool_content`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_content)
+  - [`txpool_inspect`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_inspect)
+  - [`txpool_status`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status)
 
-运行这一RPC方法需要先提供交易的哈希值。此外，还可提供以下可选参数：
+## Debug API {: #geth-debug-api }
 
- - **disableStorage** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则内存捕获功能将关闭
- - **disableMemory** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则存储捕获功能将关闭
- - **disableStack** —— 一个输入值：布尔型（默认：*false*）。若设置为true，则堆栈捕获功能将关闭
+有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/rpc/ns-debug)：
 
-目前暂不支持基于JavaScript的交易跟踪。
+  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction) —— 需要追踪交易的哈希值
+  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbynumber) —— 需要追踪区块的区块编号
+  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbyhash) —— 需要追踪区块的哈希值
 
-## 跟踪模块 {: #trace-module } 
+此外，还可提供以下*可选*参数：
 
-有关`trace_filter`的具体执行操作，请见[OpenEthereum追踪模块教程](https://openethereum.github.io/JSONRPC-trace-module#trace_filter)。
+ - **disableStorage**(*boolean*) ——（默认：*false*）。若设置为true，则内存捕获功能将关闭
+ - **disableMemory**(*boolean*) ——（默认：*false*）。若设置为true，则存储捕获功能将关闭
+ - **disableStack**(*boolean*) ——（默认：*false*）。若设置为true，则堆栈捕获功能将关闭
 
-运行这一RPC方法需要以下任一可选参数：
+## Txpool API
 
- - **fromBlock** —— 一个输入值：可输入区块号(`hex`)， 创世区块`earliest` ，或者输入可用最佳区块`latest` （默认）。跟踪第一个区块
- - **toBlock** —— 一个输入值：可输入区块号(`hex`)，创世区块`earliest` ，或者输入可用最佳区块`latest` （默认）。跟踪最后一个区块
- - **fromAddress** —— 一个输入值：由地址组成的阵列。仅过滤这些地址发出的交易。如果输入的为空阵列，将不会进行过滤
- - **toAddress** ——  一个输入值：由地址组成的阵列。仅过滤这些地址接收的交易。如果输入的为空阵列，将不会进行过滤
- - **after** —— 一个输入值：偏移量（`uint`），默认为0。跟踪偏移号或起始号
- - **count** —— 一个输入值：跟踪次数（`uint`）。跟踪次数将以一连串的数字显示
+有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/rpc/ns-txpool)：
 
-## 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
+  - [`txpool_content`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_content) —— 无需任何参数
+  - [`txpool_inspect`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_inspect) —— 无需任何参数
+  - [`txpool_status`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status) —— 无需任何参数
 
-如上所述，要使用这两种功能需要有运行`debug`和`trace`标记的节点。在这个示例中，我们使用的是Moonbase Alpha本地完整节点，RPC HTTP终端为`http://127.0.0.1:9933`。如果您已有运行的节点，也会看到相似的终端日志：
+## Trace模块 {: #trace-module }
+
+有关[`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter) RPC的具体执行操作，请参考[OpenEthereum的Trace模块教程](https://openethereum.github.io/JSONRPC-trace-module)：
+
+ - **fromBlock**(*uint* blockNumber) —— 输入区块编号(`hex`)， 创世区块`earliest` ，或可用最佳区块`latest` （默认）。追踪第一个区块
+ - **toBlock**(*uint* blockNumber) —— 输入区块编号(`hex`)，创世区块`earliest` ，或可用最佳区块`latest` （默认）。追踪最后一个区块
+ - **fromAddress**(*array* addresses) —— 仅过滤这些地址发出的交易。如果输入的为空阵列，将不会进行过滤
+ - **toAddress**(*array* addresses) —— 仅过滤这些地址接收的交易。如果输入的为空阵列，将不会进行过滤
+ - **after**(*uint* offset) —— 默认为`0`。追踪偏移号或起始号
+ - **count**(*uint* numberOfTraces) —— 追踪次数将以一连串的数字显示
+
+您需注意以下一些默认值：
+
+ - `trace_filter`的单个请求允许返回的最大追踪条目数为`500`。超过此限制的请求将返回错误
+ - 请求处理的区块会暂时存储在缓存中`300`秒，之后将被删除
+
+如需更改默认值，您可以在启动追踪节点时添加[附加标识](/node-operators/networks/tracing-node/#additional-flags)。
+
+## 进行测试 {: #try-it-out }
+
+在本示例中，我们使用的是本地Moonbase Alpha全节点，RPC HTTP终端为`http://127.0.0.1:9933`。您也可以运行以下针对Moonbeam开发或Moonriver追踪节点的curl命令。
+
+如果您已有运行的节点，也会看到相似的终端日志：
 
 ![Debug API](/images/builders/tools/debug-trace/debug-trace-1.png)
 
-例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`)：
+### 使用Debug API
+
+例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
 
 ```
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
@@ -67,7 +95,9 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 ![Trace Debug Node Running](/images/builders/tools/debug-trace/debug-trace-2.png)
 
-调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条跟踪结果）：
+### 使用追踪模块
+
+调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条追踪结果）：
 
 ```
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
@@ -78,6 +108,23 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
   }'
 ```
 
-节点将返回过滤后的跟踪信息结果（因篇幅过长，此处返回内容有所删减）。
+节点将返回过滤后的追踪信息结果（因篇幅过长，此处返回内容有所删减）。
 
 ![Trace Filter Node Running](/images/builders/tools/debug-trace/debug-trace-3.png)
+
+### 使用Txpool API
+
+由于目前支持的txpool方法都不需要参数，因此您可以通过更改任何txpool方法以适配以下curl命令：
+
+```
+curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
+  '{
+    "jsonrpc":"2.0",
+    "id":1,
+    "method":"txpool_status", "params":[]
+  }'
+```
+
+在本示例中，`txpool_status`方法将返回当前待定或排队的交易数。
+
+![Txpool Request and Response](/images/builders/tools/debug-trace/debug-trace-4.png)
