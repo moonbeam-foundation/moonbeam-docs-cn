@@ -195,7 +195,6 @@ Moonbeam拥有多种不同的部署，包含Moonbase Alpha测试网，Kusama上�
 !!! 注意事项
     您可使用`--promethues-port XXXX`标记（将`XXXX`替换成真实的接口序号）指定个性化Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
-以上命令将激活所有已开放且基本运行所需的端口，包括P2P、RPC和Prometheus (telemetry) 端口。该命令也可与Gantree Node Watchdog telemetry兼容使用。如果您要开放特定端口，请激活以下Docker运行命令。但这样做会阻止Gantree Node Watchdog (telemetry) 容器获取moonbeam容器的数据。因此，除非您懂得如何进行[Docker连接](https://docs.docker.com/network/)，否则在运行收集人时请不要采用这种操作方式。
 
 ```
 docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} #rest of code goes here
@@ -510,14 +509,6 @@ sudo rm -rf {{ networks.moonbase.node_directory }}/*
 ```
 
 最后，重复前述步骤安装最新版本，请确保您使用的是最新标签。完成后即可运行全新节点，使用全新数据目录。
-
-## Telemetry {: #telemetry } 
-
-请按照[本教程](/node-operators/networks/telemetry/)激活Moonbase Alpha或是Moonriver节点telemetry服务器。
-
-运行telemetry对全节点而言并不是必要的，但对收集人而言是必要的。
-
-您可访问最新的[Moonbase Alpha telemetry](https://telemetry.polkadot.io/#list/Moonbase%20Alpha)和[Moonriver telmetry](https://telemetry.polkadot.io/#list/Moonriver)数据。
 
 ## 日志与故障检测 {: #logs-and-troubleshooting } 
 
