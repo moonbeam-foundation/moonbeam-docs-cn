@@ -30,7 +30,6 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 从技术角度来看，收集人必须满足以下技术要求：
 
  - 必须运行带有验证选项的全节点。可根据[启动全节点教程](/node-operators/networks/full-node/)选择收集人的特定代码段
- - 启动全节点的telemetry服务器。具体操作步骤请见[telemetry教程](/node-operators/networks/telemetry/)
 
 ## 账户与质押要求 {: #accounts-and-staking-requirements } 
 
