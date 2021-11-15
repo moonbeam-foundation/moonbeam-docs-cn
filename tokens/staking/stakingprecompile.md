@@ -19,9 +19,12 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 接口包含以下的函数：
 
- - **is_nominator**(*address* collator) —— 检查指定地址当前是否为质押提名人的只读函数
+ - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押提名人的只读函数
  - **is_candidate**(*address* collator) —— 检查指定地址当前是否为收集人候选者的只读函数
  - **min_nomination**() —— 获得最小提名数量的只读函数
+ - **candidate_count**() - 获得当前收集人数量的只读函数
+ - **collator_nomination_count**(*address* collator) - 获得指定收集人提名数量的只读函数
+ - **nominator_nomination_count**(*address* nominator) - 获得指定提名人提名数量的只读函数
  - **join_candidates**(*unit256* amount) —— 允许账户加入拥有指定保证金金额的候选收集人集
  - **leave_candidates**() —— 立即从候选人池中移除账户防止其他人将其选为收集人，并在BondDuration轮次结束后触发解绑
  - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集
@@ -72,6 +75,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 2. 提供收集人的地址，如`{{ networks.moonbase.staking.collators.address1 }}`
 3. 提供在WEI中提名的数量。最低提名的token数量为`{{networks.moonbase.staking.min_nom_stake}}` ，所以WEI中最低的数量是`5000000000000000000`
 4. 点击“transact”并在MetaMask确认交易
+5. The Parachain Staking precompile will appear in the list of "Deployed Contracts"
 
 ![Nominate a Collator](/images/tokens/staking/precompiles/precompile-4.png)
 
