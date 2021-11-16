@@ -1,15 +1,15 @@
-Moonriver的RPC和WSS端点目前由PureStake提供，仅为开发环境应同使用，而不为生产环境应用使用。以下为其他端点服务供应者:
+### API供应者 {: #api-provider } 
 
-- [OnFinality](https://onfinality.io/)
+Moonriver支持以下API供应者: 
+
+- [PureStake](/builders/get-started/api-providers#purestake-development-endpoints) - 仅供开发使用
+- [Bware Labs](https://bwarelabs.com/)
 - [Elara](https://elara.patract.io/)
+- [OnFinality](https://onfinality.io/)
 
-### HTTPS DNS {: #https-dns } 
+更多相关信息请查看[API供应者](/builders/get-started/api-providers)文档。
 
-如果您想使用HTTPS连接至Moonriver， 您只需将您的provider（提供者）导至以下的RPC DNS：
-
-```
-https://rpc.moonriver.moonbeam.network
-```
+### 快速开始 {: #quick-start }  
 
 如果使用的是web3.js库，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonriver（同时支持HTTP和WS）：
 
@@ -36,14 +36,6 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 ```
 
 任何以太坊钱包都应当能够生成可以使用Moonbeam的地址（例如：[MetaMask](https://metamask.io/)）。
-
-### WSS DNS {: #wss-dns } 
-
-如果想使用WebSocket连接，你可以使用以下的DNS：
-
-```
-wss://wss.moonriver.moonbeam.network
-```
 
 ### Chain ID {: #chain-id } 
 

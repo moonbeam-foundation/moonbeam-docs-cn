@@ -3,11 +3,9 @@ title: Moonbase Alpha
 description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）生态的首选入口。通过此教程学习如何连接至Moonbase Alpha测试网。
 ---
 
-# 连接到Moonbeam测试网（Moonbase Alpha）
+# Moonbeam测试网快速上手（Moonbase Alpha）
 
-## 概览 {: #introduction }
-
-Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为WSS。
+## 连接到Moonbase Alpha {: #connect-to-moonbase-alpha } 
 
 --8<-- 'text/testnet/connect.md'
 
@@ -18,6 +16,9 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
  - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)
  - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha)
  - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
+
+ 更多相关信息请参考[区块浏览器](/builders/tools/explorers)文档。
+
 
 ## 连接MetaMask
 
@@ -32,7 +33,7 @@ Moonbase Alpha有两个端点可供用户连接：一个为HTTPS，另一个为W
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)指南。
+如果您还没有安装MetaMask，并想查看相关指南，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)指南。
 
 您也可以使用以下网络信息连接MetaMask：
 
