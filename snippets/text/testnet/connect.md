@@ -1,10 +1,15 @@
-### HTTPS DNS {: #https-dns } 
+### API供应者 {: #api-provider } 
 
-如果您想使用HTTPS连接至Moonbase Alpha， 您只需将您的provider（提供者）导至以下的RPC DNS：
+Moonbase Alpha支持以下API供应者: 
 
-```
-https://rpc.testnet.moonbeam.network
-```
+- [PureStake](/builders/get-started/api-providers#purestake-development-endpoints) - 仅供开发使用
+- [Bware Labs](https://bwarelabs.com/)
+- [Elara](https://elara.patract.io/)
+- [OnFinality](https://onfinality.io/)
+
+更多相关信息请查看[API供应者](/builders/get-started/api-providers)文档。
+
+### 快速开始 {: #quick-start }  
 
 如果使用的是web3.js库，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonbase Alpha（同时支持HTTP和WS）：
 
@@ -31,14 +36,6 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 ```
 
 任何以太坊钱包都应当能够生成可以使用Moonbeam的地址（例如：[MetaMask](https://metamask.io/)）。
-
-### WSS DNS {: #wss-dns } 
-
-如果想使用WebSocket连接，您可以使用以下的DNS：
-
-```
-wss://wss.testnet.moonbeam.network
-```
 
 ### Chain ID {: #chain-id } 
 

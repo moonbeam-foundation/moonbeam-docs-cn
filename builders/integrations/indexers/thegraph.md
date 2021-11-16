@@ -26,9 +26,32 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
  - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
  - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币
 
+## 快速开始 {: #quick-start } 
+
+如果您已经熟悉使用The Graph，并且想很快开始在Moonbeam上面开发，您可以在Subgraph manifest (`subgraph.yaml`)中配置以下网络：
+
+=== "Moonbeam开发节点"
+    ```
+    dataSources:
+      network: mbase
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    dataSources:
+      network: mbase
+    ```
+
+=== "Moonriver"
+    ```
+    dataSources:
+      network: moonriver
+    ```
+
+
 ## 彩票合约 {: #the-lottery-contract } 
 
-我们将使用一个简单的彩票合约作为示例。您可以通过[此链接](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol)找到其Solidity文档。
+我们将使用一个简单的彩票合约作为示例。您可以通过[MoonLotto Repo](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol)找到其Solidity文档。
 
 合约玩家可以通过这个合约为自己购买彩票，也可以送给另外一位用户。一个小时后，如果参与者达到了十位，并且下一位玩家进入后，就会触发某一函数决定中奖者。所有储存在合约中的资金将发送到中奖者的地址上，然后游戏进入下一轮。
 
