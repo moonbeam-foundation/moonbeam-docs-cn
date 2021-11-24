@@ -77,7 +77,7 @@ cd moonbeam
 第二步，执行以下命令安装Substrate及其必备组件（包含Rust）：
 
 ```
---8<-- 'code/setting-up-node/substrate.md'
+--8<-- 'code/setting-up-node/installrust.md'
 ```
 
 完成上述步骤后，使用以下指令运行独立节点：
@@ -89,7 +89,7 @@ cd moonbeam
 如果您的设备出现”a cargo not found error“，您可手动将Rust加入您的系统路径（或是重启系统）：
 
 ```
---8<-- 'code/setting-up-node/cargoerror.md'
+--8<-- 'code/setting-up-node/updatepath.md'
 ```
 
 !!! 注意事项

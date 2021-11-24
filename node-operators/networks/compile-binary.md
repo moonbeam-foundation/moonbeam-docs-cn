@@ -33,7 +33,7 @@ git checkout tags/$(git tag | tail -1)
 下一步，执行以下命令安装Substrate和所有必要的操作环境，包括Rust：
 
 ```
---8<-- 'code/setting-up-node/substrate.md'
+--8<-- 'code/setting-up-node/installrust.md'
 ```
 
 最后，创建平行链二进制文档：
@@ -47,7 +47,7 @@ cargo build --release
 如果终端显示*cargo not found error*，请在系统路径中手动加入Rust，或重启系统：
 
 ```
---8<-- 'code/setting-up-node/cargoerror.md'
+--8<-- 'code/setting-up-node/updatepath.md'
 ```
 
 现在您已可以使用Moonbeam二进制文档[运行Systemd服务](/node-operators/networks/full-node/#running-the-systemd-service)。
