@@ -17,11 +17,11 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
 
 本教程将引导您如何在Moonbase Alpha测试网上创建多重签名Safe钱包。您还将学习如何将DEV和ERC20 Token发送至Safe钱包或从Safe钱包发送，以及如何使用Safe钱包与智能合约进行交互。本教程也适用于Moonriver。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites }
 
 首先，您需要准备几个资金充裕的[MetaMask账户](#metamask-accounts)和一些准备发送至Safe钱包的[ERC20 Token](#erc20-tokens)，以及一个[已部署的智能合约](#deployed-smart-contract)进行交互。
 
-### MetaMask账户
+### MetaMask账户 {: #metamask-accounts }
 
 在本教程中，您将在Moonbase Alpha上创建一个Safe钱包与其交互并管理您的资金。要连接至Safe钱包，您需要执行以下操作：
 
@@ -36,11 +36,11 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
  - **Bob** — 0x3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0
  - **Charlie** — 0x798d4Ba9baf0064Ec19eB4F0a1a45785ae9D6DFc
 
-### ERC20 Tokens
+### ERC20 Tokens {: #erc20-tokens }
 
 本教程的后半部分将引导您如何在Safe钱包发送和接收ERC20 Token。因此，您需要部署一些ERC20 Token并将其添加至您的MetaMask帐户中。您可以查看[使用Remix部署至Moonbeam](https://docs.moonbeam.network/builders/interact/remix/)操作教程，特别是[在Moonbeam上使用Remix部署合约](https: //docs.moonbeam.network/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)和[通过MetaMask与基于Moonbeam的ERC20进行交互](https://docs.moonbeam.network/ builders/interact/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask)两部分将向您展示如何部署ERC20  Token并将其导入MetaMask。
 
-### 已部署的智能合约
+### 已部署的智能合约 {: #deployed-smart-contract }
 
 本教程的最后部分将引导您如何使用Safe钱包与智能合约进行交互。所以您将需要一个已部署的智能合约与其交互。详细的操作指南可参考[在Moonbeam上使用Remix部署合约](/builders/tools/remix/#deploying-a-contract-to-moonbeam)。
 
@@ -62,11 +62,11 @@ contract SetText {
 
 您将需要合约地址和ABI，请确保您已将它们复制或保存到其他地方，以备不时之需。
 
-## 创建一个Safe钱包
+## 创建一个Safe钱包 {: #create-a-safe }
 
 要创建一个Safe钱包，导航至[Moonbeam Safe](https://multisig.moonbeam.network/moonbase)。本教程将引导您在Moonbase Alpha上创建一个Safe钱包，您也可以修改配置[在Moonriver上创建一个Safe钱包](https://multisig.moonbeam.network/moonriver)。您可点击页面右上角的网络下拉菜单切换网络。
 
-### 连接MetaMask
+### 连接MetaMask {: #connect-metamask }
 
 进入[Moonbase Alpha](https://multisig.moonbeam.network/moonbase/)页面后，开始创建Safe钱包之前先连接您的钱包：
 
@@ -90,7 +90,7 @@ contract SetText {
 
 现在，您可以在右上方确认您的MetaMask账户已连接至Moonbase Alpha网络。如果您使用的是开发账户，您应该可以看到Alice的账户地址。如果不是，请再次确认您的MetaMask并切换到Alice账户。
 
-### 创建新的Safe钱包
+### 创建新的Safe钱包  {: #create-new-safe }
 
 点击**Create new Safe**，在Moonbase Alpha上创建一个新的Safe钱包。页面将出现一个向导，引导您完成创建新的Safe钱包。完成这些步骤并创建新的Safe钱包，即表示您同意使用条款和隐私政策。因此，在开始之前，请仔细查看这些内容。
 
@@ -136,7 +136,7 @@ contract SetText {
 
 ![Safe Created Successfully](/images/builders/tools/multisig-safe/safe-7.png)
 
-## 配置Safe钱包
+## 配置Safe钱包  {: #configure-safe }
 
 您可以随时管理您的Safe钱包并在创建时更改一些参数设置。为此，您可以点击左侧菜单上的**Settings**选项。
 
@@ -149,9 +149,9 @@ contract SetText {
  - **Policies** — 允许您发起一个链上提案，更改多重签名阈值以执行交易
  - **Advanced** — 允许您从Safe钱包查看其他参数，如自定义交易nonce、模块和事物卫士（Transaction Guard）
 
-## 接收和发送Token
+## 接收和发送Token  {: #receive-and-send-tokens }
 
-### 接收Token
+### 接收Token  {: #receive-tokens }
 
 现在，您已经创建了您的Safe钱包，可以开始进行交互。首先，通过发送一些DEV Token来加载Safe。您可以从任何拥有DEV Token的账户发送至Safe钱包。在本示例中，您可以使用Alice账户。将鼠标移至资产列表的**DEV**上，显示**Send**和**Receive**按钮后，点击**Receive**。
 
@@ -177,7 +177,7 @@ contract SetText {
 
 交易已经发送，您的DEV Token余额也会更新在Safe钱包。
 
-### 发送Token
+### 发送Token  {: #send-tokens }
 
 现在，您的Safe钱包已经有资金，您可以将资产从Safe钱包发送至另一个账户。在本示例中，您可以发送1个DEV Token至Bob的地址。将鼠标移至资产列表的**DEV**上，点击**Send**。
 
@@ -203,7 +203,7 @@ contract SetText {
 
 ![Transaction Needs Confirmations](/images/builders/tools/multisig-safe/safe-15.png)
 
-### 交易确认
+### 交易确认  {: #transaction-confirmation }
 
 对于多重签名钱包Safe的所有用例，确认（或拒绝）交易提案的过程是相似的。其中一位所有者发起执行操作的提案。其他所有者可以批准或拒绝该提案。一旦达到签名阈值，任何所有者都可以在批准的情况下执行交易提案，如果拒绝则交易提案不通过。
 
@@ -228,9 +228,9 @@ contract SetText {
 
 这样就意味着您已经成功在Safe钱包接收和发送DEV Token了！
 
-## 接收和发送ERC20 Token
+## 接收和发送ERC20 Token  {: #receive-and-send-erc20-tokens }
 
-### 接收ERC20 Token
+### 接收ERC20 Token  {: #receive-erc20-tokens }
 
 接下来就是在Safe钱包接收和发送ERC20 Token。您需要确保您的MetaMask已经有充足的**MYTOK** ERC20 Token。如果还没有，请返回查看先决条件，参考[ERC20 Tokens](#erc20-tokens)部分。
 
@@ -254,7 +254,7 @@ contract SetText {
 
 如果您返回至Safe钱包，在**Assets**列表中您应该可以看到**MyToken**的余额已经显示为1,000 MYTOK。**MyToken**可能需要几分钟才能出现，您无需执行任何添加资产的操作，它会自动出现。
 
-### 发送ERC20 Token
+### 发送ERC20 Token  {: #send-erc20-tokens }
 
 现在，您的Safe钱包已经有MYTOK，您可以将一些MYTOK从Safe钱包发送至另一个账户。在本示例中，您可以发送10个MYTOK至Charlie的账户。
 
@@ -294,7 +294,7 @@ contract SetText {
 
 这样就意味着您已经成功在Safe钱包接收和发送ERC20 Token了！
 
-## 与智能合约交互
+## 与智能合约交互  {: #interact-with-a-smart-contract }
 
 在这一部分，您将使用Safe钱包与智能合约交互。您应该已经使用Remix部署了`SetText.sol`合约。如果还没有，请返回查看先决条件，参考[已部署的智能合约](#deployed-smart-contract)部分。
 
