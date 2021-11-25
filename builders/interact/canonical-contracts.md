@@ -7,7 +7,7 @@ description: 本文概述了Moonriver和Moonbase Alpha上可用的标准合约�
 
 ![Canonical contracts banner](/images/builders/interact/canonical-contracts/canonical-contracts-banner.png)
 
-## 公用基础设施合约
+## 公用基础设施合约 {: #common-goods-contracts}
 
 以下为已创建的合约地址：
 
@@ -31,7 +31,7 @@ description: 本文概述了Moonriver和Moonbase Alpha上可用的标准合约�
 
     _*[UniswapV2 Demo Repo](https://github.com/PureStake/moonbeam-uniswap/tree/main/uniswap-contracts-moonbeam)部署_
 
-## 预编译合约
+## 预编译合约 {: #precompiled-contracts }
 
 Moonriver上包含一组按地址和基于源网络分类的预编译合约。如果将预编译地址转换为十进制格式，并按数值进行分类，分类将如下所示：
 
@@ -39,7 +39,7 @@ Moonriver上包含一组按地址和基于源网络分类的预编译合约。�
 - **1024-2047** - [不在以太坊中且不特定于Moonbeam](#non-moonbeam-specific-nor-ethereum-precomiles)的预编译
 - **2048-4095** - [Moonbeam特定预编译](#moonbeam-specific-precompiles)
 
-### 以太坊主网预编译
+### 以太坊主网预编译 {: #ethereum-mainnet-precompiles }
 
 |                             合约                             |                    地址                    |
 | :----------------------------------------------------------: | :----------------------------------------: |
@@ -52,7 +52,7 @@ Moonriver上包含一组按地址和基于源网络分类的预编译合约。�
 | [Bn128Mul](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/struct.Bn128Mul.html) | 0x0000000000000000000000000000000000000007 |
 | [Bn128Pairing](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/struct.Bn128Pairing.html) | 0x0000000000000000000000000000000000000008 |
 
-### 非Moonbeam特定或以太坊预编译
+### 非Moonbeam特定或以太坊预编译 {: #non-moonbeam-specific-nor-ethereum-precompiles }
 
 |                             合约                             |                    地址                    |
 | :----------------------------------------------------------: | :----------------------------------------: |
@@ -60,7 +60,7 @@ Moonriver上包含一组按地址和基于源网络分类的预编译合约。�
 | [Dispatch](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_dispatch/struct.Dispatch.html) | 0x0000000000000000000000000000000000000401 |
 | [ECRecoverPublicKey](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_simple/struct.ECRecoverPublicKey.html) | 0x0000000000000000000000000000000000000402 |
 
-### Moonbeam特定预编译
+### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 
 |                             合约                             |                    地址                    |
 | :----------------------------------------------------------: | :----------------------------------------: |
