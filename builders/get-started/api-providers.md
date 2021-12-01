@@ -5,7 +5,7 @@ description: 使用支持的API提供者通过JSON RPC和WSS端口连接至基�
 
 # API提供者
 
-![API Providers banner](/images/builders/get-started/api-providers/api-providers-banner.png)
+![API Providers banner](/images/builders/get-started/endpoints/endpoints-banner.png)
 
 ## PureStake开发端口
 
