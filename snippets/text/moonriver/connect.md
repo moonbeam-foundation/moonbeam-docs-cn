@@ -4,7 +4,6 @@ Moonriver支持以下API供应者:
 
 - [PureStake](/builders/get-started/api-providers#purestake-development-endpoints) - 仅供开发使用
 - [Bware Labs](https://bwarelabs.com/)
-- [Elara](https://elara.patract.io/)
 - [OnFinality](https://onfinality.io/)
 
 更多相关信息请查看[API供应者](/builders/get-started/api-providers)文档。
