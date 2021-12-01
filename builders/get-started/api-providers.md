@@ -100,7 +100,7 @@ Bware Labs平台的用户只需在用户友好型界面中通过简单的几个�
 
 4. 点击**Create Endpoint**
 
-![Bware Labs](/images/builders/get-started/api-providers/api-providers-1.png)
+![Bware Labs](/images/builders/get-started/endpoints/endpoints-1.png)
 
 #### OnFinality
 
@@ -114,4 +114,4 @@ OnFinality为客户提供基于API密钥的免费端口，提供比免费公共�
 
 3. 您的自定义API端口将会自动生成
 
-![OnFinality](/images/builders/get-started/api-providers/api-providers-2.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-2.png)
