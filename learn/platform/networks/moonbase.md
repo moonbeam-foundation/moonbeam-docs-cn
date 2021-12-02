@@ -125,9 +125,3 @@ Moonbase Alpha具有以下配置：
 随着Moonbase Alpha v6的版本发布，每一个区块的gas使用上限被设置为{{ networks.moonbase.gas_block }}，每次交易的gas使用上限被设置为{{ networks.moonbase.gas_tx }}。
 
 用户目前仅能使用Moonbeam平行链。我们会在未来的网络中加入中继链，向用户提供测试转移代币的功能。
-
-## 链的清理 {: #chain-purge } 
-
-本网络目前仍在开发之中，为了重置区块链至其原本的状态，因此会偶尔会清理掉部分的链。这是为了主要测试网的升级或维护。我们会在清理链的前24小时内通过[Discord频道](https://discord.gg/PfpUATX)来发布消息，敬请关注。
-
-请注意，PureStake不会迁移链的状态。因此当正在执行链的清理的时候，所有储存在区块链上的资料将会遗失。然而，由于目前并没有gas的限制，用户可以轻松的找回清理前的状态。

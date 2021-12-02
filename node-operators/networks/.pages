@@ -1,9 +1,7 @@
 title: 网络
-hide: false
 nav:
   - index.md
-  - full-node.md
-  - compile-binary.md
+  - run-a-node
   - tracing-node.md
   - collator.md
 
