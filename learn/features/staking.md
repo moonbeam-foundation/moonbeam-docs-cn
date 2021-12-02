@@ -35,7 +35,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver)
-    - **管理质押相关操作** — 访问[Moonbeam Network dApp](https://apps.moonbeam.network/moonriver)
+    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonriver)
 
 === "Moonbase Alpha" 
 
@@ -51,7 +51,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **收集人信息** — 收集人列表：[Moonbase Alpha Subscan](https://moonbase.subscan.io/validator). 最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha)
-    - **管理质押相关操作** — 访问[Moonbeam Network dApp](https://apps.moonbeam.network/moonbase-alpha)
+    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonbase-alpha)
 
 想要获取任何质押参数的当前值，请查看[如何质押您的Token]( /tokens/staking/stake/)教程中的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters)部分。
 
@@ -81,4 +81,4 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
 
 ## 开始操作 {: #try-it-out } 
 
-现在您可以开始通过[Moonbeam Network dApp](https://apps.moonbeam.network/moonriver)在Moonriver和Moonbase Alpha上使用质押功能。您可参考[此教程](https://moonbeam.network/tutorial/stake-movr/)或观看[此视频教程](https://youtu.be/maIfN2QkPpc)学习如何质押。
+现在您可以开始通过[Moonbeam Network DApp](https://apps.moonbeam.network/moonriver)在Moonriver和Moonbase Alpha上使用质押功能。您可参考[此教程](https://moonbeam.network/tutorial/stake-movr/)或观看[此视频教程](https://youtu.be/maIfN2QkPpc)学习如何质押。

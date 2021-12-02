@@ -9,7 +9,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam提供的�
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在[以太坊API JSON-RPC](https://eth.wiki/json-rpc/API#json-rpc-methods)支持方面与以太坊之间的重要差异。
 
-Moonbeam团队与[Parity](https://www.parity.io/)密切合作开发[Frontier](https://github.com/paritytech/frontier)。Frontier是基于Substrate的以太坊兼容层，它允许开发人员运行未经修改的以太坊dApp。
+Moonbeam团队与[Parity](https://www.parity.io/)密切合作开发[Frontier](https://github.com/paritytech/frontier)。Frontier是基于Substrate的以太坊兼容层，它允许开发人员运行未经修改的以太坊DApp。
 
 尽管如此，并非所有的以太坊JSON RPC方法都被支持，一些被支持的方法返回默认值（与 PoW 相关的那些）。本教程将概述关于以太坊RPC支持的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 

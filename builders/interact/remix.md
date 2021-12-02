@@ -91,7 +91,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 成功部署合约之后，您便可通过Remix与智能合约进行交互。
 
-将左侧页面往下滑，找到“Deployed Contracts”，点击name，symbol，以及totalSupply，将会分别出现“MyToken”，“MYTOK”，以及“8000000000000000000000000“。如果您复制合约地址并将它粘贴在balanceOf的空格中，您可以看到用户ERC20地址上的账户全部余额，请参考下图。
+将左侧页面往下滑，找到“Deployed Contracts”，点击name，symbol，以及totalSupply，将会分别出现“MyToken”，“MYTOK”，以及“8000000000000000000000000“。如果您复制合约地址并将它粘贴在balanceOf的空格中，您可以看到用户ERC-20地址上的账户全部余额，请参考下图。
 
 ![Interact with the contract from Remix](/images/builders/interact/remix/using-remix-11.png)
 

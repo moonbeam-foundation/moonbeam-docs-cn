@@ -8,7 +8,7 @@ description: 目前在Moonbeam测试网上支持导航Substrate和以太坊层�
 
 ## 概览 {: #introduction } 
 
-区块浏览器就如同区块链的搜寻引擎，可以让用户搜索像是余额、合约和交易等等的资讯。进阶版的区块浏览器还提供索引编辑的功能，让用户能够在网络中直接提供像是ERC20代币一样完整的一套信息，甚至还有可能提供API服务，可直接通过外部设备连接。
+区块浏览器就如同区块链的搜寻引擎，可以让用户搜索像是余额、合约和交易等等的资讯。进阶版的区块浏览器还提供索引编辑的功能，让用户能够在网络中直接提供像是ERC-20代币一样完整的一套信息，甚至还有可能提供API服务，可直接通过外部设备连接。
 
 Moonbeam现在提供两种不同的浏览器：一个专为查询以太坊API，另一个为查询Substrate API。
 
@@ -38,7 +38,7 @@ Blockscout提供对用户友好的界面，让用户能够检查并确认包含�
  - 开源开发，意味着所有的代码都对社群开源或是改进。您可以在[这里](https://github.com/blockscout/blockscout)找到代码。
  - 实时交易追踪
  - 智能合约互动
- - 支持ERC和ERC721代币，在友好型界面中列出所有能使用的代币合约
+ - 支持ERC-21和ERC-721代币，在友好型界面中列出所有能使用的代币合约
  - 带有GraphQL的功能齐全的API，用户可以通过网络界面直接测试API调用。
 
 您可以在[这里](https://moonbase-blockscout.testnet.moonbeam.network/)找到针对Moonbase Alpha测试网运行的Blockscout instance。
