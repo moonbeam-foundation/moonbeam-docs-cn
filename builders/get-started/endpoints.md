@@ -47,22 +47,6 @@ description: 使用支持的API提供者连接至公共端点或创建自定义J
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-1.png)
 
-### Elara
-
-[Elara](https://elara.patract.io/)为Moonriver开发者提供免费、即时和可扩展的区块链API访问服务。
-
-首先，导向至[Elara](https://elara.patract.io/)，使用您的GitHub证书创建一个账户。登录后，在**Dashboard**展开**Kusama Eco-chains**菜单，选择**Moonriver**。随后，您将通过创建新的项目生成一个API端点。为此，您需要执行以下操作：
-
-1. 点击**Create New Project**
-
-2. 输入您的项目名称
-
-3. 选择网络
-
-4. 点击**Create**创建项目
-
-![Elara](/images/builders/get-started/endpoints/endpoints-2.png)
-
 ### OnFinality
 
 [OnFinality](https://onfinality.io/)为客户提供基于API密钥的免费端点，提供比免费公共端点更高的速率限制和性能。您还会收到有关您的应用程序使用情况的深入分析。
@@ -75,4 +59,4 @@ description: 使用支持的API提供者连接至公共端点或创建自定义J
 
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-3.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-2.png)
