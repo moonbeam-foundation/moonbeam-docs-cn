@@ -31,6 +31,8 @@ Graph节点负责从区块链上获取事件消息，并精准更新数据存储
 
 在教程中，我们将用`--ethapi=trace`标记Graph节点，对应Moonbase Alpha完整节点运行。
 
+如果您想运行开启`tracing`的全节点，请参考[运行追踪节点](/node-operators/networks/tracing-node)指南。
+
 ## 运行Graph节点 {: #running-a-graph-node } 
 
 首先，克隆[Graph节点代码库](https://github.com/graphprotocol/graph-node/)：

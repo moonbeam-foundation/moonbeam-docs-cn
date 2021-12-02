@@ -5,8 +5,6 @@ description: 学习如何通过RPC和WSS端点连接到Moonriver（Moonbeam在Ku
 
 # Moonriver快速上手
 
-## 连接Moonriver {: #connect-to-moonriver } 
-
 --8<-- 'text/moonriver/connect.md'
 
 ## 区块链浏览器 {: #block-explorers }

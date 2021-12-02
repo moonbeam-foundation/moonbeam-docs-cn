@@ -1,13 +1,12 @@
-### API供应者 {: #api-provider } 
+## 连接Moonbase Alpha {: #connect-to-moonbase-alpha } 
 
-Moonbase Alpha支持以下API供应者: 
+### 网络端点 {: #network-endpoints } 
 
-- [PureStake](/builders/get-started/api-providers#purestake-development-endpoints) - 仅供开发使用
-- [Bware Labs](https://bwarelabs.com/)
-- [Elara](https://elara.patract.io/)
-- [OnFinality](https://onfinality.io/)
+Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。
 
-更多相关信息请查看[API供应者](/builders/get-started/api-providers)文档。
+如果您需要生产环境可以使用的端点，请参考[网络端点](/builders/get-started/endpoints/#endpoint-providers) 指南。如果仅为开发环境使用，您可以使用以下的公用端点：
+
+--8<-- 'code/endpoints/moonbase.md'
 
 ### 快速开始 {: #quick-start }  
 
@@ -16,7 +15,7 @@ Moonbase Alpha支持以下API供应者:
 ```js
 const Web3 = require('web3'); //Load Web3 library
 .
-.
+.   
 .
 //Create local Web3 instance - set Moonbase Alpha as provider
 const web3 = new Web3('https://rpc.testnet.moonbeam.network'); 

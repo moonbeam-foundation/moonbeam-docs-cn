@@ -1,121 +1,164 @@
 ---
 title: 使用Ledger
-description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，使用Ledger硬件钱包在Moonbeam内签署交易
+description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性，使用Ledger硬件钱包在Moonbeam内签署交易。
 ---
 
-# Ledger硬件钱包
+# 使用Ledger硬件钱包与Moonbeam交互
 
-![Intro diagram](/images/tokens/connect/ledger/ledger-banner.png)
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/ct4h9MN41j4' frameborder='0' allowfullscreen></iframe></div>
+<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style>
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
-硬件钱包可提供一个相对安全的加密资产存储方式，因其密钥（用于签署交易）是以离线的方式储存。截至本教程撰写时，Ledger可提供两种硬件钱包的解决方案：Ledger Nano S和Ledger Nano X。
+硬件钱包可提供一个相对安全的加密资产存储方式，因其私钥（用于签署交易）是以离线的方式储存。截至本教程撰写时，Ledger可提供两种硬件钱包的解决方案：Ledger Nano S和Ledger Nano X。
 
-因为Moonbeam完全兼容以太坊的特性，且Ledger现在支持不同Chain ID网络的签署，您能够使用Ledger装置在Moonbeam签署交易！
+随着Moonriver应用在Ledger的上线，您现在无需与链上配置互动即可使用您的Ledger设备签署交易。如果您希望在基于Moonbeam的网络上使用您的Ledger设备，您可以在Ledger Live上的以太坊应用设置您的Chain ID。
 
-本教程将会带您了解如何在Moonbase Alpha上开始使用您的Ledger硬件钱包。本教程仅包括使用Ledger Nano X设备的执行步骤，但这也适用于Ledger Nano S。同样的步骤也可以在Moonbeam生态系统的其他网络实行。
+本教程将会带您了解如何在Moonbeam上开始使用您的Ledger硬件钱包。本教程仅包括使用Ledger Nano X设备的执行步骤，但这也同样适用于Ledger Nano S。
 
-## 查看先决条件 {: #checking-prerequisites } 
+## 查看先决条件 {: #checking-prerequisites }
 
 在您开始之前，请将您的[Ledger Live](https://www.ledger.com/ledger-live/download)更新至最新的可用版本。与此同时，请确认您的Ledger硬件钱包运行的是最新的固件。Ledger的技术支持网站有提供如何提升[Ledger Nano S](https://support.ledger.com/hc/en-us/articles/360002731113-Update-Ledger-Nano-S-firmware)和[Ledger Nano X](https://support.ledger.com/hc/en-us/articles/360013349800-Update-Ledger-Nano-X-firmware)设备固件的教程。
 
-当您确认您所运行的是最新版本的固件，请确保您同时运行的是最新的以太坊应用。Ledger的技术支持网站同样提供了[如何安装以太坊应用的教程](https://support.ledger.com/hc/en-us/articles/360009576554-Ethereum-ETH-)。
-
 截至本教程撰写时，使用的版本如下：
 
- - Ledger Live 2.29
- - Ledger Nano S firmware v2.0.0
- - Ledger Nano X firmware v1.3.0
- - Ethereum app v1.8.5
+ - [Ledger Live 2.35.1](https://support.ledger.com/hc/en-us/articles/360020773319-What-s-new-in-Ledger-Live-?docs=true)
+ - [Ledger Nano S firmware v2.0.0](https://support.ledger.com/hc/en-us/articles/360010446000-Ledger-Nano-S-firmware-release-notes?docs=true)
+ - [Ledger Nano X firmware v2.0.1](https://support.ledger.com/hc/en-us/articles/360014980580-Ledger-Nano-X-firmware-release-notes?docs=true)
 
-除此之外，您还需要MetaMask作为您Ledger设备与Moonbase Alpha之间的媒介，请确保您的[MetaMask已成功连接至Moonbase Alpha](/integrations/wallets/metamask/)。谷歌浏览器的用户（v91）需要额外的步骤，具体可以参考[此教程](#谷歌浏览器)；火狐的用户则会有较为直观和简易的使用体验。
+除此之外，您还需要MetaMask作为您Ledger设备与Moonbeam之间的媒介，请确保您的MetaMask已经[连接至Moonbeam](/tokens/connect/metamask/)。
 
-请注意，您的Ledger设备会在您连接至MetaMask的网络内签署交易。
+在[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/)，将您的Ledger设备连接至Chrome变得相对简单，您只需要安装最新版本的MetaMask应用即可。
 
-## 将您的Ledger账户导入MetaMask {: #importing-your-ledger-account-to-metamask } 
+## 安装Ledger Live应用 {: install-the-ledger-live-app }
 
-首先，您需要将您的Ledger设备连接至电脑并将其解锁，打开以太坊应用。接下来，请跟随以下步骤，将您的Ledger以太坊账户导入MetaMask中：
+如果您希望连接至Moonriver，您可以在Ledger Live的应用目录选取Moonriver应用，但在这之前您需要先安装以太坊应用。因为Moonriver应用依赖于以太坊应用的功能，为确保流程无误，请先安装以太坊应用，再安装Moonriver应用。除此之外，对于其他基于Moonbeam的网络您只需要安装以太坊应用并在其后输入特定的Chain ID。
 
- 1. 点击右上角的logo展开使用菜单
- 2. 选取“连接硬件钱包“
+1. 在菜单栏中选取**Manager**
 
-![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-1.png)
+2. 连接并解锁您的设备（这必须在安装前完成）
+
+3. 在**App catalog**搜寻Ethereum（ETH）并点击**Install**。您的Ledger设备将会显示**Processing**，安装完毕后应用将会出现在您的Ledger设备中。
+
+4. 在**App catalog**中搜寻Moonriver（MOVR）并点击**Install**。同样，您的Ledger设备将会显示**Processing**，并会在安装完毕后显示在您的Ledger设备中。
+
+在Ledger Live应用中，您应能够看到以太坊和Moonriver应用出现在**Manager**页面上的**Apps installed**的标签下。确认已成功安装应用后，您可以关闭Ledger Live页面。
+
+<img src="/images/tokens/connect/ledger/ledger-1.png" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+
+## 将您的Ledger账户导入MetaMask {: #import-your-ledger-account-to-metamask }
+
+当您已成功从Ledger Live安装了Moonriver和以太坊应用后，请将您的Ledger设备连接至电脑并将其解锁，然后再开启Moonriver应用。如果您使用的是Moonriver以外的基于Moonbeam的网络，您可以直接打开以太坊应用。随后，您可以根据以下步骤将您的Ledger账户导入MetaMask：
+
+ 1. 点击右上角的logo展开菜单栏
+
+  2. 选取**Connect Hardware Wallet**
+
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
 
 进入下个页面后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
- 1. 点选Ledger logo
- 2. 点击“继续”
+ 1. 选取Ledger logo
 
-![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
+  2. 点击**Continue**
 
-如果MetaMask已经成功连接至您的Ledger设备，您将能看到五个以太坊式的账户。相反地，如果您没有看到账户的画面，请在此确认您已经将Ledger Live关闭，Ledger设备已成功连接至电脑并解锁，且已开启以太坊应用。如果您使用的是谷歌浏览器，请查看这些[额外步骤](#谷歌浏览器)。
+![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/ledger-3.png)
 
-在五个以太坊式账户列表中，请跟随以下步骤：
+如果您使用的是Chrome或是基于Chrome的浏览器（如Brace），您将会需要通过WebHID选取您希望连接的Ledger设备：
 
- 1. 选取您想从您Ledger设备导入的账户
- 2. 点击“解锁”
+1. 在弹窗中选取您的Ledger设备
 
-![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/ledger-3.png)
+2. 点击**Connect**
 
-如果您成功将您Ledger的以太坊式账户导入MetaMask，您将能在MetaMask主页看到以下画面：
+![Ledger on Chrome](/images/tokens/connect/ledger/ledger-4.png)
 
-![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/ledger-4.png)
+如果未出现弹窗，您将会需要修改您的MetaMask设定允许其使用WebHID连接。您可以根据以下步骤查看并更新您的MetaMask设定：
 
-您现在已成功从Ledger设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#使用您的Ledger签署交易)。
+1. 展开右上角的菜单栏并进入**Settings**
 
-### 谷歌浏览器 {: #chrome-browser } 
+2. 导向至**Advanced**
 
-在谷歌浏览器的版本91（v91），希望将Ledger设备连接至MetaMask的用户需要运行Ledger Live的最新版本（截至本教程撰写时为v2.29）。
-
-除此之外，在MetaMask内也需要开启支持Ledger Live的功能，您可以使用以下步骤进行操作：
-
- 1. 展开右上角的菜单，点击“设置”
- 2. 点击“高级选项”
- 3. 开启“使用Ledger Live”
-
-随着此功能的开启，MetaMask将会在尝试连接您的Ledger设备时开启Ledger Live。如果您想了解更多，可以查看[此MetaMask博客文章](https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet)。
-
-## 使用您的Ledger签署交易 {: #signing-a-transaction-using-your-ledger } 
-
-如果您已成功[将您的Ledger账户导入MetaMask](#将您的Ledger账户导入MetaMask)，并准备好使用您的Ledger设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
-
-首先，确保您的Ledger账户[有足够的DEV Token](/getting-started/moonbase/faucet/)。接着，点击“发送”按钮。
-
-![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/ledger-5.png)
-
-如同操作一个标准的交易，您要设置接收方的地址，输入您想发送的Token数量，确认交易细节后点击确认。这会在您的Ledger设备开启一个交易签署指示，您可以跟随以下步骤进行操作：
-
- 1. 点击按钮以进入下一个画面。您的Ledger设备将会提醒您检查本次交易
- 2. 检查将要发送的Token数量。请注意，Token对应于MetaMask所连接的网络。**在这里是DEV Token，不是ETH！**检查完毕后，进入下一个画面
- 3. 检查接收方地址后，进入下一个画面
- 4. 检查网络的Chain ID，您可以通过此信息确认MetaMask所连接到的网络。举例而言，Moonbase Alpha的Chain ID是{{ networks.moonbase.chain_id }} (hex: {{ networks.moonbase.hex_chain_id}})，Moonriver是{{ networks.moonriver.chain_id }} (hex: {{ networks.moonriver.hex_chain_id }})，Moonbeam是1284（尚未上线）。检查完毕后，进入下一个页面。
- 5. 检查适用于本次交易的最高费用，由Gas费乘以您在MetaMask设置的Gas限制计算。检查完毕后，进入下一个页面
- 6. 如果您同意所有交易的细节则可以通过本次交易。这将会签署交易并通过MetaMask发送。如果您不同意，则进入下一个页面
- 7. 如果您不同意所有的交易细节，请拒绝。这将会取消交易而MetaMsk会将本次交易标记为失败。
+3. 下滑至**Preferred Ledger Connection Type**并在下拉列表中选取**WebHID**
 
 !!! 注意事项
-    截至本教程撰写时所显示的Token一直是`ETH`。请注意，所使用的Token是对应与MetaMask所连接的网络。
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-6.png)
+​    **Preferred Ledger Connection Type**设置仅能在Chrome或是基于Chrome的浏览器上使用。此设置不会出现在其他浏览器（如Firefox）。
 
-在您通过交易之后，MetaMask会将其发送至网络。当交易确认完成，MetaMask的主画面将会显示“发送”。
+如果MetaMask能成功连接至您的Ledger设备，您将能看到5个Moonbeam/以太坊式账户的列表。如果您并未见到上述画面，请检查Ledger Live是否已经关闭、是否已经将Ledger设备连接至您的电脑并成功解锁，以及是否成功开启Moonriver应用。如果您使用的是其他基于Moonbeam的网络，确保以太坊应用已经在您的Ledger设备上开启。
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-7.png)
+### 导入账户并查看余额 {: #import-accounts-and-view-balances }
 
-就这样！您已经成功在Moonbase Alpha使用您的Ledger硬件钱包签署交易！
+在5个Moonbeam账户的列表中，根据以下步骤进行操作：
 
-## 使用您的Ledger与合约交互 {: #interacting-with-contracts-using-your-ledger } 
+ 1. 选取您希望从您的Ledger设备导入的账户
+
+  2. 点击**Unlock**
+
+![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/ledger-5.png)
+
+如果您已经成功导入您的Ledger账户，您将能够在MetaMask页面上看到您的账户以及余额，如下图所示：
+
+![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/ledger-6.png)
+
+您可以在MetaMask随时切换账户以查看您Ledger账户的余额。
+
+您已经成功从您的Ledger设备导入一个Moonbeam兼容的账户，您可以开始使用您的Ledger设备进行互动。
+
+## 获得Token {: #receive-tokens }
+
+如果您希望开始使用您的Ledger设备进行交互，您将需要转入一些资金。您可以通过在MetaMask上点击您的账户名称和地址复制您的账户地址。
+
+![MetaMask Copy Account](/images/tokens/connect/ledger/ledger-7.png)
+
+接着，您将需要获取一些MOVR或是DEV Token并转入您所复制的账户地址。交易完成后，您将能看到余额更新。
+
+如果您需要DEV Token用于测试Moonbase Alpha测试网，您可以至水龙头[获取Token](/builders/get-started/moonbase/#get-tokens)。
+
+## 发送Token {: #send-tokens }
+
+接着，您可以使用您的Ledger设备在Moonbeam上发送和签署交易。如果您希望开始发送交易，点击**Send**按钮：
+
+![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/ledger-8.png)
+
+如同正常的交易，请设置接收人地址、输入发送金额、检查交易细节后并确认。这将会启用您Ledger设备的交易签名向导，您可以根据以下步骤进行操作：
+
+ 1. 点击按钮以进入下个画面，您的Ledger设备仅会在签署交易时提醒您
+
+ 2. 检查发送的Token数量并跳转至下个画面
+
+ 3. 检查接收人地址并进入下个画面
+
+ 4. *此步骤仅适用于以太坊应用*。检查网络的Chain ID。本信息可以在MetaMask连接至的网络信息内确认。举例而言，Moonbase Alpha的Chain ID是1287（hex: 0x507）、Moonriver为1285（hex: 0x505）以及Moonbeam为1284（尚未上线）。确认后，进入下个画面。
+
+ 5. 检查适用此交易的最大费用，这经由Gas费用乘以您在MetaMask上设置的Gas限制。确认完毕后，进入下个页面。
+
+ 6. 如果您同意所有的交易细节，请批准交易。这将会签署交易并触发MetaMask发送此交易。如果不同意交易细节，请进入下个页面
+
+  7. 如果您不同意所有交易细节，请拒绝交易。这将会取消本次交易，MetaMask同时会将本次交易标注为失败。
+
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-9.png)
+
+在您通过交易之后，MetaMask将会将此发送至网络上。当交易被成功确认后，将会被显示在MetaMask的**Activity**标签中的**Send**一栏。
+
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-10.png)
+
+恭喜您已成功签署此交易并使用Ledger硬件钱包在Moonbeam发送一些Token。
+
+## 使用您的Ledger与合约交互 {: #interact-with-contracts-using-your-ledger }
 
 默认情况下，Ledger设备不接受交易对象中的`data`字段。因此，用户无法部署智能合约或与智能合约交互。
 
 然而，如果您想要使用您的Ledger硬件钱包执行有关智能合约的交易，您需要修改以太坊应用中的配置参数。您可以跟随以下步骤进行操作：
 
- 1. 打开Ledger以太坊应用
- 2. 导航至“设定”
- 3. 找到“合约数据“页面，它应出现在页面底部并显示“不允许”。
- 4. 选取这个选项并将其修改为“允许”
+ 1. 在您的Ledger中，打开Moonriver或是以太坊应用
+
+ 2. 导向至**Settings**
+
+ 3. 找到**Blind signing**页面，它应出现在页面底部并显示**NOT Enabled**
+
+  4. 选取这个选项并将其修改为**Enabled**
 
 !!! 注意事项
     此选项对于您的Ledger设备与可能存在于Moonbeam生态系统的ERC20 Token合约之间的交互是必要的。
 
-![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ledger-8.png)
+![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ledger-11.png)

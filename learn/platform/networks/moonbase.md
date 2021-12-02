@@ -100,8 +100,6 @@ Moonbase Alpha具有以下配置：
  - [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)
  - [Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)
 
-## 开始使用 {: #get-started } 
-
 --8<-- 'text/testnet/connect.md'
 
 ## 遥测功能 {: #telemetry } 
