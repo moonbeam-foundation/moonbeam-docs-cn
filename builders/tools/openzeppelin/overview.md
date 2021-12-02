@@ -9,7 +9,7 @@ description:  通过此教程学习如何利用Moonbeam以太坊兼容性功能�
 
 ## 概览 {: #introduction } 
 
-OpenZeppelin在以太坊开发者社群中极为出名，因其经过审核的智能合约和库代表着产业标准。举例而言，几乎所有关于开发者如何部署ERC20代币的教程都是使用OpenZeppelin合约作为范例。
+OpenZeppelin在以太坊开发者社群中极为出名，因其经过审核的智能合约和库代表着产业标准。举例而言，几乎所有关于开发者如何部署ERC-20代币的教程都是使用OpenZeppelin合约作为范例。
 
 您可以在OppenZeppelin的[官网](https://openzeppelin.com/)和[官方文档网站](https://docs.openzeppelin.com/openzeppelin/)获得更多资讯。
 
@@ -28,6 +28,6 @@ OpenZeppelin在以太坊开发者社群中极为出名，因其经过审核的�
 您可以在以下的连接找到每个产品相应的教程：
 
  - [**Contract Wizard**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) —— 关于如何利用OpenZeppelin网页版教程构建不同功能的智能合约。
- - **[合约&库](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam)** —— 关于如何使用OpenZeppelin的模版部署常见的代币合约，如ERC20、ERC721和ERC1155
+ - **[合约&库](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam)** —— 关于如何使用OpenZeppelin的模版部署常见的代币合约，如ERC-20、ERC-721和ERC-1155
  - [**Defender**](/integrations/openzeppelin/defender/) —— 关于如何利用OpenZeppelin Defender管理您在Moonbase Alpha测试网上的智能合约。
 

@@ -59,8 +59,6 @@ Moonriver预先设定了[5个阶段的部署过程](https://moonbeam.network/net
 |            轮次            | {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时） |
 |           绑定期           |        {{ networks.moonriver.staking.bond_lock }}轮次        |
 
-## 开始使用 {: #get-started } 
-
 --8<-- 'text/moonriver/connect.md'
 
 ## Telemetry {: #telemetry } 

@@ -34,9 +34,9 @@ Covalent API有两类终端：
  - Covalent API采用实时刷新方式，刷新率为30秒或2个区块，每批次为10分钟或40个区块
 
 ## 支持终端 {: #supported-endpoints } 
- - **Balances** —— 获取某一地址的代币余额。这一函数将返回一个包含所有ERC20和NFT代币余额（包括ERC721 和ERC1155）的列表，以及这些代币目前的现货价格（若有）
+ - **Balances** —— 获取某一地址的代币余额。这一函数将返回一个包含所有ERC-20和NFT代币余额（包括ERC-721 和ERC-1155）的列表，以及这些代币目前的现货价格（若有）
  - **Transactions** —— 返回某一地址的所有交易记录，包括解码的日志事件。这一函数将深度抓取区块链并返回索引到这一地址的所有交易
- - **Transfers** —— 获取某一地址的ERC20代币转移记录以及历史代币价格（若有）)
+ - **Transfers** —— 获取某一地址的ERC-20代币转移记录以及历史代币价格（若有）)
  - **Token Holders** —— 返回代币持有者列表，并标有页码
  - **Log Events (Smart Contract)** —— 返回特定智能合约发出的已解码日志事件，并标有页码
  - **Log Events (Topic Hash)** —— 返回已解码日志事件，各个事件主题的哈希值之间用逗号分开，并标有页码
@@ -128,7 +128,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
     
     ```
 
-输出内容应与以下内容相似。余额终端将返回所有ERC20和NFT代币余额（包括ERC721和ERC1155）列表，以及它们目前的现货价格（若有）。
+输出内容应与以下内容相似。余额终端将返回所有ERC-20和NFT代币余额（包括ERC-721和ERC-1155）列表，以及它们目前的现货价格（若有）。
 
 ![Javascript Console Output](/images/builders/integrations/indexers/covalent/covalentjs.png)
 

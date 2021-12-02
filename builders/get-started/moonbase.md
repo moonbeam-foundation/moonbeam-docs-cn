@@ -5,8 +5,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 # Moonbeam测试网快速上手（Moonbase Alpha）
 
-## 连接到Moonbase Alpha {: #connect-to-moonbase-alpha } 
-
 --8<-- 'text/testnet/connect.md'
 
 ## 区块链浏览器 {: #block-explorers }

@@ -1,6 +1,6 @@
 ---
 title: Moonbeam Safe
-description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moonbeam上创建一个新的多重签名钱包并接收和发送Token（以及ERC20 Token）至Safe钱包。
+description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moonbeam上创建一个新的多重签名钱包并接收和发送Token（以及ERC-20 Token）至Safe钱包。
 ---
 
 # 与Moonbeam Safe交互
@@ -15,11 +15,11 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
 
 为了帮助管理单签名钱包和多重签名钱包，[Gnosis Safe](https://gnosis-safe.io/)被fork创建了[Moonbeam Safe](https://multisig.moonbeam.network/)。Safe钱包可以配置为多重签名合约，允许两个或更多所有者持有资金并从Safe钱包转移资金。您还可以将Safe钱包配置为只有一个所有者的单签名合约。
 
-本教程将引导您如何在Moonbase Alpha测试网上创建多重签名Safe钱包。您还将学习如何将DEV和ERC20 Token发送至Safe钱包或从Safe钱包发送，以及如何使用Safe钱包与智能合约进行交互。本教程也适用于Moonriver。
+本教程将引导您如何在Moonbase Alpha测试网上创建多重签名Safe钱包。您还将学习如何将DEV和ERC-20 Token发送至Safe钱包或从Safe钱包发送，以及如何使用Safe钱包与智能合约进行交互。本教程也适用于Moonriver。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-首先，您需要准备几个资金充裕的[MetaMask账户](#metamask-accounts)和一些准备发送至Safe钱包的[ERC20 Token](#erc20-tokens)，以及一个[已部署的智能合约](#deployed-smart-contract)进行交互。
+首先，您需要准备几个资金充裕的[MetaMask账户](#metamask-accounts)和一些准备发送至Safe钱包的[ERC-20 Token](#erc20-tokens)，以及一个[已部署的智能合约](#deployed-smart-contract)进行交互。
 
 ### MetaMask账户 {: #metamask-accounts }
 
@@ -36,9 +36,9 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
  - **Bob** — 0x3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0
  - **Charlie** — 0x798d4Ba9baf0064Ec19eB4F0a1a45785ae9D6DFc
 
-### ERC20 Tokens {: #erc20-tokens }
+### ERC-20 Tokens {: #erc20-tokens }
 
-本教程的后半部分将引导您如何在Safe钱包发送和接收ERC20 Token。因此，您需要部署一些ERC20 Token并将其添加至您的MetaMask帐户中。您可以查看[使用Remix部署至Moonbeam](https://docs.moonbeam.network/builders/interact/remix/)操作教程，特别是[在Moonbeam上使用Remix部署合约](https: //docs.moonbeam.network/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)和[通过MetaMask与基于Moonbeam的ERC20进行交互](https://docs.moonbeam.network/ builders/interact/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask)两部分将向您展示如何部署ERC20  Token并将其导入MetaMask。
+本教程的后半部分将引导您如何在Safe钱包发送和接收ERC-20 Token。因此，您需要部署一些ERC-20 Token并将其添加至您的MetaMask帐户中。您可以查看[使用Remix部署至Moonbeam](https://docs.moonbeam.network/builders/interact/remix/)操作教程，特别是[在Moonbeam上使用Remix部署合约](https: //docs.moonbeam.network/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)和[通过MetaMask与基于Moonbeam的ERC20进行交互](https://docs.moonbeam.network/ builders/interact/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask)两部分将向您展示如何部署ERC20  Token并将其导入MetaMask。
 
 ### 已部署的智能合约 {: #deployed-smart-contract }
 
@@ -228,11 +228,11 @@ contract SetText {
 
 这样就意味着您已经成功在Safe钱包接收和发送DEV Token了！
 
-## 接收和发送ERC20 Token  {: #receive-and-send-erc20-tokens }
+## 接收和发送ERC-20 Token  {: #receive-and-send-erc20-tokens }
 
-### 接收ERC20 Token  {: #receive-erc20-tokens }
+### 接收ERC-20 Token  {: #receive-erc20-tokens }
 
-接下来就是在Safe钱包接收和发送ERC20 Token。您需要确保您的MetaMask已经有充足的**MYTOK** ERC20 Token。如果还没有，请返回查看先决条件，参考[ERC20 Tokens](#erc20-tokens)部分。
+接下来就是在Safe钱包接收和发送ERC-20 Token。您需要确保您的MetaMask已经有充足的**MYTOK** ERC-20 Token。如果还没有，请返回查看先决条件，参考[ERC-20 Tokens](#erc20-tokens)部分。
 
 本示例中，您应该仍然连接着Bob的账户。因此，您将从Bob的账户发送MYTOK Token至Safe钱包。
 
@@ -250,17 +250,17 @@ contract SetText {
 
   6. 查看交易详情，然后点击**Confirm**发送交易
 
-![Send ERC20s to the Safe](/images/builders/tools/multisig-safe/safe-18.png)
+![Send ERC-20s to the Safe](/images/builders/tools/multisig-safe/safe-18.png)
 
 如果您返回至Safe钱包，在**Assets**列表中您应该可以看到**MyToken**的余额已经显示为1,000 MYTOK。**MyToken**可能需要几分钟才能出现，您无需执行任何添加资产的操作，它会自动出现。
 
-### 发送ERC20 Token  {: #send-erc20-tokens }
+### 发送ERC-20 Token  {: #send-erc20-tokens }
 
 现在，您的Safe钱包已经有MYTOK，您可以将一些MYTOK从Safe钱包发送至另一个账户。在本示例中，您可以发送10个MYTOK至Charlie的账户。
 
 将鼠标移至资产列表的**MyToken**上，点击**Send**。
 
-![Send ERC20s from the Safe](/images/builders/tools/multisig-safe/safe-19.png)
+![Send ERC-20s from the Safe](/images/builders/tools/multisig-safe/safe-19.png)
 
 随后将会跳出弹窗，您需输入接收人和需要发送的MYTOK Token数量：
 
@@ -272,7 +272,7 @@ contract SetText {
 
   4. 点击**Review**并查看详情
 
-![Send ERC20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-20.png)
+![Send ERC-20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-20.png)
 
 确认信息无误后，请执行以下操作：
 
@@ -280,7 +280,7 @@ contract SetText {
 
   2. 点击**Sign**签名消息。
 
-![Sign Message to Send ERC20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-21.png)
+![Sign Message to Send ERC-20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-21.png)
 
 现在，如果您返回Safe钱包，在**Transactions**标签下，您应该能够看得到已经发起的向Charlie的地址发送10个MYTOK Token的交易提案。但是，您可以看到只收到2个确认中的其中一个，还需要另一个所有者确认才可执行交易。
 
@@ -292,7 +292,7 @@ contract SetText {
 
 ![Successfully Executed Transaction](/images/builders/tools/multisig-safe/safe-23.png)
 
-这样就意味着您已经成功在Safe钱包接收和发送ERC20 Token了！
+这样就意味着您已经成功在Safe钱包接收和发送ERC-20 Token了！
 
 ## 与智能合约交互  {: #interact-with-a-smart-contract }
 

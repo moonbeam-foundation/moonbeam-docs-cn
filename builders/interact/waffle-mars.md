@@ -49,7 +49,7 @@ npm install ethereum-waffle ethereum-mars ethers \
     - [Waffle](https://github.com/EthWorks/Waffle) - for writing, compiling, and testing smart contracts
     - [Mars](https://github.com/EthWorks/Mars) - for deploying smart contracts to Moonbeam
     - [Ethers](https://github.com/ethers-io/ethers.js/) - for interacting with Moonbeam's Ethereum API
-    - [OpenZeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) - the contract you'll be creating will use OpenZeppelin's ERC20 base implementation
+    - [OpenZeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) - the contract you'll be creating will use OpenZeppelin's ERC-20 base implementation
     - [TypeScript](https://github.com/microsoft/TypeScript) - the project will be a TypeScript project
     - [TS Node](https://github.com/TypeStrong/ts-node) - for executing the deployment script you'll create later in this guide
     - [Chai](https://github.com/chaijs/chai) - an assertion library used alongside Waffle for writing tests
@@ -105,7 +105,7 @@ contract MyToken is ERC20 {
 }
 ```
 
-在此合约中，您正在创建一个名为MyToken的ERC20代币，其符号为MYTOK，作为合约的创建者，您可根据需求设置MYTOK的铸造数量。
+在此合约中，您正在创建一个名为MyToken的ERC-20代币，其符号为MYTOK，作为合约的创建者，您可根据需求设置MYTOK的铸造数量。
 
 ## 使用Waffle编译和测试 {: #use-waffle-to-compile-and-test } 
 

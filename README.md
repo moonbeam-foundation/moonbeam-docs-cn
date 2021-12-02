@@ -65,7 +65,7 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
  - [Web3.py](/integrations/ethlibraries/web3py/)
  - [The Graph](/integrations/indexers/thegraph/)
  - [Covalent API](/integrations/indexers/covalent/)
- - [调试及跟踪](/integrations/debug-trace/)
+ - [调试及跟踪](/builders/tools/debug-trace/)
 
 ### 预言机 {: #oracles }
 

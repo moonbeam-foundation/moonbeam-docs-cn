@@ -11,7 +11,7 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
 
 索引协议可以更有效地组织信息，便于应用程序访问及使用。例如，Google就是通过索引整个互联网的信息，快速为搜索者提供所需信息。
 
-The Graph是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或dApp都可以便捷地利用这些数据。
+The Graph是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或DApp都可以便捷地利用这些数据。
 
 此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/introduction#what-the-graph-is)了解更多关于The Graph协议的信息。
 
@@ -105,7 +105,7 @@ npx graph codegen --output-dir src/types/
 
 ### Schema.graphql {: #schemagraphql } 
 
-在对`schema.graphql`进行修改之前，需要先列明要从合约事件中抽取的数据。需要根据dApp本身的要求对schema进行定义。本示例中虽然没有与彩票相关的dApp，但我们定义了四个实体：
+在对`schema.graphql`进行修改之前，需要先列明要从合约事件中抽取的数据。需要根据DApp本身的要求对schema进行定义。本示例中虽然没有与彩票相关的DApp，但我们定义了四个实体：
 
  - **Round** —— 一轮彩票抽奖活动。它将储存以下索引：轮次、发出奖金、轮次开始的时间戳、中奖者、结果出炉的时间以及参与彩票（从`Ticket`实体中获取）等相关信息
  - **Player** —— 参加了至少一轮的玩家。它将存储玩家地址和所有参与彩票（从`Ticket`实体中获取）的相关信息

@@ -54,7 +54,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 ## 运行一个追踪节点 {: #run-a-tracing-node }
 
-运行一个`debug`、`txpool`和`tracing`节点类似于[运行一个全节点](/node-operators/networks/full-node/)。您将会需要使用`purestake/moonbeam-tracing`镜像，而非标准`purestake/moonbeam` Docker镜像。最新的支持版本可以在[Docker Hub for the `moonbeam-tracing` image](https://hub.docker.com/r/purestake/moonbeam-tracing/tags)上找到。
+运行一个`debug`、`txpool`和`tracing`节点类似于[运行一个全节点](/node-operators/networks/run-a-node/overview/)。您将会需要使用`purestake/moonbeam-tracing`镜像，而非标准`purestake/moonbeam` Docker镜像。最新的支持版本可以在[Docker Hub for the `moonbeam-tracing` image](https://hub.docker.com/r/purestake/moonbeam-tracing/tags)上找到。
 
 您同样需要根据您启用的功能使用以下标识开始您的节点：
 
