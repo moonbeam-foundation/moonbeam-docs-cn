@@ -5,7 +5,7 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 # OpenZeppelin Defender
 
-![OpenZeppelin Defender Banner](/images/builders/tools/openzeppelin/oz-defender-banner.png)
+![OpenZeppelin Defender Banner](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -77,7 +77,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/)。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/moonbase/metamask/)，点击右上角的“Connect wallet（连接钱包）”按钮：
 
-![OpenZeppelin Defender Connect](/images/builders/tools/openzeppelin/oz-defender-1.png)
+![OpenZeppelin Defender Connect](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-1.png)
 
 如果操作成功，您可以看到自己的地址，并显示“Connected to Moonbase Alpha（已连接到Moonbase Alpha）”。
 
@@ -96,11 +96,11 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  5. 检查合约功能是否被正确识别
  6. 检查所有信息后，点击“Add（添加）”按钮
 
-![OpenZeppelin Defender Admin Add Contract](/images/builders/tools/openzeppelin/oz-defender-2.png)
+![OpenZeppelin Defender Admin Add Contract](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-2.png)
 
 导入成功后，就可以在Admin组件主界面看到该合约：
 
-![OpenZeppelin Defender Admin Contract Added](/images/builders/tools/openzeppelin/oz-defender-3.png)
+![OpenZeppelin Defender Admin Contract Added](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-3.png)
 
 ### 创建合约提案 {: #create-a-contract-proposal } 
 
@@ -115,7 +115,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. 点击“New proposal（新建提案）”按钮，显示所有选项
  2. 点击“Pause（暂停）”
 
-![OpenZeppelin Defender Admin Contract New Pause Proposal](/images/builders/tools/openzeppelin/oz-defender-4.png)
+![OpenZeppelin Defender Admin Contract New Pause Proposal](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-4.png)
 
 提案页面将打开，显示所有需要填写的提案相关信息。在本示例中，需要提供以下信息：
 
@@ -124,22 +124,22 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  3. 提案描述。为合约的其他成员/管理员提供的信息越详细越好（若使用多重签名钱包）
  4. 点击“Create pause proposal（创建暂停提案）”
 
-![OpenZeppelin Defender Admin Contract Pause Proposal Details](/images/builders/tools/openzeppelin/oz-defender-5.png)
+![OpenZeppelin Defender Admin Contract Pause Proposal Details](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-5.png)
 
 成功创建提案后，提案将显示在合约管理员主面板上。
 
-![OpenZeppelin Defender Admin Contract Proposal List](/images/builders/tools/openzeppelin/oz-defender-6.png)
+![OpenZeppelin Defender Admin Contract Proposal List](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-6.png)
 
 ### 同意合约提案 {: #approve-a-contract-proposal } 
 
 创建合约提案后，下一步是同意并执行提案。进入提案，并点击“Approve and Execute（同意并执行）”。
 
-![OpenZeppelin Defender Admin Contract Proposal Pause Approve](/images/builders/tools/openzeppelin/oz-defender-7.png)
+![OpenZeppelin Defender Admin Contract Proposal Pause Approve](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-7.png)
 
 
 通过这一步骤将创建一笔交易，需要使用MetaMask签名。此后提案状态将改为“Executed（已执行（待确认））”。交易被处理后，状态将显示为“Executed（已执行）”。
 
-![OpenZeppelin Defender Admin Contract Proposal Pause Executed](/images/builders/tools/openzeppelin/oz-defender-8.png)
+![OpenZeppelin Defender Admin Contract Proposal Pause Executed](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-8.png)
 
 合约状态也将从“Running（运行中）”变为“Paused（已暂停）”。现在您已学会如何使用Admin组件管理智能合约了。
 
