@@ -64,5 +64,6 @@ Moonriver上包含一组按地址和基于源网络分类的预编译合约。�
 
 |                             合约                             |                    地址                    |
 | :----------------------------------------------------------: | :----------------------------------------: |
-| [平行链质押](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol) | 0x0000000000000000000000000000000000000800 |
-| [众贷奖励](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol) | 0x0000000000000000000000000000000000000801 |
+| [Parachain Staking](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)  | {{networks.moonbase.precompiles.staking}} |
+| [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol) | {{networks.moonbase.precompiles.crowdloan }} |
+| [ERC20 Interface (Moonbase Alpha)](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)  | {{networks.moonbase.precompiles.erc20 }} |

@@ -1,9 +1,11 @@
 ---
-title: 预编译合约
+title: 以太坊原生预编译合约
 description:  通过此教程学习如何在Moonbeam测试网Moonbase Alpha上使用完全兼容以太坊的预编译合约。
 ---
 
-# Moonbase Alpha预编译合约
+# Moonbase Alpha的以太坊预编译合约
+
+![Precomiled Contracts Banner](/images/builders/tools/precompiles/eth-mainnet/eth-mainnet-banner.png)
 
 ## 概览 {: #introduction } 
 
