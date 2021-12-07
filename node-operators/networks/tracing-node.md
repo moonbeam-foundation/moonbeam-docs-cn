@@ -72,8 +72,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     purestake/moonbeam-tracing:v0.13.1-800 \
     --base-path=/data \
     --name="Moonbeam-Tutorial" \
-    --execution native \
-    --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
     --ethapi=debug,trace,txpool \
@@ -89,8 +87,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --base-path=/data \
     --chain alphanet \
     --name="Moonbeam-Tutorial" \
-    --execution native \
-    --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
     --ethapi=debug,trace,txpool \
