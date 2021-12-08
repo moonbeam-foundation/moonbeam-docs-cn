@@ -7,11 +7,13 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在可用�
 
 ## 概览
 
-虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在余额转账方面与以太坊之间的主要差异。
+虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生代币（例如：MOVR和GLMR）余额转账方面与以太坊之间的主要差异。
 
-Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方面，用户可以通过MetaMask、MathWallet或其他任何使用以太坊JSON-RPC的工具等应用程序来使用以太坊API。另一方面，用户可以通过Polkadot.js App网站使用Substrate API。
+Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方面，用户可以通过MetaMask、MathWallet或其他任何使用以太坊JSON-RPC的工具等应用程序来使用以太坊API。另一方面，用户可以通过Polkadot.js App网站使用Substrate API或直接使用Substrate RPC。
 
-开发者需要注意的是，Token持有者可以利用这两个API来转移代币。本教程将概述围绕这两个API进行余额转账的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
+开发者需要注意的是，Token持有者可以利用这两类API来转移原生代币。请注意，这页内容不适用于其他类资产的转账，例如Moonriver或Moonbeam EVM中基于ERC20的资产。这些资产的转移只能通过以太坊API完成，因为需要与智能合约交互。
+
+本教程将概述围绕这两类API进行余额转账的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 
 ## 以太坊转账
 
@@ -21,7 +23,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 ## Moonbeam转账
 
-如先前所述，Moonbeam使Token持有者能够通过以太坊和Substrate API执行转账。在Moonbeam上有多种情况可以触发Token转账。因此，为了监控所有的转账，**您应该使用Polkadot.js SDK**（Substrate API）。
+如先前所述，Moonbeam使Token持有者能够通过以太坊和Substrate API执行原生代币转账。在Moonbeam上有多种情况可以触发Token转账。因此，为了监控所有的转账，**您应该使用Polkadot.js SDK**（Substrate API）。
 
 在介绍不同情况之前，有两个与区块相关的不同要素。
 
@@ -35,9 +37,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
  - **Ethereum转账** —— 这将创建一个`ethereum.transact`外部参数，为一个空白输入值。这将触发**一个**`balances.Transfer`事件
  -  **通过智能合约进行以太坊转账** —— 这将创建一个`ethereum.transact`外部参数，多个数据成为输入值。这将触发**一个或多个**`balances.Transfer`事件
 
-All the scenarios described above will effectively transfer tokens. The easiest way to monitor them all is to rely on the `balances.Transfer` event.
-
-上述所有场景都将能有效地进行Token转账。监控它们最简单的方法就是通过`balances.Transfer`事件。
+上述所有场景都将能有效地进行原生代币转账。监控它们最简单的方法就是通过`balances.Transfer`事件。
 
 ## 使用Substrate API来监控所有余额转账
 
