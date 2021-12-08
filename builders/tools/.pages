@@ -3,8 +3,8 @@ nav:
  - index.md
  - eth-libraries
  - eth-dev-env
+ - precompiles
  - explorers.md
  - multisig-safe.md
- - precompiles
  - debug-trace.md
  - pubsub.md
