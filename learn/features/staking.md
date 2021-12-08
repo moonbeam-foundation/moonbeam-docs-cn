@@ -34,8 +34,9 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名人奖励池** — 年通胀的{{ networks.moonriver.staking.nominator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
-    - **收集人信息** — 收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver)
-    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonriver)
+    - **收集人信息** — Moonriver收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}
+    - **收集人APY信息** - [DappLooker Collator Dashboard](http://analytics.dapplooker.com/public/dashboard/7dfc5a6e-da33-4d54-94bf-0dfa5e6843cb){target=_blank} *注意：此数据面板是实验性质的测试版软件，可能无法准确反映收集人的性能。在委托收集人之前，务必做好研究* 
+    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonriver){target=_blank}
 
 === "Moonbase Alpha" 
 
@@ -50,8 +51,8 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **提名人奖励池** — 年通胀的{{ networks.moonbase.staking.nominator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
-    - **收集人信息** — 收集人列表：[Moonbase Alpha Subscan](https://moonbase.subscan.io/validator). 最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha)
-    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonbase-alpha)
+    - **收集人信息** — 收集人列表：[Moonbase Alpha Subscan](https://moonbase.subscan.io/validator). 最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank}
+    - **管理质押相关操作** — 访问[Moonbeam Network DApp](https://apps.moonbeam.network/moonbase-alpha){target=_blank}
 
 想要获取任何质押参数的当前值，请查看[如何质押您的Token]( /tokens/staking/stake/)教程中的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters)部分。
 
