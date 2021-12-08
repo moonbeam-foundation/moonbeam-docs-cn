@@ -2,7 +2,7 @@
 title: 主页
 description: 欢迎访问Moonbeam资料库，Moonbeam是Polkadot上兼容以太坊的智能合约平行链。
 ---
-
+ 
 # 欢迎访问Moonbeam 
  
 ![Main Page Banner Image](/images/learn/platform/main-banner.png)
