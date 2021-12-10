@@ -5,7 +5,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 # 与质押预编译交互
 
-![Staking Moonbeam Banner](/images/builders/tools/precompiles/staking/staking-banner.png)
+![Staking Moonbeam Banner](/images/builders/tools/precompiles/staking-for-cn/staking-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -57,7 +57,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 2. 将文档内容复制并粘贴至名为StakingInterface.sol的Remix文档
 
-![Copying and Pasting the Staking Interface into Remix](/images/builders/tools/precompiles/staking/staking-1.png)
+![Copying and Pasting the Staking Interface into Remix](/images/builders/tools/precompiles/staking-for-cn/staking-1.png)
 
 ## 编译合约 {: #compile-the-contract }  
 
@@ -65,7 +65,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 2. 编译[Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
 
-![Compiling StakingInteface.sol](/images/builders/tools/precompiles/staking/staking-2.png)
+![Compiling StakingInteface.sol](/images/builders/tools/precompiles/staking-for-cn/staking-2.png)
 
 ## 读取合约 {: #access-the-contract }
 
@@ -79,7 +79,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 5. 平行链质押预编译将出现在"Deployed Contracts"列表
 
-![Provide the address](/images/builders/tools/precompiles/staking/staking-3.png)
+![Provide the address](/images/builders/tools/precompiles/staking-for-cn/staking-3.png)
 
 ## 提名一个收集人 {: #nominate-a-collator }
 
@@ -103,7 +103,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 4. 调用完成后，将会显示结果
 
-![Call collator nomination count](/images/builders/tools/precompiles/staking/staking-4.png)
+![Call collator nomination count](/images/builders/tools/precompiles/staking-for-cn/staking-4.png)
 
 ### 获取现有提名数 {: #get-your-number-of-existing-nominations }
 
@@ -117,7 +117,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 4. 调用完成后，将会显示结果
 
-![Call nominator nomination count](/images/builders/tools/precompiles/staking/staking-5.png)
+![Call nominator nomination count](/images/builders/tools/precompiles/staking-for-cn/staking-5.png)
 
 ### 调用提名 {: #call-nominate }
 
@@ -137,7 +137,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 7. MetaMask将跳出弹窗，请查看详情并确认交易
 
-![Nominate a Collator](/images/builders/tools/precompiles/staking/staking-6.png)
+![Nominate a Collator](/images/builders/tools/precompiles/staking-for-cn/staking-6.png)
 
 ## 验证提名 {: #verify-nomination }
 
@@ -155,7 +155,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 5. 点击"Save"
 
-![Add to Address Book](/images/builders/tools/precompiles/staking/staking-7.png)
+![Add to Address Book](/images/builders/tools/precompiles/staking-for-cn/staking-7.png)
 
 ### 验证提名人状态 {: #verify-nominator-state }
 
@@ -172,7 +172,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 !!! 注意事项
     如果您想要查看提名概述，无需在"blockhash to query at"字段中输入任何内容。
 
-![Verify Nomination](/images/builders/tools/precompiles/staking/staking-8.png)
+![Verify Nomination](/images/builders/tools/precompiles/staking-for-cn/staking-8.png)
 
 ## 撤销一个提名 {: #revoking-a-nomination }
 
@@ -186,6 +186,6 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 4. MetaMask将跳出弹窗，请查看详情并确认交易
 
-![Revoke Nomination](/images/builders/tools/precompiles/staking/staking-9.png)
+![Revoke Nomination](/images/builders/tools/precompiles/staking-for-cn/staking-9.png)
 
 调用完成后，将会显示结果。您也可以在Polkadot.js Apps上再次检查您的提名人状态进行确认。

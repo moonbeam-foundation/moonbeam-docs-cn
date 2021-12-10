@@ -5,7 +5,7 @@ description: 通过此教程学习如何在运行节点后成为Moonbeam网络�
 
 # 在Moonbeam上运行收集人
 
-![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
+![Collator Moonbeam Banner](/images/node-operators/networks/collators-for-cn/collator-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -58,7 +58,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 将H160账户导入到Polkadot.js后，就可以在“Accounts”标签下看到该账户。请确保手上已有公共地址（`PUBLIC_KEY`），我们在设置[部署全节点](/node-operators/networks/full-node/)的收集选项时需要用到它。
 
-![Account in Polkadot.js](/images/node-operators/networks/collators/collator-polkadotjs-1.png)
+![Account in Polkadot.js](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-1.png)
 
 ## 成为候选收集人 {: #become-a-collator-candidate }
 
@@ -98,7 +98,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   5. 点击运行图标，以执行编辑框内的代码
   6. 点击复制图标复制结果，将在加入候选收集人池时使用
 
-![Get Number of Candidates](/images/node-operators/networks/collators/collator-polkadotjs-2.png)
+![Get Number of Candidates](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-2.png)
 
 ### 加入候选人池 {: #join-the-candidate-pool }
 
@@ -113,7 +113,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   7. 设置候选人数量即候选人池大小。如何设置该数值请查看[此部分](#get-the-size-of-the-candidate-pool)
   8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Join Collators pool Polkadot.js](/images/node-operators/networks/collators/collator-polkadotjs-3.png)
+![Join Collators pool Polkadot.js](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-3.png)
 
 !!! 注意事项
     函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
@@ -135,7 +135,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   6. 在`more: BalanceOf`字段中设置要增加的绑定数量
   7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Collator Bond More](/images/node-operators/networks/collators/collator-polkadotjs-7.png)
+![Collator Bond More](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-7.png)
 
 ### 减少绑定量 {: #bond-less }
 作为收集人或候选收集人，如果您所绑定的MOVR数量超过{{ networks.moonriver.staking.collator_bond_min }}枚，您可以减少您的绑定数量。
@@ -151,7 +151,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   6. 在`less: BalanceOf`字段中设置要减少的绑定数量
   7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Collator Bond Less](/images/node-operators/networks/collators/collator-polkadotjs-8.png)
+![Collator Bond Less](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-8.png)
 
 ## 会话密钥 {: #session-keys }
 
@@ -159,7 +159,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 首先，请确保您正在[运行收集人节点](/node-operators/networks/run-a-node/overview/)并已公开RPC端口。一旦您开始运行收集人节点，您的终端应出现类似以下日志：
 
-![Collator Terminal Logs](/images/node-operators/networks/collators/collator-terminal-1.png)
+![Collator Terminal Logs](/images/node-operators/networks/collators-for-cn/collator-terminal-1.png)
 
 接着，通过使用`author_rotateKeys`方法将RPC调用发送到HTTP端点来转换会话密钥。若收集人的HTTP端点位于端口`9933`，则JSON-RPC调用可能如下所示：
 
@@ -176,7 +176,7 @@ curl http://127.0.0.1:9933 -H \
 
 收集人节点应使用新的author ID（会话密钥）的相应公共密钥进行响应。
 
-![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/collator-terminal-2.png)
+![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators-for-cn/collator-terminal-2.png)
 
 请确保您已记下author ID的公钥。接下来，这将被映射到H160以太坊式地址（用于接收区块奖励）。
 
@@ -211,11 +211,11 @@ curl http://127.0.0.1:9933 -H \
   6. 输入author ID。在此示例中，这在前一个部分通过RPC调用`author_rotateKeys`获得
   7. 点击“Submit Transaction”
 
-![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/collator-polkadotjs-4.png)
+![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-4.png)
 
 如果交易成功，您将看到确认通知。如果没有，请确认您是否已加入[候选收集人池](#become-a-collator-candidate)。
 
-![Author ID Mapping to Account Extrinsic Successful](/images/node-operators/networks/collators/collator-polkadotjs-5.png)
+![Author ID Mapping to Account Extrinsic Successful](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-5.png)
 
 ### 检查映射设定 {: #checking-the-mappings }
 
@@ -228,7 +228,7 @@ curl http://127.0.0.1:9933 -H \
  5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
  6. 点击“+”按钮来传送RPC调用
 
-![Author ID Mapping Chain State](/images/node-operators/networks/collators/collator-polkadotjs-6.png)
+![Author ID Mapping Chain State](/images/node-operators/networks/collators-for-cn/collator-polkadotjs-6.png)
 
 You should be able to see the H160 account associated with the author ID provided. If no author ID was included, this would return all the mappings stored on-chain.
 
