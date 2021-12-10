@@ -46,10 +46,10 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 以下的示例将会在Moonbase Alpha上演示，然而这同样适用于其他网络，包括Moonriver和Moonbeam。
 
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/)
- - 拥有一个超过`{{networks.moonbase.staking.min_nom_stake}}`枚Token的账户。您可以通过[Mission Control](/builders/get-started/moonbase/#get-tokens/)获得
+ - 拥有一个超过`{{networks.moonbase.staking.min_del_stake}}`枚Token的账户。您可以通过[Mission Control](/builders/get-started/moonbase/#get-tokens/)获得
 
 !!! 注意事项
-    由于需要最低的提名数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_nom_stake}}`枚Token才可进行操作。若想获取更多超过水龙头分配的Token，请随时通过Discord联系我们，我们很高兴为您提供帮助。
+    由于需要最低的提名数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_del_stake}}`枚Token才可进行操作。若想获取更多超过水龙头分配的Token，请随时通过Discord联系我们，我们很高兴为您提供帮助。
 
 ## Remix设置 {: #remix-set-up }
 
@@ -83,9 +83,9 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 ## 提名一个收集人 {: #nominate-a-collator }
 
-在本示例中，我们需要在Moonbase Alpha上提名一个收集人。提名人持有Token，并为担保的收集人质押。所有用户只要持有超过{{networks.moonbase.staking.min_nom_stake}}枚可用Token皆可成为提名人。
+在本示例中，我们需要在Moonbase Alpha上提名一个收集人。提名人持有Token，并为担保的收集人质押。所有用户只要持有超过{{networks.moonbase.staking.min_del_stake}}枚可用Token皆可成为提名人。
 
-您可自行研究并选择想要提名的收集人。在本教程中，我们将使用以下收集人地址：`{{ networks.moonbase.staking.collators.address1 }}`。
+您可自行研究并选择想要提名的收集人。在本教程中，我们将使用以下收集人地址：`{{ networks.moonbase.staking.candidates.address1 }}`。
 
 In order to nominate a collator, you'll need to determine the current collator nomination count and nominator nomination count. The collator nomination count is the numner of nominations backing a specific collator. The nominator nomination count is the number of nominations made by the nominator.
 
@@ -97,7 +97,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 1. 找到"collator_nominator_count"函数并展开面板
 
-2. 输入收集人地址（`{{ networks.moonbase.staking.collators.address1 }}`）
+2. 输入收集人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
 
 3. 点击"call"
 
@@ -125,9 +125,9 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 1. 发现"nominate"函数并展开面板
 
-2. 输入收集人地址（`{{ networks.moonbase.staking.collators.address1 }}`）
+2. 输入收集人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
 
-3. 提供在WEI中提名的数量。最低提名的Token数量为`{{networks.moonbase.staking.min_nom_stake}}`，所以WEI中最低的数量是`5000000000000000000`
+3. 提供在WEI中提名的数量。最低提名的Token数量为`{{networks.moonbase.staking.min_del_stake}}`，所以WEI中最低的数量是`5000000000000000000`
 
 4. 输入收集人的提名数量
 

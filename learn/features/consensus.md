@@ -30,7 +30,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 收集人可以通过外部函数直接绑定代币加入候选收集人池。加入候选池后，代币持有者可以通过在平行链层提名增加对该收集人的质押量（也被称为质押）。
 
-平行链质押是Nimbus应用于候选收集人池的两大过滤器中的一个，根据网络中的代币质押量（包括收集人本身绑定的代币数量以及从代币持有者中所获得的提名数量）选出前{{ networks.moonbase.staking.max_collators }}名的收集人。这个过滤后的池被称为“精选候选池”。这个池中的候选收集人在每一轮都会进行更新（每轮时长为{{ networks.moonbase.staking.round_blocks }}个区块），以下图表展示了在特定一轮中平行链质押过滤过程：
+平行链质押是Nimbus应用于候选收集人池的两大过滤器中的一个，根据网络中的代币质押量（包括收集人本身绑定的代币数量以及从代币持有者中所获得的提名数量）选出前{{ networks.moonbase.staking.max_candidates }}名的收集人。这个过滤后的池被称为“精选候选池”。这个池中的候选收集人在每一轮都会进行更新（每轮时长为{{ networks.moonbase.staking.round_blocks }}个区块），以下图表展示了在特定一轮中平行链质押过滤过程：
 
 ![Nimbus Parachain Staking Filter](/images/learn/features/consensus/consensus-1.png)
 

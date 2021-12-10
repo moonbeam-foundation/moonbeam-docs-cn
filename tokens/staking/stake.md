@@ -25,7 +25,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 |        变量        |      |                              值                              |
 | :----------------: | :--: | :----------------------------------------------------------: |
-|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_nom_stake }}枚代币      |
+|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_del_stake }}枚代币      |
 |   最低提名持有量   |      |     {{ networks.moonbase.staking.min_nom_amount}}枚代币      |
 | 提名者的收集人限额 |      |       {{ networks.moonbase.staking.max_col_per_nom }}        |
 |        轮次        |      | {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时） |
@@ -126,8 +126,8 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 |  变量   |      |                        地址                        |
 | :-----: | :--: | :------------------------------------------------: |
-| 校对器1 |      | {{ networks.moonbase.staking.collators.address1 }} |
-| 校对器2 |      | {{ networks.moonbase.staking.collators.address2 }} |
+| 校对器1 |      | {{ networks.moonbase.staking.candidates.address1 }} |
+| 校对器2 |      | {{ networks.moonbase.staking.candidates.address2 }} |
 
 使用Polkadot.js Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
@@ -142,7 +142,7 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
  1. 选择希望质押代币的账户
  2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
  3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`nominate`外部参数
- 4. 设置您要提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address1 }}`
+ 4. 设置您要提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.candidates.address1 }}`
  5. 设置您要质押的代币数量
  6. 输入您[从JavaScript命令窗](/tokens/staking/stake/#get-the-collator-nominator-count)获取的`collator_nominator_count`参数
  7. 输入您[从JavaScript命令窗](/tokens/staking/stake/#get-your-number-of-existing-nominations)获取的`nomination_count` 参数；如果您从没用这个账户提过命，这里填`0`
@@ -170,7 +170,7 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
-您也可以通过以上同样的步骤提名其他的收集人。例如，Alice也提名了 `{{ networks.moonbase.staking.collators.address2 }}` 。
+您也可以通过以上同样的步骤提名其他的收集人。例如，Alice也提名了 `{{ networks.moonbase.staking.candidates.address2 }}` 。
 
 ## 如何停止提名 {: #how-to-stop-nominations } 
 
@@ -183,7 +183,7 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
  1. 选择您需要移除提名的代币账户
  2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
  3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`revokeNomination`外部参数
- 4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address2 }}`
+ 4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.candidates.address2 }}`
  5. 点击“提交交易”按钮，并签名确认交易
 
 ![Staking Revoke Nomination Extrinsic](/images/tokens/staking/stake-for-cn/stake-9.png)
