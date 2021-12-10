@@ -1,5 +1,5 @@
 ---
-title: 如何使用质押预编译
+title: 质押预编译
 description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 ---
 
@@ -11,7 +11,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 最近推出一种名为[平行链质押](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src)的委托权益证明Pallet，使Token持有者（提名人）能够准确表达他们愿意支持的候选收集人以及希望质押的数量。除此之外，平行链质押Pallet的设计也将使链上的委托人和收集人共享风险与回报。
 
-质押模块是使用Rust进行编码的，它同时也是Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于地址`{{networks.moonbase.staking.precompile_address}}`的预编译合约中的以太坊API使用质押功能。质押预编译功能在发布[Moonbase Alpha v8 release](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v8/)时首次推出。
+质押模块是使用Rust进行编码的，它同时也是Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于地址`{{networks.moonbase.precompiles.staking}}`的预编译合约中的以太坊API使用质押功能。质押预编译功能在发布[Moonbase Alpha v8 release](https://moonbeam.network/announcements/testnet-upgrade-moonbase-alpha-v8/)时首次推出。
 
 本教程将向您展示如何在Moonbase Alpha上与质押预编译交互。此教程同样适用于Moonriver。
 
@@ -75,7 +75,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 3. 确认已在Contract下拉菜单中勾选”ParachainStaking - Stakinginterface.sol“。另外，因为这是一个预编译合约，无需进行部署。相反地，我们将会在“At Address”区块提供预编译的地址
 
-4. 提供质押预编译的地址：`{{networks.moonbase.staking.precompile_address}}`并点击“At Address”
+4. 提供质押预编译的地址：`{{networks.moonbase.precompiles.staking}}`并点击“At Address”
 
 5. 平行链质押预编译将出现在"Deployed Contracts"列表
 

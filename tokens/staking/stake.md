@@ -1,5 +1,5 @@
 ---
-title: 如何质押
+title: 授权质押
 description: 本教程将展示如何通过提名收集人在Moonbeam质押代币
 ---
 

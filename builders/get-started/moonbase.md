@@ -11,9 +11,10 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 您可以使用以下区块链浏览器来浏览Moonbase Alpha:
 
- - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)
+ - **以太坊API(类似Etherscan)** — [Moonscan](https://moonbase.moonscan.io/){target=_blank}
  - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha)
  - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
+ - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)
 
  更多相关信息请参考[区块浏览器](/builders/tools/explorers)文档。
 
@@ -49,7 +50,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多5个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
 
-您可以在“Miscellaneous"一栏下面找到我们的Alphanet机器人频道。
+您可以在“Miscellaneous"一栏下面找到我们的#Moonbase-Faucet频道。
 
 ![Discord1](/images/builders/get-started/moonbase/discord-1.png)
 
@@ -68,4 +69,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 Mission Control将会发送5个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的代币。
 
 ![Discord2](/images/builders/get-started/moonbase/discord-2.png)
+
+!!! 注意事项
+    Moonbase Alpha DEV代币没有经济价值，请不要滥用水龙头。
 

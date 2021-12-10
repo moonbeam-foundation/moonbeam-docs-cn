@@ -33,7 +33,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 对于与以太坊PoW相关并返回值的API，默认值将会被返回。现有遵循PoW机制的以太坊合约（如矿池合约）将会无法在Moonbeam上运作。
 
-在确定性方面，您能够在Moonbeam上查看交易何时可以被确认，这代表将无法被恢复。其实这个策略相当简单，主要为以下四点：
+然而，Moonbeam的最终确定性可用于提供比以太坊目前更好的用户体验。检查交易确定性的策略相当简单：
 
  1. 您查询网络最新终结区块的哈希
 
@@ -73,17 +73,16 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 --8<-- 'code/vs-ethereum/ethers.md'
 
-<!---
 ### Web3.py的自定义RPC请求
 
 在[Web3.py](https://web3py.readthedocs.io/en/stable/)中，您可以利用`JSONBaseProvider()` Web3提供者执行自定义RPC请求。这将会启用`encode_rpc_request`和 `decode_rpc_response`方法。然而，截至本文撰写时，这尚未被列在Web3.js的官方文档当中。
 
 给定一个交易哈希（`tx_hash`），以下代码片段使用Web3.jy获取当前确认的区块并将其与您提供的交易所属的区块编号比较。
 
-此代码从Substrate JSON-RPC异步调用两个自定义RPC请求：`chain_getFinalizedHead`和`chain_getHeader`。第一个请求将会获得最终确认区块的区块哈希，第二个请求获得已知区块哈希的区块标题。它使用内置的`web3.eth.getTransactionReceipt`方法检索交易收据。
+此代码从Substrate JSON-RPC异步调用两个自定义RPC请求：`chain_getFinalizedHead`和`chain_getHeader`。第一个请求将会获得最终确认区块的区块哈希，第二个请求获得已知区块哈希的区块标题。它使用内置的`web3.eth.getTransactionReceipt`方法检索交易收据。`eth_getBlockByNumber`方法也相似, 用来检查交易是否被包括在区块里。
 
 --8<-- 'code/vs-ethereum/web3py.md'
--->
+
 
 ## 使用Polkadot.js查看交易量确定性 {: #checking-tx-finality-with-polkadot.js } 
 

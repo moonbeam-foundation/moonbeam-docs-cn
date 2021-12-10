@@ -9,6 +9,10 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在账户�
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在账户余额方面与以太坊之间一些重要的差异。
 
+Moonbeam的设计初衷之一是创建一个最大程度接近以太坊的环境，并提供一组兼容以太坊的Web3 RPC端点。作为基于Substrate的智能合约链，Moonbeam将公开Substrate RPC，且具有由Substrate提供支持的完整功能，例如质押、治理以及其他不属于以太坊API的功能。
+
+Moonbeam的[统一账户](/learn/features/unified-accounts/)是Moonbeam实现以太坊兼容性的一种方式，通过将协议的底层账户类型更改为以太坊式类型（即H160或以“0x”开头的20字节的地址）Substrate和以太坊API均使用统一账户，并在区块链上映射相同的底层数据存储。尽管如此，来自以太坊用户在通过以太坊API使用Moonbeam账户时仍需了解一些重要差异。
+
 本教程将概述关于账户余额的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 
 ## 以太坊账户余额
@@ -38,4 +42,6 @@ _An image will be here_
 以太坊和Moonbeam上账户余额的主要区别在于Moonbeam中锁定和保留余额的概念。账户仍然拥有这些Token，但（尚）不能用来交易。
 
 从以太坊API的角度来说，一个账户可能会显示有一定的余额（称为`reducible`余额）。 然而，通过在链上操作后，该余额值可能会增加（或减少）而实际上并没有余额转移。
+
+需要注意的是，此处描述的差异仅适用于原生代币（MOVR、GLMR）的账户余额以及不与智能合约交互的资产余额。但如果通过智能合约与Moonbeam账户余额交互，其特性与以太坊相同。例如，如果您在Moonriver上将MOVR转换为Wrapped MOVR，则这个余额将无法通过质押或治理操作改变，因为这是只能合约存储的一部分。在这种情况下，该账户的可减少余额已被提交到Wrapped MOVR智能合约，并且不能被 Substrate类操作修改。
 
