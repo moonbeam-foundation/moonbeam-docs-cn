@@ -5,7 +5,7 @@ description: Moonbeam平行链质押以太坊Solidity预编译接口的演示
 
 # 与质押预编译交互
 
-![Staking Moonbeam Banner](/images/builders/tools/precompiles/staking-for-cn/staking-banner.png)
+![Staking Moonbeam Banner](/images/builders/tools/precompiles/staking/staking-banner.png)
 
 ## 概览 {: #introduction }
 
