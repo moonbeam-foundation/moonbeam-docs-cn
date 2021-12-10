@@ -25,7 +25,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 |        变量        |      |                              值                              |
 | :----------------: | :--: | :----------------------------------------------------------: |
-|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_nom_stake }}枚代币      |
+|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_del_stake }}枚代币      |
 |   最低提名持有量   |      |     {{ networks.moonbase.staking.min_nom_amount}}枚代币      |
 | 提名者的收集人限额 |      |       {{ networks.moonbase.staking.max_col_per_nom }}        |
 |        轮次        |      | {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时） |
@@ -57,7 +57,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 3. 选取任何您希望获取数据的参数。举例而言，您可以使用**maxCollatorsPerNominator**，这将会返回您可提名的最大收集人数
 4. 点击**+**以获取数据
 
-![Retrieving staking parameters](/images/tokens/staking/stake/stake-1.png)
+![Retrieving staking parameters](/images/tokens/staking/stake-for-cn/stake-1.png)
 
 您应当可以看到单个提名人可提名的最大收集人数。截至本文撰写时，在Moonbase Alpha上单个提名人可提名的最大收集人数为100。
 
@@ -76,7 +76,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
  - **selectedCandidates** —— 返回目前处于活跃状态的收集人群体，也就是总Token质押量前八名的收集人（提名人的质押量也包括在内）
  - **candidatePool** —— 返回目前所有收集人的名单，包括不在活跃收集人群体中的收集人
 
-![Staking Account](/images/tokens/staking/stake/stake-2.png)
+![Staking Account](/images/tokens/staking/stake-for-cn/stake-2.png)
 
 ## 获取收集人提名数 {: #get-the-collator-nominator-count } 
 
@@ -97,7 +97,7 @@ console.log(collatorInfo.toHuman()["nominators"].length);
  5. 点击执行按钮；这会使代码在编辑器里运行
  6. 拷贝运行结果，这会在提名时作为参数
 
-![Get collator nominator count](/images/tokens/staking/stake/stake-3.png)
+![Get collator nominator count](/images/tokens/staking/stake-for-cn/stake-3.png)
 
 ## 获取提名人目前提名数 {: #get-your-number-of-existing-nominations } 
 
@@ -118,7 +118,7 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
  5. 点击执行按钮；这会使代码在编辑器里运行
  6. 拷贝运行结果，这会在提名时作为参数
 
-![Get existing nomination count](/images/tokens/staking/stake/stake-4.png)
+![Get existing nomination count](/images/tokens/staking/stake-for-cn/stake-4.png)
 
 ## 如何提名收集人 {: #how-to-nominate-a-collator } 
 
@@ -126,8 +126,8 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 |  变量   |      |                        地址                        |
 | :-----: | :--: | :------------------------------------------------: |
-| 校对器1 |      | {{ networks.moonbase.staking.collators.address1 }} |
-| 校对器2 |      | {{ networks.moonbase.staking.collators.address2 }} |
+| 校对器1 |      | {{ networks.moonbase.staking.candidates.address1 }} |
+| 校对器2 |      | {{ networks.moonbase.staking.candidates.address2 }} |
 
 使用Polkadot.js Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 
@@ -135,20 +135,20 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 目前所有与质押挖矿相关的功能都需要通过“Developer”标签下的“Extrinsics”菜单进入：
 
-![Staking Account](/images/tokens/staking/stake/stake-5.png)
+![Staking Account](/images/tokens/staking/stake-for-cn/stake-5.png)
 
 提名收集人，需要提供以下信息：
 
  1. 选择希望质押代币的账户
  2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
  3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`nominate`外部参数
- 4. 设置您要提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address1 }}`
+ 4. 设置您要提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.candidates.address1 }}`
  5. 设置您要质押的代币数量
  6. 输入您[从JavaScript命令窗](/tokens/staking/stake/#get-the-collator-nominator-count)获取的`collator_nominator_count`参数
  7. 输入您[从JavaScript命令窗](/tokens/staking/stake/#get-your-number-of-existing-nominations)获取的`nomination_count` 参数；如果您从没用这个账户提过命，这里填`0`
  8. 点击“Submit Transaction”按钮，并签名确认交易
 
-![Staking Join Nominators Extrinsics](/images/tokens/staking/stake/stake-6.png)
+![Staking Join Nominators Extrinsics](/images/tokens/staking/stake-for-cn/stake-6.png)
 
 !!! 注意事项
     第6步和第7步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数据。 
@@ -157,7 +157,7 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 您可以在“Developer”标签下的“Chain state”中查看是否已成功提名。
 
-![Staking Account and Chain State](/images/tokens/staking/stake/stake-7.png)
+![Staking Account and Chain State](/images/tokens/staking/stake-for-cn/stake-7.png)
 
 在此，请提供以下信息：
 
@@ -166,11 +166,11 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
  3. 确保已经关闭“include option”滑块
  4. 点击"+"按钮发送状态请求
 
-![Staking Chain State Query](/images/tokens/staking/stake/stake-8.png)
+![Staking Chain State Query](/images/tokens/staking/stake-for-cn/stake-8.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
-您也可以通过以上同样的步骤提名其他的收集人。例如，Alice也提名了 `{{ networks.moonbase.staking.collators.address2 }}` 。
+您也可以通过以上同样的步骤提名其他的收集人。例如，Alice也提名了 `{{ networks.moonbase.staking.candidates.address2 }}` 。
 
 ## 如何停止提名 {: #how-to-stop-nominations } 
 
@@ -183,10 +183,10 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
  1. 选择您需要移除提名的代币账户
  2. 选择需要进行交互的模块。在本示例中为`parachainStaking`模块
  3. 选择本次交易需要使用的外部参数，这会决定接下来步骤的填写内容。在本示例中为`revokeNomination`外部参数
- 4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.collators.address2 }}`
+ 4. 设置您希望移除提名的收集人地址。在本示例中为 `{{ networks.moonbase.staking.candidates.address2 }}`
  5. 点击“提交交易”按钮，并签名确认交易
 
-![Staking Revoke Nomination Extrinsic](/images/tokens/staking/stake/stake-9.png)
+![Staking Revoke Nomination Extrinsic](/images/tokens/staking/stake-for-cn/stake-9.png)
 
 交易确认后，可以在“Developer”标签下的“Chain state”中查看是否已撤销提名。
 
@@ -197,13 +197,13 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
   3. 确保已经关闭“include options”滑块
   4. 点击"+"按钮发送状态请求
 
-![Staking Revoke Nomination Chain State](/images/tokens/staking/stake/stake-8.png)
+![Staking Revoke Nomination Chain State](/images/tokens/staking/stake-for-cn/stake-8.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个提名列表，每个提名都包含了收集人的目标地址及质押数量。
 
 通过`leaveNominators`外部参数，您可以继续移除所有正在进行中的提名（“外部参数”指引中的第3步）。这一参数无输入值：
 
-![Staking Leave Nominatiors Extrinsic](/images/tokens/staking/stake/stake-10.png)
+![Staking Leave Nominatiors Extrinsic](/images/tokens/staking/stake-for-cn/stake-10.png)
 
 确认交易后，您的账户将不会出现在`nominatorState`状态中，同时您（相关质押）的冻结余额也将归零。
 
@@ -215,4 +215,4 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 从上述例子可以看到，在经过两轮支付后，Alice获得了`0.0044`代币作为奖励：
 
-![Staking Reward Example](/images/tokens/staking/stake/stake-11.png)
+![Staking Reward Example](/images/tokens/staking/stake-for-cn/stake-11.png)

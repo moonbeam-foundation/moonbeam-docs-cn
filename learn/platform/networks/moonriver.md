@@ -18,7 +18,7 @@ _更新至2021年6月30日_
 Moonriver预先设定了[5个阶段的部署过程](https://moonbeam.network/networks/moonriver/launch/)。目前，Moonriver处于第0阶段并有以下配置：
 
 - 以平行链的形式运行并连接至Kusama中继链
-- 拥有一个由PureStake代表Moonbeam基金会运营并含有{{ networks.moonriver.staking.max_collators }}位收集人的有效集。将会在第1阶段举行一次初始收集人选举，以扩展Moonbeam团队以外的收集人集。
+- 拥有一个由PureStake代表Moonbeam基金会运营并含有{{ networks.moonriver.staking.max_candidates }}位收集人的有效集。将会在第1阶段举行一次初始收集人选举，以扩展Moonbeam团队以外的收集人集。
 - 两个由PureStake运营的RPC端点。用户可以运行全节点以访问其所有的私人RPC端点。
 
 ![Moonriver Diagram](/images/learn/platform/networks/moonriver-diagram.png)
@@ -52,9 +52,9 @@ Moonriver预先设定了[5个阶段的部署过程](https://moonbeam.network/net
 
 |            变量            |                             数值                             |
 | :------------------------: | :----------------------------------------------------------: |
-|      最低提名质押数量      |    {{ networks.moonriver.staking.min_nom_stake }}枚Token     |
+|      最低提名质押数量      |    {{ networks.moonriver.staking.min_del_stake }}枚Token     |
 |        最低提名数量        |    {{ networks.moonriver.staking.min_nom_amount}}枚token     |
-| 收集人可获得最高的提名人数 |       {{ networks.moonriver.staking.max_nom_per_col }}       |
+| 收集人可获得最高的提名人数 |       {{ networks.moonriver.staking.max_del_per_can }}       |
 | 提名人可提名的最高收集人数 |       {{ networks.moonriver.staking.max_col_per_nom }}       |
 |            轮次            | {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时） |
 |           绑定期           |        {{ networks.moonriver.staking.bond_lock }}轮次        |

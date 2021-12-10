@@ -23,15 +23,15 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
 
 === "Moonriver" 
 
-    - **最低提名质押量** — {{ networks.moonriver.staking.min_nom_stake }}枚MOVR
+    - **最低提名质押量** — {{ networks.moonriver.staking.min_del_stake }}枚MOVR
     - **轮次时长** — {{ networks.moonriver.staking.round_blocks }}个区块一个轮次，每个轮次约{{ networks.moonriver.staking.round_hours }}小时
-    - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonriver.staking.max_nom_per_col }}名的提名人才有资格获得质押奖励
+    - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonriver.staking.max_del_per_can }}名的提名人才有资格获得质押奖励
     - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonriver.staking.max_col_per_nom }}个不同的收集人
     - **绑定时长** — 提名将在下一个轮次生效（资金可随时提取）
     - **解绑时长** — {{ networks.moonriver.staking.bond_lock }}个轮次
-    - **奖励发放** — {{ networks.moonriver.collator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
+    - **奖励发放** — {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
     - **收集人佣金** — 固定为年通胀率（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonriver.staking.collator_reward_inflation }}%，与提名人奖励池无关
-    - **提名人奖励池** — 年通胀的{{ networks.moonriver.staking.nominator_reward_inflation }}%
+    - **提名人奖励池** — 年通胀的{{ networks.moonriver.staking.delegator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **收集人信息** — Moonriver收集人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}
@@ -40,15 +40,15 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
 
 === "Moonbase Alpha" 
 
-    - **最低提名质押量** — {{ networks.moonbase.staking.min_nom_stake }}枚DEV
+    - **最低提名质押量** — {{ networks.moonbase.staking.min_del_stake }}枚DEV
     - **轮次时长** — {{ networks.moonbase.staking.round_blocks }}个区块一个轮次，每个轮次约{{ networks.moonbase.staking.round_hours }}小时
-    - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonbase.staking.max_nom_per_col }}名的提名人才有资格获得质押奖励
+    - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonbase.staking.max_del_per_can }}名的提名人才有资格获得质押奖励
     - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonbase.staking.max_col_per_nom }}个不同的收集人
     - **绑定时长** — 提名将在下一个轮次生效（资金可随时提取）
     - **解绑时长** — {{ networks.moonbase.staking.bond_lock }}个轮次
-    - **奖励发放** — {{ networks.moonbase.collator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
+    - **奖励发放** — {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
     - **收集人佣金** — 固定为年通胀（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonbase.staking.collator_reward_inflation }}%，与提名人奖励池无关
-    - **提名人奖励池** — 年通胀的{{ networks.moonbase.staking.nominator_reward_inflation }}%
+    - **提名人奖励池** — 年通胀的{{ networks.moonbase.staking.delegator_reward_inflation }}%
     - **提名奖励** — 会随时变化。提名奖励是分配给所有有效提名人的提名人奖励总和，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** — 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **收集人信息** — 收集人列表：[Moonbase Alpha Subscan](https://moonbase.subscan.io/validator). 最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank}

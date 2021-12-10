@@ -15,7 +15,7 @@ description: 通过此教程学习如何在运行节点后成为Moonbeam网络�
 
 Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过一个两步过滤器将收集人分配到区块生产插槽：
 
- - 平行链质押过滤器根据每个网络中的Token质押量挑选Moonbase Alpha上排名前{{networks.moonbase.staking.max_collators }}名收集人和Moonriver上排名前{{networks.moonriver.staking.max_collators }}名收集人。这个过滤后的池被称为“精选候选收集人池”。每一轮这个池中的候选收集人都会进行更新
+ - 平行链质押过滤器根据每个网络中的Token质押量挑选Moonbase Alpha上排名前{{networks.moonbase.staking.max_candidates }}名收集人和Moonriver上排名前{{networks.moonriver.staking.max_candidates }}名收集人。这个过滤后的池被称为“精选候选收集人池”。每一轮这个池中的候选收集人都会进行更新
  - 固定规模子集过滤法在第一次过滤的基础之上对每个区块生产插槽进行伪随机的子集选择
 
 此教程将带您完成以下步骤：
@@ -38,14 +38,14 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 === "Moonbase Alpha"
     |    变量     |                          值                          |
     |:---------------:|:-------------------------------------------------------:|
-    |   绑定量   | {{ networks.moonbase.staking.collator_bond_min }}枚DEV   |
-    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_collators }}名收集人 |
+    |   绑定量   | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV   |
+    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
 
 === "Moonriver"
     |    变量     |                          值                           |
     |:---------------:|:--------------------------------------------------------:|
-    |   绑定量   | {{ networks.moonriver.staking.collator_bond_min }}枚MOVR  |
-    | 活跃收集人集上限 | {{ networks.moonriver.staking.max_collators }}名收集人 |
+    |   绑定量   | {{ networks.moonriver.staking.candidate_bond_min }}枚MOVR  |
+    | 活跃收集人集上限 | {{ networks.moonriver.staking.max_candidates }}名收集人 |
 
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
@@ -67,16 +67,16 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 === "Moonbase Alpha"
     |               变量                |       值        |
     |:-------------------------------------:|:------------------:|
-    |    加入/离开候选收集人池     | {{ networks.moonbase.collator_timings.join_leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.join_leave_candidates.hours }}小时） |
-    |        新增/移除提名         | {{ networks.moonbase.collator_timings.add_remove_nominations.rounds }}轮次（{{ networks.moonbase.collator_timings.add_remove_nominations.hours }}小时） |
-    | 奖励发放（在本轮结束后） | {{ networks.moonbase.collator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.collator_timings.rewards_payouts.hours }}小时） |
+    |    加入/离开候选收集人池     | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
+    |        新增/移除提名         | {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时） |
+    | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
 
 === "Moonriver"
     |               变量                |       值        |
     |:-------------------------------------:|:------------------:|
-    |    加入/离开候选收集人池     | {{ networks.moonriver.collator_timings.join_leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.join_leave_candidates.hours }}小时） |
-    |        新增/移除提名         | {{ networks.moonriver.collator_timings.add_remove_nominations.rounds }}轮次（{{ networks.moonriver.collator_timings.add_remove_nominations.hours }}小时） |
-    | 奖励发放（在本轮结束后） | {{ networks.moonriver.collator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.collator_timings.rewards_payouts.hours }}小时） |
+    |    加入/离开候选收集人池     | {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时） |
+    |        新增/移除提名         | {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时） |
+    | 奖励发放（在本轮结束后） | {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时） |
 
 !!! 注意事项
     上表所列值可能会在未来发布新版本时有所调整。
@@ -118,14 +118,14 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 !!! 注意事项
     函数名称和最低绑定金额要求可能会在未来发布新版本时有所调整。
 
-如上所述，只有在Moonbase Alpha上提名质押量最高的前{{ networks.moonbase.staking.max_collators }}名收集人和Mooriver上提名质押量最高的前{{ networks.moonriver.staking.max_collators }}名收集人才可以进入活跃「收集人集」。
+如上所述，只有在Moonbase Alpha上提名质押量最高的前{{ networks.moonbase.staking.max_candidates }}名收集人和Mooriver上提名质押量最高的前{{ networks.moonriver.staking.max_candidates }}名收集人才可以进入活跃「收集人集」。
 
 ### 停止参与收集活动 {: #stop-collating }
 
 与波卡（Polkadot）的`chill()`函数相似，按照前述相同步骤进行操作，便可离开候选收集人池，但在第5步时需要选择`leaveCandidates()`函数。
 
 ### 增加绑定量 {: #bond-more }
-作为收集人或者候选收集人，有两种增加质押的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个拥有的地址，并[提名您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，是拥有 {{networks.moonriver.staking.collator_bond_min }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体操作如下所示：
+作为收集人或者候选收集人，有两种增加质押的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个拥有的地址，并[提名您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，是拥有 {{networks.moonriver.staking.candidate_bond_min }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体操作如下所示：
 
   1. 进入“Developer”标签
   2. 点击“Extrinsics”
@@ -138,10 +138,10 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 ![Collator Bond More](/images/node-operators/networks/collators/collator-polkadotjs-7.png)
 
 ### 减少绑定量 {: #bond-less }
-作为收集人或候选收集人，如果您所绑定的MOVR数量超过{{ networks.moonriver.staking.collator_bond_min }}枚，您可以减少您的绑定数量。
+作为收集人或候选收集人，如果您所绑定的MOVR数量超过{{ networks.moonriver.staking.candidate_bond_min }}枚，您可以减少您的绑定数量。
 
 !!! note 注意事项
-    Moonriver收集人现在在网络启动过程的绑定数量一度为100枚MOVR。作为收集人，如果您所绑定的数量等于或少于{{ networks.moonriver.staking.collator_bond_min }}枚MOVR，您将无法减少您的绑定数量。
+    Moonriver收集人现在在网络启动过程的绑定数量一度为100枚MOVR。作为收集人，如果您所绑定的数量等于或少于{{ networks.moonriver.staking.candidate_bond_min }}枚MOVR，您将无法减少您的绑定数量。
 
   1. 进入“Developer”标签
   2. 点击“Extrinsics”
