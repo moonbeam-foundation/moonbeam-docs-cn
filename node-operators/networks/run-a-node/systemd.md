@@ -51,7 +51,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 当您检索到二进制文件，您可以直接[运行systemd服务](#running-the-systemd-service)开始运行您的节点。
 
-### Compile the Binary {: #compile-the-binary } 编译二进制文件
+### 编译二进制文件 {: #compile-the-binary }
 
 手动编译二进制文件需要约30分钟和32GB的存储空间。
 
