@@ -39,10 +39,10 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 === "Moonriver"
     |  组件   |  | 最低参数要求                                                                                                                |
     |:------------:|::|:---------------------------------------------------------------------------------------------------------------------------|
-    |   **CPU**    |  | {{ networks.moonriver.node.cores }}核（最快单核速度）                                                        |
-    |   **RAM**    |  | {{ networks.moonriver.node.ram }} GB                                                                                       |
-    |   **SSD**    |  | {{ networks.moonriver.node.hd }} GB（最低要求）                                                                            |
-    | **Firewall** |  | P2P端口必须向流入流量开放：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333, 30334 TCP |
+    |   **CPU 中央处理器**     |  | {{ networks.moonriver.node.cores }}核（最快单核速度）                                                        |
+    |   **RAM 内存**    |  | {{ networks.moonriver.node.ram }} GB                                                                                       |
+    |   **SSD 固态硬盘**     |  | {{ networks.moonriver.node.hd }} GB（最低要求）                                                                            |
+    | **Firewall 防火墙** |  | P2P端口必须向流入流量开放：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333, 30334 TCP |
 
 !!! 注意事项
     如果在节点运行时没有看到`Imported`消息（没有`[Relaychain]`标签），您可能需要重新检查端口配置。

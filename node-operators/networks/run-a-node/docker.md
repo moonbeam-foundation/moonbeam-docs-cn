@@ -33,7 +33,6 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbase.node_directory }}
-    ```
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}

@@ -131,7 +131,6 @@ cargo build --release
 现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件复制到目标目录（`./target/release/{{networks.moonbase.binary_name }}`）。或者，将Moonbeam二进制文件复制到根目录：
 
 === "Moonbase Alpha"
-
     ```
     cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
     ```
@@ -344,21 +343,20 @@ journalctl -f -u moonbeam.service
    
     === "Moonbase Alpha"
         ```
-       rm  {{ networks.moonbase.node_directory }}/moonbeam
+        rm  {{ networks.moonbase.node_directory }}/moonbeam
         ```
     
     === "Moonriver"
         ```
-       rm  {{ networks.moonriver.node_directory }}/moonbeam
-    
-      ```
+        rm  {{ networks.moonriver.node_directory }}/moonbeam
+        ```
     
 3. 从[Moonbeam GitHub Release](https://github.com/PureStake/moonbeam/releases/)页面获取Moonbeam的最新版本
 
 4. 如果您使用的是发布的二进制文件，更新版本并运行以下命令：
 
     ```
-wget https://github.com/PureStake/moonbeam/releases/download/<NEW VERSION TAG HERE>/moonbeam
+    wget https://github.com/PureStake/moonbeam/releases/download/<NEW VERSION TAG HERE>/moonbeam
     ```
     
     如果您想要编译二进制文件，请参考[编译二进制文件](#compile-the-binary)指引，确保您已通过运行`git checkout`获取最新版本。
