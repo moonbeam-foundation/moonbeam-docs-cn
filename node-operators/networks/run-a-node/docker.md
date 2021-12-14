@@ -61,7 +61,11 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
     ```
     
-下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是“收集人”代码段。注意，您需要替换两处`YOUR-NODE-NAME`。
+下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是“收集人”代码段。注意，您需要替换：
+
+ - 在两处替换 `YOUR-NODE-NAME` 
+ - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则备至为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
+
 
 ### 全节点 {: #full-node }
 
@@ -77,6 +81,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
@@ -96,6 +101,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
@@ -114,6 +120,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
@@ -136,6 +143,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
@@ -155,6 +163,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
@@ -174,6 +183,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB>
     -- \
     --execution wasm
     --pruning archive \
