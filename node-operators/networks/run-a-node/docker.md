@@ -13,13 +13,13 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 ## 安装指引 {: #installation-instructions }
 
-使用Docker可以快速创建Moonbeam节点。关于安装Docker的更多资讯，请访问[此页面](https://docs.docker.com/get-docker/)。截至本文截稿，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver时，将需要数天的时间同步Kusama中继链内嵌入的数据。请确认您的系统符合以下[要求](/node-operators/networks/run-a-node/overview#requirements)。
+使用Docker可以快速创建Moonbeam节点。关于安装Docker的更多资讯，请访问[此页面](https://docs.docker.com/get-docker/)。截至本文截稿，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver，或Polkadot上的Moonbeam时，将需要数天的时间同步相应中继链内嵌入的数据。请确认您的系统符合以下[要求](/node-operators/networks/run-a-node/overview#requirements)。
 
 创建一个本地目录以储存链上数据：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
-    mkdir {{ networks.moonbase.node_directory }}
+    mkdir {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
@@ -27,15 +27,20 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     mkdir {{ networks.moonriver.node_directory }}
     ```
 
-接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`DOCKER_USER`）：
-
 === "Moonbase Alpha"
     ```
+    mkdir {{ networks.moonbase.node_directory }}
+    ```
+
+接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`DOCKER_USER`）：
+
+=== "Moonbeam"
+    ```
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonbase.node_directory }}
+    chown DOCKER_USER {{ networks.moonbeam.node_directory }}
 
     # chown to current user
-    sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
+    sudo chown -R $(id -u):$(id -g) {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
@@ -47,23 +52,33 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     sudo chown -R $(id -u):$(id -g) {{ networks.moonriver.node_directory }}
     ```
 
+=== "Moonbase Alpha"
+    ```
+    # chown to a specific user
+    chown DOCKER_USER {{ networks.moonbase.node_directory }}
+
+    # chown to current user
+    sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
+    ```
+    
 下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是“收集人”代码段。注意，您需要替换两处`YOUR-NODE-NAME`。
 
 ### 全节点 {: #full-node }
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
-    docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
+    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+    purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
     --base-path=/data \
-    --chain alphanet \
+    --chain {{ networks.moonbeam.chain_spec }} \
     --name="YOUR-NODE-NAME" \
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
     -- \
+    --execution wasm
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -82,11 +97,69 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --pruning archive \
     --state-cache-size 1 \
     -- \
+    --execution wasm
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
+=== "Moonbase Alpha"
+    ```
+    docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+    --base-path=/data \
+    --chain {{ networks.moonbase.chain_spec }} \
+    --name="YOUR-NODE-NAME" \
+    --execution wasm \
+    --wasm-execution compiled \
+    --pruning archive \
+    --state-cache-size 1 \
+    -- \
+    --execution wasm
+    --pruning archive \
+    --name="YOUR-NODE-NAME (Embedded Relay)"
+    ```
+
+
 ### 收集人 {: #collator }
+
+=== "Moonbeam"
+    ```
+    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+    --base-path=/data \
+    --chain {{ networks.moonbeam.chain_spec }} \
+    --name="YOUR-NODE-NAME" \
+    --validator \
+    --execution wasm \
+    --wasm-execution compiled \
+    --pruning archive \
+    --state-cache-size 1 \
+    -- \
+    --execution wasm
+    --pruning archive \
+    --name="YOUR-NODE-NAME (Embedded Relay)"
+    ```
+
+=== "Moonriver"
+    ```
+    docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+    --base-path=/data \
+    --chain {{ networks.moonriver.chain_spec }} \
+    --name="YOUR-NODE-NAME" \
+    --validator \
+    --execution wasm \
+    --wasm-execution compiled \
+    --pruning archive \
+    --state-cache-size 1 \
+    -- \
+    --execution wasm
+    --pruning archive \
+    --name="YOUR-NODE-NAME (Embedded Relay)"
+    ```
 
 === "Moonbase Alpha"
     ```
@@ -102,24 +175,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --pruning archive \
     --state-cache-size 1 \
     -- \
-    --pruning archive \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
-
-=== "Moonriver"
-    ```
-    docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonriver.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --validator \
-    --execution wasm \
-    --wasm-execution compiled \
-    --pruning archive \
-    --state-cache-size 1 \
-    -- \
+    --execution wasm
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -131,7 +187,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 ![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-1.png)
 
 !!! 注意事项
-    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。
+    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
 
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
@@ -146,11 +202,11 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 ![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.png)
 
 !!! 注意事项
-    同步Kusama的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements)。
+    同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements)。
 
 如果您按照Moonbase Alpha的节点教程操作，当同步完成，您将获得一个在本地运行的Moonbase Alpha测试网节点！
 
-如果您按照Moonrive的节点教程操作，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver网络上生产的区块！请注意，这个部分将会需要数天时间来同步Kusama的中继链数据。
+如果您按照Moonriver或Moonbeam的节点教程操作，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver/Moonbeam网络上生产的区块！请注意，这个部分将会需要数天时间来先同步中继链数据。
 
 ## 客户端升级 {: #update-the-client }
 
@@ -168,7 +224,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 当您的节点再次运行时，您将在您的终端看到日志。
 
-### 清除节点 {: #purge-your-node }
+## 清除节点 {: #purge-your-node }
 
 如果您需要Moonbeam节点的新实例，您可以通过删除相关联的数据目录来清除您的节点。
 
@@ -182,10 +238,10 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 如果您使用`-v`标志启动节点，则需要清除指定的目录。例如，对于直接关联的数据，您可以运行以下命令来清除您的平行链和中继链数据：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/*
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
@@ -194,14 +250,18 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
-To only remove the parachain data for a specific chain, you can run:
-
-仅为指定链移除平行链数据，您可运行以下命令：
-
 === "Moonbase Alpha"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
+    sudo rm -rf {{ networks.moonbase.node_directory }}/*
+    ```
+
+仅为指定链移除平行链数据，您可运行以下命令：
+
+=== "Moonbeam"
+
+    ```
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
@@ -210,12 +270,19 @@ To only remove the parachain data for a specific chain, you can run:
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
-同样地，仅移除中继链数据，您可运行以下命令：
 
 === "Moonbase Alpha"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
+    sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
+    ```
+
+同样地，仅移除中继链数据，您可运行以下命令：
+
+=== "Moonbeam"
+
+    ```
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
@@ -223,5 +290,12 @@ To only remove the parachain data for a specific chain, you can run:
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
+
+=== "Moonbase Alpha"
+
+    ```
+    sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
+    ```
+
 
 --8<-- 'text/purge-chain/post-purge.md'
