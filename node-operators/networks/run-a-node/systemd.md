@@ -26,10 +26,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 使用`wget`快速获取最新[发布的二进制文件](https://github.com/PureStake/moonbeam/releases)：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
 
     ```
-    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
+    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbeam.parachain_release_tag }}/moonbeam
     ```
 
 === "Moonriver"
@@ -37,16 +37,27 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonriver.parachain_release_tag }}/moonbeam
     ``` 
 
+=== "Moonbase Alpha"
+
+    ```
+    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
+    ```
+
 您可以在您的终端运行`sha256sum`命令来确认您所下载的是否为正确版本，您应该看到以下输出：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
-    {{ networks.moonbase.parachain_sha256sum }}
+    {{ networks.moonbeam.parachain_sha256sum }}
     ```
 
 === "Moonriver"
     ```
     {{ networks.moonriver.parachain_sha256sum }}
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    {{ networks.moonbase.parachain_sha256sum }}
     ```
 
 当您检索到二进制文件，您可以直接[运行systemd服务](#running-the-systemd-service)开始运行您的节点。
@@ -104,9 +115,9 @@ cargo build --release
 
 首先，创建一个服务账户：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
-    adduser moonbase_service --system --no-create-home
+    adduser moonbeam_service --system --no-create-home
     ```
 
 === "Moonriver"
@@ -114,25 +125,33 @@ cargo build --release
     adduser moonriver_service --system --no-create-home
     ```
 
-接下来，创建一个目录来存储二进制文件和数据。请确认您已经为储存链数据的本地目录设定所有权和权限许可：
-
 === "Moonbase Alpha"
     ```
-    mkdir {{ networks.moonbase.node_directory }}
-    chown moonbase_service {{ networks.moonbase.node_directory }}
+    adduser moonbase_service --system --no-create-home
+    ```
+   
+接下来，创建一个目录来存储二进制文件和数据（您可能需要`sudo`）：
+
+=== "Moonbeam"
+    ```
+    mkdir {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
     ```
     mkdir {{ networks.moonriver.node_directory }}
-    chown moonriver_service {{ networks.moonriver.node_directory }}
     ```
-
-现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件复制到目标目录（`./target/release/{{networks.moonbase.binary_name }}`）。或者，将Moonbeam二进制文件复制到根目录：
 
 === "Moonbase Alpha"
     ```
-    cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+    mkdir {{ networks.moonbase.node_directory }}
+    ```  
+
+现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件复制到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件复制到根目录（可能需要`sudo`）：
+
+=== "Moonbeam"
+    ```
+    cp ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
@@ -140,31 +159,54 @@ cargo build --release
     cp ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
     ```
 
+=== "Moonbase Alpha"
+    ```
+    cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+    ```
+
+然后，在存储链上数据的本地目录设置相应的权限:
+
+=== "Moonbeam"
+    ```
+    sudo chown -R moonbeam_service {{ networks.moonbeam.node_directory }}
+    ```
+
+=== "Moonriver"
+    ```
+    sudo chown -R moonriver_service {{ networks.moonriver.node_directory }}
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    sudo chown -R moonbase_service {{ networks.moonbase.node_directory }}
+    ```
+
 接下来，创建systemd配置文件。如果您设定的是收集人节点，请确认您使用的是“收集人”的代码段。您需执行以下操作：
 
  - 替换两处`YOUR-NODE-NAME`
+ - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
  - 再次检查确认二进制文件是否位于以下正确路径 (*ExecStart*)
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
 #### 全节点 {: #full-node }
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
     [Unit]
-    Description="Moonbase Alpha systemd service"
+    Description="Moonbeam systemd service"
     After=network.target
     StartLimitIntervalSec=0
-
+    
     [Service]
     Type=simple
     Restart=on-failure
     RestartSec=10
-    User=moonbase_service
-    SyslogIdentifier=moonbase
+    User=moonbeam_service
+    SyslogIdentifier=moonbeam
     SyslogFacility=local7
     KillSignal=SIGHUP
-    ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
+    ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --port {{ networks.parachain.p2p }} \
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
@@ -172,13 +214,15 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --base-path {{ networks.moonbase.node_directory }} \
-         --chain {{ networks.moonbase.chain_spec }} \
+         --db-cache <50% RAM in MB>
+         --base-path {{ networks.moonbeam.node_directory }} \
+         --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -209,6 +253,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
+         --db-cache <50% RAM in MB>
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -216,18 +261,59 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
     ```
+
+=== "Moonbase Alpha"
+    ```
+    [Unit]
+    Description="Moonbase Alpha systemd service"
+    After=network.target
+    StartLimitIntervalSec=0
+
+    [Service]
+    Type=simple
+    Restart=on-failure
+    RestartSec=10
+    User=moonbase_service
+    SyslogIdentifier=moonbase
+    SyslogFacility=local7
+    KillSignal=SIGHUP
+    ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
+         --port {{ networks.parachain.p2p }} \
+         --rpc-port {{ networks.parachain.rpc }} \
+         --ws-port {{ networks.parachain.ws }} \
+         --execution wasm \
+         --wasm-execution compiled \
+         --pruning=archive \
+         --state-cache-size 1 \
+         --db-cache <50% RAM in MB>
+         --base-path {{ networks.moonbase.node_directory }} \
+         --chain {{ networks.moonbase.chain_spec }} \
+         --name "YOUR-NODE-NAME" \
+         -- \
+         --port {{ networks.relay_chain.p2p }} \
+         --rpc-port {{ networks.relay_chain.rpc }} \
+         --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
+         --pruning=archive \
+         --name="YOUR-NODE-NAME (Embedded Relay)"
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
 #### 收集人 {: #collator }
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
     ```
     [Unit]
-    Description="Moonbase Alpha systemd service"
+    Description="Moonbeam systemd service"
     After=network.target
     StartLimitIntervalSec=0
 
@@ -235,11 +321,11 @@ cargo build --release
     Type=simple
     Restart=on-failure
     RestartSec=10
-    User=moonbase_service
-    SyslogIdentifier=moonbase
+    User=moonbeam_service
+    SyslogIdentifier=moonbeam
     SyslogFacility=local7
     KillSignal=SIGHUP
-    ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
+    ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --validator \
          --port {{ networks.parachain.p2p }} \
          --rpc-port {{ networks.parachain.rpc }} \
@@ -248,20 +334,22 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --base-path {{ networks.moonbase.node_directory }} \
-         --chain {{ networks.moonbase.chain_spec }} \
+         --db-cache <50% RAM in MB>
+         --base-path {{ networks.moonbeam.node_directory }} \
+         --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
     ```
-
+    
 === "Moonriver"
     ```
     [Unit]
@@ -286,6 +374,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
+         --db-cache <50% RAM in MB>
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -293,12 +382,56 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
     ```
+
+=== "Moonbase Alpha"
+    ```
+    [Unit]
+    Description="Moonbase Alpha systemd service"
+    After=network.target
+    StartLimitIntervalSec=0
+
+    [Service]
+    Type=simple
+    Restart=on-failure
+    RestartSec=10
+    User=moonbase_service
+    SyslogIdentifier=moonbase
+    SyslogFacility=local7
+    KillSignal=SIGHUP
+    ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
+         --validator \
+         --port {{ networks.parachain.p2p }} \
+         --rpc-port {{ networks.parachain.rpc }} \
+         --ws-port {{ networks.parachain.ws }} \
+         --execution wasm \
+         --wasm-execution compiled \
+         --pruning=archive \
+         --state-cache-size 1 \
+         --db-cache <50% RAM in MB>
+         --base-path {{ networks.moonbase.node_directory }} \
+         --chain {{ networks.moonbase.chain_spec }} \
+         --name "YOUR-NODE-NAME" \
+         -- \
+         --port {{ networks.relay_chain.p2p }} \
+         --rpc-port {{ networks.relay_chain.rpc }} \
+         --ws-port {{ networks.relay_chain.ws }} \
+         --execution wasm
+         --pruning=archive \
+         --name="YOUR-NODE-NAME (Embedded Relay)"
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+!!! 注意事项
+    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
 
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
@@ -336,21 +469,26 @@ journalctl -f -u moonbeam.service
 1. 停止systemd服务：
 
     ```
-    sudo systemctl stop moonbeam
+    sudo systemctl stop moonbeam.service
     ```
     
 2. 移除二进制文件的旧版本：
    
-    === "Moonbase Alpha"
+    === "Moonbeam"
         ```
-        rm  {{ networks.moonbase.node_directory }}/moonbeam
+        rm  {{ networks.moonbeam.node_directory }}/moonbeam
         ```
     
     === "Moonriver"
         ```
         rm  {{ networks.moonriver.node_directory }}/moonbeam
         ```
-    
+
+    === "Moonbase Alpha"
+        ```
+        rm  {{ networks.moonbase.node_directory }}/moonbeam
+        ```
+        
 3. 从[Moonbeam GitHub Release](https://github.com/PureStake/moonbeam/releases/)页面获取Moonbeam的最新版本
 
 4. 如果您使用的是发布的二进制文件，更新版本并运行以下命令：
@@ -363,13 +501,13 @@ journalctl -f -u moonbeam.service
 
 5. 将二进制文件复制到数据目录：
 
-    === "Moonbase Alpha"
+    === "Moonbeam"
         ```
         # If you used the release binary:
-        cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        cp ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
     
         # Or if you compiled the binary:
-        cp ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        cp ./target/release/{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
         ```
     
     === "Moonriver"
@@ -380,14 +518,24 @@ journalctl -f -u moonbeam.service
         # Or if you compiled the binary:
         cp ./target/release/{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
         ```
-    
-6. 更新权限：
 
     === "Moonbase Alpha"
+        ```
+        # If you used the release binary:
+        cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+    
+        # Or if you compiled the binary:
+        cp ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        ```
+    
+
+6. 更新权限：
+
+    === "Moonbeam"
 
         ```
         chmod +x moonbeam
-        chown moonbase_service moonbeam
+        chown moonbeam_service moonbeam
         ```
     
     === "Moonriver"
@@ -396,22 +544,29 @@ journalctl -f -u moonbeam.service
         chmod +x moonbeam
         chown moonriver_service moonbeam
         ```
+
+    === "Moonbase Alpha"
+
+        ```
+        chmod +x moonbeam
+        chown moonbase_service moonbeam
+        ```
     
 7. 启动您的服务：
 
     ```
-    systemctl start moonbeam
+    systemctl start moonbeam.service
     ```
 
-您可以运行`systemctl status moonbeam.service`查看你更新的节点的状态，或者运行`journalctl -f -u moonbeam.service`查看日志：
+您可以运行以上命令查看节点的状态或日志。
 
-### 清除节点 {: #purge-your-node }
+## 清除节点 {: #purge-your-node }
 
 如果您需要Moonbeam节点的新实例，您可以通过删除相关联的数据目录来清除您的节点。
 
 取决于您使用的是发布的二进制文件还是自己编译的二进制文件，清除链数据的方式也有所不同。如果您是自己编译二进制文件，您可跳过该步骤至[清除编译的二进制文件](#purge-compiled-binary)部分。
 
-#### 清除发布的二进制文件 {: #purge-release-binary }
+### 清除发布的二进制文件 {: #purge-release-binary }
 
 首先，您需要停止systemd服务：
 
@@ -421,10 +576,10 @@ sudo systemctl stop moonbeam
 
 您可以运行以下命令清除您的平行链和中继链数据：
 
-=== "Moonbase Alpha"
+=== "Moonbeam"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/*
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
@@ -433,12 +588,18 @@ sudo systemctl stop moonbeam
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
-仅为指定链移除平行链数据，您可运行以下命令：
-
 === "Moonbase Alpha"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
+    sudo rm -rf {{ networks.moonbase.node_directory }}/*
+    ```
+
+仅为指定链移除平行链数据，您可运行以下命令：
+
+=== "Moonbeam"
+
+    ```
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
@@ -447,12 +608,19 @@ sudo systemctl stop moonbeam
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
-同样地，仅移除中继链数据，您可运行以下命令：
-
 === "Moonbase Alpha"
 
     ```
-    sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
+    sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
+    ```
+
+
+同样地，仅移除中继链数据，您可运行以下命令：
+
+=== "Moonbeam"
+
+    ```
+    sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
@@ -461,9 +629,15 @@ sudo systemctl stop moonbeam
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
 
+=== "Moonbase Alpha"
+
+    ```
+    sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
+    ```
+
 --8<-- 'text/purge-chain/post-purge.md'
 
-#### 清除编译的二进制文件 {: #purge-compiled-binary }
+### 清除编译的二进制文件 {: #purge-compiled-binary }
 
 如果您想要启动一个新的节点实例，您可以使用一些`purge-chain`命令，它们将按照指令删除以前的链数据。清除平行链和中继链数据的基本命令如下所示：
 
