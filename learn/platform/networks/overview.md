@@ -9,10 +9,10 @@ description: 本文将简要描述Moonbeam计划建立的网络，一个位于Po
 
 以下是我们关于部署平行链的路线图：
 
- - Moonbase Alpha: PureStake主导平行链测试网（2020 九月
- - Moonrock: 部署于Rococo测试网上（_待定_）
- - Moonriver: 部署于Kusama上（2021 Q2末）
- - Moonbeam: 部署于Polkadot上（2021 Q3末）
+ - Moonbase Alpha: PureStake主导平行链测试网（2020 九月)
+ - Moonrock: 部署于Rococo测试网上（2021 五月）
+ - Moonriver: 部署于Kusama上（2021 六月）
+ - Moonbeam: 部署于Polkadot上（2021 十二月）
 
 这个策略能让我们在保持适当的更新速度同时，降低Polkadot 主网上Moonbeam软件升级的风险。同时，我们会在网络开放的时候提供更多关于如何使用不同以Moonbeam为基础的网络细节。
 
@@ -30,10 +30,16 @@ description: 本文将简要描述Moonbeam计划建立的网络，一个位于Po
 
 ## Moonriver {: #moonriver } 
 
-在部署于Polkadot主网之前，Moonbeam将会以平行链的形式发布在Kusama的网络上（[更多细节](https://www.purestake.com/news/moonbeam-on-kusama/)）。这需要平行链功能在Kusama上开通。
+在部署于Polkadot主网之前，Moonbeam以平行链的形式发布在Kusama的网络上（[更多细节](https://www.purestake.com/news/moonbeam-on-kusama/)）。Kusama网的平行链功能已经开通。
 
-我们计划在一些功能开通之后，在Moonriver上执行包括像[Crowdloan](https://wiki.polkadot.network/docs/learn-crowdloans)、[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)的平行链相关的功能。
+随着平行链功能的开通，Moonriver将会支持[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)等相关功能。
+
+[更多了解Moonriver](/learn/platform/networks/moonriver/).
 
 ## Moonbeam的Polkadot主网 {: #moonbeam-polkadot-mainnet } 
 
-Moonbeam的生产主网同样会以平行链的形式部署在Polkadot上，这个Moonbeam网络将有最高级别的安全性和可用性，其在主网上运行的代码基本上将通过上面列出的一个或多个其他网络来进行审查。
+Moonbeam的生产环境主网自2021年12月17日起以平行链的形式部署在Polkadot主网上。Moonbeam网络将有最高级别的安全性和可用性，其在主网上运行的代码基本上将通过上面列出的一个或多个其他网络来进行审查。
+
+随着平行链功能的开通，Moonbeam将会支持[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)等相关功能。
+
+[更多了解Moonbeam](/learn/platform/networks/moonbeam/).

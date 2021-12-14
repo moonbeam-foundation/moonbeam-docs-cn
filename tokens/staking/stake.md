@@ -21,15 +21,32 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 --8<-- 'text/staking/staking-definitions.md'
 
-目前，对于Moonbase Alpha来说，上述参数具体如下：
+=== "Moonriver"
 
-|        变量        |      |                              值                              |
-| :----------------: | :--: | :----------------------------------------------------------: |
-|   最低提名质押量   |      |     {{ networks.moonbase.staking.min_del_stake }}枚代币      |
-|   最低提名持有量   |      |     {{ networks.moonbase.staking.min_nom_amount}}枚代币      |
-| 提名者的收集人限额 |      |       {{ networks.moonbase.staking.max_col_per_nom }}        |
-|        轮次        |      | {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时） |
-|      绑定时长      |      |         {{ networks.moonbase.staking.bond_lock }}轮          |
+    |             变量             |  |                                                                          值                                                                         |
+    |:---------------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |     最低提名质押量     |  |                                                   {{ networks.moonriver.staking.min_del_stake }} MOVR                                                   |
+    | 单个收集人最大有效提名人数量 |  |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
+    | 单个提名人可提名的最大收集人数  |  |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
+    |               轮次时长               |  |                        {{ networks.moonriver.staking.round_blocks }} blocks ({{ networks.moonriver.staking.round_hours }} hours)                        |
+    |           绑定时长           |  |                                                    {{ networks.moonriver.staking.bond_lock }} rounds                                                    |
+    |      解除收集人时长       |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
+    |     减少提名数额时长    |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
+    |     解绑时长      |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
+
+
+=== "Moonbase Alpha"
+
+    |            变量              |  |                                                                         值                                                                        |
+    |:---------------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |     最低提名质押量      |  |                                                   {{ networks.moonbase.staking.min_del_stake }} DEV                                                   |
+    | 单个收集人最大有效提名人数量 |  |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
+    | 单个提名人可提名的最大收集人数  |  |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
+    |               轮次时长               |  |                        {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours)                        |
+    |           绑定时长           |  |                                                   {{ networks.moonbase.staking.bond_lock }} rounds                                                    |
+    |      解除收集人时长       |  |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbase.delegator_timings.leave_delegators.hours }} hours)   |
+    |     减少提名数额时长     |  |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
+    |     解绑时长     |  | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }} hours) |
 
 ## 外部参数定义 {: #extrinsics-definitions } 
 

@@ -26,7 +26,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **最低提名质押量** — {{ networks.moonriver.staking.min_del_stake }}枚MOVR
     - **轮次时长** — {{ networks.moonriver.staking.round_blocks }}个区块一个轮次，每个轮次约{{ networks.moonriver.staking.round_hours }}小时
     - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonriver.staking.max_del_per_can }}名的提名人才有资格获得质押奖励
-    - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonriver.staking.max_col_per_nom }}个不同的收集人
+    - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonriver.staking.max_del_per_del }}个不同的收集人
     - **绑定时长** — 提名将在下一个轮次生效（资金可随时提取）
     - **解绑时长** — {{ networks.moonriver.staking.bond_lock }}个轮次
     - **奖励发放** — {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
@@ -43,7 +43,7 @@ Moonbeam使用基于[波卡PoS模型](https://wiki.polkadot.network/docs/learn-c
     - **最低提名质押量** — {{ networks.moonbase.staking.min_del_stake }}枚DEV
     - **轮次时长** — {{ networks.moonbase.staking.round_blocks }}个区块一个轮次，每个轮次约{{ networks.moonbase.staking.round_hours }}小时
     - **单个收集人最大有效提名人数量** — 特定轮次，质押量排名前{{ networks.moonbase.staking.max_del_per_can }}名的提名人才有资格获得质押奖励
-    - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonbase.staking.max_col_per_nom }}个不同的收集人
+    - **单个提名人可提名的最大收集人数** — 一个提名人可以提名{{ networks.moonbase.staking.max_del_per_del }}个不同的收集人
     - **绑定时长** — 提名将在下一个轮次生效（资金可随时提取）
     - **解绑时长** — {{ networks.moonbase.staking.bond_lock }}个轮次
     - **奖励发放** — {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户

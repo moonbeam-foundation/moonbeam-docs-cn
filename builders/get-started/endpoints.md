@@ -15,13 +15,17 @@ description: 使用支持的API提供者连接至公共端点或创建自定义J
 
 如果想要寻找适用于开发环境的API提供者，您可查看本教程的[端点提供者](#endpoint-providers)部分。
 
-### Moonbase Alpha端点
+### Moonbeam端点
 
---8<-- 'code/endpoints/moonbase.md'
+--8<-- 'code/endpoints/moonbeam.md'
 
 ### Moonriver端点
 
 --8<-- 'code/endpoints/moonriver.md'
+
+### Moonbase Alpha端点
+
+--8<-- 'code/endpoints/moonbase.md'
 
 ## 端点提供者
 
@@ -37,7 +41,7 @@ description: 使用支持的API提供者连接至公共端点或创建自定义J
 
 首先，导向至[Bware Labs](https://app.bwarelabs.com/)，点击“Launch App"连接至您的钱包。连接成功后，您将能够生成您的自定义端点。为此，您需要执行以下操作：
 
-1. 为您的端点选择网络。目前有两个选项：Moonbeam和Moonriver。如果您希望选择Moonbase Alpha TestNet，请选择Moonbeam。
+1. 为您的端点选择网络。目前有三个选项：Moonbeam，Moonriver和Moonbase Alpha。
 
 2. 为端点设置名称
 
