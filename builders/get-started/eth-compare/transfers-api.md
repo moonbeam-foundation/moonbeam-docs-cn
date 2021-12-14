@@ -3,7 +3,7 @@ title: 转账API
 description: 本文描述了以太坊开发者需要了解的Moonbeam在可用余额转账与以太坊之间的主要差异
 ---
 
-![Moonbeam v Ethereum - Transfers API Banner](/images/eth-compare/transfers-api-banner.png)
+![Moonbeam v Ethereum - Transfers API Banner](/images/builders/get-started/eth-compare/transfers-api-banner.png)
 
 ## 概览
 
