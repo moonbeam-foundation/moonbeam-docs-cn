@@ -214,7 +214,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -222,7 +222,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -253,7 +253,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -261,7 +261,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -292,7 +292,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -300,7 +300,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 
@@ -334,7 +334,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -342,7 +342,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -374,7 +374,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -382,7 +382,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -414,7 +414,7 @@ cargo build --release
          --wasm-execution compiled \
          --pruning=archive \
          --state-cache-size 1 \
-         --db-cache <50% RAM in MB>
+         --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
          --name "YOUR-NODE-NAME" \
@@ -422,7 +422,7 @@ cargo build --release
          --port {{ networks.relay_chain.p2p }} \
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
-         --execution wasm
+         --execution wasm \
          --pruning=archive \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 

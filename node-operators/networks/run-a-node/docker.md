@@ -81,9 +81,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -101,9 +101,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -120,9 +120,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -143,9 +143,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -163,9 +163,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
@@ -183,9 +183,9 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB>
+    --db-cache <50% RAM in MB> \
     -- \
-    --execution wasm
+    --execution wasm \
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
