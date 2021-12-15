@@ -85,29 +85,26 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 您可在此处使用以下网络为MetaMask进行配置：
 
-=== "Moonbeam Development Node"
-
-    - Network Name: `Moonbeam Dev`
-    - RPC URL: `{{ networks.development.rpc_url }}`
-    - ChainID: `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`)
-    - Symbol (Optional): `DEV`
-    - Block Explorer (Optional): `{{ networks.development.block_explorer }}`
+=== "Moonriver"
+    - Network Name: `Moonriver`
+    - RPC URL: `{{ networks.moonriver.rpc_url }}`
+    - ChainID: `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`)
+    - Symbol (Optional): `MOVR`
+    - Block Explorer (Optional): `{{ networks.moonriver.block_explorer }}`
 
 === "Moonbase Alpha"
-
     - Network Name: `Moonbase Alpha`
     - RPC URL: `{{ networks.moonbase.rpc_url }}`
     - ChainID: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`)
     - Symbol (Optional): `DEV`
     - Block Explorer (Optional): `{{ networks.moonbase.block_explorer }}`
 
-=== "Moonriver"
-
-    - Network Name: `Moonriver`
-    - RPC URL: `{{ networks.moonriver.rpc_url }}`
-    - ChainID: `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`)
-    - Symbol (Optional): `MOVR`
-    - Block Explorer (Optional): `{{ networks.moonriver.block_explorer }}`
+=== "Moonbeam Dev Node"
+    - Network Name: `Moonbeam Dev`
+    - RPC URL: `{{ networks.development.rpc_url }}`
+    - ChainID: `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`)
+    - Symbol (Optional): `DEV`
+    - Block Explorer (Optional): `{{ networks.development.block_explorer }}`
 
 ![MetaMask5](/images/tokens/connect/metamask/metamask-8.png)
 

@@ -26,20 +26,19 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 - **默认字段包含** —— 真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称
 - **自定义字段包含** —— 任何相关信息。举例而言，您可以包含您的Discord用户名
 
-=== "Moonbase Alpha"
-    |        变量       |                                定义                               |                      值                     |
-    |:---------------------:|:-----------------------------------------------------------------------:|:----------------------------------------------:|
-    |     基础押金     |            用于设置身份的押金数量           | {{ networks.moonbase.identity.basic_dep }} DEV |
-    |     字段押金     | 用于设置身份的每个字段的押金数量 | {{ networks.moonbase.identity.field_dep }} DEV |
-    | 最大附加字段数 |     可储存于一个ID的最大附加字段数     |   {{ networks.moonbase.identity.max_fields }}  |
-
 === "Moonriver"
-    |        变量       |                                定义                               |                       值                      |
-    |:---------------------:|:-----------------------------------------------------------------------:|:------------------------------------------------:|
-    |     基础押金     |            用于设置身份的押金数量           | {{ networks.moonriver.identity.basic_dep }} MOVR |
-    |     字段押金     | 用于设置身份的每个字段的押金数量 | {{ networks.moonriver.identity.field_dep }} MOVR |
-    | 最大附加字段数 |     可储存于一个ID的最大附加字段数     |   {{ networks.moonriver.identity.max_fields }}   |
+    |      变量      |               定义               |                        值                        |
+    |:--------------:|:--------------------------------:|:------------------------------------------------:|
+    |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonriver.identity.basic_dep }} MOVR |
+    |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonriver.identity.field_dep }} MOVR |
+    | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |   {{ networks.moonriver.identity.max_fields }}   |
 
+=== "Moonbase Alpha"
+    |      变量      |               定义               |                       值                       |
+    |:--------------:|:--------------------------------:|:----------------------------------------------:|
+    |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonbase.identity.basic_dep }} DEV |
+    |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbase.identity.field_dep }} DEV |
+    | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |  {{ networks.moonbase.identity.max_fields }}   |
 
 ## 开始使用
 

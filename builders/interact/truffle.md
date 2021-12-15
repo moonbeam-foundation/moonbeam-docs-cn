@@ -96,15 +96,14 @@ module.exports = {
 
 您可以在下方找到所有网络的网络配置：
 
-=== "Moonbeam Development Node"
-
+=== "Moonriver"
     ```
-    dev: {
+    moonriver: {
       provider: () => {
          ...
-         return new HDWalletProvider(privateKeyDev, '{{ networks.development.rpc_url }}') // Insert your private key here
+         return new HDWalletProvider(privateKeyMoonriver, '{{ networks.moonriver.rpc_url }}') // Insert your private key here
       },
-      network_id: {{ networks.development.chain_id }} (hex: {{ networks.development.hex_chain_id }}),
+      network_id: {{ networks.moonriver.chain_id }} (hex: {{ networks.moonriver.hex_chain_id }}),
     },
     ```
 
@@ -119,14 +118,14 @@ module.exports = {
     },
     ```
 
-=== "Moonriver"
+=== "Moonbeam Dev Node"
     ```
-    moonriver: {
+    dev: {
       provider: () => {
          ...
-         return new HDWalletProvider(privateKeyMoonriver, '{{ networks.moonriver.rpc_url }}') // Insert your private key here
+         return new HDWalletProvider(privateKeyDev, '{{ networks.development.rpc_url }}') // Insert your private key here
       },
-      network_id: {{ networks.moonriver.chain_id }} (hex: {{ networks.moonriver.hex_chain_id }}),
+      network_id: {{ networks.development.chain_id }} (hex: {{ networks.development.hex_chain_id }}),
     },
     ```
 
@@ -222,22 +221,19 @@ truffle compile
 
 现在我们开始准备部署已编译完的合约。您可以使用以下命令执行此操作：
 
-=== "Moonbeam Development Node"
-
+=== "Moonriver"
     ```
-    truffle migrate --network dev
+    truffle migrate --network moonriver
     ```
 
 === "Moonbase Alpha"
-
     ```
     truffle migrate --network moonbase
     ```
 
-=== "Moonriver"
-
+=== "Moonbeam Dev Node"
     ```
-    truffle migrate --network moonriver
+    truffle migrate --network dev
     ```
 
 若操作成功，您将看到部署成功的信息，其中包括部署合约的地址：
