@@ -65,11 +65,14 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 运行追踪节点的完整命令如以下所示：
 
+!!! note
+    用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
+
 === "Moonbeam Development Node"
     ```
     docker run --network="host" -v "/var/lib/alphanet-data:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam-tracing:v0.13.1-800 \
+    {{ networks.development.tracing_tag }} \
     --base-path=/data \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
@@ -83,15 +86,17 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
     docker run --network="host" -v "/var/lib/alphanet-data:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam-tracing:v0.13.1-800 \
+    {{ networks.moonbase.tracing_tag }} \
     --base-path=/data \
     --chain alphanet \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     -- \
+    --execution wasm \
     --pruning archive \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
@@ -100,17 +105,17 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
     docker run --network="host" -v "/var/lib/alphanet-data:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam-tracing:v0.13.1-800 \
+    {{ networks.moonriver.tracing_tag }} \
     --base-path=/data \
     --chain moonriver \
     --name="Moonbeam-Tutorial" \
-    --execution native \
-    --wasm-execution compiled \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
     -- \
+    --execution wasm \
     --pruning archive \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
