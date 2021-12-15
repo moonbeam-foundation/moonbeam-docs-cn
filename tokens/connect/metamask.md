@@ -5,7 +5,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 # 使用MetaMask与Moonbeam交互
 
-![Intro banner](/images/integrations/integrations-metamask-banner.png)
+![Intro banner](/images/tokens/connect/metamask/metamask-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -57,7 +57,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 除了创建新账户，您还可以选择导入任何您持有私钥的账户至MetaMask。例如，您可以导入开发账户。
 
-![Import dev account into MetaMask](/images/metamask/metamask-3.png)
+![Import dev account into MetaMask](/images/tokens/connect/metamask/metamask-3.png)
 
 为该开发节点预先提供资金的开发账户的详细信息如下：
 
@@ -67,11 +67,11 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 在导入页面，选择“Private Key”并粘贴以上对应私钥（在本教程示例中，我们使用Gerald的密钥）：
 
-![Paste your account key into MetaMask](/images/metamask/metamask-4.png)
+![Paste your account key into MetaMask](/images/tokens/connect/metamask/metamask-4.png)
 
 导入后将出现如下图所示的“Account 2”：
 
-![MetaMask displaying your new Account 2](/images/metamask/metamask-5.png)
+![MetaMask displaying your new Account 2](/images/tokens/connect/metamask/metamask-5.png)
 
 ## 连接MetaMask至Moonbeam {: #connect-metamask-to-moonbeam }
 
@@ -112,11 +112,11 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 您也可以尝试使用MetaMask发送一些Token。在本示例中，您将需要两个账户。为此，您需要再创建一个新的账户。两个账户准备完毕后，点击“发送”开启一笔转账。选择“在我的账户间转账”选项，我们尝试交易100个Token并保持其他设置不变：
 
-![Initiating a token transfer](/images/metamask/metamask-9.png)
+![Initiating a token transfer](/images/tokens/connect/metamask/metamask-9.png)
 
 提交交易后，您将看到“待处理”字样的的状态，直到确认为止，如下图所示：
 
-![Transaction confirmation](/images/metamask/metamask-10.png)
+![Transaction confirmation](/images/tokens/connect/metamask/metamask-10.png)
 
 请注意，Account 2的余额减去了已转移的金额以及gas费。切换到Account 1，我们看到已转移的100个Token已经到账：
 
@@ -124,7 +124,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 如果您回到运行Moonbeam节点的终端，可以在交易到达时看到正在编写的区块：
 
-![Moonbeam Development Node](/images/metamask/metamask-12.png)
+![Moonbeam Development Node](/images/tokens/connect/metamask/metamask-12.png)
 
 !!! 注意事项
     如果您最终使用Substrate purge-chain命令重置您的开发节点，您需要通过设置 -> 高级 -> 重设账户这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。
