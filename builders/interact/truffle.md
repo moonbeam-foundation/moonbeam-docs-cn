@@ -118,7 +118,7 @@ module.exports = {
     },
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     dev: {
       provider: () => {
@@ -231,7 +231,7 @@ truffle migrate --network moonriver
     truffle migrate --network moonbase
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     truffle migrate --network dev
     ```

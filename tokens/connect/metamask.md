@@ -99,7 +99,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     - Symbol (Optional): `DEV`
     - Block Explorer (Optional): `{{ networks.moonbase.block_explorer }}`
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     - Network Name: `Moonbeam Dev`
     - RPC URL: `{{ networks.development.rpc_url }}`
     - ChainID: `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`)

@@ -47,7 +47,7 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
       {{ networks.moonbase.rpc_url }}
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
       {{ networks.development.rpc_url }}
     ```

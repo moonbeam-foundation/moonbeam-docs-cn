@@ -135,7 +135,7 @@ npm install @nomiclabs/hardhat-ethers ethers
       },
     ```   
     
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```      
     dev: {
         url: '{{ networks.development.rpc_url }}',
