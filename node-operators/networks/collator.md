@@ -36,22 +36,22 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或者基本的以太坊式账户。另外，需要拥有最低Token质押量才有资格成为候选人。只有一定数量的根据提名质押量排名靠前的收集人才会进入活跃「收集人集」。
 
 === "Moonbase Alpha"
-    |    变量     |                          值                          |
-    |:---------------:|:-------------------------------------------------------:|
-    |   绑定量   | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV   |
-    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
+    |       变量       |                           值                            |
+    |:----------------:|:-------------------------------------------------------:|
+    |      绑定量      | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV |
+    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人  |
 
 === "Moonriver"
-    |    变量     |                          值                           |
-    |:---------------:|:--------------------------------------------------------:|
-    |   绑定量   | {{ networks.moonriver.staking.candidate_bond_min }}枚MOVR  |
-    | 活跃收集人集上限 | {{ networks.moonriver.staking.max_candidates }}名收集人 |
+    |       变量       |                            值                             |
+    |:----------------:|:---------------------------------------------------------:|
+    |      绑定量      | {{ networks.moonriver.staking.candidate_bond_min }}枚MOVR |
+    | 活跃收集人集上限 |  {{ networks.moonriver.staking.max_candidates }}名收集人  |
 
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
 每个收集人都有一个与收集活动相关联的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
+目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)账户有两种方法：
 
  - 从[MetaMask](/tokens/connect/metamask/)或[MathWallet](/tokens/connect/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
  - 使用[Polkadot.js](/tokens/connect/polkadotjs/)创建新的H160账户
@@ -65,17 +65,17 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 在开始之前，您需要注意以下与收集活动相关的不同操作的时间安排：
 
 === "Moonbase Alpha"
-    |               变量                |       值        |
-    |:-------------------------------------:|:------------------:|
-    |    加入/离开候选收集人池     | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
-    |        新增/移除提名         | {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时） |
+    |           变量           |                                                                     值                                                                      |
+    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  加入/离开候选收集人池   | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
+    |      新增/移除提名       |    {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）    |
     | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
 
 === "Moonriver"
-    |               变量                |       值        |
-    |:-------------------------------------:|:------------------:|
-    |    加入/离开候选收集人池     | {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时） |
-    |        新增/移除提名         | {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时） |
+    |           变量           |                                                                      值                                                                       |
+    |:------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  加入/离开候选收集人池   | {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时） |
+    |      新增/移除提名       |    {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时）    |
     | 奖励发放（在本轮结束后） | {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时） |
 
 !!! 注意事项
@@ -83,7 +83,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 ### 获取候选池的大小 {: #get-the-size-of-the-candidate-pool }
 
-首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)中运行以下JavaScript代码段:
+首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)中运行以下JavaScript代码段:
 
 ```js
 // Simple script to get candidate pool size
@@ -102,7 +102,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool }
 
-节点开始运行并同步网络后，您将成为候选收集人（并加入候选收集人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
+节点开始运行并同步网络后，您将成为候选收集人（并加入候选收集人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
 
   1. 进入“Developers”标签，点击“Extrinsics”
   2. 选择您用于参与收集活动的账户

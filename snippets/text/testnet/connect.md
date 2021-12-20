@@ -18,7 +18,7 @@ const Web3 = require('web3'); //Load Web3 library
 .   
 .
 //Create local Web3 instance - set Moonbase Alpha as provider
-const web3 = new Web3('https://rpc.testnet.moonbeam.network'); 
+const web3 = new Web3('https://rpc.api.moonbase.moonbeam.network'); 
 ```
 如果使用的是ethers.js库，您可以使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})` 来定义开发者，并且将provider（提供者）URL设定至Moonbase Alpha：
 
@@ -26,7 +26,7 @@ const web3 = new Web3('https://rpc.testnet.moonbeam.network');
 const ethers = require('ethers');
 
 
-const providerURL = 'https://rpc.testnet.moonbeam.network';
+const providerURL = 'https://rpc.api.moonbase.moonbeam.network';
 // Define Provider
 const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
     chainId: 1287,

@@ -141,7 +141,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 ## 验证提名 {: #verify-nomination }
 
-您可以在Polkadot.js Apps查看链状态以验证您的提名是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入下个部分。
+您可以在Polkadot.js Apps查看链状态以验证您的提名是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入下个部分。
 
 ### 将MetaMask地址加入地址簿 {: #add-metamask-address-to-address-book }
 
@@ -159,7 +159,7 @@ In order to nominate a collator, you'll need to determine the current collator n
 
 ### 验证提名人状态 {: #verify-nominator-state }
 
-1. 为了验证您已成功提名，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)导向至"Developer" -> "Chain State"
+1. 为了验证您已成功提名，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)导向至"Developer" -> "Chain State"
 
 2. 选择"parachainStaking" Pallet
 

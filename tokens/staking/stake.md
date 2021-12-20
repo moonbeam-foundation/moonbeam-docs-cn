@@ -23,30 +23,30 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 === "Moonriver"
 
-    |             变量             |  |                                                                          值                                                                         |
-    |:---------------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |     最低提名质押量     |  |                                                   {{ networks.moonriver.staking.min_del_stake }} MOVR                                                   |
-    | 单个收集人最大有效提名人数量 |  |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
-    | 单个提名人可提名的最大收集人数  |  |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
-    |               轮次时长               |  |                        {{ networks.moonriver.staking.round_blocks }} blocks ({{ networks.moonriver.staking.round_hours }} hours)                        |
-    |           绑定时长           |  |                                                    {{ networks.moonriver.staking.bond_lock }} rounds                                                    |
-    |      解除收集人时长       |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
-    |     减少提名数额时长    |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
-    |     解绑时长      |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
+    |              变量              |  |                                                                           值                                                                            |
+    |:------------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |         最低提名质押量         |  |                                                   {{ networks.moonriver.staking.min_del_stake }} MOVR                                                   |
+    |  单个收集人最大有效提名人数量  |  |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
+    | 单个提名人可提名的最大收集人数 |  |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
+    |            轮次时长            |  |                        {{ networks.moonriver.staking.round_blocks }} blocks ({{ networks.moonriver.staking.round_hours }} hours)                        |
+    |            绑定时长            |  |                                                    {{ networks.moonriver.staking.bond_lock }} rounds                                                    |
+    |         解除收集人时长         |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
+    |        减少提名数额时长        |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
+    |            解绑时长            |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
 
 
 === "Moonbase Alpha"
 
-    |            变量              |  |                                                                         值                                                                        |
-    |:---------------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |     最低提名质押量      |  |                                                   {{ networks.moonbase.staking.min_del_stake }} DEV                                                   |
-    | 单个收集人最大有效提名人数量 |  |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
-    | 单个提名人可提名的最大收集人数  |  |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
-    |               轮次时长               |  |                        {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours)                        |
-    |           绑定时长           |  |                                                   {{ networks.moonbase.staking.bond_lock }} rounds                                                    |
-    |      解除收集人时长       |  |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbase.delegator_timings.leave_delegators.hours }} hours)   |
-    |     减少提名数额时长     |  |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
-    |     解绑时长     |  | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }} hours) |
+    |              变量              |  |                                                                          值                                                                           |
+    |:------------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |         最低提名质押量         |  |                                                   {{ networks.moonbase.staking.min_del_stake }} DEV                                                   |
+    |  单个收集人最大有效提名人数量  |  |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
+    | 单个提名人可提名的最大收集人数 |  |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
+    |            轮次时长            |  |                        {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours)                        |
+    |            绑定时长            |  |                                                   {{ networks.moonbase.staking.bond_lock }} rounds                                                    |
+    |         解除收集人时长         |  |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbase.delegator_timings.leave_delegators.hours }} hours)   |
+    |        减少提名数额时长        |  |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
+    |            解绑时长            |  | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }} hours) |
 
 ## 外部参数定义 {: #extrinsics-definitions } 
 
@@ -65,7 +65,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 您现在可以阅读关于质押的所有参数，如列在[一般定义](#general-definitions)的参数和来自Polkadot.js Apps的参数。
 
-导向至Polkadot.js Apps **Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
+导向至Polkadot.js Apps **Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
 
 接着，请跟随以下步骤检索各种质押参数：
 
@@ -97,7 +97,7 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 
 ## 获取收集人提名数 {: #get-the-collator-nominator-count } 
 
-首先，您需要查询`collator_nominator_count`， 因为提名时需要这个参数。此参数可以通过[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)运行以下代码获得：
+首先，您需要查询`collator_nominator_count`， 因为提名时需要这个参数。此参数可以通过[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)运行以下代码获得：
 
 ```js
 // Simple script to get collator_nominator_count
@@ -118,7 +118,7 @@ console.log(collatorInfo.toHuman()["nominators"].length);
 
 ## 获取提名人目前提名数 {: #get-your-number-of-existing-nominations } 
 
-如果您从来没有从这个账户进行提名，您可以跳过这步。但是如果您不确定您目前有多少个提名，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)运行以下的Javascript代码来获取`nomination_count`这个参数：
+如果您从来没有从这个账户进行提名，您可以跳过这步。但是如果您不确定您目前有多少个提名，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)运行以下的Javascript代码来获取`nomination_count`这个参数：
 
 ```js
 // Simple script to get your number of existing nominations.
@@ -141,10 +141,10 @@ console.log(nominatorInfo.toHuman()["nominations"].length);
 
 本小节将介绍提名收集人的流程。本教程将用以下收集人作为示例：
 
-|  变量   |      |                        地址                        |
-| :-----: | :--: | :------------------------------------------------: |
-| 校对器1 |      | {{ networks.moonbase.staking.candidates.address1 }} |
-| 校对器2 |      | {{ networks.moonbase.staking.candidates.address2 }} |
+|  变量   |  |                        地址                         |
+|:-------:|::|:---------------------------------------------------:|
+| 校对器1 |  | {{ networks.moonbase.staking.candidates.address1 }} |
+| 校对器2 |  | {{ networks.moonbase.staking.candidates.address2 }} |
 
 使用Polkadot.js Apps交互界面进入质押挖矿功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)。
 

@@ -36,7 +36,7 @@ npm ls web3
 
 ```js
 const Web3 = require('web3');
-const web3 = new Web3('wss://wss.testnet.moonbeam.network');
+const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
 
 web3.eth.subscribe('logs', {
     address: 'ContractAddress',
@@ -91,7 +91,7 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 
 ```js
 const Web3 = require('web3');
-const web3 = new Web3('wss://wss.testnet.moonbeam.network');
+const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
 
 web3.eth
    .subscribe(
