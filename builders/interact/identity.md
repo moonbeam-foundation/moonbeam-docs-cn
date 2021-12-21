@@ -15,7 +15,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ## 查看先决条件 { : #checking-prerequisites }
 
-您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network)。此教程也适用于[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network)。 
+您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network)。此教程也适用于[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network)。 
 
 同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token水龙头的相关信息，请访问Moonbase Alpha官方文档网站的[获得Token](/builders/get-started/moonbase/#get-tokens)板块。
 
@@ -50,7 +50,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ### 设置身份
 
-如果想开始使用账户UI设置一个身份，请导向至PolkadotJS Apps浏览器的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)页面。
+如果想开始使用账户UI设置一个身份，请导向至PolkadotJS Apps浏览器的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)页面。
 
 您应该已经有一个已连接网络的账户，所以您可以点击您的账户名称以确认实时的账户余额。在设置身份并传送交易之后，您提交的款项将会从您的可转账余额转移至您的储蓄账户。
 
@@ -90,7 +90,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ### 清除身份
 
-如果您想从PolkadotJS Apps界面的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)中清除您的身份，您可以跟随以下步骤：
+如果您想从PolkadotJS Apps界面的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)中清除您的身份，您可以跟随以下步骤：
 
 1. 点击您希望清除身份信息账户旁的三个垂直点按钮
 
@@ -116,7 +116,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ### 设置身份
 
-如果您想要使用外部参数UI注册一个身份，请导向PolkadotJS Apps的[Extrinsics页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/extrinsics)。接着，您可以跟随以下步骤操作：
+如果您想要使用外部参数UI注册一个身份，请导向PolkadotJS Apps的[Extrinsics页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics)。接着，您可以跟随以下步骤操作：
 
 1. 选取您的账户
 
@@ -162,7 +162,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ### 确认身份
 
-如果您想重新确认您的身份信息，您可以导向至**开发者**标签并进入[Chain state](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)页面。
+如果您想重新确认您的身份信息，您可以导向至**开发者**标签并进入[Chain state](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)页面。
 
 ![Navigate to Chain State](/images/builders/interact/identity/identity-14.png)
 
@@ -182,7 +182,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ### 清除身份
 
-如果您想从PolkadotJS Apps界面的[Extrinsics标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/extrinsics)中清除您的身份，您可以跟随以下步骤：
+如果您想从PolkadotJS Apps界面的[Extrinsics标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics)中清除您的身份，您可以跟随以下步骤：
 
 1. 在**using the selected account**下拉选单中选取您的账户
 

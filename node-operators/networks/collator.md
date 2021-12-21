@@ -51,7 +51,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 每个收集人都有一个与收集活动相关联的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
+目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)账户有两种方法：
 
  - 从[MetaMask](/tokens/connect/metamask/)或[MathWallet](/tokens/connect/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
  - 使用[Polkadot.js](/tokens/connect/polkadotjs/)创建新的H160账户
@@ -83,7 +83,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 ### 获取候选池的大小 {: #get-the-size-of-the-candidate-pool }
 
-首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)中运行以下JavaScript代码段:
+首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)中运行以下JavaScript代码段:
 
 ```js
 // Simple script to get candidate pool size
@@ -102,7 +102,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool }
 
-节点开始运行并同步网络后，您将成为候选收集人（并加入候选收集人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
+节点开始运行并同步网络后，您将成为候选收集人（并加入候选收集人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
 
   1. 进入“Developers”标签，点击“Extrinsics”
   2. 选择您用于参与收集活动的账户
