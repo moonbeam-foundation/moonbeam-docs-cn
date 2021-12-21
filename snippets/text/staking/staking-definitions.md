@@ -1,6 +1,6 @@
 关于Moonbeam质押挖矿系统，我们需要了解以下重要参数：
 
- - **候选人（Candidates）** — 进入有效集后有资格生产区块的节点
+ - **候选人（Candidates）** — 获得足够质押量进入有效集后有资格生产区块的节点
  - **收集人（Collators）** — 区块生产者，负责收集用户的交易，并生成状态转移证明，由中继链进行验证。如果做出不当行为，其权益就会被削减
  - **委托人（Delegators）** — 进行质押挖矿的代币持有者，为特定的候选收集人投票担保，只要账户中持有[最低数额](https://wiki.polkadot.network/docs/learn-accounts#balance-types)以上的代币都能成为委托人
  - **最低委托质押量（Minimum delegation stake）** — 成为委托人所需的最低代币质押量
