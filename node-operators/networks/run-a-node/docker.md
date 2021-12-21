@@ -249,19 +249,16 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 如果您使用`-v`标志启动节点，则需要清除指定的目录。例如，对于直接关联的数据，您可以运行以下命令来清除您的平行链和中继链数据：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/*
     ```
@@ -269,20 +266,16 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 仅为指定链移除平行链数据，您可运行以下命令：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
-
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
     ```
@@ -290,22 +283,18 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 同样地，仅移除中继链数据，您可运行以下命令：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
 
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```
-
 
 --8<-- 'text/purge-chain/post-purge.md'

@@ -37,22 +37,19 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 在新的RPC URL处输入Moonbeam的RPC URL：
 
-=== "Moonbeam Development Node"
-
+=== "Moonriver"
     ```
-      {{ networks.development.rpc_url }}
+      {{ networks.moonriver.rpc_url }}
     ```
 
 === "Moonbase Alpha"
-
     ```
       {{ networks.moonbase.rpc_url }}
     ```
 
-=== "Moonriver"
-
+=== "Moonbeam开发节点"
     ```
-      {{ networks.moonriver.rpc_url }}
+      {{ networks.development.rpc_url }}
     ```
 
 最后点击“Save”。

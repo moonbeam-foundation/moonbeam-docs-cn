@@ -35,17 +35,17 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或者基本的以太坊式账户。另外，需要拥有最低Token质押量才有资格成为候选人。只有一定数量的根据提名质押量排名靠前的收集人才会进入活跃「收集人集」。
 
-=== "Moonbase Alpha"
-    |       变量       |                           值                            |
-    |:----------------:|:-------------------------------------------------------:|
-    |      绑定量      | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV |
-    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人  |
-
 === "Moonriver"
     |       变量       |                            值                             |
     |:----------------:|:---------------------------------------------------------:|
     |      绑定量      | {{ networks.moonriver.staking.candidate_bond_min }}枚MOVR |
     | 活跃收集人集上限 |  {{ networks.moonriver.staking.max_candidates }}名收集人  |
+
+=== "Moonbase Alpha"
+    |       变量       |                           值                            |
+    |:----------------:|:-------------------------------------------------------:|
+    |      绑定量      | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV |
+    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人  |
 
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
@@ -64,19 +64,19 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 在开始之前，您需要注意以下与收集活动相关的不同操作的时间安排：
 
-=== "Moonbase Alpha"
-    |           变量           |                                                                     值                                                                      |
-    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
-    |  加入/离开候选收集人池   | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
-    |      新增/移除提名       |    {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）    |
-    | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
-
 === "Moonriver"
     |           变量           |                                                                      值                                                                       |
     |:------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
     |  加入/离开候选收集人池   | {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时） |
     |      新增/移除提名       |    {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时）    |
     | 奖励发放（在本轮结束后） | {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时） |
+
+=== "Moonbase Alpha"
+    |           变量           |                                                                     值                                                                      |
+    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  加入/离开候选收集人池   | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
+    |      新增/移除提名       |    {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）    |
+    | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
 
 !!! 注意事项
     上表所列值可能会在未来发布新版本时有所调整。

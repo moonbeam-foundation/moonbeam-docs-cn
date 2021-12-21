@@ -63,8 +63,8 @@ interface AggregatorV3Interface {
 目前，我们部署了以下报价对的Data Feed合约：
 
 === "Moonriver"
-    | 基础报价对  |  |                Data Feed合约                |
-    |:-----------:|--|:------------------------------------------------:|
+    | 基础报价对  |  |                        Data Feed合约                        |
+    |:-----------:|--|:-----------------------------------------------------------:|
     | BTC to USD  |  | {{ networks.moonriver.chainlink.feed.aggregator.btc_usd }}  |
     | ETH to USD  |  | {{ networks.moonriver.chainlink.feed.aggregator.eth_usd }}  |
     | KSM to USD  |  | {{ networks.moonriver.chainlink.feed.aggregator.ksm_usd }}  |
@@ -76,8 +76,8 @@ interface AggregatorV3Interface {
     | USDT to USD |  | {{ networks.moonriver.chainlink.feed.aggregator.usdt_usd }} |
     
 === "Moonbase Alpha"
-    |  基础报价对  |  |                Data Feed合约                |
-    |:------------:|--|:------------------------------------------------:|
+    |  基础报价对  |  |                        Data Feed合约                        |
+    |:------------:|--|:-----------------------------------------------------------:|
     |  BTC to USD  |  |  {{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}  |
     |  ETH to USD  |  |  {{ networks.moonbase.chainlink.feed.aggregator.eth_usd }}  |
     |  DOT to USD  |  |  {{ networks.moonbase.chainlink.feed.aggregator.dot_usd }}  |
@@ -105,12 +105,12 @@ interface AggregatorV3Interface {
 
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 
-    === "Moonbase Alpha"
-        `{{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}`
-    
     === "Moonriver"
         `{{ networks.moonriver.chainlink.feed.aggregator.btc_usd }}`
 
+    === "Moonbase Alpha"
+        `{{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}`
+    
 ![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-1.png)
 
 这将创建一个可以进行交互的Aggregator接口实例，并出现在Remix的**Deployed Contracts**部分。执行以下操作步骤获取最新价格数据：

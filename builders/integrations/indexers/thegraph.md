@@ -30,10 +30,10 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 如果您已经熟悉使用The Graph，并且想很快开始在Moonbeam上面开发，您可以在Subgraph manifest (`subgraph.yaml`)中配置以下网络：
 
-=== "Moonbeam开发节点"
+=== "Moonriver"
     ```
     dataSources:
-      network: mbase
+      network: moonriver
     ```
 
 === "Moonbase Alpha"
@@ -42,13 +42,12 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
       network: mbase
     ```
 
-=== "Moonriver"
+=== "Moonbeam开发节点"
     ```
     dataSources:
-      network: moonriver
+      network: mbase
     ```
-
-
+    
 ## 彩票合约 {: #the-lottery-contract } 
 
 我们将使用一个简单的彩票合约作为示例。您可以通过[MoonLotto Repo](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol)找到其Solidity文档。

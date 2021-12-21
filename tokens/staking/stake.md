@@ -22,7 +22,6 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
 --8<-- 'text/staking/staking-definitions.md'
 
 === "Moonriver"
-
     |              变量              |  |                                                                           值                                                                            |
     |:------------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
     |         最低提名质押量         |  |                                                   {{ networks.moonriver.staking.min_del_stake }} MOVR                                                   |
@@ -33,7 +32,6 @@ description: 本教程将展示如何通过提名收集人在Moonbeam质押代�
     |         解除收集人时长         |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
     |        减少提名数额时长        |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
     |            解绑时长            |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
-
 
 === "Moonbase Alpha"
 
