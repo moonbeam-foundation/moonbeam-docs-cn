@@ -5,7 +5,7 @@ description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及
 
 # Moonbeam测试网（Moonbase Alpha）
 
-更新于2021年5月27日
+更新于2021年12月9日
 
 !!! 注意事项 
     随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0)版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
@@ -21,7 +21,7 @@ description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及
 Moonbase Alpha具有以下配置：
 
  - Moonbeam会以平行链方式接入中继链运行
- - 平行链上将会有两个收集者节点（由PureStake主导）以收集区块。外部收集节点可以加入网络。只有质押前{{ networks.moonbase.collator_slots }}名收集人节点将被选为活跃收集人群体
+ - 平行链上将会有两个收集者节点（由PureStake主导）以收集区块。外部收集节点可以加入网络。只有质押前{{ networks.moonbase.staking.max_candidates }}名收集人节点将被选为活跃收集人群体
  - 中继链上会有三个验证者节点（由PureStake主导）来决定中继链上的区块。其中一个会被选来敲定每一个由Moonbeam收集者收集来的区块。此设定为将来扩展为两个平行链配置提供了空间。
  - 将会有两个RPC端点（由PureStake主导）。同时，用户可以运行全节点来使用他们的私人RPC节点。
 
@@ -65,14 +65,14 @@ Moonbase Alpha具有以下配置：
 
 
 ??? release v6 "_2021年2月_"
-    - 公开发布定制的[Staking pallet](https://wiki.polkadot.network/docs/learn-staking)，拥    有代币的用户可以提名收集人并获得奖励
+    - 公开发布定制的[Staking pallet](https://wiki.polkadot.network/docs/learn-staking)，拥    有代币的用户可以委托候选人并获得奖励
     - 增加[Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/democracy)，拥有代币的用户可以[上传提案](/governance/proposals/)并且[投票](/governance/voting/)
     - 将[Frontier RPC](https://github.com/paritytech/frontier)更新至最新版本，提高EVM至少五倍的    执行效率
     - Gas的使用限制提高至一个区块15M以及每一个交易13M的限制
 
 ??? release v7 "_2021年4月_"
     - 添加对以太坊调试/跟踪模块的支持。这些功能在默认情况下处于关闭状态，需要启动一个完整节点并打开该    功能才可使用
-        - 修复区块传播问题，不再仅限于收集人，从而提高网络稳定性
+        - 修复区块传播问题，不再仅限于候选收集人，从而提高网络稳定性
         - 增加理事会和技术委员会，扩展治理功能
         - 重构质押模块，使用新名称来改善终端用户体验
         - 添了三个新的预编译：[Bn128Add](https://eips.ethereum.org/EIPS/eip-196)、[Bn128Mul](https://eips.ethereum.org/EIPS/eip-196)和[Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
@@ -110,11 +110,9 @@ Moonbase Alpha具有以下配置：
 
 --8<-- 'text/testnet/faucet.md'
 
-## 早期阶段的权益证明 {: #early-stage-proof-of-stake } 
+## 权益证明 {: #proof-of-stake } 
 
-随着Moonbase Alpha v6版本的推出，测试网上已正在运行早期阶段的权益证明（Proof of Stake）系统。这意味着在测试的初衷下，Moonbeam的合作者会被激励去成为网络内的首个收集者。
-
-随着Moonbase Alpha的进展，我们希望能将其发展成完全去中心化的权益证明（Proof of Stake）网络。
+Moonbase Alpha是一个完全去中心化的权益证明网络。用户可以选择委托收集人节点来生产区块和获得质押奖励。请注意，Moonbase Alpha的DEV代币是没有任何经济价值的。候选人有效集的上限将会由治理决定。有效集的集元组成将由质押（包括委托）排名决定。
 
 ## 限制 {: #limitations } 
 

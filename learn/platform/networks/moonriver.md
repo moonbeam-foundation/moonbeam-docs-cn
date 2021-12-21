@@ -29,7 +29,7 @@ _更新至2021年12月13日_
 
 |       变量       |                         数值                          |
 | :--------------: | :---------------------------------------------------: |
-|    最小Gas费     |     {{ networks.moonriver.min_gas_price }} Gsed*      |
+|    最小Gas费     |     {{ networks.moonriver.min_gas_price }} Gwei*      |
 | 目标区块生产时间 |   {{ networks.moonriver.block_time }}秒（预计6秒）    |
 |   区块Gas上限    | {{ networks.moonriver.gas_block }}（预计提升至少4倍） |
 |  交易Gas费上限   |  {{ networks.moonriver.gas_tx }}（预计提升至少4倍）   |
@@ -88,7 +88,7 @@ Moonriver的最小单位是Sediment（Sed），需要10^18个Sediment以组成�
 
 ## 权益证明(POS) {: #proof-of-stake } 
 
-Moonriver是一个完全去中心化的权益证明网络，用户可以提名收集人节点来生产区块和获得质押奖励。它采用[Nimbus共识](/learn/features/consensus/)框架为平行链共识算法。收集人有效集的上限将会由治理决定。有效集的集元组成将由质押（包括提名）排名决定。
+Moonriver是一个完全去中心化的权益证明网络，用户可以委托收集人节点来生产区块和获得质押奖励。它采用[Nimbus共识](/learn/features/consensus/)框架为平行链共识算法。候选人有效集的上限将会由治理决定。有效集的集元组成将由质押（包括委托）排名决定。
 
 ## 限制 {: #limitations } 
 
