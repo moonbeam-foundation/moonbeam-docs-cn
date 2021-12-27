@@ -113,7 +113,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Provide the address](/images/builders/tools/precompiles/staking/staking-3.png)
 
-## 委托一个收集人 {: #nominate-a-collator }
+## 委托一个收集人 {: #delegate-a-collator }
 
 在本示例中，我们需要在Moonbase Alpha上委托一个收集人。委托人持有Token，并为担保的收集人质押。所有用户只要持有超过{{networks.moonbase.staking.min_del_stake}}枚可用Token皆可成为委托人。
 
@@ -121,7 +121,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 想要委托一个候选人，您将需要确定当前候选人的委托人数和委托人的委托数量。候选人的委托人数是支持指定候选人的委托人数。委托人的委托数量是委托人参与委托的次数。
 
-### 获取候选人的委托人数 {: #get-the-collator-nominator-count }
+### 获取候选人的委托人数 {: #get-the-candidate-delegator-count }
 
 获取候选人的委托人数量，您需要调用质押预编译提供的函数。在**Deployed Contracts**列表下找到**PARACHAINSTAKING**合约，然后执行以下操作：
 
@@ -135,7 +135,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Call collator delegation count](/images/builders/tools/precompiles/staking/staking-4.png)
 
-### 获取现有委托数量 {: #get-your-number-of-existing-nominations }
+### 获取现有委托数量 {: #get-your-number-of-existing-delegations }
 
 如果您不知道现有的委托数量，您可以执行以下步骤获得：
 
@@ -149,7 +149,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Call delegator delegation count](/images/builders/tools/precompiles/staking/staking-5.png)
 
-### 调用委托 {: #call-nominate }
+### 调用委托 {: #call-delegate }
 
 现在，您已获取[候选人的委托人数](#get-the-candidate-delegator-count)和[现有委托数量](#get-your-number-of-existing-delegations)，接下来您可以开始委托一个收集人。为此，您需要执行以下操作：
 
@@ -169,9 +169,9 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Delegate a Collator](/images/builders/tools/precompiles/staking/staking-6.png)
 
-## 验证委托 {: #verify-nomination }
+## 验证委托 {: #verify-delegation }
 
-您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入[验证委托人状态]()部分。
+您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入[验证委托人状态]()部分。
 
 ### 将MetaMask地址加入地址簿 {: #add-metamask-address-to-address-book }
 
@@ -187,9 +187,9 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Add to Address Book](/images/builders/tools/precompiles/staking/staking-7.png)
 
-### 验证委托人状态 {: #verify-nominator-state }
+### 验证委托人状态 {: #verify-delegator-state }
 
-1. 为了验证您已成功委托，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)后导向至**Developer**，选择**Chain State**
+1. 为了验证您已成功委托，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)后导向至**Developer**，选择**Chain State**
 
 2. 选择**parachainStaking** Pallet
 
@@ -206,7 +206,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ![Verify delegation](/images/builders/tools/precompiles/staking/staking-8.png)
 
-## 撤销一个委托 {: #revoking-a-nomination }
+## 撤销一个委托 {: #revoking-a-delegation }
 
 在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
@@ -214,7 +214,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 您可以使用`scheduleRevokeDelegation`函数撤销对特定候选人的委托并收回您的Token。发起请求并不会自动撤销您的委托，您需要等待延迟时段，并通过`executeDelegationRequest` 函数执行请求。在Moonbase Alpha上会有{{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时。在Moonriver上会有{{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时。
 
-### 发起撤销委托的请求
+### 发起撤销委托的请求 {: #schedule-request-to-revoke-a-delegation }
 
 回到Remix以撤销对特定候选人的委托并收回您的Token，并执行以下步骤操作：
 
@@ -230,7 +230,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 当交易成功确认，您将会需要等待延迟时段后才能为您执行撤回委托的请求。如果您尝试在延迟时段前操作，该操作将会失败
 
-### 执行撤回委托的请求
+### 执行撤回委托的请求 {: #execute-request-to-revoke-a-delegation }
 
 当已经过延迟时段，您能够回到Remix并遵循以下步骤以执行可用请求：
 
@@ -246,7 +246,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 当已完成操作，特定委托人对特定候选收集人的委托将会被撤回并显示。同时您也可以在Polkadot.js Apps上检查您的委托人状态。
 
-### 取消撤销委托请求
+### 取消撤销委托请求  {: #cancel-request-to-revoke-a-delegation }
 
 如果因任何因素您希望取消待处理的撤销委托请求，您可以在Remix上执行以下步骤：
 

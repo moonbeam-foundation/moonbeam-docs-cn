@@ -125,7 +125,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 
 Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbeam网络的流程。Moonbeam Remix Plugin综合了所有在编译、部署和交互时所需的功能，能够在无需切换页面的情况下（即在同一个页面内）完成智能合约的部署和开发。
 
-### 安装Moonbeam Remix Plugin
+### 安装Moonbeam Remix Plugin {: #installing-the-moonbeam-remix-plugin }
 
 请遵循以下步骤安装Moonbeam Remix Plugin：
 
@@ -139,7 +139,7 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
 
 当您已成功安装插件，代表Moonbeam Remix Plugin的Moonbeam标志将会出现在左手边。
 
-### 开始使用Moonbeam Remix Plugin
+### 开始使用Moonbeam Remix Plugin {: #getting-started-with-the-moonbeam-remix-plugin }
 
 在Remix IDE中点击Moonbeam Logo开启Moonbeam Plugin。请注意，此教程预设您在Remix内已有待编译的合约。您可以在[此网页](https://wizard.openzeppelin.com/)创建ERC-20合约，遵循以下步骤使用Moonbeam Remix Plugin在Moonbase Alpha部署一个ERC-20 Token。
 

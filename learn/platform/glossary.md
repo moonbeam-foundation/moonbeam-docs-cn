@@ -19,7 +19,7 @@ description: 我们整理了与波卡（Polkadot）相关的中英对照术语�
 
 提名人是中继链代币持有者，可选择其“支持”的验证人。 提名人可以收到验证人的部分奖励，如果验证人行为不当，则可能会削减提名人已抵押的代币。 提名人最多可以提名16位验证人作为受信任的验证节点候选人，质押会分给所选择并且在当前有效集内的验证人。如果您希望在波卡（Polkadot）和/或Kusama上委托PureStake验证人节点，请查看[此教程](https://www.purestake.com/technology/polkadot-validator/)。
 
-### 提名权益证明（Nomitated Proof of Stake） {: #nominated-proof-of-stake } 
+### 提名权益证明（Nominated Proof of Stake） {: #nominated-proof-of-stake } 
 
 NPoS共识机制（提名权益证明）机制通过选择验证人集合，实现最强化的Polkadot链上安全。该机制的核心是权益证明系统（PoS），即委托人支持验证人。 获得最多支持的候选验证人可选举成为验证节点之一。 如果验证人行为不当，将大幅削减其已质押的代币。 因此，提名人应对他们提名的验证人进行尽职调查。如果您希望在波卡（Polkadot）和/或Kusama上提名PureStake，请查看[此教程](https://www.purestake.com/technology/polkadot-validator/)。
 

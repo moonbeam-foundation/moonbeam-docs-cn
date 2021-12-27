@@ -93,7 +93,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 您现在可以阅读关于质押的所有参数，如列在[一般定义](#general-definitions)的参数和来自Polkadot.js Apps的参数。
 
-导向至Polkadot.js Apps的**Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
+导向至Polkadot.js Apps的**Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
 
 接着，执行以下步骤检索各种质押参数：
 
@@ -125,7 +125,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
  4. 选择查询状态。在本示例中为**selectedCandidates**或**candidatePool**状态
 
-  5. 点击**+**按钮发送状态查询
+ 5. 点击**+**按钮发送状态查询
 
 以下每个外部函数都会返回不同结果：
 
@@ -136,7 +136,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ### 获取收集人的委托数量 {: #get-the-candidate-delegation-count } 
 
-首先，您需要查询`candidateDelegationCount`，因为在之后的交易时需要提交这个参数。此参数可以通过[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)运行以下代码获得：
+首先，您需要查询`candidateDelegationCount`，因为在之后的交易时需要提交这个参数。此参数可以通过[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)运行以下代码获得：
 
 ```js
 // Simple script to get candidate_delegation_count
@@ -156,13 +156,13 @@ console.log(candidateInfo.toHuman()["delegators"].length);
 
  5. 点击执行按钮。这会使代码在编辑器里运行
 
-  6. 复制运行结果，在您发起委托时需要用到
+ 6. 复制运行结果，在您发起委托时需要用到
 
 ![Get candidate delegation count](/images/tokens/staking/stake/stake-14.png)
 
 ### 获取目前委托数据 {: #get-your-number-of-existing-delegations }
 
-如果您从来没有从这个账户进行委托，您可以跳过这步。但是如果您不确定您目前有多少个委托，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)运行以下的Javascript代码段来获取`delegator_delegation_count`：
+如果您从来没有从这个账户进行委托，您可以跳过这步。但是如果您不确定您目前有多少个委托，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)运行以下的Javascript代码段来获取`delegator_delegation_count`：
 
 ```js
 // Simple script to get your number of existing delegations.
@@ -182,7 +182,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  5. 点击执行按钮。这会使代码在编辑器里运行
 
-  6. 复制运行结果，在您发起委托时需要用到
+ 6. 复制运行结果，在您发起委托时需要用到
 
 ![Get existing delegation count](/images/tokens/staking/stake/stake-13.png)
 
@@ -219,7 +219,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  7. 输入您[从JavaScript命令窗口](#get-your-number-of-existing-delegations)获取的`delegator_delegation_count`函数。如果您从没用这个账户委托过收集人，这里应设置为`0`
 
-  8. 点击**Submit Transaction**按钮，并签名确认交易
+ 8. 点击**Submit Transaction**按钮，并签名确认交易
 
 ![Staking Join Delegators Extrinsics](/images/tokens/staking/stake/stake-15.png)
 
@@ -243,7 +243,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  4. 确保**include option**滑块处于打开状态
 
-  5. 点击**+**按钮发送状态查询
+ 5. 点击**+**按钮发送状态查询
 
 ![Staking Chain State Query](/images/tokens/staking/stake/stake-16.png)
 
@@ -273,7 +273,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  4. 设置您希望移除委托的收集人地址。在本示例中为`{{ networks.moonbase.staking.candidates.address2 }}`
 
-  5. 点击**Submit Transaction**按钮，并签名确认交易
+ 5. 点击**Submit Transaction**按钮，并签名确认交易
 
 ![Staking Schedule Request to Revoke Delegation Extrinsic](/images/tokens/staking/stake/stake-17.png)
 
@@ -301,7 +301,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  5. 设置您希望移除委托的收集人地址。在本示例中为`{{ networks.moonbase.staking.candidates.address2 }}`
 
-  6. 点击**Submit Transaction**按钮，并签名确认交易
+ 6. 点击**Submit Transaction**按钮，并签名确认交易
 
 ![Staking Execute Revoke Delegation Extrinsic](/images/tokens/staking/stake/stake-19.png)
 
@@ -329,7 +329,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
  4. 确保**include option**滑块处于打开状态
 
-  5. 点击**+**按钮发送状态查询
+ 5. 点击**+**按钮发送状态查询
 
 ![Staking Verify Delegation is Revoked](/images/tokens/staking/stake/stake-21.png)
 

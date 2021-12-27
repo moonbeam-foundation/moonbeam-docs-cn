@@ -47,17 +47,11 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
     |   绑定数量   |  {{ networks.moonbase.staking.candidate_bond_min }}枚DEV  |
     | 有效集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
 
-=== "Moonbase Alpha"
-    |       变量       |                           值                            |
-    |:----------------:|:-------------------------------------------------------:|
-    |      绑定量      | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV |
-    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人  |
-
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
 每个收集人都有一个与收集活动相关联的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)账户有两种方法：
+目前，创建[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)账户有两种方法：
 
  - 从[MetaMask](/tokens/connect/metamask/)或[MathWallet](/tokens/connect/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
  - 使用[Polkadot.js](/tokens/connect/polkadotjs/)创建新的H160账户
@@ -86,19 +80,12 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
     |     减少候选人委托      |     {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）     |
     | 奖励发放（在本轮结束后） |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }} rounds ({{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时）    |
 
-=== "Moonbase Alpha"
-    |           变量           |                                                                     值                                                                      |
-    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
-    |  加入/离开候选收集人池   | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
-    |      新增/移除提名       |    {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）    |
-    | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
-
 !!! 注意事项
     加入候选收集人池将即刻生效。添加或增加委托也将即刻生效，但奖励会在 {{networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮后开始发放。上表所列值可能会在未来发布新版本时有所调整。
 
 ### 获取候选池的大小 {: #get-the-size-of-the-candidate-pool }
 
-首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js)中运行以下JavaScript代码段:
+首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js)中运行以下JavaScript代码段:
 
 ```js
 // Simple script to get candidate pool size
@@ -116,13 +103,13 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  5. 点击运行图标，以执行编辑框内的代码
 
-  6. 点击复制图标复制结果，将在加入候选人池时使用
+ 6. 点击复制图标复制结果，将在加入候选人池时使用
 
 ![Get Number of Candidates](/images/node-operators/networks/collators/collator-polkadotjs-2.png)
 
 ### 加入候选人池 {: #join-the-candidate-pool }
 
-节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
+节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，在Polkadot.js选择[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)或[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)，并执行以下步骤：
 
  1. 进入**Developer**标签，点击**Extrinsics**
 
@@ -138,7 +125,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  7. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
 
-  8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Join candidate pool via Polkadot.js](/images/node-operators/networks/collators/collator-polkadotjs-16.png)
 
@@ -169,7 +156,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 输入`candidateCount`（可从[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分获得）
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Schedule leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-9.png)
 
@@ -189,7 +176,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 选择目标候选人账户（在提交`scheduleLeaveCandidates`函数后，任何人都可以在延迟时段过后执行请求）
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Execute leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-10.png)
 
@@ -209,7 +196,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 输入`candidateCount`（可从[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分获得）
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Cancel leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-11.png)
 
@@ -235,7 +222,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 在**more: BalanceOf**字段中输入要增加的绑定数量
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 !!! 注意事项
     收集人不会因增加绑定数量而获得额外奖励。想要增加您质押的MOVR数量，建议您将资金发送至另一个拥有的地址并委托给您的收集人。
@@ -269,7 +256,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 在**less: BalanceOf**字段中输入要减少的绑定数量
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Schedule Candidate Bond Less](/images/node-operators/networks/collators/collator-polkadotjs-12.png)
 
@@ -291,7 +278,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 选择目标候选人账户（在提交`scheduleCandidateBondLess`函数后，任何人都可以在延迟时段过后执行请求）
 
-  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Execute Candidate Bond Less](/images/node-operators/networks/collators/collator-polkadotjs-13.png)
 
@@ -311,7 +298,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  5. 选择**cancelCandidateBondRequest**函数
 
-  6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Cancel leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-14.png)
 
@@ -378,7 +365,7 @@ curl http://127.0.0.1:9933 -H \
 
  6. 输入author ID。在本示例中，可在前一个部分通过RPC调用`author_rotateKeys`获得
 
-  7. 点击**Submit Transaction**
+ 7. 点击**Submit Transaction**
 
 ![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/collator-polkadotjs-4.png)
 
@@ -400,7 +387,7 @@ curl http://127.0.0.1:9933 -H \
 
  5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
 
-  6. 点击**+**按钮来传送RPC调用
+ 6. 点击**+**按钮来传送RPC调用
 
 ![Author ID Mapping Chain State](/images/node-operators/networks/collators/collator-polkadotjs-6.png)
 
