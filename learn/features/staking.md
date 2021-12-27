@@ -22,7 +22,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 ## 常用资讯 {: #quick-reference }
 
 === "Moonriver" 
-    - **最低委托数量** —— {{ networks.moonriver.staking.min_del_stake }}枚MOVR
+        - **最低委托数量** —— {{ networks.moonriver.staking.min_del_stake }}枚MOVR
         - **轮次时长** —— {{ networks.moonriver.staking.round_blocks }}区块一个轮次，每个轮次约{{ networks.moonriver.staking.round_hours }}小时
         - **单个候选人最大有效委托人数** —— 在特定轮次内，质押量排名前{{ networks.moonriver.staking.max_del_per_can }}名的委托人才有资格获得质押奖励
         - **单个委托人可委托的最大委托人数** —— 一个委托人可以委托{{ networks.moonriver.staking.max_del_per_del }}个不同的候选人
@@ -38,7 +38,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
         - **管理质押相关操作** —— 访问[Moonbeam Network dApp](https://apps.moonbeam.network/moonriver)
 
 === "Moonbase Alpha" 
-    - **最低委托数量** —— {{ networks.moonbase.staking.min_del_stake }}枚DEV
+        - **最低委托数量** —— {{ networks.moonbase.staking.min_del_stake }}枚DEV
         - **轮次时长** —— {{ networks.moonbase.staking.round_blocks }}区块一个轮次，每个轮次约{{ networks.moonbase.staking.round_hours }}小时
         - **单个候选人最大有效委托人数** —— 在特定轮次内，质押量排名前{{ networks.moonbase.staking.max_del_per_can }}名的委托人才有资格获得质押奖励
         - **单个委托人可委托的最大委托人数** —— 一个委托人可以委托{{ networks.moonbase.staking.max_del_per_del }}个不同的候选人
