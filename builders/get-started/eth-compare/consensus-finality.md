@@ -29,7 +29,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 ## 主要差异 {: #main-differences } 
 
-在共识方面，Moonbeam主要基于提名权益证明（NPoS）模式，而以太坊遵循工作量证明（PoW）模式，两者大相径庭。因此，PoW概念如`difficulty`、`uncles`和`hashrate`等，在Moonbeam上没有任何意义。
+在共识方面，Moonbeam主要基于委托权益证明（NPoS）模式，而以太坊遵循工作量证明（PoW）模式，两者大相径庭。因此，PoW概念如`difficulty`、`uncles`和`hashrate`等，在Moonbeam上没有任何意义。
 
 对于与以太坊PoW相关并返回值的API，默认值将会被返回。现有遵循PoW机制的以太坊合约（如矿池合约）将会无法在Moonbeam上运作。
 
