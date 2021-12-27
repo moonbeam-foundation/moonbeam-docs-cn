@@ -47,6 +47,12 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
     |   绑定数量   |  {{ networks.moonbase.staking.candidate_bond_min }}枚DEV  |
     | 有效集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
 
+=== "Moonbase Alpha"
+    |       变量       |                           值                            |
+    |:----------------:|:-------------------------------------------------------:|
+    |      绑定量      | {{ networks.moonbase.staking.candidate_bond_min }}枚DEV |
+    | 活跃收集人集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人  |
+
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
 每个收集人都有一个与收集活动相关联的账户。该账户用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
@@ -79,6 +85,13 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
     |          撤销委托           | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时） |
     |     减少候选人委托      |     {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）     |
     | 奖励发放（在本轮结束后） |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }} rounds ({{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时）    |
+
+=== "Moonbase Alpha"
+    |           变量           |                                                                     值                                                                      |
+    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  加入/离开候选收集人池   | {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时） |
+    |      新增/移除提名       |    {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）    |
+    | 奖励发放（在本轮结束后） | {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时） |
 
 !!! 注意事项
     加入候选收集人池将即刻生效。添加或增加委托也将即刻生效，但奖励会在 {{networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮后开始发放。上表所列值可能会在未来发布新版本时有所调整。

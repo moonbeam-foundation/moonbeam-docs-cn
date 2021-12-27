@@ -53,7 +53,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in Polkadot.js](/images/governance/governance-proposal-1.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-1.png)
 
 本次进行投票的提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
@@ -61,7 +61,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 在Moonbeam上进行投票非常简单。所有治理相关功能都在“Democracy”标签下。如下图所示，可以看到有一个数字`1`，说明有一项民主事项正在进行中（可能是提案或公投）。点击描述旁的箭头，就可以看到您要投票的公投情况。行动和描述旁的数字称为“公投指数”（在本示例中为0）。就绪后，点击“Vote”按钮。
 
-![Vote Button](/images/governance/governance-vote-1.png)
+![Vote Button](/images/tokens/governance/voting/vote-2.png)
 
 此处，您需要提供以下信息：
 
@@ -81,14 +81,14 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
  4. 点击““Vote Aye”或“Vote Nay”，然后签名确认交易
 
-![Vote Submission](/images/governance/governance-vote-2.png)
+![Vote Submission](/images/tokens/governance/voting/vote-3.png)
 
 !!! 注意事项
     上图显示的锁定期仅为参考。本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
 
 在本示例中，Alice决定投赞成票，信念值为`6x`。而Charley决定投反对票，但选择不锁定任何代币（他的代币仅在公投期间锁定），因此他的信念值为`0.1x`。在“Democracy”标签下可以看到目前票数分布下的投票结果。
 
-![Vote Information](/images/governance/governance-vote-3.png)
+![Vote Information](/images/tokens/governance/voting/vote-4.png)
 
 从上述投票演示中可以得出：
 
@@ -102,10 +102,6 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 投票期结束后，已通过的提案可以在“Dispatch”标签下查看。您也可以在这里看到距离提案执行的时间。
 
 ![Proposal Enactment](/images/tokens/governance/voting/vote-5.png)
-
-在这一示例中，我们通过`setBalance`函数来将Bob的余额设定为1500枚代币。等到提案执行期结束，就可以在“Accounts”标签下查看该提案是否已写入法律。
-
-![Proposal Result](/images/governance/governance-vote-5.png)
 
 ### 委托投票 {: #delegate-voting } 
 
@@ -128,6 +124,8 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 ![Extrinsics Transaction for Delegation](/images/tokens/governance/voting/vote-7.png)
 
 在本示例中，Alice委托了1000份投票权重（1000枚代币乘以信念值1）给Charley。
+
+![View Delegation](/images/tokens/governance/voting/vote-8.png)
 
 !!! 注意事项
     委托投票的另一个方法是在“Accounts”标签下点击委托账户名称后的“…”，并填写上述相关信息。
@@ -208,7 +206,3 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 | **结果** |      | 1.5 < 9.8 (赞成一方赢得投票！) |
 
 简而言之，参与率低的提案需要获得大量绝对多数赞成票来获得通过，但随着投票人数增加，就会变成简单多数制。
-
-## 我们期待您的反馈
-
-如果您对Moonbase Alpha提案投票以及其它Moonbeam相关话题有任何意见或建议，欢迎通过开发团队的官方[Discord渠道](https://discord.gg/PfpUATX)联系我们。

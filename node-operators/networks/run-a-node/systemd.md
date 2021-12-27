@@ -27,7 +27,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 使用`wget`快速获取最新[发布的二进制文件](https://github.com/PureStake/moonbeam/releases)：
 
 === "Moonbeam"
-
     ```
     wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbeam.parachain_release_tag }}/moonbeam
     ```
@@ -38,7 +37,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ``` 
 
 === "Moonbase Alpha"
-
     ```
     wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
     ```
@@ -532,21 +530,18 @@ journalctl -f -u moonbeam.service
 6. 更新权限：
 
     === "Moonbeam"
-
         ```
         chmod +x moonbeam
         chown moonbeam_service moonbeam
         ```
     
     === "Moonriver"
-
         ```
         chmod +x moonbeam
         chown moonriver_service moonbeam
         ```
 
     === "Moonbase Alpha"
-
         ```
         chmod +x moonbeam
         chown moonbase_service moonbeam
@@ -577,19 +572,16 @@ sudo systemctl stop moonbeam
 您可以运行以下命令清除您的平行链和中继链数据：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/*
     ```
@@ -597,19 +589,16 @@ sudo systemctl stop moonbeam
 仅为指定链移除平行链数据，您可运行以下命令：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
     ```
@@ -618,19 +607,16 @@ sudo systemctl stop moonbeam
 同样地，仅移除中继链数据，您可运行以下命令：
 
 === "Moonbeam"
-
     ```
     sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
-
     ```
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
 
 === "Moonbase Alpha"
-
     ```
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```

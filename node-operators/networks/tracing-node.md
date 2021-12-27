@@ -21,17 +21,26 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 如果您在先前尚未运行过Moonbeam全节点，您将会需要建立一个目录以储存链数据：
 
-=== "Moonbase Alpha"
-    ```
-    mkdir {{ networks.moonbase.node_directory }}
-    ```
-
 === "Moonriver"
     ```
     mkdir {{ networks.moonriver.node_directory }}
     ```
 
+=== "Moonbase Alpha"
+    ```
+    mkdir {{ networks.moonbase.node_directory }}
+    ```
+
 接着，确认您根据储存链数据的本地目录设定所有权和许可权。在本示例中，您需要为特定或是现有用户设定所需的许可权（将`DOCKER_USER`替换为将运行`docker`命令的实际用户）：
+
+=== "Moonriver"
+    ```
+    # chown to a specific user
+    chown DOCKER_USER {{ networks.moonriver.node_directory }}
+
+    # chown to current user
+    sudo chown -R $(id -u):$(id -g) {{ networks.moonriver.node_directory }}
+    ```
 
 === "Moonbase Alpha"
 
@@ -41,15 +50,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
-    ```
-
-=== "Moonriver"
-    ```
-    # chown to a specific user
-    chown DOCKER_USER {{ networks.moonriver.node_directory }}
-
-    # chown to current user
-    sudo chown -R $(id -u):$(id -g) {{ networks.moonriver.node_directory }}
     ```
 
 ## 运行一个追踪节点 {: #run-a-tracing-node }
@@ -68,18 +68,23 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 !!! note
     用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
 
-=== "Moonbeam Development Node"
+=== "Moonriver"
     ```
     docker run --network="host" -v "/var/lib/alphanet-data:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    {{ networks.development.tracing_tag }} \
+    {{ networks.moonriver.tracing_tag }} \
     --base-path=/data \
+    --chain moonriver \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
-    --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
-    --dev
+    --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
+    -- \
+    --execution wasm \
+    --pruning archive \
+    --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
 === "Moonbase Alpha"
@@ -101,23 +106,18 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
-=== "Moonriver"
+=== "Moonbeam开发节点"
     ```
     docker run --network="host" -v "/var/lib/alphanet-data:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    {{ networks.moonriver.tracing_tag }} \
+    {{ networks.development.tracing_tag }} \
     --base-path=/data \
-    --chain moonriver \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
-    --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
-    --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
-    -- \
-    --execution wasm \
-    --pruning archive \
-    --name="Moonbeam-Tutorial (Embedded Relay)"
+    --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
+    --dev
     ```
 
 !!! 注意事项
