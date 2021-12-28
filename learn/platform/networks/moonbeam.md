@@ -49,7 +49,7 @@ Moonbeam完全启动后将拥有以下配置：
     | 收集人可获得的委托人数上限 |                             {{ networks.moonbeam.staking.max_del_per_can }}                             |
     | 委托人可委托的收集人数上限   |                             {{ networks.moonbeam.staking.max_del_per_del }}                             |
     |               轮次               | {{ networks.moonbeam.staking.round_blocks }}区块（{{ networks.moonbeam.staking.round_hours }}小时） |
-    |           绑定期           |                            {{ networks.moonbeam.staking.bond_lock }}轮次                             |
+    |           解绑期           |                            {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次                             |
 
 _*阅读更多关于[Token面额](#token-denominations)_
 

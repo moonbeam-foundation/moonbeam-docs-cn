@@ -27,7 +27,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     - **单个候选人最大有效委托人数** —— 在特定轮次内，质押量排名前{{ networks.moonriver.staking.max_del_per_can }}名的委托人才有资格获得质押奖励
     - **单个委托人可委托的最大委托人数** —— 一个委托人可以委托{{ networks.moonriver.staking.max_del_per_del }}个不同的候选人
     - **绑定时长** —— 委托将会在下一个轮次生效（资金可随时提取）
-    - **解绑时长** —— {{ networks.moonriver.staking.bond_lock }}轮次
+    - **解绑时长** —— {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次
     - **奖励发放** —— {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
     - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonriver.staking.collator_reward_inflation }}%，与委托人奖励池无关
     - **委托人奖励池** —— 年通胀的{{ networks.moonriver.staking.delegator_reward_inflation }}%
@@ -43,7 +43,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     - **单个候选人最大有效委托人数** —— 在特定轮次内，质押量排名前{{ networks.moonbase.staking.max_del_per_can }}名的委托人才有资格获得质押奖励
     - **单个委托人可委托的最大委托人数** —— 一个委托人可以委托{{ networks.moonbase.staking.max_del_per_del }}个不同的候选人
     - **绑定时长** —— 委托将会在下一个轮次生效（资金可随时提取）
-    - **解绑时长** —— {{ networks.moonbase.staking.bond_lock }}轮次
+    - **解绑时长** —— {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次
     - **奖励发放** —— {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
     - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonbase.staking.collator_reward_inflation }}%，与委托人奖励池无关
     - **委托人奖励池** —— 年通胀的{{ networks.moonbase.staking.delegator_reward_inflation }}%
@@ -56,7 +56,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 ## 奖励分配 {: #reward-distribution } 
 
-收集人在每轮（{{ networks.moonbase.staking.round_blocks }}个区块）结束时收到前{{ networks.moonbase.staking.bond_lock }}轮的奖励。
+收集人在每轮（{{ networks.moonbase.staking.round_blocks }}个区块）结束时收到前{{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮的奖励。
 
 5%的年通胀的分配安排如下：
 

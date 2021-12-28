@@ -57,7 +57,7 @@ _更新至2021年12月13日_
 | 收集人可获得最高的提名人数 |       {{ networks.moonriver.staking.max_del_per_can }}       |
 | 提名人可提名的最高收集人数 |       {{ networks.moonriver.staking.max_del_per_del }}       |
 |            轮次            | {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时） |
-|           绑定期           |        {{ networks.moonriver.staking.bond_lock }}轮次        |
+|           解绑期           |   {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次        |
 
 _*更多关于[代币面额](#token-denominations)_
 
