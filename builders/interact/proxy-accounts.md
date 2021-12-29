@@ -15,7 +15,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 本教程将引导您如何在Moonbase Alpha测试网上创建用于余额转账的代理账户以及如何执行代理交易。
 
-## 查看先决条件
+## 查看先决条件 {: #checking-prerequisites } 
 
 在操作本教程之前，您需要准备：
 
@@ -25,7 +25,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 如果您想要把您的账户导入Polkadot.js Apps，请参考[使用Polkadot.js Apps与Moonbeam交互](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)的教程。
 
-## 一般定义
+## 一般定义 {: #general-definitions } 
 
 设置代理账户时，代理绑定的Token将会从您的可用余额转移至您的预留余额。绑定为必要步骤，因为添加代理需要链上存储空间。从账户中移除代理后，绑定的Token将退还到您的可用余额中。
 
@@ -50,7 +50,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
     | 保证金系数 |  {{ networks.moonbase.proxy.deposit_factor }}枚DEV  |
     |  代理上限   |  {{ networks.moonbase.proxy.max_proxies }}个代理 |
 
-## 代理类型
+## 代理类型 {: #proxy-types } 
 
 创建代理账户时，您必须选择一种代理类型来定义代理的使用方式，可用选项如下：
 
@@ -64,7 +64,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 在本教程中，您将使用余额代理类型设置代理账户。由于此代理类型能够代表主账户花费资金，因此您需谨慎操作，只对您信任的账户提供访问权限。代理将有权转移主账户中的所有资金，如若不授权，代理可能转移所有主账户的资金。另外，请确保根据需求移除代理。
 
-## 创建代理账户
+## 创建代理账户 {: #creating-a-proxy-account } 
 
 在Polkadot.js Apps，您可以在**Extrinsics**页面或**Accounts**页面创建代理账户。然而，如果您要创建延时代理，您将需要在**Extrinsics**页面进行操作。时间延迟通过指定基于多个区块的延迟时段为代理提供额外安全层。延迟期结束前，代理账户无法执行交易。这使主账户能够在该时间段审查代理的待处理交易（可能存在恶意操作的交易），在必要时于执行前取消操作。
 
@@ -105,7 +105,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 在下一部分，您将学习如何验证您的代理账户是否已成功设置。
 
-## 验证您的代理账户
+## 验证您的代理账户 {: #verifying-your-proxy-account } 
 
 您可以通过**Accounts**页面或**Chain state**页面验证您的代理账户是否已成功设置。
 
@@ -135,7 +135,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 ![Proxy Overview Pop-up](/images/builders/interact/proxy-accounts/proxies-7.png)
 
-## 执行代理交易
+## 执行代理交易 {: #executing-a-proxy-transaction } 
 
 完成上述操作后，您已拥有一个代理账户并验证该账户已成功设置，现在您可以使用代理账户代表您的主账户执行交易。
 
@@ -167,7 +167,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 这样就可以了！这意味着您已成功使用代理账户代表您的主账户执行交易！
 
-## 移除代理账户
+## 移除代理账户 {: #removing-a-proxy-account } 
 
 与创建代理账户相似，您可以在**Extrinsics**页面或**Accounts**页面移除代理账户。无论您在哪个页面操作，您都可以选择移除单个代理帐户或与您的主帐户关联的所有代理。
 
