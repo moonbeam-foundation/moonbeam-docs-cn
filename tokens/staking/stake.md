@@ -30,6 +30,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
     | 单个候选人最大有效委托人数 |  |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
     | 单个委托人可委托的最大候选人数  |  |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
     |               轮次时长               |  |                        {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时）                        |
+    |      委托生效期   |  |    委托在下一轮开始生效 （资金会马上绑定）                                        |
     |      离开委托人时长       |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时）   |
     |     减少委托量时长     |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）      |
     |     撤销委托时长      |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时） |
@@ -41,6 +42,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
     | 单个候选人最大有效委托人数 |  |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
     | 单个委托人可委托的最大候选人数  |  |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
     |               轮次时长               |  |                        {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时）                        |
+    |      委托生效期   |  |    委托在下一轮开始生效 （资金会马上绑定）                                        |
     |      离开委托人时长       |  |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时）   |
     |     减少委托量时长     |  |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）      |
     |     撤销委托时长      |  | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时） |
