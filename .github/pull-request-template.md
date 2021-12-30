@@ -1,6 +1,6 @@
-### Description
+### Description/Original PRs
 
-Please explain the changes this PR addresses here.
+If this PR is for translated content, please link to the original PRs here. Otherwise, please explain the changes this PR addresses here.
 
 ### Checklist
 
@@ -10,4 +10,4 @@ Please explain the changes this PR addresses here.
 
 ### Corresponding PRs
 
-Please link to any corresponding PRs here.
+Please link to any additional corresponding PRs here.
