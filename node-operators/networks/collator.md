@@ -38,13 +38,13 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 === "Moonriver"
     |    变量     |                           值                           |
     |:---------------:|:---------------------------------------------------------:|
-    |   绑定数量   | {{ networks.moonriver.staking.candidate_bond_min }}枚MOVR  |
+    |   绑定数量   | {{ networks.moonriver.staking.min_can_stk }}枚MOVR  |
     | 有效集上限 | {{ networks.moonriver.staking.max_candidates }}名收集人 |
 
 === "Moonbase Alpha"
     |    变量     |                          值                           |
     |:---------------:|:--------------------------------------------------------:|
-    |   绑定数量   |  {{ networks.moonbase.staking.candidate_bond_min }}枚DEV  |
+    |   绑定数量   |  {{ networks.moonbase.staking.min_can_stk }}枚DEV  |
     | 有效集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
 
 ### Polkadot.js账户 {: #account-in-polkadotjs }
@@ -121,7 +121,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  5. 打开下拉菜单，在质押相关的所有外部参数中，选择**joinCandidates()**函数
 
- 6. 将绑定数量设置为成为候选人的[最低数量](#accounts-and-staking-requirements)（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.candidate_bond_min }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.candidate_bond_min_wei }}`（即21个0）。在Moonriver的最低绑定数量为{{ networks.moonriver.staking.candidate_bond_min }}枚MOVR，以wei为单位应输入`{{ networks.moonriver.staking.candidate_bond_min_wei }}`（即20个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
+ 6. 将绑定数量设置为成为候选人的[最低数量](#accounts-and-staking-requirements)（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即21个0）。在Moonriver的最低绑定数量为{{ networks.moonriver.staking.min_can_stk }}枚MOVR，以wei为单位应输入`{{ networks.moonriver.staking.min_can_stk_wei }}`（即20个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
 
  7. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
 
@@ -208,7 +208,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个属于您控制的地址，并[委托您的收集人](tokens/staking/stake/#how-to-nominate-a-collator)。第二个，是拥有{{ networks.moonriver.staking.candidate_bond_min }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个属于您控制的地址，并[委托您的收集人](tokens/staking/stake/#how-to-nominate-a-collator)。第二个，是拥有{{ networks.moonriver.staking.min_can_stk }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
 
  1. 进入**Developer**标签
 
@@ -231,10 +231,10 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 减少绑定数量 {: #bond-less }
 
-在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为在Moonriver上的收集人或候选收集人，如果您所绑定的MOVR数量超过{{ networks.moonriver.staking.candidate_bond_min }}枚，您可以减少您的绑定数量。
+在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为在Moonriver上的收集人或候选收集人，如果您所绑定的MOVR数量超过{{ networks.moonriver.staking.min_can_stk }}枚，您可以减少您的绑定数量。
 
 !!! 注意事项
-    Moonriver收集人的绑定数量在早期网络启动阶段为100枚MOVR。作为收集人，如果您所绑定的数量等于或少于{{ networks.moonriver.staking.candidate_bond_min }}枚MOVR，您将无法减少您的绑定数量。
+    Moonriver收集人的绑定数量在早期网络启动阶段为100枚MOVR。作为收集人，如果您所绑定的数量等于或少于{{ networks.moonriver.staking.min_can_stk }}枚MOVR，您将无法减少您的绑定数量。
 
 想要减少绑定数量，您需要先发起请求并等待延迟时段，随后执行请求。只要请求还未被执行，您仍可随时[取消请求](#cancel-request)。
 
