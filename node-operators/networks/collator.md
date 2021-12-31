@@ -38,7 +38,6 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 === "Moonriver"
     |    变量     |                           值                           |
     |:---------------:|:---------------------------------------------------------:|
-    |   绑定数量   | {{ networks.moonriver.staking.min_can_stk }} MOVR  |
     | 最小自质押量 |     {{ networks.moonriver.staking.min_can_stk }} MOVR     |
     | 最小总质押量 |     {{ networks.moonriver.staking.min_col_stk }} MOVR     |
     | 有效集上限 | {{ networks.moonriver.staking.max_candidates }} |
@@ -46,7 +45,6 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 === "Moonbase Alpha"
     |    变量     |                          值                           |
     |:---------------:|:--------------------------------------------------------:|
-    |   绑定数量   |  {{ networks.moonbase.staking.min_can_stk }} DEV  |
     | 最小自质押量 |     {{ networks.moonbase.staking.min_can_stk }} DEV    |
     | 最小总质押量 |     {{ networks.moonbase.staking.min_col_stk }} DEV     |
     | 有效集上限 | {{ networks.moonbase.staking.max_candidates }} |
