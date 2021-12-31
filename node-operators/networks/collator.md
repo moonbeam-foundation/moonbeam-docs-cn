@@ -33,19 +33,21 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 ## 账户与质押要求 {: #accounts-and-staking-requirements }
 
-和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或以太坊式账户。另外，需要拥有最低Token质押量才有资格成为候选人。只有一定数量的根据提名质押量排名靠前的收集人才会进入收集人有效集。
+和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或以太坊式账户。另外，需要拥有高于最低自质押量(Self-bonded)才有资格成为候选人。只有一定数量的根据质押量和委托量排名靠前的收集人才会进入收集人有效集。
 
 === "Moonriver"
     |    变量     |                           值                           |
     |:---------------:|:---------------------------------------------------------:|
-    |   绑定数量   | {{ networks.moonriver.staking.min_can_stk }}枚MOVR  |
-    | 有效集上限 | {{ networks.moonriver.staking.max_candidates }}名收集人 |
+    | 最小自质押量 |     {{ networks.moonriver.staking.min_can_stk }} MOVR     |
+    | 最小总质押量 |     {{ networks.moonriver.staking.min_col_stk }} MOVR     |
+    | 有效集上限 | {{ networks.moonriver.staking.max_candidates }} |
 
 === "Moonbase Alpha"
     |    变量     |                          值                           |
     |:---------------:|:--------------------------------------------------------:|
-    |   绑定数量   |  {{ networks.moonbase.staking.min_can_stk }}枚DEV  |
-    | 有效集上限 | {{ networks.moonbase.staking.max_candidates }}名收集人 |
+    | 最小自质押量 |     {{ networks.moonbase.staking.min_can_stk }} DEV    |
+    | 最小总质押量 |     {{ networks.moonbase.staking.min_col_stk }} DEV     |
+    | 有效集上限 | {{ networks.moonbase.staking.max_candidates }} |
 
 ### Polkadot.js账户 {: #account-in-polkadotjs }
 
@@ -81,7 +83,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
     | 奖励发放（在本轮结束后） |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }} rounds ({{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时）    |
 
 !!! 注意事项
-    加入候选收集人池将即刻生效。添加或增加委托也将即刻生效，但奖励会在 {{networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮后开始发放。上表所列值可能会在未来发布新版本时有所调整。
+    加入候选收集人池将即刻生效。添加或增加委托也将即刻生效，但奖励会在 {{networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮后开始发放。计算出的奖励会以线性方式释放，每个区块释放一次，直到所有奖励都释放完毕。每一个区块会随机选择一个收集人以及其委托人来发送奖励。假设有{{ networks.moonriver.staking.max_candidates }}个收集人, 那么全部收集人以及委托人会在新一轮开始后的第{{ networks.moonriver.staking.max_candidates }}块区块前收到奖励。上表所列值可能会在未来发布新版本时有所调整。
 
 ### 获取候选池的大小 {: #get-the-size-of-the-candidate-pool }
 
