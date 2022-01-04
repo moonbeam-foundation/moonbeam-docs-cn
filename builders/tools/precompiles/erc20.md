@@ -23,30 +23,17 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 预编译位于以下地址：
 
+=== "Moonriver"
+     ```
+     {{networks.moonriver.precompiles.erc20 }}
+     ```
+
 === "Moonbase Alpha"
      ```
-     {{networks.moonbase.precompiles.erc20 }}
+     {{networks.moonriver.precompiles.erc20 }}
      ```
 
-接口包括以下功能：
-
-- **name()** —— 只读函数，用于返回Token名称
-- **symbol()** —— 只读函数，用于返回Token符号
-- **decimals()** —— 只读函数，用于返回Token小数位数
-- **totalSupply()** —— 只读函数，用于返回存在的Token总数
-- **balanceOf(*address* who)** —— 只读函数，用于返回特定地址余额
-- **allowance(*address* owner, *address* spender)** —— 只读函数，用于检查和返回所有者允许给支出者的Token数量
-- **transfer(*address* to, *uint256* value)** —— 转移一定Token数量至特定地址，若交易成功返回True
-- **approve(*address* spender, *uint256* value)** —— 批准提供的地址代表`msg.sender`支出特定的Token数量。若成功返回True
-- **transferFrom(*address* from, *address* to, *uint256* value)** —— 从一个指定地址转移Token至另一个指定地址，若成功返回True
-
-!!! 注意事项
-    ERC-20标准没有明确多次调用`approve`的具体影响，但是使用此功能多次更改额度可能会开启攻击向量。为避免不正确或意外的交易排序，您可以先将`spender`额度减少至`0`，然后再设置一个预期的额度。更多关于攻击向量的详情，请见文章[ERC-20 API: An Attack Vector on Approve/TransferFrom Methods](https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit#)
-
-接口也包括以下所需事件：
-
-- **Transfer(*address indexed* from, *address indexed* to, *uint256* value)** —— 当执行传送时发出
-- **Approval(*address indexed* owner, *address indexed* spender, *uint256* value)** —— 当注册批准时发出
+--8<-- 'text/erc20-interface/erc20-interface.md'
 
 !!! 注意事项
 
@@ -86,7 +73,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 
 ## 使用Remix与预编译交互 {: #interact-with-the-precompile-using-remix }
 
-您可以使用[Remix](https://remix.ethereum.org/)与ERC20预编译交互。为此，您需要执行以下操作：
+您可以使用[Remix](https://remix.ethereum.org/)与ERC-20预编译交互。为此，您需要执行以下操作：
 
 1. 获取[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)副本
 2. 将文档内容粘贴至名为**IERC20.sol**的Remix文档
@@ -118,7 +105,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 
 ### 获取Token基本信息 {: #get-basic-token-information }
 
-ERC20接口允许您快速获取Token信息，包括Token总供应量、名称、符号和小数位数。您可通过以下步骤获取这些信息：
+ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称、符号和小数位数。您可通过以下步骤获取这些信息：
 
 1. 在**Deployed Contracts**一栏展开IERC20合约
 2. 点击**`decimals`**以获取Moonbase Alpha原生协议Token的小数位数
