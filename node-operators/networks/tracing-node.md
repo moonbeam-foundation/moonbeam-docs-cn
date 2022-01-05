@@ -70,11 +70,11 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonriver"
     ```
-    docker run --network="host" -v "/var/lib/alphanet-data:/data" \
+    docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonriver.tracing_tag }} \
     --base-path=/data \
-    --chain moonriver \
+    --chain {{ networks.moonriver.chain_spec }} \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
@@ -89,11 +89,11 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonbase Alpha"
     ```
-    docker run --network="host" -v "/var/lib/alphanet-data:/data" \
+    docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonbase.tracing_tag }} \
     --base-path=/data \
-    --chain alphanet \
+    --chain {{ networks.moonbase.chain_spec }} \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
@@ -108,13 +108,9 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonbeam开发节点"
     ```
-    docker run --network="host" -v "/var/lib/alphanet-data:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
+    docker run --network="host"
     {{ networks.development.tracing_tag }} \
-    --base-path=/data \
     --name="Moonbeam-Tutorial" \
-    --pruning archive \
-    --state-cache-size 1 \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     --dev
