@@ -9,7 +9,7 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 ## 概览 {: #introduction }
 
-[Nifty钱包](https://www.poa.network/for-users/nifty-wallet)先前从MetaMask分叉出来，并随后被扩展至以与POA网络、POA核心和POA Sokol互操作。由于Nifty与以太坊相互兼容，因此同样也可以在Moonbeam上使用。
+[Nifty钱包](https://www.poa.network/v/master-1/for-users/nifty-wallet)先前从MetaMask分叉出来，并随后被扩展至以与POA网络、POA核心和POA Sokol互操作。由于Nifty与以太坊相互兼容，因此同样也可以在Moonbeam上使用。
 
 请注意，由于Nifty钱包仍然是测试软件，因此建议在网站使用完毕后登出您的钱包。
 

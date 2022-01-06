@@ -96,8 +96,8 @@ npx graph codegen --output-dir src/types/
 
 一般而言，Subgraph定义了The Graph将从区块链上索引的数据以及其存储方式。Subgraph一般含有以下文档：
 
- - **subgraph.yaml** —— 包含着[Subgraph manifest](https://thegraph.com/docs/define-a-subgraph#the-subgraph-manifest)文件的YAML文档，也就是与Subgraph索引的智能合约相关的信息
- - **schema.graphql** —— [GraphQL schema](https://thegraph.com/docs/define-a-subgraph#the-graphql-schema)文档，定义正在创建的Subgraph的数据储存及其架构。通过[GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language)编写。https://graphql.org/learn/schema/#type-language)
+ - **subgraph.yaml** —— 包含着[Subgraph manifest](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-subgraph-manifest)文件的YAML文档，也就是与Subgraph索引的智能合约相关的信息
+ - **schema.graphql** —— [GraphQL schema](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-graph-ql-schema)文档，定义正在创建的Subgraph的数据储存及其架构。通过[GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language)编写。https://graphql.org/learn/schema/#type-language)
  - **AssemblyScript mappings** —— TypeScript中的代码（接下来编译为[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)），用于将合约中的事件数据翻译成schema中定义的实体
 
 创建Subgraph需要对文档进行修改，文档的修改没有特定顺序。
