@@ -22,7 +22,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 例如，Moonbeam就使用了两层结构。第一层由平行链质押过滤器组成，根据质押量排名选择活跃的收集人池；第二层增加了一个过滤器，进一步缩小每一个插槽的「收集人子集」的规模。
 
-请注意，Nimbus只能选出在下一个可用插槽中有资格生产平行链区块的收集人。[Cumulus](https://wiki.polkadot.network/docs/build-cumulus#docsNav)共识机制将进行最佳区块标记，而最终（中继链的）[BABE](https://wiki.polkadot.network/docs/learn-consensus#babe)和[GRANDPA](https://wiki.polkadot.network/docs/learn-consensus#grandpa-finality-gadget)混合共识模型会将这个平行链区块发送到中继链上，并最后终结。当中继链分叉在中继链层面完成以后，平行链区块就获得终结。
+请注意，Nimbus只能选出在下一个可用插槽中有资格生产平行链区块的收集人。[Cumulus](https://wiki.polkadot.network/docs/build-pdk#cumulus)共识机制将进行最佳区块标记，而最终（中继链的）[BABE](https://wiki.polkadot.network/docs/learn-consensus#babe)和[GRANDPA](https://wiki.polkadot.network/docs/learn-consensus#grandpa-finality-gadget)混合共识模型会将这个平行链区块发送到中继链上，并最后终结。当中继链分叉在中继链层面完成以后，平行链区块就获得终结。
 
 下面两个小节将介绍Moonbeam目前所使用的过滤策略。
 

@@ -13,7 +13,7 @@ description: 通过本教程，学习如何通过Truffle将基于Solidity的智�
 [Truffle](https://www.trufflesuite.com/)是一个以太坊智能合约集成开发工具。本教程介绍了如何通过Truffle将基于Solidity的智能合约部署到Moonbeam节点。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
 
 !!! 注意事项
-    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}) {{ networks.moonbase.version }}版本的{{ networks.development.build_tag}}标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
+    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.parachain_release_tag }}) {{ networks.moonbase.version }}版本的{{ networks.development.build_tag}}标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
 
 --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 

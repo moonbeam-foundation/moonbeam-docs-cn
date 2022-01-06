@@ -120,4 +120,4 @@ chain (our genesis: GENESIS_ID theirs: OTHER_GENESIS_ID)
 由于节点的启动方式不同，清除区块链链数据的指引也会有所不同：
 
   - 对于Docker，您可以查看[使用Docker](/node-operators/networks/run-a-node/docker)页面的[清除节点](/node-operators/networks/run-a-node/docker/#purge-your-node)部分
-  - 对于Systemd，您可以查看[使用Systemd](/node-operators/networks/run-a-node/systemd)页面的[清除节点](node-operators/networks/run-a-node/systemd/#purge-your-node)部分
+  - 对于Systemd，您可以查看[使用Systemd](/node-operators/networks/run-a-node/systemd)页面的[清除节点](/node-operators/networks/run-a-node/systemd/#purge-your-node)部分

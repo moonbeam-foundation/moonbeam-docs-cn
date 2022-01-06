@@ -148,7 +148,7 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。
 
-预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/evm-contracts/src/v0.6)中找到。在本示例中，我们将使用Remix来与Moonbase Alpha交互并部署合约。在Remix环境下，可以复制以下代码：
+预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/contracts/src/v0.6)中找到。在本示例中，我们将使用Remix来与Moonbase Alpha交互并部署合约。在Remix环境下，可以复制以下代码：
 
 ```
 pragma solidity ^0.6.6;

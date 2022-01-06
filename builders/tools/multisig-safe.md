@@ -38,7 +38,7 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
 
 ### ERC-20 Tokens {: #erc20-tokens }
 
-本教程的后半部分将引导您如何在Safe钱包发送和接收ERC-20 Token。因此，您需要部署一些ERC-20 Token并将其添加至您的MetaMask帐户中。您可以查看[使用Remix部署至Moonbeam](https://docs.moonbeam.network/builders/interact/remix/)操作教程，特别是[在Moonbeam上使用Remix部署合约](https: //docs.moonbeam.network/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)和[通过MetaMask与基于Moonbeam的ERC20进行交互](https://docs.moonbeam.network/ builders/interact/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask)两部分将向您展示如何部署ERC20  Token并将其导入MetaMask。
+本教程的后半部分将引导您如何在Safe钱包发送和接收ERC-20 Token。因此，您需要部署一些ERC-20 Token并将其添加至您的MetaMask帐户中。您可以查看[使用Remix部署至Moonbeam](/builders/interact/remix/)操作教程，特别是[在Moonbeam上使用Remix部署合约](https: //docs.moonbeam.network/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)和[通过MetaMask与基于Moonbeam的ERC20进行交互](/builders/interact/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask)两部分将向您展示如何部署ERC20  Token并将其导入MetaMask。
 
 ### 已部署的智能合约 {: #deployed-smart-contract }
 

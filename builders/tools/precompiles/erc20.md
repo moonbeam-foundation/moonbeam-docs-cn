@@ -13,7 +13,7 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
 
 这种预编译的主要优势之一是消除了将协议Token包装为ERC-20智能合约必要性，例如以太坊上的WETH。此外，还可以防止具有相同协议Token的多个包装。因此，需要通过ERC-20接口与协议Token交互的DApp无需单独的智能合约即可实现。
 
-在后台，[ERC-20预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/src/lib.rs)执行与Substrate Balances Pallet相关的特定Substrate操作，由Rust编码。Balances Pallet提供处理[Moonbeam各种余额类型](builders/get-started/eth-compare/balances/#moonbeam-account-balances)、设置余额、转移余额等功能。
+在后台，[ERC-20预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/src/lib.rs)执行与Substrate Balances Pallet相关的特定Substrate操作，由Rust编码。Balances Pallet提供处理[Moonbeam各种余额类型](/builders/get-started/eth-compare/balances/#moonbeam-account-balances)、设置余额、转移余额等功能。
 
 本教程将向您展示如何通过ERC-20预编译用Moobase Alpha测试网的原生协议Token——DEV Token交互。
 

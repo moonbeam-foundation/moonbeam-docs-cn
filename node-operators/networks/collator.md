@@ -210,7 +210,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个属于您控制的地址，并[委托您的收集人](tokens/staking/stake/#how-to-nominate-a-collator)。第二个，是拥有{{ networks.moonriver.staking.min_can_stk }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个属于您控制的地址，并[委托您的收集人](/tokens/staking/stake/#staking-your-tokens)。第二个，是拥有{{ networks.moonriver.staking.min_can_stk }}枚MOVR的收集人通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
 
  1. 进入**Developer**标签
 

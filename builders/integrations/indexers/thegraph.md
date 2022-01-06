@@ -13,7 +13,7 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
 
 The Graph是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或DApp都可以便捷地利用这些数据。
 
-此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/introduction#what-the-graph-is)了解更多关于The Graph协议的信息。
+此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/en/about/introduction/#what-the-graph-is)了解更多关于The Graph协议的信息。
 
 [Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)版本新增了以太坊跟踪模块，因此The Graph可以索引Moonbeam上的区块链数据。
 
@@ -256,7 +256,7 @@ export function handlePlayerJoined(event: PlayerJoined): void {
  - 在Graph Explorer网页点击“Add Subgraph”按钮，创建Subgraph。输入Subgraph名称。
 
 !!! 注意事项
-    以上步骤均可在[此链接](https://thegraph.com/docs/deploy-a-subgraph)中找到。
+    以上步骤均可在[此链接](https://thegraph.com/docs/developer/quick-start#4-deploy-your-subgraph)中找到。
 
 如果您使用的是本地Graph节点，可以通过执行以下代码创建Subgraph：
 

@@ -33,7 +33,7 @@ Moonbase Alpha具有以下配置：
 
 ??? release v1 "_2020年9月_" 
     - Substrate中完全模拟以太坊区块的生产（以太坊pallet）
-    - 通过可分派功能与Rust EVM实现交互（[EVM pallet](https://docs.rs/pallet-evm/2.0.1/    pallet_evm/))
+    - 通过可分派功能与Rust EVM实现交互（[EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/))
     - 在Substrate（[Frontier](https://github.com/paritytech/frontier)）中由以太坊RPC原生支持（Web3)。此功能提供了与以太坊开发者工具之间的兼容性，包括MetaMask、Remix和Truffle Substrate
 
 
@@ -78,10 +78,10 @@ Moonbase Alpha具有以下配置：
         - 添了三个新的预编译：[Bn128Add](https://eips.ethereum.org/EIPS/eip-196)、[Bn128Mul](https://eips.ethereum.org/EIPS/eip-196)和[Bn128Pairing](https://eips.ethereum.org/EIPS/eip-197)
 
 ??? release v8 "_2021年5月_" 
-    - 增加[财政库pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_treasury/index.html)，为    Moonbase Alpha新增财政库功能。两个财政库已被加入至网络当中，一个财政库将会获得 20% 的交易费并由民众和议会治理。另一个财政库将会获得 30% 的区块奖励，并负责收集资金为未来的平行链插槽做准备。
-        - 增加[代理pallet](https://substrate.dev/rustdocs/v3.0.0/pallet_proxy/index.html)，可在Moonbase Alpha上使用[代理账户](https://wiki.polkadot.network/docs/learn-proxies)
+    - 增加[财政库pallet](https://substrate.dev/rustdocs/latest/pallet_treasury/index.html)，为    Moonbase Alpha新增财政库功能。两个财政库已被加入至网络当中，一个财政库将会获得 20% 的交易费并由民众和议会治理。另一个财政库将会获得 30% 的区块奖励，并负责收集资金为未来的平行链插槽做准备。
+        - 增加[代理pallet](https://substrate.dev/rustdocs/latest/pallet_proxy/index.html)，可在Moonbase Alpha上使用[代理账户](https://wiki.polkadot.network/docs/learn-proxies)
         - 引入新的共识机制Nimbus。Nimbus通过提供不同的过滤器，随机选择活跃收集人池的一部分来进行下一个区    块生产。此外，区块作者将使用可以映射到每个收集人的 H160 地址的会话密钥进行奖励支付。您可在[这里](/learn/consensus/)阅读更多关于Nimbus资讯。
-        - 在地址`{{ networks.moonbase.precompiles.staking }}`处增加[质押预编译合约](https://github.com/PureStake/moonbeam/pull/358)。您可在[此链接](https://raw.githubusercontent.com/PureStake/moonbeam/master/runtime/precompiles/src/StakingInterface.sol)找到如何与合约交互。
+        - 在地址`{{ networks.moonbase.precompiles.staking }}`处增加[质押预编译合约](https://github.com/PureStake/moonbeam/pull/358)。您可在[此链接](https://raw.githubusercontent.com/PureStake/moonbeam/master/precompiles/parachain-staking/StakingInterface.sol)找到如何与合约交互。
         - 增加初步日志布隆过滤器（Bloom Filter），以匹配通过Frontier的用户请求。进一步优化了此功能，以实现更快的响应时间和更可预测的性能
         - 增加[平行链众贷pallet](https://github.com/paritytech/polkadot/blob/master/runtime/common/src/crowdloan.rs)，以测试众贷奖励分配
         - 众多升级以加强网络稳定性
@@ -118,7 +118,7 @@ Moonbase Alpha是一个完全去中心化的权益证明网络。用户可以选
 
 因为这是Moonbeam的第一个测试网，所以仍然有一些限制。
 
-部分[预编码](https://docs.klaytn.com/smart-contract/precompiled-contracts)尚未加入至此版本内，您可以在[这里](/integrations/precompiles/)查询目前所支持的预编码。除此之外，您还是能够使用所有的内建功能。
+部分[预编码](https://docs.klaytn.com/smart-contract/precompiled-contracts)尚未加入至此版本内，您可以在[这里](/builders/tools/precompiles/)查询目前所支持的预编码。除此之外，您还是能够使用所有的内建功能。
 
 随着Moonbase Alpha v6的版本发布，每一个区块的gas使用上限被设置为{{ networks.moonbase.gas_block }}，每次交易的gas使用上限被设置为{{ networks.moonbase.gas_tx }}。
 

@@ -15,7 +15,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 本教程介绍了如何使用[Remix IDE](https://remix.ethereum.org/)将基于Solidity的智能合约搭建和部署到Moonbeam开发节点。
 
 !!! 注意事项
-    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}) {{ networks.moonbase.parachain_release_tag }}版本的{{ networks.development.build_tag}}标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
+    本教程用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.parachain_release_tag }}) {{ networks.moonbase.parachain_release_tag }}版本的{{ networks.development.build_tag}}标签建立。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier)组件正处于积极开发阶段。
 
 ## 查看先决条件 {: #checking-prerequisites }
 

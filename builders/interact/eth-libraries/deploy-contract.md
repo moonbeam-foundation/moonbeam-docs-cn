@@ -212,7 +212,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
  - Ethers.js: [_get.js_](/snippets/code/ethers-contract-local/get.js)
  - Web3.py: [_get.py_](/snippets/code/web3py-contract/get.py)
 
-简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准开发节点的RPC终端和[Moonbase Alpha](learn/platform/networks/moonbase/)的终端。
+简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准开发节点的RPC终端和[Moonbase Alpha](/learn/platform/networks/moonbase/)的终端。
 
 第二部分（“Call Function”）简述了合约的实际调用。无论使用哪种库，都将创建合约实例（链接到合约地址），并从中查询调用程序。其中部分关键要点我们将会在后面展开讨论。
 
