@@ -29,8 +29,8 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     - **绑定时长** —— 委托将会在下一个轮次生效（资金可随时提取）
     - **解绑时长** —— {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次
     - **奖励发放延迟** —— {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
-    - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonriver.staking.collator_reward_inflation }}%，与委托人奖励池无关
-    - **委托人奖励池** —— 年通胀的{{ networks.moonriver.staking.delegator_reward_inflation }}%
+    - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.inflation.total_annual_inflation }}%）的{{ networks.moonriver.inflation.collator_reward_inflation }}%，与委托人奖励池无关
+    - **委托人奖励池** —— 年通胀的{{ networks.moonriver.inflation.delegator_reward_inflation }}%
     - **委托人奖励** —— 随时变化。总委托人奖励分配给所有的有效委托人，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** —— 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **候选收集人信息** —— 候选人列表：[Moonriver Subscan](https://moonriver.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver)
@@ -45,8 +45,8 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     - **绑定时长** —— 委托将会在下一个轮次生效（资金可随时提取）
     - **解绑时长** —— {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次
     - **奖励发放延迟** —— {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}个轮次后奖励会自动发放至余额账户
-    - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.total_annual_inflation }}%）的{{ networks.moonbase.staking.collator_reward_inflation }}%，与委托人奖励池无关
-    - **委托人奖励池** —— 年通胀的{{ networks.moonbase.staking.delegator_reward_inflation }}%
+    - **收集人佣金** —— 固定为年通胀（{{ networks.moonriver.inflation.total_annual_inflation }}%）的{{ networks.moonbase.inflation.collator_reward_inflation }}%，与委托人奖励池无关
+    - **委托人奖励池** —— 年通胀的{{ networks.moonbase.inflation.delegator_reward_inflation }}%
     - **委托人奖励** —— 随时变化。总委托人奖励分配给所有的有效委托人，与质押总量相关（[查看更多](/staking/overview/#reward-distribution)）
     - **惩罚** —— 目前暂无任何惩罚，后续可通过治理改变。产生区块的收集人未被中继链最终确定的将不会获得奖励
     - **候选收集人信息** —— 候选人列表：[Moonbase Alpha Subscan](https://moonbase.subscan.io/validator)。最新两轮的收集人数据：[Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha)
