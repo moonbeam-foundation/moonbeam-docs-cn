@@ -85,9 +85,9 @@ Blockscout还提供以下功能：
 
 虽然Polkadot.js Apps不是功能齐全的区块浏览器，但是一个方便的选项，尤其是对于运行本地开发节点的用户，使其可以查看事件和查询交易哈希。Polkadot.js Apps使用WebSocket端点与网络进行交互。您可以遵循[此教程](/builders/get-started/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node)的操作步骤连接Moonbeam开发节点。该默认端口为`9944`。
 
-![Polkadot.js Local Node](/images/builders/tools/explorers/explorers-5.png)
+![Polkadot.js Local Node](/images/builders/tools/explorers/explorers-6.png)
 
 Polkadot.js Apps也支持[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonriver.api.onfinality.io%2Fpublic-ws#/explorer)和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer)，更多信息请访问[这一页面](/tokens/connect/polkadotjs/)。
 
-![Polkadot.js Moonriver](/images/builders/tools/explorers/explorers-6.png)
+![Polkadot.js Moonriver](/images/builders/tools/explorers/explorers-5.png)
 
