@@ -15,16 +15,7 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/en/about/introduction/#what-the-graph-is)了解更多关于The Graph协议的信息。
 
-[Moonbase Alpha v7](https://github.com/PureStake/moonbeam/releases/tag/v0.7.0)版本新增了以太坊跟踪模块，因此The Graph可以索引Moonbeam上的区块链数据。
-
-本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。
-
-## 查看先决条件 {: #checking-prerequisites } 
-
-在Moonbase Alpha上使用The Graph有两种方式：
-
- - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
- - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币
+因为Moonbeam支持以太坊跟踪模块，The Graph可以索引Moonbeam上的区块链数据。本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。本教程也可以在Moonbeam和Moonriver网络上使用。
 
 ## 快速开始 {: #quick-start } 
 
@@ -47,6 +38,13 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
     dataSources:
       network: mbase
     ```
+
+## 查看先决条件 {: #checking-prerequisites } 
+
+在Moonbase Alpha上使用The Graph有两种方式：
+
+ - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
+ - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币  
     
 ## 彩票合约 {: #the-lottery-contract } 
 
@@ -249,26 +247,43 @@ export function handlePlayerJoined(event: PlayerJoined): void {
 
 ## 部署Subgraph {: #deploying-a-subgraph }
 
+部署Subgraph有几种方式。本教程会介绍使用[托管式服务部署](#using-the-hosted-service)，及使用[本地节点部署](#using-a-local-graph-node)。
+
+### 使用托管式服务 {: #using-the-hosted-service }
+
 如果您准备使用The Graph API（托管式服务），您需要进行以下步骤：
 
  - 首先您需要有Github账户，创建[Graph Explorer](https://thegraph.com/explorer/) 账户
  - 进入主面板，并输入访问代币
  - 在Graph Explorer网页点击“Add Subgraph”按钮，创建Subgraph。输入Subgraph名称。
 
+然后在命令行中添加access token和部署Subgraph
+```
+npx graph auth --product hosted-service <access-token>
+npx graph deploy --product hosted-service <username>/<subgraph-name>    
+```
+ - **username** —— 即将创建的Subgraph相关的用户名
+ - **subgraph-Name** —— Subgraph名称
+ - **access-token** —— 使用Graph API服务的access token
+
 !!! 注意事项
     以上步骤均可在[此链接](https://thegraph.com/docs/developer/quick-start#4-deploy-your-subgraph)中找到。
+
+
+### 使用本地Graph节点 {: #using-a-local-graph-node }
 
 如果您使用的是本地Graph节点，可以通过执行以下代码创建Subgraph：
 
 ```
-npx graph create <username>/<subgraphName> --node <graph-node>
+npx graph create <username>/<subgraph-name> --node <graph-node>  
 ```
 
 在以上代码中：
 
  - **username** —— 即将创建的Subgraph相关的用户名
  - **subgraphName** —— Subgraph名称
- - **graph-node** —— 使用托管式服务的URL。一般而言，本地Graph节点是`http://127.0.0.1:8020`
+ - **graph-node** —— 使用托管式服务的URL；一般而言，本地Graph节点是`http://127.0.0.1:8020`
+
 
 一旦创建完成后即可运行以下命令，用与此前相同的参数进行Subgraph部署：
 
@@ -283,12 +298,12 @@ npx graph deploy <username>/<subgraphName> \
 
  - **username** —— 创建Subgraph时所使用的用户名
  - **subraphName**  —— 创建Subgraph时所定义的Subgraph名称
- - **ifps-url** —— IFPS 的URL。如果使用的是The Graph API，可以使用`https://api.thegraph.com/ipfs/`地址。如果运行的是本地Graph节点，默认值为`http://localhost:5001`
- - **graph-node** —— 所使用的托管式服务的URL。如果使用的是The Graph API，可以使用 `https://api.thegraph.com/deploy/`。如果运行的是本地Graph节点，默认值为 `http://localhost:8020`
- - **access-token** —— 使用The Graph API的访问代币。如果使用的是本地Graph节点，那么这一参数为非必要参数
+ - **ifps-url** —— IFPS 的URL；如果使用的是The Graph API，可以使用`https://api.thegraph.com/ipfs/`地址。如果运行的是本地Graph节点，默认值为`http://localhost:5001`
+ - **graph-node** —— 所使用的托管式服务的URL；如果使用的是The Graph API，可以使用 `https://api.thegraph.com/deploy/`。如果运行的是本地Graph节点，默认值为 `http://localhost:8020`
+ - **access-token** —— 使用The Graph API的访问代币；如果使用的是本地Graph节点，那么这一参数为非必要参数
 
 上述命令的日志应与以下内容相似：
 
 ![The Graph deployed](/images/builders/integrations/indexers/the-graph/the-graph-1.png)
 
-现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据
+现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据。
