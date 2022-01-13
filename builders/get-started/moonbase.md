@@ -18,7 +18,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
  更多相关信息请参考[区块浏览器](/builders/tools/explorers)文档。
 
-
 ## 连接MetaMask
 
 如果您已经安装了MetaMask，您可以轻松地将MetaMask连接至Moonbase Alpha测试网：
@@ -26,8 +25,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 <div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask" value="moonbase">连接MetaMask</a>
 </div>
-
-
 
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
