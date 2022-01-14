@@ -298,7 +298,7 @@ npx graph deploy <username>/<subgraphName> \
 
  - **username** —— 创建Subgraph时所使用的用户名
  - **subraphName**  —— 创建Subgraph时所定义的Subgraph名称
- - **ifps-url** —— IFPS 的URL；如果使用的是The Graph API，可以使用`https://api.thegraph.com/ipfs/`地址。如果运行的是本地Graph节点，默认值为`http://localhost:5001`
+ - **ipfs-url** —— IPFS 的URL；如果使用的是The Graph API，可以使用`https://api.thegraph.com/ipfs/`地址。如果运行的是本地Graph节点，默认值为`http://localhost:5001`
  - **graph-node** —— 所使用的托管式服务的URL；如果使用的是The Graph API，可以使用 `https://api.thegraph.com/deploy/`。如果运行的是本地Graph节点，默认值为 `http://localhost:8020`
  - **access-token** —— 使用The Graph API的访问代币；如果使用的是本地Graph节点，那么这一参数为非必要参数
 
