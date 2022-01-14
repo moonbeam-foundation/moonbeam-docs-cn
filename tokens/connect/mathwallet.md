@@ -9,13 +9,11 @@ description: 通过此教程学习如何将Mathwallet（浏览器版）钱包连
 
 ## 概览 {: #introduction } 
 
-MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持[Moonbase Alpha测试网](/networks/moonbase/)，意味着用户现在能通过除了MetaMask以外的钱包来与Moonbase Alpha进行交互。
+MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持每一个[Moonbeam网络](/learn/platform/networks)，意味着用户现在能通MathWallet来与任何一个Moonbeam网络进行交互。
 
-在本教程中，我们将带您了解如何设置MathWallet，使其能够连接到我们的测试网。除此之外，我们也会提供一个简短的例子，来说明如何在其他工具中，譬如[Remix](/integrations/remix/)，将MathWallet当作一个Web3的提供者来使用。
+在本教程中，我们将带您了解如何设置MathWallet，使其能够连接到[Moonbeam](#connect-to-moonbeam)，[Moonriver](#connect-to-moonriver)，和[Moonbase Alpha](#connect-to-moonbase-alpha)。除此之外，我们也会提供一个简短的例子，来说明如何在其他工具中，譬如[Remix](/integrations/remix/)，将MathWallet当作一个Web3的提供者来使用。
 
-## 将MathWallet连接至Moonbeam {: #checking-prerequisites } 
-
-在这个部分，我们将会演示如何将MathWallet连接至Moonbase Alpha。
+## 查看先决条件 {: #checking-prerequisites } 
 
 首先您需要安装MathWallet浏览器插件，您可以通过此[网站](https://mathwallet.org/en-us/)安装。
 
@@ -23,29 +21,61 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ![Set wallet password](/images/tokens/connect/mathwallet/mathwallet-1.png)
 
-接着，请启动Moonbase Alpha。点击Settings（右上角的齿轮图标）-> Networks -> Ethereum。
+## 连接至Moonbeam {: #connect-to-moonbeam } 
 
-![Enable Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-2.png)
+我们将会演示如何连接MathWallet至Moonbeam。您可以直接点击**Switch Network**然后选择**Moonbeam**。
 
-最后，在主界面点击Switch Network并选取Moonbase Alpha.
+![Switch to Moonbeam](/images/tokens/connect/mathwallet/mathwallet-2.png)
 
-![Connect to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-3.png)
+就这样，您已经成功将MathWallet连接至Moonbeam了！您的钱包应如以下所示：
+
+<img src="/images/tokens/connect/mathwallet/mathwallet-3.png" alt="Wallet Connected to Moonbeam" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+
+现在您已经成功连接至Moonbeam， 您可以跳转至[如何新增钱包](#adding-a-wallet)来开始新建或导入钱包。
+
+## 连接至Moonriver {: #connect-to-moonriver } 
+
+我们将会演示如何连接MathWallet至Moonriver。您可以直接点击**Switch Network**然后选择**Moonriver**。
+
+![Connect to Moonriver](/images/tokens/connect/mathwallet/mathwallet-4.png)
+
+就这样，您已经成功将MathWallet连接至Moonriver了！您的钱包应如以下所示：
+
+<img src="/images/tokens/connect/mathwallet/mathwallet-5.png" alt="Wallet Connected to Moonriver" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+
+现在您已经成功连接至Moonriver， 您可以跳转至[如何新增钱包](#adding-a-wallet)来开始新建或导入钱包。
+
+## 连接至Moonbase Alpha {: #connect-to-moonbase-alpha } 
+
+我们将会演示如何连接MathWallet至Moonbase Alpha。首先您需要启动Moonbase Alpha。点击**Settings**（右上角的齿轮图标）-> **Networks** -> **Ethereum**，然后找到并开启**Moonbase Alpha**。
+
+![Enable Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-6.png)
+
+最后，在主界面点击Switch Network并选取Moonbase Alpha。从主页，点击**Switch Network**，然后选择**Moonbase Alpha**。
+
+![Connect to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-7.png)
 
 就这样，您已经成功将MathWallet连接至Moonbase Alpha测试网了！您的钱包应如以下所示：
 
-![Wallet Connected to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-4.png)
+![Wallet Connected to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-8.png)
+
+现在您已经成功连接至Moonbase Alpha， 您可以跳转至[如何新增钱包](#adding-a-wallet)来开始新建或导入钱包。
 
 ## 如何新增钱包 {: #adding-a-wallet }
+
+以下步骤会使用Moonbase Alpha，但也适用于Moonbeam和Moonriver。
 
 现在我们已经成功地将MathWallet连接至Moonbase Alpha了，我们可以创建一个钱包来获得一个账户并开始与测试网交互。到目前为止，有三个方法能够新增钱包：
 
  - 创建一个钱包
  - 使用助记词或私钥来导入一个已存在的钱包
-- 连接硬钱包（_目前尚未支持_）
+ - 连接硬钱包（_目前尚未支持_）
 
 ### 创建一个钱包 {: #create-a-wallet}
 
-如果希望建立一个新的钱包，请点击"Moonbase Alpha"左边的:heavy_plus_sign:图示并且选取"Create Wallet"。
+以下步骤会使用Moonbase Alpha，但也适用于Moonbeam和Moonriver。
+
+如果希望建立一个新的钱包，请点击**Moonbase Alpha**左边的:heavy_plus_sign:图示并且选取**Create Wallet**。
 
 ![MathWallet create a wallet](/images/tokens/connect/mathwallet/mathwallet-5.png)
 
@@ -55,7 +85,9 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ### 导入一个钱包 {: #import-a-wallet } 
 
-如果希望建立一个新的钱包，请点击"Moonbase Alpha"左边的:heavy_plus_sign:图示并且选取"Import Wallet"。
+以下步骤会使用Moonbase Alpha，但也适用于Moonbeam和Moonriver。
+
+如果希望建立一个新的钱包，请点击**Moonbase Alpha**左边的:heavy_plus_sign:图示并且选取**Import Wallet**。
 
 ![MathWallet import a wallet](/images/tokens/connect/mathwallet/mathwallet-7.png)
 
@@ -71,8 +103,8 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 在类似于[Remix](/integrations/remix/)的工具中，MathWallet扮演着一个Web3提供者的角色。当您成功将MathWallet连接至Moonbase Alpha之后，您就可以像使用MetaMask一般，部署合约，或是签名交易，只是使用的媒介是MathWallet。
 
-举例而言，在Remix中，当您在部署一个智能合约时，请记得在"Environment"列表中选取"Injected Web3"的选项。如果您的MathWallet已经连接，您会在box（_{{ networks.moonbase.chain_id }}_）下面看见测试网的Chain ID以及您已经汇入Remix的MathWallet账户。当您在发送交易的时候，应当会看见一个相似的弹出窗口，如下图：
+举例而言，在Remix中，当您在部署一个智能合约时，请记得在**Environment**列表中选取**Injected Web3**的选项。如果您的MathWallet已经连接，您会在box（_{{ networks.moonbase.chain_id }}_）下面看见测试网的Chain ID以及您已经汇入Remix的MathWallet账户。当您在发送交易的时候，应当会看见一个相似的弹出窗口，如下图：
 
 ![MathWallet sign transaction](/images/tokens/connect/mathwallet/mathwallet-10.png)
 
-点击"Accept"代表您正在签名这项交易，接着合约即将被部署至Moonbase Alpha测试网。
+点击**Accept**代表您正在签名这项交易，接着合约即将被部署至Moonbase Alpha测试网。
