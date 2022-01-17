@@ -77,11 +77,11 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 如果希望建立一个新的钱包，请点击**Moonbase Alpha**左边的:heavy_plus_sign:图示并且选取**Create Wallet**。
 
-![MathWallet create a wallet](/images/tokens/connect/mathwallet/mathwallet-5.png)
+![MathWallet create a wallet](/images/tokens/connect/mathwallet/mathwallet-9.png)
 
 设置并确认您的钱包名字。接着，请确认您已安全地记下您的助记词，因为它可以有直接的权限进入您的钱包并使用您的资产。当您完成了整个过程之后，您应当能够在新建立的钱包看到与其相连的公开地址。
 
-![MathWallet wallet created](/images/tokens/connect/mathwallet/mathwallet-6.png)
+![MathWallet wallet created](/images/tokens/connect/mathwallet/mathwallet-10.png)
 
 ### 导入一个钱包 {: #import-a-wallet } 
 
@@ -89,15 +89,15 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 如果希望建立一个新的钱包，请点击**Moonbase Alpha**左边的:heavy_plus_sign:图示并且选取**Import Wallet**。
 
-![MathWallet import a wallet](/images/tokens/connect/mathwallet/mathwallet-7.png)
+![MathWallet import a wallet](/images/tokens/connect/mathwallet/mathwallet-11.png)
 
 接着，选取使用助记词或是私钥来导入钱包。如果选择的是助记词，请逐字输入助记词并以空格分格。至于第二个选项，请输入私钥（可以使用或不使用为`0x`开头输入，两者皆能运作）
 
-![MathWallet private key or mnemonic import](/images/tokens/connect/mathwallet/mathwallet-8.png)
+![MathWallet private key or mnemonic import](/images/tokens/connect/mathwallet/mathwallet-12.png)
 
 接着点击下一步，设定好钱包名字之后就完成了！您应当可以在您输入的钱包上看到其相应的公共地址。
 
-![MathWallet imported wallet](/images/tokens/connect/mathwallet/mathwallet-9.png)
+![MathWallet imported wallet](/images/tokens/connect/mathwallet/mathwallet-13.png)
 
 ## 如何使用MathWallet {: #using-mathwallet } 
 
@@ -105,6 +105,6 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 举例而言，在Remix中，当您在部署一个智能合约时，请记得在**Environment**列表中选取**Injected Web3**的选项。如果您的MathWallet已经连接，您会在box（_{{ networks.moonbase.chain_id }}_）下面看见测试网的Chain ID以及您已经汇入Remix的MathWallet账户。当您在发送交易的时候，应当会看见一个相似的弹出窗口，如下图：
 
-![MathWallet sign transaction](/images/tokens/connect/mathwallet/mathwallet-10.png)
+![MathWallet sign transaction](/images/tokens/connect/mathwallet/mathwallet-14.png)
 
 点击**Accept**代表您正在签名这项交易，接着合约即将被部署至Moonbase Alpha测试网。
