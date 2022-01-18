@@ -26,6 +26,34 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
  - **锁定期** —— 赢得投票用户的代币锁定期（提案执行后）。在此期间，用户仍可使用锁定代币进行质押或投票
  - **委托** —— 将自己的投票权委托给其他账户，以积累一定信念值的行为
 
+=== "Moonbeam"
+    |         变量         |  |                                                            Value                                                             |
+    |:------------------------:|::|:----------------------------------------------------------------------------------------------------------------------------:|
+    |      投票期       |  |     {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}}天)      |
+    | 加速投票期 |  | {{ networks.moonbeam.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.fast_vote_period.days}}天) |
+    |     执行期     |  |     {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}}天)     |
+    |     冷却期      |  |     {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}}天)      |
+    |     最低保证金      |  |                                      {{ networks.moonbeam.democracy.min_deposit }} GLMR                                      |
+
+
+=== "Moonriver"
+    |         变量         |  |                                                             Value                                                              |
+    |:------------------------:|::|:------------------------------------------------------------------------------------------------------------------------------:|
+    |      投票期       |  |     {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}}天)      |
+    | 加速投票期 |  | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonriver.democracy.fast_vote_period.days}}天) |
+    |     执行期     |  |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}}天)     |
+    |     冷却期      |  |     {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}}天)      |
+    |     最低保证金      |  |                                      {{ networks.moonriver.democracy.min_deposit }} MOVR                                       |
+
+=== "Moonbase Alpha"
+    |         变量         |  |                                                              Value                                                              |
+    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------:|
+    |      投票期       |  |       {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}}天)       |
+    | 加速投票期 |  | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.hours}}小时) |
+    |     执行期     |  |      {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}}天)       |
+    |     冷却期      |  |       {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}}天)       |
+    |     最低保证金      |  |                                        {{ networks.moonbase.democracy.min_deposit }} DEV  
+
 ## 原则 {: #principles } 
 
 在参与Moonbeam治理流程中，我们还希望用户做到以下几点：

@@ -29,8 +29,25 @@ const web3 = new Web3('RPC_URL');
 
 您可以根据您希望连接的网络，将`RPC_URL`设置为以下的数值：
 
- - Moonbeam开发节点： `http://127.0.0.1:9933`
- - Moonbase Alpha测试网: `https://rpc.api.moonbase.moonbeam.network`
+=== "Moonbeam"
+    ```
+    {{ networks.moonbeam.rpc_url }}
+    ```
+
+=== "Moonriver"
+    ```
+    {{ networks.moonriver.rpc_url }}
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    {{ networks.moonbase.rpc_url }}
+    ```
+
+=== "Moonbeam Dev Node"
+    ```
+    {{ networks.development.rpc_url }}
+    ```
 
 ## 分步教程 {: #step-by-step-tutorials } 
 

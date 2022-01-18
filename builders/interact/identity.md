@@ -11,13 +11,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 [Substrate](/learn/platform/technology/#substrate-framework)身份pallet是「开箱即用」的解决方案，能够新增个人信息至您的链上账户。个人信息可以包含的基础类别如真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称。您同样也可以利用自定区域新增其他相关信息。
 
-此教程将会带您了解如何在Moonbase Alpha测试网上设置或清除一个身份（这也适用于Moonriver网络）。
-
-## 查看先决条件 { : #checking-prerequisites }
-
-您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network)。此教程也适用于[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network)。 
-
-同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token水龙头的相关信息，请访问Moonbase Alpha官方文档网站的[获得Token](/builders/get-started/moonbase/#get-tokens)板块。
+此教程将会带您了解如何在Moonbase Alpha测试网上设置或清除一个身份（这也适用于Moonbeam和Moonriver网络）。
 
 ## 一般定义
 
@@ -25,6 +19,13 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 - **默认字段包含** —— 真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称
 - **自定义字段包含** —— 任何相关信息。举例而言，您可以包含您的Discord用户名
+
+=== "Moonbeam"
+    |      变量      |               定义               |                        值                        |
+    |:--------------:|:--------------------------------:|:------------------------------------------------:|
+    |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonbeam.identity.basic_dep }} GLMR |
+    |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbeam.identity.field_dep }} GLMR |
+    | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |   {{ networks.moonbeam.identity.max_fields }}   |
 
 === "Moonriver"
     |      变量      |               定义               |                        值                        |
@@ -39,6 +40,12 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
     |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonbase.identity.basic_dep }} DEV |
     |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbase.identity.field_dep }} DEV |
     | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |  {{ networks.moonbase.identity.max_fields }}   |
+
+## 查看先决条件 { : #checking-prerequisites }
+
+您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network)。此教程也适用于[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network)。 
+
+同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token水龙头的相关信息，请访问Moonbase Alpha官方文档网站的[获得Token](/builders/get-started/moonbase/#get-tokens)板块。
 
 ## 开始使用
 

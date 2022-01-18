@@ -7,11 +7,11 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在可用�
 
 ## 概览
 
-虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生代币（例如：MOVR和GLMR）余额转账方面与以太坊之间的主要差异。
+虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生代币（例如：GLMR和MOVR）余额转账方面与以太坊之间的主要差异。
 
 Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方面，用户可以通过MetaMask、MathWallet或其他任何使用以太坊JSON-RPC的工具等应用程序来使用以太坊API。另一方面，用户可以通过Polkadot.js App网站使用Substrate API或直接使用Substrate RPC。
 
-开发者需要注意的是，Token持有者可以利用这两类API来转移原生代币。请注意，这页内容不适用于其他类资产的转账，例如Moonriver或Moonbeam EVM中基于ERC20的资产。这些资产的转移只能通过以太坊API完成，因为需要与智能合约交互。
+开发者需要注意的是，Token持有者可以利用这两类API来转移原生代币。请注意，这页内容不适用于其他类资产的转账，例如Moonriver或Moonbeam EVM中基于ERC-20的资产。这些资产的转移只能通过以太坊API完成，因为需要与智能合约交互。
 
 本教程将概述围绕这两类API进行余额转账的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 

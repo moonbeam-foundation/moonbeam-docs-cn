@@ -117,6 +117,15 @@ npm install @nomiclabs/hardhat-ethers ethers
 
 在`module.exports`文档中，我们需要提供Solidity版本（根据合约文档为`0.8.1`版本）以及网络的详细信息：
 
+=== "Moonbeam"
+    ```
+    moonbeam: {
+        url: '{{ networks.moonbeam.rpc_url }}',
+        chainId: {{ networks.moonbeam.chain_id }}, //(hex: {{ networks.moonbeam.hex_chain_id }}),
+        accounts: [privateKeyMoonrbeam] // Insert your private key here
+      },
+    ```
+
 === "Moonriver"
     ```
     moonriver: {
@@ -282,6 +291,6 @@ await box.store(5)
 
 返回结果应当是`5`或您最初所储存的数值。
 
-恭喜， 您已完成Hardhat操作指引! 🤯 🎉
+恭喜， 您已完成Hardhat操作指引!
 
 如需了解关于Hardhat、Hardhat插件以及其他功能的更多详情，请访问[hardhat.org](https://hardhat.org/)。

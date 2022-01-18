@@ -35,13 +35,27 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  - **锁定期** —— 赢得投票用户的代币锁定期（提案执行后）。在此期间，用户仍可使用锁定代币进行质押或投票
  - **委托** —— 将自己的投票权委托给其他账户，以积累一定信念值的行为
 
-目前Moonbase Alpha有关参数设置如下：
+=== "Moonbeam"
+    |       变量         |  |                                                         Value                                                         |
+    |:-----------------------:|::|:---------------------------------------------------------------------------------------------------------------------:|
+    |      执行期       |  | {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}}天) |
+    | 最高票数 |  |                                      {{ networks.moonbeam.democracy.max_votes}}                                       |
+    |       投票期       |  |  {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}}天)  |
 
-|   变量   |      |                              值                              |
-| :------: | :--: | :----------------------------------------------------------: |
-|  投票期  |      | {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days) |
-|  执行期  |      | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
-| 最高票数 |      |          {{ networks.moonbase.democracy.max_votes}}          |
+=== "Moonriver"
+    |        变量         |  |                                                          Value                                                          |
+    |:-----------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      执行期       |  | {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}}天) |
+    | 最高票数 |  |                                       {{ networks.moonriver.democracy.max_votes}}                                       |
+    |       投票期       |  |  {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}}天)  |
+
+=== "Moonbase Alpha"
+    |        变量         |  |                                                         Value                                                         |
+    |:-----------------------:|::|:---------------------------------------------------------------------------------------------------------------------:|
+    |      执行期       |  | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}}天) |
+    | 最高票数 |  |                                      {{ networks.moonbase.democracy.max_votes}}                                       |
+    |       投票期       |  |  {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}}天)  |
+
 
 ## 提案步骤 {: #roadmap-of-a-proposal } 
 
