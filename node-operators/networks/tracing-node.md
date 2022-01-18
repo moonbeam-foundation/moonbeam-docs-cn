@@ -68,6 +68,25 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 !!! note
     用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
 
+=== "Moonbeam"
+    ```
+    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    {{ networks.moonbeam.tracing_tag }} \
+    --base-path=/data \
+    --chain {{ networks.moonbeam.chain_spec }} \
+    --name="Moonbeam-Tutorial" \
+    --pruning archive \
+    --state-cache-size 1 \
+    --db-cache <50% RAM in MB> \
+    --ethapi=debug,trace,txpool \
+    --wasm-runtime-overrides=/moonbeam/moonbeam-substitutes-tracing \
+    -- \
+    --execution wasm \
+    --pruning archive \
+    --name="Moonbeam-Tutorial (Embedded Relay)"
+    ```
+
 === "Moonriver"
     ```
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \

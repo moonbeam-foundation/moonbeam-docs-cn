@@ -338,8 +338,10 @@ curl http://127.0.0.1:9933 -H \
 
 在author ID映射到您的账户时，系统将会发送一定数量的Token绑定到您的账户。该Token由author ID注册获得。网络发送的Token数量设置如下所示：
 
- - Moonbase Alpha - {{ networks.moonbase.staking.collator_map_bond }}枚DEV 
+ - Moonbeam -  {{ networks.moonbeam.staking.collator_map_bond }}枚GLMR
  - Moonriver - {{ networks.moonriver.staking.collator_map_bond }}枚MOVR
+ - Moonbase Alpha - {{ networks.moonbase.staking.collator_map_bond }}枚DEV 
+
 
 `authorMapping`模块具有以下外部编程：
 

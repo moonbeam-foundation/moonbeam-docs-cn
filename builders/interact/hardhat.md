@@ -122,7 +122,7 @@ npm install @nomiclabs/hardhat-ethers ethers
     moonbeam: {
         url: '{{ networks.moonbeam.rpc_url }}',
         chainId: {{ networks.moonbeam.chain_id }}, //(hex: {{ networks.moonbeam.hex_chain_id }}),
-        accounts: [privateKeyMoonrbeam] // Insert your private key here
+        accounts: [privateKeyMoonbeam] // Insert your private key here
       },
     ```
 

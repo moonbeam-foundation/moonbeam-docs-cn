@@ -20,9 +20,6 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
 
 ## 连接MetaMask {: #connect-metamask }
 
-由于Moonbeam尚未启用EVM功能，目前暂不能连接至MetaMask。Moonbeam网络完全启动后，您可遵循相关教程连接MetaMask至Moonbeam。
-
-<!---
 如果您已安装MetaMask，您可轻松将MetaMask连接至Moonriver：
 
 <div class="button-wrapper">
@@ -40,4 +37,3 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
  - ChainID: `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`)
  - Symbol (Optional): `GLMR`
  - Block Explorer (Optional): `{{ networks.moonbeam.block_explorer }}` 
- --->
