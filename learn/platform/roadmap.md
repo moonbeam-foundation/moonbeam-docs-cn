@@ -9,7 +9,18 @@ Moonbeam一直处于密集开发阶段。
 
 2020年9月，我们上线了第一版[测试网](/networks/overview/)。从那时起，我们几乎每个月都进行重大升级。 您可在[版本发布通知](/networks/moonbase/#release-notes)中查看每次更新的详情。
 
+2021年6月，Moonriver[上线Kusama](https://moonbeam.network/announcements/moonriver-launch-kusama/)，使其成为Moonbeam网络首个生产级区块链。
 
-预计在2021年第一季度末，我们将在Kusama启动Moonriver，2021年第二季度，我们将在波卡（Polkadot）主网上正式上线Moonbeam。
+2021年12月，Moonbeam作为生态系统中的首批平行链之一[上线波卡（Polkadot）](https://moonbeam.network/announcements/moonriver-launch-kusama/)。
 
-目前，我们的重点是确保Moonbeam的功能完整性，即完全兼容EVM和Web3的API兼容。让Web3基金会的Grant资助用在实处，打造与Web3兼容的RPC API。您可在[此处](https://github.com/w3f/Open-Grants-Program/blob/master/applications/web3-compatible-api.md)查阅更多关于Grant资助的详细信息。Moonbeam已于2020年8月[获得Web3基金会的Grant资助](https://www.purestake.com/news/purestake-awarded-web3-foundation-grant-moonbeam/)。
+## Moonbeam和Moonriver于2022年第一季度-第二季度的路线图 {: #q1-q2-2022-roadmap-for-moonbeam-and-moonriver }
+
+![Q1-Q2 2022 Roadmap](/images/learn/platform/roadmap/roadmap.png)
+
+### 互操作性 {: #interoperability }
+
+互操作性一直是项目开发的重中之重，特别是XCM开发。更多关于XCM信息，请查看Moonbeam官方资料库的[XCM](/builders/xcm/)部分。
+
+### 社区发展 {: community-development }
+
+持续扩展Moonriver和Moonbeam生态系统也是项目一直所关注的，包括集成和合作伙伴的发展以及增加Bounty赏金计划。
