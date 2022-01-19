@@ -83,7 +83,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 前面提到的一些质押接口功能包含退出延迟，您必须等待延迟后才能执行请求。需要注意的退出延迟如下：
 
 === "Moonbeam"
-    |        变量         |                                                                         Value                                                                         |
+    |        变量         |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
     | 减少候选人绑定 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbeam.collator_timings.can_bond_less.hours }} hours)       |
     | 减少稳妥人绑定 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }} hours)      |
@@ -92,7 +92,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
     |    退出委托人集     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }} hours)   |
 
 === "Moonriver"
-    |        变量         |                                                                          Value                                                                          |
+    |        变量         |                                                                          值                                                                          |
     |:-----------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | 减少候选人绑定 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonriver.collator_timings.can_bond_less.hours }} hours)       |
     | 减少稳妥人绑定 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
@@ -101,7 +101,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
     |    退出委托人集     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
 
 === "Moonbase Alpha"
-    |        变量         |                                                                         Value                                                                         |
+    |        变量         |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
     | 减少候选人绑定 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbase.collator_timings.can_bond_less.hours }} hours)       |
     | 减少稳妥人绑定 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
