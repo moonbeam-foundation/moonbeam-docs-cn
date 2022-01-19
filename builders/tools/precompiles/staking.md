@@ -13,6 +13,11 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 质押模块采用Rust进行编码，其为Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于以下指定地址的预编译合约中的以太坊API使用质押功能：
 
+=== "Moonbeam"
+     ```
+     {{networks.moonbeam.precompiles.staking}}
+     ```
+
 === "Moonriver"
      ```
      {{networks.moonriver.precompiles.staking}}
@@ -40,22 +45,22 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
  - **candidate_delegation_count**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数，取代已弃用的`collator_nomination_count`函数
  - **delegator_delegation_count**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数，取代已弃用的`nominator_nomination_count`函数
  - **join_candidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集
- - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，在Moonbase Alpha上会有{{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮延迟，约为{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时，在Moonriver上会有{{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮延迟，约为{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时
+ - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`execute_leave_candidates`执行请求。 取代已弃用的`leave_candidates`函数
  - **execute_leave_candidates**() —— 执行离开候选收集人集的可用请求
  - **cancel_leave_candidates**(*uint256* candidateCount) —— 使候选人取消待处理的离开候选人池的请求。提供当前候选人池中的候选人数量
  - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集
  - **go_online**() —— 在先前调用go_offline()后，重新加入候选收集人集
  - **candidate_bond_more**(*uint256* more) —— 候选收集人根据指定数量增加绑定数量
- - **schedule_candidate_bond_less**(*uint256* more) —— 发起减少候选人绑定一定Token数量的请求。在Moonbase Alpha上会有{{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮延迟，约为{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时。在Moonriver上会有{{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮延迟，约为{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时。当超过延迟时间，您可以通过`execute_candidate_bond_request`函数执行请求。此为取代已弃用的`candidate_bond_less`函数
+ - **schedule_candidate_bond_less**(*uint256* more) —— 发起减少候选人绑定一定Token数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以通过`execute_candidate_bond_request`函数执行请求。此为取代已弃用的`candidate_bond_less`函数
  - **execute_candidate_bond_request**(*address* candidate) —— 执行任何减少指定候选人绑定数量的可用请求
  - **cancel_candidate_bond_request**() —— 使候选人取消待处理的减少候选人绑定数量的请求
  - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 如果执行者并不是委托人，此函数会将其加入委托人集。如果执行者已经是委托人，此函数将会调整其委托数量。取代已弃用的`nominate`函数
- - **schedule_leave_delegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。在Moonbase Alpha上会有{{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮延迟，约为{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时。在Moonriver上会有{{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮延迟，约为{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时。当超过延迟时间，您可以通过`execute_leave_delegators`函数执行请求
+ - **schedule_leave_delegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_leave_delegators`函数执行请求。此为取代已弃用的`leave_nominators`函数
  - **execute_leave_delegators**(*uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求
  - **cancel_leave_delegators**() —— 取消待处理的离开委托人集的请求
- - **schedule_revoke_delegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。在Moonbase Alpha上会有{{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时。在Moonriver上会有{{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时。当超过延迟时间，您将能够通过`execute_delegation_request`函数执行请求。取代已弃用的 `revoke_nominations`函数
+ - **schedule_revoke_delegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`execute_delegation_request`函数执行请求。取代已弃用的 `revoke_nominations`函数
  - **delegator_bond_more**(*address* candidate, *uint256* more) —— 委托人增加绑定在特定收集人的数量。取代已弃用的`nominator_bond_more`函数
- - **schedule_delegator_bond_less**(*address* candidate, *uint256* less) —— 发起委托人减少绑定在特定候选收集人的数量的请求。在Moonbase Alpha上会有{{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮延迟，约为{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时。在Moonriver上会有{{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮延迟，约为{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时。当超过延迟时间，您可以通过`execute_delegation_request`函数执行请求。取代已弃用的 `nominator_bond_less`函数
+ - **schedule_delegator_bond_less**(*address* candidate, *uint256* less) —— 发起委托人减少绑定在特定候选收集人的数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_delegation_request`函数执行请求。取代已弃用的 `nominator_bond_less`函数
  - **execute_delegation_request**(*address* delegator, *address* candidate) —— 执行任何在提供委托人和候选人地址的情况下的可用委托请求
  - **cancel_delegation_request**(*address* candidate) —— 取消提供的候选人地址中任何待处理的委托请求
 
@@ -73,9 +78,41 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
  - **nominator_bond_more**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量
  - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量
 
+## 退出延迟 {: #exit-delays }
+
+前面提到的一些质押接口功能包含退出延迟，您必须等待延迟后才能执行请求。需要注意的退出延迟如下：
+
+=== "Moonbeam"
+    |        变量         |                                                                         Value                                                                         |
+    |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
+    | 减少候选人绑定 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbeam.collator_timings.can_bond_less.hours }} hours)       |
+    | 减少稳妥人绑定 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }} hours)      |
+    |    解除委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbeam.delegator_timings.revoke_delegations.hours }} hours) |
+    |    退出候选人集     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonbeam.collator_timings.leave_candidates.hours }} hours)    |
+    |    退出委托人集     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }} hours)   |
+
+=== "Moonriver"
+    |        变量         |                                                                          Value                                                                          |
+    |:-----------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    | 减少候选人绑定 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonriver.collator_timings.can_bond_less.hours }} hours)       |
+    | 减少稳妥人绑定 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
+    |    解除委托     | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
+    |    退出候选人集      |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonriver.collator_timings.leave_candidates.hours }} hours)    |
+    |    退出委托人集     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
+
+=== "Moonbase Alpha"
+    |        变量         |                                                                         Value                                                                         |
+    |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
+    | 减少候选人绑定 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbase.collator_timings.can_bond_less.hours }} hours)       |
+    | 减少稳妥人绑定 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
+    |    解除委托     | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }} hours) |
+    |    退出候选人集      |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonbase.collator_timings.leave_candidates.hours }} hours)    |
+    |    退出委托人集     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbase.delegator_timings.leave_delegators.hours }} hours)   |
+
+
 ## 查看先决条件 {: #checking-prerequisites } 
 
-以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonriver。
+以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonbeam和Moonriver。
 
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/)
  - 拥有一个超过`{{networks.moonbase.staking.min_del_stake}}`枚Token的账户。您可以通过[Mission Control](/builders/get-started/moonbase/#get-tokens/)获得
@@ -208,11 +245,11 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 ## 撤销一个委托 {: #revoking-a-delegation }
 
-在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
+在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
 目前取消质押需要您发起离开或是撤回委托的请求，等待延迟时段，然后执行请求。
 
-您可以使用`scheduleRevokeDelegation`函数撤销对特定候选人的委托并收回您的Token。发起请求并不会自动撤销您的委托，您需要等待延迟时段，并通过`executeDelegationRequest` 函数执行请求。在Moonbase Alpha上会有{{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时。在Moonriver上会有{{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮延迟，约为{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时。
+您可以使用`scheduleRevokeDelegation`函数撤销对特定候选人的委托并收回您的Token。发起请求并不会自动撤销您的委托，您需要等待延迟时段，并通过`executeDelegationRequest` 函数执行请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`executeDelegationRequest`函数执行请求。
 
 ### 发起撤销委托的请求 {: #schedule-request-to-revoke-a-delegation }
 
