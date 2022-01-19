@@ -133,7 +133,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
  3. 检查接收人地址并进入下个画面
 
- 4. *此步骤仅适用于以太坊应用*。检查网络的Chain ID。本信息可以在MetaMask连接至的网络信息内确认。举例而言，Moonbase Alpha的Chain ID是1287（hex: 0x507）、Moonriver为1285（hex: 0x505）以及Moonbeam为1284（hex: 0x504）。确认后，进入下个画面。
+ 4. *此步骤仅适用于以太坊应用*。检查网络的Chain ID。本信息可以在MetaMask连接至的网络信息内确认。举例而言，Moonbeam为1284（hex: 0x504）、Moonriver为1285（hex: 0x505）以及Moonbase Alpha的Chain ID是1287（hex: 0x507）。确认后，进入下个画面。
 
  5. 检查适用此交易的最大费用，这经由Gas费用乘以您在MetaMask上设置的Gas限制。确认完毕后，进入下个页面。
 

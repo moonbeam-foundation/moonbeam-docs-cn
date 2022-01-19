@@ -20,12 +20,12 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     <a href="#" class="md-button connectMetaMask" value="moonbeam">连接至Moonbeam</a>
 </div>
 <div class="button-wrapper">
+    <a href="#" class="md-button connectMetaMask" value="moonriver">连接至Moonriver</a>
+</div>
+<div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask" value="moonbase">连接至Moonbase Alpha</a>
 </div>
 
-<div class="button-wrapper">
-    <a href="#" class="md-button connectMetaMask" value="moonriver">连接至Moonriver</a>
-</div>
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
@@ -100,7 +100,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     |     Symbol (Optional)     |                                      `DEV`                                       |
     | Block Explorer (Optional) |                     `{{ networks.moonbase.block_explorer }}`                     |
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     |         Variable          |                                         Value                                          |
     |:-------------------------:|:--------------------------------------------------------------------------------------:|
     |       Network Name        |                                     `Moonbeam Dev`                                     |
@@ -113,11 +113,11 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 ## 进行首笔交易 {: #initiate-a-transfer }
 
-您也可以尝试使用MetaMask发送一些Token。在本示例中，您将需要两个账户。为此，您需要再创建一个新的账户。两个账户准备完毕后，点击**发送**开启一笔转账。选择**在我的账户间转账**选项，我们尝试交易100个Token并保持其他设置不变：
+您也可以尝试使用MetaMask发送一些Token。在本示例中，您将需要两个账户。为此，您需要再创建一个新的账户。两个账户准备完毕后，点击**Send**开启一笔转账。选择**Transfer between my accounts**选项，我们尝试交易100个Token并保持其他设置不变：
 
 ![Initiating a token transfer](/images/tokens/connect/metamask/metamask-8.png)
 
-提交交易后，您将看到**待处理**字样的的状态，直到确认为止，如下图所示：
+提交交易后，您将看到**Pending**字样的的状态，直到确认为止，如下图所示：
 
 ![Transaction confirmation](/images/tokens/connect/metamask/metamask-9.png)
 
@@ -130,4 +130,4 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 ![Moonbeam Development Node](/images/tokens/connect/metamask/metamask-11.png)
 
 !!! 注意事项
-    如果您最终使用Substrate purge-chain命令重置您的开发节点，您需要通过**设置** -> **高级** -> **重设账户**这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。
+    如果您最终使用Substrate purge-chain命令重置您的开发节点，您需要选择**Setting**下**Advanced**，然后点击**Reset Account**这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。

@@ -78,7 +78,9 @@ Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通�
 因为本教程使用Moonbase Alpha测试网，确保您账户拥有DEV Token，必要时，可以至[水龙头](/builders/get-started/moonbase/#get-tokens/)获取一些Token。点击**Submit**，签署交易后，合约将会被部署至Moonbase Alpha测试网。
 
 !!! 注意事项
-    请注意，即使您的账户余额显示有ETH，但那只是DEV Token并非真正的ETH。另外，本次交易将会显示在**Sent**标签下面，如下图所示：
+    请注意，即使您的账户余额显示有ETH，但那只是DEV Token并非真正的ETH。
+    
+另外，本次交易将会显示在**Sent**标签下面，如下图所示：
 
 <img src="/images/tokens/connect/nifty/nifty-6.png" alt="Nifty confirmed transaction" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 

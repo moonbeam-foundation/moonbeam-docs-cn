@@ -47,7 +47,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 ## 连接至Moonbase Alpha {: #connect-to-moonbase-alpha } 
 
-我们将会演示如何连接MathWallet至Moonbase Alpha。首先您需要启动Moonbase Alpha。点击**Settings**（右上角的齿轮图标）-> **Networks** -> **Ethereum**，然后找到并开启**Moonbase Alpha**。
+我们将会演示如何连接MathWallet至Moonbase Alpha。首先您需要启动Moonbase Alpha。点击**Settings**（右上角的齿轮图标），然后选择**Networks**下**Ethereum**，然后找到并开启**Moonbase Alpha**。
 
 ![Enable Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-6.png)
 
