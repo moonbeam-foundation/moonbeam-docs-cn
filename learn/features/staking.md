@@ -109,27 +109,27 @@ If you're looking for candidate or collator-specific requirements and informatio
     |                 变量                  |                                         值                                        |
     |:-----------------------------------------:|:-------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonbeam.inflation.total_annual_inflation }}%               |
-    | 收集人和委托人激励池 | 年通胀之{{ networks.moonbeam.inflation.delegator_reward_inflation }}% |
-    |            收集人激励            | 年通胀之{{ networks.moonbeam.inflation.collator_reward_inflation }}% |
+    | 收集人和委托人奖励池 | 年通胀之{{ networks.moonbeam.inflation.delegator_reward_inflation }}% |
+    |            收集人佣金            | 年通胀之{{ networks.moonbeam.inflation.collator_reward_inflation }}% |
     |          平行链绑定储蓄           |  年通胀之{{ networks.moonbeam.inflation.parachain_bond_inflation }}%  |
 
 === "Moonriver"
     |                 变量                  |                                         值                                         |
     |:-----------------------------------------:|:--------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonriver.inflation.total_annual_inflation }}%               |
-    | 收集人和委托人激励池 | 年通胀之{{ networks.moonriver.inflation.delegator_reward_inflation }}% |
-    |            收集人激励           | 年通胀之{{ networks.moonriver.inflation.collator_reward_inflation }}%  |
+    | 收集人和委托人奖励池 | 年通胀之{{ networks.moonriver.inflation.delegator_reward_inflation }}% |
+    |            收集人佣金           | 年通胀之{{ networks.moonriver.inflation.collator_reward_inflation }}%  |
     |          平行链绑定储蓄           |  年通胀之{{ networks.moonriver.inflation.parachain_bond_inflation }}%  |
 
 === "Moonbase Alpha"
     |                 变量                  |                                         值                                         |
     |:-----------------------------------------:|:-------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonbase.inflation.total_annual_inflation }}%               |
-    | 收集人和委托人激励池 | 年通胀之{{ networks.moonbase.inflation.delegator_reward_inflation }}% |
-    |            收集人激励            | 年通胀之{{ networks.moonbase.inflation.collator_reward_inflation }}%  |
+    | 收集人和委托人奖励池 | 年通胀之{{ networks.moonbase.inflation.delegator_reward_inflation }}% |
+    |            收集人佣金            | 年通胀之{{ networks.moonbase.inflation.collator_reward_inflation }}%  |
     |          平行链绑定储蓄           |  年通胀之{{ networks.moonbase.inflation.parachain_bond_inflation }}%  |
 
-从激励池中，收集人获得与他们绑定相对应的奖励，其余的按质押比例分配给委托人。
+从奖励池中，收集人获得与他们绑定相对应的奖励，其余将按质押比例分配给委托人。
 
 ### Calculating Rewards {: #calculating-rewards }
 
