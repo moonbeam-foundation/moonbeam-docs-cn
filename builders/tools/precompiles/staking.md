@@ -85,29 +85,29 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 === "Moonbeam"
     |        变量         |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbeam.collator_timings.can_bond_less.hours }} hours)       |
-    | 减少稳妥人绑定 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }} hours)      |
-    |    解除委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbeam.delegator_timings.revoke_delegations.hours }} hours) |
-    |    退出候选人集     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonbeam.collator_timings.leave_candidates.hours }} hours)    |
-    |    退出委托人集     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }} hours)   |
+    | 减少候选人绑定 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonbeam.collator_timings.can_bond_less.hours }}小时)       |
+    | 减少稳妥人绑定 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }}小时)      |
+    |    解除委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时) |
+    |    退出候选人集     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonbeam.collator_timings.leave_candidates.hours }}小时)    |
+    |    退出委托人集     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时)   |
 
 === "Moonriver"
     |        变量         |                                                                          值                                                                          |
     |:-----------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonriver.collator_timings.can_bond_less.hours }} hours)       |
-    | 减少稳妥人绑定 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonriver.delegator_timings.del_bond_less.hours }} hours)      |
-    |    解除委托     | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }} hours) |
-    |    退出候选人集      |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonriver.collator_timings.leave_candidates.hours }} hours)    |
-    |    退出委托人集     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonriver.delegator_timings.leave_delegators.hours }} hours)   |
+    | 减少候选人绑定 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonriver.collator_timings.can_bond_less.hours }}小时)       |
+    | 减少稳妥人绑定 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时)      |
+    |    解除委托     | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时) |
+    |    退出候选人集      |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonriver.collator_timings.leave_candidates.hours }}小时)    |
+    |    退出委托人集     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时)   |
 
 === "Moonbase Alpha"
     |        变量         |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }} rounds ({{ networks.moonbase.collator_timings.can_bond_less.hours }} hours)       |
-    | 减少稳妥人绑定 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }} rounds ({{ networks.moonbase.delegator_timings.del_bond_less.hours }} hours)      |
-    |    解除委托     | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }} rounds ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }} hours) |
-    |    退出候选人集      |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }} rounds ({{ networks.moonbase.collator_timings.leave_candidates.hours }} hours)    |
-    |    退出委托人集     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }} rounds ({{ networks.moonbase.delegator_timings.leave_delegators.hours }} hours)   |
+    | 减少候选人绑定 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonbase.collator_timings.can_bond_less.hours }}小时)       |
+    | 减少稳妥人绑定 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时)      |
+    |    解除委托     | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时) |
+    |    退出候选人集      |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonbase.collator_timings.leave_candidates.hours }}小时)    |
+    |    退出委托人集     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
 
 
 ## 查看先决条件 {: #checking-prerequisites } 

@@ -31,7 +31,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     | 单个候选人最大有效委托人数 |                                                    {{ networks.moonbeam.staking.max_del_per_can }}                                                    |
     |       单个委托人可委托的最大委托人数        |                                                    {{ networks.moonbeam.staking.max_del_per_del }}                                                    |
     |       奖励发放延迟        |    {{ networks.moonbeam.delegator_timings.rewards_payouts.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.rewards_payouts.hours }}小时)    |
-    |    增加委托时长    |                                           takes effect in the next round (funds are withdrawn immediately)                                            |
+    |    增加委托时长    |                                           委托将会在下一个轮次生效（资金可随时提取）                                            |
     |    减少委托时长     |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }}小时)      |
     |     取消委托延迟     | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时) |
     |      退出委托人集延迟      |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时)   |
@@ -44,7 +44,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     | 单个候选人最大有效委托人数 |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
     |       单个委托人可委托的最大委托人数        |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
     |       奖励发放延迟        |    {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次 ({{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时)    |
-    |     增加委托时长    |                                            takes effect in the next round (funds are withdrawn immediately)                                             |
+    |     增加委托时长    |                                            委托将会在下一个轮次生效（资金可随时提取）                                             |
     |    减少委托时长     |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时)      |
     |     取消委托延迟     | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时) |
     |      退出委托人集延迟      |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时)   |
@@ -57,7 +57,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     | 单个候选人最大有效委托人数 |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
     |       单个委托人可委托的最大委托人数        |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
     |       奖励发放延迟        |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次 ({{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时)    |
-    |     增加委托时长    |                                           takes effect in the next round (funds are withdrawn immediately)                                            |
+    |     增加委托时长    |                                           委托将会在下一个轮次生效（资金可随时提取）                                            |
     |    减少委托时长     |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时)      |
     |     取消委托延迟     | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时) |
     |      退出委托人集延迟      |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
@@ -74,21 +74,21 @@ If you're looking for candidate or collator-specific requirements and informatio
 === "Moonbeam"
     |      变量       |                                                  值                                                  |
     |:-------------------:|:-------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbeam Subscan](https://moonbeam.subscan.io/validator){target=_blank}                 |
-    | 收集人统计数据 | [Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonbeam){target=_blank} |
+    | 候选收集人列单  |                [Moonbeam Subscan浏览器](https://moonbeam.subscan.io/validator){target=_blank}                 |
+    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonbeam){target=_blank} |
 
 === "Moonriver"
     |      变量       |                                                                 值                                                                 |
     |:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                              [Moonriver Subscan](https://moonriver.subscan.io/validator){target=_blank}                               |
-    | 收集人统计数据 |               [Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}                |
+    | 候选收集人列单  |                              [Moonriver Subscan浏览器](https://moonriver.subscan.io/validator){target=_blank}                               |
+    | 收集人统计数据 |               [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}                |
     |  收集人APY数据  | [DappLooker收集人仪表板](http://analytics.dapplooker.com/public/dashboard/7dfc5a6e-da33-4d54-94bf-0dfa5e6843cb){target=_blank} |
 
 === "Moonbase Alpha"
     |      变量       |                                                    值                                                     |
     |:-------------------:|:------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbase Alpha Subscan](https://moonbase.subscan.io/validator){target=_blank}                |
-    | 收集人统计数据 | [Moonbeam Explorer](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank} |
+    | 候选收集人列单  |                [Moonbase Alpha Subscan浏览器](https://moonbase.subscan.io/validator){target=_blank}                |
+    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank} |
 
 
 !!! 注意事项
@@ -110,24 +110,24 @@ If you're looking for candidate or collator-specific requirements and informatio
     |:-----------------------------------------:|:-------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonbeam.inflation.total_annual_inflation }}%               |
     | 收集人和委托人奖励池 | 年通胀之{{ networks.moonbeam.inflation.delegator_reward_inflation }}% |
-    |            收集人佣金            | 年通胀之{{ networks.moonbeam.inflation.collator_reward_inflation }}% |
-    |          平行链绑定储蓄           |  年通胀之{{ networks.moonbeam.inflation.parachain_bond_inflation }}%  |
+    |            收集人佣金            | 年通胀率之{{ networks.moonbeam.inflation.collator_reward_inflation }}% |
+    |          平行链绑定储蓄           |  年通胀率之{{ networks.moonbeam.inflation.parachain_bond_inflation }}%  |
 
 === "Moonriver"
     |                 变量                  |                                         值                                         |
     |:-----------------------------------------:|:--------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonriver.inflation.total_annual_inflation }}%               |
     | 收集人和委托人奖励池 | 年通胀之{{ networks.moonriver.inflation.delegator_reward_inflation }}% |
-    |            收集人佣金           | 年通胀之{{ networks.moonriver.inflation.collator_reward_inflation }}%  |
-    |          平行链绑定储蓄           |  年通胀之{{ networks.moonriver.inflation.parachain_bond_inflation }}%  |
+    |            收集人佣金           | 年通胀率之{{ networks.moonriver.inflation.collator_reward_inflation }}%  |
+    |          平行链绑定储蓄           |  年通胀率之{{ networks.moonriver.inflation.parachain_bond_inflation }}%  |
 
 === "Moonbase Alpha"
     |                 变量                  |                                         值                                         |
     |:-----------------------------------------:|:-------------------------------------------------------------------------------------:|
     |             年通胀率              |               {{ networks.moonbase.inflation.total_annual_inflation }}%               |
     | 收集人和委托人奖励池 | 年通胀之{{ networks.moonbase.inflation.delegator_reward_inflation }}% |
-    |            收集人佣金            | 年通胀之{{ networks.moonbase.inflation.collator_reward_inflation }}%  |
-    |          平行链绑定储蓄           |  年通胀之{{ networks.moonbase.inflation.parachain_bond_inflation }}%  |
+    |            收集人佣金            | 年通胀率之{{ networks.moonbase.inflation.collator_reward_inflation }}%  |
+    |          平行链绑定储蓄           |  年通胀率之{{ networks.moonbase.inflation.parachain_bond_inflation }}%  |
 
 从奖励池中，收集人获得与他们绑定相对应的奖励，其余将按质押比例分配给委托人。
 
