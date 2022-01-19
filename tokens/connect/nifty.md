@@ -27,15 +27,20 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 ## 将Nifty钱包连接至Moonbeam {: #connect-nifty-wallet-to-moonbeam }
 
-当您成功创建一个账户，即可通过创建一个自定义网络连接至Moonbase Alpha测试网。
+当您成功创建一个账户，即可通过创建一个自定义网络连接至Moonbeam网络之一。
 
-您也可以通过导入已有的账户连接至Moonbase Alpha。目前为止，硬件钱包暂不支持自定义RPC。
+您也可以通过导入已有的账户连接至Moonbeam。目前为止，硬件钱包暂不支持自定义RPC。
 
-导向至设置，在左上角点击POA下拉菜单。接着，下滑页面至底部选取Custom RPC。
+导向至设置，在左上角点击网络下拉菜单。接着，下滑页面至底部选取**Custom RPC**。
 
 <img src="/images/tokens/connect/nifty/nifty-2.png" alt="Create Custom RPC" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-在新的RPC URL处输入Moonbeam的RPC URL：
+在**New RPC URL**处输入Moonbeam的RPC URL：
+
+=== "Moonbeam"
+    ```
+      {{ networks.moonbeam.rpc_url }}
+    ```
 
 === "Moonriver"
     ```
@@ -56,30 +61,32 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 <img src="/images/tokens/connect/nifty/nifty-3.png" alt="Connect to Moonbase Alpha" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-完成后，RPC链接会被更改成Moonbase Alpha的RPC URL，并且您可以在左上角看到网络已经被更换成“Private Network”。
+完成后，RPC链接会被更改成您提供的Moonbeam RPC URL，并且您可以在左上角看到网络已经被更换成**Private Network**。
 
 <img src="/images/tokens/connect/nifty/nifty-4.png" alt="Wallet Connected to Moonbase Alpha" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-恭喜您已经成功将Nifty钱包连接至Moonbase Alpha测试网！
+恭喜您已经成功将Nifty钱包连接至Moonbeam！
 
 ## 使用Nifty钱包 {: #using-nifty-wallet }
 
-Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通过将Nifty钱包连接至Moonbase Alpha，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。
+Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通过将Nifty钱包连接至Moonbeam网络之一，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。本教程会使用Moonbase Alpha测试网，但也适用于Moonbeam和Moonriver。
 
-举例而言，在Remix中，当您在部署智能合约时，请确保您在“Environment”菜单中选择“Injected Web3”的选项。当您成功连接Nifty钱包，您将会在方框（_{{ networks.moonbase.chain_id }}_）下面见到测试网Chain ID，并且您的Nifty钱包账户将会同时嵌入至Remix。当您在传送交易时，您将会看一个类似下图所示的弹窗：
+在Remix中，当您在部署智能合约时，请确保您在**Environment**菜单中选择**Injected Web3**的选项。当您成功连接Nifty钱包，您将会在方框下面见到Moonbeam Chain ID，并且您的Nifty钱包账户将会同时嵌入至Remix。当您在传送交易时，您将会看一个类似下图所示的弹窗：
 
 <img src="/images/tokens/connect/nifty/nifty-5.png" alt="Nifty sign transaction" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-确保您账户拥有DEV Token，必要时，可以至[水龙头](/builders/get-started/moonbase/#get-tokens/)获取一些Token。点击“Submit”，签署交易后，合约将会被部署至Moonbase Alpha测试网。
+因为本教程使用Moonbase Alpha测试网，确保您账户拥有DEV Token，必要时，可以至[水龙头](/builders/get-started/moonbase/#get-tokens/)获取一些Token。点击**Submit**，签署交易后，合约将会被部署至Moonbase Alpha测试网。
 
 !!! 注意事项
-    请注意，即使您的账户余额显示有ETH，但那只是DEV Token并非真正的ETH。另外，本次交易将会显示在“Sent”标签下面，如下图所示：
+    请注意，即使您的账户余额显示有ETH，但那只是DEV Token并非真正的ETH。
+    
+另外，本次交易将会显示在**Sent**标签下面，如下图所示：
 
 <img src="/images/tokens/connect/nifty/nifty-6.png" alt="Nifty confirmed transaction" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
 ## 创建新账户 {: #create-a-new-account }
 
-如果您想要创建新账户，请点击右上角的用户图标并选取“Create Account”。
+如果您想要创建新账户，请点击右上角的用户图标并选取**Create Account**。
 
 <img src="/images/tokens/connect/nifty/nifty-7.png" alt="Nifty create an account" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
@@ -89,11 +96,11 @@ Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通�
 
 ## 导入账户 {: #import-an-account }
 
-如果您想要创建新钱包，请点击右上角的用户图标并选取“Import Account”。
+如果您想要创建新钱包，请点击右上角的用户图标并选取**Import Account**。
 
 <img src="/images/tokens/connect/nifty/nifty-9.png" alt="Nifty import an account" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-接着，在下方选取导入的方式并且输入必要内容以导入您的账户。举例而言，如果您希望使用私钥导入账户，请在输入区域内贴上您的私钥并点击“Import”。
+接着，在下方选取导入的方式并且输入必要内容以导入您的账户。举例而言，如果您希望使用私钥导入账户，请在输入区域内贴上您的私钥并点击**Import**。
 
 <img src="/images/tokens/connect/nifty/nifty-10.png" alt="MathWallet private key or mnemonic import" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 

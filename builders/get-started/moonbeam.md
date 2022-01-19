@@ -23,7 +23,7 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
 由于Moonbeam尚未启用EVM功能，目前暂不能连接至MetaMask。Moonbeam网络完全启动后，您可遵循相关教程连接MetaMask至Moonbeam。
 
 <!---
-如果您已安装MetaMask，您可轻松将MetaMask连接至Moonriver：
+如果您已安装MetaMask，您可轻松将MetaMask连接至Moonbeam：
 
 <div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask" value="moonbeam">连接MetaMask</a>

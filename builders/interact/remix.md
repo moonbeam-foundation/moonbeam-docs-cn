@@ -83,7 +83,7 @@ Remix是目前以太坊上最常被使用的智能合约开发环境之一。基
 ![Confirm the transaction message](/images/builders/interact/remix/using-remix-9.png)
 
 !!! 注意事项
-    若您在部署任意合约时遇到问题，可通过以下操作手动提高Gas限制。设置 -> 高级 -> 高级Gas控制 = 启用。
+    若您在部署任意合约时遇到问题，可通过以下操作在MetaMask手动提高Gas限制。点击**设置**下**高级**，然后将**高级Gas控制** 设置为**启用**。
 
 完成确认后，部署也随之完成，您将会在MetaMask上看到您的交易记录。与此同时，合约也会出现在Remix的Deployed Contracts一栏内。
 
