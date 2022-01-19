@@ -35,7 +35,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
  - **冷却期** —— 提案被否决后不能重新提交的时期（以区块数量计算）
 
 === "Moonbeam"
-    |         变量         |  |                                                          Value                                                          |
+    |         变量         |  |                                                          值                                                          |
     |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
     |      发起期       |  | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
     |     冷却期      |  |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
@@ -43,7 +43,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
     | 最低提案存款额 |  |                                    {{ networks.moonbeam.democracy.min_deposit}} GLMR                                    |
 
 === "Moonriver"
-    |         变量         |  |                                                           Value                                                           |
+    |         变量         |  |                                                           值                                                           |
     |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------:|
     |      发起期       |  | {{ networks.moonriver.democracy.launch_period.blocks}} blocks ({{ networks.moonriver.democracy.launch_period.days}} days) |
     |     冷却期      |  |   {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)   |
@@ -51,7 +51,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
     | 最低提案存款额 |  |                                    {{ networks.moonriver.democracy.min_deposit}} MOVR                                     |
 
 === "Moonbase Alpha"
-    |         变量         |  |                                                          Value                                                          |
+    |         变量         |  |                                                          值                                                          |
     |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
     |      发起期       |  | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
     |     冷却期      |  |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |

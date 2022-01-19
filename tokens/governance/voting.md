@@ -36,21 +36,21 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
  - **委托** —— 将自己的投票权委托给其他账户，以积累一定信念值的行为
 
 === "Moonbeam"
-    |       变量         |  |                                                         Value                                                         |
+    |       变量         |  |                                                         值                                                         |
     |:-----------------------:|::|:---------------------------------------------------------------------------------------------------------------------:|
     |      执行期       |  | {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}}天) |
     | 最高票数 |  |                                      {{ networks.moonbeam.democracy.max_votes}}                                       |
     |       投票期       |  |  {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}}天)  |
 
 === "Moonriver"
-    |        变量         |  |                                                          Value                                                          |
+    |        变量         |  |                                                          值                                                          |
     |:-----------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
     |      执行期       |  | {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}}天) |
     | 最高票数 |  |                                       {{ networks.moonriver.democracy.max_votes}}                                       |
     |       投票期       |  |  {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}}天)  |
 
 === "Moonbase Alpha"
-    |        变量         |  |                                                         Value                                                         |
+    |        变量         |  |                                                         值                                                         |
     |:-----------------------:|::|:---------------------------------------------------------------------------------------------------------------------:|
     |      执行期       |  | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}}天) |
     | 最高票数 |  |                                      {{ networks.moonbase.democracy.max_votes}}                                       |

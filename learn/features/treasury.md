@@ -27,7 +27,7 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会
 目前，财政库的价值如下：
 
 === "Moonbeam"
-    |            变量             |  |                                                        Value                                                         |
+    |            变量             |  |                                                        值                                                         |
     |:-------------------------------:|::|:--------------------------------------------------------------------------------------------------------------------:|
     |          提案保证金          |  |                        {{ networks.moonbeam.treasury.proposal_bond }}% of the proposed spend                         |
     |      最低提案保证金      |  |                               {{ networks.moonbeam.treasury.proposal_bond_min }} GLMR                                |

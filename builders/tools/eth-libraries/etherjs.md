@@ -39,28 +39,28 @@ let wallet = new ethers.Wallet(privKey, provider);
 除此之外， `provider`和`wallet`内有不同的方法供用户使用。您可以根据您所希望连接的网络，将`RPC_URL`设置为以下的数值：
 
 === "Moonbeam"
-    |   Variable   |                                      Value                                       |
+    |   变量   |                                      值                                       |
     |:------------:|:--------------------------------------------------------------------------------:|
     |   RPC_URL    |                        `{{ networks.moonbeam.rpc_url }}`                         |
     |   ChainID    | `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`) |
     | NETWORK_NAME |                       `{{ networks.moonbeam.chain_spec }}`                       |
 
 === "Moonriver"
-    |   Variable   |                                       Value                                        |
+    |   变量   |                                       值                                        |
     |:------------:|:----------------------------------------------------------------------------------:|
     |   RPC_URL    |                         `{{ networks.moonriver.rpc_url }}`                         |
     |   ChainID    | `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`) |
     | NETWORK_NAME |                       `{{ networks.moonriver.chain_spec }}`                        |
 
 === "Moonbase Alpha"
-    |   Variable   |                                      Value                                       |
+    |   变量   |                                      值                                       |
     |:------------:|:--------------------------------------------------------------------------------:|
     |   RPC_URL    |                        `{{ networks.moonbase.rpc_url }}`                         |
     |   ChainID    | `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`) |
     | NETWORK_NAME |                                 `moonbase-alpha`                                 |
 
-=== "Moonbeam Dev Node" 
-    |   Variable   |                                         Value                                          |
+=== "Moonbeam开发节点" 
+    |   变量   |                                         值                                          |
     |:------------:|:--------------------------------------------------------------------------------------:|
     |   RPC_URL    |                          `{{ networks.development.rpc_url }}`                          |
     |   ChainID    | `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`) |

@@ -44,7 +44,7 @@ const web3 = new Web3('RPC_URL');
     {{ networks.moonbase.rpc_url }}
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     {{ networks.development.rpc_url }}
     ```

@@ -43,7 +43,7 @@ web3 = Web3(Web3.HTTPProvider('RPC_URL'))
     {{ networks.moonbase.rpc_url }}
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     {{ networks.development.rpc_url }}
     ```

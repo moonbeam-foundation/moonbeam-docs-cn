@@ -121,7 +121,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
 
- 5. 打开下拉菜单，在质押相关的所有外部参数中，选择**joinCandidates()**函数
+ 5. 打开下拉菜单，在质押相关的所有Extrinsic中，选择**joinCandidates()**函数
 
  6. 将绑定数量设置为成为候选人的[最低数量](#accounts-and-staking-requirements)（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即21个0）。在Moonriver的最低绑定数量为{{ networks.moonriver.staking.min_can_stk }}枚MOVR，以wei为单位应输入`{{ networks.moonriver.staking.min_can_stk_wei }}`（即20个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
 
@@ -220,7 +220,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
 
- 5. 打开下拉菜单，在质押相关的所有外部参数中，选择**candidateBondMore()**函数
+ 5. 打开下拉菜单，在质押相关的所有Extrinsic中，选择**candidateBondMore()**函数
 
  6. 在**more: BalanceOf**字段中输入要增加的绑定数量
 
@@ -353,9 +353,9 @@ curl http://127.0.0.1:9933 -H \
 
 - **mapping** (*address* optionalAuthorID) —— 将显示所有储存在链上的映射内容，或是根据您的输入显示相关内容
 
-### 映射外部信息 {: #mapping-extrinsic }
+### 映射Extrinsic {: #mapping-extrinsic }
 
-如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](#become-a-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射外部信息（交易）。请注意，每一次注册author ID将会绑定Token。为此，请执行以下步骤：
+如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](#become-a-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射Extrinsic（交易）。请注意，每一次注册author ID将会绑定Token。为此，请执行以下步骤：
 
  1. 进入**Developer**标签
 

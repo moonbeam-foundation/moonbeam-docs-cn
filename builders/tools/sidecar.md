@@ -54,7 +54,7 @@ node_modules/.bin/substrate-api-sidecar --version
     export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonbase.moonbeam.network
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     export SAS_SUBSTRATE_WS_URL=ws://127.0.0.1:9944
     ```

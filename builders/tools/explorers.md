@@ -46,27 +46,27 @@ Moonbeam现在提供两种不同的浏览器：一种用于查询以太坊API，
 
 ### Moonscan {: #Moonscan } 
 
-[Moonscan](https://moonscan.io/)是Moonbeam主要的以太坊API区块浏览器。Moonscan由Etherscan团队创建，为用户提供强大、直观且功能丰富的体验。除了全面的交易和区块数据，Moonscan还提供一系列的[数据和图表](https://moonbeam.moonscan.io/charts)，如平均Gas价格、日交易量和区块大小图表。
+[Moonscan](https://moonscan.io/){target=_blank}是Moonbeam主要的以太坊API区块浏览器。Moonscan由Etherscan团队创建，为用户提供强大、直观且功能丰富的体验。除了全面的交易和区块数据，Moonscan还提供一系列的[数据和图表](https://moonbeam.moonscan.io/charts){target=_blank}，如平均Gas价格、日交易量和区块大小图表。
 
 Moonscan其他功能如下：
 
  - [收集人排行榜](https://moonbeam.moonscan.io/collators){target=_blank}，通过收集人的表现进行排名
  - [合约源码验证](https://moonscan.io/verifyContract){target=_blank}，可通过网页界面和API访问
  - 能够读写已验证的智能合约的状态数据
- - [Token授权](https://moonscan.io/tokenapprovalchecker)，您可以查看和撤销任何之前的Token授权
+ - [Token授权](https://moonscan.io/tokenapprovalchecker){target=_blank}，您可以查看和撤销任何之前的Token授权
 
 ![Moonriver Moonscan](/images/builders/tools/explorers/explorers-1.png)
 
 ### Blockscout {: #blockscout } 
 
-[Blockscout](https://blockscout.moonriver.moonbeam.network/)提供一个用户友好型的界面，让用户能够检查并确认在EVM区块链上的交易，包括Moonbeam。使用户能够搜寻交易、查看账户和余额，以及验证智能合约。更多信息请访问[文档网站](https://docs.blockscout.com/)。
+[Blockscout](https://blockscout.moonriver.moonbeam.network/){target=_blank}提供一个用户友好型的界面，让用户能够检查并确认在EVM区块链上的交易，包括Moonbeam。使用户能够搜寻交易、查看账户和余额，以及验证智能合约。更多信息请访问[文档网站](https://docs.blockscout.com/){target=_blank}。
 
 Blockscout还提供以下功能：
 
- - 开源开发，意味着所有的代码都对社群开源或是改进。您可以在[这里](https://github.com/blockscout/blockscout)找到代码
+ - 开源开发，意味着所有的代码都对社群开源或是改进。您可以在[这里](https://github.com/blockscout/blockscout){target=_blank}找到代码
  - 实时交易追踪
  - 智能合约交互
- - [带有GraphQL的功能齐全的API](https://blockscout.moonriver.moonbeam.network/graphiql)，用户可以通过网页界面直接测试API调用
+ - [带有GraphQL的功能齐全的API](https://blockscout.moonriver.moonbeam.network/graphiql){target=_blank}，用户可以通过网页界面直接测试API调用
  - 支持ERC-20和ERC-721 Token，在友好型界面中列出所有能使用的Token合约
 
 ![Blockscout Explorer](/images/builders/tools/explorers/explorers-2.png)
@@ -87,7 +87,7 @@ Blockscout还提供以下功能：
 
 ### Subscan {: #subscan } 
 
-[Subscan](https://moonbeam.subscan.io/){target=_blank} 是Moonbeam主要的Substrate API区块浏览器，它能够解析标准或自定义模块。举例而言，这个功能对展示关于质押、治理和EVM pallet（或是模块）非常有帮助。所有代码都是开源的，并且可以在[Subscan Essentials](https://github.com/itering/subscan-essentials)找到。
+[Subscan](https://moonbeam.subscan.io/){target=_blank} 是Moonbeam主要的Substrate API区块浏览器，它能够解析标准或自定义模块。举例而言，这个功能对展示关于质押、治理和EVM pallet（或是模块）非常有帮助。所有代码都是开源的，并且可以在[Subscan Essentials](https://github.com/itering/subscan-essentials){target=_blank}找到。
 
 ![Subscan Moonriver](/images/builders/tools/explorers/explorers-4.png)
 
