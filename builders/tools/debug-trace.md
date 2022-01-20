@@ -13,11 +13,7 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 本教程将介绍Moonbeam上支持的RPC方法，以及如何通过使用curl命令对本地Moonbase Alpha追踪节点来调用这些方法。
 
-## 查看先决条件
-
-本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`标识。如果未完成以上配置，请参考[运行追踪节点](/node-operators/networks/tracing-node/)教程。RPC HTTP终端为`http://127.0.0.1:9933`。
-
-## 支持的RPC方法
+## 支持的RPC方法 {: #supported-rpc-methods }
 
 可用的RPC方法如下：
 
@@ -29,7 +25,9 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
   - [`txpool_inspect`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_inspect)
   - [`txpool_status`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status)
 
-## Debug API {: #geth-debug-api }
+  
+
+## Debug API {: #debug-api }
 
 有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/rpc/ns-debug)：
 
@@ -43,7 +41,7 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
  - **disableMemory**(*boolean*) ——（默认：*false*）。若设置为true，则存储捕获功能将关闭
  - **disableStack**(*boolean*) ——（默认：*false*）。若设置为true，则堆栈捕获功能将关闭
 
-## Txpool API
+## Txpool API {: #txpool-api }
 
 有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/rpc/ns-txpool)：
 
@@ -69,17 +67,19 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 如需更改默认值，您可以在启动追踪节点时添加[附加标识](/node-operators/networks/tracing-node/#additional-flags)。
 
-## 进行测试 {: #try-it-out }
+## 查看先决条件 {: #checking-prerequisites }
 
-在本示例中，我们使用的是本地Moonbase Alpha全节点，RPC HTTP终端为`http://127.0.0.1:9933`。您也可以运行以下针对Moonbeam开发或Moonriver追踪节点的curl命令。
+本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`标识。如果未完成以上配置，请参考[运行追踪节点](/node-operators/networks/tracing-node/)教程。RPC HTTP终端为`http://127.0.0.1:9933`。
+
+如果您尚未运行跟踪节点，您可以按照 [运行跟踪节点](/node-operators/networks/tracing-node/) 上的指南进行操作。RPC HTTP终端为`http://127.0.0.1:9933`。
 
 如果您已有运行的节点，也会看到相似的终端日志：
 
 ![Debug API](/images/builders/tools/debug-trace/debug-trace-1.png)
 
-### 使用Debug API
+## 使用Debug API {: #using-the-debug-api }
 
-例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
+运行跟踪节点后，您可以在终端中开启另一个窗口，在其中运行`curl`命令并调用任何可用的JSON RPC方法。例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
 
 ```
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
@@ -95,7 +95,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 ![Trace Debug Node Running](/images/builders/tools/debug-trace/debug-trace-2.png)
 
-### 使用追踪模块
+## 使用追踪模块 {: #using-the-tracing-module }
 
 调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条追踪结果）：
 
@@ -112,7 +112,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 ![Trace Filter Node Running](/images/builders/tools/debug-trace/debug-trace-3.png)
 
-### 使用Txpool API
+## 使用Txpool API {: #using-the-txpool-api }
 
 由于目前支持的txpool方法都不需要参数，因此您可以通过更改任何txpool方法以适配以下curl命令：
 

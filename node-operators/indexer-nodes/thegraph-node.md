@@ -64,7 +64,7 @@ git clone https://github.com/graphprotocol/graph-node/ \
     ethereum: 'mbase:{{ networks.development.rpc_url }}'
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     ethereum: 'mbase:{{ networks.development.rpc_url }}'
     ```
