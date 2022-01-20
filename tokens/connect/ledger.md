@@ -14,6 +14,10 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 随着Moonriver应用在Ledger的上线，您现在无需与链上配置互动即可使用您的Ledger设备签署交易。如果您希望在基于Moonbeam的网络上使用您的Ledger设备，您可以在Ledger Live上的以太坊应用设置您的Chain ID。
 
+您可以通过设置Chain ID在Ledger Live上使用Ethereum应用程序来连接Moonbeam、Moonriver 和 Moonbase Alpha测试网。Moonbeam的Chain ID是1284，Moonriver的Chain ID是1285，Moonbase Alpha的Chain ID是1287。
+
+对于 Moonriver，您还可以选择在 Ledger Live 上使用专用的 Moonriver 应用程序，这样您就不必担心设置链 ID，并且您知道您已连接到正确的网络。请注意，Moonriver 应用程序只能用于连接 Moonriver 网络，不适用于 Moonbeam 或 Moonbase Alpha。
+
 本教程将会带您了解如何在Moonbeam上开始使用您的Ledger硬件钱包。本教程仅包括使用Ledger Nano X设备的执行步骤，但这也同样适用于Ledger Nano S。
 
 ## 查看先决条件 {: #checking-prerequisites }
@@ -32,23 +36,24 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 ## 安装Ledger Live应用 {: install-the-ledger-live-app }
 
+您可以通过设置Chain ID在Ledger Live上使用Ethereum应用程序来连接Moonbeam、Moonriver 和 Moonbase Alpha测试网。
+
 如果您希望连接至Moonriver，您可以在Ledger Live的应用目录选取Moonriver应用，但在这之前您需要先安装以太坊应用。因为Moonriver应用依赖于以太坊应用的功能，为确保流程无误，请先安装以太坊应用，再安装Moonriver应用。除此之外，对于其他基于Moonbeam的网络您只需要安装以太坊应用并在其后输入特定的Chain ID。
 
+打开Ledger Live，然后：
+
 1. 在菜单栏中选取**Manager**
-
 2. 连接并解锁您的设备（这必须在安装前完成）
-
 3. 在**App catalog**搜寻Ethereum（ETH）并点击**Install**。您的Ledger设备将会显示**Processing**，安装完毕后应用将会出现在您的Ledger设备中。
+4. *这步仅适用于Moonriver* 在**App catalog**中搜寻Moonriver（MOVR）并点击**Install**。同样，您的Ledger设备将会显示**Processing**，并会在安装完毕后显示在您的Ledger设备中。
 
-4. 在**App catalog**中搜寻Moonriver（MOVR）并点击**Install**。同样，您的Ledger设备将会显示**Processing**，并会在安装完毕后显示在您的Ledger设备中。
-
-在Ledger Live应用中，您应能够看到以太坊和Moonriver应用出现在**Manager**页面上的**Apps installed**的标签下。确认已成功安装应用后，您可以关闭Ledger Live页面。
+在Ledger Live应用中，您应能够看到以太坊或Moonriver应用出现在**Manager**页面上的**Apps installed**的标签下。确认已成功安装应用后，您可以关闭Ledger Live页面。
 
 <img src="/images/tokens/connect/ledger/ledger-1.png" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
 ## 将您的Ledger账户导入MetaMask {: #import-your-ledger-account-to-metamask }
 
-当您已成功从Ledger Live安装了Moonriver和以太坊应用后，请将您的Ledger设备连接至电脑并将其解锁，然后再开启Moonriver应用。如果您使用的是Moonriver以外的基于Moonbeam的网络，您可以直接打开以太坊应用。随后，您可以根据以下步骤将您的Ledger账户导入MetaMask：
+当您已成功从Ledger Live安装了Moonriver或以太坊应用后，请将您的Ledger设备连接至电脑并将其解锁，然后再开启Moonriver应用。如果您使用的是Moonriver以外的基于Moonbeam的网络，您可以直接打开以太坊应用。随后，您可以根据以下步骤将您的Ledger账户导入MetaMask：
 
  1. 点击右上角的logo展开菜单栏
 
@@ -128,7 +133,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
  3. 检查接收人地址并进入下个画面
 
- 4. *此步骤仅适用于以太坊应用*。检查网络的Chain ID。本信息可以在MetaMask连接至的网络信息内确认。举例而言，Moonbase Alpha的Chain ID是1287（hex: 0x507）、Moonriver为1285（hex: 0x505）以及Moonbeam为1284（尚未上线）。确认后，进入下个画面。
+ 4. *此步骤仅适用于以太坊应用*。检查网络的Chain ID。本信息可以在MetaMask连接至的网络信息内确认。举例而言，Moonbeam为1284（hex: 0x504）、Moonriver为1285（hex: 0x505）以及Moonbase Alpha的Chain ID是1287（hex: 0x507）。确认后，进入下个画面。
 
  5. 检查适用此交易的最大费用，这经由Gas费用乘以您在MetaMask上设置的Gas限制。确认完毕后，进入下个页面。
 

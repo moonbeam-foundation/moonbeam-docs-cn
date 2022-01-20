@@ -20,7 +20,7 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
 
 ## 连接MetaMask {: #connect-metamask }
 
-如果您已安装MetaMask，您可轻松将MetaMask连接至Moonriver：
+如果您已安装MetaMask，您可轻松将MetaMask连接至Moonbeam：
 
 <div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask" value="moonbeam">连接MetaMask</a>
