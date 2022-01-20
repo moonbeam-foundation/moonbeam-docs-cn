@@ -6,7 +6,7 @@
  - **委托人（Delegators）**—— 质押Token的Token持有者，为特定的候选收集人担保。任何持有超过最低数量且能够[自由支配](https://wiki.polkadot.network/docs/learn-accounts#balance-types)的Token的人皆能够成为委托人
  - **最低委托持有量（Minimum delegation per candidate）**——委托人要委托候选收集人所需的最低Token数量
  - **候选收集人的委托人限额（Maximum delegators per candidate）**——每个候选收集人能接受的最高可获得奖励的委托人数量（根据质押数量决定）
- - **最高委托量（Maximu delegations）**—— 委托人能够委托的最高候选收集人数量
+ - **最高委托量（Maximum delegations）**—— 委托人能够委托的最高候选收集人数量
  - **退出生效期（Exit delay）**——退出生效期为候选收集人或是委托人在提交减少质押数量、撤销质押或离开候选收集人集或委托人后执行动作所需等待的时间
  - **奖励分发延迟（Reward payout delay）**—— 在奖励自动分发至余额前所需等待的固定数量的轮次
  - **奖励池（Reward pool）**—— 为收集人和委托人所设计的年通胀比例

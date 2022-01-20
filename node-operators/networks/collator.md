@@ -28,9 +28,9 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 !!! 注意事项
 
-​    运行一个**收集人**节点对CPU的要求高于上述所提供的要求。为了使您的收集人节点能够跟上高交易吞吐量，具有高时钟速度和单核性能的CPU非常重要，因为区块生产/导入过程几乎完全是单线程的。我们使用以下CPU进行了测试并看到了良好的结果：Intel Xeon E-2386/2388和Ryzen 9 5950x/5900x。由于大多数云服务提供商专注于多线程而非单线程性能，因此建议使用裸机提供商。另外，因为Docker将对性能产生重大影响，因此也不建议在Docker中运行收集人节点。
+    ​运行一个**收集人**节点对CPU的要求高于上述所提供的要求。为了使您的收集人节点能够跟上高交易吞吐量，具有高时钟速度和单核性能的CPU非常重要，因为区块生产/导入过程几乎完全是单线程的。我们使用以下CPU进行了测试并看到了良好的结果：Intel Xeon E-2386/2388和Ryzen 9 5950x/5900x。由于大多数云服务提供商专注于多线程而非单线程性能，因此建议使用裸机提供商。另外，因为Docker将对性能产生重大影响，因此也不建议在Docker中运行收集人节点。
 
-## 账户与质押要求 {: #and-staking-requirements } 
+## 账户与质押要求 {: #accounts-and-staking-requirements }
 
 和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或以太坊式账户。另外，需要拥有最低Token质押量（即收集人自身绑定的最低数量）才有资格成为候选收集人。只有一定数量的总质押量（包括收集人自身绑定的数量和委托的质押量）排名靠前的候选收集人才会进入收集人有效集。
 
@@ -146,7 +146,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求并不会自动将您从候选人池中移除，您需要等待[退出生效期](#collator-timings)，才能够执行请求并停止参与收集活动。在等待具体轮次数的过程中，如果您在有效集中您仍有资格生产区块和获取奖励。
 
-### 发起离开候选人的请求
+### 发起离开候选人的请求 {: #schedule-request-to-leave-candidates }
 
 执行以下步骤开始发起一个请求：
 
@@ -165,7 +165,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ![Schedule leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-9.png)
 
-### 执行离开候选人的请求
+### 执行离开候选人的请求 {: #execute-request-to-leave-candidates }
 
 退出生效期过后，您将能够执行离开候选人的请求。为此，您需执行以下步骤：
 
@@ -185,7 +185,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ![Execute leave candidates request](/images/node-operators/networks/collators/collator-polkadotjs-10.png)
 
-### 取消离开候选人的请求
+### 取消离开候选人的请求 {: #cancel-request-to-leave-candidates }
 
 如果您已发起离开候选人池的请求，只要请求还未被执行，您仍可以取消请求并留在候选人池中。为此，您需执行以下步骤：
 
@@ -238,7 +238,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 想要减少绑定数量，您需要先发起请求并等待[退出生效期](#collator-timings)，随后执行请求。只要请求还未被执行，您仍可随时[取消请求](#cancel-request)。
 
-#### 发起减少绑定数量的请求
+#### 发起减少绑定数量的请求 {: #schedule-bond-less-request }
 
 想要发起减少绑定数量的请求，您可执行以下步骤：
 
@@ -259,7 +259,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 当交易确认，您将需要等待退出生效期，然后才能为您执行减少绑定数量的请求。如果您尝试在退出生效期前操作，该extrinsic将会失败，并且您将看到来自Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`错误。
 
-#### 执行减少绑定数量的请求
+#### 执行减少绑定数量的请求 {: #execute-bond-less-request }
 
 退出生效期过后，您将能够执行减少绑定数量的请求。为此，您需执行以下步骤：
 
@@ -280,7 +280,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 交易确认后，您可以在**Accounts**标签处查看您的可用余额。请注意，请求已执行，您的余额已更新。
 
-#### 取消减少绑定数量的请求
+#### 取消减少绑定数量的请求 {: #cancel-bond-less-request }
 
 如果您已发起增加或减少绑定数量的请求，只要请求还未被执行，您仍可以取消请求并保持原有的绑定数量。为此，您需执行以下步骤：
 
@@ -372,16 +372,24 @@ curl http://127.0.0.1:9933 -H \
 您也可以通过验证链上状态来确认目前的链上映射情况。为此，请执行以下步骤：
 
  1. 进入**Developer**标签
-  2. 点击**Chain state**
-
-  3. 选择**authorMapping**作为查询状态
-
-  4. 选择**mappingWithDeposit**函数
-
-  5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
-
-   6. 点击**+**按钮来传送RPC调用
+ 2. 点击**Chain state**
+ 3. 选择**authorMapping**作为查询状态
+ 4. 选择**mappingWithDeposit**函数
+ 5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
+ 6. 点击**+**按钮来传送RPC调用
 
 ![Author ID Mapping Chain State](/images/node-operators/networks/collators/collator-polkadotjs-6.png)
 
 您应该能够看到与提供的author ID相关联的H160帐户。如果未包含author ID，这将返回存储在链上的所有映射。
+
+## 加入 Discord {: #join-discord }
+
+作为收集人，关注节点的更新和更改非常重要。如果您的节点出现任何问题，能够迅速与我们联系也很重要，以免会对收集人和委托人的奖励产生负面影响，还会对网络稳定性产生负面影响。
+
+为此，我们使用[Discord](https://discord.com/invite/moonbeam)来推送更新。与收集人相关的Discord频道包括：
+
+ - **tech-upgrades-announcements** - 我们在这个频道里发布节点更新或配置变更等信息。我们也会更新任何需要关注的技术问题，例如网络堵塞等
+ - **collat​​ors** — 收集人讨论频道。我们为拥有一个活跃而友好的收集人社区而感到自豪，所以如果您有任何问题，可以在这里提问。对于需要收集人关注的任何问题，我们会在这里推送
+ - **meet-the-collators** - 在这个频道中，您可以向委托人介绍自己
+
+加入我们的Discord后，请随时DM*PureStake - Gil#0433*或*PureStake-Art#6950*并介绍自己。如果我们发现您的节点有任何问题，这将使我们知道与谁联系。同时我们会能开启相关的Discord收集人权限，使您能够在*meet-the-collat​​ors*频道中发帖。

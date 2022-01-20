@@ -65,7 +65,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/)教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters)部分。
 
-If you're looking for candidate or collator-specific requirements and information, you can take a look at the [Collators](/node-operators/networks/collator) guide.
+如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collat​​or)指南。
 
 ## 选择收集人节点参考资料 {: #resources-for-selecting-a-collator}
 
