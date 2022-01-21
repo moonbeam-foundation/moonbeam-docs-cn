@@ -27,7 +27,6 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
  - 必须运行带有收集选项的全节点。可根据[启动全节点教程](/node-operators/networks/run-a-node/overview/)选择收集人的特定代码段
 
 !!! 注意事项
-
     ​运行一个**收集人**节点对CPU的要求高于上述所提供的要求。为了使您的收集人节点能够跟上高交易吞吐量，具有高时钟速度和单核性能的CPU非常重要，因为区块生产/导入过程几乎完全是单线程的。我们使用以下CPU进行了测试并看到了良好的结果：Intel Xeon E-2386/2388和Ryzen 9 5950x/5900x。由于大多数云服务提供商专注于多线程而非单线程性能，因此建议使用裸机提供商。另外，因为Docker将对性能产生重大影响，因此也不建议在Docker中运行收集人节点。
 
 ## 账户与质押要求 {: #accounts-and-staking-requirements }
