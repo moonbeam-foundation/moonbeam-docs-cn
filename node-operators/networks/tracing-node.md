@@ -83,11 +83,11 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonbeam"
     ```
-    docker run --network="host" -v "/var/lib/alphanet-data:/data" \
+    docker run --network="host" -v "/var/lib/{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonbeam.tracing_tag }} \
     --base-path=/data \
-    --chain moonbeam \
+    --chain {{ networks.moonbeam.chain_spec }} \
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
