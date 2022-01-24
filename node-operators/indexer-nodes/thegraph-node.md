@@ -24,12 +24,7 @@ Graph节点负责从区块链上获取事件消息，并精准更新数据存储
  - [Docker Compose](https://docs.docker.com/compose/install/)
  - [JQ](https://stedolan.github.io/jq/download/)
 
-此外，您还需要有一个已启用`--ethapi=trace`选项且正在运行的节点。当前，有以下两种不同类型的节点供您选择：
-
- - **Moonbeam**开发节点 —— 在私有环境下运行自己的Moonbeam实例。具体操作请见[此教程](/getting-started/local-node/setting-up-a-node/)。请务必查看[高级标记章节](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha**节点 —— 在测试网上运行完整节点，并进入自己的私有终端。具体操作请见[此教程](/node-operators/networks/full-node/)。请务必查看[高级标记章节](/node-operators/networks/full-node/#advanced-flags-and-options)
-
-在教程中，我们将用`--ethapi=trace`标记Graph节点，对应Moonbase Alpha完整节点运行。
+在教程中，我们将用`tracing`标记Graph节点，对应Moonbase Alpha完整节点运行。此教程也适用于Moonbeam和Moonriver。
 
 如果您想运行开启`tracing`的全节点，请参考[运行追踪节点](/node-operators/networks/tracing-node)指南。
 
@@ -54,9 +49,25 @@ git clone https://github.com/graphprotocol/graph-node/ \
 
 设置好所有相关内容后，需要在`docker-compose.yml`文档中修改“Ethereum environment”，让其指向运行该Graph节点的节点终端。请注意，`setup.sh`文档会检测`Host IP`并写入一个值，因此您需要进行相应修改。
 
-```
-ethereum: 'mbase:{{ networks.development.rpc_url }}'
-```
+=== "Moonbeam"
+    ```
+    ethereum: 'moonbeam:{{ networks.development.rpc_url }}'
+    ```
+
+=== "Moonriver"
+    ```
+    ethereum: 'moonriver:{{ networks.development.rpc_url }}'
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    ethereum: 'mbase:{{ networks.development.rpc_url }}'
+    ```
+
+=== "Moonbeam开发节点"
+    ```
+    ethereum: 'mbase:{{ networks.development.rpc_url }}'
+    ```
 
 整个`docker-compose.yml`文档应与以下内容相似：
 
@@ -113,4 +124,4 @@ docker-compose up
 
 ![Graph Node logs](/images/node-operators/indexer-nodes/the-graph/the-graph-node-3.png)
 
-这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam开发节点。
+这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam和Moonriver。

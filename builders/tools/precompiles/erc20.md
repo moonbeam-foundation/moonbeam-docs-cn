@@ -23,6 +23,11 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 预编译位于以下地址：
 
+<!-- === "Moonbeam"
+     ```
+     {{networks.moonbeam.precompiles.erc20 }}
+     ``` -->
+
 === "Moonriver"
      ```
      {{networks.moonriver.precompiles.erc20 }}

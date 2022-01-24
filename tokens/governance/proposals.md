@@ -34,14 +34,30 @@ description: 如何通过治理机制在Moonbeam上发送提案
  - **发起期** —— 两次公投之间的时间间隔
  - **冷却期** —— 提案被否决后不能重新提交的时期（以区块数量计算）
 
-目前Moonbase Alpha有关参数设置如下：
+=== "Moonbeam"
+    |         变量         |  |                                                          值                                                          |
+    |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       |  | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
+    |     冷却期      |  |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |  |                                 {{ networks.moonbeam.democracy.min_preim_deposit}} GLMR                                 |
+    | 最低提案存款额 |  |                                    {{ networks.moonbeam.democracy.min_deposit}} GLMR                                    |
 
-|      变量      |      |                              值                              |
-| :------------: | :--: | :----------------------------------------------------------: |
-|     发起期     |      | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
-|     冷却期     |      | {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days) |
-| 最低原像存款额 |      |    {{ networks.moonbase.democracy.min_preim_deposit}} DEV    |
-| 最低提案存款额 |      |       {{ networks.moonbase.democracy.min_deposit}} DEV       |
+=== "Moonriver"
+    |         变量         |  |                                                           值                                                           |
+    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       |  | {{ networks.moonriver.democracy.launch_period.blocks}} blocks ({{ networks.moonriver.democracy.launch_period.days}} days) |
+    |     冷却期      |  |   {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |  |                                 {{ networks.moonriver.democracy.min_preim_deposit}} MOVR                                  |
+    | 最低提案存款额 |  |                                    {{ networks.moonriver.democracy.min_deposit}} MOVR                                     |
+
+=== "Moonbase Alpha"
+    |         变量         |  |                                                          值                                                          |
+    |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       |  | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
+    |     冷却期      |  |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |  |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
+    | 最低提案存款额 |  |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+
 
 ## 提案步骤 {: #roadmap-of-a-proposal } 
 

@@ -21,11 +21,11 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ## Extrinsic定义 {: #extrinsics-definitions } 
 
-质押pallet有很多外部参数，本教程无法逐一进行介绍。但以下列表已经囊括与委托流程相关的外部参数。在[runtime升级到1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)之后，一些外部参数已经弃用。
+质押pallet有很多Extrinsic，本教程无法逐一进行介绍。但以下列表已经囊括与委托流程相关的Extrinsic。在[runtime升级到1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)之后，一些Extrinsic已经弃用。
 
 !!! 注意事项
 
-​    随着质押pallet不断升级，外部参数将来可能发生变化。
+​    随着质押pallet不断升级，Extrinsic将来可能发生变化。
 
 ### 加入或离开委托人集 {: #join-or-leave-the-delegator-set }
 

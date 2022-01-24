@@ -36,6 +36,13 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 保证金计算公式：`deposit base + deposit factor * number of proxies`
 
+=== "Moonbeam"
+    |    变量    |                       值                       |
+    |:--------------:|:-------------------------------------------------:|
+    |  保证金基数  |  {{ networks.moonbeam.proxy.deposit_base }}枚GLMR  |
+    | 保证金系数 | {{ networks.moonbeam.proxy.deposit_factor }}枚GLMR |
+    |  代理上限   | {{ networks.moonbeam.proxy.max_proxies }}个代理 |
+
 === "Moonriver"
     |    变量    |                       值                        |
     |:--------------:|:--------------------------------------------------:|

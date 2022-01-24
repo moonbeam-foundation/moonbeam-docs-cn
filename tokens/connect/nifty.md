@@ -23,7 +23,7 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 <img src="/images/tokens/connect/nifty/nifty-1.png" alt="Set wallet password" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-成功创建个人密码之后，账户将会创立一个资产库并生成能够恢复您账户的助记词。您将会被提醒储存页面上的助记词。您可以选择以文档的形式储存您的助记词，或是以其他的方式进行存储，接着您可以点击“I‘ve copied it somewhere safe.“来继续创建过程。您只需要确定您已经安全地储存了助记词并且不会与任何人分享。
+成功创建个人密码之后，账户将会创立一个资产库并生成能够恢复您账户的助记词。您将会被提醒储存页面上的助记词。您可以选择以文档的形式储存您的助记词，或是以其他的方式进行存储，接着您可以点击**I‘ve copied it somewhere safe**来继续创建过程。您只需要确定您已经安全地储存了助记词并且不会与任何人分享。
 
 ## 将Nifty钱包连接至Moonbeam {: #connect-nifty-wallet-to-moonbeam }
 
@@ -57,7 +57,7 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
       {{ networks.development.rpc_url }}
     ```
 
-最后点击“Save”。
+最后点击**Save**。
 
 <img src="/images/tokens/connect/nifty/nifty-3.png" alt="Connect to Moonbase Alpha" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 

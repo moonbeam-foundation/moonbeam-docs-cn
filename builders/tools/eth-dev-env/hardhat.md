@@ -34,33 +34,40 @@ npx hardhat
 在您的`hardhat.config.js`文档中，为Moonbeam开发节点和Moonbase Alpha测试网新增网络配置：
 
 ```javascript
-// Moonbeam Development Node Private Key
-const privateKeyDev =
-   '99B3C12287537E38C90A9219D4CB074A89A16E9CDB20BF85728EBD97C343E342';
-// Moonbase Alpha Private Key
-const privateKeyMoonbase = "YOUR-PRIVATE-KEY-HERE";
+// Moonbeam Private Key - Note: This is for example purposes only. Never store your private keys in a JavaScript file.
+const privateKeyMoonbeam = "YOUR-PRIVATE-KEY-HERE";
 // Moonriver Private Key - Note: This is for example purposes only. Never store your private keys in a JavaScript file.
 const privateKeyMoonriver = "YOUR-PRIVATE-KEY-HERE";
+// Moonbase Alpha Private Key
+const privateKeyMoonbase = "YOUR-PRIVATE-KEY-HERE";
+// Moonbeam Development Node Private Key
+const privateKeyDev = '99B3C12287537E38C90A9219D4CB074A89A16E9CDB20BF85728EBD97C343E342';
 
 module.exports = {
    networks: {
-      // Moonbeam Development Node
-      dev: {
-        url: '{{ networks.development.rpc_url }}',
-        chainId: {{ networks.development.chain_id }} (hex: {{ networks.development.hex_chain_id }}),
-        accounts: [privateKeyDev]
+      // Moonbeam
+      moonbeam: {
+        url: '{{ networks.moonbeam.rpc_url }}',
+        chainId: {{ networks.moonbeam.chain_id }},  // {{ networks.moonbeam.hex_chain_id }} in hex,
+        accounts: [privateKeyMoonbeam]
+      },
+      // Moonriver
+      moonriver: {
+        url: '{{ networks.moonriver.rpc_url }}',
+        chainId: {{ networks.moonriver.chain_id }},  // {{ networks.moonriver.hex_chain_id }} in hex,
+        accounts: [privateKeyMoonriver]
       },
       // Moonbase Alpha TestNet
       moonbase: {
         url: '{{ networks.moonbase.rpc_url }}',
-        chainId: {{ networks.moonbase.chain_id }} (hex: {{ networks.moonbase.hex_chain_id }}),  
+        chainId: {{ networks.moonbase.chain_id }},  // {{ networks.moonbase.hex_chain_id }} in hex,
         accounts: [privateKeyMoonbase]
       },
-      // Moonriver
-      moonbase: {
-        url: '{{ networks.moonriver.rpc_url }}',
-        chainId: {{ networks.moonriver.chain_id }} (hex: {{ networks.moonriver.hex_chain_id }}),
-        accounts: [privateKeyMoonriver]
+      // Moonbeam Development Node
+      dev: {
+        url: '{{ networks.development.rpc_url }}',
+        chainId: {{ networks.development.chain_id }},  // {{ networks.development.hex_chain_id }} in hex,
+        accounts: [privateKeyDev]
       },
    },
 };

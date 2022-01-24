@@ -92,9 +92,20 @@ module.exports = {
 
 请注意，这里我们所使用的是Truffle的`HD-Wallet-Provider`作为分层确定性钱包。另外，我们也设定了一个指向独立节点提供者URL的`dev`网络，以及开发帐户的私钥，该帐户将所有资金都保存在独立节点中。
 
-要部署至Moonbase Alpha测试网或者Moonriver，您需要提供持有资金的地址的私钥。对于Moonbase Alpha，您可以在MetaMask中创建一个帐户，使用[测试网水龙头](/builders/get-started/moonbase/#get-tokens/)注入资金，并导出其私钥。
+要部署至Moonbeam网络前，您需要提供持有资金的地址的私钥。对于Moonbeam开发节点，它包含10个预注资开发账户。对于Moonbase Alpha，您可以在MetaMask中创建一个帐户，使用[测试网水龙头](/builders/get-started/moonbase/#get-tokens/)注入资金，并导出其私钥。
 
 您可以在下方找到所有网络的网络配置：
+
+=== "Moonbeam"
+    ```
+    moonbeam: {
+      provider: () => {
+         ...
+         return new HDWalletProvider(privateKeyMoonbeam, '{{ networks.moonbeam.rpc_url }}') // Insert your private key here
+      },
+      network_id: {{ networks.moonbeam.chain_id }} (hex: {{ networks.moonbeam.hex_chain_id }}),
+    },
+    ```
 
 === "Moonriver"
     ```
@@ -220,6 +231,11 @@ truffle compile
 ![Truffle compile success message](/images/builders/interact/eth-dev-env/truffle/truffle-6.png)
 
 现在我们开始准备部署已编译完的合约。您可以使用以下命令执行此操作：
+
+=== "Moonbeam"
+    ```
+    truffle migrate --network moonbeam
+    ```
 
 === "Moonriver"
     ```

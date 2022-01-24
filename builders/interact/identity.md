@@ -11,20 +11,21 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 [Substrate](/learn/platform/technology/#substrate-framework)身份pallet是「开箱即用」的解决方案，能够新增个人信息至您的链上账户。个人信息可以包含的基础类别如真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称。您同样也可以利用自定区域新增其他相关信息。
 
-此教程将会带您了解如何在Moonbase Alpha测试网上设置或清除一个身份（这也适用于Moonriver网络）。
+此教程将会带您了解如何在Moonbase Alpha测试网上设置或清除一个身份（这也适用于Moonbeam和Moonriver网络）。
 
-## 查看先决条件 { : #checking-prerequisites }
-
-您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network)。此教程也适用于[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network)。 
-
-同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token水龙头的相关信息，请访问Moonbase Alpha官方文档网站的[获得Token](/builders/get-started/moonbase/#get-tokens)板块。
-
-## 一般定义
+## 一般定义 {: #general-definitions }
 
 您必须绑定一定数量的资金才能将您的信息储存至链上，而这些资金将会在身份最终清除后返回至您的账户。目前有两个不同种类的字段：默认和自定义。如果您使用了自定义字段，您将会需要根据您所使用的字段提交额外的押金。
 
 - **默认字段包含** —— 真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称
 - **自定义字段包含** —— 任何相关信息。举例而言，您可以包含您的Discord用户名
+
+=== "Moonbeam"
+    |      变量      |               定义               |                        值                        |
+    |:--------------:|:--------------------------------:|:------------------------------------------------:|
+    |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonbeam.identity.basic_dep }} GLMR |
+    |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbeam.identity.field_dep }} GLMR |
+    | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |   {{ networks.moonbeam.identity.max_fields }}   |
 
 === "Moonriver"
     |      变量      |               定义               |                        值                        |
@@ -40,15 +41,21 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
     |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbase.identity.field_dep }} DEV |
     | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |  {{ networks.moonbase.identity.max_fields }}   |
 
-## 开始使用
+## 查看先决条件 {: #checking-prerequisites }
+
+您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network){target=_blank}。此教程也适用于[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network){target=_blank}和[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network){target=_blank}。 
+
+同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token水龙头的相关信息，请访问Moonbase Alpha官方文档网站的[获得Token](/builders/get-started/moonbase/#get-tokens)板块。
+
+## 开始使用 {: #getting-started }
 
 根据包含的信息，用户可以通过几个不同的方式使用PolkadotJS Apps来设置并清除身份。如果您希望仅使用默认字段来注册您的身份，您可以跟随[通过账户UI管理身份](#managing-an-identity-via-accounts)的教程操作。
 
-如果您希望获得更定制化的使用体验，并想要在默认字段的基础上增加自定义字段，您可以跟随[通过外部参数UI管理身份](#managing-an-identity-via-extrinsics)的教程操作。
+如果您希望获得更定制化的使用体验，并想要在默认字段的基础上增加自定义字段，您可以跟随[通过ExtrinsicUI管理身份](#managing-an-identity-via-extrinsics)的教程操作。
 
-## 通过账户管理身份
+## 通过账户管理身份 {: #managing-an-identity-via-accounts }
 
-### 设置身份
+### 设置身份 {: #set-an-identity }
 
 如果想开始使用账户UI设置一个身份，请导向至PolkadotJS Apps浏览器的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)页面。
 
@@ -88,7 +95,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 当您清除您的身份，您储备账户中的Token将会被重新转回您的可转移余额中。如果您需要更改您的身份，您可以重新操作设置身份的流程。请注意，即使您只需要改变或是覆盖其中一个字段，您还是需要重新输入所有字段信息。您将无需额外支付款项，除非您使用自定义字段，您仍需要支付gas费。
 
-### 清除身份
+### 清除身份 {: #clear-an-identity }
 
 如果您想从PolkadotJS Apps界面的[Accounts标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)中清除您的身份，您可以跟随以下步骤：
 
@@ -112,11 +119,11 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 恭喜，您已经成功清除您的身份。如果您想要新增新的身份，您可以随时进行操作。
 
-## 通过外部参数管理身份
+## 通过Extrinsic管理身份 {: #managing-an-identity-via-extrinsics }
 
-### 设置身份
+### 设置身份 {: #set-an-identity }
 
-如果您想要使用外部参数UI注册一个身份，请导向PolkadotJS Apps的[Extrinsics页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics)。接着，您可以跟随以下步骤操作：
+如果您想要使用Extrinsic UI注册一个身份，请导向PolkadotJS Apps的[Extrinsics页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics)。接着，您可以跟随以下步骤操作：
 
 1. 选取您的账户
 
@@ -130,7 +137,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
     2. 以选定的格式输入数据
 
-![Set your identity using the Extrincs UI](/images/builders/interact/identity/identity-10.png)
+![Set your identity using the Extrinsic UI](/images/builders/interact/identity/identity-10.png)
 
 根据个人选择，如果您希望加入自定义字段，您可以跟随以下步骤操作：
 
@@ -160,7 +167,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 您将在页面右上角看到状态通知的弹窗。当交易成功确认后，您已经成功设置了身份！如果您想要确认您的身份信息是否正确，您可以确认您的身份。
 
-### 确认身份
+### 确认身份 {: #confirm-an-identity }
 
 如果您想重新确认您的身份信息，您可以导向至**开发者**标签并进入[Chain state](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)页面。
 
@@ -180,7 +187,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 恭喜，现在您已经成功设置一个身份！当您清除您的身份，您储备余额的Token将会被重新转回至您的可转移余额当中。如果您需要更改您的身份，您可以重新操作设置身份的流程。请注意，即使您只需要改变或是覆盖其中一个字段，您还是需要重新输入所有字段信息。您将无需额外支付款项，除非您使用自定义字段，您仍需要支付gas费。
 
-### 清除身份
+### 清除身份 {: #clear-an-identity }
 
 如果您想从PolkadotJS Apps界面的[Extrinsics标签](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics)中清除您的身份，您可以跟随以下步骤：
 
