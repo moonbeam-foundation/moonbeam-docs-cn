@@ -172,17 +172,3 @@ Tx Weight映射到区块JSON对象的以下字段：
 ```
 extrinsics.{extrinsic number}.events.{event number}.data.0.weight
 ```
-
-## 公共Moonbeam Sidecar部署 {: #public-moonbeam-sidecar-deployments }
-
-Moonbeam网络有公共的Substrate API Sidecar部署，可以通过根据API查询其端点来使用。
-
-=== "Moonriver"
-    ```
-    https://moonriver-rest-api.moonriver.moonbeam.network
-    ```
-
-=== "Moonbase Alpha"
-    ```
-    https://moonbase-rest-api.testnet.moonbeam.network
-    ```
