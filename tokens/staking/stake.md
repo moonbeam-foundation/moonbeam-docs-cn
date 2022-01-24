@@ -15,39 +15,11 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 候选人加入到收集人有效集后，他们就有资格生产区块并获得部分区块奖励（Token通胀模型的一部分）。考虑到委托人对收集人在网络中质押的贡献比例，收集人与委托人共享质押奖励。
 
-本教程将向您展示如何通过Polkadot.js Apps在Moonbase Alpha上质押。此教程同样适用于Moonriver。
+本教程将向您展示如何通过Polkadot.js Apps在Moonbase Alpha上质押。此教程同样适用于Moonbeam和Moonriver。如果希望简单质押Token，持有者可以使用[Moonbeam dApp](https://apps.moonbeam.network/)来进行操作。
 
-如果希望简单质押Token，持有者可以使用[Moonbeam dApp](https://apps.moonbeam.network/)来进行操作。
+有关质押的更多基本信息，请查看[Moonbeam质押](/learn/features/staking/)概述。
 
-## 一般定义 {: #general-definitions } 
-
---8<-- 'text/staking/staking-definitions.md'
-
-=== "Moonriver"
-    |             变量              |  |                                                                          值                                                                          |
-    |:---------------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |     最低委托数量      |  |                                                   {{ networks.moonriver.staking.min_del_stake }}枚MOVR                                                   |
-    | 单个候选人最大有效委托人数 |  |                                                    {{ networks.moonriver.staking.max_del_per_can }}                                                     |
-    | 单个委托人可委托的最大候选人数  |  |                                                    {{ networks.moonriver.staking.max_del_per_del }}                                                     |
-    |               轮次时长               |  |                        {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时）                        |
-    |      委托生效期   |  |    委托在下一轮开始生效 （资金会马上绑定）                                        |
-    |      离开委托人时长       |  |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时）   |
-    |     减少委托量时长     |  |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）      |
-    |     撤销委托时长      |  | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时） |
-
-=== "Moonbase Alpha"
-    |             变量              |  |                                                                         值                                                                         |
-    |:---------------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |     最低委托数量      |  |                                                   {{ networks.moonbase.staking.min_del_stake }}枚DEV                                                   |
-    | 单个候选人最大有效委托人数 |  |                                                    {{ networks.moonbase.staking.max_del_per_can }}                                                    |
-    | 单个委托人可委托的最大候选人数  |  |                                                    {{ networks.moonbase.staking.max_del_per_del }}                                                    |
-    |               轮次时长               |  |                        {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时）                        |
-    |      委托生效期   |  |    委托在下一轮开始生效 （资金会马上绑定）                                        |
-    |      离开委托人时长       |  |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时）   |
-    |     减少委托量时长     |  |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）      |
-    |     撤销委托时长      |  | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时） |
-
-## 外部函数定义 {: #extrinsics-definitions } 
+## Extrinsic定义 {: #extrinsics-definitions } 
 
 质押pallet有很多Extrinsic，本教程无法逐一进行介绍。但以下列表已经囊括与委托流程相关的Extrinsic。在[runtime升级到1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)之后，一些Extrinsic已经弃用。
 
@@ -58,7 +30,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 加入或离开委托人集 {: #join-or-leave-the-delegator-set }
 
  - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 委托收集人。数额需要大于最低委托质押量。取代已弃用的`nominate`函数
- - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个退出生效期，随后才能真正离开委托人集。在Moonbase Alpha上解除需要{{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)）的生效期；在Moonriver上解除需要{{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时)）的生效期。取代已弃用的`leaveNominators`函数
+ - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference)，随后才能执行请求。取代已弃用的`leaveNominators`函数
  - **executeLeaveDelegators**(*uint256* delegatorDelegationCount) —— 执行离开委托人集。该函数仅用于已在计划之内的离开行为，且退出已生效之后。最终，所有正在进行的委托将被撤销
  - **cancelLeaveDelegators**() —— 取消已在离开计划的委托人集的请求
 
@@ -70,7 +42,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 绑定更多Token或减少绑定Token {: #bond-more-or-less }
 
  - **delegatorBondMore**(*address* candidate, *uint256* more) —— 向已经委托的收集人增加质押Token数量的请求。取代已弃用的`nominatorBondMore`函数
- - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeCandidateBondRequest`执行请求前，需经过一个退出生效期，随后才能真正执行该请求。在Moonbase Alpha上减少需要{{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）的生效期；在Moonriver上减少需要{{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）的生效期。取代已弃用的`nominatorBondLess`函数
+ - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeCandidateBondRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference)，随后才能执行请求。取代已弃用的`nominatorBondLess`函数
  - **executeCandidateBondRequest**(*address* candidate) —— 对一个特定候选人减少绑定的执行行为。该函数仅用于已计划的绑定请求，且退出已生效之后
  - **cancelCandidateBondLess**() —— 取消已计划的对特定候选人增加或者减少绑定的请求
 
@@ -81,7 +53,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ### 撤销委托 {: #revoke-delegations }
 
- - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个退出生效期，随后才能真正执行该请求。在Moonbase Alpha上撤销需要{{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时）的生效期；在Moonriver上撤销需要{{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮（{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时）的生效期。取代已弃用的`revokeNomination`函数
+ - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference)，随后才能执行请求。取代已弃用的`revokeNomination`函数
  - **executeDelegationRequest**(*address* delegator, *address* candidate) —— 执行和已处于待办委托的请求。该函数仅用于已计划的撤销请求，且退出已生效之后
  - **cancelDelegationRequest**(*address* candidate) —— 取消已计划的请求以撤销委托的请求
 
@@ -93,7 +65,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 您现在可以阅读关于质押的所有参数，如列在[一般定义](#general-definitions)的参数和来自Polkadot.js Apps的参数。
 
-导向至Polkadot.js Apps的**Chain State**界面，并将其连接[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate)。
+导向至Polkadot.js Apps的**Chain State**界面，本教程会连接至[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}，但也可以链接至[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network/#chainstate){target=_blank}或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network/#chainstate){target=_blank}。
 
 接着，执行以下步骤检索各种质押参数：
 
@@ -107,7 +79,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ![Retrieving staking parameters](/images/tokens/staking/stake/stake-12.png)
 
-您应当可以看到单个委托人可委托的最大收集人数。截至本文撰写时，在Moonbase Alpha上单个委托人可委托的最大收集人数为{{ networks.moonbase.staking.max_del_per_del }} ；在Moonriver上为{{ networks.moonriver.staking.max_del_per_del }}。
+您应当可以看到单个委托人可委托的最大收集人数，也可以在[Moonbeam质押](/learn/features/staking/#quick-reference)概述中查询。
 
 ## 如何通过Polkadot.js Apps进行质押 {: #how-to-delegate-a-candidate }
 
@@ -129,7 +101,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 以下每个外部函数都会返回不同结果：
 
- - **selectedCandidates** —— 返回目前的收集人有效集，也就是总Token质押量前{{ networks.moonbase.staking.max_candidates }}名的收集人（委托人的质押量也包括在内）
+ - **selectedCandidates** —— 返回目前的收集人有效集，也就是总Token质押量前{{ networks.moonbase.staking.max_candidates }}名的收集人（委托人的质押量也包括在内）。例如，在Moonbase Alpha上是当前的前{{ networks.moonbase.staking.max_candidates }}名收集人
  - **candidatePool** —— 返回目前所有收集人的名单，包括不在有效集的收集人
 
 ![Staking Account](/images/tokens/staking/stake/stake-2.png)
@@ -188,12 +160,12 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ### 质押Token {: #staking-your-tokens }
 
-本教程将用以下候选收集人作为示例：
+本教程将用Moonbase Alpha上的以下候选收集人作为示例：
 
 |     变量     |      |                        地址                         |
 | :----------: | ---- | :-------------------------------------------------: |
 | 候选收集人1  |      | {{ networks.moonbase.staking.candidates.address1 }} |
-| 候选收集人 2 |      | {{ networks.moonbase.staking.candidates.address2 }} |
+| 候选收集人2  |      | {{ networks.moonbase.staking.candidates.address2 }} |
 
 使用Polkadot.js Apps交互界面进入质押功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。
 
@@ -253,11 +225,9 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ## 如何停止委托 {: #how-to-stop-delegations } 
 
-在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。这些升级已经在Moonbase Alpha和Moonriver上生效。
+在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
-如果您希望退出或者停止一个委托，首先您需要计划（schedule），等待退出生效期，再执行（execute）该退出。如果您已经是委托人，您有两个方式来请求停止委托：通过`scheduleRevokeDelegation`参数，请求从一个特定的收集人处解除质押Token；或是通过`scheduleLeaveDelegators`参数，请求撤销所有正在进行的委托。计划请求不会自动撤销您的委托，需等待退出生效期之后，再通过`executeDelegationRequest`方式或`executeLeaveDelegators` 方式执行该请求。
-
-在Moonbase Alpha上退出委托人需要{{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时）的生效期；在Moonriver上退出委托人需要{{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮（{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时）的生效期。
+如果您希望退出或者停止一个委托，首先您需要计划（schedule），等待退出生效期，再执行（execute）该退出。如果您已经是委托人，您有两个方式来请求停止委托：通过`scheduleRevokeDelegation`参数，请求从一个特定的收集人处解除质押Token；或是通过`scheduleLeaveDelegators`参数，请求撤销所有正在进行的委托。计划请求不会自动撤销您的委托，需等待退出生效期之后，再通过`executeDelegationRequest`方式或`executeLeaveDelegators` 方式执行该请求。发起退出请求后并不会自动执行，需要等待[退出延迟](/learn/features/staking/#quick-reference)，然后通过`executeDelegationRequest`或`executeLeaveDelegators` 函数执行请求。
 
 ### 计划停止委托的请求 {: #schedule-request-to-stop-delegations }
 
@@ -285,7 +255,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ![Staking Leave Delegators Extrinsic](/images/tokens/staking/stake/stake-18.png)
 
-计划该请求后，需等待退出生效期之后，在执行该请求。如果您试图在退出生效期之前执行，将会导致该参数失败，并且您将会在Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`看到错误。
+计划该请求后，需要等待[退出延迟](/learn/features/staking/#quick-reference)之后，再执行该请求。如果您试图在退出生效期之前执行，将会导致该参数失败，并且您将会在Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`看到错误。
 
 ### 执行停止委托的请求 {: #execute-request-to-stop-delegations }
 

@@ -21,6 +21,11 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 如果您在先前尚未运行过Moonbeam全节点，您将会需要建立一个目录以储存链数据：
 
+=== "Moonbeam"
+    ```
+    mkdir {{ networks.moonbeam.node_directory }}
+    ```
+
 === "Moonriver"
     ```
     mkdir {{ networks.moonriver.node_directory }}
@@ -32,6 +37,14 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 接着，确认您根据储存链数据的本地目录设定所有权和许可权。在本示例中，您需要为特定或是现有用户设定所需的许可权（将`DOCKER_USER`替换为将运行`docker`命令的实际用户）：
+
+=== "Moonbeam"
+    ```
+    # chown to a specific user
+    chown DOCKER_USER {{ networks.moonbeam.node_directory }}
+    # chown to current user
+    sudo chown -R $(id -u):$(id -g) {{ networks.moonbeam.node_directory }}
+    ```
 
 === "Moonriver"
     ```
@@ -61,7 +74,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
   - **`--ethapi=debug`** — 选择性标识，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
   - **`--ethapi=trace`** — 选择性标识，启用`trace_filter` 
   - **`--ethapi=txpool`** — 选择性标识，启用`txpool_content`、`txpool_inspect`和`txpool_status`
-  - **`--wasm-runtime-overrides=/moonbeam/<network>-substitutes-tracing`** — 用于追踪指定存储本地WASM runtime路径的**必备**标识。接受网络作为参数`moonbase`（用于开发节点和 Moonbase Alpha）或`moonriver`
+  - **`--wasm-runtime-overrides=/moonbeam/<network>-substitutes-tracing`** — 用于追踪指定存储本地WASM runtime路径的**必备**标识。接受网络作为参数`moonbeam`、`moonriver`或`moonbase``moonbase`（用于开发节点和 Moonbase Alpha）
 
 运行追踪节点的完整命令如以下所示：
 
@@ -128,6 +141,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 === "Moonbeam开发节点"
     ```
     docker run --network="host"
+    -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.development.tracing_tag }} \
     --name="Moonbeam-Tutorial" \
     --ethapi=debug,trace,txpool \
