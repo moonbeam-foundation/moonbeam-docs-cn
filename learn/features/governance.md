@@ -40,7 +40,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
     |         变量         |  |                                                             值                                                              |
     |:------------------------:|::|:------------------------------------------------------------------------------------------------------------------------------:|
     |      投票期       |  |     {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}}天)      |
-    | 加速投票期 |  | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonriver.democracy.fast_vote_period.days}}天) |
+    | 加速投票期 |  | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonriver.democracy.fast_vote_period.hours}}小时) |
     |     执行期     |  |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}}天)     |
     |     冷却期      |  |     {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}}天)      |
     |     最低保证金      |  |                                      {{ networks.moonriver.democracy.min_deposit }} MOVR                                       |
