@@ -1,5 +1,5 @@
 ---
-title: 区块浏览器
+title: 概述
 description: 目前在Moonbeam上支持导航Substrate和以太坊层的区块浏览器
 ---
 # 区块浏览器
@@ -13,6 +13,15 @@ description: 目前在Moonbeam上支持导航Substrate和以太坊层的区块�
 Moonbeam现在提供两种不同的浏览器：一种用于查询以太坊API，另一种专为查询Substrate API。所有基于EVM的交易都可以通过以太坊API访问，而Substrate API可以依赖于Substrate 的原生功能，如治理和质押。Substrate API也包括基于EVM交易的相关信息，但仅显示有限信息。
 
 ## 相关链接 {: #quick-links }
+
+=== "Moonbeam"
+    |                                                        区块浏览器                                                        |   类型    |                           URL                           |
+    |:----------------------------------------------------------------------------------------------------------------------------:|:---------:|:-------------------------------------------------------:|
+    |                                   [Moonscan](https://moonbeam.moonscan.io/){target=_blank}                                   |    EVM    |              https://moonbeam.moonscan.io/              |
+    |                              [Blockscout](https://blockscout.moonbeam.network/){target=_blank}                               |    EVM    |          https://blockscout.moonbeam.network/           |
+    |                     [Expedition](https://moonbeam-explorer.netlify.app/?network=Moonbeam){target=_blank}                     |    EVM    | https://moonbeam-explorer.netlify.app/?network=Moonbeam |
+    |                                    [Subscan](https://moonbeam.subscan.io/){target=_blank}                                    | Substrate |              https://moonbeam.subscan.io/               |
+    | [Polkadot.Js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam.api.onfinality.io%2Fpublic-ws#/explorer){target=_blank} | Substrate |         https://polkadot.js.org/apps/#/explorer         |
 
 === "Moonriver"
     |                                                          区块浏览器                                                           |   类型    |                           URL                            |
