@@ -78,12 +78,12 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 运行追踪节点的完整命令如以下所示：
 
-!!! note
+!!! 注意事项
     用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
 
 === "Moonbeam"
     ```
-    docker run --network="host" -v "/var/lib/{{ networks.moonbeam.node_directory }}:/data" \
+    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonbeam.tracing_tag }} \
     --base-path=/data \
@@ -91,6 +91,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="Moonbeam-Tutorial" \
     --pruning archive \
     --state-cache-size 1 \
+    --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbeam-substitutes-tracing \
     -- \

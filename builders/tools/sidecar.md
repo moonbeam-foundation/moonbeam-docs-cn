@@ -39,6 +39,11 @@ node_modules/.bin/substrate-api-sidecar --version
 
 在Sidecar将运行的终端中，导出网络WS端点的环境变量，例如：
 
+=== "Moonbeam"
+    ```
+    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonbeam.network
+    ```
+
 === "Moonriver"
     ```
     export SAS_SUBSTRATE_WS_URL=wss://wss.moonriver.moonbeam.network
@@ -46,10 +51,10 @@ node_modules/.bin/substrate-api-sidecar --version
 
 === "Moonbase Alpha"
     ```
-    export SAS_SUBSTRATE_WS_URL=wss://wss.testnet.moonbeam.network
+    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonbase.moonbeam.network
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     export SAS_SUBSTRATE_WS_URL=ws://127.0.0.1:9944
     ```

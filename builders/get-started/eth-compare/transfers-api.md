@@ -7,11 +7,11 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在可用�
 
 ## 概览
 
-虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生代币（例如：MOVR和GLMR）余额转账方面与以太坊之间的主要差异。
+虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生代币（例如：GLMR和MOVR）余额转账方面与以太坊之间的主要差异。
 
 Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方面，用户可以通过MetaMask、MathWallet或其他任何使用以太坊JSON-RPC的工具等应用程序来使用以太坊API。另一方面，用户可以通过Polkadot.js App网站使用Substrate API或直接使用Substrate RPC。
 
-开发者需要注意的是，Token持有者可以利用这两类API来转移原生代币。请注意，这页内容不适用于其他类资产的转账，例如Moonriver或Moonbeam EVM中基于ERC20的资产。这些资产的转移只能通过以太坊API完成，因为需要与智能合约交互。
+开发者需要注意的是，Token持有者可以利用这两类API来转移原生代币。请注意，这页内容不适用于其他类资产的转账，例如Moonriver或Moonbeam EVM中基于ERC-20的资产。这些资产的转移只能通过以太坊API完成，因为需要与智能合约交互。
 
 本教程将概述围绕这两类API进行余额转账的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 
@@ -27,15 +27,15 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 在介绍不同情况之前，有两个与区块相关的不同要素。
 
- - **Extrinsic** —— 指源于系统本身之外的状态变化。最常见的外部参数形式是交易。它们是按执行顺序排列的
-- **Events** —— 指由外部参数产生的日志。每个外部参数可以有多个事件。它们按执行顺序排列。
+ - **Extrinsic** —— 指源于系统本身之外的状态变化。最常见的Extrinsic形式是交易。它们是按执行顺序排列的
+- **Events** —— 指由Extrinsic产生的日志。每个Extrinsic可以有多个事件。它们按执行顺序排列。
 
 不同的转账场景如下:
 
- - **Substrate转账** —— 这将创建一个外部参数，`balances.transfer`或`balances.transferKeepAlive`。这将触发**一个**`balances.Transfer`事件
- - **Substrate功能** —— 一些原生Substrate功能可以创建外部参数，将Token发送至一个地址。例如，[Treasury](/learn/features/treasury/)可以创建一个外部参数，如`treasury.proposeSend`，这将触发**一个或多个**`balances.Transfer`事件
- - **Ethereum转账** —— 这将创建一个`ethereum.transact`外部参数，为一个空白输入值。这将触发**一个**`balances.Transfer`事件
- -  **通过智能合约进行以太坊转账** —— 这将创建一个`ethereum.transact`外部参数，多个数据成为输入值。这将触发**一个或多个**`balances.Transfer`事件
+ - **Substrate转账** —— 这将创建一个Extrinsic，`balances.transfer`或`balances.transferKeepAlive`。这将触发**一个**`balances.Transfer`事件
+ - **Substrate功能** —— 一些原生Substrate功能可以创建Extrinsic，将Token发送至一个地址。例如，[Treasury](/learn/features/treasury/)可以创建一个Extrinsic，如`treasury.proposeSend`，这将触发**一个或多个**`balances.Transfer`事件
+ - **Ethereum转账** —— 这将创建一个`ethereum.transact`Extrinsic，为一个空白输入值。这将触发**一个**`balances.Transfer`事件
+ -  **通过智能合约进行以太坊转账** —— 这将创建一个`ethereum.transact`Extrinsic，多个数据成为输入值。这将触发**一个或多个**`balances.Transfer`事件
 
 上述所有场景都将能有效地进行原生代币转账。监控它们最简单的方法就是通过`balances.Transfer`事件。
 

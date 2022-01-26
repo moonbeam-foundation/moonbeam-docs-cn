@@ -128,7 +128,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   3. 确认您的收集人账户已充值[所需的最低质押量](#accounts-and-staking-requirements)，并有多余金额用于支付交易费
   4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
   5. 打开下拉菜单，在质押相关的所有外部参数中，选择**joinCandidates()**函数
-  6. 将绑定数量设置为成为候选人的[最低数量](#accounts-and-staking-requirements)（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。在Moonriver的最低绑定数量为{{ networks.moonriver.staking.min_can_stk }}枚MOVR，以wei为单位应输入`{{ networks.moonriver.staking.min_can_stk_wei }}`（即{{ networks.moonriver.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
+  6. 将绑定数量设置为成为候选人的[最低数量](#accounts-and-staking-requirements)（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
   7. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
    8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
@@ -214,17 +214,12 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](#accounts-and-staking-requirements)的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
 
  1. 进入**Developer**标签
-  2. 点击**Extrinsics**
-
-  3. 选择您的收集人账户（并验证该账户是否有足够资金可用于绑定）
-
-  4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
-
-  5. 打开下拉菜单，在质押相关的所有外部参数中，选择**candidateBondMore()**函数
-
-  6. 在**more: BalanceOf**字段中输入要增加的绑定数量
-
-   7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
+ 2. 点击**Extrinsics**
+ 3. 选择您的收集人账户（并验证该账户是否有足够资金可用于绑定）
+ 4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
+ 5. 打开下拉菜单，在质押相关的所有Extrinsic中，选择**candidateBondMore()**函数
+ 6. 在**more: BalanceOf**字段中输入要增加的绑定数量
+ 7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 !!! 注意事项
     收集人不会因增加绑定数量而获得额外奖励。想要增加您质押的Token数量，建议您将资金发送至另一个拥有的地址并委托给您的收集人。
@@ -343,9 +338,9 @@ curl http://127.0.0.1:9933 -H \
 
 - **mapping** (*address* optionalAuthorID) —— 将显示所有储存在链上的映射内容，或是根据您的输入显示相关内容
 
-### 映射Extrinsic {: #mapping-extrinsic } 
+### 映射Extrinsic {: #mapping-extrinsic }
 
-如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](#become-a-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射extrinsic（交易）。请注意，每一次注册author ID将会绑定Token。为此，请执行以下步骤：
+如果您想要将您的author ID映射至您的账户，您需要成为[候选人池](#become-a-candidate)中的一员。当您成功成为候选人，您将需要传送您的映射Extrinsic（交易）。请注意，每一次注册author ID将会绑定Token。为此，请执行以下步骤：
 
  1. 进入**Developer**标签
   2. 点击**Extrinsics**

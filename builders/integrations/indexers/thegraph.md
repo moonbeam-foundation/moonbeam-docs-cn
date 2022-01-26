@@ -21,6 +21,12 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 如果您已经熟悉使用The Graph，并且想很快开始在Moonbeam上面开发，您可以在Subgraph manifest (`subgraph.yaml`)中配置以下网络：
 
+=== "Moonbeam"
+    ```
+    dataSources:
+      network: moonbeam
+    ```
+
 === "Moonriver"
     ```
     dataSources:
@@ -43,7 +49,7 @@ The Graph是一个去中心化、开源的索引协议，可以为以太坊等�
 
 在Moonbase Alpha上使用The Graph有两种方式：
 
- - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)
+ - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/)（也可适用于Moonbeam和Moonriver）
  - 通过[Graph Explorer网站](https://thegraph.com/explorer/)将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币  
     
 ## 彩票合约 {: #the-lottery-contract } 
@@ -144,7 +150,7 @@ type Ticket @entity {
  - **repository** —— subgraph的Github代码库
  - **schema/file** —— `schema.graphql`文档的位置
  - **dataSources/name** —— Subgraph的名称
- - **network** —— 网络名称。对于所有在Moonbase Alpha上部署的Subgraph，这一值**必须**设置为`mbase` 
+ - **network** —— 网络名称。对于所有在Moonbase Alpha上部署的Subgraph，这一值**必须**设置为`mbase`。Moonbeam和 Moonriver可分别使用`moonbeam`和`moonriver`标签
  - **dataSources/source/address** —— 利息合约地址
  - **dataSources/source/abi** —— 合约界面在以`codegen`命令创建的`types`文件夹中储存的位置
  - **dataSources/source/startBlock** —— 索引开始的第一个区块。在理想的情况下，这个数值和合约创建区块接近。在[Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)上提供合约地址即可获取这一信息。在本示例中，合约的创建区块为`{{ networks.moonbase.thegraph.block_number }}`
