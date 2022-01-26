@@ -27,7 +27,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 --8<-- 'code/web3-contract-local/Incrementer.sol'
 ```
 
-### 收集验证合约所需信息
+### 收集验证合约所需信息 {: #collecting-information-for-contract-verification}
 
 为验证合约，您将需要收集合约编译器和部署细节的相关信息以保证验证能够顺利进行。
 
