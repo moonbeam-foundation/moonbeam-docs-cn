@@ -221,9 +221,6 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  6. 在**more: BalanceOf**字段中输入要增加的绑定数量
  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-!!! 注意事项
-    收集人不会因增加绑定数量而获得额外奖励。想要增加您质押的Token数量，建议您将资金发送至另一个拥有的地址并委托给您的收集人。
-
 ![Collator Bond More](/images/node-operators/networks/collators/collator-polkadotjs-7.png)
 
 ### 减少自身绑定数量 {: #bond-less}
