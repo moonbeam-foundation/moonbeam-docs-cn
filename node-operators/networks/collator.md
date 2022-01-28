@@ -58,7 +58,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/)，通过
 
 每个收集人都有一个与收集活动相关联的账户。该账户映射author ID，用于识别收集人作为区块生产者的身份，并从区块奖励中发送相关款项。
 
-取决于您想要运行收集人节点的网络，您可以前往Polkadot.js选择[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/accounts)、[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)或[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)。目前，您有两种创建账户的方式：
+取决于您想要运行收集人节点的网络，您可以前往Polkadot.js选择[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/accounts)、[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/accounts)或[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts)。目前，您有两种创建账户的方式：
 
  - 从[MetaMask](/tokens/connect/metamask/)或[MathWallet](/tokens/connect/mathwallet/)等外部钱包或服务中导入现有的（或创建新的）H160账户
  - 使用[Polkadot.js](/tokens/connect/polkadotjs/)创建新的H160账户
@@ -211,7 +211,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加自身绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](#accounts-and-staking-requirements)的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](#accounts-and-staking-requirements)的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/accounts)增加其绑定数量，具体步骤如下所示：
 
  1. 进入**Developer**标签
  2. 点击**Extrinsics**

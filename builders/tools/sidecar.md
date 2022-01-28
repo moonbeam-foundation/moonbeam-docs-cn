@@ -46,7 +46,7 @@ node_modules/.bin/substrate-api-sidecar --version
 
 === "Moonriver"
     ```
-    export SAS_SUBSTRATE_WS_URL=wss://wss.moonriver.moonbeam.network
+    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonriver.moonbeam.network
     ```
 
 === "Moonbase Alpha"
