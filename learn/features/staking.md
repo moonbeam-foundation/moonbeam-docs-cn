@@ -72,27 +72,38 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 以下是一些可以帮助您选择收集人节点的参考资料：
 
 === "Moonbeam"
-    |      变量       |                                                  值                                                  |
-    |:-------------------:|:-------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbeam Subscan浏览器](https://moonbeam.subscan.io/validator){target=_blank}                 |
-    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonbeam){target=_blank} |
+    |           变量           |                                     值                                     |
+    |:----------------------------:|:-----------------------------------------------------------------------------:|
+    |     GLMR质押仪表盘     |              [Stake GLMR](https://stakeglmr.com/){target=_blank}              |
+    |    候选收集人排行榜     |       [Moonscan](https://moonbeam.moonscan.io/collators){target=_blank}       |
+    | 质押模拟仪表盘 |            [Web3Go](https://web3go.xyz/#/Moonbeam){target=_blank}             |
+    |      候选收集人仪表盘      | [DappLooker](https://network.dapplooker.com/moonbeam/collator){target=_blank} |
 
 === "Moonriver"
-    |      变量       |                                                                 值                                                                 |
-    |:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                              [Moonriver Subscan浏览器](https://moonriver.subscan.io/validator){target=_blank}                               |
-    | 收集人统计数据 |               [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}                |
-    |  收集人APY数据  | [DappLooker收集人仪表板](http://analytics.dapplooker.com/public/dashboard/7dfc5a6e-da33-4d54-94bf-0dfa5e6843cb){target=_blank} |
+    |           变量           |                                     值                                      |
+    |:----------------------------:|:------------------------------------------------------------------------------:|
+    |     MOVR质押仪表盘     |              [Stake MOVR](https://stakemovr.com/){target=_blank}               |
+    |    候选收集人排行榜     |       [Moonscan](https://moonriver.moonscan.io/collators){target=_blank}       |
+    | 质押模拟仪表盘 |            [Web3Go](https://web3go.xyz/#/Moonriver){target=_blank}             |
+    |      候选收集人仪表盘      | [DappLooker](https://network.dapplooker.com/moonriver/collator){target=_blank} |
+
 
 === "Moonbase Alpha"
-    |      变量       |                                                    值                                                     |
-    |:-------------------:|:------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbase Alpha Subscan浏览器](https://moonbase.subscan.io/validator){target=_blank}                |
-    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank} |
+    |      变量      |                                     值                                      |
+    |:------------------:|:------------------------------------------------------------------------------:|
+    | 候选收集人列单 | [Moonbase Alpha Subscan](https://moonbase.subscan.io/validator){target=_blank} |
+
 
 
 !!! 注意事项
     Moonriver的DappLooker收集人仪表板是实验性测试版软件，可能无法准确反映收集人节点的性能。在委托给收集人之前，请务必自己进行研究。
+
+### 基本技巧 {: #general-tips }
+
+- 要获取更高的质押奖励，您应该选择总绑定数量较低的收集人。在这种情况下，您的委托数量占收集人总质押数量的份额越高，您将获得更多的奖励。然而，在这种情况下也会存在另一种风险，即您选择的收集人可能被踢出活跃收集人集，这意味着您也无法再获得奖励
+- 每个收集人的最低绑定数量将可能随时增加，如果您的委托数量接近最低委托数量，则您很可能低于最低委托数量并无法获得奖励
+- 选择多个委托人进行委托是获得奖励最有效的方式，但是建议您有足够的资金能保证自己委托给每个收集人的数量均超过最低委托数量
+- 您可以通过查看每个收集人近期生产区块的数量来判断收集人的性能
 
 
 ## 奖励分配 {: #reward-distribution } 
