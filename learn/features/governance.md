@@ -17,7 +17,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
 
 权力越大，责任越大。在参与Moonbeam治理之前，请先了解一些重要参数：
 
- - **提案 **—— 代币持有者提出的行动方案或事项，需获其它用户赞成才可进入公投环节
+ - **提案**—— 代币持有者提出的行动方案或事项，需获其它用户赞成才可进入公投环节
  - **公投** —— 获得赞成数最多的提案将由社区进行公投。除非有紧急公投正在进行，否则最多只能同时进行5个公投
  - **发起期** —— 两次公投之间的时间间隔
  - **投票期** —— 代币持有者对提案进行公投的时期（一次公投的时长）
@@ -34,7 +34,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
     |     执行期     |  |     {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}}天)     |
     |     冷却期      |  |     {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}}天)      |
     |     最低保证金      |  |                                      {{ networks.moonbeam.democracy.min_deposit }} GLMR                                      |
-
+    |    最多提案     |  |                                       {{ networks.moonbeam.democracy.max_proposals }}                                        |
 
 === "Moonriver"
     |         变量         |  |                                                             值                                                              |
@@ -44,6 +44,7 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
     |     执行期     |  |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}}天)     |
     |     冷却期      |  |     {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}}天)      |
     |     最低保证金      |  |                                      {{ networks.moonriver.democracy.min_deposit }} MOVR                                       |
+    |    最多提案     |  |                                       {{ networks.moonriver.democracy.max_proposals }}    
 
 === "Moonbase Alpha"
     |         变量         |  |                                                              值                                                              |
@@ -52,37 +53,48 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
     | 加速投票期 |  | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.hours}}小时) |
     |     执行期     |  |      {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}}天)       |
     |     冷却期      |  |       {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}}天)       |
-    |     最低保证金      |  |                                        {{ networks.moonbase.democracy.min_deposit }} DEV  
+    |     最低保证金      |  |                                        {{ networks.moonbase.democracy.min_deposit }} DEV 
+    |    最多提案     |  |                                       {{ networks.moonriver.democracy.max_proposals }}        
 
 ## 原则 {: #principles } 
 
 在参与Moonbeam治理流程中，我们还希望用户做到以下几点：
 
- - 对希望参与Moonbeam网络的和受到治理决策影响的代币持有者持开放包容的态度。
- - 欢迎其他代币持有者一同参与，而不是冷漠相待，即使他们的观点可能与您本身的相反。
- - 在决策过程中保持开放透明。
- - 将网络的良好发展置于个人利益之上。
- - 任何时候都做一位道德行动者，时刻考虑自身作为（或不作为）的道德影响。
- - 在与其他代币持有者互动的过程中保持耐心与大度，但绝不容忍语言、行动或行为上的暴力和伤害。
+ - 对希望参与Moonbeam网络的和受到治理决策影响的代币持有者持开放包容的态度
+ - 欢迎其他代币持有者一同参与，而不是冷漠相待，即使他们的观点可能与您本身的相反
+ - 在决策过程中保持开放透明
+ - 将网络的良好发展置于个人利益之上
+ - 任何时候都做一位道德行动者，时刻考虑自身作为（或不作为）的道德影响
+ - 在与其他代币持有者互动的过程中保持耐心与大度，但绝不容忍语言、行动或行为上的暴力和伤害
 
-以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[尤其是这一篇](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434)。
+以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[How to Participate in Blockchain Governance in Good Faith (and with Good Manners)](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=blank}。
 
 ## 链上治理机制 {: #on-chain-governance-mechanics } 
 
-Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets)，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
+Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets){target=blank}，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
 
 这一治理机制的主要组成部分包括：
 
  - **公投** —— 关于修改关键参数值、代码升级或治理机制本身等事宜需要提案并进行公投
  - **投票** —— 各代币持有者在权重规则下进行公投。公投通过后，提案将进入延迟执行期，不同意该提案的用户可以在此期间退出网络
  - **理事会** —— 由用户投票产生，在系统中有特殊投票权。理事会成员的职责是提出公投，并对公众提案的公投有一票否决权。理事会成员通过滚动选举的方式选出，GLMR持有者可以对新任和现任委员会成员投票
+ - **技术委员会**——由理事会选举产生的具有特殊投票权的个人团体。与Polkadot和Kusama一样，技术委员会有能力（与理事会一起）在紧急情况下快速进行紧急投票和实施。可以在现有的活跃公投的同时创建快速公投。也就是说，紧急公投并不能取代目前正在进行的公投
  - **财政库**—— 一系列的资金，提交提案并充值后即可进行支出。消费提案必须经过委员会同意。若提案遭到拒绝，提案者将失去充值的资金
 
-更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/)和[wiki博客](https://wiki.polkadot.network/docs/learn-governance)。
+更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=blank}和[Polkadot治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=blank}。
 
-## 在Moonbase Alpha上进行测试 {: #try-it-on-moonbase-alpha } 
+## 理事会和技术委员会的投票权 {: #voting-rights-of-the-council-and-the-technical-committee } 
 
-目前，Moonbase Alpha测试网上的代币持有者可以提交提案并进行投票。具体步骤请查阅以下教程：
+本节介绍有关投票权的一些背景信息。技术委员会和理事会对提案进行投票的时间是有限制的。如果已经提交了足够的选票来确定结果，则提案可能会更早结束。技​​术委员会和理事会受[最大数量的提案](#quick-reference)的限制。
+
+**取消投票权:**
+
+ - 技术委员会只能在全票通过的情况下取消尚未有结果的提案
+ - 单个技术委员会成员可以否决受理提案，但是他只能否决一次，并且仅在[冷却期](#quick-reference)内有效
+
+## 进行测试 {: #try-it-out } 
+
+代币持有者可以在Moonbeam、Moonriver和Moonbase Alpha提交提案并进行投票。具体步骤请查阅以下教程：
 
  - [提案](/governance/proposals/)
  - [投票](/governance/voting/)
