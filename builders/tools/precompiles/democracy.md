@@ -9,7 +9,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ## 概览 {: #introduction }
 
-作为波卡（Polkadot）的平行链，得益于[Substrate民主pallet](https://marketplace-staging.substrate.dev/pallets/pallet-democracy)，Moonbeam拥有原生的链上治理功能。民主pallet使用Rust语言编码，无法直接从Moonbeam的以太坊方面访问。然而，民主预编译让您能够直接通过solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户汇入Polkadot.js App后使用复杂的界面进行操作。
+作为波卡（Polkadot）的平行链，得益于[Substrate民主pallet](https://marketplace-staging.substrate.dev/pallets/pallet-democracy){target=blank}，Moonbeam拥有原生的链上治理功能。民主pallet使用Rust语言编码，无法直接从Moonbeam的以太坊方面访问。然而，民主预编译让您能够直接通过solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户汇入Polkadot.js App后使用复杂的界面进行操作。
 
 民主预编译位于以下地址：
 
@@ -30,7 +30,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ## 民主预编译Solidity接口 {: #the-democracy-solidity-interface }
 
-[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol)是一个能够用于Solidity合约与民主pallet交互的接口。预编译的精妙之处在于您无需学习Substrate API，就可以使用熟悉的以太坊界面与质押功能交互。
+[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=blank}是一个能够用于Solidity合约与民主pallet交互的接口。预编译的精妙之处在于您无需学习Substrate API，就可以使用熟悉的以太坊界面与质押功能交互。
 
 接口包含以下函数：
 
@@ -51,27 +51,28 @@ description: Moonbeam民主Solidity预编译接口演示
 此接口同样包含目前尚未被支持但有可能在将来支持的函数：
 
 - **ongoing_referendum_info**(*uint256* ref_index) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
-  1. 公投结束区块（*uint256*）
-  2. 提案哈希（*bytes32*）
-  3. [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve)0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
-  4. 执行延迟时间（*uint256*）
-  5. 总同意票数，包含Token锁定时间参数（*uint256*）
-  6. 总反对票数，包含Token锁定时间参数（*uint256*）
-  7. 当前投票结果，不包含Token锁定时间参数（*uint256*）
+     1. 公投结束区块（*uint256*）
+     2. 提案哈希（*bytes32*）
+     3. [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
+     4. 执行延迟时间（*uint256*）
+     5. 总同意票数，包含Token锁定时间参数（*uint256*）
+     6. 总反对票数，包含Token锁定时间参数（*uint256*）
+     7. 当前投票结果，不包含Token锁定时间参数（*uint256*）
+
  - **finished_referendum_info**(*uint256* ref_index) —— 返回公投是否通过以及结束区块信息的只读函数
 
 ## 查看先决条件 {: #checking-prerequisites } 
 
-以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/)和[如何投票](/tokens/governance/proposals/)。除此之外，您还需要：
+以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=blank}和[如何投票](/tokens/governance/voting/){target=blank}。除此之外，您还需要：
 
- - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/)
- - 具有拥有一定数量DEV的账户，您可以从[Mission Control](/builders/get-started/moonbase/#get-tokens/)获得一些。
+ - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=blank}
+ - 具有拥有一定数量DEV的账户，您可以从[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=blank}获得一些。
 
 ## 设置Remix {: #remix-set-up }
 
-1. 复制[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol)
+1. 复制[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=blank}
 
-2. 将档案内容复制并贴上至[Remix](https://remix.ethereum.org/)，并将其命名为DemocracyInterface.sol
+2. 将档案内容复制并贴上至[Remix](https://remix.ethereum.org/){target=blank}，并将其命名为DemocracyInterface.sol
 
 ![Copying and Pasting the Democracy Interface into Remix](/images/builders/tools/precompiles/democracy/democracy-1.png)
 
@@ -79,7 +80,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 1. 点击位于由上至下第二个的Compile标签
 
-2. 编译[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol)
+2. 编译[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=blank}
 
 ![Compiling DemocracyInteface.sol](/images/builders/tools/precompiles/democracy/democracy-2.png)
 
@@ -101,7 +102,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ### 获得哈希和带编码的提案 {: #submit-the-preimage-hash } 
 
-如果您拥有提案的哈希，您可以通过[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol)提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，根据以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)进行操作：
+如果您拥有提案的哈希，您可以通过[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，根据以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}进行操作：
 
  1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
 
@@ -142,7 +143,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ### 提交原像（Preimage） {: #submit-the-preimage } 
 
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)获得的带编码的提案，并通过民主预编译后中的**note_preimage**函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**note_preimage**提交原像（Preimage）：
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}获得的带编码的提案，并通过民主预编译后中的**note_preimage**函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**note_preimage**提交原像（Preimage）：
 
 1. 展开民主预编译合约以查看可用函数
 
@@ -154,7 +155,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ![Submit the preimage](/images/builders/tools/precompiles/democracy/democracy-7.png)
 
-在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)的民主页面中确认您的提案是否在提案列表当中。
+在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}的民主页面中确认您的提案是否在提案列表当中。
 
 ## 附议提案 {: #second-a-proposal } 
 
@@ -162,7 +163,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ### 获得提案索引编码 {: #get-the-proposal-index } 
 
-首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)中获得提案的索引编码：
+首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}中获得提案的索引编码：
 
 1. 导向至**Governance**标签
 
@@ -190,7 +191,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 5. 点击**transact**并在MetaMask确认此交易
 
-恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)并查看您的账户是否出现在支持列表当中
+恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}并查看您的账户是否出现在支持列表当中
 
 ![Second via the precompile](/images/builders/tools/precompiles/democracy/democracy-9.png)
 
@@ -203,7 +204,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 ### 获得公投编码 {: #get-the-referendum-index } 
 
-首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy)上获得公投编码：
+首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=blank}上获得公投编码：
 
 1. 导向至**Governance**标签
 
@@ -229,10 +230,10 @@ description: Moonbeam民主Solidity预编译接口演示
 
 5. 输入以WEI表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 
-6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/)教程。
+6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=blank}教程。
 
 7. 点击**transact**并在MetaMask确认此交易
 
 ![Call the vote function](/images/builders/tools/precompiles/democracy/democracy-11.png)
 
-恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol)当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[*Discord*](https://discord.gg/moonbeam)询问。
+恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[*Discord*](https://discord.gg/moonbeam){target=blank}询问。
