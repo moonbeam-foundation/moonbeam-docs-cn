@@ -7,7 +7,7 @@ description: 如何将您的项目收录在DappRadar平台上
 
 ![Template banner image](/images/learn/dapps-list/dapp-radar/dapp-radar-banner.png)
 
-## DappRadar概览
+## DappRadar概览 {: #introduction-to-dappradar }
 
 [DappRadar](https://dappradar.com/)创建于2018年，旨在向全世界的开发者和用户提供高质量且精准的去中心化应用程序相关数据。从那时起，DappRadar已经收录了20个协议中约上万个应用程序，成为DApp应用发现和分析平台中值得信赖的标杆。用他们自己的话说，*“DappRadar通过dapp数据筛选，删除虚假和无关的活动，提供真实且可控制的市场数据。跟踪DApp的活跃用户、Token数量和交易活动，以深入了解DApp生态系统的趋势。”*
 
@@ -20,7 +20,7 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
 !!! 注意事项
     DappRadar包含用户生成的内容，建议您提前做好研究以验证信息的准确性。Moonbeam是一个无需许可的网络，任何项目都可以将其合约部署至Moonbeam。
 
-## 必要内容
+## 必要内容 {: #required-content }
 
 向DappRadar提交您的项目/DApp时，您必须提交以下信息：
 
@@ -31,7 +31,7 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
  - 简短描述（少于160个字符）
  - 完整描述
 
-## 如何提交您的DApp
+## 如何提交您的DApp {: #how-to-submit-your-dapp }
 
 首先，您将需要创建一个DappRadar账户并验证您的邮箱。当您准备好上述内容后，您可以前往[DApp提交页面](https://dappradar.com/dashboard/submit-dapp)，并采取以下步骤：
 
