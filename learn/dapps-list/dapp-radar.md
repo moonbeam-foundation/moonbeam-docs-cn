@@ -36,24 +36,16 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
 首先，您将需要创建一个DappRadar账户并验证您的邮箱。当您准备好上述内容后，您可以前往[DApp提交页面](https://dappradar.com/dashboard/submit-dapp)，并采取以下步骤：
 
  1. 输入您的项目名称
-
  2. 上传您的DApp Logo（250 x 250px，png或jpg格式，大小不超过150KB）
-
  3. 为您的DApp选择一个类别
-
  4. 输入DApp的网站URL
-
  5. 为您的DApp写一段简短的描述（少于160个字符）
-
  6. 选择您的DApp想要部署的协议。您可以选择多个协议，如Moonbeam和Moonriver
-
- 7. 为您的DApp写一段完整的描述
-
- 8. （可选）提供社交媒体链接
-
- 9. 此选项为可选项，但建议您提供DApp的屏幕截图。您也可以选择提供一个DApp演示视频的YouTube链接
-
-  10. 阅读条款和条件，并点击**Submit a dapp**
+ 7. 选择至少一个协议后，系统会提示您为每个协议输入该合约地址
+ 8. 为您的DApp写一段完整的描述
+ 9. 可选）提供社交媒体链接
+ 10. 此选项为可选项，但建议您提供DApp的屏幕截图。您也可以选择提供一个DApp演示视频的YouTube链接
+ 11. 阅读条款和条件，并点击**Submit a dapp**
 
 ![How to Submit your DApp](/images/learn/dapps-list/dapp-radar/dapp-radar-2.png)
 
