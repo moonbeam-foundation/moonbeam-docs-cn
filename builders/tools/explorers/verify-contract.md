@@ -5,7 +5,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 ---
 # 验证智能合约
 
-![Explorer Banner](/images/builders/tools/explorers/verify-contract/verify-contract-banner.png)
+![Explorer Banner](/images/builders/tools/verify-contract/block-explorers/verify-contract-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -45,9 +45,9 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 5. 在部署后，记录智能合约部署的合约地址。合约的部署地址可以通过使用Truffle、Hardhat或以太坊库等基于命令行的开发工具，在控制台输出中获得，也可以通过Remix IDE等工具中在GUI中复制获得
 
-![Example Compiler Options in Remix IDE](/images/builders/tools/explorers/verify-contract/verify-contract-1.png)
+![Example Compiler Options in Remix IDE](/images/builders/tools/verify-contract/block-explorers/verify-contract-1.png)
 
-![Contract Address in Remix IDE](/images/builders/tools/explorers/verify-contract/verify-contract-2.png)
+![Contract Address in Remix IDE](/images/builders/tools/verify-contract/block-explorers/verify-contract-2.png)
 
 ## 验证合约 {: #verifying-the-contract }
 
@@ -69,7 +69,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 6. 在表格底下点击**Continue**按钮以进入下个页面
 
-    ![First Page Screenshot](/images/builders/tools/explorers/verify-contract/verify-contract-3.png)
+    ![First Page Screenshot](/images/builders/tools/verify-contract/block-explorers/verify-contract-3.png)
 
 在第二个页面，**Contract Address**、**Compiler**和**Constructor Arguments**的输入框应该都已自动填写完毕，您只需填写以下信息：
 
@@ -83,17 +83,17 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 5. 在页面底下点击CAPTCHA和**Verify and Publish**按钮以确认信息并开始验证
 
-   ![Second Page Screenshot](/images/builders/tools/explorers/verify-contract/verify-contract-4.png)
+   ![Second Page Screenshot](/images/builders/tools/verify-contract/block-explorers/verify-contract-4.png)
 
 经过一段时间后，验证的结果将会显示在浏览器上，成功结果的页面将会显示合约的ABI编码构造函数、合约名称、字节码和ABI。
 
-​    ![Result Page Screenshot](/images/builders/tools/explorers/verify-contract/verify-contract-5.png)
+​    ![Result Page Screenshot](/images/builders/tools/verify-contract/block-explorers/verify-contract-5.png)
 
 ### BlockScout {: #blockscout }
 
 在[BlockScout](https://moonbase-blockscout.testnet.moonbeam.network/)上通过搜寻地址导向至指定网络的合约页面，并在**Code**标签下点击**Verify & Publish**按钮
 
-​    ![BlockScout Verify Button](/images/builders/tools/explorers/verify-contract/verify-contract-6.png)
+​    ![BlockScout Verify Button](/images/builders/tools/verify-contract/block-explorers/verify-contract-6.png)
 
 在验证页面，合约地址将会被自动填写，您只需输入以下信息：
 
@@ -109,11 +109,11 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 6. 在所有信息填写完毕后点击页面下方的**Verify & Publish**按钮
 
-![BlockScout Verify Page](/images/builders/tools/explorers/verify-contract/verify-contract-7.png)
+![BlockScout Verify Page](/images/builders/tools/verify-contract/block-explorers/verify-contract-7.png)
 
 经过一段时间后，如果验证完全成功，浏览器将会回到合约的**Code**页面，显示合约的相关信息，包含构造函数ABI编码、合约名称、字节面、ABI和源代码。合约页面将同时拥有两个新的标签，**Read Contract**和**Write Contract**，方便用户阅读和直接撰写合约。
 
-​    ![BlockScout Result Page](/images/builders/tools/explorers/verify-contract/verify-contract-8.png)
+​    ![BlockScout Result Page](/images/builders/tools/verify-contract/block-explorers/verify-contract-8.png)
 
 
 ## 智能合约扁平化 {: #smart-contract-flattening }
@@ -130,6 +130,6 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 在**Compiler Type**（上述示例中的第三个步骤）选取**Solidity (Multi-part files)**。在下个页面，选取并上传所有组成其智能合约的不同Solidity文件，包含嵌入依赖项的合约文件。
 
- ![Moonscan Multifile Page](/images/builders/tools/explorers/verify-contract/verify-contract-9.png)
+ ![Moonscan Multifile Page](/images/builders/tools/verify-contract/block-explorers/verify-contract-9.png)
 
 除此之外，其余验证过程与在Moonscan上验证单一文件合约的过程相同。
