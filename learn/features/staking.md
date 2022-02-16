@@ -65,7 +65,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/){target=blank}教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters){target=blank}部分。
 
-如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collat​​or)指南。
+如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collators/requirements/#bonding-requirements){target=blank}指南。
 
 ## 选择收集人节点参考资料 {: #resources-for-selecting-a-collator}
 
@@ -142,7 +142,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 从奖励池中，收集人获得与他们绑定相对应的奖励，其余将按质押比例分配给委托人。
 
-### Calculating Rewards {: #calculating-rewards }
+### 计算奖励 {: #calculating-rewards }
 
 从数学上来讲，对于收集人而言，每个区块预计获得以及最终获得的奖励分配应如下所示：
 
