@@ -9,13 +9,13 @@ description: Moonbeam提供质押功能，使Token持有者能够使用手中的
 
 ## 概览 {: #introduction }
 
-Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot.network/docs/learn-consensus)的区块生产机制，也就是以收集人和验证人的形式。[收集人](https://wiki.polkadot.network/docs/learn-collator)负责通过收集来自用户的交易并为中继链的[验证人](https://wiki.polkadot.network/docs/learn-validator)生产状态转移证明。
+Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot.network/docs/learn-consensus){target=blank}的区块生产机制，也就是以收集人和验证人的形式。[收集人](https://wiki.polkadot.network/docs/learn-collator){target=blank}负责通过收集来自用户的交易并为中继链的[验证人](https://wiki.polkadot.network/docs/learn-validator){target=blank}生产状态转移证明。
 
 候选人根据他们在网络中质押量的筛选后进入活跃收集人（生产区块的节点）集，而这就是需要质押功能的地方。
 
 候选收集人（以及Token持有者，如其参与委托）将会质押Token在网络当中。总质押量前N位的候选人将会获选为可用的交易集生产区块，N为可变参数。部分区块奖励将会分发给生产区块的收集人，而收集人将会进一步根据委托的Token比例分配给参与委托的Token持有者。这样的机制促使网络成员愿意质押Token以提高整体的安全性。
 
-如果希望更多了解管理质押的相关操作，您可以访问[Moonbeam Network DApp](https://apps.moonbeam.network/)并使用页面顶部的网络选项在Moonbeam网络之间轻松切换。要了解如何使用DApp，您可以查看[如何质押MOVR代币](https://moonbeam.network/tutorial/stake-movr/)指南或[视频教程](https://www.youtube.com/watch?v=D2wPnqfoeIg，两者都可以适用于Moonbeam和 Moonbase Alpha测试网。
+如果希望更多了解管理质押的相关操作，您可以访问[Moonbeam Network DApp](https://apps.moonbeam.network/){target=blank}并使用页面顶部的网络选项在Moonbeam网络之间轻松切换。要了解如何使用DApp，您可以查看[如何质押MOVR代币](https://moonbeam.network/tutorial/stake-movr/){target=blank}指南或[视频教程](https://www.youtube.com/watch?v=D2wPnqfoeIg){target=blank}，两者都可以适用于Moonbeam和 Moonbase Alpha测试网。
 
 ## 一般定义 {: #general-definitions }
 
@@ -63,36 +63,47 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     |      退出委托人集延迟      |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
 
 
-想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/)教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters)部分。
+想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/){target=blank}教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters){target=blank}部分。
 
-如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collat​​or)指南。
+如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collators/requirements/#bonding-requirements){target=blank}指南。
 
 ## 选择收集人节点参考资料 {: #resources-for-selecting-a-collator}
 
 以下是一些可以帮助您选择收集人节点的参考资料：
 
 === "Moonbeam"
-    |      变量       |                                                  值                                                  |
-    |:-------------------:|:-------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbeam Subscan浏览器](https://moonbeam.subscan.io/validator){target=_blank}                 |
-    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonbeam){target=_blank} |
+    |           变量           |                                     值                                     |
+    |:----------------------------:|:-----------------------------------------------------------------------------:|
+    |     GLMR质押仪表盘     |              [Stake GLMR](https://stakeglmr.com/){target=_blank}              |
+    |    候选收集人排行榜     |       [Moonscan](https://moonbeam.moonscan.io/collators){target=_blank}       |
+    | 质押模拟仪表盘 |            [Web3Go](https://web3go.xyz/#/Moonbeam){target=_blank}             |
+    |      候选收集人仪表盘      | [DappLooker](https://network.dapplooker.com/moonbeam/collator){target=_blank} |
 
 === "Moonriver"
-    |      变量       |                                                                 值                                                                 |
-    |:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                              [Moonriver Subscan浏览器](https://moonriver.subscan.io/validator){target=_blank}                               |
-    | 收集人统计数据 |               [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=Moonriver){target=_blank}                |
-    |  收集人APY数据  | [DappLooker收集人仪表板](http://analytics.dapplooker.com/public/dashboard/7dfc5a6e-da33-4d54-94bf-0dfa5e6843cb){target=_blank} |
+    |           变量           |                                     值                                      |
+    |:----------------------------:|:------------------------------------------------------------------------------:|
+    |     MOVR质押仪表盘     |              [Stake MOVR](https://stakemovr.com/){target=_blank}               |
+    |    候选收集人排行榜     |       [Moonscan](https://moonriver.moonscan.io/collators){target=_blank}       |
+    | 质押模拟仪表盘 |            [Web3Go](https://web3go.xyz/#/Moonriver){target=_blank}             |
+    |      候选收集人仪表盘      | [DappLooker](https://network.dapplooker.com/moonriver/collator){target=_blank} |
+
 
 === "Moonbase Alpha"
-    |      变量       |                                                    值                                                     |
-    |:-------------------:|:------------------------------------------------------------------------------------------------------------:|
-    | 候选收集人列单  |                [Moonbase Alpha Subscan浏览器](https://moonbase.subscan.io/validator){target=_blank}                |
-    | 收集人统计数据 | [Moonbeam Explorer浏览器](https://moonbeam-explorer.netlify.app/stats/miners?network=MoonbaseAlpha){target=_blank} |
+    |      变量      |                                     值                                      |
+    |:------------------:|:------------------------------------------------------------------------------:|
+    | 候选收集人列单 | [Moonbase Alpha Subscan](https://moonbase.subscan.io/validator){target=_blank} |
+
 
 
 !!! 注意事项
     Moonriver的DappLooker收集人仪表板是实验性测试版软件，可能无法准确反映收集人节点的性能。在委托给收集人之前，请务必自己进行研究。
+
+### 基本技巧 {: #general-tips }
+
+- 要获取更高的质押奖励，您应该选择总绑定数量较低的收集人。在这种情况下，您的委托数量占收集人总质押数量的份额越高，您将获得更多的奖励。然而，在这种情况下也会存在另一种风险，即您选择的收集人可能被踢出活跃收集人集，这意味着您也无法再获得奖励
+- 每个收集人的最低绑定数量将可能随时增加，如果您的委托数量接近最低委托数量，则您很可能低于最低委托数量并无法获得奖励
+- 选择多个委托人进行委托是获得奖励最有效的方式，但是建议您有足够的资金能保证自己委托给每个收集人的数量均超过最低委托数量
+- 您可以通过查看每个收集人近期生产区块的数量来判断收集人的性能
 
 
 ## 奖励分配 {: #reward-distribution } 
@@ -131,7 +142,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 从奖励池中，收集人获得与他们绑定相对应的奖励，其余将按质押比例分配给委托人。
 
-### Calculating Rewards {: #calculating-rewards }
+### 计算奖励 {: #calculating-rewards }
 
 从数学上来讲，对于收集人而言，每个区块预计获得以及最终获得的奖励分配应如下所示：
 
