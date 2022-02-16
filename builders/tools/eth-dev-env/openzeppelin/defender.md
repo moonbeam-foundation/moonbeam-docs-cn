@@ -122,7 +122,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. Admin账户地址。如果想通过现有钱包（在获得所有必要许可的前提下）运行，该提案这一字段可以留空
  2. 提案名称
  3. 提案描述。为合约的其他成员/管理员提供的信息越详细越好（若使用多重签名钱包）
- 4. 点击“Create pause proposal（创建暂停提案）”
+ 4. 点击**Create pause proposal**（创建暂停提案）
 
 ![OpenZeppelin Defender Admin Contract Pause Proposal Details](/images/builders/tools/eth-dev-env/openzeppelin/oz-defender-5.png)
 

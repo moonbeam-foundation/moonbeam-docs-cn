@@ -220,7 +220,9 @@ export function handlePlayerJoined(event: PlayerJoined): void {
   }
   round.index = event.params.round;
   round.prize = event.params.prizeAmount;
+
   round.save();
+
   // ID for the player:
   // issuer address
   let playerId = event.params.player.toHex();
@@ -231,18 +233,20 @@ export function handlePlayerJoined(event: PlayerJoined): void {
     player = new Player(playerId);
   }
   player.address = event.params.player;
+
   player.save();
+
   // ID for the ticket (round - player_address - ticket_index_round):
-  // "round_number" + "-" + "player_address" + "-" + "ticket_index_per_round"
   // `${round_number}-${player_address}-${ticket_index_per_round}`
   let nextTicketIndex = event.params.ticketIndex.toString();
-  let ticketId = roundId + "-" + playerId + "-" + nextTicketIndex;
   let ticketId = `${roundId}-${playerId}-${nextTicketIndex}`;
+
   let ticket = new Ticket(ticketId);
   ticket.round = roundId;
   ticket.player = playerId;
   ticket.isGifted = event.params.isGifted;
   ticket.isWinner = false;
+
   ticket.save();  
 }
 ```

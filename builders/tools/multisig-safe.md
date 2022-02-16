@@ -68,7 +68,7 @@ contract SetText {
 
 ### 连接MetaMask {: #connect-metamask }
 
-进入[Moonbase Alpha](https://multisig.moonbeam.network/moonbase/)页面后，开始创建Safe钱包之前先连接您的钱包：
+进入[Moonbase Alpha](https://multisig.moonbeam.network/moonbase/){target=blank}页面后，开始创建Safe钱包之前先连接您的钱包：
 
  1. 点击**Connect Wallet**
 
