@@ -125,9 +125,9 @@ npm init --yes
 
 还有一点必不可少，定义`addressTo`，即交易接收地址。
 
-在第二部分，使用`nonce`、 `gasPrice`、 `gas`、 `to`和`value`字段创建交易对象。这些字段分别描述了交易数量、gas价格（Moonbase Alpha与开发节点之间的gas价格为0）、交易消耗的gas（本示例中为21000）、交易接收地址及交易金额。请注意，您可通过`web3.eth.getTransactionCount(address)`查阅交易数量。比如，您可通过`web3.toWei()`函数，输入需要交易的ETH数量并转换成以WEI为单位的输出。调用`web3.eth.account.signTransaction()`方法对交易进行私钥签名。
+在第二部分，使用`nonce`、 `gasPrice`、 `gas`、 `to`和`value`字段创建交易对象。这些字段分别描述了交易数量、gas价格（至少1GWei）、交易消耗的gas（本示例中为21000）、交易接收地址及交易金额。请注意，您可通过`web3.eth.get_transaction_count(address)`查阅交易数量。比如，您可通过`web3.toWei()`函数，输入需要交易的ETH数量并转换成以WEI为单位的输出。调用`web3.eth.account.sign_transaction()`方法对交易进行私钥签名。
 
-交易签名成功后，您可调用`web3.eth.sendSignedTransaction()`进行交易，需要提供位于`createTransaction.rawTransaction`的已签名交易。
+交易签名成功后，您可调用`web3.eth.send_signed_transaction()`进行交易，需要提供位于`tx_create.rawTransaction`的已签名交易。
 
 ## 余额文件 {: #the-balance-file }
 
@@ -174,7 +174,7 @@ npm init --yes
 
 [此脚本](/snippets/code/web3py-tx/balances.py)的第一个部分与[交易文件](/builders/interact/eth-libraries/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
 
-在第二部分，通过调用`web3.eth.getBalance(address)`来获取接收地址的余额。同时，您也可以使用`eb3.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
+在第二部分，通过调用`web3.eth.get_balance(address)`来获取接收地址的余额。同时，您也可以使用`eb3.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ## 运行脚本 {: #running-the-scripts }
 

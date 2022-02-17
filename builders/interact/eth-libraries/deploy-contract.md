@@ -196,9 +196,9 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 私钥和与之关联的公共地址功能：签名交易和建立来源地址。
 
-在第二部分，用`web3.eth.contract()`创建合约实例，提供从编译文件导入的ABI和字节码。接下来，使用合约实例的`constructor().buildTransaction()`方法建立构造交易。请注意，在`constructor()`代码中，您需要输入构造函数的所需参数，包含`from`即交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过 `web3.eth.getTransactionCount(address)`方式获得交易个数。
+在第二部分，用`web3.eth.contract()`创建合约实例，提供从编译文件导入的ABI和字节码。接下来，使用合约实例的`constructor().buildTransaction()`方法建立构造交易。请注意，在`constructor()`代码中，您需要输入构造函数的所需参数，包含`from`即交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过 `web3.eth.get_transaction_count(address)`方式获得交易个数。
 
-使用`web3.eth.account.signTransaction()`签名交易，同时传输交易及私钥。
+使用`web3.eth.account.sign_transaction()`签名交易，同时传输交易及私钥。
 
 最后，发送已签名的交易，同时合约地址也会显示在终端。
 
@@ -341,9 +341,9 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 定义私钥和与之关联的地址是为了签名交易和创立发送地址。 此外，合约接口（ABI）和地址也需要与之交互。
 
-在第二部分，通过提供ABI和地址使用`web3.eth.contract()`创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为`contract`、`methodName`和`_input`，使用`contract.functions.methodName(_input).buildTransaction`函数来构建交易对象。在`buildTransaction()`代码中，您需要输入`from`交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过`web3.eth.getTransactionCount(address)`方式获得交易个数。
+在第二部分，通过提供ABI和地址使用`web3.eth.contract()`创建合约实例。接下来，将合约实例、调用函数和输入（如有必要）替换为`contract`、`methodName`和`_input`，使用`contract.functions.methodName(_input).buildTransaction`函数来构建交易对象。在`buildTransaction()`代码中，您需要输入`from`交易发送地址（请确保使用和私钥相关的地址）。此外，可以通过`web3.eth.get_transaction_count(address)`方式获得交易个数。
 
-使用`web3.eth.account.signTransaction()`签名交易，同时传输上面步骤提到的交易对象及私钥。
+使用`web3.eth.account.sign_transaction()`签名交易，同时传输上面步骤提到的交易对象及私钥。
 
 最后，交易哈希值会显示在终端。
 
