@@ -45,7 +45,7 @@ npm install @metamask/detect-provider
 
 成功创建按钮后，现在您将需要添加点击按钮时使用的`configureMoonbaseAlpha`函数。
 
-1. 在`window.ethereum`检测提供商是否为MetaMask。如果您想要简单的解决方案，您可以直接访问`window.ethereum`。您也可以使用MetaMask的`detect-provider`工具包，为您的MetaMask扩展程序和MetaMask Mobile检测提供商。
+1. 在`window.ethereum`检测提供商是否为MetaMask。如果您想要简单的解决方案，您可以直接访问`window.ethereum`。您也可以使用MetaMask的`detect-provider`工具包，为您的MetaMask扩展程序和MetaMask Mobile检测提供商
 
     ```javascript
     import detectEthereumProvider from '@metamask/detect-provider';
@@ -59,7 +59,7 @@ npm install @metamask/detect-provider
     }
     ```
     
-2. 通过调用`eth_requestAccounts`函数来请求获取用户的账户。这将提示MetaMask跳出弹窗，要求用户选择想要连接的账户。在后台，通过调用`wallet_requestPermissions`函数来检查账户的权限。目前仅限于`eth_accounts`可用于连接。因此，您最终要验证您是否有权访问从`eth_accounts`返回的用户地址。如果您有兴趣了解更多权限系统的相关信息，请查看[EIP-2255](https://eips.ethereum.org/EIPS/eip-2255){target=blank}。
+2. 通过调用`eth_requestAccounts`函数来请求获取用户的账户。这将提示MetaMask跳出弹窗，要求用户选择想要连接的账户。在后台，通过调用`wallet_requestPermissions`函数来检查账户的权限。目前仅限于`eth_accounts`可用于连接。因此，您最终要验证您是否有权访问从`eth_accounts`返回的用户地址。如果您有兴趣了解更多权限系统的相关信息，请查看[EIP-2255](https://eips.ethereum.org/EIPS/eip-2255){target=blank}
 
     ```javascript
 import detectEthereumProvider from '@metamask/detect-provider';
@@ -92,15 +92,15 @@ import detectEthereumProvider from '@metamask/detect-provider';
                     method: "wallet_addEthereumChain",
                     params: [
                         {
-                            chainId: "0x507", // Moonbase Alpha's chainId is 1287, which is 0x507 in hex
+                            chainId: "{{ networks.moonbase.hex_chain_id }}", // Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
                             chainName: "Moonbase Alpha",
                             nativeCurrency: {
                                 name: 'DEV',
                                 symbol: 'DEV',
                                 decimals: 18
                             },
-                        rpcUrls: ["https://rpc.testnet.moonbeam.network"],
-                        blockExplorerUrls: ["https://moonbase-blockscout.testnet.moonbeam.network/"]
+                        rpcUrls: ["{{ networks.moonbase.rpc_url }}"],
+                        blockExplorerUrls: ["{{ networks.moonbase.block_explorer }}"]
                         },
                     ]
                 })
@@ -125,8 +125,8 @@ import detectEthereumProvider from '@metamask/detect-provider';
     const chainId = await provider.request({
         method: 'eth_chainId'
     })
-    // Moonbase Alpha's chainId is 1287, which is 0x507 in hex
-    if (chainId === "0x507"){
+    // Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
+    if (chainId === "{{ networks.moonbase.hex_chain_id }}"){
         // At this point, you might want to disable the "Connect" button
         // or inform the user that they are already connected to the
         // Moonbase Alpha testnet

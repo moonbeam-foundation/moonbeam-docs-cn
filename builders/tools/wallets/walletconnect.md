@@ -9,7 +9,7 @@ description: 学习如何将WalletConnect集成至基于Moonbeam网络构建的d
 
 ## 概览 {: #introduction }
 
-[WalletConnect](https://walletconnect.com/)是一个供钱包和DApp之间安全交互的开源协议。
+[WalletConnect](https://walletconnect.com/){target=blank}是一个供钱包和DApp之间安全交互的开源协议。
 
 WalletConnect通过使用桥接服务器以中继负载在DApp和移动端钱包构建一个远端连接。通过DApp中的二维码即可发起连接，用户需要扫描二维码并在移动端钱包上通过。当连接成功建立后，DApp和钱包之间的负载将会通过共享私钥进行加密。
 
@@ -32,9 +32,9 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       short_name: "moonbeam",
       chain: "Moonbeam",
       network: "mainnet",
-      chain_id: 1284,
-      network_id: 1284,
-      rpc_url: "https:pc.api.moonbeam.network",
+      chain_id: {{ networks.moonbeam.chain_id }},
+      network_id: {{ networks.moonbeam.chain_id }},
+      rpc_url: "{{ networks.moonbeam.rpc_url }}",
       native_currency: {
         symbol: "GLMR",
         name: "Glimmer",
@@ -52,9 +52,9 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       short_name: "moonriver",
       chain: "Moonriver",
       network: "mainnet",
-      chain_id: 1285,
-      network_id: 1285,
-      rpc_url: "https://rpc.moonriver.moonbeam.network",
+      chain_id: {{ networks.moonriver.chain_id }},
+      network_id: {{ networks.moonriver.chain_id }},
+      rpc_url: "{{ networks.moonriver.rpc_url }}",
       native_currency: {
         symbol: "MOVR",
         name: "Moonriver",
@@ -72,9 +72,9 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       short_name: "moonbase",
       chain: "Moonbase",
       network: "testnet",
-      chain_id: 1287,
-      network_id: 1287,
-      rpc_url: "https://rpc.api.moonbase.moonbeam.network",
+      chain_id: {{ networks.moonbase.chain_id }},
+      network_id: {{ networks.moonbase.chain_id }},
+      rpc_url: "{{ networks.moonbase.rpc_url }}",
       native_currency: {
         symbol: "DEV",
         name: "DEV",
@@ -95,7 +95,7 @@ npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 
 本教程将会使用MetaMask移动端钱包以进行测试。您可以前往[metamask.io/download/](https://metamask.io/download/){target=blank}并切换**iOS**或**Android**标签下载MetaMask移动端钱包。
 
-最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。您可以至[官方Discord](https://discord.com/invite/PfpUATX)的水龙头获得DEV Token，详情查看[此教程](/builders/get-started/moonbase/#get-tokens)。
+最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。您可以至[官方Discord](https://discord.com/invite/PfpUATX){target=blank}的水龙头获得DEV Token，详情查看[此教程](/builders/get-started/moonbase/#get-tokens){target=blank}。
 
 ## 开始测试 {: #getting-started }
 
