@@ -184,7 +184,7 @@ npm init --yes
 
 ### Web3.py {: #web3py } 
 
-In the first part of the script, the `web3` instance (or provider) is created using the 在此脚本的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
+在此脚本的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
 
 私钥和与之关联的公共地址功能：签名交易和建立来源地址。
 
@@ -274,7 +274,7 @@ In the first part of the script, the `web3` instance (or provider) is created us
     --8<-- 'code/web3py-contract/increment.py'
     ```
 
-其次，用来合约交互的文件是 _reset.*_ ，该文件的功能是将合约中存储的数字重置归零。您可以创建一个名为 `increment.js` 或 `increment.py` 的文件，具体取决于您使用的语言。
+其次，用来合约交互的文件是 _reset.*_ ，该文件的功能是将合约中存储的数字重置归零。您可以创建一个名为 `reset.js` 或 `reset.py` 的文件，具体取决于您使用的语言。
 
 每个文件的结构与每个库的 _increment.*_ 对应结构类似，主要区别在于调用程序。
 
