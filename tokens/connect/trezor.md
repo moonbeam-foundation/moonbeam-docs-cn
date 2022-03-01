@@ -109,3 +109,5 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 就这样！您已经成功在Moonbase Alpha使用您的Trezor硬件钱包签署交易！
 
 使用您的Trezor设备与智能合约互操作的过程与本教程基本相同。请在同意交易之前，再次检查签署于您的Trezor设备的数据。
+
+--8<-- 'text/disclaimers/third-party-content.md'

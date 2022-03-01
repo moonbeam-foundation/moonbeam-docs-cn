@@ -256,3 +256,4 @@ truffle migrate --network moonriver
 
 ![Successful contract deployment actions](/images/builders/interact/eth-dev-env/truffle/truffle-7.png)
 
+--8<-- 'text/disclaimers/third-party-content.md'

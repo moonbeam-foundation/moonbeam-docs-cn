@@ -125,3 +125,5 @@ docker-compose up
 ![Graph Node logs](/images/node-operators/indexer-nodes/the-graph/the-graph-node-3.png)
 
 这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam和Moonriver。
+
+--8<-- 'text/disclaimers/third-party-content.md'

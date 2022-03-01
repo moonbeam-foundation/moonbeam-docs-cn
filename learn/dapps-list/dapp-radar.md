@@ -50,3 +50,8 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
 ![How to Submit your DApp](/images/learn/dapps-list/dapp-radar/dapp-radar-2.png)
 
 DappRader团队会审核您所提交的信息，若符合收录要求，该DApp将会发布在DappRader平台上。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam){target=blank}与我们联系。若您需要DappRadar的支持，请联系[developers@dappradar.com](mailto:developers@dappradar.com)。
+
+## 免责声明 {: #disclaimer }
+
+*DappRadar包含用户生成的内容，而Moonbeam基金会尚未审查此类用户生成的内容。*
+--8<-- 'text/disclaimers/user-generated-content.md'

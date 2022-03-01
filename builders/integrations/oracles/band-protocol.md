@@ -239,3 +239,5 @@ queryData();
 ![Band Protocol JavaScript Library](/images/builders/integrations/oracles/band/band-console.png)
 
 请注意，与通过智能合约获取报价相比，通过这种方法获得的返回结果将直接在正确的单位中显示。
+
+--8<-- 'text/disclaimers/third-party-content.md'

@@ -350,3 +350,4 @@ contract SetText {
 
 这样就意味着您已经成功使用Safe钱包与智能合约交互了！
 
+--8<-- 'text/disclaimers/third-party-content.md'
