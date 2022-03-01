@@ -2,6 +2,7 @@
 title: Razor Network
 description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network预言机喂价
 ---
+
 # Razor Network预言机
 
 ![Razor Network Moonbeam Diagram](/images/builders/integrations/oracles/razor/razor-banner.png)
@@ -136,3 +137,9 @@ interface Razor {
 通过这一方法，您将创建一个可以进行交互的demo合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
 ![Razor check price](/images/builders/integrations/oracles/razor/razor-demo-2.png)
+
+## 与联系我们 {: #contact-us } 
+
+如果您对在您的项目中实施Razor Network Oracle或任何其他Moonbeam相关主题有任何反馈，请随时通过我们的官方开发 [Discord 服务器](https://discord.com/invite/PfpUATX) 与我们联系。
+
+--8<-- 'text/disclaimers/third-party-content.md'

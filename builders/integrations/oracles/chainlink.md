@@ -124,3 +124,5 @@ interface AggregatorV3Interface {
 请注意，您必须用`decimals()`方式了解喂价的小数位数，才能获得实际价格。
 
 如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX)联系我们。
+
+--8<-- 'text/disclaimers/third-party-content.md'

@@ -108,3 +108,4 @@ Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通�
 
 <img src="/images/tokens/connect/nifty/nifty-11.png" alt="Nifty create an account" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
+--8<-- 'text/disclaimers/third-party-content.md'
