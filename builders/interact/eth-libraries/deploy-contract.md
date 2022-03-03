@@ -83,7 +83,7 @@ npm init --yes
 
 ## 合约文件 {: #the-contract-file }
 
-我们将使用一个简单的增量合约，任意为其命名为_Incrementer.sol_，您可在[这里](/snippets/code/web3-contract-local/Incrementer.sol)找到。相关Solidity代码如下：
+我们将使用一个简单的增量合约，任意为其命名为_Incrementer.sol_。相关Solidity代码如下：
 
 ```solidity
 --8<-- 'code/web3-contract-local/Incrementer.sol'
@@ -96,11 +96,7 @@ npm init --yes
 
 ## 合约编译 {: #compiling-the-contract }
 
-编译文件的唯一目的是通过Solidity编译器生成合约的字节码和二进制接口（Application Binary Interface (ABI) ）。您可通过以下链接找到对应库的代码片段（文件被命名为`compile.*`）：
-
- - Web3.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
- - Ethers.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
- - Web3.py: [_compile.py_](/snippets/code/web3py-contract/compile.py)
+编译文件的唯一目的是通过Solidity编译器生成合约的字节码和二进制接口（Application Binary Interface (ABI) ）。您可以通过创建 `compile.js` 或 `compile.py` 文件开始，具体取决于您使用的语言。
 
 !!! 注意事项
     两个JavaScript库的编译文件相同，因为他们绑定一个Solidity编译器（相同的程序包），同时共享JavaScript
@@ -122,7 +118,7 @@ npm init --yes
 
 ### Web3.js和Ethers.js {: #web3js-and-ethersjs }
 
-在[脚本](/snippets/code/web3-contract-local/compile.js)的第一部分，获取合约的路径，并读取其内容。
+在脚本的第一部分，获取合约的路径，并读取其内容。
 
 接下来，构建Solidity编译器的输入对象，并将其作为输入传递给`solc.compile`函数。
 
@@ -130,7 +126,7 @@ npm init --yes
 
 ### Web3.py {: #web3py } 
 
-在[脚本](/snippets/code/web3py-contract/compile.py)的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
+在脚本的第一部分，使用`solcx.compile_files`函数来编译合约文件。请注意，合约文件与编译脚本位于同一目录中。
 
 !!! 注意事项
     当运行`compile.py`时，您可能会收到一个需要安装`Solc`的错误提示。如遇此情况，请取消在文件中注释执行`solcx.install_solc()`的行，并用`python3 compile.py`重新运行编译文件。更多信息您可通过[此链接](https://pypi.org/project/py-solc-x/)查看。
@@ -139,11 +135,7 @@ npm init --yes
 
 ## 合约部署 {: #deploying-the-contract }
 
-无论使用哪种库，部署已编译智能合约的策略都有些相似。本合约实例使用其接口（ABI）和字节码所创建。在此示例，部署功能可通过发送已签名的交易来部署合约。您可以通过以下链接找到对应库的代码片段（文件被命名为`deploy.*`）：
-
- - Web3.js: [_deploy.js_](/snippets/code/web3-contract-local/deploy.js)
- - Ethers.js: [_deploy.js_](/snippets/code/ethers-contract-local/deploy.js)
- - Web3.py: [_deploy.py_](/snippets/code/web3py-contract/deploy.py)
+无论使用哪种库，部署已编译智能合约的策略都有些相似。本合约实例使用其接口（ABI）和字节码所创建。在此示例，部署功能可通过发送已签名的交易来部署合约。您可以创建一个名为 `deploy.js` 或 `deploy.py` 的文件，具体取决于您使用的语言。
 
 简单起见，部署文件由两个部分组成。如同前例，您使用的库、合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和提供者的帐户（具有私钥）也会被定义。请注意，`providerRPC`同时拥有标准开发节点的RPC终端和[Moonbase Alpha](/learn/platform/networks/moonbase/)的终端。
 
@@ -170,7 +162,7 @@ npm init --yes
 
 ### Web3.js {: #web3js } 
 
-在[脚本](/snippets/code/web3-contract-local/deploy.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
+在脚本的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
 
 为了交易和日志记录，需定义私钥以及与之关联的地址，此处仅需要私钥。 此外，您可以从编译器的输出中获取字节码和接口（ABI）。
 
@@ -182,7 +174,7 @@ npm init --yes
 
 ### Ethers.js {: #ethersjs } 
 
-在[脚本](/snippets/code/ethers-contract-local/deploy.js)的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
+在脚本的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
 私钥可用于创建钱包实例，需要上一步内提及的提供者辅助。钱包实例可用于对交易进行签名。此外，您可以从编译器的输出中获取字节码和ABI 。
 
@@ -192,7 +184,7 @@ npm init --yes
 
 ### Web3.py {: #web3py } 
 
-In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the `web3` instance (or provider) is created using the 在[此脚本](/snippets/code/web3py-contract/deploy.py)的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
+在此脚本的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
 
 私钥和与之关联的公共地址功能：签名交易和建立来源地址。
 
@@ -206,11 +198,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 调用方法不需要修改合约存储（更改变量）的交互类型，这意味着无需发送任何交易。
 
-下面简单介绍 _get.*_ 文件（调用方法中最简单的一种），该文件将获取合约中存储的当前值。您可以通过以下链接找到对应库的代码段（文件被命名为`get.*`):
-
- - Web3.js: [_get.js_](/snippets/code/web3-contract-local/get.js)
- - Ethers.js: [_get.js_](/snippets/code/ethers-contract-local/get.js)
- - Web3.py: [_get.py_](/snippets/code/web3py-contract/get.py)
+下面简单介绍 _get.*_ 文件（调用方法中最简单的一种），该文件将获取合约中存储的当前值。您可以创建一个名为 `get.js` 或 `get.py` 的文件，具体取决于您使用的语言。
 
 简单起见，调用文件由两个部分组成。如同前例，您使用的库，合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者和合约地址也会被定义。请注意，`providerRPC`同时拥有标准开发节点的RPC终端和[Moonbase Alpha](/learn/platform/networks/moonbase/)的终端。
 
@@ -233,7 +221,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Web3.js {: #web3js } 
 
-在[脚本](/snippets/code/web3-contract-local/get.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
+在脚本的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -243,7 +231,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Ethers.js {: #ethersjs } 
 
-在[脚本](/snippets/code/ethers-contract-local/get.js)的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
+在脚本的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -253,7 +241,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Web3.py {: #web3py } 
 
-在[脚本](/snippets/code/web3py-contract/get.py)的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
+在脚本的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
 
 合约接口（ABI）和地址也需要与之交互。
 
@@ -265,11 +253,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 发送程序是修改合约存储（更改变量）的交互类型，也就是需要对交易进行签名和发送。
 
-首先，概述 _increment.*_ 文件，该文件将合约中存储的当前数字增加给定值。 您可以通过以下链接找到对应库的代码段（文件被命名为`increment。*`）：
-
- - Web3.js: [_increment.js_](/snippets/code/web3-contract-local/increment.js)
- - Ethers.js: [_increment.js_](/snippets/code/ethers-contract-local/increment.js)
- - Web3.py: [_increment.py_](/snippets/code/web3py-contract/increment.py)
+首先，概述 _increment.*_ 文件，该文件将合约中存储的当前数字增加给定值。 您可以创建一个名为 `increment.js` 或 `increment.py` 的文件，具体取决于您使用的语言。
 
 简单起见，增量文件由两个部分组成。如同前例，使用的库以及合约的ABI和字节码会在第一部分（"Define Provider & Variables"）被导入。此外，提供者、合约地址和`increment`函数的值也会被定义。请注意，`providerRPC`同时拥有标准开发节点的RPC终端和[Moonbase Alpha](/learn/platform/networks/moonbase/)的终端。
 
@@ -290,11 +274,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
     --8<-- 'code/web3py-contract/increment.py'
     ```
 
-其次，用来合约交互的文件是 _reset.*_ ，该文件的功能是将合约中存储的数字重置归零。您可以通过以下链接找到对应库的代码段（文件被命名为`reset.*`）：
-
- - Web3.js: [_reset.js_](/snippets/code/web3-contract-local/reset.js)
- - Ethers.js: [_reset.js_](/snippets/code/ethers-contract-local/reset.js)
- - Web3.py: [_reset.py_](/snippets/code/web3py-contract/reset.py)
+其次，用来合约交互的文件是 _reset.*_ ，该文件的功能是将合约中存储的数字重置归零。您可以创建一个名为 `reset.js` 或 `reset.py` 的文件，具体取决于您使用的语言。
 
 每个文件的结构与每个库的 _increment.*_ 对应结构类似，主要区别在于调用程序。
 
@@ -315,7 +295,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Web3.js {: #web3js } 
 
-在脚本（[increment](/code-snippets/web3-contract-local/increment.js)或者[reset](/code-snippets/web3-contract-local/reset.js)文件）的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择将交易发送到您指定的网络。
+在“increment”或者“reset”脚本的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择将交易发送到您指定的网络。
 
 定义私钥和与之关联的地址是为了交易和日志记录。此处仅需要私钥。 此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
@@ -327,7 +307,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Ethers.js {: #ethersjs } 
 
-在脚本（[increment](/code-snippets/ethers-contract-local/increment.js)或者[reset](/code-snippets/ethers-contract-local/reset.js)文件）第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
+在“increment”或者“reset”脚本的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
 定义私钥是用于创建钱包实例，需要上一步所提及的提供者辅助。钱包实例可用于对交易进行签名。此外，合约接口（ABI）和地址也需要与之交互。如有必要，您可以定义所需的任何变量作为要与之交互的函数的输入。
 
@@ -337,7 +317,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ### Web3.py {: #web3py } 
 
-在脚本（[increment](/code-snippets/web3py-contract/increment.py)或者[reset](/code-snippets/web3py-contract/reset.py)文件）的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
+在“increment”或者“reset”脚本的第一部分，`web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择要将交易发送到您指定的网络。
 
 定义私钥和与之关联的地址是为了签名交易和创立发送地址。 此外，合约接口（ABI）和地址也需要与之交互。
 
@@ -349,7 +329,7 @@ In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the
 
 ## 运行脚本 {: #running-the-scripts }
 
-在这个部分，之前所显示的代码已针对开发节点进行了调整，您可以根据[此教程](/builders/get-started/moonbeam-dev/)来运行。与此同时，每笔交易均从节点随附的预付款帐户发送。
+在这个部分，之前所显示的代码已针对开发节点进行了调整，您可以根据[Moonbeam开发节点教程](/builders/get-started/moonbeam-dev/){target=blank}来运行。与此同时，每笔交易均从节点随附的预付款帐户发送。
 
 --8<-- 'text/metamask-local/dev-account.md'
 

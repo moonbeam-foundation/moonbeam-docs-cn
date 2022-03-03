@@ -1,9 +1,9 @@
 ---
-title: 验证智能合约
+title: 区块浏览器
 description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约
 
 ---
-# 验证智能合约
+# 使用区块浏览器验证智能合约
 
 ![Explorer Banner](/images/builders/tools/verify-contracts/block-explorers/verify-contract-banner.png)
 
@@ -21,7 +21,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 本教程将会使用以上提及的部署教程中所使用的智能合约作为验证范本。
 
-所使用的合约为简单的增量函数，根据功能命名为*Incrementer.sol*，您也可以在[这里](/snippets/code/web3-contract-local/Incrementer.sol)找到更多细节。内含的Solidity代码如以下所示：
+所使用的合约为简单的增量函数，根据功能命名为*Incrementer.sol*。内含的Solidity代码如以下所示：
 
 ```solidity
 --8<-- 'code/web3-contract-local/Incrementer.sol'
