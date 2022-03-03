@@ -26,7 +26,7 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/){target=b
  - 平行链质押过滤器根据每个网络中的Token质押量挑选排名靠前的候选人。每个网络候选人的具体排名数量，请参考文档网页的[最低收集人绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}部分。这个过滤后的池被称为“精选候选人池”（即收集人有效集）。每一轮这个池中的候选人都会进行更新
  - 固定规模子集过滤器为每个块生产槽选出的候选者挑选伪随机子集
 
-用户可以在Moonbeam、Moonriver和Moonbase Alpha网络上启动全节点，并激活`collate`功能作为候选收集人参与生态系统。您可以查看文档网页的[运行节点](/node-operators/networks/run-a-node/){target=blank}部分选择使用[Docker](node-operators/networks/run-a-node/docker/){target=blank}或[Systemd](node-operators/networks/run-a-node/systemd/){target=blank}启动节点。
+用户可以在Moonbeam、Moonriver和Moonbase Alpha网络上启动全节点，并激活`collate`功能作为候选收集人参与生态系统。您可以查看文档网页的[运行节点](/node-operators/networks/run-a-node/){target=blank}部分选择使用[Docker](/node-operators/networks/run-a-node/docker/){target=blank}或[Systemd](/node-operators/networks/run-a-node/systemd/){target=blank}启动节点。
 
 ## 加入Discord {: #join-discord }
 

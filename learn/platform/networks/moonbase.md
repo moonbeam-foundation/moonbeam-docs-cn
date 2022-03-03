@@ -83,7 +83,7 @@ Moonbase Alpha具有以下配置：
         - 引入新的共识机制Nimbus。Nimbus通过提供不同的过滤器，随机选择活跃收集人池的一部分来进行下一个区    块生产。此外，区块作者将使用可以映射到每个收集人的 H160 地址的会话密钥进行奖励支付。您可在[这里](/learn/consensus/)阅读更多关于Nimbus资讯。
         - 在地址`{{ networks.moonbase.precompiles.staking }}`处增加[质押预编译合约](https://github.com/PureStake/moonbeam/pull/358)。您可在[此链接](https://raw.githubusercontent.com/PureStake/moonbeam/master/precompiles/parachain-staking/StakingInterface.sol)找到如何与合约交互。
         - 增加初步日志布隆过滤器（Bloom Filter），以匹配通过Frontier的用户请求。进一步优化了此功能，以实现更快的响应时间和更可预测的性能
-        - 增加[平行链众贷pallet](https://github.com/paritytech/polkadot/blob/master/runtime/common/src/crowdloan.rs)，以测试众贷奖励分配
+        - 增加[平行链众贷pallet](https://github.com/PureStake/crowdloan-rewards)，以测试众贷奖励分配
         - 众多升级以加强网络稳定性
         - 最低Gas价格设定为1 GDEV（类似于与以太坊上的GWei）
 

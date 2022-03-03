@@ -64,15 +64,9 @@ npm init --yes
 
 ## 交易文件 {: #the-transaction-file }
 
-只需一个文件即可执行帐户之间的交易。我们会示范如何通过以下脚本，从拥有私钥的初始地址转账1个Token至另一个指定地址。您可以通过以下链接找到对应库的代码片段（文件被命名为`transaction.*`）：
+只需一个文件即可执行帐户之间的交易。您可以创建一个文件并将其命名为`transaction.js`或`transaction.py`，具体取决于您使用的语言。
 
- - Web3.js: [_transaction.js_](/snippets/code/web3-tx-local/transaction.js)
- - Ethers.js: [_transaction.js_](/snippets/code/ethers-tx-local/transaction.js)
- - Web3.py: [_transaction.py_](/snippets/code/web3py-tx/transaction.py)
-
-无论使用哪个库，每个文件都被分为三个部分：第一部分（“Define Provider & Variables”），导入需使用的库，被定义的提供者以及其他变量（变量会随着库的改变而改变）。请注意，`providerRPC`同时拥有标准开发节点RPC端点和[Moonbase Alpha](/learn/platform/networks/moonbase/)的端点。
-
-第二部分（“Create and Deploy Transaction”），概述了传送交易所需要的函数。其中部分关键要点我们将会在后面展开讨论。
+本节中显示的脚本会将1枚代币从原始地址（您持有私钥的地址）转移到另一个地址。无论使用什么库，脚本都分为两个部分。在第一部分（"Define Provider & Variables"）中，导入了要使用的库，并定义了提供程序和其他变量（变量取决于库）。请注意，`providerRPC` 既有标准的开发节点RPC端点，也有用于 [Moonbase Alpha](/learn/platform/networks/moonbase/) 的端点。第二部分（"Create and Deploy Transaction"）概述了发送事务本身所需的功能。下面将讨论一些关键要点。
 
 === "Web3.js"
     ```
@@ -91,7 +85,7 @@ npm init --yes
 
 ### Web3.js {: #web3js } 
 
-在[脚本](/snippets/code/web3-tx-local/transaction.js)的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
+在脚本的第一部分，`web3`实例（或提供者）通过RPC提供的`Web3`构造函数创建。您可以通过改变构造函数的提供者RPC，选择要将交易发送到您指定的网络。
 
 私钥及其关联的公共地址分别用于交易签名及日志记录。仅需提供私钥即可。
 
@@ -105,7 +99,7 @@ npm init --yes
 
 ### Ethers.js {: #ethersjs } 
 
-在[脚本](/snippets/code/ethers-tx-local/transaction.js)的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
+在脚本的第一部分，您可以使用名字、RPC URL（必填）和Chain ID来指定不同的网络。另一种方式是调用`ethers.providers.StaticJsonRpcProvider`或`ethers.providers.JsonRpcProvide(providerRPC)`创建提供者（类似于`web3`实例），后者仅需提供者RPC的端点地址，但调用此函数能会导致与某些项目格式规范的兼容性问题。
 
 定义私钥用于创建钱包的实例，需要上一步所提及的提供者辅助。钱包实例可用于对交易进行签名。
 
@@ -119,7 +113,7 @@ npm init --yes
 
 ### Web3.py {: #web3py } 
 
-在[脚本](/snippets/code/web3py-tx/transaction.py)的第一部分， `web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择将交易发送到您指定的网络。
+在脚本的第一部分， `web3`实例（或是提供者）是使用提供者RPC的`Web3(Web3.HTTPProvider(provider_rpc))`方式所创建的。您可以通过改变提供者RPC，选择将交易发送到您指定的网络。
 
 私钥及其关联的公共地址分别用于交易签名及日志记录。无需提供公共地址。
 
@@ -131,17 +125,9 @@ npm init --yes
 
 ## 余额文件 {: #the-balance-file }
 
-在运行脚本之前，您需要在交易前和交易后检查您的余额文件。您可通过简单的查询账户余额来进行检查。
+在运行脚本之前，您需要在交易前和交易后检查您的余额文件。您可通过简单的查询账户余额来进行检查。首先，创建一个新文件并将其命名为“balances.js”或“balances.py”，具体取决于您使用的语言。
 
-您可通过以下链接找到对应库的代码段（文件被命名为`balances.*`）：
-
- - Web3.js: [_balances.js_](/snippets/code/web3-tx-local/balances.js)
- - Ethers.js: [_balances.js_](/snippets/code/ethers-tx-local/balances.js)
- - Web3.py: [_balances.py_](/snippets/code/web3py-tx/balances.py)
-
-简单起见，余额文件由两个部分组成。如同前例，您要使用的库会在第一部分（“Define Provider & Variables”）被导入，提供者和发送/接收地址（查询余额）也会被定义。
-
-第二部分（“Balance Call Function”）概述了获取先前定义的账户余额的所需函数。请注意，`providerRPC`同时拥有标准开发节点的RPC端点和[Moonbase Alpha](/learn/platform/networks/moonbase/)的端点。其中的关键要点我们将会在后面展开讨论。
+简单起见，余额文件由两个部分组成。如同前例，您要使用的库会在第一部分（“Define Provider & Variables”）被导入，提供者和发送/接收地址（查询余额）也会被定义。第二部分（“Balance Call Function”）概述了获取先前定义的账户余额的所需函数。请注意，`providerRPC`同时拥有标准开发节点的RPC端点和[Moonbase Alpha](/learn/platform/networks/moonbase/)的端点。其中的关键要点我们将会在后面展开讨论。
 
 === "Web3.js"
     ```
@@ -160,25 +146,25 @@ npm init --yes
 
 ### Web3.js {: #web3js } 
 
-[此脚本](/snippets/code/web3-tx-local/balances.js)的第一部分与[交易文件](/getting-started/local-node/send-transaction/#web3js)非常相似，最大的不同是没有发送交易的需求，此脚本不需要您的私钥。
+此脚本的第一部分与[交易文件](/getting-started/local-node/send-transaction/#web3js)非常相似，最大的不同是没有发送交易的需求，此脚本不需要您的私钥。
 
 在第二部分，通过调用封装了web3方法的异步函数`web3.eth.getBalance(address)`来获取地址余额。同时，您可以使用`web3.utils.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ### Ethers.js {: #ethersjs } 
 
-[此脚本](/snippets/code/ethers-tx-local/balances.js)的第一部分与[交易文件](/builders/interact/eth-libraries/send-transaction/#ethersjs)非常相似，最大的不同是无需私钥传送交易需求。但是，您仅需要定义`addressFrom`。
+此脚本的第一部分与[交易文件](/builders/interact/eth-libraries/send-transaction/#ethersjs)非常相似，最大的不同是无需私钥传送交易需求。但是，您仅需要定义`addressFrom`。
 
 在第二部分，通过调用封装了提供者方法的异步函数`provider.getBalance(address)`获取地址余额。同时，您也可以使用`ethers.utils.formatEther()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ### Web3.py {: #web3py } 
 
-[此脚本](/snippets/code/web3py-tx/balances.py)的第一个部分与[交易文件](/builders/interact/eth-libraries/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
+此脚本的第一个部分与[交易文件](/builders/interact/eth-libraries/send-transaction/#web3py)非常相似。最大的不同是无需私钥传送交易需求。
 
 在第二部分，通过调用`web3.eth.getBalance(address)`来获取接收地址的余额。同时，您也可以使用`eb3.fromWei()`函数，将余额转换成更容易识别ETH数量的计量单位。
 
 ## 运行脚本 {: #running-the-scripts }
 
-在这个部分，之前所显示的代码已针对开发节点进行了调整，您可以根据[此教程](/builders/get-started/moonbeam-dev/)来运行。与此同时，每笔交易均从节点随附的预付款帐户发送。
+在这个部分，之前所显示的代码已针对开发节点进行了调整，您可以根据[Moonbeam开发节点教程](/builders/get-started/moonbeam-dev/){target=blank} 来运行。与此同时，每笔交易均从节点随附的预付款帐户发送。
 
 --8<-- 'text/metamask-local/dev-account.md'
 
