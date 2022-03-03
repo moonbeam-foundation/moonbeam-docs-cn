@@ -17,7 +17,7 @@ description:  通过此教程学习如何使用OpenZeppelin的智能合约交互
 
 ## OpenZeppelin Contract Wizard {: #openzeppelin-contract-wizard } 
 
-OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为[Contracts Wizard]((https://docs.openzeppelin.com/contracts/4.x/wizard)){target=blank}。
+OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为[Contracts Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard){target=blank}。
 
 目前Contracts Wizard支持以下ERC标准：
 
