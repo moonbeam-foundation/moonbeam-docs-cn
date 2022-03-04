@@ -4,7 +4,7 @@ description: 通过此教程学习如何使用以太坊Web3 JavaScript库在Moon
 ---
 # Web3.py Python库
 
-![Intro diagram](/images/builders/tools/eth-libraries/web3py-banner.png)
+![Intro diagram](/images/builders/build/eth-api/libraries/web3py/web3py-banner.png)
 
 ## 概览 {: #introduction } 
 

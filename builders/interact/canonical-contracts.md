@@ -5,7 +5,7 @@ description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标
 
 # 标准合约
 
-![Canonical contracts banner](/images/builders/interact/canonical-contracts/canonical-contracts-banner.png)
+![Canonical contracts banner](/images/builders/build/canonical-contracts/contract-addresses/canonical-contracts-banner.png)
 
 ## 公用基础设施合约 {: #common-goods-contracts}
 
