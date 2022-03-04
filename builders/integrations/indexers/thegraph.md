@@ -313,3 +313,5 @@ npx graph deploy <username>/<subgraphName> \
 ![The Graph deployed](/images/builders/integrations/indexers/the-graph/the-graph-1.png)
 
 现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据。
+
+--8<-- 'text/disclaimers/third-party-content.md'

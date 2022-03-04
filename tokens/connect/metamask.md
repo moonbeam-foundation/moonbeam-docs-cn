@@ -131,3 +131,5 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 
 !!! 注意事项
     如果您最终使用Substrate purge-chain命令重置您的开发节点，您需要选择**Setting**下**Advanced**，然后点击**Reset Account**这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。
+
+--8<-- 'text/disclaimers/third-party-content.md'

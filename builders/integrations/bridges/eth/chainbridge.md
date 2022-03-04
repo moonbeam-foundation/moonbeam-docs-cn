@@ -351,3 +351,5 @@ interface IBridge {
 ### Moonbase Alpha ChainBridge用户界面 {: #moonbase-alpha-chainbridge-ui } 
 
 使用[Moonbase Alpha ChainBridge用户界面](https://moonbase-chainbridge.netlify.app/)，无需设置Remix合约即可体验将ERC-20S代币从Moonbase Alpha转移到Kovan或Rinkeby的操作过程。
+
+--8<-- 'text/disclaimers/third-party-content.md'

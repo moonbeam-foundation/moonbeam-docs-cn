@@ -160,3 +160,4 @@ Covalent目前拥有Python、Node、Go代码库，这些代码库作为[Covalent
 !!! 注意事项
     这些工具并非由Covalent进行维护。用户需要自行尽职调查，在使用这些项目的工具之前对其进行评估。
 
+--8<-- 'text/disclaimers/third-party-content.md'

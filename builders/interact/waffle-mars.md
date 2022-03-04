@@ -401,3 +401,5 @@ npm run deploy
 ## 示例项目 {: #example-project } 
 
 如果您想在Moonbeam上查看Waffle和Mars项目的完整示例，请查看以下由EthWorks（Waffle和Mars背后的团队）成员创建的[moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example)。
+
+--8<-- 'text/disclaimers/third-party-content.md'

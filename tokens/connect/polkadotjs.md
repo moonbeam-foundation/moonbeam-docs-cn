@@ -66,3 +66,5 @@ description: 根据此教程快速学习如何使用基于Substrate的应用程�
 ![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-8.png)
 
 这表明交易已完成！我们非常高兴Polkadot.js App能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam Network的用户体验和以太坊兼容功能。
+
+--8<-- 'text/disclaimers/third-party-content.md'

@@ -76,3 +76,5 @@ module.exports = {
 ## 分步教程 {: #tutorial }
 
 如果您想获得更加详细的分步教程，您可以查看在Moonbeam上使用[Hardhat](/builders/interact/hardhat/)进行开发的详细教程。  
+
+--8<-- 'text/disclaimers/third-party-content.md'
