@@ -234,7 +234,7 @@ yarn install
          file: ./abis/moonbeamDevNode_YourContract.json
         ```
 
-关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/intergrations/indexers/thegraph/){target=blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=blank}。
+关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=blank}。
 
 ### React组件 {: #react-component }
 
