@@ -7,6 +7,7 @@ nav:
  - hardhat.md
  - truffle.md
  - waffle-mars.md
+ - scaffold-eth.md
  - canonical-contracts.md
  - proxy-accounts.md
  - identity.md

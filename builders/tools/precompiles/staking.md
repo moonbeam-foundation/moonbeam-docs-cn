@@ -46,7 +46,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
  - **delegator_delegation_count**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数，取代已弃用的`nominator_nomination_count`函数
  - **join_candidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集
  - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`execute_leave_candidates`执行请求。 取代已弃用的`leave_candidates`函数
- - **execute_leave_candidates**() —— 执行离开候选收集人集的可用请求
+ - **execute_leave_candidates**(*address* candidate, *uint256* candidateDelegationCount) —— 执行离开候选收集人集的可用请求
  - **cancel_leave_candidates**(*uint256* candidateCount) —— 使候选人取消待处理的离开候选人池的请求。提供当前候选人池中的候选人数量
  - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集
  - **go_online**() —— 在先前调用go_offline()后，重新加入候选收集人集
@@ -56,7 +56,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
  - **cancel_candidate_bond_request**() —— 使候选人取消待处理的减少候选人绑定数量的请求
  - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 如果执行者并不是委托人，此函数会将其加入委托人集。如果执行者已经是委托人，此函数将会调整其委托数量。取代已弃用的`nominate`函数
  - **schedule_leave_delegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_leave_delegators`函数执行请求。此为取代已弃用的`leave_nominators`函数
- - **execute_leave_delegators**(*uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求
+ - **execute_leave_delegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求
  - **cancel_leave_delegators**() —— 取消待处理的离开委托人集的请求
  - **schedule_revoke_delegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`execute_delegation_request`函数执行请求。取代已弃用的 `revoke_nominations`函数
  - **delegator_bond_more**(*address* candidate, *uint256* more) —— 委托人增加绑定在特定收集人的数量。取代已弃用的`nominator_bond_more`函数
