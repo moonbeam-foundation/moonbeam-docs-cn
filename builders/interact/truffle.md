@@ -47,7 +47,7 @@ mkdir moonbeam-truffle-box && cd moonbeam-truffle-box
 truffle unbox PureStake/moonbeam-truffle-box
 ```
 
-![Unbox Moonbeam Truffle box](/images/builders/interact/eth-dev-env/truffle/truffle-1.png)
+![Unbox Moonbeam Truffle box](/images/builders/build/eth-api/dev-env/truffle/truffle-1.png)
 
 若您不想全网安装Truffle，Moonbeam Truffle box也有Truffle作为依赖项可以使用。在这种情况下，您可以直接克隆以下代码库：
 
@@ -150,7 +150,7 @@ module.exports = {
 truffle run moonbeam install
 ```
 
-![Docker image download](/images/builders/interact/eth-dev-env/truffle/truffle-2.png)
+![Docker image download](/images/builders/build/eth-api/dev-env/truffle/truffle-2.png)
 
 下载后，我们可以使用以下指令来开始生成本地节点：
 
@@ -160,7 +160,7 @@ truffle run moonbeam start
 
 您将看到节点启动的提示消息，紧随其后的是两个有效终端。
 
-![Moonbeam local node started](/images/builders/interact/eth-dev-env/truffle/truffle-3.png)
+![Moonbeam local node started](/images/builders/build/eth-api/dev-env/truffle/truffle-3.png)
 
 您可以通过以下代码来停止运行Moonbeam开发节点，并删除Docker映像：
 
@@ -169,7 +169,7 @@ truffle run moonbeam stop && \
 truffle run moonbeam remove
 ```
 
-![Moonbeam local node stoped and image removed](/images/builders/interact/eth-dev-env/truffle/truffle-4.png)
+![Moonbeam local node stoped and image removed](/images/builders/build/eth-api/dev-env/truffle/truffle-4.png)
 
 您还可以选择暂停和取消暂停Moonbeam开发节点：
 
@@ -180,7 +180,7 @@ truffle run moonbeam unpause
 
 您可以在下图中看到这些命令的输出：
 
-![Install Moonbeam Truffle box](/images/builders/interact/eth-dev-env/truffle/truffle-5.png)
+![Install Moonbeam Truffle box](/images/builders/build/eth-api/dev-env/truffle/truffle-5.png)
 
 !!! 注意事项
     如果您熟悉Docker，您可以跳过插件命令，直接与Docker映像交互。
@@ -228,7 +228,7 @@ truffle compile
 
 若操作成功，您将会看到如下图所示情况：
 
-![Truffle compile success message](/images/builders/interact/eth-dev-env/truffle/truffle-6.png)
+![Truffle compile success message](/images/builders/build/eth-api/dev-env/truffle/truffle-6.png)
 
 现在我们开始准备部署已编译完的合约。您可以使用以下命令执行此操作：
 
@@ -254,5 +254,5 @@ truffle migrate --network moonriver
 
 若操作成功，您将看到部署成功的信息，其中包括部署合约的地址：
 
-![Successful contract deployment actions](/images/builders/interact/eth-dev-env/truffle/truffle-7.png)
+![Successful contract deployment actions](/images/builders/build/eth-api/dev-env/truffle/truffle-7.png)
 

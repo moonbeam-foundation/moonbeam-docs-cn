@@ -5,7 +5,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 # 设置代理账户
 
-![Setting up a Proxy Account](/images/builders/interact/proxy-accounts/proxies-banner.png)
+![Setting up a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -91,24 +91,24 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 7. 点击**Submit Transaction** 
 
-![Creating a Proxy Account](/images/builders/interact/proxy-accounts/proxies-1.png)
+![Creating a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-1.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。点击**Sign and Submit**创建代理关系。
 
-![Submit Transaction to Create a Proxy Account](/images/builders/interact/proxy-accounts/proxies-2.png)
+![Submit Transaction to Create a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-2.png)
 
 交易成功提交后，您将收到交易确认的通知。
 
 如前文所述，您也可以从**Accounts**创建代理账户。进入**Accounts**页面，点击主账户旁边的三个竖点，选择**Add proxy**。
 
-![Add Proxy](/images/builders/interact/proxy-accounts/proxies-3.png)
+![Add Proxy](/images/tokens/manage/proxy-accounts/proxies-3.png)
 
 !!! 注意事项
     如果帐户中已有代理，显示的选项将会是**Manage proxies**，而不是显示**Add proxy**。
 
 随后，将会跳出弹窗，您将能够输入所需信息（如主账户/被代理账户、代理账户、代理类型等）以创建代理账户。
 
-![Add Proxy from Accounts Page](/images/builders/interact/proxy-accounts/proxies-4.png)
+![Add Proxy from Accounts Page](/images/tokens/manage/proxy-accounts/proxies-4.png)
 
 在下一部分，您将学习如何验证您的代理账户是否已成功设置。
 
@@ -130,17 +130,17 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 6. 点击**+**按钮发送查询请求
 
-![Verify your Proxy Accounts](/images/builders/interact/proxy-accounts/proxies-5.png)
+![Verify your Proxy Accounts](/images/tokens/manage/proxy-accounts/proxies-5.png)
 
 随后将在页面出现结果，显示所有代理的信息，包括委托/代理地址、代理类型、延迟期（若有设置）以及为所有代理绑定的总绑定数量（以wei为单位）。
 
 如前所述，您也可以通过**Accounts**页面验证您的代理账户。进入**Accounts**页面，主账户旁边应出现代理图标。将鼠标移至该图标，点击**Proxy overview**查看您的代理。
 
-![Proxy Overview Button](/images/builders/interact/proxy-accounts/proxies-6.png)
+![Proxy Overview Button](/images/tokens/manage/proxy-accounts/proxies-6.png)
 
 随后将跳出弹窗，您可以查看所有代理账户的信息。
 
-![Proxy Overview Pop-up](/images/builders/interact/proxy-accounts/proxies-7.png)
+![Proxy Overview Pop-up](/images/tokens/manage/proxy-accounts/proxies-7.png)
 
 ## 执行代理交易 {: #executing-a-proxy-transaction } 
 
@@ -166,7 +166,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 9. 点击**Submit Transaction**
 
-![Execute a Proxy Transaction](/images/builders/interact/proxy-accounts/proxies-8.png)
+![Execute a Proxy Transaction](/images/tokens/manage/proxy-accounts/proxies-8.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。输入代理账户的密码后点击**Sign and Submit**。
 
@@ -194,7 +194,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 7. 点击**Submit Transaction**
 
-![Remove a Proxy Account](/images/builders/interact/proxy-accounts/proxies-9.png)
+![Remove a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-9.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。可以选择从主账户或代理账户签署和发送交易，但为了移除代理，交易必须从主账户发送。输入您的密码并点击**Sign and Submit**。
 
@@ -202,11 +202,11 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 如前所示，您也可以在**Accounts**页面移除代理账户。进入**Accounts**页面，点击主账户旁边的三个竖点，选择**Manage Proxies**。
 
-![Manage Proxies](/images/builders/interact/proxy-accounts/proxies-10.png)
+![Manage Proxies](/images/tokens/manage/proxy-accounts/proxies-10.png)
 
 随后将跳出弹窗，您可以查看所有代理账户的信息。您可以点击代理账户旁边的**X**按钮移除单个代理账户。代理将从列表中移除，随后点击**Submit**。接下来，输入您的密码提交交易。您也可以点击**Clear all**移除所有的代理，随后系统将自动提示您输入密码和提交交易。
 
-![Remove a Proxy Account from the Accounts Page](/images/builders/interact/proxy-accounts/proxies-11.png)
+![Remove a Proxy Account from the Accounts Page](/images/tokens/manage/proxy-accounts/proxies-11.png)
 
 交易成功提交后，您可以查看您当前的代理。如果您移除了所有代理，您会看到代理图标不再显示在主帐户旁边。
 

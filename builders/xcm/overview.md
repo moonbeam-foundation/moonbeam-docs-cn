@@ -5,7 +5,7 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 # 跨共识信息格式（XCM）
 
-![XCM Overview Banner](/images/builders/xcm/overview-banner.png)
+![XCM Overview Banner](/images/builders/xcm/overview/overview-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -24,14 +24,14 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 !!! 注意事项
     目前，XCMP仍在开发当中。当前暂时使用称为水平中继路由信息传递（HRMP）进行传递，信息将会在中继链存储和读取，此协议将会在XCMP完整部署后弃用
 
-![Vertical Message Passing and Cross-chain Messge Passing Overview](/images/builders/xcm/overview-1.png)
+![Vertical Message Passing and Cross-chain Messge Passing Overview](/images/builders/xcm/overview/overview-1.png)
 
 除此之外，至少在XCM信息实现的早期阶段，有两个最常见的用例：
 
 - **资产传送** —— 通过销毁在初始区块链的资产并在目标链上创建相应数量的资产以将资产从一个区块链转移到另外一个区块链。在此情况下，每条链都将使用原生资产作为储备，类似于销毁铸造的桥接机制。此模式需要一定程度的信任，因为两条链中的任何一条都有可能恶意铸造更多资产
 - **远程转移** —— 通过在初始区块链上由目标区块链所拥有的中间账户将资产转移至目标区块链。此中间账户称为“主权”账户。在此情况下，原本链上的资产将不会被销毁，而是由主权账户持有。而XCM的执行将会在目标链上铸造包装（又称“虚拟”或是“跨链”资产）的相应资产至目标地址。此包装资产将能够永远以1:1的比例与原生资产兑换。此机制类似于锁仓铸造或是销毁解锁的桥接机制
 
-![Asset Teleporting and Remote Transfers](/images/builders/xcm/overview-2.png)
+![Asset Teleporting and Remote Transfers](/images/builders/xcm/overview/overview-2.png)
 
 关于更多XCM的细节相关文章请访问[Polkadot Wiki](https://wiki.polkadot.network/docs/learn-crosschain)。
 
@@ -58,7 +58,7 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 尽管平行链A已经表达其与平行链B之间开启XCM信息频道的意愿，但后者仍未将其是否愿意收取来自平行链A信息的意愿传送至中继链。因此，如要建立一个完整信息频道，平行链B也必须传送函数（同样也是XCM）至中继链。接受开启信息频道的函数与先前的函数相同。然而，编码调用数据的部分仅需包含新方法（接受信息频道）和初始传送者的平行链ID（在此以平行链A为例）。当两条平行链皆同意后，信息频道将会在下个时段开启。
 
-![XCM Channel Registration Overview](/images/builders/xcm/overview-3.png)
+![XCM Channel Registration Overview](/images/builders/xcm/overview/overview-3.png)
 
 以上提到的动作皆能通过SUDO（若可用）或是治理（技术委员会或是公投）执行。
 
@@ -89,7 +89,7 @@ Moonbeam作为波卡生态系统中的平行链，其中最重要的XCM实现是
 
 为扩展至Moonbeam独特的以太坊兼容功能，外部资产将会通过预编译合约以标准的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)形式呈现。Moonbeam上的XCM资产将会被称为XC-20以与通过EVM产生的原生XCM资产区分。预编译合约将会使用适当的Substrate功能以执行要求动作。然而，以开发者的眼光来看，XC-20为具有XCM跨链资产优势的ERC-20 Token，dApp也将能以熟悉的ERC-20接口支持他们。
 
-![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/xcm/overview-4.png)
+![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/xcm/overview/overview-4.png)
 
 预编译本身并不支持跨链转账尽量保持与原始ERC-20接口相同。所以，开发者将会需要仰赖Substrate API和XCM将其资产转移回原先转入的链，或是在不同的[预编译合约](https://github.com/PureStake/moonbeam/tree/master/precompiles/xtokens)使用来自以太坊API的XCM基础功能。
 
@@ -109,7 +109,7 @@ Moonbeam作为波卡生态系统中的平行链，XCM + VMP的组合将能够使
 
 Moonbeam将会原地执行XCM信息内包含的指定动作。在此例子中为铸造和转帐同样数量的*xcDOT*（跨链DOT）至Alice指定的账户，也就是Alith。在目标区块链上执行XCM的费用已经在转移资产时使用部分资产支付（在此示例中为_xcDOTs_）。
 
-![Transfers from the Relay Chain to Moonbeam](/images/builders/xcm/overview-5.png)
+![Transfers from the Relay Chain to Moonbeam](/images/builders/xcm/overview/overview-5.png)
 
 请注意以下重点：
 
@@ -123,7 +123,7 @@ Alith将其*xcDOT*存入流动性矿池。接着，Charleth需要更多*xcDOT*�
 
 波卡将会原地执行XCM信息内包含的指定动作。在此示例中为自Moonbeam主权账户转移与销毁的*xcDOT*数量相同的DOT至Charleth指定的账户，在此示例中被称为Charley。
 
-![Transfers Back from Moonbeam to the Relay Chain](/images/builders/xcm/overview-6.png)
+![Transfers Back from Moonbeam to the Relay Chain](/images/builders/xcm/overview/overview-6.png)
 
 ### Moonbeam与其他平行链 {: #moonbeam-and-other-parachains }
 
@@ -135,6 +135,6 @@ Moonbeam作为波卡生态中的平行链，XCM + XCMP的组合使资产能够�
 
 由于XCM信息为在目标平行链上执行，因此将会铸造并转移同样数量的*xcGLMR*（跨链GLMR）至Alith指定的地址，在此示例中为Alice。XCM信息在目标平行链的执行费用以在转移资产时使用部分资产支付（此示例为*xcGLMR*）。
 
-![Transfers from Moonbeam to another Parachain](/images/builders/xcm/overview-7.png)
+![Transfers from Moonbeam to another Parachain](/images/builders/xcm/overview/overview-7.png)
 
 将*xcGLMR*转回Moonbeam的流程与上述流程相似。首先，XCM信息执行将会销毁返回至Moonbeam的*xcGLMR*数量。当成功销毁后，XCM信息剩余的部分将会通过中继链传送至Moonbeam。Moonbeam将会原地执行XCM信息并转移GLMR（销毁的*xcGLMR*数量）从目标链的主权账户至指定地址。

@@ -5,7 +5,7 @@ description: 在Moonbeam上使用Hardhat来编译、部署和调试以太坊智�
 
 # 在Moonbeam上使用Hardhat进行开发
 
-![Hardhat Create Project](/images/builders/interact/hardhat/hardhat-banner.png)
+![Hardhat Create Project](/images/builders/build/eth-api/dev-env/hardhat/hardhat-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -61,7 +61,7 @@ npx hardhat
 
 运行指令后，选择`Create an empty hardhat.config.js`：
 
-![Hardhat Create Project](/images/builders/interact/hardhat/hardhat-1.png)
+![Hardhat Create Project](/images/builders/build/eth-api/dev-env/hardhat/hardhat-1.png)
 
 ## 合约文档 {: #the-contract-file } 
 
@@ -195,7 +195,7 @@ module.exports = {
 npx hardhat compile
 ```
 
-![Hardhat Contract Compile](/images/builders/interact/hardhat/hardhat-2.png)
+![Hardhat Contract Compile](/images/builders/build/eth-api/dev-env/hardhat/hardhat-2.png)
 
 编译完成后将创建`artifacts`目录：合约的字节码和元数据将以`.json`文档形式保存在这个目录下。我们建议将这一目录加入到您的`.gitignore`。
 
@@ -246,7 +246,7 @@ main()
 
 合约在几秒之后便可部署完成，然后您就可以在终端上看到地址。
 
-![Hardhat Contract Deploy](/images/builders/interact/hardhat/hardhat-3.png)
+![Hardhat Contract Deploy](/images/builders/build/eth-api/dev-env/hardhat/hardhat-3.png)
 
 恭喜，您的合约现已上线！请保存地址，下一步我们将用它来与合约实例进行交互。
 
@@ -281,7 +281,7 @@ await box.store(5)
 
 交易将由您的Moonbase账户签名，并广播到整个网络。输出值与下面内容相似：
 
-![Transaction output](/images/builders/interact/hardhat/hardhat-4.png)
+![Transaction output](/images/builders/build/eth-api/dev-env/hardhat/hardhat-4.png)
 
 请注意输入的`from`地址、合约地址和`data`。现在可以运行以下代码获取数值：
 
