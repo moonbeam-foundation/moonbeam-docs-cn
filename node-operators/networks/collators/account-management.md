@@ -101,7 +101,7 @@ curl http://127.0.0.1:9933 -H \
 
 设置链上身份将便于识别您的收集人节点身份。与显示您的帐户地址不同，这将显示您所选择的名称。
 
-您有多种方式可以设置您的身份。您可以查看[管理您的账户身份](builders/interact/identity/){target=blank}文档页面为您的收集人节点设置身份。
+您有多种方式可以设置您的身份。您可以查看[管理您的账户身份](/builders/interact/identity/){target=blank}文档页面为您的收集人节点设置身份。
 
 ## 代理账户 {: #proxy-accounts }
 

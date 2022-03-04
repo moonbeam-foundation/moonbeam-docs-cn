@@ -79,7 +79,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  3. 确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}，并有多余金额用于支付交易费
  4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
  5. 打开下拉菜单，在质押相关的所有extrinsics中，选择**joinCandidates()**函数
- 6. 将绑定数量设置为成为候选人的[最低数量](node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
+ 6. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
  7. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
  8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
