@@ -1,5 +1,5 @@
 ---
-title: Flags
+title: 标志
 description: 有助于在Moonbeam上运行一个完整平行链节点的标志
 ---
 
