@@ -145,21 +145,21 @@ cargo build --release
     mkdir {{ networks.moonbase.node_directory }}
     ```  
 
-现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件复制到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件复制到根目录（可能需要`sudo`）：
+现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件移动到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件移动到根目录（可能需要`sudo`）：
 
 === "Moonbeam"
     ```
-    cp ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
+    mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
     ```
-    cp ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
+    mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
     ```
 
 === "Moonbase Alpha"
     ```
-    cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+    mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
     ```
 
 然后，在存储链上数据的本地目录设置相应的权限:
@@ -497,33 +497,33 @@ journalctl -f -u moonbeam.service
     
     如果您想要编译二进制文件，请参考[编译二进制文件](#compile-the-binary)指引，确保您已通过运行`git checkout`获取最新版本。
 
-5. 将二进制文件复制到数据目录：
+5. 将二进制文件移动到数据目录：
 
     === "Moonbeam"
         ```
         # If you used the release binary:
-        cp ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
+        mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
     
         # Or if you compiled the binary:
-        cp ./target/release/{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
+        mv ./target/release/{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
         ```
     
     === "Moonriver"
         ```
         # If you used the release binary:
-        cp ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
+        mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
     
         # Or if you compiled the binary:
-        cp ./target/release/{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
+        mv ./target/release/{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
         ```
 
     === "Moonbase Alpha"
         ```
         # If you used the release binary:
-        cp ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
     
         # Or if you compiled the binary:
-        cp ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        mv ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
         ```
     
 
