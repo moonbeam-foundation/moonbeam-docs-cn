@@ -201,47 +201,47 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 然后将EVM字段映射总结为如下所示：
 
 === "EIP1559"
-    | EVM Field              | Block JSON Field                                           |
-    |------------------------|------------------------------------------------------------|
-    | Chain ID             | `extrinsics.{extrinsic number}.args.transaction.eip1559.chainId`|   
-    | Nonce                | `extrinsics.{extrinsic number}.args.transaction.eip1559.nonce`|
-    | Max Priority Fee Per Gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas`|
-    | Max Fee Per Gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxFeePerGas`|
-    | Gas Limit             | `extrinsics.{extrinsic number}.args.transaction.eip1559.gasLimit`|
-    | Access List          | `extrinsics.{extrinsic number}.args.transaction.eip1559.accessList`|       
-    | Signature            | `extrinsics.{extrinsic number}.args.transaction.eip1559.oddYParity/r/s`|
-    | Sender Address       | `extrinsics.{extrinsic number}.events.{event number}.data.0` |
-    | Recipient Address    | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
-    | EVM Hash             | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
-    | EVM Execution Status | `extrinsics.{extrinsic number}.events.{event number}.data.3` |
+    |        EVM Field         |                               Block JSON Field                                |
+    |:------------------------:|:-----------------------------------------------------------------------------:|
+    |         Chain ID         |       `extrinsics.{extrinsic number}.args.transaction.eip1559.chainId`        |
+    |          Nonce           |        `extrinsics.{extrinsic number}.args.transaction.eip1559.nonce`         |
+    | Max Priority Fee Per Gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas` |
+    |     Max Fee Per Gas      |     `extrinsics.{extrinsic number}.args.transaction.eip1559.maxFeePerGas`     |
+    |        Gas Limit         |       `extrinsics.{extrinsic number}.args.transaction.eip1559.gasLimit`       |
+    |       Access List        |      `extrinsics.{extrinsic number}.args.transaction.eip1559.accessList`      |
+    |        Signature         |    `extrinsics.{extrinsic number}.args.transaction.eip1559.oddYParity/r/s`    |
+    |      Sender Address      |         `extrinsics.{extrinsic number}.events.{event number}.data.0`          |
+    |    Recipient Address     |         `extrinsics.{extrinsic number}.events.{event number}.data.1`          |
+    |         EVM Hash         |         `extrinsics.{extrinsic number}.events.{event number}.data.2`          |
+    |   EVM Execution Status   |         `extrinsics.{extrinsic number}.events.{event number}.data.3`          |
 
 === "Legacy"
-    | EVM Field              | Block JSON Field                                           |
-    |------------------------|------------------------------------------------------------|
-    | Nonce                | `extrinsics.{extrinsic number}.args.transaction.legacy.nonce`|
-    | Gas Price             | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice`|
-    | Gas Limit             | `extrinsics.{extrinsic number}.args.transaction.legacy.gasLimit`|
-    | Value                | `extrinsics.{extrinsic number}.args.transaction.legacy.value`|   
-    | Signature            | `extrinsics.{extrinsic number}.args.transaction.legacy.signature`|
-    | Sender Address       | `extrinsics.{extrinsic number}.events.{event number}.data.0` |
-    | Recipient Address    | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
-    | EVM Hash             | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
-    | EVM Execution Status | `extrinsics.{extrinsic number}.events.{event number}.data.3` |
+    |      EVM Field       |                         Block JSON Field                          |
+    |:--------------------:|:-----------------------------------------------------------------:|
+    |        Nonce         |   `extrinsics.{extrinsic number}.args.transaction.legacy.nonce`   |
+    |      Gas Price       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice`  |
+    |      Gas Limit       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasLimit`  |
+    |        Value         |   `extrinsics.{extrinsic number}.args.transaction.legacy.value`   |
+    |      Signature       | `extrinsics.{extrinsic number}.args.transaction.legacy.signature` |
+    |    Sender Address    |   `extrinsics.{extrinsic number}.events.{event number}.data.0`    |
+    |  Recipient Address   |   `extrinsics.{extrinsic number}.events.{event number}.data.1`    |
+    |       EVM Hash       |   `extrinsics.{extrinsic number}.events.{event number}.data.2`    |
+    | EVM Execution Status |   `extrinsics.{extrinsic number}.events.{event number}.data.3`    |
 
 === "EIP2930"
-    | EVM Field              | Block JSON Field                                           |
-    |------------------------|------------------------------------------------------------|
-    | Chain ID             | `extrinsics.{extrinsic number}.args.transaction.eip2930.chainId`|
-    | Nonce                | `extrinsics.{extrinsic number}.args.transaction.eip2930.nonce`|
-    | GasPrice             | `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice`|
-    | GasLimit             | `extrinsics.{extrinsic number}.args.transaction.eip2930.gasLimit`|
-    | Value                | `extrinsics.{extrinsic number}.args.transaction.eip2930.value`| 
-    | Access List          | `extrinsics.{extrinsic number}.args.transaction.eip2930.accessList`|       
-    | Signature            | `extrinsics.{extrinsic number}.args.transaction.eip2930.oddYParity/r/s`|
-    | Sender Address       | `extrinsics.{extrinsic number}.events.{event number}.data.0` |
-    | Recipient Address    | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
-    | EVM Hash             | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
-    | EVM Execution Status | `extrinsics.{extrinsic number}.events.{event number}.data.3` |
+    |      EVM Field       |                            Block JSON Field                             |
+    |:--------------------:|:-----------------------------------------------------------------------:|
+    |       Chain ID       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.chainId`     |
+    |        Nonce         |     `extrinsics.{extrinsic number}.args.transaction.eip2930.nonce`      |
+    |       GasPrice       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice`    |
+    |       GasLimit       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasLimit`    |
+    |        Value         |     `extrinsics.{extrinsic number}.args.transaction.eip2930.value`      |
+    |     Access List      |   `extrinsics.{extrinsic number}.args.transaction.eip2930.accessList`   |
+    |      Signature       | `extrinsics.{extrinsic number}.args.transaction.eip2930.oddYParity/r/s` |
+    |    Sender Address    |      `extrinsics.{extrinsic number}.events.{event number}.data.0`       |
+    |  Recipient Address   |      `extrinsics.{extrinsic number}.events.{event number}.data.1`       |
+    |       EVM Hash       |      `extrinsics.{extrinsic number}.events.{event number}.data.2`       |
+    | EVM Execution Status |      `extrinsics.{extrinsic number}.events.{event number}.data.3`       |
 
 !!! 注意事项
     EVM交易号和签名字段位于`extrinsics.{extrinsic number}.args.transaction.{transaction type}`，而`extrinsics.{extrinsic number}`下的`nonce`和`signature`字段是Substrate交易号和签名，需为EVM交易设置为`null`。
@@ -269,18 +269,18 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 EIP 1559引入的`Base Fee`由网络自身决定。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上为固定值，如下所示：
 
 === "Moonbeam"
-    |      变量      |                                     值                                      |
-    |:------------------:|:------------------------------------------------------------------------------:|
+    |   变量   |    值    |
+    |:--------:|:--------:|
     | Base Fee | 100 Gwei |
 
 === "Moonriver"
-    |      变量      |                                     值                                      |
-    |:------------------:|:------------------------------------------------------------------------------:|
+    |   变量   |   值   |
+    |:--------:|:------:|
     | Base Fee | 1 Gwei |
 
 === "Moonbase Alpha"
-    |      变量      |                                     值                                      |
-    |:------------------:|:------------------------------------------------------------------------------:|
+    |   变量   |   值   |
+    |:--------:|:------:|
     | Base Fee | 1 Gwei |
 
 `Transaction Weight`是一种Substrate机制，用于管理验证区块所需的时间。对于所有的交易类型，`Transaction Weight`可以通过在相关extrinsic事件下的`method`进行如下设置以检索获得：
