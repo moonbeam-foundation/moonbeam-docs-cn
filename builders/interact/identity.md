@@ -5,7 +5,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 # 管理您的账户身份
 
-![Managing your Account Identity](/images/builders/interact/identity/identity-banner.png)
+![Managing your Account Identity](/images/tokens/manage/identity/identity-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -61,7 +61,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 您应该已经有一个已连接网络的账户，所以您可以点击您的账户名称以确认实时的账户余额。在设置身份并传送交易之后，您提交的款项将会从您的可转账余额转移至您的储蓄账户。
 
-![Starting account balances](/images/builders/interact/identity/identity-1.png)
+![Starting account balances](/images/tokens/manage/identity/identity-1.png)
 
 您可以根据以下步骤设置您的身份：
 
@@ -69,7 +69,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 2. 在跳出的弹窗中选择**Set on-chain identity**
 
-![Set on-chain identity](/images/builders/interact/identity/identity-2.png)
+![Set on-chain identity](/images/tokens/manage/identity/identity-2.png)
 
 接着，将会跳出一个注册和设置身份的弹窗，您可以开始填写您的信息。您无需填写所有字段，可根据自身情况选择只填写其中一个或是全部。举例而言：
 
@@ -81,15 +81,15 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 4. 完成填写信息并确认提交金额后，点击**Set Identity**
 
-![Set your identity](/images/builders/interact/identity/identity-3.png)
+![Set your identity](/images/tokens/manage/identity/identity-3.png)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击Sign and Submit以签署和发送本次交易。
 
-![Authorize transaction](/images/builders/interact/identity/identity-4.png)
+![Authorize transaction](/images/tokens/manage/identity/identity-4.png)
 
 您将在页面右上角看到状态通知的弹窗。当交易成功确认后，您可以再次点击您的账户名称，操作面板将会从右侧弹出。您的余额将会改变，同时您也可以看到您的新身份信息。
 
-![Updated account balances](/images/builders/interact/identity/identity-5.png)
+![Updated account balances](/images/tokens/manage/identity/identity-5.png)
 
 如果身份信息与您输入的一致，则恭喜您以成功设置身份！
 
@@ -103,19 +103,19 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 2. 在跳出的弹窗中选择**Set on-chain identity**
 
-![Set on-chain identity](/images/builders/interact/identity/identity-6.png)
+![Set on-chain identity](/images/tokens/manage/identity/identity-6.png)
 
 接着，将跳出设置身份的弹窗，其中包含您曾经填写的信息。您需要点击**Clear Identity**。
 
-![Clear identity](/images/builders/interact/identity/identity-7.png)
+![Clear identity](/images/tokens/manage/identity/identity-7.png)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击Sign and Submit以签署和发送本次交易。
 
-![Authorize transaction](/images/builders/interact/identity/identity-8.png)
+![Authorize transaction](/images/tokens/manage/identity/identity-8.png)
 
 您将在页面右上角看到状态通知的弹窗。当交易成功确认后，您可以再次点击您的账户名称，操作面板将会从右侧弹出。您可以看到储备余额已经被重新转移至您的可转移余额账户中，同时您也可以看到您的身份信息已被移除。
 
-![Updated account balances](/images/builders/interact/identity/identity-9.png)
+![Updated account balances](/images/tokens/manage/identity/identity-9.png)
 
 恭喜，您已经成功清除您的身份。如果您想要新增新的身份，您可以随时进行操作。
 
@@ -137,7 +137,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
     2. 以选定的格式输入数据
 
-![Set your identity using the Extrinsic UI](/images/builders/interact/identity/identity-10.png)
+![Set your identity using the Extrinsic UI](/images/tokens/manage/identity/identity-10.png)
 
 根据个人选择，如果您希望加入自定义字段，您可以跟随以下步骤操作：
 
@@ -155,15 +155,15 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
     2. 以选定的格式输入数值
 
-![Add custom fields](/images/builders/interact/identity/identity-11.png)
+![Add custom fields](/images/tokens/manage/identity/identity-11.png)
 
 最后，如果您添加了所有身份信息，您可以下滑页面并点击**Submit Transaction**。
 
-![Submit identity information](/images/builders/interact/identity/identity-12.png)
+![Submit identity information](/images/tokens/manage/identity/identity-12.png)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击**Sign and Submit**以签署和发送本次交易。
 
-![Authorize transaction](/images/builders/interact/identity/identity-13.png)
+![Authorize transaction](/images/tokens/manage/identity/identity-13.png)
 
 您将在页面右上角看到状态通知的弹窗。当交易成功确认后，您已经成功设置了身份！如果您想要确认您的身份信息是否正确，您可以确认您的身份。
 
@@ -171,7 +171,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 如果您想重新确认您的身份信息，您可以导向至**开发者**标签并进入[Chain state](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)页面。
 
-![Navigate to Chain State](/images/builders/interact/identity/identity-14.png)
+![Navigate to Chain State](/images/tokens/manage/identity/identity-14.png)
 
 在**Chain State**的界面，请确认已选取**Storage**选项。接着您可以开始查询您的身份信息：
 
@@ -183,7 +183,7 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 4. 点击**+**按钮获得您的身份信息
 
-![Request identity information](/images/builders/interact/identity/identity-15.png)
+![Request identity information](/images/tokens/manage/identity/identity-15.png)
 
 恭喜，现在您已经成功设置一个身份！当您清除您的身份，您储备余额的Token将会被重新转回至您的可转移余额当中。如果您需要更改您的身份，您可以重新操作设置身份的流程。请注意，即使您只需要改变或是覆盖其中一个字段，您还是需要重新输入所有字段信息。您将无需额外支付款项，除非您使用自定义字段，您仍需要支付gas费。
 
@@ -199,11 +199,11 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 4. 点击**Submit Transaction**
 
-![Clear an identity using the Extrinsics UI](/images/builders/interact/identity/identity-16.png)
+![Clear an identity using the Extrinsics UI](/images/tokens/manage/identity/identity-16.png)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击**Sign and Submit**以签署和发送本次交易。
 
-![Authorize transaction](/images/builders/interact/identity/identity-17.png)
+![Authorize transaction](/images/tokens/manage/identity/identity-17.png)
 
 您将在页面右上角看到状态通知的弹窗。
 

@@ -5,7 +5,7 @@ description: 如何在Moonbeam网络上使用基于Substrate的REST服务
 
 # 在Moonbeam上使用Substrate API Sidecar
 
-![Substrate API Sidecar](/images/builders/tools/sidecar/sidecar-banner.png)
+![Substrate API Sidecar](/images/builders/build/substrate-api/sidecar/sidecar-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -79,7 +79,7 @@ node_modules/.bin/substrate-api-sidecar
 
 如果安装和配置成功后，您应该在后台看到以下输出：
 
-![Successful Output](/images/builders/tools/sidecar/sidecar-1.png)
+![Successful Output](/images/builders/build/substrate-api/sidecar/sidecar-1.png)
 
 ## Substrate API Sidecar端点 {: #substrate-api-sidecar-endpoints }
 

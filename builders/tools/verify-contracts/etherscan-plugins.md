@@ -5,7 +5,7 @@ description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonb
 
 # 使用Etherscan插件验证智能合约
 
-![Etherscan Plugins Banner](/images/builders/tools/verify-contracts/etherscan-plugins/plugins-banner.png)
+![Etherscan Plugins Banner](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -31,7 +31,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=b
 
 2. 选择**Click to sign up**后注册您的新账号
 
-![Sign up for Moonscan](/images/builders/tools/verify-contracts/etherscan-plugins/plugins-1.png)
+![Sign up for Moonscan](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-1.png)
 
 完成注册并登录新账号后，您将能够创建API密钥。
 
@@ -39,7 +39,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=b
 
 2. 点击**+ Add**按钮增加新的密钥
 
-![Add an API key](/images/builders/tools/verify-contracts/etherscan-plugins/plugins-2.png)
+![Add an API key](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-2.png)
 
 系统将提示您为您的API密钥输入**AppName**。随后，点击**Continue**，该密钥将会显示在您的API密钥列表中。
 
@@ -80,7 +80,7 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS>
 
 在您的终端，您将看到您的合约源代码已成功提交验证。如果验证成功，您将在终端看到**Successfully verified contract**以及[Moonbase Alpha上的Moonscan](https://moonbase.moonscan.io/){target=blank}的合约代码链接。
 
-![Successful verification using hardhat-etherscan plugin](/images/builders/tools/verify-contracts/etherscan-plugins/plugins-3.png)
+![Successful verification using hardhat-etherscan plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-3.png)
 
 如果您正在验证具有constructor arguments的合约，您将需要运行上述命令并在命令末尾添加用于部署合约的constructor arguments。例如：
 
@@ -127,6 +127,6 @@ truffle run verify MyToken --network moonbase
 
 如果验证成功，您将在终端看到**Pass - Verified**以及[Moonbase Alpha上的Moonscan](https://moonbase.moonscan.io/){target=blank}的合约代码链接。
 
-![Successful verification using truffle-verify-plugin](/images/builders/tools/verify-contracts/etherscan-plugins/plugins-4.png)
+![Successful verification using truffle-verify-plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.png)
 
 更多关于插件的详细信息，请参考[README.md文档](https://github.com/rkalis/truffle-plugin-verify#readme){target=blank}的`truffle-plugin-verify` GitHub代码库。

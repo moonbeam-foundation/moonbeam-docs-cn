@@ -5,7 +5,7 @@ description:  学习如何在Moonbeam测试网Moonbase Alpha上使用完全兼�
 
 # 在Moonbase Alpha上的以太坊主网预编译合约
 
-![Precomiled Contracts Banner](/images/builders/tools/precompiles/eth-mainnet/eth-mainnet-banner.png)
+![Precomiled Contracts Banner](/images/builders/build/canonical-contracts/precompiles/eth-mainnet/eth-mainnet-banner.png)
 
 ## 概览 {: #introduction }
 

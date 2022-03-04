@@ -5,7 +5,7 @@ description: 学习如何通过Moonbeam Safe钱包使用和管理资金。在Moo
 
 # 与Moonbeam Safe交互
 
-![Moonbeam Multisig Safe Banner](/images/builders/tools/multisig-safe/safe-banner.png)
+![Moonbeam Multisig Safe Banner](/images/tokens/manage/multisig-safe/safe-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -74,7 +74,7 @@ contract SetText {
 
   2. 选择钱包连接至Moonbeam Safe。本示例中您可以使用MetaMask。如果MetaMask没有出现在选项列表中，点击**Show More**并选择**MetaMask**
 
-![Connect Wallet to Moonbeam Safe](/images/builders/tools/multisig-safe/safe-1.png)
+![Connect Wallet to Moonbeam Safe](/images/tokens/manage/multisig-safe/safe-1.png)
 
 如果您还没有登录MetaMask，系统将会提示您登录。随后，将引导您添加和连接您的帐户，以及添加和切换至Moonbase Alpha网络：
 
@@ -86,7 +86,7 @@ contract SetText {
 
  4. 点击**Switch Network**将网络切换至Moonbase Alpha
 
-![Connect MetaMask to Moonbase Alpha](/images/builders/tools/multisig-safe/safe-2.png)
+![Connect MetaMask to Moonbase Alpha](/images/tokens/manage/multisig-safe/safe-2.png)
 
 现在，您可以在右上方确认您的MetaMask账户已连接至Moonbase Alpha网络。如果您使用的是开发账户，您应该可以看到Alice的账户地址。如果不是，请再次确认您的MetaMask并切换到Alice账户。
 
@@ -94,7 +94,7 @@ contract SetText {
 
 点击**Create new Safe**，在Moonbase Alpha上创建一个新的Safe钱包。页面将出现一个向导，引导您完成创建新的Safe钱包。完成这些步骤并创建新的Safe钱包，即表示您同意使用条款和隐私政策。因此，在开始之前，请仔细查看这些内容。
 
-![Create Safe](/images/builders/tools/multisig-safe/safe-3.png)
+![Create Safe](/images/tokens/manage/multisig-safe/safe-3.png)
 
 您将需要给您的Safe钱包设置名称：
 
@@ -102,7 +102,7 @@ contract SetText {
 
   2. 点击**Start**
 
-![Submit Safe Name](/images/builders/tools/multisig-safe/safe-4.png)
+![Submit Safe Name](/images/tokens/manage/multisig-safe/safe-4.png)
 
 接下来是所有者和签名确认部分。在这个部分中，您将添加Safe钱包的所有者并设置阈值。阈值决定了在交易执行之前需要多少位所有者来签名确认。
 
@@ -122,7 +122,7 @@ contract SetText {
 
   5. 点击**Review**进入向导的最后步骤
 
-![Enter Safe Owners](/images/builders/tools/multisig-safe/safe-5.png)
+![Enter Safe Owners](/images/tokens/manage/multisig-safe/safe-5.png)
 
 最后，您可以查看所有Safe钱包和所有者的详细信息，确认信息无误后：
 
@@ -130,17 +130,17 @@ contract SetText {
 
   2. 点击**Confirm**发送交易并创建Safe钱包
 
-![Send Transaction to Create Multisig Safe](/images/builders/tools/multisig-safe/safe-6.png)
+![Send Transaction to Create Multisig Safe](/images/tokens/manage/multisig-safe/safe-6.png)
 
 处理交易和创建Safe钱包可能需要几分钟时间。创建成功后，您将会看到一条消息，提示“Your Safe was created successfully”。然后，您可以点击**Get Started**加载您的Safe钱包并开始交互。
 
-![Safe Created Successfully](/images/builders/tools/multisig-safe/safe-7.png)
+![Safe Created Successfully](/images/tokens/manage/multisig-safe/safe-7.png)
 
 ## 配置Safe钱包  {: #configure-safe }
 
 您可以随时管理您的Safe钱包并在创建时更改一些参数设置。为此，您可以点击左侧菜单上的**Settings**选项。
 
-![Modify Safe Settings](/images/builders/tools/multisig-safe/safe-8.png)
+![Modify Safe Settings](/images/tokens/manage/multisig-safe/safe-8.png)
 
 随后，您将会看到以下选项：
 
@@ -155,11 +155,11 @@ contract SetText {
 
 现在，您已经创建了您的Safe钱包，可以开始进行交互。首先，通过发送一些DEV Token来加载Safe。您可以从任何拥有DEV Token的账户发送至Safe钱包。在本示例中，您可以使用Alice账户。将鼠标移至资产列表的**DEV**上，显示**Send**和**Receive**按钮后，点击**Receive**。
 
-![Receive Tokens to the Safe](/images/builders/tools/multisig-safe/safe-9.png)
+![Receive Tokens to the Safe](/images/tokens/manage/multisig-safe/safe-9.png)
 
 随后将会跳出弹窗，显示Safe钱包的地址。点击地址右侧的复制图标以复制地址，然后点击**Done**。
 
-![Copy Safe Address](/images/builders/tools/multisig-safe/safe-10.png)
+![Copy Safe Address](/images/tokens/manage/multisig-safe/safe-10.png)
 
 接下来，打开您的MetaMask以发起交易：
 
@@ -173,7 +173,7 @@ contract SetText {
 
   5. 查看交易详情，点击**Confirm**
 
-![Send DEV Tokens to the Safe](/images/builders/tools/multisig-safe/safe-11.png)
+![Send DEV Tokens to the Safe](/images/tokens/manage/multisig-safe/safe-11.png)
 
 交易已经发送，您的DEV Token余额也会更新在Safe钱包。
 
@@ -181,7 +181,7 @@ contract SetText {
 
 现在，您的Safe钱包已经有资金，您可以将资产从Safe钱包发送至另一个账户。在本示例中，您可以发送1个DEV Token至Bob的地址。将鼠标移至资产列表的**DEV**上，点击**Send**。
 
-![Send Tokens from the Safe](/images/builders/tools/multisig-safe/safe-12.png)
+![Send Tokens from the Safe](/images/tokens/manage/multisig-safe/safe-12.png)
 
 随后将会跳出弹窗，您需输入接收人和需要发送的DEV Token数量：
 
@@ -193,15 +193,15 @@ contract SetText {
 
   4. 点击**Review**
 
-![Send 1 DEV Token from the Safe to Bob](/images/builders/tools/multisig-safe/safe-13.png)
+![Send 1 DEV Token from the Safe to Bob](/images/tokens/manage/multisig-safe/safe-13.png)
 
 然后查看详细信息，点击**Submit**。MetaMask将跳出弹窗，您将看到您发送的不是交易而是消息。点击**Sign**签名消息。
 
-![Submit Transaction and Sign Message](/images/builders/tools/multisig-safe/safe-14.png)
+![Submit Transaction and Sign Message](/images/tokens/manage/multisig-safe/safe-14.png)
 
 现在，如果您返回Safe钱包，在**Transactions**标签下，您应该能够看得到已经发起的向Bob的地址发送1个DEV Token的交易提案。但是，您可以看到只收到2个确认中的其中一个，还需要另一个所有者确认才可执行交易。
 
-![Transaction Needs Confirmations](/images/builders/tools/multisig-safe/safe-15.png)
+![Transaction Needs Confirmations](/images/tokens/manage/multisig-safe/safe-15.png)
 
 ### 交易确认  {: #transaction-confirmation }
 
@@ -220,11 +220,11 @@ contract SetText {
 !!! 注意事项
     如果您收到交易可能失败的错误消息，您可能需要增加gas限制。您可以在**Advanced options**或MetaMask中执行此操作。
 
-![Submit Transaction Confirmation](/images/builders/tools/multisig-safe/safe-16.png)
+![Submit Transaction Confirmation](/images/tokens/manage/multisig-safe/safe-16.png)
 
 交易将从**QUEUE**标签移除，但是可以在**HISTORY**标签下找到交易记录。此外，Bob的余额现在增加了1个DEV  Token，而Safe钱包的DEV Token余额减少了。
 
-![Successfully Executed Transaction](/images/builders/tools/multisig-safe/safe-17.png)
+![Successfully Executed Transaction](/images/tokens/manage/multisig-safe/safe-17.png)
 
 这样就意味着您已经成功在Safe钱包接收和发送DEV Token了！
 
@@ -250,7 +250,7 @@ contract SetText {
 
   6. 查看交易详情，然后点击**Confirm**发送交易
 
-![Send ERC-20s to the Safe](/images/builders/tools/multisig-safe/safe-18.png)
+![Send ERC-20s to the Safe](/images/tokens/manage/multisig-safe/safe-18.png)
 
 如果您返回至Safe钱包，在**Assets**列表中您应该可以看到**MyToken**的余额已经显示为1,000 MYTOK。**MyToken**可能需要几分钟才能出现，您无需执行任何添加资产的操作，它会自动出现。
 
@@ -260,7 +260,7 @@ contract SetText {
 
 将鼠标移至资产列表的**MyToken**上，点击**Send**。
 
-![Send ERC-20s from the Safe](/images/builders/tools/multisig-safe/safe-19.png)
+![Send ERC-20s from the Safe](/images/tokens/manage/multisig-safe/safe-19.png)
 
 随后将会跳出弹窗，您需输入接收人和需要发送的MYTOK Token数量：
 
@@ -272,7 +272,7 @@ contract SetText {
 
   4. 点击**Review**并查看详情
 
-![Send ERC-20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-20.png)
+![Send ERC-20s to Charlie from the Safe](/images/tokens/manage/multisig-safe/safe-20.png)
 
 确认信息无误后，请执行以下操作：
 
@@ -280,17 +280,17 @@ contract SetText {
 
   2. 点击**Sign**签名消息。
 
-![Sign Message to Send ERC-20s to Charlie from the Safe](/images/builders/tools/multisig-safe/safe-21.png)
+![Sign Message to Send ERC-20s to Charlie from the Safe](/images/tokens/manage/multisig-safe/safe-21.png)
 
 现在，如果您返回Safe钱包，在**Transactions**标签下，您应该能够看得到已经发起的向Charlie的地址发送10个MYTOK Token的交易提案。但是，您可以看到只收到2个确认中的其中一个，还需要另一个所有者确认才可执行交易。
 
-![Transaction Needs Confirmation](/images/builders/tools/multisig-safe/safe-22.png)
+![Transaction Needs Confirmation](/images/tokens/manage/multisig-safe/safe-22.png)
 
 您需要将账号切换至Alice或者Charlie，确认交易并执行。您可遵循上面[交易确认](#transaction-confirmation)部分的步骤进行操作。
 
 当另外两个账户的其中一个账户确认交易后，交易将被移到**HISTORY**标签。
 
-![Successfully Executed Transaction](/images/builders/tools/multisig-safe/safe-23.png)
+![Successfully Executed Transaction](/images/tokens/manage/multisig-safe/safe-23.png)
 
 这样就意味着您已经成功在Safe钱包接收和发送ERC-20 Token了！
 
@@ -306,7 +306,7 @@ contract SetText {
 
   2. 然后，选择**Contract interaction**
 
-![New Contract Interaction](/images/builders/tools/multisig-safe/safe-24.png)
+![New Contract Interaction](/images/tokens/manage/multisig-safe/safe-24.png)
 
 随后将会跳出**Contract interaction**的弹窗，您需要填写智能合约详细内容：
 
@@ -320,7 +320,7 @@ contract SetText {
 
   5. 点击**Review**
 
-![Create Contract Interaction](/images/builders/tools/multisig-safe/safe-25.png)
+![Create Contract Interaction](/images/tokens/manage/multisig-safe/safe-25.png)
 
 确认信息无误后，请执行以下操作：
 
@@ -332,21 +332,21 @@ contract SetText {
 
     点击**Sign**签署消息
 
-![Submit Contract Interaction](/images/builders/tools/multisig-safe/safe-26.png)
+![Submit Contract Interaction](/images/tokens/manage/multisig-safe/safe-26.png)
 
 现在，如果您返回Safe钱包，在**Transactions**标签下，您应该能够看得到为**Contract interaction**发起的交易提案。但是，您可以看到只收到2个确认中的其中一个，还需要另一个所有者确认才可执行交易。
 
-![Transaction Needs Confirmation](/images/builders/tools/multisig-safe/safe-27.png)
+![Transaction Needs Confirmation](/images/tokens/manage/multisig-safe/safe-27.png)
 
 您需要将账号切换至Bob或者Charlie，确认交易并执行。您可遵循上面[交易确认](#transaction-confirmation)部分的步骤进行操作。
 
 当另外两个账户的其中一个账户确认交易后，交易将被移到**HISTORY**标签。
 
-![Transaction History](/images/builders/tools/multisig-safe/safe-28.png)
+![Transaction History](/images/tokens/manage/multisig-safe/safe-28.png)
 
 请仔细检查设置的文本内容无误。您可以通过再次执行该过程进行确认，除了从**Method**下拉菜单中选择**setTextData**以外，您可以选择**text**来读取`text`值。这将是一个调用（call）而不是一个交易，因此会出现一个**Call**按钮。点击后，将会直接出现一个弹窗，您应该会看到调用的结果`polkadots and Moonbeams`。
 
-![Contract Interaction Call Result](/images/builders/tools/multisig-safe/safe-29.png)
+![Contract Interaction Call Result](/images/tokens/manage/multisig-safe/safe-29.png)
 
 这样就意味着您已经成功使用Safe钱包与智能合约交互了！
 

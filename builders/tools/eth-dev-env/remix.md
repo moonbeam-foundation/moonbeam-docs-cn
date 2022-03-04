@@ -5,7 +5,7 @@ description: 通过此教程学习如何使用主流的以太坊开发人员工�
 
 # Remix
 
-![Intro diagram](/images/builders/tools/eth-dev-env/remix/remix-banner.png)
+![Intro diagram](/images/builders/build/eth-api/dev-env/remix/remix-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -36,11 +36,11 @@ contract SimpleContract{
 
 4. MetaMask将跳出显示交易相关信息的弹窗，点击“Confirm”进行签名
 
-![Deploying Contract](/images/builders/tools/eth-dev-env/remix/remix-1.png)
+![Deploying Contract](/images/builders/build/eth-api/dev-env/remix/remix-1.png)
 
 交易确认后，合约将出现在Remix的“Deployed Contracts”栏目中。在这里即可与合约功能进行交互。
 
-![Interact with Contract](/images/builders/tools/eth-dev-env/remix/remix-2.png)
+![Interact with Contract](/images/builders/build/eth-api/dev-env/remix/remix-2.png)
 
 ## 分步教程 {: #tutorial }
 

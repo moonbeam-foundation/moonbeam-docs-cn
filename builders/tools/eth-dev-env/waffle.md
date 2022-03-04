@@ -5,7 +5,7 @@ description: 通过此教程学习如何配置Waffle在本地运行的Moonbeam�
 
 # Waffle
 
-![Waffle Introduction](/images/builders/tools/eth-dev-env/waffle-banner.png)
+![Waffle Introduction](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-banner.png)
 
 ## 概览 {: #introduction } 
 

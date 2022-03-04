@@ -5,7 +5,7 @@ description: 通过此教程学习如何配置Mars在Moonbeam开发节点或Moon
 
 # Mars
 
-![Mars Introduction](/images/builders/tools/eth-dev-env/mars-banner.png)
+![Mars Introduction](/images/builders/build/eth-api/dev-env/waffle-mars/mars-banner.png)
 
 ## 概览 {: #introduction }
 
