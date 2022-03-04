@@ -143,3 +143,4 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 合约状态也将从**Running**（运行中）变为**Paused**（已暂停）。现在您已学会如何使用Admin组件管理智能合约了。
 
+--8<-- 'text/disclaimers/third-party-content.md'

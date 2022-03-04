@@ -294,3 +294,5 @@ await box.store(5)
 恭喜， 您已完成Hardhat操作指引!
 
 如需了解关于Hardhat、Hardhat插件以及其他功能的更多详情，请访问[hardhat.org](https://hardhat.org/)。
+
+--8<-- 'text/disclaimers/third-party-content.md'

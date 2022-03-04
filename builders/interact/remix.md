@@ -156,3 +156,5 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
 就是这么简单！当合约成功部署后，您将能看到地址以及所有能够与之交互的访问和修改方法。
 
 Moonbeam Remix Plugin能够在Remix中无缝使用，所以您可以随时切换使用传统的Remix编译功能进行部署，或是选择使用Moonbeam Remix Plugin。
+
+--8<-- 'text/disclaimers/third-party-content.md'

@@ -332,3 +332,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 从上述示例可以看到，在经过两轮后，Alice获得了`0.0044` Token作为奖励：
 
 ![Staking Reward Example](/images/tokens/staking/stake/stake-11.png)
+
+--8<-- 'text/disclaimers/staking-risks.md'
+*质押的MOVR/GLMR代币将被锁定，取回它们需要{{ networks.moonriver.delegator_timings.del_bond_less.days }}天/{{ networks.moonbeam.delegator_timings.del_bond_less.days }}天等待期。*
+--8<-- 'text/disclaimers/staking-risks-part-2.md'

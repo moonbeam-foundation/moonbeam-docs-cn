@@ -46,3 +46,4 @@ contract SimpleContract{
 
 如果您想获得更加详细的分步教程，您可以查看在Moonbeam上使用[Remix](/builders/interact/remix/)进行开发的详细教程。
 
+--8<-- 'text/disclaimers/third-party-content.md'

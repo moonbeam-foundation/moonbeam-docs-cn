@@ -68,3 +68,8 @@ State of the DApps根据活跃用户、交易量、开发者活动和项目背�
 ![How to Submit your DApp](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-2.png)
 
 State of the DApps团队通常会在一个工作日内审核您提交的信息。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam)与我们联系。若您需要State of the DApps的支持，请联系support@stateofthedapps.com
+
+<div class="page-disclaimer">
+  State of Dapps包含用户生成内容，此类内容不由Moonbeam基金会审核。
+  --8<-- 'text/disclaimers/user-generated-content.md'
+</div>

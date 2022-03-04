@@ -119,3 +119,5 @@ description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移�
 
  - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/)
  - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile)
+
+ --8<-- 'text/disclaimers/third-party-content.md'

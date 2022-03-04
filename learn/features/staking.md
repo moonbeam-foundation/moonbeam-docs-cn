@@ -155,3 +155,7 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 ![Staking Delegator Reward](/images/learn/features/staking/staking-overview-2.png)
 
 其中，`amount_due`为被分配至特定区块的相应通胀，`stake`对应由每个委托人在收集人中绑定的Token数量，相对于该收集人的总质押量。
+
+--8<-- 'text/disclaimers/staking-risks.md'
+*质押的MOVR/GLMR代币将被锁定，取回它们需要{{ networks.moonriver.delegator_timings.del_bond_less.days }}天/{{ networks.moonbeam.delegator_timings.del_bond_less.days }}天等待期。*
+--8<-- 'text/disclaimers/staking-risks-part-2.md'

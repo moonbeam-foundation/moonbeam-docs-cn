@@ -108,3 +108,5 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 ![MathWallet sign transaction](/images/tokens/connect/mathwallet/mathwallet-14.png)
 
 点击**Accept**代表您正在签名这项交易，接着合约即将被部署至Moonbase Alpha测试网。
+
+--8<-- 'text/disclaimers/third-party-content.md'

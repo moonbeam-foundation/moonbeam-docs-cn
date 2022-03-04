@@ -219,3 +219,5 @@ Chainlink预言机配置的最后一步就是创建任务。请参阅[Chainlink�
 To verify the Oracle is up and answering requests, follow our [using an Oracle](/integrations/oracles/chainlink/) tutorial. The main idea is to deploy a client contract that requests to the Oracle, and the Oracle writes the requested data into the contract's storage.
 
 要验证预言机的在线状态以及是否能正常完成请求，请参阅[预言机使用教程](/integrations/oracles/chainlink/)进行操作。主要步骤是：部署一个客户合约，向预言机发送请求，并使预言机向客户合约中写入所请求的数据。
+
+--8<-- 'text/disclaimers/third-party-content.md'

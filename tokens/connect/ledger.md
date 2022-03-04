@@ -167,3 +167,5 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
     此选项对于您的Ledger设备与可能存在于Moonbeam生态系统的ERC-20 Token合约之间的交互是必要的。
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ledger-11.png)
+
+--8<-- 'text/disclaimers/third-party-content.md'
