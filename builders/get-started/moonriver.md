@@ -13,7 +13,7 @@ description: 学习如何通过RPC和WSS端点连接到Moonriver（Moonbeam在Ku
 
  - **以太坊API(类似Etherscan)** — [Moonscan](https://moonbase.moonscan.io/){target=_blank}
  - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha)
- - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
+ - **基于以太坊API和索引** — [Blockscout](https://blockscout.moonriver.moonbeam.network/)
  - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer)
 
  更多相关信息请参考[区块浏览器](/builders/tools/explorers)文档。
