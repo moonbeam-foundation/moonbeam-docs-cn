@@ -153,7 +153,7 @@ type Ticket @entity {
  - **network** —— 网络名称。对于所有在Moonbase Alpha上部署的Subgraph，这一值**必须**设置为`mbase`。Moonbeam和 Moonriver可分别使用`moonbeam`和`moonriver`标签
  - **dataSources/source/address** —— 利息合约地址
  - **dataSources/source/abi** —— 合约界面在以`codegen`命令创建的`types`文件夹中储存的位置
- - **dataSources/source/startBlock** —— 索引开始的第一个区块。在理想的情况下，这个数值和合约创建区块接近。在[Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)上提供合约地址即可获取这一信息。在本示例中，合约的创建区块为`{{ networks.moonbase.thegraph.block_number }}`
+ - **dataSources/source/startBlock** —— 索引开始的第一个区块。在理想的情况下，这个数值和合约创建区块接近。在[Moonscan](https://moonbase.moonscan.io/)上提供合约地址即可获取这一信息。在本示例中，合约的创建区块为`{{ networks.moonbase.thegraph.block_number }}`
  - **dataSources/mapping/file** —— 映射文档的位置
  - **dataSources/mapping/entities** —— 在`schema.graphql`文档中实体的定义
  - **dataSources/abis/name** —— 合约界面在`types/dataSources/name`文档中的储存位置
