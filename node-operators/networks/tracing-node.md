@@ -98,7 +98,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 32 \
     -- \
     --execution wasm \
-    --pruning archive \
+    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
@@ -118,7 +118,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 32 \
     -- \
     --execution wasm \
-    --pruning archive \
+    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
@@ -138,7 +138,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 32 \
     -- \
     --execution wasm \
-    --pruning archive \
+    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
