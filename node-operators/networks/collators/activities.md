@@ -156,7 +156,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  6. 在**more: BalanceOf**字段中输入要增加的绑定数量
  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Collator Bond More](/images/node-operators/networks/collators/activities/activities-6.png)
+![Collator Bond More](/images/node-operators/networks/collators/activities/activities-7.png)
 
 ### 减少自身绑定数量 {: #bond-less}
 
@@ -176,7 +176,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  6. 在**less: BalanceOf**字段中输入要减少的绑定数量
  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Schedule Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-7.png)
+![Schedule Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-8.png)
 
 当交易确认，您将需要等待退出生效期，然后才能为您执行减少绑定数量的请求。如果您尝试在退出生效期前操作，该extrinsic将会失败，并且您将看到来自Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`错误。
 
@@ -192,7 +192,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  6. 选择目标候选人账户（在提交`scheduleCandidateBondLess`函数后，任何人都可以在退出生效期后执行请求）
  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Execute Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-8.png)
+![Execute Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-9.png)
 
 交易确认后，您可以在**Accounts**标签处查看您的可用余额。请注意，请求已执行，您的余额已更新。
 
@@ -207,4 +207,4 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  5. 选择**cancelCandidateBondRequest** extrinsic
  6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-9.png)
+![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-10.png)
