@@ -10,7 +10,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 ## 概览 {: #introduction }
 
-[Remix](https://remix.ethereum.org/){target=blank}是目前以太坊上最常被使用的智能合约开发环境之一。基于Moonbeam兼容以太坊的特性，Remix可直接与Moonbeam网络一起使用。
+[Remix](https://remix.ethereum.org/){target=_blank}是目前以太坊上最常被使用的智能合约开发环境之一。基于Moonbeam兼容以太坊的特性，Remix可直接与Moonbeam网络一起使用。
 
 本教程将介绍使用Remix IDE在Moonbeam开发节点上部署和创建基于Solidity的智能合约的过程。此教程同时适用于Moonbeam、Moonriver和Moonbase Alpha网络。
 
@@ -18,8 +18,8 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 在开始之前，您将需要准备以下内容：
 
-- 本地运行的[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=blank}
-- [安装且配置完毕的MetaMask](/tokens/connect/metamask/){target=blank}以使用您的开发节点
+- 本地运行的[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=_blank}
+- [安装且配置完毕的MetaMask](/tokens/connect/metamask/){target=_blank}以使用您的开发节点
 
 如果您已遵循上述教程，您将会拥有一个正在收集交易以生产区块的本地Moonbeam节点。
 
@@ -29,11 +29,11 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 ![MetaMask installation with a balance](/images/builders/build/eth-api/dev-env/remix/using-remix-2.png)
 
-如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=blank}获得用于测试目的的DEV Token。
+如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
 
 ## 开始使用Remix {: #getting-started-with-remix }
 
-现在，您可以启动[Remix](https://remix.ethereum.org/){target=blank}进行操作。在主页面的**Environment**下选择**Solidity**为Solidity开发配置Remix，接着导航至**File Explorers**查看。
+现在，您可以启动[Remix](https://remix.ethereum.org/){target=_blank}进行操作。在主页面的**Environment**下选择**Solidity**为Solidity开发配置Remix，接着导航至**File Explorers**查看。
 
 ![File explorer](/images/builders/build/eth-api/dev-env/remix/using-remix-3.png)
 
@@ -136,7 +136,7 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
 
 ### 开始使用Moonbeam Remix Plugin {: #getting-started-with-the-moonbeam-remix-plugin }
 
-在Remix IDE中点击Moonbeam Logo开启Moonbeam Plugin。请注意，此教程预设您在Remix内已有待编译的合约。您可以在[此网页](https://wizard.openzeppelin.com/){target=blank}创建ERC-20合约，遵循以下步骤使用Moonbeam Remix Plugin在Moonbase Alpha部署一个ERC-20 Token。
+在Remix IDE中点击Moonbeam Logo开启Moonbeam Plugin。请注意，此教程预设您在Remix内已有待编译的合约。您可以在[此网页](https://wizard.openzeppelin.com/){target=_blank}创建ERC-20合约，遵循以下步骤使用Moonbeam Remix Plugin在Moonbase Alpha部署一个ERC-20 Token。
 
  1. 点击**Connect**，将您的Metamask钱包连接至Remix
 

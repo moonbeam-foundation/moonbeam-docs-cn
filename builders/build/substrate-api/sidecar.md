@@ -187,7 +187,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
         ...
     ```
 
-想要获取关于新的[EIP1559](https://eips.ethereum.org/EIPS/eip-1559){target=blank}和[EIP2930](https://eips.ethereum.org/EIPS/eip-2930){target=blank}交易类型更多信息，及其每个字段的含义，请参考各自的官方以太坊提案。
+想要获取关于新的[EIP1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}和[EIP2930](https://eips.ethereum.org/EIPS/eip-2930){target=_blank}交易类型更多信息，及其每个字段的含义，请参考各自的官方以太坊提案。
 
 ### 交易字段映射 {: #transaction-field-mappings }
 

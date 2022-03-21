@@ -9,13 +9,13 @@ description: Moonbeam提供质押功能，使Token持有者能够使用手中的
 
 ## 概览 {: #introduction }
 
-Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot.network/docs/learn-consensus){target=blank}的区块生产机制，也就是以收集人和验证人的形式。[收集人](https://wiki.polkadot.network/docs/learn-collator){target=blank}负责通过收集来自用户的交易并为中继链的[验证人](https://wiki.polkadot.network/docs/learn-validator){target=blank}生产状态转移证明。
+Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot.network/docs/learn-consensus){target=_blank}的区块生产机制，也就是以收集人和验证人的形式。[收集人](https://wiki.polkadot.network/docs/learn-collator){target=_blank}负责通过收集来自用户的交易并为中继链的[验证人](https://wiki.polkadot.network/docs/learn-validator){target=_blank}生产状态转移证明。
 
 候选人根据他们在网络中质押量的筛选后进入活跃收集人（生产区块的节点）集，而这就是需要质押功能的地方。
 
 候选收集人（以及Token持有者，如其参与委托）将会质押Token在网络当中。总质押量前N位的候选人将会获选为可用的交易集生产区块，N为可变参数。部分区块奖励将会分发给生产区块的收集人，而收集人将会进一步根据委托的Token比例分配给参与委托的Token持有者。这样的机制促使网络成员愿意质押Token以提高整体的安全性。
 
-如果希望更多了解管理质押的相关操作，您可以访问[Moonbeam Network DApp](https://apps.moonbeam.network/){target=blank}并使用页面顶部的网络选项在Moonbeam网络之间轻松切换。要了解如何使用DApp，您可以查看[如何质押MOVR代币](https://moonbeam.network/tutorial/stake-movr/){target=blank}指南或[视频教程](https://www.youtube.com/watch?v=D2wPnqfoeIg){target=blank}，两者都可以适用于Moonbeam和 Moonbase Alpha测试网。
+如果希望更多了解管理质押的相关操作，您可以访问[Moonbeam Network DApp](https://apps.moonbeam.network/){target=_blank}并使用页面顶部的网络选项在Moonbeam网络之间轻松切换。要了解如何使用DApp，您可以查看[如何质押MOVR代币](https://moonbeam.network/tutorial/stake-movr/){target=_blank}指南或[视频教程](https://www.youtube.com/watch?v=D2wPnqfoeIg){target=_blank}，两者都可以适用于Moonbeam和 Moonbase Alpha测试网。
 
 ## 一般定义 {: #general-definitions }
 
@@ -63,9 +63,9 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     |      退出委托人集延迟      |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
 
 
-想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/){target=blank}教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters){target=blank}部分。
+想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/){target=_blank}教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters){target=_blank}部分。
 
-如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collators/requirements/#bonding-requirements){target=blank}指南。
+如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collators/requirements/#bonding-requirements){target=_blank}指南。
 
 ## 选择收集人节点参考资料 {: #resources-for-selecting-a-collator}
 

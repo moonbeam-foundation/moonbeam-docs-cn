@@ -13,9 +13,9 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 公投是简单的、包容的和基于质押的投票方案。每一次公投都有一个与之相关的具体的提议。公投有固定的时长。投票期过后，将会进行票数统计，如果提案获得通过，就会被执行。
 
-在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）来创建提案、附议提案和投票提案。本教程为已经到公投阶段的提案提供如何进行投票的指引。关于[如何创建提案](/tokens/governance/proposals/){target=blank}，请直接点此链接查看。
+在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）来创建提案、附议提案和投票提案。本教程为已经到公投阶段的提案提供如何进行投票的指引。关于[如何创建提案](/tokens/governance/proposals/){target=_blank}，请直接点此链接查看。
 
-更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/en/learn-governance){target=blank}和[参与民主权利](https://wiki.polkadot.network/docs/en/maintain-guides-democracy){target=blank}页面。
+更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/en/learn-governance){target=_blank}和[参与民主权利](https://wiki.polkadot.network/docs/en/maintain-guides-democracy){target=_blank}页面。
 
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
@@ -62,9 +62,9 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 ## 参与公投 {: #voting-on-a-referendum }
 
-本小节将介绍公投流程。本教程使用已经创建的公投进行讲解（请参阅[公投创建教程](/tokens/governance/proposals/){target=blank}）。
+本小节将介绍公投流程。本教程使用已经创建的公投进行讲解（请参阅[公投创建教程](/tokens/governance/proposals/){target=_blank}）。
 
-您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=blank}教程完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
+您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
 ![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-1.png)
 

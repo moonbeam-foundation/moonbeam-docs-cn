@@ -10,7 +10,7 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 [Web3.py](https://web3py.readthedocs.io/)是一组代码库，允许开发者使用Python，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用web3.js库与Moonbeam节点交互，与在以太坊操作相同。
 
-在本教程中，您将学习如何使用web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=blank}。
+在本教程中，您将学习如何使用web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -114,7 +114,7 @@ print(f"The balance of { address_from } is: { balance_from } ETH")
 print(f"The balance of { address_to } is: { balance_to } ETH")
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/balances.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/balances.py){target=_blank}。
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -140,7 +140,7 @@ touch transaction.py
 
 3. 定义`account_from`，包括`private_key`和`address_to`变量。此处需要私钥以签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
 
-4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
+4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
 
 5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.toWei`函数将数字格式化成以Wei为单位的易读数字
 
@@ -186,7 +186,7 @@ tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
 print(f"Transaction successful with hash: { tx_receipt.transactionHash.hex() }")
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/transaction.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/transaction.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -286,7 +286,7 @@ tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
 print(f'Contract deployed at address: { tx_receipt.contractAddress }')
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/deploy.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/deploy.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -341,7 +341,7 @@ number = Incrementer.functions.number().call()
 print(f'The current number stored is: { number } ')
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/get.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/get.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -415,7 +415,7 @@ tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
 print(f'Tx successful with hash: { tx_receipt.transactionHash.hex() }')
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/increment.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/increment.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -480,7 +480,7 @@ tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
 print(f'Tx successful with hash: { tx_receipt.transactionHash.hex() }')
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/reset.py){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/reset.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 

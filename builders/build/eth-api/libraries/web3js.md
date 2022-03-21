@@ -8,9 +8,9 @@ description: 通过本教程学习如何使用以太坊Web3 JavaScript代码库�
 
 ## 概览 {: #introduction }
 
-[Web3.js](https://web3js.readthedocs.io/){target=blank}是一组代码库，允许开发者使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用web3.js库与Moonbeam节点交互，与在以太坊操作相同。
+[Web3.js](https://web3js.readthedocs.io/){target=_blank}是一组代码库，允许开发者使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用web3.js库与Moonbeam节点交互，与在以太坊操作相同。
 
-在本教程中，您将学习如何使用web3.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=blank}。
+在本教程中，您将学习如何使用web3.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -128,7 +128,7 @@ const balances = async () => {
 balances();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-tx-local/balances.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-tx-local/balances.js){target=_blank}。
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -194,7 +194,7 @@ const send = async () => {
 send();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-tx-local/transaction.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-tx-local/transaction.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -294,7 +294,7 @@ const deploy = async () => {
 deploy();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/deploy.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/deploy.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -359,7 +359,7 @@ const get = async () => {
 get();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/get.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/get.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -442,7 +442,7 @@ const increment = async () => {
 increment();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/increment.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/increment.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -516,7 +516,7 @@ const reset = async () => {
 reset();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/reset.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3-contract-local/reset.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 

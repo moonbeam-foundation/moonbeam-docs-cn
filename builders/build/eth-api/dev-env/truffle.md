@@ -10,19 +10,19 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 ## 概览 {: #introduction }
 
-本教程将向您展示通过以太坊上常用的智能合约开发工具[Truffle](https://www.trufflesuite.com/){target=blank}将基于Solidity智能合约部署至Moonbeam节点的操作过程。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
+本教程将向您展示通过以太坊上常用的智能合约开发工具[Truffle](https://www.trufflesuite.com/){target=_blank}将基于Solidity智能合约部署至Moonbeam节点的操作过程。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
 
-为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=blank}。
+为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=_blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=_blank}。
 
 本教程将向您展示如何在本地运行的开发节点上使用Moonbeam Truffle box和Moonbeam Truffle plugin部署合约并之其交互。这教程也同样适用于Moonbeam、Moonriver和Moonbase Alpha测试网。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。对于Moonbase Alpha测试网，您可以通过[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=blank}获得用于测试目的的DEV Token。
+本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。对于Moonbase Alpha测试网，您可以通过[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
 
 --8<-- 'text/common/endpoint-examples.md'
 
-使用Moonbeam Truffle plugin之前，您需要准备已经安装的[Docker](https://docs.docker.com/get-docker/){target=blank}。
+使用Moonbeam Truffle plugin之前，您需要准备已经安装的[Docker](https://docs.docker.com/get-docker/){target=_blank}。
 
 在以下示例中，您无需全网安装Truffle，因其已作为依赖项包含在Moonbeam Truffle box中。但是，如果您希望使用`truffle`命令直接替代运行中的`npx truffle`或`./node_modules/.bin/truffle`，您可以通过运行以下命令进行全网安装：
 
@@ -59,16 +59,16 @@ npm install -g truffle
 如果您查看`moonbeam-truffle-box`目录内部，您将发现以下需要注意的目录和文件：
 
 - **`contracts`** —— 一个目录，用于存储您创建的任何Solidity合约，包括以下Moonbeam Truffle box中的合约：
-    - **`Migrations.sol`** —— 使用Truffle[迁移](https://trufflesuite.com/docs/truffle/getting-started/running-migrations.html){target=blank}功能所需的合约
+    - **`Migrations.sol`** —— 使用Truffle[迁移](https://trufflesuite.com/docs/truffle/getting-started/running-migrations.html){target=_blank}功能所需的合约
     - **`MyToken.sol`** —— 示例合约
 - **`migrations`** —— 包含帮助您部署合约至网络的JavaScript文件。这带有以下脚本：
     - **`1_initial_migration.js`** —— 部署`Migrations.sol`合约的脚本。由于此合约需要先部署才能使用迁移，因此合约以`1`开头，您可以从那里创建具有递增编号前缀的新的迁移
     - **`2_deploy_contracts.js`** —— 部署示例合约`MyToken.sol`的脚本
-- **`truffle-config.js`** —— 项目的[配置文件](https://trufflesuite.com/docs/truffle/reference/configuration){target=blank}，您可以在其中定义项目可以部署的网络以及编译合约时所使用的编译器等
+- **`truffle-config.js`** —— 项目的[配置文件](https://trufflesuite.com/docs/truffle/reference/configuration){target=_blank}，您可以在其中定义项目可以部署的网络以及编译合约时所使用的编译器等
 
 ## 使用Moonbeam Truffle Plugin运行节点 {: #using-the-moonbeam-truffle-plugin-to-run-a-node }
 
-现在，您已经创建了一个简单的Truffle项目，接下来您可以启动本地Moonbeam开发节点部署合约。Moonbeam Truffle plugin提供了一种在后台使用[Docker](https://www.docker.com/){target=blank}快速开始开发节点的方法。
+现在，您已经创建了一个简单的Truffle项目，接下来您可以启动本地Moonbeam开发节点部署合约。Moonbeam Truffle plugin提供了一种在后台使用[Docker](https://www.docker.com/){target=_blank}快速开始开发节点的方法。
 
 要在您的本地环境启动Moonbeam开发节点，您需要：
 
@@ -224,7 +224,7 @@ contract MyToken is ERC20 {
 }
 ```
 
-这是一个基于[OpenZepplin](/builders/build/eth-api/dev-env/openzeppelin/overview/){target=blank} ERC-20合约模板的的简易版ERC-20合约。该合约创建以`MyToken`为符号和标准的 18 位小数的`MyToken`。此外，还将为合约创建者设置初始Token供应量。
+这是一个基于[OpenZepplin](/builders/build/eth-api/dev-env/openzeppelin/overview/){target=_blank} ERC-20合约模板的的简易版ERC-20合约。该合约创建以`MyToken`为符号和标准的 18 位小数的`MyToken`。此外，还将为合约创建者设置初始Token供应量。
 
 ## 迁移脚本 {: #the-migration-script }
 

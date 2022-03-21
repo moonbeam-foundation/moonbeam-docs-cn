@@ -9,7 +9,7 @@ description:  通过此教程学习如何使用OpenZeppelin的智能合约交互
 
 ## 概览 {: #introduction } 
 
-[OpenZeppelin](https://openzeppelin.com/){target=blank}合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 
+[OpenZeppelin](https://openzeppelin.com/){target=_blank}合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 
 
 由于Moonbeam是完全兼容以太坊的区块链，OpenZeppelin所有合约和库都无需经过任何修改就能在Moonbeam上部署。
 
@@ -17,23 +17,23 @@ description:  通过此教程学习如何使用OpenZeppelin的智能合约交互
 
 ## OpenZeppelin Contract Wizard {: #openzeppelin-contract-wizard } 
 
-OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为[Contracts Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard){target=blank}。
+OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，它可能是使用OpenZeppelin代码编写智能合约最简单快捷的方式。这一工具称为[Contracts Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard){target=_blank}。
 
 目前Contracts Wizard支持以下ERC标准：
 
- - [**ERC-20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/){target=blank} —— 遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=blank}的同质化代币标准。同质化指的是所有代币均相同，并可互换，也就是说它们具有相同的价值。同质化代币的一个典型例子就是法币，面值相等的纸币其价值相等
- - [**ERC-721**](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/){target=blank} —— 遵守[EIP-721](https://eips.ethereum.org/EIPS/eip-721){target=blank}的非同质化代币合约。非同质化指的是每一枚代币都不一样，因此独一无二。ERC-721代币可以用于代表某一特定物品的所有权，例如游戏、房地产中的收藏品等
- - [**ERC-1155**](https://docs.openzeppelin.com/contracts/4.x/erc1155){target=blank} —— 遵守[EIP-1155](https://eips.ethereum.org/EIPS/eip-1155){target=blank}标准，也被称为多代币合约，因为同一个智能合约可以同时代表同质化和非同质化代币
+ - [**ERC-20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/){target=_blank} —— 遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=_blank}的同质化代币标准。同质化指的是所有代币均相同，并可互换，也就是说它们具有相同的价值。同质化代币的一个典型例子就是法币，面值相等的纸币其价值相等
+ - [**ERC-721**](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/){target=_blank} —— 遵守[EIP-721](https://eips.ethereum.org/EIPS/eip-721){target=_blank}的非同质化代币合约。非同质化指的是每一枚代币都不一样，因此独一无二。ERC-721代币可以用于代表某一特定物品的所有权，例如游戏、房地产中的收藏品等
+ - [**ERC-1155**](https://docs.openzeppelin.com/contracts/4.x/erc1155){target=_blank} —— 遵守[EIP-1155](https://eips.ethereum.org/EIPS/eip-1155){target=_blank}标准，也被称为多代币合约，因为同一个智能合约可以同时代表同质化和非同质化代币
 
 Contracts Wizard由以下环节组成：
 
  1. **代币标准选择** —— 显示Contracts Wizard所支持的所有标准
  2. **设置** —— 为每一种代币标准提供基准线设置，例如代币名称、代码、预铸造（合约部署时的代币供应量）以及URI（非同质化代币）
  3. **功能** —— 显示每一种代币标准的所有功能列表。可以再通过以下链接获取各功能的更多信息：
-     - [ERC-20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20){target=blank}
-     - [ERC-721](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721){target=blank}
-     - [ERC-1155](https://docs.openzeppelin.com/contracts/4.x/api/token/erc1155){target=blank}
- 4. **访问控制** —— 每种代币标准所有可用的[访问控制机制](https://docs.openzeppelin.com/contracts/4.x/access-control){target=blank}列表
+     - [ERC-20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20){target=_blank}
+     - [ERC-721](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721){target=_blank}
+     - [ERC-1155](https://docs.openzeppelin.com/contracts/4.x/api/token/erc1155){target=_blank}
+ 4. **访问控制** —— 每种代币标准所有可用的[访问控制机制](https://docs.openzeppelin.com/contracts/4.x/access-control){target=_blank}列表
  5. **交互代码显示** —— 显示用户设置下的智能合约代码
 
 ![OpenZeppelin Contracts Wizard](/images/builders/build/eth-api/dev-env/openzeppelin/contracts/oz-wizard-1.png)
@@ -48,14 +48,14 @@ Contracts Wizard由以下环节组成：
  - ERC-721（非同质化代币）
  - ERC-1155（多代币标准）
 
-所有合约代码均通过OpenZeppelin的[Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard){target=blank}获取。
+所有合约代码均通过OpenZeppelin的[Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard){target=_blank}获取。
 
 ### 检查先决条件  {: #checking-prerequisites } 
 
-请确保安装[MetaMask](https://metamask.io/){target=blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=blank}进行合约部署。相关指引请点击以下链接：
+请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=_blank}进行合约部署。相关指引请点击以下链接：
 
- - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/){target=blank}
- - [使用Remix与Moonbeam进行交互](/integrations/remix/){target=blank}
+ - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/){target=_blank}
+ - [使用Remix与Moonbeam进行交互](/integrations/remix/){target=_blank}
 
 ### 部署ERC-20代币 {: #deploying-an-erc20-token } 
 
@@ -124,7 +124,7 @@ contract MyToken is ERC20, Ownable {
 
 可铸造的ERC-721 OpenZeppelin代币合约有一个`mint`函数，只有合约持有者可以调用这一函数。默认设置下，合约所有者即为合约的部署者地址。
 
-和[ERC-20合约](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
+和[ERC-20合约](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=_blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
 
 下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
@@ -189,7 +189,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
 OpenZeppelin的ERC-1155代币合约提供只能在`constructor`函数中调用的`_mint`函数。因此在本示例中，我们将创建1000枚ID为`0`的代币以及一枚ID为`1`的独特代币。
 
-第一步是进入[Remix](https://remix.ethereum.org/){target=blank}并创建新文档。在本示例中，文档命名为`ERC1155.sol`。
+第一步是进入[Remix](https://remix.ethereum.org/){target=_blank}并创建新文档。在本示例中，文档命名为`ERC1155.sol`。
 
 和[ERC-20](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 

@@ -9,7 +9,7 @@ description: 使用Hardhat在Moonbeam上编译、部署和调试以太坊智能�
 
 ## 概览 {: #introduction }
 
-[Hardhat](https://hardhat.org/){target=blank}是一个以太坊开发环境，可帮助开发人员管理和自动化构建智能合约和DApp所固有的重复性任务。Hardhat可以直接与Moonbeam的以太坊API交互，因此可以在部署智能合约至Moonbeam时使用。
+[Hardhat](https://hardhat.org/){target=_blank}是一个以太坊开发环境，可帮助开发人员管理和自动化构建智能合约和DApp所固有的重复性任务。Hardhat可以直接与Moonbeam的以太坊API交互，因此可以在部署智能合约至Moonbeam时使用。
 
 本教程将涵盖如何使用Hardhat在Moonbase Alpha测试网上编译、部署和调试以太坊智能合约。本教程也同样适用于Moonbeam、Moonriver和Moonbeam开发节点。
 
@@ -17,8 +17,8 @@ description: 使用Hardhat在Moonbeam上编译、部署和调试以太坊智能�
 
 在开始之前，您将需要准备以下内容：
 
- - 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=blank}
- - 拥有资金的账户，您可以从[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=blank}获取资金
+ - 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 拥有资金的账户，您可以从[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取资金
  - 
 --8<-- 'text/common/endpoint-examples.md'
 
@@ -59,7 +59,7 @@ description: 使用Hardhat在Moonbeam上编译、部署和调试以太坊智能�
 
 这将在您的项目目录中创建一个Hardhat配置文件（`hardhat.config.js`）。
 
-Hardhat项目创建完毕后，您可以安装[ethers plugin](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=blank}。这将为使用[ethers.js](/builders/tools/eth-libraries/etherjs/){target=blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
+Hardhat项目创建完毕后，您可以安装[ethers plugin](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将为使用[ethers.js](/builders/tools/eth-libraries/etherjs/){target=_blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
 
 ```
 npm install @nomiclabs/hardhat-ethers ethers

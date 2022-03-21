@@ -9,9 +9,9 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 ## 概览 {: #introduction }
 
-[ethers.js](https://docs.ethers.io/){target=blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用ether.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在此[博客文章](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3){target=blank}了解更多关于ether.js的信息。
+[ethers.js](https://docs.ethers.io/){target=_blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用ether.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在此[博客文章](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3){target=_blank}了解更多关于ether.js的信息。
 
-在本教程中，您将学习如何使用ethers.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=blank}，[Moonriver](/builders/get-started/networks/moonriver/){target=blank}，或是[Moonbeam development node](/builders/get-started/networks/moonbeam-dev/){target=blank}。
+在本教程中，您将学习如何使用ethers.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}，[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}，或是[Moonbeam development node](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -40,7 +40,7 @@ npm install ethers solc@0.8.0
 
 ## 设置Ehters提供商 {: #setting-up-the-ethers-provider }
 
-在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.io/v5/api/providers/){target=blank}与网络交互。
+在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.io/v5/api/providers/){target=_blank}与网络交互。
 
 --8<-- 'text/common/endpoint-setup.md'
 
@@ -196,7 +196,7 @@ const balances = async () => {
 balances();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/balances.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/balances.js){target=_blank}。
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -263,7 +263,7 @@ const send = async () => {
 send();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/transaction.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/transaction.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -350,7 +350,7 @@ const deploy = async () => {
 deploy();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/deploy.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/deploy.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -416,7 +416,7 @@ const get = async () => {
 get();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/get.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/get.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -489,7 +489,7 @@ const increment = async () => {
 increment();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/increment.js){target=blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/increment.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -553,7 +553,7 @@ const reset = async () => {
 reset();
 ```
 
-您可以查看在[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/reset.js){target=blank}。
+您可以查看在[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/reset.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 

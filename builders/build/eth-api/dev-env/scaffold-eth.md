@@ -9,7 +9,7 @@ description: 通过本教程学习如何使用Scaffold-ETH快速在Moonbeam上�
 
 ## 概览 {: #introduction }
 
-[Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth){target=blank}是以太坊常用开发工具的集合，使开发人员能够快速部署Solidity智能合约，并上线带有React前端和已部署subgraph的DApp。目前有一些预制模板可供常见DApp类型，如NFT、ERC-20 Token、多签钱包、简易DEX等使用。
+[Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth){target=_blank}是以太坊常用开发工具的集合，使开发人员能够快速部署Solidity智能合约，并上线带有React前端和已部署subgraph的DApp。目前有一些预制模板可供常见DApp类型，如NFT、ERC-20 Token、多签钱包、简易DEX等使用。
 
 Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。所有这些组件只需稍作修改就可在Moonbeam网络上使用。本教程将引导您如何在Moonbeam网络上使用Scaffold-ETH部署和运行默认示例合约和DApp。
 
@@ -19,9 +19,9 @@ Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。�
 
 要运行Scaffold-ETH的The Graph组件，您还需要在您的系统安装以下程序以从Docker运行本地The Graph节点：
 
- - [Docker](https://docs.docker.com/get-docker/){target=blank}
- - [Docker Compose](https://docs.docker.com/compose/install/){target=blank}
- - [JQ](https://stedolan.github.io/jq/download/){target=blank}
+ - [Docker](https://docs.docker.com/get-docker/){target=_blank}
+ - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
+ - [JQ](https://stedolan.github.io/jq/download/){target=_blank}
 
 ### 安装Scaffold-ETH {: #installing-scaffold-eth }
 
@@ -115,7 +115,7 @@ yarn install
         defaultNetwork = "moonbeamDevNode";
         ```
     
-3. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/tools/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
+3. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/tools/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
 
 
 4. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
@@ -128,7 +128,7 @@ yarn install
     }
     ```
 
-关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/interact/hardhat/){target=blank}。
+关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/interact/hardhat/){target=_blank}。
 
 ### The Graph组件 {: #the-graph-component }
 
@@ -234,7 +234,7 @@ yarn install
          file: ./abis/moonbeamDevNode_YourContract.json
         ```
 
-关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=blank}。
+关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=_blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=_blank}。
 
 ### React组件 {: #react-component }
 
