@@ -12,7 +12,7 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 本教程将向您展示通过以太坊上常用的智能合约开发工具[Truffle](https://www.trufflesuite.com/){target=blank}将基于Solidity智能合约部署至Moonbeam节点的操作过程。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
 
-为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=blank}，使您可以快速开始使用[Moonbeam开发节点](/ builders/get-started/moonbeam-dev/){target=blank}。
+为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=blank}。
 
 本教程将向您展示如何在本地运行的开发节点上使用Moonbeam Truffle box和Moonbeam Truffle plugin部署合约并之其交互。这教程也同样适用于Moonbeam、Moonriver和Moonbase Alpha测试网。
 
@@ -75,7 +75,7 @@ npm install -g truffle
 1. 下载对应的Docker镜像：
 
     ```
-truffle run moonbeam install
+    truffle run moonbeam install
     ```
     
     ![Docker image download](/images/builders/build/eth-api/dev-env/truffle/truffle-2.png)
@@ -251,7 +251,7 @@ module.exports = function (deployer) {
 1. 编译合约：
 
     ```
-truffle compile
+    truffle compile
     ```
     
     如果成功，您将看到如下所示的输出：

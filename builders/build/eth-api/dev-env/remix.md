@@ -144,7 +144,7 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
 
  3. 点击**Compile**或根据需求点击**Auto-Compile**
 
-  4. 点击**Deploy**在Metamask上确认交易
+  4. 点击**Deploy**和**Confirm**在Metamask上确认交易
 
 ![Compiling and Deploying a Contract with the Moonbeam Remix Plug](/images/builders/build/eth-api/dev-env/remix/using-remix-18.png)
 

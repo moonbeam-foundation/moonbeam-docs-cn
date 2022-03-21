@@ -68,7 +68,7 @@ pip3 install web3 py-solc-x
     web3 = Web3(Web3.HTTPProvider('{{ networks.moonbase.rpc_url }}'))
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```python
     from web3 import Web3

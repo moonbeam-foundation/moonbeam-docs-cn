@@ -1,5 +1,5 @@
 ---
-title: 集成WalletConnect
+title: WalletConnect
 description: 学习如何将WalletConnect集成至基于Moonbeam网络构建的dApp
 ---
 

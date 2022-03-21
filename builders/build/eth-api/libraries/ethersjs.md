@@ -124,7 +124,7 @@ npm install ethers solc@0.8.0
     );
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```js
     // 1. Import ethers

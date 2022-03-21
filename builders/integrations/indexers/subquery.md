@@ -43,7 +43,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 3. 使用下方命令以初始化您SubQuery项目：
 
     ```
-subql init PROJECT_NAME
+    subql init PROJECT_NAME
     ```
     
     系统会提示一系列问题。关于**Select a network**，您可以选择任一Moonbeam网络：**Moonbeam**、**Moonriver**、**Moonbeam Alpha**。关于RPC endpoint，您可以输入正创建项目的特定网络的[Network Endpoint](/builders/get-started/endpoints/){target=blank}
