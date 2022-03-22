@@ -1,5 +1,5 @@
 ---
-title: Substrate API Sidecar
+title: Sidecar
 description: 如何在Moonbeam网络上使用基于Substrate的REST服务
 ---
 
