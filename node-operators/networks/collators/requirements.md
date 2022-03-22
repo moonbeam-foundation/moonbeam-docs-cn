@@ -144,4 +144,4 @@ Moonkey也提供一些其他的功能，具体如下所示：
 
 ## 收集人问卷调查 {: #collator-questionnaire }
 
-[收集人问卷调查](https://docs.google.com/forms/d/e/1FAIpQLSfjmcXdiOXWtquYlBhdgXBunCKWHadaQCgPuBtzih1fd0W3aA/viewform){target=blank}旨在评估所有收集人在Moonbase Alpha上状态。因此，在填写此表格之前，您需要先在Moonbase Alpha上运行一个收集人节点。您将需要在表格中提供您的联系方式和一些基本的硬件设备规格。这样您和Moonbeam团队之间可以保持沟通渠道，以防您的节点出现任何问题。
+[收集人问卷调查](https://docs.google.com/forms/d/e/1FAIpQLSfjmcXdiOXWtquYlBhdgXBunCKWHadaQCgPuBtzih1fd0W3aA/viewform){target=_blank}旨在评估所有收集人在Moonbase Alpha上状态。因此，在填写此表格之前，您需要先在Moonbase Alpha上运行一个收集人节点。您将需要在表格中提供您的联系方式和一些基本的硬件设备规格。这样您和Moonbeam团队之间可以保持沟通渠道，以防您的节点出现任何问题。

@@ -25,8 +25,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志
     - **`both`** —— 执行本地和wasm文件
     - **`nativeelsewasm`** —— 优先执行本地文件，但无法执行时执行wasm文件
 - **`--wasm-execution`** —— 指定执行wasm runtime代码时的函数方法，以下为可用选项：
-    - **`compiled`** —— 此为默认选项，使用[wasmtime](https://github.com/paritytech/wasmtime){target=blank}编译的runtime
-    - **`interpreted-i-know-what-i-do`** —— 使用[wasmi interpreter](https://github.com/paritytech/wasmi){target=blank}
+    - **`compiled`** —— 此为默认选项，使用[wasmtime](https://github.com/paritytech/wasmtime){target=_blank}编译的runtime
+    - **`interpreted-i-know-what-i-do`** —— 使用[wasmi interpreter](https://github.com/paritytech/wasmi){target=_blank}
 - **`--pruning`** —— 指定状态调整模式。如果为使用`--validator`标志运行的节点，默认保持所有区块的状态。否则，状态仅会保留最近的256个区块，以下为可用选项：
     - **`archive`** —— 保持所有区块的状态
     - **`<number-of-blocks>`** —— 指定保留状态的自定义区块编号
@@ -34,7 +34,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志
 - **`--db-cache`** —— 指定数据库缓存能够使用的记忆体。一般建议设置为您服务器拥有的实际RAM的50%。举例而言，32GB RAM的服务器建议将此选项设置为`16000`。虽然其最小值可以为`2000`，但低于建议的规格
 - **`--base-path`** —— 指定您链上数据储存的路径
 - **`--chain`** —— 指定使用的链规格。其可以为预先设定的链规格，如`{{ networks.moonbeam.chain_spec }}`、 `{{ networks.moonriver.chain_spec }}`、或 `{{ networks.moonbase.chain_spec }}`。也可以是具有链规格的特定文档路径（如使用`build-spec`命令输出的文档）
-- **`--name`** —— 为节点指定可辨识的名称，在启用的情况下在[telemetry](https://telemetry.polkadot.io/){target=blank}可见
+- **`--name`** —— 为节点指定可辨识的名称，在启用的情况下在[telemetry](https://telemetry.polkadot.io/){target=_blank}可见
 - **`--telemetry-url`** —— 指定telemetry服务器所连接的URL。此标志能够用于为多个telemetry端点多次使用。此标志使用两个参数，分别为URL和日志详细级别（Verbosity Level）。日志详细级别范围为0-9，0代表最低级别。预期使用此标志的格式为'<URL VERBOSITY>'，如`--telemetry-url 'wss://foo/bar 0'`
 - **`--in-peers`** —— 指定可接受向内连接的最大数量，默认为`25`
 - **`--out-peers`** —— 指定可接受向外连接的最大数量以维持稳定，默认为`25`

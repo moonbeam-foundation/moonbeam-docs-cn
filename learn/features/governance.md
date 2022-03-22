@@ -67,11 +67,11 @@ Moonbeam作为去中心化网络，将由核心开发者、应用程序开发者
  - 任何时候都做一位道德行动者，时刻考虑自身作为（或不作为）的道德影响
  - 在与其他代币持有者互动的过程中保持耐心与大度，但绝不容忍语言、行动或行为上的暴力和伤害
 
-以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[How to Participate in Blockchain Governance in Good Faith (and with Good Manners)](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=blank}。
+以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，[How to Participate in Blockchain Governance in Good Faith (and with Good Manners)](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=_blank}。
 
 ## 链上治理机制 {: #on-chain-governance-mechanics } 
 
-Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets){target=blank}，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
+Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主权利、理事会、财政库组成的[Substrate框架模块](/resources/glossary/#substrate-frame-pallets){target=_blank}，和Kusama、Polkadot中继链的治理方式相似。该方式能确保与Moonbeam网络相关的关键决策由多数代币作出。提案进入公投后，根据投票权重得出投票结果，从而执行决策。
 
 这一治理机制的主要组成部分包括：
 
@@ -81,7 +81,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，并采用由民主
  - **技术委员会**——由理事会选举产生的具有特殊投票权的个人团体。与Polkadot和Kusama一样，技术委员会有能力（与理事会一起）在紧急情况下快速进行紧急投票和实施。可以在现有的活跃公投的同时创建快速公投。也就是说，紧急公投并不能取代目前正在进行的公投
  - **财政库**—— 一系列的资金，提交提案并充值后即可进行支出。消费提案必须经过委员会同意。若提案遭到拒绝，提案者将失去充值的资金
 
-更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=blank}和[Polkadot治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=blank}。
+更多关于Substrate框架模块的链上治理详情，请查阅[Polkadot网站概述](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=_blank}和[Polkadot治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=_blank}。
 
 ## 理事会和技术委员会的投票权 {: #voting-rights-of-the-council-and-the-technical-committee } 
 

@@ -9,7 +9,7 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
 
 ## 概览 {: #introduction }
 
-在基于Moonbeam的网络上成为收集人需要您满足[绑定要求](/node-operators/networks/collators/requirements/#bonding-requirements){target=blank}并加入候选人池。在您加入候选人池后，您可以调整您的自身绑定数量或决定何时离开候选人池。
+在基于Moonbeam的网络上成为收集人需要您满足[绑定要求](/node-operators/networks/collators/requirements/#bonding-requirements){target=_blank}并加入候选人池。在您加入候选人池后，您可以调整您的自身绑定数量或决定何时离开候选人池。
 
 如果您想要减少您的自身绑定数量或离开候选人池，您首先需要发起请求，在[退出生效期](#collator-timings)后才能执行请求。
 
@@ -76,10 +76,10 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  1. 进入**Developer**标签，点击**Extrinsics**
  2. 选择您想用于参与收集活动的账户
- 3. 确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}，并有多余金额用于支付交易费
+ 3. 确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}，并有多余金额用于支付交易费
  4. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
  5. 打开下拉菜单，在质押相关的所有extrinsics中，选择**joinCandidates()**函数
- 6. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
+ 6. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}（输入数量需以`wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
  7. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
  8. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
@@ -88,7 +88,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 !!! 注意事项
     函数名称和最低绑定数量要求可能会在未来发布新版本时有所调整。
 
-如上所述，只有质押量排名靠前的收集人才可以进入收集人有效集。每个网络候选人的具体排名数量和最低绑定数量请查看[账户与质押要求](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}部分。
+如上所述，只有质押量排名靠前的收集人才可以进入收集人有效集。每个网络候选人的具体排名数量和最低绑定数量请查看[账户与质押要求](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}部分。
 
 ## 停止参与收集活动 {: #stop-collating } 
 
@@ -146,7 +146,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加自身绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/accounts){target=blank}增加其绑定数量，具体步骤如下所示：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/accounts){target=_blank}增加其绑定数量，具体步骤如下所示：
 
  1. 进入**Developer**标签
  2. 点击**Extrinsics**
@@ -160,7 +160,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 减少自身绑定数量 {: #bond-less}
 
-在[runtime1001升级](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/){target=blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=blank}。
+在[runtime1001升级](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/){target=_blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}。
 
 想要减少绑定数量，您需要先发起请求并等待[退出生效期](#collator-timings)，随后执行请求。只要请求还未被执行，您仍可随时[取消请求](#cancel-bond-less-request)。
 

@@ -1,0 +1,6 @@
+title: 账户管理
+nav:
+  - index.md
+  - proxy-accounts.md
+  - multisig-safe.md
+  - identity.md
