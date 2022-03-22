@@ -17,19 +17,19 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 我可以在哪里获得帮助？**
 
-**A:** 在[Discord](https://discord.gg/RyVefR79FA){target=blank}有一个活跃且友好的收集人社区。在您需要帮助之前先加入Discord收集人频道，并介绍自己。私信**PureStake-Gil#0433**或**PureStake-Art#6950** ，并进行自我介绍，负责人会根据您的问题给到相应的解决方案
+**A:** 在[Discord](https://discord.gg/RyVefR79FA){target=_blank}有一个活跃且友好的收集人社区。在您需要帮助之前先加入Discord收集人频道，并介绍自己。私信**PureStake-Gil#0433**或**PureStake-Art#6950** ，并进行自我介绍，负责人会根据您的问题给到相应的解决方案
 
 ***
 
 **Q: 我如何获取最新消息？**
 
-**A:** 所有的更新和重要技术信息都将及时更新在[Discord](https://discord.gg/PhfEbKYqak){target=blank}的**#tech-upgrades-announcements**频道。加入并关注此频道。您也可以根据自身需求，通过Slack或电报群等获取最新消息。
+**A:** 所有的更新和重要技术信息都将及时更新在[Discord](https://discord.gg/PhfEbKYqak){target=_blank}的**#tech-upgrades-announcements**频道。加入并关注此频道。您也可以根据自身需求，通过Slack或电报群等获取最新消息。
 
 ***
 
 **Q: 我如何注册自己的节点？**
 
-**A:** 您可在[此问卷调查表格](https://docs.google.com/forms/d/e/1FAIpQLSfjmcXdiOXWtquYlBhdgXBunCKWHadaQCgPuBtzih1fd0W3aA/viewform){target=blank}中提交您的联系方式以及一些基本硬件设备。您必须在Moonbase Alpha上运行一个收集人节点后方可填写问卷调查。
+**A:** 您可在[此问卷调查表格](https://docs.google.com/forms/d/e/1FAIpQLSfjmcXdiOXWtquYlBhdgXBunCKWHadaQCgPuBtzih1fd0W3aA/viewform){target=_blank}中提交您的联系方式以及一些基本硬件设备。您必须在Moonbase Alpha上运行一个收集人节点后方可填写问卷调查。
 
 ***
 
@@ -87,7 +87,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 是否有CPU优化的二进制文件？** 
 
-**A:** 在每个[版本更新页面](https://github.com/PureStake/moonbeam/releases){target=blank}都有CPU优化的二进制文件。为您的CPU架构选择二进制文件。
+**A:** 在每个[版本更新页面](https://github.com/PureStake/moonbeam/releases){target=_blank}都有CPU优化的二进制文件。为您的CPU架构选择二进制文件。
 
 - **Moonbeam-znver3** - Ryzen 9
 - **Moonbeam-skylake** - Intel 
@@ -97,7 +97,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 监控节点有什么推荐？** 
 
-**A:** 监控对于网络的健康和收益最大化至关重要。我们建议使用[Grafana Labs](https://grafana.com){target=blank}。他们有一个免费的处理层，可以用于处理6个以上的Moonbeam服务器。
+**A:** 监控对于网络的健康和收益最大化至关重要。我们建议使用[Grafana Labs](https://grafana.com){target=_blank}。他们有一个免费的处理层，可以用于处理6个以上的Moonbeam服务器。
 
 ***
 
@@ -109,13 +109,13 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 我应该如何设置警报？**
 
-**A:** 设置警报对于保持您的Moonbeam节点持续生产区块和获取奖励至关重要。我们推荐由[Grafana Labs](https://grafana.com){target=blank}提供支持的[pagerduty.com](https://www.pagerduty.com/){target=blank}。使用上述的[KPI查询](#:~:text=substrate_proposer_block_constructed_count)功能并设置数值低于1时发起警报。警报需要7天24小时随时呼叫待命人员。
+**A:** 设置警报对于保持您的Moonbeam节点持续生产区块和获取奖励至关重要。我们推荐由[Grafana Labs](https://grafana.com){target=_blank}提供支持的[pagerduty.com](https://www.pagerduty.com/){target=_blank}。使用上述的[KPI查询](#:~:text=substrate_proposer_block_constructed_count)功能并设置数值低于1时发起警报。警报需要7天24小时随时呼叫待命人员。
 
 ***
 
 **Q: 什么是Nimbus密钥？**
 
-**A:** Nimbus密钥与[波卡的会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys){target=blank}相似，您的主机和备份机需要有唯一的密钥。将密钥输出保存至安全的地方，确保当您收到警报时可以获取到密钥。您可以参考[会话密钥](/node-operators/networks/collators/account-management/#session-keys){target=blank}的文档页面创建您的密钥。
+**A:** Nimbus密钥与[波卡的会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys){target=_blank}相似，您的主机和备份机需要有唯一的密钥。将密钥输出保存至安全的地方，确保当您收到警报时可以获取到密钥。您可以参考[会话密钥](/node-operators/networks/collators/account-management/#session-keys){target=_blank}的文档页面创建您的密钥。
 
 ***
 
@@ -127,7 +127,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 我需要设置中心化日志记录吗？**
 
-**A:** [Grafana Labs](https://grafana.com){target=blank}也同样可以配置中心化日志记录，这也是我们所推荐的。您可以在同一个地方看到所有的节点记录。[Kibana](https://www.elastic.co/kibana/){target=blank}提供更强大的中心化日志功能，但是Grafana更为简单，适合初学者。
+**A:** [Grafana Labs](https://grafana.com){target=_blank}也同样可以配置中心化日志记录，这也是我们所推荐的。您可以在同一个地方看到所有的节点记录。[Kibana](https://www.elastic.co/kibana/){target=_blank}提供更强大的中心化日志功能，但是Grafana更为简单，适合初学者。
 
 ***
 

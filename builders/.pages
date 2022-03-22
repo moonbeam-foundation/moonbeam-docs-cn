@@ -1,9 +1,8 @@
 title: 开发者
 hide: false
 nav:
-    - index.md
-    - get-started
-    - interact
-    - tools
-    - xcm
-    - integrations
+  - index.md
+  - get-started
+  - build
+  - xcm
+  - integrations
