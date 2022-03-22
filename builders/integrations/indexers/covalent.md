@@ -71,7 +71,7 @@ curl https://api.covalenthq.com/v1/1287/tokens/\
     API密钥后的冒号`:`非常重要，如果没有这个冒号，您就会被要求输入密码（但其实不需要密码）。
 
 
-Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，名单中将不会出现您的地址。访问[Moonbase Alpha ERC-20代币水龙头](https://moonbase-minterc20.netlify.app/)，先铸造一些ERTH代币，然后再重复以上的Covalent API请求步骤。Covalent API会进行实时更新，现在您应该会在ERTH代币持有者名单中看到自己的地址。
+Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，名单中将不会出现您的地址。访问[Moonbase Alpha ERC-20代币任务中心](https://moonbase-minterc20.netlify.app/)，先铸造一些ERTH代币，然后再重复以上的Covalent API请求步骤。Covalent API会进行实时更新，现在您应该会在ERTH代币持有者名单中看到自己的地址。
 
 ## Javascript示例 {: #javascript-examples } 
 

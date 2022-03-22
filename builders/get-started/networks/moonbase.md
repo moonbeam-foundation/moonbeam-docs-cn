@@ -41,13 +41,13 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ## 获得Token {: #get-tokens }
 
-要开始在Moonbase Alpha上开发部署，您可以在我们的Discord频道的[水龙头](https://discord.gg/PfpUATX)处获得DEV Token。若想了解具体DEV数量，您可通过我们的社区渠道直接联系我们。
+要开始在Moonbase Alpha上开发部署，您可以在我们的Discord频道的[任务中心](https://discord.gg/PfpUATX)处获得DEV Token。若想了解具体DEV数量，您可通过我们的社区渠道直接联系我们。
 
 ### Discord - Mission Control {: #discord-mission-control } 
 
 为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多5个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
 
-您可以在“Miscellaneous"一栏下面找到我们的#Moonbase-Faucet频道。
+您可以在“Miscellaneous"一栏下面找到我们的**Moonbase-Faucet**频道。
 
 ![Discord1](/images/builders/get-started/networks/moonbase/discord-1.png)
 

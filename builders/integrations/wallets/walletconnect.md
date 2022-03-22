@@ -87,7 +87,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在本教程中，您将会使用以[React](https://reactjs.org/)构建的简易终端DApp通过WalletConnect连接至移动端钱包。因此，您将会需要一个React项目以及MetaMask移动端钱包以进行测试。目前已经有建立好的范本，其中包含需要的工具包、基础撰写模式以及需要加入逻辑和UI元素的占位符。然而，如果您要使用您自己的DApp进行测试，您将需要安装以下所需依赖项：
+在本教程中，您将会使用以[React](https://reactjs.org/){target=_blank}构建的简易终端DApp通过WalletConnect连接至移动端钱包。因此，您将会需要一个React项目以及MetaMask移动端钱包以进行测试。目前已经有建立好的范本，其中包含需要的工具包、基础撰写模式以及需要加入逻辑和UI元素的占位符。然而，如果您要使用您自己的DApp进行测试，您将需要安装以下所需依赖项：
 
 ```
 npm install ethers @walletconnect/client @walletconnect/qrcode-modal
@@ -95,7 +95,7 @@ npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 
 本教程将会使用MetaMask移动端钱包以进行测试。您可以前往[metamask.io/download/](https://metamask.io/download/){target=_blank}并切换**iOS**或**Android**标签下载MetaMask移动端钱包。
 
-最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。您可以至[官方Discord](https://discord.com/invite/PfpUATX){target=_blank}的水龙头获得DEV Token，详情查看[此教程](/builders/get-started/moonbase/#get-tokens){target=_blank}。
+最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。您可以至[官方Discord](https://discord.com/invite/PfpUATX){target=_blank}的任务中心获得DEV Token，详情查看[此教程](/builders/get-started/moonbase/#get-tokens){target=_blank}。
 
 ## 开始测试 {: #getting-started }
 

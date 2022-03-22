@@ -27,7 +27,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 - 在社区保持活跃度
     - [加入Discord](/node-operators/networks/collators/overview/#join-discord)并自我介绍，若需要可随时更新，以及帮助支持社区成员或其他收集人
 - 创建教程和教学性内容
-- [成为Moonbeam大使](https://moonbeam.network/community/ambassadors/){target=blank}
+- [成为Moonbeam大使](https://moonbeam.network/community/ambassadors/){target=_blank}
 - 贡献与生态系统相关的开源软件
 - 积极参与治理和投票
 
