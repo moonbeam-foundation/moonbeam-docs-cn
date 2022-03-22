@@ -29,11 +29,3 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
     MetaMask会弹出窗口，请求允许将Moonbeam添加为自定义网络。一旦您批准授权，MetaMask将会把您当前的网络切换至Moonbeam。
 
 如果您尚未安装MetaMask，请遵循[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)的教程开始操作。
-
-您也可以使用以下网络信息连接MetaMask：
-
- - Network Name: `Moonbeam`
- - RPC URL: `{{ networks.moonbeam.rpc_url }}`
- - ChainID: `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`)
- - Symbol (Optional): `GLMR`
- - Block Explorer (Optional): `{{ networks.moonbeam.block_explorer }}` 

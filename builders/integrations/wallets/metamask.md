@@ -99,7 +99,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
                                 symbol: 'DEV',
                                 decimals: 18
                             },
-                        rpcUrls: ["{{ networks.moonbase.rpc_url }}"],
+                        rpcUrls: ["{{ networks.moonbase.public_rpc_url }}"],
                         blockExplorerUrls: ["{{ networks.moonbase.block_explorer }}"]
                         },
                     ]

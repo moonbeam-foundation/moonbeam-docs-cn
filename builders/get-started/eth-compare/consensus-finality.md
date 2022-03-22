@@ -51,6 +51,8 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 同样也可以在[Web3.py](https://web3py.readthedocs.io/)中使用`make_request`方法执行自定义RPC请求，您可以使用Web3.js的例子作为基准。
 
+--8<-- 'text/common/endpoint-examples.md'
+
 !!! 注意事项
     以下所提供的代码片段并不适用于每个生产环境，请确保您已根据实际案例进行修改或调整。
 

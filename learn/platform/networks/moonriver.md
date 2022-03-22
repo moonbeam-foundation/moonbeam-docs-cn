@@ -33,8 +33,6 @@ _更新至2021年12月13日_
 | 目标区块生产时间 |   {{ networks.moonriver.block_time }}秒（预计6秒）    |
 |   区块Gas上限    | {{ networks.moonriver.gas_block }}（预计提升至少4倍） |
 |  交易Gas费上限   |  {{ networks.moonriver.gas_tx }}（预计提升至少4倍）   |
-|     RPC端点      |           {{ networks.moonriver.rpc_url }}            |
-|     WSS 端点     |           {{ networks.moonriver.wss_url }}            |
 
 ### 治理配置
 

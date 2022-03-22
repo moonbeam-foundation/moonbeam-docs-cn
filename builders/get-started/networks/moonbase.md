@@ -31,14 +31,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 如果您还没有安装MetaMask，并想查看相关指南，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)指南。
 
-您也可以使用以下网络信息连接MetaMask：
-
- - 网络名称： `Moonbase Alpha`
- - RPC URL: `{{ networks.moonbase.rpc_url }}`
- - ChainID: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`)
- - 代币缩写（可选）： `DEV`
- - 区块链浏览器（可选）： `{{ networks.moonbase.block_explorer }}`
-
 ## 获得Token {: #get-tokens }
 
 要开始在Moonbase Alpha上开发部署，您可以在我们的Discord频道的[水龙头](https://discord.gg/PfpUATX)处获得DEV Token。若想了解具体DEV数量，您可通过我们的社区渠道直接联系我们。

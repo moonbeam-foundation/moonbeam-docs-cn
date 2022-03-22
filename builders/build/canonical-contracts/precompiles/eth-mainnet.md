@@ -32,6 +32,8 @@ npm ls web3
 ```
 撰写本教程时，所用版本为1.3.0。此外，我们还将使用[Remix](/builders/tools/remix/)，并通过[MetaMask](/tokens/connect/metamask/)将其连接至Moonbase Alpha测试网。
 
+--8<-- 'text/common/endpoint-examples.md'
+
 ## 使用ECRECOVER进行签名验证 {: #verify-signatures-with-ecrecover }
 
 这一预编译的主要功能是验证消息签名。一般来说，将某笔交易的签名值输入到`ecrecover`中，将会返回一个地址，如果该地址与发送该交易的公共地址相同，则签名通过验证。

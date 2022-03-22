@@ -39,22 +39,22 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 === "Moonbeam"
     ```
-      {{ networks.moonbeam.rpc_url }}
+      {{ networks.moonbeam.public_rpc_url }}
     ```
 
 === "Moonriver"
     ```
-      {{ networks.moonriver.rpc_url }}
+      {{ networks.moonriver.public_rpc_url }}
     ```
 
 === "Moonbase Alpha"
     ```
-      {{ networks.moonbase.rpc_url }}
+      {{ networks.moonbase.public_rpc_url }}
     ```
 
 === "Moonbeam开发节点"
     ```
-      {{ networks.development.rpc_url }}
+      {{ networks.development.public_rpc_url }}
     ```
 
 最后点击**Save**。
