@@ -275,7 +275,7 @@ module.exports = function (deployer) {
         truffle migrate --network moonbase
         ```
     
-    === "Moonbeam Dev Node"
+    === "Moonbeam开发节点"
         ```
         truffle migrate --network dev
         ```

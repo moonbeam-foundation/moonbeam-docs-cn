@@ -71,7 +71,7 @@ npm install web3 solc@0.8.0
     const web3 = new Web3('{{ networks.moonbase.rpc_url }}');
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```js
     const Web3 = require('web3');
