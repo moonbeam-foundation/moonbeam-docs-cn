@@ -18,7 +18,6 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
     - [进行ERC-20代币转移](/integrations/bridges/ethereum/chainbridge/#erc-20-token-transfer)
     - [进行ERC-721代币转移](/integrations/bridges/ethereum/chainbridge/#erc-721-token-transfer)
     - [一般应用程序](/integrations/bridges/ethereum/chainbridge/#generic-handler)
- - [联系我们](/integrations/bridges/ethereum/chainbridge/#we-want-to-hear-from-you)
 
 ## ChainBridge的运行机制 {: #how-the-bridge-works } 
 
