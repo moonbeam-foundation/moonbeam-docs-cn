@@ -15,7 +15,7 @@ Covalent通过统一的API为所有区块链网络上的资产提供完全的公
 所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
 
  - 安装MetaMask并[连接到Moonbase](/getting-started/moonbase/metamask/)
- - 拥有一个账户并存有一定资金，该账户可以从[Mission Control](https://docs.moonbeam.network/getting-started/moonbase/faucet/)创建
+ - 拥有一个账户并存有一定资金，该账户可以从[任务中心](https://docs.moonbeam.network/getting-started/moonbase/faucet/)创建
 
 ## 终端类型 {: #types-of-endpoints } 
 

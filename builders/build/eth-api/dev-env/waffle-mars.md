@@ -22,7 +22,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 您将需要具备以下先决条件：
 
  - 已安装MetaMask并[连接到 Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 具有一定资金的账户，你可以从[Discord - Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得测试代币
+ - 具有一定资金的账户，你可以从[Discord - 任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得测试代币
 
 --8<-- 'text/common/endpoint-examples.md'
 
