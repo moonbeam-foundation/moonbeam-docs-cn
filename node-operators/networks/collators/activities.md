@@ -96,6 +96,8 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求并不会自动将您从候选人池中移除，您需要等待[退出生效期](#collator-timings)，才能够执行请求并停止参与收集活动。在等待具体轮次数的过程中，如果您在有效集中您仍有资格生产区块和获取奖励。
 
+类似于[Polkadot 的 `chill()`](https://wiki.polkadot.network/docs/maintain-guides-how-to-chill){target=_blank}功能，您可以[暂时离开候选池](#temporarily-leave-the-candidate-pool）而不解除您的代币绑定。
+
 ### 发起离开候选人的请求 {: #schedule-request-to-leave-candidates }
 
 执行以下步骤开始发起一个请求：
@@ -137,6 +139,23 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  7. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-5.png)
+
+### 暂时离开候选池 {: #temporarily-leave-the-candidate-pool }
+
+如果您想暂时离开候选池，可以使用 `goOffline` 方法轻松完成。这可能很有用，例如，如果您需要暂时离开以执行维护操作。完成后，您可以使用 `goOnline` 方法重新加入池。
+
+要暂时离开，您可以采取以下步骤：
+
+ 1. 导航到**Developer**选项卡
+ 2. 点击**Extrinsics**
+ 3. 选择您的候选人帐户
+ 4. 在**submit the following extrinsic**菜单下选择**parachainStaking**托盘
+ 5. 选择 **goOffline** extrinsic
+ 6. 提交交易。按照向导并使用您为帐户设置的密码签署交易
+
+![暂时离开候选池](/images/node-operators/networks/collat​​ors/activities/activities-6.png)
+
+然后，无论何时您想重新加入，都可以使用 `goOnline` 方法，按照上面概述的相同步骤，然后在第 5 步中，选择 `goOnline` 外部。请注意，如果您之前调用过 `goOffline`，则只能调用 `goOnline`。
 
 ## 更改自身绑定数量 {: #change-self-bond-amount }
 
