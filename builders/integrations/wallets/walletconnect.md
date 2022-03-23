@@ -34,7 +34,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       network: "mainnet",
       chain_id: {{ networks.moonbeam.chain_id }},
       network_id: {{ networks.moonbeam.chain_id }},
-      rpc_url: "{{ networks.moonbeam.rpc_url }}",
+      rpc_url: "{{ networks.moonbeam.public_rpc_url }}",
       native_currency: {
         symbol: "GLMR",
         name: "Glimmer",
@@ -54,7 +54,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       network: "mainnet",
       chain_id: {{ networks.moonriver.chain_id }},
       network_id: {{ networks.moonriver.chain_id }},
-      rpc_url: "{{ networks.moonriver.rpc_url }}",
+      rpc_url: "{{ networks.moonriver.public_rpc_url }}",
       native_currency: {
         symbol: "MOVR",
         name: "Moonriver",

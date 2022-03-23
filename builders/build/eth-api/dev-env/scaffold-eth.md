@@ -23,6 +23,8 @@ Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。�
  - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
  - [JQ](https://stedolan.github.io/jq/download/){target=_blank}
 
+ --8<-- 'text/common/endpoint-examples.md'
+
 ### 安装Scaffold-ETH {: #installing-scaffold-eth }
 
 首先，从GitHub代码库下载Scaffold-ETH。
@@ -47,6 +49,8 @@ yarn install
 
 您需要对组成Scaffold-ETH的三个主要组件进行配置修改。
 
+--8<-- 'text/common/endpoint-examples.md'
+
 ### Hardhat组件 {: #hardhat-component }
 
 您可以在`/packages/hardhat`文件下对Hardhat组件进行修改配置。
@@ -57,9 +61,9 @@ yarn install
 
         ```js
         moonbeam: {
-            url: '{{ networks.moonbeam.rpc_url }}',
+            url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
             chainId: {{ networks.moonbeam.chain_id }},  // {{ networks.moonbeam.hex_chain_id }} in hex,
-            accounts: ["Deployment Account Private Key"]
+            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
         }
         ```
     
@@ -67,9 +71,9 @@ yarn install
 
         ```js
         moonriver: {
-            url: '{{ networks.moonriver.rpc_url }}',
+            url: '{{ networks.moonriver.rpc_url }}',  // Insert your RPC URL here
             chainId: {{ networks.moonriver.chain_id }},  // {{ networks.moonriver.hex_chain_id }} in hex,
-            accounts: ["Deployment Account Private Key"] 
+            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
         }
         ```
     
@@ -79,7 +83,7 @@ yarn install
         moonbaseAlpha: {
             url: '{{ networks.moonbase.rpc_url }}',
             chainId: {{ networks.moonbase.chain_id }},  // {{ networks.moonbase.hex_chain_id }} in hex,
-            accounts: ["Deployment Account Private Key"]
+            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
         }
         ```
     
@@ -89,7 +93,7 @@ yarn install
         moonbeamDevNode: {
             url: '{{ networks.development.rpc_url }}',
             chainId: {{ networks.development.chain_id }},  // {{ networks.development.hex_chain_id }} in hex,
-            accounts: ["Deployment Account Private Key"]
+            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
         }
         ```
     
@@ -134,18 +138,9 @@ yarn install
 
 在Scaffold-ETH的The Graph组件中，您需要修改两个文件将本地TheGraph节点实例指向对应Moonbeam RPC端点。
 
-1. 首先，修改`servers/graph-node/environment/ethereum`下的`scaffold-eth/packages/services/graph-node/docker-compose.yaml`文件，将The Graph节点的 RPC端点更改为索引：
+1. 首先，修改`servers/graph-node/environment/ethereum`下的`scaffold-eth/packages/services/graph-node/docker-compose.yaml`文件，将The Graph节点的RPC端点更改为索引。
 
-
-    === "Moonbeam"
-        ```
-        'moonbeam:{{ networks.moonbeam.rpc_url }}'
-        ```
-    
-    === "Moonriver"
-        ```
-        'moonriver:{{ networks.moonriver.rpc_url }}'
-        ```
+    对于Moonbeam或Moonriver，您可以使用私有的[RPC网络端点](/builders/get-started/endpoints/){target=_blank}。对于Moonbase Alpha或Moonbeam开发节点，您可以使用以下端点：
     
     === "Moonbase Alpha"
         ```
@@ -156,9 +151,6 @@ yarn install
         ```
         'mbase:{{ networks.development.rpc_url }}'
         ```
-    
-    !!! 注意事项
-        本示例使用Moonbeam公共RPC端点，但对于生产DApp，建议使用私有API端点提供商。查看[此页面](/builders/get-started/endpoints/#endpoint-providers){target=_blank}获取更多信息。
 
 2. 接下来，您需要修改`subgraph/src/subgraph.template.yaml`。将正在部署的合约中`dataSources/network`字段更改为先前在`docker-compose.yaml`中定义的对应网络名称：
 
@@ -250,7 +242,7 @@ yarn install
             color: "#42A2A0",
             chainId: {{ networks.moonbeam.chain_id }}, // {{ networks.moonbeam.hex_chain_id }} in hex,
             blockExplorer: "{{ networks.moonbeam.block_explorer }}",
-            rpcUrl: "{{ networks.moonbeam.rpc_url }}",
+            rpcUrl: "{{ networks.moonbeam.rpc_url }}", // Insert your RPC URL here
             gasPrice: 100000000000,
             faucet: "",
         },
@@ -264,7 +256,7 @@ yarn install
             color: "#42A2A0",
             chainId: {{ networks.moonriver.chain_id }}, // {{ networks.moonriver.hex_chain_id }} in hex,
             blockExplorer: "{{ networks.moonriver.block_explorer }}",
-            rpcUrl: "{{ networks.moonriver.rpc_url }}",
+            rpcUrl: "{{ networks.moonriver.rpc_url }}", // Insert your RPC URL here
             gasPrice: 1000000000,
             faucet: "",
         },

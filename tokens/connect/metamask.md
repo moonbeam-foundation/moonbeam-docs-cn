@@ -77,7 +77,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     |         Variable          |                                      Value                                       |
     |:-------------------------:|:--------------------------------------------------------------------------------:|
     |       Network Name        |                                    `Moonbeam`                                    |
-    |          RPC URL          |                        `{{ networks.moonbeam.rpc_url }}`                         |
+    |          RPC URL          |                        `{{ networks.moonbeam.public_rpc_url }}`                         |
     |          ChainID          | `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`) |
     |     Symbol (Optional)     |                                      `GLMR`                                      |
     | Block Explorer (Optional) |                     `{{ networks.moonbeam.block_explorer }}`                     |
@@ -86,7 +86,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     |         Variable          |                                       Value                                        |
     |:-------------------------:|:----------------------------------------------------------------------------------:|
     |       Network Name        |                                    `Moonriver`                                     |
-    |          RPC URL          |                         `{{ networks.moonriver.rpc_url }}`                         |
+    |          RPC URL          |                         `{{ networks.moonriver.public_rpc_url }}`                         |
     |          ChainID          | `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`) |
     |     Symbol (Optional)     |                                       `MOVR`                                       |
     | Block Explorer (Optional) |                     `{{ networks.moonriver.block_explorer }}`                      |

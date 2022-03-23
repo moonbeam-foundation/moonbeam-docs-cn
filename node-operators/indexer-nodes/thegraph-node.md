@@ -24,9 +24,10 @@ description: 通过此教程学习如何在Moonbeam上使用The Graph索引协�
  - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
  - [JQ](https://stedolan.github.io/jq/download/){target=_blank}
 
-在教程中，我们将用`tracing`标记Graph节点，对应Moonbase Alpha完整节点运行。此教程也适用于Moonbeam和Moonriver。
+在教程中，我们将用`tracing`标记Graph节点，对应Moonbase Alpha完整节点运行。如果您想运行开启`tracing`的全节点，请参考[运行追踪节点](/node-operators/networks/tracing-node){target=_blank}指南。
 
-如果您想运行开启`tracing`的全节点，请参考[运行追踪节点](/node-operators/networks/tracing-node){target=_blank}指南。
+此教程也适用于Moonbeam和Moonriver。
+--8<-- 'text/common/endpoint-examples.md'
 
 ## 运行Graph节点 {: #running-a-graph-node } 
 
