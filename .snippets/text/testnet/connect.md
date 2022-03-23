@@ -12,7 +12,7 @@ Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。
 
 #### WSS {: #wss }
 
---8<-- 'code/endpoints/moonbase-https.md'
+--8<-- 'code/endpoints/moonbase-wss.md'
 
 #### 中继链 {: #relay-chain }
 
