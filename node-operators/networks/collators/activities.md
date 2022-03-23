@@ -153,7 +153,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  5. 选择 **goOffline** extrinsic
  6. 提交交易。按照向导并使用您为帐户设置的密码签署交易
 
-![暂时离开候选池](/images/node-operators/networks/collat​​ors/activities/activities-6.png)
+![暂时离开候选池](/images/node-operators/networks/collators/activities/activities-6.png)
 
 然后，无论何时您想重新加入，都可以使用 `goOnline` 方法，按照上面概述的相同步骤，然后在第 5 步中，选择 `goOnline` 外部。请注意，如果您之前调用过 `goOffline`，则只能调用 `goOnline`。
 
