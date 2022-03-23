@@ -21,7 +21,7 @@ description: 学习如何在基于Moonbeam的网络设置代理账户
 
 - 打开[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)并已连接至Moonbase Alpha
 - 在Moonbase Alpha上创建或拥有2个账户
-- 至少有一个账户拥有`DEV` Token。您可以通过Moonbase Alpha的[水龙头](/builders/get-started/moonbase/#get-tokens/)获得用于测试的DEV Token
+- 至少有一个账户拥有`DEV` Token。您可以通过Moonbase Alpha的[任务中心](/builders/get-started/moonbase/#get-tokens/)获得用于测试的DEV Token
 
 如果您想要把您的账户导入Polkadot.js Apps，请参考[使用Polkadot.js Apps与Moonbeam交互](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)的教程。
 

@@ -15,7 +15,7 @@ Covalent通过统一的API为所有区块链网络上的资产提供完全的公
 所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
 
  - 安装MetaMask并[连接到Moonbase](/getting-started/moonbase/metamask/)
- - 拥有一个账户并存有一定资金，该账户可以从[Mission Control](https://docs.moonbeam.network/getting-started/moonbase/faucet/)创建
+ - 拥有一个账户并存有一定资金，该账户可以从[任务中心](https://docs.moonbeam.network/getting-started/moonbase/faucet/)创建
 
 ## 终端类型 {: #types-of-endpoints } 
 
@@ -71,7 +71,7 @@ curl https://api.covalenthq.com/v1/1287/tokens/\
     API密钥后的冒号`:`非常重要，如果没有这个冒号，您就会被要求输入密码（但其实不需要密码）。
 
 
-Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，名单中将不会出现您的地址。访问[Moonbase Alpha ERC-20代币水龙头](https://moonbase-minterc20.netlify.app/)，先铸造一些ERTH代币，然后再重复以上的Covalent API请求步骤。Covalent API会进行实时更新，现在您应该会在ERTH代币持有者名单中看到自己的地址。
+Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，名单中将不会出现您的地址。访问[Moonbase Alpha ERC-20代币任务中心](https://moonbase-minterc20.netlify.app/)，先铸造一些ERTH代币，然后再重复以上的Covalent API请求步骤。Covalent API会进行实时更新，现在您应该会在ERTH代币持有者名单中看到自己的地址。
 
 ## Javascript示例 {: #javascript-examples } 
 

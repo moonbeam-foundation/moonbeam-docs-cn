@@ -9,15 +9,11 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 ## 概览 {: #introduction } 
 
-在Moonbeam[治理概述页面](/governance/overview/#definitions)中提到，提案指的是代币持有者向区块链提出建议，让系统自动执行。
+在Moonbeam[治理概述页面](/learn/features/governance/#definitions){target=_blank}中提到，提案指的是代币持有者向区块链提出建议，让系统自动执行。
 
-提案是治理系统的核心组成部分，是代币持有者提出行动或者变化建议的主要工具。提案后，其他代币持有者将对提案进行投票。
+提案是治理系统的核心组成部分，是代币持有者提出行动或者变化建议的主要工具。提案后，其他代币持有者将对提案进行投票。Moonbeam用户将能够使用其H160地址和私钥（即他们的常规以太坊账户）创建、赞成和投票提案！
 
-在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）创建提案、附议提案和投票提案。
-
-[Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0)发布后，用户现可在测试网上提交提案进行公投。本教程为如何创建提案提供了指引，对从创建提案到进入公投阶段的流程进行了介绍。关于如何进行提案投票，可以点击[这里](/governance/voting/)查看相关教程。
-
-更多详情，请参阅Polkadot Wiki下的[治理](https://wiki.polkadot.network/docs/learn-governance)和[参与民主权利](https://wiki.polkadot.network/docs/maintain-guides-democracy)页面。
+本指南概述了如何创建提案的过程。这些步骤将从它的创建开始，直到它达到公投。关于[如何对提案进行投票](/tokens/governance/voting/){target=_blank} 有单独的指南。更多信息可以在Polkadot的Wiki页面中找到与[Governance](https://wiki.polkadot.network/docs/learn-governance#council){target=_blank}和[Participate in Democracy](https://wiki.polkadot.network/docs/maintain-guides-democracy){target=_blank}。
 
 !!! 注意事项
     本教程在定制版本的Moonbeam上进行，发布/执行期较短，仅作演示用途。
@@ -35,29 +31,30 @@ description: 如何通过治理机制在Moonbeam上发送提案
  - **冷却期** —— 提案被否决后不能重新提交的时期（以区块数量计算）
 
 === "Moonbeam"
-    |         变量         |  |                                                          值                                                          |
-    |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
-    |      发起期       |  | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
-    |     冷却期      |  |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
-    | 最低原像存款额 |  |                                 {{ networks.moonbeam.democracy.min_preim_deposit}} GLMR                                 |
-    | 最低提案存款额 |  |                                    {{ networks.moonbeam.democracy.min_deposit}} GLMR                                    |
+    |         变量         |                                                          值                                                          |
+    |:------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
+    |     冷却期      |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |                                 {{ networks.moonbeam.democracy.min_preim_deposit}} GLMR                                 |
+    | 最低提案存款额 |                                    {{ networks.moonbeam.democracy.min_deposit}} GLMR                                    |
 
 === "Moonriver"
-    |         变量         |  |                                                           值                                                           |
-    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------:|
-    |      发起期       |  | {{ networks.moonriver.democracy.launch_period.blocks}} blocks ({{ networks.moonriver.democracy.launch_period.days}} days) |
-    |     冷却期      |  |   {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)   |
-    | 最低原像存款额 |  |                                 {{ networks.moonriver.democracy.min_preim_deposit}} MOVR                                  |
-    | 最低提案存款额 |  |                                    {{ networks.moonriver.democracy.min_deposit}} MOVR                                     |
+    |         变量         |                                                           值                                                           |
+    |:------------------------:|:-------------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       | {{ networks.moonriver.democracy.launch_period.blocks}} blocks ({{ networks.moonriver.democracy.launch_period.days}} days) |
+    |     冷却期      |   {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |                                 {{ networks.moonriver.democracy.min_preim_deposit}} MOVR                                  |
+    | 最低提案存款额 |                                    {{ networks.moonriver.democracy.min_deposit}} MOVR                                     |
 
 === "Moonbase Alpha"
-    |         变量         |  |                                                          值                                                          |
-    |:------------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
-    |      发起期       |  | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
-    |     冷却期      |  |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
-    | 最低原像存款额 |  |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
-    | 最低提案存款额 |  |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+    |         变量         |                                                          值                                                          |
+    |:------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      发起期       | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
+    |     冷却期      |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
+    | 最低原像存款额 |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
+    | 最低提案存款额 |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
 
+本指南将向您展示如何在 Moonbase Alpha 上提交提案。它也可以适用于Moonbeam或Moonriver。
 
 ## 提案步骤 {: #roadmap-of-a-proposal } 
 
@@ -67,7 +64,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 这一小节将介绍从原像到公投的提案过程。本教程中，我们创建了一个真实提案，而不是提供通用示例，以作为本教程和其它教程的基础。
 
-您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[这一教程](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account)完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
+您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[创建或导入H160账户](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
 ![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-1.png)
 
@@ -77,7 +74,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 第一步是提交提案原像。这是因为大型原像包含关于提案本身的所有信息，储存成本很高。在这一设置下，资金较多的账户可以负责提交原像，另一个账户提交提案。
 
-所有治理相关操作均在“Democracy”标签下。进入后，点击“Submit preimage”按钮。
+所有治理相关操作均在**Democracy**标签下。进入后，点**Submit preimage**按钮。
 
 ![Submit Preimage](/images/tokens/governance/proposals/proposals-2.png)
 
@@ -85,10 +82,9 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
  1. 选择提交原像的账户
  2. 选择希望交互的模块以及可调用的函数（或行动）进行提案。所选行动将决定接下来的步骤中要填写的内容领域。在这一示例中，选择的是`democracy`模块和`setBalance`函数
- 3. 设置希望修改余额的账户地址
- 4. 设置新余额。了解更多余额类型，您可访问[这一网页](https://wiki.polkadot.network/docs/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
- 5. 复制原像哈希值。这个数值代表着提案，在提交正式提案时会用到
- 6. 点击“Submit preimage”按钮并签名确认交易
+ 3. 以ascii或十六进制格式输入备注文本，前缀为“0x”。确保备注是唯一的。 “你好世界！”已经提出，不接受重复的相同提案。这些提案将永久存在于链上，所以请不要输入敏感信息或亵渎
+ 4. 复制原像哈希值。这个数值代表着提案，在提交正式提案时会用到
+ 5. 点击**Submit preimage**按钮并签名确认交易
 
 ![Fill in the Preimage Information](/images/tokens/governance/proposals/proposals-3.png)
 
@@ -99,7 +95,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
 ### 提交提案 {: #submitting-a-proposal } 
 
-提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在“Democracy”页面点击“Submit proposal”。
+提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在**Democracy**页面点击**Submit proposal**。
 
 ![Submit proposal](/images/tokens/governance/proposals/proposals-4.png)
 
@@ -108,14 +104,14 @@ description: 如何通过治理机制在Moonbeam上发送提案
  1. 选择提交提案的账户（在本示例中为Alice）
  2. 输入提案的原像哈希值。在这个示例中为上一小节操作得到的`setBalance`原像哈希值
  3. 设置锁定金额。数值应等于提案者锁定的金额。只有锁定量最高的提案才会进入公投阶段。最低充值额显示在“Input”标签正下方
- 4. 点击“Submit proposal”按钮并签名确认交易
+ 4. 点击**Submit proposal**按钮并签名确认交易
 
 ![Fill in the Proposal Information](/images/tokens/governance/proposals/proposals-5.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。该提案也会进入“Proposals”列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
+交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。该提案也会进入**Proposals**列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
 
 ![Proposal listed](/images/tokens/governance/proposals/proposals-6.png)
 
@@ -126,7 +122,7 @@ description: 如何通过治理机制在Moonbeam上发送提案
 !!! 注意事项
     一个账户可多次附议同一提案。这是原理上就存在的功能，因为一个账户可以发送代币到不同地址，并使用这些地址来附议提案。提案是否能进入公投阶段看的是代币锁定量，而不是地址数量。
 
-上一小节介绍了如何创建提案，本小节则介绍了如何附议提案。在提案列表中选择需要赞成的提案并点击"Second"按钮即可。
+上一小节介绍了如何创建提案，本小节则介绍了如何附议提案。在提案列表中选择需要赞成的提案并点击**Second**按钮即可。
 
 ![Proposal listed to Second](/images/tokens/governance/proposals/proposals-7.png)
 
@@ -134,13 +130,13 @@ description: 如何通过治理机制在Moonbeam上发送提案
 
  1. 选择您希望用于附议提案的账户（在本示例中为Charley）
  2. 验证附议提案所需代币数量
- 3. 点击“Second”按钮并签名确认交易
+ 3. 点击**Second**按钮并签名确认交易
 
 ![Fill in Second Information](/images/tokens/governance/proposals/proposals-8.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
-交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。您也可以在“Proposals”列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
+交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。您也可以在**Proposals**列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
 
 ![Proposal Seconded](/images/tokens/governance/proposals/proposals-9.png)

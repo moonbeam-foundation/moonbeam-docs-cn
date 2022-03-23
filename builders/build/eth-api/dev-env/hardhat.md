@@ -18,7 +18,7 @@ description: 使用Hardhat在Moonbeam上编译、部署和调试以太坊智能�
 在开始之前，您将需要准备以下内容：
 
  - 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有资金的账户，您可以从[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取资金
+ - 拥有资金的账户，您可以从[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取资金
  - 
 --8<-- 'text/common/endpoint-examples.md'
 

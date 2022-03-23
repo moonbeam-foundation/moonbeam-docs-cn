@@ -23,10 +23,10 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 预编译位于以下地址：
 
-<!-- === "Moonbeam"
+=== "Moonbeam"
      ```
      {{networks.moonbeam.precompiles.erc20 }}
-     ``` -->
+     ```
 
 === "Moonriver"
      ```
@@ -48,9 +48,9 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 遵循本教程操作，您将需要以下条件：
 
-- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/)
+- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或拥有两个账户，以测试ERC-20预编译不同的功能
-- 至少拥有一个转入`DEV` Token的账户，您可以从Moonbase Alpha[水龙头](/builders/get-started/moonbase/#get-tokens/)获取用于测试的DEV Token
+- 至少拥有一个转入`DEV` Token的账户，您可以从Moonbase Alpha[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取用于测试的DEV Token
 
 ## 添加Token至MetaMask {: #add-token-to-metamask }
 

@@ -18,16 +18,16 @@ description: 和所有的智能合约平台一样，Moonbeam Network也需要发
 
 部署在Polkadot上的Moonbeam代币称为Glimmer（GLMR）。代币应用举例：“调用这个智能合约将花费3个Glimmer（GLMR）“。
 
-更多关于Glimmer的资讯请点击[这里](https://moonbeam.network/networks/moonbeam/glimmer-token/)。
+更多关于Glimmer的资讯请点击[Moonbeam基金](https://moonbeam.network/networks/moonbeam/glimmer-token/)。
 
 ## Moonriver Token {: #moonriver-token } 
 
 部署在Kusama上的Moonbeam网络是Moonriver，它的代币为Moonriver（MOVR），代币应用举例：“调用这个智能合约将花费3个Moonriver（MOVR）”。
 
-更多关于Moonriver的资讯请点击[这里](https://moonbeam.network/networks/moonriver/river-token/)。
+更多关于Moonriver的资讯请点击[Moonbeam基金](https://moonbeam.network/networks/moonriver/river-token/)。
 
 ## DEV Token {: #dev-token } 
 
 Moonbeam测试网Moonbase Alpha的代币为DEV。此代币可免费获取，且仅供Moonbase Alpha上的开发和测试使用。
 
-您可在[Faucet 水龙头](/getting-started/moonbase/faucet/)免费获取DEV代币。
+您可在[任务中心](/getting-started/moonbase/faucet/)免费获取DEV代币。
