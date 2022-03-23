@@ -74,7 +74,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
       network: "testnet",
       chain_id: {{ networks.moonbase.chain_id }},
       network_id: {{ networks.moonbase.chain_id }},
-      rpc_url: "{{ networks.moonbase.public_rpc_url }}",
+      rpc_url: "{{ networks.moonbase.rpc_url }}",
       native_currency: {
         symbol: "DEV",
         name: "DEV",

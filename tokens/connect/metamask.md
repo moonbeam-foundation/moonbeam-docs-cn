@@ -95,7 +95,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     |         Variable          |                                      Value                                       |
     |:-------------------------:|:--------------------------------------------------------------------------------:|
     |       Network Name        |                                 `Moonbase Alpha`                                 |
-    |          RPC URL          |                        `{{ networks.moonbase.public_rpc_url }}`                         |
+    |          RPC URL          |                        `{{ networks.moonbase.rpc_url }}`                         |
     |          ChainID          | `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`) |
     |     Symbol (Optional)     |                                      `DEV`                                       |
     | Block Explorer (Optional) |                     `{{ networks.moonbase.block_explorer }}`                     |
@@ -104,7 +104,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
     |         Variable          |                                         Value                                          |
     |:-------------------------:|:--------------------------------------------------------------------------------------:|
     |       Network Name        |                                     `Moonbeam Dev`                                     |
-    |          RPC URL          |                          `{{ networks.development.public_rpc_url }}`                          |
+    |          RPC URL          |                          `{{ networks.development.rpc_url }}`                          |
     |          ChainID          | `{{ networks.development.chain_id }}` (hex: `{{ networks.development.hex_chain_id }}`) |
     |     Symbol (Optional)     |                                         `DEV`                                          |
     | Block Explorer (Optional) |                      `{{ networks.development.block_explorer }}`                       |

@@ -2,7 +2,21 @@
 
 ### 网络端点 {: #network-endpoints } 
 
-Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。如果您需要生产环境可以使用的端点，请参考[网络端点](/builders/get-started/endpoints/#endpoint-providers) 指南。
+Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。
+
+如果您需要生产环境可以使用的端点，请参考[网络端点](/builders/get-started/endpoints/#endpoint-providers) 指南。如果仅为开发环境使用，您可以使用以下的公用端点：
+
+#### HTTPS {: #https }
+
+--8<-- 'code/endpoints/moonbase-https.md'
+
+#### WSS {: #wss }
+
+--8<-- 'code/endpoints/moonbase-https.md'
+
+#### 中继链 {: #relay-chain }
+
+--8<-- 'text/testnet/relay-chain.md'
 
 ### 快速开始 {: #quick-start }  
 

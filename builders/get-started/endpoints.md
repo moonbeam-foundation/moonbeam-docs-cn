@@ -7,14 +7,32 @@ description: 使用支持的API提供商连接至公共端点或创建自定义J
 
 ![API Providers banner](/images/builders/get-started/endpoints/endpoints-banner.png)
 
-## 端点提供商
+## 公共端点 {: #public-endpoints }
+
+Moonbase Alpha TestNet有可供开发使用的公共端点。对于Moonbeam或Moonriver，您需要从支持Moonbeam的[端点提供商](#endpoint-providers) 获取您自己的私有端点。
+
+基于Moonbeam的网络有两种端点可供用户连接：一种是HTTPS，另一种是WSS。
+
+### HTTPS {: #https }
+
+--8<-- 'code/endpoints/moonbase-https.md'
+
+### WSS {: #wss }
+
+--8<-- 'code/endpoints/moonbase-wss.md'
+
+### 中继链 {: #relay-chain }
+
+--8<-- 'text/testnet/relay-chain.md'
+
+## 端点提供商 {: #endpoint-providers } 
 
 您可以使用以下任意API提供商，创建适用于开发环境或生产环境的端点：
 
 - [Bware Labs](#bware-labs)
 - [OnFinality](#onfinality)
 
-### Bware Labs
+### Bware Labs {: #bware-labs }
 
 [Bware Labs](https://bwarelabs.com/)平台的用户只需在用户友好型界面中通过简单的几个点击步骤，便能够获得免费的端点，以允许您与Moonbeam进行交互。
 
@@ -27,7 +45,7 @@ description: 使用支持的API提供商连接至公共端点或创建自定义J
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-1.png)
 
-### OnFinality
+### OnFinality {: #onfinality }
 
 [OnFinality](https://onfinality.io/)为客户提供比免费公共端点更高速率限制和性能的基于API密钥的免费端点。您还会收到有关您的应用程序使用情况的深入分析。
 

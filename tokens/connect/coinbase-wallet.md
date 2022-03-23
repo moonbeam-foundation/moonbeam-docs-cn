@@ -69,7 +69,7 @@ description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移�
     |         变量          |                                      值                                       |
     |:-------------------------:|:--------------------------------------------------------------------------------:|
     |       Network Name        |                                 `Moonbase Alpha`                                 |
-    |          RPC URL          |                        `{{ networks.moonbase.public_rpc_url }}`                         |
+    |          RPC URL          |                        `{{ networks.moonbase.rpc_url }}`                         |
     |          ChainID          | `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`) |
     |     Symbol (Optional)     |                                      `DEV`                                       |
     | Block Explorer (Optional) |                     `{{ networks.moonbase.block_explorer }}`                     |

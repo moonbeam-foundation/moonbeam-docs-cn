@@ -22,7 +22,7 @@ const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
 const ethers = require('ethers');
 
 
-const providerURL = "https://rpc.api.moonriver.moonbeam.network";
+const providerURL = "RPC-API-ENDPOINT-HERE"; // Insert your RPC URL here
 // Define Provider
 const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
     chainId: 1285,
