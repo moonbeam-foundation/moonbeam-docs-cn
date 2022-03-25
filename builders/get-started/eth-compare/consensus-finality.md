@@ -47,10 +47,6 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 ## 使用Moonbeam RPC端点查询交易确定性 {: #checking-tx-finality-with-moonbeam-rpc-endpoints }
 
-Moonbeam has added support for two custom RPC endpoints, `moon_isBlockFinalized` and `moon_isTxFinalized`, that can be used to check whether an on-chain event is finalized. 
-
-For more information you can go to the [Finality RPC Endpoints](/builders/build/moonbeam-custom-api#finality-rpc-endpoints){target=_blank} section of the Moonbeam Custom API page.
-
 Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC端点的支持，可用于查询链上事件是否已最终确定。
 
 您可以在[Moonbeam自定义API页面](/builders/build/moonbeam-custom-api#finality-rpc-endpoints){target=_blank} 中查阅详细API信息。
