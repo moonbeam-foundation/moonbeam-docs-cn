@@ -45,63 +45,46 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 以下部分将会列出您该如何使用以太坊JSON-RPC（自定义Web3请求）和Substrate（波卡）JSON-RPC检查交易终结的进度。
 
-## 使用以太坊库检查交易量确定性 {: #checking-tx-finality-with-ethereum-libraries } 
+## 使用Moonbeam RPC端点查询交易确定性 {: #checking-tx-finality-with-moonbeam-rpc-endpoints }
 
-您可以在[Web3.js](https://web3js.readthedocs.io/)和[Ethers.js](https://docs.ethers.io/)中使用`send`方法连接至Substrate JSON-RPC。
+Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC端点的支持，可用于查询链上事件是否已最终确定。
 
-同样也可以在[Web3.py](https://web3py.readthedocs.io/)中使用`make_request`方法执行自定义RPC请求，您可以使用Web3.js的例子作为基准。
+您可以在[Moonbeam自定义API页面](/builders/build/moonbeam-custom-api#finality-rpc-endpoints){target=_blank} 中查阅详细API信息。
+
+## 使用以太坊库查询交易确定性 {: #checking-tx-finality-with-ethereum-libraries } 
+
+您可以在[Web3.js](https://web3js.readthedocs.io/)和[Ethers.js](https://docs.ethers.io/)中使用`send`方法连接至Substrate JSON-RPC。同样也可以在[Web3.py](https://web3py.readthedocs.io/)中使用`make_request`方法执行自定义RPC请求，您可以使用Web3.js的例子作为基准。
+
+此代码依赖来自Substrate JSON-RPC的两个自定义RPC请求：`chain_getFinalizedHead` 和`chain_getHeader`。第一个请求将会获得最新确认区块的区块哈希，第二个请求将获得已知区块哈希的区块标题。 `eth_getBlockByNumber`和`eth_getTransactionReceipt`的调用也是如此，以检查给定的交易哈希是否包含在区块中。
 
 --8<-- 'text/common/endpoint-examples.md'
 
 !!! 注意事项
     以下所提供的代码片段并不适用于每个生产环境，请确保您已根据实际案例进行修改或调整。
 
-### Web3.js的自定义RPC请求 {: #custom-rpc-requests-with-web3.js } 
+=== "web3.js"
+    --8<-- 'code/vs-ethereum/web3.md'
 
-在[Web3.js](https://web3js.readthedocs.io/)中，您可以使用`web3.currentProvider.send()`方法执行自定义RPC请求。然而，截至本文撰写时，这尚未被列在Web3.js的官方文档当中。
+=== "ethers.js"
+    --8<-- 'code/vs-ethereum/ethers.md'
 
-给定一个交易哈希（`tx_hash`），以下代码片段将使用Web3.js来获取当前确认的区块并将其与您提供的交易所属的区块编号比较。
+=== "web3.py"
+    --8<-- 'code/vs-ethereum/web3py.md'
 
-此代码依赖来自Substrate JSON-RPC的两个自定义RPC请求：`chain_getFinalizedHead` 和`chain_getHeader`。第一个请求将会获得最新确认区块的区块哈希，第二个请求将获得已知区块哈希的区块标题。这同样适用相同的自定义RPC函数`eth_getTransactionReceipt`，但这可以使用常规的`web3.eth.getTransactionReceipt(hash)`方法修改。同样，这也适用于`eth_getBlockByNumber`检查指定交易哈希是否被包含在区块当中。
+## Checking Tx Finality with Substrate Libraries {: #checking-tx-finality-with-substrate-libraries }
 
---8<-- 'code/vs-ethereum/web3.md'
+[Polkadot.js API组件](https://polkadot.js.org/docs/api/start)和[Python Substrate Interface组件](https://github.com/polkascan/py-substrate-interface)提供开发者使用Javascript操作Substrate链的方法。
 
-### Ethers.js的自定义RPC请求 {: #custom-rpc-requests-with-ethers.js } 
+给定一个交易哈希（`tx_hash`），以下代码片段会获取当前的最终区块，并将其与您提供的交易的区块高度进行比较。该代码依赖于来自 Substrate JSON-RPC的三个RPC请求：
 
-在[Ethers.js](https://docs.ethers.io/)中，您可以使用`JsonRpcProvider` Web3提供者执行自定义RPC请求。这将会启用`web3Provider.send()`方法，详细信息可以访问其[文档网站](https://docs.ethers.io/v5/api/providers/jsonrpc-provider/#JsonRpcProvider-send)。
-给定一个交易哈希（`tx_hash`），以下代码片段使用Ethers.js获取当前确认的区块并将其与您提供的交易所属的区块编号比较。
+- `chain_getFinalizedHead` - 第一个请求获取最新的最终确认区块的区块哈希
+- `chain_getHeader` - 第二个请求获取给定区块哈希的块头
+- `eth_getTransactionReceipt` - 检索给定交易哈希的ETH交易收据
 
-此代码来自Substrate JSON-RPC的两个自定义RPC请求：`chain_getFinalizedHead` 和`chain_getHeader`。第一个请求将会获得最新确认区块的区块哈希，第二个请求将获得已知区块哈希的区块标题。这同样适用相同的自定义RPC函数`eth_getTransactionReceipt`，但这可以使用常规的`web3.eth.getTransactionReceipt(hash)`方法修改。同样，这也适用于`eth_getBlockByNumber`检查给定的交易哈希是否被包含在区块当中。
+您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc)和[Python Substrate Interface官方文档网站](https://polkascan.github.io/py-substrate-interface/)查询所有关于这两个库的详细JSON RPC信息。
 
---8<-- 'code/vs-ethereum/ethers.md'
+=== "Polkadot.js"
+    --8<-- 'code/vs-ethereum/polkadotjs.md'
 
-### Web3.py的自定义RPC请求
-
-在[Web3.py](https://web3py.readthedocs.io/en/stable/)中，您可以利用`JSONBaseProvider()` Web3提供者执行自定义RPC请求。这将会启用`encode_rpc_request`和 `decode_rpc_response`方法。然而，截至本文撰写时，这尚未被列在Web3.js的官方文档当中。
-
-给定一个交易哈希（`tx_hash`），以下代码片段使用Web3.jy获取当前确认的区块并将其与您提供的交易所属的区块编号比较。
-
-此代码从Substrate JSON-RPC异步调用两个自定义RPC请求：`chain_getFinalizedHead`和`chain_getHeader`。第一个请求将会获得最终确认区块的区块哈希，第二个请求获得已知区块哈希的区块标题。它使用内置的`web3.eth.getTransactionReceipt`方法检索交易收据。`eth_getBlockByNumber`方法也相似, 用来检查交易是否被包括在区块里。
-
---8<-- 'code/vs-ethereum/web3py.md'
-
-
-## 使用Polkadot.js查看交易量确定性 {: #checking-tx-finality-with-polkadot.js } 
-
-[Polkadot.js API组件](https://polkadot.js.org/docs/api/start)提供开发者使用Javascript操作Substrate链的方法。
-
-给定一个交易哈希（`tx_hash`），以下的代码片段使用Polkadot.js获取最新确认的区块并且与提供的区块号比较。您可以在[官方文档网站](https://polkadot.js.org/docs/substrate/rpc)查询所有关于Polkadot.js和Substrate JSON RPC的所有可用信息。
-
-此代码依赖来自Substrate JSON-RPC的三个RPC请求：`chain_getFinalizedHead`、 `chain_getHeader`以及`eth_getTransactionReceipt`。第一个请求获得最新确认区块的区块哈希，第二个请求获得给定区块哈希的区块标题，而第三个请求则类似于以太坊JSON-RPC指令但是直接通过Substrate元数据完成。
-
---8<-- 'code/vs-ethereum/polkadotjs.md'
-
-## 使用Python Substrate Interface查看交易量确定性 {: #checking-tx-finality-with-python-substrate-interface } 
-
-[Python Substrate Interface组件](https://github.com/polkascan/py-substrate-interface)提供开发者使用Python操作Substrate链的方法。
-
-给定一个交易哈希（`tx_hash`），以下的代码片段使用Python Substrate Interface获取最新确认的区块并且与提供的区块号比较。您可以在[官方文档网站](https://polkascan.github.io/py-substrate-interface/)查询所有关于Python Substrate Interface以及其API端点的所有信息。
-
-此代码依赖来自Substrate JSON-RPC的两个RPC请求：`eth_getTransactionReceipt`和`eth_getBlockByNumber`。第一个请求获得交易的EVM交易收据，第二个请求获得某个高度的区块。
-
---8<-- 'code/vs-ethereum/pysubstrateinterface.md'
+=== "py-substrate-interface"
+    --8<-- 'code/vs-ethereum/pysubstrateinterface.md'
