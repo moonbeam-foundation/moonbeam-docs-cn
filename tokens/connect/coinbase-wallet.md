@@ -1,5 +1,5 @@
 ---
-title: 使用Coinbase Wallet
+title: 使用Coinbase Wallet移动端App与Moonbeam交互
 description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移动端App
 ---
 

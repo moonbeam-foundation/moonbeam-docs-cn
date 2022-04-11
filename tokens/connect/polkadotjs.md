@@ -1,7 +1,8 @@
 ---
-title: 使用Polkadot.js Apps
+title: Polkadot.js Apps
 description: 根据此教程快速学习如何使用基于Substrate的应用程序，如Polkadot.js与Moonbeam的标准以太坊H160地址进行交互。
 ---
+
 # Polkadot.js Apps
 
 ![Intro diagram](/images/tokens/connect/polkadotjs/polkadotjs-banner.png)

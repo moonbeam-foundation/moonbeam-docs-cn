@@ -1,5 +1,5 @@
 ---
-title: 治理
+title: Moonbeam治理
 description: 作为波卡（Polkadot）平行链，Moonbeam将通过链上治理机制，来允许公众进行质押权重投票
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 质押
+title: 如何在Moonbeam上质押
 description: Moonbeam提供质押功能，使Token持有者能够使用手中的Token委托候选收集人以获得奖励
 ---
 

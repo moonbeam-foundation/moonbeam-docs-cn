@@ -1,9 +1,9 @@
 ---
-title: 财政库
+title: Moonbeam财政库
 description: 作为波卡（Polkadot）平行链，Moonbeam将使用由理事会成员控制的链上财政库，允许利益相关者提交提案以进一步发展网络。
 ---
 
-# **Moonbeam**财政库
+# Moonbeam财政库
 
 ![Treasury Moonbeam Banner](/images/learn/features/treasury/treasury-overview-banner.png)
 

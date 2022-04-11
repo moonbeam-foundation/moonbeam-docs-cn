@@ -1,8 +1,8 @@
 ---
-title: 区块浏览器
+title: 使用区块浏览器验证智能合约
 description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约
-
 ---
+
 # 使用区块浏览器验证智能合约
 
 ![Explorer Banner](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-banner.png)

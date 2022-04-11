@@ -1,5 +1,5 @@
 ---
-title: Graph节点
+title: 在Moonbeam上运行Graph节点
 description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
 ---
 

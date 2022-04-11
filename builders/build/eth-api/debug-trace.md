@@ -1,5 +1,5 @@
 ---
-title: Debug & Trace
+title: Debug API与Trace模块
 description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上调用非标准RPC方式
 ---
 

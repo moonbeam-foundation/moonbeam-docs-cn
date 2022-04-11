@@ -1,7 +1,8 @@
 ---
-title: Web3.js
+title: Web3.js JavaScript代码库
 description: 通过本教程学习如何使用以太坊Web3 JavaScript代码库在Moonbeam上部署Solidity智能合约
 ---
+
 # Web3.js JavaScript代码库
 
 ![Intro diagram](/images/builders/build/eth-api/libraries/web3js/web3js-banner.png)

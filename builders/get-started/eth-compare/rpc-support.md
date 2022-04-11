@@ -3,6 +3,8 @@ title: RPC支持
 description: 本文描述了以太坊开发者需要了解的Moonbeam提供的以太坊RPC支持方面与以太坊本身可提供支持的主要差异
 ---
 
+# This needs a title
+
 ![Moonbeam v Ethereum - RPC Support Banner](/images/builders/get-started/eth-compare/rpc-support-banner.png)
 
 ## 概览

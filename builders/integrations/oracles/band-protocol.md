@@ -1,7 +1,8 @@
 ---
-title: Band Protocol
+title: Band Protocol预言机
 description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocal预言机喂价
 ---
+
 # Band Protocol预言机
 
 ![Band Protocol Moonbeam Diagram](/images/builders/integrations/oracles/band/band-banner.png)

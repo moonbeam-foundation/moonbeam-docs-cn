@@ -1,5 +1,5 @@
 ---
-title: 运行追踪节点
+title: Debug API和Trace模块
 description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上运行节点
 ---
 

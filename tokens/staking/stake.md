@@ -1,5 +1,5 @@
 ---
-title: 如何进行质押
+title: 如何质押Token
 description: 本教程将展示如何通过委托收集人在Moonbeam质押Token
 ---
 

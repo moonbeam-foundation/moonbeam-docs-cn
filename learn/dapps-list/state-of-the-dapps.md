@@ -1,5 +1,5 @@
 ---
-title: State of the DApps
+title: 如何上线您的项目或DApp
 description: 如何在State of the Dapps上提交您的项目或DApp
 ---
 

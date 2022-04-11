@@ -1,5 +1,5 @@
 ---
-title: 合约地址
+title: 标准合约
 description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和一些预编译合约
 ---
 

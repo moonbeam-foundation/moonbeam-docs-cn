@@ -1,5 +1,5 @@
 ---
-title: 概况
+title: 网络
 description: 本文将简要描述Moonbeam计划建立的网络，一个位于Polkadot上并与以太坊兼容的智能合约平行链。
 ---
 

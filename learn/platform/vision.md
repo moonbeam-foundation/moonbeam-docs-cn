@@ -1,5 +1,5 @@
 ---
-title: 愿景
+title: Moonbeam的愿景
 description: Moonbeam旨在实现多链未来，解决跨链互操作性挑战。
 ---
 

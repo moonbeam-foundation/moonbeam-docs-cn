@@ -1,5 +1,5 @@
 ---
-title: Razor Network
+title: Razor Network预言机
 description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network预言机喂价
 ---
 

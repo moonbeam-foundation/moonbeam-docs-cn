@@ -1,5 +1,5 @@
 ---
-title: 事件订阅
+title: Moonbase Alpha事件订阅
 description: 使用类似于以太坊的发布-订阅功能来订阅Moonbeam兼容以太坊的链上特定事件。
 ---
 

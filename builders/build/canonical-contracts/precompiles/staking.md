@@ -1,5 +1,5 @@
 ---
-title: 质押功能
+title: 与质押预编译交互
 description: Moonbeam平行链的以太坊Solidity质押预编译接口演示
 ---
 

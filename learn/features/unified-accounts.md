@@ -2,6 +2,7 @@
 title: 统一账户
 description: 目前Moonbeam本地使用基于以太坊的H160账户系统且获得Polkadot.js Apps的支持。
 ---
+
 # 统一账户
 
 ![Intro diagram](/images/learn/features/unified-accounts/unified-accounts-banner.png)

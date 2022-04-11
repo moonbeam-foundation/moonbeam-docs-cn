@@ -1,5 +1,5 @@
 ---
-title: 提案投票
+title: 如何给提案投票
 description: 如何通过Moonbeam治理机制来投票决定执行或否决提案
 ---
 

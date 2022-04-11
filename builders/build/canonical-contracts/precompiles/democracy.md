@@ -1,5 +1,5 @@
 ---
-title: 民主
+title: 与民主预编译交互
 description: Moonbeam民主Solidity预编译接口演示
 ---
 

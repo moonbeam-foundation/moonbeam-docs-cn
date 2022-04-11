@@ -1,5 +1,5 @@
 ---
-title: 跨链集成
+title: 跨链集成方案
 description: Moonbeam的跨链集成将支持基于波卡（Polkadot）的平行链及非波卡链（如以太坊）。
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Defender
+title: OpenZeppelin Defender
 description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以太坊的Moonbeam上安全地管理智能合约
 ---
 

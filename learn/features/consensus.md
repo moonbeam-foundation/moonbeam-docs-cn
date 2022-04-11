@@ -1,5 +1,5 @@
 ---
-title: 平行链Consensus
+title: Nimbus平行链共识框架
 description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其作为波卡（Polkadot）共享安全模型的一部分的运作原理
 ---
 

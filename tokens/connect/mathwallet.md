@@ -1,5 +1,5 @@
 ---
-title: 使用MathWallet
+title: 使用MathWallet与Moonbeam交互
 description: 通过此教程学习如何将Mathwallet（浏览器版）钱包连接至Moonbeam。
 ---
 

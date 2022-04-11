@@ -1,5 +1,5 @@
 ---
-title: Etherscan插件
+title: 使用Etherscan插件验证智能合约
 description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约
 ---
 

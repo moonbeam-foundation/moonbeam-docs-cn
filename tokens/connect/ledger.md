@@ -1,5 +1,5 @@
 ---
-title: 使用Ledger
+title: 使用Ledger硬件钱包与Moonbeam交互
 description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性，使用Ledger硬件钱包在Moonbeam内签署交易。
 ---
 

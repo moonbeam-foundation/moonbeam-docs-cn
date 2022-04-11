@@ -1,5 +1,5 @@
 ---
-title: The Graph
+title: 在Moonbeam上使用The Graph
 description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
 ---
 

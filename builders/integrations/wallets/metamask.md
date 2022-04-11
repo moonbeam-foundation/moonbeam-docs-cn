@@ -1,5 +1,5 @@
 ---
-title: MetaMask
+title: 将MetaMask集成至DApp
 description: 学习如何在Moonbase测试网使用MetaMask。此教程将向您展示如何将MetaMask集成至DApp以及自动将用户连接至Moonbase Alpha。
 ---
 

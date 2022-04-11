@@ -1,7 +1,8 @@
 ---
-title: 为何选择Polkadot
+title: 为什么我们选择在Polkadot上构建生态
 description: Moonbeam基于Substrate框架开发，是Polkadot生态的重要链接方，可有效提升平台的运转效率和安全性。
 ---
+
 # 为什么我们选择在Polkadot上构建生态
 
 经过深入研究后，我们使用[Substrate开发框架](/resources/glossary/#substrate)构建Moonbeam，并将Moonbeam作为[平行链](/resources/glossary/#parachains)部署至[Polkadot网络](/resources/glossary/#polkadot)。

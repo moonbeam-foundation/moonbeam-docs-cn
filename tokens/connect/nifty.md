@@ -1,5 +1,5 @@
 ---
-title: 使用Nifty
+title: 使用Nifty钱包与Moonbeam交互
 description: 此教程将会带您了解如何连接Nifty钱包，一个基于浏览器并与以太坊和Moonbeam兼容的钱包。
 ---
 

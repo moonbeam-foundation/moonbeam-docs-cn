@@ -1,5 +1,5 @@
 ---
-title: 使用Scaffold-ETH
+title: 使用Scaffold-ETH在Moonbeam上部署DApp
 description: 通过本教程学习如何使用Scaffold-ETH快速在Moonbeam上部署带有React UI和subgraph的Solidity DApp。
 ---
 

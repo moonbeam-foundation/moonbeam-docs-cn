@@ -1,5 +1,5 @@
 ---
-title: Moonriver
+title: Moonriver快速上手
 description: 学习如何通过RPC和WSS端点连接到Moonriver（Moonbeam在Kusama上的部署）
 ---
 

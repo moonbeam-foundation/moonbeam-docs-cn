@@ -1,5 +1,5 @@
 ---
-title: Moonbeam多签钱包
+title: 与Moonbeam Safe多签钱包交互
 description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。在Moonbeam上创建一个新的多重签名钱包并接收和发送Token（以及ERC-20 Token）至Safe钱包。
 ---
 

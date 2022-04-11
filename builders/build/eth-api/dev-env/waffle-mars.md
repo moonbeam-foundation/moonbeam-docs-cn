@@ -1,5 +1,5 @@
 ---
-title: Waffle和Mars
+title: 在Moonbeam上使用Waffle和Mars
 description: 通过此教程学习如何使用Waffle和Mars在Moonbeam上编写、编译、测试和部署以太坊智能合约。
 ---
 

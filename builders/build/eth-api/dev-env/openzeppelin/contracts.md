@@ -1,5 +1,5 @@
 ---
-title: 合约向导
+title: OpenZeppelin合约&库
 description:  通过此教程学习如何使用OpenZeppelin的智能合约交互式工具“Contracts Wizard”轻松创建常见的OpenZeppelin合约，以及如何利用Moonbeam以太坊兼容性功能将OpenZeppelin合约部署至Moonbeam。
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: 常见问题
 description: 关于成为收集人和收集人活动的一些常见问题以及在Moonbeam上运行和操作收集人节点时的注意事项
 ---
 

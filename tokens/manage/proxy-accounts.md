@@ -1,5 +1,5 @@
 ---
-title: 代理账户
+title: 设置代理账户
 description: 学习如何在基于Moonbeam的网络设置代理账户
 ---
 

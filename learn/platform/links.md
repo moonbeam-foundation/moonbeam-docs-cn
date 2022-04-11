@@ -1,5 +1,5 @@
 ---
-title: 重要链接
+title: Links
 description: 如果您是刚接触Moonbeam或是波卡（Polkadot）网络，这里有一些重要的链接供您查看，包括与以太坊兼容的工具。
 ---
 

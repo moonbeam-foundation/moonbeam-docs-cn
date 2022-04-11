@@ -1,5 +1,5 @@
 ---
-title: SubQuery
+title: 使用SubQuery索引Moonbeam
 description: 学习如何通过使用SubQuery，在Moonbeam和Moonriver上索引Substrate和EVM数据
 ---
 

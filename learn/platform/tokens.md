@@ -1,5 +1,5 @@
 ---
-title: 代币
+title: 概览
 description: 和所有的智能合约平台一样，Moonbeam Network也需要发行实用性代币让生态有效运转。发行在Polkadot平台上的代币为Glimmer（GLMR），在Kusama上的代币称作Moonriver（MOVR）。
 ---
 

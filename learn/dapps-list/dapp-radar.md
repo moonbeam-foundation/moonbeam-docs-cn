@@ -1,5 +1,5 @@
 ---
-title: DappRadar 
+title: 如何将您的项目收录在DappRadar平台上
 description: 如何将您的项目收录在DappRadar平台上
 ---
 
