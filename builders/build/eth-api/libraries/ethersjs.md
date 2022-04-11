@@ -63,7 +63,7 @@ npm install ethers solc@0.8.0
       moonbeam: {
         name: 'moonbeam',
         rpc: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
-        chainId: '{{ networks.moonbeam.chain_id }}', // {{ networks.moonbeam.hex_chain_id }} in hex,
+        chainId: {{ networks.moonbeam.chain_id }}, // {{ networks.moonbeam.hex_chain_id }} in hex,
       },
     };
     // 3. Create ethers provider
@@ -87,7 +87,7 @@ npm install ethers solc@0.8.0
       moonriver: {
         name: 'moonriver',
         rpc: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
-        chainId: '{{ networks.moonriver.chain_id }}', // {{ networks.moonriver.hex_chain_id }} in hex,
+        chainId: {{ networks.moonriver.chain_id }}, // {{ networks.moonriver.hex_chain_id }} in hex,
       },
     };
     // 3. Create ethers provider
@@ -111,7 +111,7 @@ npm install ethers solc@0.8.0
       moonbase: {
         name: 'moonbase-alpha',
         rpc: '{{ networks.moonbase.rpc_url }}',
-        chainId: '{{ networks.moonbase.chain_id }}', // {{ networks.moonbase.hex_chain_id }} in hex,
+        chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
       },
     };
     // 3. Create ethers provider
@@ -135,7 +135,7 @@ npm install ethers solc@0.8.0
       dev: {
         name: 'moonbeam-development',
         rpc: '{{ networks.development.rpc_url }}',
-        chainId: '{{ networks.development.chain_id }}', // {{ networks.development.hex_chain_id }} in hex,
+        chainId: {{ networks.development.chain_id }}, // {{ networks.development.hex_chain_id }} in hex,
       },
     };
     // 3. Create ethers provider
