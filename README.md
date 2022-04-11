@@ -29,21 +29,21 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 目前，任选以下一种方式，助您轻松参与Moonbeam构建：
 
- - 将您的Moonbeam实例构建为[独立节点](/getting-started/local-node/setting-up-a-node/)
- - [连接](/builders/get-started/moonbeam/)到[Moonbeam](/learn/platform/networks/moonbeam/)
- - [连接](/builders/get-started/moonriver/)到[Moonriver](/learn/platform/networks/moonriver/)
- - [连接](/builders/get-started/moonbase/)到[Moonbase Alpha TestNet](/learn/platform/networks/moonbase/)
+ - 将您的Moonbeam实例构建为[独立节点](/builders/get-started/moonbeam-dev.md)
+ - [连接](/builders/get-started/networks/moonbeam.md)到[Moonbeam](/learn/platform/networks/moonbeam.md)
+ - [连接](/builders/get-started/networks/moonriver.md)到[Moonriver](/learn/platform/networks/moonriver.md)
+ - [连接](/builders/get-started/networks/moonbase.md)到[Moonbase Alpha TestNet](/learn/platform/networks/moonbase.md)
 
 ### 钱包 {: #wallets }
 
 目前，我们成功测试以下钱包可使用Moonbeam网络：
 
- - [MetaMask](/integrations/wallets/metamask/)
- - [MathWallet](/integrations/wallets/mathwallet/)
- - [Polkadot.js Apps](/tokens/connect/polkadotjs/)
- - [Ledger](/integrations/wallets/ledger/)
- - [Trezor](/integrations/wallets/trezor/)
- - [Nifty](/tokens/connect/nifty/)
+ - [MetaMask](/tokens/connect/metamask.md)
+ - [MathWallet](/tokens/connect/mathwallet.md)
+ - [Polkadot.js Apps](/tokens/connect/polkadotjs.md)
+ - [Ledger](/tokens/connect/ledger.md)
+ - [Trezor](/tokens/connect/trezor.md)
+ - [Nifty](/tokens/connect/nifty.md)
 
 请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
 
@@ -51,37 +51,36 @@ Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbea
 
 由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具部署合约：
 
- - [Ethereum Libraries](/builders/interact/eth-libraries/)
- - [Remix](/builders/interact/remix/)
- - [OpenZeppelin and Remix](/builders/interact/oz-remix/)
- - [HardHat](/builders/interact/hardhat/)
- - [Truffle](/builders/interact/truffle/)
- - [Waffle and Mars](/builders/interact/waffle-mars/)
+ - [Remix](/builders/build/eth-api/dev-env/remix.md)
+ - [OpenZeppelin and Remix](/builders/build/eth-api/dev-env/openzeppelin/contracts.md)
+ - [HardHat](/builders/build/eth-api/dev-env/hardhat.md)
+ - [Truffle](/builders/build/eth-api/dev-env/truffle.md)
+ - [Waffle and Mars](/builders/build/eth-api/dev-env/waffle-mars.md)
 
 有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
 
 ### 工具和集成 {: #tools-and-integrations }
 
- - [Web3.js](/integrations/ethlibraries/web3js/)
- - [Ethers.js](/integrations/ethlibraries/etherjs/)
- - [Web3.py](/integrations/ethlibraries/web3py/)
- - [The Graph](/integrations/indexers/thegraph/)
- - [Covalent API](/integrations/indexers/covalent/)
- - [调试及跟踪](/builders/tools/debug-trace/)
+ - [Web3.js](/builders/build/eth-api/libraries/web3js.md)
+ - [Ethers.js](/builders/build/eth-api/libraries/ethersjs.md)
+ - [Web3.py](/builders/build/eth-api/libraries/web3py.md)
+ - [The Graph](/builders/integrations/indexers/thegraph.md)
+ - [Covalent API](/builders/integrations/indexers/covalent.md)
+ - [调试及跟踪](/builders/build/eth-api/debug-trace.md)
 
 ### 预言机 {: #oracles }
 
 我们提供多个预言机选项，实现智能合约数据喂价：
 
- - [Chainlink](/integrations/oracles/chainlink/)
- - [Band Protocol](/integrations/oracles/band-protocol/)
- - [Razor Network](/integrations/oracles/razor-network/)
+ - [Chainlink](/builders/integrations/oracles/chainlink.md)
+ - [Band Protocol](/builders/integrations/oracles/band-protocol.md)
+ - [Razor Network](/builders/integrations/oracles/razor-network.md)
 
 ### 桥服务 {: #bridges }
 
 目前，我们可提供功能齐全的桥服务，实现连接以太坊Rinkeby/Kovan测试网和Moonbase Alpha测试网：
 
- - [ChainBridge](/integrations/bridges/ethereum/chainbridge/)
+ - [ChainBridge](/builders/integrations/bridges/eth/chainbridge.md)
 
 ---
 
