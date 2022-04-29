@@ -253,7 +253,7 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
 7. 生成在您GraphQL模式文件中定义的所需GraphQL模型：
 
     ```
-yarn codegen
+    yarn codegen
     ```
     
     ![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-4.png)   
