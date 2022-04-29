@@ -30,7 +30,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
  - 从 [Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取Moonbase Alpha的DEV Token
 
-## 查看先决条件{: #checking-prerequisites }
+## 查看先决条件 {: #checking-prerequisites }
 
 请先准备以下条件后再按照本教程进行操作：
 
@@ -246,7 +246,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 
 成功！现在，Chainlink预言机节点已经设置成功，并且该节点已经在Moonbase Alpha上运行。
 
-### 使用任何API{: #using-any-api }
+### 使用任何API {: #using-any-api }
 
 您也可以创建并使用job spec来处理任何API。您可以您可以通过例如[market.link](https://market.link/){target=_blank}等独立列表服务搜索预有Job。请注意，尽管这些Job可能会为其他网络实现，但您将能够使用job spec在Moonbase Alpha上为您的预言机节点创建Job。当您找到一个可以满足您需求的Job后，您将需要复制这个job spec JSON并使用它来创建一个新的Job。
 
