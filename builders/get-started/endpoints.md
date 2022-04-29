@@ -29,27 +29,33 @@ Moonbase Alpha TestNet有可供开发使用的公共端点。对于Moonbeam或Mo
 
 您可以使用以下任意API提供商，创建适用于开发环境或生产环境的端点：
 
-- [Bware Labs](#bware-labs)
+- [Blast](#blast)
 - [OnFinality](#onfinality)
 
-### Bware Labs {: #bware-labs }
+### Blast {: #blast }
 
-[Bware Labs](https://bwarelabs.com/)平台的用户只需在用户友好型界面中通过简单的几个点击步骤，便能够获得免费的端点，以允许您与Moonbeam进行交互。
+[Blast](https://blastapi.io/){target=_blank}平台的用户只需在用户友好型界面中通过简单的几个点击步骤，便能够获得免费的端点，以允许您与Moonbeam进行交互。
 
-首先，导向至[Bware Labs](https://app.bwarelabs.com/)，点击“Launch App"连接至您的钱包。连接成功后，您将能够生成您的自定义端点。为此，您需要执行以下操作：
+首先，导向至[Blast](https://blastapi.io/){target=_blank},，点击“Launch App"连接至您的钱包。连接成功后，您将能够创建一个项目并生成您的自定义端点。为此，您需要执行以下操作：
 
 1. 为您的端点选择网络。目前有三个选项：Moonbeam、Moonriver和Moonbase Alpha
 2. 为您的端点设置名称
 3. 在下拉菜单中选择网络
 4. 点击**Create Endpoint**
 
+1. 创立项目
+2. 点击**可用端点**
+3. 为您的端点选择一个网络。有三个选项可供选择：Moonbeam、Moonriver 和 Moonbase Alpha
+4. 确认选择的网络并按**Activate**
+5. 您将可以在**Active Endpoints**下看到您选择的网络。单击此网络，您将在下一页看到您的自定义RPC和WSS端点
+
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-1.png)
 
 ### OnFinality {: #onfinality }
 
-[OnFinality](https://onfinality.io/)为客户提供比免费公共端点更高速率限制和性能的基于API密钥的免费端点。您还会收到有关您的应用程序使用情况的深入分析。
+[OnFinality](https://onfinality.io/){target=_blank}为客户提供比免费公共端点更高速率限制和性能的基于API密钥的免费端点。您还会收到有关您的应用程序使用情况的深入分析。
 
-要创建一个自定义OnFinality端点，首先导向至[OnFinality](https://onfinality.io/)并注册。如果您已注册可直接登录。在OnFinality的**Dashboard**，您可以执行以下操作：
+要创建一个自定义OnFinality端点，首先导向至[OnFinality](https://onfinality.io/){target=_blank}并注册。如果您已注册可直接登录。在OnFinality的**Dashboard**，您可以执行以下操作：
 
 1. 点击**API Service**
 2. 在下拉菜单中选择网络
