@@ -261,7 +261,7 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
 8. 要部署您的项目至SubQuery管理的服务器，您必须在上传前构建您的配置。您可以通过运行以下代码完成配置：
 
     ```
-yarn build
+    yarn build
     ```
     
     ![yarn build results](/images/builders/integrations/indexers/subquery/subquery-5.png)   
