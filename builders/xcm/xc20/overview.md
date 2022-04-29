@@ -1,9 +1,9 @@
 ---
-title: 跨链资产
+title: 概览
 description: 学习如何使用ERC-20接口与Moonbeam上的跨链Token进行交互，并通过资产预编译合约在Moonbase Alpha测试网上查看其流程
 ---
 
-# 与跨链资产交互
+# XC-20和跨链资产
 
 ![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/xcm/xc20/overview/xc20-banner.png)
 
@@ -20,6 +20,34 @@ XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点�
 XC-20资产使用`xc`作为其名称的前缀与其他资产类别进行区分。举例而言，Kusama上的KSM在Moonriver上的相应资产将会是*xcKSM*。请注意，XC-20预编译合约并不支持跨链资产转移，但可以使其尽可能接近标准的ERC-20接口。
 
 XC-20类别的资产需要在使用前进行注册和与生态系统中的其他资产联结，这可以通过提案的形式以白名单流程进行。如果您对在测试网上测试XCM功能有兴趣，请通过[Discord Server](https://discord.gg/PfpUATX)与我们联系。更多关于XCM的信息，您也可以在文档页面的[XCM概览](/builders/xcm/overview/)页面查看。
+
+## 现有XC-20资产 {: #current-xc20-assets}
+
+现有可用XC-20资产列表如下：
+
+=== "Moonriver"
+    | 符号  |  起源   |                                                                 XC-20地址                                                                 |
+    |:-------:|:---------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  xcKSM  |  Kusama   | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonriver.moonscan.io/address/0xffffffff1fcacbd218edc0eba20fc2308c778080){target=_blank} |
+    |  xcKAR  |  Karura   | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonriver.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
+    | xcKINT  | Kintsugi  | [0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2](https://moonriver.moonscan.io/address/0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2){target=_blank} |
+    | xcMRMRK | Statemine | [0xffffffFF893264794d9d57E1E0E21E0042aF5A0A](https://moonriver.moonscan.io/address/0xffffffFF893264794d9d57E1E0E21E0042aF5A0A){target=_blank} |
+
+     _*您可以在[此处](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/assets){target=_blank}查看每个资产ID_
+
+=== "Moonbase Alpha"
+    | 符号  |        起源        |                                                                XC-20地址                                                                 |
+    |:-------:|:--------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
+    | xcUNIT  | Relay Chain Alphanet | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonbase.moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |  xcBNC  |   Bifrost Alphanet   | [0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd](https://moonbase.moonscan.io/address/0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd){target=_blank} |
+    |  xcKAR  |   Karura Alphanet    | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonbase.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
+    | xcKUSD  |   Karura Alphanet    | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonbase.moonscan.io/address/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
+    | xcKINT  |  Kintsugi Alphanet   | [0xFFFfffff27C019790DFBEE7cB70F5996671B2882](https://moonbase.moonscan.io/address/0xFFFfffff27C019790DFBEE7cB70F5996671B2882){target=_blank} |
+    | xcKBTC  |  Kintsugi Alphanet   | [0xFffFfFff5C2Ec77818D0863088929C1106635d26](https://moonbase.moonscan.io/address/0xFffFfFff5C2Ec77818D0863088929C1106635d26){target=_blank} |
+    | xcMRMRK |  Statemine Alphanet  | [0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d](https://moonbase.moonscan.io/address/0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d){target=_blank} |
+
+     _*您可以在[此处](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看每个资产ID_
+
 
 本教程将会带您了解如何使用Polkadot.js Apps检索Moonbase Alpha测试网上可用的XC-20资产并计算其预编译地址。除此之外，您还将学会如何使用Remix与XC-20预编译合约交互。
 
@@ -51,7 +79,11 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 ![Fetch list of cross-chain assets](/images/builders/xcm/xc20/overview/xc20-1.png)
 
-检索结果将会以asset ID和其相关信息的形式显现，包含所有Moonbase Alpha上已注册的XC-20资产。为了获得特定XC-20资产的详细信息（如名称、标志等），您可以使用**metadata**函数以获得元数据：
+检索结果将会以asset ID和其相关信息的形式显现，包含所有Moonbase Alpha上已注册的XC-20资产。
+
+## 检索跨链资产元数据 {: #retrieve-cross-chain-assets-metadata }
+
+为了获得特定XC-20资产的详细信息（如名称、标志和multi-location等），您可以使用**metadata**函数以获得元数据：
 
 1. 在**selected state query**下拉菜单中选择**assets**
 

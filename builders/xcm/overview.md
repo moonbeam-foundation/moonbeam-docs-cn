@@ -13,6 +13,12 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 为实现跨链传递功能，[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain)格式定义了一种围绕如何在两个互操作区块链间执行传递信息的表达语言。XCM并不限制于波卡内，其目标是成为两个共识系统间的通用和可扩展性语言。
 
+此页面是XCM和其相关定义的简要介绍和概述。更多信息可以在 [Polkadot 的 Wiki](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}中找到。
+
+--8<-- 'text/xcm/general-xcm-definitions.md'
+
+## XCM传递协议 {: #XCM-transport-protocols }
+
 波卡实现两个跨共识或传递协议，用于其组成的平行链中以处理XCM消息，而Moonbeam是其中之一：
 
 - **垂直信息传递（VMP）** —— 分为两种信息传递协议：
