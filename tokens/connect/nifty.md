@@ -69,7 +69,7 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 ## 使用Nifty钱包 {: #using-nifty-wallet }
 
-Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通过将Nifty钱包连接至Moonbeam网络之一，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。本教程会使用Moonbase Alpha测试网，但也适用于Moonbeam和Moonriver。
+Nifty钱包为Web3工具的提供者，如[Remix](/builders/build/eth-api/dev-env/remix/)。通过将Nifty钱包连接至Moonbeam网络之一，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。本教程会使用Moonbase Alpha测试网，但也适用于Moonbeam和Moonriver。
 
 在Remix中，当您在部署智能合约时，请确保您在**Environment**菜单中选择**Injected Web3**的选项。当您成功连接Nifty钱包，您将会在方框下面见到Moonbeam Chain ID，并且您的Nifty钱包账户将会同时嵌入至Remix。当您在传送交易时，您将会看一个类似下图所示的弹窗：
 

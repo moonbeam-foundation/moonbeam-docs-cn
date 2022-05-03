@@ -67,7 +67,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。除此之外，您还需要：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 具有拥有一定数量DEV的账户，您可以从[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得一些。
+ - 具有拥有一定数量DEV的账户，您可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得一些。
 
 ## 设置Remix {: #remix-set-up }
 

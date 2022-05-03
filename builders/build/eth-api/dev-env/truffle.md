@@ -12,13 +12,13 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 本教程将向您展示通过以太坊上常用的智能合约开发工具[Truffle](https://www.trufflesuite.com/){target=_blank}将基于Solidity智能合约部署至Moonbeam节点的操作过程。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
 
-为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=_blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=_blank}。
+为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=_blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 本教程将向您展示如何在本地运行的开发节点上使用Moonbeam Truffle box和Moonbeam Truffle plugin部署合约并之其交互。这教程也同样适用于Moonbeam、Moonriver和Moonbase Alpha测试网。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。对于Moonbase Alpha测试网，您可以通过[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
+本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。对于Moonbase Alpha测试网，您可以通过[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
 
 --8<-- 'text/common/endpoint-examples.md'
 

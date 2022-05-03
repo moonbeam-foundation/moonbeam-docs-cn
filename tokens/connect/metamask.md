@@ -29,7 +29,7 @@ description: 本指南将引导您了解如何将基于浏览器的以太坊钱�
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-想要一键连接至Moonbase Alpha，先通过[如何将MetaMask按钮连接至您的dapp](/builders/interact/metamask-dapp/)进行设置。本教程也适用于其他Moonbeam网络。
+想要一键连接至Moonbase Alpha，先通过[如何将MetaMask按钮连接至您的dapp](/builders/integrations/wallets/metamask/)进行设置。本教程也适用于其他Moonbeam网络。
 
 ## 安装MetaMask扩展程序 {: #install-the-metamask-extension }
 

@@ -154,7 +154,7 @@ cd moonbeam
 
 随着[Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/)的发布，Moonbeam可支持在统一账户模式下运行，该模式支持以太坊的H160账户格式并且已与Polkadot.js Apps兼容。如果您想查看账户上的余额，您可直接将您的账户导入至Accounts。更多详情请参考[统一账户](/learn/features/unified-accounts/)部分。
 
-您也可以利用Moonbeam完整的以太坊RPC功能，使用[MetaMask](/tokens/connect/metamask/)查询账户的余额。除此之外，您还可以利用其他的开发工具，如[Remix](/builders/interact/remix/)和[Truffle](/builders/interact/remix/)等。
+您也可以利用Moonbeam完整的以太坊RPC功能，使用[MetaMask](/tokens/connect/metamask/)查询账户的余额。除此之外，您还可以利用其他的开发工具，如[Remix](/builders/build/eth-api/dev-env/remix/)和[Truffle](/builders/build/eth-api/dev-env/truffle/)等。
 
 ## 常用命令、标识及选项 {: #common-commands-flags-and-options }
 
@@ -213,7 +213,7 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 
 您也可以通过运行追踪节点访问一些非标准RPC方式的权限，这将允许开发者在runtime期间检查和调试交易事件。与标准Moonbeam开发节点相比，追踪节点使用的是不同的Docker镜像。
 
-想要学习如何运行Moonbeam开发追踪节点，请查看[运行追踪节点](/node-operators/networks/tracing-node)的操作指南并确保在操作过程中已切换至**Moonbeam开发节点**标签。随后，通过您的追踪节点访问非标准RPC方法，详情请查看[Debug & Trace](/builders/tools/debug-trace)指南。
+想要学习如何运行Moonbeam开发追踪节点，请查看[运行追踪节点](/node-operators/networks/tracing-node)的操作指南并确保在操作过程中已切换至**Moonbeam开发节点**标签。随后，通过您的追踪节点访问非标准RPC方法，详情请查看[Debug & Trace](/builders/build/eth-api/debug-trace)指南。
 
 ## 预注资的开发账户 {: #pre-funded-development-accounts }
 

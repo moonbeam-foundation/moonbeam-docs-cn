@@ -17,7 +17,7 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
 
 在开始本教程示例之前，您将需要提前准备以下内容：
 
- - 拥有资金的账户。以Moonbase Alpha为例，您可以从[任务中心](/builders/get-started/moonbase/#get-tokens/)获得用于测试目的的DEV Token
+ - 拥有资金的账户。以Moonbase Alpha为例，您可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得用于测试目的的DEV Token
  - 
 --8<-- 'text/common/endpoint-examples.md'
 

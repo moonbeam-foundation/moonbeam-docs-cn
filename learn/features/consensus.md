@@ -36,7 +36,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 这个池还将通过另外一个过滤器，为下一个区块生产插槽返回一个符合资格的「候选人子集」。
 
-如需了解更多质押相关的信息，请访问我们的[质押文档](/staking/overview/)。
+如需了解更多质押相关的信息，请访问我们的[质押文档](/learn/features/staking/)。
 
 ## 固定规模子集过滤法 {: #fixed-size-subset-filtering } 
 

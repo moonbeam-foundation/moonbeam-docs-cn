@@ -97,7 +97,7 @@ Blockscout还提供以下功能：
 
 ![Polkadot.js Moonriver](/images/builders/get-started/explorers/explorers-5.png)
 
-要将其连接到 Moonbeam 开发节点，您可以按照 [将Polkadot.js应用程序连接到本地Moonbeam节点](/builders/get-started/moonbeam-dev/#connecting-polkadot-js-apps-to -a-local-moonbeam-node){target=_blank}部分的[开始使用 Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank} 指南。默认端口为`9944`。
+要将其连接到 Moonbeam 开发节点，您可以按照 [将Polkadot.js应用程序连接到本地Moonbeam节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=_blank}部分的[开始使用 Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank} 指南。默认端口为`9944`。
 
 ![Polkadot.js Local Node](/images/builders/get-started/explorers/explorers-6.png)
 

@@ -128,7 +128,7 @@ interface Razor {
  - getPrice：根据函数中对应输入的数据，提供单一Job ID喂价。例如，输入任务ID`1`就会收到`ETH`/`USD`的报价。
  - getMultiPrice：根据函数中对应输入的阵列，提供多个Job ID喂价。例如，输入Job ID`[1,2]`就会收到`ETH`/`USD`和`BTC`/`USD`的报价。
 
-下面让我们尝试通过[Remix](/integrations/remix/)获取`BTC`/ `USD` 的报价。
+下面让我们尝试通过[Remix](/builders/build/eth-api/dev-env/remix/)获取`BTC`/ `USD` 的报价。
 
 创建文件和编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`{{ networks.moonbase.razor.bridge_address }}`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接（通过Web3 提供者的钱包）。
 

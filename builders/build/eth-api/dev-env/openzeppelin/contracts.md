@@ -55,7 +55,7 @@ Contracts Wizard由以下环节组成：
 请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=_blank}进行合约部署。相关指引请点击以下链接：
 
  - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/){target=_blank}
- - [使用Remix与Moonbeam进行交互](/integrations/remix/){target=_blank}
+ - [使用Remix与Moonbeam进行交互](/builders/build/eth-api/dev-env/remix/){target=_blank}
 
 ### 部署ERC-20代币 {: #deploying-an-erc20-token } 
 

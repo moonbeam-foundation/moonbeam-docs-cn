@@ -27,8 +27,8 @@ description:  通过此教程学习如何利用Moonbeam以太坊兼容性功能�
 
 您可以在以下的连接找到每个产品相应的教程：
 
- - [**Contract Wizard**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) —— 关于如何利用OpenZeppelin网页版教程构建不同功能的智能合约。
- - **[合约&库](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam)** —— 关于如何使用OpenZeppelin的模版部署常见的代币合约，如ERC-20、ERC-721和ERC-1155
- - [**Defender**](/integrations/openzeppelin/defender/) —— 关于如何利用OpenZeppelin Defender管理您在Moonbase Alpha测试网上的智能合约，也可适用于Moonbeam和Moonriver网。
+ - [**Contract Wizard**](/builders/build/eth-api/dev-env/openzeppelin/contracts/#openzeppelin-contract-wizard) —— 关于如何利用OpenZeppelin网页版教程构建不同功能的智能合约。
+ - [**合约&库**](/builders/build/eth-api/dev-env/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam) —— 关于如何使用OpenZeppelin的模版部署常见的代币合约，如ERC-20、ERC-721和ERC-1155
+ - [**Defender**](/builders/build/eth-api/dev-env/openzeppelin/defender/) —— 关于如何利用OpenZeppelin Defender管理您在Moonbase Alpha测试网上的智能合约，也可适用于Moonbeam和Moonriver网。
 
 --8<-- 'text/disclaimers/third-party-content.md'

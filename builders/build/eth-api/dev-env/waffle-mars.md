@@ -22,7 +22,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 您将需要具备以下先决条件：
 
  - 已安装MetaMask并[连接到 Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 具有一定资金的账户，你可以从[Discord - 任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得测试代币
+ - 具有一定资金的账户，你可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得测试代币
 
 --8<-- 'text/common/endpoint-examples.md'
 
@@ -166,7 +166,7 @@ npm run build
 
 --8<-- 'text/common/endpoint-setup.md'
 
-由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options)[设置Moonbeam开发节点](/getting-started/local-node/setting-up-a-node/)。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache)可获得的快速迭代体验相似。
+由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options)[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/)。运行具有[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options)功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
     ```

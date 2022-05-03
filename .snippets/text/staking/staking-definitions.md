@@ -11,5 +11,5 @@
  - **奖励分发延迟（Reward payout delay）**—— 在奖励自动分发至余额前所需等待的固定数量的轮次
  - **奖励池（Reward pool）**—— 为收集人和委托人所设计的年通胀比例
  - **收集人佣金（Collator commission）**—— 收集人初始获得质押奖励的固定比例，与奖励池无关
- - **委托人奖励（Delegator rewards）**—— 分配给所有合格委托人奖励的总和，根据质押的数量计算（[阅读更多](/staking/overview/#reward-distribution)）
+ - **委托人奖励（Delegator rewards）**—— 分配给所有合格委托人奖励的总和，根据质押的数量计算（[阅读更多](/learn/features/staking/#reward-distribution）
  - **惩罚（Slashing）**—— 避免收集人执行不当行为的机制，通常惩罚为扣除收集人和委托人一定占比的质押数量。目前暂无惩罚机制，但可通过治理改变。收集人生产区块后未获得中继链最终确定将不会获得奖励
