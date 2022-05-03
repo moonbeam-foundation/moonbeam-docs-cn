@@ -1,6 +1,6 @@
 ---
-title: 在Moonbeam上使用The Graph
-description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
+title: 使用The Graph构建API
+description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgraph的API，以存储和获取给定智能合约的链上数据。
 ---
 
 # 在Moonbeam上使用The Graph

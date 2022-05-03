@@ -1,6 +1,6 @@
 ---
 title: 账户余额
-description: 本文描述了以太坊开发者需要了解的Moonbeam在账户余额方面与以太坊之间的主要差异
+description: 本文描述了以太坊开发者需要了解的Moonbeam在账户余额方面与以太坊之间的主要差异。
 ---
 
 # This needs a title

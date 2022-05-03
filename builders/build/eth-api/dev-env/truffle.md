@@ -1,6 +1,6 @@
 ---
-title: 使用Truffle部署至Moonbeam
-description: 通过本教程学习如何通过Truffle将基于Solidity的智能合约轻松部署到Moonbeam
+title: 使用Truffle部署智能合约
+description: 通过本教程学习如何通过Truffle将基于Solidity的智能合约轻松部署到Moonbeam。
 ---
 
 # 使用Truffle部署至Moonbeam

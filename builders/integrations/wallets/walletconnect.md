@@ -1,6 +1,6 @@
 ---
 title: 将WalletConnect集成至DApp
-description: 学习如何将WalletConnect集成至基于Moonbeam网络构建的dApp
+description: 了解如何将WalletConnect集成到基于任何Moonbeam网络的DApp中，特别是让用户可以连接他们的移动钱包。
 ---
 
 # 将WalletConnect集成至DApp

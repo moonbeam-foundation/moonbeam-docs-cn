@@ -1,6 +1,6 @@
 ---
-title: 转账API
-description: 本文描述了以太坊开发者需要了解的Moonbeam在可用余额转账与以太坊之间的主要差异
+title: 在Moonbeam上转账和订阅余额变化
+description: 本文描述了以太坊开发者需要了解的Moonbeam在可用余额转账与以太坊之间的主要差异。
 ---
 
 # This needs a title

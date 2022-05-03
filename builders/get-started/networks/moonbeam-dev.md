@@ -1,6 +1,6 @@
 ---
-title: 设置Moonbeam开发节点
-description: 通过此教程学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot.js GUI并加以控制
+title: 运行Moonbeam开发节点
+description: 通过此教程学习如何设置您的第一个Moonbeam开发节点，以及如何使用Polkadot.js GUI连接并操作此节点。
 ---
 
 # 设置Moonbeam开发节点

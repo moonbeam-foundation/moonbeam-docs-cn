@@ -1,6 +1,6 @@
 ---
 title: 设置代理账户
-description: 学习如何在基于Moonbeam的网络设置代理账户
+description: 了解如何在基于Moonbeam的网络上设置代理帐户，以便您可以将钱包安全保存在冷存储中。
 ---
 
 # 设置代理账户

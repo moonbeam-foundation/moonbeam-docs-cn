@@ -1,6 +1,6 @@
 ---
-title: Web3.js JavaScript代码库
-description: 通过本教程学习如何使用以太坊Web3 JavaScript代码库在Moonbeam上部署Solidity智能合约
+title: 使用web3.js发送交易和部署合约
+description: 通过本教程学习如何使用以太坊web3.js JavaScript代码库在Moonbeam上发送交易和部署Solidity智能合约。
 ---
 
 # Web3.js JavaScript代码库

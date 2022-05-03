@@ -1,6 +1,7 @@
 ---
 title:  原生Token ERC-20预编译
-description:  学习如何在Moonbeam上访问并交互原生Token ERC-20，以及如何使用ERC-20预编译合约在Moonbase Alpha测试网上完成此操作
+description:  学习如何在Moonbeam上访问并交互原生Token ERC-20，以及如何使用ERC-20预编译合约。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, token, 原生
 ---
 
 #  原生Token ERC-20预编译

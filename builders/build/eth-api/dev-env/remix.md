@@ -1,6 +1,6 @@
 ---
-title: 使用Remix部署至Moonbeam
-description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE与Moonbeam本地节点交互
+title: 使用Remix部署智能合约
+description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE与Moonbeam网络交互。
 ---
 
 # 使用Remix部署至Moonbeam

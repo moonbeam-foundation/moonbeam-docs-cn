@@ -1,6 +1,6 @@
 ---
-title: Moonriver
-description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配置情况，以及如何使用Solidity进行开发。
+title: Moonriver概览
+description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配置和部署概览，以及如何使用Solidity进行开发。
 ---
 
 # Moonriver

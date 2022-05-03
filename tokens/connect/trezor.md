@@ -1,6 +1,6 @@
 ---
-title: Trezor硬件钱包
-description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，使用Trezor硬件钱包在Moonbeam内签署交易
+title: 如何连接和使用Trezor
+description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，连接和使用Trezor硬件钱包在Moonbeam内签署交易
 ---
 
 # Trezor硬件钱包

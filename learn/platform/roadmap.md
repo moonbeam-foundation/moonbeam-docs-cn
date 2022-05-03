@@ -1,6 +1,6 @@
 ---
 title: 产品路线图
-description: 2020年9月，Moonbeam发布了第一版测试网。2021年初，Moonbeam在Kusama发布了Beta版主网，并即将在波卡（Polkadot）发布主网。
+description: Moonbeam于2020年9月推出了第一个测试网，2021年6月在Kusama上推出了主网，并于2021年12月在Polkadot上推出了主网。
 ---
 
 # 产品路线图

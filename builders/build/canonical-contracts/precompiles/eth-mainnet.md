@@ -1,6 +1,7 @@
 ---
-title: 在Moonbase Alpha上的以太坊主网预编译合约
-description:  学习如何在Moonbeam测试网Moonbase Alpha上使用完全兼容以太坊的预编译合约
+title: 以太坊主网预编译合约
+description: 了解如何在Moonbeam上使用以太坊标准预编译合约，例如ECRECOVER、SHA256等。
+keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128Add, Bn128Mul, Bn128Pairing
 ---
 
 # 在Moonbase Alpha上的以太坊主网预编译合约

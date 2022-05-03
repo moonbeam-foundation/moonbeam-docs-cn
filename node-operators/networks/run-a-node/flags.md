@@ -1,6 +1,6 @@
 ---
-title: 有助于在Moonbeam上运行节点的标志
-description: 有助于在Moonbeam上运行一个完整平行链节点的标志
+title: 运行节点标志和选项
+description: 有助于在Moonbeam上运行一个完整平行链节点的标志；了解如何访问节点操作员可用的所有标志。
 ---
 
 # 有助于在Moonbeam上运行节点的标志

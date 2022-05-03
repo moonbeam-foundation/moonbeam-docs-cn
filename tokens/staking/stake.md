@@ -1,6 +1,6 @@
 ---
-title: 如何质押Token
-description: 本教程将展示如何通过委托收集人在Moonbeam质押Token
+title: 如何质押您的MOVR和GLMR代币
+description: 了解如何通过委托收集人在Moonbeam上质押代币并获得奖励。
 ---
 
 # 如何质押Token

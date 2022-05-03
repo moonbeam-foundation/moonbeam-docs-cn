@@ -1,6 +1,6 @@
 ---
-title: 开始使用Moonbeam
-description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot）上的Moonbeam。
+title: Moonbeam快速上手
+description: 学习如何通过RPC和WSS端点快速连接至基于波卡的Moonbeam。
 ---
 
 # 开始使用Moonbeam

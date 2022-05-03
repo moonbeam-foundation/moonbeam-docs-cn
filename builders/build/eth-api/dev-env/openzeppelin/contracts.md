@@ -1,6 +1,6 @@
 ---
-title: OpenZeppelin合约&库
-description:  通过此教程学习如何使用OpenZeppelin的智能合约交互式工具“Contracts Wizard”轻松创建常见的OpenZeppelin合约，以及如何利用Moonbeam以太坊兼容性功能将OpenZeppelin合约部署至Moonbeam。
+title: 部署OpenZeppelin智能合约
+description: 了解如何使用 OpenZeppelin Contracts Wizard创建常见智能合约，例如ERC-20和 ERC-721代币，并将它们部署在Moonbeam上。
 ---
 
 # OpenZeppelin合约&库

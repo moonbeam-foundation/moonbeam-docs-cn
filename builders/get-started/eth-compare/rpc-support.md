@@ -1,6 +1,6 @@
 ---
-title: RPC支持
-description: 本文描述了以太坊开发者需要了解的Moonbeam提供的以太坊RPC支持方面与以太坊本身可提供支持的主要差异
+title: RPC方法支持
+description: 本文描述了以太坊开发者需要了解的Moonbeam提供的以太坊RPC支持以及相关的主要差异。
 ---
 
 # This needs a title

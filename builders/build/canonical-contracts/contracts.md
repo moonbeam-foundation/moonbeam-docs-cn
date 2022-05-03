@@ -1,6 +1,7 @@
 ---
-title: 标准合约
-description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和一些预编译合约
+title: Moonbeam标准合约
+description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和预编译合约。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
 ---
 
 # 标准合约

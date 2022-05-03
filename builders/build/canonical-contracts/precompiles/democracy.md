@@ -1,6 +1,7 @@
 ---
-title: 与民主预编译交互
-description: Moonbeam民主Solidity预编译接口演示
+title: 与Moonbeam民主预编译交互
+description: 如何使用以太坊API与Moonbeam Solidity 民主预编译接口进行交互。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 ---
 
 # 与民主预编译交互

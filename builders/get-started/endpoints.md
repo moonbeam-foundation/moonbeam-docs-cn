@@ -1,6 +1,6 @@
 ---
-title: 网络端点
-description: 使用支持的API提供商连接至公共端点或创建自定义JSON RPC和WSS端点至基于Moonbeam的网络。
+title: MoonbeamAPI提供商和网络端点
+description: 使用支持的API提供商连接至公共端点或创建私有JSON RPC和WSS端点至基于Moonbeam的网络。
 ---
 
 # 网络端点

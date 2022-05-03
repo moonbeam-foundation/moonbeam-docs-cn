@@ -1,6 +1,6 @@
 ---
-title: 开始使用Covalent API
-description: 使用 Covalent API Moonbeam 查询区块链数据
+title: Covalent API
+description: 使用Covalent API在Moonbeam上查询区块链数据，包括余额、交易、代币持有人和事件等信息。
 ---
 
 # 开始使用Covalent API

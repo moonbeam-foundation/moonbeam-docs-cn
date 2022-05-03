@@ -1,6 +1,7 @@
 ---
-title: 与质押预编译交互
-description: Moonbeam平行链的以太坊Solidity质押预编译接口演示
+title: 质押预编译
+description: 了解如何使用质押预编译，允许开发人员使用Ethereum API访问质押功能。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, solidity
 ---
 
 # 与质押预编译交互

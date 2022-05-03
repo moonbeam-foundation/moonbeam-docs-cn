@@ -1,6 +1,6 @@
 ---
 title: Band Protocol预言机
-description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocal预言机喂价
+description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocol预言机喂价
 ---
 
 # Band Protocol预言机

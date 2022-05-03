@@ -1,6 +1,6 @@
 ---
-title: 使用SubQuery索引Moonbeam
-description: 学习如何通过使用SubQuery，在Moonbeam和Moonriver上索引Substrate和EVM数据
+title: 使用SubQuery和GraphQL索引Moonbeam
+description: 学习如何通过使用SubQuery，在Moonbeam和Moonriver上索引Substrate和EVM数据，并使用 GraphQL 查询数据。
 ---
 
 # 使用SubQuery索引Moonbeam

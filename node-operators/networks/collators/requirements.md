@@ -1,6 +1,6 @@
 ---
-title: 收集人要求
-description: 了解在Moonbeam网络上成为收集人和维护收集人节点的要求
+title: Moonbeam收集人要求
+description: 了解在Moonbeam网络上成为收集人和维护收集人节点的要求，包括对硬件、绑定等的要求。
 ---
 
 # 收集人要求

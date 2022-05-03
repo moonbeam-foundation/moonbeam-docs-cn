@@ -1,6 +1,6 @@
 ---
 title: 使用区块浏览器验证智能合约
-description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约
+description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约。
 ---
 
 # 使用区块浏览器验证智能合约

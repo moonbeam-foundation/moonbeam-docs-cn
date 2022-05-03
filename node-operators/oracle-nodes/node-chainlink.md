@@ -1,5 +1,5 @@
 ---
-title: 在Moonbeam上运行Chainlink预言机节点
+title: 运行Chainlink预言机节点
 description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合约提供链上数据
 ---
 

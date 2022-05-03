@@ -1,6 +1,6 @@
 ---
-title: Moonbeam测试网快速上手（Moonbase Alpha）
-description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）生态的首选入口。通过此教程学习如何连接至Moonbase Alpha测试网。
+title: Moonbase Alpha测试网快速上手
+description: Moonbeam的测试网，Moonbase Alpha，是进入波卡生态的首选入口。通过此教程了解如何连接至Moonbase Alpha。
 ---
 
 # Moonbeam测试网快速上手（Moonbase Alpha）

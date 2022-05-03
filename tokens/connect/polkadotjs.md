@@ -1,6 +1,6 @@
 ---
-title: Polkadot.js Apps
-description: 根据此教程快速学习如何使用基于Substrate的应用程序，如Polkadot.js与Moonbeam的标准以太坊H160地址进行交互。
+title: 在Polkadot.js Apps上创建帐户
+description: 根据此教程快速学习如何使用Polkadot.js Apps与Moonbeam的以太坊标准H160地址进行交互和发送交易。
 ---
 
 # Polkadot.js Apps

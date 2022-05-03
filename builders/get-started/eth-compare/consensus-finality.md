@@ -1,6 +1,6 @@
 ---
 title: 共识和确定性
-description: 本文描述了以太坊开发者需要了解的Moonbeam在共识和确定性方面与以太坊之间的主要差异
+description: 本文描述了以太坊开发者需要了解的Moonbeam在共识和确定性方面与以太坊之间的主要差异。
 ---
 
 # This needs a title

@@ -1,6 +1,6 @@
 ---
 title: 如何将您的项目收录在DappRadar平台上
-description: 如何将您的项目收录在DappRadar平台上
+description: 如何在DappRadar上列出您的Moonbeam或Moonriver项目，这是一个用于部署到 Moonbeam的智能合约和DApp的列表和排名平台。
 ---
 
 # 如何将您的项目收录在DappRadar平台上

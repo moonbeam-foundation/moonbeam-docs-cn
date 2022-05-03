@@ -1,6 +1,6 @@
 ---
-title: Moonbeam测试网（Moonbase Alpha）
-description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及如何使用Solidity开始在其上进行构建。
+title: Moonbeam测试网概览
+description: Moonbeam测试网（Moonbase Alpha当前配置的概述，以及如何使用Solidity开始在其上进行开发。
 ---
 
 # Moonbeam测试网（Moonbase Alpha）

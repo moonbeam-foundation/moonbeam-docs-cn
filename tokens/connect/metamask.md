@@ -1,6 +1,6 @@
 ---
-title: 使用MetaMask与Moonbeam交互
-description: 通过此教程学习如何将MetaMask，一个以浏览器为基础的以太坊钱包连接至Moonriver、Moonbase Alpha测试网或Moonbeam开发节点。
+title: 如何连接MetaMask
+description: 本指南将引导您了解如何将基于浏览器的以太坊钱包MetaMask连接到基于Moonbeam的网络以及如何转移资金。
 ---
 
 # 使用MetaMask与Moonbeam交互

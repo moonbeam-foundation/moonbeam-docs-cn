@@ -1,6 +1,6 @@
 ---
-title: ChainBridge协议的以太坊Moonbeam跨链转接桥
-description: 如何使用ChainBridge协议以智能合约形式实现以太坊和Moonbeam之间的链间资产转移。
+title: 使用ChainBridge跨链转账
+description: 如何使用ChainBridge协议以智能合约形式实现以太坊和Moonbeam之间的ERC-20、ERC-721等常见资产的跨链转账。
 ---
 
 # ChainBridge协议的以太坊Moonbeam跨链转接桥
