@@ -69,7 +69,7 @@ Covalent API有两类终端：
 
 所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
 
- - 安装MetaMask并[连接到Moonbase](/getting-started/moonbase/metamask/)
+ - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/)
  - 拥有一个账户并存有一定资金，该账户可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)创建
 
 ## Covalent API使用测试 {: #try-it-out } 
