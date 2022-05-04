@@ -97,7 +97,7 @@ BN128Mul预编译实现了原生椭圆曲线的标量乘法。它返回一个椭
 
 --8<-- 'code/precompiles/bn128mul.md'
 
-使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/))并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256ScalarMul(bytes32 x, bytes32 y, bytes32 scalar)`方法返回操作结果。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256ScalarMul(bytes32 x, bytes32 y, bytes32 scalar)`方法返回操作结果。
 
 ## BN128Pairing {: #bn128pairing }
 
