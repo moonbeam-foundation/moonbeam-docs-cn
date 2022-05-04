@@ -29,7 +29,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 ![MetaMask installation with a balance](/images/builders/build/eth-api/dev-env/remix/using-remix-2.png)
 
-如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank){target=_blank}获得用于测试目的的DEV Token。
+如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
 
 ## 开始使用Remix {: #getting-started-with-remix }
 
