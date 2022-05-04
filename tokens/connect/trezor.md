@@ -36,7 +36,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 点击右上角的logo展开使用菜单
  2. 选取“连接硬件钱包“
 
-![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ethereum/ledger-2.png)
 
 进入下个页面之后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
