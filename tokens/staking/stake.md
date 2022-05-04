@@ -290,7 +290,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ## 质押奖励 {: #staking-rewards } 
 
-收集人有效集的候选人通过生产区块获得奖励，委托人也会获得奖励。您可以在[此页面](/staking/overview/#reward-distribution)大致了解奖励的计算方式。
+收集人有效集的候选人通过生产区块获得奖励，委托人也会获得奖励。您可以在[此页面](/learn/features/staking/#reward-distribution)大致了解奖励的计算方式。
 
 总而言之，收集人获得奖励后（奖励包括收集人本身的权益），将根据占该收集人所有委托人总权益的比例对各个委托人进行奖励分成。
 

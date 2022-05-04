@@ -82,4 +82,4 @@ Moonbeam的Token被称为Glimmer（GLMR）。想要获取更多资讯，请访�
 
 ## 限制 {: #limitations }
 
-部分[预编译](https://docs.klaytn.com/smart-contract/precompiled-contracts)功能目前仍无法使用，其余内建的功能皆可使用。您可在[此页面](/builders/tools/precompiles/)查看当前可使用的预编译方案。
+部分[预编译](https://docs.klaytn.com/smart-contract/precompiled-contracts)功能目前仍无法使用，其余内建的功能皆可使用。您可在[此页面](/builders/build/canonical-contracts/precompiles/)查看当前可使用的预编译方案。

@@ -16,7 +16,7 @@ description: Moonbeam的测试网，Moonbase Alpha，是进入波卡生态的首
  - **基于以太坊API和索引** — [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/)
  - **基于Substrate API** — [Subscan](https://moonbase.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer)
 
- 更多相关信息请参考[区块浏览器](/builders/tools/explorers)文档。
+ 更多相关信息请参考[区块浏览器](builders/get-started/explorers/)文档。
 
 ## 连接MetaMask
 

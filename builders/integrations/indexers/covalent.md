@@ -5,7 +5,7 @@ description: 使用Covalent API在Moonbeam上查询区块链数据，包括余�
 
 # 开始使用Covalent API
 
-![The Graph on Moonbeam](/images/builders/integrations/indexers/covalent/covalent-banner.png)
+![Covalent on Moonbeam](/images/builders/integrations/indexers/covalent/covalent-banner.png)
 
 ## 概览 {: #introduction } 
 

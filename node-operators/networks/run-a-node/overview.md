@@ -90,7 +90,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 
 您也可以通过运行追踪节点访问一些非标准RPC方式的权限，这将允许开发者在runtime期间检查和调试交易事件。与标准Moonbase Alpha，Moonriver，或Moonbeam节点相比，追踪节点使用的是不同的Docker镜像。
 
-请查看[运行追踪节点](/node-operators/networks/tracing-node)的操作指南并确保在操作过程中已切换至正确网络。随后，通过您的追踪节点访问非标准RPC方法，详情请查看[Debug & Trace](/builders/tools/debug-trace)指南。
+请查看[运行追踪节点](/builders/build/eth-api/debug-trace)的操作指南并确保在操作过程中已切换至正确网络。随后，通过您的追踪节点访问非标准RPC方法，详情请查看[Debug & Trace](/builders/tools/debug-trace)指南。
 
 ## 日志和故障排除 {: #logs-and-troubleshooting }
 
