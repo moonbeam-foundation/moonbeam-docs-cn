@@ -5,7 +5,7 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
 
 # ChainBridge协议的以太坊Moonbeam跨链转接桥
 
-![ChainBridge Moonbeam banner](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-banner.png)
+![ChainBridge Moonbeam banner](/images/builders/integrations/bridges/chainbridge/chainbridge-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -48,7 +48,7 @@ ChainBridge目前依赖于受信任的中继器来执行这些角色。此外，
 
 工作流程整体示意图如下所示：
 
-![ChainBridge Moonbeam diagram](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-diagram.png)
+![ChainBridge Moonbeam diagram](/images/builders/integrations/bridges/chainbridge/chainbridge-1.png)
 
 在转接桥两端的目标合约通过一系列的注册进行连接，注册通过桥接合约在相应的处理程序合约中进行。目前，只有桥接合约管理员可以进行注册。
 
@@ -103,7 +103,7 @@ ERC-20代币需要先通过中继器在处理程序合约上进行注册，才�
 
 本示例的一般工作流程示意图如下所示：
 
-![ChainBridge ERC-20 workflow](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-erc20.png)
+![ChainBridge ERC-20 workflow](/images/builders/integrations/bridges/chainbridge/chainbridge-2.png)
 
 无论代币转移方向如何，想要通过示例ERC-20代币尝试桥接功能，还需要完成以下步骤：
 
@@ -157,7 +157,7 @@ interface ICustomERC20 {
 4. 调用`mintTokens()`函数并进行交易签名
 5. 交易确认后，即可收到5枚ERC-20S代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
 
-![ChainBridge ERC-20 mint Tokens](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-1.png)
+![ChainBridge ERC-20 mint Tokens](/images/builders/integrations/bridges/chainbridge/chainbridge-3.png)
 
 接收到代币后，就可以进行后续步骤，通过转接桥将代币发送到目标链上。在这一示例中，代币将从**Moonbase Alpha**发送到**Kovan**。将会有一个单一接口，可用于传输ERC-20S和ERC-721M代币。在此示例中，将通过以下接口合约使用`sendERC20SToken()`发起已铸造的ERC-20S代币交易：
 
@@ -200,11 +200,11 @@ interface IBridge {
 
 交易确认后，Kovan相应地址将收到转移过来的代币。整个过程需要3分钟左右。
 
-![ChainBridge ERC-20 send Tokens](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-2.png)
+![ChainBridge ERC-20 send Tokens](/images/builders/integrations/bridges/chainbridge/chainbridge-4.png)
 
 将代币转入[MetaMask](/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
-![ChainBridge ERC-20 balance](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-3.png)
+![ChainBridge ERC-20 balance](/images/builders/integrations/bridges/chainbridge/chainbridge-5.png)
 
 你也可以在Kovan上铸造ERC-20S代币并将其转移至Moonbase Alpha。可以使用接口合约提供的`increaseAllowance()`进行使用许可或提高限额。通过使用接口合约中的`allowance()`，可以在ERC-20代币合约中查看处理程序合约的限额。
 
@@ -215,7 +215,7 @@ interface IBridge {
 
 和上一个示例相似，ERC-721代币合约也需要经过中继器注册才能使用转接桥进行转移。为此，我们创建了一个定制化的ERC-721代币合约，让所有用户都可以铸造代币，用于进行桥接功能的测试。然而，由于每个代币是非同质化且独一无二的，只能在源链代币合约上铸造，无法在目标合约上铸造。因此，我们需要一对ERC-721合约地址才能实现Rinkeby/Kovan和Moonbase Alpha之间两个方向的代币转移。下面是本示例的工作流程示意图，重点需要注意的是代币ID和元数据。
 
-![ChainBridge ERC-721 workflow](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-erc721.png)
+![ChainBridge ERC-721 workflow](/images/builders/integrations/bridges/chainbridge/chainbridge-6.png)
 
 在Moonbase Alpha上铸造代币（名称：ERC-721Moon，代号：ERC-721M）并在Moonbase Alpha和Rinkeby/Kovan之间进行代币转移，需要以下地址信息：
 
@@ -283,7 +283,7 @@ interface ICustomERC721 {
 4. 调用`mintTokens()`函数并进行交易签名
 5. 交易确认后，即可收到1枚ERC-721M代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
 
-![ChainBridge ERC-721 mint Tokens](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-4.png) 
+![ChainBridge ERC-721 mint Tokens](/images/builders/integrations/bridges/chainbridge/chainbridge-7.png) 
 
 可以通过以下接口合约使用`sendERC721MoonToken()`函数发起交易，将最初铸造的代币（ERC-721E）转移到Moonbase Alpha。
 
@@ -326,11 +326,11 @@ interface IBridge {
 
 交易确认后，Kovan相应地址将收到转移过来的代币ID。整个过程需要3分钟左右。
 
-![ChainBridge ERC-721 send Token](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-5.png)
+![ChainBridge ERC-721 send Token](/images/builders/integrations/bridges/chainbridge/chainbridge-8.png)
 
 将代币加入[MetaMask](/integrations/wallets/metamask/)并连接到目标链（在这一示例中为Kovan）即可查看余额。
 
-![ChainBridge ERC-721 balance](/images/builders/integrations/bridges/eth/chainbridge/chainbridge-6.png)
+![ChainBridge ERC-721 balance](/images/builders/integrations/bridges/chainbridge/chainbridge-9.png)
 
 请注意，仅可在Moonbase Alpha上铸造ERC-721M代币并转移至Kovan或Rinkey。请一定要先在ERC-721代币合约中查看处理程序合约的限额。可以使用接口合约提供的`approve()`许可处理程序合约发送代币。通过`getApproved()`可以查看每个代币ID的许可情况。
 

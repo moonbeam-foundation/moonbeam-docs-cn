@@ -4,7 +4,6 @@ nav:
   - '使用MetaMask': 'metamask.md'
   - '使用MathWallet': 'mathwallet.md'
   - '使用Polkadot.js Apps': 'polkadotjs.md'
-  - '使用Coinbase Wallet': 'coinbase-wallet.md'
   - '使用Ledger': 'ledger.md'
   - '使用Trezor': 'trezor.md'
   - '使用Nifty': 'nifty.md'

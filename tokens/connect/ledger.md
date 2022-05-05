@@ -49,7 +49,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 在Ledger Live应用中，您应能够看到以太坊或Moonriver应用出现在**Manager**页面上的**Apps installed**的标签下。确认已成功安装应用后，您可以关闭Ledger Live页面。
 
-<img src="/images/tokens/connect/ledger/ledger-1.png" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+<img src="/images/tokens/connect/ledger/ethereum/ledger-1.png" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
 ## 将您的Ledger账户导入MetaMask {: #import-your-ledger-account-to-metamask }
 
@@ -59,7 +59,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
   2. 选取**Connect Hardware Wallet**
 
-![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ethereum/ledger-2.png)
 
 进入下个页面后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
@@ -67,7 +67,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
   2. 点击**Continue**
 
-![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/ledger-3.png)
+![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/ethereum/ledger-3.png)
 
 如果您使用的是Chrome或是基于Chrome的浏览器（如Brace），您将会需要通过WebHID选取您希望连接的Ledger设备：
 
@@ -75,7 +75,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 2. 点击**Connect**
 
-![Ledger on Chrome](/images/tokens/connect/ledger/ledger-4.png)
+![Ledger on Chrome](/images/tokens/connect/ledger/ethereum/ledger-4.png)
 
 如果未出现弹窗，您将会需要修改您的MetaMask设定允许其使用WebHID连接。您可以根据以下步骤查看并更新您的MetaMask设定：
 
@@ -99,11 +99,11 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
   2. 点击**Unlock**
 
-![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/ledger-5.png)
+![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/ethereum/ledger-5.png)
 
 如果您已经成功导入您的Ledger账户，您将能够在MetaMask页面上看到您的账户以及余额，如下图所示：
 
-![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/ledger-6.png)
+![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/ethereum/ledger-6.png)
 
 您可以在MetaMask随时切换账户以查看您Ledger账户的余额。
 
@@ -113,7 +113,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 如果您希望开始使用您的Ledger设备进行交互，您将需要转入一些资金。您可以通过在MetaMask上点击您的账户名称和地址复制您的账户地址。
 
-![MetaMask Copy Account](/images/tokens/connect/ledger/ledger-7.png)
+![MetaMask Copy Account](/images/tokens/connect/ledger/ethereum/ledger-7.png)
 
 接着，您将需要获取一些MOVR或是DEV Token并转入您所复制的账户地址。交易完成后，您将能看到余额更新。
 
@@ -123,7 +123,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 接着，您可以使用您的Ledger设备在Moonbeam上发送和签署交易。如果您希望开始发送交易，点击**Send**按钮：
 
-![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/ledger-8.png)
+![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/ethereum/ledger-8.png)
 
 如同正常的交易，请设置接收人地址、输入发送金额、检查交易细节后并确认。这将会启用您Ledger设备的交易签名向导，您可以根据以下步骤进行操作：
 
@@ -141,11 +141,11 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
   7. 如果您不同意所有交易细节，请拒绝交易。这将会取消本次交易，MetaMask同时会将本次交易标注为失败。
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-9.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ethereum/ledger-9.png)
 
 在您通过交易之后，MetaMask将会将此发送至网络上。当交易被成功确认后，将会被显示在MetaMask的**Activity**标签中的**Send**一栏。
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ledger-10.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/ethereum/ledger-10.png)
 
 恭喜您已成功签署此交易并使用Ledger硬件钱包在Moonbeam发送一些Token。
 
@@ -166,6 +166,6 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 !!! 注意事项
     此选项对于您的Ledger设备与可能存在于Moonbeam生态系统的ERC-20 Token合约之间的交互是必要的。
 
-![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ledger-11.png)
+![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ethereum/ledger-11.png)
 
 --8<-- 'text/disclaimers/third-party-content.md'
