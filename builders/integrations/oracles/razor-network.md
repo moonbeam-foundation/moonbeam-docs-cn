@@ -137,3 +137,5 @@ interface Razor {
 通过这一方法，您将创建一个可以进行交互的demo合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
 ![Razor check price](/images/builders/integrations/oracles/razor/razor-demo-2.png)
+
+--8<-- 'text/disclaimers/third-party-content.md'

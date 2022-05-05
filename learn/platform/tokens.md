@@ -1,6 +1,6 @@
 ---
 title: 实用代币
-description: 每个Moonbeam网络都需要一个实用代币才能运行 - Polkadot上Moonbeam的Glimmer(GLMR)和Kusama上Moonriver的Moonriver(MVR)。
+description: 每个Moonbeam网络都需要一个实用代币才能运行 - Polkadot上Moonbeam的Glimmer(GLMR)和Kusama上Moonriver的Moonriver(MOVR)。
 ---
 
 # 概览
