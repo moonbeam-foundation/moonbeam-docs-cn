@@ -18,8 +18,9 @@ description: 通过Brownie在Moonbeam上使用Python进行编译、部署和调�
 首先，您需要准备以下先决条件：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有一定资金的账户，您可以在[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得所需Token
- - --8<-- 'text/common/endpoint-examples.md'
+ - 拥有一定资金的账户，您可以在[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得所需Token
+ - 
+ --8<-- 'text/common/endpoint-examples.md'
 
 ## 创建Brownie项目 {: #creating-a-brownie-project }
 
@@ -38,7 +39,7 @@ description: 通过Brownie在Moonbeam上使用Python进行编译、部署和调�
     python3 -m pipx ensurepath
     ```
     
-2. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
+3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
    
     ```
     pipx install eth-brownie
@@ -46,7 +47,7 @@ description: 通过Brownie在Moonbeam上使用Python进行编译、部署和调�
     !!! 注意事项
         [`pipx`](https://github.com/pypa/pipx){target=_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
     
-3. 创建项目
+4. 创建项目
    
     ```
     brownie init
