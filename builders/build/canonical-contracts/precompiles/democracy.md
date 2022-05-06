@@ -1,6 +1,7 @@
 ---
-title: 民主
-description: Moonbeam民主Solidity预编译接口演示
+title: 与Moonbeam民主预编译交互
+description: 如何使用以太坊API与Moonbeam Solidity 民主预编译接口进行交互。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 ---
 
 # 与民主预编译交互
@@ -66,7 +67,7 @@ description: Moonbeam民主Solidity预编译接口演示
 以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。除此之外，您还需要：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 具有拥有一定数量DEV的账户，您可以从[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得一些。
+ - 具有拥有一定数量DEV的账户，您可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得一些。
 
 ## 设置Remix {: #remix-set-up }
 
@@ -226,7 +227,7 @@ description: Moonbeam民主Solidity预编译接口演示
 
 3. 输入公投编码以进行投票
 
-4. 输入0表示不同意，输入1表示同意。在公投中，不同意代表保持原状态，同意表示执行此公投的动作
+4. 将此字段留空表示否定或输入1表示赞成。在公投的背景下，`Nay`是保持现状不变的投票，`Aye`是通过公投提议
 
 5. 输入以WEI表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 

@@ -1,5 +1,5 @@
 ---
-title: 概览
+title: 运行收集人节点
 description: 关于运行节点后如何深入了解并成为Moonbeam网络中收集人的说明
 ---
 

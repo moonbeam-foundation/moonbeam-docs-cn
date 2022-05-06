@@ -1,6 +1,6 @@
 ---
-title: The Graph
-description: 通过此教程学习如何在Moonbeam上使用The Graph索引协议构建API
+title: 使用The Graph构建API
+description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgraph的API，以存储和获取给定智能合约的链上数据。
 ---
 
 # 在Moonbeam上使用The Graph
@@ -74,7 +74,7 @@ The Graph使用彩票合约发出的事件消息进行数据索引。彩票合�
 
 ## 创建Subgraph {: #creating-a-subgraph } 
 
-本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/PureStake/moonlotto-subgraph){target=_blank}有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您想了解更多关于配置文件和使用Hardhat部署智能合约，可以查看[Hardhat集成教程](/integrations/hardhat/){target=_blank}。
+本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/PureStake/moonlotto-subgraph){target=_blank}有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您想了解更多关于配置文件和使用Hardhat部署智能合约，可以查看[Hardhat集成教程](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
 
 第一步，克隆代码库并安装附带程序：
 

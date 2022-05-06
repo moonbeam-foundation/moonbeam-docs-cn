@@ -1,6 +1,6 @@
 ---
-title: 合约向导
-description:  通过此教程学习如何使用OpenZeppelin的智能合约交互式工具“Contracts Wizard”轻松创建常见的OpenZeppelin合约，以及如何利用Moonbeam以太坊兼容性功能将OpenZeppelin合约部署至Moonbeam。
+title: 部署OpenZeppelin智能合约
+description: 了解如何使用 OpenZeppelin Contracts Wizard创建常见智能合约，例如ERC-20和 ERC-721代币，并将它们部署在Moonbeam上。
 ---
 
 # OpenZeppelin合约&库
@@ -55,7 +55,7 @@ Contracts Wizard由以下环节组成：
 请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=_blank}进行合约部署。相关指引请点击以下链接：
 
  - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/){target=_blank}
- - [使用Remix与Moonbeam进行交互](/integrations/remix/){target=_blank}
+ - [使用Remix与Moonbeam进行交互](/builders/build/eth-api/dev-env/remix/){target=_blank}
 
 ### 部署ERC-20代币 {: #deploying-an-erc20-token } 
 

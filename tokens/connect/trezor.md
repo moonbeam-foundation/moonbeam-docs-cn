@@ -1,6 +1,6 @@
 ---
-title: 使用Trezor
-description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，使用Trezor硬件钱包在Moonbeam内签署交易
+title: 如何连接和使用Trezor
+description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，连接和使用Trezor硬件钱包在Moonbeam内签署交易
 ---
 
 # Trezor硬件钱包
@@ -36,7 +36,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
  1. 点击右上角的logo展开使用菜单
  2. 选取“连接硬件钱包“
 
-![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ledger-2.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ethereum/ledger-2.png)
 
 进入下个页面之后，选择您要在MetaMask使用的硬件钱包。截至本教程撰写时，仅支持Ledger和Trezor硬件钱包。您可以根据以下步骤进行操作：
 
@@ -84,7 +84,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 如果您已成功[将您的Trezor账户导入MetaMask](#将您的Trezor账户导入MetaMask)，并准备好使用您的Trezor设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
 
-首先，确保您的Trezor账户[有足够的DEV Token](/getting-started/moonbase/faucet/)。接着，点击“发送”按钮。
+首先，确保您的Trezor账户[有足够的DEV Token](/builders/get-started/networks/moonbase/#get-tokens/)。接着，点击“发送”按钮。
 
 ![MetaMask Trezor Account Funded](/images/tokens/connect/trezor/trezor-9.png)
 

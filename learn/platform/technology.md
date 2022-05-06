@@ -1,6 +1,6 @@
 ---
-title: 技术
-description: 基于Rust语言以及Substrate框架，Moonbeam不仅能够为执行指令提供了丰富的工具，也可以进行专业化和优化。
+title: 技术与架构
+description: 基于Rust语言以及Substrate框架，Moonbeam不仅能够为开发者提供了丰富的工具，也可以进行专业化和优化。
 ---
 
 # 技术

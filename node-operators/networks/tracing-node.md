@@ -1,6 +1,6 @@
 ---
-title: 运行追踪节点
-description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上运行节点
+title: 运行Tracing节点
+description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上运行Tracing节点
 ---
 
 # Debug API和Trace模块
@@ -177,4 +177,4 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 ## 使用一个追踪节点 {: #using-a-tracing-node }
 
-想要了解其他在Moonbeam上的可用非标准RPC方法，以及如何通过追踪节点使用这些方法，请访问[Debug & Trace](/builders/tools/debug-trace/)教程。
+想要了解其他在Moonbeam上的可用非标准RPC方法，以及如何通过追踪节点使用这些方法，请访问[Debug & Trace](/builders/build/eth-api/debug-trace/)教程。

@@ -1,4 +1,4 @@
 title: 质押
 nav:
   - index.md
-  - stake.md
+  - '如何进行质押': 'stake.md'

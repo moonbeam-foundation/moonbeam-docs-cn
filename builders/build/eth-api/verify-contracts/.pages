@@ -1,5 +1,5 @@
 title: 验证智能合约
 nav:
- - index.md
- - block-explorers.md
- - etherscan-plugins.md
+  - index.md
+  - '区块浏览器': 'block-explorers.md'
+  - 'Etherscan插件': 'etherscan-plugins.md'

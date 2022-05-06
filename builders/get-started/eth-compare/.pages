@@ -1,7 +1,7 @@
 title: Moonbeam vs 以太坊
 nav:
   - index.md
-  - balances.md
-  - transfers-api.md
-  - consensus-finality.md
-  - rpc-support.md
+  - '账户余额': 'balances.md'
+  - '转账API': 'transfers-api.md'
+  - '共识和确定性': 'consensus-finality.md'
+  - 'RPC支持': 'rpc-support.md'

@@ -1,7 +1,8 @@
 ---
-title: Band Protocol
-description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocal预言机喂价
+title: Band Protocol预言机
+description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Band Protocol预言机喂价
 ---
+
 # Band Protocol预言机
 
 ![Band Protocol Moonbeam Diagram](/images/builders/integrations/oracles/band/band-banner.png)
@@ -169,7 +170,7 @@ interface TestInterface {
  - getPrice: 根据函数中对应输入的数据，提供单一基础货币/报价货币对喂价，即BTC/USD
  - getMultiPrices: 根据函数中对应输入的数据，提供多种基础货币/报价货币对喂价，即BTC/USD、ETH/USD、ETH/EUR
 
-例如，使用[Remix](/integrations/remix/)接口可以方便地获取BTC/USD价格对。
+例如，使用[Remix](/builders/build/eth-api/dev-env/remix/)接口可以方便地获取BTC/USD价格对。
 
 创建文档及编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接。
 

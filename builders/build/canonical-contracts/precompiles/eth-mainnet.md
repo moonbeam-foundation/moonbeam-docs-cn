@@ -1,6 +1,7 @@
 ---
-title: 以太坊原生
-description:  学习如何在Moonbeam测试网Moonbase Alpha上使用完全兼容以太坊的预编译合约
+title: 以太坊主网预编译合约
+description: 了解如何在Moonbeam上使用以太坊标准预编译合约，例如ECRECOVER、SHA256等。
+keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128Add, Bn128Mul, Bn128Pairing
 ---
 
 # 在Moonbase Alpha上的以太坊主网预编译合约
@@ -30,7 +31,7 @@ npm install --save web3
 ```
 npm ls web3
 ```
-撰写本教程时，所用版本为1.3.0。此外，我们还将使用[Remix](/builders/tools/remix/)，并通过[MetaMask](/tokens/connect/metamask/)将其连接至Moonbase Alpha测试网。
+撰写本教程时，所用版本为1.3.0。此外，我们还将使用[Remix](/builders/build/eth-api/dev-env/remix/)，并通过[MetaMask](/tokens/connect/metamask/)将其连接至Moonbase Alpha测试网。
 
 --8<-- 'text/common/endpoint-examples.md'
 
@@ -50,7 +51,7 @@ npm ls web3
 
 --8<-- 'code/precompiles/ecrecoverremix.md'
 
-使用[Remix编译器部署](/builders/interact/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`verify()`方法进行验证，如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，即返回*true*。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`verify()`方法进行验证，如果`ecrecover`返回的地址与消息签名所使用的地址（与密钥相关，需在合约中手动设置）一致，即返回*true*。
 
 ## 使用SHA256函数获取哈希值 {: #hashing-with-sha256 }
 
@@ -68,7 +69,7 @@ SHA3-256是SHA-3安全散列算法（遵循[FIPS202](https://nvlpubs.nist.gov/ni
 
 --8<-- 'code/precompiles/sha3fips.md'
 
-使用[Remix编译器部署](/builders/interact/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`sha3fips(bytes memory data)`方法返回数据参数的编码字符串。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`sha3fips(bytes memory data)`方法返回数据参数的编码字符串。
 
 ## 使用RIPEMD-160函数获取哈希值 {: #hashing-with-ripemd-160 }
 
@@ -86,7 +87,7 @@ BN128Add预编译实现了原生椭圆曲线点添加。它返回一个表示`(a
 
 --8<-- 'code/precompiles/bn128add.md'
 
-使用[Remix编译器部署](/builders/interact/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256Add(bytes32 ax, bytes32 ay, bytes32 bx, bytes32 by)`方法返回操作结果。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256Add(bytes32 ax, bytes32 ay, bytes32 bx, bytes32 by)`方法返回操作结果。
 
 ## BN128Mul {: #bn128mul }
 
@@ -96,7 +97,7 @@ BN128Mul预编译实现了原生椭圆曲线的标量乘法。它返回一个椭
 
 --8<-- 'code/precompiles/bn128mul.md'
 
-使用[Remix编译器部署](/builders/interact/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256ScalarMul(bytes32 x, bytes32 y, bytes32 scalar)`方法返回操作结果。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`callBn256ScalarMul(bytes32 x, bytes32 y, bytes32 scalar)`方法返回操作结果。
 
 ## BN128Pairing {: #bn128pairing }
 
@@ -106,7 +107,7 @@ BN128Pairing预编译通过椭圆曲线配对操作进行zkSNARK验证。更多�
 
 --8<-- 'code/precompiles/bn128pairing.md'
 
-使用[Remix编译器部署](/builders/interact/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`function callBn256Pairing(bytes memory input)`方法返回操作结果。
+使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`function callBn256Pairing(bytes memory input)`方法返回操作结果。
 
 ## 恒等函数 {: #the-identity-function }
 
@@ -126,4 +127,4 @@ BN128Pairing预编译通过椭圆曲线配对操作进行zkSNARK验证。更多�
 
 --8<-- 'code/precompiles/modularexp.md'
 
-您也可以在[Remix](/builders/tools/remix/)环境中尝试使用这一合约。调用`verify()`函数，输入基数、指数和除数，结果将储存在函数的`checkResult`变量中。
+您也可以在[Remix](/builders/build/eth-api/dev-env/remix/)环境中尝试使用这一合约。调用`verify()`函数，输入基数、指数和除数，结果将储存在函数的`checkResult`变量中。

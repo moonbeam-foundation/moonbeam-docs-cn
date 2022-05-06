@@ -1,5 +1,5 @@
 ---
-title: 发送提案
+title: 如何在Moonbeam上提出提案
 description: 如何通过治理机制在Moonbeam上发送提案
 ---
 

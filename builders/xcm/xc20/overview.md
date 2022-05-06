@@ -1,6 +1,6 @@
 ---
-title: 概览
-description: 学习如何使用ERC-20接口与Moonbeam上的跨链Token进行交互，并通过资产预编译合约在Moonbase Alpha测试网上查看其流程
+title: XC-20和跨链资产
+description: 了解如何使用资产预编译访问Moonbeam上跨链代币的ERC-20接口并与之交互。
 ---
 
 # XC-20和跨链资产
@@ -72,8 +72,8 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 通过XC-20预编译获得XC-20资产的使用和转移，您将需要：
 
 - [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/)
-- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/moonbase/#get-tokens/)
-- 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/moonbase/#get-tokens/)获得Token以进行测试
+- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/)
+- 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
 
 ## 跨链资产的检索列表 {: #retrieve-list-of-cross-chain-assets }
 

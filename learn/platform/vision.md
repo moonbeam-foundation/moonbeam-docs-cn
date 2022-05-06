@@ -1,6 +1,6 @@
 ---
-title: 愿景
-description: Moonbeam旨在实现多链未来，解决跨链互操作性挑战。
+title: Moonbeam的愿景｜多链
+description: Moonbeam旨在实现多链未来，用户和资产可以在许多专注和异构的链中自由移动。
 ---
 
 # Moonbeam的愿景

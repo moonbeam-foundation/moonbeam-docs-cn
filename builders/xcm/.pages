@@ -1,5 +1,5 @@
 title: XCM互操作性
 nav:
   - index.md
-  - overview.md
-  - xc20
+  - '概览': 'overview.md'
+  - '跨链资产': 'xc20.md'

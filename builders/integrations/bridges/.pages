@@ -2,4 +2,4 @@ title: 桥
 hide: false
 nav:
   - index.md
-  - eth
+  - 'ChainBridge': 'chainbridge.md'

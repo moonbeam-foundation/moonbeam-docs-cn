@@ -1,4 +1,4 @@
 title: Substrate API
 nav:
   - index.md
-  - sidecar.md
+  - 'Sidecar': 'sidecar.md'

@@ -1,6 +1,6 @@
 ---
-title: MetaMask
-description: 学习如何在Moonbase测试网使用MetaMask。此教程将向您展示如何将MetaMask集成至DApp以及自动将用户连接至Moonbase Alpha。
+title: 将MetaMask集成至DApp
+description: 本教程向您展示如何将MetaMask集成到DApp中，并通过单击按钮自动将用户连接到 Moonbeam。
 ---
 
 # 将MetaMask集成至DApp

@@ -1,6 +1,6 @@
 ---
-title: 事件订阅
-description: 使用类似于以太坊的发布-订阅功能来订阅Moonbeam兼容以太坊的链上特定事件。
+title: 在Moonbeam上订阅以太坊格式事件
+description: 使用类似于以太坊的pubsub功能来订阅Moonbeam上的以太坊格式事件。
 ---
 
 # Moonbase Alpha事件订阅
@@ -11,9 +11,9 @@ description: 使用类似于以太坊的发布-订阅功能来订阅Moonbeam兼�
 ## 查看先决条件 {: #checking-prerequisites } 
 本教程所使用的示例基于Ubuntu 18.04的环境。除此之外，还需要进行以下操作：
 
- - 安装MetaMask并[连接到Moonbase](/getting-started/moonbase/metamask/)
- - 建立账户并充值资金。可以从[任务中心](/getting-started/moonbase/faucet/)获取相关操作教程/getting-started/moonbase/faucet/)
- - 在Moonbase上部署您的ERC-20代币。您可以根据我们的[Remix教程](/getting-started/local-node/using-remix/)进行操作，但首先要确保MetaMask指向Moonbase
+ - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/)
+ - 建立账户并充值资金。可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)
+ - 在Moonbase上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/)进行操作，但首先要确保MetaMask指向Moonbase
 
 --8<-- 'text/common/install-nodejs.md'
 

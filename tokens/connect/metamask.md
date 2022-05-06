@@ -1,6 +1,6 @@
 ---
-title: 使用MetaMask
-description: 通过此教程学习如何将MetaMask，一个以浏览器为基础的以太坊钱包连接至Moonriver、Moonbase Alpha测试网或Moonbeam开发节点。
+title: 如何连接MetaMask
+description: 本指南将引导您了解如何将基于浏览器的以太坊钱包MetaMask连接到基于Moonbeam的网络以及如何转移资金。
 ---
 
 # 使用MetaMask与Moonbeam交互
@@ -29,7 +29,7 @@ description: 通过此教程学习如何将MetaMask，一个以浏览器为基�
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-想要一键连接至Moonbase Alpha，先通过[如何将MetaMask按钮连接至您的dapp](/builders/interact/metamask-dapp/)进行设置。本教程也适用于其他Moonbeam网络。
+想要一键连接至Moonbase Alpha，先通过[如何将MetaMask按钮连接至您的dapp](/builders/integrations/wallets/metamask/)进行设置。本教程也适用于其他Moonbeam网络。
 
 ## 安装MetaMask扩展程序 {: #install-the-metamask-extension }
 

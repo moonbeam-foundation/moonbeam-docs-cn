@@ -1,5 +1,6 @@
 title: 钱包
 nav:
   - index.md
-  - metamask.md
-  - walletconnect.md
+  - 'MetaMask': 'metamask.md'
+  - 'WalletConnect': 'walletconnect.md'
+  
