@@ -1,6 +1,6 @@
 ---
 title: Brownie
-description: 通过Brownie在Moonbeam上使用Python进行编译、部署和调试以太坊式智能合约
+description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie在Moonbeam上使用Python编译、部署和调试智能合约。
 ---
 
 # 使用Brownie在Moonbeam上进行部署
