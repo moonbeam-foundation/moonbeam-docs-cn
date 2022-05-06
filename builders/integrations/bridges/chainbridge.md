@@ -1,7 +1,8 @@
 ---
-title: ChainBridge
-description: 如何使用ChainBridge协议以智能合约形式实现以太坊和Moonbeam之间的链间资产转移。
+title: 使用ChainBridge跨链转账
+description: 如何使用ChainBridge协议以智能合约形式实现以太坊和Moonbeam之间的ERC-20、ERC-721等常见资产的跨链转账。
 ---
+
 # ChainBridge协议的以太坊Moonbeam跨链转接桥
 
 ![ChainBridge Moonbeam banner](/images/builders/integrations/bridges/chainbridge/chainbridge-banner.png)
@@ -115,7 +116,7 @@ ERC-20代币需要先通过中继器在处理程序合约上进行注册，才�
 !!! 注意事项
     处理程序合约代表所有者需有足够限额才能进行代币转移。若转移失败，请检查限额。
 
-下面尝试将ERC-20S代币从**Moonbase Alpha** 转移到**Kovan**。我们将使用[Remix](/integrations/remix/)完成这一任务。首先，我们可以调用以下合约接口铸造代币：
+下面尝试将ERC-20S代币从**Moonbase Alpha** 转移到**Kovan**。我们将使用[Remix](/builders/build/eth-api/dev-env/remix/)完成这一任务。首先，我们可以调用以下合约接口铸造代币：
 
 ```solidity
 pragma solidity ^0.8.1;
@@ -233,7 +234,7 @@ interface IBridge {
 
 简单来说，在这个示例中，我们修改了用于发起交易的桥接合约，提前定义好了_chainID_和_resourceID_。用户只需输入接收地址和代币ID，*calldata*对象将自动生成。
 
-下面尝试将ERC-721M代币从**Kovan** 转移到**Moonbase Alpha**。我们将使用[Remix](/integrations/remix/)完成这一任务。首先，我们可以使用以下接口连接到源链ERC-721合约，并铸造代币。`tokenOfOwnerByIndex()`也可以用来检查特定地址持有的代币ID，并传递地址信息和索引到报价请求（每个代币ID作为与地址相关的阵列元素进行储存）：
+下面尝试将ERC-721M代币从**Kovan** 转移到**Moonbase Alpha**。我们将使用[Remix](/builders/build/eth-api/dev-env/remix/)完成这一任务。首先，我们可以使用以下接口连接到源链ERC-721合约，并铸造代币。`tokenOfOwnerByIndex()`也可以用来检查特定地址持有的代币ID，并传递地址信息和索引到报价请求（每个代币ID作为与地址相关的阵列元素进行储存）：
 
 ```solidity
 pragma solidity ^0.8.1;

@@ -117,7 +117,7 @@ description: 本教程将引导您如何利用Moonbeam兼容以太坊的特性�
 
 接着，您将需要获取一些MOVR或是DEV Token并转入您所复制的账户地址。交易完成后，您将能看到余额更新。
 
-如果您需要DEV Token用于测试Moonbase Alpha测试网，您可以至任务中心[获取Token](/builders/get-started/moonbase/#get-tokens)。
+如果您需要DEV Token用于测试Moonbase Alpha测试网，您可以至任务中心[获取Token](/builders/get-started/networks/moonbase/#get-tokens)。
 
 ## 发送Token {: #send-tokens }
 

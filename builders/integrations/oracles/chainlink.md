@@ -1,6 +1,6 @@
 ---
-title: Chainlink
-description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Chainlink预言机喂价
+title: Chainlink预言机
+description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Chainlink预言机喂价。查看Moonriver上可用的价格信息。
 ---
 
 # Chainlink预言机

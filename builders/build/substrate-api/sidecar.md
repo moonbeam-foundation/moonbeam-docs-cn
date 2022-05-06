@@ -1,6 +1,6 @@
 ---
-title: Sidecar
-description: 如何在Moonbeam网络上使用基于Substrate的REST服务
+title: 在Moonbeam上使用Substrate API Sidecar
+description: 了解如何使用基于Substrate的REST服务在Moonbeam网络上来查询区块、账户余额、计算交易费用等。
 ---
 
 # 在Moonbeam上使用Substrate API Sidecar

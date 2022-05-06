@@ -1,5 +1,5 @@
 title: 标准合约
 nav:
   - index.md
-  - contracts.md
+  - '合约地址': 'contracts.md'
   - precompiles

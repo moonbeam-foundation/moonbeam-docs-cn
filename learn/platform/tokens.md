@@ -1,6 +1,6 @@
 ---
-title: 代币
-description: 和所有的智能合约平台一样，Moonbeam Network也需要发行实用性代币让生态有效运转。发行在Polkadot平台上的代币为Glimmer（GLMR），在Kusama上的代币称作Moonriver（MOVR）。
+title: 实用代币
+description: 每个Moonbeam网络都需要一个实用代币才能运行 - Polkadot上Moonbeam的Glimmer(GLMR)和Kusama上Moonriver的Moonriver(MOVR)。
 ---
 
 # 概览
@@ -30,4 +30,4 @@ description: 和所有的智能合约平台一样，Moonbeam Network也需要发
 
 Moonbeam测试网Moonbase Alpha的代币为DEV。此代币可免费获取，且仅供Moonbase Alpha上的开发和测试使用。
 
-您可在[任务中心](/getting-started/moonbase/faucet/)免费获取DEV代币。
+您可在[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)免费获取DEV代币。

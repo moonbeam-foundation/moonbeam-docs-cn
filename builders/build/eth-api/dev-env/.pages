@@ -2,8 +2,8 @@ title: 开发环境
 nav:
   - index.md
   - openzeppelin
-  - remix.md
-  - hardhat.md
-  - truffle.md
-  - waffle-mars.md
-  - scaffold-eth.md
+  - 'Remix': 'remix.md'
+  - 'Hardhat': 'hardhat.md'
+  - 'Truffle': 'truffle.md'
+  - 'Waffle和Mars': 'waffle-mars.md'
+  - '使用Scaffold-ETH': 'scaffold-eth.md'

@@ -1,8 +1,8 @@
 ---
-title: 区块浏览器
-description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约
-
+title: 使用区块浏览器验证智能合约
+description: 学习如何使用区块浏览器在Moonbeam网络上验证智能合约。
 ---
+
 # 使用区块浏览器验证智能合约
 
 ![Explorer Banner](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-banner.png)
@@ -15,9 +15,9 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 ## 部署合约 {: #deploying-the-contract }
 
-要在区块浏览器上验证一个智能合约，首先确保该合约已部署至目标网络。本教程将演示在[Moonbase Alpha](/builders/get-started/moonbase/)上部署智能合约。
+要在区块浏览器上验证一个智能合约，首先确保该合约已部署至目标网络。本教程将演示在[Moonbase Alpha](/builders/get-started/networks/moonbase/)上部署智能合约。
 
-关于如何使用Moonbeam上的以太坊库部署智能合约，您可以查看[此教程](/builders/interact/eth-libraries/deploy-contract/)。同样，您也可以使用如[Remix](/builders/interact/remix/#deploying-a-contract-to-moonbeam-using-remix)、[Truffle](/builders/interact/truffle/#deploying-a-contract-to-moonbeam-using-truffle)或其他开发者工具在Moonbeam上部署智能合约。
+关于如何使用Moonbeam上的以太坊库部署智能合约，您可以查看[此教程](/builders/build/eth-api/libraries/)。同样，您也可以使用如[Remix](/builders/build/eth-api/dev-env/remix/#deploying-a-contract-to-moonbeam-using-remix)、[Truffle](/builders/build/eth-api/dev-env/truffle/#deploying-a-contract-to-moonbeam-using-truffle)或其他开发者工具在Moonbeam上部署智能合约。
 
 本教程将会使用以上提及的部署教程中所使用的智能合约作为验证范本。
 

@@ -1,21 +1,34 @@
+---
 title: Covalent API
-description: 使用 Covalent API Moonbeam 查询区块链数据
+description: 使用Covalent API在Moonbeam上查询区块链数据，包括余额、交易、代币持有人和事件等信息。
 ---
 
 # 开始使用Covalent API
 
-![The Graph on Moonbeam](/images/builders/integrations/indexers/covalent/covalent-banner.png)
+![Covalent on Moonbeam](/images/builders/integrations/indexers/covalent/covalent-banner.png)
 
 ## 概览 {: #introduction } 
 
 Covalent通过统一的API为所有区块链网络上的资产提供完全的公开透明。简而言之，用户无需任何代码，就可以从各个区块链上获取详细的区块链交易数据。通过统一的Covalent API界面，用户可以创建全新的应用程序或者调整现有的应用程序，无需重新配置或维护基础设施。Covalent现已支持Moonbase Alpha，并且计划支持Moonbeam和Moonriver。
 
-## 查看先决条件 {: #checking-prerequisites } 
+## 快速上手 {: #quick-start } 
 
-所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
+如果您熟悉Covalent并希望学习如何直接进入任何基于Moonbeam的网络，您只需提供Chain ID：
 
- - 安装MetaMask并[连接到Moonbase](/getting-started/moonbase/metamask/)
- - 拥有一个账户并存有一定资金，该账户可以从[任务中心](https://docs.moonbeam.network/getting-started/moonbase/faucet/)创建
+=== "Moonbeam"
+    ```
+    {{ networks.moonbeam.chain_id }}
+    ```
+
+=== "Moonriver"
+    ```
+    {{ networks.moonriver.chain_id }}
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    {{ networks.moonbase.chain_id }}
+    ```
 
 ## 终端类型 {: #types-of-endpoints } 
 
@@ -51,6 +64,13 @@ Covalent API有两类终端：
 |      Token Holders       |     |           api.covalenthq.com/v1/1287/tokens/{contract_address}/token_holders/           |
 |      Log Events (Smart Contract)       |     |           api.covalenthq.com/v1/1287/events/address/{contract_address}/           |
 |      Log Events (Topic Hash)      |     |           api.covalenthq.com/v1/1287/events/topics/{topic}/           |
+
+## 查看先决条件 {: #checking-prerequisites } 
+
+所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
+
+ - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/)
+ - 拥有一个账户并存有一定资金，该账户可以从[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)创建
 
 ## Covalent API使用测试 {: #try-it-out } 
 首先确保您已获得以“ckey_”开头的[API密钥](https://www.covalenthq.com/platform/#/auth/register/)。Token Holders终端将返回某一特定代币所有持有者的列表，调用这个API需要执行以下操作：

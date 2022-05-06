@@ -1,5 +1,5 @@
 ---
-title: 使用Scaffold-ETH
+title: 使用Scaffold-ETH在Moonbeam上开发DApp
 description: 通过本教程学习如何使用Scaffold-ETH快速在Moonbeam上部署带有React UI和subgraph的Solidity DApp。
 ---
 
@@ -119,7 +119,7 @@ yarn install
         defaultNetwork = "moonbeamDevNode";
         ```
     
-3. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/tools/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
+3. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
 
 
 4. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
@@ -132,7 +132,7 @@ yarn install
     }
     ```
 
-关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/interact/hardhat/){target=_blank}。
+关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
 
 ### The Graph组件 {: #the-graph-component }
 
@@ -393,4 +393,4 @@ yarn install
 
 ![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.png)
 
-关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/tools/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}。
+关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}。

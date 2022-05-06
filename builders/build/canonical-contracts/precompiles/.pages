@@ -1,7 +1,7 @@
 title: 预编译合约
 nav:
   - index.md
-  - eth-mainnet.md
-  - erc20.md
-  - staking.md 
-  - democracy.md
+  - '以太坊原生': 'eth-mainnet.md'
+  - '原生Token ERC-20': 'erc20.md'
+  - '质押功能': 'staking.md'
+  - '民主': 'democracy.md'

@@ -3,5 +3,5 @@ nav:
   - index.md
   - networks
   - eth-compare
-  - endpoints.md
-  - explorers.md
+  - '网络端点': 'endpoints.md'
+  - '区块浏览器': 'explorers.md'

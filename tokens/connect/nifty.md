@@ -1,5 +1,5 @@
 ---
-title: 使用Nifty
+title: 如何连接和使用Nifty钱包
 description: 此教程将会带您了解如何连接Nifty钱包，一个基于浏览器并与以太坊和Moonbeam兼容的钱包。
 ---
 
@@ -69,13 +69,13 @@ description: 此教程将会带您了解如何连接Nifty钱包，一个基于�
 
 ## 使用Nifty钱包 {: #using-nifty-wallet }
 
-Nifty钱包为Web3工具的提供者，如[Remix](/builders/tools/remix/)。通过将Nifty钱包连接至Moonbeam网络之一，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。本教程会使用Moonbase Alpha测试网，但也适用于Moonbeam和Moonriver。
+Nifty钱包为Web3工具的提供者，如[Remix](/builders/build/eth-api/dev-env/remix/)。通过将Nifty钱包连接至Moonbeam网络之一，您可以如同在MetaMask上部署合约般部署合约，并且通过Nifty签署交易。本教程会使用Moonbase Alpha测试网，但也适用于Moonbeam和Moonriver。
 
 在Remix中，当您在部署智能合约时，请确保您在**Environment**菜单中选择**Injected Web3**的选项。当您成功连接Nifty钱包，您将会在方框下面见到Moonbeam Chain ID，并且您的Nifty钱包账户将会同时嵌入至Remix。当您在传送交易时，您将会看一个类似下图所示的弹窗：
 
 <img src="/images/tokens/connect/nifty/nifty-5.png" alt="Nifty sign transaction" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
-因为本教程使用Moonbase Alpha测试网，确保您账户拥有DEV Token，必要时，可以至[任务中心](/builders/get-started/moonbase/#get-tokens/)获取一些Token。点击**Submit**，签署交易后，合约将会被部署至Moonbase Alpha测试网。
+因为本教程使用Moonbase Alpha测试网，确保您账户拥有DEV Token，必要时，可以至[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获取一些Token。点击**Submit**，签署交易后，合约将会被部署至Moonbase Alpha测试网。
 
 !!! 注意事项
     请注意，即使您的账户余额显示有ETH，但那只是DEV Token并非真正的ETH。
