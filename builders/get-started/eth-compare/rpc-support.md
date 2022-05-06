@@ -1,7 +1,9 @@
 ---
-title: RPC支持
-description: 本文描述了以太坊开发者需要了解的Moonbeam提供的以太坊RPC支持方面与以太坊本身可提供支持的主要差异
+title: RPC方法支持
+description: 本文描述了以太坊开发者需要了解的Moonbeam提供的以太坊RPC支持以及相关的主要差异。
 ---
+
+# RPC方法支持
 
 ![Moonbeam v Ethereum - RPC Support Banner](/images/builders/get-started/eth-compare/rpc-support-banner.png)
 
@@ -79,4 +81,4 @@ Moonbeam团队与[Parity](https://www.parity.io/)密切合作开发[Frontier](ht
  - **[newPendingTransactions](https://geth.ethereum.org/docs/rpc/pubsub#newpendingtransactions)** —— 返回所有增加至待处理状态的交易哈希
  - **[syncing](https://geth.ethereum.org/docs/rpc/pubsub#syncing)** —— 表示节点开始或停止与网络同步
 
-如果您想获得跟多关于这些订阅的详细教程，请查看[事件订阅](/builders/tools/pubsub/)教程。
+如果您想获得跟多关于这些订阅的详细教程，请查看[事件订阅](/builders/build/eth-api/pubsub/)教程。

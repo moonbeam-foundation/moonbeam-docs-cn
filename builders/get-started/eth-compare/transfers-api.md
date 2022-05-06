@@ -1,7 +1,9 @@
 ---
-title: 转账API
-description: 本文描述了以太坊开发者需要了解的Moonbeam在可用余额转账与以太坊之间的主要差异
+title: 在Moonbeam上转账和订阅余额变化
+description: 本文描述了以太坊开发者需要了解的Moonbeam在可用余额转账与以太坊之间的主要差异。
 ---
+
+# 在Moonbeam上转账和订阅余额变化
 
 ![Moonbeam v Ethereum - Transfers API Banner](/images/builders/get-started/eth-compare/transfers-api-banner.png)
 
@@ -48,4 +50,3 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 --8<-- 'code/vs-ethereum/balance-event.md'
 
 此外，您可以在[此脚本](https://gist.github.com/crystalin/b2ce44a208af60d62b5ecd1bad513bce)中找到更多余额转账相关具体案例的代码片段。
-

@@ -1,6 +1,7 @@
 ---
-title: 质押功能
-description: Moonbeam平行链的以太坊Solidity质押预编译接口演示
+title: 质押预编译
+description: 了解如何使用质押预编译，允许开发人员使用Ethereum API访问质押功能。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, solidity
 ---
 
 # 与质押预编译交互
@@ -115,7 +116,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonbeam和Moonriver。
 
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/)
- - 拥有一个超过`{{networks.moonbase.staking.min_del_stake}}`枚Token的账户。您可以通过[任务中心](/builders/get-started/moonbase/#get-tokens/)获得
+ - 拥有一个超过`{{networks.moonbase.staking.min_del_stake}}`枚Token的账户。您可以通过[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得
 
 !!! 注意事项
     由于需要最低的委托数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_del_stake}}`枚Token才可进行操作。若想获取更多超过水龙头分配的Token，请随时通过Discord联系我们，我们很高兴为您提供帮助。

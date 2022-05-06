@@ -1,6 +1,6 @@
 ---
-title: Moonbase Alpha
-description: Moonbeam测试网（Moonbase Alpha）当前配置的概述，以及如何使用Solidity开始在其上进行构建。
+title: Moonbeam测试网概览
+description: Moonbeam测试网（Moonbase Alpha当前配置的概述，以及如何使用Solidity开始在其上进行开发。
 ---
 
 # Moonbeam测试网（Moonbase Alpha）
@@ -38,13 +38,13 @@ Moonbase Alpha具有以下配置：
 
 
 ??? release v2 "_2020年10月_"
-    - 支持活动订阅功能（pub/sub），这是Web3 RPC端缺少的组件，但经常被DApp开发人员使用。您可以    [这里](/integrations/pubsub/)找到如何订阅活动的教程。
+    - 支持活动订阅功能（pub/sub），这是Web3 RPC端缺少的组件，但经常被DApp开发人员使用。您可以    [这里](/builders/build/eth-api/pubsub/)找到如何订阅活动的教程。
     - 支持以下的预编合约：[ecrecover](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-01-ecrecover-hash-v-r-s)、[sha256](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-02-sha-256-data)    [ripemd160](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-03-ripemd-160-data)和[身份函数](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x-04-datacopy-data)（或datacopy)。
 
 
 ??? release v3 "_2020年11月_" 
     - 将Substrate和以太坊账户统一为H160的形式，我们将这个功能称为[统一账户](https://medium.com/moonbeam-network/moonbase-alpha-v3-introducing-unified-accounts-88fae3564cda)。    后，系统内将会只有一种账户并以单一地址来表示
-    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](/integrations/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
+    - 新增支持活动订阅功能及对主题使用通配符和条件格式的可能性。您可以在[这里](/builders/build/eth-api/pubsub/#using-wildcards-and-conditional-formatting)找到更多资讯
     - Polkadot.js Apps现在原生支持H160地址以及ECDSA密钥。您可以通过您的以太坊地址来使    Substrate的功能（当可以使用时），例如staking、balances和governance。您可以在[这里](/integrations/wallets/polkadotjs/)找到更多资讯
 
 
@@ -108,7 +108,21 @@ Moonbase Alpha具有以下配置：
 
 ## 代币 {: #tokens } 
 
---8<-- 'text/testnet/faucet.md'
+Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。目前，您可以通过两种方式访问​​此令牌：通过Discord机器人或手动访问。
+
+### Discord - 任务中心 {: #discord-mission-control }
+
+为了自动请求测试Token，我们创建了一个Discord机器人（名为 Mission Control :sunglasses:），当您输入您的地址时，它将每24小时（每个 Discord 用户）自动发送最多5个 DEV 令牌。您可以在我们的 [Discord 频道](https://discord.gg/PfpUATX) 上查看。有关更多信息，请访问 [此站点](/builders/get-started/networks/moonbase/#get-tokens/)。
+ 
+在“Miscellaneous”类别下，您将找到我们的AlphaNet机器人频道。输入以下消息，将 `<enter-address-here->` 替换为您的 H160 地址：
+ 
+```
+!faucet 发送 <enter-address-here->
+```
+
+### 手动程序 {: #manual-procedure }
+
+对于超过我们的Discord机器人允许的Token请求，请通过我们的[Discord频道](https://discord.gg/PfpUATX) 直接联系版主。我们很高兴提供测试您的应用程序所需的Token。
 
 ## 权益证明 {: #proof-of-stake } 
 
@@ -118,7 +132,7 @@ Moonbase Alpha是一个完全去中心化的权益证明网络。用户可以选
 
 因为这是Moonbeam的第一个测试网，所以仍然有一些限制。
 
-部分[预编码](https://docs.klaytn.com/smart-contract/precompiled-contracts)尚未加入至此版本内，您可以在[这里](/builders/tools/precompiles/)查询目前所支持的预编码。除此之外，您还是能够使用所有的内建功能。
+部分[预编码](https://docs.klaytn.com/smart-contract/precompiled-contracts)尚未加入至此版本内，您可以在[这里](/builders/build/canonical-contracts/precompiles/)查询目前所支持的预编码。除此之外，您还是能够使用所有的内建功能。
 
 随着Moonbase Alpha v6的版本发布，每一个区块的gas使用上限被设置为{{ networks.moonbase.gas_block }}，每次交易的gas使用上限被设置为{{ networks.moonbase.gas_tx }}。
 

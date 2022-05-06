@@ -1,5 +1,5 @@
 ---
-title: Moonbeam多签钱包
+title: Moonbeam Safe多签钱包
 description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。在Moonbeam上创建一个新的多重签名钱包并接收和发送Token（以及ERC-20 Token）至Safe钱包。
 ---
 
@@ -26,7 +26,7 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 在本教程中，您将在Moonbase Alpha上创建一个Safe钱包与其交互并管理您的资金。要连接至Safe钱包，您需要执行以下操作：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/)
- - 需要准备至少两个资金充裕的账户。您可以从Discord的[任务中心](/builders/get-started/moonbase/#get-tokens/)获得DEV Token
+ - 需要准备至少两个资金充裕的账户。您可以从Discord的[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得DEV Token
 
 您将需要至少两个帐户，因为您将设置一个具有3个所有者的多重签名Safe钱包，并且需要获得2/3的签名确认才能执行任何交易。因此，在本教程中，您需要在至少两个帐户之间来回切换才能确认和发送交易。
 

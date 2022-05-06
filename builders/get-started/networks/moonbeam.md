@@ -1,6 +1,6 @@
 ---
-title: Moonbeam
-description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot）上的Moonbeam。
+title: Moonbeam快速上手
+description: 学习如何通过RPC和WSS端点快速连接至基于波卡的Moonbeam。
 ---
 
 # 开始使用Moonbeam
@@ -16,7 +16,7 @@ description: 学习如何通过RPC和WSS端点快速连接至波卡（Polkadot�
  - **基于以太坊API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam)
  - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/explorer)
 
-更多可用区块浏览器的相关信息，请访问Moonbeam资料库的[区块浏览器](/builders/tools/explorers)部分。
+更多可用区块浏览器的相关信息，请访问Moonbeam资料库的[区块浏览器](/builders/get-started/explorers/)部分。
 
 ## 连接MetaMask {: #connect-metamask }
 

@@ -1,6 +1,6 @@
 ---
-title: Etherscan插件
-description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约
+title: 使用插件验证智能合约
+description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约。
 ---
 
 # 使用Etherscan插件验证智能合约
@@ -20,7 +20,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 在开始本教程之前，您将需要提前准备：
 
 - [安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}测试网
-- 一个拥有`DEV` Token的账户。以测试为目的，您可从Moonbase Alpha[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取Token
+- 一个拥有`DEV` Token的账户。以测试为目的，您可从Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获取Token
 - 一个您将尝试验证合约的网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥
 
 ## 生成Moonscan API密钥 {: generating-a-moonscan-api-key }
@@ -45,7 +45,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 
 ## 使用Hardhat Etherscan插件 {: #using-the-hardhat-etherscan-plugin }
 
-本教程此部分将以[使用Hardhat部署至Moonbeam](/builders/interact/hardhat/){target=_blank}所创建的`Box.sol`合约为例。
+本教程此部分将以[使用Hardhat部署至Moonbeam](builders/build/eth-api/dev-env/hardhat/){target=_blank}所创建的`Box.sol`合约为例。
 
 开始使用Hardhat Etherscan插件之前，您需要先运行以下代码安装插件库：
 
@@ -98,7 +98,7 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "<constructor argument>
 
 ## 使用Truffle验证插件 {: #using-the-truffle-verify-plugin }
 
-本教程此部分将以[使用Truffle部署至Moonbeam](/builders/interact/truffle/){target=_blank}所创建的`MyToken.sol`合约为例。
+本教程此部分将以[使用Truffle部署至Moonbeam](/builders/build/eth-api/dev-env/truffle/){target=_blank}所创建的`MyToken.sol`合约为例。
 
 开始使用`truffle-plugin-verify`之前，您需要先打开您的Truffle项目并运行以下代码安装插件：
 

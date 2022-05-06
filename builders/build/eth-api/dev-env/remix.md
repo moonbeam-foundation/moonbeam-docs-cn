@@ -1,6 +1,6 @@
 ---
-title: Remix
-description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE与Moonbeam本地节点交互
+title: 使用Remix部署智能合约
+description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE与Moonbeam网络交互。
 ---
 
 # 使用Remix部署至Moonbeam
@@ -18,7 +18,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 在开始之前，您将需要准备以下内容：
 
-- 本地运行的[Moonbeam开发节点](/builders/get-started/moonbeam-dev/){target=_blank}
+- 本地运行的[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}
 - [安装且配置完毕的MetaMask](/tokens/connect/metamask/){target=_blank}以使用您的开发节点
 
 如果您已遵循上述教程，您将会拥有一个正在收集交易以生产区块的本地Moonbeam节点。
@@ -29,7 +29,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 ![MetaMask installation with a balance](/images/builders/build/eth-api/dev-env/remix/using-remix-2.png)
 
-如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[任务中心](/builders/get-started/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
+如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。以Moonbase Alpha为例，您可以自[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
 
 ## 开始使用Remix {: #getting-started-with-remix }
 

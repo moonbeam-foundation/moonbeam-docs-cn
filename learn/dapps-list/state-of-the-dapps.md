@@ -1,6 +1,6 @@
 ---
-title: State of the DApps
-description: 如何在State of the Dapps上提交您的项目或DApp
+title: 在State of the DApps中列出您的DApp
+description: 如何在State of the DApps上列出您的Moonbeam或Moonriver项目，这是一个用于部署到Moonbeam的智能合约和DApps的列表和排名平台。
 ---
 
 # 如何上线您的项目或DApp
