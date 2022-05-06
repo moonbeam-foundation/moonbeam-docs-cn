@@ -51,9 +51,10 @@ Moonbeam现在提供两种不同的浏览器：一种用于查询以太坊API，
 Moonscan其他功能如下：
 
  - [收集人排行榜](https://moonbeam.moonscan.io/collators){target=_blank}，通过收集人的表现进行排名
- - [合约源码验证](https://moonscan.io/verifyContract){target=_blank}，可通过网页界面和API访问
+ - [合约源码验证](/builders/build/eth-api/verify-contracts/block-explorers/){target=_blank}，可通过网页界面和API访问
  - 能够读写已验证的智能合约的状态数据
  - [Token授权](https://moonscan.io/tokenapprovalchecker){target=_blank}，您可以查看和撤销任何之前的Token授权
+ - [添加Token信息](/builders/get-started/token-profile/){target=_blank}，并为部署到基于Moonbeam的网络的ERC-20、ERC-721和ERC-1155创建资料页面。资料页面可以包括您的项目连接、社交媒体、价格数据和与代币有关的其他信息
 
 ![Moonriver Moonscan](/images/builders/get-started/explorers/explorers-1.png)
 
