@@ -39,7 +39,7 @@ Moonbase Alpha TestNet有可供开发使用的公共端点。对于Moonbeam或Mo
 首先，导向至[Blast](https://blastapi.io/){target=_blank},，点击“Launch App"连接至您的钱包。连接成功后，您将能够创建一个项目并生成您的自定义端点。为此，您需要执行以下操作：
 
 1. 创立项目
-2. 点击**可用端点**
+2. 点击**Available Endpoints**
 3. 为您的端点选择一个网络。有三个选项可供选择：Moonbeam、Moonriver 和 Moonbase Alpha
 4. 确认选择的网络并按**Activate**
 5. 您将可以在**Active Endpoints**下看到您选择的网络。单击此网络，您将在下一页看到您的自定义RPC和WSS端点
