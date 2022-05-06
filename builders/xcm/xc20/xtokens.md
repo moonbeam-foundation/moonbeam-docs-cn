@@ -179,7 +179,7 @@ X-Token预编译合约将会允许开发者通过基于Moonbeam网络的以太�
  - **transfer**(*address* currency_address, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示先前提及的`transfer`函数。然而，在使用币种ID之外，您需要提供[XC-20地址](/builders/xcm/xc20/#current-xc20-assets){target=_blank}。多重地点将会以一种特定形式构建，将会在下部分提及
  - **transfer_multiasset**(*Multilocation* *memory* asset, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示先前提及的`transferMultiasset`函数。所有多重地点将会以一种特定形式构建，将会在下部分提及
 
-### 构建预编译多重地点
+### 构建预编译多重地点 {: #building-the-precompile-multilocation }
 
 在X-Tokens预编译接口中，`Multilocation`架构根据下列函数定义：
 
