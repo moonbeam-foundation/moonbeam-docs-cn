@@ -1,6 +1,6 @@
 ---
-title: 如何在Moonbeam上提出提案
-description: 如何通过治理机制在Moonbeam上发送提案
+title: 如何在Moonbeam创建提案
+description: 了解治理提案的路线图以及如何创建、将其发送以进行投票，以及通过治理功能在Moonbeam上投票。
 ---
 
 # 提案
