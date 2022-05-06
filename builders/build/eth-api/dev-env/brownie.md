@@ -70,7 +70,13 @@ description: 通过Brownie在Moonbeam上使用Python进行编译、部署和调�
 
 要部署至Moonbeam网络，您需要添加并配置网络。
 
-Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和线上环境。在后台，Brownie使用Ganache作为开发环境。然而，由于Moonbeam开发者节点做为您专属的开发环境，您并不需要Ganache。因此，您可以使用线上网络（如Moonriver和Moonbase Alpha）所使用的配置来配置您的节点。
+Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和生产环境。
+
+Brownie原生支持在Moonbeam网络部署，但如果您希望将合约部署到Moonriver、Moonbase Alpha或Moonbeam 开发节点，则需要添加相应的网络配置。
+
+如果您熟悉Brownie，您可能已经习惯了`Mainnet`和`Testnet`网络设置。为了保持一致，您可以在预先存在的Moonbeam网络配置下添加Moonbase Alpha和Moonbeam开发节点的配置。由于Moonriver是它自己的主网，您可以为Moonriver添加全新的网络配置。
+
+在后台，Brownie使用Ganache作为开发环境。然而，由于Moonbeam开发者节点做为您专属的开发环境，您并不需要Ganache。因此，您可以使用线上网络（如Moonriver和Moonbase Alpha）所使用的配置来配置您的节点。
 
 您可以跟随以下命令添加Moonriver、Moonbase Alpha或是Moonbeam开发者节点：
 
@@ -292,7 +298,11 @@ def main():
 
 ## 与合约交互 {: #interacting-with-the-contract }
 
-要与您新部署的合约交互，您可以在Brownie `console`中运行以下命令：
+您可以使用Brownie控制台与合约交互以进行快速调试和测试，也可以编写脚本进行交互。
+
+### 使用Brownie控制台 {: #using-brownie-console }
+
+要与您新部署的合约交互，您可以在Brownie控制台中运行以下命令：
 
 === "Moonbeam"
     ```
@@ -345,5 +355,62 @@ def main():
 ![Interact with Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-6.png)
 
 恭喜您！您已经成功通过Brownie部署合约并与之交互！
+
+--8<-- 'text/disclaimers/third-party-content.md'
+
+### 使用脚本 {: #using-a-script }
+
+您还可以编写一个脚本来与您新部署的合约进行交互。首先，您可以在`scripts`目录中创建一个新文件：
+
+```
+cd scripts && touch store-and-retrieve.py
+```
+
+接下来，您需要编写存储和查询数值的脚本。请执行以下步骤：
+
+1. 从`brownie`导入`Box`合约和`accounts`模块
+2. 使用`accounts.load()`加载您的帐户，它会解密密钥库文件并返回给定帐户名称的帐户信息
+3. 为`Box`合约创建一个变量
+4. 使用`store`和`retrieve`函数存储一个值，然后检索它并打印到控制台
+
+```py
+# scripts/store-and-retrieve.py
+from brownie import Box, accounts
+
+def main():
+    account = accounts.load('alice')
+    box = Box[0]
+    store = box.store(5, {'from': accounts.load('alice'), 'gas_limit': '50000'})
+    retrieve = box.retrieve({'from': accounts.load('alice')})
+
+    print("Transaction hash for updating the stored value: " + store)
+    print("Stored value: " + retrieve)
+```
+
+要运行脚本，您可以使用以下命令：
+
+=== "Moonbeam"
+    ```
+    brownie run scripts/store-and-retrieve.py --network moonbeam-mainnet
+    ```
+
+=== "Moonriver"
+    ```
+    brownie run scripts/store-and-retrieve.py --network moonriver-mainnet
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    brownie run scripts/store-and-retrieve.py --network moonbeam-testnet
+    ```
+
+=== "Moonbeam Dev Node"
+    ```
+    brownie run scripts/store-and-retrieve.py --network moonbeam-dev
+    ```
+
+您需要输入Alice的密码才能发送交易以更新存储值。交易完成后，您应该会在控制台上看到交易哈希和“5”。
+
+恭喜，您已成功部署并使用Brownie与合约交互！
 
 --8<-- 'text/disclaimers/third-party-content.md'
