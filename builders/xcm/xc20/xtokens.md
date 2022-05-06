@@ -73,7 +73,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 1. 选取您希望转移XCM的账户
 
-2. 选取**xToken** pallet
+2. 选取**xTokens** pallet
 
 3. 选取**transfer** extrinsic
 
