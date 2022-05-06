@@ -1,5 +1,5 @@
 title: XC-20
 nav:
     - index.md
-    - overview.md
-    - xtokens.md
+    - 'Overview': 'overview.md'
+    - 'Send XC-20s': 'xtokens.md'
