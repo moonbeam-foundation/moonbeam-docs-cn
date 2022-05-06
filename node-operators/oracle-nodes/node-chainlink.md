@@ -28,15 +28,15 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha WSS EndPoint: `wss://wss.api.moonbase.moonbeam.network`
  - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
- - 从 [Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}获取Moonbase Alpha的DEV Token
+ - 从 [Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获取Moonbase Alpha的DEV Token
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 请先准备以下条件后再按照本教程进行操作：
 
  - 为运行Postgres DB和Chainlink节点容器[安装Docker](https://docs.docker.com/get-docker/){target=_blank}
- - 带资金的账户。您可以在[Metamask](/tokens/connect/metamask/){target=blank}创建一个账户，从[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=blank}注入资金
- - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/tools/remix/){target=blank}教程
+ - 带资金的账户。您可以在[Metamask](/tokens/connect/metamask/){target=blank}创建一个账户，从[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=blank}注入资金
+ - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=blank}教程
 
 ## 如何操作 {: #getting-started } 
 
@@ -59,7 +59,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
     mkdir -p ~/.chainlink-moonbeam && cd ~/.chainlink-moonbeam
     ```
 
-2. 用Docker创建Postgres DB (MacOs users请将`--network host \`替换为`-p 5432:5432`)
+2. 用Docker创建Postgres DB (MacOS users请将`--network host \`替换为`-p 5432:5432`)
 
     ```
 docker run -d --name chainlink_postgres_db \
@@ -70,9 +70,9 @@ docker run -d --name chainlink_postgres_db \
         -t postgres:11
     ```
     
-    请确保将`{YOU_PASSWORD_HERE}`替换为真实的密码。如果尚未下载必要的镜像，Docker将继续下载
+    请确保将`{YOUR_PASSWORD_HERE}`替换为真实的密码。如果尚未下载必要的镜像，Docker将继续下载
 
-3. 在`chainlink-moonbeam`目录下创建Chainlink环境文档。该文档将在Chainlink容器创建过程中被读取。MacOs用户请将`localhost`替换成`host.docker.internal`
+3. 在`chainlink-moonbeam`目录下创建Chainlink环境文档。该文档将在Chainlink容器创建过程中被读取。MacOS用户请将`localhost`替换成`host.docker.internal`
 
     ```
 echo "ROOT=/chainlink
@@ -89,7 +89,7 @@ echo "ROOT=/chainlink
     MINIMUM_CONTRACT_PAYMENT=0" > ~/.chainlink-moonbeam/.env
     ```
     
-    除了密码（`{YOUR_PASSWORD_HERE}`）以外，还需要提供Link Token合约（`{LINK TOKEN CONTRACT ADDRESS}`）。
+    除了密码（`{YOUR_PASSWORD_HERE}`）以外，还需要提供LINK Token合约（`{LINK TOKEN CONTRACT ADDRESS}`）。
 
 4. 创建`.api`文档来储存用户和密码，用于进入节点API、节点运营用户界面以及Chainlink命令模式
 
@@ -118,7 +118,7 @@ echo "ROOT=/chainlink
     echo "{THIRD-PASSWORD}" > ~/.chainlink-moonbeam/.password
     ```
 
-8. 激活容器（MacOs用户请将`--network host \`替换成`-p 6688:6688`）
+8. 激活容器（MacOS用户请将`--network host \`替换成`-p 6688:6688`）
 
     ```
     docker run -d --name chainlink_oracle_node \
@@ -153,7 +153,7 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 2. 进入**Configuration Page**页面，并复制节点地址
 
-3. 通过[Mission Control](/builders/get-started/moonbase/#get-tokens/){target=_blank}注入资金。
+3. 通过[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}注入资金。
 
     ![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
 

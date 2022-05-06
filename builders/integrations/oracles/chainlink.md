@@ -173,7 +173,7 @@ interface ChainlinkInterface {
 | SUSHI to USD | {{ networks.moonbase.chainlink.basic.sushi_usd }} |
 |  UNI to USD  |  {{ networks.moonbase.chainlink.basic.uni_usd }}  |
 
-在此例中，您可以继续使用在[Remix](/builders/tools/remix/){target=_blank}中使用带有`BTC to USD`的job ID的接口合约。在创建文档和编译合约之后，您可以执行以下步骤：
+在此例中，您可以继续使用在[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}中使用带有`BTC to USD`的job ID的接口合约。在创建文档和编译合约之后，您可以执行以下步骤：
 
 1. 进入**Deploy and Run Transactions**标签
 
@@ -209,8 +209,6 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/Cha
 ```
 
 您可以查阅[Chainlink documentation on ChainlinkClient API Reference](https://docs.chain.link/docs/chainlink-framework/){target=_blank}以获得更多资讯。
-
-如果您决定走这条路线，请记住预言机节点仅支持上一节中列出的job ID。您将只能访问受支持货币交易对的定价数据。如果您需要更多功能或想使用其他API，请查看[使用您自己的预言机节点以创建自定义合约](#create-custom-contracts-using-your-own-oracle-node)部分。
 
 请注意LINK Token支付设置为0。
 
@@ -395,7 +393,7 @@ interface AggregatorV3Interface {
     | SUSHI to USD | {{ networks.moonbase.chainlink.feed.aggregator.sushi_usd }} |
     |  UNI to USD  |  {{ networks.moonbase.chainlink.feed.aggregator.uni_usd }}  |
 
-举例而言，您可以通过[Remix](https://remix.ethereum.org/){target=_blank}使用Aggregator接口获取`BTC to USD`喂价。如果您需要加载合约至Remix，请参考[使用Remix](/builders/interact/remix/)文档。
+举例而言，您可以通过[Remix](https://remix.ethereum.org/){target=_blank}使用Aggregator接口获取`BTC to USD`喂价。如果您需要加载合约至Remix，请参考[使用Remix](/builders/build/eth-api/dev-env/remix/)文档。
 
 您需要将您的MetaMask账户连接至Remix，请确保您已安装MetaMask并已连接至Moonbase Alpha测试网或Moonriver。若您还未设置MetaMask，请参考[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/#install-the-metamask-extension){target=_blank}教程。
 
