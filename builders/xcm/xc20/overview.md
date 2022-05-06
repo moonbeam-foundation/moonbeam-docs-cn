@@ -57,15 +57,17 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
     |   Statemine Alphanet    | xc-MRMRK | [0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d](https://moonbase.moonscan.io/address/0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d){target=_blank} |
     
 
-     _*您可以在[此处](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看每个资产ID_
+     _*您可以在[Polkadot.js的Assets页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看每个资产ID_
 
 本教程将会带您了解如何使用Polkadot.js Apps检索Moonbase Alpha测试网上可用的XC-20资产并计算其预编译地址。除此之外，您还将学会如何使用Remix与XC-20预编译合约交互。
 
-## ERC-20接口 {: #the-erc20-interface }
+## XC-20与ERC-20 {: #xc-20-vs-erc-20 }
 
-Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)接口跟随智能合约中Token的标准API接口，[EIP-20 Token Standard](https://eips.ethereum.org/EIPS/eip-20) 。此标准定义了一个Token合约必须实现与应用程序互操作所需的函数和动作。
+尽管XC-20和ERC-20有很多相似之处，但仍让需要注意两者之间的差异。
 
---8<-- 'text/erc20-interface/erc20-interface.md'
+首先，XC-20是基于Substrate的资产，因此，它们也受到治理等Substrate功能的直接影响。此外，通过 Substrate API完成的XC-20交易不会在基于EVM的区块浏览器中可见，例如[Moonscan](https://moonscan.io){target=_blank}。只有通过以太坊API完成的交易才能通过此类浏览器看到。
+
+尽管如此，XC-20可以通过ERC-20接口进行交互，因此它们具有可以从Substrate和Ethereum API交互的特性。这为开发者在使用这类资产时提供了更大的灵活性，并允许与基于EVM的智能合约（如DEX、借贷平台等）无缝集成。
 
 ## 查看先决条件 {: #checking-prerequisites } 
 
@@ -75,7 +77,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 - 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/)
 - 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
 
-## 跨链资产的检索列表 {: #retrieve-list-of-cross-chain-assets }
+## 跨链资产的检索列表 {: #list-xchain-assets }
 
 获取Moonbase Alpha测试网上目前可用的XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer)并确认您已连接至Moonbase Alpha。接着，点击**Developer**标签并在下拉菜单中选取**Chain State**。随后，您可以遵循以下步骤查看可用的XC-20资产：
 
@@ -91,7 +93,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 检索结果将会以asset ID和其相关信息的形式显现，包含所有Moonbase Alpha上已注册的XC-20资产。
 
-## 检索跨链资产元数据 {: #retrieve-cross-chain-assets-metadata }
+## 检索跨链资产元数据 {: #x-chain-assets-metadata }
 
 为了获得特定XC-20资产的详细信息（如名称、标志和multi-location等），您可以使用**metadata**函数以获得元数据：
 
@@ -174,4 +176,4 @@ XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现�
 
 ![Interact with the precompile functions](/images/builders/xcm/xc20/overview/xc20-6.png)
 
-如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/tools/precompiles/erc20)并加以修改来适用XC-20预编译交互。
+如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/)并加以修改来适用XC-20预编译交互。

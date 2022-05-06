@@ -1,5 +1,5 @@
 ---
-title: 传送XC-20
+title: 跨链传送XC-20
 description: 学习如何使用X-Tokens pallet将XC-20s传送至其他链。另外，X-Tokens预编译允许您通过以太坊API访问核心功能。
 ---
 
