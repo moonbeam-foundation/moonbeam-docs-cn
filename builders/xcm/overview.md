@@ -1,5 +1,5 @@
 ---
-title: 概览
+title: 跨共识信息格式（XCM）
 description: 跨共识信息格式（XCM）运作机制概览，以及开发者该如何运用波卡/kusama间的xcm使用新资产
 ---
 

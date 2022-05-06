@@ -1,6 +1,6 @@
 ---
-title: Moonriver
-description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配置情况，以及如何使用Solidity进行开发。
+title: Moonriver概览
+description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配置和部署概览，以及如何使用Solidity进行开发。
 ---
 
 # Moonriver
@@ -92,5 +92,5 @@ Moonriver是一个完全去中心化的权益证明网络，用户可以委托�
 
 ## 限制 {: #limitations } 
 
-部分[预编译](https://docs.klaytn.com/smart-contract/precompiled-contracts)功能目前仍无法使用，其余内建的功能皆可使用。您可在[此页面](/builders/tools/precompiles/)查看当前可使用的预编译方案。
+部分[预编译](https://docs.klaytn.com/smart-contract/precompiled-contracts)功能目前仍无法使用，其余内建的功能皆可使用。您可在[此页面](/builders/build/canonical-contracts/precompiles/)查看当前可使用的预编译方案。
 

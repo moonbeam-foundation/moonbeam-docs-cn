@@ -1,5 +1,5 @@
 ---
-title: 收集人活动
+title: Moonbeam收集人活动
 description: 关于深入了解并学习成为Moonbeam网络中收集人相关活动的说明
 ---
 

@@ -1,6 +1,7 @@
 ---
-title: 合约地址
-description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和一些预编译合约
+title: Moonbeam标准合约
+description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和预编译合约。
+keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
 ---
 
 # 标准合约
@@ -59,11 +60,11 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
 
 |                                                        合约                                                         |                    地址                    |
 |:-------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-|                     [ECRECOVER](/builders/tools/precompiles/#verify-signatures-with-ecrecover/){target=_blank}                      | 0x0000000000000000000000000000000000000001 |
-|                             [SHA256](/builders/tools/precompiles/#hashing-with-sha256/){target=_blank}                              | 0x0000000000000000000000000000000000000002 |
-|                         [RIPEMD160](/builders/tools/precompiles/#hashing-with-ripemd-160/){target=_blank}                           | 0x0000000000000000000000000000000000000003 |
-|                           [Identity](/builders/tools/precompiles/#the-identity-function/){target=_blank}                            | 0x0000000000000000000000000000000000000004 |
-|                   [Modular Exponentiation](/builders/tools/precompiles/#modular-exponentiation/){target=_blank}                     | 0x0000000000000000000000000000000000000005 |
+|                     [ECRECOVER](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover/){target=_blank}                      | 0x0000000000000000000000000000000000000001 |
+|                             [SHA256](/builders/build/canonical-contracts/precompiles/eth-mainnet/#hashing-with-sha256/){target=_blank}                              | 0x0000000000000000000000000000000000000002 |
+|                         [RIPEMD160](/builders/build/canonical-contracts/precompiles/eth-mainnet/#hashing-with-ripemd-160/){target=_blank}                           | 0x0000000000000000000000000000000000000003 |
+|                           [Identity](/builders/build/canonical-contracts/precompiles/eth-mainnet/#the-identity-function/){target=_blank}                            | 0x0000000000000000000000000000000000000004 |
+|                   [Modular Exponentiation](/builders/build/canonical-contracts/precompiles/eth-mainnet/#modular-exponentiation/){target=_blank}                     | 0x0000000000000000000000000000000000000005 |
 |     [Bn128Add](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/struct.Bn128Add.html){target=_blank}      | 0x0000000000000000000000000000000000000006 |
 |     [Bn128Mul](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/struct.Bn128Mul.html){target=_blank}      | 0x0000000000000000000000000000000000000007 |
 | [Bn128Pairing](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/struct.Bn128Pairing.html){target=_blank}  | 0x0000000000000000000000000000000000000008 |

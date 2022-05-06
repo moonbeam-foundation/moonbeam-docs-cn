@@ -1,5 +1,5 @@
 ---
-title: 治理
+title: Moonbeam治理
 description: 作为波卡（Polkadot）平行链，Moonbeam将通过链上治理机制，来允许公众进行质押权重投票
 ---
 
@@ -104,4 +104,4 @@ Token持有者可以在Moonbeam、Moonriver和Moonbase Alpha上提交提案并�
 
  - [提案](/tokens/governance/proposals/)
  - [投票](/tokens/governance/voting/)
- - [与DemocracyInterface.sol交互](/builders/tools/precompiles/democracy/)
+ - [与DemocracyInterface.sol交互](/builders/build/canonical-contracts/precompiles/democracy/)
