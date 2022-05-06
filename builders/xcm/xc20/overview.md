@@ -69,14 +69,6 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
 
 尽管如此，XC-20可以通过ERC-20接口进行交互，因此它们具有可以从Substrate和Ethereum API交互的特性。这为开发者在使用这类资产时提供了更大的灵活性，并允许与基于EVM的智能合约（如DEX、借贷平台等）无缝集成。
 
-## 查看先决条件 {: #checking-prerequisites } 
-
-通过XC-20预编译获得XC-20资产的使用和转移，您将需要：
-
-- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/)
-- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/)
-- 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
-
 ## 跨链资产的检索列表 {: #list-xchain-assets }
 
 获取Moonbase Alpha测试网上目前可用的XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer)并确认您已连接至Moonbase Alpha。接着，点击**Developer**标签并在下拉菜单中选取**Chain State**。随后，您可以遵循以下步骤查看可用的XC-20资产：
@@ -111,7 +103,7 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
 
 您将会获得元数据的结果，您可以查看与VUNIT XC-20资产的相关asset ID。
 
-## 计算预编译地址 {: #calculate-precompile-addresses }
+## 计算预编译地址 {: #calculate-xc20-address }
 
 现在您已经检索可用XC-20资产的列表，在您通过预编译与其交互之前，您需要从asset ID获取预编译地址。
 
@@ -130,6 +122,20 @@ address = "0xFFF..." + DecimalToHex(AssetId)
 资产预编译的代码将仅会处在`0xFFFFFFFF00000000000000000000000000000000`和`0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF`之间。
 
 现在您已获得XC-20资产的预编译地址，您可以在Remix使用此地址与任何XC-20资产和ERC-20资产交互。
+
+## ERC-20接口 {: #the-erc20-interface }
+
+Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)接口跟随智能合约中Token的标准API接口，[EIP-20 Token Standard](https://eips.ethereum.org/EIPS/eip-20) 。此标准定义了一个Token合约必须实现与应用程序互操作所需的函数和动作。
+
+--8<-- 'text/erc20-interface/erc20-interface.md'
+
+## 查看先决条件 {: #checking-prerequisites } 
+
+通过XC-20预编译获得XC-20资产的使用和转移，您将需要：
+
+- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/)
+- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/)
+- 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
 
 ## 使用Remix与预编译合约交互 {: #interact-with-the-precompile-using-remix }
 
