@@ -9,52 +9,59 @@ description: 了解如何使用资产预编译访问Moonbeam上跨链代币的ER
 
 ## 概览 {: #introduction } 
 
-[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain)定义了两条互操作的区块链之间传递信息的方式。此格式为Moonbeam/Moonriver与中继链或是其他波卡/Kusama生态内平行链之间打开了传递信息和资产的大门。
+[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}定义了两条互操作的区块链之间传递信息的方式。此格式为Moonbeam/Moonriver与中继链或是其他波卡/Kusama生态内平行链之间打开了传递信息和资产的大门。
 
 Substrate资产原生具有可互操作性。然而，开发者需要使用Substrate API与其交互。而这使开发者的体验感降低，尤其是来自以太坊生态的开发者。因此，为了协助开发者上手波卡和Kusama提供的原生互操作性，Moonbeam引入了XC-20概念。
 
-XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)与之交互。除此之外，开发者能够使用常用以太坊开发框架或dApp集成XC-20资产。
+XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}与之交互。除此之外，开发者能够使用常用以太坊开发框架或dApp集成XC-20资产。
 
 ![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/xcm/overview/overview-4.png)
 
-XC-20资产使用`xc`作为其名称的前缀与其他资产类别进行区分。举例而言，Kusama上的KSM在Moonriver上的相应资产将会是*xcKSM*。请注意，XC-20预编译合约并不支持跨链资产转移，但可以使其尽可能接近标准的ERC-20接口。
+XC-20资产使用`xc`作为其名称的前缀与其他资产类别进行区分。举例而言，波卡上的DOT在Moonbeam上的相应资产将会是 _xcDOT_，Kusama上的KSM在Moonriver上的相应资产将会是 _xcKSM_。请注意，XC-20预编译合约并不支持跨链资产转移，但可以使其尽可能接近标准的ERC-20接口。XC-20的跨链转移是通过[X-Tokens Pallet](/builders/xcm/xc20/xtokens/)完成的。
 
-XC-20类别的资产需要在使用前进行注册和与生态系统中的其他资产联结，这可以通过提案的形式以白名单流程进行。如果您对在测试网上测试XCM功能有兴趣，请通过[Discord Server](https://discord.gg/PfpUATX)与我们联系。更多关于XCM的信息，您也可以在文档页面的[XCM概览](/builders/xcm/overview/)页面查看。
+XC-20类别的资产需要在使用前进行注册和与生态系统中的其他资产联结，这可以通过提案的形式以白名单流程进行。如果您对在测试网上测试XCM功能有兴趣，请通过[Discord Server](https://discord.gg/PfpUATX){target=_blank}与我们联系。更多关于XCM的信息，您也可以在文档页面的[XCM概览](/builders/xcm/overview/){target=_blank}页面查看。
 
 ## 现有XC-20资产 {: #current-xc20-assets}
 
 现有可用XC-20资产列表如下：
 
-=== "Moonriver"
-    |  起源   | 符号  |                                                                 XC-20地址                                                                 |
-    |:---------:|:-------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
-    |  Kusama   | xc-KSM  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonriver.moonscan.io/address/0xffffffff1fcacbd218edc0eba20fc2308c778080){target=_blank} |
-    |  Bifrost  | xc-BNC  | [0xFFfFFfFFF075423be54811EcB478e911F22dDe7D](https://moonriver.moonscan.io/address/0xFFfFFfFFF075423be54811EcB478e911F22dDe7D){target=_blank} |
-    |  Karura   | xc-KAR  | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonriver.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
-    |  Karura   | xc-aUSD | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonriver.moonscan.io/address/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
-    | Kintsugi  | xc-KINT | [0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2](https://moonriver.moonscan.io/address/0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2){target=_blank} |
-    | Kintsugi  | xc-kBTC | [0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0](https://moonriver.moonscan.io/address/0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0){target=_blank} |
-    | Statemine | xc-RMRK | [0xffffffFF893264794d9d57E1E0E21E0042aF5A0A](https://moonriver.moonscan.io/address/0xffffffFF893264794d9d57E1E0E21E0042aF5A0A){target=_blank} |
-    | Statemine | xc-USDT | [0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d](https://moonriver.moonscan.io/address/0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d){target=_blank} |
+=== "Moonbeam"
+    |   起源   | 符号  |                                                              XC-20地址                                                              |
+    |:--------:|:-----:|:-----------------------------------------------------------------------------------------------------------------------------------:|
+    | Polkadot | xcDOT | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
 
-     _*您可以在[此处](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/assets){target=_blank}查看每个资产ID_
+     _*您可以在[Polkadot.js的Assets页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/assets){target=_blank}查看每个资产ID_
+
+=== "Moonriver"
+    |   起源    |  符号  |                                                                   XC-20地址                                                                   |
+    |:---------:|:------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  Kusama   | xcKSM  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonriver.moonscan.io/address/0xffffffff1fcacbd218edc0eba20fc2308c778080){target=_blank} |
+    |  Bifrost  | xcBNC  | [0xFFfFFfFFF075423be54811EcB478e911F22dDe7D](https://moonriver.moonscan.io/address/0xFFfFFfFFF075423be54811EcB478e911F22dDe7D){target=_blank} |
+    |  Karura   | xcKAR  | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonriver.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
+    |  Karura   | xcaUSD | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonriver.moonscan.io/address/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
+    | Kintsugi  | xcKINT | [0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2](https://moonriver.moonscan.io/address/0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2){target=_blank} |
+    | Kintsugi  | xckBTC | [0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0](https://moonriver.moonscan.io/address/0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0){target=_blank} |
+    | Statemine | xcRMRK | [0xffffffFF893264794d9d57E1E0E21E0042aF5A0A](https://moonriver.moonscan.io/address/0xffffffFF893264794d9d57E1E0E21E0042aF5A0A){target=_blank} |
+    | Statemine | xcUSDT | [0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d](https://moonriver.moonscan.io/address/0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d){target=_blank} |
+
+     _*您可以在[Polkadot.js的Assets页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/assets){target=_blank}查看每个资产ID_
 
 === "Moonbase Alpha"
-    |         起源          |  符号  |                                                                XC-20地址                                                                 |
-    |:-----------------------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
-    |  Relay Chain Alphanet   | xc-UNIT  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonbase.moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
-    |    Basilisk Alphanet    |  xc-BSX  | [0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA](https://moonbase.moonscan.io/address/0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA){target=_blank} |
-    |    Bifrost Alphanet     |  xc-BNC  | [0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd](https://moonbase.moonscan.io/address/0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd){target=_blank} |
-    |    Calamari Alphanet    |  xc-KMA  | [0xFFffFffFA083189f870640b141ae1E882c2b5bad](https://moonbase.moonscan.io/address/0xFFffFffFA083189f870640b141ae1E882c2b5bad){target=_blank} |
-    |  Crust/Shadow Alphanet  |  xc-CSM  | [0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7](https://moonbase.moonscan.io/address/0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7){target=_blank} |
-    |     Karura Alphanet     |  xc-KAR  | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonbase.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
-    |     Karura Alphanet     | xc-kUSD  | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonbase.moonscan.io/address/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
-    |     Khala Alphanet      |  xc-PHA  | [0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603](https://moonbase.moonscan.io/address/0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603){target=_blank} |
-    |    Kintsugi Alphanet    | xc-KINT  | [0xFFFfffff27C019790DFBEE7cB70F5996671B2882](https://moonbase.moonscan.io/address/0xFFFfffff27C019790DFBEE7cB70F5996671B2882){target=_blank} |
-    |    Kintsugi Alphanet    | xc-kBTC  | [0xFffFfFff5C2Ec77818D0863088929C1106635d26](https://moonbase.moonscan.io/address/0xFffFfFff5C2Ec77818D0863088929C1106635d26){target=_blank} |
-    |    Litentry Alphanet    |  xc-LIT  | [0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0](https://moonbase.moonscan.io/address/0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0){target=_blank} |
-    | Parallel Heiko Alphanet |  xc-HKO  | [0xffffffFF394054BCDa1902B6A6436840435655a3](https://moonbase.moonscan.io/address/0xffffffFF394054BCDa1902B6A6436840435655a3){target=_blank} |
-    |   Statemine Alphanet    | xc-MRMRK | [0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d](https://moonbase.moonscan.io/address/0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d){target=_blank} |
+    |          起源           |  符号   |                                                                  XC-20地址                                                                   |
+    |:-----------------------:|:-------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
+    |  Relay Chain Alphanet   | xcUNIT  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonbase.moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |    Basilisk Alphanet    |  xcBSX  | [0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA](https://moonbase.moonscan.io/address/0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA){target=_blank} |
+    |    Bifrost Alphanet     |  xcBNC  | [0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd](https://moonbase.moonscan.io/address/0xFffFFFfF1FAE104Dc4C134306bCA8e2E1990aCfd){target=_blank} |
+    |    Calamari Alphanet    |  xcKMA  | [0xFFffFffFA083189f870640b141ae1E882c2b5bad](https://moonbase.moonscan.io/address/0xFFffFffFA083189f870640b141ae1E882c2b5bad){target=_blank} |
+    |  Crust/Shadow Alphanet  |  xcCSM  | [0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7](https://moonbase.moonscan.io/address/0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7){target=_blank} |
+    |     Karura Alphanet     |  xcKAR  | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonbase.moonscan.io/address/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
+    |     Karura Alphanet     | xckUSD  | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonbase.moonscan.io/address/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
+    |     Khala Alphanet      |  xcPHA  | [0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603](https://moonbase.moonscan.io/address/0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603){target=_blank} |
+    |    Kintsugi Alphanet    | xcKINT  | [0xFFFfffff27C019790DFBEE7cB70F5996671B2882](https://moonbase.moonscan.io/address/0xFFFfffff27C019790DFBEE7cB70F5996671B2882){target=_blank} |
+    |    Kintsugi Alphanet    | xckBTC  | [0xFffFfFff5C2Ec77818D0863088929C1106635d26](https://moonbase.moonscan.io/address/0xFffFfFff5C2Ec77818D0863088929C1106635d26){target=_blank} |
+    |    Litentry Alphanet    |  xcLIT  | [0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0](https://moonbase.moonscan.io/address/0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0){target=_blank} |
+    | Parallel Heiko Alphanet |  xcHKO  | [0xffffffFF394054BCDa1902B6A6436840435655a3](https://moonbase.moonscan.io/address/0xffffffFF394054BCDa1902B6A6436840435655a3){target=_blank} |
+    |   Statemine Alphanet    | xcMRMRK | [0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d](https://moonbase.moonscan.io/address/0xFFffffFfd2aaD7f60626608Fa4a5d34768F7892d){target=_blank} |
     
 
      _*您可以在[Polkadot.js的Assets页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看每个资产ID_
@@ -133,15 +140,15 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 通过XC-20预编译获得XC-20资产的使用和转移，您将需要：
 
-- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/)
-- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/)
+- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
+- 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}
 - 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
 
 ## 使用Remix与预编译合约交互 {: #interact-with-the-precompile-using-remix }
 
-您可以使用[Remix](https://remix.ethereum.org/)与XC-20预编译交互，首先您需要将ERC-20接口加入Remix：
+您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与XC-20预编译交互，首先您需要将ERC-20接口加入Remix：
 
-1. 获得[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)的复制文档
+1. 获得[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的复制文档
 
 2. 将文档内容复制并粘贴至名为**IERC20.sol**的Remix文档
 
@@ -182,4 +189,4 @@ XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现�
 
 ![Interact with the precompile functions](/images/builders/xcm/xc20/overview/xc20-6.png)
 
-如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/)并加以修改来适用XC-20预编译交互。
+如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
