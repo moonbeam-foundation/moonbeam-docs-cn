@@ -1,6 +1,6 @@
 ---
 title: 如何使用Polkadot.js API
-description: 跟随此教程学习如何使用polkadot.js API库在Moonbeam上查询链数据、发送交易以及更多。
+description: 跟随此教程学习如何使用Polkadot.js API库在Moonbeam上查询链数据、发送交易以及更多。
 ---
 
 # Polkadot.js API库
@@ -9,11 +9,11 @@ description: 跟随此教程学习如何使用polkadot.js API库在Moonbeam上�
 
 ## 概览 {: #introduction }
 
-[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用JavaScript与节点的Polkadot或Substrate接口交互。在本教程中您将找到可用功能的概述和一些常用的代码示例，助您快速使用polkadot.js API库与Moonbeam网络交互。
+[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用JavaScript与节点的Polkadot或Substrate接口交互。在本教程中您将找到可用功能的概述和一些常用的代码示例，助您快速使用Polkadot.js API库与Moonbeam网络交互。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在开始安装和使用polkadot.js API库之前，您需要先安装node.js。
+在开始安装和使用Polkadot.js API库之前，您需要先安装Node.js。
 
 --8<-- 'text/common/install-nodejs.md'
 
@@ -21,7 +21,7 @@ description: 跟随此教程学习如何使用polkadot.js API库在Moonbeam上�
 
 ### 安装Polkadot.js API库 {: #installing-polkadot.js-api-library }
 
-首先，您需要通过应用程序包管理器（如`yarn`）为您的项目安装polkadot.js API库。您可以通过运行以下命令将其安装至您的项目目录：
+首先，您需要通过应用程序包管理器（如`yarn`）为您的项目安装Polkadot.js API库。您可以通过运行以下命令将其安装至您的项目目录：
 
 ```
 yarn add @polkadot/api
@@ -45,7 +45,7 @@ import { typesBundlePre900 } from "moonbeam-types-bundle"
 
 ## 创建API提供商实例 {: #creating-an-API-provider-instance }
 
-与ETH API库相似，您必须先实例化一个polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
+与ETH API库相似，您必须先实例化一个Polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
 
 --8<-- 'text/common/endpoint-examples.md'
 
@@ -91,15 +91,15 @@ import { typesBundlePre900 } from "moonbeam-types-bundle"
 
 ### 元数据和动态API修饰 {: #metadata-and-dynamic-api-decoration }
 
-在深入了解通过polkadot.js API库执行不同任务的细节之前，您需要先了库的一些基本运作原理。
+在深入了解通过Polkadot.js API库执行不同任务的细节之前，您需要先了库的一些基本运作原理。
 
-当polkadot.js API连接至节点时，首要做的一件事是检索元数据并根据元数据信息修饰API。元数据有效地以`api.<type>.<module>.<section>`形式提供数据，这些数据适合以下`<type>`类别之一：`consts`、`query`和`tx`。
+当Polkadot.js API连接至节点时，首要做的一件事是检索元数据并根据元数据信息修饰API。元数据有效地以`api.<type>.<module>.<section>`形式提供数据，这些数据适合以下`<type>`类别之一：`consts`、`query`和`tx`。
 
-因此，`api.{consts, query, tx}.<module>.<method>`端点中包含的所有信息都不是硬编码在API中的。这将允许如Moonbeam这样的平行链通过其Pallet自定义端点，这些端点可以通过polkadot.js API库直接访问。
+因此，`api.{consts, query, tx}.<module>.<method>`端点中包含的所有信息都不是硬编码在API中的。这将允许如Moonbeam这样的平行链通过其Pallet自定义端点，这些端点可以通过Polkadot.js API库直接访问。
 
 ## 查询信息 {: #querying-for-information }
 
-在这一部分，您将学习如何使用polkadot.js API库查询链上信息。
+在这一部分，您将学习如何使用Polkadot.js API库查询链上信息。
 
 ### 状态查询 {: #state-queries }
 
@@ -126,8 +126,6 @@ const nextNonce = await api.rpc.system.accountNextIndex(addr);
 console.log(`${now}: balance of ${balance.free} and a current nonce of ${nonce} and next nonce of ${nextNonce}`);
 ```
 
-You can view the [complete script on GitHub](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/substrate-api/state-queries.js){target=_blank}.
-
 您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/substrate-api/state-queries.js){target=_blank}。
 
 ### RPC查询 {: #rpc-queries }
@@ -149,8 +147,6 @@ const lastHeader = await api.rpc.chain.getHeader();
 // Log the information
 console.log(`${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`);
 ```
-
-You can view the [complete script on GitHub](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/substrate-api/rpc-queries.js){target=_blank}.
 
 您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/substrate-api/rpc-queries.js){target=_blank}。
 
@@ -327,12 +323,11 @@ api.tx.utility
 您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/substrate-api/batch-transactions.js){target=_blank}。
 
 !!! 注意事项
-
-​	您可以通过添加`console.log(api.tx.parachainStaking);`到代码，查看`parachainStaking`模块的全部可用功能。
+​    您可以通过添加`console.log(api.tx.parachainStaking);`到代码，查看`parachainStaking`模块的全部可用功能。
 
 ## 自定义RPC请求 {: #custom-rpc-requests }
 
-RPC作为函数在特定模块公开显示。这意味着一旦可使用后，您可以通过`api.rpc.<module>.<method>(...params[])`调用任意RPC。这也同样适用于以`polkadotApi.rpc.eth.*`形式使用polkadot.js API访问以太坊RPC。
+RPC作为函数在特定模块公开显示。这意味着一旦可使用后，您可以通过`api.rpc.<module>.<method>(...params[])`调用任意RPC。这也同样适用于以`polkadotApi.rpc.eth.*`形式使用Polkadot.js API访问以太坊RPC。
 
 您可以通过调用`api.rpc.rpc.methods()`来检查公开的RPC端点的列表，该列表为节点公开的已知RPC列表。
 
