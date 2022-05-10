@@ -41,7 +41,7 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 关于更多XCM的细节相关文章请访问[Polkadot Wiki](https://wiki.polkadot.network/docs/learn-crosschain)。
 
-目前Moonbeam仅支持远程转账。所有在Moonbeam上的跨链资产将以*xc + TokenName*的形式呈现。举例而言，Kusama的KSM将会以xcKSM在Moonriver上呈现。关于XC-20标准的更多内容请查看[这里](/builders/xcm/xc20)。
+目前Moonbeam仅支持远程转账。所有在Moonbeam上的跨链资产将以*xc + TokenName*的形式呈现。举例而言，波卡的DOT将会以 _xcDOT_ 在Moonbeam上呈现，而Kusama的KSM将会以 _xcKSM_ 在Moonriver上呈现。关于XC-20标准的更多内容请查看[这里](/builders/xcm/xc20)。
 
 **开发者必须了解错误的XCM信息可能导致资产流失。**因此，在部署至真实经济环境之前，开发者必须先在测试网测试XCM功能。
 
@@ -60,7 +60,7 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
     * 于目标点信息队列的最大信息数量
     * 可发送的最大信息大小
 
-交易费用将以中继链的跨链资产（xc）形式（*xcRelayChainAsset*）支付。以Kusama和Moonriver为例，交易费用将会以_xcKSM_支付。因此，支付费用的账户需要有足够的_xcRelayChainAsset_。这可以在Moonbeam/Moonriver中通过从传入的XCM信息中收取费用来解决，也就是先以原始区块链上的资产支付，发送到财政库，并使用财政库账户支付信息频道注册费用。
+交易费用将以中继链的跨链资产（xc）形式（*xcRelayChainAsset*）支付。以波卡和Moonbeam为例，交易费用将会以 _xcDOT_ 支付，而以Kusama和Moonriver为例，交易费用将会以 _xcKSM_ 支付。因此，支付费用的账户需要有足够的_xcRelayChainAsset_。这可以在Moonbeam/Moonriver中通过从传入的XCM信息中收取费用来解决，也就是先以原始区块链上的资产支付，发送到财政库，并使用财政库账户支付信息频道注册费用。
 
 尽管平行链A已经表达其与平行链B之间开启XCM信息频道的意愿，但后者仍未将其是否愿意收取来自平行链A信息的意愿传送至中继链。因此，如要建立一个完整信息频道，平行链B也必须传送函数（同样也是XCM）至中继链。接受开启信息频道的函数与先前的函数相同。然而，编码调用数据的部分仅需包含新方法（接受信息频道）和初始传送者的平行链ID（在此以平行链A为例）。当两条平行链皆同意后，信息频道将会在下个时段开启。
 

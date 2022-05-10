@@ -67,7 +67,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 ### X-Tokens转移函数 {: #xtokens-transfer-function}
 
-在本教程中，您将会构建一个XCM信息，通过X-Tokens pallet的转移函数将Moonbase Alpha的`xcUNIT`转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
+在本教程中，您将会构建一个XCM信息，通过X-Tokens pallet的`transfer`函数将Moonbase Alpha的`xcUNIT`转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
 如果您已经[查看了先决条件](#xtokens-check-prerequisites)，您可以导向至[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面并设定以下选项：
 
