@@ -1,6 +1,7 @@
 title: 整合
 nav:
  - index.md
+ - analytics
  - bridges
  - indexers
  - oracles
