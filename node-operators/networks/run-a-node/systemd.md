@@ -211,7 +211,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -250,7 +250,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -289,7 +289,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
@@ -331,7 +331,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -371,7 +371,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -411,7 +411,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 1 \
+         --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
