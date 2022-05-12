@@ -190,7 +190,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
-如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
+如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
 
 在Docker拉取必要的镜像后，您的Moonbeam（或Moonriver）全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等：
 
