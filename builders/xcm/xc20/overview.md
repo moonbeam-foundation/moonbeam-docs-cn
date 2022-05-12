@@ -26,9 +26,11 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
 现有可用XC-20资产列表如下：
 
 === "Moonbeam"
-    |   起源   | 符号  |                                                              XC-20地址                                                              |
-    |:--------:|:-----:|:-----------------------------------------------------------------------------------------------------------------------------------:|
-    | Polkadot | xcDOT | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |   起源   |  符号  |                                                              XC-20地址                                                              |
+    |:--------:|:------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
+    | Polkadot | xcDOT  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonscan.io/address/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |  Acala   | xcaUSD | [0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda](https://moonscan.io/address/0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda){target=_blank} |
+    |  Acala   | xcACA  | [0xffffFFffa922Fef94566104a6e5A35a4fCDDAA9f](https://moonscan.io/address/0xffffFFffa922Fef94566104a6e5A35a4fCDDAA9f){target=_blank} |
 
      _*您可以在[Polkadot.js的Assets页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/assets){target=_blank}查看每个资产ID_
 
