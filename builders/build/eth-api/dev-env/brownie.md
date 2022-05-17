@@ -97,13 +97,14 @@ Brownie原生支持在Moonbeam网络部署，但如果您希望将合约部署�
 
 如果您成功添加了网络，您将会在终端看到关于网络细节的成功信息。
 
-![Add network ](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
 
 您可以运行以下命令查看全部支持的网络：
 
 ```
 brownie networks list
 ```
+
+![Networks list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
 
 如果您添加的是Moonbase Alpha，您应看它作为Moonbeam附属网络出现在列表。除此之外，如果您添加的是Moonriver，您应看到它作为独立网络出现在列表底部。
 
