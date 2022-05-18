@@ -9,21 +9,23 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ## 公共端点 {: #public-endpoints }
 
-Moonbase Alpha TestNet有可供开发使用的公共端点。对于Moonbeam或Moonriver，您需要从支持Moonbeam的[端点提供商](#endpoint-providers) 获取您自己的私有端点。
-
 基于Moonbeam的网络有两种端点可供用户连接：一种是HTTPS，另一种是WSS。
 
-### HTTPS {: #https }
+在本文档中的端点仅供开发环境应用使用，而不为生产环境应用使用。
 
---8<-- 'code/endpoints/moonbase-https.md'
+如果想要寻找适用于开发环境的API提供者，您可查看本教程的[端点提供者](#endpoint-providers)部分。
 
-### WSS {: #wss }
+### Moonbeam {: #moonbeam }
 
---8<-- 'code/endpoints/moonbase-wss.md'
+--8<-- 'code/endpoints/moonbeam.md'
 
-### 中继链 {: #relay-chain }
+### Moonriver {: #moonriver }
 
---8<-- 'text/testnet/relay-chain.md'
+--8<-- 'code/endpoints/moonriver.md'
+
+### Moonbase Alpha {: #moonbase-alpha }
+
+--8<-- 'code/endpoints/moonbase.md'
 
 ## 端点提供商 {: #endpoint-providers } 
 
