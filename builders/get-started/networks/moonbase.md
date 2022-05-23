@@ -7,7 +7,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 --8<-- 'text/testnet/connect.md'
 
-## 区块浏览器
+## 区块浏览器 {: #block-explorers }
 
 您可以使用任意区块浏览器查看Moonbase Alpha：
 
@@ -18,7 +18,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 更多关于上述区块浏览器的信息，请直接查看[区块浏览器](/builders/get-started/explorers/)部分。
 
-## 连接MetaMask
+## 连接MetaMask {: #connect-metamask }
 
 如果您已经安装了MetaMask，您可以轻松地将MetaMask连接至Moonbase Alpha测试网：
 
