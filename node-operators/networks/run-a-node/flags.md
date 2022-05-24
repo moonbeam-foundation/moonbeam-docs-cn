@@ -38,7 +38,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 - **`--telemetry-url`** —— 指定telemetry服务器所连接的URL。此标志能够用于为多个telemetry端点多次使用。此标志使用两个参数，分别为URL和日志详细级别（Verbosity Level）。日志详细级别范围为0-9，0代表最低级别。预期使用此标志的格式为'<URL VERBOSITY>'，如`--telemetry-url 'wss://foo/bar 0'`
 - **`--in-peers`** —— 指定可接受向内连接的最大数量，默认为`25`
 - **`--out-peers`** —— 指定可接受向外连接的最大数量以维持稳定，默认为`25`
-- **`--runtime-cache-size 32`** - 将保留在内存缓存中的不同运行时版本的数量配置为`32`
+- **`--runtime-cache-size 64`** - 将保留在内存缓存中的不同运行时版本的数量配置为`64`
 
 ## 如何访问所有可用标志 {: #how-to-access-all-of-the-available-flags }
 
