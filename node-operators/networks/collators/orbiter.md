@@ -99,8 +99,10 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
     ```
 
 === "Moonbase Alpha"
-
+    ```
     {{ networks.moonbase.orbiter.max_collators }} Program Collators
+    ```
+
 每个Orbiter将会在下个Orbiter取代之前运行特定轮次，以下为每个网络能够运行的轮次数量：
 
 === "Moonbeam"
