@@ -55,49 +55,7 @@ yarn install
 
 您可以在`/packages/hardhat`文件下对Hardhat组件进行修改配置。
 
-1. 您需要修改的文件名为`scaffold-eth/packages/hardhat/hardhat.config.js`。在`module.exports/networks`部分，添加您想要使用的Moonbeam网络的网络定义：包括RPC端点、chain ID以及部署合约账户的私钥
-
-    === "Moonbeam"
-
-        ```js
-        moonbeam: {
-            url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
-            chainId: {{ networks.moonbeam.chain_id }},  // {{ networks.moonbeam.hex_chain_id }} in hex,
-            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
-        }
-        ```
-    
-    === "Moonriver"
-
-        ```js
-        moonriver: {
-            url: '{{ networks.moonriver.rpc_url }}',  // Insert your RPC URL here
-            chainId: {{ networks.moonriver.chain_id }},  // {{ networks.moonriver.hex_chain_id }} in hex,
-            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
-        }
-        ```
-    
-    === "Moonbase Alpha"
-
-        ```js
-        moonbaseAlpha: {
-            url: '{{ networks.moonbase.rpc_url }}',
-            chainId: {{ networks.moonbase.chain_id }},  // {{ networks.moonbase.hex_chain_id }} in hex,
-            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
-        }
-        ```
-    
-    === "Moonbeam开发节点"
-
-        ```js
-        moonbeamDevNode: {
-            url: '{{ networks.development.rpc_url }}',
-            chainId: {{ networks.development.chain_id }},  // {{ networks.development.hex_chain_id }} in hex,
-            accounts: ['PRIVATE-KEY-HERE'] // Insert your private key here
-        }
-        ```
-    
-2. 在同一个文件中，使用您已定义的网络名称，将`defaultNetwork`常量设置为您想要部署智能合约的网络
+1. 您需要修改的文件名为`scaffold-eth/packages/hardhat/hardhat.config.js`。首先，将`defaultNetwork`常量设置为您想要部署智能合约的网络
 
     === "Moonbeam"
         ```
@@ -119,10 +77,10 @@ yarn install
         defaultNetwork = "moonbeamDevNode";
         ```
     
-3. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
+2. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
 
 
-4. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
+3. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
 
     ```js
     if (defaultNetwork !== "localhost") {
@@ -131,6 +89,8 @@ yarn install
       //);
     }
     ```
+
+4. 在 `scaffold-eth/packages/hardhat/` 下创建一个名为 `mnemonic.txt` 的文件，然后将合约部署者账户的助记词复制粘贴到该文件中。
 
 关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
 
@@ -223,7 +183,7 @@ yarn install
     
     === "Moonbeam开发节点"
         ```
-         file: ./abis/moonbeamDevNode_YourContract.json
+        file: ./abis/moonbeamDevNode_YourContract.json
         ```
 
 关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=_blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=_blank}。
@@ -231,66 +191,8 @@ yarn install
 ### React组件 {: #react-component }
 
 现在，您需要在React组件中修改两个文件以添加Moonbeam网络。
-
-1. 首先，在`NETWORKS`常量下将对应Moonbeam网络添加至`scaffold-eth/packages/react-app/src/constants.js`：
-
-    === "Moonbeam"
-
-        ```js
-        moonbeam: {
-            name: "moonbeam",
-            color: "#42A2A0",
-            chainId: {{ networks.moonbeam.chain_id }}, // {{ networks.moonbeam.hex_chain_id }} in hex,
-            blockExplorer: "{{ networks.moonbeam.block_explorer }}",
-            rpcUrl: "{{ networks.moonbeam.rpc_url }}", // Insert your RPC URL here
-            gasPrice: 100000000000,
-            faucet: "",
-        },
-        ```
-    
-    === "Moonriver"
-
-        ```js
-        moonriver: {
-            name: "moonriver",
-            color: "#42A2A0",
-            chainId: {{ networks.moonriver.chain_id }}, // {{ networks.moonriver.hex_chain_id }} in hex,
-            blockExplorer: "{{ networks.moonriver.block_explorer }}",
-            rpcUrl: "{{ networks.moonriver.rpc_url }}", // Insert your RPC URL here
-            gasPrice: 1000000000,
-            faucet: "",
-        },
-        ```
-    
-    === "Moonbase Alpha"
-
-        ```js
-        moonbaseAlpha: {
-            name: "moonbaseAlpha",
-            color: "#42A2A0",
-            chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
-            blockExplorer: "{{ networks.moonbase.block_explorer }}",
-            rpcUrl: "{{ networks.moonbase.rpc_url }}",
-            gasPrice: 1000000000,
-            faucet: "https://discord.gg/SZNP8bWHZq",
-        },
-        ```
-    
-    === "Moonbeam开发节点"
-
-        ```js
-        moonbeamDevNode: {
-            name: "moonbeamDevNode",
-            color: "#42A2A0",
-            chainId: {{ networks.development.chain_id }}, // {{ networks.development.hex_chain_id }} in hex,
-            blockExplorer: "{{ networks.development.block_explorer }}",
-            rpcUrl: "{{ networks.development.rpc_url }}",
-            gasPrice: 1000000000,
-            faucet: "",
-        }
-        ```
-    
-2. 接下来，修改`scaffold-eth/packages/react-app/src/App.jsx`，并将`initialNetwork`常量设置从`constants.js`导出的对应网络定义成默认网络：
+  
+1. 首先，修改`scaffold-eth/packages/react-app/src/App.jsx`，并将`initialNetwork`常量设置从`constants.js`导出的对应网络定义成默认网络：
 
     === "Moonbeam"
         ```
@@ -312,7 +214,7 @@ yarn install
         const initialNetwork = NETWORKS.moonbeamDevNode;
         ```
     
-3. 在同一个文件`App.jsx`中，将`networkOptions`设置为您的DApp所支持的网络，例如：
+2. 在同一个文件`App.jsx`中，将`networkOptions`设置为您的DApp所支持的网络，例如：
 
     ```
     const networkOptions = [initialNetwork.name, "moonbeam", "moonriver"];
@@ -388,6 +290,9 @@ yarn install
     ```
     yarn verify --network moonbaseAlpha <CONTRACT-ADDRESS>
     ```
+
+!!! 注意事项
+    如果您正在验证的智能合约具有构造函数方法参数，您还需要将使用的参数附加到上述命令的末尾。
 
 稍等片刻，控制台输出将显示验证结果。如果成功，则会显示Moonscan上已验证合约的 URL。
 
