@@ -43,8 +43,14 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
  - **points**(*uint256* round) —— 获取在给定轮次中授予所有收集人总分的只读函数
  - **min_delegation**() —— 获取最小委托数量的只读函数，取代已弃用的`min_nomination`函数
  - **candidate_count**() —— 获取当前候选收集人数量的只读函数
+ - **round**() - 返回当前轮数的只读函数
  - **candidate_delegation_count**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数，取代已弃用的`collator_nomination_count`函数
  - **delegator_delegation_count**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数，取代已弃用的`nominator_nomination_count`函数
+ - **selected_candidates**() - 获取当前轮次选定候选人的只读函数
+ - **delegation_request_is_pending**(*address* delegator, *address* candidate) - 返回一个布尔值以指示给定的委托人是否为给定的候选人提出了尚未执行的委托请求
+ - **delegator_exit_is_pending**(*address* delegator) - 返回一个布尔值以指示委托人是否存在尚未执行的退出请求
+ - **candidate_exit_is_pending**(*address* candidate) - 返回一个布尔值以指示候选人是否存在尚未执行的退出请求
+ - **candidate_request_is_pending**(*address* candidate) - 返回一个布尔值以指示给定候选人是否存在尚未执行的减少绑定请求
  - **join_candidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集
  - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`execute_leave_candidates`执行请求。 取代已弃用的`leave_candidates`函数
  - **execute_leave_candidates**(*address* candidate, *uint256* candidateDelegationCount) —— 执行离开候选收集人集的可用请求
