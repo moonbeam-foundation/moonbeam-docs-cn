@@ -21,7 +21,7 @@ Moonbeam基金会将确保Orbiter计划的收集人处于活跃收集人集，�
 
 要参与Orbiter计划，您必须符合以下参与条件：
 
-- 由于计划本身要求，每个Orbiter必须通过KYC检查且不能为特定国家的居民
+- 由于计划本身要求，每个Orbiter必须通过身份验证且不能为特定国家的居民
 - 每个Orbiter必须质押一定资金，以避免恶意行为的出现且此资金将有可能被削减
 - 每个个体（个人或是团体）仅能在各个网络上运行一个Oribter，如一个在Moonriver，一个在Moonbeam
 - Orbiter将无法在其Orbiter相同的网络上运行另外一个收集人账户。然而，在仅在单一网络上运行的情况下，Orbiter将能够在另外一个网络上运行收集人，如在Moonbeam上运行一个收集人，在Moonrriver上运行一个Orbiter
@@ -32,12 +32,12 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
 
 ## 申请和加入过程 {: #application-and-onboarding-process }
 
-要加入Orbiter计划，您将需要填写申请表单并提交联系方式、社群媒体账号以及收集人和节点详情。在表格最后，您将需要根据操作流程完成KYC。
+要加入Orbiter计划，您将需要填写申请表单并提交联系方式、社群媒体账号以及收集人和节点详情。在表格最后，您将需要根据操作流程完成身份验证。
 
 <div class="button-wrapper">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSewdSAFgs0ZbgvlflmZbHrSpe6uH9HdXdGIL7i07AB2pFgxVQ/viewform" target="_blank" class="md-button">Moonbeam Orbiter Program Application</a>
 </div>
-当您通过了KYC并成功通过此次计划的申请，您将会收到通知并开始进行加入流程，以下为加入流程的步骤：
+当您通过了身份验证并成功通过此次计划的申请，您将会收到通知并开始进行加入流程，以下为加入流程的步骤：
 
 1. 获得通知后，在Moonbase Alpha运行Orbiter
 2. 在完成Moonbase Alpha试验期后，您将会被通知获得在Moonriver上运行的资格
