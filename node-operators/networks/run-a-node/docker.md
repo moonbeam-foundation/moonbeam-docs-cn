@@ -80,7 +80,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -100,7 +100,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -119,7 +119,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -142,7 +142,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -162,7 +162,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -182,13 +182,16 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --pruning archive \
-    --state-cache-size 0 \
+    --state-cache-size 1 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
     --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
+
+!!! 注意事项
+    有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
 

@@ -211,7 +211,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -250,7 +250,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -289,7 +289,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
@@ -331,7 +331,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -371,7 +371,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -411,7 +411,7 @@ cargo build --release
          --execution wasm \
          --wasm-execution compiled \
          --pruning=archive \
-         --state-cache-size 0 \
+         --state-cache-size 1 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
@@ -429,7 +429,7 @@ cargo build --release
     ```
 
 !!! 注意事项
-    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
+    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
