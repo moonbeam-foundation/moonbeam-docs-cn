@@ -47,7 +47,7 @@ Subsquid具有来自以太坊虚拟机（EVM）和Substrate数据的原生完整
 6. 同时，您还需要安装些许额外的依赖项以检索EVM数据：
 
     ```bash
-    npm i @ethersproject/abi ethers @subsquid/substrate-evm-processor
+    npm i @ethersproject/abi ethers @subsquid/substrate-evm-processor @subsquid/evm-typegen
     ```
 
 [![Image from Gyazo](https://i.gyazo.com/a6d785e88ce366a327ce2bd60735df87.gif)](https://gyazo.com/a6d785e88ce366a327ce2bd60735df87)
@@ -116,7 +116,7 @@ npx sqd codegen
 
 ## ABI定义和Wrapper {: #abi-definition-and-wrapper}
 
-Subsquid支持为Substrate数据源（事件、extrinsics和储存项）自动构建TypeScript类型的安全接口，并会在Runtime中自动检测更变。此功能尚未支持EVM合约，因此EVM事件的TypeScript接口将会需要手动构建。
+Subsquid支持为Substrate数据源（事件、extrinsics和储存项）自动构建TypeScript类型的安全接口，并会在Runtime中自动检测更变。要专门为EVM日志生成TypeScript接口和解码函数，可以使用Subsquid的`evm-typegen`工具。
 
 要提取和运行ERC-721数据，您必须获取其应用二进制接口（Application Binary Interface, ABI）的定义。您可以在JSON文件中获取，并在其后导入项目之中。
 
@@ -149,54 +149,13 @@ Subsquid支持为Substrate数据源（事件、extrinsics和储存项）自动�
 
 ### 使用ABI以获得和解码事件数据 {: #get-and-decode-event-data }
 
-接着，创建一个TypeScrip文件以使用ABI创建数据接口和解码事件数据：
+要从ABI定义自动生成TypeScript接口并解码事件数据，只需从项目的根文件夹运行以下命令：
 
-1. 在`src/abis`文件夹中，创建一个名为`erc721.ts`的新文件：
-
-    ```
-    touch src/abis/erc721.ts
-    ```
-    
-2. 将JSON ABI导入TypeScript项目
-
-3. 创建一个将用于在项目传递数据的数据接口
-
-4. 在希望了解的EVM事件、相关主题和解码事件的函数本身之间定义一个映射函数，在本示例中为`Transfer`事件
-
-```typescript
-// src/abis/erc721.ts
-import { Interface } from "@ethersproject/abi";
-import { EvmLogHandlerContext } from "@subsquid/substrate-evm-processor";
-import erc721Json from "./ERC721.json";
-
-const abi = new Interface(erc721Json);
-
-export interface TransferEvent {
-  from: string;
-  to: string;
-  tokenId: bigint;
-}
-
-const transferFragment = abi.getEvent("Transfer(address,address,uint256)");
-
-export const events = {
-  "Transfer(address,address,uint256)": {
-    topic: abi.getEventTopic("Transfer(address,address,uint256)"),
-    decode(data: EvmLogHandlerContext): TransferEvent {
-      const result = abi.decodeEventLog(
-        transferFragment,
-        data.data || "",
-        data.topics
-      );
-      return {
-        from: result[0],
-        to: result[1],
-        tokenId: result[2].toBigInt(),
-      };
-    },
-  },
-};
+```bash
+npx squid-evm-typegen --abi src/abi/ERC721.json --output src/abi/erc721.ts
 ```
+
+`abi`参数指向之前创建的JSON文件，而`output`参数是将由命令本身生成的文件的名称。
 
 ## 定义和绑定事件处理程序 {: #define-and-bind-event-handlers }
 
@@ -204,134 +163,61 @@ Subsquid SDK提供用户[处理器](https://docs.subsquid.io/key-concepts/proces
 
 处理器提供会“处理”如同Substrate事件、extrinsics、储存项或是EVM记录等特定数据的附加函数。这函数能够通过指定事件、extrinsic名称、EVM记录合约地址进行配置。当处理器正在处理数据时，如果其遇到配置的事件名称，他将会执行“处理”函数内的内容。
 
-在开始操作事件执行程序之前，您必须要定义许多常数和函数。您可以为这些项目创建两个附加文件：
+在开始使用事件处理程序之前，有必要定义一些常量和一些辅助函数来管理EVM合约。您可以为这些项目创建一个附加文件：
 
+```bash
+touch src/contract.ts
 ```
-mkdir src/helpers
-touch src/constants.ts src/helpers/events.ts
-```
 
-### 常数定义 {: #constants-definitions }
+### 管理EVM合约 {: #event-handler-and-helper-functions }
 
-在`src/constants.ts`文件中，您可以定义一些常数。举例而言，您可以使用Moonriver上的Moonsama的合约以及ERC-721 Token ABI
+在 `src/contract.ts` 文件中，您将执行以下步骤：
 
-1. 定义ERC-721 Token合约地址
-
-2. 定义API端点和配置
-
-3. 定义合约信息，包含合约名称、标志和总供应
-
-4. 设定一个Ethers提供者并使用其为合约地址和ABI创建一个合约实例
+1. 定义链节点端点（可选）
+2. 创建一个合约接口来存储地址和ABI等信息
+3. 定义函数以从数据库中获取合约实体或创建一个
+4. 定义`processTransfer` EVM日志处理程序，实现跟踪令牌传输的逻辑
 
 ```typescript
-// src/constants.ts
+// src/contracts.ts
+import { assertNotNull, Store } from "@subsquid/substrate-evm-processor";
 import { ethers } from "ethers";
-import ABI from "./abis/ERC721.json";
-
-export const CONTRACT_ADDRESS = "0xb654611f84a8dc429ba3cb4fda9fad236c505a1a";
-
-// API constants
+import * as erc721 from "./abi/erc721";
+import { Contract } from "./model";
+ 
 export const CHAIN_NODE = "wss://wss.api.moonriver.moonbeam.network";
-export const BATCH_SIZE = 500;
-export const API_RETRIES = 5;
 
-// From contract
-export const CONTRACT_NAME = "Moonsama";
-export const CONTRACT_SYMBOL = "MSAMA";
-export const CONTRACT_TOTAL_SUPPLY = 1000n;
-
-// Ethers contract
-export const PROVIDER = new ethers.providers.WebSocketProvider(CHAIN_NODE);
-export const CONTRACT_INSTANCE = new ethers.Contract(
-  CONTRACT_ADDRESS,
-  ABI,
-  PROVIDER
+export const contract = new ethers.Contract(
+  "0xb654611f84a8dc429ba3cb4fda9fad236c505a1a",
+  erc721.abi,
+  new ethers.providers.WebSocketProvider(assertNotNull(CHAIN_NODE))
 );
-```
-
-要在Moonbeam或Moonbase Alpha上定义函数，您将会需要更新您所选择网络上Token的Token合约。您同样需要更新`CHAIN_NODE`函数为正确的WSS端点：
-
-=== "Moonbeam"
-    ```
-    export const CHAIN_NODE = "wss://wss.api.moonbeam.network";
-    ```
-
-=== "Moonriver"
-    ```
-    export const CHAIN_NODE = "wss://wss.api.moonriver.moonbeam.network";
-    ```
-
-=== "Moonbase Alpha"
-    ```
-    export const CHAIN_NODE = "wss://wss.api.moonbase.moonbeam.network";
-    ```
-
-### 事件处理函数和协助函数 {: #event-handler-and-helper-functions }
-
-在`src/helpers/events.ts`文件中，您可以跟随以下步骤进行操作：
-
-1. 定义传递数据的接口
-
-2. 定义自数据库获取合约接口的函数，或是自行创建
-
-3. 创建一个合约记录处理程序函数`contractLogsHandler`以解码事件数据，获取Token转移信息以及将其映射和储存至数据库
-
-```typescript
-// src/helpers/events.ts
-import {
-  assertNotNull,
-  EvmLogHandlerContext,
-  Store,
-} from "@subsquid/substrate-evm-processor";
-import { Owner, Token, Transfer, Contract } from "../model";
-import {
-  CONTRACT_INSTANCE,
-  CONTRACT_NAME,
-  CONTRACT_SYMBOL,
-  CONTRACT_TOTAL_SUPPLY,
-} from "../constants";
-import * as erc721 from "../abis/erc721";
-
+ 
 export function createContractEntity(): Contract {
   return new Contract({
-    id: CONTRACT_INSTANCE.address,
-    name: CONTRACT_NAME,
-    symbol: CONTRACT_SYMBOL,
-    totalSupply: CONTRACT_TOTAL_SUPPLY,
+    id: contract.address,
+    name: "Moonsama",
+    symbol: "MSAMA",
+    totalSupply: 1000n,
   });
 }
-
+ 
 let contractEntity: Contract | undefined;
-
+ 
 export async function getContractEntity({
   store,
 }: {
   store: Store;
 }): Promise<Contract> {
   if (contractEntity == null) {
-    contractEntity = await store.get(Contract, CONTRACT_INSTANCE.address);
+    contractEntity = await store.get(Contract, contract.address);
   }
   return assertNotNull(contractEntity);
 }
 
-export interface EvmLog {
-  data: string;
-  topics?: Array<string> | null;
-  address: string;
-}
-export interface ParsedLogs {
-  name: string;
-  args?: any;
-  topics: string;
-  fragment: any;
-  signature: string;
-}
-
-export async function contractLogsHandler(
-  ctx: EvmLogHandlerContext
-): Promise<void> {
+async function processTransfer(ctx: EvmLogHandlerContext): Promise<void> {
   const transfer =
-    erc721.events["Transfer(address,address,uint256)"].decode(ctx);
+    events["Transfer(address,address,uint256)"].decode(ctx);
 
   let from = await ctx.store.get(Owner, transfer.from);
   if (from == null) {
@@ -349,7 +235,7 @@ export async function contractLogsHandler(
   if (token == null) {
     token = new Token({
       id: transfer.tokenId.toString(),
-      uri: await CONTRACT_INSTANCE.tokenURI(transfer.tokenId),
+      uri: await contract.tokenURI(transfer.tokenId),
       contract: await getContractEntity(ctx),
       owner: to,
     });
@@ -383,44 +269,39 @@ export async function contractLogsHandler(
 现在您可以将处理程序函数附加至处理器并设置处理其确保能够顺利执行。您可以编辑`src/processor.ts`文件以进行操作。
 
 1. 移除先前存在的代码
-
-2. 更新导入函数，包含`CONTRACT_ADDRESS`地址、`contractsLogHandler`、`createContractEntity`协助函数以及`events`映射
-
+2. 更新导入以包含`CHAIN_NODE`和`contract`常量、`getContractEntity`和`createContractEntity`辅助函数、`processTransfer`处理函数和`events`映射
 3. 使用`SubstrateEvmProcessor`创建一个处理器并自行命名。举例而言，您可以使用`moonriver-substrate`或是根据您使用的网络命名
-
 4. 更新数据源和类型包
-
 5. 附加EVM记录处理程序函数和区块前的触发器，其将会在数据库中创建和储存合约实体
 
 ```typescript
 // src/processor.ts
-import { SubstrateEvmProcessor } from "@subsquid/substrate-evm-processor";
+import {
+  EvmLogHandlerContext,
+  SubstrateEvmProcessor,
+} from "@subsquid/substrate-evm-processor";
 import { lookupArchive } from "@subsquid/archive-registry";
-import { CHAIN_NODE, BATCH_SIZE, CONTRACT_ADDRESS } from "./constants";
-import { contractLogsHandler, createContractEntity } from "./helpers/events";
-import { events } from "./abis/erc721";
+import { CHAIN_NODE, contract, createContractEntity, getContractEntity, processTransfer } from "./contract";
+import { events } from "./abi/erc721";
+import { Owner, Token, Transfer } from "./model";
 
 const processor = new SubstrateEvmProcessor("moonriver-substrate");
-
-processor.setBatchSize(BATCH_SIZE);
 
 processor.setDataSource({
   chain: CHAIN_NODE,
   archive: lookupArchive("moonriver")[0].url,
 });
 
-processor.setTypesBundle("moonbeam");
-
 processor.addPreHook({ range: { from: 0, to: 0 } }, async (ctx) => {
   await ctx.store.save(createContractEntity());
 });
 
 processor.addEvmLogHandler(
-  CONTRACT_ADDRESS,
+  contract.address,
   {
     filter: [events["Transfer(address,address,uint256)"].topic],
   },
-  contractLogsHandler
+  processTransfer
 );
 
 processor.run();
