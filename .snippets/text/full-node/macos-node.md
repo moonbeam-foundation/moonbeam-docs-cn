@@ -16,7 +16,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
@@ -36,7 +36,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
@@ -55,7 +55,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
@@ -75,7 +75,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
@@ -94,7 +94,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
@@ -114,7 +114,7 @@ purestake/moonbeam:v0.23.0 \
 --execution wasm \
 --wasm-execution compiled \
 --pruning archive \
---state-cache-size 1 \
+--state-cache-size 0 \
 -- \
 --execution wasm \
 --pruning 1000 \
