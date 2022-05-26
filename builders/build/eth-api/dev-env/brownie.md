@@ -68,45 +68,25 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 ## 网络配置 {: #network-configuration }
 
-要部署至Moonbeam网络，您需要添加并配置网络。
+要部署至Moonbeam网络，您需要添加并配置网络。Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和生产环境。
 
-Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和生产环境。
-
-Brownie原生支持在Moonbeam网络部署，但如果您希望将合约部署到Moonriver、Moonbase Alpha或Moonbeam 开发节点，则需要添加相应的网络配置。
-
-如果您熟悉Brownie，您可能已经习惯了`Mainnet`和`Testnet`网络设置。为了保持一致，您可以在预先存在的Moonbeam网络配置下添加Moonbase Alpha和Moonbeam开发节点的配置。由于Moonriver是它自己的主网，您可以为Moonriver添加全新的网络配置。
-
-在后台，Brownie使用Ganache作为开发环境。然而，由于Moonbeam开发者节点做为您专属的开发环境，您并不需要Ganache。因此，您可以使用线上网络（如Moonriver和Moonbase Alpha）所使用的配置来配置您的节点。
-
-您可以跟随以下命令添加Moonriver、Moonbase Alpha或是Moonbeam开发者节点：
-
-=== "Moonriver"
-    ```
-    brownie networks add Moonriver moonriver-main host={{ networks.moonriver.public_rpc_url }} name=Mainnet chainid={{ networks.moonriver.chain_id }}
-    ```
-
-=== "Moonbase Alpha"
-    ```
-    brownie networks add Moonbeam moonbeam-testnet host={{ networks.moonbase.rpc_url }} name=Testnet chainid={{ networks.moonbase.chain_id }}
-    ```
-
-=== "Moonbeam Dev Node"
-    ```
-    brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url }} name=Development chainid={{ networks.development.chain_id }}
-    ```
-
-如果您成功添加了网络，您将会在终端看到关于网络细节的成功信息。
-
-
-您可以运行以下命令查看全部支持的网络：
+从版本1.18.2开始，Brownie开箱即可支持Moonbeam、Moonriver和Moonbase Alpha。要查看支持的网络的完整列表，您可以运行以下命令：
 
 ```
 brownie networks list
 ```
 
-![Networks list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
+![Network list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
 
-如果您添加的是Moonbase Alpha，您应看它作为Moonbeam附属网络出现在列表。除此之外，如果您添加的是Moonriver，您应看到它作为独立网络出现在列表底部。
+如果您希望将合约部署到Moonbeam开发节点，则需要添加网络配置。在后台，Brownie使用Ganache开发环境。但是，由于Moonbeam开发节点将充当您自己的个人开发环境，因此不需要Ganache。因此，您可以将开发节点配置为“live”网络。
+
+要添加Moonbeam开发节点配置，您可以运行以下命令：
+
+```
+brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url }} name=Development chainid={{ networks.development.chain_id }}
+```
+
+如果您成功添加了网络，您将会在终端看到关于网络细节的成功信息。
 
 要部署Moonbeam网络或是在特定网络上进行测试，您可以通过以下命令扩展至指定的网络：
 
