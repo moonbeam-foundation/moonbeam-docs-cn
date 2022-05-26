@@ -5,7 +5,7 @@ description: 了解如何使用资产预编译访问Moonbeam上跨链代币的ER
 
 # XC-20和跨链资产
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/xcm/xc20/overview/xc20-banner.png)
+![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/xcm/xc20/xc20/xc20-banner.png)
 
 ## 概览 {: #introduction } 
 
@@ -90,7 +90,7 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
 
 4. 点击**+**按钮传送检索指令
 
-![Fetch list of cross-chain assets](/images/builders/xcm/xc20/overview/xc20-1.png)
+![Fetch list of cross-chain assets](/images/builders/xcm/xc20/xc20/xc20-1.png)
 
 检索结果将会以asset ID和其相关信息的形式显现，包含所有Moonbase Alpha上已注册的XC-20资产。
 
@@ -108,7 +108,7 @@ XC-20类别的资产需要在使用前进行注册和与生态系统中的其他
 
 5. 点击**+**按钮传送检索指令
 
-![Get asset metadata](/images/builders/xcm/xc20/overview/xc20-2.png)
+![Get asset metadata](/images/builders/xcm/xc20/xc20/xc20-2.png)
 
 您将会获得元数据的结果，您可以查看与VUNIT XC-20资产的相关asset ID。
 
@@ -154,7 +154,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 2. 将文档内容复制并粘贴至名为**IERC20.sol**的Remix文档
 
-![Load the interface in Remix](/images/builders/xcm/xc20/overview/xc20-3.png)
+![Load the interface in Remix](/images/builders/xcm/xc20/overview/overview-1.png)
 
 ### 编译合约 {: #compile-the-contract }
 
@@ -164,7 +164,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 2. 编译**IERC20.sol**文档
 
-![Compiling IERC20.sol](/images/builders/xcm/xc20/overview/xc20-4.png)
+![Compiling IERC20.sol](/images/builders/xcm/xc20/overview/overview-2.png)
 
 当接口已成功被编译后，您将会在**Compile**标签旁看到绿色的打勾符号。
 
@@ -182,13 +182,13 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 5. 提供在[Calculate Precompile Address](#calculate-precompile-address)部分计算得到的XC-20预编译地址`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`，并点击**At Address**
 
-![Access the address](/images/builders/xcm/xc20/overview/xc20-5.png)
+![Access the address](/images/builders/xcm/xc20/overview/overview-3.png)
 
 !!! 注意事项
     如果您希望确保运行顺利，您可以使用您的搜寻引擎查询校验工具以校验您的XC-20预编译地址。当地址校验成功，您可以将其用在**At Address**字段中。
 
 XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现在您可以使用任何ERC-20函数以获得XC-20的信息或是转移XC-20。
 
-![Interact with the precompile functions](/images/builders/xcm/xc20/overview/xc20-6.png)
+![Interact with the precompile functions](/images/builders/xcm/xc20/overview/overview-4.png)
 
 如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
