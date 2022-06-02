@@ -1,115 +1,26 @@
----
-title: 主页
-description: 欢迎访问Moonbeam资料库，Moonbeam是Polkadot上兼容以太坊的智能合约平行链。
----
- 
-# 欢迎访问Moonbeam 
- 
-![Main Page Banner Image](/images/learn/platform/main-banner.png)
+# Moonbeam文档
 
-Moonbeam是同时兼容波卡（Polkadot）生态与以太坊（Ethereum）生态的智能合约平行链。本网站为Moonbeam资料库，在这里，无论您是开发人员，信息收集者，或终端用户都可自由浏览关于Moonbeam网络平台的第一手资料。
+![Main Page Banner](/images/readme-contributing/readme-banner.png)
 
-本网站信息将随着Moonbeam社区的发展而实时更新。 
+此库包含波卡（Polkadot）网络上完全兼容以太坊的智能合约平行链Moonbeam的文档。在这里，您可以找到面向开发人员、收集人、终端用户和其他Moonbeam网络参与者的高阶和技术类型的信息。
 
-欢迎您加入Moonbeam社区，期待与您携手打造去中心化跨链世界。 
+随着Moonbeam的持续开发，此库也将随之发展完善。 我们欢迎您加入Moonbeam社区，并为此库和项目做出贡献。
 
----
+## 关于站点
 
-## 什么是Moonbeam？ {: #what-is-moonbeam }
+此库的内容显示在Moonbeam文档站点[docs.moonbeam.network](https://docs.moonbeam.network)上，由[mkdocs](https://www.mkdocs.org/)生成。使用的主题是[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)。
 
-Moonbeam是开发者友好型区块链，可实现完全兼容EVM、Web3的API兼容以及将Moonbeam连接到现有的以太坊网络的网桥。开发者可借助Moonbeam，利用现有的以太坊开发者工具和网络，轻松实现跨链兼容。开发者只需基于自身开发成果稍作修改，即可轻松将现有的Solidity智能合约和DApp前端部署到Moonbeam。
+## 贡献
 
-Moonbeam还将成为波卡（Polkadot）网络的平行链。这意味着Moonbeam不仅能从Polkadot中继链中获得共享的安全性，还能同时集成链接到波卡（Polkadot）的其他链（Polkadot需先实现相关功能）。
+如果您对贡献此库感兴趣，请随时复制repo、更改、开启PR✨。在更改前，请先查阅[`CONTRIBUTING.md` file](https://github.com/PureStake/moonbeam-docs/blob/master/CONTRIBUTING.md)中的贡献参与指南。
 
----
+您也可以在此[提出问题](https://github.com/PureStake/moonbeam-docs/issues/new)。感谢您的时间和精力为此库作出贡献💜。
 
-## 如何参与Moonbeam？ {: #how-to-get-started-with-moonbeam }
+## Moonbeam社区
 
-### 网络 {: #networks }
-
-目前，任选以下一种方式，助您轻松参与Moonbeam构建：
-
- - 将您的Moonbeam实例构建为[独立节点](/builders/get-started/moonbeam-dev.md)
- - [连接](/builders/get-started/networks/moonbeam.md)到[Moonbeam](/learn/platform/networks/moonbeam.md)
- - [连接](/builders/get-started/networks/moonriver.md)到[Moonriver](/learn/platform/networks/moonriver.md)
- - [连接](/builders/get-started/networks/moonbase.md)到[Moonbase Alpha TestNet](/learn/platform/networks/moonbase.md)
-
-### 钱包 {: #wallets }
-
-目前，我们成功测试以下钱包可使用Moonbeam网络：
-
- - [MetaMask](/tokens/connect/metamask.md)
- - [MathWallet](/tokens/connect/mathwallet.md)
- - [Polkadot.js Apps](/tokens/connect/polkadotjs.md)
- - [Ledger](/tokens/connect/ledger.md)
- - [Trezor](/tokens/connect/trezor.md)
- - [Nifty](/tokens/connect/nifty.md)
-
-请注意，我们欢迎任何与以太坊定制网络兼容的钱包与Moonbeam兼容！
-
-### 部署合约 {: #deploy-a-contract}
-
-由于Moonbeam的以太坊兼容性，您可自由选择以下您了解并喜爱的开发工具部署合约：
-
- - [Remix](/builders/build/eth-api/dev-env/remix.md)
- - [OpenZeppelin and Remix](/builders/build/eth-api/dev-env/openzeppelin/contracts.md)
- - [HardHat](/builders/build/eth-api/dev-env/hardhat.md)
- - [Truffle](/builders/build/eth-api/dev-env/truffle.md)
- - [Waffle and Mars](/builders/build/eth-api/dev-env/waffle-mars.md)
-
-有更好的以太坊工具推荐？[欢迎联系我们](https://discord.gg/PfpUATX)
-
-### 工具和集成 {: #tools-and-integrations }
-
- - [Web3.js](/builders/build/eth-api/libraries/web3js.md)
- - [Ethers.js](/builders/build/eth-api/libraries/ethersjs.md)
- - [Web3.py](/builders/build/eth-api/libraries/web3py.md)
- - [The Graph](/builders/integrations/indexers/thegraph.md)
- - [Covalent API](/builders/integrations/indexers/covalent.md)
- - [调试及跟踪](/builders/build/eth-api/debug-trace.md)
-
-### 预言机 {: #oracles }
-
-我们提供多个预言机选项，实现智能合约数据喂价：
-
- - [Chainlink](/builders/integrations/oracles/chainlink.md)
- - [Band Protocol](/builders/integrations/oracles/band-protocol.md)
- - [Razor Network](/builders/integrations/oracles/razor-network.md)
-
-### 桥服务 {: #bridges }
-
-目前，我们可提供功能齐全的桥服务，实现连接以太坊Rinkeby/Kovan测试网和Moonbase Alpha测试网：
-
- - [ChainBridge](/builders/integrations/bridges/eth/chainbridge.md)
-
----
-
-## 如何参与Moonbeam社区互动 {: #how-to-engage-with-the-moonbeam-community }
-
-### :fontawesome-brands-discord:  Discord {: #fontawesome-brands-discord-discord } 
-
-如需获取关于测试网和开发相关的最新内容，欢迎加入[ Moonbeam Discord](https://discord.gg/PfpUATX)群组。
-
-### :moonbeam-element:  Element  {: #moonbeamelement:-element } 
-
-想要与开发人士讨论技术或分享经验，欢迎加入[Moonbeam Element（原名为Riot）](https://app.element.io/#/room/#moonbeam:matrix.org)。
-
-### :fontawesome-brands-telegram-plane:  Telegram {: #fontawesome-brands-telegramplane-telegram } 
-
-了解常规项目信息或其他非技术性内容，欢迎加入[Moonbeam Telegram](https://t.me/Moonbeam_Official)。
-
-### :fontawesome-brands-twitter:  Twitter {: #fontawesome-brands-twitter-twitter } 
-
-关注 [Moonbeam Twitter推特](https://twitter.com/MoonbeamNetwork)，了解Moonbeam最新资讯。
-
-### :fontawesome-brands-youtube:  YouTube {: #fontawesome-brands-youtube-youtube }  
-
-订阅 [Moonbeam YouTube频道](https://www.youtube.com/c/MoonbeamNetwork)，获取全部视频教程及相关内容。
-
-### :fontawesome-solid-envelope:  Newsletter {: #fontawesome-solid-envelope-newsletter } 
-
-订阅 [Moonbeam 电子月报](https://moonbeam.network/newsletter/)，获取每月Moonbeam进展总结。
-
-## 关于Moonbeam资料库 {: #about-this-site }
-
-本资料库生成自[mkdocs](https://www.mkdocs.org/)，所有内容均来源于moonbeam-docs，且可在 [on :fontawesome-brands-github: GitHub](https://github.com/PureStake/moonbeam-docs)同步找到。
+- **Discord** —— [Discord channel](https://discord.gg/PfpUATX)提供技术支持和发展
+- **Element** —— [Element (formerly Riot) room](https://app.element.io/#/room/#moonbeam:matrix.org)提供技术讨论和支持
+- **Telegram** —— [电报群](https://t.me/Moonbeam_Official)提供一般信息和非技术话题讨论
+- **Twitter** —— 关注[@MoonbeamNetwork](https://twitter.com/MoonbeamNetwork)推特获取最新资讯
+- **YouTube** —— 订阅[YouTube频道](https://www.youtube.com/c/MoonbeamNetwork)获取视频类教程和相关内容
+- **Newsletter** —— 订阅[月报](https://moonbeam.network/newsletter/)获取项目最新进展

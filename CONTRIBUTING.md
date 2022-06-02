@@ -1,0 +1,138 @@
+# 贡献参与指南
+
+文档的源文件以[Markdown](https://daringfireball.net/projects/markdown/)编写，通常遵循[谷歌开发者文档指南](https://developers.google.com/style)。
+
+请查看本文档中提到的指南，准备好后，您可以针对`master`分支打开一个PR。通常情况下，Moonbeam开发者关系团队将审查该PR并要求您进行必要的修改。然后，团队会将您的PR合并到本地分支，并确保所有的格式更改在本地网站上正确。一切准备就绪后，这些更改将被发布到实时网站上。
+
+非常感谢您的贡献！💜
+
+## 预览在VS代码中的更改
+
+请注意，目前暂不支持本地检阅更改。
+
+然而，如果您使用的是Visual Studio Code，您可以在提交之前预览您对`.md`文件的更改。请查阅Visual Studio docs网站上的[Markdown和Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown)教程了解如何操作。
+
+## 结构
+
+在根目录和每个子目录中，除了内容目录和页面，您还会发现以下文件：
+
+- **`.pages`** —— 定义文档网站的结构
+- **`index.md`** —— 代表您在整个文档网站上看到的[着陆页](https://docs.moonbeam.network/builders/)
+
+### 以`.pages`文件为例
+
+以[Canonical Contracts](https://docs.moonbeam.network/builders/build/canonical-contracts/) `.pages`文件为例：
+
+```markdown
+title: Canonical Contracts
+nav:
+  - index.md
+  - 'Contract Addresses': 'contracts.md'
+  - precompiles
+```
+
+请注意：
+
+- 页面顶部的`title`字段代表子目录的名称显示
+- `index.md`页面必须始终是列表中的第一个项目
+- 文件遵循“名称显示”的惯例: 'file-name.md'
+- 子目录在源代码中按其目录名称罗列
+
+**Canonical Contracts**和**Contract Addresses**都显示在左边的导航菜单和登陆页上。**Precompiled Contracts**的标题来自[`.pages` file for the `precompiles` subdirectory](https://github.com/PureStake/moonbeam-docs/blob/master/builders/build/canonical-contracts/precompiles/.pages)的`title` 。
+
+![Display titles](/images/readme-contributing/contributing-1.png)
+
+### 以 `index.md` 为例
+
+以[Canonical Contracts](https://docs.moonbeam.network/builders/build/canonical-contracts/) `index.md`文件为例：
+
+```markdown
+---
+title: Canonical & Precompiled Contracts
+description: Here you can find canonical contract addresses for Moonbeam, and precompiled contracts for interacting with Substrate features using the Ethereum API.
+template: main.html
+---
+
+<div class='subsection-wrapper'></div>
+```
+
+请注意：
+
+- `title`代表<title>标签，用于SEO目的
+- `description`代表元描述，也用于SEO目的
+- `template`定义要使用的模板，必须始终是`main.html`
+- `<div>`被填充了任何页面或子目录的链接，并在运行时由一个脚本自动填充，以建立着陆页
+
+**Canonical Contracts**着陆页被渲染，并从`.pages`文件中检索`title`。
+
+![Landing page](/images/readme-contributing/contributing-2.png)
+
+## 内容页面
+
+当添加一个新的内容页时，您应有以下组件：
+
+- **`title`** —— 代表<title>标签，用于SEO目的（不显示在发布的网站上）
+- **`description`** —— 代表元描述，也用于SEO目的（不显示在发布的网站上）
+- **Page title**  —— 将显示在页面顶部的标题
+- **`## Introduction` section** —— 2-3个段落作为介绍。这是长期存在的，意味着后续无需更改
+
+另外，您还应考虑包括以下部分：
+
+- **`## Checking Prerequisites` section** —— 如果指南要求用户安装例如Docker或MetaMask等开发工具，应该在这里罗列
+- **`## Getting Started` section** —— 如果这是第三方集成，请设置链接指向您的项目文档网站的最重要部分，以帮助用户开始使用您的项目
+
+例如：
+
+```
+---
+title: Title for SEO purposes
+description: Description for SEO purposes.
+---
+
+# Page Title
+
+![Banner Image](/images/<subdirectory>/<project>-banner.png)
+
+## Introduction
+
+Write 2-3 paragraphs to serve as the introduction here.
+
+...
+```
+
+## 图片
+
+图片存储在`images`子目录下，其组织结构与文档网站的结构相一致。因此，如果您正在为`builders`部分创建一个新的页面，并需要添加图片，这些图片将被放在`images/builders/`子目录下面。
+
+所有的页面都应该有一个标题图片，您可以使用`images`目录根部的`_banner-template.svg`来创建自己的标题图片。
+
+所有着陆页都需要一个logo或相关的图标。您可以使用位于`images`子目录根部的`_index-page-template.svg`来创建您自己的正确尺寸。这些图片存储在`images/index-pages`子目录中。
+
+最终，图片以`.png`格式在网站上显示。
+
+如需在页面上添加图片，您应有[alt text](https://developers.google.com/style/images#alt-text)并使用以下结构：
+
+```markdown
+![Alt text goes here](/images/<subdirectory>/<image-file-name>.png)
+```
+
+## 片段
+
+片段可以用来管理可重复使用的代码或文本。`text`和`code`的子目录可供使用。`text`片段将被翻译为中文版本的文档网站。另一方面，`code`片段应仅包含代码，因此不会被翻译。
+
+如需链接到一个片段，您可以在Markdown文件中使用以下结构：
+
+```markdown
+--8<-- 'code/<subdirectory>/<snippet-file-name>.md'
+```
+
+代码片段可以用Markdown或编程语言本身来写，例如`.py`代表Python，`.js`代表JavaScript等等。
+
+## 搜索引擎优化（SEO）
+
+以下是一些资源，可以帮助您创建有利于SEO的建议标题和描述：
+
+- [Google's recommendation on good titles](https://developers.google.com/search/docs/advanced/appearance/title-link?hl=en)
+- [Google's recommendation on good descriptions](https://developers.google.com/search/docs/advanced/appearance/snippet?hl=en)
+
+一般来说，标题应在50至60个字符之间，描述应在110至160个字符之间。
