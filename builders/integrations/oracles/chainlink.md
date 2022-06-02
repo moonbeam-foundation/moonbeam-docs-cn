@@ -36,7 +36,7 @@ Moonbeam运行的预部署合约和预言机节点支持一组有限的job ID，
 ```
 pragma solidity ^0.6.6;
 
-import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/ChainlinkClient.sol";
+import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
 
 /**
  * @title Client based in ChainlinkClient
@@ -46,7 +46,7 @@ contract Client is ChainlinkClient {
   // Stores the answer from the Chainlink oracle
   uint256 public currentPrice;
   address public owner;
-  
+
   // Deploy with the address of the LINK token
   constructor(address _link) public {
     // Set the address for the LINK token for the network
@@ -72,7 +72,7 @@ contract Client is ChainlinkClient {
   {
     currentPrice = _price;
   }
-  
+
   // Allows the owner to cancel an unfulfilled request
   function cancelRequest(
     bytes32 _requestId,
@@ -111,12 +111,13 @@ contract Client is ChainlinkClient {
 
     return result;
   }
-  
+
   // Reverts if the sender is not the owner of the contract
   modifier onlyOwner() {
     require(msg.sender == owner);
     _;
   }
+}
 ```
 
 合约的核心函数如下：
