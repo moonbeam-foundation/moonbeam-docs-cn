@@ -41,7 +41,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 您可以在**Miscellaneous**一栏下面找到我们的**#Moonbase-Faucet**频道。
 
-![Moonbase faucet channel on Discord](/images/builders/get-started/networks/moonbase/moonbase-1.png)
+![Moonbase faucet channel on Discord](/images/builders/get-started/networks/moonbase/moonbase-2.png)
 
 如果您想要查询您的余额，请输入以下信息，并将`<enter-address-here->`替换为您的H160地址:
 
@@ -57,7 +57,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 Mission Control将会发送5个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的Token。
 
-![Faucet send command example](/images/builders/get-started/networks/moonbase/moonbase-2.png)
+![Faucet send command example](/images/builders/get-started/networks/moonbase/moonbase-3.png)
 
 !!! 注意事项
     Moonbase Alpha DEV Token并不具备任何实际价值。请不要向水龙头发送非必要请求。
@@ -68,15 +68,15 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 ### 参考链接 {: #quick-links } 
 
-|  DApp  | 描述 |                Repository                  |
-|:------------:|:------------:|:-------------------------------------------------:|
-| [Moonbase ERC-20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank} | ERC-20 Faucet  |[https://github.com/PureStake/moonbase-mintableERC20](https://github.com/PureStake/moonbase-mintableERC20){target=_blank} |
-| [Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}  |  Uniswap V2 Fork  | [https://github.com/PureStake/moonbeam-uniswap](https://github.com/PureStake/moonbeam-uniswap){target=_blank}  |
-| [MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}  | Chainlink Demo  | [https://github.com/PureStake/moonlink-dashboard](https://github.com/PureStake/moonlink-dashboard){target=_blank}  |
-| [MoonLotto Lottery](https://moonbase-moonlotto.netlify.app/){target=_blank}  | TheGraph Demo  | [Interface](https://github.com/PureStake/moonlotto-interface){target=_blank}, [Subgraph](https://github.com/PureStake/moonlotto-subgraph){target=_blank}  |
-| [Moonbeam WalletConnect](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank}  | WalletConnect Demo  | [https://github.com/PureStake/moonbeam-walletconnect-demo](https://github.com/PureStake/moonbeam-walletconnect-demo){target=_blank}  |
-| [Moonbase ChainBridge](https://moonbase-chainbridge.netlify.app/transfer){target=_blank}  | ChainBridge Demo  | [https://github.com/PureStake/chainbridge-ui](https://github.com/PureStake/chainbridge-ui){target=_blank}  |
-| [MoonGas](https://moonbeam-gasinfo.netlify.app/){target=_blank}  | Gas Price Tracker  | [https://github.com/albertov19/moonbeam-gas-station](https://github.com/albertov19/moonbeam-gas-station){target=_blank}  |
+|                                           DApp                                            |        描述        |                                                                        Repository                                                                        |
+|:-----------------------------------------------------------------------------------------:|:------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|     [Moonbase ERC-20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank}      |   ERC-20 Faucet    |                [https://github.com/PureStake/moonbase-mintableERC20](https://github.com/PureStake/moonbase-mintableERC20){target=_blank}                 |
+|        [Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}        |  Uniswap V2 Fork   |                      [https://github.com/PureStake/moonbeam-uniswap](https://github.com/PureStake/moonbeam-uniswap){target=_blank}                       |
+|       [MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}        |   Chainlink Demo   |                    [https://github.com/PureStake/moonlink-dashboard](https://github.com/PureStake/moonlink-dashboard){target=_blank}                     |
+|        [MoonLotto Lottery](https://moonbase-moonlotto.netlify.app/){target=_blank}        |   TheGraph Demo    | [Interface](https://github.com/PureStake/moonlotto-interface){target=_blank}, [Subgraph](https://github.com/PureStake/moonlotto-subgraph){target=_blank} |
+| [Moonbeam WalletConnect](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank} | WalletConnect Demo |           [https://github.com/PureStake/moonbeam-walletconnect-demo](https://github.com/PureStake/moonbeam-walletconnect-demo){target=_blank}            |
+| [Moonbase ChainBridge](https://moonbase-chainbridge.netlify.app/transfer){target=_blank}  |  ChainBridge Demo  |                        [https://github.com/PureStake/chainbridge-ui](https://github.com/PureStake/chainbridge-ui){target=_blank}                         |
+|              [MoonGas](https://moonbeam-gasinfo.netlify.app/){target=_blank}              | Gas Price Tracker  |                 [https://github.com/albertov19/moonbeam-gas-station](https://github.com/albertov19/moonbeam-gas-station){target=_blank}                  |
 
 !!! 注意事项
     这些DApp仅用于演示目的，可能不完整或不适合用于生产部署。
@@ -85,7 +85,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 [Moonbase ERC-20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank}使您能够铸造多样的ERC-20测试Token，对应太阳系的八大行星以及冥王星。开始铸造Token前，请先点击屏幕右上方“**Connect MetaMask**”。然后，鼠标往下滚至**Mint Tokens**处，选择ERC-20合约。点击**Submit Tx**并在MetaMask中确认交易。每次铸造会产生100枚Token，您可以每小时为每个合约铸造Token。
 
-![ERC20 Minter](/images/builders/get-started/networks/moonbase/moonbase-3.png)
+![ERC20 Minter](/images/builders/get-started/networks/moonbase/moonbase-4.png)
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
@@ -101,7 +101,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 5. 在列表中寻找或者选择想要交换的资产
 
-![Moonbeam Swap](/images/builders/get-started/networks/moonbase/moonbase-4.png)
+![Moonbeam Swap](/images/builders/get-started/networks/moonbase/moonbase-5.png)
 
 !!! 注意事项
     如果您在**Moon Menu**下只能看到部分资产列表，您的浏览器可能缓存了**Moon Menu**的旧版本。请清除缓存并重新加入**Moon Menu**可解决此问题。
@@ -110,7 +110,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 [MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/)。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
 
-![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-5.png)
+![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-6.png)
 
 ### MoonLotto Lottery {: #moonlotto-lottery } 
 
@@ -124,7 +124,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 3. 点击**Submit on MetaMask**并在MetaMask中确认交易
 
-![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-6.png)
+![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-7.png)
 
 ### Moonbeam WalletConnect {: #moonbeam-walletconnect } 
 
@@ -134,7 +134,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 2. 使用[与WalletConnect兼容的钱包](https://walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
 
-![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-7.png)
+![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-8.png)
 
 ### Moonbase ChainBridge {: #moonbase-chainbridge } 
 
@@ -160,7 +160,7 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 10. 点击**Start Transfer**并在MetaMask确认交易。DApp将更新跨链桥转移的状态
 
-![Moonbase ChainBridge](/images/builders/get-started/networks/moonbase/moonbase-8.png)
+![Moonbase ChainBridge](/images/builders/get-started/networks/moonbase/moonbase-9.png)
 
 ### MoonGas {: #moongas } 
 
@@ -168,4 +168,4 @@ Mission Control将会发送5个DEV Token到您的账户，并显示您当前的�
 
 您将注意到Moonbeam最小gas价格是100 Gwei，然而Moonriver和Moonbase Alpha的仅仅是1 Gwei。这种差异源于[GLMR与MOVR初始供应量的百倍差距](https://moonbeam.foundation/news/moonbeam-community-announcement/){target=_blank}，因此，Moonbeam最小值100 Gwei就相当于Moonriver最小值1 Gwei。
 
-![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-9.png)
+![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-10.png)
