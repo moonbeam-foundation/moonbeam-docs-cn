@@ -51,7 +51,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 ## 查看先决条件 {: #xtokens-check-prerequisites}
 
-要在Polikadot.js Apps上传送extrinsics，您需要拥有一个具有[资金](https://docs.moonbeam.network/builders/get-started/networks/moonbase/#get-tokens)的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}。
+要在Polikadot.js Apps上传送extrinsics，您需要拥有一个具有[资金](/builders/get-started/networks/moonbase/#get-tokens)的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}。
 
 除此之外，您还需要拥有一些`xcUNIT` Token方能跟随此教程，该Token为Alphanet中继链Token `UNIT`的[XC-20](/builders/xcm/xc20/){target=blank}形式。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=blank}上使用`DEV` Token（Moonbase Alpha上的原生Token）获取一些，其为Moonbase Alpha上的Uniswap-V2版本的示范协议。
 

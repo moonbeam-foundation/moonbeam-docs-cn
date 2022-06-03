@@ -395,6 +395,6 @@ except SubstrateRequestException as e:
 
 这对于与Moonbeam的[ETH JSON RPC](/builders/get-started/eth-compare/rpc-support/){target=_blank}端点或Moonbeam的[自定义RPC](/builders/build/moonbeam-custom-api/){target=_blank}端点交互特别有效。
 
-关于如何通过Python Substrate Interface使用自定义RPC调用以检查给定交易哈希的最终性，请参考[共识和确定性页面](https://docs.moonbeam.network/builders/get-started/eth-compare/consensus-finality/#checking-tx-finality-with-substrate-libraries)的示例。
+关于如何通过Python Substrate Interface使用自定义RPC调用以检查给定交易哈希的最终性，请参考[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#checking-tx-finality-with-substrate-libraries)的示例。
 
 --8<-- 'text/disclaimers/third-party-content.md'

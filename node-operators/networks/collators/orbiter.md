@@ -126,7 +126,7 @@ Orbiter的奖励将会与分配到同一个计划收集人的Orbiter一同分享
 
 ## 性能指标 {: #performance-metrics }
 
-每个Orbiter的表现将会在一定期间内检测和衡量，以确保其运行顺利且能够正常生产区块。如果其表现处于所有计划收集人的一定区间内，预期Orbiter将利用最高级的装置以保持在区间内。关于更多硬件设备的需求，请查看收集人[配备要求页面](https://docs.moonbeam.network/node-operators/networks/collators/requirements/){target=_blank}。
+每个Orbiter的表现将会在一定期间内检测和衡量，以确保其运行顺利且能够正常生产区块。如果其表现处于所有计划收集人的一定区间内，预期Orbiter将利用最高级的装置以保持在区间内。关于更多硬件设备的需求，请查看收集人[配备要求页面](/node-operators/networks/collators/requirements/){target=_blank}。
 
 Metrics will be assessed over 7 day periods. The performance metrics are as follows:
 
