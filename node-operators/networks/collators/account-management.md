@@ -1,6 +1,6 @@
 ---
-title: 收集人账户管理
-description: 学习如何管理您的收集人账户，包括创建和转换会话密钥、映射您的author ID、设置身份以及创建代理账户。
+title: 收集人账号管理
+description: 学习如何管理您的收集人账户，包括生成会话密钥、映射author ID、设置身份以及创建代理账户。
 ---
 
 # 收集人账户管理
@@ -9,15 +9,18 @@ description: 学习如何管理您的收集人账户，包括创建和转换会�
 
 ## 概览 {: #introduction }
 
-在基于Moonbeam的网络上运行收集人节点时，您需要注意一些账户管理活动。首先也是最重要的，您将需要为您的主服务器和备份用服务器创建会话密钥，用于签署区块。随后，您将需要映射每个会话密钥（也称为author ID）到您的H160账户，用于接收区块奖励。
+在基于Moonbeam的网络上运行收集人节点时，您需要注意一些账户管理活动。首先也是最重要的，您将需要为您的主服务器和备份用服务器创建[会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys){target=_blank}，用于确定区块生产和签署区块。
 
 另外，您还可以考虑一些其他的账户管理活动，例如设置链上身份或设置代理账户。
 
-本教程将引导您如何管理您的收集人账户，包括创建和转换会话密钥、映射您的author ID、设置身份以及创建代理账户。
+本教程将引导您如何管理您的收集人账户，包括创建和转换会话密钥、注册和更新会话密钥、设置身份以及创建代理账户。
 
-## 会话密钥 {: #session-keys }
+## 生成会话密钥 {: #session-keys }
 
-收集人将使用author ID来签署区块，它类似于[会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys){target=_blank}。为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from){target=_blank}。本教程将向您展示如何创建/转换与收集人节点相关联的会话密钥。
+为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from){target=_blank}。本教程将向您展示如何创建/转换与收集人节点相关联的会话密钥。您将需要为以下各项生成会话密钥：
+
+- author ID，用于签署区块并与H160账户创建关联以接收区块奖励
+- [VRF](https://wiki.polkadot.network/docs/learn-randomness#vrf){target=_blank}密钥，用于区块生产
 
 首先，请确保您正在[运行收集人节点](/node-operators/networks/run-a-node/overview/){target=_blank}。开始运行收集人节点后，您的终端应出现类似以下日志：
 
@@ -36,29 +39,32 @@ curl http://127.0.0.1:9933 -H \
   }'
 ```
 
-收集人节点应使用新的author ID（会话密钥）的相应公钥进行响应。
+收集人节点应使用新的会话密钥的相应公钥进行响应。
 
 ![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/account-management/account-2.png)
 
-请确保您已记下author ID的公钥。您的每台服务器，包括主服务器和备份服务器，都应该拥有其独特的密钥。由于密钥永远不会离开您的服务器，因此您可以将其视为该服务器的唯一ID。
+请记住您将需要为每个要生成的会话密钥调用`author_rotateKeys`。确保您已记下每个会话密钥的公钥。您的每台服务器，包括主服务器和备份服务器，都应该拥有其独特的密钥。由于密钥永远不会离开您的服务器，因此您可以将其视为该服务器的唯一ID。
 
-接下来，author ID将被映射到H160以太坊式地址（用于接收区块奖励）。
+接下来，您将需要注册您的会话密钥并将author ID会话密钥映射到H160以太坊格式的地址（用于接收区块奖励）。
 
-## 映射Author ID到您的账户 {: #map-author-id-to-your-account }
+## 映射Author ID并设置会话密钥 {: #map-author-id-set-session-keys }
 
-生成author ID（会话密钥）后的下一步是将其映射到您的H160帐户（以太坊式地址）。该账户将用于接收区块奖励，请确保您拥有其私钥。
-
-在author ID映射到您的账户时，系统将会发送一定数量的Token绑定到您的账户。这些Token由author ID注册获得。网络发送的绑定数量设置如下所示：
+在author ID映射到您的账户时，系统将会发送一定数量的Token绑定到您的账户。这些Token由author ID注册获得。网络发送的Token数量设置如下所示：
 
  - Moonbeam -  {{ networks.moonbeam.staking.collator_map_bond }}枚GLMR
  - Moonriver - {{ networks.moonriver.staking.collator_map_bond }}枚MOVR
- - Moonbase Alpha - {{ networks.moonbase.staking.collator_map_bond }}枚DEV 
+ - Moonbase Alpha - {{ networks.moonbase.staking.collator_map_bond }}枚DEV
 
 `authorMapping`模块具有以下extrinsics编程：
 
- - **addAssociation**(*address* authorID) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#:~:text=绑定数量)
+ - **registerKeys**(*address* authorID, *address* keys) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这在一次调用中不仅增加了关联，而且也设置了会话密钥。这将需要一定的[绑定数量](#:~:text=网络发送的Token数量设置如下所示)。取代已弃用的`addAssociation` extrinsic
  - **clearAssociation**(*address* authorID) —— 将清除author ID和发送交易的H160账户之间的连接，需要由author ID的持有者进行操作。这将退还绑定数量
- - **updateAssociation**(*address* oldAuthorID, *address* newAuthorID) —— 将旧的author ID映射到新的author ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定
+ - **setKeys**(*address* oldAuthorID, *address* newAuthorID, *address* newKeys) —— 将旧的author ID映射到新的author ID，并设置会话密钥。这对私钥转换和迁移极为实用。`registerKeys`和`clear`两个关联extrinsics将会被自动执行，使得私钥转换无需第二次绑定。取代已弃用的`updateAssociation` extrinsic
+
+以下函数**已弃用**，但仍存在向后兼容性：
+
+ - **addAssociation**(*address* authorID) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#:~:text=The bond set is as follows)。此函数通过默认将`keys`设置为author ID来保持向后兼容性
+ - **updateAssociation**(*address* oldAuthorID, *address* newAuthorID) —— 将旧的author ID映射到新的author ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定。此函数通过默认将`newKeys`设置为author ID来保持向后兼容性
 
 这个模块同时也新增以下RPC调用（链状态）：
 
@@ -66,15 +72,21 @@ curl http://127.0.0.1:9933 -H \
 
 ### 映射Extrinsic {: #mapping-extrinsic }
 
-如果您想要将您的author ID映射到您的账户，您需要成为[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中的一员。当您成功成为候选人，您将需要传送您的映射extrinsic。请注意，每一次注册author ID将会绑定Token。为此，请执行以下步骤：
+生成会话密钥后的下一步是注册会话密钥和映射author ID到H160账户（即以太坊格式的地址）。确保您拥有该账户的私钥，这将用于接收区块奖励。
 
- 1. 进入**Developer**标签
- 2. 点击**Extrinsics**
- 3. 选取您想要映射author ID的目标账户（用于签署交易）
- 4. 选择**authorMapping**
- 5. 选择**addAssociation()**函数
- 6. 输入author ID。在本示例中，可在前一个部分通过RPC调用`author_rotateKeys`获得
- 7. 点击**Submit Transaction**
+如果您想要将您的author ID映射到您的账户，您需要成为[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中的一员。当您成为候选人后，您需要传送您的映射extrinsic。请注意，每一次注册author ID将会绑定Token。要执行操作，点击页面上方的**Developer**，在下拉菜单中选择**Extrinsics**选项，然后执行以下步骤：
+
+ 1. 选择您要映射author ID的关联帐户（用于签署交易）
+
+ 2. 选择**authorMapping** extrinsic
+
+ 3. 选择**registerKeys()**函数
+
+ 4. 输入**authorId** (**NimbusId**)。在本示例中，可在前一个部分通过RPC调用`author_rotateKeys`获得
+
+ 5. 在**keys**字段中，输入VRF密钥。这可以通过RPC调用`author_rotateKeys`获得
+
+  6. 点击**Submit Transaction**
 
 ![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
 
@@ -82,16 +94,17 @@ curl http://127.0.0.1:9933 -H \
 
 ![Author ID Mapping to Account Extrinsic Successful](/images/node-operators/networks/collators/account-management/account-4.png)
 
-### 检查映射设定 {: #checking-the-mappings } 
+### 检查映射设定 {: #checking-the-mappings }
 
-您也可以通过验证链上状态来确认目前的链上映射情况。为此，请执行以下步骤：
+您也可以通过验证链上状态来确认目前的链上映射情况。要执行操作，点击页面上方的**Developer**，在下拉菜单中选择**Chain State**选项，然后执行以下步骤：
 
- 1. 进入**Developer**标签
- 2. 点击**Chain state**
- 3. 选择**authorMapping**作为查询状态
- 4. 选择**mappingWithDeposit**函数
- 5. 提供author ID进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
- 6. 点击**+**按钮来传送RPC调用
+ 1. 选择**authorMapping**作为状态查询
+
+ 2. 选择**mappingWithDeposit**函数
+
+ 3. 提供author ID (Nimbus ID)进行查询。您也可以通过关闭按钮以停止检索所有链上的映射情况
+
+  4. 点击**+**按钮传送PRC调用
 
 ![Author ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5.png)
 
