@@ -57,7 +57,7 @@ curl http://127.0.0.1:9933 -H \
 
 `authorMapping`模块具有以下extrinsics编程：
 
- - **registerKeys**(*address* authorID, *address* keys) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这在一次调用中不仅增加了关联，而且也设置了会话密钥。这将需要一定的[绑定数量](#:~:text=The bond set is as follows)。取代已弃用的`addAssociation` extrinsic
+ - **registerKeys**(*address* authorID, *address* keys) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这在一次调用中不仅增加了关联，而且也设置了会话密钥。这将需要一定的[绑定数量](#:~:text=网络发送的Token数量设置如下所示)。取代已弃用的`addAssociation` extrinsic
  - **clearAssociation**(*address* authorID) —— 将清除author ID和发送交易的H160账户之间的连接，需要由author ID的持有者进行操作。这将退还绑定数量
  - **setKeys**(*address* oldAuthorID, *address* newAuthorID, *address* newKeys) —— 将旧的author ID映射到新的author ID，并设置会话密钥。这对私钥转换和迁移极为实用。`registerKeys`和`clear`两个关联extrinsics将会被自动执行，使得私钥转换无需第二次绑定。取代已弃用的`updateAssociation` extrinsic
 
