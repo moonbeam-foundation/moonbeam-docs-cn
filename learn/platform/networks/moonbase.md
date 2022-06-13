@@ -66,12 +66,19 @@ Moonbase Alpha具有以下配置：
 
 ## 代币 {: #tokens } 
 
-Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。目前，您可以通过两种方式访问​​此令牌：通过[Discord机器人](#discord-mission-control)或[手动访问](#manual-procedure)。
+Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。目前，您可以通过几种方式获得测试代币：通过Moonbase Alpha水龙头、Discord机器人或手动申请。
+
+### Moonbase Alpha水龙头 {: #moonbase-alpha-faucet }
+
+您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
 
 ### Discord - 任务中心 {: #discord-mission-control }
 
-如需[自动请求](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}测试Token，可以利用了一个名为Mission Control的Discord机器人。当您输入您的地址时，它将每24小时（每个 Discord 用户）自动发送最多{{ networks.moonbase.faucet_amount }}个DEV令牌。您可以在我们的 [Discord 频道](https://discord.gg/PfpUATX)上的 
-**#moonbase-faucet**频道查看。有关更多信息，请访问 [此站点](/builders/get-started/networks/moonbase/#get-tokens/)。
+如需[自动请求](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}测试Token，可以利用了一个名为Mission Control的Discord机器人。当您输入您的地址时，它将每24小时（每个 Discord 用户）自动发送最多{{ networks.moonbase.faucet_amount }}个DEV令牌。您可以在Moonbeam[Discord 频道](https://discord.gg/PfpUATX)上的 
+**#moonbase-faucet**频道使用；有关更多信息，请访问[获取测试代币教程](/builders/get-started/networks/moonbase/#get-tokens/)。
+
+!!! 注意事项
+    Discord测试币水龙头将于2022年6月下旬弃用。
  
 在**Miscellaneous**类别下，您将找到 **#moonbase-faucet**频道。输入以下消息，将 `<enter-address-here->` 替换为您的 H160 地址：
  
@@ -79,7 +86,7 @@ Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价�
 !faucet 发送 <enter-address-here>
 ```
 
-### 手动程序 {: #manual-procedure }
+### 手动申请 {: #manual-procedure }
 
 对于超过我们的Discord机器人允许的Token请求，请通过Moonbeam的[Discord频道](https://discord.gg/PfpUATX){target=_blank}直接联系版主。我们很高兴提供测试您的应用程序所需的Token。
 

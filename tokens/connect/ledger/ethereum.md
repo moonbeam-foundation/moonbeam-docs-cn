@@ -68,7 +68,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 
 接下来，您将需要获取一些GLMR、MOVR或DEV Token并转入您所复制的账户地址。交易完成后，您将能看到余额更新。
 
-如果您需要DEV Token用于测试Moonbase Alpha测试网，您可以前往水龙头[获取Token](/builders/get-started/moonbase/#get-tokens)。
+--8<-- 'text/faucet/faucet-sentence.md'
 
 ## 发送Token {: #send-tokens }
 

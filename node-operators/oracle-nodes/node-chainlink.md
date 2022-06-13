@@ -28,14 +28,16 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha WSS EndPoint: `wss://wss.api.moonbase.moonbeam.network`
  - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
- - 从 [Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获取Moonbase Alpha的DEV Token
+ - 
+ --8<-- 'text/faucet/faucet-list-item.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 请先准备以下条件后再按照本教程进行操作：
 
  - 为运行Postgres DB和Chainlink节点容器[安装Docker](https://docs.docker.com/get-docker/){target=_blank}
- - 带资金的账户。您可以在[Metamask](/tokens/connect/metamask/){target=blank}创建一个账户，从[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=blank}注入资金
+ - 带资金的账户。您可以在[Metamask](/tokens/connect/metamask/){target=blank}创建一个账户。
+ --8<-- 'text/faucet/faucet-list-item.md'
  - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=blank}教程
 
 ## 如何操作 {: #getting-started } 
@@ -153,8 +155,9 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 2. 进入**Configuration Page**页面，并复制节点地址
 
-3. 通过[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}注入资金。
-
+3. 注入资金。
+ --8<-- 'text/faucet/faucet-list-item.md'
+  
     ![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
 
 下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。

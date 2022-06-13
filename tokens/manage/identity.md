@@ -43,9 +43,12 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network){target=_blank}。此教程也适用于[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network){target=_blank}和[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network){target=_blank}。 
+使用本指南将需要以下几个先决条件：
 
-同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)。如果您使用的是Moonbase Alpha，请确保您的账户中有足够的DEV Token，如果在Moonriver网络则须具有足够的MOVR。关于DEV Token的相关信息，请访问Moonbase Alpha官方文档网站的[从任务中心获得Token](/builders/get-started/networks/moonbase/#get-tokens)板块。
+- 您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network){target=_blank}。此教程也适用于[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network){target=_blank}和[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network){target=_blank}
+- 同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account)
+- 请确认账户中有足够资金。
+ --8<-- 'text/faucet/faucet-list-item.md'
 
 ## 开始使用 {: #getting-started }
 

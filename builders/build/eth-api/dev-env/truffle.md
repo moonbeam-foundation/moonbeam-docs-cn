@@ -18,7 +18,8 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。对于Moonbase Alpha测试网，您可以通过[任务中心](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得用于测试目的的DEV Token。
+本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。
+--8<-- 'text/faucet/faucet-sentence.md'
 
 --8<-- 'text/common/endpoint-examples.md'
 

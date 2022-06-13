@@ -18,7 +18,8 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 首先，您需要准备以下先决条件：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有一定资金的账户，您可以在[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得所需Token
+ - 具有拥有一定数量资金的账户。 
+ --8<-- 'text/faucet/faucet-list-item.md'
  - 
  --8<-- 'text/common/endpoint-examples.md'
 
