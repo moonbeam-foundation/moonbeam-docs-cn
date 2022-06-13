@@ -37,7 +37,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### Discord - Mission Control {: #discord-mission-control } 
 
-为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多5个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
+为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多{{ networks.moonbase.faucet_amount }}个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
 
 您可以在**Miscellaneous**一栏下面找到我们的**#Moonbase-Faucet**频道。
 
@@ -55,7 +55,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 !faucet send <enter-address-here->
 ```
 
-Mission Control将会发送5个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的Token。
+Mission Control将会发送{{ networks.moonbase.faucet_amount }}个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的Token。
 
 ![Faucet send command example](/images/builders/get-started/networks/moonbase/moonbase-3.png)
 
