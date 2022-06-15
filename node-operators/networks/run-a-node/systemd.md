@@ -16,13 +16,13 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 !!! 注意事项
     Moonbase Alpha仍被视为是一个Alpha网络，因此其正常运行时间_不会_达到100%。平行链将不时地进行清理。在开发自己的应用程序时，请确保您已采取方法快速地将合约与账户重新部署到新的平行链。[Discord channel](https://discord.gg/PfpUATX)会至少提前24小时发布清理区块链的通知。
 
-## 安装指引 {: #installation-instructions }
+## 上手指南 {: #getting-started } 
 
-本小节将介绍使用二进制以及作为systemd服务运行Moonbeam全节点的操作流程。本教程所使用的示例基于Ubuntu 18.04的环境。Moonbeam也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu版本。
+以下小节将介绍使用二进制以及作为systemd服务运行Moonbeam全节点的操作流程。本教程所使用的示例基于Ubuntu 18.04的环境。Moonbeam也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu版本。
 
 如果您不想自己编译二进制文件，您可以使用[发布的二进制文件](#the-release-binary)。如果您想要自己编译二进制文件，请查看[编译二进制文件](#compile-the-binary)部分，安装依赖项和编译可能需要约30分钟。
 
-### 发布的二进制文件 {: #the-release-binary }
+## 发布的二进制文件 {: #the-release-binary }
 
 使用`wget`快速获取最新[发布的二进制文件](https://github.com/PureStake/moonbeam/releases)：
 
@@ -60,42 +60,42 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 当您检索到二进制文件，您可以直接[运行systemd服务](#running-the-systemd-service)开始运行您的节点。
 
-### 编译二进制文件 {: #compile-the-binary }
+## 编译二进制文件 {: #compile-the-binary }
 
 手动编译二进制文件需要约30分钟和32GB的存储空间。
 
 以下命令将创建最新版本的Moonbeam平行链。
 
-首先，克隆moonbeam repo。
+1. 克隆Moonbeam repo。
 
-```
-git clone https://github.com/PureStake/moonbeam
-cd moonbeam
-```
+    ```
+    git clone https://github.com/PureStake/moonbeam
+    cd moonbeam
+    ```
 
-检查最新版本：
+2. 检查最新版本：
 
-```
-git checkout tags/$(git describe --tags)
-```
+    ```
+    git checkout tags/$(git describe --tags)
+    ```
 
-如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请通过执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install)安装Rust和其先决条件：
+3. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请通过执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install)安装Rust和其先决条件：
 
-```
---8<-- 'code/setting-up-node/installrust.md'
-```
+    ```
+    --8<-- 'code/setting-up-node/installrust.md'
+    ```
 
-接下来，通过运行以下命令更新您的PATH环境变量：
+4. 接下来，通过运行以下命令更新您的PATH环境变量：
 
-```
---8<-- 'code/setting-up-node/updatepath.md'
-```
+    ```
+    --8<-- 'code/setting-up-node/updatepath.md'
+    ```
 
-最后，创建平行链二进制文件：
+5. 编译平行链二进制文件：
 
-```
-cargo build --release
-```
+    ```
+    cargo build --release
+    ```
 
 ![Compiling Binary](/images/node-operators/networks/run-a-node/systemd/full-node-binary-1.png)
 
@@ -107,77 +107,79 @@ cargo build --release
 
 现在，您可以使用Moonbeam二进制文件运行systemd服务。
 
-### 运行Systemd服务 {: #running-the-systemd-service }
+## 运行服务 {: #setup-the-service }
 
 通过以下指令完成所有与服务运行相关的设置。
 
-首先，创建一个服务账户：
+1. 首先，创建一个服务账户：
 
-=== "Moonbeam"
-    ```
-    adduser moonbeam_service --system --no-create-home
-    ```
+    === "Moonbeam"
+        ```
+        adduser moonbeam_service --system --no-create-home
+        ```
 
-=== "Moonriver"
-    ```
-    adduser moonriver_service --system --no-create-home
-    ```
+    === "Moonriver"
+        ```
+        adduser moonriver_service --system --no-create-home
+        ```
 
-=== "Moonbase Alpha"
-    ```
-    adduser moonbase_service --system --no-create-home
-    ```
+    === "Moonbase Alpha"
+        ```
+        adduser moonbase_service --system --no-create-home
+        ```
    
-接下来，创建一个目录来存储二进制文件和数据（您可能需要`sudo`）：
+2. 创建一个目录来存储二进制文件和数据（您可能需要`sudo`）：
 
-=== "Moonbeam"
-    ```
-    mkdir {{ networks.moonbeam.node_directory }}
-    ```
+    === "Moonbeam"
+        ```
+        mkdir {{ networks.moonbeam.node_directory }}
+        ```
 
-=== "Moonriver"
-    ```
-    mkdir {{ networks.moonriver.node_directory }}
-    ```
+    === "Moonriver"
+        ```
+        mkdir {{ networks.moonriver.node_directory }}
+        ```
 
-=== "Moonbase Alpha"
-    ```
-    mkdir {{ networks.moonbase.node_directory }}
-    ```  
+    === "Moonbase Alpha"
+        ```
+        mkdir {{ networks.moonbase.node_directory }}
+        ```  
 
-现在，将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件移动到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件移动到根目录（可能需要`sudo`）：
+3. 将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件移动到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件移动到根目录（可能需要`sudo`）：
 
-=== "Moonbeam"
-    ```
-    mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
-    ```
+    === "Moonbeam"
+        ```
+        mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
+        ```
 
-=== "Moonriver"
-    ```
-    mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
-    ```
+    === "Moonriver"
+        ```
+        mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
+        ```
 
-=== "Moonbase Alpha"
-    ```
-    mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
-    ```
+    === "Moonbase Alpha"
+        ```
+        mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
+        ```
 
-然后，在存储链上数据的本地目录设置相应的权限:
+4. 在存储链上数据的本地目录设置相应的权限:
 
-=== "Moonbeam"
-    ```
-    sudo chown -R moonbeam_service {{ networks.moonbeam.node_directory }}
-    ```
+    === "Moonbeam"
+        ```
+        sudo chown -R moonbeam_service {{ networks.moonbeam.node_directory }}
+        ```
 
-=== "Moonriver"
-    ```
-    sudo chown -R moonriver_service {{ networks.moonriver.node_directory }}
-    ```
+    === "Moonriver"
+        ```
+        sudo chown -R moonriver_service {{ networks.moonriver.node_directory }}
+        ```
 
-=== "Moonbase Alpha"
-    ```
-    sudo chown -R moonbase_service {{ networks.moonbase.node_directory }}
-    ```
+    === "Moonbase Alpha"
+        ```
+        sudo chown -R moonbase_service {{ networks.moonbase.node_directory }}
+        ```
+
+## 创建配置文件 {: #create-the-configuration-file }
 
 接下来，创建systemd配置文件。如果您设定的是收集人节点，请确认您使用的是“收集人”的代码段。您需执行以下操作：
 
@@ -187,7 +189,7 @@ cargo build --release
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
-#### 全节点 {: #full-node }
+### 全节点 {: #full-node }
 
 === "Moonbeam"
     ```
@@ -306,7 +308,7 @@ cargo build --release
     WantedBy=multi-user.target
     ```
 
-#### 收集人 {: #collator }
+### 收集人 {: #collator }
 
 === "Moonbeam"
     ```
@@ -434,18 +436,9 @@ cargo build --release
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
-运行以下命令即可注册并开始服务：
+## 运行服务 {: #run-the-service }
 
-```
-systemctl enable moonbeam.service
-systemctl start moonbeam.service
-```
-
-最后一步，运行以下命令以验证服务：
-
-```
-systemctl status moonbeam.service
-```
+--8<-- 'text/systemd/run-service.md'
 
 ![Service Status](/images/node-operators/networks/run-a-node/systemd/full-node-binary-2.png)
 
@@ -457,6 +450,11 @@ journalctl -f -u moonbeam.service
 
 ![Service Logs](/images/node-operators/networks/run-a-node/systemd/full-node-binary-3.png)
 
+如果出于任何原因需要停止服务，可以运行：
+
+```
+systemctl stop moonbeam.service
+```
 
 ## 更新客户端 {: #update-the-client }
 
