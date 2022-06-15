@@ -121,7 +121,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 如果我的主节点关闭，故障转移流程是怎么样的？**
 
-**A:** 当主服务器关闭时，执行故障转移到备份服务器的最佳方法是执行密钥相关更新。每个服务器已经有一组唯一的[密钥](#:~:text=什么是Nimbus密钥)。运行`updateAssociation` author映射extrinsic。您可以遵循[映射Extrinsic](/node-operators/networks/collators/account-management/#mapping-extrinsic)的教程进行修改以使用`updateAssociation` extrinsic。
+**A:** 当主服务器关闭时，执行故障转移到备份服务器的最佳方法是执行密钥相关更新。每个服务器已经有一组唯一的[密钥](#:~:text=什么是Nimbus密钥)。运行`setKeys` author映射extrinsic。您可以遵循[映射Extrinsic](/node-operators/networks/collators/account-management/#mapping-extrinsic){target=_blank}的教程进行修改以使用`setKeys` extrinsic。
 
 ***
 
@@ -155,13 +155,13 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **A:** 您需要知道两种绑定数量。请在执行以下步骤前确保您的节点已配置和同步完毕。
 
-第一个是[加入收集人池的绑定数量](/node-operators/networks/collators/activities/#become-a-candidate)：
+第一个是[加入收集人池的绑定数量](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}：
 
 - **Moonbeam** - 最低{{ networks.moonbeam.staking.min_can_stk }}枚GLMR
 - **Moonriver** - 最低{{ networks.moonriver.staking.min_can_stk }}枚MOVR
 - **Moonbase Alpha** - 最低{{ networks.moonbase.staking.min_can_stk }}枚DEV
 
-第二个是[密钥关联的绑定数量](/node-operators/networks/collators/account-management/#map-author-id-to-your-account)：
+第二个是[密钥关联的绑定数量](/node-operators/networks/collators/account-management/#map-author-id-set-session-keys){target=_blank}：
 
 - **Moonbeam** - 最低{{ networks.moonbeam.staking.collator_map_bond }}枚GLMR
 - **Moonriver** - 最低{{ networks.moonriver.staking.collator_map_bond }}枚MOVR
@@ -171,4 +171,4 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 如何在我的收集人账户设置身份？**  
 
-**A:** 链上设置身份将帮助您识别您的节点并吸引更多委托量。您可以通过[管理身份](/tokens/manage/identity/)文档页面的操作教程设置身份。
+**A:** 链上设置身份将帮助您识别您的节点并吸引更多委托量。您可以通过[管理身份](/tokens/manage/identity/){target=_blank}文档页面的操作教程设置身份。

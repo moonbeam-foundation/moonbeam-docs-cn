@@ -5,13 +5,13 @@ description: 如何在State of the DApps上列出您的Moonbeam或Moonriver项�
 
 # 如何上线您的项目或DApp
 
-![Template banner image](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-banner.png)
+![State of the DApps banner image](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-banner.png)
 
 ## State of the DApps概览 {: #introduction-to-state-of-the-dapps } 
 
 [State of the DApps](https://www.stateofthedapps.com/)由Joris Bontje于2016年创建，旨在为所有部署在以太坊上的智能合约或去中心化应用提供便捷入口。从那时起，它便有了巨大的发展，支持多链并展示了大量的信息。用他们的话说，*“无论您是在寻找新的用户、测试人员、概念反馈、合作伙伴或投资伙伴，通过DApp项目的权威入口处登记，为您的项目获得吸引力。”*
 
-State of the DApps根据活跃用户、交易量、开发者活动和项目背景对项目进行排名。Moonriver现已上线State of the DApps。此前，众包DApp在[Moonbeam官方资料库的List页面](/learn/dapps-list/)进行维护。目前，该登记口已被弃用，并由State of the DApps和[DappRadar](/learn/dapps-list/dapp-radar/)所取代。
+State of the DApps根据活跃用户、交易量、开发者活动和项目背景对项目进行排名。Moonriver现已上线State of the DApps。此前，众包DApp在[Moonbeam官方资料库的List页面](/learn/dapps-list/)进行维护。目前，该登记口已被弃用并由[DApp列表](/learn/dapps-list/){target=_blank}下的列表平台取代。
 
 ![State of the DApps Home Page](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-1.png)
 

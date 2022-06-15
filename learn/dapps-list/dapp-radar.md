@@ -5,13 +5,13 @@ description: 如何在DappRadar上列出您的Moonbeam或Moonriver项目，这�
 
 # 如何将您的项目收录在DappRadar平台上
 
-![Template banner image](/images/learn/dapps-list/dapp-radar/dapp-radar-banner.png)
+![DappRadar banner image](/images/learn/dapps-list/dapp-radar/dapp-radar-banner.png)
 
 ## DappRadar概览 {: #introduction-to-dappradar }
 
 [DappRadar](https://dappradar.com/){target=_blank}创建于2018年，旨在向全世界的开发者和用户提供高质量且精准的去中心化应用程序相关数据。从那时起，DappRadar已经收录了20个协议中约上万个应用程序，成为DApp应用发现和分析平台中值得信赖的标杆。用他们自己的话说，*“DappRadar通过dapp数据筛选，删除虚假和无关的活动，提供真实且可控制的市场数据。跟踪DApp的活跃用户、Token数量和交易活动，以深入了解DApp生态系统的趋势。”*
 
-Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappradar-now-tracking-dapps-on-moonbeam-moonriver){target=_blank}。DappRadar为[优秀Moonbeam DApp](https://dappradar.com/rankings/protocol/moonbeam){target=_blank}和[优秀Moonriver DApp](https://dappradar.com/rankings/protocol/moonriver){target=_blank}保持首页展示位。在与DappRadar集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/PureStake/moonbeam-project-directory){target=_blank}处于维护阶段。目前，该登记口已被弃用，并由DappRadar和[State of the DApps](/learn/dapps-list/state-of-the-dapps/){target=_blank}所取代。
+Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappradar-now-tracking-dapps-on-moonbeam-moonriver){target=_blank}。DappRadar为[优秀Moonbeam DApp](https://dappradar.com/rankings/protocol/moonbeam){target=_blank}和[优秀Moonriver DApp](https://dappradar.com/rankings/protocol/moonriver){target=_blank}保持首页展示位。在与DappRadar集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/PureStake/moonbeam-project-directory){target=_blank}处于维护阶段。目前，该登记口已被弃用并由[DApp列表](/learn/dapps-list/){target=_blank}下的列表平台取代。
 
 ![DappRadar Home Page](/images/learn/dapps-list/dapp-radar/dapp-radar-1.png)
 
@@ -25,7 +25,7 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
 向DappRadar提交您的项目/DApp时，您必须提交以下信息：
 
  - DApp名称
- - Logo（250 x 250px，png或jpg格式）
+ - Logo（250 x 250px，PNG或JPG格式）
  - 类别
  - 网站URL
  - 简短描述（少于160个字符）
