@@ -30,4 +30,4 @@ description: 每个Moonbeam网络都需要一个实用代币才能运行 - Polka
 
 Moonbeam测试网Moonbase Alpha的代币为DEV。此代币可免费获取，且仅供Moonbase Alpha上的开发和测试使用。
 
-您可在[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)免费获取DEV代币。
+--8<-- 'text/faucet/faucet-sentence.md'

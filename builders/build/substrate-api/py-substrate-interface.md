@@ -15,7 +15,8 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 
 在开始操作之前，您将需要准备以下内容：
 
- - 拥有资金的账户。以Moonbase Alpha而言，您可以从[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获取用于测试的DEV Token
+ - 具有拥有一定数量资金的账户。 
+ --8<-- 'text/faucet/faucet-list-item.md'
  - 
  --8<-- 'text/common/endpoint-examples.md'
  - 安装[`pip`](https://pypi.org/project/pip/){target=_blank}

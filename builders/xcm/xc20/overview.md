@@ -144,7 +144,8 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 - [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或是拥有两个账户/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}
-- 至少其中一个账户拥有足够的`DEV` Token。您可以通过Moonbase Alpha[任务中心](/builders/get-started/networks/moonbase/#get-tokens/)获得Token以进行测试
+- 具有拥有一定数量DEV的账户。 
+--8<-- 'text/faucet/faucet-list-item.md'
 
 ## 使用Remix与预编译合约交互 {: #interact-with-the-precompile-using-remix }
 
