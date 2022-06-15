@@ -75,7 +75,7 @@ Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价�
 ### Discord - 任务中心 {: #discord-mission-control }
 
 如需[自动请求](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}测试Token，可以利用了一个名为Mission Control的Discord机器人。当您输入您的地址时，它将每24小时（每个 Discord 用户）自动发送最多{{ networks.moonbase.faucet_amount }}个DEV令牌。您可以在Moonbeam[Discord 频道](https://discord.gg/PfpUATX)上的 
-**#moonbase-faucet**频道使用；有关更多信息，请访问[获取测试代币教程](/builders/get-started/networks/moonbase/#get-tokens/)。
+**#moonbase-faucet**频道使用。
 
 !!! 注意事项
     Discord测试币水龙头将于2022年6月下旬弃用。
