@@ -397,4 +397,4 @@ journalctl -f -u moonbeam.service
 
 ## 使用一个追踪节点 {: #using-a-tracing-node }
 
-想要了解其他在Moonbeam上的可用非标准RPC方法，以及如何通过追踪节点使用这些方法，请查看[Debug & Trace](/builders/tools/debug-trace/)教程。
+想要了解其他在Moonbeam上的可用非标准RPC方法，以及如何通过追踪节点使用这些方法，请查看[Debug & Trace](/builders/build/eth-api/debug-trace/)教程。
