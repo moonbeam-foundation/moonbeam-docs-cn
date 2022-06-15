@@ -57,7 +57,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbeam.node_directory }}
-    ```
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbeam.node_directory }}
