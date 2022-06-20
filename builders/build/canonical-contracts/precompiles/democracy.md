@@ -137,7 +137,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 3. 输入提案哈希
 
-4. 输入以WEI为单位的Token数值来绑定。最低绑定数量为{{ networks.moonbase.democracy.min_deposit }} DEV，{{ networks.moonriver.democracy.min_deposit }} MOVR或是{{ networks.moonbeam.democracy.min_deposit }} GLMR。以此例而言为4 DEV或是已经输入的`4000000000000000000` 
+4. 输入以Wei为单位的Token数值来绑定。最低绑定数量为{{ networks.moonbase.democracy.min_deposit }} DEV，{{ networks.moonriver.democracy.min_deposit }} MOVR或是{{ networks.moonbeam.democracy.min_deposit }} GLMR。以此例而言为4 DEV或是已经输入的`4000000000000000000` 
 
 5. 点击**transact**并在MetaMask确认交易
 
@@ -230,7 +230,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 4. 将此字段留空表示否定或输入1表示赞成。在公投的背景下，`Nay`是保持现状不变的投票，`Aye`是通过公投提议
 
-5. 输入以WEI表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
+5. 输入以Wei表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 
 6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=_blank}教程。
 

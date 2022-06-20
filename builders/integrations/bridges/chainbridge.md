@@ -195,7 +195,7 @@ interface IBridge {
 1. 加载桥接合约地址并点击**At Address**
 2. 调用`sendERC20SToken()`函数，输入目标Chain ID（在这一示例中为Kovan: `42`）
 3. 在桥的另一侧输入接收地址
-4. 输入需要转移的WEI数量
+4. 输入需要转移的Wei数量
 5. 点击**transact**，随后MetaMask将弹出窗口以要求签名确认交易
 
 交易确认后，Kovan相应地址将收到转移过来的代币。整个过程需要3分钟左右。
