@@ -202,7 +202,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 2. 输入您希望委托的收集人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
 
-3. 提供以WEI为单位的委托数量。最低委托的Token数量为`{{networks.moonbase.staking.min_del_stake}}`，所以以WEI为单位的最低委托数量是`5000000000000000000`
+3. 提供以Wei为单位的委托数量。最低委托的Token数量为`{{networks.moonbase.staking.min_del_stake}}`，所以以Wei为单位的最低委托数量是`5000000000000000000`
 
 4. 输入候选人的委托数量
 
