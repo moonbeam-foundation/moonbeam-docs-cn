@@ -21,7 +21,7 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 
 --8<-- 'text/common/install-nodejs.md'
 
-#### 安装Substrate API Sidecar {: #installing-the-substrate-api-sidecar }
+### 安装Substrate API Sidecar {: #installing-the-substrate-api-sidecar }
 
 在当前代码库安装Substrate API Sidecar服务，请在命令行运行以下命令：
 
@@ -245,6 +245,59 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 
 !!! 注意事项
     EVM交易号和签名字段位于`extrinsics.{extrinsic number}.args.transaction.{transaction type}`，而`extrinsics.{extrinsic number}`下的`nonce`和`signature`字段是Substrate交易号和签名，需为EVM交易设置为`null`。
+
+    成功执行的EVM交易将在"EVM Execution Status"字段下返回`succeed: "Stopped"`或`succeed: "Returned"`。
+
+### ERC-20代币转账 {: #erc-20-token-transfers }
+
+智能合约（例如部署在Moonbeam上的ERC-20合约）发出的事件可以从Sidecar区块的JSON对象中解码。它的嵌套结构如下：
+
+```JSON
+RESPONSE JSON Block Object:
+    |--extrinsics
+        |--{extrinsic number}
+            |--method
+                |--pallet: "ethereum"
+                |--method: "transact"
+            |--signature:
+            |--nonce: 
+            |--args
+                |--transaction
+                    |--{transaction type}
+            |--hash
+            |--events
+                |--{event number}
+                    |--method
+                        |--pallet: "evm"
+                        |--method: "Log"
+                    |--data
+                        |--0
+                            |-- address
+                            |-- topics
+                                |--0
+                                |--1
+                                |--2
+					        |-- data
+            ...
+    ...
+
+```
+
+Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=_blank}事件，可解码如下：
+
+
+|     交易信息      |                           对应JSON字段                            |
+|:-----------------------:|:---------------------------------------------------------------------:|
+| ERC-20合约地址 | `extrinsics.{extrinsic number}.events.{event number}.data.0.address`  |
+|  事件签名哈希   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
+|     发送人地址      | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
+|    接纳人地址    | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
+|         数额          |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
+
+EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
+
+!!! 注意事项
+    转账金额以Wei和十六进制格式给出。 
 
 
 ### 计算Gas花费 {: #computing-gas-used } 
