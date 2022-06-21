@@ -351,4 +351,45 @@ contract SetText {
 
 这样就意味着您已经成功使用Safe钱包与智能合约交互了！
 
+## 使用Moonbeam Safe API {: #using-moonbeam-safe-apis }
+
+Moonbeam、Moonriver和Moonbase Alpha也支持用API来与Moonbeam Safe进行交互。
+
+=== "Moonbeam"
+     ```
+     {{networks.moonbeam.multisig.api_page }}
+     ```
+
+=== "Moonriver"
+     ```
+     {{networks.moonriver.multisig.api_page}}
+     ```
+
+=== "Moonbase Alpha"
+     ```
+     {{networks.moonbase.multisig.api_page}}
+     ```
+
+作为使用API的示例，请尝试从Moonbeam Safe API检索有关多签钱包的信息。从Safe页面，复制您的多签地址：
+
+![Contract Interaction Call Result](/images/tokens/manage/multisig-safe/safe-30.png)
+
+然后您可以开始使用API：
+
+ 1. 打開對應網絡的API頁面
+ 2. 向下滚动到 **Safes** 部分并单击 **/safes/{address}/** 端点部分以展开其页面
+ 3. 点击右侧的**Try it out**按钮
+
+![Contract Interaction Call Result](/images/tokens/manage/multisig-safe/safe-31.png)
+
+页面中应出现一个**Execute**按钮：
+
+ 1. 将您的保险箱地址粘贴到**Address**输入栏
+ 2. 点击**Execute**
+ 3. 有关您的保险箱的信息将显示在下方
+
+![Contract Interaction Call Result](/images/tokens/manage/multisig-safe/safe-32.png)
+
+恭喜！您已成功使用API for Moonbeam Safes。为了方便或添加到您自己的应用程序中，仍有许多其他端点可供使用。
+
 --8<-- 'text/disclaimers/third-party-content.md'
