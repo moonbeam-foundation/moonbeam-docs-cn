@@ -80,10 +80,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ### Pocket Network {: #pokt }
 
-[Pocket Network](https://pokt.network/){target=_blank} is a decentralized node service that provides a free personal endpoint to DApps on Moonbeam & Moonriver.  
-
-To get your own endpoint, go to [Pocket Network](https://mainnet.portal.pokt.network/#/){target=_blank} and sign up or log in. From the **Portal**, you can:  
-
 [Pocket Network](https://pokt.network/){target=_blank}是一个去中心化的节点服务上，它为Moonbeam和Moonriver上的DApps提供免费的个人端点。
 
 要获取您自己的端点，请前往[Pocket Network](https://mainnet.portal.pokt.network/#/){target=_blank} 并注册或登录。从 **Portal**，您可以：
