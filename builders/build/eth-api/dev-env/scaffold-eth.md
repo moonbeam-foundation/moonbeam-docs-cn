@@ -104,12 +104,12 @@ yarn install
     
     === "Moonbase Alpha"
         ```
-        'moonbaseAlpha:{{ networks.moonbase.rpc_url }}'
+        ethereum: "moonbaseAlpha:{{ networks.moonbase.rpc_url }}"
         ```
     
     === "Moonbeam开发节点"
         ```
-        'moonbeamDevNode:{{ networks.development.rpc_url }}'
+        ethereum: "moonbeamDevNode:{{ networks.development.rpc_url }}"
         ```
 
 2. 接下来，您需要修改`subgraph/subgraph.yaml`。将正在部署的合约中`dataSources/network`字段更改为先前在`docker-compose.yaml`中定义的对应网络名称：
