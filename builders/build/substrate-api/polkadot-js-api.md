@@ -27,22 +27,6 @@ description: 跟随此教程学习如何使用Polkadot.js API库在Moonbeam上�
 yarn add @polkadot/api
 ```
 
-### 安装Moonbeam Types Bundle {: #moonbeam-types-bundle }
-
-要解码Moonbeam自定义事件和类型，你将需要通过添加以下内容至您的`package.json`以将[Moonbeam Types Bundle](https://www.npmjs.com/package/moonbeam-types-bundle){target=_blank}包含在您的项目中：
-
-```json
-"@polkadot/api": "^{{ networks.moonbase.moonbeam_types_bundle.stable_version }}",
-"moonbeam-types-bundle": "^{{ networks.moonbase.moonbeam_types_bundle.polkadot_js_dependency_version }}",
-"typescript": "{{ networks.moonbase.moonbeam_types_bundle.typescript_dependency_version }}"
-```
-
-并将以下文本添加到项目文件的开头：
-
-```javascript
-import { typesBundlePre900 } from "moonbeam-types-bundle"
-```
-
 ## 创建API提供商实例 {: #creating-an-API-provider-instance }
 
 与ETH API库相似，您必须先实例化一个Polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
@@ -246,7 +230,7 @@ console.log(`Derived Address from Private Key: ${otherPair.address}`);
 
 ### 发送基本事务 {: #sending-basic-transactions }
 
-以下是一个从Alice发送基本事务给Bob的示例：
+以下是发送基本交易的示例。此代码示例还将检索交易的编码调用数据，以及交易哈希。
 
 ```javascript
 // Initialize the API provider as in the previous section
@@ -259,12 +243,19 @@ console.log(`Derived Address from Private Key: ${otherPair.address}`);
 const alice = keyring.addFromUri('ALICE-ACCOUNT-PRIVATE-KEY');
 const bob = 'BOB-ACCOUNT-PUBLIC-KEY';
 
-// Sign and send a transfer from Alice to Bob
-const txHash = await api.tx.balances
+// Form the transaction
+const tx = await api.tx.balances
   .transfer(bob, 12345)
-  .signAndSend(alice);
 
-// Show the hash
+// Retrieve the encoded calldata of the transaction
+const encodedCalldata = tx.method.toHex()
+console.log(encodedCallData)
+
+// Sign and send the transaction
+const txHash = await tx
+    .signAndSend(alice);
+
+// Show the transaction hash
 console.log(`Submitted with hash ${txHash}`);
 ```
 
@@ -325,12 +316,99 @@ api.tx.utility
 !!! 注意事项
 ​    您可以通过添加`console.log(api.tx.parachainStaking);`到代码，查看`parachainStaking`模块的全部可用功能。
 
-## 自定义RPC请求 {: #custom-rpc-requests }
+## Substrate和自定义RPC请求 {: #substrate-and-custom-json-rpc-endpoints }
 
 RPC作为函数在特定模块公开显示。这意味着一旦可使用后，您可以通过`api.rpc.<module>.<method>(...params[])`调用任意RPC。这也同样适用于以`polkadotApi.rpc.eth.*`形式使用Polkadot.js API访问以太坊RPC。
 
-您可以通过调用`api.rpc.rpc.methods()`来检查公开的RPC端点的列表，该列表为节点公开的已知RPC列表。
+一些通过Polkadot.js API可用的方法也可以通过Moonbeam节点上的JSON-RPC端点调用。本节将提供一些示例；您可以通过调用 `api.rpc.rpc.methods()` 或下面列出的 `rpc_methods` 端点来查看公开的RPC端点列表。
 
-[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#)提供了使用自定义RPC调用来检查给定事务确定性的示例。
+- **[`methods()`](https://polkadot.js.org/docs/substrate/rpc/#methods-rpcmethods){target=_blank}**
+    - **接口** -  `api.rpc.rpc.methods`
+    - **JSON-RPC** - `rpc_methods`
+    - **返回** - 节点公开的RPC方法列表
+
+    ```bash
+      curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "jsonrpc":"2.0",
+        "id":1,
+        "method":"rpc_methods",
+        "params": []
+      }'
+    ```
+
+- **[`getBlock(hash?: BlockHash)`](https://polkadot.js.org/docs/substrate/rpc/#getblockhash-blockhash-signedblock){target=_blank}**
+    - **接口** - `api.rpc.chain.getBlock`
+    - **JSON-RPC** - `chain_getBlock`
+    - **返回** - 由区块哈希参数指定的区块header和body
+
+    ```bash
+      curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "jsonrpc":"2.0",
+        "id":1,
+        "method":"chain_getBlock",
+        "params": ["0x870ad0935a27ed8684048860ffb341d469e091abc2518ea109b4d26b8c88dd96"]
+      }'
+    ```
+
+- **[`getFinalizedHead()`](https://polkadot.js.org/docs/substrate/rpc/#getfinalizedhead-blockhash){target=_blank}**
+    - **接口** `api.rpc.chain.getFinalizedHead`
+    - **JSON-RPC** `chain_getFinalizedHead`
+    - **返回** 最新最终确定区块的区块哈希
+
+    ```bash
+      curl --location --request POST '{{ networks.moonbase.rpc_url }}' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "jsonrpc":"2.0",
+        "id":1,
+        "method":"chain_getHeader",
+        "params": []
+      }'
+    ```
+
+[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#)提供了使用自定义RPC调用来检查交易确定性的示例。
+
+## 实用工具方法 {: #utilities }
+
+Polkadot.js API 还包括许多实用程序库，用于计算常用的加密原语和哈希函数。
+
+以下示例通过首先计算其RLP（[递归长度前缀](https://eth.wiki/fundamentals/rlp){target=_blank}）编码，然后使用keccak256对结果进行哈希来预先计算Legacy类型以太坊交易的交易哈希。
+
+```javascript
+import { encode } from '@polkadot/util-rlp';
+import { keccakAsHex } from '@polkadot/util-crypto';
+import { numberToHex } from '@polkadot/util';
+
+// Define the raw signed transaction
+const txData = {
+    nonce: numberToHex(1),
+    gasPrice: numberToHex(21000000000),
+    gasLimit: numberToHex(21000),
+    to: '0xc390cC49a32736a58733Cf46bE42f734dD4f53cb',
+    value: numberToHex(1000000000000000000),
+    data: '',
+    v: "0507",
+    r: "0x5ab2f48bdc6752191440ce62088b9e42f20215ee4305403579aa2e1eba615ce8",
+    s: "0x3b172e53874422756d48b449438407e5478c985680d4aaa39d762fe0d1a11683"
+}
+
+// Extract the values to an array
+var txDataArray = Object.keys(txData)
+    .map(function (key) {
+        return txData[key];
+    });
+
+// Calculate the RLP encoded transaction
+var encoded_tx = encode(txDataArray)
+
+// Hash the encoded transaction using keccak256
+console.log(keccakAsHex(encoded_tx))
+```
+
+您可以查看相应的[NPM存储库页面](https://www.npmjs.com/package/@polkadot/util-crypto/v/0.32.19){target=_blank}以获取其中的可用方法列表库及其相关文档。
 
 --8<-- 'text/disclaimers/third-party-content.md'
