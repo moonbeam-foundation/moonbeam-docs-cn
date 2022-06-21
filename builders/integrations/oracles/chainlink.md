@@ -1,6 +1,6 @@
 ---
 title: Chainlink预言机
-description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使用Chainlink预言机喂价。查看Moonriver上可用的价格信息。
+description: 查看Moonbeam上可用的价格信息，和如何通过智能合约或者Javascript使用Chainlink预言机实现智能合约喂价。
 ---
 
 # Chainlink预言机
@@ -9,7 +9,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 ## 概览 {: #introduction } 
 
-开发者现可以使用[Chainlink去中心化的预言机网络](https://chain.link/){target=_blank}在Moonbase Alpha测试网和Moonriver中获取数据。[Price Feeds（喂价）](https://docs.chain.link/docs/architecture-decentralized-model)包含由预言机运营商在智能合约持续更新的实时价格数据，便于其他智能合约的获取及使用。本教程将介绍可用的喂价以及如何在Moonriver上获取最新价格数据。
+开发者现可以使用[Chainlink去中心化的预言机网络](https://chain.link/){target=_blank}在Moonbeam网络上获取数据。[Price Feeds（喂价）](https://docs.chain.link/docs/architecture-decentralized-model)包含由预言机运营商在智能合约持续更新的实时价格数据，便于其他智能合约的获取及使用。本教程将介绍可用的喂价以及如何在Moonriver上获取最新价格数据。
 
 ## 基本请求模型 {: #basic-request-model } 
 
@@ -304,7 +304,7 @@ contract Client is ChainlinkClient {
 
 ### 获取价格数据 {: #fetch-price-data }
 
-Moonbase Alpha和Moonriver均有Data Feed合约，以简化请求喂价的流程。在Moonbase Alpha的现有配置下，Moonbeam团队只运营一个预言机节点，通过单一API来源获取数据。价格数据每分钟查看一次，每小时通过智能合约更新一次，另外在价格变动超过1%时也会进行更新。Moonriver的Data Feed合约由多个Chainlink节点定期更新。
+Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonbase Alpha的现有配置下，Moonbeam团队只运营一个预言机节点，通过单一API来源获取数据。价格数据每分钟查看一次，每小时通过智能合约更新一次，另外在价格变动超过1%时也会进行更新。Moonbeam和Moonriver的Data Feed合约由多个Chainlink节点定期更新。
 
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
@@ -341,7 +341,19 @@ interface AggregatorV3Interface {
 
 如上述接口所示，有5个函数可获取价格：`decimal`、`description`、`version`、`getRoundData`和`latestRoundData`。
 
-目前提供以下报价对的[Data Feed合约](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank} ：
+目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}和Moonbase Alpha提供以下报价对的[Data Feed合约](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}：
+
+=== "Moonbeam"
+
+    |  基础报价对  |                     Data Feed合约                      |
+    |:-----------:|:-----------------------------------------------------------:|
+    | ATOM to USD | {{ networks.moonbeam.chainlink.feed.aggregator.atom_usd }} |
+    | BNB to USD  | {{ networks.moonbeam.chainlink.feed.aggregator.bnb_usd }}  |
+    | BTC to USD  | {{ networks.moonbeam.chainlink.feed.aggregator.btc_usd }}  |
+    | ETH to USD  | {{ networks.moonbeam.chainlink.feed.aggregator.eth_usd }}  |
+    | GLMR to USD | {{ networks.moonbeam.chainlink.feed.aggregator.glmr_usd }} |
+    | LINK to USD | {{ networks.moonbeam.chainlink.feed.aggregator.link_usd }} |
+    | USDC to USD | {{ networks.moonbeam.chainlink.feed.aggregator.usdc_usd }} |
 
 === "Moonriver"
     |  基础报价对 |                      Data Feed合约                      |
@@ -396,7 +408,7 @@ interface AggregatorV3Interface {
 
 举例而言，您可以通过[Remix](https://remix.ethereum.org/){target=_blank}使用Aggregator接口获取`BTC to USD`喂价。如果您需要加载合约至Remix，请参考[使用Remix](/builders/build/eth-api/dev-env/remix/)文档。
 
-您需要将您的MetaMask账户连接至Remix，请确保您已安装MetaMask并已连接至Moonbase Alpha测试网或Moonriver。若您还未设置MetaMask，请参考[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/#install-the-metamask-extension){target=_blank}教程。
+您需要将您的MetaMask账户连接至Remix，请确保您已安装MetaMask并已连接至相应的网络。若您还未设置MetaMask，请参考[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/#install-the-metamask-extension){target=_blank}教程。
 
 创建文件和编译合约后，您将需要执行以下步骤：
 
@@ -410,11 +422,20 @@ interface AggregatorV3Interface {
 
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 
+    === "Moonbeam"
+        ```
+        {{ networks.moonbeam.chainlink.feed.aggregator.btc_usd }}
+        ```
+        
     === "Moonriver"
-        `{{ networks.moonriver.chainlink.feed.aggregator.btc_usd }}`
+        ```
+        {{ networks.moonriver.chainlink.feed.aggregator.btc_usd }}
+        ```
 
     === "Moonbase Alpha"
-        `{{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}`
+        ```
+        {{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}
+        ```
 
 ![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
 
