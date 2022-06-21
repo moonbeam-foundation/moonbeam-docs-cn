@@ -100,19 +100,19 @@ yarn install
 
 1. 首先，修改`servers/graph-node/environment/ethereum`下的`scaffold-eth/packages/services/graph-node/docker-compose.yaml`文件，将The Graph节点的RPC端点更改为索引。
 
-    对于Moonbeam或Moonriver，您可以使用私有的[RPC网络端点](/builders/get-started/endpoints/){target=_blank}。对于Moonbase Alpha或Moonbeam开发节点，您可以使用以下端点：
+    对于Moonbeam或Moonriver，您可以使用私有的[RPC网络端点](/builders/get-started/endpoints/){target=_blank}和相应的网络前缀。对于Moonbase Alpha或Moonbeam开发节点，您可以使用以下端点：
     
     === "Moonbase Alpha"
         ```
-        'mbase:{{ networks.moonbase.rpc_url }}'
+        ethereum: "moonbaseAlpha:{{ networks.moonbase.rpc_url }}"
         ```
     
     === "Moonbeam开发节点"
         ```
-        'mbase:{{ networks.development.rpc_url }}'
+        ethereum: "moonbeamDevNode:{{ networks.development.rpc_url }}"
         ```
 
-2. 接下来，您需要修改`subgraph/src/subgraph.template.yaml`。将正在部署的合约中`dataSources/network`字段更改为先前在`docker-compose.yaml`中定义的对应网络名称：
+2. 接下来，您需要修改`subgraph/subgraph.yaml`。将正在部署的合约中`dataSources/network`字段更改为先前在`docker-compose.yaml`中定义的对应网络名称：
 
     === "Moonbeam"
         ```
@@ -126,43 +126,15 @@ yarn install
     
     === "Moonbase Alpha"
         ```
-        network: mbase 
+        network: moonbaseAlpha 
         ```
     
     === "Moonbeam开发节点"
         ```
-        network: mbase 
+        network: moonbeamDevNode
         ```
     
-3. 接着，在同一个文件`subgraph.template.yaml`中，将`dataSources/source/address`字段更改为：
-
-    === "Moonbeam"
-        ```
-        {% raw %}
-        address: "{{moonbeam_YourContractAddress}}"
-        {% endraw %}
-        ```
-    
-    === "Moonriver"
-        ```
-        {% raw %}
-        address: "{{moonriver_YourContractAddress}}"
-        {% endraw %}
-        ```
-    
-    === "Moonbase Alpha"
-        ```
-        {% raw %}
-        address: "{{moonbaseAlpha_YourContractAddress}}"
-        {% endraw %}
-        ```
-        
-    === "Moonbeam开发节点"
-        ```
-        {% raw %}
-        address: "{{moonbeamDevNode_YourContractAddress}}"
-        {% endraw %}
-        ```
+3. 接着，在同一个文件`subgraph.yaml`中，将`dataSources/source/address`字段更改为含有`0x`前缀的合约部署地址
     
 4. 最后，在同一个文件`subgraph.template.yaml`中，将`dataSources/mapping/abis/file`字段更改为：
 
@@ -185,6 +157,9 @@ yarn install
         ```
         file: ./abis/moonbeamDevNode_YourContract.json
         ```
+    !!! 注意事项
+        如果您不部署示例合约，此处的文件名将有所不同，但遵循相同的 `<网络前缀>_<合约文件名>` 格式。
+
 
 关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=_blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=_blank}。
 
@@ -240,6 +215,8 @@ yarn install
     
     ![Contract deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-3.png)
 
+    如果您要使用The Graph，请将部署的合约地址填入`subgraph.yaml`。如果不用The Graph，你可以跳到第5步来启动React 服务器
+
 3. 接下来，通过输入以下命令以创建sub-graph：
 
     ```
@@ -250,9 +227,25 @@ yarn install
 
 4. 接下来，部署sub-graph至本地graph节点：
 
-    ```
-    yarn graph-ship-local
-    ```
+    === "Moonbeam"
+        ```
+        yarn graph-codegen && yarn graph-build --network moonbeam && yarn graph-deploy-local
+        ```
+
+    === "Moonriver"
+        ```
+        yarn graph-codegen && yarn graph-build --network moonriver && yarn graph-deploy-local
+        ```
+
+    === "Moonbase Alpha"
+        ```
+        yarn graph-codegen && yarn graph-build --network moonbaseAlpha && yarn graph-deploy-local
+        ```
+
+    === "Moonbeam Dev Node"
+        ```
+        yarn graph-codegen && yarn graph-build --network moonbeamDevNode && yarn graph-deploy-local
+        ```
     
     系统将提示您为正在部署的sub-graph输入版本名称
 

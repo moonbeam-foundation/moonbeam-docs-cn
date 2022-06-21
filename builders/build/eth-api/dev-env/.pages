@@ -5,6 +5,6 @@ nav:
   - 'Remix': 'remix.md'
   - 'Hardhat': 'hardhat.md'
   - 'Truffle': 'truffle.md'
-  - 'Waffle和Mars': 'waffle-mars.md'
+  - 'Waffle & Mars': 'waffle-mars.md'
   - 'Brownie': 'brownie.md'
-  - '使用Scaffold-ETH': 'scaffold-eth.md'
+  - 'Scaffold-ETH': 'scaffold-eth.md'
