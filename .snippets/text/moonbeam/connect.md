@@ -4,7 +4,7 @@ Moonbeam有两种端点可供用户连接：一种是HTTPS，另一种是WSS。
 
 如果您需要适用于生产环境使用的端点，请参考Moonbeam官方资料库的[端点提供者](/builders/get-started/endpoints/#endpoint-providers)部分。如果仅为开发环境使用，您可以使用以下HTTPS或WSS端点：
 
---8<-- 'code/endpoints/moonbeam.md'
+--8<-- 'text/endpoints/moonbeam.md'
 
 ## 快速开始 {: #quick-start }
 

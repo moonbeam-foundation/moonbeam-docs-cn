@@ -17,15 +17,15 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ### Moonbeam {: #moonbeam }
 
---8<-- 'code/endpoints/moonbeam.md'
+--8<-- 'text/endpoints/moonbeam.md'
 
 ### Moonriver {: #moonriver }
 
---8<-- 'code/endpoints/moonriver.md'
+--8<-- 'text/endpoints/moonriver.md'
 
 ### Moonbase Alpha {: #moonbase-alpha }
 
---8<-- 'code/endpoints/moonbase.md'
+--8<-- 'text/endpoints/moonbase.md'
 
 ## 端点提供商 {: #endpoint-providers } 
 
