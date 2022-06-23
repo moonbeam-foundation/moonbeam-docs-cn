@@ -68,7 +68,9 @@ module.exports = {
     moonbase: { ... }
   },
   etherscan: {
-    apiKey: moonscanApiKey
+    apiKey: {
+      moonbaseAlpha: moonscanApiKey
+    }  
   }
 };
 ```
