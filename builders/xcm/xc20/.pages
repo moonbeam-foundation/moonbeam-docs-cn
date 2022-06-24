@@ -3,3 +3,5 @@ nav:
     - index.md
     - '概览': 'overview.md'
     - '传送XC-20': 'xtokens.md'
+    - '可铸造XC-20': 'mintable-xc20.md'
+    - 'XC-20转账': 'xtokens.md'
