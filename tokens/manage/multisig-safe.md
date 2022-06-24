@@ -376,7 +376,7 @@ Moonbeam、Moonriver和Moonbase Alpha也支持用API来与Moonbeam Safe进行交
 
 然后您可以开始使用API：
 
- 1. 打開對應網絡的API頁面
+ 1. 打开对应网络的API页面
  2. 向下滚动到 **Safes** 部分并单击 **/safes/{address}/** 端点部分以展开其页面
  3. 点击右侧的**Try it out**按钮
 
