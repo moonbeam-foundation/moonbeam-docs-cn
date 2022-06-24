@@ -9,7 +9,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 ## 概览 {: #introduction }
 
-如同[XC-20概况](/builders/xcm/xc20/overview)文章内所述{target=_blank}，[XC-20有两种类型](/builders/xcm/xc20/overview#types-of-xc-20s){target_=blank}：[外部的](/builders/xcm/xc20/xc20){target=*blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/xcm/xc20/overview)文章内所述{target=_blank}，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
+如同[XC-20概况](/builders/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
 
 所有XC-20核心皆为Substrate类型资产。一般而言，开发者需要通过Substrate API与任何Substrate资产交互。然而，Moonbeam移除了Substrate的相关部分并让用户和开发者能够通过预编译合约的ERC-20接口与此类资产交互。因此，开发者能够使用标准的以太坊开发者工具与这些资产交互。可铸造XC-20包含ERC-20接口的扩展以及一些关于管理资产和元数据设置（如名称、象征和资产小数位数等）的信息。此外，同样有一些额外的角色供资产进行注册和管理。
 
@@ -47,7 +47,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 - **thaw_asset()** —— 解锁整个资产运行和Token，仅有所有者（Owner）和管理员（Admin）能够使用此函数
 - **transfer_ownership(*address* owner)** —— 将此资产的所有权转移至新的指定账户，仅有所有者（Owner）能够使用此函数
 - **set_team(*address* issuer, *address* admin, *address* freezer)** —— 允许所有者（Owner）设定此Token的发行者（Issuer）、管理员（Admin）以及锁定者（Freezer）。请查看[可铸造XC-20角色](#mintable-xc-20-roles)部分以查看每个角色的细节。仅有所有者（Owner）能够使用此函数
-- **set_metadata(*string calldata* name, *string calldata* symbol, *uint8* decimals)** —— 设定此资产的名称、符号以及资产位数。资产位数可以自行配置并不需要于Moonbeam原生资产具有相同的资产位数。
+- **set_metadata(*string calldata* name, *string calldata* symbol, *uint8* decimals)** —— 设定此资产的名称、符号以及资产位数。资产位数可以自行配置并不需要于Moonbeam原生资产具有相同的资产位数
 - **clear_metadata()** —— 清除此资产现有的名称、符号以及资产位数
 
 ## 获取可铸造XC-20资产的列表 {: #retrieve-list-of-mintable-xc-20s }
@@ -55,7 +55,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 要获取Moonbase Alpha测试网上目前可用的可铸造XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。不同于外部XC-20资产，可铸造XC-20资产并不会在**Assets**栏位下出现。要查询可用的可铸造XC-20资产，您需要导向至**Developer**标签，并在下拉菜单中选择**Chain State**，然后跟随以下步骤：
 
 1.   在**selected state query**下拉菜单中，选择**localAssets**
-    --8<-- 'text/xc-20/list-of-assets.md'
+--8<-- 'text/xc-20/list-of-assets.md'
 
 ![Fetch list of cross-chain assets](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-1.png)
 
@@ -66,7 +66,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 要快速获得特定可铸造XC-20资产的相关信息（如名称、符号等）您可以使用**metadata** extrinsic以获得其元数据。举例而言，您可以使用资产ID`144992676743556815849525085098140609495`，并跟随以下步骤进行操作：
 
 1. 在**selected state query**下拉菜单中，选择**localAssets**
-    --8<-- 'text/xc-20/retrieve-metadata.md'
+--8<-- 'text/xc-20/retrieve-metadata.md'
 
 ![Get asset metadata](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-2.png)
 
@@ -98,8 +98,9 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 要在Moonbase Alpha上注册一个可铸造XC-20资产，您需要准备以下内容：
 
-- [安装MetaMasak并将其连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
-- 一个拥有`DEV`的账户，您可以至[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){taget=_blank}获得Token以进行测试
+- [安装MetaMask并将其连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
+- 具有拥有一定数量DEV的账户
+ --8<-- 'text/faucet/faucet-list-item.md'
 
 ### 创建提案{: #create-a-proposal } 
 
@@ -120,7 +121,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
     {{ networks.moonbase.mintable_xc20.asset_deposit }} DEV
     ```
 
-接着，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。在网页最上方点击**Governance**并在下拉菜单中选择**Democracy**。接着，选择**++Submit preimage Governance**并跟随以下步骤进行操作：
+接着，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。在网页最上方点击**Governance**并在下拉菜单中选择**Democracy**。接着，选择**+ Submit preimage**并跟随以下步骤进行操作：
 
 1. 选择您希望用于创建提案所要用的账户
 

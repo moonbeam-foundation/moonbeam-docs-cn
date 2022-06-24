@@ -96,7 +96,8 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 - [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或拥有2个账户
-- 至少其中一个账户拥有足够的`DEV` Token。您可以通过[Mission Control](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}获得Token以进行测试
+- 至少有一个账户拥有`DEV` Token
+--8<-- 'text/faucet/faucet-list-item.md'
 - 您想要交互的XC-20预编译地址。计算预编译地址的操作说明会有些许不同，这取决于XC-20资产是迁移至Moonbeam的外部资产或是直接在Moonbeam上铸造
     - [计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
     - [计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
@@ -117,7 +118,7 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 1. 点击（从上至下的）第二个**Compile**标签
 
-2. 编译**IER20.sol**文档
+2. 编译**IERC20.sol**文档
 
 ![Compiling IERC20.sol](/images/builders/xcm/xc20/overview/overview-2.png)
 

@@ -97,7 +97,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 7. 定义XCM目标multilocation，您需要将Moonbase Alpha的中继链中的一个账户作为初始点。因此，您需要设置以下参数：
 
-    | Parameter |     Value      |
+    | 参数 |     数值      |
     |:---------:|:--------------:|
     |  Version  |       V1       |
     |  Parents  |       1        |
@@ -131,7 +131,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 4. 定义XCM资产multilocation，您需要将Moonbase Alpha的中继链中的`UNIT`作为初始点。每条链皆有不同的定义方法。因此，您需要为各个目标设置不同的资产multilocation。在此例而言，中继链Token将会通过以下函数定义：
 
-    | Parameter | Value |
+    | 参数 | 数值 |
     |:---------:|:-----:|
     |  Version  |  V1   |
     |  Parents  |   1   |
@@ -139,7 +139,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
     
     如果您要将本教程修改成适应可铸造XC-20资产，您需要指定创建资产和资产ID的pallet。因此，您需要设置以下参数：
 
-    |   Parameter    |     Value      |
+    |   参数    |     数值      |
     |:--------------:|:--------------:|
     |    Version     |       V1       |
     |    Parents     |       1        |
@@ -153,7 +153,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 7. 定义XCM目标multilocation，您需要将Moonbase Alpha的中继链中的一个账户作为初始点。因此，您需要设置以下参数：
 
-    | Parameter |     Value      |
+    | 参数 |     数值      |
     |:---------:|:--------------:|
     |  Version  |       V1       |
     |  Parents  |       1        |
@@ -198,7 +198,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 此接口包含以下函数：
 
- - **transfer**(*address* currency_address, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](/builders/xcm/xc20/xtokens/#xtokens-transfers-function)中提及的`transfer`函数。然而，在使用币种ID之外，您需要为`currency_address`提供资产预编译地址：
+ - **transfer**(*address* currency_address, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](/builders/xcm/xc20/xtokens/#xtokens-transfer-function)中提及的`transfer`函数。然而，在使用币种ID之外，您需要为`currency_address`提供资产预编译地址：
 
     - 对于[外部XC-20](/builders/xcm/xc20/xc20){target=_blank}，您可以提供[XC-20预编译地址](/builders/xcm/xc20/xc20/#current-xc20-assets){target=_blank}
     - 对于[可铸造XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}，您可以遵循[计算预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}的操作说明
