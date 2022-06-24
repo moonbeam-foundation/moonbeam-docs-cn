@@ -48,7 +48,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 4. 确认选择的网络并按**Activate**
 5. 您将可以在**Active Endpoints**下看到您选择的网络。单击此网络，您将在下一页看到您的自定义RPC和WSS端点
 
-![Bware Labs](/images/builders/get-started/endpoints/endpoints-1.png)
+![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
 
 ### Dwellir {: #dwellir }
 
@@ -76,7 +76,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 在下拉菜单中选择网络
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-2.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-4.png)
 
 ### Pocket Network {: #pokt }
 
@@ -90,7 +90,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 输入你的DApp名称，选择你对应的网络
 4. 您的新端点将生成并显示在以下应用程序屏幕中
 
-![Pocket Network](/images/builders/get-started/endpoints/endpoints-4.png)
+![Pocket Network](/images/builders/get-started/endpoints/endpoints-5.png)
 
 您不必为每个端点生成一个新的DApp！您可以将新链添加到您现有的DApp中：
 
