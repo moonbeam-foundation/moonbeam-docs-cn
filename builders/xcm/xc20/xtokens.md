@@ -221,7 +221,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 请注意每个multilocation皆有`parents`元素，请使用`uint8`和一组字节定义。Parents代表有多少“hops”在通过中继链中您需要执行的传递向上方向。作为`uint8`，您将会看到以下数值：
 
-|   Origin    | Destination | Parents Value |
+|   起源    | 目的地 | parents值 |
 |:-----------:|:-----------:|:-------------:|
 | Parachain A | Parachain A |       0       |
 | Parachain A | Relay Chain |       1       |
@@ -229,7 +229,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 字节阵列（`bytes[]`）定义了内部参数以及其在multilocation的内容。阵列的大小则根据以下定义`interior`数值：
 
-|    Array     | Size | Interior Value |
+|    数组     | 大小 | interior值 |
 |:------------:|:----:|:--------------:|
 |      []      |  0   |      Here      |
 |    [XYZ]     |  1   |       X1       |
@@ -238,7 +238,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 假设所有字节阵列包含数据。所有元素的首个字节（2个十六进制数值）与`XN`部分的选择器相关，举例来说：
 
-| Byte Value |    Selector    | Data Type |
+| 字节数值 |    选项    | 数据类型 |
 |:----------:|:--------------:|-----------|
 |    0x00    |   Parachain    | bytes4    |
 |    0x01    |  AccountId32   | bytes32   |
@@ -250,7 +250,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 接着，根据选择器及其数据类型，以下字节对应于提供的实际数据。请注意在Polkadot.js Apps示例中出现的`AccountId32`，`AccountIndex64`和`AccountKey20`，`network`将会在最后添加。如下所示：
 
-|    Selector    |       Data Value       |        Represents         |
+|    选项    |       数据值       |        代表         |
 |:--------------:|:----------------------:|:-------------------------:|
 |   Parachain    |    "0x00+000007E7"     |     Parachain ID 2023     |
 |  AccountId32   | "0x01+AccountId32+00"  | AccountId32, Network Any  |
