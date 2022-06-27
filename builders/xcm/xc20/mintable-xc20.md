@@ -94,7 +94,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 这一部分将会引导您如何在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}注册一个资产并使用[Remix](https://remix.ethereum.org/){target=_blank}与可铸造XC-20资产特定的函数交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面的[如何使用Remix与预编译合约交互](/builders/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
 
-### Checking Prerequisites {: #checking-prerequisites } 查看先决条件 {: #checking-prerequisites }
+### 查看先决条件 {: #checking-prerequisites }
 
 要在Moonbase Alpha上注册一个可铸造XC-20资产，您需要准备以下内容：
 
@@ -102,7 +102,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 - 具有拥有一定数量DEV的账户
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### 创建提案{: #create-a-proposal } 
+### 创建提案 {: #create-a-proposal } 
 
 要在Moonbeam上创建可铸造XC-20资产，首个步骤为创建提案。资产的创建者（Creator）将需要存入一定资产，每个网络所需的锁定数量如下：
 
