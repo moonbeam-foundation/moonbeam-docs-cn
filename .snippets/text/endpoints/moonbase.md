@@ -1,5 +1,5 @@
 === "HTTPS"
-    |  Provider  |                                           RPC URL                                           |
+    |  供应商  |                                           RPC URL                                           |
     |:----------:|:-------------------------------------------------------------------------------------------:|
     |   Blast    |    <pre style="padding-right: 2em">```https://moonbase-alpha.public.blastapi.io```</pre>    |
     | OnFinality | <pre style="padding-right: 2em">```https://moonbeam-alpha.api.onfinality.io/public```</pre> |
@@ -7,7 +7,7 @@
 
         
 === "WSS"
-    |  Provider  |                                           RPC URL                                            |
+    |  供应商  |                                           RPC URL                                            |
     |:----------:|:--------------------------------------------------------------------------------------------:|
     |   Blast    |     <pre style="padding-right: 2em">```wss://moonbase-alpha.public.blastapi.io```</pre>      |
     | OnFinality | <pre style="padding-right: 2em">```wss://moonbeam-alpha.api.onfinality.io/public-ws```</pre> |
