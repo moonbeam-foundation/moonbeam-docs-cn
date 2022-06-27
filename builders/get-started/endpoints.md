@@ -47,7 +47,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 选择[Moonbeam网络](https://www.ankr.com/protocol/public/moonbeam/){target=_blank}
 3. 复制提供的节点URL即可以开始发出请求；无需注册或KYC
 
-![Ankr](/images/builders/get-started/endpoints/endpoints-5.png)
+![Ankr](/images/builders/get-started/endpoints/endpoints-1.png)
 
 ### Blast {: #blast }
 
