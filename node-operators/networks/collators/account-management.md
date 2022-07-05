@@ -41,7 +41,7 @@ curl http://127.0.0.1:9933 -H \
 
 收集人节点应使用新的会话密钥的相应公钥进行响应。
 
-![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/account-management/account-2.png)
+![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/account-management/account-2-for-cn.png)
 
 请记住您将需要为每个要生成的会话密钥调用`author_rotateKeys`。确保您已记下每个会话密钥的公钥。您的每台服务器，包括主服务器和备份服务器，都应该拥有其独特的密钥。由于密钥永远不会离开您的服务器，因此您可以将其视为该服务器的唯一ID。
 
@@ -88,11 +88,9 @@ curl http://127.0.0.1:9933 -H \
 
   6. 点击**Submit Transaction**
 
-![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
+![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3-for-cn.png)
 
 如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
-
-![Author ID Mapping to Account Extrinsic Successful](/images/node-operators/networks/collators/account-management/account-4.png)
 
 ### 检查映射设定 {: #checking-the-mappings }
 
@@ -106,7 +104,7 @@ curl http://127.0.0.1:9933 -H \
 
   4. 点击**+**按钮传送PRC调用
 
-![Author ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5.png)
+![Author ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5-for-cn.png)
 
 您应该能够看到与提供的author ID相关联的H160帐户。如果未包含author ID，这将返回存储在链上的所有映射。
 
