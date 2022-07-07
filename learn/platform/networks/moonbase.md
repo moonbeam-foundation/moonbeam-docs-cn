@@ -41,7 +41,7 @@ Moonbase Alpha具有以下配置：
     |         变量         |                                                            值                                                             |
     |:------------------------:|:----------------------------------------------------------------------------------------------------------------------------:|
     |      投票期       |      {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{networks.moonbase.democracy.vote_period.days}}天)      |
-    | 快速通道投票期 | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{networks.moonbase.democracy.fast_vote_period.days}}天) |
+    | 快速通道投票期 | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{networks.moonbase.democracy.fast_vote_period.hours}}小时) |
     |     执行期     |     {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{networks.moonbase.democracy.enact_period.days}}天      |
     |     冷静期      |      {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{networks.moonbase.democracy.cool_period.days}}天)      |
     |     最低存入量      |                                      {{ networks.moonbase.democracy.min_deposit }} DEV                                       |
