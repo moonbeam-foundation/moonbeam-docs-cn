@@ -39,7 +39,7 @@ _更新至2021年5月26日_
 |    变量    |                             数值                             |
 | :--------: | :----------------------------------------------------------: |
 |   投票期   | {{ networks.moonriver.democracy.vote_period.blocks}}区块（{{ networks.moonriver.democracy.vote_period.days}}天） |
-| 快速投票期 | {{ networks.moonriver.democracy.fast_vote_period.blocks}}区块（{{ networks.moonriver.democracy.fast_vote_period.hours}}天） |
+| 快速投票期 | {{ networks.moonriver.democracy.fast_vote_period.blocks}}区块（{{ networks.moonriver.democracy.fast_vote_period.hours}}小时） |
 |   颁布期   | {{ networks.moonriver.democracy.enact_period.blocks}}区块（{{ networks.moonriver.democracy.enact_period.days}}天） |
 |   冷却期   | {{ networks.moonriver.democracy.cool_period.blocks}}区块（{{ networks.moonriver.democracy.cool_period.days}}天） |
 | 最低保证金 |     {{ networks.moonriver.democracy.min_deposit }} MOVR      |
