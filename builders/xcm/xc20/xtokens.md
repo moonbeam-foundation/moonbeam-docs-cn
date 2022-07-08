@@ -17,7 +17,10 @@ description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另�
 
 **开发者须知若发送不正确的XCM信息可能会导致资金丢失。**因此，XCM功能需先在测试网上进行测试后才可移至生产环境。
 
+## 相关XCM定义 {: #relevant-xcm-definitions }
+
 --8<-- 'text/xcm/general-xcm-definitions.md'
+--8<-- 'text/xcm/general-xcm-definitions2.md'
 
 ## X-Tokens Pallet接口 {: #x-tokens-pallet-interface}
 
@@ -32,7 +35,7 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 其中需要提供信息输入的函数定义如下：
 
- - **currencyId/currencies** —— 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`OtherReserve`代表其资产
+ - **currencyId/currencies** —— 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`ForeignAsset`代表其XC-20资产ID（而不是其XC-20地址）
  - **amount** —— 将通过XCM转移的Token数量
  - **dest** —— 一个multilocation，用于定义将通过XCM转移Token的目标地址。其支持不同地址格式，如20或32字节的地址（以太坊或是Substrate格式）
  - **destWeight** —— 您提供给目标链希望其执行XCM信息的最大执行时间。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
@@ -81,20 +84,14 @@ X-Tokens pallet提供以下extrinsics（函数）：
 
 在本示例中，您将会构建一个XCM信息，通过X-Tokens pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
-导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项：
+导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项（也可以适用于[可铸造XC-20s](/builders/xcm/xc20/mintable-xc20/){target=_blank}）：
 
 1. 选取您希望转移XCM的账户
-
 2. 选择**xTokens** pallet
-
 3. 选择**transfer** extrinsic
-
 4. 将外部XC-20的币种ID设置为**ForeignAsset**或将可铸造XC-20的币种ID设置为**LocalAssetReserve**。因为`xcUNIT`是外部XC-20，所以您需要选择**ForeignAsset**
-
 5. 输入资产ID。在本示例中，`xcUNIT`的资产ID为`42259045809535163221576417993425387648`
-
-6. 设置需要转移的Token数量。在本示例中，您将转移1个`xcUNIT`，但您需要注意`xcUNIT`后有12位小数位，因此您可以设置为`1000000000000`
-
+6. 设置需要转移的Token数量。在本示例中，您将转移1个`xcUNIT`，但您需要注意`xcUNIT`后有12位小数位
 7. 定义XCM目标multilocation，您需要将Moonbase Alpha的中继链中的一个账户作为初始点。因此，您需要设置以下参数：
 
     | 参数 |     数值      |
@@ -192,7 +189,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
      {{networks.moonbase.precompiles.xtokens}}
      ```
 
-### X-Tokens Solidity接口 {: #the-democracy-solidity-interface }
+### X-Tokens Solidity接口  {: #xtokens-solidity-interface } 
 
 [Xtokens.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与X-Tokens pallet交互的接口。
 
@@ -212,59 +209,12 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 在X-Tokens预编译接口中，`Multilocation`架构根据下列函数定义：
 
-```js
- struct Multilocation {
-    uint8 parents;
-    bytes [] interior;
-}
-```
-
-请注意每个multilocation皆有`parents`元素，请使用`uint8`和一组字节定义。Parents代表有多少“hops”在通过中继链中您需要执行的传递向上方向。作为`uint8`，您将会看到以下数值：
-
-|   起源    | 目的地 | parents值 |
-|:-----------:|:-----------:|:-------------:|
-| Parachain A | Parachain A |       0       |
-| Parachain A | Relay Chain |       1       |
-| Parachain A | Parachain B |       1       |
-
-字节阵列（`bytes[]`）定义了内部参数以及其在multilocation的内容。阵列的大小则根据以下定义`interior`数值：
-
-|    数组     | 大小 | interior值 |
-|:------------:|:----:|:--------------:|
-|      []      |  0   |      Here      |
-|    [XYZ]     |  1   |       X1       |
-|  [XYZ, ABC]  |  2   |       X2       |
-| [XYZ, ... N] |  N   |       XN       |
-
-假设所有字节阵列包含数据。所有元素的首个字节（2个十六进制数值）与`XN`部分的选择器相关，举例来说：
-
-| 字节数值 |    选项    | 数据类型 |
-|:----------:|:--------------:|-----------|
-|    0x00    |   Parachain    | bytes4    |
-|    0x01    |  AccountId32   | bytes32   |
-|    0x02    | AccountIndex64 | u64       |
-|    0x03    |  AccountKey20  | bytes20   |
-|    0x04    | PalletInstance | byte      |
-|    0x05    |  GeneralIndex  | u128      |
-|    0x06    |   GeneralKey   | bytes[]   |
-
-接着，根据选择器及其数据类型，以下字节对应于提供的实际数据。请注意在Polkadot.js Apps示例中出现的`AccountId32`，`AccountIndex64`和`AccountKey20`，`network`将会在最后添加。如下所示：
-
-|    选项    |       数据值       |        代表         |
-|:--------------:|:----------------------:|:-------------------------:|
-|   Parachain    |    "0x00+000007E7"     |     Parachain ID 2023     |
-|  AccountId32   | "0x01+AccountId32+00"  | AccountId32, Network Any  |
-|  AccountKey20  | "0x03+AccountKey20+00" | AccountKey20, Network Any |
-| PalletInstance |       "0x04+03"        |     Pallet Instance 3     |
-
-!!! 注意事项
-    `interior`数据通常需要使用引号包含。如果您未遵循此规则，您将会获得`invalid tuple value`错误。
+--8<-- 'text/xcm/xcm-precompile-multilocation.md'
 
 以下代码片段包含`Multilocation`架构的部分示例，因为其将会在X-Token预编译函数中使用：
 
-
 ```js
-// Multilocation targeting the relay chain asset from a parachain
+// Multilocation targeting the relay chain or its asset from a parachain
 {
     1, // parents = 1
     [] // interior = here
