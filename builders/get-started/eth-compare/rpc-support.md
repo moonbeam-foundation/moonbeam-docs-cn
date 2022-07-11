@@ -40,7 +40,7 @@ Moonbeam团队与[Parity](https://www.parity.io/)密切合作开发[Frontier](ht
  - **[eth_sendRawTransaction](https://eth.wiki/json-rpc/API#eth_sendrawtransaction)** —— 为已签名的交易创建新的消息调用交易或创建合约。返回交易哈希，如果交易尚不可用，则返回零哈希
  - **[eth_call](https://eth.wiki/json-rpc/API#eth_call)** —— 立即执行新的消息调用，无需在区块链上创建交易，返回已执行调用的值
  - **[eth_estimateGas](https://eth.wiki/json-rpc/API#eth_estimategas)** —— 返回指定交易成功所需的预计gas费。您可以选择质地指定`gasPrice`或`maxFeePerGas`和`maxPriorityFeePerGas`
-  - **[eth_feeHistory](https://github.com/ethereum/execution-apis/blob/main/src/eth/fee_market.json)** —— 返回指定范围内（最多1024个区块）的baseFeePerGas、gasUsedRatio、oldestBlock和奖励
+  - **[eth_feeHistory](https://docs.alchemy.com/alchemy/apis/ethereum/eth-feehistory)** —— 返回指定范围内（最多1024个区块）的baseFeePerGas、gasUsedRatio、oldestBlock和奖励
  - **[eth_getTransactionByHash](https://eth.wiki/json-rpc/API#eth_gettransactionbyhash)** —— 返回指定哈希的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
  - **[eth_getTransactionByBlockHashAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblockhashandindex)** —— 返回指定区块哈希和指定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
  - **[eth_getTransactionByBlockNumberAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblocknumberandindex)** —— 返回指定区块号和制定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段

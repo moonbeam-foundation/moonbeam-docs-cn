@@ -86,7 +86,7 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
     | [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}  |   {{networks.moonbeam.precompiles.crowdloan }}   |
     |                [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                  |    {{networks.moonbeam.precompiles.xtokens}}     |
     |        [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}         | {{networks.moonbeam.precompiles.relay_encoder}}  |
-    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm_transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonbeam.precompiles.xcm_transactor}} |
+    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonbeam.precompiles.xcm_transactor}} |
     |  [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}   | {{networks.moonbeam.precompiles.author_mapping}} |
 
 === "Moonriver"
@@ -98,7 +98,7 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
     |     [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}       |   {{networks.moonriver.precompiles.democracy}}    |
     |                [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                  |    {{networks.moonriver.precompiles.xtokens}}     |
     |        [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}         | {{networks.moonriver.precompiles.relay_encoder}}  |
-    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm_transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonriver.precompiles.xcm_transactor}} |
+    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonriver.precompiles.xcm_transactor}} |
     |  [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}   | {{networks.moonriver.precompiles.author_mapping}} |
 
 === "Moonbase Alpha"
@@ -110,6 +110,6 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
     |     [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}       |   {{networks.moonbase.precompiles.democracy}}    |
     |                [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                  |    {{networks.moonbase.precompiles.xtokens}}     |
     |        [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}         | {{networks.moonbase.precompiles.relay_encoder}}  |
-    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm_transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonbase.precompiles.xcm_transactor}} |
+    |      [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/XcmTransactor.sol){target=_blank}        | {{networks.moonbase.precompiles.xcm_transactor}} |
     |  [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}   | {{networks.moonbase.precompiles.author_mapping}} |
 
