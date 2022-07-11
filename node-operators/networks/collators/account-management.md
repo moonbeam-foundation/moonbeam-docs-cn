@@ -78,7 +78,7 @@ curl http://127.0.0.1:9933 -H \
  1. 选择您要映射author ID的关联帐户（用于签署交易）
  2. 选择**authorMapping** extrinsic
  3. 将方法设置为 **setKeys()**
- 4. 输入密钥。就是上一节通过RPC调用`author_rotateKeys`得到的响应，就是你的author ID和VRF会话密钥的串联公钥
+ 4. 输入 **keys**。就是上一节通过RPC调用`author_rotateKeys`得到的响应，就是你的author ID和VRF会话密钥的串联公钥
  5. 点击**Submit Transaction**
 
 ![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
