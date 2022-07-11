@@ -17,16 +17,15 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 ## 生成会话密钥 {: #session-keys }
 
-为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from){target=_blank}。本教程将向您展示如何创建/转换与收集人节点相关联的会话密钥。您将需要为以下各项生成会话密钥：
-
-- author ID，用于签署区块并与H160账户创建关联以接收区块奖励
-- [VRF](https://wiki.polkadot.network/docs/learn-randomness#vrf){target=_blank}密钥，用于区块生产
+为了符合Substrate标准，Moonbeam收集人的会话密钥为[SR25519](https://wiki.polkadot.network/docs/learn-keys#what-is-sr25519-and-where-did-it-come-from){target=_blank}。本教程将向您展示如何创建/转换与收集人节点相关联的会话密钥。
 
 首先，请确保您正在[运行收集人节点](/node-operators/networks/run-a-node/overview/){target=_blank}。开始运行收集人节点后，您的终端应出现类似以下日志：
 
 ![Collator Terminal Logs](/images/node-operators/networks/collators/account-management/account-1.png)
 
-接下来，通过使用`author_rotateKeys`方法将RPC调用发送到HTTP端点来创建/转换会话密钥。举例而言，如果您的收集人HTTP端点位于端口`9933`，则JSON-RPC调用可能如下所示：
+接下来，通过使用`author_rotateKeys`方法将RPC调用发送到HTTP端点来创建/转换会话密钥。当您调用 `author_rotateKeys` 时，结果是两个密钥的大小。回复将包含串联的作者ID（Nimbus 密钥）和VRF密钥。作者ID 用于签署区块并创建与您的H160帐户的关联，以便支付区块奖励。区块生产需要[VRF](https://wiki.polkadot.network/docs/learn-randomness#vrf){target=_blank}密钥。
+
+举例而言，如果您的收集人HTTP端点位于端口`9933`，则JSON-RPC调用可能如下所示：
 
 ```
 curl http://127.0.0.1:9933 -H \
@@ -39,11 +38,11 @@ curl http://127.0.0.1:9933 -H \
   }'
 ```
 
-收集人节点应使用新的会话密钥的相应公钥进行响应。
+收集人节点应使用串联的新会话密钥的相应公钥进行回复。`0x`前缀后的前64位十六进制字符代表您的作者ID，最后64位十六进制字符是您的VRF会话密钥的公钥。在下一部分映射您的作者ID和设置会话密钥时，您将使用串联的公钥。
 
-![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/account-management/account-2-for-cn.png)
+![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/account-management/account-2.png)
 
-请记住您将需要为每个要生成的会话密钥调用`author_rotateKeys`。确保您已记下每个会话密钥的公钥。您的每台服务器，包括主服务器和备份服务器，都应该拥有其独特的密钥。由于密钥永远不会离开您的服务器，因此您可以将其视为该服务器的唯一ID。
+确保您已记下串联的会话密钥公钥。您的每台服务器，包括主服务器和备份服务器，都应该拥有其独特的密钥。由于密钥永远不会离开您的服务器，因此您可以将其视为该服务器的唯一ID。
 
 接下来，您将需要注册您的会话密钥并将author ID会话密钥映射到H160以太坊格式的地址（用于接收区块奖励）。
 
@@ -57,14 +56,14 @@ curl http://127.0.0.1:9933 -H \
 
 `authorMapping`模块具有以下extrinsics编程：
 
- - **registerKeys**(*address* authorID, *address* keys) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这在一次调用中不仅增加了关联，而且也设置了会话密钥。这将需要一定的[绑定数量](#:~:text=网络发送的Token数量设置如下所示)。取代已弃用的`addAssociation` extrinsic
- - **clearAssociation**(*address* authorID) —— 将清除author ID和发送交易的H160账户之间的连接，需要由author ID的持有者进行操作。这将退还绑定数量
- - **setKeys**(*address* oldAuthorID, *address* newAuthorID, *address* newKeys) —— 将旧的author ID映射到新的author ID，并设置会话密钥。这对私钥转换和迁移极为实用。`registerKeys`和`clear`两个关联extrinsics将会被自动执行，使得私钥转换无需第二次绑定。取代已弃用的`updateAssociation` extrinsic
+ - **setKeys**(*address* keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置作者ID和会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币]（#:~:text=Token数量设置如下）。替换弃用的`addAssociation`和`updateAssociation`函数
+- **removeKeys**() - 删除作者 ID 和会话密钥。替换已弃用的“clearAssociation”extrinsic
 
 以下函数**已弃用**，但仍存在向后兼容性：
 
  - **addAssociation**(*address* authorID) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#:~:text=The bond set is as follows)。此函数通过默认将`keys`设置为author ID来保持向后兼容性
  - **updateAssociation**(*address* oldAuthorID, *address* newAuthorID) —— 将旧的author ID映射到新的author ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定。此函数通过默认将`newKeys`设置为author ID来保持向后兼容性
+ - **clearAssociation**(*address* authorID) — 清除作者ID与发送交易的H160帐户的关联，该帐户需要是该作者ID的所有者。也退还押金
 
 这个模块同时也新增以下RPC调用（链状态）：
 
@@ -77,22 +76,31 @@ curl http://127.0.0.1:9933 -H \
 如果您想要将您的author ID映射到您的账户，您需要成为[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中的一员。当您成为候选人后，您需要传送您的映射extrinsic。请注意，每一次注册author ID将会绑定Token。要执行操作，点击页面上方的**Developer**，在下拉菜单中选择**Extrinsics**选项，然后执行以下步骤：
 
  1. 选择您要映射author ID的关联帐户（用于签署交易）
-
  2. 选择**authorMapping** extrinsic
+ 3. 将方法设置为 **setKeys()**
+ 4. 输入 **keys**。就是上一节通过RPC调用`author_rotateKeys`得到的响应，就是你的author ID和VRF会话密钥的串联公钥
+ 5. 点击**Submit Transaction**
 
- 3. 选择**registerKeys()**函数
-
- 4. 输入**authorId** (**NimbusId**)。在本示例中，可在前一个部分通过RPC调用`author_rotateKeys`获得
-
- 5. 在**keys**字段中，输入VRF密钥。这可以通过RPC调用`author_rotateKeys`获得
-
-  6. 点击**Submit Transaction**
-
-![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3-for-cn.png)
+![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
 
 如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
 
 ### 检查映射设定 {: #checking-the-mappings }
+
+您也可以通过验证链上状态来确认目前的链上映射情况。要检查特定的作者ID，您可以使用串联公钥的前64位十六进制字符来获取作者ID。要验证作者ID是否正确，您可以运行以下命令，并将前64个字符传递到`params`数组中：
+
+```
+curl http://127.0.0.1:9933 -H "Content-Type:application/json;charset=utf-8" -d   '{
+  "jsonrpc":"2.0",
+  "id":1,
+  "method":"author_hasKey",
+  "params": ["72c7ca7ef07941a3caeb520806576b52cb085f7577cc12cd36c2d64dbf73757a", "nmbs"]
+}'
+```
+
+如果正确，则响应应返回`"result": true`。
+
+![Check Nimbus Key](/images/node-operators/networks/collators/account-management/account-4.png)
 
 您也可以通过验证链上状态来确认目前的链上映射情况。要执行操作，点击页面上方的**Developer**，在下拉菜单中选择**Chain State**选项，然后执行以下步骤：
 
@@ -104,7 +112,7 @@ curl http://127.0.0.1:9933 -H \
 
   4. 点击**+**按钮传送PRC调用
 
-![Author ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5-for-cn.png)
+![Author ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5.png)
 
 您应该能够看到与提供的author ID相关联的H160帐户。如果未包含author ID，这将返回存储在链上的所有映射。
 
