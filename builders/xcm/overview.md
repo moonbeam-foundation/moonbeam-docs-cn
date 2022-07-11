@@ -32,8 +32,6 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一�
  - **Transact** — 执行编码的函数调用
  - **DepositAsset** — 减去持有的资产并将等价资产（或衍生物）存入给定账户
 
-For example, an XCM message that transfers KSM from Kusama to Moonriver will include the following XCM instructions (in that order), which are partly executed on Kusama and partly executed on Moonriver:
-
 例如，一条将KSM从Kusama转帐到Moonriver的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Kusama上执行，部分在Moonriver上执行：
 
  1. [DepositReserveAsset](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Kusama执行
@@ -53,9 +51,9 @@ For example, an XCM message that transfers KSM from Kusama to Moonriver will inc
 - **跨链信息传递（XCMP）** —— 在连接至同一个中继链的情况下，允许两个平行链相互交换信息。跨链交易使用基于Merkle Tree的基础排队机制以确保真确度。收集人在平行链间交换信息，而中继链验证人将会对这些信息进行验证。
 
 !!! 注意事项
-    目前，XCMP仍在开发当中。当前暂时使用称为水平中继路由信息传递（HRMP）进行传递，信息将会在中继链存储和读取，此协议将会在XCMP完整部署后弃用
+    目前，XCMP仍在开发当中。当前暂时使用称为水平中继路由信息传递（HRMP）进行传递，信息将会在中继链存储和读取，此协议将会在XCMP完整部署后弃用。
 
-![Vertical Message Passing and Cross-chain Messge Passing Overview](/images/builders/xcm/overview/overview-1.png)
+![Vertical Message Passing and Cross-chain Message Passing Overview](/images/builders/xcm/overview/overview-1.png)
 
 除此之外，至少在XCM信息实现的早期阶段，有两个最常见的用例：
 
