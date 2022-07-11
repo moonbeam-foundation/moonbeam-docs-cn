@@ -176,7 +176,7 @@ fetch_wallet_balance('0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8')
     `auth`的第二个参数留空，因为不需要密码，只需要您的API密钥。
 
 ### 由社区创建的工具库 {: #community-built-libraries } 
-Covalent目前拥有Python、Node、Go代码库，这些代码库作为[Covalent Alchemists项目](https://www.covalenthq.com/ambassador/)的一部分，都是由社区进行创建和维护。这些社区创建的工具为Covalent API用户带来价值，可以在[这里获取](https://www.covalenthq.com/docs/tools/community)。
+Covalent目前拥有Python、Node、Go代码库，这些代码库作为[Covalent Alchemists项目](https://www.covalenthq.com/alchemists/)的一部分，都是由社区进行创建和维护。这些社区创建的工具为Covalent API用户带来价值，可以在[这里获取](https://www.covalenthq.com/docs/tools/community)。
 
 !!! 注意事项
     这些工具并非由Covalent进行维护。用户需要自行尽职调查，在使用这些项目的工具之前对其进行评估。
