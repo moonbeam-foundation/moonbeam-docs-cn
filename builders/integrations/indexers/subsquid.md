@@ -3,7 +3,7 @@ title: 使用Subsquid检索Moonbeam数据
 description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate和EVM数据
 ---
 
-# 在Mooinbeam上使用Subsquid进行检索
+# 在Moonbeam上使用Subsquid进行检索
 
 ![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
 
@@ -98,7 +98,7 @@ type Transfer @entity {
 }
 ```
 
-其中有几点关于[模式定义](https://docs.subsquid.io/reference/openreader-schema){target=_blank}，值得注意的部分如下所示：
+其中有几点关于[模式定义](https://docs.subsquid.io/docs/query-squid/openreader-schema/annotations-directives){target=_blank}，值得注意的部分如下所示：
 
   - **`@entity`** —— 表示此类型将被转换在数据库中储存的ORM模型
   - **`@derivedFrom`** —— 表示数据中的区域将不会永久保持，而会进行变化
@@ -127,7 +127,7 @@ Subsquid支持为Substrate数据源（事件、extrinsics和储存项）自动�
     touch src/abis/ERC721.json
     ```
     
-2. 复制[ERC-721接口的ABI](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/code/subsquid/erc721.md){target=_blank}，并粘贴至`ERC721.json`文件
+2. 复制[ERC-721接口的ABI](https://www.github.com/PureStake/moonbeam-docs/blob/master/.snippets/code/subsquid/erc721.md){target=_blank}，并粘贴至`ERC721.json`文件
 
 !!! 注意事项
     ERC-721 ABI定义了合约里面所有事件的签名。`Transfer`事件有三个函数，分别为 `from`、`to`和`tokenId`，其类型分别为`address`、`address`和`uint256`。因此，`Transfer`事件真正的定义将为`Transfer(address, address, uint256)`。
@@ -159,7 +159,7 @@ npx squid-evm-typegen --abi src/abi/ERC721.json --output src/abi/erc721.ts
 
 ## 定义和绑定事件处理程序 {: #define-and-bind-event-handlers }
 
-Subsquid SDK提供用户[处理器](https://docs.subsquid.io/key-concepts/processor){target=_blank}，*被称为`SubstrateProcessor`，在特定情况下被称为[`SubstrateEvmProcessor`](https://docs.subsquid.io/reference/evm-processor)。*处理器连接至 [Subsquid archive](https://docs.subsquid.io/key-concepts/architecture#archive){target=_blank}以获取链上数据。其自开始设定的开始区块运作，直到设定的最后一个区块或是新的数据被加入至链上时停止。
+Subsquid SDK提供用户[处理器](https://docs.subsquid.io/docs/develop-a-squid/squid-processor){target=_blank}，被称为`SubstrateProcessor`，在特定情况下被称为[`SubstrateEvmProcessor`](https://docs.subsquid.io/docs/develop-a-squid/evm-support/evm-processor){target=_blank}。*处理器连接至 [Subsquid archive](https://docs.subsquid.io/docs/archives/){target=_blank}以获取链上数据。其自开始设定的开始区块运作，直到设定的最后一个区块或是新的数据被加入至链上时停止。
 
 处理器提供会“处理”如同Substrate事件、extrinsics、储存项或是EVM记录等特定数据的附加函数。这函数能够通过指定事件、extrinsic名称、EVM记录合约地址进行配置。当处理器正在处理数据时，如果其遇到配置的事件名称，他将会执行“处理”函数内的内容。
 
@@ -431,7 +431,7 @@ query MyQuery {
 
 ## 发布项目 {: #publish-the-project }
 
-Subsquid提供一个SaaS解决方案以托管其社区创建的项目。请查看Subsquid官方文档网站上[部署您的Squid的教程](https://docs.subsquid.io/tutorial/deploy-your-squid){target=_blank}以获取更多信息。
+Subsquid提供一个SaaS解决方案以托管其社区创建的项目。请查看Subsquid官方文档网站上[部署您的Squid的教程](https://docs.subsquid.io/docs/deploy-squid/){target=_blank}以获取更多信息。
 
 您同样可以导向至[Aquarium](https://app.subsquid.io/aquarium){target=_blank}查看其托管的项目。
 

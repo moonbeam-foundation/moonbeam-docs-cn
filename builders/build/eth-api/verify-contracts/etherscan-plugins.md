@@ -46,7 +46,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 
 ## 使用Hardhat Etherscan插件 {: #using-the-hardhat-etherscan-plugin }
 
-本教程此部分将以[使用Hardhat部署至Moonbeam](builders/build/eth-api/dev-env/hardhat/){target=_blank}所创建的`Box.sol`合约为例。
+本教程此部分将以[使用Hardhat部署至Moonbeam](/builders/build/eth-api/dev-env/hardhat/){target=_blank}所创建的`Box.sol`合约为例。
 
 开始使用Hardhat Etherscan插件之前，您需要先运行以下代码安装插件库：
 

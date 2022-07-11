@@ -51,7 +51,7 @@ Moonbeam上的[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/pre
 
 标准的ERC-20 `approve`函数在其设计中受到限制，因为`allowance`仅能由交易的发送者`msg.sender`进行修改。您可在[OpenZeppelin的ERC-20接口的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L136){target=_blank}中找到，通过[`msgSender`函数](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol#L17){target=_blank}设置`owner`，最终将其设置为`msg.sender`。
 
-用户可以签署信息而非签署`approve`交易，该签名可以用于调用`permit`函数以修改`allowance`。如此一来，仅需少量gas即可进行Token转移。另外，用户也无需发送两次交易来批准和转移Token。关于`permit`函数的示例，请查看[OpenZeppelin的ERC-20 Permit扩展的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20 /extensions/draft-ERC20Permit.sol#L41){target=_blank}。
+用户可以签署信息而非签署`approve`交易，该签名可以用于调用`permit`函数以修改`allowance`。如此一来，仅需少量gas即可进行Token转移。另外，用户也无需发送两次交易来批准和转移Token。关于`permit`函数的示例，请查看[OpenZeppelin的ERC-20 Permit扩展的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L41){target=_blank}。
 
 The [Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口包含以下函数：
 
@@ -147,4 +147,4 @@ XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现�
 
 ![Interact with the precompile functions](/images/builders/xcm/xc20/overview/overview-4.png)
 
-如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
+如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
