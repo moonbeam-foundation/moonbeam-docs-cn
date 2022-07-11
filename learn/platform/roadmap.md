@@ -15,8 +15,6 @@ Moonbeam一直处于密集开发阶段。
 
 ## Moonbeam和Moonriver于2022年第一季度-第二季度的路线图 {: #q1-q2-2022-roadmap-for-moonbeam-and-moonriver }
 
-![Q1-Q2 2022 Roadmap](/images/learn/platform/roadmap/roadmap.png)
-
 ### 互操作性 {: #interoperability }
 
 互操作性一直是项目开发的重中之重，特别是XCM开发。更多关于XCM信息，请查看Moonbeam官方资料库的[XCM](/builders/xcm/)部分。
