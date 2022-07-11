@@ -3,7 +3,7 @@ title: 使用Subsquid检索Moonbeam数据
 description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate和EVM数据
 ---
 
-# 在Mooinbeam上使用Subsquid进行检索
+# 在Moonbeam上使用Subsquid进行检索
 
 ![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
 
