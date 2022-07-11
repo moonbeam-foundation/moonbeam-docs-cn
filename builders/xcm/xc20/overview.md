@@ -57,7 +57,7 @@ The [Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/a
 
 - **permit(*address* owner, *address* spender, *uint256*, value, *uint256*, deadline, *uint8* v, *bytes32* r, *bytes32* s)** —— 任何人均可调用批准permit
 - **nonces(*address* owner)** —— 反馈给定所有者当前的nonce
-- **DOMAIN_SEPARATOR()** —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612/#specification){target=_blank}实现
+- **DOMAIN_SEPARATOR()** —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现
 
 **DOMAIN_SEPARATOR()**是在[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中定义，计算如下：
 
