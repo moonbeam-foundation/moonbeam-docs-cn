@@ -49,15 +49,15 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
     1. 关于**Select a network**，您可以选择任一Moonbeam网络。在本示例中，您可以选择**Moonbeam**
 
-        ![Select Moonbeam](/images/builders/integrations/indexers/subquery/subquery-1.png)    
+        ![Select Moonbeam](/images/builders/integrations/indexers/subquery/subquery-1-for-cn.png)    
 
     2. 您可以为每个网络选择一个模板项目（每个网络都有启动项目供你使用）。尤其是Moonriver，您可以在标准启动项目和EVM启动项目中选择。本教程将基于Moonriver EVM启动项目操作，但将从适用Moonbeam的可用标准启动项目进行构建。接下来，您可以选择**moonbeam-starter**
 
-        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2.png)    
+        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2-for-cn.png)    
 
     3. 这将复制启动项目，随后您可以根据提示回答一些额外的问题。您可以直接按回车键输入默认值或者根据需求输入自定义值
 
-        ![Create project](/images/builders/integrations/indexers/subquery/subquery-2.png)   
+        ![Create project](/images/builders/integrations/indexers/subquery/subquery-3-for-cn.png)   
 
 4. 这将为您的SubQuery项目自动创建一个目录。您只需要从项目目录中安装依赖项：
 
@@ -256,7 +256,7 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
     yarn codegen
     ```
     
-    ![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-4.png)   
+    ![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-5.png)   
 
 8. 要部署您的项目至SubQuery管理的服务器，您必须在上传前构建您的配置。您可以通过运行以下代码完成配置：
 
@@ -264,7 +264,7 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
     yarn build
     ```
     
-    ![yarn build results](/images/builders/integrations/indexers/subquery/subquery-5.png)   
+    ![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)   
 
 9. 使用Docker[发布您的项目](https://doc.subquery.network/publish/publish/){target=blank}至[SubQuery项目](https://project.subquery.network/)或本地[运行一个SubQuery节点](https://doc.subquery.network/run/run/){target=_blank}
 
@@ -272,7 +272,7 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
     docker-compose pull && docker-compose up
     ```
     
-    ![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-6.png)   
+    ![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-7.png)   
 
     !!! 注意事项
         第一次下载所需安装包可能会需要一些时间，但不久您便可以看到一个正在运行的SubQuery节点。
@@ -281,11 +281,11 @@ import { FrontierEvmEvent, FrontierEvmCall } from '@subql/contract-processors/di
 
 启动您的数据库和同步节点可能会需要一些时间，但最终您将看到您的节点开始生产区块。
 
-![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-7.png)   
+![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.png)   
 
 现在您可以打开浏览器输入http://localhost:3000查询您的项目，在该页面，您将找到GraphQL playground。在playground的右上角，找到**Docs**按钮，可以打开文档。该文档自动生成，可协助寻找您可查询的实体或者函数。
 
-![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-8.png)   
+![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.png)   
 
 恭喜您！现在您已经拥有一个接受GraphQL API查询的Moonbeam SubQuery项目！请注意，根据您所配置的初始区块，索引Moonbeam可能需要几天时间。
 
