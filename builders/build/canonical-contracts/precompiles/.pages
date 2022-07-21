@@ -5,6 +5,6 @@ nav:
   - '原生Token ERC-20': 'erc20.md'
   - '质押功能': 'staking.md'
   - '民主': 'democracy.md'
-  - '批量': 'batch.md'
+  - '批量处理': 'batch.md'
   - 'X-Tokens': '/builders/xcm/xc20/xtokens/#xtokens-precompile'
   - 'XCM-Transactor': '/builders/xcm/xcm-transactor/#xcmtransactor-precompile'

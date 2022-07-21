@@ -1,7 +1,7 @@
 ---
 title:  批量预编译合约
 description:  学习如何一次通过Moonbeam预编译批量合约执行多个转账交易以及合约交互。
-关键词：solidity、以太坊、批量、交易、moonbeam、预编译、合约
+keywords: solidity、以太坊、批量、交易、moonbeam、预编译、合约
 ---
 
 # 与批量预编译合约交互
@@ -217,7 +217,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
   **"moonbeam"**这个单词应当显示在下方。恭喜！您已成功使用批量预编译合约与函数交互。
 
-### 整合子交易 {: combining-subtransactions }
+### 整合子交易 {: #combining-subtransactions }
 
 目前为止，传送原生资产和与函数交互为分开的状态，但实际上两者可以整合在一起。
 
