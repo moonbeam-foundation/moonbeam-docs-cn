@@ -6,7 +6,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, token, 原
 
 #  原生Token ERC-20预编译
 
-![Precomiled Contracts Banner](/images/builders/build/canonical-contracts/precompiles/erc20/erc20-banner.png)
+![Precompiled Contracts Banner](/images/builders/build/canonical-contracts/precompiles/erc20/erc20-banner.png)
 
 ## 概览 {: #introduction }
 
