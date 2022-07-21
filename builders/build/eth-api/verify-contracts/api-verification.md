@@ -385,7 +385,7 @@ Sourcify支持两种验证匹配结果。
 
 同样的，您能够使用[Sourcify拥有的GUI](https://sourcify.dev/#/verifier){target=blank}提交合约验证。
 
-### 通过地址和链ID查看验证状态 {: check-verification-status-by-address-and-chain-id } 
+### 通过地址和链ID查看验证状态 {: #check-verification-status-by-address-and-chain-id } 
 
 Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态，这可以通过URL函数实现，如指定合约地址以及网络的链ID。
 
@@ -428,7 +428,7 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
 ]
 ```
 
-### 为验证合约检索源文件 {: get-contract-source-files-for-verified-contracts }
+### 为验证合约检索源文件 {: #get-contract-source-files-for-verified-contracts }
 
 您同样可以通过Sourcify库检索验证合约的源文件。
 
