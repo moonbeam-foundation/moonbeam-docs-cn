@@ -45,7 +45,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或是拥有两个账户以测试批量预编译合约的不同功能
-- 至少拥有一个具有`DEV`的账户
+- 至少拥有一个具有`DEV`的账户。
    --8<-- 'text/faucet/faucet-list-item.md'
 
 ## 使用Remix与预编译合约交互 {: #interact-with-the-precompile-using-remix }
@@ -147,7 +147,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 当交易完成后，确保您查看两个地址的余额，不论是通过MetaMask或是[区块浏览器](/builders/get-started/explorers/){target=_blank}皆可。恭喜您！您已经成功通过批量预编译合约传送批量交易。
 
 !!! 注意事项
-     一般而言如果您希望通过合约传送资产或是传送资产至合约当中，您将会需要在整体交易对象中设定传送数量并与支付函数交互。然而，由于批量预编译合约直接与Substrate代码交互，并不是一个一般的以太坊交易，因此无需设置上述数据。
+    一般而言如果您希望通过合约传送资产或是传送资产至合约当中，您将会需要在整体交易对象中设定传送数量并与支付函数交互。然而，由于批量预编译合约直接与Substrate代码交互，并不是一个一般的以太坊交易，因此无需设置上述数据。
 
 ### 查看合约交易调用数据 {: #find-a-contract-interactions-call-data }
 
