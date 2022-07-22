@@ -3,3 +3,4 @@ nav:
   - index.md
   - '区块浏览器': 'block-explorers.md'
   - 'Etherscan插件': 'etherscan-plugins.md'
+  - '基于API的合约验证': 'api-verification.md'
