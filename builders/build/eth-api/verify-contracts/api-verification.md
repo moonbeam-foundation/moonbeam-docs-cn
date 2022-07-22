@@ -70,7 +70,6 @@ Moonbeam相关网络的Moonscan API URL如下：
         libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
         // ...
     }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
-    ```
 
     if (response.data.status == "1") {
         // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
@@ -106,7 +105,6 @@ Moonbeam相关网络的Moonscan API URL如下：
         libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
         // ...
     }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
-    ```
 
     if (response.data.status == "1") {
         // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
@@ -142,7 +140,6 @@ Moonbeam相关网络的Moonscan API URL如下：
         libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
         // ...
     }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
-    ```
 
     if (response.data.status == "1") {
         // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
@@ -311,7 +308,6 @@ Sourcify支持两种验证匹配结果。
         },
         "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
     })
-    ```
 
     if (result.status == "perfect") {
         // perfect match
@@ -340,7 +336,6 @@ Sourcify支持两种验证匹配结果。
         },
         "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
     })
-    ```
 
     if (result.status == "perfect") {
         // perfect match
@@ -369,7 +364,6 @@ Sourcify支持两种验证匹配结果。
         },
         "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
     })
-    ```
 
     if (result.status == "perfect") {
         // perfect match
@@ -398,7 +392,7 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
             ?addresses={INSERT-ADDRESS-1-HERE, INSERT-ADDRESS-2-HERE, ...}
             &chainIds={INSERT-CHAIN-ID-1, INSERT-CHAIN-ID-2, ...}
     ```
-=== "Partial Match 部分匹配"
+=== "部分匹配"
 
     ```bash
     curl https://sourcify.dev/server/check-all-by-addresses
