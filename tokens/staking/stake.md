@@ -30,7 +30,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 加入或离开委托人集 {: #join-or-leave-the-delegator-set }
 
  - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 委托收集人。数额需要大于最低委托质押量。取代已弃用的`nominate`函数
- - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=退出委托人集延迟)，随后才能执行请求。取代已弃用的`leaveNominators`函数
+ - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=退出委托人集延迟){target=_blank}，随后才能执行请求。取代已弃用的`leaveNominators`函数
  - **executeLeaveDelegators**(*uint256* delegatorDelegationCount) —— 执行离开委托人集。该函数仅用于已在计划之内的离开行为，且退出已生效之后。最终，所有正在进行的委托将被撤销
  - **cancelLeaveDelegators**() —— 取消已在离开计划的委托人集的请求
 
