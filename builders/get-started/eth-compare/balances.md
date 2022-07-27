@@ -43,14 +43,7 @@ Moonbeam上的账户是一个拥有Token余额（Token种类取决于网络）�
 
 ![View balances on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-3.png)
 
-You can also view your balance locks using Polkadot.js Apps. Before getting started, make sure Polkadot.js Apps is connected to the correct network. Then go ahead and select the **Developer** tab, then choose **Chain State**, and take the following steps:
-
 您还可以使用Polkadot.js Apps查看您的余额锁定。在开始之前，请确保Polkadot.js Apps连接到正确的网络。然后点击**Developer**标签，然后选择 **Chain State**，并执行以下步骤：
-
-1. Select **balances** from the **selected state query** dropdown
-2. Choose the **locks** extrinsic
-3. Enter your address
-4. Click the **+** button to submit the extrinsic
 
 1. 从**selected state query**下拉列表中选择**balances**
 2. 选择**locks** extrinsic
