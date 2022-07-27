@@ -6,7 +6,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, solidity
 
 # 与质押预编译交互
 
-![Staking Moonbeam Banner](/images/builders/build/canonical-contracts/precompiles/staking/staking-banner.png)
+![Staking Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/staking/staking-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -134,7 +134,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 2. 将文档内容复制并粘贴至名为StakingInterface.sol的Remix文档
 
-![Copying and Pasting the Staking Interface into Remix](/images/builders/build/canonical-contracts/precompiles/staking/staking-1.png)
+![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/staking-1.png)
 
 ## 编译合约 {: #compile-the-contract }  
 
@@ -142,7 +142,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 2. 编译[Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
 
-![Compiling StakingInteface.sol](/images/builders/build/canonical-contracts/precompiles/staking/staking-2.png)
+![Compiling StakingInteface.sol](/images/builders/pallets-precompiles/precompiles/staking/staking-2.png)
 
 ## 读取合约 {: #access-the-contract } 
 
@@ -156,7 +156,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 5. 平行链质押预编译将出现在**Deployed Contracts**列表
 
-![Provide the address](/images/builders/build/canonical-contracts/precompiles/staking/staking-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/staking/staking-3.png)
 
 ## 委托一个收集人 {: #delegate-a-collator }
 
@@ -178,7 +178,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 4. 调用完成后，将会显示结果
 
-![Call collator delegation count](/images/builders/build/canonical-contracts/precompiles/staking/staking-4.png)
+![Call collator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-4.png)
 
 ### 获取现有委托数量 {: #get-your-number-of-existing-delegations }
 
@@ -192,7 +192,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 4. 调用完成后，将会显示结果
 
-![Call delegator delegation count](/images/builders/build/canonical-contracts/precompiles/staking/staking-5.png)
+![Call delegator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-5.png)
 
 ### 调用委托 {: #call-delegate }
 
@@ -212,7 +212,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 7. MetaMask将跳出弹窗，请查看详情并确认交易
 
-![Delegate a Collator](/images/builders/build/canonical-contracts/precompiles/staking/staking-6.png)
+![Delegate a Collator](/images/builders/pallets-precompiles/precompiles/staking/staking-6.png)
 
 ## 验证委托 {: #verify-delegation }
 
@@ -230,7 +230,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 5. 点击**Save**
 
-![Add to Address Book](/images/builders/build/canonical-contracts/precompiles/staking/staking-7.png)
+![Add to Address Book](/images/builders/pallets-precompiles/precompiles/staking/staking-7.png)
 
 ### 验证委托人状态 {: #verify-delegator-state }
 
@@ -249,7 +249,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 !!! 注意事项
     如果您想要查看委托概述，无需在**blockhash to query at**字段中输入任何内容。
 
-![Verify delegation](/images/builders/build/canonical-contracts/precompiles/staking/staking-8.png)
+![Verify delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-8.png)
 
 ## 撤销一个委托 {: #revoking-a-delegation }
 
@@ -271,7 +271,7 @@ Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbea
 
 4. MetaMask将跳出弹窗，请查看详情并点击**confirm**
 
-![Revoke delegation](/images/builders/build/canonical-contracts/precompiles/staking/staking-9.png)
+![Revoke delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-9.png)
 
 当交易成功确认，您将会需要等待延迟时段后才能为您执行撤回委托的请求。如果您尝试在延迟时段前操作，该操作将会失败
 

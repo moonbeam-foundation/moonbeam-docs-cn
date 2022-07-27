@@ -6,7 +6,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 # 与民主预编译交互
 
-![Staking Moonbeam Banner](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-banner.png)
+![Staking Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/democracy/democracy-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -76,7 +76,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 2. 将档案内容复制并贴上至[Remix](https://remix.ethereum.org/){target=_blank}，并将其命名为DemocracyInterface.sol
 
-![Copying and Pasting the Democracy Interface into Remix](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-1.png)
+![Copying and Pasting the Democracy Interface into Remix](/images/builders/pallets-precompiles/precompiles/democracy/democracy-1.png)
 
 ## 编译合约 {: #compile-the-contract } 
 
@@ -84,7 +84,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 2. 编译[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}
 
-![Compiling DemocracyInteface.sol](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-2.png)
+![Compiling DemocracyInteface.sol](/images/builders/pallets-precompiles/precompiles/democracy/democracy-2.png)
 
 ## 访问合约 {: #access-the-contract } 
 
@@ -98,7 +98,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 5. 此民主预编译将会出现在**Deployed Contracts**列表中
 
-![Provide the address](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/democracy/democracy-3.png)
 
 ## 提交提案 {: #submit-a-proposal } 
 
@@ -116,7 +116,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
   5. 点击**Submit preimage**按钮，但请不要在下一页签署和确认此交易
 
-![Get the proposal hash](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-4.png)
+![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-4.png)
 
 在下个页面，根据以下步骤进行操作：
 
@@ -124,7 +124,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
   2. 复制带编码的提案——您将在随后步骤中使用**note_preimage**时用到它
 
-![Get the encoded proposal](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-5.png)
+![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
 
 !!! 注意事项
      请**不要**在此签署和提交交易。您将会在随后步骤中通过**note_preimage**提交此信息。
@@ -141,7 +141,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 5. 点击**transact**并在MetaMask确认交易
 
-![Call the propose function](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-6.png)
+![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
 
 ### 提交原像（Preimage） {: #submit-the-preimage } 
 
@@ -155,7 +155,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 4. 点击**transact**并在MetaMask确认交易
 
-![Submit the preimage](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-7.png)
+![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的民主页面中确认您的提案是否在提案列表当中。
 
@@ -177,7 +177,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 5. 记录已附议的数字。如果并没有任何支持，此区块将会保持空白
 
-![Get the proposal information](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-8.png)
+![Get the proposal information](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
 
 ### 调用Second函数 {: #call-the-second-function } 
 
@@ -195,7 +195,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
 
-![Second via the precompile](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-9.png)
+![Second via the precompile](/images/builders/pallets-precompiles/precompiles/democracy/democracy-9.png)
 
 !!! 注意事项
     提案编码与公投编码不同。当提案进入公投状态，其将会获得新的公投索引编码。
@@ -216,7 +216,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 4. 记录公投编码
 
-![Get the referendum index](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-10.png)
+![Get the referendum index](/images/builders/pallets-precompiles/precompiles/democracy/democracy-10.png)
 
 ### 使用标准投票函数 {: #call-the-standard-vote-function } 
 
@@ -236,6 +236,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 7. 点击**transact**并在MetaMask确认此交易
 
-![Call the vote function](/images/builders/build/canonical-contracts/precompiles/democracy/democracy-11.png)
+![Call the vote function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-11.png)
 
 恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[*Discord*](https://discord.gg/moonbeam){target=_blank}询问。
