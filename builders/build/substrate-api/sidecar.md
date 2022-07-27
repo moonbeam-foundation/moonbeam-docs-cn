@@ -23,11 +23,14 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 
 ### 安装Substrate API Sidecar {: #installing-the-substrate-api-sidecar }
 
-在当前代码库安装Substrate API Sidecar服务，请在命令行运行以下命令：
+在当前目录下本地安装Substrate API Sidecar服务，请在命令行运行以下命令：
 
 ```
 npm install @substrate/api-sidecar@{{ networks.moonbase.substrate_api_sidecar.stable_version }}
 ```
+
+!!!注意事项
+     如果当前目录还没有Node.js项目结构，则需要先执行`mkdir node_modules`，手动创建`node_modules`目录。
 
 Substrate API Sidecar v{{ networks.moonbase.substrate_api_sidecar.stable_version }}是当前经过测试过可与Moonbeam网络共同使用的稳定版本。您可以通过在安装的根目录运行以下命令来验证是否成功安装：
 
