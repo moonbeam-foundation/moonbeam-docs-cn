@@ -202,7 +202,7 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 --8<-- 'code/setting-up-node/runnodewithsealinginterval.md'
 ```
 
-- **`-l <log pattern>` or `--log <log pattern>`**：设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有RPC日志，该命令应如下所示：`-l rpc=trace`
+- **`-l <log pattern>` or `--log <log pattern>`**：设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON RPC日志，该命令应如下所示：`-l json=trace`
 - **`--sealing <interval>`**：当区块需要被密封在开发服务中。可接受的时间间隔参数为 `instant`、 `manual`或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`
 - **`--rpc-port <port>`**：设置HTTP RPC服务器的TCP端口。接受端口作为参数
 - **`--ws-port <port>`**：设置WebSockets RPC服务器的TCP端口。 接受端口作为参数

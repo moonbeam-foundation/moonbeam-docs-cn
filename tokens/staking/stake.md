@@ -156,7 +156,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ### 质押Token {: #staking-your-tokens }
 
-使用Polkadot.js Apps交互界面进入质押功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[此教程](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}。
+使用Polkadot.js Apps交互界面进入质押功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[创建或引入H160账户教程](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}。
 
 在本示例中，我们导入了一个账户，并命名为：Alice。Alice的地址为 `0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`。
 
@@ -178,12 +178,11 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 ![Staking Join Delegators Extrinsics](/images/tokens/staking/stake/stake-15.png)
 
 !!! 注意事项
-
 ​    第6步和第7步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
 
-交易确认后可以返回到**Accounts**标签查看预留余额（应与质押的Token数量一致）。
+### 确认委托 {: #verifying-delegations }
 
-您可以在**Developer**标签下的**Chain state**中查看委托是否成功。
+交易确认后，您可以在**Developer**标签下的**Chain state**中查看委托是否成功。
 
 ![Staking Account and Chain State](/images/tokens/staking/stake/stake-7.png)
 
@@ -193,7 +192,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
  2. 选择状态以查询。在本示例中为**delegatorState**
  3. 验证所选地址是否正确。在本示例中为Alice的账户
  4. 确保**include option**滑块处于打开状态
- 5. 点击**+**按钮发送状态查询
+ 5. 点击 **+**按钮发送状态查询
 
 ![Staking Chain State Query](/images/tokens/staking/stake/stake-16.png)
 
@@ -249,7 +248,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 1. 选择移除所有委托的账户
 2. 选择**parachainStaking** pallet
 3. 选择**executeLeaveDelegators**函数
-4. 输入您[从JavaScript命令窗口](#get-your-number-of-existing-delegations)获取的`delegationCount`函数撤销全部委托；如果您从没用这个账户委托过，这里应设置为`0`
+4. 输入您[从JavaScript命令窗口](#get-your-number-of-existing-delegations){target=_blank}获取的`delegationCount`函数撤销全部委托；如果您从没用这个账户委托过，这里应设置为`0`
 5. 点击**Submit Transaction**按钮，并签名确认交易
 
 ![Staking Execute Leave Delegators Extrinsic](/images/tokens/staking/stake/stake-20.png)
@@ -270,7 +269,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个保留委托列表，每个委托都包含了候选收集人的目标地址及质押数量。 `{{ networks.moonbase.staking.candidates.address2 }}`不再出现。或者如果您已经离开了委托人集，您应该看到返回结果显示为`<none>`。
 
-您也可以通过**Accounts**标签检查可用的和预留的余额，请注意现在执行已经完成，您的余额也已经更新。
+为确保撤销按预期执行，您可以按照上面[验证委托](#verifying-delegations)部分中的步骤进行操作。
 
 ### 取消停止委托的请求 {: #cancel-request-to-stop-delegations }
 
@@ -290,7 +289,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ## 质押奖励 {: #staking-rewards } 
 
-收集人有效集的候选人通过生产区块获得奖励，委托人也会获得奖励。您可以在[此页面](/learn/features/staking/#reward-distribution){target=_blank}大致了解奖励的计算方式。
+收集人有效集的候选人通过生产区块获得奖励，委托人也会获得奖励。您可以在Moonbeam质押概述的[奖励分配页面](/learn/features/staking/#reward-distribution){target=_blank}大致了解奖励的计算方式。
 
 总而言之，收集人获得奖励后（奖励包括收集人本身的权益），将根据占该收集人所有委托人总权益的比例对各个委托人进行奖励分成。
 
