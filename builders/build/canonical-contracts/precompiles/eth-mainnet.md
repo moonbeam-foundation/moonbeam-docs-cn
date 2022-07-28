@@ -6,7 +6,7 @@ keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128
 
 # 在Moonbase Alpha上的以太坊主网预编译合约
 
-![Precompiled Contracts Banner](/images/builders/build/canonical-contracts/precompiles/eth-mainnet/eth-mainnet-banner.png)
+![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/eth-mainnet/eth-mainnet-banner.png)
 
 ## 概览 {: #introduction }
 

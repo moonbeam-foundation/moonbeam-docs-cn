@@ -6,7 +6,7 @@ keywords: solidity、以太坊、批量、交易、moonbeam、预编译、合约
 
 # 与批量预编译合约交互
 
-![Precomiled Contracts Banner](/images/builders/build/canonical-contracts/precompiles/batch/batch-banner.png)
+![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/batch/batch-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -76,7 +76,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 3. 点击**Compile Batch.sol**以编译合约
 
-![Compiling Batch.sol](/images/builders/build/canonical-contracts/precompiles/batch/batch-1.png)
+![Compiling Batch.sol](/images/builders/pallets-precompiles/precompiles/batch/batch-1.png)
 
 如果接口编译成功，你将会在**Compile**标签旁看到绿色的打勾图示。
 
@@ -94,7 +94,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 5. 提供批量预编译合约的地址：`{{networks.moonbase.precompiles.batch}}`并点击**At Address**
 
-![Access the address](/images/builders/build/canonical-contracts/precompiles/batch/batch-2.png)
+![Access the address](/images/builders/pallets-precompiles/precompiles/batch/batch-2.png)
 
 **BATCH**预编译合约将会出现在**Deployed Contract**的菜单当中。
 
@@ -114,7 +114,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 6. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
-![Deploy SimpleContract](/images/builders/build/canonical-contracts/precompiles/batch/batch-3.png)
+![Deploy SimpleContract](/images/builders/pallets-precompiles/precompiles/batch/batch-3.png)
 
 **SIMPLECONTRACT**合约将会出现在**Deployed Contracts**当中。
 
@@ -142,7 +142,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 8. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
-![Send Batch Transfer](/images/builders/build/canonical-contracts/precompiles/batch/batch-4.png)
+![Send Batch Transfer](/images/builders/pallets-precompiles/precompiles/batch/batch-4.png)
 
 当交易完成后，确保您查看两个地址的余额，不论是通过MetaMask或是[区块浏览器](/builders/get-started/explorers/){target=_blank}皆可。恭喜您！您已经成功通过批量预编译合约传送批量交易。
 
@@ -163,7 +163,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 4. 点击**transact**按钮旁的复制按钮以复制调用数据而非传送交易
 
-![Transaction Call Data](/images/builders/build/canonical-contracts/precompiles/batch/batch-5.png)
+![Transaction Call Data](/images/builders/pallets-precompiles/precompiles/batch/batch-5.png)
 
 现在您已经拥有该交易的调用数据！根据范例数据的`1` 和`"moonbeam"`，我们可以在调用数据中查找这些被编码的数据：
 
@@ -203,7 +203,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 9. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
-![Batch Function Interaction](/images/builders/build/canonical-contracts/precompiles/batch/batch-6.png)
+![Batch Function Interaction](/images/builders/pallets-precompiles/precompiles/batch/batch-6.png)
 
 如果您使用与教程中相同的函数数据，请确认交易是否为成功状态：
 
@@ -213,7 +213,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 3. 点击蓝色的**messages**按钮
 
-![SimpleContract Confirmation](/images/builders/build/canonical-contracts/precompiles/batch/batch-7.png)
+![SimpleContract Confirmation](/images/builders/pallets-precompiles/precompiles/batch/batch-7.png)
 
   **"moonbeam"**这个单词应当显示在下方。恭喜！您已成功使用批量预编译合约与函数交互。
 
