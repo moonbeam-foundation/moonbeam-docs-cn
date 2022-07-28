@@ -141,7 +141,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 1. 点击**Connect Wallet**
 
-2. 使用[与WalletConnect兼容的钱包](https://walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
+2. 使用[与WalletConnect兼容的钱包](https://explorer.walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
 
 ![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-8.png)
 
