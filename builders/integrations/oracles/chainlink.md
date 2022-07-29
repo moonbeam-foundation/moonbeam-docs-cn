@@ -341,10 +341,10 @@ interface AggregatorV3Interface {
 
 如上述接口所示，有5个函数可获取价格：`decimal`、`description`、`version`、`getRoundData`和`latestRoundData`。
 
-目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}和Moonbase Alpha提供以下报价对的[Data Feed合约](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}：
+目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}和Moonbase Alpha提供以下报价对的数据喂价合约：
 
 === "Moonbeam"
-    | 基础报价对  |                     Data Feed合约                     |
+    | 基础报价对  |                     数据喂价合约                      |
     |:-----------:|:-----------------------------------------------------:|
     | ATOM to USD | {{ networks.moonbeam.chainlink.feed.proxy.atom_usd }} |
     | BNB to USD  | {{ networks.moonbeam.chainlink.feed.proxy.bnb_usd }}  |
@@ -357,7 +357,7 @@ interface AggregatorV3Interface {
     | USDC to USD | {{ networks.moonbeam.chainlink.feed.proxy.usdc_usd }} |
 
 === "Moonriver"
-    |  基础报价对  |                      Data Feed合约                      |
+    |  基础报价对  |                      数据喂价合约                       |
     |:------------:|:-------------------------------------------------------:|
     | 1INCH to USD | {{ networks.moonriver.chainlink.feed.proxy.inch_usd }}  |
     | AAVE to USD  | {{ networks.moonriver.chainlink.feed.proxy.aave_usd }}  |
@@ -395,7 +395,7 @@ interface AggregatorV3Interface {
     |  YFI to USD  |  {{ networks.moonriver.chainlink.feed.proxy.yfi_usd }}  |
 
 === "Moonbase Alpha"
-    |  基础报价对  |                     Data Feed合约                      |
+    |  基础报价对  |                      数据喂价合约                      |
     |:------------:|:------------------------------------------------------:|
     | AAVE to USD  | {{ networks.moonbase.chainlink.feed.proxy.aave_usd }}  |
     | ALGO to USD  | {{ networks.moonbase.chainlink.feed.proxy.algo_usd }}  |
