@@ -440,17 +440,17 @@ interface AggregatorV3Interface {
 
     === "Moonbeam"
         ```
-        {{ networks.moonbeam.chainlink.feed.aggregator.btc_usd }}
+        {{ networks.moonbeam.chainlink.feed.proxy.btc_usd }}
         ```
         
     === "Moonriver"
         ```
-        {{ networks.moonriver.chainlink.feed.aggregator.btc_usd }}
+        {{ networks.moonriver.chainlink.feed.proxy.btc_usd }}
         ```
 
     === "Moonbase Alpha"
         ```
-        {{ networks.moonbase.chainlink.feed.aggregator.btc_usd }}
+        {{ networks.moonbase.chainlink.feed.proxy.btc_usd }}
         ```
 
 ![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
