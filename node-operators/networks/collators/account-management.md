@@ -56,12 +56,12 @@ curl http://127.0.0.1:9933 -H \
 
 `authorMapping`模块具有以下extrinsics编程：
 
- - **setKeys**(*address* keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置作者ID和会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币]（#:~:text=Token数量设置如下）。替换弃用的`addAssociation`和`updateAssociation`函数
+ - **setKeys**(*address* keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置作者ID和会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币](#:~:text=Token数量设置如下所示)。替换弃用的`addAssociation`和`updateAssociation`函数
 - **removeKeys**() - 删除作者 ID 和会话密钥。替换已弃用的“clearAssociation”extrinsic
 
 以下函数**已弃用**，但仍存在向后兼容性：
 
- - **addAssociation**(*address* authorID) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#:~:text=The bond set is as follows)。此函数通过默认将`keys`设置为author ID来保持向后兼容性
+ - **addAssociation**(*address* authorID) —— 将您的author ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#:~:text=Token数量设置如下所示)。此函数通过默认将`keys`设置为author ID来保持向后兼容性
  - **updateAssociation**(*address* oldAuthorID, *address* newAuthorID) —— 将旧的author ID映射到新的author ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定。此函数通过默认将`newKeys`设置为author ID来保持向后兼容性
  - **clearAssociation**(*address* authorID) — 清除作者ID与发送交易的H160帐户的关联，该帐户需要是该作者ID的所有者。也退还押金
 
