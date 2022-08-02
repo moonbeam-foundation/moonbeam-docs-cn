@@ -141,7 +141,7 @@ yarn add @subql/frontier-evm-processor
 - **kind** —— *必填*，指定自定义Moonbeam数据处理器
 - **startBlock** —— 指定开始索引数据的区块
 - **processor.file** —— *必填*，引用数据处理器代码所在的文件
-- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://doc.subquery.network/create/substrate-evm/#processor-options){target=_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
+- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://doc.subquery.network/build/substrate-evm.html#processor-options){target=_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
 - **assets** —— 外部资产ABI文件的对象
 - **mapping** —— 映射规范。这包括映射条目的路径、映射函数以及任何其他映射筛选器所对应的处理器类型
 
