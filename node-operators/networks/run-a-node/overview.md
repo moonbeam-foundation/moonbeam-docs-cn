@@ -33,7 +33,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
     |:-------------------:|::|:------------------------------------------------------------------------------------------------------------|
     | **CPU 中央处理器**  |  | {{ networks.moonbeam.node.cores }}核（最快单核速度）                                                        |
     |    **RAM 内存**     |  | {{ networks.moonbeam.node.ram }} GB                                                                         |
-    |  **SSD 固态硬盘**   |  | {{ networks.moonbeam.node.hd }} GB（最低要求）                                                              |
+    |  **SSD 固态硬盘**   |  | {{ networks.moonbeam.node.hd }} TB（推荐）                                                                  |
     | **Firewall 防火墙** |  | P2P端口必须向流入流量开放：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333, 30334 TCP |
 
 === "Moonriver"
@@ -41,7 +41,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
     |:-------------------:|::|:------------------------------------------------------------------------------------------------------------|
     | **CPU 中央处理器**  |  | {{ networks.moonriver.node.cores }}核（最快单核速度）                                                       |
     |    **RAM 内存**     |  | {{ networks.moonriver.node.ram }} GB                                                                        |
-    |  **SSD 固态硬盘**   |  | {{ networks.moonriver.node.hd }} GB（最低要求）                                                             |
+    |  **SSD 固态硬盘**   |  | {{ networks.moonriver.node.hd }} TB（推荐）                                                                 |
     | **Firewall 防火墙** |  | P2P端口必须向流入流量开放：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333, 30334 TCP |
 
 === "Moonbase Alpha"
@@ -49,7 +49,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
     |:-------------------:|::|:------------------------------------------------------------------------------------------------------------|
     | **CPU 中央处理器**  |  | {{ networks.moonbase.node.cores }}核（最快单核速度）                                                        |
     |    **RAM 内存**     |  | {{ networks.moonbase.node.ram }} GB                                                                         |
-    |  **SSD 固态硬盘**   |  | {{ networks.moonbase.node.hd }} GB（最低要求）                                                              |
+    |  **SSD 固态硬盘**   |  | {{ networks.moonbase.node.hd }} TB（推荐）                                                                  |
     | **Firewall 防火墙** |  | P2P端口必须向流入流量开放：<br>&nbsp; &nbsp; - 来源：任何来源<br>&nbsp; &nbsp; - 目标地址：30333, 30334 TCP |
 
 !!! 注意事项
