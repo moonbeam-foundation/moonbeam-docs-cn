@@ -33,40 +33,11 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ## 获得Token {: #get-tokens }
 
-要开始在Moonbase Alpha上开发部署，您可以在通过Moonbase Alpha水龙头、Discord机器人或手动申请获得DEV测试代币。对于特定金额的测试代币，您可以随时通过我们的社区渠道直接与我们联系。
-
-### Moonbase Alpha水龙头 {: #moonbase-alpha-faucet }
+要开始在Moonbase Alpha上开发部署，您可以在通过Moonbase Alpha水龙头。对于特定金额的测试代币，您可以随时通过我们的社区渠道直接与我们联系。
 
 您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
 
 ![Moonbase Alpha Faucet Web](/images/builders/get-started/networks/moonbase/moonbase-1.png)
-
-### Discord - Mission Control {: #discord-mission-control } 
-
-为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多{{ networks.moonbase.faucet_amount }}个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
-
-!!! 注意事项
-    Discord测试币水龙头将于2022年6月下旬弃用。
-
-您可以在**Miscellaneous**一栏下面找到我们的**#Moonbase-Faucet**频道。
-
-![Moonbase faucet channel on Discord](/images/builders/get-started/networks/moonbase/moonbase-2.png)
-
-如果您想要查询您的余额，请输入以下信息，并将`<enter-address-here->`替换为您的H160地址:
-
-```
-!balance <enter-address-here->
-```
-
-如果您想要获得DEV Token，请输入以下的信息，并将`<enter-address-here->`替换成您的H160地址：
-
-```
-!faucet send <enter-address-here->
-```
-
-Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV Token到您的账户，并显示您当前的帐户余额。请注意，每个Discord用户每24小时仅能获得一次Mission Control发送的Token。
-
-![Faucet send command example](/images/builders/get-started/networks/moonbase/moonbase-3.png)
 
 !!! 注意事项
     Moonbase Alpha DEV Token并不具备任何实际价值。请不要向水龙头发送非必要请求。
@@ -94,7 +65,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 [Moonbase ERC-20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank}使您能够铸造多样的ERC-20测试Token，对应太阳系的八大行星以及冥王星。开始铸造Token前，请先点击屏幕右上方“**Connect MetaMask**”。然后，鼠标往下滚至**Mint Tokens**处，选择ERC-20合约。点击**Submit Tx**并在MetaMask中确认交易。每次铸造会产生100枚Token，您可以每小时为每个合约铸造Token。
 
-![ERC20 Minter](/images/builders/get-started/networks/moonbase/moonbase-4.png)
+![ERC20 Minter](/images/builders/get-started/networks/moonbase/moonbase-2.png)
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
@@ -110,7 +81,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 5. 在列表中寻找或者选择想要交换的资产
 
-![Moonbeam Swap](/images/builders/get-started/networks/moonbase/moonbase-5.png)
+![Moonbeam Swap](/images/builders/get-started/networks/moonbase/moonbase-3.png)
 
 !!! 注意事项
     如果您在**Moon Menu**下只能看到部分资产列表，您的浏览器可能缓存了**Moon Menu**的旧版本。请清除缓存并重新加入**Moon Menu**可解决此问题。
@@ -119,7 +90,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 [MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/)。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
 
-![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-6.png)
+![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-4.png)
 
 ### MoonLotto Lottery {: #moonlotto-lottery } 
 
@@ -133,7 +104,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 3. 点击**Submit on MetaMask**并在MetaMask中确认交易
 
-![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-7.png)
+![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-5.png)
 
 ### Moonbeam WalletConnect {: #moonbeam-walletconnect } 
 
@@ -143,7 +114,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 2. 使用[与WalletConnect兼容的钱包](https://explorer.walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
 
-![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-8.png)
+![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-6.png)
 
 ### Moonbase ChainBridge {: #moonbase-chainbridge } 
 
@@ -169,7 +140,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 10. 点击**Start Transfer**并在MetaMask确认交易。DApp将更新跨链桥转移的状态
 
-![Moonbase ChainBridge](/images/builders/get-started/networks/moonbase/moonbase-9.png)
+![Moonbase ChainBridge](/images/builders/get-started/networks/moonbase/moonbase-7.png)
 
 ### MoonGas {: #moongas } 
 
@@ -177,4 +148,4 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 您将注意到Moonbeam最小gas价格是100 Gwei，然而Moonriver和Moonbase Alpha的仅仅是1 Gwei。这种差异源于[GLMR与MOVR初始供应量的百倍差距](https://moonbeam.foundation/news/moonbeam-community-announcement/){target=_blank}，因此，Moonbeam最小值100 Gwei就相当于Moonriver最小值1 Gwei。
 
-![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-10.png)
+![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-8.png)
