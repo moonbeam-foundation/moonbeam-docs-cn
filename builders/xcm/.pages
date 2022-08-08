@@ -4,3 +4,4 @@ nav:
   - '概览': 'overview.md'
   - xc20
   - '远程执行': 'xcm-transactor.md'
+  - 'XCM执行费用': 'fees.md'
