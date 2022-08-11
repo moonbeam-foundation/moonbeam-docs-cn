@@ -258,7 +258,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
     5. 选择**DepositAsset**指令并设置以下值
     
-       | 参数 |     数值      |
+        | 参数 |     数值      |
         |:---------:|:------------------------------------------------:|
         |  Assets   |                       Wild                       |
         |   Wild    |                       All                        |
