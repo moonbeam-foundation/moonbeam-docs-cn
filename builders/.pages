@@ -4,5 +4,7 @@ nav:
   - index.md
   - get-started
   - build
+  - pallets-precompiles
   - xcm
   - integrations
+  
