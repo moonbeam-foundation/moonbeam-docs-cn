@@ -9,7 +9,7 @@ description: 使用Covalent API在Moonbeam上查询区块链数据，包括余�
 
 ## 概览 {: #introduction } 
 
-Covalent通过统一的API为所有区块链网络上的资产提供完全的公开透明。简而言之，用户无需任何代码，就可以从各个区块链上获取详细的区块链交易数据。通过统一的Covalent API界面，用户可以创建全新的应用程序或者调整现有的应用程序，无需重新配置或维护基础设施。Covalent现已支持Moonbase Alpha，并且计划支持Moonbeam和Moonriver。
+[Covalent](https://www.covalenthq.com/){target=_blank}通过统一的API为所有区块链网络上的资产提供完全的公开透明。简而言之，用户无需任何代码，就可以从各个区块链上获取详细的区块链交易数据。通过统一的[Covalent API](https://www.covalenthq.com/docs/api/#/0/0/USD/1){target=_blank}界面，用户可以创建全新的应用程序或者调整现有的应用程序，无需重新配置或维护基础设施。Covalent现已支持Moonbase Alpha，并且计划支持Moonbeam和Moonriver。
 
 ## 快速上手 {: #quick-start } 
 
@@ -41,7 +41,7 @@ Covalent API有两类终端：
  - Covalent API是RESTful，围绕网页端界面主要资源进行开发
  - 当前的Covalent API版本为版本1
  - 所有终端的默认返回形式为JSON
- - 所有请求均要求验证，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)才能使用Covalent API
+ - 所有请求均要求验证，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}才能使用Covalent API
  - Covalent API的根URL为https://api.covalenthq.com/v1/
  - 所有请求均通过HTTPS完成（若使用HTTP则请求失败）
  - Covalent API采用实时刷新方式，刷新率为30秒或2个区块，每批次为10分钟或40个区块
@@ -67,14 +67,14 @@ Covalent API有两类终端：
 
 ## 查看先决条件 {: #checking-prerequisites } 
 
-所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/)，此外还需要执行以下操作：
+所有请求均需进行验证。要想使用Covalent API，用户需要有[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}，此外还需要执行以下操作：
 
- - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/)
+ - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。 
  --8<-- 'text/faucet/faucet-list-item.md'
  
 ## Covalent API使用测试 {: #try-it-out } 
-首先确保您已获得以“ckey_”开头的[API密钥](https://www.covalenthq.com/platform/#/auth/register/)。Token Holders终端将返回某一特定代币所有持有者的列表，调用这个API需要执行以下操作：
+首先确保您已获得以“ckey_”开头的[API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}。Token Holders终端将返回某一特定代币所有持有者的列表，调用这个API需要执行以下操作：
 
  - 您的API密钥
  - Moonbase Alpha Chain ID: {{ networks.moonbase.chain_id }} (hex: {{ networks.moonbase.hex_chain_id }})
@@ -96,7 +96,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
 
 ## Javascript示例 {: #javascript-examples } 
 
-复制粘贴以下代码块到您选择的环境中，或是[JSFiddle](https://jsfiddle.net/)中。设置好API密钥后，将该地址设置为常用地址。请记住，我们在Moonbase Alpha网络中的链上ID是`{{ networks.moonbase.chain_id }}`。
+复制粘贴以下代码块到您选择的环境中，或是[JSFiddle](https://jsfiddle.net/){target=_blank}中。设置好API密钥后，将该地址设置为常用地址。请记住，我们在Moonbase Alpha网络中的链上ID是`{{ networks.moonbase.chain_id }}`。
 
 === "Using Fetch"
     ```js
@@ -154,7 +154,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
 ![Javascript Console Output](/images/builders/integrations/indexers/covalent/covalentjs.png)
 
 ## Python示例 {: #python-example }
-Covalent没有官方的API包装器，用户需要使用Python [请求库](https://pypi.org/project/requests/)才能直接调用API。通过`pip install requests`从指令行中将请求安装到运行环境中，然后将其导入，并在您的代码中使用。使用HTTP verbs get方法从API中返回相关信息。复制粘贴以下代码块到您选择的环境并运行。输出内容将与以上截图相似，但形式可能有所不同，这取决于运行环境。
+Covalent没有官方的API包装器，用户需要使用Python [请求库](https://pypi.org/project/requests/){target=_blank}才能直接调用API。通过`pip install requests`从指令行中将请求安装到运行环境中，然后将其导入，并在您的代码中使用。使用HTTP verbs get方法从API中返回相关信息。复制粘贴以下代码块到您选择的环境并运行。输出内容将与以上截图相似，但形式可能有所不同，这取决于运行环境。
 
 ```python
 import requests
@@ -176,7 +176,7 @@ fetch_wallet_balance('0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8')
     `auth`的第二个参数留空，因为不需要密码，只需要您的API密钥。
 
 ### 由社区创建的工具库 {: #community-built-libraries } 
-Covalent目前拥有Python、Node、Go代码库，这些代码库作为[Covalent Alchemists项目](https://www.covalenthq.com/alchemists/)的一部分，都是由社区进行创建和维护。这些社区创建的工具为Covalent API用户带来价值，可以在[这里获取](https://www.covalenthq.com/docs/tools/community)。
+Covalent目前拥有Python、Node、Go代码库，这些代码库作为[Covalent Alchemists项目](https://www.covalenthq.com/alchemists/){target=_blank}的一部分，都是由社区进行创建和维护。这些社区创建的工具为Covalent API用户带来价值，可以在[这里获取](https://www.covalenthq.com/docs/tools/community){target=_blank}。
 
 !!! 注意事项
     这些工具并非由Covalent进行维护。用户需要自行尽职调查，在使用这些项目的工具之前对其进行评估。

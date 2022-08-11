@@ -16,7 +16,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
  - **基于Ethereum API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha){target=_blank}
  - **Substrate API** —— [Subscan](https://moonbase.subscan.io/){target=_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}
 
-更多关于上述区块浏览器的信息，请直接查看[区块浏览器](/builders/get-started/explorers/)部分。
+更多关于上述区块浏览器的信息，请直接查看[区块浏览器](/builders/get-started/explorers/){target=_blank} 部分。
 
 ## 连接MetaMask {: #connect-metamask }
 
@@ -29,7 +29,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)教程。
+如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/){target=_blank} 教程。
 
 ## 获得Token {: #get-tokens }
 
@@ -43,7 +43,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### Discord - Mission Control {: #discord-mission-control } 
 
-为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多{{ networks.moonbase.faucet_amount }}个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX)中查看。
+为了让用户们可以自动获得Token，我们创建了一个Discord机器人（名为Mission Control:sunglasses:）。当您输入您的钱包地址，它会每24小时自动发送最多{{ networks.moonbase.faucet_amount }}个DEV Token至每个Discord用户的账户中。您可以在我们的[Discord频道](https://discord.gg/PfpUATX){target=_blank} 中查看。
 
 !!! 注意事项
     Discord测试币水龙头将于2022年6月下旬弃用。
@@ -98,7 +98,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
-[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/)，如为XCM测试目的的xcKarura或xcUNITs。请执行以下步骤完成交换：
+[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNITs。请执行以下步骤完成交换：
 
 1. 点击**Select a token**
 
@@ -117,7 +117,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 
 ### MoonLink Dashboard {: #moonlink-dashboard } 
 
-[MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/)。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
+[MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/){target=_blank}。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
 
 ![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-6.png)
 

@@ -27,7 +27,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 |   2    |      |       BTC        |
 |   3    |      | Microsoft Stocks |
 
-通过[此链接](https://razorscan.io/#/custom)可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档][https://docs.razor.network/]。
+通过[Razor网络浏览器](https://razorscan.io/#/custom){target=_blank}可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档](https://docs.razor.network/){target=_blank}。
 
 ## 从桥接合约获取数据 {: #get-data-from-bridge-contract } 
 
@@ -50,19 +50,19 @@ interface Razor {
 
 ### 合约示例 {: #example-contract } 
 
-我们在Moonbase Alpha测试网上部署了桥接合约（地址为`{{ networks.moonbase.razor.bridge_address }}`），方便您快速查看Razor Network预言机的喂价信息。
+Moonbase Alpha测试网上已经预先部署了桥接合约（地址为`{{ networks.moonbase.razor.bridge_address }}`），方便您快速查看Razor Network预言机的喂价信息。
 
 您只需要桥接合约接口，该接口可调出`getResult`结构，让合约可以调用函数进行报价请求。
 
 
-我们可以使用以下`Demo`脚本，它包括了多个函数：
+您可以使用以下`Demo`脚本，它包括了多个函数：
 
- - fetchPrice：一个请求单一Job ID的_视图_函数。例如，输入任务ID`1`即可获取`ETH`/`USD`报价。
- - fetchMultiPrices：一个请求多个Job ID的_视图_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/ `USD`报价。
- - savePrice：一个请求单一Job ID的_公有_函数。函数将发送交易并修改储存在合约中的`price`变量。
- - saveMultiPrices：一个请求多个Job ID的_公有_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/`USD`报价。函数将发送交易并修改储存在合约中的`pricesArr`阵列，阵列将按照输入顺序显示每个报价对的价格。
+ - **fetchPrice** - 一个请求单一Job ID的_视图_函数。例如，输入任务ID`1`即可获取`ETH`/`USD`报价。
+ - **fetchMultiPrices** - 一个请求多个Job ID的_视图_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/ `USD`报价。
+ - **savePrice** - 一个请求单一Job ID的_公有_函数。函数将发送交易并修改储存在合约中的`price`变量。
+ - **saveMultiPrices** - 一个请求多个Job ID的_公有_函数。例如，输入任务ID`[1,2]`即可同时获取`ETH`/`USD`和`BTC`/`USD`报价。函数将发送交易并修改储存在合约中的`pricesArr`阵列，阵列将按照输入顺序显示每个报价对的价格。
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 
 interface Razor {
@@ -125,12 +125,12 @@ interface Razor {
 
 完成后，您将获得两个视图函数，和此前的示例非常相似：
 
- - getPrice：根据函数中对应输入的数据，提供单一Job ID喂价。例如，输入任务ID`1`就会收到`ETH`/`USD`的报价。
- - getMultiPrice：根据函数中对应输入的阵列，提供多个Job ID喂价。例如，输入Job ID`[1,2]`就会收到`ETH`/`USD`和`BTC`/`USD`的报价。
+ - **getPrice** - 根据函数中对应输入的数据，提供单一Job ID喂价。例如，输入任务ID`1`就会收到`ETH`/`USD`的报价。
+ - **getMultiPrices** - 根据函数中对应输入的阵列，提供多个Job ID喂价。例如，输入Job ID`[1,2]`就会收到`ETH`/`USD`和`BTC`/`USD`的报价。
 
-下面让我们尝试通过[Remix](/builders/build/eth-api/dev-env/remix/)获取`BTC`/ `USD` 的报价。
+下面您可以尝试通过[Remix](/builders/build/eth-api/dev-env/remix/)获取`BTC`/ `USD` 的报价。
 
-创建文件和编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`{{ networks.moonbase.razor.bridge_address }}`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接（通过Web3 提供者的钱包）。
+创建文件和编译合约后，点击**Deploy and Run Transactions**标签，输入合约地址（`{{ networks.moonbase.razor.bridge_address }}`）并点击**At Address**。请确保已将**ENVIRONMENT**设置为**Injected Web3**，只有在该设置下才能与Moonbase Alpha连接（通过Web3 提供者的钱包）。
 
 ![Razor Remix deploy](/images/builders/integrations/oracles/razor/razor-demo-1.png)
 

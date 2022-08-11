@@ -64,13 +64,13 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 !!! 注意事项
     以下所提供的代码片段并不适用于每个生产环境，请确保您已根据实际案例进行修改或调整。
 
-=== "web3.js"
+=== "Web3.js"
     --8<-- 'code/vs-ethereum/web3.md'
 
-=== "ethers.js"
+=== "Ethers.js"
     --8<-- 'code/vs-ethereum/ethers.md'
 
-=== "web3.py"
+=== "Web3.py"
     --8<-- 'code/vs-ethereum/web3py.md'
 
 ## Checking Tx Finality with Substrate Libraries {: #checking-tx-finality-with-substrate-libraries }

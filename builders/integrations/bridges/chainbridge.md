@@ -9,16 +9,18 @@ description: 如何使用ChainBridge协议以智能合约形式实现以太坊�
 
 ## 概览 {: #introduction } 
 
-跨链转接桥是连接两个经济独立、技术相异的区块链，实现链间沟通的解决方案。转接桥可以有两种：一种是中心化的可信协议，另一种是去中心化的无信任协议。[ChainSafe](https://chainsafe.io/)团队推出的模块化的多方向[ChainBridge](https://github.com/ChainSafe/ChainBridge#installation)就是现有的解决方案之一，现已支持Moonbeam部署，连接Moonbase Alpha测试网和以太坊Rinkeby/Kovan测试网。
+跨链转接桥是连接两个经济独立、技术相异的区块链，实现链间沟通的解决方案。转接桥可以有两种：一种是中心化的可信协议，另一种是去中心化的无信任协议。[ChainSafe](https://chainsafe.io/){target=_blank}团队推出的模块化的多方向[ChainBridge](https://github.com/ChainSafe/ChainBridge#installation){target=_blank}就是现有的解决方案之一。
+
+ChainBridge目前在Moonbeam上已经可以使用，它连接以下网络：
+
+=== "Moonbase Alpha"
+    |       网络        |
+    |:---------------------:|
+    |  Kovan TestNet (ETH)  |
+    | Rinkeby TestNet (ETH) |
+
 
 本教程共分为两个部分。第一部分，我们将介绍ChainBridge的一般工作流程。第二部分，我们将通过多个示例演示如何在Moonbase Alpha和Rinkeby/Kovan间进行ERC-20和ERC-721资产的转移。
-
- - [ChainBridge的运行机制](/integrations/bridges/ethereum/chainbridge/#how-the-bridge-works)
-    - [一般定义](/integrations/bridges/ethereum/chainbridge/#general-definitions)
- - [使用ChainBridge部署Moonbase Alpha](/integrations/bridges/ethereum/chainbridge/#try-it-on-moonbase-alpha)
-    - [进行ERC-20代币转移](/integrations/bridges/ethereum/chainbridge/#erc-20-token-transfer)
-    - [进行ERC-721代币转移](/integrations/bridges/ethereum/chainbridge/#erc-721-token-transfer)
-    - [一般应用程序](/integrations/bridges/ethereum/chainbridge/#generic-handler)
 
 ## ChainBridge的运行机制 {: #how-the-bridge-works } 
 
@@ -152,7 +154,7 @@ interface ICustomERC20 {
 将自定义ERC-20合同添加到Remix并进行编译后，创建ERC-20S代币：
 
 1. 跳转至Remix的**Deploy & Run Transactions**页面
-2. 从**Environment**下拉列表中选择Injected Web3
+2. 从**ENVIRONMENT**下拉列表中选择Injected Web3
 3. 加载自定义ERC-20代币合约地址，然后点击**At Address**
 4. 调用`mintTokens()`函数并进行交易签名
 5. 交易确认后，即可收到5枚ERC-20S代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
@@ -278,7 +280,7 @@ interface ICustomERC721 {
 将合约添加至Remix并进行编译后，我们要铸造一个ERC-721M代币：
 
 1. 跳转至Remix的**Deploy & Run Transactions**页面
-2. 从**Environment**下拉列表中选择Injected Web3
+2. 从**ENVIRONMENT**下拉列表中选择Injected Web3
 3. 加载自定义ERC-721M代币合约地址，然后点击**At Address**
 4. 调用`mintTokens()`函数并进行交易签名
 5. 交易确认后，即可收到1枚ERC-721M代币。将代币转入[MetaMask](/integrations/wallets/metamask/)，即可查看余额
@@ -319,7 +321,7 @@ interface IBridge {
 现在，您可以继续通过转接桥将ERC-721M代币发送到目标链上。在这一示例中，代币将从Moonbase Alpha发送到Kovan。通过转接桥转移ERC-721M代币，需执行以下操作：
 
 1. 加载桥接合约地址并点击**At Address**
-2. 调用`sendERC721MoonToken()`函数发起交易，将最初在Moonbase Alpha铸造的ERC-721M代币转移至目标链（在这一示例中为Kovan: `42`）
+2. 调用`sendERC721MoonToken()`函数发起交易，将最初在Moonbase Alpha铸造的ERC-721M代币转移至目标链。在这一示例中为Kovan: `42`
 3. 在桥的另一侧输入接收地址
 4. 输入需要转移的代币ID
 5. 点击**transact**，随后MetaMask将弹出窗口以要求签名确认交易
