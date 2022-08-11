@@ -217,7 +217,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 3. 为**dest**设置以下信息
 
-    | Parameter | Value |
+    | 参数 |     数值      |
     |:---------:|:-----:|
     |  Version  |  V1   |
     |  Parents  |   1   |
@@ -227,7 +227,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
     1. 选择**WithdrawAsset**指令并设置以下值
 
-        | Parameter |     Value     |
+        | 参数 |     数值      |
         |:---------:|:-------------:|
         |    Id     |   Concrete    |
         |  Parents  |       0       |
@@ -237,7 +237,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         
     2. 选择**BuyExecution**指令并设置以下值
     
-        |  Parameter  |     Value     |
+        | 参数 |     数值      |
         |:-----------:|:-------------:|
         |     Id      |   Concrete    |
         |   Parents   |       0       |
@@ -248,7 +248,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         
     3. 选择**Transact**指令并设置以下值
     
-        |      Parameter      |                                              Value                                               |
+        | 参数 |     数值      |
         |:-------------------:|:------------------------------------------------------------------------------------------------:|
         |     OriginType      |                                              Native                                              |
         | RequireWeightAtMost |                                            1000000000                                            |
@@ -258,7 +258,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
     5. 选择**DepositAsset**指令并设置以下值
     
-        | Parameter |                      Value                       |
+       | 参数 |     数值      |
         |:---------:|:------------------------------------------------:|
         |  Assets   |                       Wild                       |
         |   Wild    |                       All                        |
