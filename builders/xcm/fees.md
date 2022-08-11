@@ -89,7 +89,7 @@ Substrate先前发布了一个权重系统，决定一个函数的权重，也�
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
-|     Database      |                     Read                      |                     Write                      |
+|     数据库      |                     读                      |                     写                      |
 | :---------------: | :-------------------------------------------: | :--------------------------------------------: |
 | RocksDB (default) | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
 |     ParityDB      | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
@@ -126,7 +126,7 @@ DOT = {{ networks.polkadot.xcm_instruction.planck_dot_cost }} / 10^10
 
 作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以转移xcDOT至DOT到波卡网络上所需的总花费：
 
-|  Instruction  |                         Weight                          |                           Cost                            |
+|  指令  |                         权重                          |                           费用                            |
 | :-----------: | :-----------------------------------------------------: | :-------------------------------------------------------: |
 | WithdrawAsset | {{ networks.polkadot.xcm_instruction.weight.display }}  |   {{ networks.polkadot.xcm_instruction.dot_cost }} DOT    |
 |  ClearOrigin  | {{ networks.polkadot.xcm_instruction.weight.display }}  |   {{ networks.polkadot.xcm_instruction.dot_cost }} DOT    |
@@ -138,7 +138,7 @@ DOT = {{ networks.polkadot.xcm_instruction.planck_dot_cost }} / 10^10
 
 Kusama上的总权重花费包括：给定指令本身花费和数据库读写的费用。尚未对数据库读写操作进行基准测试，而对指令权重进行了基准测试。以下为数据库执行权重花费的细节：
 
-|     Database      |                    Read                     |                    Write                     |
+|     数据库      |                    读                     |                    写                    |
 | :---------------: | :-----------------------------------------: | :------------------------------------------: |
 | RocksDB (default) | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
 |     ParityDB      | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
@@ -187,7 +187,7 @@ KSM = {{ networks.kusama.xcm_instruction.withdraw.planck_ksm_cost }} / 10^12
 
 作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以转移xcKSM至KSM在Kusama网络的总花费：
 
-|  Instruction  |                            Weight                            |                             Cost                             |
+|  指令  |                            权重                            |                             费用                             |
 | :-----------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | WithdrawAsset | {{ networks.kusama.xcm_instruction.withdraw.total_weight }}  | {{ networks.kusama.xcm_instruction.withdraw.ksm_cost }} KSM  |
 |  ClearOrigin  | {{ networks.kusama.xcm_instruction.clear_origin.total_weight }} | {{ networks.kusama.xcm_instruction.clear_origin.ksm_cost }} KSM |
@@ -200,17 +200,17 @@ KSM = {{ networks.kusama.xcm_instruction.withdraw.planck_ksm_cost }} / 10^12
 Moonbeam上每个XCM指令使用固定的权重数量。接着权重单位将被转变成余额单位作为费用计算的一部分。每个基于Moonbeam网络的权重数量和每单位权重的Wei如下所示：
 
 === "Moonbeam"
-    |                                                                                                   权重                                                                                                    |                                                                            每单位权重的Wei                                                                            |
+    |                                                                                                   权重                                                                                                    |                                                                            费用                                                                            |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} | [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/master/runtime/moonbeam/src/lib.rs#L128){target=_blank} |
 
 === "Moonriver"
-    |                                                                                                    权重                                                                                                     |                                                                            每单位权重的Wei                                                                             |
+    |                                                                                                    权重                                                                                                     |                                                                            费用                                                                             |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonriver/src/xcm_config.rs#L208){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/master/runtime/moonbeam/src/lib.rs#L128){target=_blank} |
 
 === "Moonbase Alpha"
-    |                                                                                                   权重                                                                                                    |                                                                                             每单位权重的Wei                                                                                             |
+    |                                                                                                   权重                                                                                                    |                                                                                             费用                                                                                             |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [{{ networks.moonbase.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/xcm_config.rs#L219){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L135){target=_blank} |
 
