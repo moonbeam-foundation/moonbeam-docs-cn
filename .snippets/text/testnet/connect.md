@@ -11,11 +11,11 @@ Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。
 如果使用的是web3.js库，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonbase Alpha（同时支持HTTP和WS）：
 
 ```js
-const Web3 = require('web3'); //Load Web3 library
+const Web3 = require('web3'); // Load Web3 library
 .
 .   
 .
-//Create local Web3 instance - set Moonbase Alpha as provider
+// Create local Web3 instance - set Moonbase Alpha as provider
 const web3 = new Web3('https://rpc.api.moonbase.moonbeam.network'); 
 ```
 如果使用的是ethers.js库，您可以使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})` 来定义开发者，并且将provider（提供者）URL设定至Moonbase Alpha：

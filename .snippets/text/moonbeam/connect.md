@@ -11,11 +11,11 @@ Moonbeam有两种端点可供用户连接：一种是HTTPS，另一种是WSS。
 在开始之前，请确保从受支持的[网络端点](/builders/get-started/endpoints/){target=_blank}提供商之一获取您自己的端点和API密钥。如果使用的是web3.js库，您可以创建一个本地的Web3实例并设定提供者来连接Moonbeam（同时支持HTTP和WS）：
 
 ```js
-const Web3 = require('web3'); //Load Web3 library
+const Web3 = require('web3'); // Load Web3 library
 .
 .
 .
-//Create local Web3 instance - set Moonbeam as provider
+// Create local Web3 instance - set Moonbeam as provider
 const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
 ```
 
