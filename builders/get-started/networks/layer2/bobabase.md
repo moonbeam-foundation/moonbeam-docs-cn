@@ -57,6 +57,7 @@ Bobabase区块浏览器是一个[Blockscout的实例]({{ networks.bobabase.block
 <div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask" value="bobabase">连接MetaMask</a>
 </div>
+
 !!! 注意事项
     MetaMask会弹出窗口，请求允许将Bobabase添加为自定义网络。一旦您批准授权，MetaMask将会把您当前的网络切换至Bobabase。
 
