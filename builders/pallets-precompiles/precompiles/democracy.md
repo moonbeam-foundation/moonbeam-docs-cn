@@ -35,18 +35,18 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 接口包含以下函数：
 
- - **public_prop_count**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/build/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
- - **deposit_of**(*uint256* prop_index) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/build/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
- - **lowest_unbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/build/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
- - **propose**(*bytes32* proposal_hash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/build/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
- - **second**(*uint256* prop_index, *uint256* seconds_upper_bound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/build/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
- - **standard_vote**(*uint256* ref_index, *bool* aye, *uint256* vote_amount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/build/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
+ - **public_prop_count**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
+ - **deposit_of**(*uint256* prop_index) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
+ - **lowest_unbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
+ - **propose**(*bytes32* proposal_hash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
+ - **second**(*uint256* prop_index, *uint256* seconds_upper_bound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
+ - **standard_vote**(*uint256* ref_index, *bool* aye, *uint256* vote_amount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
  - **remove_vote**(*uint256* ref_index)  —— 此函数用于在逾期的民主锁定之前于特定公投上移除投票。请注意，移除投票不能在提案投票进行中时撤销或是取消
- - **delegate**(*address* representative, *uint256* candidateCount, *uint256* amount) —— 通过提供需要被委托的特定账户信息、用于所有委托投票的Token锁定之间函数以及用于委托的Token数量的“信念值”系数，以委托其投票权力至其他账户。调用民主pallet的[`delegate`](/builders/build/pallets/democracy/#:~:text=delegate(to, conviction, balance)){target=_blank}方法
- - **un_delegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/build/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
- - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**remove_vote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/build/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
- - **note_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePrimage`](/builders/build/pallets/democracy/#:~:text=notePrimage(encodedProposal)){target=_blank}方法
- - **note_imminent_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/build/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
+ - **delegate**(*address* representative, *uint256* candidateCount, *uint256* amount) —— 通过提供需要被委托的特定账户信息、用于所有委托投票的Token锁定之间函数以及用于委托的Token数量的“信念值”系数，以委托其投票权力至其他账户。调用民主pallet的[`delegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=delegate(to, conviction, balance)){target=_blank}方法
+ - **un_delegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
+ - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**remove_vote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/pallets-precompiles/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
+ - **note_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePrimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePrimage(encodedProposal)){target=_blank}方法
+ - **note_imminent_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
 
 此接口同样包含目前尚未被支持但有可能在将来支持的函数：
 

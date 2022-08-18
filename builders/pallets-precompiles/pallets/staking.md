@@ -27,7 +27,7 @@ Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/mast
     | 减少委托人绑定量 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonbeam.delegator_timings.del_bond_less.hours }}小时）      |
     |    撤销委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时） |
     |    离开候选人（收集人）池     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbeam.collator_timings.leave_candidates.hours }}小时）    |
-    |    离开委托人池     |   {{ 9networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次{{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时）   |
+    |    离开委托人池     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次{{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时）   |
 
 === "Moonriver"
     |        变量         |                                                                          值                                                                          |

@@ -65,16 +65,16 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
 |         [RIPEMD160](/builders/build/canonical-contracts/precompiles/eth-mainnet/#hashing-with-ripemd-160/){target=_blank}          | 0x0000000000000000000000000000000000000003 |
 |           [Identity](/builders/build/canonical-contracts/precompiles/eth-mainnet/#the-identity-function/){target=_blank}           | 0x0000000000000000000000000000000000000004 |
 |   [Modular Exponentiation](/builders/build/canonical-contracts/precompiles/eth-mainnet/#modular-exponentiation/){target=_blank}    | 0x0000000000000000000000000000000000000005 |
-|                           [BN128Add](/builders/build/pallets/eth-mainnet/#bn128add){target=_blank}                            | 0x0000000000000000000000000000000000000006 |
-|                           [BN128Mul](/builders/build/pallets/eth-mainnet/#bn128mul){target=_blank}                            | 0x0000000000000000000000000000000000000007 |
-|                       [BN128Pairing](/builders/build/pallets/eth-mainnet/#bn128pairing){target=_blank}                        | 0x0000000000000000000000000000000000000008 |
+|                           [BN128Add](/builders/pallets-precompiles/precompiles/eth-mainnet/#bn128add){target=_blank}                            | 0x0000000000000000000000000000000000000006 |
+|                           [BN128Mul](/builders/pallets-precompiles/precompiles/eth-mainnet/#bn128mul){target=_blank}                            | 0x0000000000000000000000000000000000000007 |
+|                       [BN128Pairing](/builders/pallets-precompiles/precompiles/eth-mainnet/#bn128pairing){target=_blank}                        | 0x0000000000000000000000000000000000000008 |
 |   [Blake2](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_blake2/struct.Blake2F.html){target=_blank}    | 0x0000000000000000000000000000000000000009 |
 
 ### 非Moonbeam特定或以太坊预编译 {: #non-moonbeam-specific-nor-ethereum-precompiles }
 
 |                                                                      合约                                                                       |                    地址                    |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-|                           [SHA3FIPS256](/builders/build/pallets/eth-mainnet/#hashing-with-sha3fips256){target=_blank}                           | 0x0000000000000000000000000000000000000400 |
+|                           [SHA3FIPS256](/builders/pallets-precompiles/precompiles/eth-mainnet/#hashing-with-sha3fips256){target=_blank}                           | 0x0000000000000000000000000000000000000400 |
 |          [Dispatch](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_dispatch/struct.Dispatch.html){target=_blank}          | 0x0000000000000000000000000000000000000401 |
 | [ECRecoverPublicKey](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_simple/struct.ECRecoverPublicKey.html){target=_blank} | 0x0000000000000000000000000000000000000402 |
 

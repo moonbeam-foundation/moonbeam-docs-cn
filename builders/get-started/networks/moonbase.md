@@ -128,9 +128,7 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 [MoonLotto.sol](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol){target=_blank}持有彩票的合约逻辑。请执行以下步骤参与：
 
 1. 连接您的MetaMask钱包，并确保在Moonbase Alpha网络上
-
 2. 输入彩票接收方地址，或勾选**I want to buy a ticket for my address**
-
 3. 点击**Submit on MetaMask**并在MetaMask中确认交易
 
 ![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-7.png)
@@ -140,7 +138,6 @@ Mission Control将会发送{{ networks.moonbase.discord_faucet_amount }}个DEV T
 [Moonbeam WalletConnect](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank}展示了将[WalletConnect](https://walletconnect.com/){target=_blank}轻松集成到您的DApp并解锁对各种加密钱包的支持。请确保在[demo app repository](https://github.com/PureStake/moonbeam-walletconnect-demo){target=_blank}先查阅WalletConnect集成如何工作。请执行以下步骤开始：
 
 1. 点击**Connect Wallet**
-
 2. 使用[与WalletConnect兼容的钱包](https://explorer.walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
 
 ![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-8.png)
