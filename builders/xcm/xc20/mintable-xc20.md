@@ -124,21 +124,13 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 接着，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。在网页最上方点击**Governance**并在下拉菜单中选择**Democracy**。接着，选择**+ Submit preimage**并跟随以下步骤进行操作：
 
 1. 选择您希望用于创建提案所要用的账户
-
 2. 在**propose**下拉菜单中选择**assetManager**
-
 3. 接着选择**registerLocalAsset**函数
-
 4. 输入创建者（Creator）的地址
-
 5. 输入所有者（Owener）的地址
-
 6. 设定**isSufficient**，如果设定为`true`，则其可以在转移至另一个没有原生Token余额的账户
-
 7. 设定**minBalance**
-
 8. 复制**preimage hash**并用于下个步骤
-
 9. 点击**+ Submit preimage**
 
 ![Create preimage to register the mintable XC-20](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-3.png)
@@ -181,19 +173,12 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 要设置资产元数据，您需要[获取资产ID](#retrieve-list-of-mintable-xc-20s)。当您拥有资产ID，点击页面上方的**Developer**并在下拉选单中选择**Extrinsics**，接着跟随以下步骤进行操作：
 
 1. 选择所有者（Owner）账户
-
 2. 在**submit the following extrinsic**下拉选单中，选择**localAssets**
-
 3. 接着选择**setMetadata** extrinsic
-
 4. 输入资产ID
-
 5. 输入资产名称
-
 6. 设置资产符号
-
 7. 设置资产位数，其不必与Moonbeam原生Token一样为18位数，您可以根据需求配置
-
 8. 点击**Submit Transaction**
 
 ![Set metadata for mintable XC-20](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-5.png)
@@ -207,7 +192,6 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 首先，您需要添加`LocalAsset`至[Remix](https://remix.ethereum.org/){target=_blank}，接着跟随以下步骤进行操作：
 
 1. 获得[LocalAsset.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}复制文件
-
 2. 将其内容贴入Remix文件并命名为**ILocalAsset.sol**
 
 ![Load the interface in Remix](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-6.png)
@@ -215,7 +199,6 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 当您在Remix运行接口，您需要编译它：
 
 1. 点击页面上方**Compile**标签
-
 2. 编译**ILocalAsset.sol**文件
 
 ![Compiling IERC20.sol](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-7.png)
@@ -225,13 +208,9 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 与部署预编译合约不同，您将会使用XC-20预编译地址访问接口：
 
 1. 点击Remix中**Compile**标签下方的**Deploy and Run**标签。请注意此处预编译合约已经为部署状态
-
-2. 确保**Environment**下拉选单中的**Injected Web3**已被选择。当您选择**Injected Web3**，您的MetaMask将会弹出视窗以将您的账户连接至Remix
-
-3. 确认**Account**下方显示为正确的账户
-
-4. 确认已在**Contract**下拉选单中选择**ILocalAsset - ILocalAsset.sol**。由于此为预编译合约，因此并不需要部署任何节点。相反地，我们将在**At Address**字段提供预编译合约的地址
-
+2. 确保**ENVIRONMENT**下拉选单中的**Injected Web3**已被选择。当您选择**Injected Web3**，您的MetaMask将会弹出视窗以将您的账户连接至Remix
+3. 确认**ACCOUNT**下方显示为正确的账户
+4. 确认已在**CONTRACT**下拉选单中选择**ILocalAsset - ILocalAsset.sol**。由于此为预编译合约，因此并不需要部署任何节点。相反地，我们将在**At Address**字段提供预编译合约的地址
 5. 提供在[计算预编译合约地址](#calculate-precompile-address)部分获得的XC-20预编译合约地址，`0xFFFFFFFE6D1492E39F1674F65A6F600B4589ABD7`，并点击**At Address**
 
 ![Access the address](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-8.png)
