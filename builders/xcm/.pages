@@ -3,4 +3,6 @@ nav:
   - index.md
   - '概览': 'overview.md'
   - xc20
+  - '开通跨链通道': 'xc-integration.md'
   - '远程执行': 'xcm-transactor.md'
+  - 'XCM执行费用': 'fees.md'
