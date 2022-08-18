@@ -59,7 +59,7 @@ The [Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/a
 - **nonces**(*address* owner) —— 反馈给定所有者当前的nonce
 - **DOMAIN_SEPARATOR**() —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现
 
-**DOMAIN_SEPARATOR**()是在[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中定义，计算如下：
+**DOMAIN_SEPARATOR()**是在[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中定义，计算如下：
 
 ```
 keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
@@ -80,11 +80,11 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 域分隔符的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L130-L154){target=_blank}实现中看到，在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中显示了一个实际的示例。
 
-除了域分隔符，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于给定函数参数的`permit`函数。这使用了一个给定数值确保签名不会受到重放攻击。哈希结构的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L169-L177){target=_blank}实现中看到，在[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}中显示了一个实际的示例。
+除了域分隔符，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于给定函数参数的`permit`函数。这使用了一个给定数值确保签名不会受到重放攻击。哈希结构的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现中看到，在[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}中显示了一个实际的示例。
 
-域分隔符和哈希结构可以用于构建[最终哈希](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L180-L183){target=_blank}的完全编码消息。在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L101){target=_blank}中显示了一个实际的示例。
+域分隔符和哈希结构可以用于构建[最终哈希](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L177-L181){target=_blank}的完全编码消息。在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L101){target=_blank}中显示了一个实际的示例。
 
-使用最终哈希以及`v`、`r`和`s`数值，通过[ECRECOVER预编译](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}可以验证签名。如果验证成功，限额将会更新。
+使用最终哈希以及`v`、`r`和`s`数值，通过[ECRECOVER预编译](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}可以验证和恢复签名。如果验证成功，nonce和限额将会更新。
 
 ## 使用Remix与预编译交互 {: #interact-with-the-precompile-using-remix }
 

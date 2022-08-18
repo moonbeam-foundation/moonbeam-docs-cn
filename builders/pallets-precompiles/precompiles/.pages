@@ -1,10 +1,11 @@
 title: Solidity预编译
 nav:
   - index.md
+  - '批量处理': 'batch.md'
+  - '调用许可': 'call-permit.md' 
+  - '民主': 'democracy.md'
   - '以太坊原生': 'eth-mainnet.md'
   - '原生Token ERC-20': 'erc20.md'
   - '质押功能': 'staking.md'
-  - '民主': 'democracy.md'
-  - '批量处理': 'batch.md'
   - 'X-Tokens': '/builders/xcm/xc20/xtokens/#xtokens-precompile'
   - 'XCM-Transactor': '/builders/xcm/xcm-transactor/#xcmtransactor-precompile'
