@@ -1,306 +1,159 @@
 ---
-title: 质押预编译
-description: 了解如何使用质押预编译，允许开发人员使用Ethereum API访问质押功能。
-keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, solidity
+title: 平行链Staking Pallet
+description: 学习关于Moonbeam上平行链Staking Pallet可用extrinsics，以及通过使用Polkadot.js Apps和Polkadot.js API，如何与其交互。
+keywords: staking, substrate, pallet, moonbeam, polkadot 
 ---
 
-# 与质押预编译交互
+# 平行链Staking Pallet
 
-![Staking Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/staking/staking-banner.png)
+![Staking Moonbeam Banner](/images/builders/pallets-precompiles/pallets/staking-banner.png)
 
 ## 概览 {: #introduction }
 
-Moonbeam使用一种名为[平行链质押](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src)的委托权益证明Pallet，使Token持有者（委托人）能够准确表达他们愿意支持的候选收集人以及希望质押的数量。除此之外，平行链质押Pallet的设计也将使链上的委托人和候选收集人共享风险与回报。
+Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank} pallet使用Delegated Proof of Stake（委托权益证明）系统，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链staking pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
 
-质押模块采用Rust进行编码，其为Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于以下指定地址的预编译合约中的以太坊API使用质押功能：
+平行链staking pallet的一些功能也可以通过staking预编译实现。此预编译是一个Solidity接口，使您通过以太坊API执行质押动作。更多信息，请点击[Staking Precompile](/builders/pallets-precompiles/precompiles/staking){target=_blank}教程。
 
-=== "Moonbeam"
-     ```
-     {{networks.moonbeam.precompiles.staking}}
-     ```
+此教程将概述平行链staking pallet中可用的extrinsics、存储函数、pallet常量getter。
 
-=== "Moonriver"
-     ```
-     {{networks.moonriver.precompiles.staking}}
-     ```
+## 退出生效期 {: #exit-delays }
 
-=== "Moonbase Alpha"
-     ```
-     {{networks.moonbase.precompiles.staking}}
-     ```
-
-本教程将向您展示如何在Moonbase Alpha上与质押预编译交互。此教程同样适用于Moonriver。
-
-## 平行链质押Solidity接口 {: #the-parachain-staking-solidity-interface }
-
-[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)是一个接口，通过Solidity合约与平行链质押交互。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
-
-接口包含以下的函数：
-
- - **is_delegator**(*address* delegator) —— 检查指定地址当前是否为质押委托人的只读函数，取代已弃用的`is_nominator`函数
- - **is_candidate**(*address* candidate) —— 检查指定地址当前是否为候选收集人的只读函数
- - **is_selected_candidate**(*address* candidate) —— 检查指定地址当前是否为活跃收集人集其中一部分的只读函数
- - **points**(*uint256* round) —— 获取在给定轮次中授予所有收集人总分的只读函数
- - **min_delegation**() —— 获取最小委托数量的只读函数，取代已弃用的`min_nomination`函数
- - **candidate_count**() —— 获取当前候选收集人数量的只读函数
- - **round**() - 返回当前轮数的只读函数
- - **candidate_delegation_count**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数，取代已弃用的`collator_nomination_count`函数
- - **delegator_delegation_count**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数，取代已弃用的`nominator_nomination_count`函数
- - **selected_candidates**() - 获取当前轮次选定候选人的只读函数
- - **delegation_request_is_pending**(*address* delegator, *address* candidate) - 返回一个布尔值以指示给定的委托人是否为给定的候选人提出了尚未执行的委托请求
- - **delegator_exit_is_pending**(*address* delegator) - 返回一个布尔值以指示委托人是否存在尚未执行的退出请求
- - **candidate_exit_is_pending**(*address* candidate) - 返回一个布尔值以指示候选人是否存在尚未执行的退出请求
- - **candidate_request_is_pending**(*address* candidate) - 返回一个布尔值以指示给定候选人是否存在尚未执行的减少绑定请求
- - **join_candidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集
- - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`execute_leave_candidates`执行请求。 取代已弃用的`leave_candidates`函数
- - **execute_leave_candidates**(*address* candidate, *uint256* candidateDelegationCount) —— 执行离开候选收集人集的可用请求
- - **cancel_leave_candidates**(*uint256* candidateCount) —— 使候选人取消待处理的离开候选人池的请求。提供当前候选人池中的候选人数量
- - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集
- - **go_online**() —— 在先前调用go_offline()后，重新加入候选收集人集
- - **candidate_bond_more**(*uint256* more) —— 候选收集人根据指定数量增加绑定数量
- - **schedule_candidate_bond_less**(*uint256* more) —— 发起减少候选人绑定一定Token数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以通过`execute_candidate_bond_request`函数执行请求。此为取代已弃用的`candidate_bond_less`函数
- - **execute_candidate_bond_request**(*address* candidate) —— 执行任何减少指定候选人绑定数量的可用请求
- - **cancel_candidate_bond_request**() —— 使候选人取消待处理的减少候选人绑定数量的请求
- - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 如果执行者并不是委托人，此函数会将其加入委托人集。如果执行者已经是委托人，此函数将会调整其委托数量。取代已弃用的`nominate`函数
- - **schedule_leave_delegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_leave_delegators`函数执行请求。此为取代已弃用的`leave_nominators`函数
- - **execute_leave_delegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求
- - **cancel_leave_delegators**() —— 取消待处理的离开委托人集的请求
- - **schedule_revoke_delegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`execute_delegation_request`函数执行请求。取代已弃用的 `revoke_nominations`函数
- - **delegator_bond_more**(*address* candidate, *uint256* more) —— 委托人增加绑定在特定收集人的数量。取代已弃用的`nominator_bond_more`函数
- - **schedule_delegator_bond_less**(*address* candidate, *uint256* less) —— 发起委托人减少绑定在特定候选收集人的数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_delegation_request`函数执行请求。取代已弃用的 `nominator_bond_less`函数
- - **execute_delegation_request**(*address* delegator, *address* candidate) —— 执行任何在提供委托人和候选人地址的情况下的可用委托请求
- - **cancel_delegation_request**(*address* candidate) —— 取消提供的候选人地址中任何待处理的委托请求
-
-以下的函数已被**弃用**，将会在近期移除：
-
- - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押委托人的只读函数
- - **min_nomination**() —— 获取最低委托数量的只读函数
- - **collator_nomination_count**(*address* collator) —— 返回指定收集人地址委托数量的只读函数
- - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数
- - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑
- - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量
- - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量
- - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托
- - **revoke_nominations**(*address* collator) —— 撤销指定委托
- - **nominator_bond_more**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量
- - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量
-
-## 退出延迟 {: #exit-delays }
-
-前面提到的一些质押接口功能包含退出延迟，您必须等待延迟后才能执行请求。需要注意的退出延迟如下：
+一些staking pallet extrinsics包括退出生效期，在请求执行前您必须等待。需要注意的退出生效期如下：
 
 === "Moonbeam"
     |        变量         |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonbeam.collator_timings.can_bond_less.hours }}小时)       |
-    | 减少稳妥人绑定 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.del_bond_less.hours }}小时)      |
-    |    解除委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时) |
-    |    退出候选人集     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonbeam.collator_timings.leave_candidates.hours }}小时)    |
-    |    退出委托人集     |   {{ networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时)   |
+    | 减少候选人（收集人）绑定量 |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbeam.collator_timings.can_bond_less.hours }}小时）       |
+    | 减少委托人绑定量 |      {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonbeam.delegator_timings.del_bond_less.hours }}小时）      |
+    |    撤销委托    | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时） |
+    |    离开候选人（收集人）池     |    {{ networks.moonbeam.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbeam.collator_timings.leave_candidates.hours }}小时）    |
+    |    离开委托人池     |   {{ 9networks.moonbeam.delegator_timings.leave_delegators.rounds }}轮次{{ networks.moonbeam.delegator_timings.leave_delegators.hours }}小时）   |
 
 === "Moonriver"
     |        变量         |                                                                          值                                                                          |
     |:-----------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonriver.collator_timings.can_bond_less.hours }}小时)       |
-    | 减少稳妥人绑定 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时)      |
-    |    解除委托     | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时) |
-    |    退出候选人集      |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonriver.collator_timings.leave_candidates.hours }}小时)    |
-    |    退出委托人集     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时)   |
+    | 减少候选人（收集人）绑定量 |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时）       |
+    | 减少委托人绑定量 |      {{ networks.moonriver.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonriver.delegator_timings.del_bond_less.hours }}小时）      |
+    |    撤销委托    | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时） |
+    |    离开候选人（收集人）池     |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时）    |
+    |    离开委托人池     |   {{ networks.moonriver.delegator_timings.leave_delegators.rounds }}轮次（{{ networks.moonriver.delegator_timings.leave_delegators.hours }}小时）   |
 
 === "Moonbase Alpha"
-    |        变量         |                                                                         值                                                                         |
+    |        变量          |                                                                         值                                                                         |
     |:-----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | 减少候选人绑定 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次 ({{ networks.moonbase.collator_timings.can_bond_less.hours }}小时)       |
-    | 减少稳妥人绑定 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次 ({{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时)      |
-    |    解除委托     | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时) |
-    |    退出候选人集      |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次 ({{ networks.moonbase.collator_timings.leave_candidates.hours }}小时)    |
-    |    退出委托人集     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
+    | 减少候选人（收集人）绑定量 |       {{ networks.moonbase.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbase.collator_timings.can_bond_less.hours }}小时）       |
+    | 减少委托人绑定量 |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）      |
+    |    撤销委托    | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时） |
+    |    离开候选人（收集人）池     |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时）    |
+    |    离开委托人池     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时）   |
 
+## 平行链Staking Pallet接口 {: #parachain-staking-pallet-interface }
 
-## 查看先决条件 {: #checking-prerequisites } 
+### Extrinsics {: #extrinsics }
 
-以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonbeam和Moonriver。
+平行链staking pallet提供以下extrinsics（函数）：
 
- - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/)
- - 拥有一个超过`{{networks.moonbase.staking.min_del_stake}}`枚Token的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+- **cancelCandidateBondLess**() - 取消一个待定中的已计划请求，以减少候选人（收集人）自身绑定数量
+- **cancelDelegationRequest**(candidate) -  取消提供候选人（收集人）的地址的任何待定中委托的请求
+- **cancelLeaveCandidates**(candidateCount) - 取消一个候选人（收集人）的待定中的已计划的请求，就目前在池中候选人的数量，以离开该池
+- **cancelLeaveDelegators**() - 取消一个待定中的已计划的请求以离开委托人池
+- **candidateBondMore**(more) - 请求增加有具体数量的候选人（收集人）自身绑定量
+- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量。
+- **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
+- **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
+- **executeDelegationRequest**(delegator, candidate) - 为提供候选人（收集人）的地址的特定委托人执行任何已计划的到期委托请求
+- **executeLeaveCandidates**(candidate, candidateDelegationCount) - 执行任何已计划的到期请求，以离开候选人（收集人）池
+- **executeLeaveDelegators**(delegator, delegationCount) - 执行已计划的到期请求，以离开委托人池并撤销所有委托
+- **goOffline**() - 无需解绑，允许收集人暂时离开池
+- **goOnline**() - 在之前调用`goOffline()`之后，允许收集人重新加入池
+- **joinCandidates**(bond, candidateCount) - 请求在特定绑定量并提供现有候选人（收集人）数量的情况下加入收集人池
 
-!!! 注意事项
-    由于需要最低的委托数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_del_stake}}`枚Token才可进行操作。若想获取更多超过水龙头分配的Token，请随时通过Discord联系我们，我们很高兴为您提供帮助。
+- **scheduleCandidateBondLess**(less) - 计划一个请求，以特定数量来减少候选人（收集人）自身绑定。这里有[退出生效期](#exit-delays)，即在您通过`executeCandidateBondLess` extrinsic执行请求之前必须等待。
 
-## Remix设置 {: #remix-set-up }
+- **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
 
-1. 获得[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的复制文档
+- **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待。
 
-2. 将文档内容复制并粘贴至名为StakingInterface.sol的Remix文档
+- **scheduleLeaveDelegators**() - 计划一个请求，以离开委托人池并撤销所有正在进行的委托。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveDelegators` extrinsic执行请求之前必须等待。
 
-![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/staking-1.png)
+- **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
 
-## 编译合约 {: #compile-the-contract }  
+- **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块。
 
-1. 点击（从上至下的）第二个Compile标签
+- **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金。
 
-2. 编译[Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
+- **setInflation**(schedule) - 设定年通胀率以导出每轮通胀率
 
-![Compiling StakingInteface.sol](/images/builders/pallets-precompiles/precompiles/staking/staking-2.png)
+- **setParachainBondAccount**(new) - 设定为平行链资金预留的持有资金账户
 
-## 读取合约 {: #access-the-contract } 
+- **setParachainBondReservePercent**(new) - 设定为平行链资金预留的通胀的百分比
 
-1. 点击Remix界面中Compile标签正下方的Deploy and Run标签。**注意：**我们现在并不是在这里部署合约，而是使用先前部署的预编译合约
+- **setStakingExpectations**(expectations) - 设定所有质押的期望
+- **setTotalSelected**(new) - 设定每轮选择的收集人的总数
 
-2. 确认已选取Environment下拉菜单中的**Injected Web3**
+### 存储模式 {: #storage-methods }
 
-3. 确认已在**Contract**下拉菜单中勾选**ParachainStaking - Stakinginterface.sol**。另外，因为这是一个预编译合约，无需进行部署。相反地，我们将会在**At Address**字段提供预编译的地址
+平行链staking pallet包括了以下只读存储模式以获取链状态数据：
 
-4. 为Moonbase Alpha提供质押预编译的地址：`{{networks.moonbase.staking.precompile_address}}`并点击**At Address**
+- **atStake**(u32, AccountId20) - 提供给定一轮数量的收集人委托质押的快照，并且可选，收集人的地址
+- **awardedPts**(u32, AccountId20) - 给定一轮数量，返回每轮每个收集人的奖励积分，并且可选，收集人的地址
+- **bottomDelegations**(AccountId20) - 为所有候选人（收集人）或者一个给定候选人（收集人）的地址返回最底部的50个委托
+- **candidateInfo**(AccountId20) - 为所有候选人（收集人）或者一个给定的候选人（收集人）的地址返回候选人（收集人）信息，如绑定量、委托数量及更多
+- **candidatePool**() - 返回每一个在池中的候选人（收集人）列表以及他们总支持质押量
 
-5. 平行链质押预编译将出现在**Deployed Contracts**列表
+- **candidateState**(AccountId20) - *已弃用*，现使用`candidateInfo`代替
+- **collatorCommission**() - 返回从所有收集人的奖励中扣除的佣金百分比
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/staking/staking-3.png)
+- **collatorState2**(AccountId20) - *已弃用*，现使用`candidateInfo`代替
+- **delayedPayouts**(u32) - 返回所有轮次或给定轮次的延迟支付
 
-## 委托一个收集人 {: #delegate-a-collator }
+- **delegationScheduledRequests**(AccountId20) - 返回所有收集人或给定收集人地址中未处理的已计划委托请求
 
-在本示例中，我们需要在Moonbase Alpha上委托一个收集人。委托人持有Token，并为担保的收集人质押。所有用户只要持有超过{{networks.moonbase.staking.min_del_stake}}枚可用Token皆可成为委托人。
+- **delegatorState**(AccountId20) - 为所有委托人或一个给定委托人地址返回委托人信息，如委托情况、委托状态，以及总委托量
 
-您可自行研究并选择想要委托的候选人。在本教程中，我们将使用以下候选人地址：`{{ networks.moonbase.staking.candidates.address1 }}`。
+- **inflationConfig**() - returns the inflation configuration —— 返回通胀配置
+- **nominatorState2**(AccountId20) - *已弃用*，现使用`delegatorState`代替
+- **palletVersion**() - 返回目前pallet版本
+- **parachainBondInfo**() - 返回平行链储备账户和年通胀的百分比
 
-想要委托一个候选人，您将需要确定当前候选人的委托人数和委托人的委托数量。候选人的委托人数是支持指定候选人的委托人数。委托人的委托数量是委托人参与委托的次数。
+- **points**(u32) - 返回在所有轮次或给定轮次中，给与收集人参与生产区块而获得奖励的总点数
 
-### 获取候选人的委托人数 {: #get-the-candidate-delegator-count }
+- **round**() - 返回目前轮次数，目前轮次的第一个区块，以及轮次的长度
+- **selectedCandidates**() - 返回被选为目前轮次的活跃集的收集人
 
-获取候选人的委托人数量，您需要调用质押预编译提供的函数。在**Deployed Contracts**列表下找到**PARACHAINSTAKING**合约，然后执行以下操作：
+- **staked**(u32) - 返回所有轮次或给定轮次的在活跃集中的收集人的质押总数
+- **topDelegations**(AccountId20) - 返回给所有收集人或给定收集人的地址的最高的300个委托
 
-1. 找到**candidate_delegation_count**函数并展开面板
+- **total**() - 返回在staking pallet中的总锁定资产
+- **totalSelected**() - 返回可被选做活跃集的收集人的总数
 
-2. 输入候选人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
+### Pallet常量 {: #constants }
 
-3. 点击**call**
+平行链staking pallet包括了以下只读函数以获取pallet常量：
 
-4. 调用完成后，将会显示结果
+- **candidateBondLessDelay**() - 返回必须等待的轮次数，直到已计划的候选人（收集人）减少其自身绑定的请求可以被执行
 
-![Call collator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-4.png)
+- **defaultBlocksPerRound**() - 返回每个轮次的默认区块数
 
-### 获取现有委托数量 {: #get-your-number-of-existing-delegations }
+- **defaultCollatorCommission**() - 返回收集人的默认佣金
 
-如果您不知道现有的委托数量，您可以执行以下步骤获得：
+- **defaultParachainBondReservePercent**() - 返回平行链账户预留的默认通胀百分比
 
-1. 找到**delegator_delegation_count**函数并展开面板
+- **delegationBondLessDelay**() - 返回必须等待的轮次数，直到已计划的减少委托的请求可以被执行
 
-2. 输入地址
-
-3. 点击**call**
-
-4. 调用完成后，将会显示结果
-
-![Call delegator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-5.png)
-
-### 调用委托 {: #call-delegate }
-
-现在，您已获取[候选人的委托人数](#get-the-candidate-delegator-count)和[现有委托数量](#get-your-number-of-existing-delegations)，接下来您可以开始委托一个收集人。为此，您需要执行以下操作：
-
-1. 找到**delegate**函数并展开面板
-
-2. 输入您希望委托的收集人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
-
-3. 提供以Wei为单位的委托数量。最低委托的Token数量为`{{networks.moonbase.staking.min_del_stake}}`，所以以Wei为单位的最低委托数量是`5000000000000000000`
-
-4. 输入候选人的委托数量
-
-5. 输入您的委托数量
-
-6. 点击**transact**
-
-7. MetaMask将跳出弹窗，请查看详情并确认交易
-
-![Delegate a Collator](/images/builders/pallets-precompiles/precompiles/staking/staking-6.png)
-
-## 验证委托 {: #verify-delegation }
-
-您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses)。如果您已经完成这个步骤，您可以略过此步骤并直接进入[验证委托人状态]()部分。
-
-### 将MetaMask地址加入地址簿 {: #add-metamask-address-to-address-book }
-
-1. 导向至**Accounts**，选择**Address Book**
-
-2. 点击**Add contact**
-
-3. 添加您的MetaMask地址
-
-4. 为账户提供一个昵称
-
-5. 点击**Save**
-
-![Add to Address Book](/images/builders/pallets-precompiles/precompiles/staking/staking-7.png)
-
-### 验证委托人状态 {: #verify-delegator-state }
-
-1. 为了验证您已成功委托，进入[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate)后导向至**Developer**，选择**Chain State**
-
-2. 选择**parachainStaking** Pallet
-
-3. 选择**delegatorState**查询
-
-4. 输入您的地址
-
-5. 通常，您可以启用**include option**滑块如果您希望提供特定区块哈希以便查询
-
-6. 点击**+**按钮返回结果并验证您的委托
-
-!!! 注意事项
-    如果您想要查看委托概述，无需在**blockhash to query at**字段中输入任何内容。
-
-![Verify delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-8.png)
-
-## 撤销一个委托 {: #revoking-a-delegation }
-
-在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
-
-目前取消质押需要您发起离开或是撤回委托的请求，等待延迟时段，然后执行请求。
-
-您可以使用`scheduleRevokeDelegation`函数撤销对特定候选人的委托并收回您的Token。发起请求并不会自动撤销您的委托，您需要等待延迟时段，并通过`executeDelegationRequest` 函数执行请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`executeDelegationRequest`函数执行请求。
-
-### 发起撤销委托的请求 {: #schedule-request-to-revoke-a-delegation }
-
-回到Remix以撤销对特定候选人的委托并收回您的Token，并执行以下步骤操作：
-
-1. 在**Deployed Contract**列表中，找到并展开**schedule_revoke_delegation**
-
-2. 输入您希望撤销委托的候选收集人地址
-
-3. 点击**transact**
-
-4. MetaMask将跳出弹窗，请查看详情并点击**confirm**
-
-![Revoke delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-9.png)
-
-当交易成功确认，您将会需要等待延迟时段后才能为您执行撤回委托的请求。如果您尝试在延迟时段前操作，该操作将会失败
-
-### 执行撤回委托的请求 {: #execute-request-to-revoke-a-delegation }
-
-当已经过延迟时段，您能够回到Remix并遵循以下步骤以执行可用请求：
-
-1. 在**Deployed Contract**列表中，找到并展开**execute_delegation_request**
-
-2. 输入您希望撤销委托的候选委托人地址
-
-3. 输入您希望撤销委托的候选收集人地址
-
-4. 点击**transact**
-
-5. MetaMask将跳出弹窗，请查看详情并点击**confirm**
-
-当已完成操作，特定委托人对特定候选收集人的委托将会被撤回并显示。同时您也可以在Polkadot.js Apps上检查您的委托人状态。
-
-### 取消撤销委托请求  {: #cancel-request-to-revoke-a-delegation }
-
-如果因任何因素您希望取消待处理的撤销委托请求，您可以在Remix上执行以下步骤：
-
-1. 在**Deployed Contract**列表中，找到并展开**cancel_delegation_request**
-
-2. 输入您希望撤销委托的候选收集人地址
-
-3. 点击**transact**
-
-4. MetaMask将跳出弹窗，请查看详情并点击**confirm**
-
-您可以在Polkadot.js Apps上再次检查您的委托人状态，确认其仍在进行中。
+- **leaveCandidatesDelay**() - 在已计划的候选人（收集人）离开池的请求可以被执行之前，返回必须等待的轮次数
+- **leaveDelegatorsDelay**() - 在已计划的委托人离开委托人集的请求可以被执行之前，返回必须等待的轮次数
+- **maxBottomDelegationsPerCandidate**() - 返回每个候选人（收集人）最多的排名靠后的委托数
+- **maxDelegationsPerDelegator**() - 返回每个委托人的最大委托数
+- **maxTopDelegationsPerCandidate**() - 返回每个候选人（收集人）的最多的排名靠前的委托数
+- **minBlocksPerRound**() - 返回每个轮次的最低区块数
+- **minCandidateStk**() - 返回成为候选人（收集人）所需的最低质押
+
+- **minCollatorStk**() - 返回成为收集人活跃集中所需的最低质押
+- **minDelegation**() - 返回最低委托数
+- **minDelegatorStk**() - 返回账户成为委托人的最低质押
+- **minSelectedCandidates**() - 返回每个轮次在活跃集中选出的收集人（收集人）的最低数量
+
+- **revokeDelegationDelay**() - 在已计划的撤销委托的请求可以被执行之前，返回必须等待的轮次数
+
+- **rewardPaymentDelay**() - 在区块生产者被奖励之后，返回必须等待的轮次数

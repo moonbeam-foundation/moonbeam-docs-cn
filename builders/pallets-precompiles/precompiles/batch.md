@@ -39,7 +39,9 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 --8<-- 'text/batch/batch-interface.md'
 
-## 查看先决条件 {: #checking-prerequisites }
+## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
+
+### 查看先决条件 {: #checking-prerequisites }
 
 要跟随此教程操作，您需要准备以下内容：
 
@@ -48,7 +50,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 - 至少拥有一个具有`DEV`的账户。
    --8<-- 'text/faucet/faucet-list-item.md'
 
-## 使用Remix与预编译合约交互 {: #interact-with-the-precompile-using-remix }
+### 设置Remix {: #remix-set-up } 
 
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互，您可以将预编译合约加入至Remix并遵循以下教程：
 
@@ -259,7 +261,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 恭喜！您已成功使用MetaMask和Remix与ERC-20预编译合约交互。
 
-## 使用以太坊开发者库 {: #using-ethereum-developer-libraries }
+## 以太坊开发者库 {: #ethereum-development-libraries }
 
 如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`utils.Interface`对象之中，而[encodeFunctionData](https://docs.ethers.io/v5/api/utils/abi/interface/#Interface--encoding){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
 
