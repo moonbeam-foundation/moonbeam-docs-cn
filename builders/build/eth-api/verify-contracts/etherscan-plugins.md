@@ -1,6 +1,6 @@
 ---
-title: 使用插件验证智能合约
-description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约。
+title: 使用Plugins验证智能合约
+description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约
 ---
 
 # 使用Etherscan插件验证智能合约
@@ -9,20 +9,21 @@ description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonb
 
 ## 概览 {: #introduction }
 
-验证智能合约是为部署在Moonbeam上的合约提供透明度和安全性的一种好方法。与Etherscan的合约验证服务集成的插件有很多，其中包括[`hardhat-etherscan` plugin](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html){target=_blank}和[`truffle-plugin-verify` plugin](https://github.com/rkalis/truffle-plugin-verify){target=_blank}。这两种插件均能通过本地检测需要验证的合约及其所需的Solidity库（若有）来自动执行验证合约的过程。
+验证智能合约是为部署在Moonbeam上的合约提供透明度和安全性的一种好方法。与Etherscan的合约验证服务集成的插件有很多，其中包括[`hardhat-etherscan`插件](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html){target=_blank}和[`truffle-plugin-verify`插件](https://github.com/rkalis/truffle-plugin-verify){target=_blank}。这两种插件均能通过本地检测需要验证的合约及其所需的Solidity库（若有）来自动执行验证合约的过程。
 
-Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_blank}项目，同样地Truffle插件也可以集成至您的[Truffle](https://trufflesuite.com/){target=_blank}项目。
+Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_blank}项目，同样地Truffle插件也可以集成至您的[Truffle](https://trufflesuite.com/){target=_blank}项目。[Foundry](https://github.com/foundry-rs/foundry){target=_blank}也具有Etherscan功能，但它们内置于其Forge工具中，而非包含在单独的插件中。
 
 本教程将向您展示如何使用两者插件验证部署至Moonbase Alpha的智能合约。本教程也同样适用于Moonbeam和Moonriver。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在开始本教程之前，您将需要提前准备：
+在开始本教程之前，您将需要准备以下内容：
 
-- [安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}测试网
-- 具有拥有一定数量DEV的账户
---8<-- 'text/faucet/faucet-list-item.md'
-- 一个您将尝试验证合约的网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥
+- [安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/)测试网
+- 一个拥有`DEV` Token的账户
+ --8<-- 'text/faucet/faucet-list-item.md'
+- 一个您将尝试验证合约网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥
+- 安装和配置Git
 
 ## 生成Moonscan API密钥 {: generating-a-moonscan-api-key }
 
@@ -54,6 +55,9 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 npm install --save-dev @nomiclabs/hardhat-etherscan
 ```
 
+!!! 注意事项
+    `@nomiclabs/hardhat-etherscan`的3.0.1版本中已添加对基于Moonbeam网络的支持。您可以通过查看`devDependencies`部分的`package.json`来确认所使用的版本并更新至3.0.1或以上的版本（若需要）。
+
 您可以将您的Moonscan API密钥与您的私钥一起添加到`secrets.json`文件中。在本示例中，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
 
 从您的Hardhat项目中，打开`hardhat.config.js`文件，导入`hardhat-etherscan`插件和您的Moonscan API密钥，并添加Etherscan配置：
@@ -74,7 +78,7 @@ module.exports = {
       moonbeam: moonbeamMoonscanAPIKey, // Moonbeam Moonscan API Key
       moonriver: moonriverMoonscanAPIKey, // Moonriver Moonscan API Key
       moonbaseAlpha: moonbeamMoonscanAPIKey, // Moonbeam Moonscan API Key    
-    }  
+    }
   }
 };
 ```
@@ -89,7 +93,7 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS>
 
 ![Successful verification using hardhat-etherscan plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-3.png)
 
-如果您正在验证具有constructor arguments的合约，您将需要运行上述命令并在命令末尾添加用于部署合约的constructor arguments。例如：
+如果您正在验证具有constructor函数的合约，您将需要运行上述命令并在命令末尾添加用于部署合约的constructor函数。例如：
 
 ```
 npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "<constructor argument>"
@@ -97,15 +101,15 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "<constructor argument>
 
 参考[Hardhat Etherscan文档网站](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html){target=_blank}获取其他如下所示用例：
 
-- [complex参数](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#complex-arguments){target=_blank}
+- [complex函数](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#complex-arguments){target=_blank} 
 - [无法检测到地址的库](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#libraries-with-undetectable-addresses){target=_blank}
-- 使用[多个API密钥](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#multiple-api-keys-and-alternative-block-explorers){target=_blank}
+- 使用[多个API密钥](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#multiple-api-keys-and-alternative-block-explorers){target=_blank} 
 - 使用[`verify`命令编程](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#using-programmatically){target=_blank}
-- [检测正确的constructor arguments](https://info.etherscan.com/determine-correct-constructor-argument-during-source-code-verification-on-etherscan/){target=_blank}
+- [检测正确的constructor函数](https://info.etherscan.com/determine-correct-constructor-argument-during-source-code-verification-on-etherscan/){target=_blank}
 
 ## 使用Truffle验证插件 {: #using-the-truffle-verify-plugin }
 
-本教程此部分将以[使用Truffle部署至Moonbeam](/builders/build/eth-api/dev-env/truffle/){target=_blank}所创建的`MyToken.sol`合约为例。
+本教程此部分将以[使用Truffle部署合约至Moonbeam](/builders/build/eth-api/dev-env/truffle/){target=_blank}所创建的`MyToken.sol`合约为例。
 
 开始使用`truffle-plugin-verify`之前，您需要先打开您的Truffle项目并运行以下代码安装插件：
 
@@ -136,4 +140,79 @@ truffle run verify MyToken --network moonbase
 
 ![Successful verification using truffle-verify-plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.png)
 
-更多关于插件的详细信息，请参考[README.md文档](https://github.com/rkalis/truffle-plugin-verify#readme){target=_blank}的`truffle-plugin-verify` GitHub代码库。
+更多关于插件的详细信息，请参考[README.md文档](https://github.com/rkalis/truffle-plugin-verify#readme){target=_blank}的`truffle-plugin-verify` GitHub repo。
+
+## 使用Foundry验证 {: #using-foundry-to-verify }
+
+本教程此部分将以[使用Foundry部署合约至Moonbeam](/builders/build/eth-api/dev-env/foundry/){target=_blank}所创建的`MyToken.sol`合约为例。
+
+除了Foundry项目，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。此API密钥可用于Moonbeam和Moonbase Alpha网络。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
+
+如果您已部署示例合约，您可以使用`verify-contract`命令行来验证。在验证合约之前，您将需要ABI编码constructor函数。为此，您可以运行以下命令：
+
+```
+cast abi-encode "constructor(uint256)" 100
+```
+
+结果将显示为`0x0000000000000000000000000000000000000000000000000000000000000064`。随后您可以使用以下命令来验证合约：
+
+=== "Moonbeam"
+    ```
+    forge verify-contract --chain-id {{ networks.moonbeam.chain_id }} \
+    YOUR_CONTRACT_ADDRESS \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    src/MyToken.sol:MyToken \
+    YOUR_MOONSCAN_API_KEY
+    ```
+
+=== "Moonriver"
+    ```
+    forge verify-contract --chain-id {{ networks.moonriver.chain_id }} \
+    YOUR_CONTRACT_ADDRESS \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    src/MyToken.sol:MyToken \
+    YOUR_MOONSCAN_API_KEY
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    forge verify-contract --chain-id {{ networks.moonbase.chain_id }} \
+    YOUR_CONTRACT_ADDRESS \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    src/MyToken.sol:MyToken \
+    YOUR_MOONSCAN_API_KEY
+    ```
+
+![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-5.png)
+
+如果您想要部署示例合约的同时进行验证，您可以使用以下命令：
+
+=== "Moonbeam"
+    ```
+    forge create --rpc-url {{ networks.moonbeam.rpc_url }} \
+    --constructor-args 100 \
+    --etherscan-api-key YOUR_MOONSCAN_API_KEY \
+    --verify --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken     
+    ```
+
+=== "Moonriver"
+    ```
+    forge create --rpc-url {{ networks.moonriver.rpc_url }} \
+    --constructor-args 100 \
+    --etherscan-api-key YOUR_MOONSCAN_API_KEY \
+    --verify --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken     
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    forge create --rpc-url {{ networks.moonbase.rpc_url }} \
+    --constructor-args 100 \
+    --etherscan-api-key YOUR_MOONSCAN_API_KEY \
+    --verify --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken 
+    ```
+
+![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-6.png)
+
