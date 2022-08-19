@@ -165,14 +165,28 @@ interface ChainlinkInterface {
 |:------------:|:-------------------------------------------------:|
 | AAVE to USD  | {{ networks.moonbase.chainlink.basic.aave_usd }}  |
 | ALGO to USD  | {{ networks.moonbase.chainlink.basic.algo_usd }}  |
+| AVAX to USD  | {{ networks.moonbase.chainlink.basic.avax_usd }}  |
 | BAND to USD  | {{ networks.moonbase.chainlink.basic.band_usd }}  |
+|  BNB to USD  |  {{ networks.moonbase.chainlink.basic.bnb_usd }}  |
 |  BTC to USD  |  {{ networks.moonbase.chainlink.basic.btc_usd }}  |
+| COMP to USD  | {{ networks.moonbase.chainlink.basic.comp_usd }}  |
+|  CRV to USD  |  {{ networks.moonbase.chainlink.basic.crv_usd }}  |
+|  CVX to USD  |  {{ networks.moonbase.chainlink.basic.cvx_usd }}  |
+|  DAI to USD  |  {{ networks.moonbase.chainlink.basic.dai_usd }}  |
 |  DOT to USD  |  {{ networks.moonbase.chainlink.basic.dot_usd }}  |
 |  ETH to USD  |  {{ networks.moonbase.chainlink.basic.eth_usd }}  |
+| FRAX to USD  | {{ networks.moonbase.chainlink.basic.frax_usd }}  |
+|  FTM to USD  |  {{ networks.moonbase.chainlink.basic.ftm_usd }}  |
 |  KSM to USD  |  {{ networks.moonbase.chainlink.basic.ksm_usd }}  |
 | LINK to USD  | {{ networks.moonbase.chainlink.basic.link_usd }}  |
+|  MKR to USD  |  {{ networks.moonbase.chainlink.basic.mkr_usd }}  |
+|  OP to USD   |  {{ networks.moonbase.chainlink.basic.op_usd }}   |
+| stETH to USD | {{ networks.moonbase.chainlink.basic.steth_usd }} |
 | SUSHI to USD | {{ networks.moonbase.chainlink.basic.sushi_usd }} |
 |  UNI to USD  |  {{ networks.moonbase.chainlink.basic.uni_usd }}  |
+| USDC to USD  | {{ networks.moonbase.chainlink.basic.usdc_usd }}  |
+| USDT to USD  | {{ networks.moonbase.chainlink.basic.usdt_usd }}  |
+|  YFI to USD  |  {{ networks.moonbase.chainlink.basic.yfi_usd }}  |
 
 在此例中，您可以继续使用在[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}中使用带有`BTC to USD`的job ID的接口合约。在创建文档和编译合约之后，您可以执行以下步骤：
 
