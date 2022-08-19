@@ -1,7 +1,6 @@
 ---
 title: 使用Foundry部署合约
-description: Learn how to use Foundry, an Ethereum development environment, to compile, deploy, and debug Solidity smart contracts on Moonbeam.
-学习如何使用以太坊部署环境Foundry在Moonbeam编译、部署和调试Solidity智能合约。
+description: 学习如何使用以太坊部署环境Foundry在Moonbeam编译、部署和调试Solidity智能合约。
 ---
 
 # 使用Foundry部署合约至Moonbeam
