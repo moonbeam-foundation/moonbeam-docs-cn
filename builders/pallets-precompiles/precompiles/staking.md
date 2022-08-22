@@ -229,7 +229,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 1. 在**Deployed Contract**列表中，找到并展开**schedule_revoke_delegation**
 2. 输入您希望撤销委托的候选收集人地址
 3. 点击**transact**
-4. MetaMask将跳出弹窗，请查看详情并点击**confirm**
+4. MetaMask将跳出弹窗，请查看详情并点击**Confirm**
 
 ![Revoke delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-9.png)
 
