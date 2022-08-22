@@ -115,7 +115,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 
 ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称、符号和小数位数。您可通过以下步骤获取这些信息：
 
-1. 在**Deployed Contracts**一栏展开IERC20合约
+1. 在**Deployed Contracts**一栏展开**IERC20**合约
 2. 点击**decimals**以获取Moonbase Alpha原生协议Token的小数位数
 3. 点击**name**以获取Token名称
 4. 点击**symbol**以获取Token符号
