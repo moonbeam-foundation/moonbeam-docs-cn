@@ -104,17 +104,17 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 以下的函数已被**弃用**，将会在近期移除：
 
- - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押委托人的只读函数
- - **min_nomination**() —— 获取最低委托数量的只读函数
- - **collator_nomination_count**(*address* collator) —— 返回指定收集人地址委托数量的只读函数
- - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数
- - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑
- - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量
- - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量
- - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托
- - **revoke_nominations**(*address* collator) —— 撤销指定委托
- - **nominator_bond_more**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量
- - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量
+ - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押委托人的只读函数。请改用`is_delegator`
+ - **min_nomination**() —— 获取最低委托数量的只读函数。请改用`min_delegation`
+ - **collator_nomination_count**(*address* collator) —— 返回指定收集人地址委托数量的只读函数。请改用`candidate_delegation_count`
+ - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数。请改用`delegator_delegation_count`
+ - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑。请改用`schedule_leave_candidates`和`execute_leave_candidates`
+ - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量。请改用`schedule_candidate_bond_less`和`execute_candidate_bond_less`
+ - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量。请改用`delegate`
+ - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托。请改用`schedule_leave_delegators`和`execute_leave_delegators`
+ - **revoke_nominations**(*address* collator) —— 撤销指定委托。请改用`schedule_revoke_delegation`和`execute_delegation_request`
+ - **nominator_bond_more**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量。请改用`delegator_bond_more`
+ - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量。请改用`schedule_delegator_bond_less`和`execute_delegation_request`
 
 ## 与Solidity接口进行交互 {: #interact-with-solidity-interface }
 
@@ -123,7 +123,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonbeam和Moonriver。
 
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 账户余额至少`{{networks.moonbase.staking.min_del_stake}}`枚Dev
+ - 账户余额至少`{{networks.moonbase.staking.min_del_stake}}`枚
  --8<-- 'text/faucet/faucet-list-item.md'
 
 !!! 注意事项

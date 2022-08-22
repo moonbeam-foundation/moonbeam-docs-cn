@@ -58,7 +58,7 @@ description: 根据此教程快速学习如何使用Polkadot.js Apps与Moonbeam�
 
 ![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-7.png)
 
-下一步，点击**Send**按钮，随后会出现一个弹窗，指引您按照操作发送交易。设置发送地址和金额，在本示例中为5个DEV代币。一切就绪后，就可以点击**Make Transfer**按钮。
+下一步，点击发送按钮，随后会出现一个弹窗，指引您按照操作发送交易。设置发送地址和金额，在本示例中为5个DEV代币。一切就绪后，就可以点击**Make Transfer**按钮。
 
 ![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-app-8.png)
 

@@ -28,22 +28,22 @@ description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另�
 
 x-tokens pallet提供以下extrinsics（函数）：
 
- - **transfer(currencyId, amount, dest, destWeight)** —— 转移一个币种，根据原生Token（自身储备）或是资产ID定义
- - **transferMultiasset(asset, dest, destWeight)** —— 转移一种可替代资产，根据其multilocation定义
- - **transferMultiassetWithFee(asset, fee, dest, destWeight)** —— 转移一种可替代资产，但其能够让资产的发送者使用另外一种资产支付转移费用。两者皆根据其multilocation定义
- - **transferMultiassets(assets, feeItem, dest, destWeight)** —— 转移多种可替代资产，并定义其中哪种资产将会被用于支付转移费用。所有资产皆由其multilocation定义
- - **transferMulticurrencies(currencies, feeItem, dest, destWeight)** —— 转移多个币种，并定义其中哪种币种将会被用于支付转移费用。所有币种都将通过原生Token（自身储备）或是资产ID定义
- - **transferWithFee(currencyId, amount, fee, dest, destWeight)** —— 转移一个币种，但允许资产发送者使用不同的资产支付转移费用。两者皆由其multilocation定义
+ - **transfer**(currencyId, amount, dest, destWeight) — 转移一个币种，根据原生Token（自身储备）或是资产ID定义
+ - **transferMultiasset**(asset, dest, destWeight) — 转移一种可替代资产，根据其multilocation定义
+ - **transferMultiassetWithFee**(asset, fee, dest, destWeight) — 转移一种可替代资产，但其能够让资产的发送者使用另外一种资产支付转移费用。两者皆根据其multilocation定义
+ - **transferMultiassets**(assets, feeItem, dest, destWeight) — 转移多种可替代资产，并定义其中哪种资产将会被用于支付转移费用。所有资产皆由其multilocation定义
+ - **transferMulticurrencies**(currencies, feeItem, dest, destWeight) — 转移多个币种，并定义其中哪种币种将会被用于支付转移费用。所有币种都将通过原生Token（自身储备）或是资产ID定义
+ - **transferWithFee**(currencyId, amount, fee, dest, destWeight) — 转移一个币种，但允许资产发送者使用不同的资产支付转移费用。两者皆由其multilocation定义
 
 其中需要提供信息输入的函数定义如下：
 
- - **currencyId/currencies** —— 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`ForeignAsset`代表其XC-20资产ID（而不是其XC-20地址）
- - **amount** —— 将通过XCM转移的Token数量
- - **dest** —— 一个multilocation，用于定义将通过XCM转移Token的目标地址。其支持不同地址格式，如20或32字节的地址（以太坊或是Substrate格式）
- - **destWeight** —— 您提供给目标链希望其执行XCM信息的最大执行时间。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
- - **asset/assets** —— 一个用于定义将通过XCM转移资产的multilocation。每条平行链将会有不同定义资产的方式。举例而言，基于Moonbeam的网络将会经由其原生Token的pallet余额索引定义
- - **fee** —— 一个用于定义支付XCM在目标链上执行的multilocation
- - **feeItem** —— 一个用于定义多样资产发送地点的索引，将用于支付XCM在目标链上的执行。举例而言，如果仅有一种资产被发送，`feeItem`将会是`0`
+ - **currencyId/currencies** — 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`ForeignAsset`代表其XC-20资产ID（而不是其XC-20地址）
+ - **amount** — 将通过XCM转移的Token数量
+ - **dest** — 一个multilocation，用于定义将通过XCM转移Token的目标地址。其支持不同地址格式，如20或32字节的地址（以太坊或是Substrate格式）
+ - **destWeight** — 您提供给目标链希望其执行XCM信息的最大执行时间。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
+ - **asset/assets** — 一个用于定义将通过XCM转移资产的multilocation。每条平行链将会有不同定义资产的方式。举例而言，基于Moonbeam的网络将会经由其原生Token的pallet余额索引定义
+ - **fee** — 一个用于定义支付XCM在目标链上执行的multilocation
+ - **feeItem** — 一个用于定义多样资产发送地点的索引，将用于支付XCM在目标链上的执行。举例而言，如果仅有一种资产被发送，`feeItem`将会是`0`
 
 ### 存储方法 {: #storage-methods }
 
@@ -223,7 +223,7 @@ x-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 --8<-- 'text/xcm/xcm-precompile-multilocation.md'
 
-以下代码片段包含`Multilocation`架构的部分示例，因为其将会在X-Token预编译函数中使用：
+以下代码片段包含`Multilocation`架构的部分示例，因为其将会在x-tokens预编译函数中使用：
 
 ```js
 // Multilocation targeting the relay chain or its asset from a parachain

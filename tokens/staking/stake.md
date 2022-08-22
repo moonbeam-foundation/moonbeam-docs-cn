@@ -56,7 +56,6 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 撤销委托 {: #revoke-delegations }
 
  - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=取消委托延迟){target=_blank}，随后才能执行请求。取代已弃用的`revokeNomination`函数
- - **executeDelegationRequest**(*address* delegator, *address* candidate) —— 执行和已处于待办委托的请求。该函数仅用于已计划的撤销请求，且退出已生效之后
  - **cancelDelegationRequest**(*address* candidate) —— 取消已计划的请求以撤销委托的请求
 
 以下外部函数已弃用：
