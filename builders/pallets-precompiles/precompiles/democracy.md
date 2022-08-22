@@ -198,4 +198,4 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 ![Call the vote function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-11.png)
 
-恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[*Discord*](https://discord.gg/moonbeam){target=_blank}询问。
+恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[Discord](https://discord.gg/moonbeam){target=_blank}询问。
