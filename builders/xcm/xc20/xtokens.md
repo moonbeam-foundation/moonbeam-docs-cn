@@ -93,7 +93,7 @@ x-tokens pallet包括以下用于获取pallet常量的只读函数：
 - [计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
 - [计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
 
-###  x-tokens转移函数 {: #xtokens-transfer-function}
+###  X-Tokens转移函数 {: #xtokens-transfer-function}
 
 在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
