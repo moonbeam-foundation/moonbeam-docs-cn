@@ -3,7 +3,7 @@ title: 通过XCM进行远程执行
 description: 通过使用XCM-Transactor pallet，如何在其他链进行远程XCM调用。XCM-Transactor预编译允许通过以太坊API访问核心功能。
 ---
 
-# 使用XCM-transactor Pallet进行远程执行
+# 使用XCM-Transactor Pallet进行远程执行
 
 ![XCM-transactor Precompile Contracts Banner](/images/builders/xcm/xcm-transactor/xcmtransactor-banner.png)
 
