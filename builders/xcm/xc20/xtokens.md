@@ -127,7 +127,7 @@ x-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣除用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
 
-### x-tokens转移多种资产函数 {: #xtokens-transfer-multiasset-function}
+### X-Tokens转移多种资产函数 {: #xtokens-transfer-multiasset-function}
 
 在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transferMultiasset`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
