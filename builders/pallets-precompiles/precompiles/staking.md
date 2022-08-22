@@ -193,7 +193,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 ### 验证委托 {: #verify-delegation }
 
-您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses)。
+您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，[将MetaMask地址加入Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses){target=_blank}。
 
 1. 导向至**Accounts**，选择**Address Book**
 2. 点击**Add contact**
