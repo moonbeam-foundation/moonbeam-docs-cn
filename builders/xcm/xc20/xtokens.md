@@ -3,7 +3,7 @@ title: 将XC-20发送至其他链
 description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另外，X-Tokens预编译允许您通过以太坊API访问核心功能。
 ---
 
-# 使用x-tokens Pallet发送XC-20s
+# 使用X-Tokens Pallet发送XC-20s
 
 ![x-tokens Precompile Contracts Banner](/images/builders/xcm/xc20/xtokens/xtokens-banner.png)
 
