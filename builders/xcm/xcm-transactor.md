@@ -34,7 +34,7 @@ XCM信息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/
 
 XCM-transactor pallet提供以下extrinsics（函数）：
 
- - **deregister**(index) —— 注销给定索引的衍生账户，以防止先前注册的帐户使用衍生地址进行远程执行。该extrinsic只能通过**root**调用，例如，通过民主提案
+ - **deregister**(index) —— 注销给定索引的衍生账户，以防止先前注册的帐户使用衍生地址进行远程执行。该extrinsic只能通过*root*调用，例如，通过民主提案
  - **register**(address, index) —— 以给定索引将给定地址注册为衍生账户。该extrinsic只能通过**root** 调用，例如，通过民主提案
  - **removeTransactInfo**(location) —— 为给定链移除交易信息，定义为multilocation
  - **setTransactInfo**(location, transactExtraWeight, feePerSecond, maxWeight) —— 为给定链设置交易信息，定义为multilocation。交易信息包含：
