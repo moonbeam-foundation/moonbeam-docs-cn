@@ -74,7 +74,7 @@ Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开�
 
 ### 已支持订阅 {: #supported-subscription }
 
-截止本文撰写时，[已支持的订阅](https://geth.ethereum.org/docs/rpc/pubsub#supported-subscriptions)：
+截止本文撰写时，[已支持的订阅](https://geth.ethereum.org/docs/rpc/pubsub#supported-subscriptions){target=_blank}：
 
  - **[newHeads](https://geth.ethereum.org/docs/rpc/pubsub#newheads){target=_blank}** —— 每次将新的标题附加至链都会触发通知
  - **[logs](https://geth.ethereum.org/docs/rpc/pubsub#logs){target=_blank}** —— 返回包含在新导入区块中并匹配指定过滤条件的日志
