@@ -218,7 +218,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 ### 撤销一个委托 {: #revoking-a-delegation }
 
-在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
+在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/){target=_blank}）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
 目前取消质押需要您发起离开或是撤回委托的请求，等待延迟时段，然后执行请求。
 
