@@ -103,7 +103,7 @@ XCM-transactor pallet包括以下用于获取pallet常量的只读函数：
 - [计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
 - [计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
 
-### 通过衍生函数进行XCM-transactor交易 {: #xcmtransactor-transact-through-derivative}
+### 通过衍生函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-derivative}
 
 在本示例中，您将构建XCM信息以通过XCM-transactor pallet的`transactThroughDerivative`函数从Moonbase Alpha执行中继链中的远程调用。
 
