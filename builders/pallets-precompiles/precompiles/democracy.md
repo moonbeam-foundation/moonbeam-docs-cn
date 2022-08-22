@@ -103,7 +103,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 ### 提交提案 {: #submit-a-proposal } 
 
-如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**标签，然后进行以下操作：
+如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**标签，点击 **+ Submit preimage**, 然后进行以下操作：
 
  1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
  2. 选取您希望交互的pallet以及可调度的函数（或是动作）以进行提案。您选取的动作将会决定您随后的操作步骤。在此例子中，此为**system** pallet和**remark**函数

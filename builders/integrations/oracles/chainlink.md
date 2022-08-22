@@ -432,9 +432,9 @@ interface AggregatorV3Interface {
 
 2. 将**ENVIRONMENT**设置为**Injected Web3**
 
-3. 如果您的MetaMask已连接，它将出现在**Account**选择列表中。否则，MetaMask将提示您连接至您的账户。
+3. 如果您的MetaMask已连接，它将出现在**ACCOUNT**选择列表中。否则，MetaMask将提示您连接至您的账户。
 
-4. 在**Contract**下拉列表中选择`AggregatorV3Interface`合约
+4. 在**CONTRACT**下拉列表中选择`AggregatorV3Interface`合约
 
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 
