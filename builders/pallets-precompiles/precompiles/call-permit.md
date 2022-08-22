@@ -443,7 +443,7 @@ node getSignature.js
 
 当您传送`dispatch`函数，您将需要与签署调用许可时所需的相同参数。开始操作之前，返回Remix中的**Deploy and Run**标签，并在**Deployed Contract**部分展开调用许可合约。请确认您已连接至您希望执行调用许可和支付交易费用的账户，随后跟随以下步骤：
 
-1. 在**form**字段输入您希望用于签署调用许可的账户地址
+1. 在**from**字段输入您希望用于签署调用许可的账户地址
 2. 复制和粘贴`SetMessage.sol`的合约地址
 3. 在**value**字段输入`0`
 4. 为`set`函数输入函数选择器以及您希望为`SetMessage.sol`合约传送消息的十六进制表现方式，在本示例中我们可以使用`hello world`：
