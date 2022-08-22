@@ -140,7 +140,7 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
  1. 点击**Connect**，将您的MetaMask钱包连接至Remix
  2. 确认您选取正确的网络。在此教程中，我们使用的是Moonbase Alpha网络。
  3. 点击**Compile**或根据需求点击**Auto-Compile**
- 4. 点击**Deploy**和**Confirm**在Metamask上确认交易
+ 4. 点击**Deploy**和**Confirm**在MetaMask上确认交易
 
 ![Compiling and Deploying a Contract with the Moonbeam Remix Plug](/images/builders/build/eth-api/dev-env/remix/using-remix-18.png)
 
