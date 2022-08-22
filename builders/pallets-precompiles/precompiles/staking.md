@@ -64,7 +64,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 ## 平行链质押Solidity接口 {: #the-parachain-staking-solidity-interface }
 
-[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)是一个接口，通过Solidity合约与平行链质押交互。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
+[StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}是一个接口，通过Solidity合约与平行链质押交互。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
 
 接口包含以下的函数：
 
