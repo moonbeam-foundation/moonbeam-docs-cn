@@ -61,7 +61,7 @@ Foundry由三个工具组成：
 
 除了这三个文件夹，还将创建一个git项目以及一个预先编写的`.gitignore`文件，其中相关文件类型和文件夹被忽略。
 
-## The Source Folder {: #the-src-folder } 源代码文件夹 {: #the-src-folder }
+## 源代码文件夹 {: #the-src-folder }
 
 `src`文件夹可能已经包含`Contract.sol`（一个最小的Solidity合约），您可以自行删除此合约。相反，您需要部署一个ERC-20合约。在合约目录中，您可以创建一个`MyToken.sol`文件：
 
