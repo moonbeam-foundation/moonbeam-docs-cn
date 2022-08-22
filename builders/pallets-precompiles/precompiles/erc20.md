@@ -84,7 +84,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与ERC-20预编译交互。为此，您需要执行以下操作：
 
 1. 获取[`ERC20.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}副本
-2. 将文档内容粘贴至名为**IERC20.sol**的Remix文档
+2. 将文档内容粘贴至名为`IERC20.sol`的Remix文档
 
 ### 编译合约 {: #compile-the-contract }
 
