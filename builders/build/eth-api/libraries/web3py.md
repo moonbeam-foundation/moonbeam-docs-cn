@@ -9,9 +9,9 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 ## 概览 {: #introduction }
 
-[Web3.py](https://web3py.readthedocs.io/)是一组代码库，允许开发者使用Python，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用web3.js库与Moonbeam节点交互，与在以太坊操作相同。
+[Web3.py](https://web3py.readthedocs.io/)是一组代码库，允许开发者使用Python，并通过HTTP、IPC或WebSocket协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Web3.py库与Moonbeam节点交互，与在以太坊操作相同。
 
-在本教程中，您将学习如何使用web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+在本教程中，您将学习如何使用Web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -33,7 +33,7 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 mkdir web3-examples && cd web3-examples
 ```
 
-在本教程中，您将需要安装web3.py代码库和Solidity编译器。您可以通过运行以下命令来安装两者的安装包：
+在本教程中，您将需要安装Web3.py代码库和Solidity编译器。您可以通过运行以下命令来安装两者的安装包：
 
 ```
 pip3 install web3 py-solc-x
@@ -41,7 +41,7 @@ pip3 install web3 py-solc-x
 
 ## 在Moonbeam上设置Web3.py {: #setup-web3-with-moonbeam }
 
-您可以为任何Moonbeam网络配置web3.py。
+您可以为任何Moonbeam网络配置Web3.py。
 --8<-- 'text/common/endpoint-setup.md'
 
 每个网络最简单的设置方式如下所示：

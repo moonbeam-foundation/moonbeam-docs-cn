@@ -322,7 +322,7 @@ EVM智能合约发出的其他事件也可以以类似的方式进行解码，�
 
 适用交易类型的`Gas Price`和`Max Priority Fee Per Gas`数值可以根据上述表格从区块中读取。
 
-EIP 1559引入的`Base Fee`由网络自身决定。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上为固定值，如下所示：
+EIP-1559引入的`Base Fee`由网络自身决定。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上为固定值，如下所示：
 
 === "Moonbeam"
     |   变量   |    值    |

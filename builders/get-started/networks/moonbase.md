@@ -16,7 +16,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
  - **基于Ethereum API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha){target=_blank}
  - **Substrate API** —— [Subscan](https://moonbase.subscan.io/){target=_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}
 
-更多关于上述区块浏览器的信息，请直接查看[区块浏览器](/builders/get-started/explorers/)部分。
+更多关于上述区块浏览器的信息，请直接查看[区块浏览器](/builders/get-started/explorers/){target=_blank} 部分。
 
 ## 连接MetaMask {: #connect-metamask }
 
@@ -29,7 +29,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 !!! 注意事项
     MetaMask将会跳出弹框，要求授权将Moonbase Alpha添加为自定义网络。经授权后，MetaMask会将您当前的网络切换到Moonbase Alpha。
 
-如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/)教程。
+如果您还没有安装MetaMask，请查看[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/){target=_blank} 教程。
 
 ## 获得Token {: #get-tokens }
 
@@ -69,7 +69,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
-[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/)，如为XCM测试目的的xcKarura或xcUNITs。请执行以下步骤完成交换：
+[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNITs。请执行以下步骤完成交换：
 
 1. 点击**Select a token**
 
@@ -88,7 +88,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### MoonLink Dashboard {: #moonlink-dashboard } 
 
-[MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/)。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
+[MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}实时展示Chainlink喂价。更多关于所有Moonbeam网络中所有Chainlink喂价信息的完整列表、以及如何获取喂价信息的相关步骤教程，请直接查阅[Moonbeam文档中的预言机部分](/builders/integrations/oracles/chainlink/){target=_blank}。您也可以查阅[MoonLink Dashboard repository](https://github.com/PureStake/moonlink-dashboard){target=_blank}. 
 
 ![MoonLink Dashboard](/images/builders/get-started/networks/moonbase/moonbase-4.png)
 
@@ -99,9 +99,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 [MoonLotto.sol](https://github.com/PureStake/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol){target=_blank}持有彩票的合约逻辑。请执行以下步骤参与：
 
 1. 连接您的MetaMask钱包，并确保在Moonbase Alpha网络上
-
 2. 输入彩票接收方地址，或勾选**I want to buy a ticket for my address**
-
 3. 点击**Submit on MetaMask**并在MetaMask中确认交易
 
 ![MoonLotto Lottery](/images/builders/get-started/networks/moonbase/moonbase-5.png)
@@ -111,7 +109,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 [Moonbeam WalletConnect](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank}展示了将[WalletConnect](https://walletconnect.com/){target=_blank}轻松集成到您的DApp并解锁对各种加密钱包的支持。请确保在[demo app repository](https://github.com/PureStake/moonbeam-walletconnect-demo){target=_blank}先查阅WalletConnect集成如何工作。请执行以下步骤开始：
 
 1. 点击**Connect Wallet**
-
 2. 使用[与WalletConnect兼容的钱包](https://explorer.walletconnect.com/registry?type=wallet){target=_blank}扫描二维码
 
 ![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-6.png)

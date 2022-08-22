@@ -47,7 +47,7 @@ npm ls web3
 
 --8<-- 'code/precompiles/ecrecoverresult.md'
 
-有了这些必要数值，我们就可以到Remix测试预编译合约。请注意，签名验证也可以通过Web3 JS库来实现，但在本示例中，我们将会使用Remix，以确保它使用的是区块链上的预编译合约。我们可以使用以下Solidity代码进行签名验证：
+有了这些必要数值，我们就可以到Remix测试预编译合约。请注意，签名验证也可以通过Web3.js库来实现，但在本示例中，我们将会使用Remix，以确保它使用的是区块链上的预编译合约。我们可以使用以下Solidity代码进行签名验证：
 
 --8<-- 'code/precompiles/ecrecoverremix.md'
 
@@ -71,7 +71,7 @@ SHA3-256是SHA-3安全散列算法（遵循[FIPS202](https://nvlpubs.nist.gov/ni
 
 使用[Remix编译器部署](/builders/build/eth-api/dev-env/remix/)并将[MetaMask连接至Moonbase Alpha](/tokens/connect/metamask/)即可部署合约。调用`sha3fips(bytes memory data)`方法返回数据参数的编码字符串。
 
-## 使用RIPEMD-160函数获取哈希值 {: #hashing-with-ripemd-160 }
+## 使用RIPEMD160函数获取哈希值 {: #hashing-with-ripemd-160 }
 
 向这一函数输入数据可返回其RIPEMD-160哈希值。测试这一预编译合约，可以使用这个[在线工具](https://md5calc.com/hash/ripemd160)来计算任何字符串的RIPEMD-160哈希值。在本示例中，我们仍使用`Hello World!`。我们将使用相同的代码，但使用另一个函数：`ripemd160`函数。请注意，这个函数返回的是`bytes20`类型的变量：
 

@@ -136,7 +136,7 @@ console.log(`${chain}: last block #${lastHeader.number} has hash ${lastHeader.ha
 
 ### 查询订阅 {: #query-subscriptions }
 
-RPC支持使用订阅函数。我们可以修改先前的示例，使其开始使用订阅函数来监听新的区块。
+RPC支持使用订阅函数。您可以修改先前的示例，使其开始使用订阅函数来监听新的区块。
 
 ```javascript
 // Initialize the API provider as in the previous section
@@ -285,7 +285,7 @@ Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些�
 // Initialize wallet key pairs as in the previous section
 ...
 
-// Construct a list of transactions we want to batch
+// Construct a list of transactions to batch
 const collator = 'COLLATOR-ACCOUNT-PUBLIC-KEY';
 const txs = [
   api.tx.balances.transfer(bob, 12345),

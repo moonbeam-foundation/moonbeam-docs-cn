@@ -55,9 +55,9 @@ Moonbeam上的[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/pre
 
 The [Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口包含以下函数：
 
-- **permit(*address* owner, *address* spender, *uint256*, value, *uint256*, deadline, *uint8* v, *bytes32* r, *bytes32* s)** —— 任何人均可调用批准permit
-- **nonces(*address* owner)** —— 反馈给定所有者当前的nonce
-- **DOMAIN_SEPARATOR()** —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现
+- **permit**(*address* owner, *address* spender, *uint256*, value, *uint256*, deadline, *uint8* v, *bytes32* r, *bytes32* s) —— 任何人均可调用批准permit
+- **nonces**(*address* owner) —— 反馈给定所有者当前的nonce
+- **DOMAIN_SEPARATOR**() —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现
 
 **DOMAIN_SEPARATOR()**是在[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中定义，计算如下：
 
@@ -80,11 +80,11 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 域分隔符的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L130-L154){target=_blank}实现中看到，在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中显示了一个实际的示例。
 
-除了域分隔符，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于给定函数参数的`permit`函数。这使用了一个给定数值确保签名不会受到重放攻击。哈希结构的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L169-L177){target=_blank}实现中看到，在[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}中显示了一个实际的示例。
+除了域分隔符，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于给定函数参数的`permit`函数。这使用了一个给定数值确保签名不会受到重放攻击。哈希结构的计算可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现中看到，在[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}中显示了一个实际的示例。
 
-域分隔符和哈希结构可以用于构建[最终哈希](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L180-L183){target=_blank}的完全编码消息。在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L101){target=_blank}中显示了一个实际的示例。
+域分隔符和哈希结构可以用于构建[最终哈希](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L177-L181){target=_blank}的完全编码消息。在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L101){target=_blank}中显示了一个实际的示例。
 
-使用最终哈希以及`v`、`r`和`s`数值，通过[ECRECOVER预编译](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}可以验证签名。如果验证成功，限额将会更新。
+使用最终哈希以及`v`、`r`和`s`数值，通过[ECRECOVER预编译](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}可以验证和恢复签名。如果验证成功，nonce和限额将会更新。
 
 ## 使用Remix与预编译交互 {: #interact-with-the-precompile-using-remix }
 
@@ -109,7 +109,6 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与XC-20预编译交互，首先您需要将ERC-20接口添加至Remix：
 
 1. 获取[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的复制文档
-
 2. 将文档内容粘贴至名为**IERC20.sol**的Remix文档
 
 ![Load the interface in Remix](/images/builders/xcm/xc20/overview/overview-1.png)
@@ -117,7 +116,6 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 当您成功在Remix读取ERC-20接口后，您将需要编译：
 
 1. 点击（从上至下的）第二个**Compile**标签
-
 2. 编译**IERC20.sol**文档
 
 ![Compiling IERC20.sol](/images/builders/xcm/xc20/overview/overview-2.png)
@@ -129,13 +127,9 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 您将使用获得的XC-20预编译地址访问接口，而非部署ERC-20预编译：
 
 1. 在Remix内的**Compile**标签下点击**Deploy and Run**标签。请注意，预编译合约已被部署
-
-2. 确保已在**Environment**下拉菜单中选择**Injected Web3**。当您已经选择**Injected Web3**，MetaMask将会跳出弹窗要求将您的账户连接至Remix
-
-3. 确认**Account**下显示的为正确账户
-
-4. 确认已在**Contract**下拉菜单中选择**IERC20 - IERC20.sol**。由于此为预编译合约，您不需要部署任何代码。同时，我们将会在**At Address**字段内显示预编译地址
-
+2. 确保已在**ENVIRONMENT**下拉菜单中选择**Injected Web3**。当您已经选择**Injected Web3**，MetaMask将会跳出弹窗要求将您的账户连接至Remix
+3. 确认**ACCOUNT**下显示的为正确账户
+4. 确认已在**CONTRACT**下拉菜单中选择**IERC20 - IERC20.sol**。由于此为预编译合约，您不需要部署任何代码。同时，我们将会在**At Address**字段内显示预编译地址
 5. 提供在[计算外部XC-20预编译地址](/builders/xcm/xc20/xc20){target=_blank}或[计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20){target=_blank}操作说明计算得到的XC-20预编译地址。在本示例中为`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`，然后点击**At Address**
 
 ![Access the address](/images/builders/xcm/xc20/overview/overview-3.png)

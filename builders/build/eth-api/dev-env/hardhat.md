@@ -60,7 +60,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 这将在您的项目目录中创建一个Hardhat配置文件（`hardhat.config.js`）。
 
-Hardhat项目创建完毕后，您可以安装[ethers plugin](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将为使用[ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
+Hardhat项目创建完毕后，您可以安装[Ethers plugin](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将为使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
 
 ```
 npm install @nomiclabs/hardhat-ethers ethers
@@ -139,7 +139,7 @@ touch secrets.json
 4. 添加Moonbase Alpha网络配置
 
 ```js
-// 1. Import the ethers plugin required to interact with the contract
+// 1. Import the Ethers plugin required to interact with the contract
 require('@nomiclabs/hardhat-ethers');
 
 // 2. Import your private key from your pre-funded Moonbase Alpha testing account

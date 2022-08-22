@@ -42,8 +42,10 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 绑定更多Token或减少绑定Token {: #bond-more-or-less }
 
  - **delegatorBondMore**(*address* candidate, *uint256* more) —— 向已经委托的收集人增加质押Token数量的请求。取代已弃用的`nominatorBondMore`函数
- - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeCandidateBondRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求。取代已弃用的`nominatorBondLess`函数
- - **executeCandidateBondRequest**(*address* candidate) —— 对一个特定候选人减少绑定的执行行为。该函数仅用于已计划的绑定请求，且退出已生效之后
+ - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求。取代已弃用的`nominatorBondLess`函数
+ - **executeDelegationRequest**(*address* candidate) —— 对一个特定候选人减少绑定的执行行为。该函数仅用于已计划的绑定请求，且退出已生效之后
+ - **scheduleCandidateBondLess**(*uint256* less) - 允许收集人候选人请求将其自绑定减少给定数量的extrinsic。在您通过`executeCandidateBondLess`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求。
+ - **executeCandidateBondLess**(*address* 候选人) - 执行减少候选人的自绑定请求。该函数仅用于已计划的绑定减少请求，且退出已生效之后
  - **cancelCandidateBondLess**() —— 取消已计划的对特定候选人增加或者减少绑定的请求
 
 以下外部函数已弃用：
@@ -54,7 +56,6 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 ### 撤销委托 {: #revoke-delegations }
 
  - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=取消委托延迟){target=_blank}，随后才能执行请求。取代已弃用的`revokeNomination`函数
- - **executeDelegationRequest**(*address* delegator, *address* candidate) —— 执行和已处于待办委托的请求。该函数仅用于已计划的撤销请求，且退出已生效之后
  - **cancelDelegationRequest**(*address* candidate) —— 取消已计划的请求以撤销委托的请求
 
 以下外部函数已弃用：
@@ -141,15 +142,10 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 ```
 
  1. 打开**Developer**标签
-
  2. 点击**JavaScript**
-
  3. 复制上面的代码段粘贴至代码编辑框内
-
  4. （可选）点击存储图标并为代码段设置一个文件名，比如**Get existing delegations**。这样即可本地存储代码
-
  5. 点击执行按钮。这会使代码在编辑器里运行
-
  6. 复制运行结果，在您发起委托时需要用到
 
 ![Get existing delegation count](/images/tokens/staking/stake/stake-13.png)
@@ -158,7 +154,7 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 使用Polkadot.js Apps交互界面进入质押功能。在此之前需要导入/创建以太坊式账户（H160地址），具体操作方式请见[创建或引入H160账户教程](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}。
 
-在本示例中，我们导入了一个账户，并命名为：Alice。Alice的地址为 `0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`。
+在本示例中，您可以导入一个账户，并命名为：Alice。Alice的地址为 `0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`。
 
 目前，所有与质押相关的功能都需要通过**Developer**标签下的**Extrinsics**菜单进入：
 
@@ -256,13 +252,9 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 交易确认后，您可以在**Developer**标签下的**Chain state**中验证委托是否被成功移除。随后，执行以下步骤：
 
  1. 选择**parachainStaking** pallet
-
  2. 选择**delegatorState**查询
-
  3. 选择您的账户
-
  4. 确保**include option**滑块处于打开状态
-
  5. 点击**+**按钮发送状态查询
 
 ![Staking Verify Delegation is Revoked](/images/tokens/staking/stake/stake-21.png)
@@ -276,13 +268,9 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 如果您计划了停止委托的请求，只要请求还未被执行，您仍然可以在任何时候取消，并且您所有的委托仍然保持原样。如果您通过`scheduleRevokeDelegation`计划请求，您需要调用`cancelDelegationRequest`。另一方面，如果您通过`scheduleRevokeDelegation` 计划请求，您需要调用`cancelLeaveDelegators`。请执行以下步骤取消请求：
 
 1. 选择取消已计划请求的账户
-
 2. 选择**parachainStaking** pallet
-
 3. 选择**cancelDelegationRequest**或**cancelLeaveDelegators**函数
-
 4. 输入您希望取消请求相对应的收集人地址
-
 5. 点击**Submit Transaction**按钮，并签名确认交易
 
 ![Staking Cancel Scheduled Request to Revoke Delegation via Chain State](/images/tokens/staking/stake/stake-22.png)

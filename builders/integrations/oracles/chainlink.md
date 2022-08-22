@@ -192,7 +192,7 @@ interface ChainlinkInterface {
 
 1. 进入**Deploy and Run Transactions**标签
 
-2. 确保您已经设置**Environment**为**Injected Web3**，并且您的MetaMask已经连接至Moonbase Alpha
+2. 确保您已经设置**ENVIRONMENT**为**Injected Web3**，并且您的MetaMask已经连接至Moonbase Alpha
 
 3. 输入客户端合约地址，`{{ networks.moonbase.chainlink.client_contract }}`，并点击**At Address**。这将创建一个您可以交互的客户端合约的实例
 
@@ -444,11 +444,11 @@ interface AggregatorV3Interface {
 
 1. 进入**Deploy and Run Transactions**标签
 
-2. 将**Environment**设置为**Injected Web3**
+2. 将**ENVIRONMENT**设置为**Injected Web3**
 
-3. 如果您的MetaMask已连接，它将出现在**Account**选择列表中。否则，MetaMask将提示您连接至您的账户。
+3. 如果您的MetaMask已连接，它将出现在**ACCOUNT**选择列表中。否则，MetaMask将提示您连接至您的账户。
 
-4. 在**Contract**下拉列表中选择`AggregatorV3Interface`合约
+4. 在**CONTRACT**下拉列表中选择`AggregatorV3Interface`合约
 
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 

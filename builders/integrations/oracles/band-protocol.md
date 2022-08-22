@@ -23,7 +23,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
  - `BTC/ETH`
  - `ETH/EUR`
 
-您可通过此[链接](https://data.bandprotocol.com)查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
+您可通过此[Band标准数据集](https://data.bandprotocol.com){target=_blank}查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
 ## 获取报价 {: #querying-prices } 
 如上所述，开发者可以通过两种方法从Band预言机获取报价：
@@ -87,10 +87,10 @@ interface IStdReference {
 ```
 接下来可以使用`DemoOracle`脚本。该脚本含有4个函数：
 
- - getPrice：请求单一基础货币报价的_视图_函数。在此示例中，`BTC`以`USD`为报价单位
- - getMultiPrices：请求多个基础货币报价的_视图_函数。在此示例中，`BTC`和`ETH`均以`USD`为报价单位
- - savePrice：请求_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串输入，如 `_base = "BTC", _quotes = "USD"`。函数将发送交易并修改储存在合约中的`price`变量
- - saveMultiPrices：一个请求多个_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串阵列输入，如`_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`。函数将发送交易并修改储存在合约中的`prices`阵列，阵列将按照输入顺序显示每个报价对的价格。
+ - **getPrice**(*string[]* base, *string[]* quotes) - 请求单一基础货币报价的_视图_函数。在此示例中，`BTC`以`USD`为报价单位
+ - **getMultiPrices**(*string[]* bases, *string[]* quotes) - 请求多个基础货币报价的_视图_函数。在此示例中，`BTC`和`ETH`均以`USD`为报价单位
+ - **savePrice**(*string* base, *string* quote) - 请求_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串输入，如 `_base = "BTC", _quotes = "USD"`。函数将发送交易并修改储存在合约中的`price`变量
+ - **saveMultiPrices**(*string[]* bases, *string[]* quotes) - 一个请求多个_基础货币/报价货币_对数据的_公有_函数。不同元素作为字符串阵列输入，如`_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`。函数将发送交易并修改储存在合约中的`prices`阵列，阵列将按照输入顺序显示每个报价对的价格。
 
 部署时，构造函数需要聚合合约地址以连接到目标网络。
 
@@ -152,7 +152,7 @@ contract DemoOracle {
 
 ### 在Moonbase Alpha上进行测试 {: #try-it-in-moonbase alpha } 
 
-我们已经在Moonbase Alpha测试网部署了一个合约（地址为`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`），方便开发者查看Band Protocol预言机的喂价信息。为此，您需要部署以下接口合约：
+Moonbase Alpha测试网已经预先部署了一个合约（地址为`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`），方便开发者查看Band Protocol预言机的喂价信息。为此，您需要部署以下接口合约：
 
 ```sol
 pragma solidity 0.6.11;
@@ -167,12 +167,12 @@ interface TestInterface {
 
 通过这一合约将创建两个视图函数，以下示例与上述示例非常相似：
 
- - getPrice: 根据函数中对应输入的数据，提供单一基础货币/报价货币对喂价，即BTC/USD
- - getMultiPrices: 根据函数中对应输入的数据，提供多种基础货币/报价货币对喂价，即BTC/USD、ETH/USD、ETH/EUR
+ - **getPrice**(*string* base, *string* quote) - 根据函数中对应输入的数据，提供单一基础货币/报价货币对喂价，即BTC/USD
+ - **getMultiPrices**(*string[]* bases, *string[]* quotes) - 根据函数中对应输入的数据，提供多种基础货币/报价货币对喂价，即BTC/USD、ETH/USD、ETH/EUR
 
-例如，使用[Remix](/builders/build/eth-api/dev-env/remix/)接口可以方便地获取BTC/USD价格对。
+例如，使用[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}接口可以方便地获取BTC/USD价格对。
 
-创建文档及编译合约后，点击“Deploy and Run Transactions”标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击“At Address”。请确保已将“Environment”设置为“Injected Web3”，只有在该设置下才能与Moonbase Alpha连接。
+创建文档及编译合约后，点击**Deploy and Run Transactions**标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击**At Address**。请确保已将**ENVIRONMENT**设置为**Injected Web3**，只有在该设置下才能与Moonbase Alpha连接。
 
 ![Band Protocol Remix deploy](/images/builders/integrations/oracles/band/band-demo-1.png)
 

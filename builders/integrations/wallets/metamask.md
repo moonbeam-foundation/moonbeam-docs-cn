@@ -35,7 +35,7 @@ npm install @metamask/detect-provider
 
 首先您将需要添加用于连接MetaMask至Moonbase Alpha的按钮。当您在下一个步骤创建逻辑时，您可以测试代码。
 
-在本教程下一部分，我们将创建一个名为`configureMoonbaseAlpha`的函数，因此点击按钮时将调用`configureMoonbaseAlpha`函数。
+在本教程下一部分， 您将创建一个名为`configureMoonbaseAlpha`的函数，因此点击按钮时将调用`configureMoonbaseAlpha`函数。
 
 ```html
 <button onClick={configureMoonbaseAlpha()}>Connect to Moonbase Alpha</button>

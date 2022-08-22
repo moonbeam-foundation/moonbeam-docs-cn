@@ -60,7 +60,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 
 - 写下并妥善保管您的密钥
 - 将您的密钥刻在金属板上
-- 使用类似[Horcrux](https://gitlab.com/unit410/horcrux)工具对密钥进行分片
+- 使用类似[Horcrux](https://gitlab.com/unit410/horcrux){target=_blank}工具对密钥进行分片
 
 但是我们还是建议您提前做好研究，使用您认为值得信赖的工具。
 
@@ -141,7 +141,7 @@ Moonkey也提供一些其他的功能，具体如下所示：
 
 ### 密钥关联绑定数量 {: #key-association-bond }
 
-其次，您将需要为密钥关联绑定数量。当[映射author ID](/node-operators/networks/collators/account-management)（会话密钥）与您的帐户获取区块奖励时，将发送绑定数量，并且该绑定数量是根据的author ID注册的。
+其次，您将需要为密钥关联绑定数量。当[映射author ID](/node-operators/networks/collators/account-management){target=_blank}（会话密钥）与您的帐户获取区块奖励时，将发送绑定数量，并且该绑定数量是根据的author ID注册的。
 
 === "Moonbeam"
     |   变量   |                         值                          |
