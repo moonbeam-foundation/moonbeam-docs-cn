@@ -152,7 +152,7 @@ XCM-transactor pallet包括以下用于获取pallet常量的只读函数：
 
 ![Check Registered Derivative Indexes](/images/builders/xcm/xcm-transactor/xcmtransactor-2.png)
 
-## XCM-transactor预编译 {: #xcmtransactor-precompile}
+## XCM-Transactor预编译 {: #xcmtransactor-precompile}
 
 XCM-transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM-transactor pallet功能。与其他[预编译合约](/builders/build/canonical-contracts/precompiles/){target=_blank}相似，XCM-transactor预编译位于以下地址：
 
