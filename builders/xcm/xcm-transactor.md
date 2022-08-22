@@ -28,7 +28,7 @@ XCM信息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/
  - **Derivative account** —— 使用简单索引从另一个账户衍生的账户。因为这个账户的私钥是未知的，所以必须使用`utility.asDerivative`方法发起交易。通过衍生账户进行交易时，交易费用由原始账户支付，但交易是从衍生账户发出的。有关更多信息，请参阅实用程序托盘页面的[衍生账户](/builders/pallets-precompiles/pallets/utility/){target=_blank}部分
  - **Transact information** —— 与XCM-transactor extrinsic的XCM远程执行部分相关的额外权重和费用信息。这为必要信息，因为XCM交易费用是由主权账户支付。因此，XCM-transactor计算该费用，并向XCM-transactor extrinsic发送者收取对应[XC-20 token](/builders/xcm/xc20/overview/){target=_blank}的预估费用，以偿还给主权账户
 
-## XCM-transactor Pallet接口 {: #xcm-transactor-pallet-interface}
+## XCM-Transactor Pallet接口 {: #xcm-transactor-pallet-interface}
 
 ### Extrinsics {: #extrinsics }
 
