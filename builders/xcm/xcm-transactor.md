@@ -72,7 +72,7 @@ XCM-transactor pallet包括以下只读存储方式：
 
 XCM-transactor pallet包括以下用于获取pallet常量的只读函数：
 
-- **baseXcmWeigh**() - 返回执行所需的基本XCM重量
+- **baseXcmWeight**() - 返回执行所需的基本XCM重量
 - **selfLocation**() - 返回本地的multilocation
 
 ## 使用XCM-transactor Pallet构建XCM {: #build-xcm-xcmtransactor-pallet}
