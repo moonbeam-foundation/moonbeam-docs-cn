@@ -33,7 +33,7 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 mkdir ethers-examples && cd ethers-examples
 ```
 
-在本教程中，您将需要安装Ether.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
+在本教程中，您将需要安装Ethers.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
 
 ```
 npm install ethers solc@0.8.0
