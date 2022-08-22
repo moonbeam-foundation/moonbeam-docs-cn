@@ -22,11 +22,11 @@ description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另�
 --8<-- 'text/xcm/general-xcm-definitions.md'
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
-## x-tokens Pallet接口 {: #x-tokens-pallet-interface }
+## X-tokens Pallet接口 {: #x-tokens-pallet-interface }
 
 ### Extrinsics {: #extrinsics }
 
-x-tokens pallet提供以下extrinsics（函数）：
+X-tokens pallet提供以下extrinsics（函数）：
 
  - **transfer**(currencyId, amount, dest, destWeight) — 转移一个币种，根据原生Token（自身储备）或是资产ID定义
  - **transferMultiasset**(asset, dest, destWeight) — 转移一种可替代资产，根据其multilocation定义
@@ -47,13 +47,13 @@ x-tokens pallet提供以下extrinsics（函数）：
 
 ### 存储方法 {: #storage-methods }
 
-x-tokens pallet包括以下只读存储方式：
+X-tokens pallet包括以下只读存储方式：
 
 - **palletVersion**() - 提供正在使用的x-tokens pallet的版本
 
 ### Pallet常量 {: #constants }
 
-x-tokens pallet包括以下用于获取pallet常量的只读函数：
+X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 - **baseXcmWeight**() - 返回执行所需的基本XCM重量
 - **selfLocation**() - 返回本地的multilocation
@@ -185,7 +185,7 @@ x-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 ## X-Tokens预编译 {: #xtokens-precompile}
 
-x-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太坊API访问XCM Token转移功能。如同其他[预编译合约](/builders/build/canonical-contracts/precompiles/){target=_blank}，x-tokens预编译位于以下地址：
+X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太坊API访问XCM Token转移功能。如同其他[预编译合约](/builders/build/canonical-contracts/precompiles/){target=_blank}，x-tokens预编译位于以下地址：
 
 === "Moonbeam"
      ```

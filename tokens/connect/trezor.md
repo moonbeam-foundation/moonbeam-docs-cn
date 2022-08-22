@@ -34,7 +34,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 首先，您需要设置一个钱包（标准或是隐藏钱包）。当您成功连接至您的Trezor设备，请将其解锁，并在Trezor Suite获得一个钱包设置。接着，将您的Trezor以太坊账户导入MetaMask，您可以跟随以下步骤进行操作：
 
  1. 点击右上角的logo展开使用菜单
- 2. 选取**onnect Hardware Wallet**
+ 2. 选取**Connect Hardware Wallet**
 
 ![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/ethereum/ledger-2.png)
 
