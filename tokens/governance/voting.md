@@ -119,8 +119,8 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
     |      16      |           5           | {{networks.moonbase.democracy.lock_period.conviction_5}}天 |
     |      32      |           6           | {{networks.moonbase.democracy.lock_period.conviction_6}}天 |
 
-
-
+!!! 注意事项
+    锁定时间的估算基于常规的 {{networks.moonbeam.block_time}} 秒区块时间。实际区块生产事件可能会有所不同，因此显示的锁定时间不应被视为精确的。
 
 ![Vote Submission](/images/tokens/governance/voting/vote-3.png)
 
