@@ -252,3 +252,19 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
     ]
 }
 ```
+
+### 使用库与X-Token交互 {: #using-libraries-to-interact-with-xtokens}
+
+当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[x-tokens 传输函数](#xtokens-transfer-function)、[x-tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[x-tokens的合约ABI](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
+
+=== "Ethers.js"
+    --8<-- 'code/xtokens/ethersjs.md'
+
+=== "Web3.js"
+    --8<-- 'code/xtokens/web3js.md'
+
+=== "Web3.py"
+    --8<-- 'code/xtokens/web3py.md'
+
+!!! 注意事项
+    在Moonbeam 或 Moonriver上测试上述示例时，您可以将RPC URL替换为您自己的[私有端点](/builders/get-started/endpoints/){target=_blank}和API密钥。

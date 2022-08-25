@@ -140,7 +140,7 @@ touch transaction.py
 
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 
-3. 定义`account_from`，包括`private_key`和`address_to`变量。此处需要私钥以签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`account_from`，包括`private_key`和`address_to`变量。此处需要私钥以签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 
 4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
 
@@ -242,7 +242,7 @@ touch deploy.py
 
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 
-3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 
 4. 使用`web3.eth.contract`函数并传入合约的ABI和字节码创建合约实例
 
@@ -316,7 +316,7 @@ touch get.py
 
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 
-3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址创建合约实例
 
@@ -367,7 +367,7 @@ touch increment.py reset.py
 
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 
-3. 定义`account_from`，包括`private_key`、已部署合约`contract_address`以及要增量的`value`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`account_from`，包括`private_key`、已部署合约`contract_address`以及要增量的`value`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 
 4. 使用`web3.eth.Contract`函数并传入已部署合约的ABI和地址以创建合约实例
 
@@ -435,7 +435,7 @@ python3 increment.py
 
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 
-3. 定义`account_from`，包括`private_key`和已部署合约`contract_address`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`account_from`，包括`private_key`和已部署合约`contract_address`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址以创建合约实例
 
