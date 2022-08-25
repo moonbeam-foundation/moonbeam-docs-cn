@@ -2,4 +2,5 @@ title: 桥
 hide: false
 nav:
   - index.md
+  - 'Axelar': 'axelar.md'
   - 'ChainBridge': 'chainbridge.md'
