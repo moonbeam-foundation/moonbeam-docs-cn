@@ -10,7 +10,7 @@ keywords: 民主、substrate、pallet、moonbeam、波卡
 
 ## 概览 {: #introduction }
 
-作为波卡上的平行链，Moonbeam通过[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}提供原生的链上治理功能。
+作为波卡上的平行链，Moonbeam通过[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}提供原生的链上治理功能。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank} 页面。
 
 部分民主pallet的功能通过民主预编译实现。预编译是一个Solidity接口，允许您通过以太坊API执行治理功能。请查看[民主预编译](/builders/pallets-precompiles/precompiles/democracy){target=_blank}相关教程了解更多。
 

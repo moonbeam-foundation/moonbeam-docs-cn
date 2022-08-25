@@ -10,9 +10,11 @@ keywords: staking, substrate, pallet, moonbeam, polkadot
 
 ## 概览 {: #introduction }
 
-Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank} pallet使用Delegated Proof of Stake（委托权益证明）系统，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链staking pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
+Moonbeam使用委托权益证明(DPoS)共识，该共识根据收集人在网络中的总质押数额决定哪些收集人有资格生产区块。有关质押的一般信息，例如术语、质押变量等，请参阅[质押](/learn/features/staking){target=_blank}页面。
 
-平行链staking pallet的一些功能也可以通过staking预编译实现。此预编译是一个Solidity接口，使您通过以太坊API执行质押动作。更多信息，请点击[Staking Precompile](/builders/pallets-precompiles/precompiles/staking){target=_blank}教程。
+DPOS共识允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链质押pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
+
+平行链质押pallet的一些功能也可以通过质押预编译获得。预编译使您能够通过以太坊 API执行质押操作。请参阅 [质押预编译](/builders/pallets-precompiles/precompiles/staking){target=_blank}页面了解更多相关信息。
 
 此教程将概述平行链staking pallet中可用的extrinsics、存储函数、pallet常量getter。
 

@@ -252,7 +252,7 @@ touch deploy.js
 // 1. Import the contract file
 const contractFile = require('./compile');
 
-// 2. Add the Ethers provider logic here:
+// 2. Add the Web3 provider logic here:
 // {...}
 
 // 3. Create address variables
@@ -338,7 +338,7 @@ touch get.js
 // 1. Import the contract abi
 const { abi } = require('./compile');
 
-// 2. Add the Ethers provider logic here:
+// 2. Add the Web3 provider logic here:
 // {...}
 
 // 3. Create address variables
@@ -403,7 +403,7 @@ touch increment.js reset.js
 // 1. Import the contract abi
 const { abi } = require('./compile');
 
-// 2. Add the Ethers provider logic here:
+// 2. Add the Web3 provider logic here:
 // {...}
 
 // 3. Create variables
@@ -480,7 +480,7 @@ node increment.js
 // 1. Import the contract abi
 const { abi } = require('./compile');
 
-// 2. Add the Ethers provider logic here:
+// 2. Add the Web3 provider logic here:
 // {...}
 
 // 3. Create variables

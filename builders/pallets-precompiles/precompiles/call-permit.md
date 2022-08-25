@@ -105,9 +105,9 @@ contract SetMessage {
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}编译和部署范例合约。要增加合约，您可以跟随以下步骤：
 
 1. 复制[`SetMessage.sol`](#example-contract){target=_blank}合约
-2. 将文件内容复制至Remix文件中并命名为**SetMesage.sol**
+2. 将文件内容复制至Remix文件中并命名为`SetMesage.sol`
 3. 获得[`CallPermit.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}的副本
-4. 将文件内容复制至Remix文件中并命名为**CallPermit.sol**
+4. 将文件内容复制至Remix文件中并命名为`CallPermit.sol`
 
 ![Copying and pasting the example contract into Remix](/images/builders/pallets-precompiles/precompiles/call-permit/call-1.png)
 

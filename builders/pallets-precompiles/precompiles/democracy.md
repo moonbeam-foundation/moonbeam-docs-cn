@@ -10,7 +10,10 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 ## 概览 {: #introduction }
 
-作为波卡（Polkadot）的平行链，得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}，Moonbeam拥有原生的链上治理功能。民主pallet使用Rust语言编码，无法直接从Moonbeam的以太坊方面访问。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户汇入Polkadot.js App后使用复杂的界面进行操作。
+作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。
+
+
+Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}。民主pallet使用Rust语言实现，无法直接从Moonbeam的以太坊API交互。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户导入Polkadot.js App后使用复杂的界面进行操作。
 
 民主预编译位于以下地址：
 
