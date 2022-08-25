@@ -26,7 +26,7 @@ Axelar API提供一个完整开发Web3应用的套件，确保开发者拥有他
 
 您也可以使用区块浏览器查看您的跨链转移记录以及更多信息：
 
-- [**Axelarscan供主网使用**](https://axelarscan.io/)
+- **[Axelarscan供主网使用](https://axelarscan.io/){target=_blank}**
 - **[Axelarscan供测试网使用](https://testnet.axelarscan.io/){target=_blank}**
 
 ## 合约 {: #contracts }
