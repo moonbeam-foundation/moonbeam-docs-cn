@@ -1,24 +1,26 @@
 ---
-title: 平行链Staking Pallet
-description: 学习关于Moonbeam上平行链Staking Pallet可用extrinsics，以及通过使用Polkadot.js Apps和Polkadot.js API，如何与其交互。
+title: 平行链质押Pallet
+description: 学习关于Moonbeam上平行链质押Pallet可用extrinsics，以及通过使用Polkadot.js Apps和Polkadot.js API，如何与其交互。
 keywords: staking, substrate, pallet, moonbeam, polkadot 
 ---
 
-# 平行链Staking Pallet
+# 平行链质押Pallet
 
 ![Staking Moonbeam Banner](/images/builders/pallets-precompiles/pallets/staking-banner.png)
 
 ## 概览 {: #introduction }
 
-Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank} pallet使用Delegated Proof of Stake（委托权益证明）系统，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链staking pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
+Moonbeam使用委托权益证明(DPoS)共识，该共识根据收集人在网络中的总质押数额决定哪些收集人有资格生产区块。有关质押的一般信息，例如术语、质押变量等，请参阅[质押](/learn/features/staking){target=_blank}页面。
 
-平行链staking pallet的一些功能也可以通过staking预编译实现。此预编译是一个Solidity接口，使您通过以太坊API执行质押动作。更多信息，请点击[Staking Precompile](/builders/pallets-precompiles/precompiles/staking){target=_blank}教程。
+DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank}，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链质押pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
 
-此教程将概述平行链staking pallet中可用的extrinsics、存储函数、pallet常量getter。
+平行链质押pallet的一些功能也可以通过质押预编译获得。预编译使您能够通过以太坊 API执行质押操作。请参阅 [质押预编译](/builders/pallets-precompiles/precompiles/staking){target=_blank}页面了解更多相关信息。
+
+此教程将概述平行链质押pallet中可用的extrinsics、存储函数、pallet常量getter。
 
 ## 退出生效期 {: #exit-delays }
 
-一些staking pallet extrinsics包括退出生效期，在请求执行前您必须等待。需要注意的退出生效期如下：
+一些质押pallet extrinsics包括退出生效期，在请求执行前您必须等待。需要注意的退出生效期如下：
 
 === "Moonbeam"
     |        变量         |                                                                         值                                                                         |
@@ -47,11 +49,11 @@ Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/mast
     |    离开候选人（收集人）池     |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时）    |
     |    离开委托人池     |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次（{{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时）   |
 
-## 平行链Staking Pallet接口 {: #parachain-staking-pallet-interface }
+## 平行链质押Pallet接口 {: #parachain-staking-pallet-interface }
 
 ### Extrinsics {: #extrinsics }
 
-平行链staking pallet提供以下extrinsics（函数）：
+平行链质押pallet提供以下extrinsics（函数）：
 
 - **cancelCandidateBondLess**() - 取消一个待定中的已计划请求，以减少候选人（收集人）自身绑定数量
 - **cancelDelegationRequest**(candidate) -  取消提供候选人（收集人）的地址的任何待定中委托的请求
@@ -82,7 +84,7 @@ Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/mast
 
 ### 存储模式 {: #storage-methods }
 
-平行链staking pallet包括了以下只读存储模式以获取链状态数据：
+平行链质押pallet包括了以下只读存储模式以获取链状态数据：
 
 - **atStake**(u32, AccountId20) - 提供给定一轮数量的收集人委托质押的快照，并且可选，收集人的地址
 - **awardedPts**(u32, AccountId20) - 给定一轮数量，返回每轮每个收集人的奖励积分，并且可选，收集人的地址
@@ -104,12 +106,12 @@ Moonbeam通过[平行链staking](https://github.com/PureStake/moonbeam/tree/mast
 - **selectedCandidates**() - 返回被选为目前轮次的活跃集的收集人
 - **staked**(u32) - 返回所有轮次或给定轮次的在活跃集中的收集人的质押总数
 - **topDelegations**(AccountId20) - 返回给所有收集人或给定收集人的地址的最高的300个委托
-- **total**() - 返回在staking pallet中的总锁定资产
+- **total**() - 返回在质押pallet中的总锁定资产
 - **totalSelected**() - 返回可被选做活跃集的收集人的总数
 
 ### Pallet常量 {: #constants }
 
-平行链staking pallet包括了以下只读函数以获取pallet常量：
+平行链质押pallet包括了以下只读函数以获取pallet常量：
 
 - **candidateBondLessDelay**() - 返回必须等待的轮次数，直到已计划的候选人（收集人）减少其自身绑定的请求可以被执行
 - **defaultBlocksPerRound**() - 返回每个轮次的默认区块数
