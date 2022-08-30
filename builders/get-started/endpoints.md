@@ -33,7 +33,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 - [Ankr](#ankr)
 - [Blast](#blast)
-- [Dwellir](#dwellir)
+<!-- - [Dwellir](#dwellir) -->
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
 
@@ -63,7 +63,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
 
-### Dwellir {: #dwellir }
+<!--### Dwellir {: #dwellir }
 
 [Dwellir](https://dwellir.com/development-nodes/){target=_blank}在自有和自营的裸机集群上为开发人员和专用节点提供免费端点。 Dwellir正在构建自定义数据解决方案和工具，如有相关需求可以与项目方联系。
 
@@ -76,8 +76,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 您的自定义端点将被部署。
 
-![Dwellir](/images/builders/get-started/endpoints/endpoints-3.png)
-
+![Dwellir](/images/builders/get-started/endpoints/endpoints-3.png)-->
 
 ### OnFinality {: #onfinality }
 
