@@ -7,7 +7,7 @@ description: Bobabase是Boba Layer 2部署在Moonbeam上的官方测试网。遵
 
 ![Bobabase Banner](/images/builders/get-started/networks/bobabase/bobabase-banner.png)
 
-## 概览
+## 概览 {: #introduction }
 [Boba](https://boba.network/){target=_blank}是一个以计算为中心的Layer 2 (L2)，构建在基于[Optimism](https://www.optimism.io/){target=_blank}开发的Optimistic Rollup（链下计算层）之上。Boba通过[Turing Hybrid Compute](https://docs.boba.network/turing/turing){target=_blank}等多种功能增强了兼容EVM区块链的计算能力。上线以太坊之后，Boba将其Layer 2扩展解决方案带入Moonbeam。Bobabase是Boba部署在Moonbase Alpha的测试网名称。Bobabeam是Boba部署在Moonbeam的主网名称，尚未上线。
 
 ## 网络端点 {: #network-endpoints }
@@ -28,11 +28,11 @@ const web3 = new Web3('{{ networks.bobabase.rpc_url }}');
 如果您使用的是Ethers.js库，使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})`定义提供商，并将提供商的URL设置为Bobabase：
 
 ```js
-const ethers = require('ethers');
+const ethers = require('ethers'); // Load Ethers library
 
 const providerURL = '{{ networks.bobabase.rpc_url }}';
 
-// Define Provider
+// Define provider
 const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
     chainId: {{ networks.bobabase.chain_id }},
     name: 'bobabase'
@@ -45,7 +45,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 Bobabase的chain ID为 `{{ networks.bobabase.chain_id }}`，即hex为`{{ networks.bobabase.hex_chain_id }}`。
 
-## 区块浏览器
+## 区块浏览器 {: #block-explorer }
 
 Bobabase区块浏览器是一个[Blockscout的实例]({{ networks.bobabase.block_explorer }}){target=_blank}。
 
@@ -118,3 +118,13 @@ TestNet BOBA通过[Bobabase Gateway]({{ networks.bobabase.gateway }}){target=_bl
 6. 您的资产将在{{ networks.bobabase.exit_delay_period_days }}天后可在Moonbase Alpha上使用。请注意，您无需手动领取，Boba或自动为您处理此步骤
 
 ![Bridge to Bobabase](/images/builders/get-started/networks/bobabase/bobabase-3.png)
+
+## 转换您的Gas代币 {: #changing-your-gas-fee-token }
+
+DEV或BOBA都可用于为Bobabase上的交易支付gas。如果你想使用DEV作为gas代币，您必须至少有0.5个DEV桥接到Bobabase。请参阅[从Moonbase Alpha到 Bobabase的跨链](#bridge-from-moonbase-alpha-to-bobabase)，了解如何将DEV或BOBA侨界到Bobabase。默认情况下，选定的Gas费代币设置为BOBA。要将其更改为DEV，请执行以下步骤：
+
+1. 按右上角的**Fee**下拉菜单
+2. 点击**DEV**或**BOBA**选择新的gas费代币
+3. 在MetaMask中确认交易
+
+![Change gas fee token](/images/builders/get-started/networks/bobabase/bobabase-4.png)

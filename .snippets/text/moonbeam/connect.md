@@ -22,10 +22,10 @@ const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
 如果使用的是Ethers.js库，您可以使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})`来定义提供者，并且将提供者URL设定至Moonbeam：
 
 ```js
-const ethers = require('ethers');
+const ethers = require('ethers'); // Load Ethers library
 
 const providerURL = "https://rpc.api.moonbeam.network";
-// Define Provider
+// Define provider
 const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
     chainId: 1284,
     name: 'moonbeam'
