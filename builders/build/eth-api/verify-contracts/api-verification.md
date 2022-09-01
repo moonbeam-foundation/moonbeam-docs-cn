@@ -456,3 +456,77 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
     ```bash
     curl https://sourcify.dev/server/files/any/{{ networks.moonbase.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
     ```
+
+### 在Foundry中使用Sourcify {: #using-sourcify-with-foundry }
+
+Foundry的Forge工具内置了对Sourcify验证的支持，类似于[内置支持的Etherscan](/builders/build/eth-api/verify-contracts/etherscan-plugins#using-foundry-to-verify){target=_blank}。本指南部分中的示例将使用在[Foundry指南](/builders/build/eth-api/dev-env/foundry/){target=_blank}中创建的 `MyToken.sol` 合约。
+
+使用Sourcify的Foundry项目必须让其编译器发出元数据文件。这可以在 `foundry.toml` 文件中配置：
+
+```
+[profile.default]
+# Input your custom or default config options here
+extra_output_files = ["metadata"]
+```
+
+如果您已经部署了示例合约，您可以使用`verify-contract`命令对其进行验证。在验证合约之前，您需要对构造函数参数进行ABI编码。要对示例合约执行此操作，您可以运行以下命令：
+
+```
+cast abi-encode "constructor(uint256)" 100
+```
+
+结果应该是“0x0000000000000000000000000000000000000000000000000000000000000064”。然后，您可以使用以下命令验证合约：
+
+=== "Moonbeam"
+    ```
+    forge verify-contract --chain-id {{ networks.moonbeam.chain_id }} \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    ```
+
+=== "Moonriver"
+    ```
+    forge verify-contract --chain-id {{ networks.moonriver.chain_id }} \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    forge verify-contract --chain-id {{ networks.moonbase.chain_id }} \
+    --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
+    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    ```
+
+![Foundry Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-1.png)
+
+如果您想同时部署示例合约并进行验证，则可以使用以下命令：
+
+=== "Moonbeam"
+    ```
+    forge create --rpc-url {{ networks.moonbeam.rpc_url }} \
+    --constructor-args 100 \
+    --verify --verifier sourcify \
+    --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken  
+    ```
+
+=== "Moonriver"
+    ```
+    forge create --rpc-url {{ networks.moonriver.rpc_url }} \
+    --constructor-args 100 \
+    --verify --verifier sourcify \
+    --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken  
+    ```
+
+=== "Moonbase Alpha"
+    ```
+    forge create --rpc-url {{ networks.moonbase.rpc_url }} \
+    --constructor-args 100 \
+    --verify --verifier sourcify \
+    --private-key YOUR_PRIVATE_KEY \
+    src/MyToken.sol:MyToken    
+    ```
+
+![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-2.png)
