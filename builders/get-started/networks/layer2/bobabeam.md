@@ -44,7 +44,6 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 ## Chain ID {: #chain-id } 
 
-Bobabeam chain ID is: `{{ networks.bobabeam.chain_id }}`, which is `{{ networks.bobabeam.hex_chain_id }}` in hex.
 Bobabeam的chain ID为`{{ networks.bobabeam.chain_id }}`，即hex为`{{ networks.bobabeam.hex_chain_id }}`。
 
 ## 区块浏览器 {: #block-explorer}
