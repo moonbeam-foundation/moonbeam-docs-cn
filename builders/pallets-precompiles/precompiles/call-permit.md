@@ -16,7 +16,17 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 
 举例来说，Alice签署了一个调用许可，接着Bob调度其允许并代表Alice执行调用。Bob将负责支付交易费用，因此Alice并不需要使用任何原生资产支付此交易，除非此调用包含转账。
 
-此调用许可预编译目前仅在Moonbase Alpha上可用，并位于以下地址：
+此预编译合约位于以下地址：
+
+=== "Moonbeam"
+     ```
+     {{networks.moonbeam.precompiles.call_permit }}
+     ```
+
+=== "Moonriver"
+     ```
+     {{networks.moonriver.precompiles.call_permit }}
+     ```
 
 === "Moonbase Alpha"
      ```
