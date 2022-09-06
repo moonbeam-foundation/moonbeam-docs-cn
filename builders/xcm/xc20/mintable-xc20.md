@@ -17,7 +17,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 ## 可铸造XC-20资产角色 {: #mintable-xc-20-roles }
 
-在您注册和管理可铸造XC-20资产时需要注意一些重要的角色。这些角色，除了创建者之外，皆由所有者通过[`set_team` extrinsic](#additional-functions)设置给其他账户，以下为所有角色的列表：
+在您注册和管理可铸造XC-20资产时需要注意一些重要的角色。这些角色，除了创建者之外，皆由所有者通过[`setTeam` extrinsic](#additional-functions)设置给其他账户，以下为所有角色的列表：
 
 - **所有者（Owner）**—— 拥有合约并能够管理资产的账户
 - **创建者（Creator）**—— 负责创建资产并支付相关存入费用的账户
@@ -43,12 +43,12 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 - **burn(*address* from, *uint256* value)** —— 销毁指定地址中的指定数量Token，仅有所有者（Owner）和管理员（Admin）能够使用此函数
 - **freeze(*address* account)** —— 锁定指定账户一定数量的Token并禁止相关交易，仅有所有者（Owner）和发行者（Issuer）能够使用此函数
 - **thaw(*address* account)** —— 解锁特定账户的Token使其能够与Token交互，仅有所有者（Owner）和管理员（Admin）能够使用此函数
-- **freeze_asset()** —— 锁定整个资产运行以及Token，仅有所有者（Owner）和锁定者（Freezer）能够使用此函数
-- **thaw_asset()** —— 解锁整个资产运行和Token，仅有所有者（Owner）和管理员（Admin）能够使用此函数
-- **transfer_ownership(*address* owner)** —— 将此资产的所有权转移至新的指定账户，仅有所有者（Owner）能够使用此函数
-- **set_team(*address* issuer, *address* admin, *address* freezer)** —— 允许所有者（Owner）设定此Token的发行者（Issuer）、管理员（Admin）以及锁定者（Freezer）。请查看[可铸造XC-20角色](#mintable-xc-20-roles)部分以查看每个角色的细节。仅有所有者（Owner）能够使用此函数
-- **set_metadata(*string calldata* name, *string calldata* symbol, *uint8* decimals)** —— 设定此资产的名称、符号以及资产位数。资产位数可以自行配置并不需要于Moonbeam原生资产具有相同的资产位数
-- **clear_metadata()** —— 清除此资产现有的名称、符号以及资产位数
+- **freezeAsset()** —— 锁定整个资产运行以及Token，仅有所有者（Owner）和锁定者（Freezer）能够使用此函数
+- **thawAsset()** —— 解锁整个资产运行和Token，仅有所有者（Owner）和管理员（Admin）能够使用此函数
+- **transferOwnership(*address* owner)** —— 将此资产的所有权转移至新的指定账户，仅有所有者（Owner）能够使用此函数
+- **setTeam(*address* issuer, *address* admin, *address* freezer)** —— 允许所有者（Owner）设定此Token的发行者（Issuer）、管理员（Admin）以及锁定者（Freezer）。请查看[可铸造XC-20角色](#mintable-xc-20-roles)部分以查看每个角色的细节。仅有所有者（Owner）能够使用此函数
+- **setMetadata(*string calldata* name, *string calldata* symbol, *uint8* decimals)** —— 设定此资产的名称、符号以及资产位数。资产位数可以自行配置并不需要于Moonbeam原生资产具有相同的资产位数
+- **clearMetadata()** —— 清除此资产现有的名称、符号以及资产位数
 
 ## 获取可铸造XC-20资产的列表 {: #retrieve-list-of-mintable-xc-20s }
 

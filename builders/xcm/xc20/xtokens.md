@@ -208,14 +208,14 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 此接口包含以下函数：
 
- - **transfer**(*address* currency_address, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-function)中提及的`transfer`函数。然而，在使用币种ID之外，您需要为`currency_address`提供资产预编译地址：
+ - **transfer**(*address* currencyAddress, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-function)中提及的`transfer`函数。然而，在使用币种ID之外，您需要为`currencyAddress`提供资产预编译地址：
     - 对于[外部XC-20](/builders/xcm/xc20/xc20){target=_blank}，您可以提供[XC-20预编译地址](/builders/xcm/xc20/xc20/#current-xc20-assets){target=_blank}
     - 对于[可铸造XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}，您可以遵循[计算预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}的操作说明
     - 对于原生Token（如GLMR、MOVR和DEV），您可以提供[ERC-20预编译](/builders/build/canonical-contracts/precompiles/erc20/#the-erc20-interface){target=_blank}地址，即`{{networks.moonbeam.precompiles.erc20 }}`
  
     `destination` multilocation将会以一种特殊形式构建（我们将在下一部分提及）
 
- - **transfer_multiasset**(*Multilocation* *memory* asset, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-multiasset-function)中提及的`transferMultiasset`函数。两种multilocation将会以一种特殊形式构建（我们将在下一部分提及）
+ - **transferMultiasset**(*Multilocation* *memory* asset, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-multiasset-function)中提及的`transferMultiasset`函数。两种multilocation将会以一种特殊形式构建（我们将在下一部分提及）
 
 ### 构建预编译Multilocation {: #building-the-precompile-multilocation }
 

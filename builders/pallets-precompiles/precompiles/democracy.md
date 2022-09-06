@@ -12,7 +12,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。
 
-
 Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}。民主pallet使用Rust语言实现，无法直接从Moonbeam的以太坊API交互。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户导入Polkadot.js App后使用复杂的界面进行操作。
 
 民主预编译位于以下地址：
@@ -38,22 +37,22 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 接口包含以下函数：
 
- - **public_prop_count**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
- - **deposit_of**(*uint256* prop_index) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
- - **lowest_unbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
- - **propose**(*bytes32* proposal_hash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
- - **second**(*uint256* prop_index, *uint256* seconds_upper_bound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
- - **standard_vote**(*uint256* ref_index, *bool* aye, *uint256* vote_amount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
- - **remove_vote**(*uint256* ref_index)  —— 此函数用于在逾期的民主锁定之前于特定公投上移除投票。请注意，移除投票不能在提案投票进行中时撤销或是取消
+ - **publicPropCount**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
+ - **depositOf**(*uint256* propIndex) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
+ - **lowestUnbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
+ - **propose**(*bytes32* proposalHash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
+ - **second**(*uint256* propIndex, *uint256* secondsUpperBound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
+ - **standardVote**(*uint256* refIndex, *bool* aye, *uint256* voteAmount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
+ - **removeVote**(*uint256* refIndex)  —— 此函数用于在逾期的民主锁定之前于特定公投上移除投票。请注意，移除投票不能在提案投票进行中时撤销或是取消
  - **delegate**(*address* representative, *uint256* candidateCount, *uint256* amount) —— 通过提供需要被委托的特定账户信息、用于所有委托投票的Token锁定之间函数以及用于委托的Token数量的“信念值”系数，以委托其投票权力至其他账户。调用民主pallet的[`delegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=delegate(to, conviction, balance)){target=_blank}方法
- - **un_delegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
- - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**remove_vote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/pallets-precompiles/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
- - **note_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
- - **note_imminent_preimage**(*bytes* encoded_proposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
+ - **unDelegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
+ - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**removeVote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/pallets-precompiles/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
+ - **notePreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
+ - **noteImminentPreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
 
 此接口同样包含目前尚未被支持但有可能在将来支持的函数：
 
-- **ongoing_referendum_info**(*uint256* ref_index) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
+- **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
      - 公投结束区块（*uint256*）
      - 提案哈希（*bytes32*）
      - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
@@ -62,7 +61,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
      - 总反对票数，包含Token锁定时间参数（*uint256*）
      - 当前投票结果，不包含Token锁定时间参数（*uint256*）
 
- - **finished_referendum_info**(*uint256* ref_index) —— 返回公投是否通过以及结束区块信息的只读函数
+ - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
@@ -119,12 +118,12 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 在下个页面，根据以下步骤进行操作：
 
  1. 点击三角形图像以显示字节状态下带编码的提案
- 2. 复制带编码的提案——您将在随后步骤中使用**note_preimage**时用到它
+ 2. 复制带编码的提案——您将在随后步骤中使用**notePreimage**时用到它
 
 ![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
 
 !!! 注意事项
-     请**不要**在此签署和提交交易。您将会在随后步骤中通过**note_preimage**提交此信息。
+     请**不要**在此签署和提交交易。您将会在随后步骤中通过**notePreimage**提交此信息。
 
 接下来您可以通过以下步骤调用Solidity接口的`propose`函数：
 
@@ -136,10 +135,10 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
 
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`note_preimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**note_preimage**提交原像（Preimage）：
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
 
  1. 展开民主预编译合约以查看可用函数
- 2. 找到**note_preimage**函数并点击按钮以展开区块
+ 2. 找到**notePreimage**函数并点击按钮以展开区块
  3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
  4. 点击**transact**并在MetaMask确认交易
 
@@ -192,7 +191,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 现在，您可以准备返回至Remix以通过民主预编译在公投进行投票，请跟随以下步骤进行操作：
 
 1. 展开民主预编译合约以查看可用函数
-2. 寻找**standard_vote**函数并点击按钮以查看区块
+2. 寻找**standardVote**函数并点击按钮以查看区块
 3. 输入公投编码以进行投票
 4. 将此字段留空表示否定或输入`1`表示赞成。在公投的背景下，**nay**是保持现状不变的投票，**aye**是通过公投提议
 5. 输入以Wei表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用

@@ -68,53 +68,53 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 接口包含以下的函数：
 
- - **is_delegator**(*address* delegator) —— 检查指定地址当前是否为质押委托人的只读函数。使用质押Pallet的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
- - **is_candidate**(*address* candidate) —— 检查指定地址当前是否为候选收集人的只读函数。使用质押Pallet的[`candidateState`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateState(AccountId20)){target=_blank}函数
- - **is_selected_candidate**(*address* candidate) —— 检查指定地址当前是否为活跃收集人集其中一部分的只读函数。使用质押Pallet的[`selectedCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=selectedCandidates()){target=_blank}函数
+ - **isDelegator**(*address* delegator) —— 检查指定地址当前是否为质押委托人的只读函数。使用质押Pallet的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
+ - **isCandidate**(*address* candidate) —— 检查指定地址当前是否为候选收集人的只读函数。使用质押Pallet的[`candidateState`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateState(AccountId20)){target=_blank}函数
+ - **isSelectedCandidate**(*address* candidate) —— 检查指定地址当前是否为活跃收集人集其中一部分的只读函数。使用质押Pallet的[`selectedCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=selectedCandidates()){target=_blank}函数
  - **points**(*uint256* round) —— 获取在给定轮次中授予所有收集人总分的只读函数。使用质押Pallet的[`points`](/builders/pallets-precompiles/pallets/staking/#:~:text=points(u32)){target=_blank}函数
- - **min_delegation**() —— 获取最小委托数量的只读函数。使用质押Pallet的`minDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=minDelegation()){target=_blank}函数
- - **candidate_count**() —— 获取当前候选收集人数量的只读函数。使用质押Pallet的[`candidatePool`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidatePool()){target=_blank}函数
+ - **minDelegation**() —— 获取最小委托数量的只读函数。使用质押Pallet的`minDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=minDelegation()){target=_blank}函数
+ - **candidateCount**() —— 获取当前候选收集人数量的只读函数。使用质押Pallet的[`candidatePool`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidatePool()){target=_blank}函数
  - **round**() - 返回当前轮数的只读函数。使用质押Pallet的[`round`](/builders/pallets-precompiles/pallets/staking/#:~:text=round()){target=_blank}函数
- - **candidate_delegation_count**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
- - **delegator_delegation_count**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数。使用质押Pallet的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
- - **selected_candidates**() - 获取当前轮次选定候选人的只读函数。使用质押Pallet的[`selectedCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=selectedCandidates()){target=_blank}函数
- - **delegation_request_is_pending**(*address* delegator, *address* candidate) - 返回一个布尔值以指示给定的委托人是否为给定的候选人提出了尚未执行的委托请求。
- - **delegator_exit_is_pending**(*address* delegator) - 返回一个布尔值以指示委托人是否存在尚未执行的退出请求。
- - **candidate_exit_is_pending**(*address* candidate) - 返回一个布尔值以指示候选人是否存在尚未执行的退出请求。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
- - **candidate_request_is_pending**(*address* candidate) - 返回一个布尔值以指示给定候选人是否存在尚未执行的减少绑定请求。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
- - **join_candidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集。使用质押Pallet的[`joinCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=joinCandidates(bond, candidateCount)){target=_blank}函数
- - **schedule_leave_candidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`execute_leave_candidates`执行请求。 使用质押Pallet的[`scheduleLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveCandidates(candidateCount)){target=_blank}函数
- - **execute_leave_candidates**(*address* candidate, *uint256* candidateDelegationCount) —— 执行离开候选收集人集的可用请求。使用质押Pallet的[`executeLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveCandidates(candidate, candidateDelegationCount)){target=_blank}函数
- - **cancel_leave_candidates**(*uint256* candidateCount) —— 使候选人取消待处理的离开候选人池的请求。提供当前候选人池中的候选人数量。使用质押Pallet的[`cancelLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveCandidates(candidateCount)){target=_blank}函数
- - **go_offline**() —— 在不解除绑定的情况下暂时离开候选收集人集。使用质押Pallet的[`goOffline`](/builders/pallets-precompiles/pallets/staking/#:~:text=goOffline()){target=_blank}函数
- - **go_online**() —— 在先前调用go_offline()后，重新加入候选收集人集。使用质押Pallet的[`goOnline`](/builders/pallets-precompiles/pallets/staking/#:~:text=goOnline()){target=_blank}函数
- - **candidate_bond_more**(*uint256* more) —— 候选收集人根据指定数量增加绑定数量。使用质押Pallet的[`candidateBondMore`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateBondMore(more)){target=_blank} 函数
- - **schedule_candidate_bond_less**(*uint256* more) —— 发起减少候选人绑定一定Token数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以通过`execute_candidate_bond_request`函数执行请求。使用质押Pallet的[`scheduleCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleCandidateBondLess(less)){target=_blank}函数
- - **execute_candidate_bond_request**(*address* candidate) —— 执行任何减少指定候选人绑定数量的可用请求。使用质押Pallet的[`executeCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeCandidateBondLess(candidate)){target=_blank}函数
- - **cancel_candidate_bond_request**() —— 使候选人取消待处理的减少候选人绑定数量的请求。使用质押Pallet的[`cancelCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelCandidateBondLess()){target=_blank}函数
+ - **candidateDelegationCount**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
+ - **delegatorDelegationCount**(*address* delegator) —— 返回指定委托人地址的委托数量的只读函数。使用质押Pallet的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
+ - **selectedCandidates**() - 获取当前轮次选定候选人的只读函数。使用质押Pallet的[`selectedCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=selectedCandidates()){target=_blank}函数
+ - **delegationRequestIsPending**(*address* delegator, *address* candidate) - 返回一个布尔值以指示给定的委托人是否为给定的候选人提出了尚未执行的委托请求。
+ - **delegatorExitIsPending**(*address* delegator) - 返回一个布尔值以指示委托人是否存在尚未执行的退出请求。
+ - **candidateExitIsPending**(*address* candidate) - 返回一个布尔值以指示候选人是否存在尚未执行的退出请求。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
+ - **candidateRequestIsPending**(*address* candidate) - 返回一个布尔值以指示给定候选人是否存在尚未执行的减少绑定请求。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
+ - **joinCandidates**(*uint256* amount, *uint256* candidateCount) —— 允许帐户加入拥有指定绑定数量和当前候选人数量的候选收集人集。使用质押Pallet的[`joinCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=joinCandidates(bond, candidateCount)){target=_blank}函数
+ - **scheduleLeaveCandidates**(*uint256* candidateCount) —— 为候选收集人发起将自身移除候选池的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以使用`executeLeaveCandidates`执行请求。 使用质押Pallet的[`scheduleLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveCandidates(candidateCount)){target=_blank}函数
+ - **executeLeaveCandidates**(*address* candidate, *uint256* candidateDelegationCount) —— 执行离开候选收集人集的可用请求。使用质押Pallet的[`executeLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveCandidates(candidate, candidateDelegationCount)){target=_blank}函数
+ - **cancelLeaveCandidates**(*uint256* candidateCount) —— 使候选人取消待处理的离开候选人池的请求。提供当前候选人池中的候选人数量。使用质押Pallet的[`cancelLeaveCandidates`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveCandidates(candidateCount)){target=_blank}函数
+ - **goOffline**() —— 在不解除绑定的情况下暂时离开候选收集人集。使用质押Pallet的[`goOffline`](/builders/pallets-precompiles/pallets/staking/#:~:text=goOffline()){target=_blank}函数
+ - **goOnline**() —— 在先前调用goOffline()后，重新加入候选收集人集。使用质押Pallet的[`goOnline`](/builders/pallets-precompiles/pallets/staking/#:~:text=goOnline()){target=_blank}函数
+ - **candidateBondMore**(*uint256* more) —— 候选收集人根据指定数量增加绑定数量。使用质押Pallet的[`candidateBondMore`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateBondMore(more)){target=_blank} 函数
+ - **scheduleCandidateBondLess**(*uint256* more) —— 发起减少候选人绑定一定Token数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)才可以通过`executeCandidateBondRequest`函数执行请求。使用质押Pallet的[`scheduleCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleCandidateBondLess(less)){target=_blank}函数
+ - **executeCandidateBondRequest**(*address* candidate) —— 执行任何减少指定候选人绑定数量的可用请求。使用质押Pallet的[`executeCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeCandidateBondLess(candidate)){target=_blank}函数
+ - **cancelCandidateBondRequest**() —— 使候选人取消待处理的减少候选人绑定数量的请求。使用质押Pallet的[`cancelCandidateBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelCandidateBondLess()){target=_blank}函数
  - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 如果执行者并不是委托人，此函数会将其加入委托人集。如果执行者已经是委托人，此函数将会调整其委托数量。使用质押Pallet的[`delegate`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegate(candidate, amount, candidateDelegationCount, delegationCount)){target=_blank}函数
- - **schedule_leave_delegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_leave_delegators`函数执行请求。使用质押Pallet的[`scheduleLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveDelegators()){target=_blank}函数
- - **execute_leave_delegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求。使用质押Pallet的[`executeLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveDelegators(delegator, delegationCount)){target=_blank}函数
- - **cancel_leave_delegators**() —— 取消待处理的离开委托人集的请求。使用质押Pallet的[`cancelLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveDelegators()){target=_blank}函数
- - **schedule_revoke_delegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`execute_delegation_request`函数执行请求。使用质押Pallet的[`scheduleRevokeDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleRevokeDelegation(collator)){target=_blank}函数
- - **delegator_bond_more**(*address* candidate, *uint256* more) —— 委托人增加绑定在特定收集人的数量。使用质押Pallet的[`delegatorBondMore`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorBondMore(candidate, more)){target=_blank}函数
- - **schedule_delegator_bond_less**(*address* candidate, *uint256* less) —— 发起委托人减少绑定在特定候选收集人的数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`execute_delegation_request`函数执行请求。使用质押Pallet的[`scheduleDelegatorBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleDelegatorBondLess(candidate, less)){target=_blank}函数
- - **execute_delegation_request**(*address* delegator, *address* candidate) —— 执行任何在提供委托人和候选人地址的情况下的可用委托请求。使用质押Pallet的[`executeDelegationRequest`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeDelegationRequest(delegator, candidate)){target=_blank}函数
- - **cancel_delegation_request**(*address* candidate) —— 取消提供的候选人地址中任何待处理的委托请求。使用质押Pallet的[`cancelDelegationRequest`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelDelegationRequest(candidate)){target=_blank}函数
+ - **scheduleLeaveDelegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`executeLeaveDelegators`函数执行请求。使用质押Pallet的[`scheduleLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveDelegators()){target=_blank}函数
+ - **executeLeaveDelegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求。使用质押Pallet的[`executeLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveDelegators(delegator, delegationCount)){target=_blank}函数
+ - **cancelLeaveDelegators**() —— 取消待处理的离开委托人集的请求。使用质押Pallet的[`cancelLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveDelegators()){target=_blank}函数
+ - **scheduleRevokeDelegation**(*address* candidate) —— 发起撤回特定地址候选收集人委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您将能够通过`executeDelegationRequest`函数执行请求。使用质押Pallet的[`scheduleRevokeDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleRevokeDelegation(collator)){target=_blank}函数
+ - **delegatorBondMore**(*address* candidate, *uint256* more) —— 委托人增加绑定在特定收集人的数量。使用质押Pallet的[`delegatorBondMore`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorBondMore(candidate, more)){target=_blank}函数
+ - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 发起委托人减少绑定在特定候选收集人的数量的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`executeDelegationRequest`函数执行请求。使用质押Pallet的[`scheduleDelegatorBondLess`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleDelegatorBondLess(candidate, less)){target=_blank}函数
+ - **executeDelegationRequest**(*address* delegator, *address* candidate) —— 执行任何在提供委托人和候选人地址的情况下的可用委托请求。使用质押Pallet的[`executeDelegationRequest`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeDelegationRequest(delegator, candidate)){target=_blank}函数
+ - **cancelDelegationRequest**(*address* candidate) —— 取消提供的候选人地址中任何待处理的委托请求。使用质押Pallet的[`cancelDelegationRequest`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelDelegationRequest(candidate)){target=_blank}函数
 
 以下的函数已被**弃用**，将会在近期移除：
 
- - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押委托人的只读函数。请改用`is_delegator`
- - **min_nomination**() —— 获取最低委托数量的只读函数。请改用`min_delegation`
- - **collator_nomination_count**(*address* collator) —— 返回指定收集人地址委托数量的只读函数。请改用`candidate_delegation_count`
- - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数。请改用`delegator_delegation_count`
- - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑。请改用`schedule_leave_candidates`和`execute_leave_candidates`
- - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量。请改用`schedule_candidate_bond_less`和`execute_candidate_bond_less`
+ - **is_nominator**(*address* nominator) —— 检查指定地址当前是否为质押委托人的只读函数。请改用`isDelegator`
+ - **min_nomination**() —— 获取最低委托数量的只读函数。请改用`minDelegation`
+ - **collator_nomination_count**(*address* collator) —— 返回指定收集人地址委托数量的只读函数。请改用`candidateDelegationCount`
+ - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数。请改用`delegatorDelegationCount`
+ - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑。请改用`scheduleLeaveCandidates`和`executeLeaveCandidates`
+ - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量。请改用`scheduleCandidateBondLess`和`execute_candidate_bond_less`
  - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量。请改用`delegate`
- - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托。请改用`schedule_leave_delegators`和`execute_leave_delegators`
- - **revoke_nominations**(*address* collator) —— 撤销指定委托。请改用`schedule_revoke_delegation`和`execute_delegation_request`
- - **nominator_bond_more**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量。请改用`delegator_bond_more`
- - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量。请改用`schedule_delegator_bond_less`和`execute_delegation_request`
+ - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托。请改用`scheduleLeaveDelegators`和`executeLeaveDelegators`
+ - **revoke_nominations**(*address* collator) —— 撤销指定委托。请改用`scheduleRevokeDelegation`和`executeDelegationRequest`
+ - **nominatorBondMore**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量。请改用`delegatorBondMore`
+ - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量。请改用`scheduleDelegatorBondLess`和`executeDelegationRequest`
 
 ## 与Solidity接口进行交互 {: #interact-with-solidity-interface }
 
@@ -163,7 +163,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 获取候选人的委托人数量，您需要调用质押预编译提供的函数。在**Deployed Contracts**列表下找到**PARACHAINSTAKING**合约，然后执行以下操作：
 
-1. 找到**candidate_delegation_count**函数并展开面板
+1. 找到**candidateDelegationCount**函数并展开面板
 2. 输入候选人地址（`{{ networks.moonbase.staking.candidates.address1 }}`）
 3. 点击**call**
 4. 调用完成后，将会显示结果
@@ -172,7 +172,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 如果您不知道现有的委托数量，您可以执行以下步骤获得：
 
-1. 找到**delegator_delegation_count**函数并展开面板
+1. 找到**delegatorDelegationCount**函数并展开面板
 2. 输入地址
 3. 点击**call**
 4. 调用完成后，将会显示结果
@@ -226,7 +226,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 回到Remix以撤销对特定候选人的委托并收回您的Token，并执行以下步骤操作：
 
-1. 在**Deployed Contract**列表中，找到并展开**schedule_revoke_delegation**
+1. 在**Deployed Contract**列表中，找到并展开**scheduleRevokeDelegation**
 2. 输入您希望撤销委托的候选收集人地址
 3. 点击**transact**
 4. MetaMask将跳出弹窗，请查看详情并点击**Confirm**
@@ -237,7 +237,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 当已经过延迟时段，您能够回到Remix并遵循以下步骤以执行可用请求：
 
-1. 在**Deployed Contract**列表中，找到并展开**execute_delegation_request**
+1. 在**Deployed Contract**列表中，找到并展开**executeDelegationRequest**
 2. 输入您希望撤销委托的候选委托人地址
 3. 输入您希望撤销委托的候选收集人地址
 4. 点击**transact**
@@ -247,7 +247,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 如果因任何因素您希望取消待处理的撤销委托请求，您可以在Remix上执行以下步骤：
 
-1. 在**Deployed Contract**列表中，找到并展开**cancel_delegation_request**
+1. 在**Deployed Contract**列表中，找到并展开**cancelDelegationRequest**
 2. 输入您希望撤销委托的候选收集人地址
 3. 点击**transact**
 4. MetaMask将跳出弹窗，请查看详情并点击**Confirm**
