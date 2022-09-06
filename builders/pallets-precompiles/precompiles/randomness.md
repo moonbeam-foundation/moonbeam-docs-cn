@@ -78,23 +78,23 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 - **REQUEST_DEPOSIT_AMOUNT** - 请求随机词所需的保证金。每个请求需要一笔保证金
 
 === "Moonbeam"
-    |        变量        |                             值                              |
-    |:----------------------:|:--------------------------------------------------------------:|
-    |    MAX_RANDOM_WORDS    |   {{ networks.moonbeam.randomness.max_random_words }} words    |
-    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.min_vrf_blocks_delay }} blocks |
-    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.max_vrf_blocks_delay }} blocks |
+    |          变量          |                               值                                |
+    |:----------------------:|:---------------------------------------------------------------:|
+    |    MAX_RANDOM_WORDS    |    {{ networks.moonbeam.randomness.max_random_words }} words    |
+    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.min_vrf_blocks_delay }} blocks  |
+    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.max_vrf_blocks_delay }} blocks  |
     | REQUEST_DEPOSIT_AMOUNT | {{ networks.moonbeam.randomness.req_deposit_amount.glmr }} GLMR |
 
 === "Moonriver"
-    |        变量        |                             值                              |
-    |:----------------------:|:--------------------------------------------------------------:|
-    |    MAX_RANDOM_WORDS    |   {{ networks.moonriver.randomness.max_random_words }} words    |
-    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.min_vrf_blocks_delay }} blocks |
-    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.max_vrf_blocks_delay }} blocks |
+    |          变量          |                                值                                |
+    |:----------------------:|:----------------------------------------------------------------:|
+    |    MAX_RANDOM_WORDS    |    {{ networks.moonriver.randomness.max_random_words }} words    |
+    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.min_vrf_blocks_delay }} blocks  |
+    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.max_vrf_blocks_delay }} blocks  |
     | REQUEST_DEPOSIT_AMOUNT | {{ networks.moonriver.randomness.req_deposit_amount.movr }} MOVR |
 
 === "Moonbase Alpha"
-    |        变量        |                             值                              |
+    |          变量          |                               值                               |
     |:----------------------:|:--------------------------------------------------------------:|
     |    MAX_RANDOM_WORDS    |   {{ networks.moonbase.randomness.max_random_words }} words    |
     |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonbase.randomness.min_vrf_blocks_delay }} blocks |
