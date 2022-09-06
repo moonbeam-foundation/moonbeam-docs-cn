@@ -55,7 +55,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 |       [MoonLink Dashboard](https://moonlink-dashboard.netlify.app/){target=_blank}        |   Chainlink Demo   |                    [https://github.com/PureStake/moonlink-dashboard](https://github.com/PureStake/moonlink-dashboard){target=_blank}                     |
 |        [MoonLotto Lottery](https://moonbase-moonlotto.netlify.app/){target=_blank}        |   TheGraph Demo    | [Interface](https://github.com/PureStake/moonlotto-interface){target=_blank}, [Subgraph](https://github.com/PureStake/moonlotto-subgraph){target=_blank} |
 | [Moonbeam WalletConnect](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank} | WalletConnect Demo |           [https://github.com/PureStake/moonbeam-walletconnect-demo](https://github.com/PureStake/moonbeam-walletconnect-demo){target=_blank}            |
-| [Moonbase ChainBridge](https://moonbase-chainbridge.netlify.app/transfer){target=_blank}  |  ChainBridge Demo  |                        [https://github.com/PureStake/chainbridge-ui](https://github.com/PureStake/chainbridge-ui){target=_blank}                         |
 |              [MoonGas](https://moonbeam-gasinfo.netlify.app/){target=_blank}              | Gas Price Tracker  |                 [https://github.com/albertov19/moonbeam-gas-station](https://github.com/albertov19/moonbeam-gas-station){target=_blank}                  |
 
 !!! 注意事项
@@ -113,36 +112,10 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ![Moonbeam WalletConnect](/images/builders/get-started/networks/moonbase/moonbase-6.png)
 
-### Moonbase ChainBridge {: #moonbase-chainbridge } 
-
-[Moonbase ChainBridge](https://moonbase-chainbridge.netlify.app/transfer){target=_blank}使得您能够从Moonbase Alpha桥接ERC-20 Token至Ethereum的Rinkeby和Kovan测试网（反之亦然）。关于使用ChainBridge的ERC-20、ERC-721和Generic Handlers的更多信息，请确保查阅[ChainBridge协议的以太坊Moonbeam跨链转接桥](/builders/integrations/bridges/chainbridge/)的步骤教程{target=_blank} 。您也可以查阅[Moonbase ChainBridge repository](https://github.com/PureStake/chainbridge-ui){target=_blank}。启动跨链桥转移前，请连接您的MetaMask钱包，并确保在Moonbase Alpha网络上，然后执行以下步骤：
-
-1. 点击**Mint ERC20S**
-
-2. 选定一个目标网络（无论目标网络如何，铸造的Token都是相同的）
-
-3. 在选择**Token**下拉菜单中选择**ERC20S** 
-
-4. 点击**Mint Tokens**并在MetaMask确认交易
-
-5. 返回至**Transfer**一栏
-
-6. 选择目标网络
-
-7. 在选择**Token**下拉菜单中选择**ERC20S** 
-
-8. 输入需要转移的Token数量
-
-9. 输入目的地地址，或勾选**I want to send funds to my address**
-
-10. 点击**Start Transfer**并在MetaMask确认交易。DApp将更新跨链桥转移的状态
-
-![Moonbase ChainBridge](/images/builders/get-started/networks/moonbase/moonbase-7.png)
-
 ### MoonGas {: #moongas } 
 
 [MoonGas](https://moonbeam-gasinfo.netlify.app/){target=_blank}是一个便于使用的数据面板，用于查看所有Moonbeam网络中前一个区块中交易的最低、最高和平均gas价格。请注意，这些数据可能会英文区块而波动很大，并且偶尔会包含异常值。您可以查阅[repository for MoonGas](https://github.com/albertov19/moonbeam-gas-station){target=_blank}。
 
 您将注意到Moonbeam最小gas价格是100 Gwei，然而Moonriver和Moonbase Alpha的仅仅是1 Gwei。这种差异源于[GLMR与MOVR初始供应量的百倍差距](https://moonbeam.foundation/news/moonbeam-community-announcement/){target=_blank}，因此，Moonbeam最小值100 Gwei就相当于Moonriver最小值1 Gwei。
 
-![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-8.png)
+![MoonGas](/images/builders/get-started/networks/moonbase/moonbase-7.png)
