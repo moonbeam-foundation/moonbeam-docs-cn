@@ -21,7 +21,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ## Extrinsic定义 {: #extrinsics-definitions } 
 
-质押pallet有很多Extrinsic，本教程无法逐一进行介绍。但以下列表已经囊括与委托流程相关的Extrinsic。在[runtime升级到1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/){target=_blank}之后，一些Extrinsic已经弃用。
+质押pallet有很多Extrinsic，本教程无法逐一进行介绍。但以下列表已经囊括与委托流程相关的Extrinsic。
 
 !!! 注意事项
 
@@ -29,38 +29,24 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ### 加入或离开委托人集 {: #join-or-leave-the-delegator-set }
 
- - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 委托收集人。数额需要大于最低委托质押量。取代已弃用的`nominate`函数
- - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=退出委托人集延迟){target=_blank}，随后才能执行请求。取代已弃用的`leaveNominators`函数
+ - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 委托收集人。数额需要大于最低委托质押量
+ - **scheduleLeaveDelegators**() —— 计划离开委托人集。在您通`executeLeaveDelegators`函数执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=退出委托人集延迟){target=_blank}，随后才能执行请求
  - **executeLeaveDelegators**(*uint256* delegatorDelegationCount) —— 执行离开委托人集。该函数仅用于已在计划之内的离开行为，且退出已生效之后。最终，所有正在进行的委托将被撤销
  - **cancelLeaveDelegators**() —— 取消已在离开计划的委托人集的请求
 
-以下外部函数已弃用：
-
- - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 委托收集人的函数。数额需要大于最低委托质押量
- - **leaveNominators**(*uint256* nominatorNominationCount) —— 离开委托人集的函数。最终，所有正在进行的委托将被撤销
-
 ### 绑定更多Token或减少绑定Token {: #bond-more-or-less }
 
- - **delegatorBondMore**(*address* candidate, *uint256* more) —— 向已经委托的收集人增加质押Token数量的请求。取代已弃用的`nominatorBondMore`函数
- - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求。取代已弃用的`nominatorBondLess`函数
+ - **delegatorBondMore**(*address* candidate, *uint256* more) —— 向已经委托的收集人增加质押Token数量的请求
+ - **scheduleDelegatorBondLess**(*address* candidate, *uint256* less) —— 对已经委托的收集人减少质押Token数量的请求。该数额不得使您的总质押量低于最低委托质押量。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求
  - **executeDelegationRequest**(*address* candidate) —— 对一个特定候选人减少绑定的执行行为。该函数仅用于已计划的绑定请求，且退出已生效之后
  - **scheduleCandidateBondLess**(*uint256* less) - 允许收集人候选人请求将其自绑定减少给定数量的extrinsic。在您通过`executeCandidateBondLess`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=减少委托时长){target=_blank}，随后才能执行请求。
  - **executeCandidateBondLess**(*address* 候选人) - 执行减少候选人的自绑定请求。该函数仅用于已计划的绑定减少请求，且退出已生效之后
  - **cancelCandidateBondLess**() —— 取消已计划的对特定候选人增加或者减少绑定的请求
 
-以下外部函数已弃用：
-
- - **nominatorBondLess**(*address* collator, *uint256* less) —— 对已委托的收集人减少质押Token数量。该数额不得使您的总质押量低于最低委托质押量
- - **nominatorBondMore**(*address* collator, *uint256* more) —— 对已委托的收集人增加质押Token数量
-
 ### 撤销委托 {: #revoke-delegations }
 
- - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=取消委托延迟){target=_blank}，随后才能执行请求。取代已弃用的`revokeNomination`函数
+ - **scheduleRevokeDelegation**(*address* collator) —— 计划完全撤销现有的委托。在您通过`executeDelegationRequest`执行请求前，需经过一个[退出延迟](/learn/features/staking/#quick-reference/#:~:text=取消委托延迟){target=_blank}，随后才能执行请求
  - **cancelDelegationRequest**(*address* candidate) —— 取消已计划的请求以撤销委托的请求
-
-以下外部函数已弃用：
-
- - **revokeNomination**(*address* collator) —— 移除现有的委托
 
 ## 获取质押参数 {: #retrieving-staking-parameters } 
 
