@@ -12,7 +12,7 @@ keywords: solidity, ethereum, randomness, VRF, moonbeam, precompiled, contracts
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种利用一些输入值并产生随机数的加密函数，并证明这些数值是由提交者生成。此证明可以由任何人验证，以确保准确计算生成的随机数计算。
 
-目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=_blank} Epoch随机数基于所有由中继链验证人在完整Epoch期间生产的VRF{target=_blank}。
+目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=_blank} Epoch随机数基于所有由中继链验证人在完整[Epoch](https://wiki.polkadot.network/docs/glossary#epoch){target=_blank}期间生产的VRF。
 
 关于更多两种随机数来源的信息，如何请求和完成工作流程以及安全考虑，请查看[Moonbeam上的随机数](/learn/features/randomness){target=_blank}页面。
 
@@ -20,7 +20,17 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 此教程将会包含如何使用随机数预编译以及随机数消费者合约创建一个随机选取赢家的彩票。同时，您将学习如何直接与随机数预编译交互以执行操作，例如清除过期的随机数请求。
 
-随机数预编译合约目前仅在Moonbase Alpha上可用，地址如下：
+此预编译合约位于以下地址：
+
+=== "Moonbeam"
+     ```
+     {{ networks.moonbeam.precompiles.randomness }}
+     ```
+
+=== "Moonriver"
+     ```
+     {{ networks.moonriver.precompiles.randomness }}
+     ```
 
 === "Moonbase Alpha"
      ```
@@ -66,6 +76,22 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 - **MIN_VRF_BLOCKS_DELAY** - 在请求能被本地VRF请求完成前的最小区块数量
 - **MAX_VRF_BLOCKS_DELAY** - 在请求能被本地VRF请求完成前的最大区块数量
 - **REQUEST_DEPOSIT_AMOUNT** - 请求随机词所需的保证金。每个请求需要一笔保证金
+
+=== "Moonbeam"
+    |        变量        |                             值                              |
+    |:----------------------:|:--------------------------------------------------------------:|
+    |    MAX_RANDOM_WORDS    |   {{ networks.moonbeam.randomness.max_random_words }} words    |
+    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.min_vrf_blocks_delay }} blocks |
+    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonbeam.randomness.max_vrf_blocks_delay }} blocks |
+    | REQUEST_DEPOSIT_AMOUNT | {{ networks.moonbeam.randomness.req_deposit_amount.glmr }} GLMR |
+
+=== "Moonriver"
+    |        变量        |                             值                              |
+    |:----------------------:|:--------------------------------------------------------------:|
+    |    MAX_RANDOM_WORDS    |   {{ networks.moonriver.randomness.max_random_words }} words    |
+    |  MIN_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.min_vrf_blocks_delay }} blocks |
+    |  MAX_VRF_BLOCKS_DELAY  | {{ networks.moonriver.randomness.max_vrf_blocks_delay }} blocks |
+    | REQUEST_DEPOSIT_AMOUNT | {{ networks.moonriver.randomness.req_deposit_amount.movr }} MOVR |
 
 === "Moonbase Alpha"
     |        变量        |                             值                              |
@@ -134,12 +160,12 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 - [安装成功的MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或是拥有3个账户以测试彩票合约
-- 所有账户皆需拥有`DEV ` Token
+- 所有账户皆需拥有`DEV ` Token。
  --8<-- 'text/faucet/faucet-list-item.md'
 
 ### 范例彩票合约 {: #example-contract }
 
-在此教程中，您将会与使用随机数预编译和消费者接口的彩票合约交互。您将会生成用于公平选取彩票获胜者的随机词。您可以在Moonbeam Docs GitHub库中寻找将被用于此教程的彩票合约文档，[`RandomnessLotteryDemo.sol`](https://raw.githubusercontent.com/PureStake/moonbeam-docs/blob/master/.snippets/code/randomness/RandomnessLotteryDemo.sol){target=_blank}。
+在此教程中，您将会与使用随机数预编译和消费者接口的彩票合约交互。您将会生成用于公平选取彩票获胜者的随机词。您可以在Moonbeam Docs GitHub库中寻找将被用于此教程的彩票合约文档，[`RandomnessLotteryDemo.sol`](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/randomness/RandomnessLotteryDemo.sol){target=_blank}。
 
 此彩票合约导入`Randomness.sol`预编译以及`RandomnessConsumer.sol`接口，并衍生自客户合约。在合约的架构中，您可以制定随机数的来源为本地VRF或BABE Epoch随机数。
 
@@ -151,7 +177,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与随机数预编译和消费者合约交互。要将接口新增至Remix并跟随其后教程，您需要跟随以下步骤：
 
-1. 复制[`RandomnessLotteryDemo.sol`](https://github.com/PureStake/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/tests/contracts/solidity/RandomnessLotteryDemo.sol){target=_blank}文件
+1. 复制[`RandomnessLotteryDemo.sol`](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/randomness/RandomnessLotteryDemo.sol){target=_blank}文件
 2. 将文件内容粘贴至一个命名为**RandomnessLotteryDemo.sol**的文件
 
 ![Add contracts to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-1.png)
