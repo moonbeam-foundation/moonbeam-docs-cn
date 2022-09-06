@@ -30,16 +30,39 @@ Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成
 
 ## 快速参考 {: #quick-reference }
 
+
+=== "Moonbeam"
+    |    Variable    |                                      Value                                      |
+    |:--------------:|:-------------------------------------------------------------------------------:|
+    |     保证金     |         {{ networks.moonbeam.randomness.req_deposit_amount.glmr }} GLMR         |
+    |  区块过期延迟  |             {{ networks.moonbeam.randomness.block_expiration }}区块             |
+    | Epoch过期延迟  |           {{ networks.moonbeam.randomness.epoch_expiration }} Epochs            |
+    |  最小区块延迟  |           {{ networks.moonbeam.randomness.min_vrf_blocks_delay }}区块           |
+    |  最大区块延迟  |           {{ networks.moonbeam.randomness.max_vrf_blocks_delay }}区块           |
+    | 最大随机词数量 |              {{ networks.moonbeam.randomness.max_random_words }}词              |
+    | Epoch完成延迟  | {{ networks.moonbeam.randomness.epoch_fulfillment_delay }} Epochs（跟随当前的） |
+
+=== "Moonriver"
+    |    Variable    |                                      Value                                       |
+    |:--------------:|:--------------------------------------------------------------------------------:|
+    |     保证金     |         {{ networks.moonriver.randomness.req_deposit_amount.movr }} MOVR         |
+    |  区块过期延迟  |             {{ networks.moonriver.randomness.block_expiration }}区块             |
+    | Epoch过期延迟  |           {{ networks.moonriver.randomness.epoch_expiration }} Epochs            |
+    |  最小区块延迟  |           {{ networks.moonriver.randomness.min_vrf_blocks_delay }}区块           |
+    |  最大区块延迟  |           {{ networks.moonriver.randomness.max_vrf_blocks_delay }}区块           |
+    | 最大随机词数量 |              {{ networks.moonriver.randomness.max_random_words }}词              |
+    | Epoch完成延迟  | {{ networks.moonriver.randomness.epoch_fulfillment_delay }} Epochs（跟随当前的） |
+
 === "Moonbase Alpha"
-    |        变量         |                                             值                                             |
-    |:-----------------------:|:---------------------------------------------------------------------------------------------:|
-    |         保证金         |                   {{ networks.moonbase.randomness.req_deposit_amount.dev }} DEV                   |
-    | 区块过期延迟  |                  {{ networks.moonbase.randomness.block_expiration }}区块                   |
-    | Epoch过期延迟  |                  {{ networks.moonbase.randomness.epoch_expiration }} Epochs                   |
-    |   最小区块延迟   |                {{ networks.moonbase.randomness.min_vrf_blocks_delay }}区块                 |
-    |   最大区块延迟   |                {{ networks.moonbase.randomness.max_vrf_blocks_delay }}区块                 |
-    |  最大随机词数量   |                   {{ networks.moonbase.randomness.max_random_words }}词                   |
-    | Epoch完成延迟 | {{ networks.moonbase.randomness.epoch_fulfillment_delay }} Epochs（跟随当前的） |
+    |      变量      |                                       值                                        |
+    |:--------------:|:-------------------------------------------------------------------------------:|
+    |     保证金     |          {{ networks.moonbase.randomness.req_deposit_amount.dev }} DEV          |
+    |  区块过期延迟  |             {{ networks.moonbase.randomness.block_expiration }}区块             |
+    | Epoch过期延迟  |           {{ networks.moonbase.randomness.epoch_expiration }} Epochs            |
+    |  最小区块延迟  |           {{ networks.moonbase.randomness.min_vrf_blocks_delay }}区块           |
+    |  最大区块延迟  |           {{ networks.moonbase.randomness.max_vrf_blocks_delay }}区块           |
+    | 最大随机词数量 |              {{ networks.moonbase.randomness.max_random_words }}词              |
+    | Epoch完成延迟  | {{ networks.moonbase.randomness.epoch_fulfillment_delay }} Epochs（跟随当前的） |
 
 ## 本地VRF {: #local-vrf }
 
