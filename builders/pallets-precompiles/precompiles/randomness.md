@@ -37,7 +37,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
      {{ networks.moonbase.precompiles.randomness }}
      ```
 
-## The Randomness Solidity Interface {: #the-randomness-interface } 随机数Solidity接口 {: #the-randomness-interface }
+## 随机数Solidity接口 {: #the-randomness-interface }
 
 [Randomness.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L4-L11){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
 
