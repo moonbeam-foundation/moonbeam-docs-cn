@@ -132,7 +132,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
   - 从`RandomnessConsumer.sol`接口继承
   - 根据您希望使用的随机数资源，通过预编译的[`requestLocalVRFRandomWords`方法](#:~:text=requestLocalVRFRandomWords)或[`requestRelayBabeEpochRandomWords`方法](#:~:text=requestRelayBabeEpochRandomWords)请求随机数
   - 通过预编译的[`fulfillRequest`方法](#:~:text=fulfillRequest)完成请求
-  - 使用与[`fulfillRandomWords`方法相同的签名](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords))通过`fulfillRandomWords`方法使用随机数
+  - 使用与`RandomnessConsumer.sol`合约中[`fulfillRandomWords`方法相同的签名](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords))通过`fulfillRandomWords`方法使用随机数
 
 通过预编译的`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`方法请求随机数时，将会设置一个用于支付请求完成过程的费用。当使用本地VRF时，为提高不可预测性，制定的延迟时间段（以区块计算）将需要在请求被完成时经过。在最后，延迟的时间段必须大于一个区块。至于BABE Epoch随机数，您不需要制定一个延迟时间段，而可以在当前Epoch的第二个Epoch完成要求。
 
