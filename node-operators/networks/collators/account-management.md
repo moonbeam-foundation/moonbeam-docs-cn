@@ -85,6 +85,8 @@ curl http://127.0.0.1:9933 -H \
 
 如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
 
+如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
+
 ### 检查映射设定 {: #checking-the-mappings }
 
 您也可以通过验证链上状态来确认目前的链上映射情况。要检查特定的作者ID，您可以使用串联公钥的前64位十六进制字符来获取作者ID。要验证作者ID是否正确，您可以运行以下命令，并将前64个字符传递到`params`数组中：

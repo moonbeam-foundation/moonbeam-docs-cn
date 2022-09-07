@@ -1,10 +1,11 @@
 title: 功能
 nav:
   - index.md
+  - '跨链集成': 'xchain-plans.md' 
   - '以太坊兼容性': 'eth-compatibility.md'
-  - '统一账户': 'unified-accounts.md'
-  - '跨链集成': 'xchain-plans.md'
-  - '质押': 'staking.md'
   - '治理': 'governance.md'
+  - '平行链共识': 'consensus.md'
+  - '随机数': 'randomness.md'
+  - '质押': 'staking.md'
   - '财政库': 'treasury.md'
-  - '平行链Consensus': 'consensus.md'
+  - '统一账户': 'unified-accounts.md'
