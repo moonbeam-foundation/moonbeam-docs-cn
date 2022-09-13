@@ -11,6 +11,8 @@ description: Bobabase是Boba Layer 2部署在Moonbeam上的官方测试网。遵
 
 [Boba](https://boba.network/){target=_blank}是一个以计算为中心的Layer 2 (L2)，构建在基于[Optimism](https://www.optimism.io/){target=_blank}开发的Optimistic Rollup（链下计算层）之上。Boba通过[Turing Hybrid Compute](https://docs.boba.network/turing/turing){target=_blank}等多种功能增强了兼容EVM区块链的计算能力。上线以太坊之后，Boba将其Layer 2扩展解决方案带入Moonbeam。Bobabase是Boba部署在Moonbase Alpha的测试网名称。Bobabeam是Boba部署在Moonbeam的主网名称，尚未上线。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 网络端点 {: #network-endpoints }
 
 --8<-- 'text/endpoints/bobabase.md'
@@ -129,3 +131,5 @@ DEV或BOBA都可用于为Bobabase上的交易支付gas。如果你想使用DEV�
 3. 在MetaMask中确认交易
 
 ![Change gas fee token](/images/builders/get-started/networks/bobabase/bobabase-4.png)
+
+--8<-- 'text/disclaimers/third-party-content.md'

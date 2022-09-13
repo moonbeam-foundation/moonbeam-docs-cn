@@ -350,3 +350,5 @@ pallet: "system", method: "ExtrinsicSuccess"
 ```
 extrinsics.{extrinsic number}.events.{event number}.data.0.weight
 ```
+
+--8<-- 'text/disclaimers/third-party-content.md'

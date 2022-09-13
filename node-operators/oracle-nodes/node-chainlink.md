@@ -16,6 +16,8 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 !!! 注意事项
     文中所用示例仅作演示用途。请**务必**妥善管理密码，请勿将密码储存在纯文本中。文中示例均在Ubuntu 18.04环境下运行，但也有包含了MacOs的调用。本教程仅适用于开发设置，并不适用于生产环境。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 基本请求模型 {: #basic-request-model } 
 
 --8<-- 'text/chainlink/brm.md'

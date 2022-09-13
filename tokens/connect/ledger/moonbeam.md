@@ -17,6 +17,8 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 在本教程中，您将学会如何使用Moonbeam app在Moonbeam开始使用您的Ledger硬件钱包。本教程以Ledger Nano X设备为例进行演示操作，但操作步骤也同样适用于Ledger Nano S。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 --8<-- 'text/ledger/checking-prereqs.md'
 
 ## 安装Moonbeam Ledger Live App {: install-the-moonbeam-ledger-live-app }

@@ -17,6 +17,8 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 本教程将引导您学习如何创建在Moonbeam上索引ERC-20转移和批准的SubQuery项目。具体来说，本教程将涵盖索引`Transfer`事件和`approve`函数的调用。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites }
 
 在本教程的后半部分，您可以选择将项目部署到本地运行的SubQuery节点。为此，您需要先在您的系统安装以下内容：
@@ -256,3 +258,5 @@ docker-compose pull && docker-compose up
 ### Moonbuilders教程 {: #moonbuilders-tutorial }
 
 SubQuery于2021年12月参加了[Moonbuilders workshop](https://www.crowdcast.io/e/moonbuilders-ws/10){target=_blank}，向大家展示了如何创建一个简单的SubQuery项目。您可以自行尝试[生成范本项目](https://github.com/stwiname/moonbuilders-demo){target=_blank}。
+
+--8<-- 'text/disclaimers/third-party-content.md'
