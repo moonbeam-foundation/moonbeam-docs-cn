@@ -28,13 +28,13 @@ Moonbeam基金会将确保orbiter计划的收集人处于活跃收集人集，�
 - 由于计划本身要求，每个orbiter必须通过KYC检查且不能为特定国家的居民
 - 每个orbiter必须绑定一定资金，以避免恶意行为的出现且此资金将有可能被削减
 - 每个个体（个人或是团体）仅能在各个网络上运行一个Oribter，如一个在Moonriver，一个在Moonbeam
-- orbiter将无法在其orbiter相同的网络上运行另外一个收集人账户。然而，在仅在单一网络上运行的情况下，orbiter将能够在另外一个网络上运行收集人，如在Moonbeam上运行一个收集人，在Moonrriver上运行一个orbiter
+- Orbiter将无法在其orbiter相同的网络上运行另外一个收集人账户。然而，在仅在单一网络上运行的情况下，orbiter将能够在另外一个网络上运行收集人，如在Moonbeam上运行一个收集人，在Moonrriver上运行一个orbiter
 
 ## 沟通交流 {: #communication }
 
 Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分的对话将会在其频道中进行或是以DM进行。当您填写并提交申请表单，您将会被添加至群组当中。
 
-## orbiter和orbiter计划收集人池配置 {: #configuration }
+## Orbiter和Orbiter计划收集人池配置 {: #configuration }
 
 计划收集人由Moonbeam基金会运营，并分配权限给orbiter以生产区块。以下为每个网络单个orbiter计划收集人池最高可提供的orbiter数量：
 

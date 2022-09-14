@@ -70,12 +70,12 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **goOnline**() - 在之前调用`goOffline()`之后，允许收集人重新加入池
 - **joinCandidates**(bond, candidateCount) - 请求在特定绑定量并提供现有候选人（收集人）数量的情况下加入收集人池
 - **scheduleCandidateBondLess**(less) - 计划一个请求，以特定数量来减少候选人（收集人）自身绑定。这里有[退出生效期](#exit-delays)，即在您通过`executeCandidateBondLess` extrinsic执行请求之前必须等待
-- **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
+- **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
 - **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待
 - **scheduleLeaveDelegators**() - *运行时1800弃用* 计划一个请求，以离开委托人池并撤销所有正在进行的委托。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`scheduleRevokeDelegation`请求
-- **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
-- **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块。
-- **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金。
+- **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
+- **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块
+- **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金
 - **setInflation**(schedule) - 设定年通胀率以导出每轮通胀率
 - **setParachainBondAccount**(new) - 设定为平行链资金预留的持有资金账户
 - **setParachainBondReservePercent**(new) - 设定为平行链资金预留的通胀的百分比
