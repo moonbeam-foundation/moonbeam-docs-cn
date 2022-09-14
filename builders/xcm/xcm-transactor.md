@@ -83,7 +83,7 @@ XCM-transactor pallet包含以下只读存储方法：
  - **destinationAssetFeePerSecond**() — 返回给定multilocation资产的每秒费用。这能够将权重转换成费用。如果`feeAmount`设置为`None`，pallet extrinsicts将读取存储元素
  - **indexToAccount**(index) — 返回与给定衍生索引关联的原始链账户
  - **palletVersion**() — 从存储库返回当前pallet的版本
- - **transactInfoWithWeightLimit**(location) — 返回给定multilocation的交易信息。如果`feeAmount`设置为`None`，pallet extrinsicts将读取存储元素
+ - **transactInfoWithWeightLimit**(location) — 返回给定multilocation的交易信息。如果`feeAmount`设置为`None`，pallet extrinsics将读取存储元素
 
 ### Pallet常量 {: #constants }
 
