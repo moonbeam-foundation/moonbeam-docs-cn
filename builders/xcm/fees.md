@@ -274,7 +274,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 5. 在**interior**选取`Here`
 6. 点击**+**提交查询
 
-xcDOT的`UnitsPerSecond`数值为`{{ networks.moonbeam.xcm.units_per_second.xcdot.display }}`。
+xcDOT的`UnitsPerSecond`数值为`{{ networks.moonbeam.xcm.units_per_second.xcdot.transfer }}`。
 
 ![Get the xcUNIT units per second value](/images/builders/xcm/fees/fees-2.png)
 
