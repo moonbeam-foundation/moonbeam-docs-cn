@@ -163,7 +163,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 `AssetsTrapped`事件在中继链上时因为XCM-transactor pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
 
-### 获取已注册的衍生索引
+### 获取已注册的衍生索引 {: #retrieve-registered-derivative-indexes }
 
 要获取所有基于Moonbeam网络主权账户和其对应索引操作的注册地址列表，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}**Developer**标签下的**Chain State**部分，并执行以下步骤：
 
