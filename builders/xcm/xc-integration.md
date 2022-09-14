@@ -128,40 +128,49 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         ```
         2004
         ```
+
     === "Moonriver"
         ```
         2023
         ```
+
     === "Moonbase Alpha"
         ```
         1000
         ```
+
  4. 输入**proposedMaxCapacity**，此值设置为相应中继链的配置（`configuration.activeConfig.hrmpChannelMaxCapacity`）
     === "Moonbeam"
         ```
         1000
         ```
+
     === "Moonriver"
         ```
         1000
         ```
+
     === "Moonbase Alpha"
         ```
         1000
         ```
+
  5. 输入**proposedMaxMessageSize**，此值设置为相应中继链的配置（`configuration.activeConfig.hrmpChannelMaxMessageSize`）
     === "Moonbeam"
         ```
         102400
         ```
+
     === "Moonriver"
         ```
         102400
         ```
+
     === "Moonbase Alpha"
         ```
         102400
         ```
+        
   6. 复制上述提及`Transact` XCM指令所需的编码调用数据。例如，在Moonbase Alpha上的编码调用数据为`0x3300e8030000e803000000900100`
 
 ![Get open HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-1.png)
@@ -177,13 +186,16 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 1. 在**submit the following extrinsic**下拉菜单中选择**polakdotXcm**
 2. 选择**send** extrinsic
 3. 为**dest**设置以下信息
+
     | 参数 |     数值      |
     |:---------:|:-----:|
     |  Version  |  V1   |
     |  Parents  |   1   |
     | Interior  | Here  |
+
 4. 对于**message**，您可以将**version**设置为`V2`并添加以下内容
     1. 选择**WithdrawAsset**指令并设置以下值
+
         | 参数 |     数值      |
         |:---------:|:-------------:|
         |    Id     |   Concrete    |
@@ -191,7 +203,9 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         | Interior  |     Here      |
         |    Fun    |   Fungible    |
         | Fungible  | 1000000000000 |      
+
     2. 选择**BuyExecution**指令并设置以下值    
+
         | 参数 |     数值      |
         |:-----------:|:-------------:|
         |     Id      |   Concrete    |
@@ -199,15 +213,19 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         |  Interior   |     Here      |
         |     Fun     |   Fungible    |
         |  Fungible   | 1000000000000 |
-        | WeightLimit |   Unlimited   |        
+        | WeightLimit |   Unlimited   |   
+
     3. 选择**Transact**指令并设置以下值    
+
         | 参数 |     数值      |
         |:-------------------:|:------------------------------------------------------------------------------------------------:|
         |     OriginType      |                                              Native                                              |
         | RequireWeightAtMost |                                            1000000000                                            |
-        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |       
+        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |  
+
     4. 选择**RefundSurplus**指令
     5. 选择**DepositAsset**指令并设置以下值    
+
         | 参数 |     数值      |
         |:---------:|:------------------------------------------------:|
         |  Assets   |                       Wild                       |
@@ -222,7 +240,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         主权账户地址如下所示：
                 
         === "Polkadot"
-        
             ```
             0x70617261d4070000000000000000000000000000000000000000000000000000
             ```
