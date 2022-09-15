@@ -101,9 +101,9 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 从运行时1800开始，以下方法已被**弃用**：
 
- - **scheduleLeaveDelegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`executeLeaveDelegators`函数执行请求。使用质押Pallet的[`scheduleLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveDelegators()){target=_blank}函数
- - **executeLeaveDelegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求。使用质押Pallet的[`executeLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveDelegators(delegator, delegationCount)){target=_blank}函数
- - **cancelLeaveDelegators**() —— 取消待处理的离开委托人集的请求。使用质押Pallet的[`cancelLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveDelegators()){target=_blank}函数
+ - **scheduleLeaveDelegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`executeLeaveDelegators`函数执行请求。使用质押Pallet的[`scheduleLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=scheduleLeaveDelegators()){target=_blank}函数。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`scheduleLeaveDelegators`请求
+ - **executeLeaveDelegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求。使用质押Pallet的[`executeLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=executeLeaveDelegators(delegator, delegationCount)){target=_blank}函数。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`executeLeaveDelegators`请求
+ - **cancelLeaveDelegators**() —— 取消待处理的离开委托人集的请求。使用质押Pallet的[`cancelLeaveDelegators`](/builders/pallets-precompiles/pallets/staking/#:~:text=cancelLeaveDelegators()){target=_blank}函数。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`cancelLeaveDelegators`请求
 
  从运行时1001开始，以下方法已被**弃用**，并且从运行时1800开始，已被删除：
 
