@@ -56,6 +56,6 @@ description: 如何将您的Moonbeam或Moonriver项目收录在Downtown Moonbeam
 Downtown Moonbeam团队会审核您所提交的信息，若符合收录要求，该DApp将会发布在Downtown Moonbeam平台上。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam){target=_blank}.与我们联系。若您需要Downtown Moonbeam的支持，请通过[Downtown Moonbeam电报群](https://t.me/dtmb_xyz){target=_blank}取得联系。
 
 <div class="page-disclaimer">
-  Downtown Moonbeam包含用户生成的内容，Moonbeam基金会尚未审查此类内容。
+  Downtown Moonbeam包含用户生成的内容，Moonbeam基金会尚未审查此类内容也和Moonbeam立场无关。
   --8<-- 'text/disclaimers/user-generated-content.md'
 </div>

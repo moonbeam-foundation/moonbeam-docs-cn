@@ -36,8 +36,8 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
  - **Derivative accounts** — 从另一个账户衍生的账户。衍生账户是无需私钥的（即私钥是未知的），因此，与XCM特定用例相关的衍生账户只能通过XCM extrinsics访问。对于此类应用，账户类型有两种：
-     - _**Sovereign-derivative account** — 这会产生一个从目标链中的平行链主权账户衍生的无私钥账户。衍生方法使用`utility.asDerivative` extrinsic用于远程调用。通过此衍生账户交易时，交易费由原账户（在本示例中为主权账户）支付，但是交易从衍生账户派遣。更多信息，请参考Utility Pallet页面的[衍生账户](/builders/pallets-precompiles/pallets/utility/){target=_blank}部分
-     - _**Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
+     - **Sovereign-derivative account** — 这会产生一个从目标链中的平行链主权账户衍生的无私钥账户。衍生方法使用`utility.asDerivative` extrinsic用于远程调用。通过此衍生账户交易时，交易费由原账户（在本示例中为主权账户）支付，但是交易从衍生账户派遣。更多信息，请参考Utility Pallet页面的[衍生账户](/builders/pallets-precompiles/pallets/utility/){target=_blank}部分
+     - **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
  - **Transact information** — 与XCM-transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM-transactor计算此费用，并向XCM-transactor extrinsic的发送者收取对应[XC-20 token](/builders/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
 
 ## XCM-Transactor Pallet接口 {: #xcm-transactor-pallet-interface}
@@ -152,16 +152,14 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 13. 点击**Submit Transaction**按钮并签署交易
 
 !!! 注意事项
-    上述配置的extrinsic的编码调用数据为
- `0x2102002a0000018080778c30c20fa2ebc0ed18d2cbca1f0180a8a4d3840c00000000000000000000a404000030fcfb53304c429689c8f94ead291272333e16d77a2560717f3a7a410be9b208070010a5d4e800ca9a3b00000000010094357700000000`。
+    上述配置的extrinsic的编码调用数据为 `0x2102002a0000018080778c30c20fa2ebc0ed18d2cbca1f0180a8a4d3840c00000000000000000000a404000030fcfb53304c429689c8f94ead291272333e16d77a2560717f3a7a410be9b208070010a5d4e800ca9a3b00000000010094357700000000`。
 
 ![XCM-Transactor Transact Through Derivative Extrinsic](/images/builders/xcm/xcm-transactor/xcmtransactor-1.png)
 
 当交易完成后，您可以在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xa90b23a54f2bb691ba2f04ae3228b1de2d2e7231b98490bf6f94e491baf09185){target=_blank}和[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0xb5a0ecc0c2f7f1363ede2e3aebab2702dd2e7b9036a6ba23a694db2b4002cd7f){target=_blank}中查看相关extrinsic和事件。请注意，在Moonbase Alpha中，有一个`transactThroughDerivative`方法相关联的事件，但是有一些`xcUNIT` Token已被销毁以偿还主权账户的交易费用。在中继链中，`paraInherent.enter` extrinsic会显示`balance.Transfer`事件，其中1 `UNIT` Token转移给Alice地址。尽管如此，交易费仍会通过Moonbase Alpha主权账户进行支付。
 
 !!! 注意事项
-
-`AssetsTrapped`事件在中继链上时因为XCM-transactor pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
+    `AssetsTrapped`事件在中继链上时因为XCM-transactor pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
 
 ### 获取已注册的衍生索引 {: #retrieve-registered-derivative-indexes }
 
@@ -185,7 +183,6 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 此部分包含使用`transactThroughSigned`函数通过XCM-transactor pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
 
 !!! 注意事项
-
 ​    请确保您已在目标链中允许将要远程执行的调用！
 
 ### 查看先决条件 {: #xcmtransactor-signed-check-prerequisites} 
@@ -205,11 +202,8 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 如果您已[完成准备工作](#xcmtransactor-signed-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
 
 1. 选择您要发送XCM的账户，确保账户已[完成所有设置](#xcmtransactor-signed-check-prerequisites)
-
 2. 选择**xcmTransactor** pallet
-
 3. 选择**transactThroughSigned** extrinsic
-
 4. 定义目标multilocation。在本示例中，设置如下：
 
     | 参数 |    值    |
@@ -221,19 +215,12 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
     | Parachain | ParachainID |
     
 5. 设置**fee**类型。在本示例中，设置为**AsCurrencyId** 
-
 6. 将currency ID设置为**ForeignAsset**。请注意，该Token将从multilocation衍生账户提现来支付XCM执行费用。在这种情况下，将使用目标链的原生储备Token，但也可以是其他任何能够作为XCM执行支付费用的Token
-
 7. 输入asset ID。在本示例中，XC-20 Token的资产ID为`35487752324713722007834302681851459189`。您可以在Polkadot.js Apps的[资产部分](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看所有可用的资产ID
-
 8. （可选）设置**feeAmount**。这是所选费用Token（XC-20）的每秒单位，将从multilocation衍生账户提取以支付XCM执行费用。在本示例中将每秒单位设置为`50000000000000000`。若您未提供此数值，pallet将使用存储库中的元素（若有）。请注意，存储中的元素可能不是最新的
-
 9. 输入将在目标链中执行的内部调用。这是pallet、方法和将被调用输入数值的编码调用数据。这可以在Polakdot.js Apps（必须连接至目标链）或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}构建。在本示例中，内部调用为`0x030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d`（即将1 Token从目标链转移给Alice账户）
-
 10. 设置**weightInfo**结构的**transactRequiredWeightAtMost**权重值。该数值不包含XCM指令的权重。在本示例中，可以将权重设置为`1000000000`
-
-11.  （可选）设置**weightInfo**结构的**overallWeight**权重值。该数值必须包括所有**transactRequiredWeightAtMost**和需要在目标链中支付XCM指令执行费用的权重。若您未提供此数值，pallet将使用存储库中的元素（若有），并将其添加至**transactRequiredWeightAtMost**。在本示例中，可以将权重设置`2000000000`
-
+11. （可选）设置**weightInfo**结构的**overallWeight**权重值。该数值必须包括所有**transactRequiredWeightAtMost**和需要在目标链中支付XCM指令执行费用的权重。若您未提供此数值，pallet将使用存储库中的元素（若有），并将其添加至**transactRequiredWeightAtMost**。在本示例中，可以将权重设置`2000000000`
 12.  点击**Submit Transaction**按钮并签署交易
 
 !!! 注意事项
@@ -274,7 +261,6 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 [XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-transactor pallet进行交互。
 
 !!! 注意事项
-
 ​    XCM-transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：

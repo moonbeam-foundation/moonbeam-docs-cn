@@ -58,24 +58,24 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **cancelCandidateBondLess**() - 取消一个待定中的已计划请求，以减少候选人（收集人）自身绑定数量
 - **cancelDelegationRequest**(candidate) -  取消提供候选人（收集人）的地址的任何待定中委托的请求
 - **cancelLeaveCandidates**(candidateCount) - 取消一个候选人（收集人）的待定中的已计划的请求，就目前在池中候选人的数量，以离开该池
-- **cancelLeaveDelegators**() - 取消一个待定中的已计划的请求以离开委托人池
+- **cancelLeaveDelegators**() - *运行时1800弃用* 取消一个待定中的已计划的请求以离开委托人池。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`cancelDelegationRequest`请求
 - **candidateBondMore**(more) - 请求增加有具体数量的候选人（收集人）自身绑定量
-- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量。
+- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量
 - **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
 - **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
 - **executeDelegationRequest**(delegator, candidate) - 为提供候选人（收集人）的地址的特定委托人执行任何已计划的到期委托请求
 - **executeLeaveCandidates**(candidate, candidateDelegationCount) - 执行任何已计划的到期请求，以离开候选人（收集人）池
-- **executeLeaveDelegators**(delegator, delegationCount) - 执行已计划的到期请求，以离开委托人池并撤销所有委托
+- **executeLeaveDelegators**(delegator, delegationCount) - *运行时1800弃用* 执行已计划的到期请求，以离开委托人池并撤销所有委托。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`executeDelegationRequest`请求
 - **goOffline**() - 无需解绑，允许收集人暂时离开池
 - **goOnline**() - 在之前调用`goOffline()`之后，允许收集人重新加入池
 - **joinCandidates**(bond, candidateCount) - 请求在特定绑定量并提供现有候选人（收集人）数量的情况下加入收集人池
-- **scheduleCandidateBondLess**(less) - 计划一个请求，以特定数量来减少候选人（收集人）自身绑定。这里有[退出生效期](#exit-delays)，即在您通过`executeCandidateBondLess` extrinsic执行请求之前必须等待。
-- **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
-- **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待。
-- **scheduleLeaveDelegators**() - 计划一个请求，以离开委托人池并撤销所有正在进行的委托。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveDelegators` extrinsic执行请求之前必须等待。
-- **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待。
-- **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块。
-- **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金。
+- **scheduleCandidateBondLess**(less) - 计划一个请求，以特定数量来减少候选人（收集人）自身绑定。这里有[退出生效期](#exit-delays)，即在您通过`executeCandidateBondLess` extrinsic执行请求之前必须等待
+- **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
+- **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待
+- **scheduleLeaveDelegators**() - *运行时1800弃用* 计划一个请求，以离开委托人池并撤销所有正在进行的委托。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`scheduleRevokeDelegation`请求
+- **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
+- **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块
+- **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金
 - **setInflation**(schedule) - 设定年通胀率以导出每轮通胀率
 - **setParachainBondAccount**(new) - 设定为平行链资金预留的持有资金账户
 - **setParachainBondReservePercent**(new) - 设定为平行链资金预留的通胀的百分比
@@ -91,14 +91,14 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **bottomDelegations**(AccountId20) - 为所有候选人（收集人）或者一个给定候选人（收集人）的地址返回最底部的50个委托
 - **candidateInfo**(AccountId20) - 为所有候选人（收集人）或者一个给定的候选人（收集人）的地址返回候选人（收集人）信息，如绑定量、委托数量及更多
 - **candidatePool**() - 返回每一个在池中的候选人（收集人）列表以及他们总支持质押量
-- **candidateState**(AccountId20) - *已弃用*，现使用`candidateInfo`代替
+- **candidateState**(AccountId20) - *运行时1200弃用*，现使用`candidateInfo`代替
 - **collatorCommission**() - 返回从所有收集人的奖励中扣除的佣金百分比
-- **collatorState2**(AccountId20) - *已弃用*，现使用`candidateInfo`代替
+- **collatorState2**(AccountId20) - *运行时1200弃用*，现使用`candidateInfo`代替
 - **delayedPayouts**(u32) - 返回所有轮次或给定轮次的延迟支付
 - **delegationScheduledRequests**(AccountId20) - 返回所有收集人或给定收集人地址中未处理的已计划委托请求
 - **delegatorState**(AccountId20) - 为所有委托人或一个给定委托人地址返回委托人信息，如委托情况、委托状态，以及总委托量
 - **inflationConfig**() - returns the inflation configuration —— 返回通胀配置
-- **nominatorState2**(AccountId20) - *已弃用*，现使用`delegatorState`代替
+- **nominatorState2**(AccountId20) - *运行时1200弃用*，现使用`delegatorState`代替
 - **palletVersion**() - 返回目前pallet版本
 - **parachainBondInfo**() - 返回平行链储备账户和年通胀的百分比
 - **points**(u32) - 返回在所有轮次或给定轮次中，给与收集人参与生产区块而获得奖励的总点数
