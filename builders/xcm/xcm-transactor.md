@@ -212,7 +212,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 4. 定义目标multilocation。在本示例中，设置如下：
 
-    | Parameter |    Value    |
+    | 参数 |    值    |
     |:---------:|:-----------:|
     |  Version  |     V1      |
     |  Parents  |      1      |
