@@ -183,7 +183,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 此部分包含使用`transactThroughSigned`函数通过XCM-transactor pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
 
 !!! 注意事项
-​    请确保您已在目标链中允许将要远程执行的调用！
+    请确保您已在目标链中允许将要远程执行的调用！
 
 ### 查看先决条件 {: #xcmtransactor-signed-check-prerequisites} 
 
@@ -261,7 +261,7 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 [XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-transactor pallet进行交互。
 
 !!! 注意事项
-​    XCM-transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
+    XCM-transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：
 
