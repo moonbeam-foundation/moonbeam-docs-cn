@@ -42,10 +42,12 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
     ```
     每池 {{ networks.moonbeam.orbiter.max_orbiters_per_collator }} 个 orbiters
     ```
+
 === "Moonriver"
     ```
     每池 {{ networks.moonriver.orbiter.max_orbiters_per_collator }} 个 orbiters
     ```
+    
 === "Moonbase Alpha"
     ```
     每池 {{ networks.moonbase.orbiter.max_orbiters_per_collator }} 个 orbiters
@@ -57,10 +59,12 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
     ```
     {{ networks.moonbeam.orbiter.max_collators }} 个 orbiter 池
     ```
+
 === "Moonriver"
     ```
     {{ networks.moonriver.orbiter.max_collators }} 个 orbiter 池
     ```
+
 === "Moonbase Alpha"
     ```
     {{ networks.moonbase.orbiter.max_collators }} 个 orbiter 池
@@ -72,10 +76,12 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
     ```
     {{ networks.moonbeam.orbiter.active.rounds }} 轮次 (~{{ networks.moonbeam.orbiter.active.hours }} 小时)
     ```
+
 === "Moonriver"
     ```
     {{ networks.moonriver.orbiter.active.rounds }} 轮次 (~{{ networks.moonriver.orbiter.active.hours }} 小时)
     ```
+
 === "Moonbase Alpha"
     ```
     {{ networks.moonbase.orbiter.active.rounds }} 轮次 (~{{ networks.moonbase.orbiter.active.hours }} 小时)
@@ -128,10 +134,12 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
     ```
     {{ networks.moonbeam.orbiter.bond }} GLMR
     ```
+
 === "Moonriver"
     ```
     {{ networks.moonriver.orbiter.bond }} MOVR
     ```
+
 === "Moonbase Alpha"
     ```
     {{ networks.moonbase.orbiter.bond }} DEV
