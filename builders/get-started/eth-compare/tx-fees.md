@@ -46,11 +46,11 @@ RESPONSE JSON Block Object:
 
 对象映射总结如下：
 
-|     交易信息      |                           JSON对象字段                            |
-|:-----------------------:|:---------------------------------------------------------------------:|
-| Fee paying account | `extrinsics.{extrinsic number}.events.{event number}.data.0`  |
-|  Total fees paid  | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
-|     Tip      | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
+|      交易信息      |                         JSON对象字段                         |
+|:------------------:|:------------------------------------------------------------:|
+| Fee paying account | `extrinsics.{extrinsic number}.events.{event number}.data.0` |
+|  Total fees paid   | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
+|        Tip         | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
 
 交易费用相关信息可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
@@ -74,10 +74,12 @@ extrinsics.{extrinsic number}.events.{event number}.data.1
     ```
     Transaction Fee =（Base Fee + Max Priority Fee Per Gas) * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
+
 === "Legacy"
     ```
     Transaction Fee = Gas Price * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
+    
 === "EIP-2930"
     ```
     Transaction Fee = Gas Price * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
@@ -85,35 +87,35 @@ extrinsics.{extrinsic number}.events.{event number}.data.1
 
 适用交易类型的`Gas Price`和`Max Priority Fee Per Gas`值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，且被截短后复制在下方：
 
-=== "EIP1559"
-    |        EVM字段         |                               JSON对象字段                                |
+=== "EIP-1559"
+    |         EVM字段          |                                 JSON对象字段                                  |
     |:------------------------:|:-----------------------------------------------------------------------------:|
     | Max priority fee per gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas` |
 
 === "Legacy"
-    |      EVM字段       |                         JSON对象字段                          |
-    |:--------------------:|:-----------------------------------------------------------------:|
-    |      Gas price       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice`  |
+    |  EVM字段  |                           JSON对象字段                           |
+    |:---------:|:----------------------------------------------------------------:|
+    | Gas price | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice` |
 
-=== "EIP2930"
-    |      EVM字段       |                            JSON对象字段                             |
-    |:--------------------:|:-----------------------------------------------------------------------:|
-    |      Gas price       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice`    |
+=== "EIP-2930"
+    |  EVM字段  |                           JSON对象字段                            |
+    |:---------:|:-----------------------------------------------------------------:|
+    | Gas price | `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice` |
 
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上是静态的，并有以下指定的值：
 
 === "Moonbeam"
-    | 变量 |  值   |
+    |   变量   |    值    |
     |:--------:|:--------:|
     | Base fee | 100 Gwei |
 
 === "Moonriver"
-    | 变量 | 值  |
+    |   变量   |   值   |
     |:--------:|:------:|
     | Base fee | 1 Gwei |
 
 === "Moonbase Alpha"
-    | 变量 | 值  |
+    |   变量   |   值   |
     |:--------:|:------:|
     | Base fee | 1 Gwei |
 
@@ -148,6 +150,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 以下curl示例将使用`eth_feeHistory`返回从各自Moonbeam网络上的最新区块开始的最后10个区块的gas信息：
 
 === "Moonbeam"
+
     ```sh
     curl --location 
          --request POST '{{ networks.moonbeam.rpc_url }}' \
@@ -159,7 +162,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
             "params": ["0xa", "latest"]
          }'
     ```
+
 === "Moonriver"
+
     ```sh
     curl --location 
          --request POST '{{ networks.moonriver.rpc_url }}' \
@@ -171,7 +176,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
             "params": ["0xa", "latest"]
          }'
     ```
+
 === "Moonbase Alpha"
+
     ```sh
     curl --location 
          --request POST '{{ networks.moonbase.rpc_url }}' \
@@ -183,7 +190,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
             "params": ["0xa", "latest"]
          }'
     ```
+
 === "Moonbeam Dev Node"
+
     ```sh
     curl --location 
          --request POST '{{ networks.development.rpc_url }}' \

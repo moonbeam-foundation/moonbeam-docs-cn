@@ -29,8 +29,8 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 npm install @substrate/api-sidecar@{{ networks.moonbase.substrate_api_sidecar.stable_version }}
 ```
 
-!!!注意事项
-     如果当前目录还没有Node.js项目结构，则需要先执行`mkdir node_modules`，手动创建`node_modules`目录。
+!!! 注意事项
+    如果当前目录还没有Node.js项目结构，则需要先执行`mkdir node_modules`，手动创建`node_modules`目录。
 
 Substrate API Sidecar v{{ networks.moonbase.substrate_api_sidecar.stable_version }}是当前经过测试过可与Moonbeam网络共同使用的稳定版本。您可以通过在安装的根目录运行以下命令来验证是否成功安装：
 
@@ -289,13 +289,13 @@ RESPONSE JSON Block Object:
 Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=_blank}事件，可解码如下：
 
 
-|     交易信息      |                           对应JSON字段                            |
-|:-----------------------:|:---------------------------------------------------------------------:|
+|    交易信息    |                             对应JSON字段                              |
+|:--------------:|:---------------------------------------------------------------------:|
 | ERC-20合约地址 | `extrinsics.{extrinsic number}.events.{event number}.data.0.address`  |
-|  事件签名哈希   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
-|     发送人地址      | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
-|    接纳人地址    | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
-|         数额          |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
+|  事件签名哈希  | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
+|   发送人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
+|   接纳人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
+|      数额      |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
 
 EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
 
