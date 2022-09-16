@@ -15,6 +15,8 @@ Subsquid具有来自以太坊虚拟机（EVM）和Substrate数据的原生完整
 
 本教程将会包含如何在Moonriver网络上创建一个Subsquid项目（也就是*“Squid"*）检索ERC-721 Token的转移记录。因此，您将会专注于`Transfer` EVM事件主题中。此教程也同样适用于Moonbeam或Moonbase Alpha。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites}
 
 要顺利运行Squid项目，您需要安装以下软件：
@@ -440,3 +442,5 @@ Subsquid提供一个SaaS解决方案以托管其社区创建的项目。请查�
 您可以在GitHub上查看[完成的完整项目](https://github.com/subsquid/squid-evm-template){target=_blank}。
 
 [Subsquid文档](https://docs.subsquid.io/){target=_blank}包含许多信息且为最适合新手开始的平台，如果您希望了解除教程外的更多信息，请查看官方文档网站。
+
+--8<-- 'text/disclaimers/third-party-content.md'

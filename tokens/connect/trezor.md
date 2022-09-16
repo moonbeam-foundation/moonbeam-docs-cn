@@ -17,6 +17,8 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 请注意，您的Trezor设备会在您MetaMask连接至的网络内签署交易。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites } 
 
 在您开始之前，请将您的[Trezor Suite](https://suite.trezor.io/){target=_blank}更新至最新的可用版本。 与此同时，请确认您的Trezor硬件钱包运行的是最新的固件。Trezor wiki有提供如何更新[Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1){target=_blank}和[Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware){target=_blank}设备固件的教程。

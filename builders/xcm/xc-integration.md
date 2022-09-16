@@ -26,26 +26,17 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 与Moonbase Alpha集成的整个流程大改可以概括为如下步骤：
 
 1. 与Alphanet中继链同步节点
-
 2. 提供WASM/Genesis head hash和平行链ID以备使用
-
 3. 计算在Alphanet中继链上的平行链主权账户（通过Moonbeam团队提供帮助）
-
 4. 提供平行链资产详情，以便在Moonbase Alpha上注册资产
-
 5. （通过SUDO或治理）从平行链向Moonbase Alpha开通HRMP通道
-
 6. （通过SUDO或治理）从Moonbase Alpha接受HRMP通道
-
 7. 在平行链上注册Moonbase Alpha的DEV Token（可选）
-
 8. 要测试XCM集成，请发送一些Token至：
-
     ```
     AccoundId: 5GWpSdqkkKGZmdKQ9nkSF7TmHp6JWt28BMGQNuG4MXtSvq3e
     Hex:       0xc4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a063
     ```
-    
 9. 测试XCM集成
 
 完成这些步骤后，双方团队均已成功测试资产转移，您的平行链Token可添加至[Moonbeam DApp](https://apps.moonbeam.network/moonbase-alpha){target=_blank}的跨链资产部分。若充值和提现按预期运行，则可以开始与Moonriver集成。
@@ -55,33 +46,22 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 与Moonriver和Moonbeam建立HRMP通道的流程也差不多相似，具体如下所示：
 
 1. 提供平行链资产详情，以便在Moonriver/Moonbeam上注册资产
-
 2. 创建向Moonriver/Moonbeam开通HRMP通道的提案。若需要，您可以创建一些提案来注册MOVR/GLMR或者您也可以随时注册
-
-3. 当第一步的提案通过后，Moonbeam将执行这些提案：
-
+3. 当第2步的提案通过后，Moonbeam将执行这些提案：
     1. 接受从Moonriver/Moonbeam传入的HRMP通道
-
     2. 发起从Moonriver/Moonbeam传出的HRMP通道提案
-
     3. 将资产注册为[XC-20 token](/builders/xcm/xc20/overview){target=_blank}格式
 
     常规执行时间如下：
-
       - **Moonriver** - 约为{{ networks.moonriver.democracy.vote_period.days }}天的投票期 + {{ networks.moonriver.democracy.enact_period.days }}天的执行期
       - **Moonbeam** - 约为{{ networks.moonbeam.democracy.vote_period.days }}天的投票期 + {{ networks.moonbeam.democracy.enact_period.days }}天的执行期
-    
 4. 接受从Moonriver/Moonbeam传出的HRMP通道
-
 5. 兑换$50等值的Token用于测试XCM集成。请将Token发送至：
-
     ```
     AccoundId: 5DnP2NuCTxfW4E9rJvzbt895sEsYRD7HC9QEgcqmNt7VWkD4
     Hex:       0x4c0524ef80ae843b694b225880e50a7a62a6b86f7fb2af3cecd893deea80b926)
     ```
-    
 6. 提供以太坊格式的地址用于MOVR/GMLR
-
 7. 用提供的Token测试XCM集成
 
 完成这些步骤后，便可以正常运作，Moonriver/Moonbeam上的新XC-20资产可添加至[Moonbeam DApp](https://apps.moonbeam.network/){target=_blank}的跨链资产部分。
@@ -133,23 +113,17 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 要创建HRMP通道，您需要发送一个XCM消息给中继链，请求通过中继链开通一个通道。此消息需要包含以下XCM指令：
 
  1. [WithdrawAsset](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 从初始平行链中继链的主权账户提取资金以备使用
-
  2. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 从中继链购买执行时间以执行XCM消息
-
  3. [Transact](https://github.com/paritytech/xcm-format#transact){target=_blank} - 提供中继链调用数据来执行
-
-  4. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} -（可选）执行后退还剩余资金。若为提供，将不退还资金
+ 4. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} -（可选）执行后退还剩余资金。若为提供，将不退还资金
 
 ### 获取中继链编码调用数据 {: #get-the-relay-chain-encoded-call-data }
 
 要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
 
 1. 在**submit the following extrinsic**下拉菜单中选择**hrmp**
-
 2. 选择**hrmpInitOpenChannel** extrinsic
-
 3. 输入Moonbeam平行链ID作为**recipient（接收方）**
-
     === "Moonbeam"
         ```
         2004
@@ -166,7 +140,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         ```
 
  4. 输入**proposedMaxCapacity**，此值设置为相应中继链的配置（`configuration.activeConfig.hrmpChannelMaxCapacity`）
-
     === "Moonbeam"
         ```
         1000
@@ -183,7 +156,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         ```
 
  5. 输入**proposedMaxMessageSize**，此值设置为相应中继链的配置（`configuration.activeConfig.hrmpChannelMaxMessageSize`）
-
     === "Moonbeam"
         ```
         102400
@@ -198,7 +170,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         ```
         102400
         ```
-
+        
   6. 复制上述提及`Transact` XCM指令所需的编码调用数据。例如，在Moonbase Alpha上的编码调用数据为`0x3300e8030000e803000000900100`
 
 ![Get open HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-1.png)
@@ -212,9 +184,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 首先，前往[Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank}并连接至平行链的WSS端点。随后，导向至**Developer**标签，选择**Extrinsics**并执行以下步骤：
 
 1. 在**submit the following extrinsic**下拉菜单中选择**polakdotXcm**
-
 2. 选择**send** extrinsic
-
 3. 为**dest**设置以下信息
 
     | 参数 |     数值      |
@@ -222,9 +192,8 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     |  Version  |  V1   |
     |  Parents  |   1   |
     | Interior  | Here  |
-    
-4. 对于**message**，您可以将**version**设置为`V2`并添加以下内容
 
+4. 对于**message**，您可以将**version**设置为`V2`并添加以下内容
     1. 选择**WithdrawAsset**指令并设置以下值
 
         | 参数 |     数值      |
@@ -233,10 +202,10 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         |  Parents  |       0       |
         | Interior  |     Here      |
         |    Fun    |   Fungible    |
-        | Fungible  | 1000000000000 |
-        
-    2. 选择**BuyExecution**指令并设置以下值
-    
+        | Fungible  | 1000000000000 |      
+
+    2. 选择**BuyExecution**指令并设置以下值    
+
         | 参数 |     数值      |
         |:-----------:|:-------------:|
         |     Id      |   Concrete    |
@@ -244,20 +213,19 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         |  Interior   |     Here      |
         |     Fun     |   Fungible    |
         |  Fungible   | 1000000000000 |
-        | WeightLimit |   Unlimited   |
-        
-    3. 选择**Transact**指令并设置以下值
-    
+        | WeightLimit |   Unlimited   |   
+
+    3. 选择**Transact**指令并设置以下值    
+
         | 参数 |     数值      |
         |:-------------------:|:------------------------------------------------------------------------------------------------:|
         |     OriginType      |                                              Native                                              |
         | RequireWeightAtMost |                                            1000000000                                            |
-        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |
-        
-    4. 选择**RefundSurplus**指令
+        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |  
 
-    5. 选择**DepositAsset**指令并设置以下值
-    
+    4. 选择**RefundSurplus**指令
+    5. 选择**DepositAsset**指令并设置以下值    
+
         | 参数 |     数值      |
         |:---------:|:------------------------------------------------:|
         |  Assets   |                       Wild                       |
@@ -272,7 +240,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         主权账户地址如下所示：
                 
         === "Polkadot"
-        
             ```
             0x70617261d4070000000000000000000000000000000000000000000000000000
             ```
@@ -307,11 +274,8 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
 
 1. 在**submit the following extrinsic**下拉菜单中选择**hrmp**
-
 2. 选择**hrmpAcceptOpenChannel** extrinsic
-
 3. 输入Moonbeam平行链ID作为**sender（发送方）**
-
     === "Moonbeam"
         ```
         2004
@@ -325,8 +289,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     === "Moonbase Alpha"
         ```
         1000
-        ```
-    
+        ```    
 4. 复制编码调用数据，将用于`Transact` XCM指令。例如，在Moonbase Alpha上的编码调用数据为`0x3301e8030000`
 
 ![Get accept HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-3.png)

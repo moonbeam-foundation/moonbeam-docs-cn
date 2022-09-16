@@ -16,6 +16,8 @@ description: 使用Docker启动并运行您自己的Graph节点，为Moonbeam上
 !!! 注意事项
     本教程示例基于Ubuntu 18.04和MacOS的环境，用户需根据其所使用其他系统进行微调。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites } 
 
 在创建Graph节点之前，请确保系统上已安装以下工具：

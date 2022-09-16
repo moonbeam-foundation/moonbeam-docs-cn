@@ -17,6 +17,8 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 本教程将引导您如何在Moonbase Alpha测试网上创建多重签名Safe钱包。您还将学习如何将DEV和ERC-20 Token发送至Safe钱包或从Safe钱包发送，以及如何使用Safe钱包与智能合约进行交互。本教程也适用于Moonbeam和Moonriver。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites }
 
 首先，您需要准备几个资金充裕的[MetaMask账户](#metamask-accounts)和一些准备发送至Safe钱包的[ERC-20 Token](#erc20-tokens)，以及一个[已部署的智能合约](#deployed-smart-contract)进行交互。

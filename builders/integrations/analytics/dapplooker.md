@@ -15,6 +15,8 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 本教程将涵盖通过Dapplooker平台注册项目所需的所有详情以及如何使用SQL编辑器构建分析。本教程适用于Moonbeam、Moonriver和Moonbase Alpha网络。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 查看先决条件 {: #checking-prerequisites }
 
 在开始操作之前，您将需要创建一个Dapplooker账户。您可以[点击此处注册](https://dapplooker.com/signup){target=blank}并创建一个账户。如果您已注册，您可以直接[点击此处登录](https://dapplooker.com/login){target=blank}您的账户。

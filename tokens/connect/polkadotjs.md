@@ -13,6 +13,8 @@ Moonbase Alpha测试网[v3升级发布后](https://www.purestake.com/news/moonbe
 
 同时，Polkadot.js Apps交互界面也进行了升级，现已原生支持H160地址和ECDSA密钥。本教程将带领大家了解Polkadot.js Apps网站与基于以太坊的账户整合。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## 连接至Moonbase Alpha {: #connecting-to-moonbase-alpha }
 
 首先，您需要连接到Moonbase Alpha测试网。请点击左上角logo，在**Test Networks**一栏中选择Moonbase Alpha，并返回顶部点击**Switch**。

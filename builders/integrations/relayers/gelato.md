@@ -13,6 +13,8 @@ description: 使用Gelato自动化您的智能合约交互并将您的Moonbeam�
 
 Gelato已上线Moonbeam和Moonriver，允许开发者和终端用户通过Gelato Ops以及Gelato Relay SDK自动化智能合约交互。首先，此教程将会包含使用Gelato Ops自动化智能合约交互的详细步骤。现在，您可以通过实际演示与Gelato Relay SDK交互。
 
+--8<-- 'text/disclaimers/third-party-content-intro.md'
+
 ## Gelato Ops {: #gelato-ops }
 
 [Gelato Ops](https://app.gelato.network/){target=_blank}为一个与Gelato网络交互和管理自动化交易的前端。无需注册，账户即可与您的钱包进行绑定。在本教程中，您需要部署一个可以通过lick函数启动的标准Gelato ice cream NFT。接着，您将依据特定的参数自动化lick函数。
