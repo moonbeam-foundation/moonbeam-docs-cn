@@ -46,7 +46,7 @@ RESPONSE JSON Block Object:
 
 对象映射总结如下：
 
-|     Tx Information      |                           Block JSON Field                            |
+|     交易信息      |                           JSON对象字段                            |
 |:-----------------------:|:---------------------------------------------------------------------:|
 | Fee paying account | `extrinsics.{extrinsic number}.events.{event number}.data.0`  |
 |  Total fees paid  | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
@@ -86,34 +86,34 @@ extrinsics.{extrinsic number}.events.{event number}.data.1
 适用交易类型的`Gas Price`和`Max Priority Fee Per Gas`值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，且被截短后复制在下方：
 
 === "EIP1559"
-    |        EVM Field         |                               Block JSON Field                                |
+    |        EVM字段         |                               JSON对象字段                                |
     |:------------------------:|:-----------------------------------------------------------------------------:|
     | Max priority fee per gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas` |
 
 === "Legacy"
-    |      EVM Field       |                         Block JSON Field                          |
+    |      EVM字段       |                         JSON对象字段                          |
     |:--------------------:|:-----------------------------------------------------------------:|
     |      Gas price       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice`  |
 
 === "EIP2930"
-    |      EVM Field       |                            Block JSON Field                             |
+    |      EVM字段       |                            JSON对象字段                             |
     |:--------------------:|:-----------------------------------------------------------------------:|
     |      Gas price       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice`    |
 
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上是静态的，并有以下指定的值：
 
 === "Moonbeam"
-    | Variable |  Value   |
+    | 变量 |  值   |
     |:--------:|:--------:|
     | Base fee | 100 Gwei |
 
 === "Moonriver"
-    | Variable | Value  |
+    | 变量 | 值  |
     |:--------:|:------:|
     | Base fee | 1 Gwei |
 
 === "Moonbase Alpha"
-    | Variable | Value  |
+    | 变量 | 值  |
     |:--------:|:------:|
     | Base fee | 1 Gwei |
 
