@@ -29,8 +29,8 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 npm install @substrate/api-sidecar@{{ networks.moonbase.substrate_api_sidecar.stable_version }}
 ```
 
-!!!注意事项
-     如果当前目录还没有Node.js项目结构，则需要先执行`mkdir node_modules`，手动创建`node_modules`目录。
+!!! 注意事项
+    如果当前目录还没有Node.js项目结构，则需要先执行`mkdir node_modules`，手动创建`node_modules`目录。
 
 Substrate API Sidecar v{{ networks.moonbase.substrate_api_sidecar.stable_version }}是当前经过测试过可与Moonbeam网络共同使用的稳定版本。您可以通过在安装的根目录运行以下命令来验证是否成功安装：
 
@@ -108,8 +108,8 @@ RESPONSE JSON Block Object:
             |--method
                 |--pallet: "ethereum"
                 |--method: "transact"
-            |--signature:
-            |--nonce: 
+            |--signature
+            |--nonce
             |--args
                 |--transaction
                     |--{transaction type}
@@ -289,66 +289,25 @@ RESPONSE JSON Block Object:
 Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=_blank}事件，可解码如下：
 
 
-|     交易信息      |                           对应JSON字段                            |
-|:-----------------------:|:---------------------------------------------------------------------:|
+|    交易信息    |                             对应JSON字段                              |
+|:--------------:|:---------------------------------------------------------------------:|
 | ERC-20合约地址 | `extrinsics.{extrinsic number}.events.{event number}.data.0.address`  |
-|  事件签名哈希   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
-|     发送人地址      | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
-|    接纳人地址    | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
-|         数额          |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
+|  事件签名哈希  | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
+|   发送人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
+|   接纳人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
+|      数额      |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
 
 EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
 
 !!! 注意事项
     转账金额以Wei和十六进制格式给出。 
 
+## 监听原生代币转帐示例代码 { #sample-code-for-monitoring-native-token-transfers }
 
-### 计算Gas花费 {: #computing-gas-used } 
+[转帐API页面](/builders/get-started/eth-compare/transfers-api/#using-substrate-api-sidecar){target=_blank}有一段代码片段演示了如何使用Substrate API Sidecar监听和解码使用Substrate或Ethereum API发送的原生代币转帐。您可以将其作为起点来构建基于Sidecar API的后端。
 
-要计算EVM交易执行期间的Gas花费或费用，可使用以下计算公式：
+## 计算交易费用 {: #calculating-transaction-fees } 
 
-=== "EIP1559"
-    ```
-    Gas Used =（Base Fee + Max Priority Fee Per Gas) * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
-    ```
-=== "Legacy"
-    ```
-    Gas Used = Gas Price * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
-    ```
-=== "EIP2930"
-    ```
-    Gas Used = Gas Price * Transaction Weight / {{ networks.moonbase.tx_weight_to_gas_ratio }}
-    ```
-
-适用交易类型的`Gas Price`和`Max Priority Fee Per Gas`数值可以根据上述表格从区块中读取。
-
-EIP-1559引入的`Base Fee`由网络自身决定。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上为固定值，如下所示：
-
-=== "Moonbeam"
-    |   变量   |    值    |
-    |:--------:|:--------:|
-    | Base Fee | 100 Gwei |
-
-=== "Moonriver"
-    |   变量   |   值   |
-    |:--------:|:------:|
-    | Base Fee | 1 Gwei |
-
-=== "Moonbase Alpha"
-    |   变量   |   值   |
-    |:--------:|:------:|
-    | Base Fee | 1 Gwei |
-
-`Transaction Weight`是一种Substrate机制，用于管理验证区块所需的时间。对于所有的交易类型，`Transaction Weight`可以通过在相关extrinsic事件下的`method`进行如下设置以检索获得：
-
-```
-pallet: "system", method: "ExtrinsicSuccess" 
-```
-
-随后，`Transaction Weight`将映射至区块JSON对象的以下字段：
-
-```
-extrinsics.{extrinsic number}.events.{event number}.data.0.weight
-```
+有关如何使用Substrate Sidecar API计算交易费用的更多详细信息和示例代码，请查看[计算 交易费用](/builders/get-started/eth-compare/tx-fees/){target=_blank}页。
 
 --8<-- 'text/disclaimers/third-party-content.md'
