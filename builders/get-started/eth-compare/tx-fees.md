@@ -119,7 +119,7 @@ extrinsics.{extrinsic number}.events.{event number}.data.1
     |:--------:|:------:|
     | Base fee | 1 Gwei |
 
-`Transaction Weight`是Substrate机制，用于管理验证区块的时间。对于所有交易类型，`Transaction Weight`可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
+`Transaction Weight`是一类Substrate机制，用于验证给定交易在一个区块内所需的执行时间。对于所有交易类型，`Transaction Weight`可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
 ```
 pallet: "system", method: "ExtrinsicSuccess" 
