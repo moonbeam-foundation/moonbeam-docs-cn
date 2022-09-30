@@ -3,6 +3,7 @@ nav:
   - index.md
   - '民主': 'democracy.md'
   - '质押功能': 'staking.md'
+  - '代理': 'proxy.md'
   - '随机数': 'randomness.md'
   - 'Utility': 'utility.md'
   - 'X-Tokens': '/builders/xcm/xc20/xtokens/#x-tokens-pallet-interface'
