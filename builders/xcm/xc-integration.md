@@ -187,46 +187,46 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 2. 选择**send** extrinsic
 3. 为**dest**设置以下信息
 
-    | 参数 |     数值      |
-    |:---------:|:-----:|
-    |  Version  |  V1   |
-    |  Parents  |   1   |
-    | Interior  | Here  |
+    |   参数   | 数值 |
+    |:--------:|:----:|
+    | Version  |  V1  |
+    | Parents  |  1   |
+    | Interior | Here |
 
 4. 对于**message**，您可以将**version**设置为`V2`并添加以下内容
     1. 选择**WithdrawAsset**指令并设置以下值
 
-        | 参数 |     数值      |
-        |:---------:|:-------------:|
-        |    Id     |   Concrete    |
-        |  Parents  |       0       |
-        | Interior  |     Here      |
-        |    Fun    |   Fungible    |
-        | Fungible  | 1000000000000 |      
+        |   参数   |     数值      |
+        |:--------:|:-------------:|
+        |    Id    |   Concrete    |
+        | Parents  |       0       |
+        | Interior |     Here      |
+        |   Fun    |   Fungible    |
+        | Fungible | 1000000000000 |
 
     2. 选择**BuyExecution**指令并设置以下值    
 
-        | 参数 |     数值      |
+        |    参数     |     数值      |
         |:-----------:|:-------------:|
         |     Id      |   Concrete    |
         |   Parents   |       0       |
         |  Interior   |     Here      |
         |     Fun     |   Fungible    |
         |  Fungible   | 1000000000000 |
-        | WeightLimit |   Unlimited   |   
+        | WeightLimit |   Unlimited   |
 
     3. 选择**Transact**指令并设置以下值    
 
-        | 参数 |     数值      |
+        |        参数         |                                               数值                                               |
         |:-------------------:|:------------------------------------------------------------------------------------------------:|
         |     OriginType      |                                              Native                                              |
         | RequireWeightAtMost |                                            1000000000                                            |
-        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |  
+        |       Encoded       | { paste the call data from the [previous section](#get-the-relay-chain-encoded-call-data) here } |
 
     4. 选择**RefundSurplus**指令
     5. 选择**DepositAsset**指令并设置以下值    
 
-        | 参数 |     数值      |
+        |   参数    |                       数值                       |
         |:---------:|:------------------------------------------------:|
         |  Assets   |                       Wild                       |
         |   Wild    |                       All                        |
@@ -415,20 +415,20 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 === "Moonbeam"
     ```
-    AccoundId: 5DnP2NuCTxfW4E9rJvzbt895sEsYRD7HC9QEgcqmNt7VWkD4
-    Hex:       0x4c0524ef80ae843b694b225880e50a7a62a6b86f7fb2af3cecd893deea80b926
+    AccountId: {{ networks.moonbeam.xcm.channel.account_id }}
+    Hex:       {{ networks.moonbeam.xcm.channel.account_id_hex }}
     ```
 
 === "Moonriver"
     ```
-    AccoundId: 5DnP2NuCTxfW4E9rJvzbt895sEsYRD7HC9QEgcqmNt7VWkD4
-    Hex:       0x4c0524ef80ae843b694b225880e50a7a62a6b86f7fb2af3cecd893deea80b926
+    AccountId: {{ networks.moonriver.xcm.channel.account_id }}
+    Hex:       {{ networks.moonriver.xcm.channel.account_id_hex }}
     ```
 
 === "Moonbase Alpha"
     ```
-    AccountId: 5GWpSdqkkKGZmdKQ9nkSF7TmHp6JWt28BMGQNuG4MXtSvq3e
-    Hex:       0xc4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a063
+    AccountId: {{ networks.moonbase.xcm.channel.account_id }}
+    Hex:       {{ networks.moonbase.xcm.channel.account_id_hex }}
     ```
 
 !!! 注意事项
