@@ -242,7 +242,7 @@ yarn install
         yarn graph-codegen && yarn graph-build --network moonbaseAlpha && yarn graph-deploy-local
         ```
 
-    === "Moonbeam Dev Node"
+    === "Moonbeam开发节点"
         ```
         yarn graph-codegen && yarn graph-build --network moonbeamDevNode && yarn graph-deploy-local
         ```

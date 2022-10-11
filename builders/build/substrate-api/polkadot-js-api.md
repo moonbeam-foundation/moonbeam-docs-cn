@@ -63,7 +63,7 @@ yarn add @polkadot/api
     const api = await ApiPromise.create({ provider: wsProvider });
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```javascript
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
