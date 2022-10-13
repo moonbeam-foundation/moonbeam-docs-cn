@@ -733,7 +733,7 @@ const response =  await to(
 
 #### Get Fee函数 {: #get-fee-withdraw }
 
-`getFee`函数用于预估在`withdraw`函数中转移一定数量资产所需的费用。以下为获得从Moonbeam将以xcDOT形式的DOT转移回波卡所需费用的范例：
+`getFee`函数用于预估在`withdraw`函数中转移一定数量资产所需的费用。以下为获得从Moonbeam将以xcDOT形式的DOT转移回波卡所需费用（以GLMR为单位）的范例：
 
 ```js
 import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
