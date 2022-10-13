@@ -48,7 +48,7 @@ SDK提供以下核心方法：
 |:---------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
 |    [`deposit()`](/builders/xcm/xcm-sdk/xcm-sdk/#deposit){target=_blank}     |                                     发起一笔存款，以将资产从其他链转移至Moonbeam                                      |
 |       [`from()`](/builders/xcm/xcm-sdk/xcm-sdk/#from){target=_blank}        |                       设置存款的来源链。此函数从`deposit()`函数返回。**必须先调用`deposit()`**                        |
-|    [`get()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-deposit){target=_blank}     |        在Moonbeam上设置账户以存入资金以及 发送存款的来源账户。此函数从`from()`函数返回。**必须先调用`from()`**        |
+|    [`get()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-deposit){target=_blank}     |        在Moonbeam上设置账户以存入资金以及 发送存款的来源账户。<br> 此函数从`from()`函数返回。**必须先调用`from()`**        |
 |   [`send()`](/builders/xcm/xcm-sdk/xcm-sdk/#send-deposit){target=_blank}    |                      发送给定数量的存款转移数据。此函数从`get()`函数返回。**必须先调用`get()`**                       |
 | [`getFee()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-fee-deposit){target=_blank} | 返回转移给定数量的预估费用，该费用将以`deposit()`函数中指定的资产支付。<br> 此函数从`get()`函数返回。**必须先调用`get()`** |
 
