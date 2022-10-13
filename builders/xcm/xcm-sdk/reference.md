@@ -22,9 +22,9 @@ SDK提供以下核心接口，并可通过[初始化](/builders/xcm/xcm-sdk/xcm-
 |                                      接口                                      |                                           描述                                            |
 |:------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|
 |       [`symbols`](/builders/xcm/xcm-sdk/xcm-sdk/#symbols){target=_blank}       |              一个包含初始化Moonbeam网络的每个支持资产的资产原链符号的列表。               |
-|        [`assets`](/builders/xcm/xcm-sdk/xcm-sdk/#assets){target=_blank}        |    一个初始化Moonbeam网络支持资产的列表，及其资产ID、Moonbeam上的预编译地址和资产符号     |
+|        [`assets`](/builders/xcm/xcm-sdk/xcm-sdk/#assets){target=_blank}        |    一个初始化Moonbeam网络支持资产的列表，及其资产ID、<br> Moonbeam上的预编译地址和资产符号     |
 |   [`moonAsset`](/builders/xcm/xcm-sdk/xcm-sdk/#native-assets){target=_blank}   |               包含初始化Moonbeam网络的资产ID、预编译合约地址和原生资产符号                |
-| [`moonChain`](/builders/xcm/xcm-sdk/xcm-sdk/#native-chain-data){target=_blank} | 包含初始化Moonbeam网络的链密钥、名称、WSS端点、平行链ID、原生资产小数位数、链ID和每秒单位 |
+| [`moonChain`](/builders/xcm/xcm-sdk/xcm-sdk/#native-chain-data){target=_blank} | 包含初始化Moonbeam网络的链密钥、名称、WSS端点、平行链ID、<br> 原生资产小数位数、链ID和每秒单位 |
 
 ## 核心方法 {: #core-sdk-methods }
 
@@ -50,7 +50,7 @@ SDK提供以下核心方法：
 |       [`from()`](/builders/xcm/xcm-sdk/xcm-sdk/#from){target=_blank}        |                       设置存款的来源链。此函数从`deposit()`函数返回。**必须先调用`deposit()`**                        |
 |    [`get()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-deposit){target=_blank}     |        在Moonbeam上设置账户以存入资金以及 发送存款的来源账户。此函数从`from()`函数返回。**必须先调用`from()`**        |
 |   [`send()`](/builders/xcm/xcm-sdk/xcm-sdk/#send-deposit){target=_blank}    |                      发送给定数量的存款转移数据。此函数从`get()`函数返回。**必须先调用`get()`**                       |
-| [`getFee()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-fee-deposit){target=_blank} | 返回转移给定数量的预估费用，该费用将以`deposit()`函数中指定的资产支付。此函数从`get()`函数返回。**必须先调用`get()`** |
+| [`getFee()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-fee-deposit){target=_blank} | 返回转移给定数量的预估费用，该费用将以`deposit()`函数中指定的资产支付。<br> 此函数从`get()`函数返回。**必须先调用`get()`** |
 
 ## 提现方法 {: #withdraw-methods }
 
@@ -62,4 +62,4 @@ SDK提供以下核心方法：
 |          [`to()`](/builders/xcm/xcm-sdk/xcm-sdk/#to){target=_blank}          |                                此函数从`withdraw()`函数返回。**必须先调用`withdraw()`**                                |
 |    [`get()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-withdraw){target=_blank}     |                     在目标链上设置账户以发送提现资金。此函数从`to()`函数返回。**必须先调用`to()`**                     |
 |   [`send()`](/builders/xcm/xcm-sdk/xcm-sdk/#send-withdraw){target=_blank}    |                        发送给定数量的提现转移数据。此函数返回`get()`函数。**必须先调用`get()`**                        |
-| [`getFee()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-fee-withdraw){target=_blank} | 返回转移给定数量的预估费用，该费用将以`withdraw()`函数中指定的资产支付。此函数从`get()`函数返回。**必须先调用`get()`** |
+| [`getFee()`](/builders/xcm/xcm-sdk/xcm-sdk/#get-fee-withdraw){target=_blank} | 返回转移给定数量的预估费用，该费用将以`withdraw()`函数中指定的资产支付。<br> 此函数从`get()`函数返回。**必须先调用`get()`** |

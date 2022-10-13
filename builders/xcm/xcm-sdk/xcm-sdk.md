@@ -534,7 +534,7 @@ const response = await from(polkadot).get(
 |       `origin`       |                     资产所属原链的链信息                     |
 |       `source`       |                 被转移资产从哪里发送的链信息                 |
 |   `sourceBalance`    |                   从原链上被转移资产的余额                   |
-|  `sourceFeeBalance`  | 原链原生资产中的余额，用于支付资产 转移的费用（如适用），否则将返回`undefined` |
+|  `sourceFeeBalance`  | 原链原生资产中的余额，用于支付资产 转移的费用（如适用)，否则将返回`undefined` |
 |  `sourceMinBalance`  |                  在原链上资产转移的最小余额                  |
 |       `getFee`       |      预估转移一定数量[所需费用](#get-fee-deposit)的函数      |
 |        `send`        |         用于[传送](#send-deposit)存入转移数据的函数          |
