@@ -147,7 +147,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     docker run --network="host" \
     -u $(id -u ${USER}):$(id -g ${USER}) \

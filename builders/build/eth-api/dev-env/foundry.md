@@ -132,7 +132,7 @@ forge build
     src/MyToken.sol:MyToken 
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```      
     forge create --rpc-url {{ networks.development.rpc_url }} \
     --constructor-args 100 \
@@ -167,7 +167,7 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbase.rpc_url }}
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```      
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.development.rpc_url }}
     ```
@@ -215,7 +215,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
     "transfer(address,uint256)" 0x0000000000000000000000000000000000000001 1
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```      
     cast send --private-key YOUR_PRIVATE_KEY \
     --rpc-url {{ networks.development.rpc_url }} \

@@ -106,7 +106,7 @@ brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url 
     --network moonbeam-test
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     --network moonbeam-dev
     ```
@@ -131,7 +131,7 @@ brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url 
         default: moonbeam-test
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```yaml
     networks:
         default: moonbeam-dev
@@ -267,7 +267,7 @@ def main():
     brownie run scripts/deploy.py --network moonbeam-test
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     brownie run scripts/deploy.py --network moonbeam-dev
     ```
@@ -301,7 +301,7 @@ def main():
     brownie console --network moonbeam-test
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     brownie console --network moonbeam-dev
     ```
@@ -386,7 +386,7 @@ def main():
     brownie run scripts/store-and-retrieve.py --network moonbeam-test
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```
     brownie run scripts/store-and-retrieve.py --network moonbeam-dev
     ```
