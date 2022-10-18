@@ -74,7 +74,7 @@ pip install substrate-interface
     )   
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```python
     # Import

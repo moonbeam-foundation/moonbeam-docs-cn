@@ -191,7 +191,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
          }'
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```sh
     curl --location 
