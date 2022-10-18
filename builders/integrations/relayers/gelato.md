@@ -94,7 +94,7 @@ npm install ethers
 touch hello-world.js
 ```
 
-现在您已经完成事前准备。接着，您需要导入Gelato Relay SDK和EthersJS：
+现在您已经完成事前准备。接着，您需要导入Gelato Relay SDK和Ethers.js：
 
 ```
   import { Wallet, utils } from "ethers";
