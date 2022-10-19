@@ -34,7 +34,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 - [Blast](#blast)
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
-- [Dwellir](#dwellir)
 <!-- - [Ankr](#ankr) -->
 
 ### Blast {: #blast }
@@ -81,21 +80,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 1. 在 **Apps** 菜单中单击您预先存在的应用程序
 2. 在 **Endpoint** 部分，选择 **Add new** 按钮并在下拉列表中搜索您想要的网络
 3. 将为您生成并显示您的新端点
-
-### Dwellir {: #dwellir }
-
-[Dwellir](https://dwellir.com/development-nodes/){target=_blank}在自有和自营的裸机集群上为开发人员和专用节点提供免费端点。 Dwellir正在构建自定义数据解决方案和工具，如有相关需求可以与项目方联系。
-
-请访问[Dwellir](https://dwellir.com/development-nodes/){target=_blank}开始使用：
-
-1. 输入您的**姓名**和**电子邮件**
-2. 从列表中选择网络
-3. 选择您想要的**服务级别**
-4. 点击**注册**
-
-您的自定义端点将被部署。
-
-![Dwellir](/images/builders/get-started/endpoints/endpoints-4.png)
 
 <!-- ### Ankr {: #ankr}
 
