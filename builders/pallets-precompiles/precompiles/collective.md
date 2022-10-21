@@ -65,7 +65,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 - **Executed**(*bytes32* proposalHash) - 提案执行时触发
 - **Proposed**(*address indexed* who, *uint32* indexed proposalIndex, *bytes32 indexed* proposalHash, *uint32* threshold) - 提案成功提交并可执行或投票时触发
-- **Voted**(*address indexed* who, *bytes32 indexed proposalHash, *bool* voted) - 提案投票时触发
+- **Voted**(*address indexed* who, *bytes32 indexed* proposalHash, *bool* voted) - 提案投票时触发
 - **Closed**(*bytes32 indexed* proposalHash) 提案结束时触发
 
 ## 与Solidity接口交互 {: #interacting-with-the-solidity-interface }
