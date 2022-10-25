@@ -4,6 +4,8 @@ title: 适用于MacOS的全节点Docker命令
 
 # MacOS收集人和全节点命令
 
+对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+
 ## Moonbeam全节点 {: #moonbeam-full-node } 
 
 ```
