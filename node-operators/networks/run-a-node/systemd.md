@@ -189,7 +189,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
-对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+!!! note
+    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 ### 全节点 {: #full-node }
 

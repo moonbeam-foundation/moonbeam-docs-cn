@@ -68,7 +68,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
 
-对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+!!! note
+    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 ### 全节点 {: #full-node }
 

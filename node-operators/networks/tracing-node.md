@@ -90,7 +90,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 在两处替换 `YOUR-NODE-NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+!!! note
+    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 运行一个追踪节点的完整命令如下所示：
 
@@ -253,7 +254,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 如果您使用的是不同的目录，请再次确认基本路径
  - 将文件命名为`/etc/systemd/system/moonbeam.service`
 
-对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+!!! note
+    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 === "Moonbeam"
     ```
