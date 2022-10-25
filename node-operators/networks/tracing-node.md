@@ -32,6 +32,9 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
   - **`--ethapi-trace-max-count <uint>`** —— 设定节点返回最大追踪条目数。`trace_filter`的单个请求返回的默认最大追踪条目数为`500`
   - **`-ethapi-trace-cache-duration <uint>`** —— 设置持续时间（以秒为单位），在此之后给定块的`trace_filter`缓存被丢弃。区块存储在缓存中的默认时间为`300`秒
 
+!!! 注意事项
+    如果您希望运行一个RPC端点以连接Polkadot.js Apps或是运行自有应用，请使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
+
 ## 使用Docker运行一个追踪节点 {: #run-a-tracing-node-with-docker }
 
 如果您之前未运行过标准的完整Moonbeam节点，您将需要设置一个目录来存储链数据：
@@ -82,10 +85,14 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 您将需要使用`purestake/moonbeam-tracing`图像替代`purestake/moonbeam` docker图像。您可在[Docker Hub的`moonbeam-tracing`图像](https://hub.docker.com/r/purestake/moonbeam-tracing/tags)中找到最新的支持版本。
 
-运行一个追踪节点的完整命令如下所示：
+下一步，执行Docker运行的命令。注意，您需要替换：
 
-!!! 注意事项
-    确保您将`<50% RAM in MB>`替换成服务器实际RAM的50%。举例而言，对于32 GB RAM，数值必须设置为`16000`。最低值为`2000`，但这低于推荐的规格
+ - 在两处替换 `YOUR-NODE-NAME` 
+ - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
+
+对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+
+运行一个追踪节点的完整命令如下所示：
 
 === "Moonbeam"
     ```
@@ -94,7 +101,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonbeam.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonbeam.chain_spec }} \
-    --name="Moonbeam-Tutorial" \
+    --name="YOUR-NODE-NAME" \
     --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -103,7 +110,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="Moonbeam-Tutorial (Embedded Relay)"
+    --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
 === "Moonriver"
@@ -113,7 +120,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonriver.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonriver.chain_spec }} \
-    --name="Moonbeam-Tutorial" \
+    --name="YOUR-NODE-NAME" \
     --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -122,7 +129,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="Moonbeam-Tutorial (Embedded Relay)"
+    --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
 === "Moonbase Alpha"
@@ -132,7 +139,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonbase.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonbase.chain_spec }} \
-    --name="Moonbeam-Tutorial" \
+    --name="YOUR-NODE-NAME" \
     --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -141,7 +148,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="Moonbeam-Tutorial (Embedded Relay)"
+    --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
 === "Moonbeam开发节点"
@@ -149,15 +156,12 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     docker run --network="host" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.development.tracing_tag }} \
-    --name="Moonbeam-Tutorial" \
+    --name="YOUR-NODE-NAME" \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     --runtime-cache-size 64 \
     --dev
     ```
-
-!!! 注意事项
-    如果您希望运行一个RPC端点以连接polkadot.js.org或是运行自己的应用，请使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 如果您已经成功运行Moonbase Alpha追踪节点，您应当会见到如下图所示的终端日志：
 
@@ -248,6 +252,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 再次确认二进制文件在正确的路径，如下所述 (_ExecStart_)
  - 如果您使用的是不同的目录，请再次确认基本路径
  - 将文件命名为`/etc/systemd/system/moonbeam.service`
+
+对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 === "Moonbeam"
     ```
@@ -368,9 +374,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     [Install]
     WantedBy=multi-user.target
     ```
-
-!!! 注意事项
-    如果您希望运行一个RPC端点以连接polkadot.js.org或是运行自有应用，请使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 ### 运行服务器 {: #run-the-service }
 

@@ -61,11 +61,14 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
     ```
     
-下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是“收集人”代码段。注意，您需要替换：
+下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是[收集人](#收集人--collator)代码段。注意，您需要替换：
 
  - 在两处替换 `YOUR-NODE-NAME` 
- - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
+ - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
+如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
+
+对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 ### 全节点 {: #full-node }
 
@@ -124,6 +127,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
+!!! 注意事项
+    如果您想要运行RPC终端、连接至Polkadot.js Apps或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
 
 ### 收集人 {: #collator }
 
@@ -184,18 +189,12 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 !!! 注意事项
     有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
-如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
-
 在Docker拉取必要的镜像后，您的Moonbeam（或Moonriver）全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等：
 
 ![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-1.png)
 
 !!! 注意事项
-    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
-
-!!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
-
 
 ```
 docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} #rest of code goes here
