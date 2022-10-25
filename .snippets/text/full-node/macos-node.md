@@ -15,11 +15,10 @@ purestake/moonbeam:v0.26.1 \
 --name="YOUR-NODE-NAME" \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
+--state-pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```
 
@@ -35,11 +34,9 @@ purestake/moonbeam:v0.26.1 \
 --validator \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```
 
@@ -54,11 +51,10 @@ purestake/moonbeam:v0.26.1 \
 --name="YOUR-NODE-NAME" \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
+--state-pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```
 
@@ -74,11 +70,9 @@ purestake/moonbeam:v0.26.1 \
 --validator \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```
 
@@ -93,11 +87,10 @@ purestake/moonbeam:v0.26.1 \
 --name="YOUR-NODE-NAME" \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
+--state-pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```
 
@@ -113,10 +106,8 @@ purestake/moonbeam:v0.26.1 \
 --validator \
 --execution wasm \
 --wasm-execution compiled \
---pruning archive \
 --state-cache-size 0 \
 -- \
 --execution wasm \
---pruning 1000 \
 --name="YOUR-NODE-NAME (Embedded Relay)"
 ```

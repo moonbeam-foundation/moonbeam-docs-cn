@@ -79,12 +79,11 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --name="YOUR-NODE-NAME" \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
@@ -99,12 +98,11 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --name="YOUR-NODE-NAME" \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
@@ -118,12 +116,11 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --name="YOUR-NODE-NAME" \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
@@ -141,12 +138,10 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
@@ -161,12 +156,10 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
@@ -181,12 +174,10 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 

@@ -95,7 +95,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --base-path=/data \
     --chain {{ networks.moonbeam.chain_spec }} \
     --name="Moonbeam-Tutorial" \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
@@ -103,7 +103,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
@@ -115,7 +114,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --base-path=/data \
     --chain {{ networks.moonriver.chain_spec }} \
     --name="Moonbeam-Tutorial" \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
@@ -123,7 +122,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
@@ -135,7 +133,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --base-path=/data \
     --chain {{ networks.moonbase.chain_spec }} \
     --name="Moonbeam-Tutorial" \
-    --pruning archive \
+    --state-pruning archive \
     --state-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
@@ -143,7 +141,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --pruning 1000 \
     --name="Moonbeam-Tutorial (Embedded Relay)"
     ```
 
@@ -272,7 +269,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
@@ -286,7 +283,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -313,7 +309,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
@@ -327,7 +323,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -354,7 +349,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
@@ -368,7 +363,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]

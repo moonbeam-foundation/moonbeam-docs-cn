@@ -27,7 +27,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 - **`--wasm-execution`** —— 指定执行Wasm runtime代码时的函数方法，以下为可用选项：
     - **`compiled`** —— 此为默认选项，使用[Wasmtime](https://github.com/paritytech/wasmtime){target=_blank}编译的runtime
     - **`interpreted-i-know-what-i-do`** —— 使用[Wasmi interpreter](https://github.com/paritytech/wasmi){target=_blank}
-- **`--pruning`** —— 指定状态调整模式。如果为使用`--validator`标志运行的节点，默认保持所有区块的状态。否则，状态仅会保留最近的256个区块，以下为可用选项：
+- **`--state-pruning`** —— 指定状态调整模式。如果为使用`--validator`标志运行的节点，默认保持所有区块的状态。否则，状态仅会保留最近的256个区块，以下为可用选项：
     - **`archive`** —— 保持所有区块的状态
     - **`<number-of-blocks>`** —— 指定保留状态的自定义区块编号
 - **`--state-cache-size`** —— 指定内部状态缓存的大小，默认为`67108864`。您可以将其设置为`0`以关闭缓存换取收集人表现提升

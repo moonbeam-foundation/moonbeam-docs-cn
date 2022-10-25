@@ -212,7 +212,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
@@ -223,7 +223,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -251,7 +250,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
@@ -262,7 +261,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -290,7 +288,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
@@ -301,7 +299,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 
     [Install]
@@ -332,7 +329,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
@@ -343,7 +339,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -372,7 +367,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
@@ -383,7 +377,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -412,7 +405,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
@@ -423,7 +415,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 
     [Install]
