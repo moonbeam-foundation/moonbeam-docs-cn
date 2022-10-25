@@ -181,13 +181,16 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 ## 创建配置文件 {: #create-the-configuration-file }
 
-接下来，创建systemd配置文件。如果您设定的是收集人节点，请确认您使用的是“收集人”的代码段。您需执行以下操作：
+接下来，创建systemd配置文件。如果您设定的是收集人节点，请确认您使用的是[收集人](#收集人--collator)的代码段。您需执行以下操作：
 
  - 替换两处`YOUR-NODE-NAME`
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
  - 再次检查确认二进制文件是否位于以下正确路径 (*ExecStart*)
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
+
+!!! note
+    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
 ### 全节点 {: #full-node }
 
@@ -212,7 +215,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
@@ -223,7 +226,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -251,7 +253,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
@@ -262,7 +264,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -290,7 +291,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
+         --state-pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
@@ -301,12 +302,14 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 
     [Install]
     WantedBy=multi-user.target
     ```
+
+!!! 注意事项
+    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 ### 收集人 {: #collator }
 
@@ -332,7 +335,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
@@ -343,7 +345,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -372,7 +373,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
@@ -383,7 +383,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
     [Install]
@@ -412,7 +411,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --pruning=archive \
          --state-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
@@ -423,15 +421,11 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
-         --pruning=1000 \
          --name="YOUR-NODE-NAME (Embedded Relay)"
 
     [Install]
     WantedBy=multi-user.target
     ```
-
-!!! 注意事项
-    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
