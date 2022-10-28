@@ -58,9 +58,8 @@ Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开�
 
 截止本文撰写时，Moonbeam支持的以太坊API的过滤器相关JSON RPC方法：
 
-- **[eth_newFilter](https://eth.wiki/json-rpc/API#eth_newfilter){target=_blank}** —— 根据所提供的输入创建过滤器对象。返回一个过滤器ID
+ - **[eth_newFilter](https://eth.wiki/json-rpc/API#eth_newfilter){target=_blank}** —— 根据所提供的输入创建过滤器对象。返回一个过滤器ID
  - **[eth_newBlockFilter](https://eth.wiki/json-rpc/API#eth_newblockfilter){target=_blank}** —— 在节点中创建过滤器以在新的区块到达时进行通知。返回一个过滤器ID
- - **[eth_newPendingTransactionFilter](https://eth.wiki/json-rpc/API#eth_newpendingtransactionfilter){target=_blank}** —— 在节点中创建过滤器以在新的待处理事务到达时进行通知。返回一个过滤器ID
  - **[eth_getFilterChanges](https://eth.wiki/json-rpc/API#eth_getfilterchanges){target=_blank}** —— 过滤器的轮询方法（参考以上方法）。返回自上次轮询以来发生的日志数组
  - **[eth_getFilterLogs](https://eth.wiki/json-rpc/API#eth_getfilterlogs){target=_blank}** —— 返回匹配指定ID过滤器的所有日志数组
  - **[eth_uninstallFilter](https://eth.wiki/json-rpc/API#eth_uninstallfilter){target=_blank}** —— 卸载指定ID的过滤器。应在不需要轮询时使用。一段时间后未使用`eth_getFilterChanges`请求过滤器超时
@@ -69,8 +68,8 @@ Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开�
 
 截止本文撰写时，Moonbeam支持的以太坊API的[事件订阅JSON RPC方法](https://geth.ethereum.org/docs/rpc/pubsub){target=_blank}：
 
-- **[eth_subscribe](https://geth.ethereum.org/docs/rpc/pubsub#create-subscription){target=_blank}** —— 为指定订阅名称创建订阅。如果成功，则返回订阅ID
-- **[eth_unsubscribe](https://geth.ethereum.org/docs/rpc/pubsub#cancel-subscription){target=_blank}** —— 取消指定ID的订阅
+ - **[eth_subscribe](https://geth.ethereum.org/docs/rpc/pubsub#create-subscription){target=_blank}** —— 为指定订阅名称创建订阅。如果成功，则返回订阅ID
+ - **[eth_unsubscribe](https://geth.ethereum.org/docs/rpc/pubsub#cancel-subscription){target=_blank}** —— 取消指定ID的订阅
 
 ### 已支持订阅 {: #supported-subscription }
 
