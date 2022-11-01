@@ -84,7 +84,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -103,7 +103,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -121,7 +121,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --execution wasm \
     --wasm-execution compiled \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -144,7 +144,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -162,7 +162,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \
@@ -180,7 +180,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --validator \
     --execution wasm \
     --wasm-execution compiled \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     -- \
     --execution wasm \

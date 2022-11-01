@@ -104,7 +104,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonbeam.chain_spec }} \
     --name="YOUR-NODE-NAME" \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbeam-substitutes-tracing \
@@ -123,7 +123,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonriver.chain_spec }} \
     --name="YOUR-NODE-NAME" \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
@@ -142,7 +142,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonbase.chain_spec }} \
     --name="YOUR-NODE-NAME" \
     --state-pruning archive \
-    --state-cache-size 0 \
+    --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
@@ -278,7 +278,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --ethapi=debug,trace,txpool \
@@ -318,7 +318,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --ethapi=debug,trace,txpool \
@@ -358,7 +358,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --ethapi=debug,trace,txpool \
