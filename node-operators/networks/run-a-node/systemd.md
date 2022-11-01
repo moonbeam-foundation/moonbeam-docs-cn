@@ -216,7 +216,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --execution wasm \
          --wasm-execution compiled \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -254,7 +254,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --execution wasm \
          --wasm-execution compiled \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -292,7 +292,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --execution wasm \
          --wasm-execution compiled \
          --state-pruning=archive \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
@@ -335,7 +335,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
@@ -373,7 +373,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
@@ -411,7 +411,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
-         --state-cache-size 0 \
+         --trie-cache-size 0 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
