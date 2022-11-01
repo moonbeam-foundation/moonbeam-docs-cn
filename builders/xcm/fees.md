@@ -84,7 +84,7 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
-|     数据库      |                     读                      |                     写                      |
+|      数据库       |                      读                       |                       写                       |
 |:-----------------:|:---------------------------------------------:|:----------------------------------------------:|
 | RocksDB (default) | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
 |     ParityDB      | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
@@ -129,19 +129,19 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_instructions.planck_dot_cost }} / 10^10
 
 作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以转移xcDOT至DOT到波卡网络上所需的总花费：
 
-|  指令  |                         重量                          |                           成本                            |
+|     指令      |                          重量                           |                           成本                            |
 |:-------------:|:-------------------------------------------------------:|:---------------------------------------------------------:|
-| WithdrawAsset | {{ networks.polkadot.xcm_instructions.weight.display }}  |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT    |
-|  ClearOrigin  | {{ networks.polkadot.xcm_instructions.weight.display }}  |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT    |
-| BuyExecution  | {{ networks.polkadot.xcm_instructions.weight.display }}  |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT    |
-| DepositAsset  | {{ networks.polkadot.xcm_instructions.weight.display }}  |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT    |
-|   **总量**   | **{{ networks.polkadot.xcm_message.transfer.weight }}** | **{{ networks.polkadot.xcm_message.transfer.cost }} DOT** |
+| WithdrawAsset | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
+|  ClearOrigin  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
+| BuyExecution  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
+| DepositAsset  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
+|   **总量**    | **{{ networks.polkadot.xcm_message.transfer.weight }}** | **{{ networks.polkadot.xcm_message.transfer.cost }} DOT** |
 
 ### Kusama {: #kusama }
 
 Kusama上的总权重花费包括：给定指令本身花费和数据库读写的费用。尚未对数据库读写操作进行基准测试，而对指令权重进行了基准测试。以下为数据库执行权重花费的细节：
 
-|     数据库      |                    读                     |                   写                     |
+|      数据库       |                     读                      |                      写                      |
 |:-----------------:|:-------------------------------------------:|:--------------------------------------------:|
 | RocksDB (default) | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
 |     ParityDB      | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
@@ -151,7 +151,7 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 [`WithdrawAsset` 指令](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight }}`基础权重，且包含一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
 
 ```
-{{ networks.kusama.xcm_instructions.withdraw.base_weight }} + {{ networks.kusama.rocks_db.read_weight}} + {{ networks.kusama.rocks_db.write_weight}} = {{ networks.kusama.xcm_instructions.withdraw.total_weight }}
+{{ networks.kusama.xcm_instructions.withdraw.base_weight }} + {{ networks.kusama.rocks_db.read_weight}} + {{ networks.kusama.rocks_db.write_weight}} = {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }}
 ```
 
 `BuyExecution`指令具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，[`BuyExecution` 指令](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
@@ -190,7 +190,7 @@ XCM-KSM-Cost = XCM-Planck-KSM-Cost / KSMDecimalConversion
 因此，以下为`WithdrawAsset`的实际计算方式：
 
 ```
-XCM-Planck-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.total_weight }} * {{ networks.kusama.xcm_instructions.planck_ksm_weight }} 
+XCM-Planck-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.total_weight.numbers_only }} * {{ networks.kusama.xcm_instructions.planck_ksm_weight }} 
 XCM-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.planck_ksm_cost }} / 10^12
 ```
 
@@ -198,13 +198,13 @@ XCM-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.planck_ksm_cost }} /
 
 作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以在Kusama网络上转移xcKSM至KSM的总花费：
 
-|  指令  |                              重量                              |                               成本                               |
-|:-------------:|:----------------------------------------------------------------:|:----------------------------------------------------------------:|
-| WithdrawAsset |   {{ networks.kusama.xcm_instructions.withdraw.total_weight }}    |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
-|  ClearOrigin  | {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}  | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
-| BuyExecution  |   {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}    |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
-| DepositAsset  | {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }} | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
-|   **总量**   |      **{{ networks.kusama.xcm_message.transfer.weight }}**       |     **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
+|     指令      |                                 重量                                 |                               成本                                |
+|:-------------:|:--------------------------------------------------------------------:|:-----------------------------------------------------------------:|
+| WithdrawAsset | {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
+|  ClearOrigin  |   {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}   | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
+| BuyExecution  |     {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
+| DepositAsset  |  {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
+|   **总量**    |        **{{ networks.kusama.xcm_message.transfer.weight }}**         |      **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
 
 
 ## 基于Moonbeam网络的XCM费用计算 {: #moonbeam-xcm-fee-calc }
@@ -240,7 +240,7 @@ GLMR = Wei / (10^18)
 因此，实际计算如下：
 
 ```
-XCM-Wei-Cost = {{ networks.moonbeam.xcm.instructions.weight_units.numbers_only }} * {{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}
+XCM-Wei-Cost = {{ networks.moonbeam.xcm.instructions.weight_units.numbers_only }} * {{ networks.moonbeam.xcm.instructions.wei_per_weight.numbers_only }}
 XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 ```
 
