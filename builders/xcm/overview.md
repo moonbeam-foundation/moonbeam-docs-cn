@@ -26,11 +26,11 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的[操作/指](https:/
 
 例如，一条将DOT从Polkadot转帐到Moonbeam的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Polkadot上执行，部分在Moonbeam上执行：
 
- 1. [DepositReserveAsset](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Kusama执行
- 2. [ReserveAssetDeposited](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Moonriver执行
- 3. [ClearOrigin](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} — 在Moonriver执行
- 4. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} — 在Moonriver执行
- 5. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} — 在Moonriver执行
+ 1. [TransferReserveAsset](https://github.com/paritytech/xcm-format#transferreserveasset){target=_blank} — 在Polkadot执行
+ 2. [ReserveAssetDeposited](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Moonbeam执行
+ 3. [ClearOrigin](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} — 在Moonbeam执行
+ 4. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} — 在Moonbeam执行
+ 5. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} — 在Moonbeam执行
 
 ## XCM传递协议 {: #XCM-transport-protocols }
 
