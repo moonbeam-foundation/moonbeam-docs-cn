@@ -22,17 +22,9 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 ## XCM Instructions {: #xcm-instructions }
 
-XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一个操作（例如，将一个代币从一个区块链转移到另一个区块链）由XCVM在源链和目标链中部分执行的指令组成。
+XCM消息包含一系列由跨共识虚拟机(XCVM)执行的[操作/指](https://github.com/paritytech/xcm-format#5-the-xcvm-instruction-set){target=_blank}令。一个操作（例如，将一个代币从一个区块链转移到另一个区块链）由XCVM在源链和目标链中部分执行的指令组成。
 
-其中一些最常见的[XCM 指令](https://github.com/paritytech/xcm-format#5-the-xcvm-instruction-set){target=_blank}包括：
-
- - **DepositReserveAsset** — 将资产从持有账户中移除并将其存入给定目的地的主权账户。将转发XCM消息发送到指定目的地
- - **ReserveAssetDeposited** — 持有代表原始区块链中资产的衍生资产
- - **BuyExecution** — 为当前交易的执行付费。资金必须存在持有账户
- - **Transact** — 执行编码的函数调用
- - **DepositAsset** — 减去持有的资产并将等价资产（或衍生物）存入给定账户
-
-例如，一条将KSM从Kusama转帐到Moonriver的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Kusama上执行，部分在Moonriver上执行：
+例如，一条将DOT从Polkadot转帐到Moonbeam的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Polkadot上执行，部分在Moonbeam上执行：
 
  1. [DepositReserveAsset](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Kusama执行
  2. [ReserveAssetDepossited](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Moonriver执行
