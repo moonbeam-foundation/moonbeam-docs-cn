@@ -9,9 +9,9 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 ## 概览 {: #introduction } 
 
-波卡的[架构](https://wiki.polkadot.network/docs/learn-architecture)使平行链能够原生地与其他平行链互操作，允许任何种类数据和资产的跨链传递。
+波卡的[架构](https://wiki.polkadot.network/docs/learn-architecture){target=_blank}使平行链能够原生地与其他平行链互操作，允许任何种类数据和资产的跨链传递。
 
-为实现跨链传递功能，[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain)格式定义了一种围绕如何在两个互操作区块链间执行传递信息的表达语言。XCM并不限制于波卡内，其目标是成为两个共识系统间的通用和可扩展性语言。
+为实现跨链传递功能，[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}格式定义了一种围绕如何在两个互操作区块链间执行传递信息的表达语言。XCM并不限制于波卡内，其目标是成为两个共识系统间的通用和可扩展性语言。
 
 此页面是XCM和其相关定义的简要介绍和概述。更多信息可以在 [Polkadot 的 Wiki](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}中找到。
 
@@ -22,23 +22,15 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 ## XCM Instructions {: #xcm-instructions }
 
-XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一个操作（例如，将一个代币从一个区块链转移到另一个区块链）由XCVM在源链和目标链中部分执行的指令组成。
+XCM消息包含一系列由跨共识虚拟机(XCVM)执行的[操作/指](https://github.com/paritytech/xcm-format#5-the-xcvm-instruction-set){target=_blank}令。一个操作（例如，将一个代币从一个区块链转移到另一个区块链）由XCVM在源链和目标链中部分执行的指令组成。
 
-其中一些最常见的[XCM 指令](https://github.com/paritytech/xcm-format#5-the-xcvm-instruction-set){target=_blank}包括：
+例如，一条将DOT从Polkadot转帐到Moonbeam的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Polkadot上执行，部分在Moonbeam上执行：
 
- - **DepositReserveAsset** — 将资产从持有账户中移除并将其存入给定目的地的主权账户。将转发XCM消息发送到指定目的地
- - **ReserveAssetDeposited** — 持有代表原始区块链中资产的衍生资产
- - **BuyExecution** — 为当前交易的执行付费。资金必须存在持有账户
- - **Transact** — 执行编码的函数调用
- - **DepositAsset** — 减去持有的资产并将等价资产（或衍生物）存入给定账户
-
-例如，一条将KSM从Kusama转帐到Moonriver的XCM消息将包括以下XCM指令（按此顺序），这些指令部分在Kusama上执行，部分在Moonriver上执行：
-
- 1. [DepositReserveAsset](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Kusama执行
- 2. [ReserveAssetDepossited](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Moonriver执行
- 3. [ClearOrigin](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} — 在Moonriver执行
- 4. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} — 在Moonriver执行
- 5. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} — 在Moonriver执行
+ 1. [TransferReserveAsset](https://github.com/paritytech/xcm-format#transferreserveasset){target=_blank} — 在Polkadot执行
+ 2. [ReserveAssetDeposited](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} — 在Moonbeam执行
+ 3. [ClearOrigin](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} — 在Moonbeam执行
+ 4. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} — 在Moonbeam执行
+ 5. [DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank} — 在Moonbeam执行
 
 ## XCM传递协议 {: #XCM-transport-protocols }
 
@@ -64,7 +56,7 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一�
 
 关于更多XCM的细节相关文章请访问[Polkadot Wiki](https://wiki.polkadot.network/docs/learn-crosschain)。
 
-目前Moonbeam仅支持远程转账。所有在Moonbeam上的跨链资产将以*xc + TokenName*的形式呈现。举例而言，波卡的DOT将会以 _xcDOT_ 在Moonbeam上呈现，而Kusama的KSM将会以 _xcKSM_ 在Moonriver上呈现。关于XC-20标准的更多内容请查看[这里](/builders/xcm/xc20)。
+目前Moonbeam仅支持远程转账。所有在Moonbeam上的跨链资产将以*xc + TokenName*的形式呈现。举例而言，波卡的DOT将会以 _xcDOT_ 在Moonbeam上呈现，而Kusama的KSM将会以 _xcKSM_ 在Moonriver上呈现。关于XC-20标准的更多内容请查看[这里](/builders/xcm/xc20){target=_blank}。
 
 **开发者必须了解错误的XCM信息可能导致资产流失。**因此，在部署至真实经济环境之前，开发者必须先在测试网测试XCM功能。
 
@@ -110,7 +102,7 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一�
 当在注册一个XCM资产时，函数需要包含以下部分（除其他事项外）：
 
 - 原始资产所在网络的平行链ID
-- 资产类别。截至本文撰写时，您可以注册原生平行链Token或是使用通过[Pallet资产](https://github.com/paritytech/substrate/blob/master/frame/assets/src/lib.rs)创建资产的相应索引。
+- 资产类别。截至本文撰写时，您可以注册原生平行链Token或是使用通过[Pallet资产](https://github.com/paritytech/substrate/blob/master/frame/assets/src/lib.rs){target=_blank}创建资产的相应索引。
 - 资产名称、标志和单位（十进制）
 - 最低额度
 
@@ -124,7 +116,7 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的操作/指令。一�
 
 Moonbeam作为波卡生态系统中的平行链，其中最重要的XCM实现是使波卡和其他平行链的资产转移至Moonbeam，这将能够使用户将其Token带入Moonbeam以及其他dApp中。
 
-为扩展至Moonbeam独特的以太坊兼容功能，外部资产将会通过预编译合约以标准的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol)形式呈现。Moonbeam上的XCM资产将会被称为XC-20以与通过EVM产生的原生XCM资产区分。预编译合约将会使用适当的Substrate功能以执行要求动作。然而，以开发者的眼光来看，XC-20为具有XCM跨链资产优势的ERC-20 Token，dApp也将能以熟悉的ERC-20接口支持他们。
+为扩展至Moonbeam独特的以太坊兼容功能，外部资产将会通过预编译合约以标准的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}形式呈现。Moonbeam上的XCM资产将会被称为XC-20以与通过EVM产生的原生XCM资产区分。预编译合约将会使用适当的Substrate功能以执行要求动作。然而，以开发者的眼光来看，XC-20为具有XCM跨链资产优势的ERC-20 Token，dApp也将能以熟悉的ERC-20接口支持他们。
 
 ![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/xcm/overview/overview-4.png)
 
