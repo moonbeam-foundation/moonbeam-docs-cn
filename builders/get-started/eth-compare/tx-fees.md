@@ -22,7 +22,7 @@ Moonbeam上通过Substrate API发送的交易费用可直接从Sidecar block JSO
 ```JSON
 RESPONSE JSON Block Object:
     |--extrinsics
-        |--{extrinsic number}
+        |--{extrinsic_number}
             |--method
             |--signature
             |--nonce
@@ -32,7 +32,7 @@ RESPONSE JSON Block Object:
             |--info
             |--era
             |--events
-                |--{event number}
+                |--{event_number}
                     |--method
                         |--pallet: "transactionPayment"
                         |--method: "TransactionFeePaid"
@@ -48,9 +48,9 @@ RESPONSE JSON Block Object:
 
 |      交易信息      |                         JSON对象字段                         |
 |:------------------:|:------------------------------------------------------------:|
-| Fee paying account | `extrinsics.{extrinsic number}.events.{event number}.data.0` |
-|  Total fees paid   | `extrinsics.{extrinsic number}.events.{event number}.data.1` |
-|        Tip         | `extrinsics.{extrinsic number}.events.{event number}.data.2` |
+| Fee paying account | `extrinsics[extrinsic_number].events[event_number].data[0]` |
+|  Total fees paid   | `extrinsics[extrinsic_number].events[event_number].data[1]` |
+|        Tip         | `extrinsics[extrinsic_number].events[event_number].data[2]` |
 
 交易费用相关信息可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
@@ -61,7 +61,7 @@ pallet: "transactionPayment", method: "TransactionFeePaid"
 随后，将用于支付此extrinsic的总交易费用映射至Block JSON对象的以下字段中：
 
 ```
-extrinsics.{extrinsic number}.events.{event number}.data.1
+extrinsics[extrinsic_number].events[event_number].data[1]
 ```
 
 ## 以太坊API交易费用 {: #ethereum-api-transaction-fees }
@@ -90,17 +90,17 @@ extrinsics.{extrinsic number}.events.{event number}.data.1
 === "EIP-1559"
     |         EVM字段          |                                 JSON对象字段                                  |
     |:------------------------:|:-----------------------------------------------------------------------------:|
-    | Max priority fee per gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas` |
+    | Max priority fee per gas | `extrinsics[extrinsic_number].args.transaction.eip1559.maxPriorityFeePerGas` |
 
 === "Legacy"
     |  EVM字段  |                           JSON对象字段                           |
     |:---------:|:----------------------------------------------------------------:|
-    | Gas price | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice` |
+    | Gas price | `extrinsics[extrinsic_number].args.transaction.legacy.gasPrice` |
 
 === "EIP-2930"
     |  EVM字段  |                           JSON对象字段                            |
     |:---------:|:-----------------------------------------------------------------:|
-    | Gas price | `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice` |
+    | Gas price | `extrinsics[extrinsic_number].args.transaction.eip2930.gasPrice` |
 
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上是静态的，并有以下指定的值：
 
@@ -128,7 +128,7 @@ pallet: "system", method: "ExtrinsicSuccess"
 随后，`Transaction Weight`将被映射至Block JSON对象的以下字段中：
 
 ```
-extrinsics.{extrinsic number}.events.{event number}.data.0.weight
+extrinsics[extrinsic_number].events[event_number].data[0].weight.refTime
 ```
 
 ### 与以太坊的关键性差异 {: #ethereum-api-transaction-fees}
