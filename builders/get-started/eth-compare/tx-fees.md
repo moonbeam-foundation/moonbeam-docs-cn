@@ -128,7 +128,7 @@ pallet: "system", method: "ExtrinsicSuccess"
 随后，`Transaction Weight`将被映射至Block JSON对象的以下字段中：
 
 ```
-extrinsics.{extrinsic number}.events.{event number}.data.0.weight.refTime
+extrinsics[extrinsic_number].events[event_number].data[0].weight.refTime
 ```
 
 ### 与以太坊的关键性差异 {: #ethereum-api-transaction-fees}

@@ -104,7 +104,7 @@ Substrate API Sidecar将Moonbeam区块作为JSON对象返回。与Moonbeam交易
 ```JSON
 RESPONSE JSON Block Object:
     |--extrinsics
-        |--{extrinsic number}
+        |--{extrinsic_number}
             |--method
                 |--pallet: "ethereum"
                 |--method: "transact"
@@ -112,10 +112,10 @@ RESPONSE JSON Block Object:
             |--nonce
             |--args
                 |--transaction
-                    |--{transaction type}
+                    |--{transaction_type}
             |--hash
             |--events
-                |--{event number}
+                |--{event_number}
                     |--method
                         |--pallet: "ethereum"
                         |--method: "Executed"
@@ -131,8 +131,8 @@ RESPONSE JSON Block Object:
 Moonbeam EVM交易可以通过在当前extrinsic对象下的`method`字段进行验证，`method`字段可设置为：
 
 ```
-{extrinsic number}.method.pallet = "ethereum"
-{extrinsic number}.method.method = "transact"
+{extrinsic_number}.method.pallet = "ethereum"
+{extrinsic_number}.method.method = "transact"
 ```
 
 ### 交易类型和负载 {: #transaction-types-and-payload }
@@ -197,8 +197,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 要获取EVM发送方地址、接收方地址，以及任何EVM交易类型的EVM哈希，检查在当前extrinsic对象下的`events`字段并验证`method`字段已设置为：
 
 ```
-{event number}.method.pallet: "ethereum"
-{event number}.method.method: "Executed" 
+{event_number}.method.method: "Executed" 
+{event_number}.method.pallet: "ethereum"
 ```
 
 然后将EVM字段映射总结为如下所示：
@@ -206,48 +206,48 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 === "EIP1559"
     |        EVM Field         |                               Block JSON Field                                |
     |:------------------------:|:-----------------------------------------------------------------------------:|
-    |         Chain ID         |       `extrinsics.{extrinsic number}.args.transaction.eip1559.chainId`        |
-    |          Nonce           |        `extrinsics.{extrinsic number}.args.transaction.eip1559.nonce`         |
-    | Max Priority Fee Per Gas | `extrinsics.{extrinsic number}.args.transaction.eip1559.maxPriorityFeePerGas` |
-    |     Max Fee Per Gas      |     `extrinsics.{extrinsic number}.args.transaction.eip1559.maxFeePerGas`     |
-    |        Gas Limit         |       `extrinsics.{extrinsic number}.args.transaction.eip1559.gasLimit`       |
-    |       Access List        |      `extrinsics.{extrinsic number}.args.transaction.eip1559.accessList`      |
-    |        Signature         |    `extrinsics.{extrinsic number}.args.transaction.eip1559.oddYParity/r/s`    |
-    |      Sender Address      |         `extrinsics.{extrinsic number}.events.{event number}.data.0`          |
-    |    Recipient Address     |         `extrinsics.{extrinsic number}.events.{event number}.data.1`          |
-    |         EVM Hash         |         `extrinsics.{extrinsic number}.events.{event number}.data.2`          |
-    |   EVM Execution Status   |         `extrinsics.{extrinsic number}.events.{event number}.data.3`          |
+    |         Chain ID         |       `extrinsics[extrinsic_number].args.transaction.eip1559.chainId`        |
+    |          Nonce           |        `extrinsics[extrinsic_number].args.transaction.eip1559.nonce`         |
+    | Max Priority Fee Per Gas | `extrinsics[extrinsic_number].args.transaction.eip1559.maxPriorityFeePerGas` |
+    |     Max Fee Per Gas      |     `extrinsics[extrinsic_number].args.transaction.eip1559.maxFeePerGas`     |
+    |        Gas Limit         |       `extrinsics[extrinsic_number].args.transaction.eip1559.gasLimit`       |
+    |       Access List        |      `extrinsics[extrinsic_number].args.transaction.eip1559.accessList`      |
+    |        Signature         |    `extrinsics[extrinsic_number].args.transaction.eip1559.oddYParity/r/s`    |
+    |      Sender Address      |         `extrinsics[extrinsic_number].events[event_number].data[0]`          |
+    |    Recipient Address     |         `extrinsics[extrinsic_number].events[event_number].data[1]`          |
+    |         EVM Hash         |         `extrinsics[extrinsic_number].events[event_number].data[2]`          |
+    |   EVM Execution Status   |         `extrinsics[extrinsic_number].events[event_number].data[3]`          |
 
 === "Legacy"
     |      EVM Field       |                         Block JSON Field                          |
     |:--------------------:|:-----------------------------------------------------------------:|
-    |        Nonce         |   `extrinsics.{extrinsic number}.args.transaction.legacy.nonce`   |
-    |      Gas Price       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasPrice`  |
-    |      Gas Limit       | `extrinsics.{extrinsic number}.args.transaction.legacy.gasLimit`  |
-    |        Value         |   `extrinsics.{extrinsic number}.args.transaction.legacy.value`   |
-    |      Signature       | `extrinsics.{extrinsic number}.args.transaction.legacy.signature` |
-    |    Sender Address    |   `extrinsics.{extrinsic number}.events.{event number}.data.0`    |
-    |  Recipient Address   |   `extrinsics.{extrinsic number}.events.{event number}.data.1`    |
-    |       EVM Hash       |   `extrinsics.{extrinsic number}.events.{event number}.data.2`    |
-    | EVM Execution Status |   `extrinsics.{extrinsic number}.events.{event number}.data.3`    |
+    |        Nonce         |   `extrinsics[extrinsic_number].args.transaction.legacy.nonce`   |
+    |      Gas Price       | `extrinsics[extrinsic_number].args.transaction.legacy.gasPrice`  |
+    |      Gas Limit       | `extrinsics[extrinsic_number].args.transaction.legacy.gasLimit`  |
+    |        Value         |   `extrinsics[extrinsic_number].args.transaction.legacy.value`   |
+    |      Signature       | `extrinsics[extrinsic_number].args.transaction.legacy.signature` |
+    |    Sender Address    |   `extrinsics[extrinsic_number].events[event_number].data[0]`    |
+    |  Recipient Address   |   `extrinsics[extrinsic_number].events[event_number].data[1]`    |
+    |       EVM Hash       |   `extrinsics[extrinsic_number].events[event_number].data[2]`    |
+    | EVM Execution Status |   `extrinsics[extrinsic_number].events[event_number].data[3]`    |
 
 === "EIP2930"
     |      EVM Field       |                            Block JSON Field                             |
     |:--------------------:|:-----------------------------------------------------------------------:|
-    |       Chain ID       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.chainId`     |
-    |        Nonce         |     `extrinsics.{extrinsic number}.args.transaction.eip2930.nonce`      |
-    |       GasPrice       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasPrice`    |
-    |       GasLimit       |    `extrinsics.{extrinsic number}.args.transaction.eip2930.gasLimit`    |
-    |        Value         |     `extrinsics.{extrinsic number}.args.transaction.eip2930.value`      |
-    |     Access List      |   `extrinsics.{extrinsic number}.args.transaction.eip2930.accessList`   |
-    |      Signature       | `extrinsics.{extrinsic number}.args.transaction.eip2930.oddYParity/r/s` |
-    |    Sender Address    |      `extrinsics.{extrinsic number}.events.{event number}.data.0`       |
-    |  Recipient Address   |      `extrinsics.{extrinsic number}.events.{event number}.data.1`       |
-    |       EVM Hash       |      `extrinsics.{extrinsic number}.events.{event number}.data.2`       |
-    | EVM Execution Status |      `extrinsics.{extrinsic number}.events.{event number}.data.3`       |
+    |       Chain ID       |    `extrinsics[extrinsic_number].args.transaction.eip2930.chainId`     |
+    |        Nonce         |     `extrinsics[extrinsic_number].args.transaction.eip2930.nonce`      |
+    |       GasPrice       |    `extrinsics[extrinsic_number].args.transaction.eip2930.gasPrice`    |
+    |       GasLimit       |    `extrinsics[extrinsic_number].args.transaction.eip2930.gasLimit`    |
+    |        Value         |     `extrinsics[extrinsic_number].args.transaction.eip2930.value`      |
+    |     Access List      |   `extrinsics[extrinsic_number].args.transaction.eip2930.accessList`   |
+    |      Signature       | `extrinsics[extrinsic_number].args.transaction.eip2930.oddYParity/r/s` |
+    |    Sender Address    |      `extrinsics[extrinsic_number].events[event_number].data[0]`       |
+    |  Recipient Address   |      `extrinsics[extrinsic_number].events[event_number].data[1]`       |
+    |       EVM Hash       |      `extrinsics[extrinsic_number].events[event_number].data[2]`       |
+    | EVM Execution Status |      `extrinsics[extrinsic_number].events[event_number].data[3]`       |
 
 !!! 注意事项
-    EVM交易号和签名字段位于`extrinsics.{extrinsic number}.args.transaction.{transaction type}`，而`extrinsics.{extrinsic number}`下的`nonce`和`signature`字段是Substrate交易号和签名，需为EVM交易设置为`null`。
+    EVM交易号和签名字段位于`extrinsics[extrinsic_number].args.transaction[transaction_type]`，而`extrinsics[extrinsic_number]`下的`nonce`和`signature`字段是Substrate交易号和签名，需为EVM交易设置为`null`。
 
     成功执行的EVM交易将在"EVM Execution Status"字段下返回`succeed: "Stopped"`或`succeed: "Returned"`。
 
@@ -258,7 +258,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 ```JSON
 RESPONSE JSON Block Object:
     |--extrinsics
-        |--{extrinsic number}
+        |--{extrinsic_number}
             |--method
                 |--pallet: "ethereum"
                 |--method: "transact"
@@ -266,10 +266,10 @@ RESPONSE JSON Block Object:
             |--nonce: 
             |--args
                 |--transaction
-                    |--{transaction type}
+                    |--{transaction_type}
             |--hash
             |--events
-                |--{event number}
+                |--{event_number}
                     |--method
                         |--pallet: "evm"
                         |--method: "Log"
@@ -291,11 +291,11 @@ Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EI
 
 |    交易信息    |                             对应JSON字段                              |
 |:--------------:|:---------------------------------------------------------------------:|
-| ERC-20合约地址 | `extrinsics.{extrinsic number}.events.{event number}.data.0.address`  |
-|  事件签名哈希  | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.0` |
-|   发送人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.1` |
-|   接纳人地址   | `extrinsics.{extrinsic number}.events.{event number}.data.0.topics.2` |
-|      数额      |   `extrinsics.{extrinsic number}.events.{event number}.data.0.data`   |
+| ERC-20合约地址 | `extrinsics[extrinsic_number].events[event_number].data[0].address`  |
+|  事件签名哈希  | `extrinsics[extrinsic_number].events[event_number].data[0].topics[0]` |
+|   发送人地址   | `extrinsics[extrinsic_number].events[event_number].data[0].topics[1]` |
+|   接纳人地址   | `extrinsics[extrinsic_number].events[event_number].data[0].topics[2]` |
+|      数额      |   `extrinsics[extrinsic_number].events[event_number].data[0].data`   |
 
 EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
 
