@@ -6,3 +6,4 @@ nav:
   - '计算交易费用': 'tx-fees.md'
   - '共识和确定性': 'consensus-finality.md'
   - 'RPC支持': 'rpc-support.md'
+  - '安全注意事项': 'security.md'

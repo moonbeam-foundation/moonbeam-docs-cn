@@ -177,7 +177,6 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 ![Check Registered Derivative Indexes](/images/builders/xcm/xcm-transactor/xcmtransactor-2.png)
 
-
 ## 通过签署函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-signed}
 
 此部分包含使用`transactThroughSigned`函数通过XCM-transactor pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
@@ -266,7 +265,7 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 此接口包含以下函数：
 
  - **indexToAccount**(*uint16* index) — 只读函数，返回授权使用给定索引的基于Moonbeam网络主权账户操作的注册地址
-  - **transactInfoWithSigned**(*Multilocation* *memory* multilocation) — 只读函数，对于定义为multilocation的给定链，返回考虑与外部调用执行（`transactExtraWeight`）关联的3个XCM指令的交易消息。这也将返回通过签署extrinsic（`transactExtraWeightSigned`）交易的`descendOrigin` XCM指令关联的额外权重信息
+  - **transactInfoWithSigned**(*Multilocation* *memory* multilocation) — 只读函数，对于定义为multilocation的给定链，返回考虑与外部调用执行（`transactExtraWeight`）关联的3个XCM指令的交易消息。这也将返回通过签署extrinsic（`transactExtraWeightSigned`）交易的`DescendOrigin` XCM指令关联的额外权重信息
  - **feePerSecond**(*Multilocation* *memory* multilocation) — 只读函数，对于作为multilocation的给定资产，返回每秒XCM执行的Token单位，其作为XCM执行费用收取。这对于给定链有多种资产可以作为手续费进行支付使非常有用
  - **transactThroughDerivativeMultilocation**(*uint8* transactor, *uint16* index, *Multilocation* *memory* feeAsset, *uint64* transactRequiredWeightAtMost, *bytes* *memory* inner_call, *uint256* feeAmount, *uint64* overallWeight) — 表示[上述示例](#xcmtransactor-transact-through-derivative)中描述的`transactThroughDerivative`方法的函数，将**fee**类型设置为**AsMultiLocation**。您需要提供Token的资产multilocation来支付费用，而不是XC-20 Token `address`
  - **transactThroughDerivative**(*uint8* transactor, *uint16* index, *address* currencyId, *uint64* transactRequiredWeightAtMost, *bytes* *memory* inner_call, *uint256* feeAmount, *uint64* overallWeight) — 表示[上述示例](#xcmtransactor-transact-through-derivative)中描述的`transactThroughDerivative`方法的函数，将**fee**类型设置为**AsCurrencyId**。您将需要提供用于支付费用的Token的[资产XC-20地址](/builders/xcm/xc20/overview/#current-xc20-assets){target=_blank}，而不是资产ID

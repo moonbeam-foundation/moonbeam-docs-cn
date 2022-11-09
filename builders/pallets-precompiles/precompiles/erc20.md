@@ -52,7 +52,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 - [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或拥有两个账户，以测试ERC-20预编译不同的功能
-- 具有拥有一定数量DEV的账户，
+- 具有拥有一定数量DEV的账户。
 --8<-- 'text/faucet/faucet-list-item.md'
 
 ### 添加Token至MetaMask {: #add-token-to-metamask }

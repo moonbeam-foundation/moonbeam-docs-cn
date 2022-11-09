@@ -5,5 +5,6 @@ nav:
   - xc20
   - '开通跨链通道': 'xc-integration.md'
   - '远程执行': 'xcm-transactor.md'
+  - '远程EVM调用': 'remote-evm-calls.md'
   - 'XCM执行费用': 'fees.md'
   - xcm-sdk

@@ -35,7 +35,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 
 ## 调用许可Solidity接口 {: #the-call-permit-interface }
 
-[CallPermit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}为一个Solidity接口，让开发者能够与预编译的三个函数交互。
+[`CallPermit.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}为一个Solidity接口，让开发者能够与预编译的三个函数交互。
 
 此接口包含以下函数：
 
