@@ -320,7 +320,7 @@ contract Client is ChainlinkClient {
 
 ### 获取价格数据 {: #fetch-price-data }
 
-Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonbase Alpha的现有配置下，Moonbeam团队只运营一个预言机节点，通过单一API来源获取数据。价格数据每分钟查看一次，每小时通过智能合约更新一次，另外在价格变动超过1%时也会进行更新。Moonbeam和Moonriver的Data Feed合约由多个Chainlink节点定期更新。
+Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonbase Alpha的现有配置下，Moonbeam团队只运营一个预言机节点，通过单一API来源获取数据。智能合约每隔12小时检查和更新一次价格数据。因此，Moonbeam Alpha的喂价数据仅用于测试目的，不具有权威性。Moonbeam和Moonriver的Data Feed合约由多个Chainlink节点定期更新。
 
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
