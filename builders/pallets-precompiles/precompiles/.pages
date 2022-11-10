@@ -1,6 +1,8 @@
 title: Solidity预编译
 nav:
   - index.md
+  - '概览': 'overview.md'
+  - '作者映射': 'author-mapping.md'
   - '批量处理': 'batch.md'
   - '调用许可': 'call-permit.md' 
   - '团体': 'collective.md'

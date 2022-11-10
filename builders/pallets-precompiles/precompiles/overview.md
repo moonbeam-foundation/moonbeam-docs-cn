@@ -1,60 +1,31 @@
 ---
-title: Moonbeam标准合约
-description: 本文概述了Moonbeam、Moonriver和Moonbase Alpha上可用的标准合约，包括一些公用基础设施和预编译合约。
-keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
+title: Solidity预编译
+description: Moonbeam上可用Solidity预编译的概述。预编译使您能够使用以太坊API与Substrate功能交互。
 ---
 
-# 标准合约
+# Moonbeam上预编译合约的概述
 
-![Canonical contracts banner](/images/builders/build/canonical-contracts/canonical-contracts-banner.png)
+![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/overview/overview-banner.png)
 
-## 公用基础设施合约 {: #common-goods-contracts}
+## 概述 {: #introduction } 
 
-以下为已创建的合约地址：
+在Moonbeam上，预编译合约是拥有以太坊格式地址的原生Substrate代码，与其他智能合约一样能够可以使用以太坊API进行调用。预编译允许您直接调用Substrate runtime，其通常在Moonbeam的以太坊这端无法访问。
 
-=== "Moonbeam"
-    |                                                          合约                                                           |                    地址                    |
-    |:-----------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-    |      [WGLMR](https://moonbeam.moonscan.io/address/0xAcc15dC74880C9944775448304B263D191c6077F#code){target=_blank}       | 0xAcc15dC74880C9944775448304B263D191c6077F |
-    |    [Multicall](https://moonbeam.moonscan.io/address/0x83e3b61886770de2F64AAcaD2724ED4f08F7f36B#code){target=_blank}     | 0x83e3b61886770de2F64AAcaD2724ED4f08F7f36B |
-    |    [Multicall2](https://moonbeam.moonscan.io/address/0x6477204E12A7236b9619385ea453F370aD897bb2#code){target=_blank}    | 0x6477204E12A7236b9619385ea453F370aD897bb2 |
-    |    [Multicall3](https://moonbeam.moonscan.io/address/0xca11bde05977b3631167028862be2a173976ca11#code){target=_blank}    | 0xcA11bde05977b3631167028862bE2a173976CA11 |
-    | [Multisig Factory](https://moonbeam.moonscan.io/address/0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2#code){target=_blank} | 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 |
-    |                           [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820){target=_blank}                            | 0x1820a4b7618bde71dce8cdc73aab6c95905fad24 |
+用于实施预编译的Substrate代码可以在[EVM pallet](/learn/features/eth-compatibility/#evm-pallet){target=_blank}中找到。EVM pallet包含了[以太坊上的标准预编译以及一些不特定于以太坊的预编译](https://github.com/paritytech/frontier/tree/master/frame/evm/precompile){target=_blank}。它也包含了通过通用[`Precompiles` 特征](https://paritytech.github.io/frontier/rustdocs/pallet_evm/trait.Precompile.html){target=_blank}创建和执行自定义预编译的能力。目前已经创建了好几个特定于Moonbeam的自定义预编译，您可以在[Moonbeam代码库](https://github.com/PureStake/moonbeam/tree/master/precompiles){target=_blank}中找到。
 
+以太坊预编译合约包含了带有大量计算的复杂功能，例如哈希和加密等。Moonbeam上自定义预编译合约提供对基于Substrate功能的访问，例如质押、治理、XCM相关函数等。
 
-=== "Moonriver"
-    |                                                           合约                                                           |                    地址                    |
-    |:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-    |      [WMOVR](https://moonriver.moonscan.io/address/0xf50225a84382c74CbdeA10b0c176f71fc3DE0C4d#code){target=_blank}       | 0xf50225a84382c74CbdeA10b0c176f71fc3DE0C4d |
-    |    [Multicall](https://moonriver.moonscan.io/address/0x30f283Cc0284482e9c29dFB143bd483B5C19954b#code){target=_blank}*    | 0x30f283Cc0284482e9c29dFB143bd483B5C19954b |
-    |    [Multicall2](https://moonriver.moonscan.io/address/0xaef00a0cf402d9dedd54092d9ca179be6f9e5ce3#code){target=_blank}    | 0xaef00a0cf402d9dedd54092d9ca179be6f9e5ce3 |
-    |   [Multicall3](https://moonriver.moonscan.io/address/0xca11bde05977b3631167028862be2a173976ca11#code/){target=_blank}    | 0xcA11bde05977b3631167028862bE2a173976CA11 |
-    | [Multisig Factory](https://moonriver.moonscan.io/address/0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2#code){target=_blank} | 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 |
-    |                            [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820){target=_blank}                            | 0x1820a4b7618bde71dce8cdc73aab6c95905fad24 |
+特定于Moonbeam的预编译可以通过以太坊API使用大家熟悉又简单易懂的Solidity接口来进行交互，它们最终被用于与底层Substrate接口进行交互。该流程如下图所示：
 
+![Precompiled Contracts Diagram](/images/builders/pallets-precompiles/precompiles/overview/overview-1.png)
 
-    _*SushiSwap部署_
+## 预编译合约地址 {: #precompiled-contract-addresses }
 
-=== "Moonbase Alpha"
-    |                                                          合约                                                           |                    地址                    |
-    |:-----------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-    |       [WDEV](https://moonbase.moonscan.io/address/0xD909178CC99d318e4D46e7E66a972955859670E1#code){target=_blank}       | 0xD909178CC99d318e4D46e7E66a972955859670E1 |
-    |    [Multicall](https://moonbase.moonscan.io/address/0x4E2cfca20580747AdBA58cd677A998f8B261Fc21#code){target=_blank}*    | 0x4E2cfca20580747AdBA58cd677A998f8B261Fc21 |
-    |    [Multicall2](https://moonbase.moonscan.io/address/0x37084d0158C68128d6Bc3E5db537Be996f7B6979#code){target=_blank}    | 0x37084d0158C68128d6Bc3E5db537Be996f7B6979 |
-    |   [Multicall3](https://moonbase.moonscan.io/address/0xca11bde05977b3631167028862be2a173976ca11#code/){target=_blank}    | 0xcA11bde05977b3631167028862bE2a173976CA11 |
-    | [Multisig Factory](https://moonbase.moonscan.io/address/0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2#code){target=_blank} | 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 |
-    |                           [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820){target=_blank}                            | 0x1820a4b7618bde71dce8cdc73aab6c95905fad24 |
-
-    _*[UniswapV2 Demo Repo](https://github.com/PureStake/moonbeam-uniswap/tree/main/uniswap-contracts-moonbeam){target=_blank}部署_
-
-## 预编译合约 {: #precompiled-contracts }
-
-Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络分类的预编译合约。如果将预编译地址转换为十进制格式，并按数值进行分类，分类将如下所示：
+预编译合约是通过其地址并基于其原始网络来分类的。如果您将预编译地址转化至小数格式，并依据数值将其分类，则有以下几种类别：
 
 - **0-1023** - [以太坊主网预编译](#ethereum-mainnet-precompiles)
-- **1024-2047** - [不在以太坊中且不特定于Moonbeam](#non-moonbeam-specific-nor-ethereum-precomiles)的预编译
-- **2048-4095** - [Moonbeam特定预编译](#moonbeam-specific-precompiles)
+- **1024-2047** - [不在以太坊也不是特定于Moonbeam](#non-moonbeam-specific-nor-ethereum-precomiles)的预编译
+- **2048-4095** - [特定于Moonbeam的预编译](#moonbeam-specific-precompiles)
 
 --8<-- 'text/precompiles/eth-mainnet.md'
 

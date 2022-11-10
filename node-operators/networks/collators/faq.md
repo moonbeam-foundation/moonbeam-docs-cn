@@ -161,7 +161,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 - **Moonriver** - 最低{{ networks.moonriver.staking.min_can_stk }}枚MOVR
 - **Moonbase Alpha** - 最低{{ networks.moonbase.staking.min_can_stk }}枚DEV
 
-第二个是[密钥关联的绑定数量](/node-operators/networks/collators/account-management/#map-author-id-set-session-keys){target=_blank}：
+第二个是[密钥关联的绑定数量](/node-operators/networks/collators/account-management/#mapping-bonds){target=_blank}：
 
 - **Moonbeam** - 最低{{ networks.moonbeam.staking.collator_map_bond }}枚GLMR
 - **Moonriver** - 最低{{ networks.moonriver.staking.collator_map_bond }}枚MOVR
