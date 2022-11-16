@@ -44,22 +44,22 @@ node_modules/.bin/substrate-api-sidecar --version
 
 === "Moonbeam"
     ```
-    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonbeam.network
+    export SAS_SUBSTRATE_URL=wss://wss.api.moonbeam.network
     ```
 
 === "Moonriver"
     ```
-    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonriver.moonbeam.network
+    export SAS_SUBSTRATE_URL=wss://wss.api.moonriver.moonbeam.network
     ```
 
 === "Moonbase Alpha"
     ```
-    export SAS_SUBSTRATE_WS_URL=wss://wss.api.moonbase.moonbeam.network
+    export SAS_SUBSTRATE_URL=wss://wss.api.moonbase.moonbeam.network
     ```
 
 === "Moonbeam开发节点"
     ```
-    export SAS_SUBSTRATE_WS_URL=ws://127.0.0.1:9944
+    export SAS_SUBSTRATE_URL=ws://127.0.0.1:9944
     ```
 
 请参考[公共端点](/builders/get-started/endpoints/)页面获取Moonbeam网络端点完整列表。
@@ -67,7 +67,7 @@ node_modules/.bin/substrate-api-sidecar --version
 设置环境变量后，您可以使用`echo`命令，运行以下命令检查环境变量是否正确设置：
 
 ```
-echo $SAS_SUBSTRATE_WS_URL
+echo $SAS_SUBSTRATE_URL
 ```
 
 这将显示您设置的网络端点。
@@ -204,8 +204,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 然后将EVM字段映射总结为如下所示：
 
 === "EIP1559"
-    |        EVM Field         |                               Block JSON Field                                |
-    |:------------------------:|:-----------------------------------------------------------------------------:|
+    |        EVM Field         |                               Block JSON Field                               |
+    |:------------------------:|:----------------------------------------------------------------------------:|
     |         Chain ID         |       `extrinsics[extrinsic_number].args.transaction.eip1559.chainId`        |
     |          Nonce           |        `extrinsics[extrinsic_number].args.transaction.eip1559.nonce`         |
     | Max Priority Fee Per Gas | `extrinsics[extrinsic_number].args.transaction.eip1559.maxPriorityFeePerGas` |
@@ -219,8 +219,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
     |   EVM Execution Status   |         `extrinsics[extrinsic_number].events[event_number].data[3]`          |
 
 === "Legacy"
-    |      EVM Field       |                         Block JSON Field                          |
-    |:--------------------:|:-----------------------------------------------------------------:|
+    |      EVM Field       |                         Block JSON Field                         |
+    |:--------------------:|:----------------------------------------------------------------:|
     |        Nonce         |   `extrinsics[extrinsic_number].args.transaction.legacy.nonce`   |
     |      Gas Price       | `extrinsics[extrinsic_number].args.transaction.legacy.gasPrice`  |
     |      Gas Limit       | `extrinsics[extrinsic_number].args.transaction.legacy.gasLimit`  |
@@ -232,8 +232,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
     | EVM Execution Status |   `extrinsics[extrinsic_number].events[event_number].data[3]`    |
 
 === "EIP2930"
-    |      EVM Field       |                            Block JSON Field                             |
-    |:--------------------:|:-----------------------------------------------------------------------:|
+    |      EVM Field       |                            Block JSON Field                            |
+    |:--------------------:|:----------------------------------------------------------------------:|
     |       Chain ID       |    `extrinsics[extrinsic_number].args.transaction.eip2930.chainId`     |
     |        Nonce         |     `extrinsics[extrinsic_number].args.transaction.eip2930.nonce`      |
     |       GasPrice       |    `extrinsics[extrinsic_number].args.transaction.eip2930.gasPrice`    |
@@ -291,11 +291,11 @@ Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EI
 
 |    交易信息    |                             对应JSON字段                              |
 |:--------------:|:---------------------------------------------------------------------:|
-| ERC-20合约地址 | `extrinsics[extrinsic_number].events[event_number].data[0].address`  |
+| ERC-20合约地址 |  `extrinsics[extrinsic_number].events[event_number].data[0].address`  |
 |  事件签名哈希  | `extrinsics[extrinsic_number].events[event_number].data[0].topics[0]` |
 |   发送人地址   | `extrinsics[extrinsic_number].events[event_number].data[0].topics[1]` |
 |   接纳人地址   | `extrinsics[extrinsic_number].events[event_number].data[0].topics[2]` |
-|      数额      |   `extrinsics[extrinsic_number].events[event_number].data[0].data`   |
+|      数额      |   `extrinsics[extrinsic_number].events[event_number].data[0].data`    |
 
 EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
 
