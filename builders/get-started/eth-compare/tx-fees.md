@@ -86,7 +86,7 @@ extrinsics[extrinsic_number].events[event_number].data[1]
     Transaction Fee = (Gas Price * Transaction Weight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 
-XXX With the introduction of RT1900, there is a `Transaction Weight` mismatch between what is reported by the Sidecar API and what is used for the EVM transaction fee. Consequently, you need to add the following amount to `Transaction Weight`:
+随着Runtime 1900的推出，Sidecar API报告的内容与用于EVM交易费用的内容之间存在“Transaction Weight”不匹配。 因此，您需要将以下金额添加至“Transaction Weight”：
 
 === "Moonbeam"
     ```
@@ -149,7 +149,7 @@ extrinsics[extrinsic_number].events[event_number].data[0].weight
 ```
 
 !!! note
-    XXX Please remember that runtime 190X there is a `Transaction Weight` mismatch. You need to add a constant to its value. Check the [Calculating Ethereum API Transaction Fees](#calculating-ethereum-api-transaction-fees) for more information.
+    请记住，Runtime190X存在`Transaction Weight`不匹配。您需要为它的值添加一个常量。查看[计算以太坊API交易费用](#calculating-ethereum-api-transaction-fees)了解更多信息。
 
 ### 与以太坊的关键性差异 {: #ethereum-api-transaction-fees}
 
@@ -161,7 +161,7 @@ extrinsics[extrinsic_number].events[event_number].data[0].weight
 
   - Moonbeam交易费用模型中使用的gas数量是通过固定比例{{ networks.moonbase.tx_weight_to_gas_ratio }}从交易的Substrate extrinsic权重值映射而来。通过此数值乘以单位gas价格来计算交易费用。此费用模型意味着通过以太坊API发送如基本转账等交易可能会比Substrate API更为便宜。
 
-### Fee History XXX 端点 {: #eth-feehistory-endpoint }
+### 费用记录 端点 {: #eth-feehistory-endpoint }
 
 Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory){target_blank} JSON-RPC端点作为对EIP-1559支持的一部分。
 
