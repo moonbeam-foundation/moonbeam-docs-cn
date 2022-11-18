@@ -72,9 +72,9 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 === "EIP-1559"
     ```
-    Gas Price = BaseFee + MaxPriorityFeePerGas < MaxFeePerGas ? 
-                BaseFee + MaxPriorityFeePerGas : 
-                MaxFeePerGas;
+    Gas Price = Base Fee + Max Priority Fee Per Gas< Max Fee Per Gas ? 
+                Base Fee + Max Priority Fee Per Gas: 
+                Max Fee Per Gas;
     Transaction Fee = (Gas Price * Transaction Weight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 === "Legacy"
@@ -101,13 +101,13 @@ extrinsics[extrinsic_number].events[event_number].data[1]
     250000000
     ```
 
-适用交易类型的`Gas Price`, `MaxFeePerGas`和`Max Priority Fee Per Gas`值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，且被截短后复制在下方：
+适用交易类型的`Gas Price`, `Max Fee Per Gas`和`Max Priority Fee Per Gas`值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，且被截短后复制在下方：
 
 === "EIP-1559"
-    |       EVM字段        |                                 JSON对象字段                                 |
-    |:--------------------:|:----------------------------------------------------------------------------:|
-    |     MaxFeePerGas     |     `extrinsics[extrinsic_number].args.transaction.eip1559.maxFeePerGas`     |
-    | MaxPriorityFeePerGas | `extrinsics[extrinsic_number].args.transaction.eip1559.maxPriorityFeePerGas` |
+    |         EVM字段          |                                 JSON对象字段                                 |
+    |:------------------------:|:----------------------------------------------------------------------------:|
+    |     Max Fee Per Gas      |     `extrinsics[extrinsic_number].args.transaction.eip1559.maxFeePerGas`     |
+    | Max Priority Fee Per Gas | `extrinsics[extrinsic_number].args.transaction.eip1559.maxPriorityFeePerGas` |
 
 === "Legacy"
     |  EVM字段  |                          JSON对象字段                           |
@@ -119,22 +119,22 @@ extrinsics[extrinsic_number].events[event_number].data[1]
     |:---------:|:----------------------------------------------------------------:|
     | Gas Price | `extrinsics[extrinsic_number].args.transaction.eip2930.gasPrice` |
 
-[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`BaseFee`是由网络自设的一个值。`EIP1559`类型交易的`BaseFee`目前在Moonbeam网络上是静态的，并有以下指定的值：
+[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。`EIP1559`类型交易的`Base Fee`目前在Moonbeam网络上是静态的，并有以下指定的值：
 
 === "Moonbeam"
-    |  变量   |    值    |
-    |:-------:|:--------:|
-    | BaseFee | 100 Gwei |
+    |   变量   |    值    |
+    |:--------:|:--------:|
+    | Base Fee | 100 Gwei |
 
 === "Moonriver"
-    |  变量   |   值   |
-    |:-------:|:------:|
-    | BaseFee | 1 Gwei |
+    |   变量   |   值   |
+    |:--------:|:------:|
+    | Base Fee | 1 Gwei |
 
 === "Moonbase Alpha"
-    |  变量   |   值   |
-    |:-------:|:------:|
-    | BaseFee | 1 Gwei |
+    |   变量   |   值   |
+    |:--------:|:------:|
+    | Base Fee | 1 Gwei |
 
 `Transaction Weight`是一类Substrate机制，用于验证给定交易在一个区块内所需的执行时间。对于所有交易类型，`Transaction Weight`可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
