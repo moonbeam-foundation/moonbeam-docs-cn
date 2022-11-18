@@ -72,7 +72,7 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 === "EIP-1559"
     ```
-    Gas Price = Base Fee + Max Priority Fee Per Gas< Max Fee Per Gas ? 
+    Gas Price = Base Fee + Max Priority Fee Per Gas < Max Fee Per Gas ? 
                 Base Fee + Max Priority Fee Per Gas: 
                 Max Fee Per Gas;
     Transaction Fee = (Gas Price * Transaction Weight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
