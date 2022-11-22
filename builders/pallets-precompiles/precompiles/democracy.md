@@ -31,6 +31,8 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
      {{networks.moonbase.precompiles.democracy}}
      ```
 
+--8<-- 'text/precompiles/security.md'
+
 ## 民主预编译Solidity接口 {: #the-democracy-solidity-interface }
 
 [DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}是一个能够用于Solidity合约与民主pallet交互的接口。预编译的精妙之处在于您无需学习Substrate API，就可以使用熟悉的以太坊界面与质押功能交互。

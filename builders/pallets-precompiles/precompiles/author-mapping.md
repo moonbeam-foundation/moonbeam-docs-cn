@@ -31,6 +31,8 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
      {{networks.moonbase.precompiles.author_mapping }}
      ```
 
+--8<-- 'text/precompiles/security.md'
+
 ## 作者映射Solidity接口 {: #the-solidity-interface }
 
 [`AuthorMappingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的方法交互。
