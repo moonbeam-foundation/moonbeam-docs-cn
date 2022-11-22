@@ -47,6 +47,8 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
  - **AuthorMapping** - 此类型的代理账户仅供收集人使用，将服务从一个服务迁移至另一个服务器
  - **IdentityJudgement** - 身份验证代理将允许代理账户判断和验证波卡上账户相关的个人信息
 
+--8<-- 'text/precompiles/security.md'
+
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
 ### 查看先决条件 {: #checking-prerequisites }

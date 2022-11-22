@@ -33,6 +33,8 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
      {{networks.moonbase.precompiles.batch }}
      ```
 
+--8<-- 'text/precompiles/security.md'
+
 ## 批量Solidity接口 {: #the-batch-interface }
 
 [`Batch.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。

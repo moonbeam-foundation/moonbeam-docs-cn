@@ -255,6 +255,8 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
      {{networks.moonbase.precompiles.xcm_transactor_legacy}}
      ```
 
+--8<-- 'text/precompiles/security.md'
+
 ### XCM-Transactor Solidity接口 {: #xcmtrasactor-solidity-interface } 
 
 [XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-transactor pallet进行交互。

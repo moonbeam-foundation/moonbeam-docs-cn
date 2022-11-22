@@ -39,6 +39,8 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
      | 技术委员会 | {{networks.moonbase.precompiles.collective_tech_committee }} |
      |  财政库委员会   |    {{networks.moonbase.precompiles.collective_treasury }}    |
 
+--8<-- 'text/precompiles/security.md'
+
 ## 团体Solidity接口 {: #the-call-permit-interface }
 
 [`Collective.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的5个方式进行交互。

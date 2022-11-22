@@ -19,6 +19,8 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 ![Precompiled Contracts Diagram](/images/builders/pallets-precompiles/precompiles/overview/overview-1.png)
 
+--8<-- 'text/precompiles/security.md'
+
 ## 预编译合约地址 {: #precompiled-contract-addresses }
 
 预编译合约是通过其地址并基于其原始网络来分类的。如果您将预编译地址转化至小数格式，并依据数值将其分类，则有以下几种类别：

@@ -31,6 +31,8 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 本指南将介绍质押预编译接口中的可用方法。此外，它将向您展示如何通过质押预编译和以太坊API与质押pallet进行交互。本指南中的示例是在Moonbase Alpha上完成的，但它们可以适用于Moonbeam 或Moonriver。
 
+--8<-- 'text/precompiles/security.md'
+
 ## 退出延迟 {: #exit-delays }
 
 前面提到的一些质押接口功能包含退出延迟，您必须等待延迟后才能执行请求。需要注意的退出延迟如下：

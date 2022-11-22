@@ -35,6 +35,8 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
+--8<-- 'text/precompiles/security.md'
+
 ## ERC-20接口 {: #the-erc20-interface }
 
 Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)接口遵循[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，即智能合约中Token的标准API接口。此标准定义了Token合约必须实现与不同应用程序互操作所需的功能和事件。
