@@ -5,7 +5,7 @@ description: 学习如何桥接资产，以及使用Axelar网络和API将您的M
 
 # Axelar Network
 
-![Axelar Moonbeam banner](/images/builders/integrations/bridges/axelar/axelar-banner.png)
+![Axelar Moonbeam banner](/images/builders/integrations/gmp/axelar/axelar-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -13,7 +13,7 @@ description: 学习如何桥接资产，以及使用Axelar网络和API将您的M
 
 Axelar为一个支持资产转移、[通用消息传递](https://docs.axelar.dev/dev/gmp-overview){target=_blank}和可组合性程序的完整堆栈转移层，其安全地连接所有区块链生态系统、应用、资产和用户，提供Web3的可互操作性。Axelar由去中心化网络的验证人、安全网关合约、统一翻译、路由架构以及一套适用于协议和应用的编程接口（APIs）。获取更多细节，请访问[技术堆栈图](https://axelar.network/blog/an-introduction-to-the-axelar-network){target=_blank}页面。
 
-![Axelar Technology Stack diagram](/images/builders/integrations/bridges/axelar/axelar-1.png)
+![Axelar Technology Stack diagram](/images/builders/integrations/gmp/axelar/axelar-1.png)
 
 Axelar API提供一个完整开发Web3应用的套件，确保开发者拥有他们开发所需的工具。通过这些工具和APIs，开发者能够使用Axelar网络以及API构建能够轻松在所有Axelar连接的生态中部署的dApp。换句话来说，Axelar将跨链互操作性浓缩为一组简单的API请求。
 
