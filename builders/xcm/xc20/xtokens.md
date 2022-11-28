@@ -80,7 +80,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
     - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的元数据](/builders/xcm/xc20/mintable-xc20/#retrieve-metadata-for-mintable-xc-20s){target=_blank}部分
 - 一些`xcUNIT` tokens。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将`DEV` tokens兑换成`xcUNIT`，Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议。
 
-![Moonbeam Swap xcUNITs](/images/builders/xcm/xc20/xtokens/xtokens-1.png)
+![Moonbeam Swap xcUNIT](/images/builders/xcm/xc20/xtokens/xtokens-1.png)
 
 要查看您的`xcUNIT`余额，您可以使用以下地址将XC-20添加至MetaMask：
 

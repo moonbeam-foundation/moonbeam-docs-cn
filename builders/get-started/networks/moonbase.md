@@ -44,7 +44,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ## 演示DApp {: #Demo-DApps }
 
-许多DApp已经部署在Moonbase Alpha，您能够试验各种应用和集成。您也可以通过 [Moonbase ERC20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank}或[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank} DApps获得多种测试Token。例如，需要测试XCM相关功能的情况下，[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}可以协助您获得跨链资产，如xcUNITs或xcKarura。在下面的表格中，您可以找到每个样本DApp，以及相应的URL和GitHub repository。
+许多DApp已经部署在Moonbase Alpha，您能够试验各种应用和集成。您也可以通过 [Moonbase ERC20 Minter](https://moonbase-minterc20.netlify.app/){target=_blank}或[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank} DApps获得多种测试Token。例如，需要测试XCM相关功能的情况下，[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}可以协助您获得跨链资产，如xcUNIT或xcKarura。在下面的表格中，您可以找到每个样本DApp，以及相应的URL和GitHub repository。
 
 ### 参考链接 {: #quick-links } 
 
@@ -68,7 +68,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
-[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNITs。请执行以下步骤完成交换：
+[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNIT。请执行以下步骤完成交换：
 
 1. 点击**Select a token**
 

@@ -107,7 +107,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
  - 您将要通过XCM-transactor pallet发送XCM的账户必须注册在给定索引中，以便能够通过主权账户的衍生账户进行操作。注册是通过根账户（Moonbase Alpha中的SUDO）完成的，所以您可以通过[联系我们](https://discord.gg/PfpUATX){target=_blank}进行注册。在本示例中，Alice的账号注册在索引`42`中
  - 通过XCM-transactor的远程调用需要目标链的Token作为手续费才能执行。因为此操作是在Moonbeam发起，所以您将需要保留Token的[XC-20](/builders/xcm/xc20/){target=_blank}表现形式。在本示例中，您正在发送XCM消息至中继链，因此您将需要`xcUNIT` Token（即Alphanet中继链Token `UNIT`的Moonbase Alpha表现形式）支付执行费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}（Moonbase Alpha 上的Uniswap V2演示版本）上兑换DEV Token以获取该Token
 
-![Moonbeam Swap xcUNITs](/images/builders/xcm/xc20/xtokens/xtokens-1.png)
+![Moonbeam Swap xcUNIT](/images/builders/xcm/xc20/xtokens/xtokens-1.png)
 
 要查看您的`xcUNIT`余额，您需要通过以下地址将XC-20添加至MetaMask。
 
