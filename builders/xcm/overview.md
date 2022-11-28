@@ -136,7 +136,7 @@ Moonbeam作为波卡生态系统中的平行链，XCM + VMP的组合将能够使
 
 所以，在波卡上的XCM信息执行将会转移特定数量的DOT至Moonbeam于波卡上的主权账户。当资产成功存入后，信息的第二部分将会被传送至Moonbeam。
 
-Moonbeam将会原地执行XCM信息内包含的指定动作。在此例子中为铸造和转帐同样数量的*xcDOT*（跨链DOT）至Alice指定的账户，也就是Alith。在目标区块链上执行XCM的费用已经在转移资产时使用部分资产支付（在此示例中为_xcDOTs_）。
+Moonbeam将会原地执行XCM信息内包含的指定动作。在此例子中为铸造和转帐同样数量的*xcDOT*（跨链DOT）至Alice指定的账户，也就是Alith。在目标区块链上执行XCM的费用已经在转移资产时使用部分资产支付（在此示例中为_xcDOT_）。
 
 ![Transfers from the Relay Chain to Moonbeam](/images/builders/xcm/overview/overview-5.png)
 
