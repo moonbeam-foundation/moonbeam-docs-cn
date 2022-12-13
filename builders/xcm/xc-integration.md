@@ -330,6 +330,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     Name: Glimmer
     Symbol: GLMR
     Decimals: 18
+    Existential Deposit: 1 (1 * 10^-18 GLMR)
     ```
 
 === "Moonriver"
@@ -337,6 +338,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     Name: Moonriver Token
     Symbol: MOVR
     Decimals: 18
+    Existential Deposit: 1 (1 * 10^-18 MOVR)
     ```
 
 === "Moonbase Alpha"
@@ -344,6 +346,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     Name: DEV
     Symbol: DEV
     Decimals: 18
+    Existential Deposit: 1 (1 * 10^-18 DEV)
     ```
 
 每个基于Moonbeam网络资产的Multilocation：
