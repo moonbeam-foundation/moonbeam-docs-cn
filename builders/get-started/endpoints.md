@@ -34,6 +34,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 - [Blast](#blast)
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
+- [UnitedBloc](#unitedbloc)
 <!-- - [Ankr](#ankr) -->
 
 ### Blast {: #blast }
@@ -80,6 +81,35 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 1. 在 **Apps** 菜单中单击您预先存在的应用程序
 2. 在 **Endpoint** 部分，选择 **Add new** 按钮并在下拉列表中搜索您想要的网络
 3. 将为您生成并显示您的新端点
+
+### UnitedBloc {: #unitedbloc }
+
+[UnitedBloc](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank} is a collective of community collators from both Moonbeam and Moonriver. To provide value for the community, they offer public RPC services for the Moonbeam, Moonriver, and Moonbase Alpha networks.
+
+The public endpoint service is served by eight geographically distributed bare metal servers globally balanced via GeoDNS and regionally load balanced with NGINX. As the service is public, there are no sign-up or API keys to manage.
+
+The collators involved in this initiative are:
+
+ - Blockshard (CH)
+ - BloClick (ES)
+ - BrightlyStake (IN)
+ - CertHum (US)
+ - GPValidator (PT)
+ - Hetavalidation (AU)
+ - Legend (AE)
+ - PathrockNetwork (DE)
+ - Polkadotters (CZ)
+ - SIK | crifferent.de (DE)
+ - StakeBaby (GR)
+ - StakeSquid (GE)
+ - TrueStaking (US)
+
+They also provide a [public Grafana dashboard](https://tinyurl.com/UnitedBloc-Dashboard){target=_blank} with some cool metrics.
+
+Check the [public endpoints section](#public-endpoints) to get the relevant URL. You can contact them via their [Telegram channel](https://t.me/+tRvy3z5-Kp1mMGMx){target=_blank}, or read more about their initiative on their [blogpost page](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank}.
+
+
+
 
 <!-- ### Ankr {: #ankr}
 
