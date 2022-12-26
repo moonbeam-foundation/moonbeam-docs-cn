@@ -89,6 +89,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 这项公用端点服务由8个地理位置上分散分布的服务器来支持。这些服务器运用GeoDNS实现全球平衡，NGINX实现区域负载平衡。因为此项服务是公用的，用户不需要注册或管理API密钥。
 
 这项提案的收集人包括：
+
  - Blockshard (CH)
  - BloClick (ES)
  - BrightlyStake (IN)
