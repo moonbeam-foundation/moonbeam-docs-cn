@@ -84,12 +84,11 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ### UnitedBloc {: #unitedbloc }
 
-[UnitedBloc](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank} is a collective of community collators from both Moonbeam and Moonriver. To provide value for the community, they offer public RPC services for the Moonbeam, Moonriver, and Moonbase Alpha networks.
+[UnitedBloc](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank} 是Moonbeam和Moonriver的社区收集人的一个集合。它以为Moonbeam、Moonriver和Moonbase Alpha网络提供公用的RPC服务的方式，为社区提供了价值。
 
-The public endpoint service is served by eight geographically distributed bare metal servers globally balanced via GeoDNS and regionally load balanced with NGINX. As the service is public, there are no sign-up or API keys to manage.
+这项公用端点服务由8个地理位置上分散分布的服务器来支持。这些服务器运用GeoDNS实现全球平衡，NGINX实现区域负载平衡。因为此项服务是公用的，用户不需要注册或管理API密钥。
 
-The collators involved in this initiative are:
-
+这项提案的收集人包括：
  - Blockshard (CH)
  - BloClick (ES)
  - BrightlyStake (IN)
@@ -104,12 +103,9 @@ The collators involved in this initiative are:
  - StakeSquid (GE)
  - TrueStaking (US)
 
-They also provide a [public Grafana dashboard](https://tinyurl.com/UnitedBloc-Dashboard){target=_blank} with some cool metrics.
+他们还有提供[Grafana dashboard](https://tinyurl.com/UnitedBloc-Dashboard){target=_blank}用以显示主要的数据度量。
 
-Check the [public endpoints section](#public-endpoints) to get the relevant URL. You can contact them via their [Telegram channel](https://t.me/+tRvy3z5-Kp1mMGMx){target=_blank}, or read more about their initiative on their [blogpost page](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank}.
-
-
-
+请参照上面的[公共端点](#public-endpoints) 部分查询相关的URL。您还可以通过他们的[Telegram频道](https://t.me/+tRvy3z5-Kp1mMGMx){target=_blank}联系他们，或者在他们的[博客页面](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank}阅读他们详细的提案。
 
 <!-- ### Ankr {: #ankr}
 
