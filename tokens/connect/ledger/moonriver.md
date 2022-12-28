@@ -22,6 +22,10 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 --8<-- 'text/ledger/checking-prereqs.md'
 
+如果您更偏向使用MetaMask作为媒介来完成Ledger设备与Moonbeam之间的操作，请确保您的MetaMask[已连接至Moonbeam](/tokens/connect/metamask/){target=_blank}。
+
+自[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/){target=_blank}发布后，将Ledger设备连接至Chrome的操作变得相对简单，您只需要安装最新版本的MetaMask即可。
+
 ## 安装Moonriver Ledger Live App {: install-the-ledger-live-app }
 
 Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要先安装Ethereum app。请注意Moonriver app仅适用于Moonriver网络，并不适用于Moonbeam或Moonbase Alpha。
