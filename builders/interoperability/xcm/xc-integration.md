@@ -5,7 +5,7 @@ description: 学习如何与基于Moonbeam的网络建立跨链集成，包括�
 
 # 与Moonbeam建立XC集成
 
-![XCM Overview Banner](/images/builders/xcm/xc-integration/xc-integration-banner.png)
+![XCM Overview Banner](/images/builders/interoperability/xcm/xc-integration/xc-integration-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -50,7 +50,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 3. 当第2步的提案通过后，Moonbeam将执行这些提案：
     1. 接受从Moonriver/Moonbeam传入的HRMP通道
     2. 发起从Moonriver/Moonbeam传出的HRMP通道提案
-    3. 将资产注册为[XC-20 token](/builders/xcm/xc20/overview){target=_blank}格式
+    3. 将资产注册为[XC-20 token](/builders/interoperability/xcm/xc20/overview){target=_blank}格式
 
     常规执行时间如下：
       - **Moonriver** - 约为{{ networks.moonriver.democracy.vote_period.days }}天的投票期 + {{ networks.moonriver.democracy.enact_period.days }}天的执行期
@@ -173,7 +173,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         
   6. 复制上述提及`Transact` XCM指令所需的编码调用数据。例如，在Moonbase Alpha上的编码调用数据为`0x3300e8030000e803000000900100`
 
-![Get open HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-1.png)
+![Get open HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/interoperability/xcm/xc-integration/xc-integration-1.png)
 
 ### 发送XCM消息至中继链 {: #send-an-xcm-message-to-the-relay-chain-open }
 
@@ -259,7 +259,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 !!! 注意事项
     使用上述示例中的值和Moonbase Alpha中继链的主权账户地址，extrinsic的编码调用数据为`0x1c000101000214000400000000070010a5d4e81300000000070010a5d4e800060002286bee383300e8030000e803000000900100140d0100040001010070617261e8030000000000000000000000000000000000000000000000000000`。
 
-![Open HRMP channel XCM message on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-2.png)
+![Open HRMP channel XCM message on Polkadot.js Apps](/images/builders/interoperability/xcm/xc-integration/xc-integration-2.png)
 
 消息发送后，中继链将执行内容和打开通道的请求。请您在请求打开通道后在[Telegram](https://t.me/Moonbeam_Official){target=_blank} or [Discord](https://discord.gg/PfpUATX){target=_blank}联系我们，请求需通过Moonbeam方接收后才可执行。
 
@@ -292,7 +292,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
         ```    
 4. 复制编码调用数据，将用于`Transact` XCM指令。例如，在Moonbase Alpha上的编码调用数据为`0x3301e8030000`
 
-![Get accept HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-3.png)
+![Get accept HRMP channel relay chain call data on Polkadot.js Apps](/images/builders/interoperability/xcm/xc-integration/xc-integration-3.png)
 
 ### 发送XCM消息至中继链 {: #send-an-xcm-message-to-the-relay-chain-accept }
 
@@ -300,7 +300,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 请返回创建HRMP通道部分，并遵循[发送XCM消息至中继链](#send-an-xcm-message-to-the-relay-chain-open)的步骤进行操作，您需要将第四步的编码调用数据修改为准确的数据。
 
-![Accept HRMP channel XCM message on Polkadot.js Apps](/images/builders/xcm/xc-integration/xc-integration-4.png)
+![Accept HRMP channel XCM message on Polkadot.js Apps](/images/builders/interoperability/xcm/xc-integration/xc-integration-4.png)
 
 ## 在您的平行链注册Moonbeam资产 {: #register-moonbeams-asset-on-your-parachain }
 
@@ -405,9 +405,9 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 - 资产表示（以xc为前缀）
 - 小数位数
 
-资产注册后，团队需确认。另外，团队将提供资产ID，[XC-20预编译](/builders/xcm/xc20/overview/#the-erc20-interface){target=_blank}地址，并设置`UnitsPerSecond`，即每秒执行XCM消息所需的Token数量。在注册时，XCM转账的目标成本为`$0.02`。`UnitsPerSecond`可能会随着Token价格的波动而更新。
+资产注册后，团队需确认。另外，团队将提供资产ID，[XC-20预编译](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}地址，并设置`UnitsPerSecond`，即每秒执行XCM消息所需的Token数量。在注册时，XCM转账的目标成本为`$0.02`。`UnitsPerSecond`可能会随着Token价格的波动而更新。
 
-您的XC-20预编译地址是通过将资产ID十进制数字转换为十六进制来计算的，并在前面加上F，直到您获得加上“0x"后达到40个字符长度的地址。关于如何计算XC-20预编译，请参考外部XC-20教程的[计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}的部分。
+您的XC-20预编译地址是通过将资产ID十进制数字转换为十六进制来计算的，并在前面加上F，直到您获得加上“0x"后达到40个字符长度的地址。关于如何计算XC-20预编译，请参考外部XC-20教程的[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}的部分。
 
 当资产成功注册后，您可以尝试将您的Token从平行链转移至Moonbase Alpha。
 
@@ -439,6 +439,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 ## 在Moonbeam上使用您的资产 {: #use-your-asset-on-moonbeam }
 
-[XC-20s](/builders/xcm/xc20/){target=_blank}是使用[ERC-20接口](/builders/xcm/xc20/overview/#the-erc20-interface){target=_blank}的Substrate资产。这意味着需要将其添加至MetaMask，并可以使用生态系统中的任何EVM DApp进行组合。团队可以协助您与任何XC-20集成相关的Dapp连接起来。
+[XC-20s](/builders/interoperability/xcm/xc20/){target=_blank}是使用[ERC-20接口](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}的Substrate资产。这意味着需要将其添加至MetaMask，并可以使用生态系统中的任何EVM DApp进行组合。团队可以协助您与任何XC-20集成相关的Dapp连接起来。
 
 若您需要DEV Token（Moonbase Alpha的原生Token）来使用您的XC-20资产，您可以从 [Moonbase Alpha Faucet](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=_blank}获取（每24小时会分配 {{ networks.moonbase.website_faucet_amount }}枚DEV）。若您需要更多的Token，请在[Telegram](https://t.me/Moonbeam_Official){target=_blank} or [Discord](https://discord.gg/PfpUATX){target=_blank}上联系Moonbeam团队。

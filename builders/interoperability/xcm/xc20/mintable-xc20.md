@@ -5,11 +5,11 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 # 可铸造XC-20
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-banner.png)
+![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-banner.png)
 
 ## 概览 {: #introduction }
 
-如同[XC-20概况](/builders/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
+如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/interoperability/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/interoperability/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
 
 所有XC-20核心皆为Substrate类型资产。一般而言，开发者需要通过Substrate API与任何Substrate资产交互。然而，Moonbeam移除了Substrate的相关部分并让用户和开发者能够通过预编译合约的ERC-20接口与此类资产交互。因此，开发者能够使用标准的以太坊开发者工具与这些资产交互。可铸造XC-20包含ERC-20接口的扩展以及一些关于管理资产和元数据设置（如名称、象征和资产小数位数等）的信息。此外，同样有一些额外的角色供资产进行注册和管理。
 
@@ -57,7 +57,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 1.   在**selected state query**下拉菜单中，选择**localAssets**
 --8<-- 'text/xc-20/list-of-assets.md'
 
-![Fetch list of cross-chain assets](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-1.png)
+![Fetch list of cross-chain assets](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-1.png)
 
 点击按钮后结果将会显示，包含Moonbase Alpha上已注册的可铸造XC-20资产的资产ID以及其他相关信息。资产ID将会自动生成并为通过BLKAE2散列的随机数以代表创建的本地资产，其ID将会在其后用于访问资产以及计算预编译地址。
 
@@ -68,7 +68,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 1. 在**selected state query**下拉菜单中，选择**localAssets**
 --8<-- 'text/xc-20/retrieve-metadata.md'
 
-![Get asset metadata](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-2.png)
+![Get asset metadata](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-2.png)
 
 在元数据的结果显现后，您还能看到与TestLoacalAsset可铸造XC-20资产对应的资产ID。
 
@@ -92,7 +92,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 ## 注册一个可铸造XC-20资产 {: #register-a-mxc-20 }
 
-这一部分将会引导您如何在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}注册一个资产并使用[Remix](https://remix.ethereum.org/){target=_blank}与可铸造XC-20资产特定的函数交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面的[如何使用Remix与预编译合约交互](/builders/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
+这一部分将会引导您如何在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}注册一个资产并使用[Remix](https://remix.ethereum.org/){target=_blank}与可铸造XC-20资产特定的函数交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面的[如何使用Remix与预编译合约交互](/builders/interoperability/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
@@ -133,7 +133,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 8. 复制**preimage hash**并用于下个步骤
 9. 点击**+ Submit preimage**
 
-![Create preimage to register the mintable XC-20](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-3.png)
+![Create preimage to register the mintable XC-20](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-3.png)
 
 当原像（Preimage）已经成功创建并提交后，您需要完整地提交提案。您可以点击**+ Submit proposal**并跟随以下步骤进行操作：
 
@@ -145,7 +145,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 4. 点击**+ Submit proposal**
 
-![Create proposal to register the mintable XC-20](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-4.png)
+![Create proposal to register the mintable XC-20](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-4.png)
 
 您将会看到弹出视窗并要求签署提案，当您签署成功后您将会在**Democracy**页面的**proposals**一栏下方见到您的提案
 
@@ -181,27 +181,27 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 7. 设置资产位数，其不必与Moonbeam原生Token一样为18位数，您可以根据需求配置
 8. 点击**Submit Transaction**
 
-![Set metadata for mintable XC-20](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-5.png)
+![Set metadata for mintable XC-20](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-5.png)
 
 您可以使用**Extrinsics**页面使用其他函数如铸造Token、提名团队、锁定以及解锁资产/账户等。
 
 ### 使用Remix与可铸造XC-20资产特定功能交互 {: #interact-with-the-precompile-using-remix }
 
-如前所示，此部分教程将仅涵盖Token合约拥有者以及具有特定[角色](#mintable-xc-20-roles)的指定账户如何与可铸造XC-20资产的特定功能交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面中的[使用Remix与预编译合约交互](/builders/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
+如前所示，此部分教程将仅涵盖Token合约拥有者以及具有特定[角色](#mintable-xc-20-roles)的指定账户如何与可铸造XC-20资产的特定功能交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面中的[使用Remix与预编译合约交互](/builders/interoperability/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
 
 首先，您需要添加`LocalAsset`至[Remix](https://remix.ethereum.org/){target=_blank}，接着跟随以下步骤进行操作：
 
 1. 获得[LocalAsset.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}复制文件
 2. 将其内容贴入Remix文件并命名为**ILocalAsset.sol**
 
-![Load the interface in Remix](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-6.png)
+![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-6.png)
 
 当您在Remix运行接口，您需要编译它：
 
 1. 点击页面上方**Compile**标签
 2. 编译**ILocalAsset.sol**文件
 
-![Compiling IERC20.sol](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-7.png)
+![Compiling IERC20.sol](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-7.png)
 
 如果接口被成功编译，您将能够在**Compile**标签旁看到绿色打勾符号。
 
@@ -213,11 +213,11 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 4. 确认已在**CONTRACT**下拉选单中选择**ILocalAsset - ILocalAsset.sol**。由于此为预编译合约，因此并不需要部署任何节点。相反地，我们将在**At Address**字段提供预编译合约的地址
 5. 提供在[计算预编译合约地址](#calculate-precompile-address)部分获得的XC-20预编译合约地址，`0xFFFFFFFE6D1492E39F1674F65A6F600B4589ABD7`，并点击**At Address**
 
-![Access the address](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-8.png)
+![Access the address](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-8.png)
 
 !!! 注意事项
     您可以通过搜寻引擎查询可用工具自行校验XC-20预编译合约的地址。当地址校验成功后，您可以再将其用于**At Address**字段。
 
 可铸造XC-20资产的预编译合约将会出现在**Deployed Contracts**的列表下方，现在您可以自由使用任何可用的函数。
 
-![Interact with the precompile functions](/images/builders/xcm/xc20/mintable-xc20/mintable-xc20-9.png)
+![Interact with the precompile functions](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-9.png)
