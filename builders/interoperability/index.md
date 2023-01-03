@@ -1,6 +1,6 @@
 ---
 title: 互操作性
-description: Learn about interoperability on Moonbeam by diving into how cross-consensus messaging (XCM) works and exploring available cross-chain protocols.
+description: 通过深入了解跨链共识消息(XCM)的工作原理以及探索已有的跨链协议来学习Moonbeam上的互操作性。
 template: main.html
 ---
 
