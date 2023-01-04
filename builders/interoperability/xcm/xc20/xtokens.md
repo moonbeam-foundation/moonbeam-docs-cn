@@ -5,7 +5,7 @@ description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另�
 
 # 使用X-Tokens Pallet发送XC-20s
 
-![x-tokens Precompile Contracts Banner](/images/builders/xcm/xc20/xtokens/xtokens-banner.png)
+![x-tokens Precompile Contracts Banner](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -65,7 +65,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 !!! 注意事项
     每条平行链皆能够通过pallet允许/禁止特定函数。因此，开发者需要确认使用的函数是被平行链允许的。相反来说，如果使用了被禁止的函数，交易将会如同`system.CallFiltered`显示一般失败。
 
-本教程将以转移`xcUNIT` token为例。`xcUNIT`是Alphanet中继链Token `UNIT`的[XC-20](/builders/xcm/xc20/overview){target=_blank}形式，也是[外部XC-20](/builders/xcm/xc20/xc20){target=_blank}。本教程也同样适用于其他外部XC-20或[可铸造XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}。
+本教程将以转移`xcUNIT` token为例。`xcUNIT`是Alphanet中继链Token `UNIT`的[XC-20](/builders/interoperability/xcm/xc20/overview){target=_blank}形式，也是[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}。本教程也同样适用于其他外部XC-20或[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}。
 
 ### 查看先决条件 {: #xtokens-check-prerequisites}
 
@@ -74,13 +74,13 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 - 一个[已添加至Polkadot.js的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}，且该账户拥有一些[DEV tokens](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
 - 您要转移资产的资产ID：
     - 对于外部XC-20，您可以从[Polkadot.js Apps的资产ID列表](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}中获取
-    - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的列表](/builders/xcm/xc20/mintable-xc20/#retrieve-list-of-mintable-xc-20s){target=_blank}部分
+    - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的列表](/builders/interoperability/xcm/xc20/mintable-xc20/#retrieve-list-of-mintable-xc-20s){target=_blank}部分
 - 您要转移资产的位数：
-    - 对于外部XC-20，请查阅[获取外部XC-20资产的元数据](/builders/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}部分
-    - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的元数据](/builders/xcm/xc20/mintable-xc20/#retrieve-metadata-for-mintable-xc-20s){target=_blank}部分
+    - 对于外部XC-20，请查阅[获取外部XC-20资产的元数据](/builders/interoperability/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}部分
+    - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的元数据](/builders/interoperability/xcm/xc20/mintable-xc20/#retrieve-metadata-for-mintable-xc-20s){target=_blank}部分
 - 一些`xcUNIT` tokens。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将`DEV` tokens兑换成`xcUNIT`，Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议。
 
-![Moonbeam Swap xcUNIT](/images/builders/xcm/xc20/xtokens/xtokens-1.png)
+![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-1.png)
 
 要查看您的`xcUNIT`余额，您可以使用以下地址将XC-20添加至MetaMask：
 
@@ -90,14 +90,14 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 您可以通过以下教程查看如何计算预编译地址：
 
-- [计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
-- [计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
+- [计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
+- [计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
 
 ###  X-Tokens转移函数 {: #xtokens-transfer-function}
 
 在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
-导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项（也可以适用于[可铸造XC-20s](/builders/xcm/xc20/mintable-xc20/){target=_blank}）：
+导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项（也可以适用于[可铸造XC-20s](/builders/interoperability/xcm/xc20/mintable-xc20/){target=_blank}）：
 
 1. 选取您希望转移XCM的账户
 2. 选择**xTokens** pallet
@@ -123,7 +123,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 !!! 注意事项
     以上extrinsict配置的编码调用数据为`0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300ca9a3b00000000`，这同样包含一个您需要改变的接收者函数。
 
-![XCM x-tokens Transfer Extrinsic](/images/builders/xcm/xc20/xtokens/xtokens-2.png)
+![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-2.png)
 
 当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣除用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
 
@@ -179,7 +179,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 !!! 注意事项
     以上extrinsict配置的编码调用数据为`0x1e010100010000070010a5d4e80101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300ca9a3b00000000`，这同样包含一个您需要改变的接收者函数。
 
-![XCM x-tokens Transfer Extrinsic](/images/builders/xcm/xc20/xtokens/xtokens-3.png)
+![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-3.png)
 
 当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣取用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
 
@@ -211,8 +211,8 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 此接口包含以下函数：
 
  - **transfer**(*address* currencyAddress, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-function)中提及的`transfer`函数。然而，在使用币种ID之外，您需要为`currencyAddress`提供资产预编译地址：
-    - 对于[外部XC-20](/builders/xcm/xc20/xc20){target=_blank}，您可以提供[XC-20预编译地址](/builders/xcm/xc20/xc20/#current-xc20-assets){target=_blank}
-    - 对于[可铸造XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}，您可以遵循[计算预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}的操作说明
+    - 对于[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}，您可以提供[XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#current-xc20-assets){target=_blank}
+    - 对于[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}，您可以遵循[计算预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}的操作说明
     - 对于原生Token（如GLMR、MOVR和DEV），您可以提供[ERC-20预编译](/builders/build/canonical-contracts/precompiles/erc20/#the-erc20-interface){target=_blank}地址，即`{{networks.moonbeam.precompiles.erc20 }}`
  
     `destination` multilocation将会以一种特殊形式构建（我们将在下一部分提及）

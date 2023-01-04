@@ -15,6 +15,8 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 您可以参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}获取关于安装和运行自己的Sidecar服务实例，以及如何为Moonbeam交易编码Sidecar区块的更多细节。
 
+**请注意，此页面信息假定您运行的是版本{{ networks.moonbase.substrate_api_sidecar.stable_version }} 的Substrate Sidecar REST API。**
+
 ## Substrate API交易费用 {: #substrate-api-transaction-fees }
 
 Moonbeam上通过Substrate API发送的交易费用可直接从Sidecar block JSON对象读取。嵌套结构如下所示：
@@ -92,14 +94,8 @@ extrinsics[extrinsic_number].events[event_number].data[1]
     ```
     86298000
     ```
-=== "Moonriver"
-    ```
-    86298000
-    ```
-=== "Moonbase Alpha"
-    ```
-    250000000
-    ```
+
+**RT2000升级已修复权重不匹配问题。** 这意味着对于运行RT2000升级版的网络，您无需添加任何数。报告的值应是正确的，并可用于先前展示的计算。
 
 适用交易类型的`Gas Price`, `Max Fee Per Gas`和`Max Priority Fee Per Gas`值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，且被截短后复制在下方：
 
@@ -149,7 +145,7 @@ extrinsics[extrinsic_number].events[event_number].data[0].weight
 ```
 
 !!! note
-    请记住，Runtime190X存在`Transaction Weight`不匹配。您需要为它的值添加一个常量。查看[计算以太坊API交易费用](#calculating-ethereum-api-transaction-fees)了解更多信息。
+    请记住，Runtime190X存在`Transaction Weight`不匹配。您需要为它的值添加一个常量。查看[计算以太坊API交易费用](#calculating-ethereum-api-transaction-fees)了解更多信息。随后的RT2000升级修复了该问题。
 
 ### 与以太坊的关键性差异 {: #ethereum-api-transaction-fees}
 

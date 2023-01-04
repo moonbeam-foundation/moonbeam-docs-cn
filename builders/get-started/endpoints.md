@@ -34,6 +34,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 - [Blast](#blast)
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
+- [UnitedBloc](#unitedbloc)
 <!-- - [Ankr](#ankr) -->
 
 ### Blast {: #blast }
@@ -80,6 +81,32 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 1. 在 **Apps** 菜单中单击您预先存在的应用程序
 2. 在 **Endpoint** 部分，选择 **Add new** 按钮并在下拉列表中搜索您想要的网络
 3. 将为您生成并显示您的新端点
+
+### UnitedBloc {: #unitedbloc }
+
+[UnitedBloc](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank}是Moonbeam和Moonriver社区收集人的一个集合。它以为Moonbeam、Moonriver和Moonbase Alpha网络提供公用RPC服务的方式，为社区提供了价值。
+
+这项公用端点服务由8个地理位置上分散分布的服务器来支持。这些服务器运用GeoDNS实现全球平衡，NGINX实现区域负载平衡。由于此项服务是公用的，用户不需要注册或管理API密钥。
+
+这项提案的收集人包括：
+
+ - Blockshard (CH)
+ - BloClick (ES)
+ - BrightlyStake (IN)
+ - CertHum (US)
+ - GPValidator (PT)
+ - Hetavalidation (AU)
+ - Legend (AE)
+ - PathrockNetwork (DE)
+ - Polkadotters (CZ)
+ - SIK | crifferent.de (DE)
+ - StakeBaby (GR)
+ - StakeSquid (GE)
+ - TrueStaking (US)
+
+他们同时提供[Grafana dashboard](https://tinyurl.com/UnitedBloc-Dashboard){target=_blank}用以显示主要的数据度量。
+
+请参照上面的[公共端点](#public-endpoints) 部分查询相关的URL。您还可以通过他们的[Telegram频道](https://t.me/+tRvy3z5-Kp1mMGMx){target=_blank}联系他们，或者在他们的[博客页面](https://medium.com/@daniel_96988/unitedbloc-rpc-c84972f69457){target=_blank}阅读他们详细的提案。
 
 <!-- ### Ankr {: #ankr}
 
