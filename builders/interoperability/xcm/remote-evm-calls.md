@@ -5,11 +5,11 @@ description: 如何通过XCM从任何已建立XCM通道的波卡平行链远程�
 
 # 通过XCM远程调用EVM
 
-![Remote EVM Calls Banner](/images/builders/xcm/remote-evm-calls/xcmevm-banner.png)
+![Remote EVM Calls Banner](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-banner.png)
 
 ## 概览 {: #introduction} 
 
-[XCM-transactor pallet](/builders/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
+[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
 
 Moonbeam的EVM仅能通过[Ethereum pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}访问。在许多事情外，这个pallet在将交易放入交易池前处理交易的某些验证步骤。接着，它会在将池子中的交易插入区块之前执行其他的验证步骤。最后，它会通过`transact`函数提供接口以执行经过验证的交易。以上所有步骤在结构和签名机制方面都遵循与以太坊交易相同的步骤。
 
@@ -19,12 +19,12 @@ Moonbeam的EVM仅能通过[Ethereum pallet](https://github.com/paritytech/fronti
 
 下列流程图描绘了通过XCM进行常规和远程EVM调用的路径：
 
-![Happy parth for regular and remote EVM calls through XCM](/images/builders/xcm/remote-evm-calls/xcmevm-1.png)
+![Happy parth for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
 
 本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
 
 !!! 注意事项
-    远程EVM调用通过[XCM-transactor pallet](/builders/xcm/xcm-transactor/){target=_blank}完成。因此，建议您在尝试通过XCM执行远程EVM调用之前熟悉XCM-transactor概念。
+    远程EVM调用通过[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}完成。因此，建议您在尝试通过XCM执行远程EVM调用之前熟悉XCM-transactor概念。
 
 **请注意，通过XCM对Moonbeam执行EVM的远程调用仍在积极开发中**。此外，**开发人员必须了解，发送不正确的XCM消息将导致资金损失。**因此，在迁移到生产环境之前须在测试网上测试XCM功能。
 
@@ -34,7 +34,7 @@ Moonbeam的EVM仅能通过[Ethereum pallet](https://github.com/paritytech/fronti
 
  - **衍生账户** — 从另一个帐户衍生的帐户。衍生账户是无密钥的，也就是私钥未知。因此，与XCM特定用例相关的衍生账户只能通过XCM相关的extrinsics访问。对于远程的EVM调用，主要类型如下：
      - **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
- - **交换信息** — 与XCM-transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM-transactor就计算费用数值，并向XCM-transactor extrinsic的发送方收取相应[XC-20 Token](/builders/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
+ - **交换信息** — 与XCM-transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM-transactor就计算费用数值，并向XCM-transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
 
 ## 通过XCM执行常规和远程EVM调用的差异 {: #differences-regular-remote-evm}
 
@@ -93,7 +93,7 @@ Ethereum-XCM pallet提供以下extrinsics（函数），可以通过`Transact`�
 
 为了能够从中继链在Polkadot.js应用程序中发送调用请求，您需要具备以下条件：
 
- - 一个在中继链上拥有资金（`UNIT`）的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}以支付交易费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}上交换DEV Token（Moonbase Alpha的原生Token）来获得一些`xcUNIT`，此为先前在Moonbase Alpha演示的克隆Uniswap-V2。接着[将它们发送到中继链](/builders/xcm/xc20/xtokens/){target=_blank}。此外，您也可以[联系我们](https://discord.gg/PfpUATX){target=_blank}直接获取一些`UNIT` Token
+ - 一个在中继链上拥有资金（`UNIT`）的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}以支付交易费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}上交换DEV Token（Moonbase Alpha的原生Token）来获得一些`xcUNIT`，此为先前在Moonbase Alpha演示的克隆Uniswap-V2。接着[将它们发送到中继链](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}。此外，您也可以[联系我们](https://discord.gg/PfpUATX){target=_blank}直接获取一些`UNIT` Token
  - 为**multilocation衍生账户**提供资金，您可以按照[下一部分](#calculate-multilocation-derivative){target=_blank}中的步骤获得该账户。该账户必须有足够的DEV Token（或Moonbeam/Moonriver网络中的GLMR/MOVR）来支付远程EVM调用的XCM执行成本。请注意，此衍生账户是将发送远程EVM调用的帐户（`msg.sender`）。因此，帐户必须满足正确执行EVM调用所需的任何条件。例如，如果您正在执行ERC-20转账，请确保拥有任何相关的ERC-20 Token
 
 !!! 注意事项
@@ -193,7 +193,7 @@ ts-node calculateMultilocationDerivative.ts \
 !!! 注意事项
     以上调用配置的编码调用数据为`0x260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
 
-![Ethereum-XCM pallet encoded call data](/images/builders/xcm/remote-evm-calls/xcmevm-2.png)
+![Ethereum-XCM pallet encoded call data](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-2.png)
 
 ### 为远程XCM执行构建XCM {: #build-xcm-remote-evm}
 
@@ -274,7 +274,7 @@ ts-node calculateMultilocationDerivative.ts \
 !!! 注意事项
     以上调用配置的编码调用数据为`0x630001000100a10f020c00040000010403001300008a5d78456301130000010403001300008a5d784563010006010300286bee7901260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
 
-![Remote XCM Call from Relay Chain](/images/builders/xcm/remote-evm-calls/xcmevm-3.png)
+![Remote XCM Call from Relay Chain](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-3.png)
 
 一旦交易处理完毕，您可以在[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x2a0e40a2e5261e792190826ce338ed513fe44dec16dd416a12f547d358773f98){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2.api.moonbase.moonbeam.network#/explorer/query/0x7570d6fa34b9dccd8b8839c2986260034eafef732bbc09f8ae5f857c28765145){target=_blank}查看相关extrinsics和事件。
 
