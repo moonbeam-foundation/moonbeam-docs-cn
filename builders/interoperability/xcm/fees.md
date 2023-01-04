@@ -5,7 +5,7 @@ description: 学习XCM指令的内容，包含如何处理XCM执行费用以及�
 
 # Moonbeam上的XCM费用
 
-![XCM Fees Banner](/images/builders/xcm/fees/fees-banner.png)
+![XCM Fees Banner](/images/builders/interoperability/xcm/fees/fees-banner.png)
 
 ## 概览 {: #introduction}
 
@@ -250,7 +250,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 
 考虑Alice在Moonbeam上向Alith的账户发送DOT的场景，费用从Alith收到的xcDOT金额中收取。要确定支付多少费用，Moonbeam使用了一个名为`UnitsPerSecond`的概念，代表网络在XCM执行时间内每秒收取的Token单位（包含小数）。 Moonbeam（可能还有其他平行链）将使用此概念来确定使用与其储备不同的资产执行XCM的费用。
 
-此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Statemine](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fstatemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
+此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Statemine](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fstatemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
 
 要找出给定的资产是否在`UnitsPerSecond`列表中，您可以使用`assetManager.assetTypeUnitsPerSecond`函数并输入想要查看的资产的multilocation。
 
@@ -263,7 +263,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 3. 在**Option**下方输入资产ID或是关闭**include option**以移除所有资产的信息。在本教程中将会获得xcUNIT的信息，其资产ID为`42259045809535163221576417993425387648`
 4. 点击**+**按钮提交查询
 
-![Get the xcUNIT asset multilocation](/images/builders/xcm/fees/fees-1.png)
+![Get the xcUNIT asset multilocation](/images/builders/interoperability/xcm/fees/fees-1.png)
 
 您可以使用查询结果，并将其用于查询**assetTypeUnitesPerSecond** extrinsic：
 
@@ -276,7 +276,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 
 xcDOT的`UnitsPerSecond`数值为`{{ networks.moonbeam.xcm.units_per_second.xcdot.transfer }}`。
 
-![Get the xcUNIT units per second value](/images/builders/xcm/fees/fees-2.png)
+![Get the xcUNIT units per second value](/images/builders/interoperability/xcm/fees/fees-2.png)
 
 请记得，权重的单位定义为执行时间的一皮秒，以下为定义执行时间的公式：
 
@@ -292,7 +292,7 @@ ExecutionTime = ({{ networks.moonbeam.xcm.instructions.weight_units.numbers_only
 
 这代表4个XCM指令需花费`{{ networks.moonbeam.xcm.message.transfer.exec_time }}`秒的区块执行时间。
 
-要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}查询资产的单位位数。
+要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/interoperability/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}查询资产的单位位数。
 
 区块执行的公式可以用于决定Alice转移DOT至Alith在Moonbeam上账户所需的花费，以下为总花费的计算公式：
 
@@ -310,18 +310,18 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 ## XCM-Transactor费用 {: #xcm-transactor-fees }
 
-[XCM-transactor pallet](/builders/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
+[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
 
 开发者有两种方法通过pallet远程交易：
 
-1. [`transactThroughDerivative`](/builders/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}
+1. [`transactThroughDerivative`](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}
 
-2. [`transactThroughSigned`](/builders/xcm/xcm-transactor/#xcmtransactor-transact-through-signed){target=_blank}，调用者在目标链上的账户为一个multilocation原生的账户，且必须要拥有足够支付XCM执行费用，加上其他用于远程执行函数调度的费用
+2. [`transactThroughSigned`](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-signed){target=_blank}，调用者在目标链上的账户为一个multilocation原生的账户，且必须要拥有足够支付XCM执行费用，加上其他用于远程执行函数调度的费用
 
 一般而言，XCM指令通常包含以下远程执行：
 
- - 首个指令将处理原链上的Token。这可以为将Token转移至某个主权账户，或是销毁相关的[XC-20资产](/builders/xcm/xc20/overview/){target=_blank}，让其可以被用于目标链。这些指令将会在原链上执行
- - [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}（可选） - 使用指令中提供的multilocation来改变起点。这仅用于`transactThroughSigned`和`transactThroughSignedMultilocation`函数，因为来源不再是主权账户，而是[multilocation衍生账户](/builders/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}
+ - 首个指令将处理原链上的Token。这可以为将Token转移至某个主权账户，或是销毁相关的[XC-20资产](/builders/interoperability/xcm/xc20/overview/){target=_blank}，让其可以被用于目标链。这些指令将会在原链上执行
+ - [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}（可选） - 使用指令中提供的multilocation来改变起点。这仅用于`transactThroughSigned`和`transactThroughSignedMultilocation`函数，因为来源不再是主权账户，而是[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}
  - [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 在目标链上执行。移除资产并将其放于待使用
  - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在目标链上执行，将会把保存资产拿出以支付执行费用，支付的费用由目标链决定
  - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} - 在目标链执行，自给定的原链调用编码的调用数据
@@ -332,7 +332,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 通过衍生函数交易包含3个XCM指令：[`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank}、[`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}以及[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}。
 
-在[通过主权衍生账户进行交易](/builders/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM交易者pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
+在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM交易者pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
 
 您可以想像以下情景：Alice想要从Moonbeam使用通过主权extrinsic在波卡中进行远程交易（她已经在她的账户中注册了一个索引）。要预估从Alice的账户中将销毁多少XC-20 Token，您需要检查特定于中继链的交易信息。因此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
@@ -342,7 +342,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 4. 在**interior**选取`Here`
 5. 点击 **+**
 
-![Get the Transact Through Derivative Weight Info for Polkadot](/images/builders/xcm/fees/fees-3.png)
+![Get the Transact Through Derivative Weight Info for Polkadot](/images/builders/interoperability/xcm/fees/fees-3.png)
 
 在获得的回应中，您可以看到`transactExtraWeight`为`{{ networks.polkadot.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的三个XCM指令所需的权重。接下来，您需要找到该特定链的`UnitsPerSecond`。在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}，设置以下选项：
 
@@ -352,7 +352,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 4. 在**interior**选取`Here`
 5. 点击 **+**
 
-![Get the Units Per Second for Transact Through Derivative for Polkadot](/images/builders/xcm/fees/fees-4.png)
+![Get the Units Per Second for Transact Through Derivative for Polkadot](/images/builders/interoperability/xcm/fees/fees-4.png)
 
 请注意，`UnitsPerSecond`与在[中继链XCM费用计算](#polkadot)部分所预估的花费相关，或是如果是其他平行链则跟[权重单位的Wei](#moonbeam-reserve-assets)相关。如同先前，计算相关的XCM执行费用与`transactExtraWeight`乘以`UnitsPerSecond`一样简单明了：
 
@@ -374,7 +374,7 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_message.transact.planck_dot_cost }} / 10
 
 通过签署函数进行的交易（multilocation衍生账户）由4个XCM指令组成：[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}、[`WithdrawAsset`]( https://github.com/paritytech/xcm-format#withdrawasset){target=_blank}、[`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}和[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}。
 
-在[通过multilocation衍生账户进行交易](/builders/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由发出调用的同一账户支付，其为目标链中的multilocation衍生帐户。因此，multilocation衍生帐户必须持有必要的资金来支付整个执行费用。请注意，支付费用的目标Token不需要在原链中注册为XC-20。
+在[通过multilocation衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由发出调用的同一账户支付，其为目标链中的multilocation衍生帐户。因此，multilocation衍生帐户必须持有必要的资金来支付整个执行费用。请注意，支付费用的目标Token不需要在原链中注册为XC-20。
 
 您可以想像以下情景：Alice想要使用通过签名函数的交易从Moonbase Alpha在另一条链（平行链 ID 888，在Moonbase Alpha中继链生态系统中）进行远程交易。要估计Alice的multilocation衍生账户执行远程调用所需的Token数量，您需要检查在目标链的特定交易信息。为此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
@@ -387,7 +387,7 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_message.transact.planck_dot_cost }} / 10
 6. 将**Parachain**设置为`888`
 7. 点击 **+**
 
-![Get the Transact Through Derivative Weight Info for another Parachain](/images/builders/xcm/fees/fees-5.png)
+![Get the Transact Through Derivative Weight Info for another Parachain](/images/builders/interoperability/xcm/fees/fees-5.png)
 
 在获得的回应中，您可以看到`transactExtraWeightSigned`为`{{ networks.moonbase_beta.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的4个XCM指令所需的权重。接下来，您需要找到目标链每执行XCM权重收取的费用。通常，您会查看该特定链的`UnitsPerSecond`。但在这种情况下并不会销毁XC-20 Token。因此，`UnitsPerSecond`可以作为参考，但不能保证估算的Token数量是正确的。要获取`UnitsPerSecond`作为参考值，在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network #/chainstate){target=_blank}，设置以下选项：
 
@@ -401,9 +401,9 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_message.transact.planck_dot_cost }} / 10
 8. 将**PalletInstance**设置为`3`
 9. 点击 **+**
 
-![Get the Units Per Second for Transact Through Derivative for another Parachain](/images/builders/xcm/fees/fees-6.png)
+![Get the Units Per Second for Transact Through Derivative for another Parachain](/images/builders/interoperability/xcm/fees/fees-6.png)
 
-请注意，此`UnitsPerSecond`与[中继链XCM费用计算](/builders/xcm/fees/#polkadot){target=_blank}部分中的预估成本有关，如果目标是另一个平行链，将与[权重单位的Wei数值](/builders/xcm/fees/#moonbeam-reserve-assets){target=_blank}部分中显示的成本有关。您需要找到正确的数值，以确保multilocation衍生账户持有的Token数量是正确的。如同先前，计算相关的XCM执行费用与`transactExtraWeight`乘以`UnitsPerSecond`一样简单明了（用于估算）：
+请注意，此`UnitsPerSecond`与[中继链XCM费用计算](/builders/interoperability/xcm/fees/#polkadot){target=_blank}部分中的预估成本有关，如果目标是另一个平行链，将与[权重单位的Wei数值](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}部分中显示的成本有关。您需要找到正确的数值，以确保multilocation衍生账户持有的Token数量是正确的。如同先前，计算相关的XCM执行费用与`transactExtraWeight`乘以`UnitsPerSecond`一样简单明了（用于估算）：
 
 ```
 XCM-Wei-Token-Cost = transactExtraWeight * UnitsPerSecond / WeightToSeconds

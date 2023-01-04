@@ -5,7 +5,7 @@ description: 学习如何使用预编译的资产Solidity合约通过ERC-20接�
 
 # XC-20概况
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/xcm/xc20/overview/overview-banner.png)
+![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/overview/overview-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -15,11 +15,11 @@ Substrate资产具有原生可互操作性。然而，开发者需要使用Subst
 
 XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}与之交互。除此之外，开发者能够使用常用以太坊开发框架或dApp集成XC-20资产。
 
-![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/xcm/overview/overview-4.png)
+![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-4.png)
 
 ## XC-20类型 {: #types-of-xc-20s }
 
-目前有两种XC-20类型：[外部XC-20](/builders/xcm/xc20/xc20){target=_blank}和[可铸造XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}。
+目前有两种XC-20类型：[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}和[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}。
 
 外部XC-20是从其他平行链或中继链转移到Moonbeam的原生跨链资产。因此，实际的Token存在于每条链的Moonbeam主权账户中。所有的外部XC-20资产使用_xc_作为其名称的前缀与其他资产类别进行区分。
 
@@ -27,7 +27,7 @@ XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点�
 
 两种XC-20类型的核心都是Substrate资产，在底层通过Substrate API进行交互。然而，Moonbeam提供了ERC-20接口与这些资产进行交互，因此无需Substrate基本知识也可直接操作。从用户角度来看，两种类型的XC-20都以相同的方式进行交互，唯一的区别在于可铸造XC-20包含了ERC-20接口的扩展，具有一些管理资产的额外功能，例如制造和销毁。
 
-XC-20的跨链转移是通过[X-Tokens pallet](/builders/xcm/xc20/xtokens/){target=_blank}来完成的。转移外部XC-20资产和可铸造XC-20资产的操作说明根据特定资产的多位置会有些许不同。
+XC-20的跨链转移是通过[X-Tokens pallet](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}来完成的。转移外部XC-20资产和可铸造XC-20资产的操作说明根据特定资产的多位置会有些许不同。
 
 ## XC-20与ERC-20 {: #xc-20-vs-erc-20 }
 
@@ -43,7 +43,7 @@ Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/prec
 
 --8<-- 'text/erc20-interface/erc20-interface.md'
 
-可铸造XC-20还包括仅允许Token合约或指定账户的所有者调用的附加功能。请查看[Mintable XC-20](/builders/xcm/xc20/mintable-xc20){target=_blank}页面获取关于附加功能和可用指定角色的更多信息。
+可铸造XC-20还包括仅允许Token合约或指定账户的所有者调用的附加功能。请查看[Mintable XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}页面获取关于附加功能和可用指定角色的更多信息。
 
 ## ERC-20 Permit接口 {: #the-erc20-permit-interface }
 
@@ -88,7 +88,7 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 ## 使用Remix与预编译交互 {: #interact-with-the-precompile-using-remix }
 
-无论是外部资产还是铸造资产，其交互的方式是一样的。但是，如果您是可铸造Token合约或具有特定功能的指定账户的所有者，还有一些额外的函数可供您交互。更多信息，请查看Mintable XC-20页面的[与可铸造XC-20特定函数交互](/builders/xcm/xc20/mintable-xc20/#interact-with-the-precompile-using-remix){target=_blank}部分。
+无论是外部资产还是铸造资产，其交互的方式是一样的。但是，如果您是可铸造Token合约或具有特定功能的指定账户的所有者，还有一些额外的函数可供您交互。更多信息，请查看Mintable XC-20页面的[与可铸造XC-20特定函数交互](/builders/interoperability/xcm/xc20/mintable-xc20/#interact-with-the-precompile-using-remix){target=_blank}部分。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
@@ -99,8 +99,8 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 - 至少有一个账户拥有`DEV` Token
 --8<-- 'text/faucet/faucet-list-item.md'
 - 您想要交互的XC-20预编译地址。计算预编译地址的操作说明会有些许不同，这取决于XC-20资产是迁移至Moonbeam的外部资产或是直接在Moonbeam上铸造
-    - [计算外部XC-20预编译地址](/builders/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
-    - [计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
+    - [计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
+    - [计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
 
 此教程将涵盖如何与[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口交互。您可以修改以下操作说明并使用[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口。
 
@@ -111,14 +111,14 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 1. 获取[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的复制文档
 2. 将文档内容粘贴至名为**IERC20.sol**的Remix文档
 
-![Load the interface in Remix](/images/builders/xcm/xc20/overview/overview-1.png)
+![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/overview/overview-1.png)
 
 当您成功在Remix读取ERC-20接口后，您将需要编译：
 
 1. 点击（从上至下的）第二个**Compile**标签
 2. 编译**IERC20.sol**文档
 
-![Compiling IERC20.sol](/images/builders/xcm/xc20/overview/overview-2.png)
+![Compiling IERC20.sol](/images/builders/interoperability/xcm/xc20/overview/overview-2.png)
 
 当接口已成功被编译后，您将会在**Compile**标签旁看到绿色的打勾符号。
 
@@ -130,15 +130,15 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 2. 确保已在**ENVIRONMENT**下拉菜单中选择**Injected Web3**。当您已经选择**Injected Web3**，MetaMask将会跳出弹窗要求将您的账户连接至Remix
 3. 确认**ACCOUNT**下显示的为正确账户
 4. 确认已在**CONTRACT**下拉菜单中选择**IERC20 - IERC20.sol**。由于此为预编译合约，您不需要部署任何代码。同时，我们将会在**At Address**字段内显示预编译地址
-5. 提供在[计算外部XC-20预编译地址](/builders/xcm/xc20/xc20){target=_blank}或[计算可铸造XC-20预编译地址](/builders/xcm/xc20/mintable-xc20){target=_blank}操作说明计算得到的XC-20预编译地址。在本示例中为`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`，然后点击**At Address**
+5. 提供在[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20){target=_blank}或[计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}操作说明计算得到的XC-20预编译地址。在本示例中为`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`，然后点击**At Address**
 
-![Access the address](/images/builders/xcm/xc20/overview/overview-3.png)
+![Access the address](/images/builders/interoperability/xcm/xc20/overview/overview-3.png)
 
 !!! 注意事项
     如果您希望确保运行顺利，您可以使用您的搜寻引擎查询校验工具以校验您的XC-20预编译地址。当地址校验成功，您可以将其用在**At Address**字段中。
 
 XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现在您可以使用任何ERC-20函数以获得XC-20的信息或是转移XC-20。
 
-![Interact with the precompile functions](/images/builders/xcm/xc20/overview/overview-4.png)
+![Interact with the precompile functions](/images/builders/interoperability/xcm/xc20/overview/overview-4.png)
 
 如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
