@@ -5,7 +5,7 @@ description: 使用Moonbeam XCM SDK轻松从波卡及其生态系统中的平行
 
 # 使用Moonbeam XCM SDK
 
-![XCM SDK Banner](/images/builders/xcm/sdk/xcm-sdk-banner.png)
+![XCM SDK Banner](/images/builders/interoperability/xcm/sdk/xcm-sdk-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -13,7 +13,7 @@ Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中�
 
 XCM SDK提供简单的协助函数，如`deposit`和`withdraw`，提供非常简单的接口以在波卡和Kusama生态中进行两条链之间的XCM转移。除外，XCM的配置包允许任何平行链项目以标准方法添加信息，使他们能够被XCM SDK支持。
 
-关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/xcm/xcm-sdk/reference){target=_blank}页面。
+关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/reference){target=_blank}页面。
 
 此教程中的示例将在Moonbeam中执行，但步骤也同样适用于Moonriver和Moonbase Alpha。
 
@@ -191,7 +191,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 
 ## 使用SDK接口 {: #using-the-api }
 
-Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/xcm/xcm-sdk/reference/#core-sdk-interfaces){target=_blank}的API。
+Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-interfaces){target=_blank}的API。
 
 请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initialization)。
 
@@ -338,11 +338,11 @@ moonChain: {
 }
 ```
 
-此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/xcm/fees/#moonbeam-reserve-assets){target=_blank}中找到更多信息。
+此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}中找到更多信息。
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 
-Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/xcm/xcm-sdk/reference/#core-sdk-methods){target=_blank}。
+Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-methods){target=_blank}。
 
 确保您已经[初始化](#initialization)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
 

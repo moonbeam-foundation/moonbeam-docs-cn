@@ -68,7 +68,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 ### Moonbeam Uniswap {: #moonbeam-uniswap } 
 
-[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNIT。请执行以下步骤完成交换：
+[Moonbeam Uniswap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}是[Uniswap-V2](https://uniswap.org/blog/uniswap-v2){target=_blank}的分叉，部署在Moonbase Alpha上。需要注意的是，Moonbeam Uniswap允许开发者可轻松交换以获取[跨链资产](/builders/interoperability/xcm/xc20/){target=_blank}，如为XCM测试目的的xcKarura或xcUNIT。请执行以下步骤完成交换：
 
 1. 点击**Select a token**
 2. 连接您的MetaMask钱包，并确保在Moonbase Alpha网络上
