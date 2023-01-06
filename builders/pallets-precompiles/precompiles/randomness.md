@@ -146,7 +146,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 您合约的`fulfillRandomWords`回调将负责处理整个完成过程。举例来说，在彩票合约中，回调将会使用随机词选取赢家并支付奖品。
 
-如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/buildxers/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
+如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
 
 随机数请求的过程如下所示：
 
