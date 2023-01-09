@@ -32,7 +32,7 @@
 接下来，您的地址应该会出现在Ledger Live上，并提示您在Ledger上验证地址。在您的设备上执行以下步骤：
 
 1. 您应该在您的设备屏幕上看到**Verify Address**。点击右侧按钮开始验证地址
-2. 在下一个显示屏幕中，您应该会看到您的地址。将您设备上的地址与Ledger Live上显示的地址进行比较，并验证其是否匹配。同时，您需要从Ledger Live复制地址用于发送交易。点击按钮继续下一步
+2. 在下一个显示屏幕中，您应该会看到您的地址。将您设备上的地址与Ledger Live上显示的地址进行比较，并验证其是否匹配。同时，您需要从Ledger Live复制地址用于发送交易。点击右侧按钮继续下一步
 3. 现在，您应该会看到**Approve**的屏幕。如果地址匹配，您可以点击设备上的两个按钮来通过验证。否则，您可以再次点击右侧按钮进入**Reject**屏幕，点击设备上的两个按钮来拒绝验证
 
 ![Verify receiving address on Ledger device](/images/tokens/connect/ledger/moonbeam/ledger-14.png)
