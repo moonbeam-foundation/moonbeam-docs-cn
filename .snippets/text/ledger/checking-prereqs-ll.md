@@ -2,4 +2,4 @@
 
 如果您更偏向使用MetaMask作为媒介来完成Ledger设备与Moonbeam之间的操作，请确保您的MetaMask[已连接至Moonbeam](/tokens/connect/metamask/){target=_blank}。
 
-自[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/){target=_blank}发布后，将Ledger设备连接至Chrome的操作变得相对简单，您只需要安装最新版本的MetaMask即可。
+自[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/){target=_blank}发布后，将Ledger设备连接至Chrome上的MetaMask操作变得相对简单，您只需要安装最新版本的MetaMask即可。
