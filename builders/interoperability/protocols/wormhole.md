@@ -9,7 +9,7 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 ## 概览
 
-[Wormhole](https://wormhole.com/){target=_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。
+[Wormhole](https://wormhole.com/){target=_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://book.wormhole.com/wormhole/5_guardianNetwork.html){target=_blank}赋能, Wormhole可以让dApps跨链传输任意消息.
 
 Wormhole由多个模块化的交换组件组成，这些组件可以独立使用并支持由多个团队构建的逐渐增加的可组合应用程序。在其协议之上构建xDapp允许快速进行跨链资产转移和跨链逻辑以提供最大的Web互操作性。Wormhole的架构包含签署Guardian网络、桥接智能合约和中继器。查看技术堆栈以获取更多信息。
 
