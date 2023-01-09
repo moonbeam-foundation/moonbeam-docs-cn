@@ -99,4 +99,6 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ethereum/ledger-11.png)
 
+--8<-- 'text/ledger/ledger-live.md'
+
 --8<-- 'text/disclaimers/third-party-content.md'

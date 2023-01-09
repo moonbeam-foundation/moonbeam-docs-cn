@@ -93,4 +93,6 @@ Moonbeam app依赖于Ethereum app，因此在安装Moonbeam app之前您需要�
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/moonbeam/ledger-11.png)
 
+--8<-- 'text/ledger/ledger-live.md'
+
 --8<-- 'text/disclaimers/third-party-content.md'
