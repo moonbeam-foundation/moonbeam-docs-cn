@@ -23,7 +23,7 @@ Tenderly平台提供以下功能：
 
 - **[Forks](https://docs.tenderly.co/simulations-and-forks/how-to-create-a-fork){target=_blank}** - 此功能在隔离环境中模拟实时Moonbeam网络，这使您可以与部署的合约和实时链上数据进行交互。您能够按时间顺序将多个模拟链接在一起，分叉还将使交易模拟更进一步。Forks允许复杂的交易测试场景，当出现一个交易依赖于另一个交易，并具有使用实时链上数据的好处。使用Tenderly分叉功能的时候需要注意一些限制。您不能与任何Moonbeam预编译的合约及其功能交互。预编译是Substrate实施的一部分，因此不能在模拟的EVM环境中复制。这禁止您在Moonbeam和基于Substrate的功能（如质押和治理）上与跨链资产交互
 
-- **[Alerting](https://docs.tenderly.co/alerts/alerting){target=_blank}** - 配置实时警报，在特定活动发生时通知，以便让您了解智能合约的情况
+- **[Alerting](https://docs.tenderly.co/alerts/intro-to-alerts){target=_blank}** - 配置实时警报，在特定活动发生时通知，以便让您了解智能合约的情况
 
 - **[Web3 Actions](https://docs.tenderly.co/web3-actions/intro-to-web3-actions){target=_blank}** - 在JavaScript或TypeScript创建可编程函数，当特定智能合约或链事件发生时，此函数能够通过Tenderly自动执行
 
