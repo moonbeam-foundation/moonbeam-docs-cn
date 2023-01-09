@@ -5,5 +5,5 @@
 截至本文撰写时，所使用的Ledger版本如下：
 
  - [Ledger Live 2.35.1](https://support.ledger.com/hc/zh-cn/articles/360020773319-Ledger-Live-%E7%9A%84%E6%96%B0%E5%8F%98%E5%8C%96-?docs=true){target=_blank}
- - [Ledger Nano S firmware v2.0.0](https://support.ledger.com/hc/en-us/articles/360010446000-Ledger-Nano-S-firmware-release-notes?docs=true){target=_blank}
+ - [Ledger Nano S firmware v2.0.0](https://support.ledger.com/hc/zh-cn/articles/360010446000-Ledger-Nano-S-%E5%9B%BA%E4%BB%B6%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E?docs=true){target=_blank}
  - [Ledger Nano X firmware v2.0.1](https://support.ledger.com/hc/zh-cn/articles/360014980580-Ledger-Nano-X-%E5%9B%BA%E4%BB%B6%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E?docs=true){target=_blank}
