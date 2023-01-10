@@ -11,7 +11,7 @@ title: 适用于MacOS的全节点Docker命令
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.27.2 \
+purestake/moonbeam:v0.28.1 \
 --base-path=/data \
 --chain moonbeam \
 --name="YOUR-NODE-NAME" \
@@ -29,7 +29,7 @@ purestake/moonbeam:v0.27.2 \
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.27.2 \
+purestake/moonbeam:v0.28.1 \
 --base-path=/data \
 --chain moonbeam \
 --name="YOUR-NODE-NAME" \
