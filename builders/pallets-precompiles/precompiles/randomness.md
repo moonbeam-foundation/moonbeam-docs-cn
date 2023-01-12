@@ -240,7 +240,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ### 挑选获胜者 {: #pick-the-winners }
 
-要完成请求，您可以使用`fulfillRequest`函数，该函数将使用合约的`requestId`变量来发起一个内部交易(internal transaction)并调用随机数预编译(random precompile)的`fulfillRequest`函数。如果成功，请求将被完成且会通过另一个内部交易生成随机词并执行`RandomnessLotteryDemo.sol`合约中定义的`fulfillRandomWords`函数。 `fulfillRandomWords`函数回调后(callback)将调用`pickWinners`并将累积奖金通过2个以上的内部交易分配给随机选取的获胜者们，每个内部交易对应一个获胜者。此外，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何剩余费用和要求的保证金都会被转移到指定的退款地址。
+要完成请求，您可以使用`fulfillRequest`函数，该函数将使用合约的`requestId`变量来发起一个内部交易(internal transaction)并调用随机数预编译(randomness precompile)的`fulfillRequest`函数。如果成功，请求将被完成且会通过另一个内部交易生成随机词并执行`RandomnessLotteryDemo.sol`合约中定义的`fulfillRandomWords`函数。 `fulfillRandomWords`函数回调后(callback)将调用`pickWinners`并将累积奖金通过2个以上的内部交易分配给随机选取的获胜者们，每个内部交易对应一个获胜者。此外，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何剩余费用和要求的保证金都会被转移到指定的退款地址。
 
 您可以在延迟经过后在任何账户跟随以下步骤发起完成请求：
 
