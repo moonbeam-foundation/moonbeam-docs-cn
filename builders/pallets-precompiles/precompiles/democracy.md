@@ -135,7 +135,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  4. 输入以Wei为单位的Token数值来绑定。最低绑定数量为{{ networks.moonbeam.democracy.min_deposit }} GLMR，{{ networks.moonriver.democracy.min_deposit }} MOVR或是{{ networks.moonbase.democracy.min_deposit }} DEV。以此例而言为4 DEV或是已经输入的`4000000000000000000` 
  5. 点击**transact**并在MetaMask确认交易
 
-![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
+![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
 
@@ -144,7 +144,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
  4. 点击**transact**并在MetaMask确认交易
 
-![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
+![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
 
 在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
 
