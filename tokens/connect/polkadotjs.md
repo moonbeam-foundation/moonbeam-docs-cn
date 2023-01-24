@@ -33,7 +33,7 @@ Moonbase Alpha测试网[v3升级发布后](https://www.purestake.com/news/moonbe
 
 2. 点击**Add account**按钮
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-3.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-4.png)
 
 这将跳出弹窗，引导您根据指示完成在Polkadot.js Apps界面新增账户的整个流程。
 
@@ -44,7 +44,7 @@ Moonbase Alpha测试网[v3升级发布后](https://www.purestake.com/news/moonbe
 !!! 注意事项
     目前，您只能通过私钥在Polkadot.js创建或导入账户。如果通过助记词操作，稍后导入账户到MetaMask等以太坊钱包时就会出现不同的公共地址。这是因为Polkadot.js使用的是BIP39，而以太坊使用的是BIP32或BIP44。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-4.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-5.png)
 
 接下来，如果要创建新账户，您要确保已储存好弹窗所显示的私钥。如果要导入现有账户，请输入MetaMask导出的私钥。
 
@@ -53,11 +53,11 @@ Moonbase Alpha测试网[v3升级发布后](https://www.purestake.com/news/moonbe
     
 请确保输入私钥前缀，如`0x`等。如果输入正确的信息，窗口左上角就会出现相应公共地址，然后点击**Next**。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-5.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-6.png)
 
 要完成向导弹窗步骤，您可以设置一个账户名称和密码。收到确认消息后，您会在**Accounts**标签中看到相应地址和余额（在本示例中为Bob的地址）。除此之外，我们还可以覆盖MetaMask扩展，可以看到两个余额是相同的。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-6.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-7.png)
 
 ## 通过Substrate API发送交易 {: #sending-a-transaction-through-substrates-api }
 
@@ -71,11 +71,11 @@ Moonbase Alpha测试网[v3升级发布后](https://www.purestake.com/news/moonbe
 
 3. 一切就绪后，点击**Make Transfer**按钮
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-7.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-8.png)
 
 随后，系统将提示您输入密码并签署和提交交易。交易确认后，您将看到每个账户的余额更新。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-8.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-9.png)
 
 这样就可以了！我们非常高兴Polkadot.js Apps能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam Network的用户体验和以太坊兼容功能。
 
