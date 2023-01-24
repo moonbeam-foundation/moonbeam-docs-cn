@@ -66,7 +66,7 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
 
 您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[创建或导入H160账户](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-1.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/for-cn/proposals-1.png)
 
 本次提案内容为：通过治理机制将Bob的余额设定为`1500`！
 
@@ -76,7 +76,7 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
 
 所有治理相关操作均在**Democracy**标签下。进入后，点**Submit preimage**按钮。
 
-![Submit Preimage](/images/tokens/governance/proposals/proposals-2.png)
+![Submit Preimage](/images/tokens/governance/proposals/for-cn/proposals-2.png)
 
 此处，您需要提供以下信息：
 
@@ -86,7 +86,7 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
  4. 复制原像哈希值。这个数值代表着提案，在提交正式提案时会用到
  5. 点击**Submit preimage**按钮并签名确认交易
 
-![Fill in the Preimage Information](/images/tokens/governance/proposals/proposals-3.png)
+![Fill in the Preimage Information](/images/tokens/governance/proposals/for-cn/proposals-3.png)
 
 !!! 注意事项
     请记得复制原像哈希值，在提交提案时必须用到这一数据。
@@ -97,7 +97,7 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
 
 提交原像后（上一小节内容），下一步就是提交与这一原像相关的提案。为此，需要在**Democracy**页面点击**Submit proposal**。
 
-![Submit proposal](/images/tokens/governance/proposals/proposals-4.png)
+![Submit proposal](/images/tokens/governance/proposals/for-cn/proposals-4.png)
 
 此处，您需要提供以下信息：
 
@@ -106,14 +106,14 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
  3. 设置锁定金额。数值应等于提案者锁定的金额。只有锁定量最高的提案才会进入公投阶段。最低充值额显示在“Input”标签正下方
  4. 点击**Submit proposal**按钮并签名确认交易
 
-![Fill in the Proposal Information](/images/tokens/governance/proposals/proposals-5.png)
+![Fill in the Proposal Information](/images/tokens/governance/proposals/for-cn/proposals-5.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
 交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。该提案也会进入**Proposals**列表，并显示提案者和代币锁定量。现在，提案已开放接受附议！
 
-![Proposal listed](/images/tokens/governance/proposals/proposals-6.png)
+![Proposal listed](/images/tokens/governance/proposals/for-cn/proposals-6.png)
 
 ### 附议 {: #seconding-a-proposal }
 
@@ -124,7 +124,7 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
 
 上一小节介绍了如何创建提案，本小节则介绍了如何附议提案。在提案列表中选择需要赞成的提案并点击**Second**按钮即可。
 
-![Proposal listed to Second](/images/tokens/governance/proposals/proposals-7.png)
+![Proposal listed to Second](/images/tokens/governance/proposals/for-cn/proposals-7.png)
 
 此处，您需要提供以下信息：
 
@@ -132,11 +132,11 @@ description: 了解治理提案的路线图以及如何创建、将其发送以�
  2. 验证附议提案所需代币数量
  3. 点击**Second**按钮并签名确认交易
 
-![Fill in Second Information](/images/tokens/governance/proposals/proposals-8.png)
+![Fill in Second Information](/images/tokens/governance/proposals/for-cn/proposals-8.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此代币可能无限期锁定。
 
 交易提交后，就会看到右上角Polkadot.js App接口出现一些确认信息。您也可以在**Proposals**列表看到该提案的相关提案者、代币锁定量以及已附议该提案的用户名单！
 
-![Proposal Seconded](/images/tokens/governance/proposals/proposals-9.png)
+![Proposal Seconded](/images/tokens/governance/proposals/for-cn/proposals-9.png)

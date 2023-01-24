@@ -16,7 +16,7 @@ keywords: 民主、substrate、pallet、moonbeam、波卡
 
 此教程将会提供Moonbeam民主pallet的可用extrinsics、储存方式和pallet常量getters的概览。
 
-## 民主Pallet接口 {: #parachain-staking-pallet-interface }
+## 民主Pallet接口 {: #democracy-pallet-interface }
 
 ### 参数 {: #extrinsics }
 
