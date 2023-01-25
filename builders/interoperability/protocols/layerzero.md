@@ -5,7 +5,7 @@ description: 学习如何使用LayerZero协议和API桥接资产以及将Moonbea
 
 # LayerZero协议
 
-![LayerZero Moonbeam banner](/images/builders/integrations/bridges/layerzero/layerzero-banner.png)
+![LayerZero Moonbeam banner](/images/builders/interoperability/protocols/layerzero/layerzero-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -13,7 +13,7 @@ description: 学习如何使用LayerZero协议和API桥接资产以及将Moonbea
 
 LayerZero是一个传输层，能够通过低级通信原语实现资产传输。使用LayerZero的DApp被称为用户应用程序，其消息由中继器跨链中继，并由预言机的区块头在目标链上进行验证。请查看下方技术栈图及其[概念文档](https://layerzero.gitbook.io/docs/faq/messaging-properties){target=_blank}以获取更多信息。
 
-![LayerZero Technology Stack diagram](/images/builders/integrations/bridges/layerzero/layerzero-1.png)
+![LayerZero Technology Stack diagram](/images/builders/interoperability/protocols/layerzero/layerzero-1.png)
 
 LayerZero API为开发Web3应用提供了丰富的套件，确保开发者拥有构建所需的工具。借助这些工具和API，开发者可以使用LayerZero协议及其API，来编写可以轻松部署在与所有LayerZero连接的生态系统的dApp。
 
