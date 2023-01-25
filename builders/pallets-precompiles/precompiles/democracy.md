@@ -94,13 +94,9 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 ### 访问合约 {: #access-the-contract } 
 
 1. 在Remix点击位于**Compile**标签下方的**Deploy and Run**标签。**注意**：您并不是在此部署合约，您是在访问一个已经部署的预编译合约
-
 2. 确认在**ENVIRONMENT**下拉菜单中的**Injected Web3**已被选取
-
 3. 确保**Democracy.sol**已在**CONTRACT**下拉菜单中被选去。由于此为预编译合约，并不需要进行部署，您需要的是在**At Address**中提供预编译合约的地址
-
 4. 为Moonbase Alpha提供民主预编译的地址：`{{networks.moonbase.precompiles.democracy}}` 并点击**At Address**
-
 5. 此民主预编译将会出现在**Deployed Contracts**列表中
 
 ![Provide the address](/images/builders/pallets-precompiles/precompiles/democracy/democracy-3.png)
@@ -115,14 +111,14 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  4. 复制原像哈希，这代表着此提案。您将会在通过民主预编译提交提案时使用此哈希
  5. 点击**Submit preimage**按钮，但请不要在下一页签署和确认此交易
 
-![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-4.png)
+![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
 
 在下个页面，根据以下步骤进行操作：
 
  1. 点击三角形图像以显示字节状态下带编码的提案
  2. 复制带编码的提案——您将在随后步骤中使用**notePreimage**时用到它
 
-![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
+![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
 
 !!! 注意事项
      请**不要**在此签署和提交交易。您将会在随后步骤中通过**notePreimage**提交此信息。
@@ -135,7 +131,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  4. 输入以Wei为单位的Token数值来绑定。最低绑定数量为{{ networks.moonbeam.democracy.min_deposit }} GLMR，{{ networks.moonriver.democracy.min_deposit }} MOVR或是{{ networks.moonbase.democracy.min_deposit }} DEV。以此例而言为4 DEV或是已经输入的`4000000000000000000` 
  5. 点击**transact**并在MetaMask确认交易
 
-![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
+![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
 
 在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
 
@@ -160,7 +156,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 4. 记录提案号码，此为您需要的首个参数
 5. 记录已附议的数字。如果并没有任何支持，此区块将会保持空白
 
-![Get the proposal information](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
+![Get the proposal information](/images/builders/pallets-precompiles/precompiles/democracy/democracy-9.png)
 
 现在，您可以回到Remix以通过民主预编译附议提案，请跟随以下步骤进行操作：
 
@@ -172,7 +168,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
 
-![Second via the precompile](/images/builders/pallets-precompiles/precompiles/democracy/democracy-9.png)
+![Second via the precompile](/images/builders/pallets-precompiles/precompiles/democracy/democracy-10.png)
 
 !!! 注意事项
     提案编码与公投编码不同。当提案进入公投状态，其将会获得新的公投索引编码。
@@ -188,7 +184,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 3. 查看**Referenda**区块，并点击三角形图示以查看更多关于公投的信息。如果并没有看见三角形图示，这代表仅仅有提案哈希，提案的原像（Preimage）并没有被提交
 4. 记录公投编码
 
-![Get the referendum index](/images/builders/pallets-precompiles/precompiles/democracy/democracy-10.png)
+![Get the referendum index](/images/builders/pallets-precompiles/precompiles/democracy/democracy-11.png)
 
 现在，您可以准备返回至Remix以通过民主预编译在公投进行投票，请跟随以下步骤进行操作：
 
@@ -200,6 +196,6 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=_blank}教程。
 7. 点击**transact**并在MetaMask确认此交易
 
-![Call the vote function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-11.png)
+![Call the vote function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-12.png)
 
 恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[Discord](https://discord.gg/moonbeam){target=_blank}询问。

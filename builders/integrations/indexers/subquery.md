@@ -31,7 +31,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 ## 创建一个项目 {: #creating-a-project }
 
-首先，您将需要[创建一个SubQuery项目](https://doc.subquery.network/create/introduction/){target=_blank}。您可以选择为Moonbeam、Moonriver或Moonbase Alpha创建项目。在本教程中，我们将选择Moonbeam创建项目。
+首先，您将需要[创建一个SubQuery项目](https://academy.subquery.network/quickstart/quickstart.html){target=_blank}。您可以选择为Moonbeam、Moonriver或Moonbase Alpha创建项目。在本教程中，我们将选择Moonbeam创建项目。
 
 一般来说，您将需要：
 
@@ -76,9 +76,9 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 初始化设置完成后，您将拥有一个包含以下文件（以及其他文件）的基础SubQuery项目：
 
-- **[`project.yaml`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/project.yaml){target=_blank}** —— [Manifest File](https://doc.subquery.network/build/manifest.html){target=_blank}，作为项目的入口点
-- **[`schema.graphql`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/schema.graphql){target=_blank}** —— [GraphQL Schema](https://doc.subquery.network/build/graphql.html){target=_blank}，定义数据形状。模板包括`Transaction` 和`Approval`实体
-- **[`src/mappings/mappingHandlers.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/mappings/mappingHandlers.ts){target=_blank}** —— 导出[Mapping](https://doc.subquery.network/build/mapping.html){target=_blank}函数，用于定义如何将链数据转换为架构中定义的GraphQL实体
+- **[`project.yaml`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/project.yaml){target=_blank}** —— [Manifest File](https://academy.subquery.network/build/manifest/polkadot.html){target=_blank}，作为项目的入口点
+- **[`schema.graphql`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/schema.graphql){target=_blank}** —— [GraphQL Schema](https://academy.subquery.network/build/graphql.html){target=_blank}，定义数据形状。模板包括`Transaction` 和`Approval`实体
+- **[`src/mappings/mappingHandlers.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/mappings/mappingHandlers.ts){target=_blank}** —— 导出[Mapping](https://academy.subquery.network/build/mapping/polkadot.html){target=_blank}函数，用于定义如何将链数据转换为架构中定义的GraphQL实体
 - **[`src/chaintypes.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/chaintypes.ts){target=_blank}** —— 专为Moonbeam导出链的类型，便于索引Moonbeam数据
 - **[`erc20.abi.json`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/erc20.abi.json){target=_blank}** —— 包含标准ERC-20接口的ABI的JSON文件，将用于筛选ERC-20转移和批准数据
 
@@ -143,7 +143,7 @@ yarn add @subql/frontier-evm-processor
 - **kind** —— *必填*，指定自定义Moonbeam数据处理器
 - **startBlock** —— 指定开始索引数据的区块
 - **processor.file** —— *必填*，引用数据处理器代码所在的文件
-- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://doc.subquery.network/build/substrate-evm.html#processor-options){target=_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
+- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://academy.subquery.network/build/substrate-evm.html#processor-options){target=_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
 - **assets** —— 外部资产ABI文件的对象
 - **mapping** —— 映射规范。这包括映射条目的路径、映射函数以及任何其他映射筛选器所对应的处理器类型
 
@@ -181,18 +181,18 @@ yarn codegen
 
 ## 映射处理器 {: #mapping-handlers }
 
-映射规范包含定义链数据如何转换的[映射函数](https://doc.subquery.network/create/mapping/#){target=_blank}。
+映射规范包含定义链数据如何转换的[映射函数](https://academy.subquery.network/build/mapping/polkadot.html){target=_blank}。
 
 示例模板包含两个映射函数，可在`src/mappings/mappingHandlers.ts`目录下方找到。这些映射函数将转换成您定义的GraphQL实体。两个处理器如下所示：
 
-- **Event handler** —— 用于捕获新的区块发出特定事件的信息。由于该函数会在任意时间的事件发出时被调用，您可以使用映射筛选器来只处理您需要的事件。这可以改善性能并减少索引次数
-- **Call handler** —— 用于捕获特定extrinsics的信息
+- **[Event handler](https://academy.subquery.network/build/substrate-evm.html#event-handlers){target=_blank}** —— 用于捕获新的区块发出特定事件的信息。由于该函数会在任意时间的事件发出时被调用，您可以使用映射筛选器来只处理您需要的事件。这可以改善性能并减少索引次数
+- **[Call handler](https://academy.subquery.network/build/substrate-evm.html#call-handlers){target=_blank}** —— 用于捕获特定extrinsics的信息
 
-在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到[`FrontierEvmEvent`](https://doc.subquery.network/create/substrate-evm/#frontierevmevent){target=_blank}和[`FrontierEvmCall`](https://doc.subquery.network/create/moonbeam/#frontierevmcall){target=_blank}。两者建立在Ether的[TransactionResponse](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse){target=blank}或者[Log](https://docs.ethers.io/v5/api/providers/types/#providers-Log){target=blank}种类的基础上。
+在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到`FrontierEvmEvent`和`FrontierEvmCall`。两者建立在Ether的[TransactionResponse](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse){target=blank}或者[Log](https://docs.ethers.io/v5/api/providers/types/#providers-Log){target=blank}种类的基础上。
 
 在本示例中，`FrontierEvmEvent`将用于处理和筛选`Transfer`事件，`FrontierEvmCall`将用于处理和筛选`approve`函数调用。您可根据自己的需求自行添加处理器。
 
-随后，映射处理器将出现在`project.yaml` manifest文件`dataSources`配置的下。您可以为您的每个处理器创建一个`mapping.handlers.handler`配置。`handleMoonbeamEvent`和`handlerMoonbeamCall`处理器已包含在示例模板中。
+随后，映射处理器将出现在`project.yaml` manifest文件`dataSources`配置的下。您可以为您的每个处理器创建一个`mapping.handlers.handler`配置。`handleMoonbeamEvent`和`handleMoonbeamCall`处理器已包含在示例模板中。
 
 在Moonbeam上调整WGLMR token的模板之前，您将需要将`mapping.handlers.handler.filter`下方的`from`字段设置为WGLMR合约地址：
 
@@ -228,7 +228,7 @@ yarn build
 
 ![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)   
 
-接下来，使用Docker[发布您的项目](https://doc.subquery.network/publish/publish/){target=_blank}至[SubQuery项目](https://project.subquery.network/){target=_blank}或[本地运行一个SubQuery节点](https://doc.subquery.network/run/run/){target=_blank}。为此，您可以运行以下命令：
+接下来，使用Docker[发布您的项目](https://academy.subquery.network/run_publish/publish.html){target=_blank}至[SubQuery项目](https://project.subquery.network/){target=_blank}或[本地运行一个SubQuery节点](https://academy.subquery.network/run_publish/run.html){target=_blank}。为此，您可以运行以下命令：
 
 ```
 docker-compose pull && docker-compose up
@@ -253,7 +253,7 @@ docker-compose pull && docker-compose up
 
 如需查看与上述创建类似的在Moonriver上构建的完整示例项目，请至[live Moonriver EVM Starter Project on the SubQuery Explorer](https://explorer.subquery.network/subquery/subquery/moonriver-evm-starter-project){target=_blank}，或者在[SubQuery Explorer](https://explorer.subquery.network/){target=_blank}上查看其他项目。
 
-如您有任何问题，您可查阅[SubQuery documentation for Substrate EVM Support](https://doc.subquery.network/create/substrate-evm/){target=_blank}页面，或者在[SubQuery Discord](https://discord.com/invite/subquery){target=_blank}的#technical-support频道联系SubQuery团队。
+如您有任何问题，您可查阅[SubQuery documentation for Substrate EVM Support](https://academy.subquery.network/build/substrate-evm.html){target=_blank}页面，或者在[SubQuery Discord](https://discord.com/invite/subquery){target=_blank}的#technical-support频道联系SubQuery团队。
 
 ### Moonbuilders教程 {: #moonbuilders-tutorial }
 

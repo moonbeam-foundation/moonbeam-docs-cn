@@ -41,7 +41,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数Solidity接口 {: #the-randomness-interface }
 
-[Randomness.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L4-L11){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
+[Randomness.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
 
 此接口包含函数、常量、事件以及枚举，如下列部分所包含。
 
@@ -146,7 +146,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 您合约的`fulfillRandomWords`回调将负责处理整个完成过程。举例来说，在彩票合约中，回调将会使用随机词选取赢家并支付奖品。
 
-如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/buildxers/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
+如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
 
 随机数请求的过程如下所示：
 
@@ -240,13 +240,14 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ### 挑选获胜者 {: #pick-the-winners }
 
-要完成请求，您可以使用`fulfillRequest`函数来，该函数将使用合约的`requestId`变量来调用随机数预编译的`fulfillRequest`函数。如果成功，请求将被完成且会生成随机词并执行`RandomnessLotteryDemo.sol`合约中定义的`fulfillRandomWords`函数。 `fulfillRandomWords`函数回调后将调用`pickWinners`并将累积奖金分配给随机选取的获胜者。此外，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何剩余费用和要求的保证金都会被转移到指定的退款地址。
+要完成请求，您可以使用`fulfillRequest`函数，该函数将使用合约的`requestId`变量来发起一个内部交易(internal transaction)并调用随机数预编译(randomness precompile)的`fulfillRequest`函数。如果成功，请求将被完成且会通过另一个内部交易生成随机词并执行`RandomnessLotteryDemo.sol`合约中定义的`fulfillRandomWords`函数。 `fulfillRandomWords`函数回调后(callback)将调用`pickWinners`并将累积奖金通过2个以上的内部交易分配给随机选取的获胜者们，每个内部交易对应一个获胜者。此外，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何剩余费用和要求的保证金都会被转移到指定的退款地址。
 
 您可以在延迟经过后在任何账户跟随以下步骤发起完成请求：
 
 1. 确保您连接至您希望完成请求的账户，可以是任何账户
 2. 点击**fulfillRequest**
-3. 在MetaMask中确认交易
+3. MetaMask在为交易估算gas使用上限时并不考虑内部交易.就这点而论，我们推荐在MetaMask里手动修改gas使用上限至`200,000`
+4. 在MetaMask中确认交易
 
 ![Fulfill the randomness request](/images/builders/pallets-precompiles/precompiles/randomness/randomness-6.png)
 

@@ -72,7 +72,7 @@ Gelato已上线Moonbeam和Moonriver，允许开发者和终端用户通过Gelato
 
 无需Gas的交易，又称元交易，允许终端用户不需要支付Gas即可与智能合约交互。用户将会签署允许交易在中继层传送并支付相关费用的消息，而非在钱包中确认交易。[EIP-2771](https://eips.ethereum.org/EIPS/eip-2771){target=_blank}是一个允许元交易的普遍标准，通过[`HelloWorld.sol`合约](https://moonscan.io/address/0x3456E168d2D7271847808463D6D383D079Bd5Eaa#code){target=_blank}执行，此合约将会在其后的教程中提及。
 
-在此演示中，您将会要求Gelato Relay SDK代表您调用`HelloWorld.sol`合约。使用的脚本来自Gelato Docs中的[快速开始教程](https://docs.gelato.network/developer-products/gelato-relay-sdk/quick-start){target=_blank}。请注意，此处并没有RPC提供者的依赖项，当交易和签署构建后，您仅需要简单将其传送至Gelato Relay API中。
+在此演示中，您将会要求Gelato Relay SDK代表您调用`HelloWorld.sol`合约。使用的脚本来自Gelato Docs中的[快速开始教程](https://docs.gelato.network/developer-services/relay/quick-start){target=_blank}。请注意，此处并没有RPC提供者的依赖项，当交易和签署构建后，您仅需要简单将其传送至Gelato Relay API中。
 
 ### 开始操作 {: #getting-started }
 
@@ -175,7 +175,7 @@ contract HelloWorld is ERC2771Context {
 
 ![Gelato Relay SDK](/images/builders/integrations/relayers/gelato/gelato-5.png)
 
-此ABI编码调用数据制定了调用的合约函数以及任何相关参数，并可以通过MetaMask或Remix获取。另外，您或许可以通过Ether.js或是Web3.js获取ABI编码调用数据。有一些额外的参数在以下示例中定义，如`paymentType`、`maxFee`以及`gas`。您可以选取不同可用的[支付类型](https://docs.gelato.network/developer-products/gelato-relay-sdk/payment-type){target=_blank} 。为简单起见，重复播放保护未包含在此示例中。
+此ABI编码调用数据制定了调用的合约函数以及任何相关参数，并可以通过MetaMask或Remix获取。另外，您或许可以通过Ether.js或是Web3.js获取ABI编码调用数据。有一些额外的参数在以下示例中定义，如`paymentType`、`maxFee`以及`gas`。您可以选取不同可用的支付类型。为简单起见，重复播放保护未包含在此示例中。
 
 ```
   // ABI encode for HelloWorld.sayHiVanilla(address _feeToken)
