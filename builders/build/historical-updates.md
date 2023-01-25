@@ -233,7 +233,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 此处应用迁移将存储在民主pallet中的原像移动到新的原像pallet。由于[波卡的上游更改](https://github.com/paritytech/substrate/pull/11649){target=_blank}，需要在Moonbeam上进行此迁移。
 
-Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并且从未执行过：`0x14262a42aa6ccb3cae0a169b939ca5b185bc317bb7c449ca1741a0600008d306`。这个原像已被最初提交原像的账户 [手动移除]了(https://moonbeam.subscan.io/extrinsic/2693398-8){target=_blank}。
+Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并且从未执行过：`0x14262a42aa6ccb3cae0a169b939ca5b185bc317bb7c449ca1741a0600008d306`。这个原像已被最初提交原像的账户 [手动移除](https://moonbeam.subscan.io/extrinsic/2693398-8){target=_blank}了。
 
 
 此迁移在以下Runtime和区块中执行：
