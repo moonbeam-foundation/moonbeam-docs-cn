@@ -4,3 +4,4 @@ nav:
   - index.md
   - 'Axelar': 'axelar.md'
   - 'Hyperlane': 'hyperlane.md'
+  - 'Wormhole': 'wormhole.md'

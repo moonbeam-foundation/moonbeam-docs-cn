@@ -1,7 +1,7 @@
 title: 快速启动
 nav:
   - index.md
-  - '的快速入门': 'quick-start.md'
+  - '快速入门': 'quick-start.md'
   - networks
   - eth-compare
   - '网络端点': 'endpoints.md'

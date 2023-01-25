@@ -21,6 +21,8 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 
 --8<-- 'text/ledger/checking-prereqs.md'
 
+--8<-- 'text/ledger/checking-prereqs-ll.md'
+
 ## 安装Ledger Live App {: install-the-ledger-live-app }
 
 如果您想要连接至Moonbeam、Moonriver或Moonbase Alpha测试网，您可以通过安装Ethereum app来实现，随后您将需要指定chain ID。
@@ -96,5 +98,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 --8<-- 'text/ledger/blind-signing.md'
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/ethereum/ledger-11.png)
+
+--8<-- 'text/ledger/ledger-live.md'
 
 --8<-- 'text/disclaimers/third-party-content.md'

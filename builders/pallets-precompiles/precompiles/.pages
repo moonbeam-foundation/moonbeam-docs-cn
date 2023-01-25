@@ -14,3 +14,4 @@ nav:
   - '质押功能': 'staking.md'
   - 'X-Tokens': '/builders/interoperability/xcm/xc20/xtokens/#xtokens-precompile'
   - 'XCM-Transactor': '/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-precompile'
+  - 'XCM-Utils': 'xcm-utils.md'

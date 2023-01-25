@@ -193,7 +193,7 @@ import "@chainlink/contracts/src/v0.6/Oracle.sol";
 
 ## 创建Job {: #creating-a-job } 
 
-Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官方文档](https://docs.chain.link/docs/job-specifications){target=_blank}：
+Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官方文档](https://docs.chain.link/chainlink-nodes/oracle-jobs/v1/job-specifications){target=_blank}：
 
 > 任务参数包含了一系列任务，节点必须执行这些任务才能获得最终结果。一条参数包含至少一个启动程序和一个任务（此前已详细讨论）。参数使用标准化JSON进行定义，实现人类可读，并能够轻易被Chainlink节点所分析。
 

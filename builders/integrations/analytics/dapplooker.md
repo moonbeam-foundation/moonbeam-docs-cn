@@ -79,9 +79,9 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 ## 创建图表和数据面板 {: #create-charts-dashboards }
 
-要开始创建图表可视化您的数据，您可以点击页面上方的**Create a Chart**。根据您的需求选择创建**Simple chart（简化图表）**、**Custom chart（自定义图表）**或者**Native query（本地查询）**图表。关于创建各类图表的更多信息，请参考[Dapplooker文档网站创建图表页面](https://dapplooker.notion.site/Create-Charts-9cd44e01cb0f472d835e8f2d954e517a){target=_blank}。
+要开始创建图表可视化您的数据，您可以点击页面上方的**Create a Chart**。根据您的需求选择创建**Simple chart（简化图表）**、**Custom chart（自定义图表）**或者**Native query（本地查询）**图表。关于创建各类图表的更多信息，请参考[Dapplooker文档网站创建图表页面](https://dapplooker.notion.site/Create-Charts-2ab63e91f4a04dab8b06dfbedb72730e){target=_blank}。
 
-如果您有兴趣创建一个数据面板，您可以点击页面上方的**Browse Data**。然后，点击**+**按钮，选择**New dashboard**。关于创建数据面板的更多信息，请参考[Dapplooker文档网站创建数据面板页面](https://dapplooker.notion.site/Create-Dashboard-e2023db32c2342969194134a5fb9780b){target=_blank}。
+如果您有兴趣创建一个数据面板，您可以点击页面上方的**Browse Data**。然后，点击**+**按钮，选择**New dashboard**。关于创建数据面板的更多信息，请参考[Dapplooker文档网站创建数据面板页面](https://dapplooker.notion.site/Create-Dashboards-61981cf5fde54d32a905eef59491c108){target=_blank}。
 
 您可以在私人或公共文件夹中发布图表和数据面板。任何人均可访问公共图表和数据面板。您可以从公共图表复制、编辑和创建新的图表和数据面板。
 
@@ -89,7 +89,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 有一系列的图表和数据面板供您查看并构建自己的Moonbeam和Moonriver图表和数据面板。开始之前您可以先参考[Moonbeam Network Collection](https://analytics.dapplooker.com/collection/323-moonbeam-network-collection){target=blank}或[Moonriver Network Collection](https://analytics.dapplooker.com/collection/79-moonriver-network-collection){target=blank}。您可以在这两个网站轻松找到可以编辑的公共图表和数据面包的列表。
 
-在开始编辑任何图表或数据面板之前，您可以点击右上角**Summarize**按钮和刷新图标中间的列表图标。这将带您进入编辑页，您可在此处自定义预先存在的数据。任何修改将不会自动保存，您需要手动点击**Save**才可应用您所修改的图表或数据面板。关于编辑和创建图表或数据面板的更多信息，请参考[Dapplooker文档网站](https://dapplooker.notion.site/Features-1454c891aef34dedb4e3067195e02245){target=_blank}。
+在开始编辑任何图表或数据面板之前，您可以点击右上角**Summarize**按钮和刷新图标中间的列表图标。这将带您进入编辑页，您可在此处自定义预先存在的数据。任何修改将不会自动保存，您需要手动点击**Save**才可应用您所修改的图表或数据面板。关于编辑和创建图表或数据面板的更多信息，请参考[Dapplooker文档网站](https://dapplooker.notion.site/Features-24c6faca79a847e4ae499e907784bbfc){target=_blank}。
 
 您还可以在[Moonbeam Staking dashboards](https://analytics.dapplooker.com/browse/2/schema/moonbeam){target=blank}和[Moonriver Staking dashboards](https://analytics.dapplooker.com/browse/2/schema/moonriver){target=blank}列表查看和构建数据。
 

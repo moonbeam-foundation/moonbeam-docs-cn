@@ -66,7 +66,7 @@ description: 如何通过Moonbeam治理机制来投票决定执行或否决提�
 
 您需要用到Polkadot.js App接口进行提案。为此，需要先导入以太坊式账户（H160地址），您可按照[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成操作。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-1.png)
+![Accounts in Polkadot.js](/images/tokens/governance/voting/vote-1.png)
 
 正在投票的提案将在链上永久嵌入备注"This is a unique string."。
 

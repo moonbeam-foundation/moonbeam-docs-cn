@@ -91,7 +91,7 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/lib.rs#L87){targer=blank}。一分为`10^10 / 100`。
+在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -160,7 +160,7 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/kusama/blob/master/runtime/polkadot/constants/src/lib.rs#L85){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -180,7 +180,7 @@ KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 )) * ( 1 / KSMExtrinsicBaseWe
 KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 * {{ networks.kusama.extrinsic_base_weight.numbers_only }} )
 ```
 
-所以，`KSMWeightToFeeCoefficient`与`{{ networks.kusama.xcm_instructions.planck_ksm_weight }} Planck-KSM`相同，现在您可以开始以KSM为单位计算最终费用，使用`KSMWeightToFeeCoefficient`作为常量和`TotalWeight`作为变量：
+所以，`KSMWeightToFeeCoefficient`与`{{ networks.kusama.xcm_instructions.planck_ksm_weight }} Planck-KSM`相同，现在您可以开始以KSM为单位计算最终费用，使用`KSMWeightToFeeCoefficient`作为常量和`TotalWeight`({{ networks.kusama.xcm_instructions.withdraw.total_weight.display }})作为变量：
 
 ```
 XCM-Planck-KSM-Cost = TotalWeight * KSMWeightToFeeCoefficient

@@ -21,6 +21,8 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 --8<-- 'text/ledger/checking-prereqs.md'
 
+--8<-- 'text/ledger/checking-prereqs-ll.md'
+
 ## 安装Moonbeam Ledger Live App {: install-the-moonbeam-ledger-live-app }
 
 Moonbeam app依赖于Ethereum app，因此在安装Moonbeam app之前您需要先安装Ethereum app。请注意Moonbeam app仅适用于Moonbeam网络，并不适用于Moonriver或Moonbase Alpha。
@@ -90,5 +92,7 @@ Moonbeam app依赖于Ethereum app，因此在安装Moonbeam app之前您需要�
 --8<-- 'text/ledger/blind-signing.md'
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/moonbeam/ledger-11.png)
+
+--8<-- 'text/ledger/ledger-live.md'
 
 --8<-- 'text/disclaimers/third-party-content.md'
