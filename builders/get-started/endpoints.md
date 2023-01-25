@@ -31,11 +31,22 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 您可以使用以下任意API提供商，创建适用于开发环境或生产环境的端点：
 
+- [1RPC](#1rpc)
 - [Blast](#blast)
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
 - [UnitedBloc](#unitedbloc)
 <!-- - [Ankr](#ankr) -->
+
+### 1RPC {: #1rpc}
+
+[1RPC](https://1rpc.io/){target=_blank}是一个免费私有RPC中继。它通过防止数据收集、用户跟踪和来自其他方的网络钓鱼尝试来保护用户隐私。它通过分布式中继将用户请求传送到其他 RPC 提供商，同时使用安全飞地技术防止跟踪用户元数据，例如 IP 地址、设备信息和钱包可链接性。
+
+1RPC 是区块链基础设施社区的一项开放倡议。 他们的动机是共同的良好使命，即帮助构建更好的 Web3，并鼓励任何重视用户隐私的人加入这一开放协作。
+
+请前往[1RPC](https://1rpc.io/){target=_blank}官方网站进行设置！
+
+![1RPC](/images/builders/get-started/endpoints/endpoints-1.png)
 
 ### Blast {: #blast }
 
@@ -50,6 +61,20 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 5. 您将可以在**Active Endpoints**下看到您选择的网络。单击此网络，您将在下一页看到您的自定义RPC和WSS端点
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
+
+### GetBlock {: #getblock }
+
+[GetBlock](https://getblock.io/){target=_blank}是一项提供对Moonbeam和Moonriver即时API访问的服务，可通过共享节点和专用节点使用。[专用节点](https://getblock.io/dedicated-nodes/){target=_blank}提供对私有服务器的访问，速度快且没有速率限制。[共享节点](https://getblock.io/nodes/){target=_blank}提供一个免费的基于API密钥的端点，让您快速上手。
+
+要开始使用GetBlock并获取API密钥，您可以前往[GetBlock注册页面](https://account.getblock.io/sign-up){target=_blank}注册。从**GetBlock Dashboard**，您可以查看和管理您现有的API密钥并创建新的API密钥。
+
+创建新的API密钥很简单，您只需：
+
+1. 点击 **Create a new API key**
+2. 为您的API密钥输入一个名称
+3. 点击 **Create** 生成您的API密钥
+
+![GetBlock](/images/builders/get-started/endpoints/endpoints-3.png)
 
 ### OnFinality {: #onfinality }
 
