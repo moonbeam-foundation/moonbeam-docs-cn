@@ -11,7 +11,7 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 [Wormhole](https://wormhole.com/){target=_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://book.wormhole.com/wormhole/5_guardianNetwork.html){target=_blank}赋能, Wormhole可以让dApps跨链传输任意消息.
 
-Wormhole由多个模块化的交换组件组成，这些组件可以独立使用并支持由多个团队构建的逐渐增加的可组合应用程序。在其协议之上构建xDapp允许快速进行跨链资产转移和跨链逻辑以提供最大的Web互操作性。Wormhole的架构包含签署Guardian网络、桥接智能合约和中继器。查看技术堆栈以获取更多信息。
+Wormhole由多个模块化的交换组件组成，这些组件可以独立使用并支持由多个团队构建的逐渐增加的可组合应用程序。在其协议之上构建xDapp允许快速进行跨链资产转移和跨链逻辑以提供最大的Web互操作性。Wormhole的架构包含签署Guardian网络、桥接智能合约和中继器。请查看技术栈图以获取更多信息。
 
 ![Wormhole Technology Stack diagram](/images/builders/integrations/bridges/wormhole/wormhole-1.png)
 
@@ -19,7 +19,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 ## 开始操作 {: #getting-started }
 
-开始使用Wormhole构建跨链应用程序可能所需资源：
+开始使用Wormhole构建跨链应用程序可能所需的资源：
 
 - **[开发者文档](https://book.wormhole.com/introduction/introduction.html){target=_blank}** - 技术性指南
 - **[门户网站](https://www.portalbridge.com/#/transfer){target=_blank}** - 跨链转移资产的桥接UI
@@ -37,7 +37,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 在此部分中，您将部署一个基本的Wormhole互连智能合约并启动一个专用中继器用于发送跨链消息。
 
-首先，您需要了解一些背景。 VAAs（Verifiable Action Approvals）是Wormhole版本的跨链消息验证格式。如果Wormhole的19名守护者有13名验证了一则特定消息，则该消息将获得批准并在其他链上接收。与Guardian（守护者）网络（充当Wormhole协议的验证人）相邻的是网络间谍。他们不做任何验证工作。相反，他们会监视守护者网络并作为一个页面以允许用户和应用查看哪些VAAs已获得批准。
+首先，您需要了解一些背景。 VAAs（Verifiable Action Approvals）是Wormhole版本的经过验证的跨链消息。如果Wormhole的19名守护者有13名验证了一则特定消息，则该消息将获得批准并在其他链上接收。与Guardian（守护者）网络（充当Wormhole协议的验证人）相邻的是网络间谍。他们不做任何验证工作。相反，他们会监视守护者网络并作为一个页面以允许用户和应用查看哪些VAAs已获得批准。
 
 中继器的职责是为目标链的执行支付费用，且在许多通用中继器中，中继器又是由用户支付费用。Wormhole目前还没有该功能，所以Wormhole的架构需要dApp开发者创建并维护其自己的专用中继器。一个开发者如果想要合约调用者为目标链支付gas费用，则需要设计自己的系统。这可能看起来工作量很大，但这允许对消息处理的方式进行微调。举例而言，一个中继器可以同时发送相同的消息至多条链。
 
@@ -57,9 +57,9 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 不同于其他跨链合约，Wormhole并不提供用户可以继承并在其上构建的母合约。这是因为Wormhole的第一条链Solana，不像Solidity一样在其智能合约中提供特有的继承。为了让每条链上的设计体验相似，Wormhole让他们的Solidity开发者直接与EVM链上的Wormhole核心桥接智能合约交互。
 
-本文中要部署的[智能合约](https://github.com/jboetticher/relayer-engine/blob/main/SimpleGeneralMessage.sol){target=_blank}储存在一个由Wormhole的Relayer Engine存储库分叉出来的Git存储库中。这将从一条链向另一条链发送字符串，并在通过Wormhole协议接收到字符串时进行存储。要部署脚本，将合约复制并粘贴至Remix或打开[Remix gist链接](https://remix.ethereum.org/?#gist=6aac8f954e245d6394f685af5d404b4b&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.17+commit.8df45f5f.js){target=_blank}。
+本文中要部署的[智能合约](https://github.com/jboetticher/relayer-engine/blob/main/SimpleGeneralMessage.sol){target=_blank}储存在一个由Wormhole的Relayer Engine存储库分叉出来的Git存储库中。这将从一条链向另一条链发送字符串，并在通过Wormhole协议接收到字符串时进行存储。要部署脚本，将合约复制并粘贴至Remix或打开[Remix gist链接](https://remix.ethereum.org/?#gist=6aac8f954e245d6394f685af5d404b4b){target=_blank}。
 
-首先，该智能合约中的代码是基于[Wormhole的最佳开发文档](https://book.wormhole.com/technical/evm/bestPractices.html){target=_blank}，但某些方面（如安全性）已被简化。当您编写用于生产环境的智能合约时，**请检查文档以更好地了解其标准**。
+首先，该智能合约中的代码是基于[Wormhole的最佳实践开发文档](https://book.wormhole.com/technical/evm/bestPractices.html){target=_blank}，但某些方面（如安全性）已被简化。当您编写用于生产环境的智能合约时，请查阅文档以更好地了解其标准。需要明确的是，**不要在生产环境中使用以下智能合约**。
 
 1. 前往**Solidity Compiler**标签
 2. 点击**Compile**按钮
@@ -85,7 +85,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 5. 点击**transact**按钮以开始部署交易
 6. 点击MetaMask中的**Confirm**按钮以开始部署
 
-当您在Moonbase Alpha上成功部署合约后，请确保复制其地址并使用连接到Wormhole的任何[EVM测试网](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses){target=_blank}重复该流程，以确保它可以跨链发送消息。注意您需要在MetaMask更改网络以部署至正确的网络。
+当您在Moonbase Alpha上成功部署合约后，请确保复制其地址并使用连接到Wormhole的任何其他[EVM测试网](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses){target=_blank}重复该流程，以确保您可以跨链发送消息。注意您需要在MetaMask更改网络以部署至正确的网络。
 
 ### 将Moonbase Alpha的互连合约列入白名单 {:whitelisting-moonbase-alpha-connected-contract}
 
@@ -101,7 +101,7 @@ function addTrustedAddress(bytes32 sender, uint16 _chainId) external {
 }
 ```
 
-注意`sender`参数是_bytes32_而非_地址_类型。Wormhole的VAAs以_bytes32_的形式提供发射器（源）地址，所以它们以_bytes32_的形式存储和检查。若要将_地址_类型转换为_bytes32_，您将需要再加上24个0。这是因为_地址_的值是20个bytes，小于_bytes32_的32个。每个byte有两个十六进制字节，所以：
+注意`sender`参数是一个_bytes32_类型，而非_address_类型。Wormhole的VAAs以_bytes32_的形式提供发射器（源）地址，所以它们以_bytes32_的形式存储和检查。若要将_address_类型转换为_bytes32_，您将需要再加上24个0。这是因为_address_的值是20个bytes，小于_bytes32_的32个。每个byte有两个十六进制字符，所以：
 
 ```
 zeros to add = (32 bytes - 20 bytes) * 2 hexadecimal characters
@@ -151,16 +151,16 @@ npm install
 
 但是在深入了解如何运行任何东西或任何插件脚本如何工作之前，您首先需要了解中继器的不同组件以及中继器的作用。
 
-中继器过滤并接收来自守护者网络的VAA，并对此进行处理。在此情况下，收集器会过滤来自您部署的互连合约通过批准的消息，然后解析该VAA，确定其目的地，最终尝试在目的地执行一个叫做`processMyMessage(bytes32 VAA)`的函数。您需要了解的是来自其他参与者的中继器可以收到这个VAA且其他中继器可以通过任何方式执行任何VAA。
+中继器过滤并接收来自守护者网络的VAA，并对此进行处理。在此情况下，中继器会过滤来自您部署的互连合约的守护者批准的消息，然后解析该VAA，确定其目的地，最终尝试在目的地执行一个叫做`processMyMessage(bytes32 VAA)`的函数。您需要了解的是来自其他参与者的中继器可以收到这个VAA且其他中继器可以以他们认为合适的任何方式执行任何VAA。
 
 从技术角度来看，该中继器的实现分为四个部分。
 
-1. 一个监视所有VAA的Wormhole守护者网络的非验证间谍节点
+1. 一个为所有VAA监视Wormhole守护者网络的非验证间谍节点
 2. 一个称为监听器的组件，其收集任何间谍节点的输出，过滤出与中继器相关信息，然后将其打包至工作流对象中
 3. 存储监听器输出的工作流对象的Redis数据库
 4. 一个称为执行者的组件，从数据库中弹出工作流并以某种方式处理（在此情况下，在目标链上发送交易）
 
-Docker容器负责监视间谍节点，该Docker容器很容易启动。`relayer-engine`包存储于一个类似于命名的文件夹中，其中包含用于监听器和数据库的大部分代码。执行器的大部分逻辑都将依赖于开发者编写的插件（即从存储库克隆的插件），但大多样板代码仍由`relayer-engine`包处理。
+Docker容器负责监视间谍节点，该Docker容器很容易启动。`relayer-engine`包存储于一个采用类似命名的文件夹中，其中包含用于监听器和数据库的大部分代码。执行器的大部分逻辑都将依赖于开发者编写的插件（即从存储库克隆的插件），但大多样板代码仍由`relayer-engine`包处理。
 
 最好按顺序处理这四个组件的配置和设置，所以从间谍节点开始。首先，在命令行，确保您目前位于`example-project`目录中。间谍节点使用Docker，所以在尝试运行节点前确保docker处于活跃状态。启动容器的命令很长，所以为了简化步骤，已经以npm脚本形式添加。您只需运行：
 
@@ -194,7 +194,7 @@ npm run spy
  ]
 ```
 
-在`simplegeneralmessage_plugin`文件夹中，打开`src/plugin.ts`。该文件包含监听器和执行器组件的插件代码，但注释已明确说明哪些函数与哪个组件相关。该文件的片段如下所示，请遵循教程操作。若没有执行操作，您可以在[Github repository](https://github.com/jboetticher/relayer-engine/blob/main/example-project/plugins/simplegeneralmessage_plugin/src/plugin.ts){target=_blank}获取整个文件。
+在`simplegeneralmessage_plugin`文件夹中，打开`src/plugin.ts`。该文件包含中继器的监听器和执行器两个组件的插件代码，但注释已明确说明哪些函数与哪个组件相关。该文件的片段如下所示，请遵循教程操作。若没有执行操作，您可以在[它的Github repository](https://github.com/jboetticher/relayer-engine/blob/main/example-project/plugins/simplegeneralmessage_plugin/src/plugin.ts){target=_blank}获取整个文件。
 
 接下来看下方的`getFilters()`函数。`spyServiceFilters`对象被注入至`getFilters()`所属的插件类别中。注意该过程中没有发生任何过滤，这仅仅是过滤器的准备工作。VAA的真正过滤发生在`relayer-engine`包中，使用此`getFilters()`函数来了解要过滤的内容。
 
@@ -291,11 +291,11 @@ npm run spy
 
 现在执行器的钱包已处理完成，我们看看执行器代码本身，其存在于`example-project/plugins/simplegeneralmessage_plugin/src/plugin.ts` 文件中。若您没有跟随操作，可以在[其GitHub存储库](https://github.com/jboetticher/relayer-engine/blob/main/example-project/plugins/simplegeneralmessage_plugin/src/plugin.ts){target=_blank}获取整个文件。
 
-`handleWorkflow(workflow, providers, execute)`函数是逻辑中心，不过其下也有一些辅助函数。这是`relayer-engine`包在Redis数据库中有工作流要被使用时调用的函数。注意注入函数的三个参数：`workflow`、`providers`和`execute`。
+所有逻辑都发生在`handleWorkflow(workflow, providers, execute)`函数里，不过其下也有一些辅助函数。这是`relayer-engine`包在Redis数据库中有工作流要被使用时调用的函数。注意注入函数的三个参数：`workflow`、`providers`和`execute`。
 
 - `workflow`对象在监听器组件的`consumeEvent(vaa, stagingArea)`函数执行时提供存放在数据库的数据。在这种境况下，仅有VAA以及其被接收的时间会被存放至数据库，其被存放在本地`payload`变量中
 - `providers`对象注入Ethers以及其他链提供商，这对于查询链上数据或进行其他区块链相关操作可能有帮助。如之前所述，目前被该包支持的提供商仅有Solana和EVM。`providers`对象不被用于实现
-- `execute`对象中目前有两个函数：`onEVM(options)`和`onSolana(options)`。这些函数需要一个Wormhole chain ID和一个有钱包注入的回调函数。包含的钱包是基于在`executor.json`文件中配置的密钥
+- `execute`对象中目前有两个函数：`onEVM(options)`和`onSolana(options)`。这些函数需要一个Wormhole chain ID和一个有钱包对象注入的回调函数。包含的钱包是基于在`executor.json`文件中配置的密钥
 
 该函数要做的第一件实质性的事情是解析负载对象，然后通过一些辅助函数解析其VAA。之后，它带着负载，将其转换至十六进制格式，并使用Ethers实用程序将负载ABI解码至其在智能合约中定义的独立值。
 
@@ -362,7 +362,7 @@ npm run spy
 
 最后一步就是检查`example-project/relayer-engine-config/common.json`。该配置文件控制着整个中继器的执行。请确保您在使用的TestNet EVM是列出在该文件中`supportedChains`对象内的。如果其未被列出，该插件不会正常运行。如果您在运行的一条链未被列出，您将需要以下列格式从[Wormhole的开发者文档](https://book.wormhole.com/reference/contracts.html#testnet){target=_blank}导入数据至配置文件。
 
-该中继器还有许多其他配置。例如，`mode`字符串设置为`“BOTH”`以确保使用监听器和执行器插件，也可根据开发者需求选择只运行其中一个。此外，还有多个日志级别可供指定，如错误消息的`“error”`。然而，在本次演示中只需保留配置设置即可。
+该中继器还有许多其他配置。例如，`mode`字符串设置为`“BOTH”`以确保使用监听器和执行器插件，也可根据开发者需求选择只运行其中一个。此外，还有多个日志级别可供指定，如`“error”`可用来只记录错误消息。然而，在本次演示中只需保留配置设置即可。
 
 
 ```javascript
@@ -395,9 +395,9 @@ npm run start
 使用Remix接口。此范例将向Fantom测试网发送跨链消息，但您可以将`destChainId`替换成您想要的任何EVM。接着，检查以下事项：
 
 1. 环境为**Injected Provider**，网络为1287（Moonbase Alpha）
-2. 您的钱包里有来自[faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}的大量资金，以支付交易成本和目标链Gas包含的DEV
-3. 在**sendMessage**调用的**message**输入中输入您选择的短消息（在本示例中为“this is a message”）
-4. 将您的SimpleGeneralMessage实例的地址放在目标链的**destAddress**输入框中
+2. 您的钱包里有来自[faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}的大量资金，以支付源链和目标链上的交易Gas成本
+3. 在**sendMessage**部分的**message**输入框中输入您选择的短消息（在本示例中为“this is a message”）
+4. 将您的在目标链上的SimpleGeneralMessage实例的地址放入**destAddress**输入框中
 5. 将目标链的Wormhole chain ID放入**sendMessage**部分的**destChainId**输入框中
 6. 当完成所有步骤后，请执行交易并在MetaMask中确认
 
