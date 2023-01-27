@@ -171,13 +171,13 @@ XCM-KSM-Cost = XCMInstrWeight * KSMWeightToFeeCoefficient
 `KSMWeightToFeeCoefficient`为常量（为一分），并可以通过以下计算获得：
 
 ```
-KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 )) * ( 1 / KSMExtrinsicBaseWeight )
+KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 3000 )) * ( 1 / KSMExtrinsicBaseWeight )
 ```
 
 使用实际数值：
 
 ```
-KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 * {{ networks.kusama.extrinsic_base_weight.numbers_only }} )
+KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 3000 * {{ networks.kusama.extrinsic_base_weight.numbers_only }} )
 ```
 
 所以，`KSMWeightToFeeCoefficient`与`{{ networks.kusama.xcm_instructions.planck_ksm_weight }} Planck-KSM`相同，现在您可以开始以KSM为单位计算最终费用，使用`KSMWeightToFeeCoefficient`作为常量和`TotalWeight`({{ networks.kusama.xcm_instructions.withdraw.total_weight.display }})作为变量：
