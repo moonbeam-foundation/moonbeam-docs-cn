@@ -84,14 +84,14 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
-|      数据库       |                      读                       |                       写                       |
-|:-----------------:|:---------------------------------------------:|:----------------------------------------------:|
-| RocksDB (default) | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
-|     ParityDB      | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
+|                                                                      数据库                                                                       |                      读                       |                       写                       |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
 
 在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/master/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
+在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -148,19 +148,19 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 现在您了解Kusama上数据库读写的权重花费，您可以使用指令的基础权重花费计算总花费。
 
-[`WithdrawAsset` 指令](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight }}`基础权重，且包含一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
+[`WithdrawAsset` 指令](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight }}`基础权重，且包含一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
 
 ```
 {{ networks.kusama.xcm_instructions.withdraw.base_weight }} + {{ networks.kusama.rocks_db.read_weight}} + {{ networks.kusama.rocks_db.write_weight}} = {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }}
 ```
 
-`BuyExecution`指令具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，[`BuyExecution` 指令](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
+`BuyExecution`指令具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，[`BuyExecution` 指令](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
 
-在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L45){target=_blank}和[通用资产](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L46){target=_blank}的权重。
+在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L45){target=_blank}和[通用资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L45){target=_blank}的权重。
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -171,13 +171,13 @@ XCM-KSM-Cost = XCMInstrWeight * KSMWeightToFeeCoefficient
 `KSMWeightToFeeCoefficient`为常量（为一分），并可以通过以下计算获得：
 
 ```
-KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 )) * ( 1 / KSMExtrinsicBaseWeight )
+KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 3000 )) * ( 1 / KSMExtrinsicBaseWeight )
 ```
 
 使用实际数值：
 
 ```
-KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 30000 * {{ networks.kusama.extrinsic_base_weight.numbers_only }} )
+KSMWeightToFeeCoefficient = ( 10^12 / ( 10 * 3000 * {{ networks.kusama.extrinsic_base_weight.numbers_only }} )
 ```
 
 所以，`KSMWeightToFeeCoefficient`与`{{ networks.kusama.xcm_instructions.planck_ksm_weight }} Planck-KSM`相同，现在您可以开始以KSM为单位计算最终费用，使用`KSMWeightToFeeCoefficient`作为常量和`TotalWeight`({{ networks.kusama.xcm_instructions.withdraw.total_weight.display }})作为变量：
