@@ -26,7 +26,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 以下列表涵盖了您将在本指南中使用并与委托流程相关的Extrinsic。
 
 !!! 注意事项
-​    随着质押pallet不断升级，Extrinsic将来可能发生变化。
+    随着质押pallet不断升级，Extrinsic将来可能发生变化。
 
 ### 加入委托人集 {: #join-or-leave-the-delegator-set }
 
@@ -171,7 +171,7 @@ if (delegatorInfo.toHuman()) {
 ![Staking Join Delegators Extrinsics](/images/tokens/staking/stake/new/stake-6.png)
 
 !!! 注意事项
-​    第7-9步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
+    第7-9步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
 
 如果您想在不设置自动复合的情况下进行委托，您可以按照前面的步骤操作，但您可以使用 **delegate** extrinsic 而不是使用 **delegateWithAutoCompound**。
 
