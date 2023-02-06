@@ -62,7 +62,6 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     |          取消委托延迟          | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次 ({{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时) |
     |        退出委托人集延迟        |   {{ networks.moonbase.delegator_timings.leave_delegators.rounds }}轮次 ({{ networks.moonbase.delegator_timings.leave_delegators.hours }}小时)   |
 
-
 想要获取任何质押参数的当前值，请参考[如何质押您的Token](/tokens/staking/stake/){target=_blank}教程的[检索质押参数](/tokens/staking/stake/#retrieving-staking-parameters){target=_blank}部分。
 
 如果您正在寻找候选人或收集人相关的要求和信息，您可以查看[收集人](/node-operators/networks/collators/requirements/#bonding-requirements){target=_blank}指南。
@@ -93,8 +92,6 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
     |:--------------:|:------------------------------------------------------------------------------:|
     | 候选收集人列单 | [Moonbase Alpha Subscan](https://moonbase.subscan.io/validator){target=_blank} |
 
-
-
 !!! 注意事项
     Moonriver的DappLooker收集人仪表板是实验性测试版软件，可能无法准确反映收集人节点的性能。在委托给收集人之前，请务必自己进行研究。
 
@@ -104,13 +101,15 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 - 每个收集人的最低绑定数量将可能随时增加，如果您的委托数量接近最低委托数量，则您很可能低于最低委托数量并无法获得奖励
 - 选择多个委托人进行委托是获得奖励最有效的方式，但是建议您有足够的资金能保证自己委托给每个收集人的数量均超过最低委托数量
 - 您可以通过查看每个收集人近期生产区块的数量来判断收集人的性能
-
+- 您可以设置自动复合，它将自动重新质押指定的您委托奖励的百分比
 
 ## 奖励分配 {: #reward-distribution } 
 
 收集人和委托人奖励会在每个轮次的开始计算，奖励资格由[奖励发放延迟](#quick-reference)前的状态来计算。例如在Moonriver网络上，本轮次的奖励是按照{{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次前的状态来计算。
 
-计算出的奖励会以线性方式释放，每个区块释放一次，直到所有奖励都释放完毕。每一个区块会随机选择一个收集人以及其委托人来发送奖励。假设有{{ networks.moonriver.staking.max_candidates }}个收集人, 那么全部收集人以及委托人会在新一轮开始后的第{{ networks.moonriver.staking.max_candidates }}块区块前收到奖励。
+计算出的奖励会从本轮次的第二个区块开始以线性方式释放，每个区块释放一次，直到所有奖励都释放完毕。每一个区块会随机选择一个收集人以及其委托人来发送奖励。假设有{{ networks.moonriver.staking.max_candidates }}个收集人, 那么全部收集人以及委托人会在新一轮开始后的第{{ networks.moonriver.staking.paid_out_block }}块区块前收到奖励。
+
+您可以选择自动复合您的委托奖励，这样您就不再需要手动委托奖励。 如果您选择设置自动复合，您可以指定自动复合的奖励百分比，它们将自动添加到您收到奖励的委托中。
 
 ### 年度通货膨胀 {: #annual-inflation}
 

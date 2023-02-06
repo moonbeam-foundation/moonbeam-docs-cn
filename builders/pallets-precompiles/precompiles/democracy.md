@@ -77,9 +77,8 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ### 设置Remix {: #remix-set-up }
 
-1. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}
-
-2. 将档案内容复制并贴上至[Remix](https://remix.ethereum.org/){target=_blank}，并将其命名为`Democracy.sol`
+1. 点击**File explorer**标签
+1. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
 
 ![Copying and Pasting the Democracy Interface into Remix](/images/builders/pallets-precompiles/precompiles/democracy/democracy-1.png)
 
@@ -94,7 +93,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 ### 访问合约 {: #access-the-contract } 
 
 1. 在Remix点击位于**Compile**标签下方的**Deploy and Run**标签。**注意**：您并不是在此部署合约，您是在访问一个已经部署的预编译合约
-2. 确认在**ENVIRONMENT**下拉菜单中的**Injected Web3**已被选取
+2. 确认在**ENVIRONMENT**下拉菜单中的**Injected Provider - Metamask**已被选取
 3. 确保**Democracy.sol**已在**CONTRACT**下拉菜单中被选去。由于此为预编译合约，并不需要进行部署，您需要的是在**At Address**中提供预编译合约的地址
 4. 为Moonbase Alpha提供民主预编译的地址：`{{networks.moonbase.precompiles.democracy}}` 并点击**At Address**
 5. 此民主预编译将会出现在**Deployed Contracts**列表中
