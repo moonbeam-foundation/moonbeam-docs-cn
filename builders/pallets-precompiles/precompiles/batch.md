@@ -76,7 +76,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ![Compiling Batch.sol](/images/builders/pallets-precompiles/precompiles/batch/batch-1.png)
 
-如果接口编译成功，你将会在**Compile**标签旁看到绿色的打勾图示。
+如果接口编译成功，您将会在**Compile**标签旁看到绿色的打勾图示。
 
 ### 使用预编译合约 {: #access-the-precompile }
 

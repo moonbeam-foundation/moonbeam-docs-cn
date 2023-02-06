@@ -145,7 +145,7 @@ Solidity接口包含以下的函数：
 ### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-2. 获得[`StakingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的复制文档，并将文档内容复制并粘贴至名为`StakingInterface.sol`的Remix文档
+2. 获得[`StakingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的拷贝，并将文档内容复制并粘贴至名为`StakingInterface.sol`的Remix文档
 
 ![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/new/staking-1.png)
 
@@ -254,7 +254,7 @@ Solidity接口包含以下的函数：
 
 ![Verify auto-compound percentage](/images/builders/pallets-precompiles/precompiles/staking/new/staking-10.png)
 
-### 设置或改变自动复合百分比 {: #set-or-change-auto-compounding }
+### 设置或更改自动复合百分比 {: #set-or-change-auto-compounding }
 
 如果您最初设置您的委托时没有设置自动复合，或者如果您想更新具有自动复合设置的现有委托的百分比，则可以使用Solidity接口的`setAutoCompound`函数。
 
@@ -264,7 +264,7 @@ Solidity接口包含以下的函数：
 
 1. 找到并展开**setAutoCompound**
 2. 输入您要为其设置或更新自动复合的候选人的帐户
-3. 输入一个0-100间的数字代表你想要自动复合的奖励百分比
+3. 输入一个0-100间的数字代表您想要自动复合的奖励百分比
 4. 输入候选人的自动复合委托数量
 5. 输入您的委托数量
 6. 点击**transact**

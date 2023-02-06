@@ -173,7 +173,7 @@ if (delegatorInfo.toHuman()) {
 !!! 注意事项
 ​    第7-9步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
 
-如果你想在不设置自动复合的情况下进行委托，你可以按照前面的步骤操作，但你可以使用 **delegate** extrinsic 而不是使用 **delegateWithAutoCompound**。
+如果您想在不设置自动复合的情况下进行委托，您可以按照前面的步骤操作，但您可以使用 **delegate** extrinsic 而不是使用 **delegateWithAutoCompound**。
 
 ### 验证委托 {: #verifying-delegations }
 
@@ -226,7 +226,7 @@ console.log(`${delegation.value}%`);
  2. 选择 **parachainStaking** pallet
  3. 选择 **setAutoCompound** 外部函数
  4. 设置您委托的候选人地址。对于这个例子，它被设置为`{{ networks.moonbase.staking.candidates.address1 }}`
- 5. 通过输入数字0-100设置自动复合的奖励百分比
+ 5. 通过输入一个0-100的数字设置自动复合的奖励百分比
  6. 对于 **candidateAutoCompoundingDelegationHint** 字段，输入配置了自动复合的候选人的委托数量
  7. 对于 **delegationCountHint** 字段，输入您的委托数量
  8. 点击 **Submit Transaction** 按钮并签署交易
@@ -252,7 +252,7 @@ console.log(`${delegation.value}%`);
 ![Staking Schedule Request to Revoke Delegation Extrinsic](/images/tokens/staking/stake/new/stake-10.png)
 
 !!! 注意事项
-​    每个候选人只能有一个待定的计划请求。
+    每个候选人只能有一个待定的计划请求。
 
 计划该请求后，需要等待[退出延迟](/learn/features/staking/#quick-reference){target=_blank}之后，再执行该请求。如果您试图在退出生效期之前执行，将会导致该参数失败，并且您将会在Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`看到错误。
 

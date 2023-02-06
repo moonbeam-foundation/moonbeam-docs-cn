@@ -51,6 +51,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
      - `v` - 签名的恢复ID，整个签名串的最后一个字节
      - `r` - 签名串的首32个字节
      - `s` - 签名串的第二个32个字节
+
 - **nonces**(*address* owner) - 回传当前随机数给指定所有者
 - **DOMAIN_SEPARATOR**() - 回传用于避免重复攻击的EIP-712域名分隔器，跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现执行
 
@@ -114,14 +115,13 @@ contract SetMessage {
 
 ### Remix设置 {: #remix-set-up }
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}编译和部署范例合约。要增加合约，您可以跟随以下步骤：
+您可以使用[Remix](https://remix.ethereum.org/){target=_blank}编译和部署范例合约。您需要一份[`SetMessage.sol`](#example-contract){target=_blank}和[`CallPermit.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}。要将合约添加到Remix，您可以执行以下步骤：
 
-1. 复制[`SetMessage.sol`](#example-contract){target=_blank}合约
-2. 将文件内容复制至Remix文件中并命名为`SetMesage.sol`
-3. 获得[`CallPermit.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}的副本
-4. 将文件内容复制至Remix文件中并命名为`CallPermit.sol`
+1. 点击**File explorer**标签
+2. 将`SetMessage.sol`合约粘贴至名为`SetMessage.sol`的Remix文件中
+3. 将`CallPermit.sol`合约粘贴至名为`CallPermit.sol`的Remix文件中
 
-![Copying and pasting the example contract into Remix](/images/builders/pallets-precompiles/precompiles/call-permit/call-1.png)
+![Copying and pasting the example contract into Remix](/images/builders/pallets-precompiles/precompiles/call-permit/call-1-new.png)
 
 ### 编译和部署范例合约 {: #compile-deploy-example-contract }
 
