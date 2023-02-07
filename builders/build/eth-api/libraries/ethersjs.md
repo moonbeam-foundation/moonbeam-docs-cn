@@ -41,7 +41,7 @@ npm install ethers solc@0.8.0
 
 ## 设置Ehters提供商 {: #setting-up-the-ethers-provider }
 
-在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.io/v5/api/providers/){target=_blank}与网络交互。
+在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.io/v6/api/providers/){target=_blank}与网络交互。
 
 --8<-- 'text/common/endpoint-setup.md'
 
@@ -51,7 +51,7 @@ npm install ethers solc@0.8.0
 
 2. 定义`providerRPC`标的，包括您希望在其上发送交易的网络配置。您将会需要包含网络的`name`、`rpc`和`chainId` 
 
-3. 使用`ethers.providers.StaticJsonRpcProvider`函数创建`provider` 。除此之外，您也可以使用`ethers.providers.JsonRpcProvide(providerRPC)`函数，其仅需要提供者RPC端点的地址。此操作可能因为个别项目规格而存在兼容性问题
+3. 使用`ethers.JsonRpcProvider`函数创建`provider`
 
 === "Moonbeam"
 
@@ -68,7 +68,7 @@ npm install ethers solc@0.8.0
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonbeam.rpc, 
       {
         chainId: providerRPC.moonbeam.chainId,
@@ -92,7 +92,7 @@ npm install ethers solc@0.8.0
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonriver.rpc, 
       {
         chainId: providerRPC.moonriver.chainId,
@@ -116,7 +116,7 @@ npm install ethers solc@0.8.0
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonbase.rpc, 
       {
         chainId: providerRPC.moonbase.chainId,
@@ -140,7 +140,7 @@ npm install ethers solc@0.8.0
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.dev.rpc, 
       {
         chainId: providerRPC.dev.chainId,
@@ -171,7 +171,7 @@ touch balances.js
 
 3. 创建打包了`provider.getBalance`函数的异步`balances`函数
 
-4. 使用`provider.getBalance`函数获取`addressFrom`和`addressTo`地址的余额。您也可以使用`eths.utils.formatEther`函数将余额转换成以ETH为单位的数字便于阅读
+4. 使用`provider.getBalance`函数获取`addressFrom`和`addressTo`地址的余额。您也可以使用`ethers.formatEther`函数将余额转换成以ETH为单位的数字便于阅读
 
 5. 最后，运行`balances`函数
 
@@ -186,8 +186,8 @@ const addressTo = 'ADDRESS-TO-HERE';
 // 3. Create balances function
 const balances = async () => {
   // 4. Fetch balances
-  const balanceFrom = ethers.utils.formatEther(await provider.getBalance(addressFrom));
-  const balanceTo = ethers.utils.formatEther(await provider.getBalance(addressTo));
+  const balanceFrom = ethers.formatEther(await provider.getBalance(addressFrom));
+  const balanceTo = ethers.formatEther(await provider.getBalance(addressTo));
 
   console.log(`The balance of ${addressFrom} is: ${balanceFrom} ETH`);
   console.log(`The balance of ${addressTo} is: ${balanceTo} ETH`);
@@ -225,7 +225,7 @@ touch transaction.js
 
 4. 创建打包了交易标的以及`wallet.sendTransaction`函数的异步`send`函数
 
-5. 创建仅需要接受者地址以及发送数量的交易标的。注意，您可以使用`ethers.utils.parseEther`，其能够处理Ether至Wei的必要单位换算，如同使用`ethers.utils.parseUnits(value, 'ether')`
+5. 创建仅需要接受者地址以及发送数量的交易标的。注意，您可以使用`ethers.parseEther`，其能够处理Ether至Wei的必要单位换算，如同使用`ethers.parseUnits(value, 'ether')`
 
 6. 使用`wallet.sendTransaction`函数发送交易，然后使用`await`等待交易处理完毕并返回交易回执
 
@@ -251,7 +251,7 @@ const send = async () => {
   // 5. Create tx object
   const tx = {
     to: addressTo,
-    value: ethers.utils.parseEther('1'),
+    value: ethers.parseEther('1'),
   };
 
   // 6. Sign and send tx - wait for receipt
@@ -342,7 +342,7 @@ const deploy = async () => {
 
   // 8. Send tx (initial value set to 5) and wait for receipt
   const contract = await incrementer.deploy([5]);
-  await contract.deployed();
+  await contract.waitForDeployment();
 
   console.log(`Contract deployed at address: ${contract.address}`);
 };
@@ -362,7 +362,6 @@ node deploy.js
 如果成功，合约地址将显示在终端。
 
 ![Deploy Contract Etherjs](/images/builders/build/eth-api/libraries/ethers/ethers-2.png)
-
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 

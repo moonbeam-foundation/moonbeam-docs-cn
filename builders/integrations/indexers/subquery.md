@@ -188,7 +188,7 @@ yarn codegen
 - **[Event handler](https://academy.subquery.network/build/substrate-evm.html#event-handlers){target=_blank}** —— 用于捕获新的区块发出特定事件的信息。由于该函数会在任意时间的事件发出时被调用，您可以使用映射筛选器来只处理您需要的事件。这可以改善性能并减少索引次数
 - **[Call handler](https://academy.subquery.network/build/substrate-evm.html#call-handlers){target=_blank}** —— 用于捕获特定extrinsics的信息
 
-在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到`FrontierEvmEvent`和`FrontierEvmCall`。两者建立在Ether的[TransactionResponse](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse){target=blank}或者[Log](https://docs.ethers.io/v5/api/providers/types/#providers-Log){target=blank}种类的基础上。
+在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到`FrontierEvmEvent`和`FrontierEvmCall`。两者建立在Ether的[TransactionResponse](https://docs.ethers.org/v6/api/providers/#TransactionResponse){target=blank}或者[Log](https://docs.ethers.org/v6/api/providers/#Log){target=blank}种类的基础上。
 
 在本示例中，`FrontierEvmEvent`将用于处理和筛选`Transfer`事件，`FrontierEvmCall`将用于处理和筛选`approve`函数调用。您可根据自己的需求自行添加处理器。
 

@@ -35,7 +35,7 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
-两个包都会安装所有需要的依赖项，如[Ethers.js](https://docs.ethers.io/v5/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
+两个包都会安装所有需要的依赖项，如[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
 
 !!! 注意事项
     目前将Moonbeam XCM包与Polkadot.js与 Node.js (JavaScript)一起使用时，存在[已知问题](https://github.com/polkadot-js/api/issues/4315){target=_blank}导致包冲突警告出现在控制台中。推荐您使用TypeScript。
@@ -44,7 +44,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 
 在与XCM SDK中的`deposit`和`withdraw`函数交互时，您将需要提供一个[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js](https://polkadot.js.org/docs/api/){target=_blank}签署者，用于签署和传送交易。Ethers签署者用于在Moonbeam上签署交易，波卡签署者将用于在您存入资产的原链上签署交易。
 
-举例而言，您可以将一个[MetaMask签署者传递至Ethers](https://docs.ethers.io/v5/getting-started/#getting-started--connecting){target=_blank}或是其他兼容钱包。如同波卡，您可以[使用`@polkadot/extension-dapp` 库传递一个兼容钱包给签署者](https://polkadot.js.org/docs/extension/){target=_blank}。
+举例而言，您可以将一个[MetaMask签署者传递至Ethers](https://docs.ethers.org/v6/getting-started/#starting-connecting){target=_blank}或是其他兼容钱包。如同波卡，您可以[使用`@polkadot/extension-dapp` 库传递一个兼容钱包给签署者](https://polkadot.js.org/docs/extension/){target=_blank}。
 
 要为Ethers.js和Polkadot.js创建一个签署者，您可以查看以下的代码段。在本示例中，您可以使用一个Polkadot.js Keyring以在原链存款时签署交易。请注意，此方法并不被推荐用于生产应用。**请勿将您的私钥或是助记词存于JavaScript或TypeScript文件中**。
 
@@ -62,7 +62,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
         chainId: {{ networks.moonbeam.chain_id }}, // {{ networks.moonbeam.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonbeam.rpc, 
       {
         chainId: providerRPC.moonbeam.chainId,
@@ -90,7 +90,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
         chainId: {{ networks.moonriver.chain_id }}, // {{ networks.moonriver.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonriver.rpc, 
       {
         chainId: providerRPC.moonriver.chainId,
@@ -118,7 +118,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
         chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.providers.StaticJsonRpcProvider(
+    const provider = new ethers.JsonRpcProvider(
       providerRPC.moonbase.rpc, 
       {
         chainId: providerRPC.moonbase.chainId,

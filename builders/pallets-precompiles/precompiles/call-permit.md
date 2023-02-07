@@ -173,7 +173,7 @@ contract SetMessage {
 2. 将组合用户需要签署数据的JSON结构并包含所有`dispatch`函数和随机数需要的种类。这将会得出`CallPermit`种类并将作为`primaryType`储存
 3. 域名分隔器将使用`"Call Permit Precompile"`创建，需要完全相同的名称、DApp或平台的版本、使用签名的网络的链ID以及将验证签名的合约地址
 4. 所有组合的数据，`types`、`domain`、`primaryType`以及`message`将会使用MetaMask签署（不论是在浏览器或是用过MetaMask的JavaScript签名库）
-5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.io/v5/){target=_blank} [`splitSignature` 函数](https://docs.ethers.io/v5/api/utils/bytes/#utils-splitSignature){target=_blank}回传签名的`v`、`r`和`s`数值。
+5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.io/){target=_blank} [`Signature.from` 函数](https://docs.ethers.org/v6/api/crypto/#Signature_from){target=_blank}回传签名的`v`、`r`和`s`数值。
 
 ### 调用许可参数 {: #call-permit-arguments }
 
@@ -202,7 +202,7 @@ contract SetMessage {
 
 ### 使用浏览器 {: #use-the-browser }
 
-开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](https://docs.ethers.io/v5/){target=_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
+开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](https://docs.ethers.io/){target=_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
 
 1. 点击**Resources**
 2. 接着输入`ethers`，下拉选单应当弹出符合的库。选择**ethers**
@@ -215,120 +215,7 @@ Ethers.js的CDN应当在**Resources**下方的库列表出现
 在**Javascript**代码框中复制并贴下方JavaScript代码段，确保取代`to`变量，或是任何您需要修改的变量：
 
 ```js
-const main = async () => {
-  await window.ethereum.enable();
-  const accounts = await window.ethereum.request({
-    method: "eth_requestAccounts",
-  });
-
-
-  const from = accounts[0];
-  const to = "INSERT-TO-ADDRESS-HERE";
-  const value = 0;
-  const data = "0x4ed3885e0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000";
-  const gaslimit = 100000;
-  const nonce = "INSERT-SIGNERS-NONCE-HERE";
-  const deadline = "INSERT-DEADLINE-HERE";
-
-  const createPermitMessageData = function() {
-    const message = {
-      from: from,
-      to: to,
-      value: value,
-      data: data,
-      gaslimit: gaslimit,
-      nonce: nonce,
-      deadline: deadline,
-    };
-
-    const typedData = JSON.stringify({
-      types: {
-        EIP712Domain: [{
-            name: "name",
-            type: "string"
-          },
-          {
-            name: "version",
-            type: "string"
-          },
-          {
-            name: "chainId",
-            type: "uint256"
-          },
-          {
-            name: "verifyingContract",
-            type: "address"
-          },
-        ],
-        CallPermit: [{
-            name: "from",
-            type: "address"
-          },
-          {
-            name: "to",
-            type: "address"
-          },
-          {
-            name: "value",
-            type: "uint256"
-          },
-          {
-            name: "data",
-            type: "bytes"
-          },
-          {
-            name: "gaslimit",
-            type: "uint64"
-          },
-          {
-            name: "nonce",
-            type: "uint256"
-          },
-          {
-            name: "deadline",
-            type: "uint256"
-          },
-        ],
-      },
-      primaryType: "CallPermit",
-      domain: {
-        name: "Call Permit Precompile",
-        version: "1",
-        chainId: {{ networks.moonbase.chain_id }},
-        verifyingContract: "{{ networks.moonbase.precompiles.call_permit }}",
-      },
-      message: message,
-    });
-
-    return {
-      typedData,
-      message,
-    };
-  };
-
-  const method = "eth_signTypedData_v4";
-  const messageData = createPermitMessageData();
-  const params = [from, messageData.typedData];
-
-  web3.currentProvider.sendAsync({
-      method,
-      params,
-      from,
-    },
-    function(err, result) {
-      if (err) return console.dir(err);
-      if (result.error) {
-        alert(result.error.message);
-        return console.error("ERROR", result);
-      }
-      console.log("Signature:" + JSON.stringify(result.result));
-      console.log(ethers.utils.splitSignature(result.result))
-
-    }
-  );
-}
-
-main()
+--8<-- 'code/precompiles/call-permit/browser-getSignature.js'
 ```
 
 要运行代码，在页面上方点击**Run**，或者您可以使用`control`和`s`。MetaMask应跳出弹窗要求您连接账户。确保您选择您希望用于签署消息的账户，接着签署消息。
@@ -354,7 +241,7 @@ npm init -y
 "type": "module"
 ```
 
-接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.io/v5/){target=_blank}：
+接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.io/){target=_blank}：
 
 ```
 npm i @metamask/eth-sig-util ethers
@@ -366,75 +253,7 @@ npm i @metamask/eth-sig-util ethers
 在`getSignature.js`文件中，您可以复制以下代码段：
 
 ```js
-import ethers from "ethers";
-import {
-  signTypedData, SignTypedDataVersion,
-} from "@metamask/eth-sig-util";
-
-const from = "INSERT-FROM-ADDRESS-HERE"
-const to = "INSERT-TO-ADDRESS-HERE";
-const value = 0;
-const data = "0x4ed3885e0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000";
-const gaslimit = 100000;
-const nonce = "INSERT-SIGNERS-NONCE-HERE";
-const deadline = "INSERT-DEADLINE-HERE";
-
-const createPermitMessageData = () => {
-  const message = {
-    from: from,
-    to: to,
-    value: value,
-    data: data,
-    gaslimit: gaslimit,
-    nonce: nonce,
-    deadline: deadline,
-  };
-
-  const typedData = {
-    types: {
-      EIP712Domain: [
-        { name: "name", type: "string" },
-        { name: "version", type: "string" },
-        { name: "chainId", type: "uint256" },
-        { name: "verifyingContract", type: "address" },
-      ],
-      CallPermit: [
-        { name: "from", type: "address" },
-        { name: "to", type: "address" },
-        { name: "value", type: "uint256" },
-        { name: "data", type: "bytes" },
-        { name: "gaslimit", type: "uint64" },
-        { name: "nonce", type: "uint256" },
-        { name: "deadline", type: "uint256" },
-      ],
-    },
-    primaryType: "CallPermit",
-    domain: {
-      name: "Call Permit Precompile",
-      version: "1",
-      chainId: {{ networks.moonbase.chain_id }},
-      verifyingContract: "{{ networks.moonbase.precompiles.call_permit }}",
-    },
-    message: message,
-  };
-
-  return {
-    typedData,
-    message,
-  };
-}
-
-const messageData = createPermitMessageData();
-
-// For demo purposes only. Never store your private key in a JavaScript/TypeScript file
-const signature = signTypedData({
-  privateKey: Buffer.from("INSERT-FROM-ACCOUNT-PRIVATE-KEY", "hex"),
-  data: messageData.typedData,
-  version: SignTypedDataVersion.V4
-})
-
-console.log(`Transaction successful with hash: ${signature}`);
-console.log(ethers.utils.splitSignature(signature))
+--8<-- 'code/precompiles/call-permit/getSignature.js'
 ```
 
 您可以使用以下命令运行脚本：
