@@ -378,7 +378,7 @@ const onConnect = async (chainId, address) => {
     setChainId(chainId);
 
     // 1. Create an Ethers provider
-    const provider = new ethers.providers.StaticJsonRpcProvider(networkData.rpc_url, {
+    const provider = new ethers.JsonRpcProvider(networkData.rpc_url, {
       chainId,
       name: networkData.name
     });
@@ -386,7 +386,7 @@ const onConnect = async (chainId, address) => {
     // 2. Get the account balance
     const balance = await provider.getBalance(address);
     // 3. Format the balance
-    const formattedBalance = ethers.utils.formatEther(balance);
+    const formattedBalance = ethers.formatEther(balance);
     // 4. Save the balance to state
     setBalance(formattedBalance);
   }

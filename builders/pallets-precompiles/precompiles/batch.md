@@ -265,7 +265,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 以太坊开发者库 {: #ethereum-development-libraries }
 
-如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`utils.Interface`对象之中，而[encodeFunctionData](https://docs.ethers.io/v5/api/utils/abi/interface/#Interface--encoding){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
+如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
 
 !!! 注意事项
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。

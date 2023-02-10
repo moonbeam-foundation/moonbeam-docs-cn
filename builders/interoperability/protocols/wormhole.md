@@ -318,7 +318,7 @@ npm run spy
 
    // Here we are parsing the payload so that we can send it to the right recipient
    const hexPayload = parsed.payload.toString("hex");
-   let [recipient, destID, sender, message] = ethers.utils.defaultAbiCoder.decode(
+   let [recipient, destID, sender, message] = ethers.AbiCoder.defaultAbiCoder().decode(
 ["bytes32", "uint16", "bytes32", "string"], "0x" + hexPayload
    );
    recipient = this.formatAddress(recipient);
@@ -345,7 +345,7 @@ npm run spy
  }
 ```
 
-在回调函数中，使用Ethers包创建一个[合约对象](https://docs.ethers.io/v5/api/contract/contract/#Contract){target=_blank}。其导入的ABI从`SimpleGeneralMessage`合约的编译中导出，所以该代码假设VAA中指定的消息接收者是或从`SimpleGeneralMessage`合约继承。
+在回调函数中，使用Ethers包创建一个[合约对象](https://docs.ethers.org/v6/api/contract/contract/#Contract){target=_blank}。其导入的ABI从`SimpleGeneralMessage`合约的编译中导出，所以该代码假设VAA中指定的消息接收者是或从`SimpleGeneralMessage`合约继承。
 
 然后，该代码会尝试用VAA执行函数`processMyMessage(bytes32 VAA)`，这是此前被定义为用于中继消息的函数。该函数名字是为智能合约随意设置的，因为中继器可以指定调用任何函数。这说明了开发者可以更改该中继器代码！
 
