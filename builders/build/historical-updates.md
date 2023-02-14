@@ -62,6 +62,29 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 
 ***
 
+#### 新账户事件漏洞 {: #new-account-event }
+
+创建新帐户时会发出`System.NewAccount`事件。但是，存在一个漏洞，即某些帐户在创建时未发出此事件。已应用一个修补程序来修补受影响的帐户并在稍后发出`System.NewAccount`。
+
+该修补程序已应用于以下区块区间：
+
+|      网络       |                                                             影响的区块区间                                                             |
+|:--------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
+|    Moonbeam    | [1041355 - 1041358 和 1100752](https://moonbeam.subscan.io/extrinsic?module=evm&call=hotfix_inc_account_sufficients){target=_blank}  |
+|   Moonriver    |      [1835760 - 1835769](https://moonriver.subscan.io/extrinsic?module=evm&call=hotfix_inc_account_sufficients){target=_blank}       |
+| Moonbase Alpha |  [2097782 - 2097974](https://moonbase.subscan.io/extrinsic?address=&module=evm&call=hotfix_inc_account_sufficients){target=_blank}   |
+
+
+此漏洞存在于以下Runtime和区块区间：
+
+|      网络      |       出现时间       |     修复时间     |            影响的区块区间            |
+| :------------: | :-----------------: | :------------: | :---------------------------------: |
+|    Moonbeam    |        RT900        |     RT1401     |              0 - 915320             |
+|   Moonriver    |        RT49         |     RT1401     |             0 - 1705939             |
+| Moonbase Alpha |        RT40         |     RT1400     |             0 - 1962557             |
+
+关于更多信息，您可以在[GitHub上查看相关的Frontier PR](https://github.com/PureStake/frontier/pull/46/files){target=_blank}.
+
 #### 错误时间戳单位 {: #incorrect-timestamp-units } 
 
 EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用的Substrate时间戳使用毫秒。此漏洞仅影响EIP-2612的实现，而非`block.timestamp`数值。
