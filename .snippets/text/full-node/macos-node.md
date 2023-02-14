@@ -33,7 +33,7 @@ purestake/moonbeam:v0.28.1 \
 --base-path=/data \
 --chain moonbeam \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \
@@ -69,7 +69,7 @@ purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain moonriver \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \
@@ -105,7 +105,7 @@ purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain alphanet \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \
