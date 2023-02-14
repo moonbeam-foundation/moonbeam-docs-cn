@@ -141,7 +141,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --base-path=/data \
     --chain {{ networks.moonbeam.chain_spec }} \
     --name="YOUR-NODE-NAME" \
-    --validator \
+    --collator \
     --execution wasm \
     --wasm-execution compiled \
     --trie-cache-size 0 \
@@ -159,7 +159,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --base-path=/data \
     --chain {{ networks.moonriver.chain_spec }} \
     --name="YOUR-NODE-NAME" \
-    --validator \
+    --collator \
     --execution wasm \
     --wasm-execution compiled \
     --trie-cache-size 0 \
@@ -177,7 +177,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     --base-path=/data \
     --chain {{ networks.moonbase.chain_spec }} \
     --name="YOUR-NODE-NAME" \
-    --validator \
+    --collator \
     --execution wasm \
     --wasm-execution compiled \
     --trie-cache-size 0 \

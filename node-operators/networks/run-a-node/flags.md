@@ -15,7 +15,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 ## 常见标志 {: #common-flags }
 
-- **`--validator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
+- **`--collator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
 - **`--port`** —— 指定端对端协议的TCP端口。平行链的默认端口为`{{ networks.parachain.p2p }}`，嵌入的中继链则为`{{ networks.relay_chain.p2p }}`
 - **`--rpc-port`** —— 指定HTTP RPC服务器的TCP端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链则为`{{ networks.relay_chain.rpc }}` 
 - **`--ws-port`** —— 指定WebSockets RPC服务器的TCP端口。平行链的的默认端口`{{ networks.parachain.ws }}`，嵌入的中继链则为`{{ networks.relay_chain.ws }}`
@@ -27,7 +27,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 - **`--wasm-execution`** —— 指定执行Wasm runtime代码时的函数方法，以下为可用选项：
     - **`compiled`** —— 此为默认选项，使用[Wasmtime](https://github.com/paritytech/wasmtime){target=_blank}编译的runtime
     - **`interpreted-i-know-what-i-do`** —— 使用[Wasmi interpreter](https://github.com/paritytech/wasmi){target=_blank}
-- **`--state-pruning`** —— 指定状态调整模式。对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。如果为使用`--validator`标志运行的节点，默认保持所有区块的状态。否则，状态仅会保留最近的256个区块，以下为可用选项：
+- **`--state-pruning`** —— 指定状态调整模式。对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。如果为使用`--collator`标志运行的节点，默认保持所有区块的状态。否则，状态仅会保留最近的256个区块，以下为可用选项：
     - **`archive`** —— 保持所有区块的状态
     - **`<number-of-blocks>`** —— 指定保留状态的自定义区块编号
 - **`--trie-cache-size`** —— 指定内部状态缓存的大小，默认为`67108864`。您可以将其设置为`0`以关闭缓存换取收集人表现提升。对于v0.27.0之前的客户端版本，`--trie-cache-size`标志被命名为`--state-cache-size`
