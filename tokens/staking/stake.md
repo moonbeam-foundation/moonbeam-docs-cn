@@ -63,7 +63,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 2. 选取任何您希望获取数据的函数。举例而言，您可以使用**maxCollatorsPerNominator**，这将会返回您可委托的最大收集人数
 3. 点击**+**以获取当前数据
 
-![Retrieving staking parameters](/images/tokens/staking/stake/new/stake-1.png)
+![Retrieving staking parameters](/images/tokens/staking/stake/stake-1.png)
 
 您应当可以看到单个委托人可委托的最大收集人数，也可以在[Moonbeam质押](/learn/features/staking/#quick-reference){target=_blank}概述中查询。
 
@@ -86,7 +86,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
  - **selectedCandidates** —— 返回目前的收集人有效集，也就是总Token质押量（委托人的质押量也包括在内）排在前面的候选收集人。例如，在Moonbase Alpha上是当前的前{{ networks.moonbase.staking.max_candidates }}名候选人
  - **candidatePool** —— 返回目前所有候选人的名单，包括不在有效集的收集人
 
-![Staking Account](/images/tokens/staking/stake/new/stake-2.png)
+![Staking Account](/images/tokens/staking/stake/stake-2.png)
 
 ### 获取候选人的委托数量 {: #get-the-candidate-delegation-count } 
 
@@ -99,7 +99,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
  5. 点击 **+** 按钮发送状态查询
  6. 复制发起委托时需要的结果
 
-![Get candidate delegation count](/images/tokens/staking/stake/new/stake-3.png)
+![Get candidate delegation count](/images/tokens/staking/stake/stake-3.png)
 
 ### 获取候选人自动复合委托数量 {: #get-candidate-auto-compounding-count }
 
@@ -120,7 +120,7 @@ console.log(autoCompoundingDelegations.toHuman().length);
  3. 要执行代码，请单击运行按钮
  4. 复制结果，因为您在发起委托时需要它
 
-![Get candidate auto-compounding delegation count](/images/tokens/staking/stake/new/stake-4.png)
+![Get candidate auto-compounding delegation count](/images/tokens/staking/stake/stake-4.png)
 
 ### 获取目前委托数据 {: #get-your-number-of-existing-delegations }
 
@@ -147,7 +147,7 @@ if (delegatorInfo.toHuman()) {
  3. 要执行代码，请单击运行按钮
  4. 复制运行结果，在您发起委托时需要用到
 
-![Get existing delegation count](/images/tokens/staking/stake/new/stake-5.png)
+![Get existing delegation count](/images/tokens/staking/stake/stake-5.png)
 
 ### 质押Token {: #staking-your-tokens }
 
@@ -168,7 +168,7 @@ if (delegatorInfo.toHuman()) {
  9. 输入[您从 JavaScript 控制台检索到的 `delegationCount` ](#get-your-number-of-existing-delegations)。如果您尚未委派候选人，则为`0`
  10. 点击**Submit Transaction**按钮，并签名确认交易
 
-![Staking Join Delegators Extrinsics](/images/tokens/staking/stake/new/stake-6.png)
+![Staking Join Delegators Extrinsics](/images/tokens/staking/stake/stake-6.png)
 
 !!! 注意事项
     第7-9步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
@@ -185,7 +185,7 @@ if (delegatorInfo.toHuman()) {
  4. 确保**include option**滑块处于打开状态
  5. 点击 **+**按钮发送状态查询
 
-![Verify delegations](/images/tokens/staking/stake/new/stake-7.png)
+![Verify delegations](/images/tokens/staking/stake/stake-7.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个委托列表，每个委托都包含了候选收集人的目标地址及质押数量。
 
@@ -214,7 +214,7 @@ console.log(`${delegation.value}%`);
  3. 要执行代码，请单击运行按钮
  4. 结果在右侧终端返回
 
-![Verify auto-compounding percentage](/images/tokens/staking/stake/new/stake-8.png)
+![Verify auto-compounding percentage](/images/tokens/staking/stake/stake-8.png)
 
 ## 设置或更改自动复合百分比 {: #set-or-change-auto-compounding }
 
@@ -231,7 +231,7 @@ console.log(`${delegation.value}%`);
  7. 对于 **delegationCountHint** 字段，输入您的委托数量
  8. 点击 **Submit Transaction** 按钮并签署交易
 
-![Staking Chain State Query](/images/tokens/staking/stake/new/stake-9.png)
+![Staking Chain State Query](/images/tokens/staking/stake/stake-9.png)
 
 ## 如何停止委托 {: #how-to-stop-delegations } 
 
@@ -249,7 +249,7 @@ console.log(`${delegation.value}%`);
  4. 设置您希望移除委托的收集人地址。在本示例中为`{{ networks.moonbase.staking.candidates.address1 }}`
  5. 点击**Submit Transaction**按钮，并签名确认交易
 
-![Staking Schedule Request to Revoke Delegation Extrinsic](/images/tokens/staking/stake/new/stake-10.png)
+![Staking Schedule Request to Revoke Delegation Extrinsic](/images/tokens/staking/stake/stake-10.png)
 
 !!! 注意事项
     每个候选人只能有一个待定的计划请求。
@@ -267,7 +267,7 @@ console.log(`${delegation.value}%`);
  5. 设置您希望移除委托的收集人地址。在本示例中为`{{ networks.moonbase.staking.candidates.address1 }}`
  6. 点击**Submit Transaction**按钮，并签名确认交易
 
-![Staking Execute Revoke Delegation Extrinsic](/images/tokens/staking/stake/new/stake-11.png)
+![Staking Execute Revoke Delegation Extrinsic](/images/tokens/staking/stake/stake-11.png)
 
 交易确认后，您可以在**Developer**标签下的**Chain state**中验证委托是否被成功移除。随后，执行以下步骤：
 
@@ -277,7 +277,7 @@ console.log(`${delegation.value}%`);
  4. 确保**include option**滑块处于打开状态
  5. 点击**+**按钮发送状态查询
 
-![Staking Verify Delegation is Revoked](/images/tokens/staking/stake/new/stake-12.png)
+![Staking Verify Delegation is Revoked](/images/tokens/staking/stake/stake-12.png)
 
 在返回结果中可以看到，账户中（在本示例中为Alice的账户）有一个保留委托列表，每个委托都包含了候选收集人的目标地址及质押数量。`{{ networks.moonbase.staking.candidates.address1 }}`不再出现。如果您不再有任何委托，将返回`<none>`。
 
@@ -293,7 +293,7 @@ console.log(`${delegation.value}%`);
 4. 输入您希望取消请求相对应的收集人地址
 5. 点击**Submit Transaction**按钮，并签名确认交易
 
-![Staking Cancel Scheduled Request to Revoke Delegation](/images/tokens/staking/stake/new/stake-13.png)
+![Staking Cancel Scheduled Request to Revoke Delegation](/images/tokens/staking/stake/stake-13.png)
 
 ## 质押奖励 {: #staking-rewards } 
 
