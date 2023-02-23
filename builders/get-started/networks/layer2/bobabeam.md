@@ -28,7 +28,7 @@ const Web3 = require('web3'); // Load Web3 library
 const web3 = new Web3('{{ networks.bobabeam.rpc_url }}');
 ```
 
-如果您使用的是Ethers.js库，使用`ethers.providers.StaticJsonRpcProvider(providerURL, {object})`定义提供商，并将提供商的URL设置为Bobabeam：
+如果您使用的是Ethers.js库，使用`ethers.JsonRpcProvider(providerURL, {object})`定义提供商，并将提供商的URL设置为Bobabeam：
 
 ```js
 const ethers = require('ethers'); // Load Ethers library
@@ -36,7 +36,7 @@ const ethers = require('ethers'); // Load Ethers library
 const providerURL = '{{ networks.bobabeam.rpc_url }}';
 
 // Define provider
-const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
+const provider = new ethers.JsonRpcProvider(providerURL, {
     chainId: {{ networks.bobabeam.chain_id }},
     name: 'bobabeam'
 });

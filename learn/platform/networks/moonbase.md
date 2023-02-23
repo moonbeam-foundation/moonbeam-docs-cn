@@ -60,17 +60,19 @@ Moonbase Alpha具有以下配置：
 
 --8<-- 'text/testnet/connect.md'
 
+## Alphanet中继链 {: #relay-chain }
+
+Alphanet中继链连接到Moonbase Alpha并且是基于[Westend](https://polkadot.network/blog/westend-introducing-a-new-testnet-for-polkadot-and-kusama/){target=_blank}但专属于Moonbeam生态系统的。它类似于您与Kusama或Polkadot的交互方式。 Alphanet中继链的原生代币是UNIT代币，仅用于测试目的，没有实际价值。
+
 ## 遥测功能 {: #telemetry } 
 
 您可以点击[波卡遥测仪表盘](https://telemetry.polkadot.io/#list/0x91bc6e169807aaa54802737e1c504b2577d4fafedd5a02c10293b1cd60e39527){target=_blank}来查看及时的Moonbase Alpha遥测资讯。
 
 ## 代币 {: #tokens } 
 
-Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。目前，您可以通过几种方式获得测试代币：通过Moonbase Alpha水龙头或手动申请。
+Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。
 
 您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
-
-### 手动申请 {: #manual-procedure }
 
 对于超过我们的Discord机器人允许的Token请求，请通过Moonbeam的[Discord频道](https://discord.gg/PfpUATX){target=_blank}直接联系版主。我们很高兴提供测试您的应用程序所需的Token。
 

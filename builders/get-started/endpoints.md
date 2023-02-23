@@ -74,7 +74,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 为您的API密钥输入一个名称
 3. 点击 **Create** 生成您的API密钥
 
-![GetBlock](/images/builders/get-started/endpoints/endpoints-3.png)
+![GetBlock](/images/builders/get-started/endpoints/endpoints-4.png)
 
 ### OnFinality {: #onfinality }
 
@@ -86,7 +86,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 在下拉菜单中选择网络
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-4.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-5.png)
 
 ### Pocket Network {: #pokt }
 
@@ -99,7 +99,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 输入你的DApp名称，选择你对应的网络
 4. 您的新端点将生成并显示在以下应用程序屏幕中
 
-![Pocket Network](/images/builders/get-started/endpoints/endpoints-5.png)
+![Pocket Network](/images/builders/get-started/endpoints/endpoints-6.png)
 
 您不必为每个端点生成一个新的DApp！您可以将新链添加到您现有的DApp中：
 

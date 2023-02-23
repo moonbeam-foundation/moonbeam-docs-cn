@@ -33,7 +33,7 @@ purestake/moonbeam:v0.28.1 \
 --base-path=/data \
 --chain moonbeam \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \
@@ -47,7 +47,7 @@ purestake/moonbeam:v0.28.1 \
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.28.1 \
+purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain moonriver \
 --name="YOUR-NODE-NAME" \
@@ -65,11 +65,11 @@ purestake/moonbeam:v0.28.1 \
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.28.1 \
+purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain moonriver \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \
@@ -83,7 +83,7 @@ purestake/moonbeam:v0.28.1 \
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.28.1 \
+purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain alphanet \
 --name="YOUR-NODE-NAME" \
@@ -101,11 +101,11 @@ purestake/moonbeam:v0.28.1 \
 ```
 docker run -p 9933:9933 -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
 -u $(id -u ${USER}):$(id -g ${USER}) \
-purestake/moonbeam:v0.28.1 \
+purestake/moonbeam:v0.29.0 \
 --base-path=/data \
 --chain alphanet \
 --name="YOUR-NODE-NAME" \
---validator \
+--collator \
 --execution wasm \
 --wasm-execution compiled \
 --trie-cache-size 0 \

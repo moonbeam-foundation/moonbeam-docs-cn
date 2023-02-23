@@ -50,19 +50,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或是拥有两个账户以测试批量预编译合约的不同功能
 - 至少拥有一个具有`DEV`的账户。
-   --8<-- 'text/faucet/faucet-list-item.md'
-
-### 设置Remix {: #remix-set-up } 
-
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互，您可以将预编译合约加入至Remix并遵循以下教程：
-
-1. 获得[`Batch.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}副本
-
-2. 将其文件内容粘贴至Remix文件内并命名为**Batch.sol**
-
-3. 获得[`SimpleContract.sol`](#example-contract)副本
-
-4. 将其文件内容粘贴至Remix文件内并命名为**SimpleContract.sol**
+ --8<-- 'text/faucet/faucet-list-item.md'
 
 ### 范例合约 {: #example-contract}
 
@@ -70,32 +58,34 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
  --8<-- 'code/batch/simple-contract.md'
 
+### 设置Remix {: #remix-set-up } 
+
+您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
+
+1. 点击**File explorer**标签
+2. 粘贴`Batch.sol`合约至Remix文件内并命名为**Batch.sol**
+3. 粘贴`SimpleContract.sol`合约至Remix文件内并命名为**SimpleContract.sol**
+
 ### 编译合约 {: #compile-the-contract }
 
 接着您需要在Remix中编译上述的两个文件：
 
 1. 确保您打开**Batch.sol**文件
-
 2. 点击**Compile**标签（从上到下第二个）
-
 3. 点击**Compile Batch.sol**以编译合约
 
 ![Compiling Batch.sol](/images/builders/pallets-precompiles/precompiles/batch/batch-1.png)
 
-如果接口编译成功，你将会在**Compile**标签旁看到绿色的打勾图示。
+如果接口编译成功，您将会在**Compile**标签旁看到绿色的打勾图示。
 
 ### 使用预编译合约 {: #access-the-precompile }
 
 您将会使用预编译合约的地址访问接口，而非部署批量预编译合约：
 
 1. 在Remix中的**Compile**标签下方点击**Deploy and Run**标签，请确保预编译合约已部署成功
-
-2. 确保**ENVIRONMENT**下拉菜单中已选取**Injected Web3**。当您选取**Injected Web3**后，MetaMask将会跳出弹窗要求将您的账户与Remix连接
-
+2. 确保**ENVIRONMENT**下拉菜单中已选取**Injected Provider - Metamask**。当您选取**Injected Provider - Metamask**后，MetaMask将会跳出弹窗要求将您的账户与Remix连接
 3. 确保**ACCOUNT**下方显示的是正确的账户地址
-
 4. 确保**CONTRACT**下拉菜单中**Batch - Batch.sol**已被选取。由于此为预编译合约，因此您不需要部署任何代码，但我们仍需要在**At Address**输入栏中提供预编译合约的地址
-
 5. 提供批量预编译合约的地址：`{{networks.moonbase.precompiles.batch}}`并点击**At Address**
 
 ![Access the address](/images/builders/pallets-precompiles/precompiles/batch/batch-2.png)
@@ -107,15 +97,10 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 另一方面，`SimpleContract.sol`将会作为一个新合约被部署。在开始本部分教程前，请为`SimpleContract.sol`档案重复[编译步骤](#compile-the-contract)。
 
 1. 在Remix中的**Compile**标签下方点击**Deploy and Run**
-
-2. 确保**ENVIRONMENT**下拉菜单中已选取**Injected Web3**，当您选取**Injected Web3**时，您或许将会见到MetaMask与Remix连接的弹窗
-
+2. 确保**ENVIRONMENT**下拉菜单中已选取**Injected Provider - Metamask**，当您选取**Injected Provider - Metamask**时，您或许将会见到MetaMask与Remix连接的弹窗
 3. 确保**ACCOUNT**下方显示的是正确的账户地址
-
 4. 确保**CONTRACT**下拉菜单中**SimpleContract - SimpleContract.sol**已被选取
-
 5. 点击**Deploy**
-
 6. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
 ![Deploy SimpleContract](/images/builders/pallets-precompiles/precompiles/batch/batch-3.png)
@@ -265,7 +250,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 以太坊开发者库 {: #ethereum-development-libraries }
 
-如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`utils.Interface`对象之中，而[encodeFunctionData](https://docs.ethers.io/v5/api/utils/abi/interface/#Interface--encoding){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
+如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
 
 !!! 注意事项
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。

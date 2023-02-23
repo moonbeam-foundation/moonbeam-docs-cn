@@ -60,7 +60,8 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **cancelLeaveCandidates**(candidateCount) - 取消一个候选人（收集人）的待定中的已计划的请求，就目前在池中候选人的数量，以离开该池
 - **cancelLeaveDelegators**() - *运行时1800弃用* 取消一个待定中的已计划的请求以离开委托人池。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`cancelDelegationRequest`请求
 - **candidateBondMore**(more) - 请求增加有具体数量的候选人（收集人）自身绑定量
-- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量
+- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托并将自动复合的奖励百分比设置为`0`。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量
+- **delegateWithAutoCompound**(candidate, amount, autoCompound, candidateDelegationCount, candidateAutoCompoundingDelegationCount, delegationCount) - 委托一个收集人候选人并用`amount`，一个0-100之间的整数（无小数）设置自动复合奖励百分比。如果调用者不是委托人，则此函数将它们添加到委托人集合中。如果调用者已经是委托人，则调整他们的委托数量。
 - **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
 - **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
 - **executeDelegationRequest**(delegator, candidate) - 为提供候选人（收集人）的地址的特定委托人执行任何已计划的到期委托请求
@@ -74,6 +75,7 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待
 - **scheduleLeaveDelegators**() - *运行时1800弃用* 计划一个请求，以离开委托人池并撤销所有正在进行的委托。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`scheduleRevokeDelegation`请求
 - **scheduleRevokeDelegation**(collator) - 计划一个请求，以撤销一个给定候选人（收集人）地址的委托。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
+- **setAutoCompound**(candidate, value, candidateAutoCompoundingDelegationCountHint, delegationCountHint) - 给定`value`，一个0-100之间的整数（无小数），设置现有委托自动复合的奖励百分比
 - **setBlocksPerRound**(new) - 设定每个轮次的区块。如果`new`值少于目前轮次的长度，将立即转换下一个区块
 - **setCollatorCommission**(new) - 设定给所有收集人`new`值的佣金
 - **setInflation**(schedule) - 设定年通胀率以导出每轮通胀率
@@ -86,7 +88,8 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 
 平行链质押pallet包括了以下只读存储模式以获取链状态数据：
 
-- **atStake**(u32, AccountId20) - 提供给定一轮数量的收集人委托质押的快照，并且可选，收集人的地址
+- **atStake**(u32, AccountId20) - 提供收集人委托质押的快照，以及给定一个整数设置为自动复合的奖励百分比，并且可选，收集人的地址
+- **autoCompoundingDelegations**(AccountId20) - 返回已设置自动复合的给定候选人的委托人列表以及设置为自动复合的奖励百分比
 - **awardedPts**(u32, AccountId20) - 给定一轮数量，返回每轮每个收集人的奖励积分，并且可选，收集人的地址
 - **bottomDelegations**(AccountId20) - 为所有候选人（收集人）或者一个给定候选人（收集人）的地址返回最底部的50个委托
 - **candidateInfo**(AccountId20) - 为所有候选人（收集人）或者一个给定的候选人（收集人）的地址返回候选人（收集人）信息，如绑定量、委托数量及更多
