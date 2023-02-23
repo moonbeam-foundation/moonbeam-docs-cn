@@ -2,8 +2,11 @@
 title: Moonbeam开发者文档汇集
 description: Moonbeam入门和开发指南。了解如何使用Ethereum和Substrate API、XCM互操作性和其它可用的集成。
 template: main.html
+hide:
+  - toc
 ---
 
+<h1 class='subsection-title'></h1>
 <div class='subsection-wrapper'></div>
 <div class='disclaimer'>
 --8<-- 'text/disclaimers/general.md'

@@ -4,4 +4,5 @@ description: 深入了解如何使用Moonbeam（基于波卡的EVM兼容平行�
 template: home.html
 ---
 
-<div class="subsection-wrapper"></div>
+<h1 class='subsection-title'></h1>
+<div class='subsection-wrapper'></div>
