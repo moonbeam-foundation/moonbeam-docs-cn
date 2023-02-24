@@ -161,7 +161,7 @@ npx squid-evm-typegen --abi src/abi/ERC721.json --output src/abi/erc721.ts
 
 ## 定义和绑定事件处理程序 {: #define-and-bind-event-handlers }
 
-Subsquid SDK提供用户[处理器](https://docs.subsquid.io/develop-a-squid/substrate-processor/){target=_blank}，被称为`SubstrateProcessor`，在特定情况下被称为[`SubstrateEvmProcessor`](https://docs.subsquid.io/develop-a-squid/substrate-processor/evm-support/){target=_blank}。*处理器连接至 [Subsquid archive](https://docs.subsquid.io/docs/archives/){target=_blank}以获取链上数据。其自开始设定的开始区块运作，直到设定的最后一个区块或是新的数据被加入至链上时停止。
+Subsquid SDK提供用户[处理器](https://docs.subsquid.io/develop-a-squid/substrate-processor/){target=_blank}，被称为`SubstrateProcessor`，在特定情况下被称为[`SubstrateEvmProcessor`](https://docs.subsquid.io/substrate-indexing/evm-support/){target=_blank}。*处理器连接至 [Subsquid archive](https://docs.subsquid.io/docs/archives/){target=_blank}以获取链上数据。其自开始设定的开始区块运作，直到设定的最后一个区块或是新的数据被加入至链上时停止。
 
 处理器提供会“处理”如同Substrate事件、extrinsics、储存项或是EVM记录等特定数据的附加函数。这函数能够通过指定事件、extrinsic名称、EVM记录合约地址进行配置。当处理器正在处理数据时，如果其遇到配置的事件名称，他将会执行“处理”函数内的内容。
 

@@ -67,7 +67,7 @@ contract SetText {
 
 ## 创建一个Safe钱包 {: #create-a-safe }
 
-要创建一个Safe钱包，导航至[Moonbeam Safe](https://multisig.moonbeam.network/moonbase){target=_blank}。本教程将引导您在Moonbase Alpha上创建一个Safe钱包，您也可以修改配置在[Moonbeam](https://multisig.moonbeam.network/moonbeam){target=_blank}或[Moonriver](https://multisig.moonbeam.network/moonriver){target=_blank}上创建一个Safe钱包。您可点击页面右上角的网络下拉菜单切换网络。
+要创建一个Safe钱包，导航至[Moonbeam Safe](https://multisig.moonbeam.network/?chain=mbase){target=_blank}。本教程将引导您在Moonbase Alpha上创建一个Safe钱包，您也可以修改配置在[Moonbeam](https://multisig.moonbeam.network/?chain=mbeam){target=_blank}或[Moonriver](https://multisig.moonbeam.network/?chain=mriver){target=_blank}上创建一个Safe钱包。您可点击页面右上角的网络下拉菜单切换网络。
 
 ### 连接MetaMask {: #connect-metamask }
 

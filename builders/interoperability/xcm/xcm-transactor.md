@@ -7,7 +7,7 @@ description: 通过使用XCM-Transactor pallet，如何在其他链进行远程X
 
 ![XCM-Transactor Precompile Contracts Banner](/images/builders/interoperability/xcm/xcm-transactor/xcmtransactor-banner.png)
 
-## 概览 {: #introduction}
+## 概览 {: #introduction }
 
 XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}组成。这些指令的组合会产生预先确定的操作，例如跨链Token转移，更有趣的是，远程跨链执行。
 
@@ -92,14 +92,14 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 - **baseXcmWeight**() — 返回每个XCM指令执行所需的基本XCM权重
 - **selfLocation**() — 返回链的multilocation
 
-## 通过衍生函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-derivative}
+## 通过衍生函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-derivative }
 
 此部分包含使用`transactThroughDerivative`函数通过XCM-transactor pallet为远程执行构建XCM消息。
 
 !!! 注意事项
     请确保您已在目标链中允许将要远程执行的调用！
 
-### 查看先决条件 {: #xcmtransactor-derivative-check-prerequisites}
+### 查看先决条件 {: #xcmtransactor-derivative-check-prerequisites }
 
 要在Polkadot.js Apps发送extrinsics，您需要准备以下内容：
 
@@ -121,7 +121,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 - [计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
 
 
-### 构建XCM {: #xcm-transact-through-derivative}
+### 构建XCM {: #xcm-transact-through-derivative }
 
 如果您已[完成准备工作](#xcmtransactor-derivative-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
 
@@ -139,7 +139,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 7. 将currency ID设置为**ForeignAsset**。因为您转移的不是DEV token（*自身储备*），而是与XC-20资产交互
 
-8. 输入asset ID。在本示例中，`xcUNIT`的资产ID为`42259045809535163221576417993425387648`。您可以在[XC-20地址部分](/builders/interoperability/xcm/xc20/overview/#current-xc20-assets){target=_blank}获取所有可用的资产ID
+8. 输入asset ID。在本示例中，`xcUNIT`的资产ID为`42259045809535163221576417993425387648`。您可以在[XC-20地址部分](/builders/interoperability/xcm/xc20/xc20/#current-xc20-assets){target=_blank}获取所有可用的资产ID
 
 9. （可选）设置**feeAmount**。这是所选费用Token（XC-20）的每秒单位，将被销毁以释放目标链上主权账户中的相应余额。在本示例中，将每秒单位设置为`13764626000000` 。若您未提供此数值，pallet将使用存储库中的元素（若有）
 
@@ -177,14 +177,14 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 ![Check Registered Derivative Indexes](/images/builders/interoperability/xcm/xcm-transactor/xcmtransactor-2.png)
 
-## 通过签署函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-signed}
+## 通过签署函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-signed }
 
 此部分包含使用`transactThroughSigned`函数通过XCM-transactor pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
 
 !!! 注意事项
     请确保您已在目标链中允许将要远程执行的调用！
 
-### 查看先决条件 {: #xcmtransactor-signed-check-prerequisites} 
+### 查看先决条件 {: #xcmtransactor-signed-check-prerequisites } 
 
 要在Polkadot.js Apps发送extrinsics，您需要准备以下内容：
 
@@ -196,7 +196,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
  - Alice在原始平行链中的地址为`0x44236223aB4291b93EEd10E4B511B37a398DEE55`
  - 在目标平行链中的multilocation衍生账户地址为`0x5c27c4bb7047083420eddff9cddac4a0a120b45c`2
 
-### 构建XCM {: #xcm-transact-through-derivative}
+### 构建XCM {: #xcm-transact-through-derivative }
 
 如果您已[完成准备工作](#xcmtransactor-signed-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
 
@@ -229,7 +229,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 当交易完成后，Alice应当在目标链上的地址收到1 Token。
 
-## XCM-Transactor预编译 {: #xcmtransactor-precompile}
+## XCM-Transactor预编译 {: #xcmtransactor-precompile }
 
 XCM-transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM-transactor pallet功能。与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}相似，XCM-transactor预编译位于以下地址：
 

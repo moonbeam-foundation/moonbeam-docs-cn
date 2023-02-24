@@ -66,18 +66,18 @@ Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开�
 
 ## 事件订阅以太坊JSON RPC方法 {: #event-subscription-rpc-methods }
 
-截止本文撰写时，Moonbeam支持的以太坊API的[事件订阅JSON RPC方法](https://geth.ethereum.org/docs/rpc/pubsub){target=_blank}：
+截止本文撰写时，Moonbeam支持的以太坊API的[事件订阅JSON RPC方法](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub){target=_blank}：
 
- - **[eth_subscribe](https://geth.ethereum.org/docs/rpc/pubsub#create-subscription){target=_blank}** —— 为指定订阅名称创建订阅。如果成功，则返回订阅ID
- - **[eth_unsubscribe](https://geth.ethereum.org/docs/rpc/pubsub#cancel-subscription){target=_blank}** —— 取消指定ID的订阅
+ - **[eth_subscribe](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#create-subscription){target=_blank}** —— 为指定订阅名称创建订阅。如果成功，则返回订阅ID
+ - **[eth_unsubscribe](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#cancel-subscription){target=_blank}** —— 取消指定ID的订阅
 
 ### 已支持订阅 {: #supported-subscription }
 
-截止本文撰写时，[已支持的订阅](https://geth.ethereum.org/docs/rpc/pubsub#supported-subscriptions){target=_blank}：
+截止本文撰写时，[已支持的订阅](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#supported-subscriptions){target=_blank}：
 
- - **[newHeads](https://geth.ethereum.org/docs/rpc/pubsub#newheads){target=_blank}** —— 每次将新的标题附加至链都会触发通知
- - **[logs](https://geth.ethereum.org/docs/rpc/pubsub#logs){target=_blank}** —— 返回包含在新导入区块中并匹配指定过滤条件的日志
- - **[newPendingTransactions](https://geth.ethereum.org/docs/rpc/pubsub#newpendingtransactions){target=_blank}** —— 返回所有增加至待处理状态的交易哈希
- - **[syncing](https://geth.ethereum.org/docs/rpc/pubsub#syncing){target=_blank}** —— 表示节点开始或停止与网络同步
+ - **[newHeads](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#newheads){target=_blank}** —— 每次将新的标题附加至链都会触发通知
+ - **[logs](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#logs){target=_blank}** —— 返回包含在新导入区块中并匹配指定过滤条件的日志
+ - **[newPendingTransactions](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#newpendingtransactions){target=_blank}** —— 返回所有增加至待处理状态的交易哈希
+ - **[syncing](https://geth.ethereum.org/docs/interacting-with-geth/rpc/pubsub#syncing){target=_blank}** —— 表示节点开始或停止与网络同步
 
 如果您想获得跟多关于这些订阅的详细教程，请查看[事件订阅](/builders/build/eth-api/pubsub/)教程。
