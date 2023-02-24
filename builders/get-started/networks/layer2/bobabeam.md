@@ -9,7 +9,7 @@ description: Bobabeam是一个部署在Moonbeam上以计算机为中心的Optimi
 
 ## 概览 {: #introduction }
 
-[Boba](https://boba.network/){target=_blank}是一个以计算为中心的Layer 2 (L2)，构建在基于[Optimism](https://www.optimism.io/){target=_blank}开发的Optimistic Rollup（链下计算层）之上。Boba通过[Turing Hybrid Compute](https://docs.boba.network/turing/turing){target=_blank}等多种功能增强了兼容EVM区块链的计算能力。上线以太坊之后，Boba将其Layer 2扩展解决方案带入Moonbeam。[Bobabase](/builders/get-started/networks/layer2/bobabase){target=_blank}是Boba部署在Moonbeam的测试网名称。Bobabeam是Boba部署在Moonbeam的主网名称。
+[Boba](https://boba.network/){target=_blank}是一个以计算为中心的Layer 2 (L2)，构建在基于[Optimism](https://www.optimism.io/){target=_blank}开发的Optimistic Rollup（链下计算层）之上。Boba通过[Turing Hybrid Compute](https://docs.boba.network/hybrid_compute){target=_blank}等多种功能增强了兼容EVM区块链的计算能力。上线以太坊之后，Boba将其Layer 2扩展解决方案带入Moonbeam。[Bobabase](/builders/get-started/networks/layer2/bobabase){target=_blank}是Boba部署在Moonbeam的测试网名称。Bobabeam是Boba部署在Moonbeam的主网名称。
 
 --8<-- 'text/disclaimers/third-party-content-intro.md'
 

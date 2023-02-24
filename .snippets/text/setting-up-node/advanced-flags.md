@@ -1,6 +1,6 @@
 随着Moonbase Alpha v7版本的发布，节点还提供对某些非标准RPC方法的访问，开发人员可以在运行时检查和调试事务。目前用户可以创建以下两种不同节点：
 
- - Geth调试API：具体来说是`debug_traceTransaction`方法。这将尝试以与执行事务相同的方式进行事务运行。有关此RPC方法详情，请见[此链接](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction)
+ - Geth调试API：具体来说是`debug_traceTransaction`方法。这将尝试以与执行事务相同的方式进行事务运行。有关此RPC方法详情，请见[此链接](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_tracetransaction)
  - OpenEthereum跟踪模块：具体来说是`trace_filter`方法。这将返回与作为RPC调用输入提供的特定过滤器匹配的跟踪。有关此RPC方法详情，请见[此链接](https://openethereum.github.io/JSONRPC-trace-module#trace_filter)
 
 可通过使用以下标志激活以上所述功能：

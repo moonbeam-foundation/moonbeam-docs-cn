@@ -17,23 +17,23 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 可用的RPC方法如下：
 
-  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction){target=_blank}
-  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbynumber){target=_blank}
-  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbyhash){target=_blank}
+  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_tracetransaction){target=_blank}
+  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbynumber){target=_blank}
+  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbyhash){target=_blank}
   - [`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=_blank}
-  - [`txpool_content`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_content){target=_blank}
-  - [`txpool_inspect`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_inspect){target=_blank}
-  - [`txpool_status`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status){target=_blank}
+  - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_content){target=_blank}
+  - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_inspect){target=_blank}
+  - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_status){target=_blank}
 
   
 
 ## Debug API {: #debug-api }
 
-有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/rpc/ns-debug){target=_blank}：
+有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug){target=_blank}：
 
-  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction){target=_blank}** —— 需要追踪交易的哈希值
-  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbynumber){target=_blank}** —— 需要追踪区块的区块编号
-  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/rpc/ns-debug#debug_traceblockbyhash){target=_blank}** —— 需要追踪区块的哈希值
+  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_tracetransaction){target=_blank}** —— 需要追踪交易的哈希值
+  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbynumber){target=_blank}** —— 需要追踪区块的区块编号
+  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbyhash){target=_blank}** —— 需要追踪区块的哈希值
 
 此外，还可提供以下*可选*参数：
 
@@ -43,11 +43,11 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 ## Txpool API {: #txpool-api }
 
-有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/rpc/ns-txpool)：
+有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool)：
 
-  - **[`txpool_content`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_content){target=_blank}** —— 无需任何参数
-  - **[`txpool_inspect`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_inspect){target=_blank}** —— 无需任何参数
-  - **[`txpool_status`](https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status){target=_blank}** —— 无需任何参数
+  - **[`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_content){target=_blank}** —— 无需任何参数
+  - **[`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_inspect){target=_blank}** —— 无需任何参数
+  - **[`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_status){target=_blank}** —— 无需任何参数
 
 ## Trace模块 {: #trace-module }
 
