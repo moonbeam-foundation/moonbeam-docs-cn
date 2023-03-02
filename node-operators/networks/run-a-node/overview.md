@@ -61,13 +61,15 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 
 只有指定P2P端口才需要对流入流量开放。**收集人节点不可以开放任何WS或RPC端口。**
 
+!!! note
+    从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，端口{{ networks.parachain.rpc }}的HTTP RPC端点已被弃用。端口{{ networks.parachain.ws }}的WS RPC端点应该同时用于HTTP和WS连接.
+
 ### 平行链全节点的默认端口 {: #default-ports-for-a-parachain-full-node }
 
 |      描述      |  |                端口                 |
 |:--------------:|--|:-----------------------------------:|
 |    **P2P**     |  | {{ networks.parachain.p2p }} (TCP)  |
-|    **RPC**     |  |    {{ networks.parachain.rpc }}     |
-|     **WS**     |  |     {{ networks.parachain.ws }}     |
+|  **RPC & WS**  |  |     {{ networks.parachain.ws }}     |
 | **Prometheus** |  | {{ networks.parachain.prometheus }} |
 
 ### 嵌入式中继链默认端口 {: #default-ports-of-embedded-relay-chain }
@@ -75,8 +77,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 |      描述      |  |                 端口                  |
 |:--------------:|--|:-------------------------------------:|
 |    **P2P**     |  | {{ networks.relay_chain.p2p }} (TCP)  |
-|    **RPC**     |  |    {{ networks.relay_chain.rpc }}     |
-|     **WS**     |  |     {{ networks.relay_chain.ws }}     |
+|  **RPC & WS**  |  |     {{ networks.relay_chain.ws }}     |
 | **Prometheus** |  | {{ networks.relay_chain.prometheus }} |
 
 ## 安装指引 {: #installation }

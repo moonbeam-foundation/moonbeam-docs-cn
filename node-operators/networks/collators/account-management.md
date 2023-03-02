@@ -89,7 +89,7 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 要使用`mappingWithDeposit`方法检查特定收集人的映射，您需要获取Nimbus ID。 为此，您可以使用串联公钥的前64个十六进制字符来获取Nimbus ID。要验证Nimbus ID是否正确，您可以运行以下命令，并将前64个字符传递到`params`数组中：
 
 ```
-curl http://127.0.0.1:9933 -H "Content-Type:application/json;charset=utf-8" -d   '{
+curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d   '{
   "jsonrpc":"2.0",
   "id":1,
   "method":"author_hasKey",

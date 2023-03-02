@@ -93,6 +93,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 !!! note
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
+    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。
+
 运行一个追踪节点的完整命令如下所示：
 
 === "Moonbeam"
@@ -256,6 +258,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 !!! note
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+    
+    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。
 
 === "Moonbeam"
     ```
@@ -273,9 +277,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -287,9 +288,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -313,9 +311,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -327,9 +322,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -353,9 +345,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -367,9 +356,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbase.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     

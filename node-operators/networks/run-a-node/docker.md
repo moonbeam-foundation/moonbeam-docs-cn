@@ -71,6 +71,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 !!! note
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
+    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。
+
 ### 全节点 {: #full-node }
 
 === "Moonbeam"
@@ -198,7 +200,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
 ```
-docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} #rest of code goes here
+docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} # rest of code goes here
 ```
 
 在同步过程中，您将看到嵌入式中继链和平行链的消息（无标签）。这些消息将显示目标区块（实时网络状态）和最佳区块（本地节点同步状态）。

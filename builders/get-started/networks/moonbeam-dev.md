@@ -48,14 +48,14 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 === "MacOS"
     ```
-    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 -p 9933:9933 \
+    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
     purestake/moonbeam:{{ networks.development.build_tag }} \
     --dev --ws-external --rpc-external
     ```
 
 === "Windows"
     ```
-    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 -p 9933:9933 ^
+    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
     purestake/moonbeam:{{ networks.development.build_tag }} ^
     --dev --ws-external --rpc-external
     ```
@@ -135,8 +135,8 @@ cd moonbeam
 
 开发节点是基于Substrate框架的节点，您可使用标准的Substrate工具来与之交互。两个可使用的RPC端点如下所示：
 
- - **HTTP** - `http://127.0.0.1:9933`
- - **WS** - `ws://127.0.0.1:9944` 
+ - **HTTP** - `{{ networks.development.rpc_url }}`
+ - **WS** - `{{ networks.development.wss_url }}`
 
 首先，我们将节点连接至Polkadot.js Apps。打开浏览器并输入链接：[https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer){target=_blank}。进入网站之后，Polkadot.js Apps将被启动，并自动连接至Polkadot主网。
 
@@ -212,10 +212,10 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有RPC日志，该命令应如下所示：`-l rpc=trace`
 - **`--sealing <interval>`** - 当区块需要被密封在开发服务中。可接受的时间间隔参数为 `instant`、 `manual`或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`
-- **`--rpc-port <port>`** - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
-- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。 接受端口作为参数
+- **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
+- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数
 
-如需标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
+如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
 
 ## Debug、Trace和TxPool API {: #debug-trace-txpool-apis } 
 
@@ -244,4 +244,4 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 您可以使用以下任一区块链浏览器来浏览Moonbeam开发节点:
 
  - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer){target=_blank} WS端口`9944`
- - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank} HTTP端口`9933`
+ - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank} HTTP端口`9944`
