@@ -69,9 +69,9 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`标识。如果未完成以上配置，请参考[运行追踪节点](/node-operators/networks/tracing-node/){target=_blank}教程。RPC HTTP终端为`http://127.0.0.1:9933`。
+本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`标识。
 
-如果您尚未运行跟踪节点，您可以按照 [运行跟踪节点](/node-operators/networks/tracing-node/) 上的指南进行操作。RPC HTTP终端为`http://127.0.0.1:9933`。
+如果未完成以上配置，请参考[运行追踪节点](/node-operators/networks/tracing-node/){target=_blank}教程。RPC HTTP终端为`{{ networks.development.rpc_url }}`。
 
 如果您已有运行的节点，也会看到相似的终端日志：
 
