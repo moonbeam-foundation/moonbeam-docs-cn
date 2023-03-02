@@ -48,14 +48,14 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 === "MacOS"
     ```
-    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 -p 9933:9933 \
+    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
     purestake/moonbeam:{{ networks.development.build_tag }} \
     --dev --ws-external --rpc-external
     ```
 
 === "Windows"
     ```
-    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 -p 9933:9933 ^
+    docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
     purestake/moonbeam:{{ networks.development.build_tag }} ^
     --dev --ws-external --rpc-external
     ```
@@ -212,10 +212,10 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有RPC日志，该命令应如下所示：`-l rpc=trace`
 - **`--sealing <interval>`** - 当区块需要被密封在开发服务中。可接受的时间间隔参数为 `instant`、 `manual`或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`
-- **`--rpc-port <port>`** - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
-- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。 接受端口作为参数
+- **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
+- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数
 
-如需标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
+如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
 
 ## Debug、Trace和TxPool API {: #debug-trace-txpool-apis } 
 

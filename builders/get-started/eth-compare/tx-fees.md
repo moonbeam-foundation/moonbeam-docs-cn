@@ -200,7 +200,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 === "Moonbeam"
     ```sh
-    curl --location 
+    curl --location \
          --request POST '{{ networks.moonbeam.rpc_url }}' \
          --header 'Content-Type: application/json' \
          --data-raw '{
@@ -212,7 +212,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
     ```
 === "Moonriver"
     ```sh
-    curl --location 
+    curl --location \
          --request POST '{{ networks.moonriver.rpc_url }}' \
          --header 'Content-Type: application/json' \
          --data-raw '{
@@ -224,7 +224,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
     ```
 === "Moonbase Alpha"
     ```sh
-    curl --location 
+    curl --location \
          --request POST '{{ networks.moonbase.rpc_url }}' \
          --header 'Content-Type: application/json' \
          --data-raw '{
@@ -236,7 +236,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
     ```
 === "Moonbeam开发节点"
     ```sh
-    curl --location 
+    curl --location \
          --request POST '{{ networks.development.rpc_url }}' \
          --header 'Content-Type: application/json' \
          --data-raw '{

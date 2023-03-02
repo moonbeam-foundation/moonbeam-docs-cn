@@ -191,6 +191,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 !!! note
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
+    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。
 
 ### 全节点 {: #full-node }
 
@@ -211,7 +212,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -223,7 +223,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -249,7 +248,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -261,7 +259,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -287,7 +284,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -299,7 +295,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -331,7 +326,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --collator \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -342,7 +336,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -369,7 +362,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
          --collator \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -380,7 +372,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
@@ -407,7 +398,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
          --collator \
          --port {{ networks.parachain.p2p }} \
-         --rpc-port {{ networks.parachain.rpc }} \
          --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --wasm-execution compiled \
@@ -418,7 +408,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --name "YOUR-NODE-NAME" \
          -- \
          --port {{ networks.relay_chain.p2p }} \
-         --rpc-port {{ networks.relay_chain.rpc }} \
          --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
