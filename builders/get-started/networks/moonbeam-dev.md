@@ -135,8 +135,8 @@ cd moonbeam
 
 开发节点是基于Substrate框架的节点，您可使用标准的Substrate工具来与之交互。两个可使用的RPC端点如下所示：
 
- - **HTTP** - `http://127.0.0.1:9933`
- - **WS** - `ws://127.0.0.1:9944` 
+ - **HTTP** - `{{ networks.development.rpc_url }}`
+ - **WS** - `{{ networks.development.wss_url }}`
 
 首先，我们将节点连接至Polkadot.js Apps。打开浏览器并输入链接：[https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer){target=_blank}。进入网站之后，Polkadot.js Apps将被启动，并自动连接至Polkadot主网。
 
@@ -244,4 +244,4 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 您可以使用以下任一区块链浏览器来浏览Moonbeam开发节点:
 
  - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer){target=_blank} WS端口`9944`
- - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank} HTTP端口`9933`
+ - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank} HTTP端口`9944`
