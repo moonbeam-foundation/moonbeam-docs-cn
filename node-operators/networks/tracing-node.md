@@ -277,8 +277,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -290,8 +288,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -315,8 +311,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -328,8 +322,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonriver.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
@@ -353,8 +345,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
-         --port {{ networks.parachain.p2p }} \
-         --ws-port {{ networks.parachain.ws }} \
          --execution wasm \
          --state-pruning=archive \
          --trie-cache-size 0 \
@@ -366,8 +356,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbase.chain_spec }} \
          --name "YOUR-NODE-NAME" \
          -- \
-         --port {{ networks.relay_chain.p2p }} \
-         --ws-port {{ networks.relay_chain.ws }} \
          --execution wasm \
          --name="YOUR-NODE-NAME (Embedded Relay)"
     
