@@ -81,11 +81,11 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
 |        [Moonbase Alpha](/builders/get-started/networks/moonbase){target=_blank}         | 从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站。 <br>水龙头会每24个小时分配{{ networks.moonbase.website_faucet_amount }} |
 | [Moonbeam Development Node](/builders/get-started/networks/moonbeam-dev){target=_blank} |                  您开发节点附带的 [10个预注资账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}中的任何一个                  |
 
-## 开发工具
+## 开发工具 {: #development-tools }
 
 因为Moonbeam是一个完全兼容以太坊的Substrate链，因此您可以使用基于Substrate工具和基于以太坊的工具。
 
-### JavaScript 工具{: #javascript }
+### JavaScript 工具 {: #javascript }
 
 === "Ethereum"
     |                                     工具                                     |      类型       |

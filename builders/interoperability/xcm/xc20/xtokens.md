@@ -40,7 +40,7 @@ X-tokens pallet提供以下extrinsics（函数）：
  - **currencyId/currencies** — 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`ForeignAsset`代表其XC-20资产ID（而不是其XC-20地址）
  - **amount** — 将通过XCM转移的Token数量
  - **dest** — 一个multilocation，用于定义将通过XCM转移Token的目标地址。其支持不同地址格式，如20或32字节的地址（以太坊或是Substrate格式）
- - **destWeight** — 您提供给目标链希望其执行XCM信息的最大执行时间。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
+ - **destWeight** — 一个枚举类型（enum），表示您提供给目标链希望其执行XCM信息的最大执行时间。`Unlimited`选项允许将所有用于gas的资产用于支付权重（weight）。`Limited`选项将gas的使用量限制为特定值。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
  - **asset/assets** — 一个用于定义将通过XCM转移资产的multilocation。每条平行链将会有不同定义资产的方式。举例而言，基于Moonbeam的网络将会经由其原生Token的pallet余额索引定义
  - **fee** — 一个用于定义支付XCM在目标链上执行的multilocation
  - **feeItem** — 一个用于定义多样资产发送地点的索引，将用于支付XCM在目标链上的执行。举例而言，如果仅有一种资产被发送，`feeItem`将会是`0`
@@ -116,12 +116,12 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
     |  Network  |      Any       |
     |    Id     | Target Account |
     
-8. 将目标权重设置为`1000000000`。请注意，在Moonbase Alpha上，每个XCM操作需要大概`100000000`权重单位。一个`transfer`包含4个XCM操作，因此目标权重应当设置为`400000000`左右
+8. 将目标权重设置为`Limited`，并将其值设置为`1000000000`。请注意，在Moonbase Alpha上，每个XCM操作需要大概`100000000`权重单位。一个`transfer`包含4个XCM操作，因此目标权重应当设置为`400000000`左右
 
 9. 点击**Submit Transaction**按钮并签署交易
 
 !!! 注意事项
-    以上extrinsict配置的编码调用数据为`0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300ca9a3b00000000`，这同样包含一个您需要改变的接收者函数。
+    以上extrinsic配置的编码调用数据为`0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a0630102286bee`，这同样包含一个您需要改变的接收者函数。
 
 ![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-2.png)
 
@@ -177,7 +177,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 9. 点击**Submit Transaction**按钮并签署交易
 
 !!! 注意事项
-    以上extrinsict配置的编码调用数据为`0x1e010100010000070010a5d4e80101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300ca9a3b00000000`，这同样包含一个您需要改变的接收者函数。
+    以上extrinsic配置的编码调用数据为`0x1e010100010000070010a5d4e80101010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a0630102286bee`，这同样包含一个您需要改变的接收者函数。
 
 ![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-3.png)
 

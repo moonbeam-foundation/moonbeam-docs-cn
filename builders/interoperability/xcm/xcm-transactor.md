@@ -1,6 +1,6 @@
 ---
 title: 通过XCM进行远程执行
-description: 通过使用XCM-Transactor pallet，如何在其他链进行远程XCM调用。XCM-Transactor预编译允许通过以太坊API访问核心功能。
+description: 通过使用XCM-Transactor Pallet，如何在其他链进行远程XCM调用。XCM-Transactor预编译允许通过以太坊API访问核心功能。
 ---
 
 # 使用XCM-Transactor Pallet进行远程执行
@@ -13,7 +13,7 @@ XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/
 
 然而，从头开始构建XCM消息还是比较困难。此外，XCM消息从根账户（即SUDO或通过民主投票）发送给生态系统中的其他参与者，这对于希望通过简单交易实现远程跨链调用的项目来说并不合适。
 
-要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM-transactor pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM-transactor pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
+要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM-Transactor Pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM-Transactor Pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
 
 pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocation计算的衍生账户进行交易。每个extrinsic都相应命名。
 
@@ -23,9 +23,9 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
  - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在目标链中执行。从持有资产中提取用于支付执行费用。支付的费用取决于目标链
  - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} - 在目标链中执行。从给定原始链派遣编码的调用数据
 
-当由XCM-transactor pallet创建的XCM消息执行后，必须支付费用。所有的相关信息可以在[XCM费用](/builders/interoperability/xcm/fees/){target=_blank}页面的[XCM-transactor费用部分](/builders/interoperability/xcm/fees/#xcm-transactor-fees){target=_blank}找到。
+当由XCM-Transactor Pallet创建的XCM消息执行后，必须支付费用。所有的相关信息可以在[XCM费用](/builders/interoperability/xcm/fees/){target=_blank}页面的[XCM-Transactor费用部分](/builders/interoperability/xcm/fees/#xcm-transactor-fees){target=_blank}找到。
 
-本教程将向您展示如何使用XCM-transactor pallet在生态系统（中继链或平行链）中从基于Moonbeam的网络发送XCM消息至其他链。此外，您还将学习到如何使用XCM-transactor预编译通过以太坊API执行同样的操作。
+本教程将向您展示如何使用XCM-Transactor Pallet在生态系统（中继链或平行链）中从基于Moonbeam的网络发送XCM消息至其他链。此外，您还将学习到如何使用XCM-Transactor预编译通过以太坊API执行同样的操作。
 
 **请注意，通过XCM消息进行远程执行仍然有一些限制。**
 
@@ -38,30 +38,31 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
  - **Derivative accounts** — 从另一个账户衍生的账户。衍生账户是无需私钥的（即私钥是未知的），因此，与XCM特定用例相关的衍生账户只能通过XCM extrinsics访问。对于此类应用，账户类型有两种：
      - **Sovereign-derivative account** — 这会产生一个从目标链中的平行链主权账户衍生的无私钥账户。衍生方法使用`utility.asDerivative` extrinsic用于远程调用。通过此衍生账户交易时，交易费由原账户（在本示例中为主权账户）支付，但是交易从衍生账户派遣。更多信息，请参考Utility Pallet页面的[衍生账户](/builders/pallets-precompiles/pallets/utility/){target=_blank}部分
      - **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
- - **Transact information** — 与XCM-transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM-transactor计算此费用，并向XCM-transactor extrinsic的发送者收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
+ - **Transact information** — 与XCM-Transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM-Transactor计算此费用，并向XCM-Transactor extrinsic的发送者收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
 
 ## XCM-Transactor Pallet接口 {: #xcm-transactor-pallet-interface}
 
 ### Extrinsics {: #extrinsics }
 
-XCM-transactor pallet提供以下extrinsics（函数）：
+XCM-Transactor Pallet提供以下extrinsics（函数）：
 
  - **deregister**(index) — 注销给定索引的衍生账户，以防止先前注册的帐户使用衍生地址进行远程执行。该extrinsic只能通过*root*调用，例如，通过民主提案
+ - **hrmpManage**(action, fee, weightInfo) - 管理与打开、接受和关闭HRMP通道相关的HRMP操作。给定的操作可以是以下三个操作中的任何一个：`InitOpen`、`Accept`和`Close`
  - **register**(address, index) — 以给定索引将给定地址注册为衍生账户。该extrinsic只能通过*root*调用，例如，通过民主提案
  - **removeFeePerSecond**(assetLocation) — 移除其储备链中给定资产的每秒费用信息。资产定义为multilocation
  - **removeTransactInfo**(location) — 移除给定链的交易信息，定义为multilocation
- - **setFeePerSecond**(assetLocation, feePerSecond) — 设置其储备链中给定资产的每秒交易费信息。资产定义为multilocation。`feePerSecond`是每秒XCM执行的Token单位，将会向XCM-transactor extrinsic的发送者收取费用
+ - **setFeePerSecond**(assetLocation, feePerSecond) — 设置其储备链中给定资产的每秒交易费信息。资产定义为multilocation。`feePerSecond`是每秒XCM执行的Token单位，将会向XCM-Transactor extrinsic的发送者收取费用
  - **setTransactInfo**(location, transactExtraWeight, maxWeight) — 设置给定链的交易信息，定义为multilocation。交易信息包含：
      - **transactExtraWeight** — 支付XCM指令执行费用（`WithdrawAsset`、`BuyExecution`和 `Transact`）的权重，预计至少比移除XCM指令执行使用的费用高出10%以上
      - **maxWeight** — 允许远程XCM执行的最大权重单位
      - **transactExtraWeightSigned** — （可选）支付XCM指令执行费用（`DescendOrigin`、`WithdrawAsset`、`BuyExecution`和`Transact`）的权重，预计至少比移除XCM指令执行使用的费用高出10%以上
- - **transactThroughDerivative**(destination, index, fee, innerCall, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令（使用`asDerivative`选项包装）。远程调的支付费用将通过原始平行链主权账户签署，而交易是从给定索引的主权账户的衍生账户发送。XCM-transactor pallet计算远程执行的费用，并向extrinsic的发送者收取资产ID给出的对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用
- - **transactThroughSigned**(destination, fee, call, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令。远程调用将通过目标平行链衍生的新账户签署和执行。对于基于Moonbeam的网络，此账户是继承的multilocation的`blake2`哈希，截断成正确的长度。XCM-transactor pallet计算远程执行的费用，并向extrinsic的发送者收取资产ID给出的对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}预估费用
- - **transactThroughSovereign**(destination, feePayer, fee, call, originKind, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令。程调用将通过支付费用的原始平行链主权账户签署，而交易是从给定起始账户发送。XCM-transactor pallet计算远程执行的费用，并通过资产multilocation向给定账户收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用
+ - **transactThroughDerivative**(destination, index, fee, innerCall, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令（使用`asDerivative`选项包装）。远程调的支付费用将通过原始平行链主权账户签署，而交易是从给定索引的主权账户的衍生账户发送。XCM-Transactor Pallet计算远程执行的费用，并向extrinsic的发送者收取资产ID给出的对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用
+ - **transactThroughSigned**(destination, fee, call, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令。远程调用将通过目标平行链衍生的新账户签署和执行。对于基于Moonbeam的网络，此账户是继承的multilocation的`blake2`哈希，截断成正确的长度。XCM-Transactor Pallet计算远程执行的费用，并向extrinsic的发送者收取资产ID给出的对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}预估费用
+ - **transactThroughSovereign**(destination, feePayer, fee, call, originKind, weightInfo) — 发送XCM消息，包含在给定目标链上远程执行特定调用的指令。程调用将通过支付费用的原始平行链主权账户签署，而交易是从给定起始账户发送。XCM-Transactor Pallet计算远程执行的费用，并通过资产multilocation向给定账户收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用
 
 其中需要输入的内容如下：
 
- - **index** — 用于计算衍生账户的值。就XCM-transactor pallet而言，这是另一条链中平行链主权账户的衍生账户
+ - **index** — 用于计算衍生账户的值。就XCM-Transactor Pallet而言，这是另一条链中平行链主权账户的衍生账户
  - **assetLocation** — 代表储备链上资产的multilocation，用于设置或获取每秒交易信息的费用
  - **location** — 代表生态系统中一条链的multilocation，用于设置或获取交易信息
  - **destination** — 代表生态系统中一条链的multilocation，XCM消息将发送到该位置
@@ -71,30 +72,30 @@ XCM-transactor pallet提供以下extrinsics（函数）：
  - **innerCall** — 在目标链中执行的调用的编码调用数据。如果通过主权衍生账户进行交易，这将包装在`asDerivative`选项中
  - **weightInfo** — 包含所有权重相关信息的结构。若没有提供足够的权重，则XCM执行将失败，资金可能会被锁定在主权账户或特定pallet中。因此，**正确设置目标权重以避免XCM执行失败至关重要**。结构包含以下两种字段：
      - **transactRequiredWeightAtMost** — 与`Transact`调用本身执行相关的权重。对于通过主权衍生的交易，您也需要考虑`asDerivative` extrinsic的权重。但是，这不会包含在所有XCM指令的成本（权重）当中
-     - **overallWeight** — XCM-transactor extrinsic可以使用的所有权重。这包含所有XCM指令以及调用本身(**transactRequiredWeightAtMost**)的权重
+     - **overallWeight** — XCM-Transactor extrinsic可以使用的所有权重。这包含所有XCM指令以及调用本身(**transactRequiredWeightAtMost**)的权重
  - **call** — 类似于`innerCall`，但是并没有用`asDerivative` extrinsic包装
  - **feePayer** — 将通过主权账户支付远程XCM执行交易费用的地址。费用将根据对应的[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}收取
  - **originKind** — 在目标链中远程调用的派遣者。目前有[四种派遣者类型](https://github.com/paritytech/polkadot/blob/0a34022e31c85001f871bb4067b7d5f5cab91207/xcm/src/v0/mod.rs#L60){target=_blank}可使用
 
 ### 存储方法 {: #storage-methods }
 
-XCM-transactor pallet包含以下只读存储方法：
+XCM-Transactor Pallet包含以下只读存储方法：
 
- - **destinationAssetFeePerSecond**() — 返回给定multilocation资产的每秒费用。这能够将权重转换成费用。如果`feeAmount`设置为`None`，pallet extrinsicts将读取存储元素
+ - **destinationAssetFeePerSecond**() — 返回给定multilocation资产的每秒费用。这能够将权重转换成费用。如果`feeAmount`设置为`None`，pallet extrinsics将读取存储元素
  - **indexToAccount**(index) — 返回与给定衍生索引关联的原始链账户
  - **palletVersion**() — 从存储库返回当前pallet的版本
  - **transactInfoWithWeightLimit**(location) — 返回给定multilocation的交易信息。如果`feeAmount`设置为`None`，pallet extrinsics将读取存储元素
 
 ### Pallet常量 {: #constants }
 
-XCM-transactor pallet包含以下只读函数以获取pallet常量：
+XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 - **baseXcmWeight**() — 返回每个XCM指令执行所需的基本XCM权重
 - **selfLocation**() — 返回链的multilocation
 
 ## 通过衍生函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-derivative }
 
-此部分包含使用`transactThroughDerivative`函数通过XCM-transactor pallet为远程执行构建XCM消息。
+此部分包含使用`transactThroughDerivative`函数通过XCM-Transactor Pallet为远程执行构建XCM消息。
 
 !!! 注意事项
     请确保您已在目标链中允许将要远程执行的调用！
@@ -104,8 +105,8 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 要在Polkadot.js Apps发送extrinsics，您需要准备以下内容：
 
  - 拥有[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}
- - 您将要通过XCM-transactor pallet发送XCM的账户必须注册在给定索引中，以便能够通过主权账户的衍生账户进行操作。注册是通过根账户（Moonbase Alpha中的SUDO）完成的，所以您可以通过[联系我们](https://discord.gg/PfpUATX){target=_blank}进行注册。在本示例中，Alice的账号注册在索引`42`中
- - 通过XCM-transactor的远程调用需要目标链的Token作为手续费才能执行。因为此操作是在Moonbeam发起，所以您将需要保留Token的[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}表现形式。在本示例中，您正在发送XCM消息至中继链，因此您将需要`xcUNIT` Token（即Alphanet中继链Token `UNIT`的Moonbase Alpha表现形式）支付执行费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}（Moonbase Alpha 上的Uniswap V2演示版本）上兑换DEV Token以获取该Token
+ - 您将要通过XCM-Transactor Pallet发送XCM的账户必须注册在给定索引中，以便能够通过主权账户的衍生账户进行操作。注册是通过根账户（Moonbase Alpha中的SUDO）完成的，所以您可以通过[联系我们](https://discord.gg/PfpUATX){target=_blank}进行注册。在本示例中，Alice的账号注册在索引`42`中
+ - 通过XCM-Transactor的远程调用需要目标链的Token作为手续费才能执行。因为此操作是在Moonbeam发起，所以您将需要保留Token的[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}表现形式。在本示例中，您正在发送XCM消息至中继链，因此您将需要`xcUNIT` Token（即Alphanet中继链Token `UNIT`的Moonbase Alpha表现形式）支付执行费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}（Moonbase Alpha 上的Uniswap V2演示版本）上兑换DEV Token以获取该Token
 
 ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-1.png)
 
@@ -159,7 +160,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 当交易完成后，您可以在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xa90b23a54f2bb691ba2f04ae3228b1de2d2e7231b98490bf6f94e491baf09185){target=_blank}和[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0xb5a0ecc0c2f7f1363ede2e3aebab2702dd2e7b9036a6ba23a694db2b4002cd7f){target=_blank}中查看相关extrinsic和事件。请注意，在Moonbase Alpha中，有一个`transactThroughDerivative`方法相关联的事件，但是有一些`xcUNIT` Token已被销毁以偿还主权账户的交易费用。在中继链中，`paraInherent.enter` extrinsic会显示`balance.Transfer`事件，其中1 `UNIT` Token转移给Alice地址。尽管如此，交易费仍会通过Moonbase Alpha主权账户进行支付。
 
 !!! 注意事项
-    `AssetsTrapped`事件在中继链上时因为XCM-transactor pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
+    `AssetsTrapped`事件在中继链上时因为XCM-Transactor Pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
 
 ### 获取已注册的衍生索引 {: #retrieve-registered-derivative-indexes }
 
@@ -179,7 +180,7 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 ## 通过签署函数进行XCM-Transactor交易 {: #xcmtransactor-transact-through-signed }
 
-此部分包含使用`transactThroughSigned`函数通过XCM-transactor pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
+此部分包含使用`transactThroughSigned`函数通过XCM-Transactor Pallet为远程执行构建XCM消息。但是，由于目标平行链暂未公开，您将无法跟进。
 
 !!! 注意事项
     请确保您已在目标链中允许将要远程执行的调用！
@@ -231,14 +232,14 @@ XCM-transactor pallet包含以下只读函数以获取pallet常量：
 
 ## XCM-Transactor预编译 {: #xcmtransactor-precompile }
 
-XCM-transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM-transactor pallet功能。与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}相似，XCM-transactor预编译位于以下地址：
+XCM-Transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM-Transactor Pallet功能。与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}相似，XCM-Transactor预编译位于以下地址：
 
 === "Moonbase Alpha"
      ```
      {{networks.moonbase.precompiles.xcm_transactor}}
      ```
 
-XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。 XCM-transactor旧版预编译位于以下地址：
+XCM-Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。 XCM-Transactor旧版预编译位于以下地址：
 
 === "Moonbeam"
      ```
@@ -259,10 +260,10 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 
 ### XCM-Transactor Solidity接口 {: #xcmtrasactor-solidity-interface } 
 
-[XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-transactor pallet进行交互。
+[XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-Transactor Pallet进行交互。
 
 !!! 注意事项
-    XCM-transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
+    XCM-Transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：
 
@@ -273,14 +274,16 @@ XCM-transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
  - **transactThroughDerivative**(*uint8* transactor, *uint16* index, *address* currencyId, *uint64* transactRequiredWeightAtMost, *bytes* *memory* inner_call, *uint256* feeAmount, *uint64* overallWeight) — 表示[上述示例](#xcmtransactor-transact-through-derivative)中描述的`transactThroughDerivative`方法的函数，将**fee**类型设置为**AsCurrencyId**。您将需要提供用于支付费用的Token的[资产XC-20地址](/builders/interoperability/xcm/xc20/overview/#current-xc20-assets){target=_blank}，而不是资产ID
  - **transactThroughSignedMultilocation**(*Multilocation* *memory* dest, *Multilocation* *memory* fee_location, *uint64* transactRequiredWeightAtMost, *bytes* *memory* call, *uint256* feeAmount, *uint64* overallWeight) — 表示[上述示例](#xcmtransactor-transact-through-signed)中描述的`transactThroughSigned`方法的函数，将**fee**类型设置为**AsMultiLocation**。您需要提供Token的资产multilocation来支付费用，而不是XC-20 Token `address`
  - **transactThroughSigned**(*Multilocation* *memory* dest, *address* fee_location_address, *uint64* transactRequiredWeightAtMost, *bytes* *memory* call, *uint256* feeAmount, *uint64* overallWeight) — 表示[上述示例](#xcmtransactor-transact-through-signed)中描述的`transactThroughSigned`方法的函数，将**fee**类型设置为**AsCurrencyId**。您将需要提供用于支付费用的Token的[资产XC-20地址](/builders/interoperability/xcm/xc20/overview/#current-xc20-assets){target=_blank}，而不是资产ID
+ - **encodeUtilityAsDerivative**(*uint8* transactor, *uint16* index, *bytes memory* innerCall) - 给定要使用的交易者（transactor）、衍生账户的索引（index）以及要从衍生地址执行的内部调用（innerCall），对`asDerivative`包装调用进行编码
+ 
 
 ### 构建预编译Multilocation {: #building-the-precompile-multilocation }
 
-在XCM-transactor预编译接口中，`Multilocation`结构定义为如下：
+在XCM-Transactor预编译接口中，`Multilocation`结构定义为如下：
 
 --8<-- 'text/xcm/xcm-precompile-multilocation.md'
 
-下面的代码片段介绍了`Multilocation`结构的一些示例，他们需要被输入到XCM-transactor预编译函数中：
+下面的代码片段介绍了`Multilocation`结构的一些示例，他们需要被输入到XCM-Transactor预编译函数中：
 
 
 ```js
