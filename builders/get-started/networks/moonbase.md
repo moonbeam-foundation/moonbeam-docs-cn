@@ -37,10 +37,14 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
 
-![Moonbase Alpha Faucet Web](/images/builders/get-started/networks/moonbase/moonbase-1.png)
+![Moonbase Alpha Faucet Website.](/images/builders/get-started/networks/moonbase/moonbase-1.png)
 
 !!! 注意事项
     Moonbase Alpha DEV Token并不具备任何实际价值。请不要向水龙头发送非必要请求。
+
+您还能使用[ChainDrop Faucet](https://chaindrop.org/?chainid=1287&token=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee){target=_blank}来请求DEV测试代币，每次请求会分配{{ networks.moonbase.chaindrop_faucet_amount }}枚DEV。
+
+![ChainDrop Faucet Website.](/images/builders/get-started/networks/moonbase/moonbase-2-new.png)
 
 ## 演示DApp {: #Demo-DApps }
 
