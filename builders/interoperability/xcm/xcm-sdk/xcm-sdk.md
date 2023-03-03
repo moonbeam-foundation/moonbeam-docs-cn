@@ -390,7 +390,7 @@ async function deposit() {
     `Your ${asset.originSymbol} balance in ${source.name}: ${toDecimal(
       sourceBalance,
       asset.decimals,
-    )}. Minimum transferable amount is: ${toDecimal(min, asset.decimals)}`,
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
   await send('INSERT-AMOUNT', (event) => console.log(event));
@@ -578,7 +578,7 @@ async function getDepositFee() {
   );
 
   const fee = await getFee('INSERT-AMOUNT'));
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals)} ${dot}`);
+  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals).toFixed()} ${dot}`);
 }
 
 getDepositFee();
@@ -621,7 +621,7 @@ async function withdraw() {
     `Your ${asset.originSymbol} balance in ${destination.name}: ${toDecimal(
       destinationBalance,
       asset.decimals,
-    )}. Minimum transferable amount is: ${toDecimal(min, asset.decimals)}`,
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
   await send('INSERT-AMOUNT', (event) => console.log(event));
@@ -772,8 +772,8 @@ async function getWithdrawFee() {
     { ethersSigner }, // Only required if you didn't pass the signer in on initialization
   );
 
-  const fee = await getFee('INSERT-AMOUNT'));
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals)} ${moonbeam.moonAsset.originSymbol}`););
+  const fee = await getFee('INSERT-AMOUNT');
+  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals).toFixed()} ${moonbeam.moonAsset.originSymbol}`);
 }
 
 getWithdrawFee();
@@ -809,7 +809,7 @@ const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
   (balances) => {
     balances.forEach(({ asset, balance, origin }) => {
       console.log(
-        `${balance.symbol}: ${toDecimal(balance.balance, balance.decimals)} (${
+        `${balance.symbol}: ${toDecimal(balance.balance, balance.decimals).toFixed()} (${
           origin.name
         } ${asset.originSymbol})`,
       );
@@ -820,13 +820,22 @@ const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
 unsubscribe();
 ```
 
-### 功能函数 {: #sdk-utils }
+### 效用函数 {: #sdk-utils }
 
-XCM SDK提供三个功能函数：`isXcmSdkDeposit`、`isXcmSdkWithdraw`和`toDecimal`。
+XCM SDK和XCM Utilities包中都有效用函数。 XCM SDK提供以下与SDK相关的效用函数：
+
+- [`isXcmSdkDeposit`](#deposit-check)
+- [`isXcmSdkWithdraw`](#withdraw-check)
+
+XCM Utilities包提供了以下通用效用函数：
+
+- [`toDecimal`](#decimals)
+- [`toBigInt`](#decimals)
+- [`hasDecimalOverflow`](#decimals)
 
 #### 查看转移数据是否用于存入  {: #deposit-check }
 
-要确定一个转移数据是否是用于存入，您可以将转移数据输入`isXcmSdkWithdraw`函数，您会获得一个布林值。如果返回`true`则该转移数据是用于存入，如果返回`false`则相反。
+要确定一个转移数据是否是用于存入，您可以将转移数据输入`isXcmSdkDeposit`函数，您会获得一个布林值。如果返回`true`则该转移数据是用于存入，如果返回`false`则相反。
 
 以下为范例：
 
@@ -850,7 +859,7 @@ console.log(isXcmSdkDeposit(withdraw)) // Returns false
 
 #### 查看转移数据是否用于取出 {: #withdraw-check }
 
-要确定一个转移数据是否用于取出，您可以在`isXcmSdkWithdraw()`输入转移数据，您会获得一个布林值。如果返回`true`则该转移数据是用于取出，如果返回`false`则相反。
+要确定一个转移数据是否用于取出，您可以在`isXcmSdkWithdraw`输入转移数据，您会获得一个布林值。如果返回`true`则该转移数据是用于取出，如果返回`false`则相反。
 
 以下为范例：
 
@@ -874,18 +883,21 @@ console.log(isXcmSdkDeposit(deposit)) // Returns false
 
 #### 将余额转换为十进制或BigInt {: #decimals }
 
-要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以指示使用的最大小数位数，预设值为`6`。
+要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以指示使用的最大小数位数，预设值为`6`；第四个参数指示了数字的[舍入方法](https://mikemcl.github.io/big.js/#rm){target=_blank}。
+`toDecimal`函数返回一个Big数字类型，您可以使用其方法 `toNumber`、`toFixed`、`toPrecision`和`toExponential`将其转换为数字或字符串。 我们建议将它们用作字符串，因为在使用数字类型时，大数字或有很多小数的数字可能会失去精度。
 
-要将十进制数转换回BigInt，您可以使用`toBigInt`函数，该函数根据提供的小数位数返回 BigInt 格式的给定数字。
+要将十进制数转换回BigInt，您可以使用`toBigInt`函数，该函数根据提供的小数位数返回BigInt格式的给定数字。
 
 举例而言，您可以使用以下代码将Moonbeam上以Wei为单位的余额转换成Glimmer：
 
 ```js
 import { toDecimal, toBigInt } from '@moonbeam-network/xcm-utils';
 
-const balance = toDecimal(3999947500000000000n, 18);
-console.log(balance); // Returns 3.999947
+const balance = toDecimal(3999947500000000000n, 18).toFixed();
+console.log(balance); // Returns '3.999947'
 
-const big = toBigInt(3.999947, 18);
+const big = toBigInt('3.999947', 18);
 console.log(big); // Returns 3999947000000000000n
 ```
+
+您还可以使用`hasDecimalOverflow`来确保给定数字的小数位数不超过允许的位数。这对表单输入很有帮助。
