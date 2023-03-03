@@ -6,5 +6,6 @@ hide:
   - toc
 ---
 
+<h1 class='subsection-title'>DApp列表</h1>
 <div class="subsection-wrapper">
 </div>
