@@ -35,7 +35,13 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
-两个包都会安装所有需要的依赖项，如[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
+您将需要安装依赖项，如[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
+
+您可以运行以下指令来安装它们：
+
+```
+npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto ethers
+```
 
 !!! 注意事项
     目前将Moonbeam XCM包与Polkadot.js与 Node.js (JavaScript)一起使用时，存在[已知问题](https://github.com/polkadot-js/api/issues/4315){target=_blank}导致包冲突警告出现在控制台中。推荐您使用TypeScript。
@@ -384,7 +390,7 @@ async function deposit() {
     `Your ${asset.originSymbol} balance in ${source.name}: ${toDecimal(
       sourceBalance,
       asset.decimals,
-    )}. Minimum transferable amount is: ${toDecimal(min, asset.decimals)}`,
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
   await send('INSERT-AMOUNT', (event) => console.log(event));
@@ -494,7 +500,12 @@ const response = await from(polkadot).get(
   },
   existentialDeposit: 10000000000n,
   min: 33068783n,
-  moonChainFee: undefined,
+  moonChainFee: {
+    balance: 0n,
+    decimals: 10,
+    fee: 33068783n,
+    symbol: 'DOT'
+  },
   native: {
     id: '42259045809535163221576417993425387648',
     erc20Id: '0xffffffff1fcacbd218edc0eba20fc2308c778080',
@@ -530,6 +541,7 @@ const response = await from(polkadot).get(
 |       `asset`        |                   被转移的[资产](#assets)                    |
 | `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
 |        `min`         |                        最小可转移数量                        |
+|    `moonChainFee`    | 支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中 |
 |       `native`       |                 原链上的原生[资产](#assets)                  |
 |       `origin`       |                     资产所属原链的链信息                     |
 |       `source`       |                 被转移资产从哪里发送的链信息                 |
@@ -566,7 +578,7 @@ async function getDepositFee() {
   );
 
   const fee = await getFee('INSERT-AMOUNT'));
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals)} ${dot}`);
+  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals).toFixed()} ${dot}`);
 }
 
 getDepositFee();
@@ -609,7 +621,7 @@ async function withdraw() {
     `Your ${asset.originSymbol} balance in ${destination.name}: ${toDecimal(
       destinationBalance,
       asset.decimals,
-    )}. Minimum transferable amount is: ${toDecimal(min, asset.decimals)}`,
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
   await send('INSERT-AMOUNT', (event) => console.log(event));
@@ -692,6 +704,11 @@ const response =  await to(
   destinationFee: 520000000n,
   existentialDeposit: 10000000000n,
   min: 10520000000n,
+  minXcmFeeAsset: {
+    amount: 0n,
+    decimals: 10,
+    symbol: "DOT",
+  },
   native: {
     id: '42259045809535163221576417993425387648',
     erc20Id: '0xffffffff1fcacbd218edc0eba20fc2308c778080',
@@ -705,6 +722,7 @@ const response =  await to(
     weight: 1000000000,
     parachainId: 0
   },
+  originXcmFeeAssetBalance: undefined,
   getFee: [AsyncFunction: getFee],
   send: [AsyncFunction: send]
 }
@@ -719,11 +737,13 @@ const response =  await to(
 | `destinationBalance` |                   目标链上账户中资产的余额                   |
 |   `destinationFee`   |                 资产转移至目标链上所需的费用                 |
 | `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
-|        `min`         |                        最小可转移数量                        |
+|        `min`         |                  被转让资产的最小可转移数量                    |
+|   `minXcmFeeAsset`   |            需要一起发送以支付费用的资产的最小可转移数量           |
 |       `native`       |                  原链的原生[资产](#assets)                   |
-|       `origin`       |                     资产所属原链的链信息                     |
-|       `getFee`       |     预估存入一定数量[所需费用](#get-fee-withdraw)的函数      |
-|        `send`        |         用于[传送](#send-withdraw)取出转移数据的函数         |
+|       `origin`       |                      资产所属原链的链信息                     |
+| `originXcmFeeAssetBalance` |   与转账一起发送以支付费用（如果有）的资产的原始账户中的余额   |
+|       `getFee`       |       预估存入一定数量[所需费用](#get-fee-withdraw)的函数       |
+|        `send`        |           用于[传送](#send-withdraw)取出转移数据的函数         |
 
 #### Send函数 {: #send-withdraw }
 
@@ -737,7 +757,8 @@ const response =  await to(
 
 ```js
 import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
-import { init, toDecimal } from '@moonbeam-network/xcm-sdk';
+import { init } from '@moonbeam-network/xcm-sdk';
+import { toDecimal } from '@moonbeam-network/xcm-utils';
 
 ...
 
@@ -751,8 +772,8 @@ async function getWithdrawFee() {
     { ethersSigner }, // Only required if you didn't pass the signer in on initialization
   );
 
-  const fee = await getFee('INSERT-AMOUNT'));
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals)} ${moonbeam.moonAsset.originSymbol}`););
+  const fee = await getFee('INSERT-AMOUNT');
+  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals).toFixed()} ${moonbeam.moonAsset.originSymbol}`);
 }
 
 getWithdrawFee();
@@ -788,7 +809,7 @@ const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
   (balances) => {
     balances.forEach(({ asset, balance, origin }) => {
       console.log(
-        `${balance.symbol}: ${toDecimal(balance.balance, balance.decimals)} (${
+        `${balance.symbol}: ${toDecimal(balance.balance, balance.decimals).toFixed()} (${
           origin.name
         } ${asset.originSymbol})`,
       );
@@ -799,13 +820,22 @@ const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
 unsubscribe();
 ```
 
-### 功能函数 {: #sdk-utils }
+### 效用函数 {: #sdk-utils }
 
-XCM SDK提供三个功能函数：`isXcmSdkDeposit`、`isXcmSdkWithdraw`和`toDecimal`。
+XCM SDK和XCM Utilities包中都有效用函数。 XCM SDK提供以下与SDK相关的效用函数：
+
+- [`isXcmSdkDeposit`](#deposit-check)
+- [`isXcmSdkWithdraw`](#withdraw-check)
+
+XCM Utilities包提供了以下通用效用函数：
+
+- [`toDecimal`](#decimals)
+- [`toBigInt`](#decimals)
+- [`hasDecimalOverflow`](#decimals)
 
 #### 查看转移数据是否用于存入  {: #deposit-check }
 
-要确定一个转移数据是否是用于存入，您可以将转移数据输入`isXcmSdkWithdraw`函数，您会获得一个布林值。如果返回`true`则该转移数据是用于存入，如果返回`false`则相反。
+要确定一个转移数据是否是用于存入，您可以将转移数据输入`isXcmSdkDeposit`函数，您会获得一个布林值。如果返回`true`则该转移数据是用于存入，如果返回`false`则相反。
 
 以下为范例：
 
@@ -829,7 +859,7 @@ console.log(isXcmSdkDeposit(withdraw)) // Returns false
 
 #### 查看转移数据是否用于取出 {: #withdraw-check }
 
-要确定一个转移数据是否用于取出，您可以在`isXcmSdkWithdraw()`输入转移数据，您会获得一个布林值。如果返回`true`则该转移数据是用于取出，如果返回`false`则相反。
+要确定一个转移数据是否用于取出，您可以在`isXcmSdkWithdraw`输入转移数据，您会获得一个布林值。如果返回`true`则该转移数据是用于取出，如果返回`false`则相反。
 
 以下为范例：
 
@@ -851,15 +881,23 @@ const deposit = moonbeam.deposit(moonbeam.symbols[0])
 console.log(isXcmSdkDeposit(deposit)) // Returns false
 ```
 
-#### 将余额转换为十进制 {: #decimals }
+#### 将余额转换为十进制或BigInt {: #decimals }
 
-要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以设定进制的最大值，预设值为`6`。
+要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以指示使用的最大小数位数，预设值为`6`；第四个参数指示了数字的[舍入方法](https://mikemcl.github.io/big.js/#rm){target=_blank}。
+`toDecimal`函数返回一个Big数字类型，您可以使用其方法 `toNumber`、`toFixed`、`toPrecision`和`toExponential`将其转换为数字或字符串。 我们建议将它们用作字符串，因为在使用数字类型时，大数字或有很多小数的数字可能会失去精度。
+
+要将十进制数转换回BigInt，您可以使用`toBigInt`函数，该函数根据提供的小数位数返回BigInt格式的给定数字。
 
 举例而言，您可以使用以下代码将Moonbeam上以Wei为单位的余额转换成Glimmer：
 
 ```js
-import { toDecimal } from '@moonbeam-network/xcm-sdk';
+import { toDecimal, toBigInt } from '@moonbeam-network/xcm-utils';
 
-const balance = toDecimal(3999947500000000000n, 18)
-console.log(balance) // Returns 3.999947
+const balance = toDecimal(3999947500000000000n, 18).toFixed();
+console.log(balance); // Returns '3.999947'
+
+const big = toBigInt('3.999947', 18);
+console.log(big); // Returns 3999947000000000000n
 ```
+
+您还可以使用`hasDecimalOverflow`来确保给定数字的小数位数不超过允许的位数。这对表单输入很有帮助。
