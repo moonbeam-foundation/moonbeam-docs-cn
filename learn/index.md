@@ -4,6 +4,7 @@ description: 了解有关Moonbeam的所有信息，包括有关以太坊兼容�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>指南</h1>

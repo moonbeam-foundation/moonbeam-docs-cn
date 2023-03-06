@@ -4,6 +4,7 @@ description: 了解Moonbeam智能合约平台，包括Moonbeam网络、愿景、
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>平台</h1>

@@ -4,6 +4,7 @@ description: 了解Moonbeam上可用的pallet，以及如何通过相关的extri
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>Pallets</h1>

@@ -4,6 +4,7 @@ description: 了解如何从Moonbeam支持的索引器之一（例如 Covalent�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>索引</h1>

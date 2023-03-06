@@ -4,6 +4,7 @@ description: 了解如何使用JavaScript或Python以太坊库（例如Ethers.js
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>库</h1>

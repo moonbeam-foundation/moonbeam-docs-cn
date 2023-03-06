@@ -4,6 +4,7 @@ description: Moonbeam XCM的SDK中可用的方法和接口，以及如何使用X
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>XCM SDK</h1>

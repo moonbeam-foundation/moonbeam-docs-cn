@@ -4,6 +4,7 @@ description: 在Moonbeam上运行预言机节点，例如ChainLink节点，并�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>预言机节点</h1>

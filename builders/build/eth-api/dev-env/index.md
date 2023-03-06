@@ -4,6 +4,7 @@ description: 了解如何使用 Remix、OpenZeppelin、Hardhat、Truffle、Waffl
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>开发环境</h1>

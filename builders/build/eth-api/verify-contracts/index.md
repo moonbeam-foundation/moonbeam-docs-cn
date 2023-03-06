@@ -4,6 +4,7 @@ description: 了解如何通过区块浏览器验证部署到Moonbeam的Solidity
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>验证智能合约</h1>

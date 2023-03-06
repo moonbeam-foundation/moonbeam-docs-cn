@@ -4,6 +4,7 @@ description: 了解如何将诸如ChainLink、Band或Razor Network之类的预�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>预言机</h1>

@@ -4,6 +4,7 @@ description: 通过构建图表和仪表板来分析链上智能合约数据，�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>分析</h1>

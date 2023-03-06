@@ -4,6 +4,7 @@ description: 了解一些可用于Moonbeam的钱包，以及如何连接您的�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>连接Moonbeam</h1>

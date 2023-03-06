@@ -4,6 +4,7 @@ description: 了解如何使用Ledger硬件钱包在Moonbeam网络上签署交�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>Ledger</h1>

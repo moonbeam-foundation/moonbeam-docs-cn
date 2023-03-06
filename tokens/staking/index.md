@@ -4,6 +4,7 @@ description: 了解如何委托收集人候选人并质押您的GLMR和MOVR代�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>质押</h1>

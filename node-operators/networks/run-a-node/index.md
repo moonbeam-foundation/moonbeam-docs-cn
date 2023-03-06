@@ -4,6 +4,7 @@ description: 了解如何使用Docker或Systemd在任何基于Moonbeam的网络�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>运行节点</h1>

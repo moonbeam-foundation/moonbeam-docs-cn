@@ -4,6 +4,7 @@ description: 了解如何在Moonbeam上运行全节点、Tracing节点或收集�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>网络</h1>

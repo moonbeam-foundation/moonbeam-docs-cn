@@ -4,6 +4,7 @@ description: 了解跨链协议，用以在Moonbeam和任意已建立连接的�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>跨链协议</h1>

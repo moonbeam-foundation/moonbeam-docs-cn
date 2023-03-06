@@ -4,6 +4,7 @@ description: 了解如何参与Moonbeam的链上治理，包括如何提出提�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>治理</h1>

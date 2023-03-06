@@ -4,6 +4,7 @@ description: 了解如何使用交易中继器执行免Gas费的交易以及智�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>中继器</h1>
