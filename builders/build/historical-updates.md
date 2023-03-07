@@ -30,6 +30,21 @@ description: Moonbeam和Moonriver上历史更新概览，包含应用于Moonbeam
 
 ***
 
+#### 以太坊费用未发送至财政库 {: #ethereum-fees-to-treasury }
+
+Moonbeam上的交易费用模型有20%的费用进入链上财政库，80%作为通缩力量销毁。在runtime 800之前，以太坊交易不会导致20%的交易费用进入链上财政库。
+
+此漏洞仅影响Moonriver和Moonbase Alpha并存在于以下Runtime和区块区间：
+
+|      网络      |   出现时间   | 修复时间 |    影响的区块区间    |
+|:--------------:|:----------:|:-----:|:--------------------:|
+|   Moonriver    |    RT49    | RT800 |      0 - 684728      |
+| Moonbase Alpha |    RT40    | RT800 |      0 - 915684      |
+
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/732){target=_blank}.
+
+***
+
 #### 遗失返还资金 {: #missing-refunds } 
 
 Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0，代表所有账户不需要最低余额数量即可被视为活跃。对于具有此配置的基于Substrate的链而言，由于零余额帐户被视为不存在，因此遗漏对该帐户的退款。
@@ -128,6 +143,22 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 | Moonbase Alpha |  RT1200  |  RT1201  | 1648994 - 1679618 |
 
 关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/paritytech/frontier/pull/570){target=_blank}。
+
+***
+
+#### EIP-1559汽油费的错误处理 {: #incorrect-gas-fees-eip1559 }
+
+随着EIP-1559支持的引入，处理`maxFeePerGas`和`maxPriorityFeePerGas`的逻辑被错误地实现了，导致`maxPriorityFeePerGas`被添加到`baseFee`中，即使总和超过了`maxFeePerGas`。
+
+此漏洞存在于以下Runtime和区块区间：
+
+|      网络      |   出现时间   | 修复时间 |    影响的区块区间     |
+|:--------------:|:----------:|:------:|:--------------------:|
+|    Moonbeam    |   RT1201   | RT1401 |   415946 - 915320    |
+|   Moonriver    |   RT1201   | RT1401 |  1471037 - 1705939   |
+| Moonbase Alpha |   RT1200   | RT1400 |  1648994 - 1962557   |
+
+关于更多信息，您可以查看[相关Frontier PR](https://github.com/PureStake/frontier/pull/45){target=_blank}.
 
 ***
 
