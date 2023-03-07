@@ -86,12 +86,12 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 |                                                                      数据库                                                                       |                      读                       |                       写                       |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.36/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.36/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
 
 在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.34/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
+在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.36/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.36/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
