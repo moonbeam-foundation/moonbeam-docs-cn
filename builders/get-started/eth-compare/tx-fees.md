@@ -256,9 +256,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 以下代码示例仅用于演示目的，代码需进行修改并进一步测试后才可正式用于生产环境。
 
 === "静态费用计算"
-    --8<-- 'code/vs-ethereum/tx-fees-block-2000.md'
+    --8<-- 'code/vs-ethereum/tx-fees-block-static.md'
 
 === "动态费用计算（仅限Moonbase Alpha）"
-    --8<-- 'code/vs-ethereum/tx-fees-block-2100.md'
+    --8<-- 'code/vs-ethereum/tx-fees-block-dynamic.md'
 
 --8<-- 'text/disclaimers/third-party-content.md'
