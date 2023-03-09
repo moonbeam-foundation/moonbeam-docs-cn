@@ -4,6 +4,7 @@ description: 在Moonbeam上开始开发、部署和与智能合约交互所需�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>快速启动</h1>

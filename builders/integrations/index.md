@@ -4,6 +4,7 @@ description: 了解Moonbeam上可用于DApp开发的集成，包括桥接器、�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>整合</h1>

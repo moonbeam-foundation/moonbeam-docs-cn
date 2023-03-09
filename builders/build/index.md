@@ -4,6 +4,7 @@ description: 学习如何使用以太坊和Substrate API以部署、验证和与
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>开发</h1>

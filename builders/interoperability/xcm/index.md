@@ -4,6 +4,7 @@ description: 概述跨链共识消息(XCM)的工作原理，以及开发者如�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>XCM互操作性</h1>

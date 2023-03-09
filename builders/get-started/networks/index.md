@@ -4,6 +4,7 @@ description: 了解如何开始在Moonbeam开发节点、Moonbase Alpha测试网
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>网络</h1>

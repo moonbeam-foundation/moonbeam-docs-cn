@@ -4,6 +4,7 @@ description: 一系列使用和管理您的GLMR和MOVR代币的指南，包括�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>Tokens</h1>

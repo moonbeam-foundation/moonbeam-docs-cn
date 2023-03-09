@@ -4,6 +4,7 @@ description: 了解如何通过创建链上身份以及设置多签保险箱和�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>账户管理</h1>

@@ -4,6 +4,7 @@ description: 了解如何在Moonbeam上运营节点，包括运行Moonbeam全节
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>节点运营</h1>

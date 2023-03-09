@@ -4,6 +4,7 @@ description: 了解称为XC-20的跨链资产，以及如何通过Moonbeam上的
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>XC-20</h1>

@@ -4,6 +4,7 @@ description: 了解如何将MetaMask和WalletConnect等钱包集成添加到Moon
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>钱包</h1>

@@ -4,6 +4,7 @@ description: 了解在 Moonbeam 上进行开发时如何使用 Ethereum API。�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>以太坊API</h1>

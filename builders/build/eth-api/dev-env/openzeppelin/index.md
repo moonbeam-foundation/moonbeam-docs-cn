@@ -4,6 +4,7 @@ description: 使用 OpenZeppelin合约和库、Contract Wizard或Defender在Moon
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>OpenZeppelin</h1>

@@ -4,6 +4,7 @@ description: 与Moonbeam上的预编译合约交互的指南列表，使您能�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>Solidity预编译</h1>

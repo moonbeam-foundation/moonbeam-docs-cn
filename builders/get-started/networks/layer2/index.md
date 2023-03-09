@@ -4,6 +4,7 @@ description: 了解如何连接和实用Bobabeam Layer 2来进行开发的相关
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>Boba Layer 2</h1>

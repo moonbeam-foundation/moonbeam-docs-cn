@@ -4,6 +4,7 @@ description: 了解Moonbeam的一些主要功能，包括以太坊兼容性、�
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>功能</h1>

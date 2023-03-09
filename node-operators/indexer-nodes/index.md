@@ -4,6 +4,7 @@ description: 了解如何在Moonbeam上运行索引器节点，例如Graph节点
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>索引节点</h1>

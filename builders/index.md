@@ -4,6 +4,7 @@ description: Moonbeam入门和开发指南。了解如何使用Ethereum和Substr
 template: main.html
 hide:
   - toc
+  - feedback
 ---
 
 <h1 class='subsection-title'>开发者</h1>
