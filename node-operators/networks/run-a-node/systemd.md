@@ -192,7 +192,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 !!! note
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
     
-    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。
+    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
 
 ### 全节点 {: #full-node }
 

@@ -6,7 +6,7 @@ title: 适用于MacOS的全节点Docker命令
 
 对于v0.27.0之前的客户端版本，`--state-pruning`命令行标志被命名为`--pruning`。
 
-对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--ws-port`命令行标志同时适用于HTTP连接和WS连接.
+对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，默认为端口`9933`的`--rpc-port`命令行标志已被弃用，并且到该端口的最大连接数已硬编码为100。`--ws-port`命令行标志，默认为端口`9944`，同时适用于HTTP连接和WS连接。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
 
 ## Moonbeam全节点 {: #moonbeam-full-node } 
 

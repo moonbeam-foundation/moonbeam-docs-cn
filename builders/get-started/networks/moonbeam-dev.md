@@ -214,6 +214,8 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 - **`--sealing <interval>`** - 当区块需要被密封在开发服务中。可接受的时间间隔参数为 `instant`、 `manual`或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`
 - **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
 - **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数
+- **`--rpc-max-connections`** - *自[客户端v0.30.0](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
+- **`--ws-max-connections`** - 指定WS RPC服务器连接的最大数量。自[客户端v0.30.0](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起，此标志调整HTTP和WS连接的总限制
 
 如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
 
