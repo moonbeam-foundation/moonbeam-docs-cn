@@ -94,33 +94,36 @@ extrinsics[extrinsic_number].events[event_number].data[1]
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 
-!!! note
-    **仅限 Moonbase Alpha**，如果计算RT2100或更高版本的交易费用，您需要使用以下公式计算`BaseFee`： `BaseFee = NextFeeMultiplier * 1250000000 / 10^18`。对于RT2100之前的Moonbeam、Moonriver、或Moonbase Alpha，您可以使用下面概述的常量`BaseFee`的值。
-
 以下部分更详细地描述了计算交易费用的每个组成部分。
 
 ### 基础费用 {: #base-fee}
 
-[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。
+[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}计算基础费用，它是根据区块拥塞情况来进行调整。 动态费用机制在运行时2100中推出到Moonbase Alpha，在运行时2200中推出到Moonriver。动态费用机制正在Moonriver和Moonbase Alpha上测试的同时，Moonbeam会继续使用静态、硬编码的基本费用。
 
-`BaseFee`在Moonbeam和Moonriver上是静态的，从RT2100开始，在Moonbase Alpha上是动态的。每个网络的静态基础费用有以下指定的值：
+每个网络的最低汽油价格（Minimum Gas Price）如下：
 
-=== "Moonbeam"
-    |   变量   |    值    |
-    |:--------:|:--------:|
-    | Base Fee | 100 Gwei |
+=== "Moonbeam（静态）"
+    |        变量       |    值     |
+    |:-----------------:|:--------:|
+    | Minimum Gas Price | 100 Gwei |
 
-=== "Moonriver"
-    |   变量   |   值   |
-    |:--------:|:------:|
-    | Base Fee | 1 Gwei |
+=== "Moonriver（动态）"
+    |        变量       |     值     |
+    |:-----------------:|:---------:|
+    | Minimum Gas Price | 1.25 Gwei |
 
-=== "Moonbase Alpha（RT2100前）"
-    |   变量   |   值   |
-    |:--------:|:------:|
-    | Base Fee | 1 Gwei |
+=== "Moonbase Alpha（动态）"
+    |        变量       |      值     |
+    |:-----------------:|:----------:|
+    | Minimum Gas Price | 0.125 Gwei |
 
-**RT2100**仅为**Moonbase Alpha**引入了一种新的动态费用机制，非常类似于[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}，其中`BaseFee`是根据区块拥塞情况调整的。因此，您需要使用`NextFeeMultiplier`估算每个区块的`BaseFee`。通过以下端点，可以从Substrate Sidecar API检索`NextFeeMultiplier`的值：
+要计算动态基本费用，请使用以下计算：
+
+```
+BaseFee = NextFeeMultiplier * 1250000000 / 10^18
+```
+
+通过以下端点，可以从Substrate Sidecar API检索`NextFeeMultiplier`的值：
 
 ```
 GET /pallets/transaction-payment/storage/nextFeeMultiplier?at={blockId}
@@ -140,7 +143,7 @@ RESPONSE JSON Storage Object:
     |--value
 ```
 
-相关数据将存储在JSON对象的`value`键中。该值是定点数据类型，因此实际值是通过将`value`除以`10^18`得到的。 这就是为什么[`BaseFee`的计算](#ethereum-api-transaction-fees)包括这样的操作。请查看本页末尾提供的[RT2100示例代码](/builders/get-started/eth-compare/tx-fees/#sample-code)。
+相关数据将存储在JSON对象的`value`键中。该值是定点数据类型，因此实际值是通过将`value`除以`10^18`得到的。 这就是为什么[`BaseFee`的计算](#ethereum-api-transaction-fees)包括这样的操作。请查看本页末尾提供的[RT2100示例代码](#sample-code)。
 
 ### GasPrice，MaxFeePerGas和MaxPriorityFeePerGas {: #gasprice-maxfeepergas-maxpriorityfeepergas }
 
@@ -186,7 +189,7 @@ extrinsics[extrinsic_number].events[event_number].data[0].weight
 
 如上所述，Moonbeam和以太坊上的交易费用模型有一些关键性的差异，开发者在Moonbeam上构建时需要注意以下部分：
 
-  - 随着**RT2100**的引入，用于Moonbase Alpha中的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}类似于 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}，但实现不同
+  - 用于Moonriver和Moonbase Alpha中的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}类似于[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}，但实现不同
 
   - Moonbeam交易费用模型中使用的gas数量是通过固定比例{{ networks.moonbase.tx_weight_to_gas_ratio }}从交易的Substrate extrinsic权重值映射而来。通过此数值乘以单位gas价格来计算交易费用。此费用模型意味着通过以太坊API发送如基本转账等交易可能会比Substrate API更为便宜。
 
@@ -251,7 +254,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 以下代码片段使用[Axios HTTP客户端](https://axios-http.com/){target=_blank}来为最终区块查询[Sidecar端点`/blocks/head`](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}。随后，根据交易类型（以太坊API：legacy、EIP-1559或EIP-2930标准以及Substrate API）计算区块中所有交易的交易费用，以及区块中的总交易费用。
 
-以下动态费用计算片段仅适用于RT2100的Moonbase Alpha。因此，如果您要为RT2100之前的Moonbase Alpha、Moonbeam或Moonriver计算费用，请使用静态费用计算代码段。
+要为Moonbeam计算交易费用，您需要使用以下静态费用计算代码段。对于Moonriver和Moonbase Alpha，您要使用动态费用计算代码段。
 
 以下代码示例仅用于演示目的，代码需进行修改并进一步测试后才可正式用于生产环境。
 

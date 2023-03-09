@@ -35,7 +35,7 @@ Moonbeam支持以下几点：
 - **基础费用pallet** - 添加对EIP-1559交易的支持并处理基本费用计算
 - **动态费用pallet** - 计算动态最低gas价格
 
-Moonbeam使用EVM和Ethereum pallet来实现完全的以太坊兼容。Moonbeam不使用基本费用或动态费用pallet。对于基本费用计算，Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}，从RT2100开始，已推广到了Moonbase Alpha。目前，Moonbeam和Moonriver有一个静态的、硬编码的基本费用，而动态费用系统正在 Moonbase Alpha上进行测试。
+Moonbeam使用EVM和Ethereum pallet来实现完全的以太坊兼容。Moonbeam不使用基本费用或动态费用pallet。对于基本费用计算，Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}，从RT2200开始，已推广到了Moonriver和Moonbase Alpha。目前，Moonbeam有一个静态的、硬编码的基本费用，而动态费用系统正在 Moonriver和Moonbase Alpha上进行测试。
 
 ### EVM Pallet {: #evm-pallet }
 
