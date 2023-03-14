@@ -35,7 +35,7 @@ Axelar API提供一个完整开发Web3应用的套件，确保开发者拥有他
 
 您可以查看Axelar部署于Moonbeam的合约列表，以及通过Axelar连接至Moonbeam的网络。
 
-- **主网合约** - [Moonbeam](https://docs.axelar.dev/dev/build/contract-addresses/mainnet){target=_blank}
-- **测试网合约** - [Moonbase Alpha](https://docs.axelar.dev/dev/build/contract-addresses/testnet){target=_blank}
+- **主网合约** - [Moonbeam](https://docs.axelar.dev/dev/reference/mainnet-contract-addresses){target=_blank}
+- **测试网合约** - [Moonbase Alpha](https://docs.axelar.dev/dev/reference/testnet-contract-addresses){target=_blank}
 
 --8<-- 'text/disclaimers/third-party-content.md'

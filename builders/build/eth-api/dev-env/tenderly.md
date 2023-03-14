@@ -21,7 +21,7 @@ Tenderly平台提供以下功能：
 
 - **[Simulator](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=_blank}** - 在分叉的开发环境中模拟交易，以在无需将交易传送至链上的情况下了解其如何运作。通过这种方式，您可以了解交易的结果并确保在将其发送至网络前按预期运作。您可以尝试不同的参数，模拟历史和当前交易，并编辑合约源代码。您可以从Tenderly数据面板访问模拟器，或用[Tenderly Simulation API](https://docs.tenderly.co/simulations-and-forks/simulation-api){target=_blank}以编程的方式来利用模拟器
 
-- **[Forks](https://docs.tenderly.co/simulations-and-forks/how-to-create-a-fork){target=_blank}** - 此功能在隔离环境中模拟实时Moonbeam网络，这使您可以与部署的合约和实时链上数据进行交互。分叉还使交易模拟更进了一步，它使您能够按时间顺序将多个模拟链接在一起。Forks允许复杂的交易测试场景，当出现一个交易依赖于另一个交易，并具有使用实时链上数据的好处。使用Tenderly分叉功能的时候需要注意一些限制。您不能与任何Moonbeam预编译的合约及其函数交互。预编译是Substrate实施的一部分，因此不能在模拟的EVM环境中复制。这禁止您在Moonbeam上与跨链资产交互和使用基于Substrate的功能（如质押和治理）
+- **[Forks](https://docs.tenderly.co/simulations-and-forks/forks){target=_blank}** - 此功能在隔离环境中模拟实时Moonbeam网络，这使您可以与部署的合约和实时链上数据进行交互。分叉还使交易模拟更进了一步，它使您能够按时间顺序将多个模拟链接在一起。Forks允许复杂的交易测试场景，当出现一个交易依赖于另一个交易，并具有使用实时链上数据的好处。使用Tenderly分叉功能的时候需要注意一些限制。您不能与任何Moonbeam预编译的合约及其函数交互。预编译是Substrate实施的一部分，因此不能在模拟的EVM环境中复制。这禁止您在Moonbeam上与跨链资产交互和使用基于Substrate的功能（如质押和治理）
 
 - **[Alerting](https://docs.tenderly.co/alerts/intro-to-alerts){target=_blank}** - 配置实时警报，在特定活动发生时通知，以便让您了解智能合约的情况
 
