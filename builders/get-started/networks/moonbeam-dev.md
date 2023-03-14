@@ -14,8 +14,7 @@ description: 通过此教程学习如何设置您的第一个Moonbeam节点，�
 
 !!! 注意事项
     本教程使用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=_blank}组件正处于积极开发阶段。
-
-​    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 Moonbeam开发节点是基于您的个人开发环境，在Moonbeam上构建和测试应用程序，相当于以太坊开发人员使用的Ganache。Moonbeam助您快速轻松上手，无需承担中继链的成本。您可以使用`--sealing`选项，立即启动节点来创建区块，或者在交易完成后的自定义时间段创建区块。默认情况下，收到交易意味着一个区块即被创建，类似于Ganache的instamine功能。
 
