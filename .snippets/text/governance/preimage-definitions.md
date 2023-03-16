@@ -1,0 +1,4 @@
+ - **Preimage hash** — hash of the proposal to be enacted. The first step to make a proposal is to submit a preimage. The hash is just its identifier. The proposer of the preimage can be different than the user that proposes that preimage as a formal proposal
+ - **原像哈希** — 提案生效的哈希。提出提案的第一步是提交原像。哈希只是一个标识符。原像的提议者可以不同于将原像作为正式提案提出的用户
+ - **Preimage deposit** — amount of tokens that the proposer needs to bond when submitting a preimage. It is calculated as the sum of a base deposit per network plus a fee per byte of the preimage being proposed
+ - **原像保证金** — 提交原像时提议者需要绑定的一笔Token数量。该金额计算为每个网络的基本保证金加上提议的原像的每字节费用

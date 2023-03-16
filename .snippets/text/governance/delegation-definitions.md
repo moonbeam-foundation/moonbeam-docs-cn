@@ -1,0 +1,4 @@
+- **Vote Delegation** — a voter can give their voting power, including Conviction voting, to another token holder (delegate) who may be more knowledgable and able to make specific decisions
+- **投票委托** — 投票者将其投票权（包括信念投票）委托给其他有经验的Token持有者
+ - **Multirole Delegation** — the ability to delegate voting power on a Track-by-Track basis, where a token holder can specify different delegates for each Track
+ - **多角色委托** — 在每个Track的基础上委托投票权，Token持有者可以为每个Track指定不同的委托

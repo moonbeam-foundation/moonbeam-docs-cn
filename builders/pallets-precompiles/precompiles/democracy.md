@@ -59,8 +59,13 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
      - 提案哈希（*bytes32*）
      - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
      - 执行延迟时间（*uint256*）
+     
+     - - The total "Aye" vote, including Conviction (*uint256*)
      - 总同意票数，包含Token锁定时间参数（*uint256*）
+
+     - The total "Nay" note, including Conviction (*uint256*)
      - 总反对票数，包含Token锁定时间参数（*uint256*）
+
      - 当前投票结果，不包含Token锁定时间参数（*uint256*）
 
  - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
@@ -69,7 +74,13 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ### 查看先决条件 {: #checking-prerequisites } 
 
-以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。除此之外，您还需要：
+以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。
+
+Before diving into the interface, it's best if you're familiar with [how to propose an action](/tokens/governance/proposals/){target=_blank} and [how to vote on a referendum](/tokens/governance/voting/){target=_blank} on Moonbeam.
+
+在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。
+
+除此之外，您还需要：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量DEV的账户。 
@@ -190,7 +201,10 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 1. 展开民主预编译合约以查看可用函数
 2. 寻找**standardVote**函数并点击按钮以查看区块
 3. 输入公投编码以进行投票
-4. 将此字段留空表示否定或输入`1`表示赞成。在公投的背景下，**nay**是保持现状不变的投票，**aye**是通过公投提议
+
+4. Leave the field empty for **Nay** or input `1` for **Aye**. In the context of a referendum, "Nay" is a vote to keep the status quo unchanged. "Aye" is a vote to enact the action proposed by the referendum
+4. 将此字段留空表示否定或输入`1`表示赞成。在公投的背景下，**Nay**是保持现状不变的投票，**Aye**是通过公投提议
+
 5. 输入以Wei表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=_blank}教程。
 7. 点击**transact**并在MetaMask确认此交易

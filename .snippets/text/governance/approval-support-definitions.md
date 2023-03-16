@@ -1,0 +1,4 @@
+ - **Approval** — minimum "Aye" votes as a percentage of overall Conviction-weighted votes needed for an approval
+ - **批准** — 获得批准所需的最低“赞成”票数占整体权重投票数的百分比
+ - **Support** — minimum number of "Aye" votes, not taking into consideration Conviction-weighted votes, needed as a percent of the total supply needed for an approval
+ - **支持** — 最低“赞成”票数（不考虑信念权重投票数）占批准所需总供应量的百分比

@@ -1,0 +1,4 @@
+- **Proposal** — an action or item, defined by the preimage hash, being proposed by a token holder and open for consideration and discussion by token holders
+- **提案** — 原像哈希定义的行动或项目，由Token持有者提议并开发供其他Token持有者讨论
+- **Referendum** — a proposal that is up for token-holder voting. Each referendum is tied to a specific proposal for a change to the Moonbeam system including values for key parameters, code upgrades, or changes to the governance system itself
+- **公投** — 由Token持有者投票的提案。每次公投均与更改Moonbeam系统的特定提案相关，包括关键参数值、代码升级或治理系统本身的修改
