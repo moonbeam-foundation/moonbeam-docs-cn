@@ -250,7 +250,7 @@ If a referendum meets the above criteria, it moves to the Decide Period and take
 
 如果公投满足以上条件，将会进入决定期并占据指定Track类别的其中一个位置。在决定期，投票将持续进行，公投设置了一定的天数来达到所需的批准和支持要求才能进入确认期。
 
-Once in the Confirm Period, a referendum must continuously meet the Approval and Support requirements for the duration of the period. If a referendum fails to meet the requirements at any point, it is returned to the Decide Period. If enough time is left in the Decide Period and the referendum meets the Approval and Support requirements again, it can progress to the Confirm Period again. If the Decide Period ends and not enough Approval and Support was received, the referendum will be rejected and the Decision Deposit will be returned. The proposal can be proposed again at any time.
+Once in the Confirm Period, a referendum must continuously meet the Approval and Support requirements for the duration of the period. If a referendum fails to meet the requirements at any point, it is returned to the Decide Period. If the referendum meets the Approval and Support requirements again, it can progress to the Confirm Period again and the Decide Period will be delayed until the end of the Confirm Period. If the Decide Period ends and not enough Approval and Support was received, the referendum will be rejected and the Decision Deposit will be returned. The proposal can be proposed again at any time.
 
 当进入确认期后，公投必须在此期间持续满足批准和支持要求。如果公投未达到要求，则返回到决定期。如果在决定期还剩下足够的时间，并且公投再次满足批准和支持要求，则可以再次进入到确认期。 如果决定期结束，但未获得足够的批准和支持，则公投将被拒绝，决定保证金将被退还。 该提议可以在任何时候再次提出。
 

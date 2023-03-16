@@ -218,7 +218,7 @@ In the following image, you'll notice enough Approval and Support have been rece
 
 ![View the Approval and Support curves for a referendum on Polkadot.js Apps.](/images/tokens/governance/voting/v2/vote-6.png)
 
-If the referendum doesn't continuously receive enough Approval and Support during the Confirm Period, and there is time left in the Decide Period, it still has a chance to pass as long as the Approval and Support requirements are met again and continously for the duration of the Confirm Period. If the Decide Period ends and the referendum still hasn't received enough Approval and Support, the referenda will be rejected and the Decision Deposit is able to be refunded.
+If the referendum doesn't continuously receive enough Approval and Support during the Confirm Period, and there is time left in the Decide Period, it still has a chance to pass as long as the Approval and Support requirements are met again and continously for the duration of the Confirm Period. If a referendum enters the Confirm Period but the Decide Period is set to end before the Confirm Period is over, the Decide Period will actually be extended until the end of the Confirm Period. If the Decide Period ends and the referendum still hasn't received enough Approval and Support, the referendum will be rejected and the Decision Deposit is able to be refunded.
 
 如果公投未在确认期持续获得足够的批准和支持，在决定期还剩下时间的情况下，只要公投在确认期再次持续获得足够的批准和支持则有机会通过。如果决定期结束，公投未获得足够的批准和支持，则将被拒绝，决定保证金将被退还。
 
