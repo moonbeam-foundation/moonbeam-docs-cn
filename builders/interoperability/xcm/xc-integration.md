@@ -84,7 +84,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 您需要准备以下内容：
 
 - Genesis head/wasm hash
-- 平行链ID。您可以在[中继链Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/parachains){target=_blank}找到所需的平行链ID
+- 平行链ID。您可以在[中继链Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/parachains){target=_blank}找到所需的平行链ID
 
 [此处有一些Alphanet生态系统中继链的快照](http://snapshots.moonbeam.network.s3-website.us-east-2.amazonaws.com/){target=_blank}可供您使用以快速开始操作。
 
@@ -119,7 +119,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 ### 获取中继链编码调用数据 {: #get-the-relay-chain-encoded-call-data }
 
-要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
+要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss://kusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss://polkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
 
 1. 在**submit the following extrinsic**下拉菜单中选择**hrmp**
 2. 选择**hrmpInitOpenChannel** extrinsic
@@ -271,7 +271,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 ### 获取中继链编码调用数据 {: #get-the-relay-chain-encoded-call-data }
 
-要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
+要获取在第三步执行的调用数据，您可前往Polkdot.js Apps并连接至[Moonbase Alpha中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}、[Kusama](https://polkadot.js.org/apps/?rpc=wss://kusama.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}或[Polkadot](https://polkadot.js.org/apps/?rpc=wss://polkadot.api.onfinality.io%2Fpublic-ws#/extrinsics){target=_blank}的WSS端点。导向**Developer**标签，选择**Extrinsics**，并执行以下步骤：
 
 1. 在**submit the following extrinsic**下拉菜单中选择**hrmp**
 2. 选择**hrmpAcceptOpenChannel** extrinsic

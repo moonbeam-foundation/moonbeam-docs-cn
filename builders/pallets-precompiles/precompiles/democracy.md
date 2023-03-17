@@ -102,7 +102,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ### 提交提案 {: #submit-a-proposal } 
 
-如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**标签，点击 **+ Submit preimage**, 然后进行以下操作：
+如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}的**Democracy**标签，点击 **+ Submit preimage**, 然后进行以下操作：
 
  1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
  2. 选取您希望交互的pallet以及可调度的函数（或是动作）以进行提案。您选取的动作将会决定您随后的操作步骤。在此例子中，此为**system** pallet和**remark**函数
@@ -132,7 +132,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
 
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
 
  1. 展开民主预编译合约以查看可用函数
  2. 找到**notePreimage**函数并点击按钮以展开区块
@@ -141,13 +141,13 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
-在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
+在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
 
 ## 附议提案 {: #second-a-proposal } 
 
 附议提案将能够使其进入公投阶段，但需要绑定与先前提案者相同的Token数量。被附议的提案转移至公投需要一定时间，在Moonbase Alpha为{{ networks.moonbase.democracy.launch_period.days}}日，在Moonriver为{{ networks.moonbase.democracy.launch_period.days}}日，在Moonbeam为{{ networks.moonbeam.democracy.launch_period.days}}日。
 
-首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}中获得提案的索引编码：
+首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}中获得提案的索引编码：
 
 1. 导向至**Governance**标签
 2. 点击**Democracy**
@@ -165,7 +165,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 4. 虽然您要支持的提案编码已经记录如上，此时仍然需要参数上线。为避免出现gas预计错误，您需要输入明显大于附议数量的数字，在此例中输入的数字为`10` 
 5. 点击**transact**并在MetaMask确认此交易
 
-恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
+恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
 
 ![Second via the precompile](/images/builders/pallets-precompiles/precompiles/democracy/democracy-10.png)
 
@@ -176,7 +176,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 获得附议的提案转移至公投状态需要一定时间，在Moonbeam为{{ networks.moonbeam.democracy.launch_period.days}}日，在Moonriver为{{ networks.moonriver.democracy.launch_period.days}}，在Moonbase为{{ networks.moonbase.democracy.launch_period.days}}。如果在Moonbase Alpha中没有正在进行中的公投，您可能需要等待启用阶段以度过您支持提案的转移时间，方能进入公投阶段。
 
-首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}上获得公投编码：
+首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}上获得公投编码：
 
 1. 导向至**Governance**标签
 2. 点击**Democracy**

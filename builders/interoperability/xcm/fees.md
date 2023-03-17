@@ -250,7 +250,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.instructions.wei_cost }} / (10^18)
 
 考虑Alice在Moonbeam上向Alith的账户发送DOT的场景，费用从Alith收到的xcDOT金额中收取。要确定支付多少费用，Moonbeam使用了一个名为`UnitsPerSecond`的概念，代表网络在XCM执行时间内每秒收取的Token单位（包含小数）。 Moonbeam（可能还有其他平行链）将使用此概念来确定使用与其储备不同的资产执行XCM的费用。
 
-此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Statemine](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fstatemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
+此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Statemine](https://polkadot.js.org/apps/?rpc=wss://statemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
 
 要找出给定的资产是否在`UnitsPerSecond`列表中，您可以使用`assetManager.assetTypeUnitsPerSecond`函数并输入想要查看的资产的multilocation。
 
@@ -334,7 +334,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM交易者pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
 
-您可以想像以下情景：Alice想要从Moonbeam使用通过主权extrinsic在波卡中进行远程交易（她已经在她的账户中注册了一个索引）。要预估从Alice的账户中将销毁多少XC-20 Token，您需要检查特定于中继链的交易信息。因此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
+您可以想像以下情景：Alice想要从Moonbeam使用通过主权extrinsic在波卡中进行远程交易（她已经在她的账户中注册了一个索引）。要预估从Alice的账户中将销毁多少XC-20 Token，您需要检查特定于中继链的交易信息。因此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
 1. 选取**xcmTransactor** pallet
 2. 选取**transactInfoWithWeightLimit**方法
@@ -344,7 +344,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 ![Get the Transact Through Derivative Weight Info for Polkadot](/images/builders/interoperability/xcm/fees/fees-3.png)
 
-在获得的回应中，您可以看到`transactExtraWeight`为`{{ networks.polkadot.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的三个XCM指令所需的权重。接下来，您需要找到该特定链的`UnitsPerSecond`。在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}，设置以下选项：
+在获得的回应中，您可以看到`transactExtraWeight`为`{{ networks.polkadot.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的三个XCM指令所需的权重。接下来，您需要找到该特定链的`UnitsPerSecond`。在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/chainstate){target=_blank}，设置以下选项：
 
 1. 选取**xcmTransactor**pallet
 2. 选取**destinationAssetFeePerSecond**函数
@@ -376,7 +376,7 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_message.transact.planck_dot_cost }} / 10
 
 在[通过multilocation衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由发出调用的同一账户支付，其为目标链中的multilocation衍生帐户。因此，multilocation衍生帐户必须持有必要的资金来支付整个执行费用。请注意，支付费用的目标Token不需要在原链中注册为XC-20。
 
-您可以想像以下情景：Alice想要使用通过签名函数的交易从Moonbase Alpha在另一条链（平行链 ID 888，在Moonbase Alpha中继链生态系统中）进行远程交易。要估计Alice的multilocation衍生账户执行远程调用所需的Token数量，您需要检查在目标链的特定交易信息。为此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
+您可以想像以下情景：Alice想要使用通过签名函数的交易从Moonbase Alpha在另一条链（平行链 ID 888，在Moonbase Alpha中继链生态系统中）进行远程交易。要估计Alice的multilocation衍生账户执行远程调用所需的Token数量，您需要检查在目标链的特定交易信息。为此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
 
 1. 选取**xcmTransactor** pallet
@@ -389,7 +389,7 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_message.transact.planck_dot_cost }} / 10
 
 ![Get the Transact Through Derivative Weight Info for another Parachain](/images/builders/interoperability/xcm/fees/fees-5.png)
 
-在获得的回应中，您可以看到`transactExtraWeightSigned`为`{{ networks.moonbase_beta.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的4个XCM指令所需的权重。接下来，您需要找到目标链每执行XCM权重收取的费用。通常，您会查看该特定链的`UnitsPerSecond`。但在这种情况下并不会销毁XC-20 Token。因此，`UnitsPerSecond`可以作为参考，但不能保证估算的Token数量是正确的。要获取`UnitsPerSecond`作为参考值，在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network #/chainstate){target=_blank}，设置以下选项：
+在获得的回应中，您可以看到`transactExtraWeightSigned`为`{{ networks.moonbase_beta.xcm_message.transact.weight }}`。这是在该特定目标链中执行此远程调用的4个XCM指令所需的权重。接下来，您需要找到目标链每执行XCM权重收取的费用。通常，您会查看该特定链的`UnitsPerSecond`。但在这种情况下并不会销毁XC-20 Token。因此，`UnitsPerSecond`可以作为参考，但不能保证估算的Token数量是正确的。要获取`UnitsPerSecond`作为参考值，在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network #/chainstate){target=_blank}，设置以下选项：
 
 1. 选取**xcmTransactor** pallet
 2. 选取**destinationAssetFeePerSecond**方法

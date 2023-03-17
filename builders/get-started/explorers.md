@@ -69,7 +69,7 @@ Blockscout还提供以下功能：
 
 ### Polkadot.js {: #polkadotjs } 
 
-虽然Polkadot.js Apps不是功能齐全的区块浏览器，但是一个方便的选项，尤其是对于运行本地开发节点的用户，使其可以查看事件和查询交易哈希。Polkadot.js Apps使用WebSocket端点与网络进行交互。Polkadot.js Apps支持[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/explorer){target=_blank}、[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbase.moonbeam.network#/explorer){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}。
+虽然Polkadot.js Apps不是功能齐全的区块浏览器，但是一个方便的选项，尤其是对于运行本地开发节点的用户，使其可以查看事件和查询交易哈希。Polkadot.js Apps使用WebSocket端点与网络进行交互。Polkadot.js Apps支持[Moonbeam](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=_blank}、[Moonriver](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbase.moonbeam.network#/explorer){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}。
 
 ![Polkadot.js Moonriver](/images/builders/get-started/explorers/explorers-5.png)
 

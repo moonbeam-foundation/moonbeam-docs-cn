@@ -14,7 +14,7 @@ description: 学习如何通过RPC和WSS端点连接到Moonriver网络 - Moonbea
  - **以太坊API(类似Etherscan)** — [Moonscan](https://moonriver.moonscan.io/){target=_blank}
  - **基于以太坊API和索引** — [Blockscout](https://blockscout.moonriver.moonbeam.network/){target=_blank}
  - **基于以太坊API JSON-RPC** — [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonriver){target=_blank}
- - **基于Substrate API** — [Subscan](https://moonriver.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/explorer){target=_blank}
+ - **基于Substrate API** — [Subscan](https://moonriver.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network#/explorer){target=_blank}
 
  更多相关信息请参考[区块浏览器](/builders/get-started/explorers/){target=_blank}文档。
 
