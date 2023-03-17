@@ -12,23 +12,17 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。
 
+With the rollout of OpenGov (originally referred to as Governance v2), several modifications have been introduced to the governance process. **OpenGov has launched on Moonriver, and once it has been rigorously tested, a proposal will be made for it to be launched on Moonbeam**. Until then, Moonbeam still uses Goverance v1. **The Democracy Precompile is for Governance v1, as such, this guide is for Moonbeam only.** If you're looking to interact with governance features on Moonriver, you should take a look at the OpenGov-related precompiles: [Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}, [Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}, and [Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}.
+
 Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}。民主pallet使用Rust语言实现，无法直接从Moonbeam的以太坊API交互。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户导入Polkadot.js App后使用复杂的界面进行操作。
+
+The Democracy Precompile is currently available in OpenGov, which is available on Moonriver and Moonbase Alpha only. If you're looking for similar functionality for Moonbeam, which is still on Governance v1, you can refer to the [Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank} documentation.
 
 民主预编译位于以下地址：
 
 === "Moonbeam"
      ```
      {{networks.moonbeam.precompiles.democracy}}
-     ```
-
-=== "Moonriver"
-     ```
-     {{networks.moonriver.precompiles.democracy}}
-     ```
-
-=== "Moonbase Alpha"
-     ```
-     {{networks.moonbase.precompiles.democracy}}
      ```
 
 --8<-- 'text/precompiles/security.md'
@@ -113,25 +107,18 @@ Before diving into the interface, it's best if you're familiar with [how to prop
 
 ### 提交提案 {: #submit-a-proposal } 
 
-如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**标签，点击 **+ Submit preimage**, 然后进行以下操作：
+You can submit a proposal via the `propose` function of the [Democracy Precompile](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank} as long as you have the preimage hash of the proposal. But before a proposal can be submitted, you'll first need to submit the preimage by passing in the encoded proposal data to the `notePreimage` function, which now belongs to the [preimage pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}.
 
- 1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
- 2. 选取您希望交互的pallet以及可调度的函数（或是动作）以进行提案。您选取的动作将会决定您随后的操作步骤。在此例子中，此为**system** pallet和**remark**函数
- 3. 输入remark函数的内容，确保其为独特的。重复的提案如“Hello World！”将不会被接受
- 4. 复制原像哈希，这代表着此提案。您将会在通过民主预编译提交提案时使用此哈希
- 5. 点击**Submit preimage**按钮，但请不要在下一页签署和确认此交易
+--8<-- 'text/precompiles/governance/submit-preimage.md'
 
-![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
 
-在下个页面，根据以下步骤进行操作：
+ 1. 展开民主预编译合约以查看可用函数
+ 2. 找到**notePreimage**函数并点击按钮以展开区块
+ 3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
+ 4. 点击**transact**并在MetaMask确认交易
 
- 1. 点击三角形图像以显示字节状态下带编码的提案
- 2. 复制带编码的提案——您将在随后步骤中使用**notePreimage**时用到它
-
-![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
-
-!!! 注意事项
-     请**不要**在此签署和提交交易。您将会在随后步骤中通过**notePreimage**提交此信息。
+![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 接下来您可以通过以下步骤调用Solidity接口的`propose`函数：
 
@@ -142,15 +129,6 @@ Before diving into the interface, it's best if you're familiar with [how to prop
  5. 点击**transact**并在MetaMask确认交易
 
 ![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
-
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
-
- 1. 展开民主预编译合约以查看可用函数
- 2. 找到**notePreimage**函数并点击按钮以展开区块
- 3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
- 4. 点击**transact**并在MetaMask确认交易
-
-![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
 

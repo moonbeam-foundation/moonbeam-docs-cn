@@ -264,7 +264,7 @@ The happy path for a proposal is shown in the following diagram:
 
 ![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/v2/proposal-roadmap.png)
 
-### Proposal Example Walkthrough 提案示例流程
+### Proposal Example Walkthrough 提案示例流程 {: #proposal-example-walkthrough }
 
 A proposal (with its preimage) is submitted for the General Admin Track on Moonriver would have the following characteristics:
 
