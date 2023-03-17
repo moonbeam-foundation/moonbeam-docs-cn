@@ -68,7 +68,7 @@ For more details on how these Substrate frame pallets implement on-chain governa
 
 更多关于Substrate框架pallet如何实施链上治理的细节，请查阅[波卡治理概览](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=blank}博客文章以及[波卡治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=blank}。
 
-## Governance v2: OpenGov {: #opengov}
+## Governance v2: OpenGov {: #opengov }
 
 This section will cover everything you need to know about OpenGov on Moonriver and Moonbase Alpha. If you're looking for governance-related information on Moonbeam, please refer to the [Goveranance v1](#governance-v1) section.
 
