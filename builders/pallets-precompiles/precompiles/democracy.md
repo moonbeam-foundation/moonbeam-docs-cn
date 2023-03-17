@@ -36,19 +36,7 @@ The Democracy Precompile is currently available in OpenGov, which is available o
  - **publicPropCount**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
  - **depositOf**(*uint256* propIndex) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
  - **lowestUnbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
- - **propose**(*bytes32* proposalHash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
- - **second**(*uint256* propIndex, *uint256* secondsUpperBound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
- - **standardVote**(*uint256* refIndex, *bool* aye, *uint256* voteAmount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
- - **removeVote**(*uint256* refIndex)  —— 此函数用于在逾期的民主锁定之前于特定公投上移除投票。请注意，移除投票不能在提案投票进行中时撤销或是取消
- - **delegate**(*address* representative, *uint256* candidateCount, *uint256* amount) —— 通过提供需要被委托的特定账户信息、用于所有委托投票的Token锁定之间函数以及用于委托的Token数量的“信念值”系数，以委托其投票权力至其他账户。调用民主pallet的[`delegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=delegate(to, conviction, balance)){target=_blank}方法
- - **unDelegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
- - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**removeVote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/pallets-precompiles/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
- - **notePreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
- - **noteImminentPreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
-
-此接口同样包含目前尚未被支持但有可能在将来支持的函数：
-
-- **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
+ - **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
      - 公投结束区块（*uint256*）
      - 提案哈希（*bytes32*）
      - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
@@ -63,6 +51,23 @@ The Democracy Precompile is currently available in OpenGov, which is available o
      - 当前投票结果，不包含Token锁定时间参数（*uint256*）
 
  - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
+ - **propose**(*bytes32* proposalHash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
+ - **second**(*uint256* propIndex, *uint256* secondsUpperBound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
+ - **standardVote**(*uint256* refIndex, *bool* aye, *uint256* voteAmount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
+ - **removeVote**(*uint256* refIndex)  —— 此函数用于在逾期的民主锁定之前于特定公投上移除投票。请注意，移除投票不能在提案投票进行中时撤销或是取消
+ - **delegate**(*address* representative, *uint256* candidateCount, *uint256* amount) —— 通过提供需要被委托的特定账户信息、用于所有委托投票的Token锁定之间函数以及用于委托的Token数量的“信念值”系数，以委托其投票权力至其他账户。调用民主pallet的[`delegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=delegate(to, conviction, balance)){target=_blank}方法
+ - **unDelegate**() —— 为委托人用于解除投票权力的函数。在原先委托指令中的Token锁定时间参数被解除后，Token将会解锁并能够领取。调用民主pallet的[`undelegate`](/builders/pallets-precompiles/pallets/democracy/#:~:text=undelegate()){target=_blank}方法
+ - **unlock**(*address* target) —— 解锁逾期锁定的Token。在使用**unlock**之前，您必须为各个提案所锁定的Token调用**removeVote**，不然这些Token将会保持锁定。这个函数能够被任何账户调用。调用民主pallet的[`unlock`](/builders/pallets-precompiles/pallets/democracy/#:~:text=unlock(target)){target=_blank}方法
+ - **notePreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
+ - **noteImminentPreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
+
+The interface also includes the following events:
+
+- **Proposed**(*uint32 indexed* proposalIndex, *uint256* deposit) - emitted when a motion has been proposed
+- **Seconded**(*uint32 indexed* proposalIndex, *address* seconder) - emitted when an account has seconded a proposal
+- **StandardVote**(*uint32 indexed* referendumIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - emitted when an account has made a standard vote
+- **Delegated**(*address indexed* who, *address* target) - emitted when an account has delegated some voting power to another account
+- **Undelegated**(*address indexed* who) - emitted when an account has undelegated some of their voting power from another account
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
