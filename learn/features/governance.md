@@ -329,7 +329,7 @@ The OpenGov Technical Committee is made up of members of the community who have 
 
 OpenGov技术委员会由拥有基于Moonbeam网络方面技术知识和专业知识的社区成员组成。
 
-### Related Guides on Goverance v2 - Goverance v2相关指南 {: #try-it-out } 
+### Related Guides on Governance v2 - Governance v2相关指南 {: #try-it-out } 
 
 For related guides on submitting and voting on referenda on Moonbeam with Governance v1, please check the following guides:
 
@@ -348,9 +348,9 @@ For related guides on submitting and voting on referenda on Moonbeam with Govern
 
 ## Governance v1 {: #governance-v1 }
 
-While OpenGov is being tested on Moonriver, Moonbeam will continue to use goverance v1. This section will cover everything you need to know about governance v1 on Moonbeam.
+While OpenGov is being tested on Moonriver, Moonbeam will continue to use governance v1. This section will cover everything you need to know about governance v1 on Moonbeam.
 
-目前OpenGov在Moonriver上进行测试，Moonbeam将继续使用goverance v1版本。此部分将涵盖Moonbeam上governance v1的所有信息。
+目前OpenGov在Moonriver上进行测试，Moonbeam将继续使用governance v1版本。此部分将涵盖Moonbeam上governance v1的所有信息。
 
 ### General Definitions 一般定义 {: #general-definitions } 
 
@@ -531,7 +531,7 @@ In short, a heavy Super-Majority of "Aye" votes is required to approve a proposa
 
 简而言之，在投票数偏低的情况下，需要绝对多数“赞成”票才能批准提案，但随着投票数的增加，则会变成简单多数的形式。
 
-### Related Guides on Goverance v1 - Goverance v1上的相关指南 {: #try-it-out } 
+### Related Guides on Governance v1 - Governance v1上的相关指南 {: #try-it-out } 
 
 For related guides on submitting and voting on referenda on Moonbeam with Governance v1, please check the following guides:
 
