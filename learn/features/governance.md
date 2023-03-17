@@ -339,8 +339,8 @@ For related guides on submitting and voting on referenda on Moonbeam with Govern
  - [如何提交提案](/tokens/governance/proposals/opengov-proposals){target=_blank}
  - [How to Vote on a Proposal](/tokens/governance/voting/opengov-voting){target=_blank}
  - [如何对提案投票](/tokens/governance/voting/opengov-voting){target=_blank}
- - [Interact with the Preimages Precompiled Contract (Solidity Interface)](/builders/pallets-precompiles/precompiles/preimages/){target=_blank}
- - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimages/){target=_blank}
+ - [Interact with the Preimages Precompiled Contract (Solidity Interface)](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}
+ - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}
  - [Interact with the Referenda Precompiled Contract (Solidity Interface)](/builders/pallets-precompiles/precompiles/referenda/){target=_blank}
  - [如何与公投预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/referenda/){target=_blank}
  - [Interact with the Conviction Voting Precompiled Contract (Solidity Interface)](/builders/pallets-precompiles/precompiles/conviction-voting/){target=_blank}
