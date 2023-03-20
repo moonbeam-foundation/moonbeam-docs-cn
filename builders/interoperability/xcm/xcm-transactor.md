@@ -104,7 +104,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 要在Polkadot.js Apps发送extrinsics，您需要准备以下内容：
 
- - 拥有[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}
+ - 拥有[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}的[账户](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}
  - 您将要通过XCM-Transactor Pallet发送XCM的账户必须注册在给定索引中，以便能够通过主权账户的衍生账户进行操作。注册是通过根账户（Moonbase Alpha中的SUDO）完成的，所以您可以通过[联系我们](https://discord.gg/PfpUATX){target=_blank}进行注册。在本示例中，Alice的账号注册在索引`42`中
  - 通过XCM-Transactor的远程调用需要目标链的Token作为手续费才能执行。因为此操作是在Moonbeam发起，所以您将需要保留Token的[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}表现形式。在本示例中，您正在发送XCM消息至中继链，因此您将需要`xcUNIT` Token（即Alphanet中继链Token `UNIT`的Moonbase Alpha表现形式）支付执行费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}（Moonbase Alpha 上的Uniswap V2演示版本）上兑换DEV Token以获取该Token
 
@@ -124,7 +124,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ### 构建XCM {: #xcm-transact-through-derivative }
 
-如果您已[完成准备工作](#xcmtransactor-derivative-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
+如果您已[完成准备工作](#xcmtransactor-derivative-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
 
 1. 选择您要发送XCM的账户，确保账户已[完成所有设置](#xcmtransactor-derivative-check-prerequisites)
 
@@ -144,7 +144,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 9. （可选）设置**feeAmount**。这是所选费用Token（XC-20）的每秒单位，将被销毁以释放目标链上主权账户中的相应余额。在本示例中，将每秒单位设置为`13764626000000` 。若您未提供此数值，pallet将使用存储库中的元素（若有）
 
-10. 输入将在目标链中执行的内部调用。这是pallet、方法和将被调用输入数值的编码调用数据。这可以在Polakdot.js Apps（必须连接至目标链）或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}构建。在本示例中，内部调用为`0x04000030fcfb53304c429689c8f94ead291272333e16d77a2560717f3a7a410be9b208070010a5d4e8`（即在中继链中将1 `UNIT`转移给Alice账户）。您可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics/decode){target=_blank}中编码调用
+10. 输入将在目标链中执行的内部调用。这是pallet、方法和将被调用输入数值的编码调用数据。这可以在Polakdot.js Apps（必须连接至目标链）或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}构建。在本示例中，内部调用为`0x04000030fcfb53304c429689c8f94ead291272333e16d77a2560717f3a7a410be9b208070010a5d4e8`（即在中继链中将1 `UNIT`转移给Alice账户）。您可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics/decode){target=_blank}中编码调用
 
 11. 设置**weightInfo**结构的**transactRequiredWeightAtMost**权重值。该数值必须包含`asDerivative` extrinsic。但是这不会包含XCM指令的权重。在本示例中，可以将权重设置为`1000000000`
 
@@ -157,14 +157,14 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ![XCM-Transactor Transact Through Derivative Extrinsic](/images/builders/interoperability/xcm/xcm-transactor/xcmtransactor-1.png)
 
-当交易完成后，您可以在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xa90b23a54f2bb691ba2f04ae3228b1de2d2e7231b98490bf6f94e491baf09185){target=_blank}和[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0xb5a0ecc0c2f7f1363ede2e3aebab2702dd2e7b9036a6ba23a694db2b4002cd7f){target=_blank}中查看相关extrinsic和事件。请注意，在Moonbase Alpha中，有一个`transactThroughDerivative`方法相关联的事件，但是有一些`xcUNIT` Token已被销毁以偿还主权账户的交易费用。在中继链中，`paraInherent.enter` extrinsic会显示`balance.Transfer`事件，其中1 `UNIT` Token转移给Alice地址。尽管如此，交易费仍会通过Moonbase Alpha主权账户进行支付。
+当交易完成后，您可以在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/0xa90b23a54f2bb691ba2f04ae3228b1de2d2e7231b98490bf6f94e491baf09185){target=_blank}和[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0xb5a0ecc0c2f7f1363ede2e3aebab2702dd2e7b9036a6ba23a694db2b4002cd7f){target=_blank}中查看相关extrinsic和事件。请注意，在Moonbase Alpha中，有一个`transactThroughDerivative`方法相关联的事件，但是有一些`xcUNIT` Token已被销毁以偿还主权账户的交易费用。在中继链中，`paraInherent.enter` extrinsic会显示`balance.Transfer`事件，其中1 `UNIT` Token转移给Alice地址。尽管如此，交易费仍会通过Moonbase Alpha主权账户进行支付。
 
 !!! 注意事项
     `AssetsTrapped`事件在中继链上时因为XCM-Transactor Pallet尚不支持处理还款功能。因此，高出预估权重将会在目标链执行XCM时导致资产无法退回。
 
 ### 获取已注册的衍生索引 {: #retrieve-registered-derivative-indexes }
 
-要获取所有基于Moonbeam网络主权账户和其对应索引操作的注册地址列表，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}**Developer**标签下的**Chain State**部分，并执行以下步骤：
+要获取所有基于Moonbeam网络主权账户和其对应索引操作的注册地址列表，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}**Developer**标签下的**Chain State**部分，并执行以下步骤：
 
 1. 在**selected state query**下拉菜单中，选择**xcmTransactor**
 
@@ -189,7 +189,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 要在Polkadot.js Apps发送extrinsics，您需要准备以下内容：
 
- - 在原始链上的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}拥有一定[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
+ - 在原始链上的[账户](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}拥有一定[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
  - 资金所在的目标链上的multilocation衍生账户。您可以通过使用 [`calculateMultilocationDerivative.ts`脚本](https://github.com/albertov19/xcmTools/blob/main/calculateMultilocationDerivative.ts){target=_blank}计算该地址
 
 在本示例中，使用的账户如下：
@@ -199,7 +199,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ### 构建XCM {: #xcm-transact-through-derivative }
 
-如果您已[完成准备工作](#xcmtransactor-signed-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
+如果您已[完成准备工作](#xcmtransactor-signed-check-prerequisites)，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，执行以下操作：
 
 1. 选择您要发送XCM的账户，确保账户已[完成所有设置](#xcmtransactor-signed-check-prerequisites)
 2. 选择**xcmTransactor** pallet
@@ -216,7 +216,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
     
 5. 设置**fee**类型。在本示例中，设置为**AsCurrencyId** 
 6. 将currency ID设置为**ForeignAsset**。请注意，该Token将从multilocation衍生账户提现来支付XCM执行费用。在这种情况下，将使用目标链的原生储备Token，但也可以是其他任何能够作为XCM执行支付费用的Token
-7. 输入asset ID。在本示例中，XC-20 Token的资产ID为`35487752324713722007834302681851459189`。您可以在Polkadot.js Apps的[资产部分](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}查看所有可用的资产ID
+7. 输入asset ID。在本示例中，XC-20 Token的资产ID为`35487752324713722007834302681851459189`。您可以在Polkadot.js Apps的[资产部分](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}查看所有可用的资产ID
 8. （可选）设置**feeAmount**。这是所选费用Token（XC-20）的每秒单位，将从multilocation衍生账户提取以支付XCM执行费用。在本示例中将每秒单位设置为`50000000000000000`。若您未提供此数值，pallet将使用存储库中的元素（若有）。请注意，存储中的元素可能不是最新的
 9. 输入将在目标链中执行的内部调用。这是pallet、方法和将被调用输入数值的编码调用数据。这可以在Polakdot.js Apps（必须连接至目标链）或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}构建。在本示例中，内部调用为`0x030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d`（即将1 Token从目标链转移给Alice账户）
 10. 设置**weightInfo**结构的**transactRequiredWeightAtMost**权重值。该数值不包含XCM指令的权重。在本示例中，可以将权重设置为`1000000000`

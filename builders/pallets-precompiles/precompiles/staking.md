@@ -219,7 +219,7 @@ Solidity接口包含以下的函数：
 
 ### 验证委托 {: #verify-delegation }
 
-您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，将MetaMask地址加入[Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/addresses){target=_blank}。
+您可以在Polkadot.js Apps查看链状态以验证您的委托是否成功。首先，将MetaMask地址加入[Polkadot.js Apps地址簿](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/addresses){target=_blank}。
 
 导航至**Accounts**，选择**Address Book**，点击**Add contact**，输入以下信息：
 
@@ -229,7 +229,7 @@ Solidity接口包含以下的函数：
 
 ![Add to Address Book](/images/builders/pallets-precompiles/precompiles/staking/staking-8.png)
 
-要验证您的委托是否成功，请前往[Polkadot.js 应用程序](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}并导航到**Developer**然后点击**Chain State**
+要验证您的委托是否成功，请前往[Polkadot.js 应用程序](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}并导航到**Developer**然后点击**Chain State**
 
 1. 选择**parachainStaking** Pallet
 2. 选择**delegatorState**查询

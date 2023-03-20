@@ -53,7 +53,7 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
 
 ### 获取候选人池的大小 {: #get-the-size-of-the-candidate-pool } 
 
-首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js){target=_blank}中运行以下JavaScript代码段：
+首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=_blank}中运行以下JavaScript代码段：
 
 ```js
 // Simple script to get candidate pool size
@@ -75,7 +75,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool } 
 
-节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}，点击**Developer**标签，从下拉菜单中选择**JavaScript**，然后进行以下步骤：
+节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，点击**Developer**标签，从下拉菜单中选择**JavaScript**，然后进行以下步骤：
 
   1. 选择您想用于参与收集活动的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}，并有多余金额用于支付交易费
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
@@ -184,7 +184,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加自身绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network#/accounts)增加其绑定数量。导向至**Developer**标签，点击**Extrinsics**，并进行以下步骤：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network#/accounts)增加其绑定数量。导向至**Developer**标签，点击**Extrinsics**，并进行以下步骤：
 
   1. 选择您的收集人账户（并验证该账户是否有足够资金可用于绑定）
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
