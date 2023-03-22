@@ -1,11 +1,11 @@
 ---
-title: Vote on a Proposal
-description: Participate in Moonbeam's governance system by following step-by-step guides on how to vote on referenda. Referenda are simple, stake-based voting schemes.
+title: 对提案进行投票
+description: 跟随有关如何对公投进行投票的分步指南，参与Moonbeam的治理系统。 公投是简单的、基于股权的投票方案。
 template: main.html
 hide: 
  - toc
  - feedback
 ---
 
-<h1 class='subsection-title'>Vote on a Proposal</h1>
+<h1 class='subsection-title'>对提案进行投票</h1>
 <div class='subsection-wrapper'></div>

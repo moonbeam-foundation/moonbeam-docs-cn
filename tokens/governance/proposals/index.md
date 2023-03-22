@@ -1,11 +1,11 @@
 ---
-title: Submit a Democracy Proposal
-description: Learn how to participate in Moonbeam's governance system by following step-by-step guides on how to propose actions/changes by submitting a Democracy Proposal.
+title: 提交民主提案
+description: 跟随如何通过提交民主提案来提出提案/变更的分步指南，了解如何参与Moonbeam的治理系统。
 template: main.html
 hide: 
  - toc
  - feedback
 ---
 
-<h1 class='subsection-title'>Submit a Democracy Proposal</h1>
+<h1 class='subsection-title'>提交民主提案</h1>
 <div class='subsection-wrapper'></div>
