@@ -40,11 +40,11 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
  - **委托** — 将自己的投票权委托给其他账户，以积累一定信念值的行为
 
 === "Moonbeam"
-    |        变量         |                                                         值                                                         |
-    |:-----------------------:|:---------------------------------------------------------------------------------------------------------------------:|
-    | 最大投票数 |                                      {{ networks.moonbeam.democracy.max_votes}}                                       |
-    |      投票期      |  {{ networks.moonbeam.democracy.vote_period.blocks}}区块（{{ networks.moonbeam.democracy.vote_period.days}天）  |
-    |    生效等待期     | {{ networks.moonbeam.democracy.enact_period.blocks}}区块（{{ networks.moonbeam.democracy.enact_period.days}}天） |
+    |    变量    |                                                        值                                                        |
+    |:----------:|:----------------------------------------------------------------------------------------------------------------:|
+    | 最大投票数 |                                    {{ networks.moonbeam.democracy.max_votes}}                                    |
+    |   投票期   |  {{ networks.moonbeam.democracy.vote_period.blocks}}区块（{{ networks.moonbeam.democracy.vote_period.days}天）   |
+    | 生效等待期 | {{ networks.moonbeam.democracy.enact_period.blocks}}区块（{{ networks.moonbeam.democracy.enact_period.days}}天） |
 
 ## 提案步骤 {: #roadmap-of-a-proposal } 
 

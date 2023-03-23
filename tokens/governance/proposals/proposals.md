@@ -34,13 +34,13 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
  - **冷静期** —— 提案被否决后直至可以再次提交的持续时长（以区块数量计算）
 
 === "Moonbeam"
-    |         变量          |                                                         值                                                          |
-    |:-------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
-    |   原像基础保证金   |                                   {{ networks.moonbeam.preimage.base_deposit }} GLMR                                    |
-    | 每个字节的原像保证金 |                                   {{ networks.moonbeam.preimage.byte_deposit }} GLMR                                    |
-    |     提案保证金      |                                   {{ networks.moonbeam.democracy.min_deposit }} GLMR                                    |
-    |       启动期       | {{ networks.moonbeam.democracy.launch_period.blocks}}区块（{{ networks.moonbeam.democracy.launch_period.days}}天） |
-    |      冷静期      |   {{ networks.moonbeam.democracy.cool_period.blocks}}区块（{{ networks.moonbeam.democracy.cool_period.days}}天）   |
+    |         变量         |                                                         值                                                         |
+    |:--------------------:|:------------------------------------------------------------------------------------------------------------------:|
+    |    原像基础保证金    |                                 {{ networks.moonbeam.preimage.base_deposit }} GLMR                                 |
+    | 每个字节的原像保证金 |                                 {{ networks.moonbeam.preimage.byte_deposit }} GLMR                                 |
+    |      提案保证金      |                                 {{ networks.moonbeam.democracy.min_deposit }} GLMR                                 |
+    |        启动期        | {{ networks.moonbeam.democracy.launch_period.blocks}}区块（{{ networks.moonbeam.democracy.launch_period.days}}天） |
+    |        冷静期        |   {{ networks.moonbeam.democracy.cool_period.blocks}}区块（{{ networks.moonbeam.democracy.cool_period.days}}天）   |
 
 ## 提案步骤 {: #roadmap-of-a-proposal } 
 

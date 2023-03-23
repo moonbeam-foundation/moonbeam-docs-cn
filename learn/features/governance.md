@@ -55,13 +55,13 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
  - **Track** - 概述提案生命周期的特定于Origin的管道。目前，有五个Track：
 
-    |  Origin Track   |                       描述                        |                 公投示例                  |
-    | :-----------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-    |        Root         |             最高优先级的提案             | Runtime更新、技术委员会管理 |
-    |     Whitelisted     | 在发送前由技术委员会列入白名单的提案 |            快速处理操作            |
-    |    General Admin    |      用于基本链上决策       | XCM费用、Orbiter计划、平行链质押参数、registrar的更新 |
-    | Emergency Canceller | 用于取消公投。保证金退还 |          错误的公投          |
-    |  Emergency Killer   | 用于处理不良公投。保证金没收 |               不良公投                |
+    |    Origin Track     |                 描述                 |                       公投示例                        |
+    |:-------------------:|:------------------------------------:|:-----------------------------------------------------:|
+    |        Root         |           最高优先级的提案           |              Runtime更新、技术委员会管理              |
+    |     Whitelisted     | 在发送前由技术委员会列入白名单的提案 |                     快速处理操作                      |
+    |    General Admin    |           用于基本链上决策           | XCM费用、Orbiter计划、平行链质押参数、registrar的更新 |
+    | Emergency Canceller |       用于取消公投。保证金退还       |                      错误的公投                       |
+    |  Emergency Killer   |     用于处理不良公投。保证金没收     |                       不良公投                        |
 
 --8<-- 'text/governance/vote-conviction-definitions.md'
 
@@ -79,23 +79,23 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 ### 治理参数 {: #governance-parameters-v2 }
 
 === "Moonriver"
-    |          变量           |                            值                            |
-    |:---------------------------:|:-----------------------------------------------------------:|
+    |         变量         |                             值                              |
+    |:--------------------:|:-----------------------------------------------------------:|
     |    原像基础保证金    |     {{ networks.moonriver.preimage.base_deposit }} MOVR     |
-    |  每个字节的原像保证金  |     {{ networks.moonriver.preimage.byte_deposit }} MOVR     |
-    | 提案提交保证金 | {{ networks.moonriver.governance.submission_deposit }} MOVR |
+    | 每个字节的原像保证金 |     {{ networks.moonriver.preimage.byte_deposit }} MOVR     |
+    |    提案提交保证金    | {{ networks.moonriver.governance.submission_deposit }} MOVR |
 
 === "Moonbase Alpha"
-    |          变量           |                           值                           |
-    |:---------------------------:|:---------------------------------------------------------:|
+    |         变量         |                            值                             |
+    |:--------------------:|:---------------------------------------------------------:|
     |    原像基础保证金    |     {{ networks.moonbase.preimage.base_deposit }} DEV     |
-    |  每个字节的原像保证金  |     {{ networks.moonbase.preimage.byte_deposit }} DEV     |
-    | 提案提交保证金 | {{ networks.moonbase.governance.submission_deposit }} DEV |
+    | 每个字节的原像保证金 |     {{ networks.moonbase.preimage.byte_deposit }} DEV     |
+    |    提案提交保证金    | {{ networks.moonbase.governance.submission_deposit }} DEV |
 
 #### Track的基本参数 {: #general-parameters-by-track }
 
 === "Moonriver"
-    |         Track          | Track ID |                                    容量                                     |                              决定<br>保证金                               |
+    |         Track          | Track ID |                                      容量                                       |                                 决定<br>保证金                                 |
     |:----------------------:|:--------:|:-------------------------------------------------------------------------------:|:------------------------------------------------------------------------------:|
     |          Root          |    0     |     {{ networks.moonriver.governance.tracks.root.max_deciding }} proposals      |     {{ networks.moonriver.governance.tracks.root.decision_deposit }} MOVR      |
     |      Whitelisted       |    1     |  {{ networks.moonriver.governance.tracks.whitelisted.max_deciding }} proposals  |  {{ networks.moonriver.governance.tracks.whitelisted.decision_deposit }} MOVR  |
@@ -104,10 +104,10 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
     |  Emergency<br>Killer   |    4     |    {{ networks.moonriver.governance.tracks.killer.max_deciding }} proposals     |    {{ networks.moonriver.governance.tracks.killer.decision_deposit }} MOVR     |
 
 === "Moonbase Alpha"
-    |         Track          | Track ID |                                    容量                                    |                             决定<br>保证金                              |
+    |         Track          | Track ID |                                      容量                                      |                                决定<br>保证金                                |
     |:----------------------:|:--------:|:------------------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
     |          Root          |    0     |     {{ networks.moonbase.governance.tracks.root.max_deciding }} proposals      |     {{ networks.moonbase.governance.tracks.root.decision_deposit }} DEV      |
-    |      Whitelisted       |    1     |  {{ networks.moonbase.governance.tracks.whitelisted.max_deciding }} proposals |  {{ networks.moonbase.governance.tracks.whitelisted.decision_deposit }} DEV  |
+    |      Whitelisted       |    1     |  {{ networks.moonbase.governance.tracks.whitelisted.max_deciding }} proposals  |  {{ networks.moonbase.governance.tracks.whitelisted.decision_deposit }} DEV  |
     |     General Admin      |    2     | {{ networks.moonbase.governance.tracks.general_admin.max_deciding }} proposals | {{ networks.moonbase.governance.tracks.general_admin.decision_deposit }} DEV |
     | Emergency<br>Canceller |    3     |   {{ networks.moonbase.governance.tracks.canceller.max_deciding }} proposals   |   {{ networks.moonbase.governance.tracks.canceller.decision_deposit }} DEV   |
     |  Emergency<br>Killer   |    4     |    {{ networks.moonbase.governance.tracks.killer.max_deciding }} proposals     |    {{ networks.moonbase.governance.tracks.killer.decision_deposit }} DEV     |
@@ -115,7 +115,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 #### Track的时间期限参数 {: #period-parameters-by-track }
 
 === "Moonriver"
-    |         Track          |                                                                            准备期                                                                             |                                                                              决定期                                                                              |                                                                            确认期                                                                             |                                                                             最短生效等待期                                                                              |
+    |         Track          |                                                                                  准备期                                                                                  |                                                                                   决定期                                                                                   |                                                                                  确认期                                                                                  |                                                                                    最短生效等待期                                                                                    |
     |:----------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     |          Root          |          {{ networks.moonriver.governance.tracks.root.prepare_period.blocks }} blocks <br>({{ networks.moonriver.governance.tracks.root.prepare_period.time }})          |          {{ networks.moonriver.governance.tracks.root.decision_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.root.decision_period.time }})          |          {{ networks.moonriver.governance.tracks.root.confirm_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.root.confirm_period.time }})          |          {{ networks.moonriver.governance.tracks.root.min_enactment_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.root.min_enactment_period.time }})          |
     |      Whitelisted       |   {{ networks.moonriver.governance.tracks.whitelisted.prepare_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.whitelisted.prepare_period.time }})   |   {{ networks.moonriver.governance.tracks.whitelisted.decision_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.whitelisted.decision_period.time }})   |   {{ networks.moonriver.governance.tracks.whitelisted.confirm_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.whitelisted.confirm_period.time }})   |   {{ networks.moonriver.governance.tracks.whitelisted.min_enactment_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.whitelisted.min_enactment_period.time }})   |
@@ -124,7 +124,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
     |  Emergency<br>Killer   |        {{ networks.moonriver.governance.tracks.killer.prepare_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.killer.prepare_period.time }})        |        {{ networks.moonriver.governance.tracks.killer.decision_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.killer.decision_period.time }})        |        {{ networks.moonriver.governance.tracks.killer.confirm_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.killer.confirm_period.time }})        |        {{ networks.moonriver.governance.tracks.killer.min_enactment_period.blocks }} blocks<br> ({{ networks.moonriver.governance.tracks.killer.min_enactment_period.time }})        |
 
 === "Moonbase Alpha"
-    |         Track          |                                                                           准备期                                                                            |                                                                             决定期                                                                             |                                                                           确认期                                                                            |                                                                            最短生效等待期                                                                             |
+    |         Track          |                                                                                 准备期                                                                                 |                                                                                  决定期                                                                                  |                                                                                 确认期                                                                                 |                                                                                   最短生效等待期                                                                                   |
     |:----------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     |          Root          |          {{ networks.moonbase.governance.tracks.root.prepare_period.blocks }} blocks <br>({{ networks.moonbase.governance.tracks.root.prepare_period.time }})          |          {{ networks.moonbase.governance.tracks.root.decision_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.root.decision_period.time }})          |          {{ networks.moonbase.governance.tracks.root.confirm_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.root.confirm_period.time }})          |          {{ networks.moonbase.governance.tracks.root.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.root.min_enactment_period.time }})          |
     |      Whitelisted       |   {{ networks.moonbase.governance.tracks.whitelisted.prepare_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.whitelisted.prepare_period.time }})   |   {{ networks.moonbase.governance.tracks.whitelisted.decision_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.whitelisted.decision_period.time }})   |   {{ networks.moonbase.governance.tracks.whitelisted.confirm_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.whitelisted.confirm_period.time }})   |   {{ networks.moonbase.governance.tracks.whitelisted.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.whitelisted.min_enactment_period.time }})   |
@@ -135,22 +135,22 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 #### Track的支持和批准参数 {: #support-and-approval-parameters-by-track }
 
 === "Moonriver"
-    |         Track          | 批准曲线 |                                                                                                                                                                                                                                     批准参数                                                                                                                                                                                                                                      | 支持曲线 |                                                                                                                                                                                                                                   支持参数                                                                                                                                                                                                                                   |
-    |:----------------------:|:--------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |          Root          |   Reciprocal   |                            {{ networks.moonriver.governance.tracks.root.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.root.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.root.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent2 }}%                            |    Linear     |                                                                                                  {{ networks.moonriver.governance.tracks.root.min_support.time0 }}: {{ networks.moonriver.governance.tracks.root.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.root.min_support.time1 }}: {{ networks.moonriver.governance.tracks.root.min_support.percent1 }}%                                                                                                  |
-    |      Whitelisted       |   Reciprocal   |       {{ networks.moonriver.governance.tracks.whitelisted.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent2 }}%       |  Reciprocal   |       {{ networks.moonriver.governance.tracks.whitelisted.min_support.time0 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_support.time1 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_support.time2 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent2 }}%       |
-    |     General Admin      |   Reciprocal   | {{ networks.moonriver.governance.tracks.general_admin.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent2 }}% |  Reciprocal   | {{ networks.moonriver.governance.tracks.general_admin.min_support.time0 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_support.time1 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_support.time2 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent2 }}% |
-    | Emergency<br>Canceller |   Reciprocal   |             {{ networks.moonriver.governance.tracks.canceller.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent2 }}%             |  Reciprocal   |             {{ networks.moonriver.governance.tracks.canceller.min_support.time0 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_support.time1 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_support.time2 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent2 }}%             |
-    |  Emergency<br>Killer   |   Reciprocal   |                      {{ networks.moonriver.governance.tracks.killer.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent2 }}%                      |  Reciprocal   |                      {{ networks.moonriver.governance.tracks.killer.min_support.time0 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_support.time1 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_support.time2 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent2 }}%                      |
+    |         Track          |  批准曲线  |                                                                                                                                                                                                                                           批准参数                                                                                                                                                                                                                                           |  支持曲线  |                                                                                                                                                                                                                                        支持参数                                                                                                                                                                                                                                        |
+    |:----------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |          Root          | Reciprocal |                            {{ networks.moonriver.governance.tracks.root.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.root.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.root.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.root.min_approval.percent2 }}%                            |   Linear   |                                                                                                  {{ networks.moonriver.governance.tracks.root.min_support.time0 }}: {{ networks.moonriver.governance.tracks.root.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.root.min_support.time1 }}: {{ networks.moonriver.governance.tracks.root.min_support.percent1 }}%                                                                                                  |
+    |      Whitelisted       | Reciprocal |       {{ networks.moonriver.governance.tracks.whitelisted.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_approval.percent2 }}%       | Reciprocal |       {{ networks.moonriver.governance.tracks.whitelisted.min_support.time0 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_support.time1 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.whitelisted.min_support.time2 }}: {{ networks.moonriver.governance.tracks.whitelisted.min_support.percent2 }}%       |
+    |     General Admin      | Reciprocal | {{ networks.moonriver.governance.tracks.general_admin.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.general_admin.min_approval.percent2 }}% | Reciprocal | {{ networks.moonriver.governance.tracks.general_admin.min_support.time0 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_support.time1 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.general_admin.min_support.time2 }}: {{ networks.moonriver.governance.tracks.general_admin.min_support.percent2 }}% |
+    | Emergency<br>Canceller | Reciprocal |             {{ networks.moonriver.governance.tracks.canceller.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.canceller.min_approval.percent2 }}%             | Reciprocal |             {{ networks.moonriver.governance.tracks.canceller.min_support.time0 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_support.time1 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.canceller.min_support.time2 }}: {{ networks.moonriver.governance.tracks.canceller.min_support.percent2 }}%             |
+    |  Emergency<br>Killer   | Reciprocal |                      {{ networks.moonriver.governance.tracks.killer.min_approval.time0 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent0 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_approval.time1 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent1 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_approval.time2 }}: {{ networks.moonriver.governance.tracks.killer.min_approval.percent2 }}%                      | Reciprocal |                      {{ networks.moonriver.governance.tracks.killer.min_support.time0 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent0 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_support.time1 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent1 }}%<br>{{ networks.moonriver.governance.tracks.killer.min_support.time2 }}: {{ networks.moonriver.governance.tracks.killer.min_support.percent2 }}%                      |
 
 === "Moonbase Alpha"
-    |         Track          | 批准曲线 |                                                                                                                                                                                                                                  批准参数                                                                                                                                                                                                                                   | 支持曲线 |                                                                                                                                                                                                                                支持参数                                                                                                                                                                                                                                |
-    |:----------------------:|:--------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |          Root          |   Reciprocal   |                            {{ networks.moonbase.governance.tracks.root.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.root.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.root.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent2 }}%                            |    Linear     |                                                                                                 {{ networks.moonbase.governance.tracks.root.min_support.time0 }}: {{ networks.moonbase.governance.tracks.root.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.root.min_support.time1 }}: {{ networks.moonbase.governance.tracks.root.min_support.percent1 }}%                                                                                                 |
-    |      Whitelisted       |   Reciprocal   |       {{ networks.moonbase.governance.tracks.whitelisted.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent2 }}%       |  Reciprocal   |       {{ networks.moonbase.governance.tracks.whitelisted.min_support.time0 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_support.time1 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_support.time2 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent2 }}%       |
-    |     General Admin      |   Reciprocal   | {{ networks.moonbase.governance.tracks.general_admin.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent2 }}% |  Reciprocal   | {{ networks.moonbase.governance.tracks.general_admin.min_support.time0 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_support.time1 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_support.time2 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent2 }}% |
-    | Emergency<br>Canceller |   Reciprocal   |             {{ networks.moonbase.governance.tracks.canceller.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent2 }}%             |  Reciprocal   |             {{ networks.moonbase.governance.tracks.canceller.min_support.time0 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_support.time1 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_support.time2 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent2 }}%             |
-    |  Emergency<br>Killer   |   Reciprocal   |                      {{ networks.moonbase.governance.tracks.killer.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent2 }}%                      |  Reciprocal   |                      {{ networks.moonbase.governance.tracks.killer.min_support.time0 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_support.time1 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_support.time2 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent2 }}%                      |
+    |         Track          |  批准曲线  |                                                                                                                                                                                                                                        批准参数                                                                                                                                                                                                                                        |  支持曲线  |                                                                                                                                                                                                                                     支持参数                                                                                                                                                                                                                                     |
+    |:----------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |          Root          | Reciprocal |                            {{ networks.moonbase.governance.tracks.root.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.root.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.root.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.root.min_approval.percent2 }}%                            |   Linear   |                                                                                                 {{ networks.moonbase.governance.tracks.root.min_support.time0 }}: {{ networks.moonbase.governance.tracks.root.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.root.min_support.time1 }}: {{ networks.moonbase.governance.tracks.root.min_support.percent1 }}%                                                                                                 |
+    |      Whitelisted       | Reciprocal |       {{ networks.moonbase.governance.tracks.whitelisted.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_approval.percent2 }}%       | Reciprocal |       {{ networks.moonbase.governance.tracks.whitelisted.min_support.time0 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_support.time1 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.whitelisted.min_support.time2 }}: {{ networks.moonbase.governance.tracks.whitelisted.min_support.percent2 }}%       |
+    |     General Admin      | Reciprocal | {{ networks.moonbase.governance.tracks.general_admin.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.general_admin.min_approval.percent2 }}% | Reciprocal | {{ networks.moonbase.governance.tracks.general_admin.min_support.time0 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_support.time1 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.general_admin.min_support.time2 }}: {{ networks.moonbase.governance.tracks.general_admin.min_support.percent2 }}% |
+    | Emergency<br>Canceller | Reciprocal |             {{ networks.moonbase.governance.tracks.canceller.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.canceller.min_approval.percent2 }}%             | Reciprocal |             {{ networks.moonbase.governance.tracks.canceller.min_support.time0 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_support.time1 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.canceller.min_support.time2 }}: {{ networks.moonbase.governance.tracks.canceller.min_support.percent2 }}%             |
+    |  Emergency<br>Killer   | Reciprocal |                      {{ networks.moonbase.governance.tracks.killer.min_approval.time0 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent0 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_approval.time1 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent1 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_approval.time2 }}: {{ networks.moonbase.governance.tracks.killer.min_approval.percent2 }}%                      | Reciprocal |                      {{ networks.moonbase.governance.tracks.killer.min_support.time0 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent0 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_support.time1 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent1 }}%<br>{{ networks.moonbase.governance.tracks.killer.min_support.time2 }}: {{ networks.moonbase.governance.tracks.killer.min_support.percent2 }}%                      |
 
 #### 信念乘数 {: #conviction-multiplier-v2 }
 
@@ -161,29 +161,29 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 每个网络的信念乘数如下所示：
 
 === "Moonriver"
-    | 生效后的锁定期 |  信念乘数 |                        预计锁定时间                        |
-    |:----------------------------:|:---------------------:|:---------------------------------------------------------------:|
-    |              0               |          0.1          |                              None                               |
-    |              1               |           1           | {{networks.moonriver.conviction.lock_period.conviction_1}} day  |
-    |              2               |           2           | {{networks.moonriver.conviction.lock_period.conviction_2}} days |
-    |              4               |           3           | {{networks.moonriver.conviction.lock_period.conviction_3}} days |
-    |              8               |           4           | {{networks.moonriver.conviction.lock_period.conviction_4}} days |
-    |              16              |           5           | {{networks.moonriver.conviction.lock_period.conviction_5}} days |
-    |              32              |           6           | {{networks.moonriver.conviction.lock_period.conviction_6}} days |
+    | 生效后的锁定期 | 信念乘数 |                          预计锁定时间                           |
+    |:--------------:|:--------:|:---------------------------------------------------------------:|
+    |       0        |   0.1    |                              None                               |
+    |       1        |    1     | {{networks.moonriver.conviction.lock_period.conviction_1}} day  |
+    |       2        |    2     | {{networks.moonriver.conviction.lock_period.conviction_2}} days |
+    |       4        |    3     | {{networks.moonriver.conviction.lock_period.conviction_3}} days |
+    |       8        |    4     | {{networks.moonriver.conviction.lock_period.conviction_4}} days |
+    |       16       |    5     | {{networks.moonriver.conviction.lock_period.conviction_5}} days |
+    |       32       |    6     | {{networks.moonriver.conviction.lock_period.conviction_6}} days |
 
 === "Moonbase Alpha"
-    | 生效后的锁定期 | 信念乘数 |                       预计锁定时间                        |
-    |:----------------------------:|:---------------------:|:--------------------------------------------------------------:|
-    |              0               |          0.1          |                              None                              |
-    |              1               |           1           | {{networks.moonbase.conviction.lock_period.conviction_1}} day  |
-    |              2               |           2           | {{networks.moonbase.conviction.lock_period.conviction_2}} days |
-    |              4               |           3           | {{networks.moonbase.conviction.lock_period.conviction_3}} days |
-    |              8               |           4           | {{networks.moonbase.conviction.lock_period.conviction_4}} days |
-    |              16              |           5           | {{networks.moonbase.conviction.lock_period.conviction_5}} days |
-    |              32              |           6           | {{networks.moonbase.conviction.lock_period.conviction_6}} days |
+    | 生效后的锁定期 | 信念乘数 |                          预计锁定时间                          |
+    |:--------------:|:--------:|:--------------------------------------------------------------:|
+    |       0        |   0.1    |                              None                              |
+    |       1        |    1     | {{networks.moonbase.conviction.lock_period.conviction_1}} day  |
+    |       2        |    2     | {{networks.moonbase.conviction.lock_period.conviction_2}} days |
+    |       4        |    3     | {{networks.moonbase.conviction.lock_period.conviction_3}} days |
+    |       8        |    4     | {{networks.moonbase.conviction.lock_period.conviction_4}} days |
+    |       16       |    5     | {{networks.moonbase.conviction.lock_period.conviction_5}} days |
+    |       32       |    6     | {{networks.moonbase.conviction.lock_period.conviction_6}} days |
 
 !!! 注意事项
-    预计锁定时间基于常规的{{ networks.moonriver.block }}秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
+    预计锁定时间基于常规的{{ networks.moonriver.block_time }}秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
 
 ### 提案步骤 {: #roadmap-of-a-proposal-v2 } 
 
@@ -205,7 +205,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 ![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/v2/proposal-roadmap.png)
 
-### 提案示例流程
+### 提案示例流程 {: #proposal-example-walkthrough }
 
 在Moonriver上的General Admin Track提交的提案（及其原像）将具有以下特征：
 
@@ -213,7 +213,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
  - 支持曲线从第{{ networks.moonriver.governance.tracks.general_admin.min_support.time0 }}天的{{ networks.moonriver.governance.tracks.general_admin.min_support.percent0 }}%开始，在第{{ networks.moonriver.governance.tracks.general_admin.min_support.time1 }}天达到{{ networks.moonriver.governance.tracks.general_admin.min_support.percent1 }}%
  - 公投以0%的“赞成”票开始决定期（带入期不开放投票）
  - Token持有者开始投票并在第{{ networks.moonriver.governance.tracks.general_admin.min_approval.time1 }}天将批准率增加到{{ networks.moonriver.governance.tracks.general_admin.min_approval.percent1 }}%以上
- - 如果批准和支持在确认期（{{ networks.moonriver.governance.tracks.general_admin.min_enactment_period.blocks }}区块，约为{{ networks.moonriver.governance.tracks.general_admin.min_enactment_period.time }}天）达到数量要求，则公投会被批准
+ - 如果批准和支持在确认期（{{ networks.moonriver.governance.tracks.general_admin.confirm_period.blocks }}区块，约为{{ networks.moonriver.governance.tracks.general_admin.confirm_period.time }}天）达到数量要求，则公投会被批准
  - 如果在决定期未达到批准和支持数量要求，则该提案将被拒绝。请注意，必须在确认期达到此数值。 因此，如果该提案满足要求但在确认期完成之前决定期已经到期，则该提案将被拒绝
 
 批准和支持的比例可以使用以下方式计算：
@@ -287,17 +287,17 @@ OpenGov技术委员会由拥有基于Moonbeam网络方面技术知识和专业�
 
 Moonbeam上的治理参数如下所示：
 
-|                  变量                   |                           值                           |
-| :----------------------------------------------: | :----------------------------------------------------------: |
-|               启动期               | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
-|               投票期               | {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}} days) |
-|           生效等待期            | {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}} days) |
-|              冷静期              | {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days) |
-|       原像基础保证金       |      {{ networks.moonbeam.preimage.base_deposit }} GLMR      |
-|  每个字节的原像保证金  |      {{ networks.moonbeam.preimage.byte_deposit }} GLMR      |
-|           提案保证金            |      {{ networks.moonbeam.democracy.min_deposit }} GLMR      |
-|            提案上限            |       {{ networks.moonbeam.democracy.max_proposals }}        |
-| 公投上限（单次）* |       {{ networks.moonbeam.democracy.max_referenda }}        |
+|         变量         |                                                           值                                                            |
+|:--------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
+|        启动期        | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
+|        投票期        |   {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}} days)   |
+|      生效等待期      |  {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}} days)  |
+|        冷静期        |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
+|    原像基础保证金    |                                   {{ networks.moonbeam.preimage.base_deposit }} GLMR                                    |
+| 每个字节的原像保证金 |                                   {{ networks.moonbeam.preimage.byte_deposit }} GLMR                                    |
+|      提案保证金      |                                   {{ networks.moonbeam.democracy.min_deposit }} GLMR                                    |
+|       提案上限       |                                     {{ networks.moonbeam.democracy.max_proposals }}                                     |
+|  公投上限（单次）*   |                                     {{ networks.moonbeam.democracy.max_referenda }}                                     |
 
 **单次最大公投数量不包括快速通道公投。* 
 
@@ -313,15 +313,15 @@ Moonbeam上的治理参数如下所示：
 Moonbeam的信念乘数如下所示：
 
 === "Moonbeam"
-    | 生效后的锁定期 |  信念乘数 |                       预计锁定时间                        |
-    |:----------------------------:|:---------------------:|:-------------------------------------------------------------:|
-    |              0               |          0.1          |                             None                              |
-    |              1               |           1           | {{networks.moonbeam.democracy.lock_period.conviction_1}}天 |
-    |              2               |           2           | {{networks.moonbeam.democracy.lock_period.conviction_2}}天 |
-    |              4               |           3           | {{networks.moonbeam.democracy.lock_period.conviction_3}}天 |
-    |              8               |           4           | {{networks.moonbeam.democracy.lock_period.conviction_4}}天 |
-    |              16              |           5           | {{networks.moonbeam.democracy.lock_period.conviction_5}}天 |
-    |              32              |           6           | {{networks.moonbeam.democracy.lock_period.conviction_6}}天 |
+    | 生效后的锁定期 | 信念乘数 |                        预计锁定时间                        |
+    |:--------------:|:--------:|:----------------------------------------------------------:|
+    |       0        |   0.1    |                            None                            |
+    |       1        |    1     | {{networks.moonbeam.democracy.lock_period.conviction_1}}天 |
+    |       2        |    2     | {{networks.moonbeam.democracy.lock_period.conviction_2}}天 |
+    |       4        |    3     | {{networks.moonbeam.democracy.lock_period.conviction_3}}天 |
+    |       8        |    4     | {{networks.moonbeam.democracy.lock_period.conviction_4}}天 |
+    |       16       |    5     | {{networks.moonbeam.democracy.lock_period.conviction_5}}天 |
+    |       32       |    6     | {{networks.moonbeam.democracy.lock_period.conviction_6}}天 |
 
 !!! 注意事项
     预计锁定时间基于常规的{{ networks.moonbeam.block }}-秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
@@ -346,10 +346,10 @@ Moonbeam的信念乘数如下所示：
 
 理事会和技术委员会是两个团体，具有以下特殊投票权：
 
-|        团体         | 可以提交<br>外部提案 | 可以提交<br>快速通道提案 | 可以取消<br>恶意的民主提案 | 可以否决<br>外部提案 |
-| :----------------------------: | :------------------------------------------------: | :--------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------: |
-|         理事会         |                         ✓                          |                             X                              |                              ✓                               |                        X                         |
-| 技术委员会 |                         X                          |                             ✓                              |                              ✓                               |                        ✓                         |
+|    团体    | 可以提交<br>外部提案 | 可以提交<br>快速通道提案 | 可以取消<br>恶意的民主提案 | 可以否决<br>外部提案 |
+|:----------:|:--------------------:|:------------------------:|:--------------------------:|:--------------------:|
+|   理事会   |          ✓           |            X             |             ✓              |          X           |
+| 技术委员会 |          X           |            ✓             |             ✓              |          ✓           |
 
 投票期限为一天或更长时间的快速通道提案需要技术委员会二分之一的批准。 投票期少于一天的快速通道提案称为“即时快速通道提案”，需要技术委员会五分之三的批准。
 
@@ -370,13 +370,13 @@ Moonbeam的信念乘数如下所示：
 
 在前面的示例中，这些数字是：
 
-|   变量   |       值        |
-| :---------------: | :-------------------: |
-|   赞成    |   10800 (1800 x 6)    |
-|   反对    |    80 (800 x 0.1)     |
-|  投票数   |   2600 (1800 + 800)   |
-|  总选票   |         1.22M         |
-|  **结果**  | 1.5 < 9.8 (Aye wins!) |
+|   变量   |          值           |
+|:--------:|:---------------------:|
+|   赞成   |   10800 (1800 x 6)    |
+|   反对   |    80 (800 x 0.1)     |
+|  投票数  |   2600 (1800 + 800)   |
+|  总选票  |         1.22M         |
+| **结果** | 1.5 < 9.8 (Aye wins!) |
 
 简而言之，在投票数偏低的情况下，需要绝对多数“赞成”票才能批准提案，但随着投票数的增加，则会变成简单多数的形式。
 
