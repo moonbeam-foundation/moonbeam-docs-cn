@@ -324,7 +324,7 @@ Moonbeam的信念乘数如下所示：
     |       32       |    6     | {{networks.moonbeam.democracy.lock_period.conviction_6}}天 |
 
 !!! 注意事项
-    预计锁定时间基于常规的{{ networks.moonbeam.block }}-秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
+    预计锁定时间基于常规的{{ networks.moonbeam.block_time }}-秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
 
 ### 提案步骤 {: #roadmap-of-a-proposal } 
 

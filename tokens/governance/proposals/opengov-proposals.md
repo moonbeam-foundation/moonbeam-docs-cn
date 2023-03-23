@@ -79,7 +79,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 ![Fill in the Preimage Information](/images/tokens/governance/proposals/v2/proposals-5.png)
 
 !!! 注意事项
-   请确保复制原像哈希，在提交提案时必须用到这一数据。
+    请确保复制原像哈希，在提交提案时必须用到这一数据。
 
 请注意，原像储存成本可以计算为（每个网络的）基本费用加上所提议的原像的每字节费用。
 
