@@ -12,11 +12,11 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。
 
-With the rollout of OpenGov (originally referred to as Governance v2), several modifications have been introduced to the governance process. **OpenGov has launched on Moonriver, and once it has been rigorously tested, a proposal will be made for it to be launched on Moonbeam**. Until then, Moonbeam still uses Goverance v1. **The Democracy Precompile is for Governance v1, as such, this guide is for Moonbeam only.** If you're looking to interact with governance features on Moonriver, you should take a look at the OpenGov-related precompiles: [Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}, [Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}, and [Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}.
+随着OpenGov（最初称为 Governance v2）的推出，对治理流程进行了多项修改。 **OpenGov已经在Moonriver上线，经过严格测试后，将提出在Moonbeam上线的提案**。在那之前，Moonbeam仍然使用Goverance v1。**民主预编译适用于Governance v1，因此，本指南仅适用于Moonbeam。**如果您希望与Moonriver上的治理功能进行交互，您应该查看与OpenGov相关的预编译：[原像预编译](/builders/pallets-precompiles/precompiles/preimage){target=_blank}、[公投预编译](/builders/pallets-precompiles/precompiles/referenda){target=_blank}和[信念投票预编译](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}。
 
 Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}。民主pallet使用Rust语言实现，无法直接从Moonbeam的以太坊API交互。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户导入Polkadot.js App后使用复杂的界面进行操作。
 
-The Democracy Precompile is currently available in OpenGov, which is available on Moonriver and Moonbase Alpha only. If you're looking for similar functionality for Moonbeam, which is still on Governance v1, you can refer to the [Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank} documentation.
+民主预编译目前在OpenGov（仅存在Moonriver和Moonbase Alpha上）中可用。 如果您正在寻找仍在Governance v1上的Moonbeam的类似功能，您可以参考[Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank}文档。
 
 民主预编译位于以下地址：
 
@@ -61,21 +61,19 @@ The Democracy Precompile is currently available in OpenGov, which is available o
  - **notePreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
  - **noteImminentPreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
 
-The interface also includes the following events:
+此接口也包含以下事件：
 
-- **Proposed**(*uint32 indexed* proposalIndex, *uint256* deposit) - emitted when a motion has been proposed
-- **Seconded**(*uint32 indexed* proposalIndex, *address* seconder) - emitted when an account has seconded a proposal
-- **StandardVote**(*uint32 indexed* referendumIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - emitted when an account has made a standard vote
-- **Delegated**(*address indexed* who, *address* target) - emitted when an account has delegated some voting power to another account
-- **Undelegated**(*address indexed* who) - emitted when an account has undelegated some of their voting power from another account
+- **Proposed**(*uint32 indexed* proposalIndex, *uint256* deposit) - 在提议动议时发出
+- **Seconded**(*uint32 indexed* proposalIndex, *address* seconder) - 当账户附议提案时发出
+- **StandardVote**(*uint32 indexed* referendumIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - 当账户进行标准投票时发出
+- **Delegated**(*address indexed* who, *address* target) - 当一个账户将一些投票权委托给另一个账户时发出
+- **Undelegated**(*address indexed* who) - 当一个账户从另一个账户取消了他们的部分投票权时发出
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
 ### 查看先决条件 {: #checking-prerequisites } 
 
 以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。
-
-Before diving into the interface, it's best if you're familiar with [how to propose an action](/tokens/governance/proposals/){target=_blank} and [how to vote on a referendum](/tokens/governance/voting/){target=_blank} on Moonbeam.
 
 在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。
 
@@ -88,7 +86,7 @@ Before diving into the interface, it's best if you're familiar with [how to prop
 ### 设置Remix {: #remix-set-up }
 
 1. 点击**File explorer**标签
-1. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
+2. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
 
 ![Copying and Pasting the Democracy Interface into Remix](/images/builders/pallets-precompiles/precompiles/democracy/democracy-1.png)
 
@@ -100,9 +98,9 @@ Before diving into the interface, it's best if you're familiar with [how to prop
 
 ![Compiling DemocracyInteface.sol](/images/builders/pallets-precompiles/precompiles/democracy/democracy-2.png)
 
-### 访问合约 {: #access-the-contract } 
+### 获取合约 {: #access-the-contract } 
 
-1. 在Remix点击位于**Compile**标签下方的**Deploy and Run**标签。**注意**：您并不是在此部署合约，您是在访问一个已经部署的预编译合约
+1. 点击位于Remix的**Compile**标签正下方的**Deploy and Run**标签。请注意：您并不是在此部署合约，您是在获取一个已经部署的预编译合约
 2. 确认在**ENVIRONMENT**下拉菜单中的**Injected Provider - Metamask**已被选取
 3. 确保**Democracy.sol**已在**CONTRACT**下拉菜单中被选去。由于此为预编译合约，并不需要进行部署，您需要的是在**At Address**中提供预编译合约的地址
 4. 为Moonbase Alpha提供民主预编译的地址：`{{networks.moonbase.precompiles.democracy}}` 并点击**At Address**
@@ -112,15 +110,15 @@ Before diving into the interface, it's best if you're familiar with [how to prop
 
 ### 提交提案 {: #submit-a-proposal } 
 
-You can submit a proposal via the `propose` function of the [Democracy Precompile](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank} as long as you have the preimage hash of the proposal. But before a proposal can be submitted, you'll first need to submit the preimage by passing in the encoded proposal data to the `notePreimage` function, which now belongs to the [preimage pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}.
+如果您有提案的原像哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}的`propose`函数提交提案。但是，在提交提案之前，您首先需要通过将编码的提案数据传递给`notePreimage`函数来提交原像，该函数现在属于[原像Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}。
 
 --8<-- 'text/precompiles/governance/submit-preimage.md'
 
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network/public-ws#/democracy){target=_blank}获得的编码后的提案，并通过民主预编译中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像仍然需要在提案能够执行前进行提交。请跟随以下步骤通过`notePreimage`函数提交原像：
 
  1. 展开民主预编译合约以查看可用函数
  2. 找到**notePreimage**函数并点击按钮以展开区块
- 3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
+ 3. 复制您在先前获得的编码后的提案。请注意，编码后的提案与原像（Preimage）哈希不同。请确认您输入的是正确的数值
  4. 点击**transact**并在MetaMask确认交易
 
 ![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
@@ -184,10 +182,7 @@ You can submit a proposal via the `propose` function of the [Democracy Precompil
 1. 展开民主预编译合约以查看可用函数
 2. 寻找**standardVote**函数并点击按钮以查看区块
 3. 输入公投编码以进行投票
-
-4. Leave the field empty for **Nay** or input `1` for **Aye**. In the context of a referendum, "Nay" is a vote to keep the status quo unchanged. "Aye" is a vote to enact the action proposed by the referendum
-4. 将此字段留空表示否定或输入`1`表示赞成。在公投的背景下，**Nay**是保持现状不变的投票，**Aye**是通过公投提议
-
+4. 将此字段留空表示否定（**Nay**）或输入`1`表示赞成（**Aye**）。在公投的背景下，"Nay"是保持现状不变的投票，"Aye"是通过公投提议
 5. 输入以Wei表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=_blank}教程。
 7. 点击**transact**并在MetaMask确认此交易

@@ -1,12 +1,12 @@
-In this section, you'll get the preimage hash and the encoded proposal data for a proposal. To get the preimage hash, you'll first need to navigate to the **Preimage** page of [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#){target=_blank}:
+在本节中，您将获得提案的原像哈希和编码后的提案数据。要获取原像哈希，您首先需要导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#){target=_blank}的**Preimage**页面：
 
- 1. Navigate to the [**Governance** tab](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}
- 2. Select **Preimages** from the dropdown
- 3. From the **Preimages** page, click on **+ Add preimage**
+ 1. 导航至[**Governance** 标签页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}
+ 2. 从下拉菜单里选择**Preimages**
+ 3. 在**Preimages**页面点击**+ Add preimage**
 
 ![Add a new preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-4.png)
 
-Then take the following steps:
+然后执行以下步骤：
 
  1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
  2. 选取您希望交互的pallet以及可调度的函数（或是动作）以进行提案。您选取的动作将会决定您随后的操作步骤。在此例子中，此为**system** pallet和**remark**函数
