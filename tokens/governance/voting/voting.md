@@ -52,7 +52,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 您可以在[治理概览页面的Governance v1提案步骤](/learn/features/governance/#roadmap-of-a-proposal){target=_blank}部分找到详细的解释。
 
-![Proposal Roadmap](/images/tokens/governance/voting/proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/voting/v1/proposal-roadmap.png)
 
 --8<-- 'text/governance/forum-discussion.md'
 
@@ -65,7 +65,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charley。
 
-![Accounts in Polkadot.js](/images/tokens/governance/voting/vote-1.png)
+![Accounts in Polkadot.js](/images/tokens/governance/voting/v1/vote-1.png)
 
 将要投票的提案将在链上永久嵌入备注"This is a unique string."。
 
@@ -73,7 +73,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 在Moonbeam上对提案进行投票非常简单。前往[Moonbeam的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}，所有治理相关功能都在**Democracy**标签下。如下图所示，可以看到Democracy旁边有个数字，说明有待处理民主事项（可能是提案或公投）。点击描述旁的箭头，就可以看到您要投票的公投情况。提案和描述旁的数字称为“公投编号”（在本示例中为`20`）。准备就绪后，点击**Vote**按钮。
 
-![Vote Button](/images/tokens/governance/voting/vote-2.png)
+![Vote Button](/images/tokens/governance/voting/v1/vote-2.png)
 
 此处，您需要提供以下信息：
 
@@ -85,14 +85,14 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
  4. 点击**Vote Aye**表示赞成提案，点击**Vote Nay**表示反对提案，然后签署交易
 
-![Vote Submission](/images/tokens/governance/voting/vote-3.png)
+![Vote Submission](/images/tokens/governance/voting/v1/vote-3.png)
 
 !!! 注意事项
     上图显示的锁定期仅供参考。本教程在定制版本的Moonbeam上进行操作，发布/生效等待期较短，仅作演示用途。
 
 在本示例中，Alice和Bob决定投赞成票**Vote Aye**，信念值为`6x`。而Charley决定投反对票**Vote Nay**，但选择不锁定任何Token（他的Token仅在公投期间锁定），因此他的信念值为`0.1x`。在**Democracy**标签下可以看到目前票数分布下的投票结果。
 
-![Vote Information](/images/tokens/governance/voting/vote-4.png)
+![Vote Information](/images/tokens/governance/voting/v1/vote-4.png)
 
 从上述投票演示中可以得出：
 
@@ -106,7 +106,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 投票期结束后，已通过的提案可以在**Dispatch**标签下查看。您也可以在这里看到距离提案生效的时间。
 
-![Proposal Enactment](/images/tokens/governance/voting/vote-5.png)
+![Proposal Enactment](/images/tokens/governance/voting/v1/vote-5.png)
 
 ### 委托投票 {: #delegate-voting } 
 
@@ -114,7 +114,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
 要进行委托投票，首先要进入**Developer**标签下的**Extrinsics**菜单。
 
-![Extrinsics Menu](/images/tokens/governance/voting/vote-6.png)
+![Extrinsics Menu](/images/tokens/governance/voting/v1/vote-6.png)
 
 !!! 注意事项
     如果您试图将Token委托给一个已经投过票的人，该交易会失败。请考虑使用一个新的账户来执行以下步骤。
@@ -135,18 +135,18 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
  7. 点击**Submit Transaction**按钮并签署交易
 
-![Extrinsics Transaction for Delegation](/images/tokens/governance/voting/vote-7.png)
+![Extrinsics Transaction for Delegation](/images/tokens/governance/voting/v1/vote-7.png)
 
 在本示例中，Alice委托了1000的投票权重（1000枚Token乘以信念值1）给Charley。为验证此委托，请点击左侧蓝色圈，会显示此处存在一个委托。
 
-![View Delegation](/images/tokens/governance/voting/vote-8.png)
+![View Delegation](/images/tokens/governance/voting/v1/vote-8.png)
 
 !!! 注意事项
     委托投票的另一个方法是在**Accounts**标签下点击委托账户名称后的三个竖着的点，并填写上述相关信息。
 
 被委托账户开始投票时，委托的总投票权重将分配给该账户所选择的选项。在本示例中，Charley决定投票支持公投中的某一提案。他以800的投票权重（800枚Token乘以信念值1）进行了投票。但由于Alice向他委托了1000的投票权重，因此他的赞成总投票权重将为1800。
 
-![Total Votes with Delegation](/images/tokens/governance/voting/vote-9.png)
+![Total Votes with Delegation](/images/tokens/governance/voting/v1/vote-9.png)
 
 重复上述步骤也可撤销委托，只需要在第3步选择`undelegate` extrinsic进行操作即可。
 
@@ -166,11 +166,11 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
  - 根据信念乘数进行锁定，会显示剩余区块数量和时间
  - 锁定期结束，意味着您可以解锁并取回Token
 
-![Account Lock Status](/images/tokens/governance/voting/vote-10.png)
+![Account Lock Status](/images/tokens/governance/voting/v1/vote-10.png)
 
 锁定期结束即可取回Token。请在**Developers**标签下的**Extrinsics**菜单中进行操作。
 
-![Extrinsics Menu](/images/tokens/governance/voting/vote-11.png)
+![Extrinsics Menu](/images/tokens/governance/voting/v1/vote-11.png)
 
 在此，我们需要发送两个不同的extrinsics。首先需要提供以下信息：
 
@@ -184,7 +184,7 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
 
  5. 点击**Submit Transaction**按钮并签署交易
 
-![Remove Vote Extrinsics](/images/tokens/governance/voting/vote-12.png)
+![Remove Vote Extrinsics](/images/tokens/governance/voting/v1/vote-12.png)
 
 下一个extrinsic，您需要提供以下信息：
 
@@ -198,8 +198,8 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
 
  5. 点击**Submit Transaction**按钮并签署交易
 
-![Unlock Extrinsics](/images/tokens/governance/voting/vote-13.png)
+![Unlock Extrinsics](/images/tokens/governance/voting/v1/vote-13.png)
 
 交易完成后，锁定的Token将被解锁。您可以返回到**Accounts**标签进行检查。在本示例中，可以看到Alice已恢复了原有余额，余额状态显示为**transferable**。
 
-![Check Balance](/images/tokens/governance/voting/vote-14.png)
+![Check Balance](/images/tokens/governance/voting/v1/vote-14.png)

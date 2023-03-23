@@ -10,10 +10,10 @@
 
 如果您已准备好发布提案详情的帖子，您可以前往**Governance**页面并点击**Democracy Proposals**。
 
-![Governance page on Moonbeam Forum](/images/tokens/governance/proposals/proposals-1.png)
+![Governance page on Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-1.png)
 
 然后点击**Open Draft**，使用提供的模板开始准备提案草案。确保更新帖子标题并添加相关标签，比如**Moonbeam**（如果提案与Moonbeam相关）。标题应遵循[Proposal: XX][Status: Idea]提案标题的格式。例如，[Proposal: XX][Status: Idea]注册XC-20 xcMYTOK。其中XX将在提案正式在链上提交后需要被更新为提案ID。
 
-![Add a proposal to the Moonbeam Forum](/images/tokens/governance/proposals/proposals-2.png)
+![Add a proposal to the Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-2.png)
 
 填写完提案详情后，点击**Create Topic**保存至论坛并打开讨论。根据收到的反馈，您可以在提交之前更新提案。

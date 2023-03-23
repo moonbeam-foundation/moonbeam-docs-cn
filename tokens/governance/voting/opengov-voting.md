@@ -68,7 +68,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-3.png)
 
 在Moonbeam上对提案进行投票非常简单。前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}，所有治理相关功能都在**Governance**标签下。在**Governance**下拉菜单中选择**Referenda**，您可以看到所有的公投。在**Referenda**页面，您可以看到每个Track的公投列表。要查看特定公投的详情，请点击描述旁边的箭头。提案和描述旁边的数字称为公投编号。
 

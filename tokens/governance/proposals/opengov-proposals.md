@@ -50,7 +50,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 
 您需要用到Polkadot.js Apps界面发起提案。为此，您需要先导入以太坊格式账户（即H160地址），您也可以遵循[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-3.png)
 
 您可以选择任何想要发起提案的内容，请确保将其分配给正确的Origin和Track，以便其具有执行提案的正确权限。
 
@@ -62,7 +62,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 
 前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}，所有治理相关操作均在**Governance**标签下，包括原像。在**Governance**下拉菜单中选择**Preimages**，然后点击**Add preimage**按钮。
 
-![Add preimage in Polkadot.js](/images/tokens/governance/proposals/proposals-4.png)
+![Add preimage in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-4.png)
 
 此处，您需要提供以下信息：
 

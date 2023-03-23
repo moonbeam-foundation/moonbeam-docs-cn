@@ -48,7 +48,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
 您可以在[治理概览页面的Governance v1提案步骤](/learn/features/governance/#roadmap-of-a-proposal){target=_blank}部分找到详细的解释。
 
-![Proposal Roadmap](/images/tokens/governance/proposals/proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/proposals/v1/proposal-roadmap.png)
 
 --8<-- 'text/governance/submit-idea.md'
 
@@ -61,7 +61,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
 您需要用到Polkadot.js Apps界面发起提案。为此，您需要先导入以太坊格式账户（即H160地址），您也可以遵循[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-3.png)
 
 本次提案内容为：将备注文本"This is a unique string."永久上链。
 
@@ -71,7 +71,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
 前往[Moonbeam的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}，所有治理相关操作均在**Governance**标签下，包括原像。在**Governance**下拉菜单中选择**Preimages**，然后点击**Add preimage**按钮。
 
-![Add preimage in Polkadot.js](/images/tokens/governance/proposals/proposals-4.png)
+![Add preimage in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-4.png)
 
 此处，您需要提供以下信息：
 
@@ -85,7 +85,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
  5. 点击**Submit preimage**按钮并签署交易
 
-![Fill in the Preimage Information](/images/tokens/governance/proposals/proposals-5.png)
+![Fill in the Preimage Information](/images/tokens/governance/proposals/v1/proposals-5.png)
 
 !!! 注意事项
     请确保复制原像哈希，在提交提案时必须用到这一数据。
@@ -98,7 +98,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
 提交原像（查看上一部分）后，下一步就是提交与这一原像相关的提案。为此，需要在**Governance**下拉菜单中选择**Democracy**，并点击**Submit proposal**。
 
-![Submit proposal](/images/tokens/governance/proposals/proposals-6.png)
+![Submit proposal](/images/tokens/governance/proposals/v1/proposals-6.png)
 
 此处，您需要提供以下信息：
 
@@ -110,7 +110,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
  4. 点击**Submit proposal**按钮并签署交易
 
-![Fill in the Proposal Information](/images/tokens/governance/proposals/proposals-7.png)
+![Fill in the Proposal Information](/images/tokens/governance/proposals/v1/proposals-7.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此Token可能无限期锁定。
@@ -130,7 +130,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
 本节将概述附议上一节中提交的提案的步骤。 为此，请单击位于相应提案右侧的**Endorse**按钮。
 
-![Proposal listed to Second](/images/tokens/governance/proposals/proposals-8.png)
+![Proposal listed to Second](/images/tokens/governance/proposals/v1/proposals-8.png)
 
 此处，您需要提供以下信息：
 
@@ -140,13 +140,13 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov(G
 
  3. 点击**Endorse**按钮并签署交易
 
-![Fill in Endorse Information](/images/tokens/governance/proposals/proposals-9.png)
+![Fill in Endorse Information](/images/tokens/governance/proposals/v1/proposals-9.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此Token可能无限期锁定。
 
 交易提交后，您将在Polkadot.js Apps界面的右上角看到一些确认信息。该提案也会进入**Proposals**部分，并显示提案者和Token锁定量，以及附议提案的用户的列表。
 
-![Proposal Endorsed](/images/tokens/governance/proposals/proposals-10.png)
+![Proposal Endorsed](/images/tokens/governance/proposals/v1/proposals-10.png)
 
 在每个启动期，附议最多的提案将进入公投。要了解如何对提案进行投票，请参考[如何在OpenGov对提案进行投票](/tokens/governance/voting/voting){target=_blank}教程。

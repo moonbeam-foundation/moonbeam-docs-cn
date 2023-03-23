@@ -359,7 +359,7 @@ Moonbeam的信念乘数如下所示：
 
 公投使用正投票率偏向指标，即绝对多数投票通过的公式。 计算方式如下所示：
 
-![Positive Turnout Bias](/images/tokens/governance/voting/vote-bias.png)
+![Positive Turnout Bias](/images/learn/features/governance/vote-bias.png)
 
 其中：
 
