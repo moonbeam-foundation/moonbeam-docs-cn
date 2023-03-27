@@ -109,3 +109,27 @@ function makeArbitraryCall(address _target, bytes calldata _bytes) public {
     require(success);
 }
 ```
+
+## 预编译可以绕过发送人（Sender）与来源（Origin）检查 {: #bypass-sender-origin-checks }
+
+交易来源（`tx.origin`）是交易起源的外部账户 (EOA) 的地址。而`msg.sender`是发起当前调用的地址。`msg.sender`可以是一个EOA或一个合约。 如果一个合约调用另一个合约，而不是直接从EOA调用合约，这两者可以是不同的值。 在这种情况下，`msg.sender`将是调用合约，`tx.origin`将是最初调用调用合约的EOA。
+
+例如，如果Alice调用合约A中的函数，然后这个函数再调用合约B中的函数，当查看对合约B的调用时，`tx.origin`是Alice，`msg.sender`是合约A。
+
+!!! 注意事项
+    [最佳做法](https://consensys.github.io/smart-contract-best-practices/development-recommendations/solidity-specific/tx-origin/){target=_blank}是，`tx.origin`不应该用于授权。相反，您应该使用`msg.sender`。
+
+您可以使用[require 函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}比较`tx.origin`和`msg.sender`。如果它们是相同的地址，则确保只有EOA可以调用该函数。如果`msg.sender`是合约地址，将抛出异常。
+
+```
+function transferFunds(address payable _target) payable public {
+    require(tx.origin == msg.sender);
+    _target.call{value: msg.value};
+}
+```
+
+在以太坊上，您可以使用此检查来确保给定的合约函数只能由EOA调用一次。这是因为在以太坊上，EOA每次交易只能与合约交互一次。然而，在Moonbeam上**情况并非如此**，因为EOA通过使用预编译合约可以一次性与合约多次交互，例如[batch](/builders/pallets-precompiles/precompiles/batch){target =_blank}和[call permit](/builders/pallets-precompiles/precompiles/call-permit){target=_blank}预编译。
+
+通过batch（批量）预编译，用户可以原子地对一个合约执行多次调用。批处理函数的调用者将是`msg.sender`和`tx.origin`，一次性启用多个合约交互。
+
+使用call permit（调用许可）预编译，如果用户想在一次交易中多次与合约交互，他们可以通过为每个合约交互签署许可并在单个函数调用中分派所有许可来实现。这只会绕过调度员是否与许可签名者是同一个帐户的`tx.origin == msg.sender`检查。否则，`msg.sender`将成为许可签署者，而`tx.origin`将成为调度员，从而引发异常。

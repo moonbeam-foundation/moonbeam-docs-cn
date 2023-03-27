@@ -2,7 +2,8 @@ title: 连接Moonbeam
 nav:
   - index.md
   - ledger
-  - '使用MetaMask': 'metamask.md'
-  - '使用MathWallet': 'mathwallet.md'
-  - '使用Polkadot.js Apps': 'polkadotjs.md'
-  - '使用Trezor': 'trezor.md'
+  - 'MetaMask': 'metamask.md'
+  - 'MathWallet': 'mathwallet.md'
+  - 'Polkadot.js Apps': 'polkadotjs.md'
+  - 'Talisman': 'talisman.md'
+  - 'Trezor': 'trezor.md'
