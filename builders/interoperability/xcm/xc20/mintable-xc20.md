@@ -52,7 +52,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 ## 获取可铸造XC-20资产的列表 {: #retrieve-list-of-mintable-xc-20s }
 
-要获取Moonbase Alpha测试网上目前可用的可铸造XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。不同于外部XC-20资产，可铸造XC-20资产并不会在**Assets**栏位下出现。要查询可用的可铸造XC-20资产，您需要导向至**Developer**标签，并在下拉菜单中选择**Chain State**，然后跟随以下步骤：
+要获取Moonbase Alpha测试网上目前可用的可铸造XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。不同于外部XC-20资产，可铸造XC-20资产并不会在**Assets**栏位下出现。要查询可用的可铸造XC-20资产，您需要导向至**Developer**标签，并在下拉菜单中选择**Chain State**，然后跟随以下步骤：
 
 1.   在**selected state query**下拉菜单中，选择**localAssets**
 --8<-- 'text/xc-20/list-of-assets.md'
@@ -92,7 +92,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 ## 注册一个可铸造XC-20资产 {: #register-a-mxc-20 }
 
-这一部分将会引导您如何在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}注册一个资产并使用[Remix](https://remix.ethereum.org/){target=_blank}与可铸造XC-20资产特定的函数交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面的[如何使用Remix与预编译合约交互](/builders/interoperability/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
+这一部分将会引导您如何在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}注册一个资产并使用[Remix](https://remix.ethereum.org/){target=_blank}与可铸造XC-20资产特定的函数交互。如果您仅想通过标准ERC-20接口与可铸造XC-20资产交互，请查看XC-20预编译页面的[如何使用Remix与预编译合约交互](/builders/interoperability/xcm/xc20/overview/#interact-with-the-precompile-using-remix){target=_blank}部分。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
@@ -121,7 +121,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
     {{ networks.moonbase.mintable_xc20.asset_deposit }} DEV
     ```
 
-接着，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。在网页最上方点击**Governance**并在下拉菜单中选择**Democracy**。接着，选择**+ Submit preimage**并跟随以下步骤进行操作：
+接着，导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。在网页最上方点击**Governance**并在下拉菜单中选择**Democracy**。接着，选择**+ Submit preimage**并跟随以下步骤进行操作：
 
 1. 选择您希望用于创建提案所要用的账户
 2. 在**propose**下拉菜单中选择**assetManager**

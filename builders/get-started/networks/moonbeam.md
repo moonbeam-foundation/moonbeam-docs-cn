@@ -14,7 +14,7 @@ description: 学习如何通过RPC和WSS端点快速连接至基于波卡的Moon
  - **以太坊API（类似Etherscan）**—— [Moonscan](https://moonbeam.moonscan.io/)
  - **具有索引功能的以太坊API** —— [Blockscout](https://blockscout.moonbeam.network/)
  - **基于以太坊API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam)
- - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network#/explorer)
+ - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/)或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer)
 
 更多可用区块浏览器的相关信息，请访问Moonbeam资料库的[区块浏览器](/builders/get-started/explorers/)部分。
 

@@ -94,13 +94,15 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 您将需要在`project.yaml`文件中更新`network`配置。`chainId`字段处可用于输入您想要索引的网络创世哈希。
 
+ --8<-- 'text/common/endpoint-examples.md'
+
 每个网络的`network`配置如下所示：
 
 === "Moonbeam"
     ```
     network:
     chainId: '0xfe58ea77779b7abda7da4ec526d14db9b1e9cd40a217c34892af80a9b332b76d'
-    endpoint: 'https://moonbeam.api.onfinality.io/public'
+    endpoint: '{{ networks.moonbeam.rpc_url }}'
     dictionary: 'https://api.subquery.network/sq/subquery/moonbeam-dictionary'
     chaintypes:
       file: ./dist/chaintypes.js
@@ -110,7 +112,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
     ```yaml
     network:
     chainId: '0x401a1f9dca3da46f5c4091016c8a2f26dcea05865116b286f60f668207d1474b'
-    endpoint: 'https://moonriver.api.onfinality.io/public'
+    endpoint: '{{ networks.moonriver.rpc_url }}'
     dictionary: 'https://api.subquery.network/sq/subquery/moonriver-dictionary'
     chaintypes:
       file: ./dist/chaintypes.js
@@ -120,7 +122,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
     ```
     network:
     chainId: '0x91bc6e169807aaa54802737e1c504b2577d4fafedd5a02c10293b1cd60e39527'
-    endpoint: 'https://moonbeam-alpha.api.onfinality.io/public'
+    endpoint: '{{ networks.moonbase.rpc_url }}'
     dictionary: 'https://api.subquery.network/sq/subquery/moonbase-alpha-dictionary'
     chaintypes:
       file: ./dist/chaintypes.js    

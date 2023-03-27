@@ -93,7 +93,7 @@ Ethereum-XCM pallet提供以下extrinsics（函数），可以通过`Transact`�
 
 为了能够从中继链在Polkadot.js应用程序中发送调用请求，您需要具备以下条件：
 
- - 一个在中继链上拥有资金（`UNIT`）的[账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}以支付交易费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}上交换DEV Token（Moonbase Alpha的原生Token）来获得一些`xcUNIT`，此为先前在Moonbase Alpha演示的克隆Uniswap-V2。接着[将它们发送到中继链](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}。此外，您也可以[联系我们](https://discord.gg/PfpUATX){target=_blank}直接获取一些`UNIT` Token
+ - 一个在中继链上拥有资金（`UNIT`）的[账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}以支付交易费用。您可以通过在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}上交换DEV Token（Moonbase Alpha的原生Token）来获得一些`xcUNIT`，此为先前在Moonbase Alpha演示的克隆Uniswap-V2。接着[将它们发送到中继链](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}。此外，您也可以[联系我们](https://discord.gg/PfpUATX){target=_blank}直接获取一些`UNIT` Token
  - 为**multilocation衍生账户**提供资金，您可以按照[下一部分](#calculate-multilocation-derivative){target=_blank}中的步骤获得该账户。该账户必须有足够的DEV Token（或Moonbeam/Moonriver网络中的GLMR/MOVR）来支付远程EVM调用的XCM执行成本。请注意，此衍生账户是将发送远程EVM调用的帐户（`msg.sender`）。因此，帐户必须满足正确执行EVM调用所需的任何条件。例如，如果您正在执行ERC-20转账，请确保拥有任何相关的ERC-20 Token
 
 !!! 注意事项
@@ -175,7 +175,7 @@ ts-node calculateMultilocationDerivative.ts \
 
 与`increment`函数交互的编码调用数据为`0xd09de08a`，即`increment()`的keccak256哈希的前8个十六进制字符（或4个字节）。如果函数有输入参数，它们也需要编码。获取编码调用数据最简单的方法是在[Remix](/builders/build/eth-api/dev-env/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask){target=_blank}或[Moonscan](https://moonbase.moonscan.io/address/0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8#code){target=_blank}进行模拟交易。接下来，在MetaMask 中，在签名之前检查**HEX**标签下的**HEX DATA: 4 BYTES**选择器。您无需签署交易。
 
-通过合约交互数据，您可以为[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}调用构建编码调用数据。为此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsics页面并跟随步骤设置以下选项（请注意，extrinsics页面仅将在您拥有帐户时显示）：
+通过合约交互数据，您可以为[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}调用构建编码调用数据。为此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsics页面并跟随步骤设置以下选项（请注意，extrinsics页面仅将在您拥有帐户时显示）：
 
 !!! 注意事项
     [Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}当前实现不支持`CREATE`操作。因此，您无法通过远程EVM调用部署智能合约。
@@ -199,7 +199,7 @@ ts-node calculateMultilocationDerivative.ts \
 
 在本示例中，您将构建一条XCM消息，通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} XCM指令和[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的`transact`函数从其中继链在Moonbase Alpha种执行远程EVM调用。
 
-如果您已经[检查了先决条件](#ethereumxcm-check-prerequisites)并且已有[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的[编码调用数据](#ethereumxcm-transact-data)，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsics页面并设置以下选项：
+如果您已经[检查了先决条件](#ethereumxcm-check-prerequisites)并且已有[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的[编码调用数据](#ethereumxcm-transact-data)，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsics页面并设置以下选项：
 
 1. 选取您希望传送XCM的账户。确认账户符合所有[先决条件](#ethereumxcm-check-prerequisites)
 2. 选取**xcmPallet** pallet
@@ -276,7 +276,7 @@ ts-node calculateMultilocationDerivative.ts \
 
 ![Remote XCM Call from Relay Chain](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-3.png)
 
-一旦交易处理完毕，您可以在[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x2a0e40a2e5261e792190826ce338ed513fe44dec16dd416a12f547d358773f98){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0x7570d6fa34b9dccd8b8839c2986260034eafef732bbc09f8ae5f857c28765145){target=_blank}查看相关extrinsics和事件。
+一旦交易处理完毕，您可以在[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x2a0e40a2e5261e792190826ce338ed513fe44dec16dd416a12f547d358773f98){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/0x7570d6fa34b9dccd8b8839c2986260034eafef732bbc09f8ae5f857c28765145){target=_blank}查看相关extrinsics和事件。
 
 在中继链中，extrinsic为`xcmPallet.send`，关联事件为`xcmPallet.Sent`（其中与费用有关）。在Moonbase Alpha中，XCM执行在`parachainSystem.setValidationData`函数发生，并且可以注意多个关联事件：
 

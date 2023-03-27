@@ -41,15 +41,9 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
      - 提案哈希（*bytes32*）
      - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
      - 执行延迟时间（*uint256*）
-     
-     - - The total "Aye" vote, including Conviction (*uint256*)
-     - 总同意票数，包含Token锁定时间参数（*uint256*）
-
-     - The total "Nay" note, including Conviction (*uint256*)
+     - 总同意票数，包含Token锁定时间参数（Conviction）（*uint256*）
      - 总反对票数，包含Token锁定时间参数（*uint256*）
-
      - 当前投票结果，不包含Token锁定时间参数（*uint256*）
-
  - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
  - **propose**(*bytes32* proposalHash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
  - **second**(*uint256* propIndex, *uint256* secondsUpperBound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
@@ -133,13 +127,13 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
 
-在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
+在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
 
 ## 附议提案 {: #second-a-proposal } 
 
 附议提案将能够使其进入公投阶段，但需要绑定与先前提案者相同的Token数量。被附议的提案转移至公投需要一定时间，在Moonbase Alpha为{{ networks.moonbase.democracy.launch_period.days}}日，在Moonriver为{{ networks.moonbase.democracy.launch_period.days}}日，在Moonbeam为{{ networks.moonbeam.democracy.launch_period.days}}日。
 
-首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}中获得提案的索引编码：
+首先，您将需要获得您希望支持的提案的相关信息。当您在先前的步骤中提交提案，其将会有至少一个提案处于列表当中。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}中获得提案的索引编码：
 
 1. 导向至**Governance**标签
 2. 点击**Democracy**
@@ -157,7 +151,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 4. 虽然您要支持的提案编码已经记录如上，此时仍然需要参数上线。为避免出现gas预计错误，您需要输入明显大于附议数量的数字，在此例中输入的数字为`10` 
 5. 点击**transact**并在MetaMask确认此交易
 
-恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
+恭喜您已成功！如需查看您支持的提案，您可以返回[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}并查看您的账户是否出现在支持列表当中
 
 ![Second via the precompile](/images/builders/pallets-precompiles/precompiles/democracy/democracy-10.png)
 
@@ -168,7 +162,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 获得附议的提案转移至公投状态需要一定时间，在Moonbeam为{{ networks.moonbeam.democracy.launch_period.days}}日，在Moonriver为{{ networks.moonriver.democracy.launch_period.days}}，在Moonbase为{{ networks.moonbase.democracy.launch_period.days}}。如果在Moonbase Alpha中没有正在进行中的公投，您可能需要等待启用阶段以度过您支持提案的转移时间，方能进入公投阶段。
 
-首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fmoonbeam-alpha.api.onfinality.io%2Fpublic-ws#/democracy){target=_blank}上获得公投编码：
+首先，如果您希望进行投票，您需要获得公投的编码。记住，提案编码与公投编码两者不同。您可以跟随以下步骤在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}上获得公投编码：
 
 1. 导向至**Governance**标签
 2. 点击**Democracy**
