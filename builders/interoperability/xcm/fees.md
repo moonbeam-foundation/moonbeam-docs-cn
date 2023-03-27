@@ -144,10 +144,10 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_instructions.planck_dot_cost }} / 10^10
 
 Kusama上的总权重花费包括：给定指令本身花费和数据库读写的费用。尚未对数据库读写操作进行基准测试，而对指令权重进行了基准测试。以下为数据库执行权重花费的细节：
 
-|      数据库       |                     读                      |                      写                      |
-|:-----------------:|:-------------------------------------------:|:--------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}      | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
+|                                                                     数据库                                                                      |                     读                      |                      写                      |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------:|:--------------------------------------------:|
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
 
 现在您了解Kusama上数据库读写的权重花费，您可以使用指令的基础权重花费计算总花费。
 
@@ -157,7 +157,7 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 {{ networks.kusama.xcm_instructions.withdraw.base_weight }} + {{ networks.kusama.rocks_db.read_weight}} + {{ networks.kusama.rocks_db.write_weight}} = {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }}
 ```
 
-[`BuyExecution`指令](https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
+[`BuyExecution`指令](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
 
 在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L45){target=_blank}和[通用资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L45){target=_blank}的权重。
 
@@ -209,14 +209,13 @@ XCM-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.planck_ksm_cost }} /
 | DepositAsset  |  {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
 |   **总量**    |        **{{ networks.kusama.xcm_message.transfer.weight }}**         |      **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
 
-
 ## 基于Moonbeam网络的XCM费用计算 {: #moonbeam-xcm-fee-calc }
 
 Substrate已推出一个权重系统，决定一个函数的权重，也就是从计算成本的角度决定一个extrinsic的昂贵程度。一个权重单位被定义为一皮秒的执行时间。当在支付费用时，用户将会根据所调用函数的权重支付交易费用，接着每个平行链皆可以决定如何将权重转换至费用，举例而言，计算交易大小或是存储花费的额外费用。
 
 Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moonbase Alpha（测试网）对通用XCM指令进行了基准测试，而可替代的XCM指令仍然使用每条指令的固定权重。 因此，基准测试过的XCM指令的总权重成本除了给定指令所需的权重之外还考虑了数据库读/写的次数。 数据库操作的权重成本明细如下：
 
-|                                                                   数据库                                                                   |                      读                       |                      写                       |
+|                                                                    数据库                                                                    |                       读                        |                        写                        |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------:|:------------------------------------------------:|
 | [RocksDB (default)](https://github.com/paritytech/substrate/blob/master/frame/support/src/weights/rocksdb_weights.rs#L27-L28){target=_blank} | {{ networks.moonbase.db_weights.rocksdb_read }} | {{ networks.moonbase.db_weights.rocksdb_write }} |
 
@@ -233,18 +232,18 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 您可以在下表中找到所有XCM指令的所有权重值：
 
 === "Moonbeam"
-    |                                                                                            XCM指令成本                                                                                             |
+    |                                                                                                 XCM指令成本                                                                                                 |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
 
 === "Moonriver"
-    |                                                                                             XCM指令成本                                                                                              |
+    |                                                                                                  XCM指令成本                                                                                                  |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonriver/src/xcm_config.rs#L208){target=_blank} |
 
 === "Moonbase Alpha"
-    |                                                                             基准测试过的指令                                                                             |                                                                           无基准测试的指令                                                                            |
-    |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |                                                                          基准测试过的指令                                                                           |                                                                           无基准测试的指令                                                                            |
+    |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
     | [通用XCM指令](https://github.com/PureStake/moonbeam/blob/master/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/PureStake/moonbeam/blob/master/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L26){target=_blank} |
 
 
