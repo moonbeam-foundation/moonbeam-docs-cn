@@ -12,23 +12,17 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。
 
+随着OpenGov（最初称为 Governance v2）的推出，对治理流程进行了多项修改。 **OpenGov已经在Moonriver上线，经过严格测试后，将提出在Moonbeam上线的提案**。在那之前，Moonbeam仍然使用Goverance v1。**民主预编译适用于Governance v1，因此，本指南仅适用于Moonbeam。**如果您希望与Moonriver上的治理功能进行交互，您应该查看与OpenGov相关的预编译：[原像预编译](/builders/pallets-precompiles/precompiles/preimage){target=_blank}、[公投预编译](/builders/pallets-precompiles/precompiles/referenda){target=_blank}和[信念投票预编译](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}。
+
 Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}。民主pallet使用Rust语言实现，无法直接从Moonbeam的以太坊API交互。然而，民主预编译让您能够直接通过Solidity接口直接访问Substrate民主pallet的治理功能。除此之外，这将能够大幅度改进终端用户的操作体验。举例而言，Token持有者将能够直接使用MetaMask进行公投，无需将账户导入Polkadot.js App后使用复杂的界面进行操作。
+
+民主预编译目前在OpenGov（仅存在Moonriver和Moonbase Alpha上）中可用。 如果您正在寻找仍在Governance v1上的Moonbeam的类似功能，您可以参考[Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank}文档。
 
 民主预编译位于以下地址：
 
 === "Moonbeam"
      ```
      {{networks.moonbeam.precompiles.democracy}}
-     ```
-
-=== "Moonriver"
-     ```
-     {{networks.moonriver.precompiles.democracy}}
-     ```
-
-=== "Moonbase Alpha"
-     ```
-     {{networks.moonbase.precompiles.democracy}}
      ```
 
 --8<-- 'text/precompiles/security.md'
@@ -42,6 +36,15 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  - **publicPropCount**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
  - **depositOf**(*uint256* propIndex) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
  - **lowestUnbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
+- **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
+     - 公投结束区块（*uint256*）
+     - 提案哈希（*bytes32*）
+     - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
+     - 执行延迟时间（*uint256*）
+     - 总同意票数，包含Token锁定时间参数（Conviction）（*uint256*）
+     - 总反对票数，包含Token锁定时间参数（*uint256*）
+     - 当前投票结果，不包含Token锁定时间参数（*uint256*）
+ - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
  - **propose**(*bytes32* proposalHash, *uint256* value) —— 通过提交哈希和锁定的Token数量提交提案。调用民主pallet的[`propose`](/builders/pallets-precompiles/pallets/democracy/#:~:text=propose(proposalHash, value)){target=_blank}方法
  - **second**(*uint256* propIndex, *uint256* secondsUpperBound) —— 通过提供提案索引编码和大于或等于现有附议此提案的数字以附议一个提案（必须计算权重）。不需要数量，因为附议这个动作需要具有与原先提案者锁定相同的数量。调用民主pallet的[`second`](/builders/pallets-precompiles/pallets/democracy/#:~:text=second(proposal, secondsUpperBound)){target=_blank}方法
  - **standardVote**(*uint256* refIndex, *bool* aye, *uint256* voteAmount, *uint256* conviction) ）—— 通过提供提案索引编号、投票趋向（`true`为执行此提案，`false`为保持现状）、锁定的Token数量以及“信念值”，来进行投票。“信念值”为`0`与`6`之间的一个数字，`0`代表没有锁定时间，而`6`代表最大锁定时间。调用民主pallet的[`vote`](/builders/pallets-precompiles/pallets/democracy/#:~:text=vote(refIndex, vote)){target=_blank}方法
@@ -52,24 +55,23 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  - **notePreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数不需要提案处于调度队列中，但需要押金以进行操作，押金将会在提案生效后返还。调用民主pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=notePreimage(encodedProposal)){target=_blank}方法
  - **noteImminentPreimage**(*bytes* encodedProposal) —— 为即将到来的提案注册一个原像（Preimage）。此函数需要提案处在调度队列中，同时不需要任何押金。当调用成功，例如：原像（Preimage）尚未被上传且与近期的提案相匹配，不支付任何费用。调用民主pallet的[`noteImminentPreimage`](/builders/pallets-precompiles/pallets/democracy/#:~:text=noteImminentPreimage(encodedProposal)){target=_blank} 方法
 
-此接口同样包含目前尚未被支持但有可能在将来支持的函数：
+此接口也包含以下事件：
 
-- **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
-     - 公投结束区块（*uint256*）
-     - 提案哈希（*bytes32*）
-     - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
-     - 执行延迟时间（*uint256*）
-     - 总同意票数，包含Token锁定时间参数（*uint256*）
-     - 总反对票数，包含Token锁定时间参数（*uint256*）
-     - 当前投票结果，不包含Token锁定时间参数（*uint256*）
-
- - **finishedReferendumInfo**(*uint256* refIndex) —— 返回公投是否通过以及结束区块信息的只读函数
+- **Proposed**(*uint32 indexed* proposalIndex, *uint256* deposit) - 在提议动议时发出
+- **Seconded**(*uint32 indexed* proposalIndex, *address* seconder) - 当账户附议提案时发出
+- **StandardVote**(*uint32 indexed* referendumIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - 当账户进行标准投票时发出
+- **Delegated**(*address indexed* who, *address* target) - 当一个账户将一些投票权委托给另一个账户时发出
+- **Undelegated**(*address indexed* who) - 当一个账户从另一个账户取消了他们的部分投票权时发出
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
 ### 查看先决条件 {: #checking-prerequisites } 
 
-以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。除此之外，您还需要：
+以下为在Moonbase Alpha网络的操作演示，然而，您能够在Moonbeam和Moonriver采用类似的步骤。
+
+在进入操作接口之前，您可以先熟悉在Moonbeam上[如何提案](/tokens/governance/proposals/){target=_blank}和[如何投票](/tokens/governance/voting/){target=_blank}。
+
+除此之外，您还需要：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量DEV的账户。 
@@ -190,7 +192,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 1. 展开民主预编译合约以查看可用函数
 2. 寻找**standardVote**函数并点击按钮以查看区块
 3. 输入公投编码以进行投票
-4. 将此字段留空表示否定或输入`1`表示赞成。在公投的背景下，**nay**是保持现状不变的投票，**aye**是通过公投提议
+4. 将此字段留空表示否定（**Nay**）或输入`1`表示赞成（**Aye**）。在公投的背景下，"Nay"是保持现状不变的投票，"Aye"是通过公投提议
 5. 输入以Wei表示的Token数量，避免输入您的全部余额，因为您仍然需要支付交易费用
 6. 输入位于0-6之间的Token锁定时间参数，这代表您希望锁定用以投票的Token的时间，0代表无锁定时间，6代表最大锁定时间。关于更多锁定时间的信息，请查看[如何投票](/tokens/governance/voting/){target=_blank}教程。
 7. 点击**transact**并在MetaMask确认此交易

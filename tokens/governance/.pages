@@ -1,5 +1,5 @@
 title: 治理
 nav:
   - index.md
-  - '发送提案': 'proposals.md'
-  - '提案投票': 'voting.md'
+  - 'proposals'
+  - 'voting'

@@ -33,7 +33,7 @@ keywords: 民主、substrate、pallet、moonbeam、波卡
 - **second**(proposal, secondsUpperBound) - 根据给定的提案索引和当前提案的支持上限支持一个提案
 - **undelegate**() - 取消委托一个传送账户的投票权利。Token将会在信念值期间结束后解锁。此函数将提交一个`Undelegated`事件
 - **unlock**(target) - 根据给定的账户移除具有过期锁定Token的账户Token
-- **vote**(refIndex, vote) - 根据给定的公投索引、投票、信念值以及锁定的Token数量在公投中投票。如果投票为`aye`，该投票被视为同意生效提案，相反情况则该投票被视为不通过其提案
+- **vote**(refIndex, vote) - 根据给定的公投索引、投票、信念值以及锁定的Token数量在公投中投票。如果投票为"Aye"，该投票被视为同意生效提案，相反情况则该投票被视为不通过其提案
 
 部分民主pallet的extrinsics用于为*技术委员会*或是*议会*投票：
 
