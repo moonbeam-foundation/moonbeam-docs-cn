@@ -1,6 +1,6 @@
-在本节中，您将获得提案的原像哈希和编码后的提案数据。要获取原像哈希，您首先需要导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#){target=_blank}的**Preimage**页面：
+在本节中，您将获得提案的原像哈希和编码后的提案数据。要获取原像哈希，您首先需要导航至[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#){target=_blank}的**Preimage**页面：
 
- 1. 导航至[**Governance** 标签页](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}
+ 1. 导航至[**Governance** 标签页](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}
  2. 从下拉菜单里选择**Preimages**
  3. 在**Preimages**页面点击**+ Add preimage**
 

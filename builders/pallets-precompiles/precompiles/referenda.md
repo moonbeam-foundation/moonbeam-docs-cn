@@ -113,7 +113,7 @@ Referenda Precompile位于以下地址：
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有DEV Token的账户
+ - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up } 
@@ -152,7 +152,7 @@ Referenda Precompile位于以下地址：
 
 要提交提案，您需要先确定您的提案属于哪个Track以及Track的Track ID。具体请参考[治理概览页面的OpenGov部分](/learn/features/governance/#opengov){target=_blank}。
 
-请确保您已获取原像哈希和原像长度，这两者可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档中的操作步骤获取。另外，您也可以通过[Polkadot.js Apps的Preimage页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/preimages){target=_blank}复制原像哈希。要获取原像长度，您可在[Polkadot.js Apps Chain State页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}使用`preimage` pallet的`preimageFor`函数查询。
+请确保您已获取原像哈希和原像长度，这两者可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档中的操作步骤获取。另外，您也可以通过[Polkadot.js Apps的Preimage页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/preimages){target=_blank}复制原像哈希。要获取原像长度，您可在[Polkadot.js Apps Chain State页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}使用`preimage` pallet的`preimageFor`函数查询。
 
 当您获取Track ID、原像哈希和原像长度后，您可以使用Referenda Precompile提交提案。在Remix，请执行以下步骤：
 
@@ -172,7 +172,7 @@ Referenda Precompile位于以下地址：
 
 ![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.png)
 
-交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.network/){target=_blank}查看提案（Polkassembly根据Track来分类提案）。
+交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.network/){target=_blank}查看提案（Polkassembly根据Track来分类提案）。
 
 ### 提交决定保证金 {: #submit-decision-deposit }
 

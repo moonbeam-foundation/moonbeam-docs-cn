@@ -79,7 +79,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有DEV Token的账户
+ - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up } 
@@ -106,7 +106,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 3. 确保在**CONTRACT**下拉菜单中已选择**ConvictionVoting.sol**。由于这是一个预编译的合约，因此无需部署，但是您需要在**At Address**字段中提供预编译的地址
 
-4. 为Moonbase Alpha提供Conviction Voting Precompile的地址：`{{ networks.moonbase.precompiles.referenda }}`并点击**At Address**
+4. 为Moonbase Alpha提供Conviction Voting Precompile的地址：`{{ networks.moonbase.precompiles.conviction_voting }}`并点击**At Address**
 
 5. Conviction Voting Precompile将会出现在**Deployed Contracts**列表当中
 
@@ -116,7 +116,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 您可以在带入期或决定期随时锁定Token并参与公投。为了促进公投通过，则需要最低批准数和支持数，但不同的track也会有不同的标准。关于不同时期和Track类别所需的批准和支持要求的更多信息，请参考[治理概览页面的OpenGov部分](/learn/features/governance/#opengov){target=_blank}。
 
-首先，您需要获取您想要参与投票的公投索引。前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}并执行以下步骤以获取公投索引：
+首先，您需要获取您想要参与投票的公投索引。前往[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}并执行以下步骤以获取公投索引：
 
 1. 从**Governance**下拉菜单中选择**Referenda**
 
@@ -154,7 +154,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 1. 找到**delegate**函数并点击按钮展开此部分
 
-2. 输入您想要用于委托的Track的Track ID。您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}找到所有Track ID
+2. 输入您想要用于委托的Track的Track ID。您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}找到所有Track ID
 
 3. 输入代表您参与投票的委托账户
 

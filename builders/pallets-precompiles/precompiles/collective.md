@@ -14,9 +14,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 团体预编译能够使用户直接从Solidity接口与[Substrate的团体pallet](https://paritytech.github.io/substrate/master/pallet_collective/index.html){target=_blank}交互。
 
-团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。
-
-举例来说，Moonriver有四个团体：理事会团体、技术委员会团体，财政库委员会团体和OpenGov技术委员会团体（用于把OpenGov提案列入白名单）。因此，每个团体都有一个预编译。关于理事会，技术委员会和OpenGov技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=_blank}页面。
+团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。举例来说，Moonriver有四个团体：理事会团体、技术委员会团体，财政库委员会团体和OpenGov技术委员会团体（用于把OpenGov提案列入白名单）。因此，每个团体都有一个预编译。关于理事会，技术委员会和OpenGov技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=_blank}页面。
 
 本教程将向您展示如何使用团体预编译进行提议、投票、结束提案。
 

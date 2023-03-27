@@ -1,7 +1,6 @@
 ---
 title: Preimage Precompile（原像预编译）合约
-description: Learn how to take the first necessary step to submit a proposal on-chain by submitting a preimage that contains the action to be carried out in the proposal.
-学习如何通过提交原像执行在链上提交提案的首个必要步骤，该原像包含提案中要执行操作。
+description: 学习如何通过提交原像执行在链上提交提案的首个必要步骤，该原像包含提案中要执行操作。
 ---
 
 # 与Preimage Precompile交互
@@ -49,7 +48,7 @@ Preimage Precompile位于以下地址：
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
- - 拥有DEV Token的账户
+ - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up } 
@@ -88,7 +87,7 @@ Preimage Precompile位于以下地址：
 
 --8<-- 'text/precompiles/governance/submit-preimage.md'
 
-现在，您可以获取从[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}获得的编码提案的**bytes**，并通过Preimage Precompile的`notePreimage`函数提交。要通过`notePreimage`函数提交原像，请执行以下步骤：
+现在，您可以获取从[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}获得的编码提案的**bytes**，并通过Preimage Precompile的`notePreimage`函数提交。要通过`notePreimage`函数提交原像，请执行以下步骤：
 
 1. 展开Preimage Precompile合约查看可用函数
 
