@@ -44,7 +44,7 @@ keywords: 民主、substrate、pallet、moonbeam、波卡
 - **emergencyCancel**(refIndex) - 根据给定的公投索引紧急取消公投。紧急取消由源账户或是*技术委员会超过5分之3的成员*提议取消提案
 - **externalPropose**(proposal) - 根据给定的提案哈希在适当计划一个外部公投时制定一个公投。在*议会超过2分之1的成员*同意后，该公投将会进入下个阶段。请参考上面的**propose** extrinsic描述中的三种类型的提案
 - **externalProposeDefault**(proposal) - 根据给定的提案原像哈希，且可以安排外部公投，即安排一次负面投票率的公投进行投票。在*议会超过5分之3成员*同意后，该公投将会进入下个阶段。请参考上面的**propose** extrinsic描述中的三种类型的提案
-- **exernalProposeMajority**(proposal) - 根据给定的提案原像哈希，且可以安排外部公投，即安排一次多数票的公投进行进阶投票。在*议会超过5分之3成员*同意后，该公投将会进入下个阶段。请参考上面的**propose** extrinsic描述中的三种类型的提案
+- **externalProposeMajority**(proposal) - 根据给定的提案原像哈希，且可以安排外部公投，即安排一次多数票的公投进行进阶投票。在*议会超过5分之3成员*同意后，该公投将会进入下个阶段。请参考上面的**propose** extrinsic描述中的三种类型的提案
 - **fastTrack**(proposalHash, votingPeriod, delay) - 根据给定的提案哈希安排一个当前由外部提交的多数公投立即进行投票，该期间允许对提案投票以及在通过后制定期间的区块数量。如果目前并没有由外部提议的公投，或是有但并不是多数决的公投则此函数将失败。在*技术委员会超过2分之1成员*投票同意后公投将会马上被递交
 - **noteImminentPreimageOperational**(encodedProposal) - 根据给定的编码提案原像，为一个在调用序列中的未来提案注册原像。此函数将会提交`PreimageNoted`事件，并必须由*议会*成员使用
 - **notePreimageOperational**(encodedProposal) - 根据给定的编码提案原像为一个未来提案注册原像。此函数并不需要提案处在调用序列中但需要定金，定金会在提案制定后归还。此函数将会提交`PreimageNoted`事件，并必须由*议会*成员使用
