@@ -36,7 +36,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  - **publicPropCount**() —— 获取过去和现在提案总数的只读函数。调用民主pallet的[`publicPropCount`](/builders/pallets-precompiles/pallets/democracy/#:~:text=publicPropCount()){target=_blank}方法
  - **depositOf**(*uint256* propIndex) —— 获取提案中锁定Token总数量的只读函数。调用民主pallet的[`depositOf`](/builders/pallets-precompiles/pallets/democracy/#:~:text=depositOf(u32)){target=_blank}方法
  - **lowestUnbaked**() —— 获取当前公投中索引排序最低的公投的只读函数。详细来说，Baked Referendum为已结束（或是已通过和已制定执行日期）的公投。Unbaked Referendum则为正在进行中的公投。调用民主pallet的[`lowestUnbaked`](/builders/pallets-precompiles/pallets/democracy/#:~:text=lowestUnbaked()){target=_blank}方法
-- **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
+ - **ongoingReferendumInfo**(*uint256* refIndex) —— 返回特定进行中公投的以元组形式表达的只读函数，内容包含以下：
      - 公投结束区块（*uint256*）
      - 提案哈希（*bytes32*）
      - [the biasing mechanism](https://wiki.polkadot.network/docs/learn-governance#super-majority-approve){target=_blank}0为SuperMajorityApprove，1为SuperMajorityAgainst，2为SimpleMajority (*uint256*)
@@ -80,7 +80,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 ### 设置Remix {: #remix-set-up }
 
 1. 点击**File explorer**标签
-1. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
+2. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
 
 ![Copying and Pasting the Democracy Interface into Remix](/images/builders/pallets-precompiles/precompiles/democracy/democracy-1.png)
 
@@ -92,9 +92,9 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Compiling DemocracyInteface.sol](/images/builders/pallets-precompiles/precompiles/democracy/democracy-2.png)
 
-### 访问合约 {: #access-the-contract } 
+### 获取合约 {: #access-the-contract } 
 
-1. 在Remix点击位于**Compile**标签下方的**Deploy and Run**标签。**注意**：您并不是在此部署合约，您是在访问一个已经部署的预编译合约
+1. 点击位于Remix的**Compile**标签正下方的**Deploy and Run**标签。请注意：您并不是在此部署合约，您是在获取一个已经部署的预编译合约
 2. 确认在**ENVIRONMENT**下拉菜单中的**Injected Provider - Metamask**已被选取
 3. 确保**Democracy.sol**已在**CONTRACT**下拉菜单中被选去。由于此为预编译合约，并不需要进行部署，您需要的是在**At Address**中提供预编译合约的地址
 4. 为Moonbase Alpha提供民主预编译的地址：`{{networks.moonbase.precompiles.democracy}}` 并点击**At Address**
@@ -104,25 +104,18 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ### 提交提案 {: #submit-a-proposal } 
 
-如果您拥有提案的哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}提交提案。如果您拥有带编码的提案，您同样可以通过预编译合约提交原像。为获得提案哈希和带编码的提案，导航到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}的**Democracy**标签，点击 **+ Submit preimage**, 然后进行以下操作：
+如果您有提案的原像哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}的`propose`函数提交提案。但是，在提交提案之前，您首先需要通过将编码的提案数据传递给`notePreimage`函数来提交原像，该函数现在属于[原像Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}。
 
- 1. 选取一个账户（任何账户皆可，因为您不需要提交任何交易）
- 2. 选取您希望交互的pallet以及可调度的函数（或是动作）以进行提案。您选取的动作将会决定您随后的操作步骤。在此例子中，此为**system** pallet和**remark**函数
- 3. 输入remark函数的内容，确保其为独特的。重复的提案如“Hello World！”将不会被接受
- 4. 复制原像哈希，这代表着此提案。您将会在通过民主预编译提交提案时使用此哈希
- 5. 点击**Submit preimage**按钮，但请不要在下一页签署和确认此交易
+--8<-- 'text/precompiles/governance/submit-preimage.md'
 
-![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
+在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network/public-ws#/democracy){target=_blank}获得的编码后的提案，并通过民主预编译中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像仍然需要在提案能够执行前进行提交。请跟随以下步骤通过`notePreimage`函数提交原像：
 
-在下个页面，根据以下步骤进行操作：
+ 1. 展开民主预编译合约以查看可用函数
+ 2. 找到**notePreimage**函数并点击按钮以展开区块
+ 3. 复制您在先前获得的编码后的提案。请注意，编码后的提案与原像（Preimage）哈希不同。请确认您输入的是正确的数值
+ 4. 点击**transact**并在MetaMask确认交易
 
- 1. 点击三角形图像以显示字节状态下带编码的提案
- 2. 复制带编码的提案——您将在随后步骤中使用**notePreimage**时用到它
-
-![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
-
-!!! 注意事项
-     请**不要**在此签署和提交交易。您将会在随后步骤中通过**notePreimage**提交此信息。
+![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 接下来您可以通过以下步骤调用Solidity接口的`propose`函数：
 
@@ -133,15 +126,6 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
  5. 点击**transact**并在MetaMask确认交易
 
 ![Call the propose function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-8.png)
-
-在此步骤，您将会使用您在[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}获得的带编码的提案，并通过民主预编译后中的`notePreimage`函数提交。尽管其名称，即原像（Preimage）并不需要在提案之前提交。然而，提交原像（Preimage）仍然需要在提案能够执行前进行提交。请跟随以下步骤通过**notePreimage**提交原像（Preimage）：
-
- 1. 展开民主预编译合约以查看可用函数
- 2. 找到**notePreimage**函数并点击按钮以展开区块
- 3. 复制您在先前获得的带编码的提案。请注意，提案编码与原像（Preimage）哈希不同。请确认您输入的是正确的数值
- 4. 点击**transact**并在MetaMask确认交易
-
-![Submit the preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-7.png)
 
 在您交易确认后您可以回到[Polkadot.JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/democracy){target=_blank}的**Democracy**页面中确认您的提案是否在提案列表当中。
 
