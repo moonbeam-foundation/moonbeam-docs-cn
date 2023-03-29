@@ -1,0 +1,5 @@
+title: Ethereum API
+hide: false
+nav:
+  - index.md
+  - '[Precompiles] Approve & Swap with the Batch Precompile': 'batch-approve-swap.md'
