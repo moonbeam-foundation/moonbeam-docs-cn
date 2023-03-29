@@ -3,3 +3,4 @@ nav:
   - index.md
   - 'proposals'
   - 'voting'
+  - 'Propose a Treasury Spend': 'treasury-spend.md'
