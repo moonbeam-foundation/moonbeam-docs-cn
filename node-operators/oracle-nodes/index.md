@@ -1,11 +1,8 @@
 ---
 title: 运行语言机节点
 description: 在Moonbeam上运行预言机节点，例如ChainLink节点，并为在Moonbeam上运行的智能合约提供链下数据。
-template: main.html
+template: subsection-index-page.html
 hide:
   - toc
   - feedback
 ---
-
-<h1 class='subsection-title'>预言机节点</h1>
-<div class='subsection-wrapper'></div>
