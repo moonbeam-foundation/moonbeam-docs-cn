@@ -183,9 +183,9 @@ To execute the XCM message locally, you'll take the following steps:
 
 要本地执行XCM消息，请执行以下步骤：
 
-1. Build the SCALE encoded calldata. You can grab the encoded calldata from the [previous section](#execute-an-xcm-message-with-polkadotjs-apps), or you can calculate the same calldata programmatically with the [Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank} 
+1. Build the SCALE encoded calldata. You can grab the encoded calldata from the [previous section](#execute-an-xcm-message-with-polkadotjs-apps), or you can calculate the same calldata programmatically with the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} 
 
-   构建SCALE编码的调用数据。您可以通过[上一部分](#execute-an-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
+   构建SCALE编码的调用数据。您可以通过[上一部分](#execute-an-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
 
 2. Send the XCM message with the encoded calldata using the Ethereum library and the XCM Utilities Precompile
 
@@ -447,9 +447,9 @@ To send the XCM message locally, you'll take the following steps:
 
    构建目标链的multilocation
 
-2. Build the SCALE encoded calldata. You can grab the encoded calldata from the [previous section](#send-xcm-message-with-polkadotjs-apps), or you can calculate the same calldata programmatically with the [Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank} 
+2. Build the SCALE encoded calldata. You can grab the encoded calldata from the [previous section](#send-xcm-message-with-polkadotjs-apps), or you can calculate the same calldata programmatically with the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} 
 
-   构建SCALE编码的调用数据。您可以通过[上一部分](#send-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
+   构建SCALE编码的调用数据。您可以通过[上一部分](#send-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
 
 3. Send the XCM message, with the destination multilocation and encoded calldata, using the Ethereum library and the XCM Utilities Precompile
 
@@ -474,9 +474,9 @@ Next, you can grab the encoded calldata from the [previous section](#send-xcm-me
 
 接下来，您可以从[上一部分](#send-xcm-message-with-polkadotjs-apps)中获取编码的调用数据。如果您通过此方式获取，您需要查看编码详细信息并手动删除与目标链multilocation对应的十六进制字符，具体情况的处理方式不同。
 
-For a more foolproof way to get the encoded calldata, you can programmatically obtain it via the [Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank} and the `polkadotXcm.execute` function. You'll still need to manipulate the calldata, but this will be easier as you can do the same manipulation every time regardless of the destination.
+For a more foolproof way to get the encoded calldata, you can programmatically obtain it via the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} and the `polkadotXcm.execute` function. You'll still need to manipulate the calldata, but this will be easier as you can do the same manipulation every time regardless of the destination.
 
-获得编码调用数据的还有更为简单的方法，您可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}和 `polkadotXcm.execute`函数以编程方式获取。但是，您仍需要操作调用数据，该步骤相对来说比较简单，无论目的地如何，操作步骤相同。
+获得编码调用数据的还有更为简单的方法，您可以通过[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}和 `polkadotXcm.execute`函数以编程方式获取。但是，您仍需要操作调用数据，该步骤相对来说比较简单，无论目的地如何，操作步骤相同。
 
 To build the SCALE encoded calldata programmatically, you can use the following snippet:
 
