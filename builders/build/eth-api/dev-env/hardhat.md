@@ -261,7 +261,7 @@ main()
 您现在可以使用`run`命令并指定`moonbase`作为网络来部署`Box.sol`合约：
 
 ```
-  npx hardhat run --network moonbase scripts/deploy.js
+npx hardhat run --network moonbase scripts/deploy.js
 ```
 
 如果您正在使用另一个Moonbeam网络，请确保您已指定正确的网络。网络名称需要与`hardhat.config.js`中所定义的网络相匹配。
@@ -313,5 +313,252 @@ npx hardhat console --network moonbase
 您将看到`5`或者您初始存储的数值。
 
 恭喜您，您已经成功使用Hardhat部署合约并与之交互。
+
+## Hardhat Forking {: #hardhat-forking }
+
+You can [fork](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=_blank} any EVM compatible chain using Hardhat, including Moonbeam. Forking simulates the live Moonbeam network locally, enabling you to interact with deployed contracts on Moonbeam in a local test environment. Since Hardhat forking is based on an EVM implementation, you can interact with the fork using standard Ethereum JSON RPC methods supported by [Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=_blank} and [Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=_blank}. 
+
+您可以使用Hardhat [fork](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=_blank} Moonbeam等任何兼容EVM的链。Forking在本地模拟实时Moonbeam网络，使您可以在本地测试网络中与部署在Moonbeam上的合约交互。因为Hardhat forking是基于EVM实现，您可以通过[Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=_blank}和[Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=_blank}支持的标准以太坊 JSON RPC函数与fork交互。
+
+There are some limitations to be aware of when using Hardhat forking. You cannot interact with any of the Moonbeam precompiled contracts and their functions. Precompiles are a part of the Substrate implementation and therefore cannot be replicated in the simulated EVM environment. This prohibits you from interacting with cross-chain assets on Moonbeam and Substrate-based functionality such as staking and governance.
+
+您需要了解一些使用Hardhat forking的注意事项。您无法与任何Moonbeam预编译网络及其函数交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制使用。这将限制您与Moonbeam上的跨链资产和基于Substrate的功能（例如质押和治理）进行交互。
+
+There is currently an issue related to forking Moonbeam, so in order to fix the issue you'll need to manually patch Hardhat first. You can find out more information by following the [issue on GitHub](https://github.com/NomicFoundation/hardhat/issues/2395#issuecomment-1043838164){target=_blank} as well as the related [PR](https://github.com/NomicFoundation/hardhat/pull/2313){target=_blank}.
+
+当前存在与forking Moonbeam相关的问题，为了解决此问题，您需要先手动修补Hardhat。您可以通过[GirHub上的问题](https://github.com/NomicFoundation/hardhat/issues/2395#issuecomment-1043838164){target=_blank}和相关[PR](https://github.com/NomicFoundation/hardhat/pull/2313){target=_blank}获取更多信息。
+
+### Patching Hardhat - 修补Hardhat {: #patching-hardhat }
+
+Before getting started, you'll need to apply a temporary patch to workaround an RPC error until Hardhat fixes the root issue. The error is as follows:
+
+在开始之前，您需要先使用临时修补来解决RPC错误直到Hardhat修复根本问题。错误如下所示：
+
+```
+Error HH604: Error running JSON-RPC server: Invalid JSON-RPC response's result.
+
+Errors: Invalid value null supplied to : RpcBlockWithTransactions | null/transactions: RpcTransaction Array/0: RpcTransaction/accessList: Array<{ address: DATA, storageKeys: Array<DATA> | null }> | undefined, Invalid value null supplied to : RpcBlockWithTransactions | null/transactions: RpcTransaction Array/1: RpcTransaction/accessList: Array<{ address: DATA, storageKeys: Array<DATA> | null }> | undefined, Invalid value null supplied to : RpcBlockWithTransactions | null/transactions: RpcTransaction Array/2: RpcTransaction/accessList: Array<{ address: DATA, storageKeys: Array<DATA> | null }> | undefined
+```
+
+To patch Hardhat, you'll need to open the `node_modules/hardhat/internal/hardhat-network/jsonrpc/client.js` file of your project. Next, you'll add a `addAccessList` function and update the `_perform` and `_performBatch` functions. 
+
+要修补Hardhat，您需要打开您项目中的`node_modules/hardhat/internal/hardhat-network/jsonrpc/client.js`文件。接下来，添加`addAccessList`函数并更新`_perform`和`_performBatch`函数。
+
+To get started, you can remove the preexisting `_perform` and `_performBatch` functions and in their place add the following code snippet:
+
+现在，您可以移除预先存在的`_perform`和`_performBatch`函数，并在其中添加以下代码片段： 
+
+```js
+  addAccessList(method, rawResult) {
+    if (
+      method.startsWith('eth_getBlock') &&
+      rawResult &&
+      rawResult.transactions?.length
+    ) {
+      rawResult.transactions.forEach((t) => {
+        if (t.accessList == null) t.accessList = [];
+      });
+    }
+  }
+  async _perform(method, params, tType, getMaxAffectedBlockNumber) {
+    const cacheKey = this._getCacheKey(method, params);
+    const cachedResult = this._getFromCache(cacheKey);
+    if (cachedResult !== undefined) {
+      return cachedResult;
+    }
+    if (this._forkCachePath !== undefined) {
+      const diskCachedResult = await this._getFromDiskCache(
+        this._forkCachePath,
+        cacheKey,
+        tType
+      );
+      if (diskCachedResult !== undefined) {
+        this._storeInCache(cacheKey, diskCachedResult);
+        return diskCachedResult;
+      }
+    }
+    const rawResult = await this._send(method, params);
+    this.addAccessList(method, rawResult);
+    const decodedResult = (0, decodeJsonRpcResponse_1.decodeJsonRpcResponse)(
+      rawResult,
+      tType
+    );
+    const blockNumber = getMaxAffectedBlockNumber(decodedResult);
+    if (this._canBeCached(blockNumber)) {
+      this._storeInCache(cacheKey, decodedResult);
+      if (this._forkCachePath !== undefined) {
+        await this._storeInDiskCache(this._forkCachePath, cacheKey, rawResult);
+      }
+    }
+    return decodedResult;
+  }
+  async _performBatch(batch, getMaxAffectedBlockNumber) {
+    // Perform Batch caches the entire batch at once.
+    // It could implement something more clever, like caching per request
+    // but it's only used in one place, and those other requests aren't
+    // used anywhere else.
+    const cacheKey = this._getBatchCacheKey(batch);
+    const cachedResult = this._getFromCache(cacheKey);
+    if (cachedResult !== undefined) {
+      return cachedResult;
+    }
+    if (this._forkCachePath !== undefined) {
+      const diskCachedResult = await this._getBatchFromDiskCache(
+        this._forkCachePath,
+        cacheKey,
+        batch.map((b) => b.tType)
+      );
+      if (diskCachedResult !== undefined) {
+        this._storeInCache(cacheKey, diskCachedResult);
+        return diskCachedResult;
+      }
+    }
+    const rawResults = await this._sendBatch(batch);
+    const decodedResults = rawResults.map((result, i) => {
+      this.addAccessList(batch[i].method, result);
+      return (0, decodeJsonRpcResponse_1.decodeJsonRpcResponse)(
+        result,
+        batch[i].tType
+      );
+    });
+    const blockNumber = getMaxAffectedBlockNumber(decodedResults);
+    if (this._canBeCached(blockNumber)) {
+      this._storeInCache(cacheKey, decodedResults);
+      if (this._forkCachePath !== undefined) {
+        await this._storeInDiskCache(this._forkCachePath, cacheKey, rawResults);
+      }
+    }
+    return decodedResults;
+  }
+```
+
+Then you can use [patch-package](https://www.npmjs.com/package/patch-package){target=_blank} to automatically patch the package by running the following command:
+
+然后，您可以通过运行以下命令使用[patch-package](https://www.npmjs.com/package/patch-package){target=_blank}自动修补代码包：
+
+```sh
+npx patch-package hardhat
+```
+
+A `patches` directory will be created and now you should be all set to fork Moonbeam without running into any errors.
+
+随即会创建一个`patches`目录，现在您可以fork Moonbeam且在运行时不会遇到任何错误。
+
+### Forking Moonbeam {: #forking-moonbeam }
+
+You can fork Moonbeam from the command line or configure your Hardhat project to always run the fork from your `hardhat.config.js` file. To fork Moonbeam or Moonriver, you will need to have your own endpoint and API key which you can get from one of the supported [Endpoint Providers](/builders/get-started/endpoints/){target=_blank}.
+
+您可以从命令行fork Moonbeam或配置您的Hardhat项目以始终从您的`hardhat.config.js`文件运行fork。要fork Moonbeam或Moonriver，需要用到您的端点和API密钥，您可以从[端点提供商](/builders/get-started/endpoints/){target=_blank}所支持的列表中获取。
+
+To fork Moonbeam from the command line, you can run the following command from within your Hardhat project directory:
+
+要从命令行fork Moonbeam，您可以从您的Hardhat项目目录中运行以下命令：
+
+=== "Moonbeam"
+
+    ```sh
+    npx hardhat node --fork {{ networks.moonbeam.rpc_url }}
+    ```
+
+=== "Moonriver"
+
+    ```sh
+    npx hardhat node --fork {{ networks.moonriver.rpc_url }}
+    ```
+
+=== "Moonbase Alpha"
+
+    ```sh
+    npx hardhat node --fork {{ networks.moonbase.rpc_url }}
+    ```
+
+If you prefer to configure your Hardhat project, you can update your `hardhat.config.js` file with the following configurations:
+
+如果您想要配置自己的Hardhat项目，您可以使用以下配置更新您的`hardhat.config.js`文件：
+
+=== "Moonbeam"
+
+    ```js
+    ...
+    networks: {
+        hardhat: {
+            forking: {
+            url: "{{ networks.moonbeam.rpc_url }}",
+            }
+        }
+    }
+    ...
+    ```
+
+=== "Moonriver"
+
+    ```js
+    ...
+    networks: {
+        hardhat: {
+            forking: {
+            url: "{{ networks.moonriver.rpc_url }}",
+            }
+        }
+    }
+    ...
+    ```
+
+=== "Moonbase Alpha"
+
+    ```js
+    ...
+    networks: {
+        hardhat: {
+            forking: {
+            url: "{{ networks.moonbase.rpc_url }}",
+            }
+        }
+    }
+    ...
+    ```
+
+When you spin up the Hardhat fork, you'll have 20 development accounts that are pre-funded with 10,000 test tokens. The forked instance is available at `http://127.0.0.1:8545/`. The output in your terminal should resemble the following:
+
+当您启动Hardhat fork时，您会有20个预先注资10,000测试Token的开发账户。可用fork实例位于`http://127.0.0.1:8545/`。在您的终端中，将会显示以下输出：
+
+![Forking terminal screen](/images/builders/build/eth-api/dev-env/hardhat/hardhat-5.png)
+
+To verify you have forked the network, you can query the latest block number:
+
+要验证您fork的网络，您可以查询最新区块编号：
+
+```
+curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
+```
+
+If you convert the `result` from [hex to decimal](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}, you should get the latest block number from the time you forked the network. You can cross reference the block number using a [block explorer](/builders/get-started/explorers){target=_blank}.
+
+如果您已经从[hex to decimal](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}转换`result`，您应该从您fork的网络获取最新区块编号。您可以使用[区块浏览器](/builders/get-started/explorers){target=_blank}交叉引用区块编号。
+
+From here you can deploy new contracts to your forked instance of Moonbeam or interact with contracts already deployed by creating a local instance of the deployed contract. 
+
+在这里，您可以部署新的合约到您fork的Moonbeam实例，或者通过创建已部署合约的本地实例与已部署合约交互。
+
+To interact with an already deployed contract, you can create a new script in the `scripts` directory using `ethers`. Because you'll be running it with Hardhat, you don't need to import any libraries. Inside the script, you can access a live contract on the network using the following snippet:
+
+要与已部署合约交互，您可以使用`ethers`在`scripts`目录中创建新的脚本。因为您将使用Hardhat运行此脚本，因此您无需导入任何库。在脚本中，您可以使用以下代码片段获取网络上的实时合约。
+
+```js
+const hre = require("hardhat");
+
+async function main() {
+  const provider = new ethers.providers.StaticJsonRpcProvider("http://127.0.0.1:8545/");
+  
+  const contract = new ethers.Contract(
+      'INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI', provider
+  );
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
 
 --8<-- 'text/disclaimers/third-party-content.md'
