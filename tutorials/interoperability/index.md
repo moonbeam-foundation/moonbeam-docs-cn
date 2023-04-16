@@ -6,7 +6,3 @@ hide:
  - toc
  - feedback
 ---
-
-
-<h1 class='subsection-title'>互操作性</h1>
-<div class='subsection-wrapper'></div>
