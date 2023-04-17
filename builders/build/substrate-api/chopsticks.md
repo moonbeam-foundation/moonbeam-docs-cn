@@ -172,7 +172,7 @@ npx @acala-network/chopsticks xcm --relaychain=configs/kusama.yml --parachain=co
 
 `relaychain`命令标志是可选的，因为Chopsticks会自动模拟网络之间的中继链。
 
-## WebSocket命令
+## WebSocket命令 {: #websocket-commands }
 
 Chopsticks的内部websocket服务器有特殊的端点，允许操作本地Substrate链。这些是可以调用的方法：
 
