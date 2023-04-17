@@ -170,7 +170,6 @@ npx @acala-network/chopsticks xcm --relaychain=configs/kusama.yml --parachain=co
 [12:49:08.227] INFO (xcm/21840): Connected relaychain 'Kusama' with parachain 'Karura'
 ```
 
-Including the `relaychain` command is optional, as Chopsticks will automatically mock a relay chain between networks.  
 `relaychain`命令标志是可选的，因为Chopsticks会自动模拟网络之间的中继链。
 
 ## WebSocket命令
