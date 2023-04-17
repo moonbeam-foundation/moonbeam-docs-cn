@@ -90,7 +90,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 在两处替换 `YOUR-NODE-NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-!!! note
+!!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
     对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
@@ -256,7 +256,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 如果您使用的是不同的目录，请再次确认基本路径
  - 将文件命名为`/etc/systemd/system/moonbeam.service`
 
-!!! note
+!!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
     
     对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
