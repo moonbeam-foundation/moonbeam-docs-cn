@@ -1,5 +1,5 @@
-title: Ethereum API
+title: 以太坊API
 hide: false
 nav:
   - index.md
-  - '[Foundry] Development Life Cycle from Start to End': 'foundry-start-to-end.md'
+  - '[Foundry]从开始到结束的开发生命周期': 'foundry-start-to-end.md'

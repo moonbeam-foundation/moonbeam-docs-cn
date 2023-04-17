@@ -1,6 +1,6 @@
 ---
-title: Ethereum Development Environment Tutorials
-description: Check out these tutorials to learn how to use the Ethereum API and Ethereum development tools, like Hardhat and Foundry, to develop smart contracts on Moonbeam.
+title: 以太坊开发环境教程
+description: 查看这些教程，了解如何使用以太坊API和以太坊开发工具（如Hardhat和Foundry）在Moonbeam上开发智能合约。
 template: subsection-index-page.html
 hide: 
  - toc
