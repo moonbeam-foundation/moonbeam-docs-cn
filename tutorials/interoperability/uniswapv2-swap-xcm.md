@@ -38,7 +38,7 @@ _February 2, 2023 | by Alberto Viera_
 - 您需要在中继链上拥有UNIT来支付发送XCM时所需的交易费用。如果您有一个具有DEV Token的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV交换xcUNIT。然后从Moonbase Alpha通过[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}。
 - 您的[多地点衍生账户](/builders/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}必须持有`DEV` Token来为Uniswap V2兑换提供资金，以及支付XCM的执行费用（尽管这可以用UNIT Token以`xcUNIT`方式支付）。我们将在下一节中计算多地点衍生账户的地址
 
---8<-- 'text/faucet/faucet-list-item.md'
+--8<-- 'text/faucet/faucet-sentence.md'
 
 ## 计算您的多地点衍生账户 {: #calculating-your-multilocation-derivative-account }
 
@@ -96,7 +96,7 @@ yarn calculate-multilocation-derivative-account \
 
  1. 设置兑换的**from**数值及Token以及兑换的**to** Token。以此例子来说，我们希望能够以0.01 `DEV`兑换`MARS`
 
- 2. 点击**Swap**按钮。Metamask将会弹出，**请不要签署交易**
+ 2. 点击**Swap**按钮。MetaMask将会弹出，**请不要签署交易**
 
  3. 在MetaMask中，点击**hex**标签，您将能看到编码的调用数据
 
@@ -248,9 +248,7 @@ generateCallData();
 
 就这样！您已经了解需要创建XCM消息本身的所有细节！这是一段漫长的旅程，但我们快结束了。
 
-## 从中继链构建XCM消息
-
-We are almost in the last part of this tutorial! In this section, we'll craft the XCM message using the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}. We'll also dissect the message instruction per instruction to understand what is happening every step of the way.
+## 从中继链构建XCM消息 {: #building-the-xcm-message-relay-chain }
 
 我们即将进入本教程的最后一部分！在本部分，我们将使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}制作XCM消息。我们还将剖析消息的每条指令，以了解每一步发生的情况。
 

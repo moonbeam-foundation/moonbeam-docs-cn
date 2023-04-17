@@ -9,7 +9,6 @@ template: main.html
 ![Banner Image](/images/tutorials/interoperability/remote-staking-via-xcm/remote-staking-via-xcm-banner.png)
 _本教程更新至2022年12月14日 | 作者：Kevin Neilson_
 
-
 ## 概览 {: #introduction }
 
 在本教程中，我们将通过从Moonbase中继链（相当于波卡中继链）上的帐户发送XCM指令来远程质押DEV Token。本教程将假定您基本上熟悉[XCM](/builders/xcm/overview/){target=_blank}和[通过XCM远程执行](/builders/xcm/xcm-transactor/){target=_blank}等相关内容。您不需要是这些主题内容的专家，但您可能会发现具有一些XCM背景知识会有所帮助。
@@ -24,7 +23,6 @@ _本教程更新至2022年12月14日 | 作者：Kevin Neilson_
 
 - 拥有一个具有一些UNIT的Moonbase Alpha中继链账户，UNIT是Moonbase中继链的原生Token。如果您拥有一个具有DEV的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV兑换xcUNIT。然后从Moonbase Alpha通过使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
 - 您将会需要计算您Moonbase Alpha中继链的[多地点衍生账户（multilocation derivative account）](#calculating-your-multilocation-derivative-account)和使其拥有足够的DEV Token。
-
   --8<-- 'text/faucet/faucet-list-item.md'
 
 ## 计算您的多地点衍生账户 {: #calculating-your-multilocation-derivative-account }
