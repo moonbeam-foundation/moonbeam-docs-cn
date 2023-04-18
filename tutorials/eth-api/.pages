@@ -1,0 +1,5 @@
+title: Ethereum API
+hide: false
+nav:
+  - index.md
+  - '[Precompiles] 通过批处理预编译进行授权和兑换': 'batch-approve-swap.md'
