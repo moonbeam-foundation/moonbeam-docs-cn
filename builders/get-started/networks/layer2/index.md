@@ -1,11 +1,8 @@
 ---
 title: Boba Layer 2
 description: 了解如何连接和实用Bobabeam Layer 2来进行开发的相关指南。
-template: main.html
+template: subsection-index-page.html
 hide:
   - toc
   - feedback
 ---
-
-<h1 class='subsection-title'>Boba Layer 2</h1>
-<div class='subsection-wrapper'></div>

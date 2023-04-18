@@ -3,3 +3,4 @@ nav:
   - index.md
   - 'proposals'
   - 'voting'
+  - '发起财政库支出提案': 'treasury-spend.md'

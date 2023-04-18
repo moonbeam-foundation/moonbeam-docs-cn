@@ -21,7 +21,7 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
  --8<-- 'text/common/endpoint-examples.md'
  - 安装[`pip`](https://pypi.org/project/pip/){target=_blank}
 
-!!! note 注意事项
+!!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 ### 安装Python Substrate Interface {: #installing-python-substrate-interface }
