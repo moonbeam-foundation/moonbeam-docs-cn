@@ -2,4 +2,4 @@ title: Ethereum API
 hide: false
 nav:
   - index.md
-  - '[Truffle] Development Life Cycle from Start to End': 'truffle-start-to-end.md'
+  - '[Truffle]从开始到结束的开发生命周期': 'truffle-start-to-end.md'
