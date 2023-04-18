@@ -1,1 +1,1 @@
-This tutorial is for educational purposes only. As such, any contracts or code created in this tutorial should not be used in production.
+本教程仅用于教育目的。 因此，不应在生产环境中使用本教程中创建的任何合约或代码。
