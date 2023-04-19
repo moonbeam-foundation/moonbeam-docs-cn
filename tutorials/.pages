@@ -2,4 +2,5 @@ title: 教程
 hide: false
 nav:
   - index.md
+  - interoperability
   - eth-api
