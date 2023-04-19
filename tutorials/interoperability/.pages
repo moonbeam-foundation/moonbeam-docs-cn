@@ -1,0 +1,6 @@
+title: 互操作性
+hide: false
+nav:
+  - index.md
+  - '[XCM] 从波卡在Moonbeam上执行远程质押': 'remote-staking-xcm.md'
+  - '[XCM] 在波卡在Moonbeam上执行Uniswap V2兑换': 'uniswapv2-swap-xcm.md'

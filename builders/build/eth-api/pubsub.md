@@ -154,6 +154,6 @@ web3.eth
 
 ![Subscribe to syncing response](/images/builders/build/eth-api/pubsub/pubsub-7.png)
 
-!!!注意事项
+!!! 注意事项
     [Frontier](https://github.com/paritytech/frontier){target=_blank}的发布/订阅功能目前还在开发中。在此版本中，用户可以订阅特定的事件类型，但可能仍存在一些限制。
 
