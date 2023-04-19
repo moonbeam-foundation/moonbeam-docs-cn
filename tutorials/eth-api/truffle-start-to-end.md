@@ -7,7 +7,7 @@ description: 学习如何使用Truffle开发、测试和部署智能合约以及
 
 ![Banner Image](/images/tutorials/eth-api/truffle-start-to-end/truffle-banner.png)
 
-_本教程更新至January 10th, 2022 | 作者Erin Shaben_
+_2023年01月10日 | 作者：Erin Shaben_
 
 ## 概览 {: #introduction }
 
