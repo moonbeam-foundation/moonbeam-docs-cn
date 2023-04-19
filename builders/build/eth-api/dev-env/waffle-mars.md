@@ -9,7 +9,7 @@ description: 通过此教程学习如何使用Waffle和Mars在Moonbeam上编写�
 
 ## 概览 {: #introduction } 
 
-[Waffle](https://getwaffle.io/){target=_blank}是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到Moonbeam开发节点或Moonbase Alpha测试网。
+[Waffle](https://getwaffle.io/){target=_blank}是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}或[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=_blank}。
 
 Waffle使用最少的依赖项，具有易于学习和扩展的编写语法，并在编译和测试智能合约时提供快速的执行时间。此外，Waffle与[TypeScript](https://www.typescriptlang.org/){target=_blank}的兼容和[Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html){target=_blank}的使用使得检视和编写测试变得容易。
 
@@ -34,11 +34,13 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 首先，您需创建一个TypeScript项目并安装和配置一些依赖项。
 
 1. 创建项目目录并更改为：
+
     ```
     mkdir waffle-mars && cd waffle-mars
     ```
 
 2. 初始化项目。这将在目录中创建一个`package.json`：
+
     ```
     npm init -y
     ```
@@ -63,11 +65,13 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
     - [@types/mocha](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/mocha) - contains the type definitions for mocha
 
 4. 创建一个[TypeScript配置](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)文件：
+
     ```
     touch tsconfig.json
     ```
 
 5. 添加基本的TypeScript配置：
+
     ```
     {
       "compilerOptions": {
@@ -98,6 +102,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
     ```
 
 2. 添加以下合约至MyToken.sol：
+
     ```
     pragma solidity ^0.8.0;
 
@@ -121,11 +126,13 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 首先，您有一个编写好的智能合约，下一步就是使用Waffle来编译它。在编译之前，您需先配置 Waffle：
 
 1. 返回项目的根目录并创建一个`waffle.json`文件来配置Waffle：
+
     ```
     cd .. && touch waffle.json
     ```
 
 2. 编辑`waffle.json`以指定编译器配置，包含合约目录等。在本示例中，我们将使用`solcjs` 和您用于合约的Solidity 版本，即`0.8.0`：
+
     ```json
     {
       "compilerType": "solcjs", // Specifies compiler to use
@@ -143,6 +150,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
     ```
 
 3. 在`package.json`中添加一个脚本来运行Waffle：
+
     ```json
     "scripts": {
       "build": "waffle"
@@ -167,7 +175,7 @@ npm run build
 
 --8<-- 'text/common/endpoint-setup.md'
 
-由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options)[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/)。运行具有[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options)功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
+由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
     ```

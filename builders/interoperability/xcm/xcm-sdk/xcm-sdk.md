@@ -163,7 +163,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     const { moonbase } = init()
     ```
 
-如果您希望支持某个特定钱包，您可以直接将签署者传递至`init`函数。否则，您仅能在为存款或提现构建转移数据时直接传递签署者。要为Ethers和波卡传递签署者，您可以使用以下代码段：
+如果您希望支持某个特定钱包，您可以直接将签署者传递至`init`函数。否则，您仅能在为存款或提现构建转移数据时直接传递签署者。要为[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}和[波卡](/builders/build/substrate-api/polkadot-js-api){target=_blank}传递签署者，您可以使用以下代码段：
 
 === "Moonbeam"
 
@@ -275,7 +275,7 @@ assets: {
 
 ### Moonbeam原生资产数据 {: #native-assets }
 
-要获得Moonbeam网络上原生协议资产的信息，如预编译合约以及原符号，您可以访问`moonAsset`属性。
+要获得Moonbeam网络上原生协议资产的信息，如[预编译合约地址](/builders/pallets-precompiles/precompiles/erc20){target=_blank}以及原符号，您可以访问`moonAsset`属性。
 
 === "Moonbeam"
 
@@ -433,7 +433,7 @@ from(polkadot);
 
 #### Get函数 {: #get-deposit }
 
-`get`需要输入在Moonbeam上的接受账户以及根据您如何设置您波卡签署者，需要输入波卡的签署者或波卡上的传送账户，并获得需要用于存入函数的数据。
+`get`需要输入在Moonbeam上的接受账户以及根据您如何设置您[波卡签署者](/builders/build/substrate-api/polkadot-js-api){target=_blank}，需要输入波卡的签署者或波卡上的传送账户，并获得需要用于存入函数的数据。
 
 如果您拥有波卡兼容的签署者，您可以在`init`函数中数据签署者，并在`get`函数中的第二个参数处输入波卡地址：
 
@@ -665,7 +665,7 @@ to(polkadot);
 
 #### Get函数 {: #get-withdraw }
 
-`get`函数需要您输入在目标链上的接收数量，以及在Moonbeam上传送账户的Ethers签署者，最后您会获得存入所要求的相关数据。
+`get`函数需要您输入在目标链上的接收数量，以及在Moonbeam上传送账户的[Ethers签署者](#creating-signers)，最后您会获得存入所要求的相关数据。
 
 ```js
 import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
