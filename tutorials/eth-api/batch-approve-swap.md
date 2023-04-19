@@ -26,7 +26,8 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 - 拥有资金的账户
   --8<-- 'text/faucet/faucet-list-item.md'
 - 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
-- --8<-- 'text/common/endpoint-examples.md'
+- 
+--8<-- 'text/common/endpoint-examples.md'
 
 ### 安装依赖项 {: #install-dependencies }
 
