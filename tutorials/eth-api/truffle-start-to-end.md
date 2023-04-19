@@ -608,8 +608,6 @@ npx truffle test --network moonbase
 npx truffle migrate --network moonbase
 ```
 
-You should see the transaction hashes for the deployment of each contract in your terminal and that a total of three deployments have been made.
-
 您应该在终端中看到每个合约部署的交易哈希，总共已完成了三个部署。
 
 ![Deploy contracts on Moonbase Alpha](/images/tutorials/eth-api/truffle-start-to-end/truffle-9.png)
