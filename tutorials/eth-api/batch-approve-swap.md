@@ -7,7 +7,7 @@ description: 学习如何使用Moonbeam上的批处理预编译（Batch Precompi
 
 ![Banner Image](/images/tutorials/eth-api/batch-approve-swap/batch-banner.png)
 
-_本教程更新至2022年12月21日 | 作者：Erin Shaben_
+_2022年12月21日 | 作者：Erin Shaben_
 
 ## 概览 {: #introduction } 
 
