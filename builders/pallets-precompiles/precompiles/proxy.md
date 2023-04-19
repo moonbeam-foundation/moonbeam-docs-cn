@@ -14,14 +14,26 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
 
 若一个用户想要为另一个用户提供执行有限数量操作的权限，传统方式只有将第一个账户的私钥提供给第二个账户才能实现。而Moonbeam包含了能够启用代理账户的[Substrate代理Pallet](/builders/pallets-precompiles/pallets/proxy){target=_blank}。代理帐户的作用是其提供了额外的安全层，可以为主帐户执行操作。举例来说，如果一个用户希望将其主账户安全存放于冷钱包中，同时仍想要访问钱包的部分功能（例如治理或质押），这是最好的选择。
 
+**代理预编译只能由外部拥有的帐户（EOA）调用。**
+
 要了解关于代理账户的更多信息以及如何在无需使用代理预编译的情况下根据自身需求设置代理账户，请查看[设置代理账户](/tokens/manage/proxy-accounts){target=_blank}页面。
 
-目前代理预编译仅可在Moonbase Alpha上使用，且位于以下地址：
+代理预编译位于以下地址：
 
+=== "Moonbeam"
+     ```
+     {{networks.moonbeam.precompiles.proxy}}
+     ```
+=== "Moonriver"
+     ```
+     {{networks.moonriver.precompiles.proxy}}
+     ```
 === "Moonbase Alpha"
      ```
      {{networks.moonbase.precompiles.proxy}}
      ```
+
+--8<-- 'text/precompiles/security.md'
 
 ## 代理Solidity接口 {: #the-proxy-solidity-interface }
 
@@ -34,22 +46,37 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
  - **removeProxies**() - 移除委托给发送者的所有代理账户
  - **isProxy**(*address* real, *address* delegate, *ProxyType* proxyType, *uint32* delay) - 若委托地址为`proxyType`类型的代理则返回布尔值`true`，地址`real`会有指定的`delay`
 
+`proxyType`参数由以下`ProxyType`枚举定义，其中值从`0`开始，具有最宽松的代理类型，并由`uint8`值表示：
+
+```sol
+enum ProxyType {
+    Any,
+    NonTransfer,
+    Governance,
+    Staking,
+    CancelProxy,
+    Balances,
+    AuthorMapping,
+    IdentityJudgement
+}
+```
+
 ## 代理类型 {: #proxy-types }
 
 可以委托账户的代理角色有多种类型，其中通过`ProxyType`枚举在`Proxy.sol`中表示。以下列表包含所有可能的代理以及可以代表主账户执行的交易类型：
 
- - **Any** - 任何代理将允许代理账户执行任何类型的交易
- - **NonTransfer** - 非转账代理将允许代理账户执行任何类型的交易，除余额转账以外
- - **Governance** - 治理代理将允许治理账户执行任何治理类型的相关交易（包括民主或理事会Pallet）
- - **Staking** - 质押代理将允许代理账户执行质押相关的交易
- - **CancelProxy** - 取消代理允许代理账户拒绝和移除延迟的主账户代理公告
- - **Balances** - 余额代理将允许代理账户仅执行余额转账
- - **AuthorMapping** - 此类型的代理账户仅供收集人使用，将服务从一个服务迁移至另一个服务器
- - **IdentityJudgement** - 身份验证代理将允许代理账户判断和验证波卡上账户相关的个人信息
-
---8<-- 'text/precompiles/security.md'
+ - **Any** - 任何代理类型，将允许代理账户进行`Governance`、`Staking`、`Balances`和`AuthorMapping`代理类型可以执行的任何类型的交易。请注意，余额转移只允许EOA，而不允许合约或预编译
+ - **NonTransfer** - 非转账代理，将允许代理账户通过`Governance`、`Staking`和`AuthorMapping`预编译执行任何类型的`msg.value`为0的交易
+ - **Governance** - 治理代理，将允许治理账户执行任何治理类型的相关交易（包括民主或理事会Pallet）
+ - **Staking** - 质押代理，将允许代理账户通过`Staking`预编译执行质押相关的交易，包括对`AuthorMapping`预编译的调用
+ - **CancelProxy** - 取消代理，允许代理账户拒绝和移除延迟的主账户代理公告。目前，代理预编译尚未支持该操作
+ - **Balances** - 余额代理，将允许代理账户仅执行余额转账至EOA
+ - **AuthorMapping** - 此类型的代理账户仅供收集人使用，将服务从一个服务器迁移至另一个服务器
+ - **IdentityJudgement** - 身份验证代理，将允许代理账户判断和验证波卡上账户相关的个人信息。目前，代理预编译尚未支持该操作
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
+
+以下部分将介绍如何与Remix中的代理预编译进行交互。请注意，**只能从EOA调用代理预编译**。
 
 ### 查看先决条件 {: #checking-prerequisites }
 

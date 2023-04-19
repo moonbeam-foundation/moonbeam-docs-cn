@@ -22,7 +22,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
     | [Multisig Factory](https://moonbeam.moonscan.io/address/0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2#code){target=_blank} | 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 |
     |                           [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820){target=_blank}                            | 0x1820a4b7618bde71dce8cdc73aab6c95905fad24 |
 
-
 === "Moonriver"
     |                                                           合约                                                           |                    地址                    |
     |:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
@@ -32,7 +31,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
     |   [Multicall3](https://moonriver.moonscan.io/address/0xca11bde05977b3631167028862be2a173976ca11#code/){target=_blank}    | 0xcA11bde05977b3631167028862bE2a173976CA11 |
     | [Multisig Factory](https://moonriver.moonscan.io/address/0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2#code){target=_blank} | 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 |
     |                            [EIP-1820](https://eips.ethereum.org/EIPS/eip-1820){target=_blank}                            | 0x1820a4b7618bde71dce8cdc73aab6c95905fad24 |
-
 
     _*SushiSwap部署_
 

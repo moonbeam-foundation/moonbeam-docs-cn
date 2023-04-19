@@ -35,7 +35,11 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 - **保证金基础** —— 为拥有代理列表帐户预留金额
 - **保证金系数** —— 为主账户拥有的每个代理预留的额外金额
 
-保证金计算公式：`deposit base + deposit factor * number of proxies`
+保证金计算公式：
+
+```
+deposit base + deposit factor * number of proxies
+```
 
 === "Moonbeam"
     |    变量    |                       值                       |
@@ -82,42 +86,45 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 ## 创建代理账户 {: #creating-a-proxy-account } 
 
-在Polkadot.js Apps，您可以在**Extrinsics**页面或**Accounts**页面创建代理账户。然而，如果您要创建延时代理，您将需要在**Extrinsics**页面进行操作。时间延迟通过指定基于多个区块的延迟时段为代理提供额外安全层。延迟期结束前，代理账户无法执行交易。这使主账户能够在该时间段审查代理的待处理交易（可能存在恶意操作的交易），在必要时于执行前取消操作。
+在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}中，您可以在**Extrinsics**页面或**Accounts**页面创建代理账户。然而，如果您要创建延时代理，您将需要在**Extrinsics**页面进行操作。时间延迟通过指定基于多个区块的延迟时段为代理提供额外安全层。延迟期结束前，代理账户无法执行交易。这使主账户能够在该时间段审查代理的待处理交易（可能存在恶意操作的交易），在必要时于执行前取消操作。
 
-想要创建代理账户，进入**Developer**标签，在下拉菜单中选择**Extrinsics**。然后执行以下步骤：
+想要创建代理账户，进入**Developer**标签，在下拉菜单中选择[**Extrinsics**](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}。然后执行以下步骤：
 
 1. 选择主账户
-
 2. 在**submit the following extrinsic**下拉菜单中选择**proxy**
-
 3. 选择**addProxy**函数
-
 4. 为代理选择**delegate**账户
-
 5. 在**proxyType**下拉菜单中选择**Balances**
-
 6. 若需要，您也可以使用指定数量的区块设置时间延迟，为主帐户增加额外的安全层以查看待处理的交易
-
 7. 点击**Submit Transaction** 
 
-![Creating a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-1.png)
+![Add a proxy account from the Extrinsics page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-1.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。点击**Sign and Submit**创建代理关系。
 
-![Submit Transaction to Create a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-2.png)
-
 交易成功提交后，您将收到交易确认的通知。
 
-如前文所述，您也可以从**Accounts**创建代理账户。进入**Accounts**页面，点击主账户旁边的三个竖点，选择**Add proxy**。
+如前文所述，您也可以从**Accounts**创建代理账户。进入**Accounts**页面，并跟随以下步骤：
 
-![Add Proxy](/images/tokens/manage/proxy-accounts/proxies-3.png)
+1. 点击主账户旁边的三个竖点
+2. 选择**Add proxy**
+
+![Select the Add proxy menu item from the Accounts page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-2.png)
 
 !!! 注意事项
     如果帐户中已有代理，显示的选项将会是**Manage proxies**，而不是显示**Add proxy**。
 
-随后，将会跳出弹窗，您将能够输入所需信息（如主账户/被代理账户、代理账户、代理类型等）以创建代理账户。
+随后，将会跳出弹窗，您将能够输入所需信息（如被代理/主账户账户、代理账户、代理类型等）以创建代理账户。首先点击**Add proxy**。
 
-![Add Proxy from Accounts Page](/images/tokens/manage/proxy-accounts/proxies-4.png)
+![Add a proxy account from the Accounts page of Polkadot.js Apps](/images/tokens/manage/proxy-accounts/new/proxies-3.png)
+
+然后执行以下步骤：
+
+1. 选择您要设置为代理的账户
+2. 选择代理类型
+3. 点击**提交**并签署交易
+
+![Add the details of the proxy account, including the proxy account and type.](/images/tokens/manage/proxy-accounts/new/proxies-4.png)
 
 在下一部分，您将学习如何验证您的代理账户是否已成功设置。
 
@@ -125,57 +132,42 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 您可以通过**Accounts**页面或**Chain state**页面验证您的代理账户是否已成功设置。
 
-在**Chain state**页面验证您的代理账户，您需执行以下步骤：
+在[**Chain state**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}验证您的代理账户，您需执行以下步骤：
 
-1. 点击**Developer**标签
+1. 在**selected state query**下拉菜单中选择**proxy**
+2. 选择**proxies**函数
+3. 选择您的主账户/被代理账户
+4. 点击**+**按钮发送查询请求
 
-2. 在下拉菜单中选择**Chain state**
-
-3. 在**selected state query**下拉菜单中选择**proxy**
-
-4. 选择**proxies**函数
-
-5. 选择您的主账户/被代理账户
-
-6. 点击**+**按钮发送查询请求
-
-![Verify your Proxy Accounts](/images/tokens/manage/proxy-accounts/proxies-5.png)
+![Verify your proxy accounts via the Extrinsics page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-5.png)
 
 随后将在页面出现结果，显示所有代理的信息，包括委托/代理地址、代理类型、延迟期（若有设置）以及为所有代理绑定的总绑定数量（以wei为单位）。
 
-如前所述，您也可以通过**Accounts**页面验证您的代理账户。进入**Accounts**页面，主账户旁边应出现代理图标。将鼠标移至该图标，点击**Proxy overview**查看您的代理。
+如前所述，您也可以通过**Accounts**页面验证您的代理账户。进入**Accounts**页面，主账户旁边应出现代理图标。将鼠标移至该图标，点击**Manage proxies**查看您的代理。
 
-![Proxy Overview Button](/images/tokens/manage/proxy-accounts/proxies-6.png)
+![Hover over the proxy icon to manage your proxies via the Accounts page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-6.png)
 
 随后将跳出弹窗，您可以查看所有代理账户的信息。
 
-![Proxy Overview Pop-up](/images/tokens/manage/proxy-accounts/proxies-7.png)
+![Review your proxy accounts.](/images/tokens/manage/proxy-accounts/new/proxies-7.png)
 
 ## 执行代理交易 {: #executing-a-proxy-transaction } 
 
 完成上述操作后，您已拥有一个代理账户并验证该账户已成功设置，现在您可以使用代理账户代表您的主账户执行交易。
 
-首先进入**Extrinsics**页面，随后执行以下操作：
+首先进入[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}，随后执行以下操作：
 
 1. 在**using the select account**下拉菜单中选择代理账户提交交易
-
 2. 在**submit the following extrinsic**下拉菜单中选择**proxy**
-
 3. 选择**proxy**函数
-
 4. 在**real**下拉菜单中选择主账户
-
 5. 选择**balances**函数
-
 6. 选择**transfer**函数
-
 7. 在**dest**字段输入资金接收地址
-
 8. 在**value**字段输入资金数量（以wei为单位）。例如，您将发送2枚DEV token，您需输入`2000000000000000000`（若以wei为单位）
-
 9. 点击**Submit Transaction**
 
-![Execute a Proxy Transaction](/images/tokens/manage/proxy-accounts/proxies-8.png)
+![Execute a proxy transaction from the Extrinsics page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-8.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。输入代理账户的密码后点击**Sign and Submit**。
 
@@ -187,23 +179,17 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 与创建代理账户相似，您可以在**Extrinsics**页面或**Accounts**页面移除代理账户。无论您在哪个页面操作，您都可以选择移除单个代理帐户或与您的主帐户关联的所有代理。
 
-在**Extrinsics**页面移除代理账户，您需要执行以下步骤：
+在[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}移除代理账户，您需要执行以下步骤：
 
 1. 在**using the selected account**下拉菜单选择您的主账户
-
 2. 选择**proxy**
-
 3. 选择**removeProxy**以移除单个代理账户或**removeProxies**以移除所有关联代理
-
 4. 如果移除单个代理账户，在**delegate**字段输入要移除的代理账户
-
 5. 选择**proxyType**函数，本示例中应选择**Balances**
-
 6. 若需要，在区块数量中选择延迟时段
-
 7. 点击**Submit Transaction**
 
-![Remove a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-9.png)
+![Remove a proxy account from the Extrinsics page of Polkadot.js Apps](/images/tokens/manage/proxy-accounts/new/proxies-9.png)
 
 随后，将会跳出弹窗要求您授权和签署交易。可以选择从主账户或代理账户签署和发送交易，但为了移除代理，交易必须从主账户发送。输入您的密码并点击**Sign and Submit**。
 
@@ -211,11 +197,11 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 如前所示，您也可以在**Accounts**页面移除代理账户。进入**Accounts**页面，点击主账户旁边的三个竖点，选择**Manage Proxies**。
 
-![Manage Proxies](/images/tokens/manage/proxy-accounts/proxies-10.png)
+![Click on the Manage Proxies button to review and manage your proxy accounts.](/images/tokens/manage/proxy-accounts/new/proxies-10.png)
 
 随后将跳出弹窗，您可以查看所有代理账户的信息。您可以点击代理账户旁边的**X**按钮移除单个代理账户。代理将从列表中移除，随后点击**Submit**。接下来，输入您的密码提交交易。您也可以点击**Clear all**移除所有的代理，随后系统将自动提示您输入密码和提交交易。
 
-![Remove a Proxy Account from the Accounts Page](/images/tokens/manage/proxy-accounts/proxies-11.png)
+![Remove a proxy account from the Accounts page of Polkadot.js Apps.](/images/tokens/manage/proxy-accounts/new/proxies-11.png)
 
 交易成功提交后，您可以查看您当前的代理。如果您移除了所有代理，您会看到代理图标不再显示在主帐户旁边。
 

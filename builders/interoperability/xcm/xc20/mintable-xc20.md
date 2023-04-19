@@ -35,12 +35,28 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 |  管理员（Admin）  |    X     |    ✓     |    X     |    ✓     |
 | 锁定者（Freezer） |    X     |    X     |    ✓     |    X     |
 
+## 可铸造XC-20 Solidity接口 {: #the-mintable-xc20-interface }
+
+可铸造XC-20 token的Solidity接口是以下三个接口的组合：
+
+ - [ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}
+ - [许可接口（符合EIP-712）](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-permit-interface){target=_blank}
+ - [可铸造接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank} — 请参看[下一节](#additional-functions)
+
 ## 可铸造XC-20的特殊功能 {: #additional-functions }
 
 可铸造XC-20包含所有者或是指定账户才能使用的特殊功能，其被包含在[LocalAsset.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}接口当中，具体如下所示：
 
 - **mint(*address* to, *uint256* value)** —— 铸造一定数量的Token至指定地址，仅有所有者（Owner）和发行者（Issuer）能够使用此函数
+
+    !!! 注意事项
+        可以铸造的最大`value`实际受限于*uint128*。如果总供应量超过2^128（不带小数），可铸造XC-20将表现不同，铸币将因溢出检查而失败。这对于传统token来说不太可能发生，因为它们无意达到如此高的数量。更多信息，请参考安全注意事项页面的[可铸造XC-20 vs ERC-20](/builders/get-started/eth-compare/security/#mintable-xc-20s-vs-erc-20s){target=_blank}部分。
+
 - **burn(*address* from, *uint256* value)** —— 销毁指定地址中的指定数量Token，仅有所有者（Owner）和管理员（Admin）能够使用此函数
+
+    !!! 注意事项
+        Substrate中的`burn`函数与[标准ERC-20 `burn`函数](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20-_burn-address-uint256-){target=_blank}行为不同，因为它不需要`from`账户拥有由`value`指定的token数量。更多信息，请参考安全注意事项页面的[可铸造XC-20 vs ERC-20](/builders/get-started/eth-compare/security/#mintable-xc-20s-vs-erc-20s){target=_blank}部分。
+    
 - **freeze(*address* account)** —— 锁定指定账户一定数量的Token并禁止相关交易，仅有所有者（Owner）和发行者（Issuer）能够使用此函数
 - **thaw(*address* account)** —— 解锁特定账户的Token使其能够与Token交互，仅有所有者（Owner）和管理员（Admin）能够使用此函数
 - **freezeAsset()** —— 锁定整个资产运行以及Token，仅有所有者（Owner）和锁定者（Freezer）能够使用此函数
@@ -138,11 +154,8 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 当原像（Preimage）已经成功创建并提交后，您需要完整地提交提案。您可以点击**+ Submit proposal**并跟随以下步骤进行操作：
 
 1. 选择您希望用于提交提案的账户
-
 2. 在**preimage hash**中贴上先前复制的内容，如果您并未复制数值，您可以在页面上方选择**Developer**并在下拉选单中点选**Chain State**，接着查询使用**preimages**函数，确保**include option**为关闭状态后提交查询
-
 3. 您可以根据需求自由更新存入数量
-
 4. 点击**+ Submit proposal**
 
 ![Create proposal to register the mintable XC-20](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-4.png)
