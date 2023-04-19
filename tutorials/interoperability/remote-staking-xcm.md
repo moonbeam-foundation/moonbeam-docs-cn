@@ -7,7 +7,7 @@ template: main.html
 # 通过XCM远程质押
 
 ![Banner Image](/images/tutorials/interoperability/remote-staking-via-xcm/remote-staking-via-xcm-banner.png)
-_本教程更新至2022年12月14日 | 作者：Kevin Neilson_
+_2022年12月14日 | 作者：Kevin Neilson_
 
 ## 概览 {: #introduction }
 

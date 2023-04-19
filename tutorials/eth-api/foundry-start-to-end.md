@@ -7,7 +7,7 @@ description: 遵循本分步教程学习如何使用Foundry在Moonbeam上构建�
 
 ![Banner Image](/images/tutorials/eth-api/foundry-start-to-end/foundry-banner.png)
 
-_本教程更新至January 10th, 2022 | 作者Jeremy Boetticher_
+_2023年01月10日 | 作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction } 
 
