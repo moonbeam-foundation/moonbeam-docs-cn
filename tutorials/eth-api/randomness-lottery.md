@@ -26,9 +26,9 @@ For more information on the two sources of randomness, how the request and fulfi
 
 获取关于这两种随机数的更多信息，包括如何请求和完成流程运作模式，以及安全因素，请参考[Moonbeam上的随机数](/learn/features/randomness){target=_blank}页面。
 
-Moonbeam provides a Randomness Precompile, which is a Solidity interface that enables smart contract developers to generate randomness via local VRF or BABE epoch randomness using the Ethereum API. Moonbeam also provides a Randomness Consumer Solidity contract that your contract must inherit from in order to consume fulfilled randomness requests.
+Moonbeam provides a [Randomness Precompile](/builders/pallets-precompiles/precompiles/randomness){target=_blank}, which is a Solidity interface that enables smart contract developers to generate randomness via local VRF or BABE epoch randomness using the Ethereum API. Moonbeam also provides a [Randomness Consumer Solidity contract](/builders/pallets-precompiles/precompiles/randomness/#randomness-consumer-solidity-interface){target=_blank} that your contract must inherit from in order to consume fulfilled randomness requests.
 
-Moonbeam提供Randomness Precompile，这是一个Solidity接口，能够使智能合约开发者使用以太坊API通过本地VRF或BABE epoch随机数生成随机数。Moonbeam也提供Randomness Consumer Solidity合约，您的合约必须自该合约继承才能使用已完成的随机数请求。
+Moonbeam提供[Randomness Precompile](/builders/pallets-precompiles/precompiles/randomness){target=_blank}，这是一个Solidity接口，能够使智能合约开发者使用以太坊API通过本地VRF或BABE epoch随机数生成随机数。Moonbeam也提供[Randomness Consumer Solidity合约](/builders/pallets-precompiles/precompiles/randomness/#randomness-consumer-solidity-interface){target=_blank}，您的合约必须自该合约继承才能使用已完成的随机数请求。
 
 This guide will show you how to use the Randomness Precompile and Randomness Consumer contract to create a lottery where the winners will randomly be selected.
 
