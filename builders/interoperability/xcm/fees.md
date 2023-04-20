@@ -55,7 +55,7 @@ Alice请求的资产转移过程如下：
 
 5. [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 在Moonbeam上执行。此指令会移除暂存区域的资产并将其传送至Moonbeam上的目标账户
 
-要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送DOT至Moonbeam，您可以查看[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/master/xtokens){target=_blank}（作为范例）。查看 [`transfer_self_reserve_asset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/8c625a5ab43c1c56cdeed5f8d814a891566d4cf8/xtokens/src/lib.rs#L660){target=_blank}函数，您将会看到其调用`TransferReserveAsset`并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`TransferReserveAsset` 指令](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L304){target=_blank}。此XCM消息由使用`xcm`参数的`ReserveAssetDeposited`和`ClearOrigin`指令组成，如上所示其中包含`BuyExecution`和`DepositAsset`指令。
+要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送DOT至Moonbeam，您可以查看[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.client_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_self_reserve_asset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.client_version}}/xtokens/src/lib.rs#L666){target=_blank}函数，您将会看到其调用`TransferReserveAsset`并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`TransferReserveAsset` 指令](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/xcm/xcm-executor/src/lib.rs#L412){target=_blank}。此XCM消息由使用`xcm`参数的`ReserveAssetDeposited`和`ClearOrigin`指令组成，如上所示其中包含`BuyExecution`和`DepositAsset`指令。
 
 要将xcDOT从Moonbeam转移回波卡，您可以使用以下指令：
 
@@ -71,7 +71,7 @@ Alice请求的资产转移过程如下：
 
 6. [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 在波卡上执行。此指令会移除暂存区域的资产并将其传送至波卡上的目标账户
 
-要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送xcDOT至波卡，您可以查看[X-Tokens Open Runtime Module Librar](https://github.com/open-web3-stack/open-runtime-module-library/tree/master/xtokens){target=_blank}（作为范例）。查看 [`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/8c625a5ab43c1c56cdeed5f8d814a891566d4cf8/xtokens/src/lib.rs#L677){target=_blank}函数，您将会看到其调用`WithdrawAsset`和`InitiateReserveWithdraw`，并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`InitiateReserveWithdraw` 指令](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L410){target=_blank}。此XCM消息由使用`xcm`参数的`WithdrawAsset`和`ClearOrigin`指令组成，如上所述其中包含`BuyExecution`和`DepositAsset`指令。
+要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送xcDOT至波卡，您可以查看[X-Tokens Open Runtime Module Librar](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.client_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.client_version}}/xtokens/src/lib.rs#L683){target=_blank}函数，您将会看到其调用`WithdrawAsset`和`InitiateReserveWithdraw`，并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`InitiateReserveWithdraw` 指令](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/xcm/xcm-executor/src/lib.rs#L412){target=_blank}。此XCM消息由使用`xcm`参数的`WithdrawAsset`和`ClearOrigin`指令组成，如上所述其中包含`BuyExecution`和`DepositAsset`指令。
 
 ## 中继链XCM费用计算 {: #rel-chain-xcm-fee-calc }
 
@@ -83,18 +83,18 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 ### Polkadot {: #polkadot }
 
-如同先前提到的，波卡目前对所有XCM指令采取[固定权重数量](https://github.com/paritytech/polkadot/blob/e76cd144f9dad8c1304fd1476f92495bbb9ad22e/runtime/polkadot/src/xcm_config.rs#L95){target=_blank}的计算方式，也就是每条指令`{{ networks.polkadot.xcm_instructions.weight.display }}`权重单位。
+如同先前提到的，波卡目前对所有XCM指令采取[固定权重数量](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/runtime/polkadot/src/xcm_config.rs#L94){target=_blank}的计算方式，也就是每条指令`{{ networks.polkadot.xcm_instructions.weight.display }}`权重单位。
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
 |                                                                      数据库                                                                       |                      读                       |                       写                       |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
 
 在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
+在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/runtime/polkadot/constants/src/lib.rs#L88){targer=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -146,24 +146,24 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 |                                                                     数据库                                                                      |                     读                      |                      写                      |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------:|:--------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight }}  | {{ networks.kusama.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.kusama.parity_db.read_weight }} | {{ networks.kusama.parity_db.write_weight }} |
 
 现在您了解Kusama上数据库读写的权重花费，您可以使用指令的基础权重花费计算总花费。
 
-例如，[`WithdrawAsset` 指令](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight }}`基础权重，且执行一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
+例如，[`WithdrawAsset` 指令](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight }}`基础权重，且执行一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
 
 ```
 {{ networks.kusama.xcm_instructions.withdraw.base_weight }} + {{ networks.kusama.rocks_db.read_weight}} + {{ networks.kusama.rocks_db.write_weight}} = {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }}
 ```
 
-[`BuyExecution`指令](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
+[`BuyExecution`指令](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L59-L61){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
 
-在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L45){target=_blank}和[通用资产](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L45){target=_blank}的权重。
+在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L45){target=_blank}和[通用资产](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L46){target=_blank}的权重。
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot/blob/v0.9.37/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L55){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot/blob/{{networks.kusama.client_version}}/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -223,7 +223,7 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 例如，`WithdrawAsset`指令是可替代XCM指令集的一部分。因此，它没有进行基准测试，`WithdrawAsset`指令的总权重成本为`{{ networks.moonbase.xcm.instructions.weight_units.display }}`。
 
-[`BuyExecution`指令](https://github.com/PureStake/moonbeam/blob/master/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L220){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
+[`BuyExecution`指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L136){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
 
 ```
 {{ networks.moonbase.xcm.instructions.buy_exec.base_weight }} + 4 * {{ networks.moonbase.db_weights.rocksdb_read }} = {{ networks.moonbase.xcm.instructions.buy_exec.total_weight }}
@@ -234,17 +234,17 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 === "Moonbeam"
     |                                                                                                 XCM指令成本                                                                                                 |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
+    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
 
 === "Moonriver"
     |                                                                                                  XCM指令成本                                                                                                  |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonriver/src/xcm_config.rs#L208){target=_blank} |
+    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonriver/src/xcm_config.rs#L211){target=_blank} |
 
 === "Moonbase Alpha"
     |                                                                          基准测试过的指令                                                                           |                                                                           无基准测试的指令                                                                            |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [通用XCM指令](https://github.com/PureStake/moonbeam/blob/master/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/PureStake/moonbeam/blob/master/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L26){target=_blank} |
+    | [通用XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L25){target=_blank} |
 
 
 以下部分教程将会包含如何在基于Moonbeam的网络计算XCM费用，有两个主要的应用场景：
@@ -258,13 +258,13 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 |                                                                               Moonbeam                                                                               |                                                                               Moonriver                                                                               |                                                                                             Moonbase Alpha                                                                                             |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/master/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/master/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L135){target=_blank} |
+| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L138){target=_blank} |
 
 这意味着以Moonbeam为例，计算一个XCM指令以储备资产作为费用的公式如下：
 
 ```
-Wei = XCMInstrWeight * Wei_Per_Weight
-GLMR = Wei / (10^18)
+XCM-Wei-Cost = XCMInstrWeight * Wei_Per_Weight
+XCM-GLMR-Cost = Wei / (10^18)
 ```
 
 因此，实际计算如下：
