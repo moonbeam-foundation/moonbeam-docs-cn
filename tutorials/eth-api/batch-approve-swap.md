@@ -38,7 +38,7 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 要安装必要依赖项，请运行以下命令：
 
 ```
-npm install @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
+npm install @nomiclabs/hardhat-ethers @openzeppelin/contracts
 ```
 
 ## 合约设置 {: #contracts }
@@ -57,6 +57,8 @@ npm install @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
 ```
 mkdir contracts && cd contracts
 ```
+
+Then, you can create a single file that we'll use to store the code for the `DemoToken` and `SimpleDex` contracts and another file for the batch precompile:
 
 然后，您可以创建一个新文件，用于存储`DemoToken`和`SimpleDex`合约的代码：
 
