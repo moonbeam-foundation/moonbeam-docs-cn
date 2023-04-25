@@ -38,11 +38,8 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 然而，Moonbeam的最终确定性可用于提供比以太坊目前更好的用户体验。检查交易确定性的策略相当简单：
 
  1. 您查询网络最新终结区块的哈希
-
  2. 您使用哈希截取区块编号
-
  3. 您使用区块编号对比您的交易，如果您的交易被包含在先前区块当中代表它已经被确认
-
  4. 进行安全检查，按编号检索区块，并验证给定的交易哈希被包含在该区块当中
 
 以下部分将会列出您该如何使用以太坊JSON-RPC（自定义Web3请求）和Substrate（波卡）JSON-RPC检查交易终结的进度。
@@ -73,9 +70,9 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 === "Web3.py"
     --8<-- 'code/vs-ethereum/web3py.md'
 
-## Checking Tx Finality with Substrate Libraries {: #checking-tx-finality-with-substrate-libraries }
+## 使用Substrate库查询交易确定性 {: #checking-tx-finality-with-substrate-libraries }
 
-[Polkadot.js API组件](https://polkadot.js.org/docs/api/start)和[Python Substrate Interface组件](https://github.com/polkascan/py-substrate-interface)提供开发者使用Javascript操作Substrate链的方法。
+[Polkadot.js API组件](/builders/build/substrate-api/polkadot-js-api){target=_blank}和[Python Substrate Interface组件](/builders/build/substrate-api/py-substrate-interface){target=_blank}提供开发者使用Javascript操作Substrate链的方法。
 
 给定一个交易哈希（`tx_hash`），以下代码片段会获取当前的最终区块，并将其与您提供的交易的区块高度进行比较。该代码依赖于来自 Substrate JSON-RPC的三个RPC请求：
 

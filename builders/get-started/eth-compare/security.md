@@ -26,11 +26,8 @@ description: 以太坊开发者在Moonbeam上进行开发时需要了解的安�
 正如之前所述，在Moonbeam上任意执行代码的一个主要问题是Moonbeam有一些可以被调用的预编译合约，这些合约可以用来绕过以太坊上通常有的一些保护措施。为了在Moonbeam上安全使用任意代码执行，您应该注意**仅适用于允许任意代码执行的合约的以下几点**：
 
 - 例如Native ERC-20预编译、XC-20预编译，和XCM相关的预编译等等的Moonbeam[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}允许用户在无需访问EVM的情况下也能管理和转移资产。然而，这些操作是通过原生Substrate代码完成的。所以，如果您的合约有原生Token或是XC-20并且允许任意代码执行的话，这些预编译可以绕过一般在EVM执行的安全检查，而用来盗窃合约内的余额
-
 - 在使用`call()`函数时将交易对象的值属性设定为固定额度（例如`call{value: 0}(...)`），这一步可以通过调用原生资产预编译以及在编码的调用数据中指定要转移的金额来绕过
-
 - 允许使用的合约的用户传入会在目标合约上执行任何函数的任意调用数据，特别是如果目标合约为预编译，是**不**安全的。为安全起见，您可以将您想要允许被执行的安全函数的函数选择器进行硬编码
-
 - 在执行任意调用数据的函数中将目标合约（包括预编译）列入黑名单也**不**认为是安全的，因为其他预编译可能会在未来被添加。在执行任意调用数据的函数中提供目标合约白名单可以认为是安全的，前提是被调用的合约不是预编译，或者如果是预编译，进行调用的合约不持有任何原生Token或XC-20
 
 在下面的章节中，您将通过示例了解每一个安全注意事项。
@@ -133,3 +130,17 @@ function transferFunds(address payable _target) payable public {
 通过batch（批量）预编译，用户可以原子地对一个合约执行多次调用。批处理函数的调用者将是`msg.sender`和`tx.origin`，一次性启用多个合约交互。
 
 使用call permit（调用许可）预编译，如果用户想在一次交易中多次与合约交互，他们可以通过为每个合约交互签署许可并在单个函数调用中分派所有许可来实现。这只会绕过调度员是否与许可签名者是同一个帐户的`tx.origin == msg.sender`检查。否则，`msg.sender`将成为许可签署者，而`tx.origin`将成为调度员，从而引发异常。
+
+## 可铸造XC-20 vs ERC-20 {: #mintable-xc-20s-vs-erc-20s }
+
+[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}是[XC-20](/builders/interoperability/xcm/xc20/overview){target=_blank}的一种形式，它直接在Moonbeam铸造和销毁。与所有XC-20一样，可铸造XC-20是Substrate资产，可以通过预编译合约ERC-20接口与之交互。特别对于可铸造XC-20，ERC-20接口扩展包括了一些[附加功能](/builders/interoperability/xcm/xc20/mintable-xc20/#additional-functions){target=_blank}，例如铸造和销毁token、冻结和解冻token和账户等。此附加功能类似于以太坊中标准ERC-20的扩展，例如[ERC20Mintable](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20Mintable){target=_blank}、[ERC20Burnable](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20Burnable){target=_blank}和[ERC20Pausable](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20Pausable){target=_blank}扩展，**但需要注意的是它们并不完全相同**。
+
+常见的以太坊ERC-20 [`burn`函数](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L277-L293){target=_blank}要求从中销毁token的帐户至少具有请求数量的token来销毁。也就是说，如果用户调用该函数试图销毁比他们实际拥有的要更多的token，则调用将失败。
+
+在Substrate中，功能不同，并且不存在该要求。因此，用户可能会在调用该函数时，用到比他们实际持有的token数量大得多的销毁数量，该调用会成功，但只会销毁他们持有的token数量。话虽如此，您将需要使用[require函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}手动要求该账户具有足够token，如下所示：
+
+```
+require(mintableERC20.balanceOf(from) >= value, "burn amount exceeds balance")
+```
+
+此外，还需要注意的是，对于可铸造XC-20，可以铸造的最大`value`（或总供应量）实际受限于*uint128*，而普通的可铸造ERC-20的总供应量上限为*uint256*。如果总供应量超过2^128（不带小数），可铸造XC-20将表现不同，铸币将因溢出检查而失败。这对于传统token来说不太可能发生，因为它们无意达到如此高的数量，但这很值得一提，因为这与标准的以太坊ERC-20不同。

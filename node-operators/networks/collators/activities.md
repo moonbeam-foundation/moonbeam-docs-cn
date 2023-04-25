@@ -63,12 +63,8 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 点击**Developer**标签，从下拉菜单中选择**JavaScript**，然后执行以下步骤：
 
- 1. 复制上述代码段并粘贴至代码编辑框内。
-
-    （可选）点击保存图标，并为代码段设置一个名称，如”Get candidatePool size“。这将在本地保存代码段
-
+ 1. 复制上述代码段并粘贴至代码编辑框内。（可选）点击保存图标，并为代码段设置一个名称，如”Get candidatePool size“。这将在本地保存代码段
  2. 点击运行图标，以执行编辑框内的代码
-
  3. 点击复制图标复制结果，将在加入候选人池时使用
 
 ![Get Number of Candidates](/images/node-operators/networks/collators/activities/activities-1.png)
@@ -95,7 +91,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）{target=_blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
-想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求并不会自动将您从候选人池中移除，您需要等待[退出生效期](#collator-timings)，才能够执行请求并停止参与收集活动。在等待具体轮次数的过程中，如果您在有效集中，您仍有资格生产区块和获取奖励。
+想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求自动将您从收集人有效集中移除，因此您将不再有资格生产区块或获得奖励。您需要等待[退出生效期](#collator-timings)，才能够执行离开请求。在等待完退出生效期并执行请求后，您将从候选人池中移除。
 
 类似[Polkadot's `chill()`](https://wiki.polkadot.network/docs/maintain-guides-how-to-chill){target=_blank}功能，无需解绑您的Token，您可以[暂时离开候选人池](#temporarily-leave-the-candidate-pool)。
 
