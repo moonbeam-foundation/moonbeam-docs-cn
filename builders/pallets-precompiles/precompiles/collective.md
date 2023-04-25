@@ -1,6 +1,8 @@
 ---
 title: 团体预编译合约
+
 description: 学习如何使用Moonbeam团体预编译通过理事会、技术委员会或财政库委员会团体执行民主功能
+
 keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbeam, 预编译, 合约
 ---
 
@@ -12,32 +14,34 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 团体预编译能够使用户直接从Solidity接口与[Substrate的团体pallet](https://paritytech.github.io/substrate/master/pallet_collective/index.html){target=_blank}交互。
 
-团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。举例来说，Moonbeam有三个团体：理事会团体、技术委员会团体和财政库委员会团体。因此，每个团体都有一个预编译。关于理事会和技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=_blank}页面。
+团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。举例来说，Moonriver有四个团体：理事会团体、技术委员会团体，财政库委员会团体和OpenGov技术委员会团体（用于把OpenGov提案列入白名单）。因此，每个团体都有一个预编译。关于理事会，技术委员会和OpenGov技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=_blank}页面。
 
 本教程将向您展示如何使用团体预编译进行提议、投票、结束提案。
 
 团体预编译位于以下地址：
 
 === "Moonbeam"
-     |     团体      |                           地址                            |
-     |:-------------------:|:------------------------------------------------------------:|
-     |       理事会       |    {{networks.moonbeam.precompiles.collective_council }}     |
-     | 技术委员会 | {{networks.moonbeam.precompiles.collective_tech_committee }} |
-     |  财政库委员会   |    {{networks.moonbeam.precompiles.collective_treasury }}    |
+     |     团体     |                             地址                             |
+     |:------------:|:------------------------------------------------------------:|
+     |    理事会    |    {{networks.moonbeam.precompiles.collective_council }}     |
+     |  技术委员会  | {{networks.moonbeam.precompiles.collective_tech_committee }} |
+     | 财政库委员会 |    {{networks.moonbeam.precompiles.collective_treasury }}    |
 
 === "Moonriver"
-     |     团体      |                            地址                            |
-     |:-------------------:|:-------------------------------------------------------------:|
-     |       理事会       |    {{networks.moonriver.precompiles.collective_council }}     |
-     | 技术委员会 | {{networks.moonriver.precompiles.collective_tech_committee }} |
-     |  财政库委员会   |    {{networks.moonriver.precompiles.collective_treasury }}    |
+     |            团体             |                                 地址                                  |
+     |:---------------------------:|:---------------------------------------------------------------------:|
+     |           理事会            |        {{networks.moonriver.precompiles.collective_council }}         |
+     |         技术委员会          |     {{networks.moonriver.precompiles.collective_tech_committee }}     |
+     |        财政库委员会         |        {{networks.moonriver.precompiles.collective_treasury }}        |
+     |      OpenGov技术委员会      | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
 
 === "Moonbase Alpha"
-     |     团体      |                           地址                            |
-     |:-------------------:|:------------------------------------------------------------:|
-     |       理事会       |    {{networks.moonbase.precompiles.collective_council }}     |
-     | 技术委员会 | {{networks.moonbase.precompiles.collective_tech_committee }} |
-     |  财政库委员会   |    {{networks.moonbase.precompiles.collective_treasury }}    |
+     |            团体             |                                 地址                                 |
+     |:---------------------------:|:--------------------------------------------------------------------:|
+     |           理事会            |        {{networks.moonbase.precompiles.collective_council }}         |
+     |         技术委员会          |     {{networks.moonbase.precompiles.collective_tech_committee }}     |
+     |        财政库委员会         |        {{networks.moonbase.precompiles.collective_treasury }}        |
+     |      OpenGov技术委员会      | {{networks.moonbase.precompiles.collective_opengov_tech_committee }} |
 
 --8<-- 'text/precompiles/security.md'
 
@@ -106,9 +110,9 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 ![Compiling Collective.sol](/images/builders/pallets-precompiles/precompiles/collective/collective-2.png)
 
-### 访问合约 {: #access-the-contract }
+### 获取合约 {: #access-the-contract }
 
-1. 点击Remix中**Compile**正下方的**Deploy and Run**标签。请注意，您不是在此处部署合约，而是访问已经部署的预编译合约
+1. 点击Remix中**Compile**正下方的**Deploy and Run**标签。请注意，您不是在此处部署合约，而是获取已经部署的预编译合约
 2. 确保在**ENVIRONMENT**下拉菜单中选择**Injected Provider - Metamask**
 3. 确保在**CONTRACT**下拉菜单中选择**Collective - Collective.sol**。因为这是一个预编译合约，因此无需部署，相反您需要在**At Address**字段中提供预编译的地址
 4. 提供团体预编译的地址`{{networks.moonbase.precompiles.collective_treasury}}`并点击**At Address**

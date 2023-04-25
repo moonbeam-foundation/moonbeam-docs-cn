@@ -1,0 +1,5 @@
+title: 提交民主提案
+nav:
+  - index.md
+  - 'Governance v1': 'proposals.md'
+  - 'OpenGov (Governance v2)': 'opengov-proposals.md'

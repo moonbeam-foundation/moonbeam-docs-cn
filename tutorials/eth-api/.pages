@@ -1,0 +1,7 @@
+title: 以太坊API
+hide: false
+nav:
+  - index.md
+  - '[Foundry]从开始到结束的开发生命周期': 'foundry-start-to-end.md'
+  - '[Precompiles] 通过批处理预编译进行授权和兑换': 'batch-approve-swap.md'
+  - '[Truffle]从开始到结束的开发生命周期': 'truffle-start-to-end.md'

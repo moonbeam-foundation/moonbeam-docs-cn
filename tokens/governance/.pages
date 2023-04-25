@@ -1,5 +1,6 @@
 title: 治理
 nav:
   - index.md
-  - '发送提案': 'proposals.md'
-  - '提案投票': 'voting.md'
+  - 'proposals'
+  - 'voting'
+  - '发起财政库支出提案': 'treasury-spend.md'

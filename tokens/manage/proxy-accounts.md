@@ -19,7 +19,7 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 在操作本教程之前，您需要准备：
 
-- 打开[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer)并已连接至Moonbase Alpha
+- 打开[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer)并已连接至Moonbase Alpha
 - 在Moonbase Alpha上创建或拥有2个账户
 - 至少有一个账户拥有`DEV` Token
 --8<-- 'text/faucet/faucet-list-item.md'

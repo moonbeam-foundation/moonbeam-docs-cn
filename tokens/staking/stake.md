@@ -55,7 +55,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 您可以使用Polkadot.js Apps查看任何常量质押数值，例如最大委托数量、最低质押要求、委托请求的退出延迟等。
 
-为此，您可以导航至Polkadot.js Apps的**Chain State**界面，本教程会连接至[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/chainstate){target=_blank}，但也可以链接至[Moonbeam](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbeam.network/#chainstate){target=_blank}或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonriver.moonbeam.network/#chainstate){target=_blank}。
+为此，您可以导航至Polkadot.js Apps的**Chain State**界面，本教程会连接至[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}，但也可以链接至[Moonbeam](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network/#chainstate){target=_blank}或是[Moonriver](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network/#chainstate){target=_blank}。
 
 接着，为了检索各种质押参数，请在**Chain State**界面选取**Constants**标签，并执行以下步骤：
 
@@ -103,7 +103,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ### 获取候选人自动复合委托数量 {: #get-candidate-auto-compounding-count }
 
-自动复合委托计数是配置了自动复合的委托数量。要确定设置了自动复合的委托数量，您可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js){target=_blank}上使用以下代码段查询候选人的自动复合委托：
+自动复合委托计数是配置了自动复合的委托数量。要确定设置了自动复合的委托数量，您可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=_blank}上使用以下代码段查询候选人的自动复合委托：
 
 ```js
 // Simple script to get the number of auto-compounding delegations for a given candidate.
@@ -124,7 +124,7 @@ console.log(autoCompoundingDelegations.toHuman().length);
 
 ### 获取目前委托数据 {: #get-your-number-of-existing-delegations }
 
-如果您从来没有从这个账户进行委托，您可以跳过这步。但是如果您不确定您目前有多少个委托，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/js){target=_blank}运行以下的Javascript代码段来获取`delegationCount`：
+如果您从来没有从这个账户进行委托，您可以跳过这步。但是如果您不确定您目前有多少个委托，您可以从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=_blank}运行以下的Javascript代码段来获取`delegationCount`：
 
 ```js
 // Simple script to get your number of existing delegations.

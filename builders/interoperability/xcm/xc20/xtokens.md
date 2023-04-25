@@ -71,9 +71,9 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 要在Polikadot.js Apps上发送extrinsics，您需要准备以下内容：
 
-- 一个[已添加至Polkadot.js的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/accounts){target=_blank}，且该账户拥有一些[DEV tokens](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
+- 一个[已添加至Polkadot.js的账户](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，且该账户拥有一些[DEV tokens](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
 - 您要转移资产的资产ID：
-    - 对于外部XC-20，您可以从[Polkadot.js Apps的资产ID列表](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/assets){target=_blank}中获取
+    - 对于外部XC-20，您可以从[Polkadot.js Apps的资产ID列表](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}中获取
     - 对于可铸造XC-20，请查阅[获取可铸造XC-20资产的列表](/builders/interoperability/xcm/xc20/mintable-xc20/#retrieve-list-of-mintable-xc-20s){target=_blank}部分
 - 您要转移资产的位数：
     - 对于外部XC-20，请查阅[获取外部XC-20资产的元数据](/builders/interoperability/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}部分
@@ -95,9 +95,9 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 ###  X-Tokens转移函数 {: #xtokens-transfer-function}
 
-在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
+在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
-导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项（也可以适用于[可铸造XC-20s](/builders/interoperability/xcm/xc20/mintable-xc20/){target=_blank}）：
+导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项（也可以适用于[可铸造XC-20s](/builders/interoperability/xcm/xc20/mintable-xc20/){target=_blank}）：
 
 1. 选取您希望转移XCM的账户
 2. 选择**xTokens** pallet
@@ -125,13 +125,13 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 ![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-2.png)
 
-当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣除用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
+当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣除用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
 
 ### X-Tokens转移多种资产函数 {: #xtokens-transfer-multiasset-function}
 
-在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transferMultiasset`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
+在本示例中，您将会构建一个XCM信息，通过x-tokens pallet的`transferMultiasset`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
-导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项：
+导航至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}的extrinsic页面，并设定以下选项：
 
 1. 选取您希望转移XCM的账户
 
@@ -181,7 +181,7 @@ X-tokens pallet包括以下用于获取pallet常量的只读函数：
 
 ![XCM x-tokens Transfer Extrinsic](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-3.png)
 
-当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣取用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
+当交易正在处理中，**TargetAccount**将会获取设定的转移数量并扣取用于在目标链上执行XCM的小额费用。在Polkadot.js Apps，您可以查看[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/0xf163f304b939bc10b6d6abcd9fd12ea00b6f6cd3f12bb2a32b759b56d2f1a40d){target=_blank}以及[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x5b997e806303302007c6829ab8e5b166a8aafc6a68f10950cc5aa8c6981ea605){target=_blank}的相关extrinsics和事件。
 
 ## X-Tokens预编译 {: #xtokens-precompile}
 
