@@ -1,6 +1,6 @@
 ---
-title: Integration Tutorials
-description: Get ahead with third-party integrations on Moonbeam! Our tutorials cover everything you need to know to integrate seamlessly. Explore now and start building!
+title: 集成教程
+description: 在Moonbeam上进行第三方集成！我们的教程涵盖了无缝集成所需了解的一切。立即来探索并开始构建吧！
 template: subsection-index-page.html
 hide: 
  - toc

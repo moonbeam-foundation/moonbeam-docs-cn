@@ -1,5 +1,5 @@
 ---
-title: 用Hardhat部署只能合约
+title: 用Hardhat部署智能合约
 description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以太坊智能合约。
 ---
 

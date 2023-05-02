@@ -9,23 +9,15 @@ description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate
 
 ## 概览 {: #introduction }
 
-[Subsquid](https://subsquid.io){target=_blank} is a query node framework for Substrate-based blockchains. In very simple terms, Subsquid can be thought of as an ETL (extract, transform, and load) tool with a GraphQL server included. It enables comprehensive filtering, pagination, and even full-text search capabilities.
+[Subsquid](https://subsquid.io){target=_blank}是基于Substrate的区块链所使用的一种检索节点框架。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（Extract-Transform-Load，数据提取、转换与加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。
 
-[Subsquid](https://subsquid.io){target=_blank}为基于Substrate区块链所使用的检索节点框架。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（提取、转换和加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。
+Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整支持。由于Moonbeam是一个基于Substrate的EVM兼容的智能合约平台，Subsquid可用于索引EVM的和基于Substrate的数据。Subsquid提供了一个Substrate Archive和Processor，还有一个EVM Archive和Processor。 Substrate Archive和Processor可用于索引Substrate和EVM数据。这使得开发者在单个项目中可以从任何Moonbeam网络中提取链上数据并处理EVM记录和Substrate实体（事件、extrinsics和储存项），并利用单个GraphQL端点提供搜索结果的相关数据。如果你只想索引EVM数据，推荐使用EVM Archive和Processor。
 
-Subsquid has native and full support for both Ethereum Virtual Machine (EVM) and Substrate data. Since Moonbeam is a Substrate-based smart contact platform that is EVM-compatible, Subsquid can be used to index both EVM and Substrate-based data. Subsquid offers a Substrate Archive and Processor and an EVM Archive and Processor. The Substrate Archive and Processor can be used to index both Substrate and EVM data. This allows developers to extract on-chain data from any of the Moonbeam networks and process EVM logs as well as Substrate entities (events, extrinsics, and storage items) in one single project and serve the resulting data with one single GraphQL endpoint. If you exclusively want to index EVM data, it is recommended to use the EVM Archive and Processor.
-
-Subsquid具有来自以太坊虚拟机（EVM）和Substrate数据的原生完整支持，允许开发者在任何Moonbeam网络中的任何项目提取链上数据并运行EVM记录和Substrate实体（事件、extrinsics和储存项），并利用单一个GraphQL端点提供搜索结果的相关数据。通过Subsquid，开发者既能够根据EVM主题、合约地址以及区块编号进行筛选。
-
-This guide will show you how to create Substrate and EVM projects with Subsquid and configure it to index data on Moonbeam. 
-
-本教程将会包含如何在Moonriver网络上创建一个Subsquid项目（也就是*“Squid"*）检索ERC-721 Token的转移记录。因此，您将会专注于`Transfer` EVM事件主题中。此教程也同样适用于Moonbeam或Moonbase Alpha。
+本指南将向您展示如何使用Subsquid创建Substrate和EVM项目，并将其配置为可以在Moonbeam上索引数据。
 
 --8<-- 'text/disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
-
-To get started with Subsquid, you'll need to have the following:
 
 要顺利运行Squid项目，您需要安装以下软件：
 
@@ -33,22 +25,22 @@ To get started with Subsquid, you'll need to have the following:
 - [Docker](https://docs.docker.com/get-docker/){target=_blank}
 - [Squid CLI](https://docs.subsquid.io/squid-cli/installation/){target=_blank} 版本2.1.0及后续版本
 
-!!! note
-    The squid template is not compatible with `yarn`, so you'll need to use `npm` instead.
+!!! 注意事项
+    squid模板与`yarn`不兼容，因此您需要改用`npm`。
 
-## Index Substrate Data on Moonbeam {: #index-substrate-calls-events }
+## 索引Moonbeam上的Substrate数据 {: #index-substrate-calls-events }
 
-To get started indexing Substrate data on Moonbeam, you'll need to create a Subsquid project and configure it for Moonbeam by taking the following steps:
+要开始索引Moonbeam上的Substrate数据，您需要创建一个Subsquid项目并按照以下步骤为Moonbeam配置它：
 
-1. Create a Subsquid project based on the Substrate template by running:
+1. 通过运行以下命令创建基于Substrate模板的Subsquid项目：
 
     ```
     sqd init <insert-squid-name> --template substrate
     ```
 
-    For more information on getting started with this template, please check out the [Quickstart: Substrate chains](https://docs.subsquid.io/quickstart/quickstart-substrate/){target=_blank} guide on Subsquid's documentation site.
+    有关开始使用此模板的更多信息，请查看Subsquid文档网站上的[快速入门：Substrate链](https://docs.subsquid.io/quickstart/quickstart-substrate/){target=_blank}指南。
 
-2. To configure your Subsquid project to run on Moonbeam, you'll need to update the `typegen.json` file. The `typegen.json` file is responsible for generating TypeScript interface classes for your data. Depending on the network you're indexing data on, the `specVersions` value in the `typegen.json` file should be configured as follows:
+2. 要配置您的Subsquid项目以在Moonbeam上运行，您需要更新`typegen.json`文件。`typegen.json`文件负责为您的数据生成TypeScript接口类。根据您在其上索引数据的网络，`typegen.json`文件中的`specVersions`值应配置如下：
 
     === "Moonbeam"
         ```
@@ -65,7 +57,7 @@ To get started indexing Substrate data on Moonbeam, you'll need to create a Subs
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
-3. Modify the `src/processor.ts` file, which is where squids instantiate the processor, configure it, and attach handler functions. The processor fetches historical on-chain data from an [Archive](https://docs.subsquid.io/archives/overview/){target=_blank}, which is a specialized data lake. You'll need to configure your processor to pull data from the Archive that corresponds to the network you are indexing data on:
+3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
     === "Moonbeam"
         ```
@@ -97,13 +89,13 @@ To get started indexing Substrate data on Moonbeam, you'll need to create a Subs
         });
         ```
 
-And that's all you have to do to configure your Subsquid project to index Substrate data on Moonbeam! Now you can update the `schema.graphql`, `typgen.json`, and `src/processor.ts` files to index the data you need for your project!
+这就是配置Subsquid项目以索引Moonbeam上的Substrate数据所需要做的全部工作！现在您可以更新`schema.graphql`、`typgen.json`和`src/processor.ts`文件来索引项目所需的数据！
 
-## Index Ethereum Data on Moonbeam {: #index-ethereum-contracts }
+## 索引Moonbeam上的以太坊数据 {: #index-ethereum-contracts }
 
-To get started indexing EVM data on Moonbeam, you'll need to create a Subsquid project and configure it for Moonbeam by taking the following steps:
+要开始索引Moonbeam上的EVM数据，您需要创建一个Subsquid项目并按照以下步骤为Moonbeam配置它：
 
-1. You can create a Subsquid project for EVM data by using the generic [EVM template](https://github.com/subsquid-labs/squid-evm-template){target=_blank} or you can use the [ABI template](https://github.com/subsquid-labs/squid-abi-template){target=_blank} for indexing data related to a specific contract:
+1. 您可以使用通用[EVM 模板](https://github.com/subsquid-labs/squid-evm-template){target=_blank}为EVM数据创建Subsquid项目，也可以使用[ABI模板](https://github.com/subsquid-labs/squid-abi-template){target=_blank}用于索引与特定合约相关的数据：
 
     === "EVM"
         ```
@@ -115,12 +107,12 @@ To get started indexing EVM data on Moonbeam, you'll need to create a Subsquid p
         sqd init <insert-squid-name> --template abi
         ```
 
-    For more information on getting started with both of these templates, please check out the following Subsquid docs:
+    有关开始使用这两个模板的更多信息，请查看以下Subsquid文档：
 
-      - [Quickstart: EVM chains](https://docs.subsquid.io/quickstart/quickstart-ethereum/){target=_blank}
-      - [Quickstart: generate from ABI](https://docs.subsquid.io/quickstart/quickstart-abi/){target=_blank}
+      - [快速入门：EVM链](https://docs.subsquid.io/quickstart/quickstart-ethereum/){target=_blank}
+      - [快速入门：从ABI生成](https://docs.subsquid.io/quickstart/quickstart-abi/){target=_blank}
 
-2. To configure your Subsquid project to run on Moonbeam, you'll need to update the `typegen.json` file. The `typegen.json` file is responsible for generating TypeScript interface classes for your data. Depending on the network you're indexing data on, the `specVersions` value in the `typegen.json` file should be configured as follows:
+2. 要配置您的Subsquid项目以在Moonbeam上运行，您需要更新`typegen.json`文件。`typegen.json`文件负责为您的数据生成TypeScript接口类。根据您在其上索引数据的网络，`typegen.json`文件中的`specVersions`值应配置如下：
 
     === "Moonbeam"
         ```
@@ -137,7 +129,7 @@ To get started indexing EVM data on Moonbeam, you'll need to create a Subsquid p
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
-3. Modify the `src/processor.ts` file, which is where squids instantiate the processor, configure it, and attach handler functions. The processor fetches historical on-chain data from an [Archive](https://docs.subsquid.io/archives/overview/){target=_blank}, which is a specialized data lake. You'll need to configure your processor to pull data from the Archive that corresponds to the network you are indexing data on:
+3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
     === "Moonbeam"
         ```
@@ -169,8 +161,8 @@ To get started indexing EVM data on Moonbeam, you'll need to create a Subsquid p
         });
         ```
 
-And that's all you have to do to configure your Subsquid project to index EVM data on Moonbeam! Now you can update the `schema.graphql`, `typgen.json`, and `src/processor.ts` files to index the data you need for your project!
+这就是配置Subsquid项目以索引Moonbeam上的EVM数据所需要做的全部工作！现在您可以更新`schema.graphql`、`typgen.json`和`src/processor.ts`文件来索引项目所需的数据！
 
-If you're interested in a step-by-step tutorial to get started indexing data on Moonbeam, you can check out the [Index NFT Token Transfers on Moonbeam with Subsquid](/tutorials/integrations/nft-subsquid){target=_blank} tutorial!
+如果您对开始索引在Moonbeam上数据的分步教程感兴趣，可以查看[使用Subsquid索引在Moonbeam上的NFT代币转账](/tutorials/integrations/nft-subsquid){target=_blank}教程！
 
 --8<-- 'text/disclaimers/third-party-content.md'
