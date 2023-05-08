@@ -225,7 +225,7 @@ Once these steps are completed succesfully, marketing efforts can be coordinated
 
 ## Forum Templates - 论坛示例 {: #forum-templates }
 
-When starting an XCM integration on Moonriver or Moonbeam MainNet, there are two preliminary posts that must be made on the [Moonbeam Community Forum](https://forum.moonbeam.foundation/){target=_blank} so that the voting community has the chance to provide feedback.
+When starting an XCM integration on Moonriver or Moonbeam MainNet, there are two preliminary posts that must be made on the [Moonbeam Community Forum](https://forum.moonbeam.foundation/){target=_blank} so that the voting community has the chance to provide feedback. This step is **not necessary** when connecting to Moonbase Alpha.
 
 在Moonriver或Moonbeam主网上开始创建XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布两个主要的帖子，以便投票的社区提供反馈。
 
@@ -635,7 +635,7 @@ Running the command below will provide the encoded calldata to register your cro
     --ed 1 --sufficient true --revert-code true 
     ```
 
-Existential deposit and sufficiency for Moonbeam-based assets is always set to 1 and `true` respectively, similar to an ERC-20 on Ethereum. The `--revert-code` flag refers to a simple EVM bytecode that is set in the [XC-20](/builders/interoperability/xcm/xc20/){target=_blank} storage element so that other smart contracts can easily interact with the XC-20.
+Existential deposit, `--ed`, is always set to 1. Sufficiency, `--sufficient`, is always set to `true`. This is so that the XC-20 assets on Moonbeam can act similar to an ERC-20 on Ethereum. The `--revert-code` flag refers to a simple EVM bytecode that is set in the [XC-20](/builders/interoperability/xcm/xc20/){target=_blank} storage element so that other smart contracts can easily interact with the XC-20. You can ensure that these values are properly included by checking for them in Polkadot.js apps with the resultant encoded calldata.
 
 基于Moonbeam的资产的最低账户余额和充足性分别设置为1和`true`，类似于以太坊上的ERC-20。`--revert-code`标志是指在[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}存储元素中设置的简单EVM字节码，以便其他智能合约可以轻松与XC-20交互。
 
