@@ -686,9 +686,12 @@ Running the command below will provide the encoded calldata to register your cro
     --ed 1 --sufficient true --revert-code true 
     ```
 
-Existential deposit, `--ed`, is always set to 1. Sufficiency, `--sufficient`, is always set to `true`. This is so that the XC-20 assets on Moonbeam can act similar to an ERC-20 on Ethereum. The `--revert-code` flag refers to a simple EVM bytecode that is set in the [XC-20](/builders/interoperability/xcm/xc20/){target=_blank} storage element so that other smart contracts can easily interact with the XC-20. You can ensure that these values are properly included by checking for them in Polkadot.js apps with the resultant encoded calldata.
+Existential deposit, `--ed`, is always set to 1. Sufficiency, `--sufficient`, is always set to `true`. This is so that the XC-20 assets on Moonbeam can act similar to an ERC-20 on Ethereum. The `--revert-code` flag refers to a simple EVM bytecode that is set in the [XC-20](/builders/interoperability/xcm/xc20/){target=_blank} storage element so that other smart contracts can easily interact with the XC-20 (**only needed for [Governance V1](/learn/features/governance#governance-v1){target=_blank} proposals**). You can ensure that these values are properly included by checking for them in [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank} with the resultant encoded calldata.
 
 基于Moonbeam的资产的最低账户余额和充足性分别设置为1和`true`，类似于以太坊上的ERC-20。`--revert-code`标志是指在[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}存储元素中设置的简单EVM字节码，以便其他智能合约可以轻松与XC-20交互。
+
+!!! remember "Warning"
+    For chains with [OpenGov](/learn/features/governance#opengov){target=_blank}, the `--revert-code true` flag was removed. This flag includes a `system.setStorage` call that the General Admin origin can't execute. The dummy EVM bytecode can be set later with a call to the Precompile Registry precompile.
 
 For example, the following command would be for registering an asset from parachain 888, with an asset that has a general key of `1`:  
 
@@ -700,7 +703,7 @@ yarn register-asset -w wss://wss.api.moonbase.moonbeam.network \
 --symbol "xcEXTN" --decimals 18 \
 --name "Example Token" \
 --units-per-second 20070165297881393351 \ 
---ed 1 --sufficient true --revert-code true 
+--ed 1 --sufficient true
 ```
 
 Its output would look like the following:  
