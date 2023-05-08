@@ -407,7 +407,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 资产注册后，团队需确认。另外，团队将提供资产ID，[XC-20预编译](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}地址，并设置`UnitsPerSecond`，即每秒执行XCM消息所需的Token数量。在注册时，XCM转账的目标成本为`$0.02`。`UnitsPerSecond`可能会随着Token价格的波动而更新。
 
-您的XC-20预编译地址是通过将资产ID十进制数字转换为十六进制来计算的，并在前面加上F，直到您获得加上“0x"后达到40个字符长度的地址。关于如何计算XC-20预编译，请参考外部XC-20教程的[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}的部分。
+您的XC-20预编译地址是通过将资产ID十进制数字转换为十六进制来计算的，并在前面加上F，直到您获得加上“0x"后达到40个字符长度的地址。关于如何计算XC-20预编译，请参考外部XC-20教程的[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=_blank}的部分。
 
 当资产成功注册后，您可以尝试将您的Token从平行链转移至Moonbase Alpha。
 

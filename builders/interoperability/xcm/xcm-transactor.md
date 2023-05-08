@@ -116,11 +116,9 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080
 ```
 
-如果您对如何计算预编译地址感兴趣，您可以查看以下教程：
+If you're interested in how the precompile address is calculated, you can check out the [Calculate External XC-20 Precompile Addresses](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=_blank} guide.
 
-- [计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
-- [计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
-
+如果您对如何计算预编译地址感兴趣，您可以查看以下教程：[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=_blank}
 
 ### 构建XCM {: #xcm-transact-through-derivative }
 
@@ -140,7 +138,7 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 7. 将currency ID设置为**ForeignAsset**。因为您转移的不是DEV token（*自身储备*），而是与XC-20资产交互
 
-8. 输入asset ID。在本示例中，`xcUNIT`的资产ID为`42259045809535163221576417993425387648`。您可以在[XC-20地址部分](/builders/interoperability/xcm/xc20/xc20/#current-xc20-assets){target=_blank}获取所有可用的资产ID
+8. 输入asset ID。在本示例中，`xcUNIT`的资产ID为`42259045809535163221576417993425387648`。您可以在[XC-20地址部分](/builders/interoperability/xcm/xc20/overview/#current-xc20-assets){target=_blank}获取所有可用的资产ID
 
 9. （可选）设置**feeAmount**。这是所选费用Token（XC-20）的每秒单位，将被销毁以释放目标链上主权账户中的相应余额。在本示例中，将每秒单位设置为`13764626000000` 。若您未提供此数值，pallet将使用存储库中的元素（若有）
 

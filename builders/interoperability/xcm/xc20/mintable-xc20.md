@@ -9,7 +9,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 ## 概览 {: #introduction }
 
-如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/interoperability/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/interoperability/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
+如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/interoperability/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/interoperability/xcm/xc20/overview/#external-xc20s){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
 
 所有XC-20核心皆为Substrate类型资产。一般而言，开发者需要通过Substrate API与任何Substrate资产交互。然而，Moonbeam移除了Substrate的相关部分并让用户和开发者能够通过预编译合约的ERC-20接口与此类资产交互。因此，开发者能够使用标准的以太坊开发者工具与这些资产交互。可铸造XC-20包含ERC-20接口的扩展以及一些关于管理资产和元数据设置（如名称、象征和资产小数位数等）的信息。此外，同样有一些额外的角色供资产进行注册和管理。
 
@@ -71,7 +71,9 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 要获取Moonbase Alpha测试网上目前可用的可铸造XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。不同于外部XC-20资产，可铸造XC-20资产并不会在**Assets**栏位下出现。要查询可用的可铸造XC-20资产，您需要导向至**Developer**标签，并在下拉菜单中选择**Chain State**，然后跟随以下步骤：
 
 1.   在**selected state query**下拉菜单中，选择**localAssets**
---8<-- 'text/xc-20/list-of-assets.md'
+2. 选择 **asset** extrinsic
+3. 关掉 **include option** 滑块
+4. 点击 **+** 按钮发送查询
 
 ![Fetch list of cross-chain assets](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-1.png)
 
@@ -82,7 +84,10 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 要快速获得特定可铸造XC-20资产的相关信息（如名称、符号等）您可以使用**metadata** extrinsic以获得其元数据。举例而言，您可以使用资产ID`144992676743556815849525085098140609495`，并跟随以下步骤进行操作：
 
 1. 在**selected state query**下拉菜单中，选择**localAssets**
---8<-- 'text/xc-20/retrieve-metadata.md'
+2. 选择 **asset** extrinsic
+3. 关掉 **include option** 滑块
+4. 输入调用 **asset** extrinsic返回的资产ID。请注意，如果您复制并粘贴带有逗号的资产ID，则逗号将被自动删除，并且数字可能会被截断。确保它与资产ID完全相同
+5. 点击 **+** 按钮发送查询
 
 ![Get asset metadata](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-2.png)
 

@@ -39,12 +39,13 @@
 
 接着，根据选择器及其数据类型，以下字节对应于提供的实际数据。请注意在Polkadot.js Apps示例中出现的`AccountId32`，`AccountIndex64`和`AccountKey20`，`network`将会在最后添加。如下所示：
 
-|    Selector    |       Data Value       |        Represents         |
-|:--------------:|:----------------------:|:-------------------------:|
-|   Parachain    |    "0x00+000007E7"     |     Parachain ID 2023     |
-|  AccountId32   | "0x01+AccountId32+00"  | AccountId32, Network Any  |
-|  AccountKey20  | "0x03+AccountKey20+00" | AccountKey20, Network Any |
-| PalletInstance |       "0x04+03"        |     Pallet Instance 3     |
+|    Selector    |       Data Value       |             Represents             |
+|:--------------:|:----------------------:|:----------------------------------:|
+|   Parachain    |    "0x00+000007E7"     |         Parachain ID 2023          |
+|  AccountId32   | "0x01+AccountId32+00"  | AccountId32, Network(Option) Null  |
+|  AccountId32   | "0x01+AccountId32+02"  |   AccountId32, Network Polkadot    |
+|  AccountKey20  | "0x03+AccountKey20+00" | AccountKey20, Network(Option) Null |
+| PalletInstance |       "0x04+03"        |         Pallet Instance 3          |
 
 !!! 注意事项
     `interior`数据通常需要使用引号包含。如果您未遵循此规则，您将会获得`invalid tuple value`错误。

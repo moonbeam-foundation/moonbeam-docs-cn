@@ -42,7 +42,7 @@ XCM-utils预编译合约为开发者提供了直接在EVM中与XCM相关的实�
 
  - **multilocationToAddress**(*Multilocation memory* multilocation) — 只读函数，为给定multilocation返回multilocation的衍生账户
  - **weightMessage**(*bytes memory* message) — 只读函数，返回XCM消息将在链上消耗的权重。消息参数必须为SCALE编码的XCM版本化的XCM消息
- - **getUnitsPerSecond**(*Multilocation memory* multilocation) — 只读函数，为以`Multilocation`形式给定的资产获取每秒单位数。multilocation必须描述一个可以支持作为费用支付的资产，例如[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}，否则此函数将回退当前调用(revert)
+ - **getUnitsPerSecond**(*Multilocation memory* multilocation) — 只读函数，为以`Multilocation`形式给定的资产获取每秒单位数。multilocation必须描述一个可以支持作为费用支付的资产，例如[外部XC-20](/builders/interoperability/xcm/xc20/overview/#external-xc20s){target=_blank}，否则此函数将回退当前调用(revert)
 
 在XCM-utils预编译中的`Multilocation`结构构建与[XCM-transactor预编译的Multilocation](/builders/interoperability/xcm/xcm-transactor#building-the-precompile-multilocation){target=_blank}相同。
 
