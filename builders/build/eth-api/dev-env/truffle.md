@@ -285,4 +285,118 @@ module.exports = function (deployer) {
 
     ![Successful contract deployment actions](/images/builders/build/eth-api/dev-env/truffle/truffle-7.png)
 
+## 使用Ganache进行分叉 {: #forking-with-ganache }
+
+[Ganache](https://trufflesuite.com/ganache/){target=_blank}是Truffle开发工具套件的一部分，是您用于本地开发和测试的个人区块链。您可以使用Ganache分叉Moonbeam，这将在本地模拟实时网络，使您能够在本地测试环境中与已经部署在Moonbeam上的合约交互。
+
+使用Ganache分叉时需要注意一些限制。由于Ganache是基于EVM实现，因此您无法与任何Moonbeam的预编译合约及其功能交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。从而，您无法与在Moonbeam上的跨链资产和基于Substrate的功能（如质押和治理）进行交互。
+
+在Truffle项目中，您可以通过运行以下命令安装Ganache CLI：
+
+```
+npm install ganache
+```
+
+然后，您可以添加脚本以在`package.json`文件中运行Ganache分叉：
+
+=== "Moonbeam"
+
+    ```json
+    ...
+    "scripts": {
+      "ganache": "ganache --fork.url {{ networks.moonbeam.rpc_url }}"
+    },
+    ...
+    ```
+
+=== "Moonriver"
+
+    ```json
+    ...
+    "scripts": {
+      "ganache": "ganache --fork.url {{ networks.moonriver.rpc_url }}"
+    },
+    ...
+    ```
+
+=== "Moonbase"
+
+    ```json
+    ...
+    "scripts": {
+      "ganache": "ganache --fork.url {{ networks.moonbase.rpc_url }}"
+    },
+    ...
+    ```
+
+当您启动分叉的实例时，您将拥有10个预注资1,000个测试Token的开发账户。分叉实例位于`http://127.0.0.1:8545/`。终端输出应类似于如下内容：
+
+![Forking terminal screen](/images/builders/build/eth-api/dev-env/truffle/truffle-8.png)
+
+要验证您是否已经分叉好网络，您可以查询最新区块号：
+
+```
+curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
+```
+
+如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=_blank}交叉查询区块号。
+
+在这里，您可以部署新的合约到您的Moonbeam分叉实例，或者通过创建已部署合约的本地实例与已部署合约交互。
+
+要与已部署合约交互，您可以使用Ethers.js或Web3.js在`scripts`目录中创建新脚本。首先，您将需要安装你选择的JavaScript库：
+
+=== "Ethers.js"
+    ```
+    npm install ethers
+    ```
+
+=== "Web3.js"
+    ```
+    npm install web3
+    ```
+
+然后，您可以创建一个新脚本来访问网络上的实时合约：
+
+=== "Ethers.js"
+
+    ```js
+    const ethers = require("ethers");
+    
+    async function main() {
+      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545/");
+      
+      const contract = new ethers.Contract(
+          'INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI', provider
+      );
+    }
+    
+    main().catch((error) => {
+      console.error(error);
+      process.exitCode = 1;
+    });
+    ```
+
+=== "Web3.js"
+
+    ```js
+    const Web3 = require("web3");
+    
+    async function main() {
+      const web3 = new Web3("http://127.0.0.1:8545/");
+      
+      const contract = new web3.eth.Contract('INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI');
+    }
+    
+    main().catch((error) => {
+      console.error(error);
+      process.exitCode = 1;
+    });
+    ```
+
+要运行脚本，您可以使用以下命令：
+
+```
+truffle exec INSERT-PATH-TO-FILE
+```
+
 --8<-- 'text/disclaimers/third-party-content.md'
