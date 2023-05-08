@@ -540,7 +540,7 @@ const response = await from(polkadot).get(
 |       `asset`        |                   被转移的[资产](#assets)                    |
 | `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
 |        `min`         |                        最小可转移数量                        |
-|    `moonChainFee`    | 支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(as of [v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}) |
+|    `moonChainFee`    | 支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起) |
 |       `native`       |                 原链上的原生[资产](#assets)                  |
 |       `origin`       |                     资产所属原链的链信息                     |
 |       `source`       |                 被转移资产从哪里发送的链信息                 |
