@@ -58,9 +58,7 @@ npm install @nomiclabs/hardhat-ethers @openzeppelin/contracts
 mkdir contracts && cd contracts
 ```
 
-Then, you can create a single file that we'll use to store the code for the `DemoToken` and `SimpleDex` contracts and another file for the batch precompile:
-
-然后，您可以创建一个新文件，用于存储`DemoToken`和`SimpleDex`合约的代码：
+然后，您可以创建一个用于存储`DemoToken`和`SimpleDex`合约代码的文件，和一个用于批处理预编译的文件：
 
 ```
 touch SimpleDex.sol Batch.sol

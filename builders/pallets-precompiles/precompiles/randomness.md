@@ -152,49 +152,30 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.png)
 
-## Generate a Random Numnber using the Randomness Precompile {: #interact-with-the-solidity-interfaces }
+## 使用随机预编译生成随机数 {: #interact-with-the-solidity-interfaces }
 
-In the following sections of this tutorial, you'll learn how to create a smart contract that generates a random number using the Randomness Precompile and the Randomness Consumer. If you want to just explore some of the functions of the Randomness Precompile, you can skip ahead to the [Use Remix to Interact Directly with the Randomness Precompile](#interact-directly) section.
-
-在接下来的教程中，您将会学习如何与随机数预编译交互，包含需要您拥有多个账户以参与彩票抽奖的彩票合约。预设彩票合约将最小参与者人量设置为3，然而您可以根据需求更改合约中的数值。
+在接下来的教程中，您将学习如何使用随机数预编译和随机数消费者创建生成随机数的智能合约。如果您只想探索随机数预编译的一些功能，可以跳到[使用Remix直接与随机数预编译交互](#interact-directly)部分。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
-For this guide, you will need to have the following:
+跟随本指南，您需要准备以下内容：
 
-如您使用预设合约，您需要准备以下内容：
-
-- [MetaMask installed and connected to Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
-- [安装成功的MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
-
-- An account funded with DEV tokens.
-- 所有账户皆需拥有`DEV ` Token。
+- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- 一个拥有`DEV` Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### Create a Random Number Generator Contract - 创建随机数生成器合约 {: #create-random-generator-contract }
+### 创建随机数生成器合约 {: #create-random-generator-contract }
 
-The contract that will be created in this section includes the functions that you'll need at a bare minimum to request randomness and consume the results from fulfilling randomness requests.
-
-这一部分创建的合约将包含请求随机数和使用满足随机数请求结果所需的基本函数。
-
-**This contract is for educational purposes only and is not meant for production use.**
+这一部分创建的合约将包含请求随机数和消费履行随机数请求的结果所需的基本函数。
 
 **此合约仅用于演示目的，不可用于生产环境。**
 
-The contract will include the following functions:
-
 此合约将包含以下函数：
 
-- A constructor that accepts the deposit required to request randomness
-- 构造函数，用于接收请求随机性所需的保证金
-- A function that submits randomness requests. For this example, the source of randomness will be local VRF, but you can easily modify the contract to use BABE epoch randomness
-- 提交随机数请求的函数。在本示例中，随机数来源为本地VRF，但是可以轻松调整合约以使用BABE epoch随机数
-- A function that fulfills the request by calling the `fulfillRequest` function of the Randomness Precompile. This function will be `payable` as the fulfillment fee will need to be submitted at the time of the randomness request
-- 通过调用Randomness Precompile的`fulfillRequest`函数完成请求的函数。此函数将是`payable`，需要在随机数请求时提交完成费用
-- A function that consumes the fulfillment results. This function's signature must match the [signature of the `fulfillRandomWords` method](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords)) of the Randomness Consumer contract
-- 使用完成结果的函数。此函数的签名必须与Randomness Consumer合约的[`fulfillRandomWords`函数的签名](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords))相匹配
-
-Without further ado, the contract is as follows:
+- 构造函数，接受请求随机数所需的保证金
+- 提交随机数请求的函数。在本示例中，随机数来源为本地VRF，但是可以轻松修改合约以使用BABE epoch随机数
+- 通过调用随机数预编译的`fulfillRequest`函数履行请求的函数。此函数将是`payable`，因为需要在随机数请求时提交履行费用
+- 消费履行请求结果的函数。此函数的签名必须与随机数消费者合约的[`fulfillRandomWords`函数的签名](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords))相匹配
 
 合约如下所示：
 
@@ -258,154 +239,129 @@ contract RandomNumber is RandomnessConsumer {
 }
 ```
 
-As you can see, there are also some constants in the contract that can be edited as you see fit, especially the `SALT_PREFIX` which can be used to produce unique results.
-
-如您所见，合约中还有一些常量需要调整，尤其是用于生成独特结果的`SALT_PREFIX`。
-
-In the following sections, you'll use Remix to deploy and interact with the contract.
+如您所见，合约中还有一些常量可以根据需要进行调整，尤其是可用于生成独特结果的`SALT_PREFIX`。
 
 在以下部分中，您将使用Remix部署合约并与其交互。
 
-### Remix Set Up - Remix设置 {: #remix-set-up}
-
-To add the contract to Remix and follow along with this section of the tutorial, you will need to create a new file named `RandomnessNumber.sol` in Remix and paste the `RandomNumber` contract into the file.
+### Remix设置 {: #remix-set-up}
 
 要添加合约至Remix并遵循本教程操作，您需要在Remix中创建一个名为`RandomnessNumber.sol`的新文件并将`RandomNumber`合约粘贴至该文件。
 
 ![Add the random number generator contract to Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-2.png)
 
-### Compile & Deploy the Random Number Generator Contract - 编译&部署随机数生成器合约 {: #compile-deploy-random-number }
-
-To compile the `RandomNumber.sol` contract in Remix, you'll need to take the following steps:
+### 编译部署随机数生成器合约 {: #compile-deploy-random-number }
 
 要在Remix中编译`RandomNumber.sol`合约，请执行以下步骤：
 
-1. Click on the **Compile** tab, second from top
+1. 点击**Compile**标签（从上到下第二个）
+2. 点击**Compile RandomNumber.sol**按钮
 
-   点击**Compile**标签（从上到下第二个）
-
-2. Click on the **Compile RandomNumber.sol** button
-
-   点击**Compile RandomNumber.sol**按钮
-
-If the contract was compiled successfully, you will see a green checkmark next to the **Compile** tab.
-
-成功编译合约后，您将在**Compile**标签旁边看到一个绿色的完成标记。
+成功编译合约后，您将在**Compile**标签旁边看到一个绿色的勾号。
 
 ![Compile the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-3.png)
 
-Now you can go ahead and deploy the contract by taking these steps:
-
 现在您可以开始执行以下步骤部署合约：
 
-1. Click on the **Deploy and Run** tab directly below the **Compile** tab
-
-   在**Compile**标签下点击**Deploy and Run**
-
-2. Make sure **Injected Provider - Metamask** is selected in the **ENVIRONMENT** dropdown. Once you select **Injected Provider - Metamask**, you might be prompted by MetaMask to connect your account to Remix
-
-   确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**。选择**Injected Provider - Metamask**后，MetaMask将提示您链接账户至Remix
-
-3. Make sure the correct account is displayed under **ACCOUNT**
-
-   确保**ACCOUNT**下方显示是正确的账户
-
-4. Enter the deposit amount in the **VALUE** field, which is `{{ networks.moonbase.randomness.req_deposit_amount.wei }}` in Wei (`{{ networks.moonbase.randomness.req_deposit_amount.dev }}` Ether)
-
-   在**VALUE**字段中输入充值金额，即`{{ networks.moonbase.randomness.req_deposit_amount.wei }}` Wei（`{{ networks.moonbase.randomness.req_deposit_amount.dev }}` Ether）
-
-5. Ensure **RandomNumber - RandomNumber.sol** is selected in the **CONTRACT** dropdown
-
-   确保在**CONTRACT**下拉菜单中已选择**RandomNumber - RandomNumber.sol**
-
-6. Click **Deploy**
-
-   点击**Deploy**
-
-7. Confirm the MetaMask transaction that appears by clicking **Confirm**
-
-   在MetaMask跳出的弹窗中，点击**Confirm**确认交易
+1. 点击位于**Compile**标签正下方的**Deploy and Run**标签
+2. 确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**。选择**Injected Provider - Metamask**后，MetaMask将提示您链接账户至Remix
+3. 确保**ACCOUNT**下方显示是正确的账户
+4. 在**VALUE**字段中输入保证金金额，即`{{ networks.moonbase.randomness.req_deposit_amount.wei }}` Wei（`{{ networks.moonbase.randomness.req_deposit_amount.dev }}` Ether）
+5. 确保在**CONTRACT**下拉菜单中已选择**RandomNumber - RandomNumber.sol**
+6. 点击**Deploy**
+7. 在MetaMask跳出的弹窗中，点击**Confirm**确认交易
 
 ![Deploy the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-4.png)
 
-The **RANDOMNUMBER** contract will appear in the list of **Deployed Contracts**.
-
 **RANDOMNUMBER**合约将出现在**Deployed Contracts**列表中。
 
-### Submit a Request to Generate a Random Number - 提交生成随机数的请求 {: #request-randomness }
+### 提交生成随机数的请求 {: #request-randomness }
 
-To request randomness, you're going to use the `requestRandomness` function of the contract, which will require you to submit a deposit as defined in the Randomness Precompile. You can submit the randomness request and pay the deposit by taking these steps:
+要请求随机数，您需要使用合约的`requestRandomness`函数，这将要求您按照随机数预编译中的定义提交保证金。您可以通过以下步骤提交随机数请求并支付保证金：
 
-要请求随机数，您需要使用合约的`requestRandomness`函数，这将要求您按照Randomness Precompile中的定义提交保证金。您可以通过以下步骤提交随机数请求并支付保证金：
-
-1. Enter an amount in the **VALUE** field for the fulfillment fee, it must be equal to or greater than the minimum fee specified in the `RandomNumber` contract, which is `500000` Gwei
-
-   在**VALUE**字段中输入数量用于支付完成费用，该数值需等于或高于`RandomNumber`合约中指定的最低费用，即`500000` Gwei
-
-2. Expand the **RANDOMNUMBER** contract
-
-   展开**RANDOMNUMBER**合约
-
-3. Click on the **requestRandomness** button
-
-   点击**requestRandomness**按钮
-
-4. Confrm the transaction in MetaMask
-
-   在MetaMask中确认交易
+1. 在**VALUE**字段中输入数量用于支付履行费用，该数值需等于或高于`RandomNumber`合约中指定的最低费用，即`500000` Gwei
+2. 展开**RANDOMNUMBER**合约
+3. 点击**requestRandomness**按钮
+4. 在MetaMask中确认交易
 
 ![Request a random number using the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-5.png)
 
-Once you submit the transaction, the `requestId` will be updated with the ID of the request. You can use the `requestId` call of the Random Number contract to get the request ID and the `getRequestStatus` functon of the Randomness Precompile to check the status of this request ID. 
+提交交易后，`requestId`将更新为请求的ID。您可以使用随机数合约的`requestId`调用来获取请求ID，并使用随机数预编译的`getRequestStatus`函数来检查此请求ID的状态。
 
-提交交易后，`requestId`将更新为请求的ID。您可以使用随机数合约的`requestId`调用来获取请求ID，并使用Randomness Precompile的`getRequestStatus`函数来检查此请求ID的状态。
+### 履行请求并保存随机数 {: #fulfill-request-save-number }
 
-### Fulfill the Request and Save the Random Number - 完成请求和保存随机数 {: #fulfill-request-save-number }
+提交随机数请求后，您需要等待延迟时间段才能完成请求。对于`RandomNumber.sol`合约，延迟时间段设置为随机数预编译中定义的最小区块延迟，即{{ networks.moonbase.randomness.min_vrf_blocks_delay }}个区块。您必须在延迟时间段结束之前完成请求。对于本地VRF，请求在{{ networks.moonbase.randomness.block_expiration }}个区块后过期，对于BABE epoch随机数，请求在{{ networks.moonbase.randomness.epoch_expiration }}个epoch后过期。
 
-After submitting the randomness request, you'll need to wait for the duration of the delay before you can fulfill the request. For the `RandomNumber.sol` contract, the delay was set to the minimum block delay defined in the Randomness Precompile, which is {{ networks.moonbase.randomness.min_vrf_blocks_delay }} blocks. You must also fulfill the request before it is too late. For local VRF, the request expires after {{ networks.moonbase.randomness.block_expiration }} blocks and for BABE epoch randomness, the request expires after {{ networks.moonbase.randomness.epoch_expiration }} epochs.
+假设您已等待最小区块数（如果您使用的是BABE epoch随机数，则为epoch）通过并且请求尚未过期，您可以通过以下步骤来完成请求：
 
-提交随机数请求后，您需要等待延迟时间段才能完成请求。对于`RandomNumber.sol`合约，延迟时间段设置为Randomness Precompile中定义的最小区块，即{{ networks.moonbase.randomness.min_vrf_blocks_delay }}区块。您必须在延迟时间段结束之前完成请求。对于本地VRF，请求在{{ networks.moonbase.randomness.block_expiration }}个区块后过期，对于BABE epoch随机数，请求在{{ networks.moonbase.randomness.epoch_expiration }}个epochs后过期。
-
-Assuming you've waited for the minimum blocks (or epochs if you're using BABE epoch randomness) to pass and the request hasn't expired, you can fulfill the request by taking the following steps:
-
-假设您已等待最小区块（如果您使用的是BABE epoch随机数，则为epochs）通过并且请求尚未过期，您可以通过以下步骤来完成请求：
-
-1. Click on the **fulfillRequest** button
-
-   点击**fulfillRequest**按钮
-
-2. Confirming the transaction in MetaMask
-
-   在MetaMask中确认交易
+1. 点击**fulfillRequest**按钮
+2. 在MetaMask中确认交易
 
 ![Fulfill the randomness request using the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-6.png)
 
-Once the request has been fulfilled, you can check the random number that was generated:
+履行请求后，您可以查看生成的随机数：
 
-交易完成后，您可以查看生成的随机数：
-
-1. Expand the **random** function
-
-   展开**random**函数
-
-2. Since the contract only requested one random word, you can get the random number by accessing the `0` index of the `random` array
-
-   由于合约只要求一个随机词，您可以通过访问`random`数组的`0`索引来获取随机数
-
-3. Click **call**
-
-   点击**call**
-
-4. The random number will appear below the **call** button 
-
-   随机数将出现在**call**按钮下方
+1. 展开**random**函数
+2. 由于合约只请求一个随机词，您可以通过访问`random`数组的`0`索引来获取随机数
+3. 点击**call**
+4. 随机数将出现在**call**按钮下方
 
 ![Retrieve the random number that was generated by the random number contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-7.png)
 
-Upon successful fulfillment, the excess fees and deposit will be sent to the address specified as the refund address.
-
 成功完成后，多余的费用和保证金将发送到指定的退款地址。
 
-If the request happened to expire before it could be fulfilled, you can interact with the Randomness Precompile directly to purge the request and unlock the deposit and fees. Please refer to the following section for instructions on how to do this.
+如果请求刚好在完成之前过期，您可以直接与随机数预编译交互以清除请求并解锁保证金和费用。有关如何执行此操作的说明，请参考以下部分。
 
-如果请求刚好在完成之前过期，您可以直接与Randomness Precompile交互以清除请求并解锁保证金和费用。有关如何执行此操作的说明，请参考以下部分。
+## 使用Remix直接与随机数预编译交互 {: #interact-directly }
+
+除了通过智能合约与随机预编译进行交互外，您还可以在Remix中直接与其交互以执行创建随机请求、检查请求状态和清除过期请求等操作。请记住，您需要有一个从消费者合约继承的合约才能满足请求，因此如果您直接使用预编译来完成请求，则无法使用结果。
+
+### Remix设置 {: #remix-set-up }
+
+要将接口添加至Remix并跟随以下教程步骤，您将需要：
+
+1. 复制[`Randomness.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
+2. 在Remix文件中粘贴文件内容并命名为**Randomness.sol**
+
+![Add precompile to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-8.png)
+
+### 编译和访问随机数预编译 {: #compile-randomness }
+
+接着，您将需要在Remix中编译`Randomness.sol`文件。要开始操作，请确认您已打开**Randomness.sol**文件并跟随以下步骤：
+
+1. 点击从上至下的第二个**Compile**标签
+2. 点击**Compile Randomness.sol**编译合约
+
+如果合约被成功编译，您将在**Compile**标签旁看见绿色打勾标志。
+
+您将会根据给定的预编译合约地址访问接口，而非部署随机数预编译：
+
+1. 在Remix中**Compile**标签下方点击**Deploy and Run**标签，请注意预编译合约已部署
+2. 确保在**ENVIRONMENT**下拉菜单中**Injected Provider - MetaMask**已选取。当选取时，MetaMask将跳出弹窗要求您将账户连接至Remix
+3. 确保正确的账户在**ACCOUNT**下方显示
+4. 确保**CONTRACT**下拉菜单中**Randomness - Randomness.sol**已被选取。由于此为预编译合约，因此并不需要部署任何代码，我们反而将会在**At Address**一栏中提供预编译地址
+5. 提供批量预编译的地址`{{ networks.moonbase.precompiles.randomness }}`并点击**At Address**
+
+![Access the address](/images/builders/pallets-precompiles/precompiles/randomness/randomness-9.png)
+
+**RANDOMNESS**预编译将会出现在**Deployed Contracts**列表中，您将会用其完成后续教程中彩票合约的随机数请求。
+
+### 获得请求状态和删除过期请求 {: #get-request-status-and-purge }
+
+任何人都可以清除过期的请求。您不需要成为请求随机数者才能够清除它。当您清除过期的请求时，要求费用将转给您，要求的保证金将退还给请求发起者。
+
+要清除请求，首先您必须确保请求已过期。为此，您可以使用预编译的`getRequestStatus`函数验证请求的状态。此调用返回的数字对应于[`RequestStatus`](#enums)枚举中值的索引。因此，您需要验证返回的数字是否为`3`表示`Expired`。
+
+当您验证请求已过期，您可以调用`purgeExpiredRequest`函数清除此请求。
+
+要验证和清除请求，您可以跟随以下步骤：
+
+1. 展开**RANDOMNESS**合约
+2. 输入您希望验证其是否过期的请求ID并点击**getRequestStatus**
+3. 回应将会出现在函数下方，验证您是否获得`3`
+4. 展开**purgeExpiredRequest**函数并输入要求ID
+5. 点击**transact**
+6. MetaMask将会跳出弹窗，请确认交易
+
+![Purge an exired request](/images/builders/pallets-precompiles/precompiles/randomness/randomness-10.png)
+
+交易完成后，您可以通过使用相同的请求ID再次调用**getRequestStatus**函数来验证请求已被清除。您应该收到`0`或`DoesNotExist`的状态。您还可以预期请求费用的金额将转入您的帐户。
