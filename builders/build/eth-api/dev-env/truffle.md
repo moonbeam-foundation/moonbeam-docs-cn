@@ -285,25 +285,17 @@ module.exports = function (deployer) {
 
     ![Successful contract deployment actions](/images/builders/build/eth-api/dev-env/truffle/truffle-7.png)
 
-## Forking with Ganache 使用Ganache分叉 {: #forking-with-ganache }
+## 使用Ganache进行分叉 {: #forking-with-ganache }
 
-[Ganache](https://trufflesuite.com/ganache/){target=_blank} is part of the Truffle suite of development tools and is your own personal blockchain for local development and testing. You can use Ganache to fork Moonbeam, which will simulate the live network locally, enabling you to interact with already deployed contracts on Moonbeam in a local test environment.
+[Ganache](https://trufflesuite.com/ganache/){target=_blank}是Truffle开发工具套件的一部分，是您用于本地开发和测试的个人区块链。您可以使用Ganache分叉Moonbeam，这将在本地模拟实时网络，使您能够在本地测试环境中与已经部署在Moonbeam上的合约交互。
 
-[Ganache](https://trufflesuite.com/ganache/){target=_blank}是Truffle开发者工具套件的一部分，是您用于本地开发和测试的个人区块链。您可以使用Ganache分叉Moonbeam，这将在本地模拟实时网络，使您能够在本地测试环境中与已经部署在Moonbeam上的合约交互。
-
-There are some limitations to be aware of when forking with Ganache. Since Ganache is based on an EVM implementation, you cannot interact with any of the Moonbeam precompiled contracts and their functions. Precompiles are a part of the Substrate implementation and therefore cannot be replicated in the simulated EVM environment. This prohibits you from interacting with cross-chain assets on Moonbeam and Substrate-based functionality such as staking and governance.
-
-使用Ganache分叉时需要注意一些限制。由于Ganache是基于EVM实现，因此您无法与任何Moonbeam已编译的合约及其功能交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。从而，您无法在Moonbeam和基于Substrate功能（如质押和治理）上与跨链资产进行交互。
-
-From your Truffle project, you can install Ganache CLI by running:
+使用Ganache分叉时需要注意一些限制。由于Ganache是基于EVM实现，因此您无法与任何Moonbeam的预编译合约及其功能交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。从而，您无法与在Moonbeam上的跨链资产和基于Substrate的功能（如质押和治理）进行交互。
 
 在Truffle项目中，您可以通过运行以下命令安装Ganache CLI：
 
 ```
 npm install ganache
 ```
-
-Then you can add a script to run Ganache forking in your `package.json` file:
 
 然后，您可以添加脚本以在`package.json`文件中运行Ganache分叉：
 
@@ -337,31 +329,21 @@ Then you can add a script to run Ganache forking in your `package.json` file:
     ...
     ```
 
-When you spin up the forked instance, you'll have 10 development accounts that are pre-funded with 1,000 test tokens. The forked instance is available at `http://127.0.0.1:8545/`. The output in your terminal should resemble the following:
-
-当您启动分叉的实例时，您将拥有10个预注资1,000测试Token的开发账户。分叉实例位于`http://127.0.0.1:8545/`。终端输出应如下所示：
+当您启动分叉的实例时，您将拥有10个预注资1,000个测试Token的开发账户。分叉实例位于`http://127.0.0.1:8545/`。终端输出应类似于如下内容：
 
 ![Forking terminal screen](/images/builders/build/eth-api/dev-env/truffle/truffle-8.png)
 
-To verify you have forked the network, you can query the latest block number:
-
-要验证分叉的网络，您可以查询最新的区块号：
+要验证您是否已经分叉好网络，您可以查询最新区块号：
 
 ```
 curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
 ```
 
-If you convert the `result` from [hex to decimal](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}, you should get the latest block number from the time you forked the network. You can cross reference the block number using a [block explorer](/builders/get-started/explorers){target=_blank}.
+如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=_blank}交叉查询区块号。
 
-如果您已经将`result`[从hex格式转换成小数位数](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}，您应该在分叉网络时获取最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=_blank}交叉引用区块号。
+在这里，您可以部署新的合约到您的Moonbeam分叉实例，或者通过创建已部署合约的本地实例与已部署合约交互。
 
-From here you can deploy new contracts to your forked instance of Moonbeam or interact with contracts already deployed by creating a local instance of the deployed contract.
-
-从这里您可以将新合约部署到您的Moonbeam分叉实例，或通过创建已部署合约的本地实例与已部署的合约进行交互。
-
-To interact with an already deployed contract, you can create a new script in the `scripts` directory using Ethers.js or Web3.js. First, you'll need to install the JavaScript library of your choice:
-
-要与已部署合约交互，您可以使用Ethers.js或Web3.js在`scripts` 目录中创建新脚本。首先，您将需要安装JavaScript库：
+要与已部署合约交互，您可以使用Ethers.js或Web3.js在`scripts`目录中创建新脚本。首先，您将需要安装你选择的JavaScript库：
 
 === "Ethers.js"
     ```
@@ -373,9 +355,7 @@ To interact with an already deployed contract, you can create a new script in th
     npm install web3
     ```
 
-Then you can create a new script to access a live contract on the network:
-
-然后，您可以创建一个新脚本来获取网络上的实时合约：
+然后，您可以创建一个新脚本来访问网络上的实时合约：
 
 === "Ethers.js"
 
@@ -412,8 +392,6 @@ Then you can create a new script to access a live contract on the network:
       process.exitCode = 1;
     });
     ```
-
-To run the script, you can use the following command:
 
 要运行脚本，您可以使用以下命令：
 
