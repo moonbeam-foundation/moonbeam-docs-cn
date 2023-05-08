@@ -72,7 +72,7 @@ Alphanet中继链连接到Moonbase Alpha并且是基于[Westend](https://polkado
 
 Moonbase Alpha上名为DEV的代币将按需求发行。 **DEV 代币没有价值，可以自由获取**。
 
-您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
+您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://faucet.moonbeam.network/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
 
 对于超过我们的Discord机器人允许的Token请求，请通过Moonbeam的[Discord频道](https://discord.gg/PfpUATX){target=_blank}直接联系版主。我们很高兴提供测试您的应用程序所需的Token。
 

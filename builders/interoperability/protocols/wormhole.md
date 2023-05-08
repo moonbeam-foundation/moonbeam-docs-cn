@@ -402,7 +402,7 @@ npm run start
 使用Remix接口。此范例将向Fantom测试网发送跨链消息，但您可以将`destChainId`替换成您想要的任何EVM。接着，检查以下事项：
 
 1. 环境为**Injected Provider**，网络为1287（Moonbase Alpha）
-2. 您的钱包里有来自[faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}的大量资金，以支付源链和目标链上的交易Gas成本
+2. 您的钱包里有来自[faucet](https://faucet.moonbeam.network/){target=_blank}的大量资金，以支付源链和目标链上的交易Gas成本
 3. 在**sendMessage**部分的**message**输入框中输入您选择的短消息（在本示例中为“this is a message”）
 4. 将您的在目标链上的SimpleGeneralMessage实例的地址放入**destAddress**输入框中
 5. 将目标链的Wormhole chain ID放入**sendMessage**部分的**destChainId**输入框中
