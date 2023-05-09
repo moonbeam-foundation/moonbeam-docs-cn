@@ -1,5 +1,5 @@
-title: Ethereum API
+title: 以太坊API
 hide: false
 nav:
   - index.md
-  - '[Hardhat] Development Life Cycle from Start to End': 'hardhat-start-to-end.md'
+  - '[Hardhat] 从头至尾的开发生命周期': 'hardhat-start-to-end.md'
