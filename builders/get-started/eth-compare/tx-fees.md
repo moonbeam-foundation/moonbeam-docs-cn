@@ -105,7 +105,7 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 === "Moonbeam"
     |        变量       |    值     |
     |:-----------------:|:--------:|
-    | Minimum Gas Price | 100 Gwei |
+    | Minimum Gas Price | 125 Gwei |
 
 === "Moonriver"
     |        变量       |     值     |
