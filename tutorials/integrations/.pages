@@ -1,0 +1,5 @@
+title: 集成
+hide: false
+nav:
+  - index.md
+  - '[索引]使用Subsquid索引NFT转账': 'nft-subsquid.md'

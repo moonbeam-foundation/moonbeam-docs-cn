@@ -8,7 +8,7 @@ Moonbeam有两种端点可供用户连接：一种是HTTPS，另一种是WSS。
 
 ## 快速开始 {: #quick-start }
 
-在开始之前，请确保从受支持的[网络端点](/builders/get-started/endpoints/){target=_blank}提供商之一获取您自己的端点和API密钥。如果使用的是Web3.js库，您可以创建一个本地的Web3实例并设定提供者来连接Moonbeam（同时支持HTTP和WS）：
+在开始之前，请确保从受支持的[网络端点](/builders/get-started/endpoints/){target=_blank}提供商之一获取您自己的端点和API密钥。如果使用的是[Web3.js库](/builders/build/eth-api/libraries/web3js){target=_blank}，您可以创建一个本地的Web3实例并设定提供者来连接Moonbeam（同时支持HTTP和WS）：
 
 ```js
 const Web3 = require('web3'); // Load Web3 library
@@ -19,7 +19,7 @@ const Web3 = require('web3'); // Load Web3 library
 const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
 ```
 
-如果使用的是Ethers.js库，您可以使用`ethers.JsonRpcProvider(providerURL, {object})`来定义提供者，并且将提供者URL设定至Moonbeam：
+如果使用的是[Ethers.js库](/builders/build/eth-api/libraries/ethersjs){target=_blank}，您可以使用`ethers.JsonRpcProvider(providerURL, {object})`来定义提供者，并且将提供者URL设定至Moonbeam：
 
 ```js
 const ethers = require('ethers'); // Load Ethers library

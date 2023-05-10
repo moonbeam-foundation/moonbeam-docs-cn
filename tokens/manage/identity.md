@@ -209,14 +209,14 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 === "Moonbeam"
     |                                                               注册服务商                                                               |                              运营商                              |                  地址                   | 索引（Index） |
     |:-------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-----:|
-    |        [Registrar #0](https://forum.moonbeam.foundation/t/referendum-73-status-passed-identity-registrar-0/208){target=_blank}        | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0x031590D13434CC554f7257A89B2E0B10d67CCCBa |   0   |
-    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-82-status-passed-new-registrar-proposal-registrar-1/319){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0x4aD549e07E96BaD335A8b99C8fd32e95EE538904 |   1   |
+    |        [Registrar #0](https://forum.moonbeam.foundation/t/referendum-73-status-passed-identity-registrar-0/208){target=_blank}        | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0xbE6E642b25Fa7925AFA1600C48Ab9aA3461DC7f1 |   0   |
+    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-82-status-passed-new-registrar-proposal-registrar-1/319){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0xeaB597B91b66d9C3EA5E3a39e22C524c287d61a5 |   1   |
 
 === "Moonriver"
     |                                                               注册服务商                                                                |                              运营商                              |                  地址                   | 索引（Index） |
     |:--------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-----:|
     |         [Registrar #0](https://forum.moonbeam.foundation/t/proposal-32-status-voting-identity-registrar-0/187){target=_blank}          | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0x031590D13434CC554f7257A89B2E0B10d67CCCBa |   0   |
-    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-125-status-passed-new-registrar-proposal-registrar-1/303){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0x4aD549e07E96BaD335A8b99C8fd32e95EE538904 |   1   |
+    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-125-status-passed-new-registrar-proposal-registrar-1/303){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0x2d18250E01312A155E81381F938B8bA8bb4d97B3 |   1   |
 
 === "Moonbase Alpha"
     |                                      注册服务商                                      |                      运营商                      |                  地址                   | 索引（Index） |

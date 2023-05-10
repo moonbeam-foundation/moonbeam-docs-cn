@@ -202,7 +202,7 @@ contract SetMessage {
 
 ### 使用浏览器 {: #use-the-browser }
 
-开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](https://docs.ethers.io/){target=_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
+开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
 
 1. 点击**Resources**
 2. 接着输入`ethers`，下拉选单应当弹出符合的库。选择**ethers**

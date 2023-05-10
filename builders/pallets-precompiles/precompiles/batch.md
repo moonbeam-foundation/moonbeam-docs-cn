@@ -14,7 +14,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 目前来说，要让用户与多个合约进行交互，需要在用户的钱包中执行多个交易确认。举个简单的例子，需要先批准智能合约使用特定Token，然后再进行转账。但预编译合约能够使开发者优化使用者体验，因其可以将用户需要确认的交易数量减少为一个。此外，由于批量执行无需多次支付Gas费（每个交易的起始Gas费为21000单位），还能够节省用户所需的Gas费用。
 
-此预编译合约直接与Substrate EVM pallet交互。批量函数的调用者将会在其地址为所有子交易执行`msg.sender`，但与[委托调用（Delegate Call）](https://docs.soliditylang.org/en/v0.8.15/introduction-to-smart-contracts.html#delegatecall-callcode-and-libraries){target=_blank}不同的是，目标合约的存储仍然被影响。实际上是用户签署了多笔交易，但只需要一次确认。
+此预编译合约直接与[Substrate EVM pallet](/learn/features/eth-compatibility#evm-pallet){target=_blank}交互。批量函数的调用者将会在其地址为所有子交易执行`msg.sender`，但与[委托调用（Delegate Call）](https://docs.soliditylang.org/en/v0.8.15/introduction-to-smart-contracts.html#delegatecall-callcode-and-libraries){target=_blank}不同的是，目标合约的存储仍然被影响。实际上是用户签署了多笔交易，但只需要一次确认。
 
 此预编译合约位于以下地址：
 
@@ -116,19 +116,12 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 您可以尝试在Moonbase Alpha上转移原生资产至您指定的两个钱包：
 
 1. 确保您连接的钱包中至少有0.5个DEV
-
 2. 在**Deployed Contracts**中展开批量预编译合约
-
 3. 展开**batchAll**函数
-
 4. 在**to**输入栏中，根据以下格式输入您的地址：`["ADDRESS-1-HERE", "ADDRESS-2-HERE"]`，其中第一个地址代表您希望传送资产的第一个地址，而第二个地址为您希望传送资产的第二个地址
-
 5. 在**value**输入栏中，输入您希望转移至个别地址以Wei为单位的数量。举例而言，`["100000000000000000", "200000000000000000"]`将会转移0.1 DEV至第一个地址和0.2 DEV至第二个地址
-
 6. 在剩下的**callData**和**gasLimit**输入栏中输入`[]`，调用数据和Gas限制在传送原生资产时不需要考虑
-
 7. 点击**transact**
-
 8. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
 ![Send Batch Transfer](/images/builders/pallets-precompiles/precompiles/batch/batch-4.png)
@@ -140,16 +133,13 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ### 查看合约交易调用数据 {: #find-a-contract-interactions-call-data }
 
-如Remix般的可视化接口和如Ethers.js般顺手的库隐藏了以太坊交易与Solidity智能合约之间的交互。函数的名称和输入数值被储存在[函数选择器](https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector-and-argument-encoding)中{target=_blank}，且输入数值将会被编码，两者将会被整合并以交易的调用数据传送。如果您希望在批量交易中传送子交易，您需要事先了解调用数据。
+如[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}般的可视化接口和如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}般顺手的库隐藏了以太坊交易与Solidity智能合约之间的交互。函数的名称和输入数值被储存在[函数选择器](https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector-and-argument-encoding)中{target=_blank}，且输入数值将会被编码，两者将会被整合并以交易的调用数据传送。如果您希望在批量交易中传送子交易，您需要事先了解调用数据。
 
 您可以尝试使用Remix查询交易的调用数据：
 
 1. 在**Deployed Contracts**下方展开`SimpleContract.sol`合约
-
 2. 展开**setMessage**函数
-
 3. 输入函数的数值，在本示例中**id**为`1`，而**message**为`"moonbeam"`
-
 4. 点击**transact**按钮旁的复制按钮以复制调用数据而非传送交易
 
 ![Transaction Call Data](/images/builders/pallets-precompiles/precompiles/batch/batch-5.png)
@@ -175,21 +165,13 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 您可以根据以下步骤传送一个批量交易：
 
 1. 在`SimpleContract.sol`标题右方的复制按钮复制其合约地址，请确保您拥有来自[先前部分教程的调用数据](#finding-a-contract-interactions-call-data)
-
 2. 在**Deployed Contracts**下方展开批量预编译合约
-
 3. 展开**batchAll**函数
-
 4. 在**to**输入栏中，以下述格式插入您先前复制的`SimpleContract.sol`合约地址：`["SIMPLE-CONTRACT-ADDRESS-HERE"]`
-
 5. 在数值输入栏中，由于`["SIMPLE-CONTRACT-ADDRESS-HERE"]`并不需要支付任何原生资产，输入`["0"]`代表0 Wei
-
 6. 在**callData**输入栏位中，以下格式插入您在先前部分教程获得的函数数据：`["CALL-DATA-HERE"]`
-
 7. 在**gasLimit**输入栏中，插入`[]`。您也可以输入Gas限制的数据，依据您的需求决定
-
 8. 点击**transact**
-
 9. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
 
 ![Batch Function Interaction](/images/builders/pallets-precompiles/precompiles/batch/batch-6.png)
@@ -197,14 +179,12 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 如果您使用与教程中相同的函数数据，请确认交易是否为成功状态：
 
 1. 在**Deployed Contracts**下方展开`SimpleContract.sol`合约
-
 2. 在**messages**按钮右方输入`1`
-
 3. 点击蓝色的**messages**按钮
 
 ![SimpleContract Confirmation](/images/builders/pallets-precompiles/precompiles/batch/batch-7.png)
 
-  **"moonbeam"**这个单词应当显示在下方。恭喜！您已成功使用批量预编译合约与函数交互。
+**"moonbeam"**这个单词应当显示在下方。恭喜！您已成功使用批量预编译合约与函数交互。
 
 ### 整合子交易 {: #combining-subtransactions }
 
@@ -250,7 +230,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 以太坊开发者库 {: #ethereum-development-libraries }
 
-如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。Web3.js也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
+如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。[Web3.js](/builders/build/eth-api/libraries/web3js){target=_blank}也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
 
 !!! 注意事项
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。
@@ -264,4 +244,4 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 === "Web3.py"
      --8<-- 'code/batch/web3py-batch.md'
 
-最后，您应当已经了解如何使用批量预编译合约交互，如同您在以太坊与一般合约交互相同。
+最后，您应当已经了解如何与批量预编译进行交互，如同您与[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}中的合约进行交互一样。

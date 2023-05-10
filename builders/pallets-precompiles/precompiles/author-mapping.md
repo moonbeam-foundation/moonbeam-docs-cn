@@ -39,6 +39,9 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 
 - **removeKeys**() — 移除作者ID和会话密钥。替代已弃用的`clearAssociation` extrinsic
 - **setKeys**(*bytes memory* keys) — 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立刻设置作者ID和会话密钥。在密钥轮换或迁移后会非常有用。调用`setKeys`需要一笔[保证金](#mapping-bonds)。替代已弃用的`addAssociation`和`updateAssociation` extrinsics
+- **nimbusIdOf**(*address* who) - 获取给定地址的Nimbus ID。如果给定地址不存在，返回`0`
+- **addressOf**(*bytes32* nimbusId) - 获取与给定Nimbus ID关联的地址。如果Nimbus ID未知，则返回`0`
+- **keysOf**(*bytes32* nimbusId) - 获取与给定的Nimbus ID关联的密钥。如果Nimbus ID未知，则返回空字节
 
 以下方式将被**弃用**，但仍将存在以实现向后兼容性：
 
