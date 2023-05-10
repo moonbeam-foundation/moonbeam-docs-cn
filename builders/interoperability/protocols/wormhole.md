@@ -52,7 +52,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 ### 使用Remix在Moonbase Alpha上部署Wormhole合约 {:deploying-the-wormhole-contract-with-remix-on-moonbase-alpha}
 
-要发送跨链消息，在本教程中，你将需要部署和使用一个智能合约。每条连接至Wormhole的链都会有某种[Wormhole核心桥接](https://github.com/wormhole-foundation/wormhole/blob/dev.v2/ethereum/contracts/interfaces/IWormhole.sol){target=_blank}的实现，其功能为发布和验证VAAs。每一个核心桥接合约（每条链一个）的实现均由守护者网络上的守护者见证，这便是他们得知何时开始验证一条消息的方式。
+要发送跨链消息，在本教程中，你将需要部署和使用一个智能合约。每条连接至Wormhole的链都会有某种[Wormhole核心桥接](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/interfaces/IWormhole.sol){target=_blank}的实现，其功能为发布和验证VAAs。每一个核心桥接合约（每条链一个）的实现均由守护者网络上的守护者见证，这便是他们得知何时开始验证一条消息的方式。
 
 不同于其他跨链合约，Wormhole并不提供用户可以继承并在其上构建的母合约。这是因为Wormhole的第一条链Solana，不像Solidity一样在其智能合约中提供特有的继承。为了让每条链上的设计体验相似，Wormhole让他们的Solidity开发者直接与EVM链上的Wormhole核心桥接智能合约交互。
 
