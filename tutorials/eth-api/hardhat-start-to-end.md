@@ -342,7 +342,7 @@ it("should initially have 0 funds in the DAO", async function () {
 });
 ```
 
-### 函数还原（revert） {: #function-reverts }
+### 函数还原（Revert） {: #function-reverts }
 
 现在，您将使用稍微不同的架构来实现更复杂的测试用例。在上述示例中，您已验证函数返回预期值。在这一部分中，您将验证函数是否会还原。您将更改调用者的地址以测试仅限管理员的功能。
 
