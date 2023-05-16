@@ -98,7 +98,7 @@ touch balances.py
 
 2. 定义`address_from`和`address_to`变量
 
-3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.fromWei`格式化结果
+3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.from_wei`格式化结果
 
 ```python
 --8<-- 'code/web3py-tx/balances.py'
@@ -130,7 +130,7 @@ touch transaction.py
 
 4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
 
-5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.toWei`函数将数字格式化成以Wei为单位的易读数字
+5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.to_wei`函数将数字格式化成以Wei为单位的易读数字
 
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
