@@ -64,19 +64,19 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/ethers.js'
+    --8<-- 'code/vs-ethereum/consensus-finality/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/web3.js'
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/vs-ethereum/web3.py'
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.py'
     ```
 
 ## 使用Substrate库查询交易确定性 {: #checking-tx-finality-with-substrate-libraries }
@@ -94,11 +94,11 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 === "Polkadot.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/polkadotjs.js'
+    --8<-- 'code/vs-ethereum/consensus-finality/polkadotjs.js'
     ```
 
 === "py-substrate-interface"
 
     ```py
-    --8<-- 'code/vs-ethereum/pysubstrateinterface.py'
+    --8<-- 'code/vs-ethereum/consensus-finality/pysubstrateinterface.py'
     ```

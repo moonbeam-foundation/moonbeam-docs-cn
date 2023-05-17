@@ -47,6 +47,6 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 以下代码片段使用[`subscribeFinalizedHeads`](https://polkadot.js.org/docs/substrate/rpc/#subscribefinalizedheads-header){target=_blank}订阅新的已确认区块头，并循环访问之中的每个事件。然后，检查是否与一个`balances.Transfer`事件对应。如果是，这将提取一个转账的`from`、`to`以及`amount`并显示在控制台上。请注意，`amount`是以最小的单位（Wei）来显示的。您可以在他们的[官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}找到关于Polkadot.js和Substrate JSON RPC的所有可用信息。
 
---8<-- 'code/vs-ethereum/balance-event.md'
+--8<-- 'code/vs-ethereum/transfers-api/balance-event.md'
 
 此外，您可以在[此脚本](https://gist.github.com/crystalin/b2ce44a208af60d62b5ecd1bad513bce){target=_blank}中找到更多余额转账相关具体案例的代码片段。
