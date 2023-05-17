@@ -61,14 +61,23 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 !!! 注意事项
     以下所提供的代码片段并不适用于每个生产环境，请确保您已根据实际案例进行修改或调整。
 
-=== "Web3.js"
-    --8<-- 'code/vs-ethereum/web3.md'
-
 === "Ethers.js"
-    --8<-- 'code/vs-ethereum/ethers.md'
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/ethers.js'
+    ```
+
+=== "Web3.js"
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.js'
+    ```
 
 === "Web3.py"
-    --8<-- 'code/vs-ethereum/web3py.md'
+
+    ```py
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.py'
+    ```
 
 ## 使用Substrate库查询交易确定性 {: #checking-tx-finality-with-substrate-libraries }
 
@@ -83,7 +92,13 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc)和[Python Substrate Interface官方文档网站](https://polkascan.github.io/py-substrate-interface/)查询所有关于这两个库的详细JSON RPC信息。
 
 === "Polkadot.js"
-    --8<-- 'code/vs-ethereum/polkadotjs.md'
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/polkadotjs.js'
+    ```
 
 === "py-substrate-interface"
-    --8<-- 'code/vs-ethereum/pysubstrateinterface.md'
+
+    ```py
+    --8<-- 'code/vs-ethereum/consensus-finality/pysubstrateinterface.py'
+    ```
