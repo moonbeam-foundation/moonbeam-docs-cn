@@ -128,7 +128,7 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **maxTopDelegationsPerCandidate**() - 返回每个候选人（收集人）的最多的排名靠前的委托数
 - **minBlocksPerRound**() - 返回每个轮次的最低区块数
 - **minCandidateStk**() - 返回成为候选人（收集人）所需的最低质押
-- **minCollatorStk**() - 返回成为收集人活跃集中所需的最低质押
+- **minCollatorStk**() - *运行时2400弃用* - 返回成为收集人活跃集中所需的最低质押
 - **minDelegation**() - 返回最低委托数
 - **minDelegatorStk**() - 返回账户成为委托人的最低质押
 - **minSelectedCandidates**() - 返回每个轮次在活跃集中选出的收集人（收集人）的最低数量
