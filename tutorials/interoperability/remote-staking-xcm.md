@@ -45,8 +45,6 @@ _作者：Kevin Neilson_
 
 该脚本将返回32字节和20字节的地址。此处，我们感兴趣的是以太坊格式的帐户，即20字节的帐户。请随时在[Moonscan](https://moonbase.moonscan.io/){target=blank}上查找您的多地点衍生账户。您会注意到此帐户是空的。您需要至少用1.1个DEV为该帐户注入资金。由于这是水龙头分配的量，您需要至少发起两次水龙头请求，或者您可以随时通过[Discord](https://discord.com/invite/amTRXQ9ZpW){target=blank}联系我们请求更多的DEV Token。
 
-![Creating the Multilocation Derivative Account](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-1.png)
-
 ## 准备在Moonbase Alpha上质押 {: #preparing-to-stake-on-moonbase-alpha }
 
 首先也是最重要的，您需要您希望委托的收集人的地址。如要找到该地址，请在第二个视窗中前往[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}。接着，确保您在正确的网络上，然后点击**Select Collator**。在您想要的委托人旁边，点击**Copy**图标。您还需要记下该委托人拥有的委托数量。下面显示的[PS-31 collator](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=_blank}在撰写本文时共有`60`个委托。
