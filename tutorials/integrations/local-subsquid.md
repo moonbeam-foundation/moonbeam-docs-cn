@@ -104,7 +104,7 @@ _本教程更新于2023年4月14日｜作者：Erin Shaben_
 !!! 注意事项
     **请勿将私钥存储在JavaScript或Python文件中。**
 
-    The private keys for the development accounts are public knowledge because the accounts exist within your own development environment. However, when you move on to indexing a live network such as Moonbase Alpha or Moonbeam (which is out of scope for this tutorial), you should manage your private keys with a designated secret manager or similar service.
+    开发账户中通常包含私钥，且这些账户存在于您自己的开发环境。然而，当您持续为如Moonbase Alpha或Moonbeam（超出本教程的范围）等实时网络建立索引时，您需要通过指定的secret manager管理器或类似服务管理您的私钥。
 
 现在我们可以编辑`hardhat.config.js`为我们的Moonbeam开发节点包含以下网络和帐户配置：
 
