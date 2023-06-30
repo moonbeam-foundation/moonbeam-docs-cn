@@ -31,11 +31,12 @@ _作者：Kevin Neilson_
 
 如要生成多地点衍生账户，首先请复制Alberto的[xcm-tools](https://github.com/PureStake/xcm-tools){target=_blank}代码库，运行`yarn`指令以安装所有必要代码包并运行以下指令：
 
-
-    ts-node calculateMultilocationDerivative.ts \
-     --w wss://wss.api.moonbase.moonbeam.network \
-     --a YOUR-MOONBASE-RELAY-ACCOUNT-HERE \
-     --n 0x57657374656e64
+```
+ts-node calculateMultilocationDerivative.ts \
+  --w wss://wss.api.moonbase.moonbeam.network \
+  --a YOUR-MOONBASE-RELAY-ACCOUNT-HERE \
+  --n 0x57657374656e64
+```
 
 接着，让我们回顾以上指令中输入的相关参数：
 
@@ -51,13 +52,11 @@ _作者：Kevin Neilson_
 
 ![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
 
-## 通过XCM在Polkadot.js进行远程质押 {: #remote-staking-via-xcm-with-polkadot-js-apps } 
+## 通过XCM在Polkadot.js进行远程质押 {: #remote-staking-via-xcm-with-polkadot-js-apps }
 
 如果您希望通过Polkadot API编程执行这些步骤，您可以跳至[下方部分教程](#remote-staking-via-xcm-with-the-polkadot-api)。
 
 首先，通过前往[Moonbase Alpha Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts){target=_blank}生成质押操作的编码调用数据。如要在此处查看**Extrinsics**菜单，您需要至少拥有一个可在Polkadot.js Apps中使用的帐户。如果你尚未拥有此类账户，您需要创建一个。接着，导向至**Developer**标签并点击**Extrinsics**。
-
-![Moonbase Alpha Polkadot JS Apps Home](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
 
 在以下步骤中，您将准备一个交易，但您需要避免在此处直接提交交易，以便能够完整地完成本教程。我们将准备此质押操作，并从中获取生成的编码调用数据，并在其后的步骤中通过XCM从中继链发送它。在**Extrinsics**页面中，请执行以下步骤：
 
