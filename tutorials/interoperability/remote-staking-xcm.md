@@ -7,7 +7,7 @@ template: main.html
 # 通过XCM远程质押
 
 ![Banner Image](/images/tutorials/interoperability/remote-staking-via-xcm/remote-staking-via-xcm-banner.png)
-_2022年12月14日 | 作者：Kevin Neilson_
+_作者：Kevin Neilson_
 
 ## 概览 {: #introduction }
 
@@ -49,7 +49,7 @@ _2022年12月14日 | 作者：Kevin Neilson_
 
 首先也是最重要的，您需要您希望委托的收集人的地址。如要找到该地址，请在第二个视窗中前往[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}。接着，确保您在正确的网络上，然后点击**Select Collator**。在您想要的委托人旁边，点击**Copy**图标。您还需要记下该委托人拥有的委托数量。下面显示的[PS-31 collator](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=_blank}在撰写本文时共有`60`个委托。
 
-![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-1.png)
+![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
 
 ## 通过XCM在Polkadot.js进行远程质押 {: #remote-staking-via-xcm-with-polkadot-js-apps } 
 
