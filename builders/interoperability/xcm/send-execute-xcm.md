@@ -11,7 +11,7 @@ description: 学习如何通过组合和试验不同的XCM指令来构建自定�
 
 XCM消息由[一系列的指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}组成，由跨共识虚拟机（XCVM）执行。这些指令的组合会执行预定的操作，例如跨链Token转移。您可以通过组合各种XCM指令创建自定义XCM消息。
 
-[**X-Tokens**](/builders/interoperability/xcm/xc20/xtokens){target=_blank}和[**XCM-Transactor**](/builders/interoperability/xcm/xcm-transactor/){target=_blank}等Pallet提供带有一组预定义的XCM指令的函数，用于发送[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}或通过XCM在其他链上远程执行。然而，要更好地了解组合不同XCM指令的结果，您可以在Moonbeam上本地构建和执行自定义XCM消息。你也可以发送自定义XCM消息至其他链（这将以[`DecendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令开始）。但是，要成功执行XCM消息，目标链需要理解这些指令。
+[X-Tokens](/builders/interoperability/xcm/xc20/xtokens){target=_blank}和[XCM Transactor](/builders/interoperability/xcm/xcm-transactor/){target=_blank}等Pallet提供带有一组预定义的XCM指令的函数，用于发送[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}或通过XCM在其他链上远程执行。然而，要更好地了解组合不同XCM指令的结果，您可以在Moonbeam上本地构建和执行自定义XCM消息。你也可以发送自定义XCM消息至其他链（这将以[`DecendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令开始）。但是，要成功执行XCM消息，目标链需要理解这些指令。
 
 要执行或发送自定义XCM消息，你可以直接使用[Polkadot XCM Pallet](#polkadot-xcm-pallet-interface)或者尝试通过带有[XCM-Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的以太坊API。在本教程中，您将学习如何使用这两种方式在Moonbase Alpha上本地执行和发送自定义的XCM消息。
 
@@ -39,7 +39,6 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 - 您的账户必须拥有一些DEV Token
   --8<-- 'text/faucet/faucet-list-item.md'
-- 如果按照Polkadot.js Apps的说明进行操作，您需要一个[接入Polkadot.js Apps接口的账户](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}
 
 ## 本地执行XCM消息 {: #execute-an-xcm-message-locally }
 
@@ -53,61 +52,77 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 !!! 注意事项
     通常情况下，当您发送XCM消息跨链至目标链时，需要用到[`BuyExecution`指令](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}用于支付远程执行。但是，对于本地执行，此指令非必要，因为您已通过extrinsic调用支付费用。
 
-### 使用Polkadot.js Apps执行XCM消息 {: #execute-an-xcm-message-with-polkadotjs-apps }
+### 使用Polkadot.js API执行XCM消息 {: #execute-an-xcm-message-with-polkadotjs-api }
 
-在本示例中，您将使用Polkadot.js Apps在Moonbase Alpha上本地执行自定义XCM消息，以直接与Polkadot XCM Pallet交互。
+在本示例中，您将使用Polkadot.js API在Moonbase Alpha上本地执行自定义XCM消息，以直接与Polkadot XCM Pallet交互。
 
-开始操作之前，请先前往[Polkadot.js Apps的**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}并执行以下步骤：
 
-1. 选择要发送XCM的账户。在本示例中，Alice为发送方
+The `execute` function of the Polkadot XCM Pallet accepts two parameters: `message` and `maxWeight`. You can start assembling these parameters by taking the following steps:
 
-2. 选择**polkadotXcm** pallet并选择**execute** extrinsic
+1. Build the `WithdrawAsset` instruction, which will require you to define:
+    - The multilocation of the DEV token on Moonbase Alpha
+    - The amount of DEV tokens to transfer
 
-3. 将消息版本设置为**V2**
+    ```js
+    const instr1 = {
+      WithdrawAsset: [
+        {
+          id: { Concrete: { parents: 0, interior: { X1: { PalletInstance: 3 } } } },
+          fun: { Fungible: 100000000000000000n }, // 0.1 DEV
+        },
+      ],
+    };
+    ```
+2. Build the `DepositAsset` instruction, which will require you to define:
+    - The multiasset identifier for DEV tokens. You can use the [`WildMultiAsset` format](https://github.com/paritytech/xcm-format/blob/master/README.md#6-universal-asset-identifiers){target=_blank}, which allows for wildcard matching, to identify the asset
+    - The multilocation of the beneficiary account on Moonbase Alpha
+    ```js
+    const instr2 = {
+      DepositAsset: {
+        assets: { Wild: 'All' },
+        beneficiary: {
+          parents: 0,
+          interior: {
+            X1: {
+              AccountKey20: {
+                key: MOONBEAM_ACCOUNT,
+              },
+            },
+          },
+        },
+      },
+    };
+    ```
+3. Combine the XCM instructions into a versioned XCM message:
+    ```js
+    const message = { V3: [instr1, instr2] };
+    ```
+4. Specify the `maxWeight`, which includes a value for `refTime` and `proofSize` that you will need to define:
+    - The `refTime` is the amount of computational time that can be used for execution. For this example, you can set it to `100000000000n`
+    - The `proofSize` is the amount of storage in bytes that can be used. You can set this to `0`
+    ```js
+    const maxWeight = { refTime: 100000000000n, proofSize: 0 } ;
+    ```
+Now that you have the values for each of the parameters, you can write the script for the execution. You'll take the following steps:
+ 1. Provide the input data for the call. This includes:
+     - The Moonbase Alpha endpoint URL to create the provider
+     - The values for each of the parameters of the `execute` function
+ 2. Create a Keyring instance that will be used to send the transaction
+ 3. Create the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
+ 4. Craft the `polkadotXcm.execute` extrinsic with the `message` and `maxWeight`
+ 5. Send the transaction using the `signAndSend` extrinsic and the Keyring instance you created in the second step
+!!! remember
+    This is for demo purposes only. Never store your private key in a JavaScript file.
+```js
+--8<-- 'code/polkadotXcm/xcmExecute/executeWithPolkadot.js'
+```
 
-4. 点击**Add item**按钮两次以添加**WithdrawAsset**和**DepositAsset**指令
-
-5. 将第一个指令设置为**WithdrawAsset**。点击指令名称下方的**Add item**按钮并输入资产的multilocation、资产类型和提现金额。因为本示例涵盖了如何在Moonbase Alpha上将DEV Token从一个账户发送到另一个账户，**WithdrawAsset**指令将定义Moonbase Alpha提现的DEV Token数量。你可以使用以下值，提取0.1 DEV Token：
-
-    |      参数      |         值         |
-    | :------------: | :----------------: |
-    |       ID       |      Concrete      |
-    |    Parents     |         0          |
-    |    Interior    |         X1         |
-    |       X1       |   PalletInstance   |
-    | PalletInstance |         3          |
-    |      Fun       |      Fungible      |
-    |    Fungible    | 100000000000000000 |
-    
-6. 将第二个指令设置为**DepositAsset**指令，并输入以下值以在Moonbase Alpha上存入DEV Token至接收方账户，在本示例中为Bob：
-
-    |   参数    |         值         |
-| :-------: | :----------------: |
-    |  Assets   |        Wild        |
-    |   Wild    |        All         |
-    | MaxAssets |         1          |
-    |  Parents  |         0          |
-    | Interior  |         X1         |
-    |    X1     |    AccountKey20    |
-    |  Network  |        Any         |
-    |    Key    | Bob's H160 Address |
-    
-    **Assets = Wild**、**Wild = All**和**MaxAssets = 1**的配置将仅从暂存处取出一项资产并存入指定账户
-
-7. 设置**maxWeight**，用于定义XCM执行允许的最大权重单位。在本示例中，您可以输入`1000000000`。任何多余的费用将退还您的账户
-
-8. 点击**Submit Transaction**并签署交易
-
-!!! 注意事项
-    上述配置的extrinsic编码的调用数据为`0x1c03020800040000010403001300008a5d784563010d010004000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e000ca9a3b00000000`。
-
-![Call the execute function of the Polkadot XCM Pallet via Polkadot.js Apps.](/images/builders/interoperability/xcm/send-execute-xcm/send-execute-xcm-1.png)
+!!! note
+    You can view an example of the above script, which sends 1 DEV to Bobs's account on Moonbeam, on [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c03030800040000010403001300008a5d784563010d0100000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e00700e876481700){target=_blank} using the following encoded calldata: `0x1c03030800040000010403001300008a5d784563010d0100000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e00700e876481700`.
 
 交易处理后，0.1 DEV Token和相关联的XCM费用从Alice的账户提取，Bob将在其账户收到0.1 DEV Token。`polkadotXcm.Attempted`事件将与结果一同发出。
 
-![Review the transaction details using Polkadot.js Apps.](/images/builders/interoperability/xcm/send-execute-xcm/send-execute-xcm-2.png)
-
-### 使用XCM-Utils预编译执行XCM交易 {: #execute-xcm-utils-precompile }
+### 使用XCM Utilities预编译执行XCM交易 {: #execute-xcm-utils-precompile }
 
 在这一部分，您将使用[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmExecute`函数（该函数仅支持Moonbase Alpha）以本地执行XCM消息。XCM Utilities预编译位于以下地址：
 
@@ -119,87 +134,39 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 `xcmExecute`函数接受两个参数：要执行SCALE编码的版本化XCM消息和要消耗的最大权重。
 
-要本地执行XCM消息，请执行以下步骤：
+First, you'll learn how to generate the encoded calldata, and then you'll learn how to use the encoded calldata to interact with the XCM Utilities Precompile.
 
-1. 构建SCALE编码的调用数据。您可以通过[上一部分](#execute-an-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
+#### Generate the Encoded Calldata of an XCM Message {: #generate-encoded-calldata }
 
-2. 使用以太坊库和XCM Utilities预编译发送带有编码调用数据的XCM消息
+To get the encoded calldata of the XCM message, you can create a script similar to the one you created in the [Execute an XCM Message with the Polkadot.js API](#execute-an-xcm-message-with-polkadotjs-api) section. Instead of building the message and sending the transaction, you'll build the message to get the encoded calldata. You'll take the following steps:
 
-要以编程方式获取SCALE编码的调用数据，您可以使用以下脚本：
+ 1. Provide the input data for the call. This includes:
+     - The Moonbase Alpha endpoint URL to create the provider
+     - The values for each of the parameters of the `execute` function as defined in the [Execute an XCM Message with the Polkadot.js API](#execute-an-xcm-message-with-polkadotjs-api) section
+ 2. Create the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
+ 3. Craft the `polkadotXcm.execute` extrinsic with the `message` and `maxWeight`
+ 4. Use the transaction to get the encoded calldata
+
+The entire script is as follows:
 
 ```js
---8<-- 'code/polkadotXcm/xcmExecute/encodedCalldata.js'
+--8<-- 'code/polkadotXcm/xcmExecute/generateEncodedCalldata.js'
 ```
 
-然后，执行以下步骤：
-
-1. 为调用提供输入数据，包括：
-
-    - Moonbase Alpha端点URL，用于创建提供者
-    - 在Moonbase Alpha上的DEV Token的multilocation
-    - 要从账户中提取的Token数量（以Wei为单位）。在本示例中，0.1 Token已足够。您可以通过XCM费用页面获取此值
-    - `xcmExecute`函数的最大权重参数
-    - DEV Token的接收方地址，在本示例中为Bob的地址
-    
-2. 构建第一个XCM指令`WithdrawAsset`。您需要提供资产的multilocation和您要提现的数量。这两个变量可在上方找到
-
-3. 构建第二个XCM指令`DepositAsset`。在之前执行的操作之后剩余部分（在这种情况下，为DEV Token）都会存入Bob的地址，该地址为接收方。要存入的资产设置为**Assets = Wild**、**Wild = All**和**MaxAssets = 1**
-
-4. 通过连接V2数组中的指令将XCM消息放在一起
-
-5. 创建Polkadot.js API提供者
-
-6. 使用XCM消息和最大权重创建`polkadotXcm.execute` extrinsic
-
-7. 获取SCALE编码的调用数据
-
-你可以使用`node`运行脚本，结果将记录到控制台。结果应与[上一部分](#execute-an-xcm-message-with-polkadotjs-apps)的编码调用数据一致：
-
-```
-0x1c03020800040000010403001300008a5d784563010d010004000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e000ca9a3b00000000
-```
-
-在使用编码的调用数据之前，您需要删除一些与XCM消息不对应的十六进制字符，例如`polkadotXcm.execute`函数的调用索引（即前4个字符）和最大权重（即最后16个字符）：
-
-```
-call index:  1c03
-XCM message: 020800040000010403001300008a5d784563010d010004000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e0
-max weight:  00ca9a3b00000000
-```
-
-因此，在本示例中，单独的XCM消息的编码调用数据为：
-
-```
-0x020800040000010403001300008a5d784563010d010004000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e0
-```
+#### Execute the XCM Message {: #execute-xcm-message }
 
 现在，您已拥有SCALE编码的XCM消息，您可以使用以下代码片段通过您选择的以太坊库以编程方式调用XCM-Utilities预编译的`xcmExecute`函数：
 
-!!! 请注意
-    以下代码片段仅用于演示目的，请勿将您的私钥存储至JavaScript或Python文件中。
-
-=== "Ethers.js"
-    ```js
-    --8<-- 'code/polkadotXcm/xcmExecute/ethers.js'
-    ```
-
-=== "Web3.js"
-    ```js
-    --8<-- 'code/polkadotXcm/xcmExecute/web3.js'
-    ```
-
-=== "Web3.py"
-    ```py
-    --8<-- 'code/polkadotXcm/xcmExecute/web3.py'
-    ```
-
-这样就可以了！您已成功使用Polkadot XCM Pallet和XCM-Utilities预编译在Moonbase Alpha上本地执行自定义XCM消息。
+1. Create a provider and signer
+2. Create an instance of the XCM Utilities Precompile to interact with
+3. Define parameters required for the `xcmExecute` function, which will be the encoded calldata for the XCM message and the maximum weight to use to execute the message. You can set the `maxWeight` to be `100000000000n`, which corresponds to the `refTime`. The `proofSize` will automatically be set to the default, which is 64KB
+4. Execute the XCM message
 
 ## 跨链发送XCM消息 {: #send-xcm-message }
 
 这一部分涵盖了通过两种不同的方法来跨链发送自定义XCM消息（即从Moonbeam到目标链，如中继链）：Polkadot XCM Pallet的`send`函数和[XCM-Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmSend`函数。
 
-要成功执行XCM消息，目标链需要理解消息中的指令。相反，您将在目标链上看到`Barrier`过滤器。为保证安全，XCM消息前会加上[`DecendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令以防止XCM代表源链的主权账户执行操作。
+要成功执行XCM消息，目标链需要理解消息中的指令。相反，您将在目标链上看到`Barrier`过滤器。为保证安全，XCM消息前会加上[`DecendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令以防止XCM代表源链的主权账户执行操作。**The example in this section will not work for the reasons mentioned above, it is purely for demonstration purposes**.
 
 在以下示例中，您将构建一个包含以下XCM指令的XCM消息，这些指令将在Alphanet中继链中执行：
 
@@ -209,97 +176,124 @@ max weight:  00ca9a3b00000000
 
 这些指令的目的是将中继链的原生资产（即Alphanet中继链的UNIT）从Moonbase Alpha转移到中继链上的一个账户。此示例仅用于演示目的，以演示如何跨链发送自定义XCM消息。 请记住，目标链需要理解消息中的指令才可执行。
 
-### 使用Polkadot.js Apps发送XCM消息 {: #send-xcm-message-with-polkadotjs-apps }
+### 使用Polkadot.js API发送XCM消息 {: #send-xcm-message-with-polkadotjs-api }
 
-在本示例中，您将使用Polkadot.js Apps在Moonbase Alpha上本地执行自定义XCM消息，以直接与Polkadot XCM Pallet交互。
+在本示例中，您将使用Polkadot.js API在Moonbase Alpha上本地执行自定义XCM消息，以直接与Polkadot XCM Pallet交互。
 
-开始操作之前，请先前往[Polkadot.js Apps的**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}并执行以下步骤：
+The `send` function of the Polkadot XCM Pallet accepts two parameters: `dest` and `message`. You can start assembling these parameters by taking the following steps:
 
-1. 选择要发送XCM的账户。在本示例中，Alice为发送方
+1. Build the multilocation of the relay chain token, UNIT, for the `dest`:
 
-2. 选择**polkadotXcm** pallet并选择**send** extrinsic
+    ```js
+    const dest = { V3: { parents: 1, interior: null } };
+    ```
+2. Build the `WithdrawAsset` instruction, which will require you to define:
+    - The multilocation of the UNIT token on the relay chain
+    - The amount of UNIT tokens to withdraw
+    ```js
+    const instr1 = {
+      WithdrawAsset: [
+        {
+          id: { Concrete: { parents: 1, interior: null } },
+          fun: { Fungible: 1000000000000n }, // 1 UNIT
+        },
+      ],
+    };
+    ```
+3. Build the `BuyExecution` instruction, which will require you to define:
+    - The multilocation of the UNIT token on the relay chain
+    - The amount of UNIT tokens to buy for execution
+    - The weight limit
+    ```js
+    const instr2 = {
+      BuyExecution: [
+        {
+          id: { Concrete: { parents: 1, interior: null } },
+          fun: { Fungible: 1000000000000n }, // 1 UNIT
+        },
+        { Unlimited: null }
+      ],
+    };
+    ```    
+4. Build the `DepositAsset` instruction, which will require you to define:
+    - The multiasset identifier for UNIT tokens. You can use the [`WildMultiAsset` format](https://github.com/paritytech/xcm-format/blob/master/README.md#6-universal-asset-identifiers){target=_blank}, which allows for wildcard matching, to identify the asset
+    - The multilocation of the beneficiary account on the relay chain
+    ```js
+    const instr3 = {
+      DepositAsset: {
+        assets: { Wild: 'All' },
+        beneficiary: {
+          parents: 1,
+          interior: {
+            X1: {
+              AccountId32: {
+                id: RELAY_ACC_ADDRESS,
+              },
+            },
+          },
+        },
+      },
+    };
+    ```
+5. Combine the XCM instructions into a versioned XCM message:
+    ```js
+    const message = { V3: [instr1, instr2, instr3] };
+    ```
+Now that you have the values for each of the parameters, you can write the script to send the XCM message. You'll take the following steps:
+ 1. Provide the input data for the call. This includes:
+     - The Moonbase Alpha endpoint URL to create the provider
+     - The values for each of the parameters of the `send` function
+ 2. Create a Keyring instance that will be used to send the transaction
+ 3. Create the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
+ 4. Craft the `polkadotXcm.send` extrinsic with the `dest` and `message`
+ 5. Send the transaction using the `signAndSend` extrinsic and the Keyring instance you created in the second step
+!!! remember
+    This is for demo purposes only. Never store your private key in a JavaScript file.
+```js
+--8<-- 'code/polkadotXcm/xcmSend/sendWithPolkadot.js'
+```
 
-3. 将目标链的multilocation版本设置为**V1**
-
-4. 输入multilocation。在本示例中，中继链Token可定义为：
-
-    |   参数   |  值  |
-    | :------: | :--: |
-    | Parents  |  1   |
-    | Interior | Here |
-    
-5. 将消息版本设置为**V2**
-
-6. 点击**Add item**按钮三次以添加**WithdrawAsset**、**BuyExecution**和**DepositAsset**指令
-
-7. 将第一个指令设置为**WithdrawAsset**。点击指令名称下方的**Add item**按钮并输入资产的multilocation、资产类型和提现金额。在本示例中，你可以使用以下值，提取1 UNIT Token：
-
-    |   参数   |      值       |
-    | :------: | :-----------: |
-    |    ID    |   Concrete    |
-    | Parents  |       1       |
-    | Interior |     Here      |
-    |   Fun    |   Fungible    |
-    | Fungible | 1000000000000 |
-    
-8. 将第二个指令设置为**BuyExecution**指令，然后再次点击指令名称下方的**Add item**按钮，并输入以下值以交易执行：
-
-    |    参数     |      值       |
-    | :---------: | :-----------: |
-    |     ID      |   Concrete    |
-    |   Parents   |       1       |
-    |  Interior   |     Here      |
-    |     Fun     |   Fungible    |
-    |  Fungible   | 1000000000000 |
-    | WeightLimit |   Unlimited   |
-    
-9. 将第三个指令设置为**DepositAsset**指令，并输入以下值以在中继链上存入UNIT Token至接收方账户，在本示例中为Bob的中继链地址：
-
-    | Parameter 参数 |       Value 值        |
-| :------------: | :-------------------: |
-    |     Assets     |         Wild          |
-    |      Wild      |          All          |
-    |   MaxAssets    |           1           |
-    |    Parents     |           1           |
-    |    Interior    |          X1           |
-    |       X1       |     AccountKey32      |
-    |    Network     |          Any          |
-    |       ID       | Bob's 32-byte Address |
-    
-    **Assets = Wild**、**Wild = All**和**MaxAssets = 1**的配置将仅从暂存处取出一项资产并存入指定账户
-
-10. 点击**Submit Transaction**并签署交易
-
-!!! 注意事项
-    上述配置的extrinsic编码的调用数据为`0x1c00010100020c000400010000070010a5d4e81300010000070010a5d4e8000d010004010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67`。
-
-![Call the send function of the Polkadot XCM Pallet via Polkadot.js Apps.](/images/builders/interoperability/xcm/send-execute-xcm/send-execute-xcm-3.png)
+!!! note
+    You can view an example of the above script, which sends 1 UNIT to Bobs's relay chain account, on [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c00030100030c000400010000070010a5d4e81300010000070010a5d4e8000d0100010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67){target=_blank} using the following encoded calldata: `0x1c00030100030c000400010000070010a5d4e81300010000070010a5d4e8000d0100010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67`.
 
 交易处理后，`polkadotXcm.sent`事件将与发送的XCM消息详情一同发出。
 
-![Review the transaction details using Polkadot.js Apps.](/images/builders/interoperability/xcm/send-execute-xcm/send-execute-xcm-4.png)
+### 使用XCM Utilities预编译发送XCM交易 {: #send-xcm-utils-precompile }
 
-### 使用XCM-Utilities预编译发送XCM交易 {: #send-xcm-utils-precompile }
+在这一部分，您将使用[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmSend`函数（该函数仅支持Moonbase Alpha）以跨链发送XCM消息。XCM-Utilities预编译位于以下地址：
 
-在这一部分，您将使用[XCM-Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmSend`函数（该函数仅支持Moonbase Alpha）以跨链发送XCM消息。XCM-Utilities预编译位于以下地址：
-
-```
-{{ networks.moonbase.precompiles.xcm_utils }}
-```
+=== "Moonbase Alpha"
+    ```
+    {{ networks.moonbase.precompiles.xcm_utils }}
+    ```
 
 在Hood下，XCM-Utilities预编译的`xcmSend`函数调用Polkadot XCM Pallet的`send`函数，即用Rust编码的Substrate pallet。使用XCM-Utilities预编译调用`send`的好处是您可以通过以太坊API完成此操作并使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}等以太坊库。要成功执行XCM消息，目标链需要了解消息中的指令。
 
 `xcmSend`函数接受两个参数：目标链的multilocation和要发送的SCALE编码的版本化XCM消息。
 
-要本地发送XCM消息，请执行以下步骤：
+First, you'll learn how to generate the encoded calldata for the XCM message, and then you'll learn how to use the encoded calldata to interact with the XCM Utilities Precompile.
 
-1. 构建目标链的multilocation
+#### Generate the Encoded Calldata of an XCM Message {: #generate-encoded-calldata }
 
-2. 构建SCALE编码的调用数据。您可以通过[上一部分](#send-xcm-message-with-polkadotjs-apps)的操作获取编码的调用数据，或者你可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}以编程方式计算相同的调用数据
+To get the encoded calldata of the XCM message, you can create a script similar to the one you created in the [Send an XCM Message with the Polkadot.js API](#send-xcm-message-with-polkadotjs-api) section. Instead of building the message and sending the transaction, you'll build the message to get the encoded calldata. You'll take the following steps:
 
-3. 使用以太坊库和XCM-Utilities预编译发送待用目标链multilocation和编码调用数据的XCM消息
+ 1. Provide the input data for the call. This includes:
+     - The Moonbase Alpha endpoint URL to create the provider
+     - The values for each of the parameters of the `send` function as defined in the [Send an XCM Message with the Polkadot.js API](#send-xcm-message-with-polkadotjs-api) section
+ 2. Create the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
+ 3. Craft the `polkadotXcm.execute` extrinsic with the `message` and `maxWeight`
+ 4. Use the transaction to get the encoded calldata
 
-在本示例中，目标链的multilocation为中继链，如下所示：
+The entire script is as follows:
+
+```js
+--8<-- 'code/polkadotXcm/xcmSend/generateEncodedCalldata.js'
+```
+
+#### Send the XCM Message {: #send-xcm-message }
+
+Before you can send the XCM message, you'll also need to build the multilocation of the destination. For this example, you'll target the relay chain with Moonbase Alpha as the origin chain:
+
 
 ```js
 const dest = [
@@ -308,62 +302,12 @@ const dest = [
 ];
 ```
 
-这将在计算编码的调用数据后使用。
+Now that you have the SCALE encoded XCM message and the destination multilocation, you can use the following code snippets to programmatically call the `xcmSend` function of the XCM Utilities Precompile using your [Ethereum library](/builders/build/eth-api/libraries/){target=_blank} of choice. Generally speaking, you'll take the following steps:
 
-接下来，您可以从[上一部分](#send-xcm-message-with-polkadotjs-apps)中获取编码的调用数据。如果您通过此方式获取，您需要查看编码详细信息并手动删除与目标链multilocation对应的十六进制字符，具体情况的处理方式不同。
-
-获得编码调用数据的还有更为简单的方法，您可以通过[Polkadot.js API](/build/substrate-api/polkadot-js-api/){target=_blank}和 `polkadotXcm.execute`函数以编程方式获取。但是，您仍需要操作调用数据，该步骤相对来说比较简单，无论目的地如何，操作步骤相同。
-
-要以编程方式获取SCALE编码的调用数据，您可以使用以下脚本：
-
-```js
---8<-- 'code/polkadotXcm/xcmSend/encodedCalldata.js'
-```
-
-然后，执行以下步骤：
-
-1. 为调用提供输入数据，包括：
-
-    - Moonbase Alpha端点URL，用于创建提供者
-    - 中继链和目标链的multilocation
-    - 要从账户中提取的Token数量（以Wei为单位）。在本示例中，1 Token已足够。您可以通过XCM费用页面获取此值
-    - UNIT Token的接收方地址，在本示例中为Bob的中继链地址
-    
-2. 构建第一个XCM指令`WithdrawAsset`。您需要提供资产的multilocation和您要提现的数量。这两个变量可在上方找到
-
-3. 构建第二个XCM指令`BuyExecution`。您需要提供资产的multilocation，上述指令取出的数量和权重限制
-
-4. 构建第二个XCM指令`DepositAsset`。在之前执行的操作之后剩余部分（在这种情况下，为DEV Token）都会存入Bob的中继链地址，该地址为接收方。要存入的资产设置为**Assets = Wild**、**Wild = All**和**MaxAssets = 1**
-
-5. 通过连接V2数组中的指令将XCM消息放在一起
-
-6. 创建Polkadot.js API提供者
-
-7. 使用XCM消息和最大权重创建`polkadotXcm.execute` extrinsic，此处无需用到最大权重，因此您可以设置为`0`
-
-8. 获取SCALE编码的调用数据
-
-你可以使用`node`运行脚本，结果将记录到控制台。结果应与上一部分的编码调用数据略有不同：
-
-```
-0x1c03020c0004000100000f0000c16ff2862313000100000f0000c16ff28623000d010004010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d670000000000000000
-```
-
-在使用编码的调用数据之前，您需要删除一些与XCM消息不对应的十六进制字符，例如`polkadotXcm.execute`函数的调用索引（即前4个字符）和最大权重（即最后16个字符）：
-
-```
-call index:  1c03
-XCM message: 020800040000010403001300008a5d784563010d010004000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e0
-max weight:  0000000000000000
-```
-
-因此，在本示例中，单独的XCM消息的编码调用数据为：
-
-```
-0x020c0004000100000f0000c16ff2862313000100000f0000c16ff28623000d010004010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67
-```
-
-现在，您已拥有目标链的multilocation和SCALE编码的XCM消息，您可以使用以下代码片段通过您选择的以太坊库以编程方式调用XCM-Utilities预编译的`xcmSend`函数：
+1. Create a provider and signer
+2. Create an instance of the XCM Utilities Precompile to interact with
+3. Define parameters required for the `xcmSend` function, which will be the destination and the encoded calldata for the XCM message
+4. Send the XCM message
 
 !!! 请注意
     以下代码片段仅用于演示目的，请勿将您的私钥存储至JavaScript或Python文件中。
