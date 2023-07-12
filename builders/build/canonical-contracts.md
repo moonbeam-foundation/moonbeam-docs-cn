@@ -25,7 +25,7 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
 === "Moonriver"
     |                                                           合约                                                           |                    地址                    |
     |:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
-    |      [WMOVR](https://moonriver.moonscan.io/address/0xf50225a84382c74CbdeA10b0c176f71fc3DE0C4d#code){target=_blank}       | 0xf50225a84382c74CbdeA10b0c176f71fc3DE0C4d |
+    |      [WMOVR](https://moonriver.moonscan.io/address/0x98878B06940aE243284CA214f92Bb71a2b032B8A#code){target=_blank}       | 0x98878B06940aE243284CA214f92Bb71a2b032B8A |
     |    [Multicall](https://moonriver.moonscan.io/address/0x30f283Cc0284482e9c29dFB143bd483B5C19954b#code){target=_blank}*    | 0x30f283Cc0284482e9c29dFB143bd483B5C19954b |
     |    [Multicall2](https://moonriver.moonscan.io/address/0xaef00a0cf402d9dedd54092d9ca179be6f9e5ce3#code){target=_blank}    | 0xaef00a0cf402d9dedd54092d9ca179be6f9e5ce3 |
     |   [Multicall3](https://moonriver.moonscan.io/address/0xca11bde05977b3631167028862be2a173976ca11#code/){target=_blank}    | 0xcA11bde05977b3631167028862bE2a173976CA11 |
