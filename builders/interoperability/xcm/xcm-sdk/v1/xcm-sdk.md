@@ -17,7 +17,7 @@ XCM SDK提供帮助函数，该函数提供在波卡/Kusama生态中链之间执
 
 以下教程的范例中在Moonbeam中进行，但同样适用于Moonriver或Moonbase Alpha。
 
-## 安装XCM SDK{: #install-the-xcm-sdk }
+## 安装XCM SDK {: #install-the-xcm-sdk }
 
 要开始使用Moonbeam XCM SDK，您首先需要安装SDK：
 
@@ -31,7 +31,7 @@ npm install @moonbeam-network/xcm-sdk
 npm install ethers@^5.7.2 @polkadot/api @polkadot/util-crypto
 ```
 
-## 创建签署人{: #create-signers }
+## 创建签署人 {: #create-signers }
 
 当在链之间转移资产时，您需要签署人来负责签署交易。如果您与之交互的是一个使用标准以太坊风格H160地址的EVM兼容链（如Moonbeam），您将需要一个以太坊签署人。更详细地说，是一个[Ethers.js](https://docs.ethers.org/v5/){target=_blank}签署人。要与中继链或其他平行链交互，您需要的是一个[Polkadot](https://polkadot.js.org/docs/api/)签署人。
 
@@ -39,7 +39,7 @@ npm install ethers@^5.7.2 @polkadot/api @polkadot/util-crypto
 
 要为Ethers.js和Polkadot.js创建签署人，您可以参考以下部分教程。
 
-!!! 提醒事项
+!!! 请记住
     **永远不要将您的私钥或是助记词存储在JavaScript或是TypeScript文件中。**
 
 ### 创建一个Ethers签署人 {: #create-a-ethers-signer }
