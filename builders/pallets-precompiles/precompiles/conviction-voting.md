@@ -7,7 +7,7 @@ description: 学习如何直接通过Moonbeam上的Conviction Voting Precompile�
 
 ![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 作为波卡平行链和去中心化网络，Moonbeam具有原生链上治理，能够使Token持有者直接参与网络。随着OpenGov（也称为Governance v2）的推出，Conviction Voting Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、原则、机制等，请参考[Moonbeam上的治理](/learn/features/governance){target=_blank}页面。
 
@@ -33,9 +33,7 @@ Conviction Voting Precompile位于以下地址：
 
 [`ConvictionVoting.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。
 
-The interfaces includes a `Conviction` enum that defines the Conviction multiplier types. The enum has the following variables:
-
-接口包含定义Conviction乘数类型的`Conviction`枚举（enum）。这个枚举具有以下变量：
+该接口包含定义[Conviction multiplier](/learn/features/governance/#conviction-multiplier-v2){target=_blank}类型的`Conviction`枚举（enum）。该枚举具有以下变量：
 
  - **None** -  0.1倍的投票，无锁定期
  - **Locked1x** - 1倍的投票，投票成功后锁定1个生效等待期
@@ -47,8 +45,12 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 接口包含以下函数：
 
+- **votingFor**(*address* who, *uint16* trackId) - returns the votes for a given account and Track
+- **classLocksFor**(*address* who) - returns the class locks for a given account
 - **voteYes**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“赞成”票（包含信念值权重）
 - **voteNo**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“反对”票（包含信念值权重）
+- **voteSplit**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - votes a split vote, with a given amount locked for "Aye" and a given amount locked for "Nay", on a poll (referendum)
+- **voteSplitAbstain**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - votes a split abstained vote, with a given amount locked for "Aye", a given amount locked for "Nay", and a given amount locked for an abstain vote (support), on a poll (referendum)
 - **removeVote**(*uint32* pollIndex) - 在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **removeOtherVote**(*address* target, *uint16* trackId, *uint32* pollIndex) - 为另一个投票者在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **delegate**(*uint16* trackId, *address* representative, *Conviction* conviction, *uint256* amount) - 委托另一个账户作为代表为特定Track的发送账户进行信念值权重投票
@@ -66,7 +68,10 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 接口也包含以下事件：
 
 - **Voted**(*uint32 indexed* pollIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - 当账户投票时发出
-- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - 当账户（`voter`）的投票被移除时发出
+- **VoteSplit**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay) - emitted when an account makes a split vote
+- **VoteSplitAbstained**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay, *uint256* nay) - emitted when an account makes a split abstained vote
+- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - emitted when an account's (`voter`) vote has been removed from an ongoing poll (referendum)
+- **VoteRemovedForTrack**(*uint32 indexed* pollIndex, *uint16* trackId, *address* voter) - emitted when an account's (`voter`) vote has been removed from an ongoing poll (referendum) for a specific Track
 - **VoteRemovedOther**(*uint32 indexed* pollIndex, *address* caller, *address* target, *uint16* trackId) - 当一个账户（`caller`）为另一个账户（`target`）移除投票时发出
 - **Delegated**(*uint16 indexed* trackId, *address* from, *address* to, *uint256* delegatedAmount, *uint8* conviction) - 当一个账户（`from`）委托给定数量的信念值权重投票给另一个账户（`to`）时发出
 - **Undelegated**(*uint16 indexed* trackId, *address* caller) - 当为特定Track移除帐户（`caller`）委托时发出
