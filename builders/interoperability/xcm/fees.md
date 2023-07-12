@@ -338,9 +338,9 @@ XCM-Cost = ({{ networks.moonbeam.xcm.units_per_second.xcdot.transfer_numbers_onl
 
 Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.transfer.xcdot_cost }} xcDOT`。
 
-## XCM-Transactor费用 {: #xcm-transactor-fees }
+## XCM Transactor费用 {: #xcm-transactor-fees }
 
-[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
+[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
 
 开发者有两种方法通过pallet远程交易：
 
@@ -362,7 +362,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 通过衍生函数交易包含3个XCM指令：[`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank}、[`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}以及[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}。
 
-在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM交易者pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
+在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM Transactor Pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
 
 您可以想像以下情景：Alice想要从Moonbeam使用通过主权extrinsic在波卡中进行远程交易（她已经在她的账户中注册了一个索引）。要预估从Alice的账户中将销毁多少XC-20 Token，您需要检查特定于中继链的交易信息。因此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
@@ -391,7 +391,7 @@ XCM-Planck-DOT-Cost = transactExtraWeight * UnitsPerSecond / WeightToSeconds
 XCM-DOT-Cost = XCM-Planck-DOT-Cost / DOTDecimalConversion
 ```
 
-因此，以下为一个通过衍生调用的XCM-transactor交易费用的实际计算：
+因此，以下为一个通过衍生调用的XCM Transactor交易费用的实际计算：
 
 ```
 XCM-Planck-DOT-Cost = {{ networks.polkadot.xcm_message.transact.numbers_only }} * {{ networks.moonbeam.xcm.units_per_second.xcdot.transact_numbers_only }} / 10^12
@@ -440,7 +440,7 @@ XCM-Wei-Token-Cost = transactExtraWeight * UnitsPerSecond / WeightToSeconds
 XCM-Token-Cost = XCM-Wei-Token-Cost / TokensDecimalConversion
 ```
 
-因此，实际一个通过衍生调用的XCM-transactor交易费用的实际计算如下：
+因此，实际一个通过衍生调用的XCM Transactor交易费用的实际计算如下：
 
 ```
 XCM-Wei-Token-Cost = {{ networks.moonbase_beta.xcm_message.transact.numbers_only }} * {{ networks.moonbase.xcm.units_per_second.xcbetadev.transact_numbers_only }}
