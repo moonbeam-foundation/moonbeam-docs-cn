@@ -99,7 +99,7 @@ Registry Precompile位于以下地址：
 
 3. 与Precompile Registry的函数交互
 
-!!! 请注意
+!!! 请记住
     以下代码片段仅用于演示目的。请勿将您的私钥存储在JavaScript或Python文件中。
 
 === "Ethers.js"
