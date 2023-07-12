@@ -136,7 +136,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 ## 论坛示例 {: #forum-templates }
 
-在Moonriver或Moonbeam主网上开始创建XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布两个主要的帖子，以便投票的社区提供反馈。
+在Moonriver或Moonbeam主网上开始创建XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布两个主要的帖子，以便投票的社区提供反馈。This step is **not necessary** when connecting to Moonbase Alpha.
 
 建议在提案正式上链之前至少有5天时间，以便为社区反馈提供时间。
 
@@ -168,8 +168,6 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 在Moonbeam XCM Proposals论坛帖和Polkassembly中，请添加以下部分和信息：
 
 - **Title** — *YOUR_NETWORK_NAME*提案以打开通道并注册*ASSET_NAME*
-
-
 - **Introduction** — 一句话概括提案
 - **Network Information** — 一句话概括您的网络，以及官网、Twitter和其他社交媒体的相关链接
 - **Summary** — 提案简介
@@ -198,9 +196,12 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     {{ networks.moonbase.wss_url }}
     ```
 
-每个基于Moonbeam网络的资产元数据：
+### Register Moonbeam Native Tokens {: #moonbeam-native-tokens }
+
+For Moonbeam native tokens, the metadata for each network is as follows:
 
 === "Moonbeam"
+
     ```
     Name: Glimmer
     Symbol: GLMR
@@ -209,6 +210,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     ```
 
 === "Moonriver"
+
     ```
     Name: Moonriver Token
     Symbol: MOVR
@@ -217,6 +219,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     ```
 
 === "Moonbase Alpha"
+
     ```
     Name: DEV
     Symbol: DEV
@@ -224,52 +227,98 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
     Existential Deposit: 1 (1 * 10^-18 DEV)
     ```
 
-每个基于Moonbeam网络资产的Multilocation：
+The multilocation of Moonbeam native assets include the parachain ID of the network and the pallet instance, which corresponds to the index of the `Balances` pallet. The multilocation for each network is as follows:
 
 === "Moonbeam"
-    ```
+
+    ```js
     {
-      "parents": 1,
-      "interior": {
-        "X2": [
-          { 
-            "Parachain": 2004,
-            "PalletInstance": 10
-          }
-        ]
+      V3: {
+        parents: 1,
+        interior: {
+          X2: [
+            { 
+              Parachain: 2004
+            },
+            {
+              PalletInstance: 10
+            }
+          ]
+        }
       }
     }
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     {
-      "parents": 1,
-      "interior": {
-        "X2": [
-          { 
-            "Parachain": 2023,
-            "PalletInstance": 10
-          }
-        ]
+      V3: {
+        'parents': 1,
+        'interior': {
+          'X2': [
+            { 
+              'Parachain': 2023
+            },
+            {
+              'PalletInstance': 10
+            }
+          ]
+        }
       }
     }
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     {
-      "parents": 1,
-      "interior": {
-        "X2": [
-          { 
-            "Parachain": 1000,
-            "PalletInstance": 3
-          }
-        ]
+      V3: {
+        'parents': 1,
+        'interior': {
+          'X2': [
+            { 
+              'Parachain': 1000
+            },
+            {
+              'PalletInstance': 3
+            }
+          ]
+        }
       }
     }
     ```
+
+### Register Local XC-20s (ERC-20s) {: register-erc20s }
+
+In order to register a local XC-20 on another chain, you'll need the multilocation of the asset on Moonbeam. The multilocation will include the parachain ID of Moonbeam, the pallet instance, and the address of the ERC-20. The pallet instance will be `48`, which corresponds to the index of the ERC-20 XCM Bridge Pallet, as this is the pallet that enables any ERC-20 to be transferred via XCM.
+
+Currently, the support for local XC-20s is only on Moonbase Alpha. You can use the following multilocation to register a local XC-20:
+
+=== "Moonbase Alpha"
+
+    ```js
+    {
+      V3: {
+        parents: 1,
+        interior: {
+          X3: [
+            { 
+              Parachain: 1000
+            },
+            {
+              PalletInstance: 48
+            },
+            {
+              AccountKey20: {
+                key: 'ERC20_ADDRESS_GOES_HERE'
+              }
+            }
+          ]
+        }
+      }
+    }
+    ```  
 
 ## 创建HRMP通道 {: #create-an-hrmp-channel }
 
@@ -429,7 +478,7 @@ yarn
     --ed 1 --sufficient true --revert-code true 
     ```
 
-基于Moonbeam的资产的最低账户余额和充足性分别设置为1和`true`，类似于以太坊上的ERC-20。`--revert-code`标志是指在[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}存储元素中设置的简单EVM字节码，以便其他智能合约可以轻松与XC-20交互。
+Existential deposit, `--ed`, is always set to 1. Sufficiency, `--sufficient`, is always set to `true`. This is so that the XC-20 assets on Moonbeam can act similar to an ERC-20 on Ethereum。`--revert-code`标志是指在[XC-20](/builders/interoperability/xcm/xc20/){target=_blank}存储元素中设置的简单EVM字节码，以便其他智能合约可以轻松与XC-20交互。You can ensure that these values are properly included by checking for them in Polkadot.js apps with the resultant encoded calldata.
 
 例如，以下命令将用于注册来自平行链888的资产，该资产的通用密钥为`1`：
 
@@ -561,7 +610,7 @@ The UnitsPerSecond needs to be set 34106412005
 
 建立两个通道并注册资产后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}地址。
 
-您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到您获得40个十六进制字符（加上“0x”）地址。 有关如何计算的更多信息，请参阅外部XC-20教程中的[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}部分。
+您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到您获得40个十六进制字符（加上“0x”）地址。 有关如何计算的更多信息，请参阅外部XC-20教程中的[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=_blank}部分。
 
 资产成功注册后，您可以尝试将Token从您的平行链转移到您正在集成的基于Moonbeam的网络。
 
