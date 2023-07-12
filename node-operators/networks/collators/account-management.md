@@ -15,13 +15,45 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 本教程将引导您如何管理您的收集人账户，包括创建和转换会话密钥、注册和更新会话密钥、设置身份以及创建代理账户。
 
+## Process to Add and Update Session Keys {: #process }
+
+The process for adding your session keys for the first time is the same as it would be for rotating your session keys. The process to create/rotate session keys is as follows:
+
+1. [Generate session keys](#session-keys) using the `author_rotateKeys` RPC method. The response to calling this method will be a 128 hexadecimal character string containing a Nimbus ID and the public key of a VRF session key
+2. [Join the candidate pool](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank} if you haven't already
+3. [Map the session keys](#mapping-extrinsic) to your candidate account using the [Author Mapping Pallet](#author-mapping-interface)'s `setKeys(keys)` extrinsic, which accepts the entire 128 hexadecimal character string as the input. When you call `setKeys` for the first time, you'll be required to submit a [mapping bond](#mapping-bonds). If you're rotating your keys and you've previously submitted a mapping bond, no new bond is required
+
+Each step of the process is outlined in the following sections.
+
 ## 生成会话密钥 {: #session-keys }
 
 --8<-- 'text/collators/generate-session-keys.md'
 
-## 需要的保证金 {: #mapping-bonds }
+## Manage Session Keys {: #manage-session-keys }
 
-在会话密钥映射到您的账户时，系统将会发送一定数量的Token绑定。此绑定按注册的会话密钥来的。绑定的Token数量设置如下所示：
+Once you've created or rotated your session keys, you'll be able to manage your session keys using the extrinsics in the Author Mapping Pallet. You can map your session keys, verify the on-chain mappings, and remove session keys.
+
+### 作者映射Pallet接口 {: #author-mapping-interface }
+
+`authorMapping`模块具有以下extrinsics编程：
+
+ - **setKeys**(keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币](#mapping-bonds)。替换弃用的`addAssociation`和`updateAssociation`函数
+- **removeKeys**() - 删除会话密钥。替换已弃用的`clearAssociation` extrinsic
+
+这个模块同时也新增以下RPC调用（链状态）：
+
+- **mappingWithDeposit**(NimbusPrimitivesNimbusCryptoPublic | string | Uint8Array) —— 将显示所有储存在链上的映射内容，或是根据您提供的Nimbus ID显示相关内容
+- **nimbusLookup**(AccountId20) - 显示所有收集人或给定收集人地址的帐户ID到Nimbus ID的反向映射
+
+### Map Session Keys {: #mapping-extrinsic }
+
+With your newly generated session keys in hand, the next step is to map your session keys to your H160 account (an Ethereum-style address). Make sure you hold the private keys to this account, as this is where the block rewards are paid out to.
+
+To map your session keys to your account, you need to be inside the [candidate pool](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}. Once you are a candidate, you need to send a mapping extrinsic, which requires a mapping bond.
+
+## Mapping Bonds {: #mapping-bonds }
+
+The mapping bond is per session keys registered. The bond for mapping your session keys to your account is as follows:
 
 === "Moonbeam"
     ```
@@ -38,29 +70,7 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
     {{ networks.moonbase.staking.collator_map_bond }} DEV
     ```
 
-## 作者映射Pallet接口 {: #author-mapping-interface }
-
-`authorMapping`模块具有以下extrinsics编程：
-
- - **setKeys**(keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币](#mapping-bonds)。替换弃用的`addAssociation`和`updateAssociation`函数
-- **removeKeys**() - 删除会话密钥。替换已弃用的`clearAssociation` extrinsic
-
-以下函数**已弃用**，但仍存在向后兼容性：
-
- - **addAssociation**(nimbusID) —— 将您的Nimbus ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#需要的保证金--mapping-bonds)。此函数通过默认将`keys`设置为Nimbus ID来保持向后兼容性
- - **updateAssociation**(oldNimbusID, newNimbusID) —— 将旧的Nimbus ID映射到新的Nimbus ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定。此函数通过默认将`newKeys`设置为Nimbus ID来保持向后兼容性
- - **clearAssociation**(nimbusID) — 清除Nimbus ID与发送交易的H160帐户的关联，该帐户需要是该Nimbus ID的所有者。也退还押金
-
-这个模块同时也新增以下RPC调用（链状态）：
-
-- **mappingWithDeposit**(NimbusPrimitivesNimbusCryptoPublic | string | Uint8Array) —— 将显示所有储存在链上的映射内容，或是根据您提供的Nimbus ID显示相关内容
-- **nimbusLookup**(AccountId20) - 显示所有收集人或给定收集人地址的帐户ID到Nimbus ID的反向映射
-
-### 映射会话密钥 {: #mapping-extrinsic }
-
-生成会话密钥后的下一步是映射你的会话密钥到H160账户（即以太坊格式的地址）。确保您拥有该账户的私钥，这将用于接收区块奖励。
-
-如果您想要将您的会话密钥映射到您的账户，您需要成为[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中的一员。当您成为候选人后，您需要传送您的映射extrinsic。请注意，每一次注册作者ID时将会绑定Token。
+#### Use Polkadot.js Apps to Map Session Keys {: #use-polkadotjs-apps }
 
 在本指南中，您将学习如何从Polkadot.js应用映射会话密钥。 要了解如何通过作者映射预编译合约创建映射，您可以参考[与作者映射预编译交互](/builders/pallets-precompiles/precompiles/author-mapping){target=_blank}页面。
 
@@ -74,9 +84,10 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 ![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
 
-如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
+!!! 注意事项
+    如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
 
-如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
+如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
 
 ### 检查映射设定 {: #checking-the-mappings }
 
@@ -126,6 +137,23 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 ![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-6.png)
 
 您应该能够看到与所提供的H160帐户关联的Nimbus ID。 如果没有提供账户，这将返回存储在链上的所有映射。
+
+
+### Remove Session Keys {: #removing-session-keys }
+
+Before removing your session keys, you'll want to make sure that you've stopped collating and left the candidate pool. To stop collating, you'll need to schedule a request to leave the candidate pool, wait a delay period, and then execute the request. For step-by-step instructions, please refer to the [Stop Collating](/node-operators/networks/collators/activities/#stop-collating){target=_blank} section of the Moonbeam Collator Activities page.
+
+Once you have left the candidate pool, you can remove your session keys. After which, the mapping bond you deposited will be returned to your account.
+
+From [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}, click on **Developer** at the top of the page, then choose **Extrinsics** from the dropdown, and take the following steps:
+
+1. Select your account
+2. Choose the **authorMapping** pallet and the **removeKeys** extrinsic
+3. Click **Submit Transaction**
+
+![Remove session keys on Polkadot.js Apps](/images/node-operators/networks/collators/account-management/account-7.png)
+
+Once the transaction goes through, the mapping bond will be returned to you. To make sure that the keys were removed, you can follow the steps in the [Check Mappings](#checking-the-mappings) section.
 
 ## 设置身份 {: #setting-an-identity }
 

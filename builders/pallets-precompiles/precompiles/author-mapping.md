@@ -43,12 +43,6 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 - **addressOf**(*bytes32* nimbusId) - 获取与给定Nimbus ID关联的地址。如果Nimbus ID未知，则返回`0`
 - **keysOf**(*bytes32* nimbusId) - 获取与给定的Nimbus ID关联的密钥。如果Nimbus ID未知，则返回空字节
 
-以下方式将被**弃用**，但仍将存在以实现向后兼容性：
-
- - **addAssociation**(*bytes32* nimbusId) — 将您的作者ID从交易发送处映射到H160账户，确保这是私钥的真正所有者。这需要一笔[保证金](#mapping-bonds)。此方法通过将`keys`默认设置为作者ID来维持向后兼容性
- - **updateAssociation**(*bytes32* oldNimbusId, *bytes32* newNimbusId) — 将映射从旧的作者ID更新为新的作者ID。在密钥轮换或迁移后会非常有用。这将自动执行`add`和`clear`关联的extrinsics，无需第二笔保证金便能启用密钥轮换。此方法通过将`newKeys`默认设置为作者ID来维持向后兼容性
- - **clearAssociation**(*bytes32* nimbusId) — 清除作者ID与发送交易的H160账户的关联，该帐户需要是该作者ID的所有者。同时，将退还保证金
-
 ## 需要的保证金 {: #bonds }
 
 要跟随本教程操作，您将需要加入候选人池并将您的会话密钥映射到您的H160以太坊格式账户。执行这两个步骤需要两笔保证金。
@@ -100,11 +94,11 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 
 如之前所述，您可以使用Ledger将其连接至MetaMask，详情请参考[Ledger](/tokens/connect/ledger/){target=_blank}教程将您的Ledger导入MetaMask。请注意，不建议您使用Ledger用于生产目的。更多信息请参考[收集人要求页面的账户要求部分](/node-operators/networks/collators/requirements/#account-requirements){target=_blank}。
 
-### 生成会话密钥 {: #generate-session-keys } 
+### 生成会话密钥 {: #generate-session-keys }
 
 --8<-- 'text/collators/generate-session-keys.md'
 
-### Remix设置 {: #remix-set-up } 
+### Remix设置 {: #remix-set-up }
 
 首先，获取[`AuthorMappingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}的副本并执行以下操作：
 
