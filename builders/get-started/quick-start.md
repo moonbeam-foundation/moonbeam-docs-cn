@@ -31,35 +31,35 @@ Moonbeam是波卡上完全兼容以太坊的智能合约平台。如此一来，
 
 === "Moonbeam"
 
-    |      变量       |                                                                                                                                               值                                                                                                                                                |
-    |:---------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |    Chain ID     |                                                                                                          <pre style="padding-right: 2em">```{{ networks.moonbeam.chain_id }}```</pre>                                                                                                           |
-    | Public RPC URLs | <pre style="padding-right: 2em">```https://moonbeam.public.blastapi.io```</pre> <pre style="padding-right: 2em">```https://moonbeam.api.onfinality.io/public```</pre>  <pre style="padding-right: 2em">```https://moonbeam-mainnet.gateway.pokt.network/v1/lb/629a2b5650ec8c0039bb30f0```</pre> |
-    | Public WSS URLs |                                                              <pre style="padding-right: 2em">```wss://moonbeam.public.blastapi.io```</pre> <pre style="padding-right: 2em">```wss://moonbeam.api.onfinality.io/public-ws```</pre>                                                               |
+    |      变量       |                                                                                                       值                                                                                                       |
+    |:---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |    Chain ID     |                                                                               <pre>```{{ networks.moonbeam.chain_id }}```</pre>                                                                                |
+    | Public RPC URLs | <pre>```https://moonbeam.public.blastapi.io```</pre> <pre>```https://moonbeam.api.onfinality.io/public```</pre>  <pre>```https://moonbeam-mainnet.gateway.pokt.network/v1/lb/629a2b5650ec8c0039bb30f0```</pre> |
+    | Public WSS URLs |                                                 <pre>```wss://moonbeam.public.blastapi.io```</pre> <pre>```wss://moonbeam.api.onfinality.io/public-ws```</pre>                                                 |
 
 === "Moonriver"
 
-    |      变量       |                                                                                                                                                 值                                                                                                                                                 |
-    |:---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |    Chain ID     |                                                                                                           <pre style="padding-right: 2em">```{{ networks.moonriver.chain_id }}```</pre>                                                                                                            |
-    | Public RPC URLs | <pre style="padding-right: 2em">```https://moonriver.public.blastapi.io```</pre> <pre style="padding-right: 2em">```https://moonriver.api.onfinality.io/public```</pre>  <pre style="padding-right: 2em">```https://moonriver-mainnet.gateway.pokt.network/v1/lb/62a74fdb123e6f003963642f```</pre> |
-    | Public WSS URLs |                                                               <pre style="padding-right: 2em">```wss://moonriver.public.blastapi.io```</pre> <pre style="padding-right: 2em">```wss://moonriver.api.onfinality.io/public-ws```</pre>                                                               |
+    |      变量       |                                                                                                        值                                                                                                         |
+    |:---------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |    Chain ID     |                                                                                <pre>```{{ networks.moonriver.chain_id }}```</pre>                                                                                 |
+    | Public RPC URLs | <pre>```https://moonriver.public.blastapi.io```</pre> <pre>```https://moonriver.api.onfinality.io/public```</pre>  <pre>```https://moonriver-mainnet.gateway.pokt.network/v1/lb/62a74fdb123e6f003963642f```</pre> |
+    | Public WSS URLs |                                                 <pre>```wss://moonriver.public.blastapi.io```</pre> <pre>```wss://moonriver.api.onfinality.io/public-ws```</pre>                                                  |
 
 === "Moonbase Alpha"
 
-    |      变量       |                                                                                                                              值                                                                                                                               |
-    |:---------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |    Chain ID     |                                                                                         <pre style="padding-right: 2em">```{{ networks.moonbase.chain_id }}```</pre>                                                                                          |
-    | Public RPC URLs | <pre style="padding-right: 2em">```https://moonbase-alpha.public.blastapi.io```</pre> <pre style="padding-right: 2em">```https://moonbeam-alpha.api.onfinality.io/public```</pre> <pre style="padding-right: 2em">```{{ networks.moonbase.rpc_url }}```</pre> |
-    | Public WSS URLs | <pre style="padding-right: 2em">```wss://moonbase-alpha.public.blastapi.io```</pre> <pre style="padding-right: 2em">```wss://moonbeam-alpha.api.onfinality.io/public-ws```</pre> <pre style="padding-right: 2em">```{{ networks.moonbase.wss_url }}```</pre>  |
+    |      变量       |                                                                                      值                                                                                      |
+    |:---------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |    Chain ID     |                                                              <pre>```{{ networks.moonbase.chain_id }}```</pre>                                                               |
+    | Public RPC URLs | <pre>```https://moonbase-alpha.public.blastapi.io```</pre> <pre>```https://moonbeam-alpha.api.onfinality.io/public```</pre> <pre>```{{ networks.moonbase.rpc_url }}```</pre> |
+    | Public WSS URLs | <pre>```wss://moonbase-alpha.public.blastapi.io```</pre> <pre>```wss://moonbeam-alpha.api.onfinality.io/public-ws```</pre> <pre>```{{ networks.moonbase.wss_url }}```</pre>  |
 
 === "Moonbeam开发节点"
 
-    |     变量      |                                       值                                        |
-    |:-------------:|:-------------------------------------------------------------------------------:|
-    |   Chain ID    | <pre style="padding-right: 2em">```{{ networks.development.chain_id }}```</pre> |
-    | Local RPC URL | <pre style="padding-right: 2em">```{{ networks.development.rpc_url }}```</pre>  |
-    | Local WSS URL | <pre style="padding-right: 2em">```{{ networks.development.wss_url }}```</pre>  |
+    |     变量      |                          值                          |
+    |:-------------:|:----------------------------------------------------:|
+    |   Chain ID    | <pre>```{{ networks.development.chain_id }}```</pre> |
+    | Local RPC URL | <pre>```{{ networks.development.rpc_url }}```</pre>  |
+    | Local WSS URL | <pre>```{{ networks.development.wss_url }}```</pre>  |
 
 !!! 注意事项
     您可以从[支持的RPC提供商](/builders/get-started/endpoints/#endpoint-providers){target=_blank}之一创建适合开发或生产的端点。
@@ -74,10 +74,10 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
 
 要开始在测试网上开发，您将需要向您的账户注入一些DEV Token以发送交易。请注意，DEV Token并无真实价值，仅用于测试目的。
 
-|                                         测试网                                          |                                                                               从哪里获取Token                                                                                |
-|:---------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                                         测试网                                          |                                                                     从哪里获取Token                                                                      |
+|:---------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |        [Moonbase Alpha](/builders/get-started/networks/moonbase){target=_blank}         | 从[Moonbase Alpha Faucet](https://faucet.moonbeam.network/){target=_blank}网站。 <br>水龙头会每24个小时分配{{ networks.moonbase.website_faucet_amount }} |
-| [Moonbeam Development Node](/builders/get-started/networks/moonbeam-dev){target=_blank} |                  您开发节点附带的 [10个预注资账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}中的任何一个                  |
+| [Moonbeam Development Node](/builders/get-started/networks/moonbeam-dev){target=_blank} |        您开发节点附带的 [10个预注资账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}中的任何一个        |
 
 ## 开发工具 {: #development-tools }
 
