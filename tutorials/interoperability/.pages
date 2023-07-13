@@ -2,6 +2,10 @@ title: 互操作性
 hide: false
 nav:
   - index.md
-  - '[互连合约] 构建跨链DAO': 'cross-chain-dao.md'
-  - '[XCM] 从波卡在Moonbeam上执行远程质押': 'remote-staking-xcm.md'
-  - '[XCM] 在波卡在Moonbeam上执行Uniswap V2兑换': 'uniswapv2-swap-xcm.md'
+  - 'Create Connected Contracts with Cross-Chain Protocols':
+    - protocols.index.md
+    - '[LayerZero] 构建跨链DAO': 'cross-chain-dao.md'
+  - 'Build Cross-Chain Applications with XCM':
+    - xcm.index.md
+    - "[Polkadot's XCM Pallet] 从波卡在Moonbeam上执行远程质押": 'remote-staking-xcm.md'
+    - "[Polkadot's XCM Pallet] 在波卡在Moonbeam上执行Uniswap V2兑换": 'uniswapv2-swap-xcm.md'
