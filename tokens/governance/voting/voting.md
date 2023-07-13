@@ -5,8 +5,6 @@ description: 学习如何通过Governance v1功能对Moonbeam上进行公投的�
 
 # 如何在Governance v1对提案进行投票
 
-![Governance Moonbeam Banner](/images/tokens/governance/voting/voting-banner.png)
-
 ## 概览 {: #introduction } 
 
 提案进入公投阶段后，Token持有者可以使用持有的Token进行投票。影响投票权重的因素有两个：Token锁定量和锁定期（称为“信念值”）。这可以从经济利益上确保不会出现兜售投票权的现象。因此，锁定期越长，投票权重越高。用户也可以选择不锁定Token，但投票权重会大大下降。

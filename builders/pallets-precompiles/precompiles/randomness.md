@@ -6,8 +6,6 @@ keywords: solidity, ethereum, randomness, VRF, moonbeam, precompiled, contracts
 
 # 与随机数预编译交互
 
-![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种利用一些输入值并产生随机数的加密函数，并证明这些数值是由提交者生成。此证明可以由任何人验证，以确保准确计算生成的随机数计算。

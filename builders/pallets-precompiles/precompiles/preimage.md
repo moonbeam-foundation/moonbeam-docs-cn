@@ -5,8 +5,6 @@ description: 学习如何通过提交原像执行在链上提交提案的首个�
 
 # 与Preimage Precompile交互
 
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/preimage/preimage-banner.png)
-
 ## 概览 {: #introduction }
 
 作为波卡（Polkadot）平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。随着OpenGov（也称为Governance v2）的推出，Preimage Pallet允许Token持有者通过提交原像（即提案中要在链上执行的操作）执行创建提案的第一步。提交提案需要用到原像哈希。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、提案流程等，请参考[Moonbeam上的治理](/learn/features/governance){target=_blank}页面。

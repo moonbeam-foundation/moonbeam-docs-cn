@@ -5,8 +5,6 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 # Ethers.js JavaScript代码库
 
-![Intro diagram](/images/builders/build/eth-api/libraries/ethers/ethersjs-banner.png)
-
 ## 概览 {: #introduction }
 
 [Ethers.js](https://docs.ethers.io/){target=_blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于Web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Ethers.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在此[博客文章](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3){target=_blank}了解更多关于Ethers.js的信息。

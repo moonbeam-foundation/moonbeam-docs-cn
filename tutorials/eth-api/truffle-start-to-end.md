@@ -5,8 +5,6 @@ description: 学习如何使用Truffle开发、测试和部署智能合约以及
 
 # Truffle智能合约开发：从本地开发节点至Moonbeam主网
 
-![Banner Image](/images/tutorials/eth-api/truffle-start-to-end/truffle-banner.png)
-
 _2023年01月10日 | 作者：Erin Shaben_
 
 ## 概览 {: #introduction }

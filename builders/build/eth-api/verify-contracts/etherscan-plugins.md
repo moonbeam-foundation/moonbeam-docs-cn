@@ -5,8 +5,6 @@ description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonb
 
 # 使用Etherscan插件验证智能合约
 
-![Etherscan Plugins Banner](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-banner.png)
-
 ## 概览 {: #introduction }
 
 验证智能合约是为部署在Moonbeam上的合约提供透明度和安全性的一种好方法。与Etherscan的合约验证服务集成的插件有很多，其中包括[`hardhat-etherscan`插件](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html){target=_blank}和[`truffle-plugin-verify`插件](https://github.com/rkalis/truffle-plugin-verify){target=_blank}。这两种插件均能通过本地检测需要验证的合约及其所需的Solidity库（若有）来自动执行验证合约的过程。

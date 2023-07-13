@@ -5,8 +5,6 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 # 与Moonbeam Safe多签钱包交互
 
-![Moonbeam Multisig Safe Banner](/images/tokens/manage/multisig-safe/safe-banner.png)
-
 ## 概览 {: #introduction }
 
 单签名钱包（简称singlesig）是一种只有一个所有者持有私钥的钱包，可以控制账户持有的所有资产。因此，如果私钥丢失将导致永久无法访问钱包并损失资金。

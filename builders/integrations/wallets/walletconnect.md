@@ -5,8 +5,6 @@ description: 了解如何将WalletConnect集成到基于任何Moonbeam网络的D
 
 # 将WalletConnect集成至DApp
 
-![WalletConnect Banner](/images/builders/integrations/wallets/walletconnect/walletconnect-banner.png)
-
 ## 概览 {: #introduction }
 
 [WalletConnect](https://walletconnect.com/){target=_blank}是一个供钱包和DApp之间安全交互的开源协议。

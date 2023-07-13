@@ -5,8 +5,6 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 # 使用Hardhat部署至Moonbeam
 
-![Hardhat Create Project](/images/builders/build/eth-api/dev-env/hardhat/hardhat-banner.png)
-
 ## 概览 {: #introduction }
 
 [Hardhat](https://hardhat.org/){target=_blank}是一个以太坊开发环境，可帮助开发人员管理和自动化构建智能合约和DApp所固有的重复性任务。Hardhat可以直接与Moonbeam的以太坊API交互，因此可以在部署智能合约至Moonbeam时使用。

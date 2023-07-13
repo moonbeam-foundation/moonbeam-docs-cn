@@ -5,8 +5,6 @@ description: 学习如何使用Hyperlane协议和API桥接资产以及将Moonbea
 
 # Hyperlane协议
 
-![Hyperlane Moonbeam banner](/images/builders/interoperability/protocols/hyperlane/hyperlane-banner.png)
-
 ## 概览 {: #introduction }
 
 [Hyperlane](https://hyperlane.xyz){target=_blank}是Web3的一个安全模块化的跨链通信协议，能够使dApp用户与任何资产或应用在任何互连的链上一键式交互。该协议支持通用资产传输以及自定义跨链通信。

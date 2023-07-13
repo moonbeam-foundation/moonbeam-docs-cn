@@ -5,8 +5,6 @@ description: 通过此教程学习如何使用Waffle和Mars在Moonbeam上编写�
 
 # 在Moonbeam上使用Waffle和Mars
 
-![Waffle and Mars on Moonbeam](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-banner.png)
-
 ## 概览 {: #introduction } 
 
 [Waffle](https://getwaffle.io/){target=_blank}是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}或[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=_blank}。

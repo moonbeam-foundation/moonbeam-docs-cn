@@ -5,8 +5,6 @@ description: 想要创建一个彩票智能合约？遵循本分步教程使用M
 
 # 使用随机数预编译创建一个彩票合约
 
-![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
-
 _本文档更新至2022年3月15日｜作者：Erin Shaben_
 
 ## 概览 {: #introduction } 

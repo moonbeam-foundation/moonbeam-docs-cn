@@ -5,8 +5,6 @@ description: 使用Gelato自动化您的智能合约交互并将您的Moonbeam�
 
 # 开始使用Gelato
 
-![Gelato Banner](/images/builders/integrations/relayers/gelato/gelato-banner.png)
-
 ## 概览 {: #introduction }
 
 [Gelato Network](https://www.gelato.network/){target=_blank}是一个为Web3设计的去中心化自动网络，允许开发者横跨多个基于EVM兼容区块链上自动化和连接任意的智能合约执行。此网络依赖于称为[执行者（Executors）](https://docs.gelato.network/introduction/executor-operators){target=_blank}的广泛交易中继层运作，通过提供的基础设施和自动化服务获得奖励。Gelato被设计为更加稳固、去中心化和实惠的机器人基础设置运行的替代解决方案。

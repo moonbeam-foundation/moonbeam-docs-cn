@@ -6,8 +6,6 @@ keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128
 
 # 在Moonbase Alpha上的以太坊主网预编译合约
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/eth-mainnet/eth-mainnet-banner.png)
-
 ## 概览 {: #introduction }
 
 [Moonbase Alpha v2](https://moonbeam.network/blog/moonbase-alpha-v2-contract-events-pub-sub-capabilities/)版本中新增的另外一个功能是提供以太坊上的一些原生[预编译合约](https://docs.klaytn.com/smart-contract/precompiled-contracts)。

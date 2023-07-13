@@ -5,8 +5,6 @@ description: 学习如何使用预编译的资产Solidity合约通过ERC-20接�
 
 # XC-20概况
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/overview/overview-banner.png)
-
 ## 概览 {: #introduction }
 
 [跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}定义了两条互操作的区块链之间传递信息的方式。此格式为Moonbeam/Moonriver与中继链或是其他波卡/Kusama生态内平行链之间打开了传递信息和资产的大门。

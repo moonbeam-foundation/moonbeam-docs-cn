@@ -5,8 +5,6 @@ description: 学习如何桥接资产，以及使用Axelar网络和API将您的M
 
 # Axelar Network
 
-![Axelar Moonbeam banner](/images/builders/interoperability/protocols/axelar/axelar-banner.png)
-
 ## 概览 {: #introduction }
 
 [Axelar](https://axelar.network/){target=_blank}为Web3带来安全的跨链通信功能。Axelar的基础设施允许dApp用户一键与任何连接网络上的任何资产或是应用程序交互。通过无需许可的PoS验证人集，Axelar网络允许dApp使用图灵完备调用传递任何信息。

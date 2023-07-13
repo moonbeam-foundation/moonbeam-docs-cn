@@ -5,8 +5,6 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 
 # 管理您的账户身份
 
-![Managing your Account Identity](/images/tokens/manage/identity/identity-banner.png)
-
 ## 概览 {: #introduction }
 
 [Substrate](/learn/platform/technology/#substrate-framework){target=_blank}身份pallet是「开箱即用」的解决方案，能够新增个人信息至您的链上账户。个人信息可以包含的基础类别如真实姓名、显示名称、网站、推特用户名、Riot（现为Elemet）名称。您同样也可以利用自定区域新增其他相关信息。

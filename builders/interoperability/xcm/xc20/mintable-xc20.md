@@ -5,8 +5,6 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 # 可铸造XC-20
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-banner.png)
-
 ## 概览 {: #introduction }
 
 如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/interoperability/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/interoperability/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。

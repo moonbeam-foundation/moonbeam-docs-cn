@@ -5,8 +5,6 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 # 使用Systemd在Moonbeam上运行节点
 
-![Full Node Moonbeam Banner](/images/node-operators/networks/run-a-node/systemd/systemd-banner.png)
-
 ## 概览 {: #introduction }
 
 在基于Moonbeam的网络运行一个全节点使您能够连接至网络，与bootnode节点同步，获得RPC端点的本地访问，在平行链上创建区块，以及更多其他不同的功能。

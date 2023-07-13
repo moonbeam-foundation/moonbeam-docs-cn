@@ -5,8 +5,6 @@ description: 关于运行节点后如何深入了解并成为Moonbeam网络中�
 
 # 在Moonbeam上运行收集人
 
-![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
-
 ## 概览 {: #introduction }
 
 收集人是网络的其中一员，其职责是维护他们所参与的平行链。他们运行一个全节点（针对他们特定的平行链和中继链），并为中继链验证者生成状态转换证明。

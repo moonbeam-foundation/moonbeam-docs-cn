@@ -5,8 +5,6 @@ description: 学习如何直接通过Moonbeam上的Conviction Voting Precompile�
 
 # 与Conviction Voting预编译交互
 
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-banner.png)
-
 ## 概览 {: #introduction } 
 
 作为波卡平行链和去中心化网络，Moonbeam具有原生链上治理，能够使Token持有者直接参与网络。随着OpenGov（也称为Governance v2）的推出，Conviction Voting Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、原则、机制等，请参考[Moonbeam上的治理](/learn/features/governance){target=_blank}页面。

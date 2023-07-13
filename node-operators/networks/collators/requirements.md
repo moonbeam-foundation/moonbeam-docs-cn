@@ -5,8 +5,6 @@ description: 了解在Moonbeam网络上成为收集人和维护收集人节点�
 
 # 收集人要求
 
-![Collator Requirements Banner](/images/node-operators/networks/collators/requirements-banner.png)
-
 ## 概览 {: #introduction } 
 
 在开始运行收集人节点之前您需要了解一些基本要求。首先，您需要遵循社区准则并满足技术要求。您需要拥有高配硬件设备、安全创建且存储的账户、满足绑定数量要求以及完成收集人问卷调查。

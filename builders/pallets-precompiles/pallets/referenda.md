@@ -6,8 +6,6 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 表决, 投票,
 
 # Referenda Pallet
 
-![Referenda Moonbeam Banner](/images/builders/pallets-precompiles/pallets/referenda-banner.png)
-
 ## 概览 {: #introduction }
 
 The Referenda Pallet allows token holders to make, delegate, and manage Conviction-weighted votes on referenda. 

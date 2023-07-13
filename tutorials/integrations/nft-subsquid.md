@@ -5,8 +5,6 @@ description: 通过本教程学习如何使用Subsquid（一种基于Substrate�
 
 # 使用Subsquid索引在Moonbeam上的NFT转账
 
-![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
-
 _本文档更新至2023年3月7日｜作者：Massimo Luraschi_
 
 ## 概览 {: #introduction }

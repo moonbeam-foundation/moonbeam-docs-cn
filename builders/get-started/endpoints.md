@@ -5,8 +5,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 # 网络端点
 
-![API Providers banner](/images/builders/get-started/endpoints/endpoints-banner.png)
-
 ## 公共端点 {: #public-endpoints }
 
 基于Moonbeam的网络有两种端点可供用户连接：一种是HTTPS，另一种是WSS。

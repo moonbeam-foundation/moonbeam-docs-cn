@@ -5,8 +5,6 @@ description: 学习如何使用LayerZero协议和API桥接资产以及将Moonbea
 
 # LayerZero协议
 
-![LayerZero Moonbeam banner](/images/builders/interoperability/protocols/layerzero/layerzero-banner.png)
-
 ## 概览 {: #introduction }
 
 [LayerZero](https://layerzero.network/){target=_blank}为Web3提供安全的全链（Omnichain）互操作性。LayerZero依赖于Oracle（预言机）和Relayer（中继器）两方在链与链之间提供安全消息传输。LayerZero的基础设施使dApp用户能够通过一键操作与任何连接链上的任何资产或应用程序进行交互。

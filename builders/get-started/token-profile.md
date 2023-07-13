@@ -5,8 +5,6 @@ description: 在Moonscan上为部署在基于Moonbeam网络的ERC-20、ERC-721�
 
 # 在Moonscan上新增Token信息
 
-![Explorer Banner](/images/builders/get-started/explorers/explorers-banner.png)
-
 ## 概览 {: #introduction }
 
 本教程将向您介绍为[Moonscan](https://moonscan.io){target=_blank}上的ERC-20、ERC-721和ERC-1155 Token新增Token简介的过程。

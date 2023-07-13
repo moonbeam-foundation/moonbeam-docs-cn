@@ -5,8 +5,6 @@ description: 使用Docker启动并运行您自己的Graph节点，为Moonbeam上
 
 # 在Moonbeam上运行Graph节点
 
-![The Graph Node on Moonbeam](/images/node-operators/indexer-nodes/the-graph/the-graph-node-banner.png)
-
 ## 概览 {: #introduction } 
 
 [Graph](https://thegraph.com/){target=_blank}节点负责从区块链上获取事件消息，并精准更新数据存储。数据存储可通过GraphQL终端请求进行访问。

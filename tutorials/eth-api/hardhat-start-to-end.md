@@ -5,7 +5,6 @@ description: 学习如何使用Hardhat开发、测试、部署智能合约以及
 
 # Hardhat开发流程
 
-![Learn about the typical Hardhat Ethereum Developer workflow from start to finish.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-banner.png)
 _本文档更新至2023年1月16日｜作者：Kevin Neilson & Erin Shaben_
 
 ## 概览 {: #introduction } 

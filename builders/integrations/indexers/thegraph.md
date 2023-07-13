@@ -5,8 +5,6 @@ description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgra
 
 # 在Moonbeam上使用The Graph
 
-![The Graph on Moonbeam](/images/builders/integrations/indexers/the-graph/the-graph-banner.png)
-
 ## 概览 {: #introduction } 
 
 索引协议可以更有效地组织信息，便于应用程序访问及使用。例如，Google就是通过索引整个互联网的信息，快速为搜索者提供所需信息。

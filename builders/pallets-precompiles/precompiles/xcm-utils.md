@@ -6,8 +6,6 @@ keywords: solidity, 以太坊, xcm, utils, moonbeam, 预编译, 合约
 
 # 与XCM-Utils预编译交互
 
-![Precomiled XCM-Utils Banner](/images/builders/pallets-precompiles/precompiles/xcm-utils/xcm-utils-banner.png)
-
 ## 概览 {: #xcmutils-precompile}
 
 XCM-utils预编译合约为开发者提供了直接在EVM中与XCM相关的实用性函数。这允许开发者能够更轻松地与其他XCM相关的预编译进行交易和交互。

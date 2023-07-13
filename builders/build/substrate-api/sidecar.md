@@ -5,8 +5,6 @@ description: 了解如何使用基于Substrate的REST服务在Moonbeam网络上�
 
 # 在Moonbeam上使用Substrate API Sidecar
 
-![Substrate API Sidecar](/images/builders/build/substrate-api/sidecar/sidecar-banner.png)
-
 ## 概览 {: #introduction } 
 
 Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块链的区块、账户余额和其他信息。这对于需要在Moonbeam网络上持续追踪账户余额和其他状态更新的交易所、钱包或其他类型的应用程序非常有用。本文将介绍如何为Moonbeam安装和运行Substrate API Sidecar，以及常用API端点。

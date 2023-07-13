@@ -5,8 +5,6 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 
 # 如何使用Polkadot.js Apps与Moonbeam交互
 
-![Intro diagram](/images/tokens/connect/polkadotjs/polkadotjs-banner.png)
-
 ## 概览 {: #introduction }
 
 作为波卡（Polkadot）平行链，Moonbeam使用[统一账户结构](/learn/features/unified-accounts/){target=_blank}允许您使用单个以太坊格式的地址就能与Substrate(Polkadot)功能和Moonbeam的EVM交互。这种统一的账户结构意味着您无需同时维护Substrate和以太坊账户，只需通过单个以太坊账户私钥即可完成与Moonbeam交互。

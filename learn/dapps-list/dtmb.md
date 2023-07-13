@@ -5,8 +5,6 @@ description: 如何将您的Moonbeam或Moonriver项目收录在Downtown Moonbeam
 
 # 如何将您的项目收录在Downtown Moonbeam平台上
 
-![Downtown Moonbeam banner image](/images/learn/dapps-list/dtmb/dtmb-banner.png)
-
 ## Downtown Moonbeam概览
 
 [Downtown Moonbeam](https://www.dtmb.xyz/){target=_blank}提供了在Moonbeam和Moonriver生态系统内构建的项目列表，包括每个DApp的基本信息，如网站信息、项目简介和联系方式。

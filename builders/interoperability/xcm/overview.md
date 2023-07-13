@@ -5,8 +5,6 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 # 跨共识信息格式（XCM）
 
-![XCM Overview Banner](/images/builders/interoperability/xcm/overview/overview-banner.png)
-
 ## 概览 {: #introduction } 
 
 波卡的[架构](https://wiki.polkadot.network/docs/learn-architecture){target=_blank}使平行链能够原生地与其他平行链互操作，允许任何种类数据和资产的跨链传递。

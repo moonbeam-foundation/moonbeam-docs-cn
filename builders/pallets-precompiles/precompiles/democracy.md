@@ -6,8 +6,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, 民主
 
 # 与民主预编译交互
 
-![Democracy Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/democracy/democracy-banner.png)
-
 ## 概览 {: #introduction }
 
 作为波卡（Polkadot）的平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank}页面。

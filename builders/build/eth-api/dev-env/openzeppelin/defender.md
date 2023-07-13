@@ -5,8 +5,6 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 # OpenZeppelin Defender
 
-![OpenZeppelin Defender Banner](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-banner.png)
-
 ## 概览 {: #introduction } 
 
 [OpenZeppelin Defender](https://docs.openzeppelin.com/defender/){target=_blank}是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：

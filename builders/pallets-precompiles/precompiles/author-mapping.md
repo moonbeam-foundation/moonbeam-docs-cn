@@ -6,8 +6,6 @@ keywords: Solidity，以太坊，作者映射，收集人，moonbeam，预编译
 
 # 使用作者映射预编译交互
 
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且易于使用的Solidity接口，将会话密钥映射至用于支付区块奖励的Moonbeam地址。这将使候选人使用Ledger或任何与Moonbeam兼容的以太坊钱包完成作者映射。但是，建议您在实体隔离的设备上生成您的密钥。更多信息请参考[收集人要求页面的账户要求部分](/node-operators/networks/collators/requirements/#account-requirements){target=_blank}。

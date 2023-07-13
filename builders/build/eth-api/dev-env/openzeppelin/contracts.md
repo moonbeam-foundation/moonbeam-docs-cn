@@ -5,8 +5,6 @@ description: 了解如何使用 OpenZeppelin Contracts Wizard创建常见智能�
 
 # OpenZeppelin合约&库
 
-![OpenZeppelin Contracts Banner](/images/builders/build/eth-api/dev-env/openzeppelin/contracts/oz-contracts-banner.png)
-
 ## 概览 {: #introduction } 
 
 [OpenZeppelin](https://openzeppelin.com/){target=_blank}合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 

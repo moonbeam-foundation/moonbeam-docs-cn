@@ -5,8 +5,6 @@ description: 学习如何使用以太坊开发平台Tenderly在Moonbeam上构建
 
 # 在Moonbeam上使用Tenderly
 
-![Tenderly Banner](/images/builders/build/eth-api/dev-env/tenderly/tenderly-banner.png)
-
 ## 概览 {: #introduction } 
 
 [Tenderly](https://tenderly.co/){target=_blank}是一个Web3开发平台，包含一套旨在帮助开发者贯穿DApp开发生命周期的工具。通过Tenderly，您可以构建、调试、测试、优化、监控、设置警报，以及查看分析Moonbeam和Moonriver上的智能合约。

@@ -5,8 +5,6 @@ description: 通过本教程学习如何使用投票以及锁定Token以支持�
 
 # 如何在OpenGov（Governance v2）中对提案进行投票
 
-![Governance Moonbeam Banner](/images/tokens/governance/voting/voting-banner.png)
-
 ## 概览 {: #introduction } 
 
 公投是简单的、包容的和基于质押的投票方案。每一次公投都有一个与之相关的具体的提议。在OpenGov中，每个公投都有一个指定的Origin级别来执行提案，并且每个Origin都有一个自己的Track，用于处理提案。尽管公投是通过共同过程完成的，但批准的要求是特定于Track的。

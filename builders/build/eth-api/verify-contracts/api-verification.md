@@ -5,8 +5,6 @@ description: 学习如何使用现有的基于API的验证函数在Moonbeam网�
 
 # 基于API的合约验证
 
-![API Verification Banner](/images/builders/build/eth-api/verify-contracts/api-verification/api-verification-banner.png)
-
 ## 概览 {: #introduction }
 
 验证智能合约能够大幅提升他们的透明性和安全性，在Moonbeam网络上部署的智能合约能够使用基于API的工具进行验证，包含Moonscan API和Sourcify。

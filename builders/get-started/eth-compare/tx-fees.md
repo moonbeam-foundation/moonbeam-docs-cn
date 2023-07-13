@@ -5,8 +5,6 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 # 计算Moonbeam上的交易费用
 
-![Transaction Fees Banner](/images/builders/get-started/eth-compare/tx-fees-banner.png)
-
 ## 概览 {: #introduction }
 
 与Moonbeam上[用于发送转账的以太坊和Substrate API](/builders/get-started/eth-compare/transfers-api/){target=_blank}类似，Moonbeam上的Substrate和EVM也有不同的交易费用模型，开发者应知道何时需要计算和继续追踪其交易的交易费用。

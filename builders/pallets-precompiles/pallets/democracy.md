@@ -6,8 +6,6 @@ keywords: 民主、substrate、pallet、moonbeam、波卡
 
 # 民主Pallet
 
-![Democracy Moonbeam Banner](/images/builders/pallets-precompiles/pallets/democracy-banner.png)
-
 ## 概览 {: #introduction }
 
 作为波卡上的平行链，Moonbeam通过[Substrate民主pallet](https://docs.rs/pallet-democracy/latest/pallet_democracy/){target=_blank}提供原生的链上治理功能。要了解有关治理的更多信息，例如相关术语、原则、机制等的概述，请参阅[Moonbeam治理](/learn/features/governance){target=_blank} 页面。

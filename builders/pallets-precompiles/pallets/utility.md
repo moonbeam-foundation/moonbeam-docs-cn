@@ -6,8 +6,6 @@ keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 
 # Utility Pallet
 
-![Utility Moonbeam Banner](/images/builders/pallets-precompiles/pallets/utility/utility-banner.png)
-
 ## 概览 {: #introduction }
 
 通过Substrate的utility pallet，Moonbeam上的用户可以通过2个可用批量extrinsics将多个调用包含在单个交易中，并使用衍生账户发送调用。

@@ -5,8 +5,6 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 # Wormhole Network
 
-![Wormhole Moonbeam banner](/images/builders/interoperability/protocols/wormhole/wormhole-banner.png)
-
 ## 概览
 
 [Wormhole](https://wormhole.com/){target=_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://book.wormhole.com/wormhole/5_guardianNetwork.html){target=_blank}赋能, Wormhole可以让dApps跨链传输任意消息.

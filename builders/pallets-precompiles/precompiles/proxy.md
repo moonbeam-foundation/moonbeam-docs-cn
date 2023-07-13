@@ -6,8 +6,6 @@ keywords: solidity, ethereum, proxy, moonbeam, precompiled, contracts, substrate
 
 # 与代理预编译交互
 
-![Proxy Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/proxy/proxy-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有限数量的操作，例如治理、质押或余额转移。

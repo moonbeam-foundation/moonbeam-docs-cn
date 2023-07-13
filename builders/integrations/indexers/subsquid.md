@@ -5,8 +5,6 @@ description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate
 
 # 在Moonbeam上使用Subsquid进行检索
 
-![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
-
 ## 概览 {: #introduction }
 
 [Subsquid](https://subsquid.io){target=_blank}是基于Substrate的区块链所使用的一种检索节点框架。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（Extract-Transform-Load，数据提取、转换与加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。

@@ -6,8 +6,6 @@ keywords: solidity、以太坊、批量、交易、moonbeam、预编译、合约
 
 # 与批量预编译合约交互
 
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/batch/batch-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。

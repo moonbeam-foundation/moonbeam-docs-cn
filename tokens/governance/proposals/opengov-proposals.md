@@ -1,12 +1,9 @@
 ---
 title: 如何在OpenGov发起提案
 description: 按照这些分步说明来了解如何提交民主提案以供其他token持有者在Moonbeam上的Governance v2 (OpenGov)中投票。 
-
 ---
 
 # 如何在OpenGov (Governance v2)发起提案
-
-![Governance Moonbeam Banner](/images/tokens/governance/proposals/governance-proposal-banner.png)
 
 ## 概览 {: #introduction }
 

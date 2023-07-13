@@ -6,8 +6,6 @@ keywords: staking, substrate, pallet, moonbeam, polkadot
 
 # 平行链质押Pallet
 
-![Staking Moonbeam Banner](/images/builders/pallets-precompiles/pallets/staking-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam使用委托权益证明(DPoS)共识，该共识根据收集人在网络中的总质押数额决定哪些收集人有资格生产区块。有关质押的一般信息，例如术语、质押变量等，请参阅[质押](/learn/features/staking){target=_blank}页面。

@@ -5,8 +5,6 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam提供的�
 
 # 支持的以太坊RPC方法
 
-![Moonbeam v Ethereum - RPC Support Banner](/images/builders/get-started/eth-compare/rpc-support-banner.png)
-
 ## 概览 {: #introduction }
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在[以太坊API JSON-RPC](https://eth.wiki/json-rpc/API#json-rpc-methods){target=_blank}支持方面与以太坊之间的重要差异。

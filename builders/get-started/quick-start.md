@@ -5,8 +5,6 @@ description: 在Moonbeam上开始开发、部署和与智能合约交互所需�
 
 # 在Moonbeam上开发的快速入门指南
 
-![Get started banner](/images/builders/get-started/quick-start-banner.png)
-
 ## 概览 {: #overview }
 
 Moonbeam是波卡上完全兼容以太坊的智能合约平台。如此一来，您可以通过[以太坊API](/builders/build/eth-api/){target=_blank}和[Substrate API](/builders/build/substrate-api/){target=_blank}与Moonbeam交互。

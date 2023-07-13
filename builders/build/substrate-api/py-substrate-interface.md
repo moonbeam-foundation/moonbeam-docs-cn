@@ -5,8 +5,6 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 
 # Python Substrate Interface
 
-![Intro diagram](/images/builders/build/substrate-api/py-substrate-interface/py-substrate-interface-banner.png)
-
 ## 概览 {: #introduction }
 
 [Python Substrate Interface](https://github.com/polkascan/py-substrate-interface){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用原生Python接口与节点的波卡或Substrate功能交互。您将在本文中找到可用功能的概述和一些常用代码示例以快速使用Python Substrate Interface与Moonbeam网络交互。

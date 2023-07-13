@@ -5,8 +5,6 @@ description: 在本教程中，您将了解互连合约以及如何在Moonbeam�
 
 # 使用OpenZeppelin的Governor合约构建跨链DAO
 
-![Banner Image](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-banner.png)
-
 _本文档更新于2023年3月24日｜作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction } 

@@ -5,8 +5,6 @@ description: 目前Moonbeam使用基于以太坊的H160账户系统且获得Polk
 
 # 统一账户
 
-![Intro diagram](/images/learn/features/unified-accounts/unified-accounts-banner.png)
-
 ## 概览 {: #introduction } 
 
 由于Moonbeam的架构为波卡上与以太坊兼容的平行链，因此底层账户系统将默认的Substrate格式账户和密钥替换为以太坊格式账户和密钥。所以您可以使用 [MetaMask](/tokens/connect/metamask){target=_blank}和其它您已经熟悉的以太坊工具，例如[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}和[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}。

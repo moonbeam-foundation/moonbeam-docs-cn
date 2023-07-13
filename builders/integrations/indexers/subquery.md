@@ -5,8 +5,6 @@ description: 学习如何使用SubQuery为Moonbeam和Moonriver索引Substrate和
 
 # 使用SubQuery索引Moonbeam
 
-![SubQuery Banner](/images/builders/integrations/indexers/subquery/subquery-banner.png)
-
 ## 概览 {: #introduction }
 
 [SubQuery](https://subquery.network/){target=_blank}是一个数据聚合层，在Layer 1区块链（例如Moonbeam和波卡）和DApp之间运行。这项服务解锁区块链数据并转换至可查询状态，以便能够在直观的应用程序中使用。这允许DApp开发者聚焦于核心用例和前端，无需在构建为处理数据的自定义后端上浪费时间。

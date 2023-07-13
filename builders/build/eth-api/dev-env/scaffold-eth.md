@@ -5,8 +5,6 @@ description: 通过本教程学习如何使用Scaffold-ETH快速在Moonbeam上�
 
 # 使用Scaffold-ETH在Moonbeam上部署DApp
 
-![Scaffold-ETH Banner](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-banner.png)
-
 ## 概览 {: #introduction }
 
 [Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth){target=_blank}是以太坊常用开发工具的集合，使开发人员能够快速部署Solidity智能合约，并上线带有React前端和已部署subgraph的DApp。目前有一些预制模板可供常见DApp类型，如NFT、ERC-20 Token、多签钱包、简易DEX等使用。

@@ -6,8 +6,6 @@ keywords: proxy, substrate, moonbeam, polkadot
 
 # 代理Pallet
 
-![Proxy Moonbeam Banner](/images/builders/pallets-precompiles/pallets/proxies-banner.png)
-
 ## 概览 {: #introduction }
 
 代理帐户可以代表用户执行有限数量的操作，并起到保护底层帐户安全的作用。这允许用户将其主账户进行安全冷存储，同时使代理能够主动执行功能并利用主账户中的Token权重参与网络。

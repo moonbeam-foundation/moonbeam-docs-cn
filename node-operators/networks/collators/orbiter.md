@@ -5,8 +5,6 @@ description: 了解针对收集人的Moonbeam Orbiter计划，包含参与条件
 
 # Moonbeam Orbiter计划
 
-![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
-
 ## 概况 {: #introduction }
 
 Moonbeam基金会宣布orbiter计划将进入试验阶段。类似于[Kusama 1000验证人计划](https://thousand-validators.kusama.network/){target=_blank}，此计划允许收集人参与网络的多样性和安全性，无需其拥有特定的资金数量或是处在活跃收集人集中。此计划是基于社区意见进行开发。

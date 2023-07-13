@@ -5,8 +5,6 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 # 收集人账户管理
 
-![Collator Account Management Banner](/images/node-operators/networks/collators/account-management/account-management-banner.png)
-
 ## 概览 {: #introduction }
 
 在基于Moonbeam的网络上运行收集人节点时，您需要注意一些账户管理活动。首先也是最重要的，您将需要为您的主服务器和备份用服务器创建[会话密钥](https://wiki.polkadot.network/docs/learn-keys#session-keys){target=_blank}，用于确定区块生产和签署区块。

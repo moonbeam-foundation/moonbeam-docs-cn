@@ -5,8 +5,6 @@ description: 查看Moonbeam上可用的价格信息，和如何通过智能合�
 
 # Chainlink预言机
 
-![Chainlink Moonbeam Banner](/images/builders/integrations/oracles/chainlink/chainlink-banner.png)
-
 ## 概览 {: #introduction } 
 
 开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。

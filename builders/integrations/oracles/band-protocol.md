@@ -5,8 +5,6 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 # Band Protocol预言机
 
-![Band Protocol Moonbeam Diagram](/images/builders/integrations/oracles/band/band-banner.png)
-
 ## 概览 {: #introduction }
 开发者可通过两种方法从Band预言机获取价格。第一，可以通过Moonbeam上的Band智能合约在固定时间段或价格滑点大于目标值（不同代币的目标值不同）时获取链上最新数据。第二，使用JavaScript辅助库，该库绕过区块链直接从Band Protocol API（与智能合约相似的函数）中获取数据。如果DApp前端需要直接获取数据，则可以使用这种方法。
 

@@ -6,8 +6,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, token, 原
 
 #  原生Token ERC-20预编译
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/erc20/erc20-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口与原生协议Token交互。

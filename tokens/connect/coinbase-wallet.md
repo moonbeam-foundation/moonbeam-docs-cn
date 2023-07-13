@@ -5,8 +5,6 @@ description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移�
 
 # 使用Coinbase Wallet移动端App与Moonbeam交互
 
-![Coinbase Wallet Banner](/images/tokens/connect/coinbase-wallet/coinbase-wallet-banner.png)
-
 ## 概览 {: #introduction }
 
 [Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}和[MetaMask](/tokens/connect/metamask/){target=_blank}一样是一个自托管（非托管）的钱包，目前支持iOS和安卓移动端。另外，Coinbase Wallet也有浏览器扩展程序版本，但是该扩展程序目前暂不支持添加自定义网络，因此与Moonbeam不兼容。Coinbase Wallet是一个完全不同于Coinbase Exchange（一个用于买卖加密货币的托管式平台）的产品。您现在可以在Coinbase Wallet上通过添加Moonbeam、Moonriver和Moonbase Alpha测试网为自定义网络并与其交互。

@@ -5,8 +5,6 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 # 在Moonbeam上运行Chainlink预言机节点
 
-![Chainlink Moonbeam Banner](/images/node-operators/oracle-nodes/chainlink/chainlink-node-banner.png)
-
 ## 概览 {: #introduction } 
 
 作为一个开放、无许可的网络，任何人都可以在Moonbeam上运行预言机，为智能合约提供数据。

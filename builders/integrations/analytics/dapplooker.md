@@ -5,8 +5,6 @@ description: 使用Dapplooker分析和查询链上数据，并创建数据面板
 
 # 开始使用Dapplooker
 
-![Dapplooker Banner](/images/builders/integrations/analytics/dapplooker/dapplooker-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonriver和Moonbeam上的开发者可以使用[Dapplooker](https://dapplooker.com/){target=_blank}平台分析其链上数据并运行SQL查询。此集成使项目能够创建图表和数据面板以追踪其智能合约并提供性能和采用方面的反馈。

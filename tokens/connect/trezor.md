@@ -5,8 +5,6 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 # Trezor硬件钱包
 
-![Intro diagram](/images/tokens/connect/trezor/trezor-banner.png)
-
 ## 概览 {: #introduction } 
 
 硬件钱包可提供一个相对安全的加密资产存储方式，因其密钥（用于签署交易）是以离线的方式储存。截至本教程撰写时，Trezor可提供两种硬件钱包的解决方案：Trezor One和Trezor Model T。

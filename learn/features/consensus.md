@@ -5,8 +5,6 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 # Nimbus平行链共识框架
 
-![Moonbeam Consensus Banner](/images/learn/features/consensus/consensus-banner.png)
-
 ## 概览 {: #introduction } 
 
 波卡（Polkadot）依赖于一种[混合共识模型](https://wiki.polkadot.network/docs/learn-consensus)。根据这一方案，区块终结工具以及区块生产机制是分开的。因此，平行链只需要考虑区块生产即可，中继链则负责验证区块状态的转变。

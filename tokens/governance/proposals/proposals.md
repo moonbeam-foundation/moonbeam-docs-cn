@@ -5,8 +5,6 @@ description: 了解提案的流程，以及如何发起提案、开放投票，�
 
 # 如何在Governance v1发起提案
 
-![Governance Moonbeam Banner](/images/tokens/governance/proposals/governance-proposal-banner.png)
-
 ## 概览 {: #introduction } 
 
 提案是指Token持有者在链上提出建议并由系统生效。提案是治理系统的核心要素之一，因为这是参与者能够提出建议/更改的主要工具，随后参与者可以对其进行投票。

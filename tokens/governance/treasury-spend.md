@@ -5,8 +5,6 @@ description: 了解财政库提案的整个周期，从Moonbeam社区论坛上�
 
 # 如何发起财政库支出提案
 
-![Governance Moonbeam Banner](/images/tokens/governance/treasury-proposals/treasury-proposal-banner.png)
-
 ## 概览 {: #introduction } 
 
 正如[财政库概览页面](/learn/features/governance/#definitions){target=_blank}所述，Moonbeam财政库是在网络创始之时的一笔链上资金。网络上线之际，Token总供应量的0.5%分配至财政库，另外持续累计的交易费用的一定比例（约为{{ networks.moonbeam.treasury.tx_fees_allocated }}%）将存入财政库。Moonbeam财政库将协助维护重要项目的发展和Moonbeam网络的增长，并为其提供资金支持。

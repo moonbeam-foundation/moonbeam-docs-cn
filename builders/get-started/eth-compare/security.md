@@ -5,8 +5,6 @@ description: 以太坊开发者在Moonbeam上进行开发时需要了解的安�
 
 # 安全注意事项
 
-![Moonbeam v Ethereum - Security Banner](/images/builders/get-started/eth-compare/security/security-banner.png)
-
 ## 概览 {: #introduction }
 
 尽管在以太坊开发时不需要特别关注一些安全事项，但在Moonbeam上开发智能合约时，需要特别注意一些。Moonbeam有几个[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}，这些是能通过以太坊API来帮助开发者绕过EVM获得基于Substrate的功能的Solidity接口。虽然这些预编译合约旨在改善开发者体验，使用者必须要注意一些可能存在的意外后果。

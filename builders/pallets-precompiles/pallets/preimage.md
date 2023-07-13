@@ -6,8 +6,6 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 原像
 
 # Preimage Pallet
 
-![Preimage Moonbeam Banner](/images/builders/pallets-precompiles/pallets/preimage-banner.png)
-
 ## 概览 {: #introduction }
 
 Preimage Pallet允许用户和Runtime在链上存储原像哈希。其他pallet也可使用此pallet来存储和管理大的字节码（byte-blob）。例如，Token持有者可以使用原像哈希通过Democracy Pallet提交民主提案。

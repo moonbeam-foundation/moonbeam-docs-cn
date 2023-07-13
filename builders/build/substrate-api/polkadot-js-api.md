@@ -5,8 +5,6 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 # Polkadot.js API库
 
-![Intro diagram](/images/builders/build/substrate-api/polkadot-js-api/polkadot-js-api-banner.png)
-
 ## 概览 {: #introduction }
 
 [Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用JavaScript与节点的Polkadot或Substrate接口交互。在本教程中您将找到可用功能的概述和一些常用的代码示例，助您快速使用Polkadot.js API库与Moonbeam网络交互。

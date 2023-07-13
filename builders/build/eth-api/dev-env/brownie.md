@@ -5,8 +5,6 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 # 使用Brownie在Moonbeam上进行部署
 
-![Brownie banner](/images/builders/build/eth-api/dev-env/brownie/brownie-banner.png)
-
 ## 概览 {: #introduction }
 
 [Brownie](https://eth-brownie.readthedocs.io/){target=_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
