@@ -7,9 +7,9 @@ description: 想要创建一个彩票智能合约？遵循本分步教程使用M
 
 ![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
 
-_本文档更新至2022年3月15日｜作者：Erin Shaben_
+_作者：Erin Shaben_
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种加密函数，它接受一些输入并产生随机值以及这些随机值是由提交者生成的真实性证明。此证明可以由任何人验证，以确保生成的随机数值计算正确。
 
