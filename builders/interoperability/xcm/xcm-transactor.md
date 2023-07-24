@@ -13,7 +13,7 @@ XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/
 
 然而，从头开始构建XCM消息还是比较困难。此外，XCM消息从根账户（即SUDO或通过民主投票）发送给生态系统中的其他参与者，这对于希望通过简单交易实现远程跨链调用的项目来说并不合适。
 
-要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM-Transactor Pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM-Transactor Pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
+要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM-Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM-Transactor Pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
 
 pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocation计算的衍生账户进行交易。每个extrinsic都相应命名。
 
@@ -37,7 +37,7 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
 
  - **Derivative accounts** — 从另一个账户衍生的账户。衍生账户是无需私钥的（即私钥是未知的），因此，与XCM特定用例相关的衍生账户只能通过XCM extrinsics访问。对于此类应用，账户类型有两种：
      - **Sovereign-derivative account** — 这会产生一个从目标链中的平行链主权账户衍生的无私钥账户。衍生方法使用`utility.asDerivative` extrinsic用于远程调用。通过此衍生账户交易时，交易费由原账户（在本示例中为主权账户）支付，但是交易从衍生账户派遣。更多信息，请参考Utility Pallet页面的[衍生账户](/builders/pallets-precompiles/pallets/utility/){target=_blank}部分
-     - **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
+     - **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/moonbeam-foundation/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
  - **Transact information** — 与XCM-Transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM-Transactor计算此费用，并向XCM-Transactor extrinsic的发送者收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
 
 ## XCM-Transactor Pallet接口 {: #xcm-transactor-pallet-interface}
@@ -270,10 +270,10 @@ XCM-Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 
 ### XCM-Transactor Solidity接口 {: #xcmtrasactor-solidity-interface } 
 
-[XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-Transactor Pallet进行交互。
+[XcmTransactor.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM-Transactor Pallet进行交互。
 
 !!! 注意事项
-    XCM-Transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
+    XCM-Transactor预编译的[旧版本](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：
 

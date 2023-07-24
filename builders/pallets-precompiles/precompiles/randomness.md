@@ -41,7 +41,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数Solidity接口 {: #the-randomness-interface }
 
-[Randomness.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
+[Randomness.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
 
 此接口包含函数、常量、事件以及枚举，如下列部分所包含。
 
@@ -119,7 +119,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数消费者Solidity接口 {: #randomness-consumer-solidity-interface }
 
-[`RandomnessConsumer.sol`](https://github.com/PureStake/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
+[`RandomnessConsumer.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
 
 消费者接口包含以下函数：
 
@@ -183,8 +183,8 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 // SPDX-License-Identifier: GPL-3.0-only
 pragma solidity >=0.8.0;
 
-import "https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol";
-import {RandomnessConsumer} from "https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol";
+import "https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol";
+import {RandomnessConsumer} from "https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol";
 
 contract RandomNumber is RandomnessConsumer {
     // The Randomness Precompile Interface
@@ -319,7 +319,7 @@ contract RandomNumber is RandomnessConsumer {
 
 要将接口添加至Remix并跟随以下教程步骤，您将需要：
 
-1. 复制[`Randomness.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
+1. 复制[`Randomness.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
 2. 在Remix文件中粘贴文件内容并命名为**Randomness.sol**
 
 ![Add precompile to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-8.png)

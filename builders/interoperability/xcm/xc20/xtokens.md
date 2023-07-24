@@ -206,7 +206,7 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### X-Tokens Solidity接口  {: #xtokens-solidity-interface } 
 
-[Xtokens.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与x-tokens pallet交互的接口。
+[Xtokens.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与x-tokens pallet交互的接口。
 
 此接口包含以下函数：
 
@@ -257,7 +257,7 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 使用库与X-Token交互 {: #using-libraries-to-interact-with-xtokens}
 
-当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[x-tokens 传输函数](#xtokens-transfer-function)、[x-tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[x-tokens的合约ABI](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
+当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[x-tokens 传输函数](#xtokens-transfer-function)、[x-tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[x-tokens的合约ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
 
 === "Ethers.js"
 

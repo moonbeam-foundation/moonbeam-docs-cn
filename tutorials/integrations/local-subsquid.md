@@ -42,21 +42,24 @@ _本教程更新于2023年4月14日｜作者：Erin Shaben_
 要创建一个开发节点，您可以运行以下指令为Moonbeam提供最新的Docker映像：
 
 === "Ubuntu"
-    ```
+
+    ```bash
     docker run --rm --name {{ networks.development.container_name }} --network host \
     purestake/moonbeam:{{ networks.development.build_tag }} \
     --dev --sealing 4000 --ws-external --rpc-external
     ```
 
 === "MacOS"
-    ```
+
+    ```bash
     docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
     purestake/moonbeam:{{ networks.development.build_tag }} \
     --dev --sealing 4000 --ws-external --rpc-external
     ```
 
 === "Windows"
-    ```
+
+    ```bash
     docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
     purestake/moonbeam:{{ networks.development.build_tag }} ^
     --dev --sealing 4000 --ws-external --rpc-external
@@ -83,13 +86,13 @@ _本教程更新于2023年4月14日｜作者：Erin Shaben_
 
 === "npm"
 
-    ```
+    ```bash
     npm install @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
     ```
 
 === "yarn"
 
-    ```
+    ```bash
     yarn add @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
     ```
 
@@ -124,17 +127,17 @@ module.exports = {
 };
 ```
 
-### 创建一个ERC-20合约 {: #create-an-erc-20-contract } 
+### 创建一个ERC-20合约 {: #create-an-erc-20-contract }
 
 出于本教程目的，我们将创建一个简单的ERC-20合约。我们将依赖OpenZeppelin的ERC-20基础实现。我们将从为合约创建一个文件并将其命名为`MyTok.sol`开始：
 
-```
+```bash
 mkdir -p contracts && touch contracts/MyTok.sol
 ```
 
 现在我们可以编辑`MyTok.sol`文件并包含以下合约，它将生成MYTOK的初始供应数并仅允许合约所有者生成额外的Token：
 
-```
+```sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
@@ -158,7 +161,7 @@ contract MyTok is ERC20, Ownable {
 
 您可以运行以下指令编译合约：
 
-```
+```bash
 npx hardhat compile
 ```
 
@@ -171,13 +174,13 @@ npx hardhat compile
 让我们跟随以下步骤来部署我们的合约：
 
 1. 为我们的脚本创建一个目录的文件：
-    
-    ```
+
+    ```bash
     mkdir -p scripts && touch scripts/deploy.js
     ```
-    
+
 2. 在`deploy.js`文件中添加以下脚本：
-    
+
     ```js
     // We require the Hardhat Runtime Environment explicitly here. This is optional
     // but useful for running the script in a standalone fashion through `node <script>`.
@@ -207,10 +210,10 @@ npx hardhat compile
       process.exitCode = 1;
     });
     ```
-    
+
 3. 使用我们在`hardhat.config.js`文件中设置的`dev`网络配置运行脚本：
-    
-    ```
+
+    ```bash
     npx hardhat run scripts/deploy.js --network dev
     ```
 
@@ -223,11 +226,11 @@ npx hardhat compile
 由于我们将检索ERC-20的`Transfer`事件，我们需要发送一些交易，将一些Token从Alith的账户转移到我们的其他测试账户。为此，我们将创建一个简单的脚本，将10个MYTOK转移给Baltathar、Charleth、Dorothy和Ethan。请跟随以下步骤：
 
 1. 创建一个新的文件脚本以传送交易
-    
-    ```
+
+    ```bash
     touch scripts/transactions.js
     ```
-    
+
 2. 在`transactions.js`文件中添加以下脚本：
 
     ```js
@@ -277,10 +280,10 @@ npx hardhat compile
       process.exitCode = 1;
     });
     ```
-    
+
 3. 运行脚本以传送交易：
-    
-    ```
+
+    ```bash
     npx hardhat run scripts/transactions.js --network dev
     ```
 
@@ -290,11 +293,11 @@ npx hardhat compile
 
 现在我们可以创建Squid以在本地开发节点检索数据。
 
-## 创建一个Subsquid项目 {: #create-subsquid-project } 
+## 创建一个Subsquid项目 {: #create-subsquid-project }
 
 现在我们将开始创建Subsquid项目。首先，我们需要安装[Subsquid CLI](https://docs.subsquid.io/squid-cli/){target=_blank}：
 
-```
+```bash
 npm i -g @subsquid/cli
 ```
 
@@ -302,13 +305,13 @@ npm i -g @subsquid/cli
 
 您可以运行以下指令创建一个名为`local-squid`的EVM Squid项目：
 
-```
+```bash
 sqd init local-squid -t evm
 ```
 
 这将会创建一个拥有所有必要依赖项的Squid项目。您可以继续操作并安装所有依赖项：
 
-```
+```bash
 cd local-squid && npm install
 ```
 
@@ -322,7 +325,7 @@ EVM Archive通过Subsquid的`subsquid/eth-archive-worker`Docker映像提供。�
 
 要开始进行操作，我们需要为Archive创建一个新的目录和Docker编译文件。
 
-```
+```bash
 mkdir archive && touch archive/docker-compose.archive.yml
 ```
 
@@ -391,7 +394,7 @@ volumes:
 
 现在我们可以运行以下指令开始我们的Archive：
 
-```
+```bash
 sqd archive-up
 ```
 
@@ -411,7 +414,7 @@ Archive的部分就是这样！现在我们需要更新我们的Squid项目来�
 
 如先前所述，我们首先需要为传输数据定义数据库结构。为此，我们将编辑位于`local-squid`根目录中的`schema.graphql`文件，并创建一个`Transfer`实体：
 
-```
+```graphql
 type Transfer @entity {
   id: ID!
   block: Int!
@@ -425,13 +428,13 @@ type Transfer @entity {
 
 现在我们可以从结构中产生实体类，我们将会用这些信息处理转账数据：
 
-```
+```bash
 sqd codegen
 ```
 
 接着，我们可以使用我们列表上的第二个条目并用我们的合约ABI生成TypeScript接口类。为此，可以运行以下指令：
 
-```
+```bash
 sqd typegen ../artifacts/contracts/MyTok.sol/MyTok.json
 ```
 
@@ -507,27 +510,27 @@ processor.run(new TypeormDatabase(), async (ctx) => {
 要运行检索器，我们需要运行一系列的`sqd`指令：
 
 1. 创建项目：
-    
-    ```
+
+    ```bash
     sqd build
     ```
-    
+
 2. 启动数据库：
-    
-    ```
+
+    ```bash
     sqd up
     ```
-    
+
 3. 删除EVM模板附带的数据库迁移文件，并为新数据库结构生成一个新文件：
-    
-    ```
+
+    ```bash
     sqd migration:clean
     sqd migration:generate
     ```
-    
+
 4. 启动检索器：
-    
-    ```
+
+    ```bash
     sqd process
     ```
 
@@ -540,19 +543,19 @@ processor.run(new TypeormDatabase(), async (ctx) => {
 
 如果您的Squid没有正确地检索区块，请确保您的开发节点正在使用`--sealing`标志运行。以本教程例子来说，你应该将标志设置为`--sealing 4000`，这样每四秒就会产生一个区块。您也可以根据需要随意编辑时间间隔。在您尝试再次启动您的Squid之前，请运行以下指令来关闭本地Archive和Squid：
 
-```
+```bash
 sqd archive-down && sqd down
 ```
 
 接着您可以启动本地Archive和备用Squid：
 
-```
+```bash
 sqd archive-up && sqd up
 ```
 
 最后您将能够重新继续检索：
 
-```
+```bash
 sqd process
 ```
 
@@ -562,7 +565,7 @@ sqd process
 
 要检查我们的检索器，我们需要在新的终端视窗中启动GraphQL服务器：
 
-```
+```bash
 sqd serve
 ```
 

@@ -31,41 +31,41 @@ _2023年01月10日 | 作者：Erin Shaben_
 
 ## 创建一个Truffle项目 {: #create-a-truffle-project }
 
-要快速上手使用Truffle，我们将使用[Moonbeam Truffle Box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}，其提供一个在Moonbeam上进行开发和部署智能合约的样板设置。
+要快速上手使用Truffle，我们将使用[Moonbeam Truffle Box](https://github.com/moonbeam-foundation/moonbeam-truffle-box){target=_blank}，其提供一个在Moonbeam上进行开发和部署智能合约的样板设置。
 
 Moonbeam Truffle Box已针对Moonbeam本地开发节点和Moonbase Alpha进行了预配置。我们需要在我们准备将合约部署至主网时使其支持Moonbeam网络，这样就完成了所有准备工作！
 
-它还附带了几个插件：[Moonbeam Truffle插件](https://github.com/purestake/moonbeam-truffle-plugin){target=_blank}和[Truffle验证插件](https://github.com/rkalis/truffle-plugin-verify){target=_blank}。Moonbeam Truffle插件将帮助我们快速启动Moonbeam本地开发节点。Truffle验证插件将使我们能够直接从我们的Truffle项目中验证我们的智能合约。我们只需要配置一个Moonscan API密钥就可以使用Truffle验证插件！
+它还附带了几个插件：[Moonbeam Truffle插件](https://github.com/moonbeam-foundation/moonbeam-truffle-plugin){target=_blank}和[Truffle验证插件](https://github.com/rkalis/truffle-plugin-verify){target=_blank}。Moonbeam Truffle插件将帮助我们快速启动Moonbeam本地开发节点。Truffle验证插件将使我们能够直接从我们的Truffle项目中验证我们的智能合约。我们只需要配置一个Moonscan API密钥就可以使用Truffle验证插件！
 
 !!! 注意事项
     如果您还没有这样做，您可以跟随教程以[生成Moonscan API密钥](https://docs.moonbeam.network/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}。您的Moonbeam Moonscan API密钥也同样适用于Moonbase Alpha，但是如果您想要将其部署至Moonriver，您将会需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
 
 事不宜迟，让我们开始创建我们的项目：
 
-1. 您可以选择全局安装Truffle或是复制[Moonbeam Truffle Box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}代码库：
+1. 您可以选择全局安装Truffle或是复制[Moonbeam Truffle Box](https://github.com/moonbeam-foundation/moonbeam-truffle-box){target=_blank}代码库：
 
-    ```
+    ```bash
     npm install -g truffle
     mkdir moonbeam-truffle-box && cd moonbeam-truffle-box
-    truffle unbox PureStake/moonbeam-truffle-box
+    truffle unbox moonbeam-foundation/moonbeam-truffle-box
     ```
 
     要避免全局安装Truffle，您可以运行以下命令并通过使用`npx truffle <command>`访问Truffle命令：
 
-    ```
-    git clone https://github.com/PureStake/moonbeam-truffle-box
+    ```bash
+    git clone https://github.com/moonbeam-foundation/moonbeam-truffle-box
     cd moonbeam-truffle-box
     ```
 
 2. 安装Moonbeam Truffle Box中的依赖项：
 
-    ```
+    ```bash
     npm install
     ```
 
 3. 打开`truffle-config.js`文件，您将会在其中找到针对本地开发节点和Moonbase Alpha的网络配置。您需要在此加入Moonbeam配置和您的Moonscan API密钥：
-    
-    ```
+
+    ```js
     ...
     networks: {
       ...
@@ -91,7 +91,7 @@ Moonbeam Truffle Box已针对Moonbeam本地开发节点和Moonbase Alpha进行�
 
 出于本教程目的，我们将会移除`MyToken.sol`合约以及项目的相关测试：
 
-```
+```bash
 rm contracts/MyToken.sol test/test_MyToken.js
 ```
 
@@ -99,7 +99,7 @@ rm contracts/MyToken.sol test/test_MyToken.js
 
 以下部分中的合约为从[OpenZeppelin](https://www.openzeppelin.com/contracts){target=_blank}导入合约。如果您跟随[创建Truffle项目](#create-a-truffle-project)部分中的步骤进行操作，Moonbeam Truffle Box会附带已安装的`openzeppelin/contracts`依赖项。如果您以不同的方式创建项目，则需要自己安装依赖项。您可以使用以下命令执行此操作：
 
-```
+```bash
 npm i @openzeppelin/contracts
 ```
 
@@ -111,7 +111,7 @@ npm i @openzeppelin/contracts
 
 我们将我们的合约添加至`contracts`目录：
 
-```
+```bash
 touch contracts/NftMarketplace.sol
 ```
 
@@ -216,7 +216,7 @@ contract NftMarketplace is ReentrancyGuard {
 
 要测试我们的NFT市场合约，我们需要铸造一个Dizzy Dragon NFT。因此，我们需要创建一个称为`DizzyDragons.sol`的简易NFT合约：
 
-```
+```bash
 touch contracts/DizzyDragons.sol
 ```
 
@@ -263,7 +263,7 @@ contract DizzyDragons is ERC721URIStorage {
 
 要编译我们的合约，我们可以先运行以下命令：
 
-```
+```bash
 npx truffle compile
 ```
 
@@ -296,13 +296,13 @@ module.exports = async function (deployer) {
 
 由于Moonbeam Truffle box附带Moonbeam Truffle插件，因此启动开发节点变得轻而易举。您只需要安装[Docker](https://docs.docker.com/get-docker/){target=_blank}即可。如果您已准备好使用Docker，您则可以通过运行以下命令获取最新的Moonbeam Docker映像：
 
-```
+```bash
 npx truffle run moonbeam install
 ```
 
 接着您可以启动节点：
 
-```
+```bash
 npx truffle run moonbeam start
 ```
 
@@ -328,7 +328,7 @@ Truffle还通过在每个测试文件中包含一个配置好正确网络的`web
 
 要开始我们的测试，我们可以添加我们的测试文件，它将以`test_`开头以表达其为一个测试文件：
 
-```
+```bash
 touch test/test_NftMarketplace.js
 ```
 
@@ -420,7 +420,7 @@ event NftMinted(uint256);
 
 假设您[Moonbeam开发节点已设置完毕并顺利运行](#start-development-node)，您可以使用以下命令运行测试：
 
-```
+```bash
 npx truffle test --network dev
 ```
 
@@ -565,20 +565,20 @@ event NftListed(
 
 测试内容就到此为止！如要运行他们，请运行以下命令：
 
-```
+```bash
 npx truffle test --network dev
 ```
 
 ![Run all tests](/images/tutorials/eth-api/truffle-start-to-end/truffle-6.png)
 
-使用Mocha，您可以灵活地测试各种边界情况，而不必像我们在示例中那样使用`assert.equal`。由于包含对Chai断言库的支持，您还可以使用[Chai的`assert` API](https://www.chaijs.com/guide/styles/#assert){target=_blank}或他们的[`expect` ](https://www.chaijs.com/guide/styles/#expect){target=_blank}和[`should`](https://www.chaijs.com/guide/styles/#should){target =_blank} API。例如，您还可以使用[Chai的`assert.fail`函数](https://www.chaijs.com/api/assert/#method_fail){target=_blank}以断言失败。
+使用Mocha，您可以灵活地测试各种边界情况，而不必像我们在示例中那样使用`assert.equal`。由于包含对Chai断言库的支持，您还可以使用[Chai的`assert` API](https://www.chaijs.com/guide/styles/#assert){target=_blank}或他们的[`expect`](https://www.chaijs.com/guide/styles/#expect){target=_blank}和[`should`](https://www.chaijs.com/guide/styles/#should){target =_blank} API。例如，您还可以使用[Chai的`assert.fail`函数](https://www.chaijs.com/api/assert/#method_fail){target=_blank}以断言失败。
 
 !!! 挑战
     尝试为尚未授权`NftMarketplace`合约传输的NFT添加一个使用`tokenUri`的测试。您应该断言该调用将失败。
 
 在Moonbeam开发节点上完成测试后，请确保停止并删除节点！你可以通过运行下列命令执行：
 
-```
+```bash
 npx truffle run moonbeam stop && \
 npx truffle run moonbeam remove
 ```
@@ -593,7 +593,7 @@ npx truffle run moonbeam remove
 
 设置帐户后，您可以在Moonbase Alpha上运行测试以确保它们在实际网络上按预期运作：
 
-```
+```bash
 npx truffle test --network moonbase
 ```
 
@@ -604,7 +604,7 @@ npx truffle test --network moonbase
 
 由于我们已经更新了我们的迁移脚本，我们可以使用此命令部署我们的合约：
 
-```
+```bash
 npx truffle migrate --network moonbase
 ```
 
@@ -616,7 +616,7 @@ npx truffle migrate --network moonbase
 
 部署合约后，不要忘记验证它们！您将运行`run verify`命令并输入已部署合约的名称和它们已部署到的网络：
 
-```
+```bash
 npx truffle run verify NftMarketplace DizzyDragons --network moonbase
 ```
 
@@ -634,7 +634,7 @@ npx truffle run verify NftMarketplace DizzyDragons --network moonbase
 
 由于Moonbeam Truffle box未附带Moonbeam网络配置，因此您需要添加它们：
 
-```
+```js
 ...
 module.exports = {
   networks: {
@@ -657,7 +657,7 @@ module.exports = {
 
 您可以使用以下命令部署您的合约：
 
-```
+```bash
 npx truffle migrate --network moonbeam
 ```
 
@@ -667,7 +667,7 @@ npx truffle migrate --network moonbeam
 
 同样，别忘记验证合约！您可以运行`run verify`命令并输入部署合约的名称以及`moonbeam`作为网络：
 
-```
+```bash
 npx truffle run verify NftMarketplace DizzyDragons --network moonbeam
 ```
 

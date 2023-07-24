@@ -37,7 +37,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 批量Solidity接口 {: #the-batch-interface }
 
-[`Batch.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。
+[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。
 
 --8<-- 'text/batch/batch-interface.md'
 
@@ -60,7 +60,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ### 设置Remix {: #remix-set-up } 
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
+您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
 
 1. 点击**File explorer**标签
 2. 粘贴`Batch.sol`合约至Remix文件内并命名为**Batch.sol**
