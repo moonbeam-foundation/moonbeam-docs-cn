@@ -133,11 +133,13 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     === "External XC-20s"
 
         ```js
-         const fee = {
-           currency: {
-           AsCurrencyId: { ForeignAsset: 354     7752324713722007834302681851459189n },
-           },
-           feeAmount: 50000000000000000n,
+        const fee = {
+          currency: {
+            AsCurrencyId: { 
+              ForeignAsset: 3547752324713722007834302681851459189n 
+            },
+          },
+          feeAmount: 50000000000000000n,
          };
         ```
 
@@ -165,6 +167,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
     - 对于`transactRequiredAtMost`，该值必须包含`asDerivative` extrinsic。然而，这并不包含XCM指令的权重。在本示例中，将`refTime`设置为 `1000000000`的权重单位，将`proofSize`设置为`0`
     - 对于`overallWeight`，该值必须是**transactRequiredWeightAtMost**加上在目标链中XCM指令执行成本所需的权重之和。如果您不提供此值，pallet将使用存储中的元素（若有）。在本示例中，将`refTime`设置为`2000000000`权重单位，将将`proofSize`设置为`0`
+
     ```js
     const weightInfo = {
       transactRequiredWeightAtMost: { refTime: 1000000000n, proofSize: 0 },
