@@ -36,21 +36,21 @@ Foundry由四个工具组成：
 
 1. 如果您尚未安装，您需要先安装Foundry。如果您在Linux或MacOS系统操作，您可以运行以下命令：
 
-    ```
+    ```bash
     curl -L https://foundry.paradigm.xyz | bash
     foundryup
     ```
-    
+
     如果在Windows系统操作，您必须安装Rust，然后从源代码构建Foundry：
 
-    ```
+    ```bash
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh
     cargo install --git https://github.com/foundry-rs/foundry foundry-cli anvil --bins --locked
     ```
-    
+
 2. 创建项目，这将创建一个文件夹，其中包含三个文件夹：
 
-    ```
+    ```bash
     forge init foundry
     ```
 
@@ -66,7 +66,7 @@ Foundry由四个工具组成：
 
 `src`文件夹可能已经包含`Contract.sol`（一个最小的Solidity合约），您可以自行删除此合约。相反，您需要部署一个ERC-20合约。在合约目录中，您可以创建一个`MyToken.sol`文件：
 
-```
+```bash
 cd src
 touch MyToken.sol
 ```
@@ -89,7 +89,7 @@ contract MyToken is ERC20 {
 
 在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin Github repo的名称。
 
-```
+```bash
 forge install OpenZeppelin/openzeppelin-contracts
 ```
 
@@ -97,7 +97,7 @@ forge install OpenZeppelin/openzeppelin-contracts
 
 安装完所有的依赖项后，您可以开始编译合约：
 
-```
+```bash
 forge build
 ```
 
@@ -110,35 +110,39 @@ forge build
 使用Forge部署合约需要一个命令，但您将需要包含一个RPC端点、一个拥有资金的私钥和构造函数参数。`MyToken.sol`要求在其构造函数中提供Token初始供应量，因此以下每个命令将包含100作为构造函数。您可以为正确的网络使用命令部署`MyToken.sol`合约。
 
 === "Moonbeam"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonbeam.rpc_url }} \
     --constructor-args 100 \
     --private-key YOUR_PRIVATE_KEY \
-    src/MyToken.sol:MyToken 
+    src/MyToken.sol:MyToken
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonriver.rpc_url }} \
     --constructor-args 100 \
     --private-key YOUR_PRIVATE_KEY \
-    src/MyToken.sol:MyToken 
+    src/MyToken.sol:MyToken
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonbase.rpc_url }} \
     --constructor-args 100 \
     --private-key YOUR_PRIVATE_KEY \
-    src/MyToken.sol:MyToken 
+    src/MyToken.sol:MyToken
     ```
 
 === "Moonbeam开发节点"
-    ```      
+
+    ```bash
     forge create --rpc-url {{ networks.development.rpc_url }} \
     --constructor-args 100 \
     --private-key YOUR_PRIVATE_KEY \
-    src/MyToken.sol:MyToken 
+    src/MyToken.sol:MyToken
     ```
 
 几分钟后，合约完成部署，您将在终端看到地址。
@@ -154,28 +158,32 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 尝试使用cast检索Token名称，其中`YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbeam.rpc_url }}
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonriver.rpc_url }}
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbase.rpc_url }}
     ```
 
 === "Moonbeam开发节点"
-    ```      
+
+    ```bash
     cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.development.rpc_url }}
     ```
 
 您需要获取此数据的hex格式：
 
-```
+```text
 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
 ```
 
@@ -183,14 +191,15 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
 ![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.png)
 
-```
+```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
 ```
 
 您也可以使用cast来改变数据。通过将其发送到0地址来尝试销毁Token。
 
 === "Moonbeam"
-    ```
+
+    ```bash
     cast send --private-key YOUR_PRIVATE_KEY \
     --rpc-url {{ networks.moonbeam.rpc_url }} \
     --chain {{ networks.moonbeam.chain_id }} \
@@ -199,7 +208,8 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     cast send --private-key YOUR_PRIVATE_KEY \
     --rpc-url {{ networks.moonriver.rpc_url }} \
     --chain {{ networks.moonriver.chain_id }} \
@@ -208,7 +218,8 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     cast send --private-key YOUR_PRIVATE_KEY \
     --rpc-url {{ networks.moonbase.rpc_url }} \
     --chain {{ networks.moonbase.chain_id }} \
@@ -217,7 +228,8 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
     ```
 
 === "Moonbeam开发节点"
-    ```      
+
+    ```bash
     cast send --private-key YOUR_PRIVATE_KEY \
     --rpc-url {{ networks.development.rpc_url }} \
     --chain {{ networks.development.chain_id }} \
@@ -243,19 +255,19 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 === "Moonbeam"
 
-    ```sh
+    ```bash
     anvil --fork-url {{ networks.moonbeam.rpc_url }}
     ```
 
 === "Moonriver"
 
-    ```sh
+    ```bash
     anvil --fork-url {{ networks.moonriver.rpc_url }}
     ```
 
 === "Moonbase Alpha"
 
-    ```sh
+    ```bash
     anvil --fork-url {{ networks.moonbase.rpc_url }}
     ```
 
@@ -265,7 +277,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 要验证您是否已分叉了网络，您可以查询最新的区块号：
 
-```
+```bash
 curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
 ```
 
@@ -273,7 +285,7 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 
 从这里，您可以将新合约部署到您的Moonbeam的分叉实例或与已部署的合约进行交互。在本教程的上述示例的基础上，您可以使用Cast进行调用，来检查您部署合约的帐户中铸造的MYTOK Token的余额：
 
-```
+```bash
 cast call INSERT-CONTRACT-ADDRESS  "balanceOf(address)(uint256)" INSERT-YOUR-ADDRESS --rpc-url http://localhost:8545
 ```
 
@@ -285,7 +297,7 @@ Chisel是一个Solidity REPL，或shell。它允许开发者直接在控制台�
 
 在本示例中，您将在Solidity中测试一些`abi`的功能。因为其相对比较复杂可以很好地演示Chisel的作用。要开始使用Chisel，请在命令行中运行以下命令以启动Chisel shell：
 
-```
+```bash
 chisel
 ```
 
@@ -297,7 +309,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 假设您对`abi`如何编码数据感兴趣，因为您正在研究如何最有效地将数据存储在区块链上，从而节省gas费用。要查看`myData`是如何存储在内存中的，您可以在Chisel shell中使用以下命令：
 
-```
+```bash
 !memdump
 ```
 
@@ -307,7 +319,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 幸运的是，Chisel会轻松帮您找到这些信息存储位置。使用`!rawstack`命令，您可以找到变量值在栈中的位置。
 
-```
+```bash
 !rawstack myData
 ```
 
@@ -317,7 +329,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 `!rawstack`命令显示`myData`变量存储在`0x80`中，与从`!memdump`命令检索到的内存内容对比时，看起来`myData`存储如下所示：
 
-```
+```text
 [0x80:0xa0]: 0x00000000000000000000000000000000000000000000000000000000000000a0
 [0xa0:0xc0]: 0x0000000000000000000000000000000000000000000000000000000000000064
 [0xc0:0xe0]: 0x0000000000000000000000000000000000000000000000000000000000000001
@@ -330,13 +342,13 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 由于您已经完成这段代码，您可以清除Chisel的状态，以防止其干扰您想要尝试的任何未来逻辑（在运行相同的Chisel实例时）：
 
-```
+```bash
 !clear
 ```
 
 测试Chisel还有一个更简单的方式。当编写以分号`;`结尾的代码时，Chisel将其作为一个语句来运行，并将其值存储在Chisel的Runtime（运行时）状态中。但是，如果您真的只需要查看ABI编码数据的表示方式，那么您可以将代码作为表达式运行。要使用相同的`abi`示例进行尝试，请在Chisel shell中编写以下内容：
 
-```
+```bash
 abi.encode(100, true, "Develop on Moonbeam")
 ```
 
@@ -350,19 +362,19 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 1. 在Chisel中存储`uint256`
 
-    ```
+    ```bash
     uint256 myNumber = 101;
     ```
 
 2. 使用`!save`存储会话。在本示例中，您可以使用数字`1`作为存储ID
 
-    ```
+    ```bash
     !save 1
     ```
 
 3. 退出对话
 
-    ```
+    ```bash
     !quit
     ```
 
@@ -370,19 +382,19 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 1. 查看存储的Chisel状态列表
 
-     ```
+     ```bash
      chisel list
      ```
 
 2. 加载存储的状态
 
-    ```
+    ```bash
     chisel load
     ```
 
 3. 查看上一组步骤中保存在Chisel中的`uint256`
 
-    ```
+    ```bash
     !rawstack myNumber
     ```
 
@@ -390,13 +402,13 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 您甚至可以在使用Chisel时分叉网络：
 
-```
+```bash
 !fork {{ networks.moonbase.rpc_url }}
 ```
 
 然后，例如，您可以查询其中一个Moonbase Alpha收集人的余额：
 
-```
+```text
 0x4c5A56ed5A4FF7B09aA86560AfD7d383F4831Cce.balance
 ```
 
@@ -404,27 +416,33 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=_blank}。
 
-## Foundry With Hardhat {: #foundry-with-hardhat }  
-Often, there will be the case where a project that you wish to integrate with that has all of its setup within [Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}, making it an arduous task to convert the entirety of the project into Foundry. This additional work is avoidable by creating a hybrid project that uses both Hardhat and Foundry features together. This is possible with Hardhat's [hardhat-foundry plugin](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=_blank}.  
-To convert your preexisting Foundry project to a hybrid project, you will essentially have to install a Hardhat project into the same folder:  
-```sh
+## 通过Hardhat使用Foundry {: #foundry-with-hardhat }
+
+通常，您希望集成的项目的所有设置都在[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=_blank}来实现。
+
+要将预先存在的Foundry项目转换成混合项目，您需要先在同一个文件夹中安装Hardhat项目：
+
+```bash
 npm init
 npm install --save-dev hardhat @nomicfoundation/hardhat-foundry
 npx hardhat
 ```
 
-For more information, please refer to our documentation on [Creating a Hardhat Project](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}.
+更多信息，请参考[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}的文档。
 
-After initializing the new Hardhat project, a few new folders and files should appear: `contracts`, `hardhat.config.js`, `scripts`, and `test/Lock.js`. You'll need to make a few modifications to create a hybrid project:
+初始化新的Hardhat项目后，将会出现一些新的文件夹和文件：`contracts`、`hardhat.config.js`、`scripts`和`test/Lock.js`。您只需稍微调整即可创建一个混合项目：
 
-1. Edit the `hardhat.config.js` file within your repository. Open it up, and at the top, add the following:  
+1. 在Repo中编辑`hardhat.config.js`文件。打开后，在头部添加下方指令：
 
     ```javascript
     require("@nomicfoundation/hardhat-foundry");
     ```
-    After adding the `hardhat-foundry` plugin, the typical `contracts` folders for Hardhat will not work because now Hardhat expects all smart contracts to be stored within Foundry's `src` folder
-2. Move all smart contracts within the `contracts` folder into the `src` folder, and then delete the `contracts` folder
-3. Edit the `foundry.toml` file to ensure that dependencies installed via Git submodules and npm can be compiled by the Forge tool. Edit the `profile.default` to ensure that the `libs` entry has both `lib` and `node_modules`:  
+
+    添加`hardhat-foundry`插件后，Hardhat的`contracts`文件夹将失效，因为现在Hardhat期望所有智能合约都存储在Foundry的`src`文件夹中
+
+2. 将`contracts`文件夹中的所有智能合约移至`src`文件夹，然后删除`contracts`文件夹
+3. 编辑`foundry.toml`文件以确保通过Git子模块和npm安装的依赖项可以由Forge工具编译。编辑`profile.default`以确保`libs`条目同时具有`lib`和`node_modules`：
+
     ```toml
     [profile.default]
     src = 'src'
@@ -433,20 +451,22 @@ After initializing the new Hardhat project, a few new folders and files should a
     solc = '0.8.20'
     evm_version = 'london'
     ```
-Now both `forge build` and `npx hardhat compile` should work regardless of the dependencies.  
-Both `forge test` and `npx hardhat test` should now be able to access all smart contracts and dependencies. `forge test` will only test the Solidity tests, whereas `npx hardhat test` will only test the JavaScript tests. If you would like to use them in conjunction, then you can create a new script within your `package.json` file:  
+
+现在，无论依赖关系如何，`forge build`和`npx hardhat compile`都应该可以工作。
+`forge test`和`npx hardhat test`现在应该能够访问所有智能合约和依赖项。`forge test`将仅用于Solidity测试，而`npx Hardhat test`将仅用于JavaScript测试。如果您想结合使用它们，那么您可以在`package.json`文件中创建一个新脚本：
+
 ```json
 "scripts": {
     "test": "npx hardhat test && forge test"
 }
 ```
 
-You can run this command with:  
+您可以运行以下指令：
 
-```sh
+```bash
 npm run test
 ```
 
-Finally, while not necessary, it could be worthwhile to move all JavaScript scripts from the `scripts` folder into Foundry's `script` folder and delete the `scripts` folder so that you don't have two folders that serve the same purpose.
+最后，虽非必要，但可以将所有JavaScript脚本从`scripts`文件夹移动到Foundry的`script`文件夹中，并删除`scripts`文件夹，这样就不会出现两个具有相同用途的文件夹。
 
 --8<-- 'text/disclaimers/third-party-content.md'
