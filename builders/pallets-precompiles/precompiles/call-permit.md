@@ -55,19 +55,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 - **nonces**(*address* owner) - 回传当前随机数给指定所有者
 - **DOMAIN_SEPARATOR**() - 回传用于避免重复攻击的EIP-712域名分隔器，跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现执行
 
-**DOMAIN_SEPARATOR()**定义于[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中，并由以下公式计算：
-
-```
-keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
-```
-
-此哈希的参数可被拆分为以下部分：
-
- - **PERMIT_DOMAIN** -`EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)`的`keccak256`
- - **name** - 签署域名的名称，必须为`"Call Permit Precompile"`
- - **version** - 签署域名的版本，在本示例中**version**设置为`1`
- - **chainId** - 网络的链ID
- - **verifyingContract** - 用于验证签名的合约地址，在本示例中被称为调用许可预编译地址
+--8<-- 'text/precompiles/call-permit/domain-separator.md'
 
 当已调用`dispatch`，此许可需要在该调用被调度前获得验证。首个步骤为[计算域名分隔器](https://github.com/PureStake/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L138){target=_blank}，您可以在[Moonbeam的实现](https://github.com/PureStake/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L112-L126){target=_blank}中找到计算过程，或是您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中找到实际范例。
 
