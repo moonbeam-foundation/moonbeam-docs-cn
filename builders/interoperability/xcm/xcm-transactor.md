@@ -23,11 +23,11 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
 
 **开发者须知悉，若发送不正确的XCM消息可能会导致资金丢失。**因此，XCM功能需先在测试网上进行测试后才可移至生产环境。
 
-## XCM Instructions For Remote Execution {: xcm-instructions-for-remote-execution }
+## 用于远程执行的XCM指令 {: xcm-instructions-for-remote-execution }
 
 通过XCM进行远程执行的[相关指令](/builders/interoperability/xcm/overview/#xcm-instructions)，有但不限于：
 
- - [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} - gets executed in the target chain. Mutates the origin that will be used for executing the subsequent XCM instructions
+ - [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} - 在目标链中执行。改变将用于执行后续XCM指令的起始地址
  - [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 在目标链中执行。移除资产并将其放于待使用
  - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在目标链中执行。从持有资产中提取用于支付执行费用。支付的费用取决于目标链
  - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} - 在目标链中执行。从给定原始链派遣编码的调用数据
@@ -65,7 +65,7 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
  - **fee** — 一个枚举（enum），为开发者提供两个关于如何定义XCM执行费用项目的选项。两种选项均依赖于`feeAmount`，即您为执行发送的XCM消息而提供的每秒XCM执行的资产单位。设置费用项目的两种不同方式如下：
      - **AsCurrencyID** — 用于支付远程调用执行的币种ID。不同的runtime有不同的定义ID的方式。以基于Moonbeam网络为例，`SelfReserve`指原生Token，`ForeignAsset`指XC-20资产ID（区别于XC-20地址）
 
-     In the case of Moonbeam-based networks, `SelfReserve` refers to the native token, `ForeignAsset` refers to the asset ID of an [external XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank} (not to be confused with the XC-20 address), and `Erc20` refers to the contract address of a [local XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}
+     对于基于Moonbeam的网络，`SelfReserve`指的是原生Token，`ForeignAsset`指的是[外部 XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s)的资产ID {target=_blank}（不要与XC-20地址混淆），而`Erc20`指的是[原生XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}
 
      - **AsMultiLocation** — 代表用于执行XCM时支付费用的资产multilocation
  - **innerCall** — 在目标链中执行的调用的编码调用数据。如果通过主权衍生账户进行交易，这将包装在`asDerivative`选项中
@@ -112,9 +112,9 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ### 构建XCM {: #xcm-transact-through-signed }
 
-Since you'll be interacting with the `transactThroughSigned` function of the XCM Transactor Pallet, you'll need to assemble the `dest`, `fee`, `call`, and `weightInfo` parameters. To do so, you can take the following steps:
+由于您将与XCM Transactor Pallet的`transactThroughSigned`函数交互，您需要组装`dest`、`fee`、`call`和`weightInfo`参数。为此，您可以执行以下步骤：
 
-1. Define the destination multilocation, which will target parachain 888:
+1. 定义目标multilocation，其目标是平行链888：
 
     ```js
     const dest = {
@@ -124,12 +124,13 @@ Since you'll be interacting with the `transactThroughSigned` function of the XCM
       },
     };
     ```
-  
-2. Define the `fee` information, which will require you to:
-    - Define the currency ID and provide the asset details
-    - Set the fee amount
-    === "External XC-20s"
-    
+
+2. 定义`fee`信息，其将要求您：
+
+    - 定义币种ID并提供资产详情
+    - 设置费用金额
+      === "External XC-20s"
+
         ```js
         const fee = {
           currency: {
@@ -138,7 +139,9 @@ Since you'll be interacting with the `transactThroughSigned` function of the XCM
           feeAmount: 50000000000000000n,
         };
         ```
-    === "Local XC-20s"
+
+      === "Local XC-20s"
+
         ```js
         const fee = {
           currency: {
@@ -147,78 +150,96 @@ Since you'll be interacting with the `transactThroughSigned` function of the XCM
           feeAmount: 50000000000000000n,
         };
         ```
-3. Define the `call` that will be executed in the destination chain. This is the encoded call data of the pallet, method, and input values to be called. It can be constructed in [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} (must be connected to the destination chain) or using the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}. For this example, the inner call is a simple balance transfer of 1 token of the destination chain to Alice's account there:
+
+3. 定义将在目标链中执行的`call`。这里需要pallet、函数和输入值的编码调用数据
+
+    它可以在[Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank}中构建（必须连接至目标链）或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}。对于本示例而言，内部调用是将目标链的1个Token余额简单转移到Alice的账户：
+
     ```js
     const call =
       '0x030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d';
     ```
-5. Set the `weightInfo`, which includes the required `transactRequiredWeightAtMost` weight and the optional `overallWeight` parameters. Both weight parameters require you to specify `refTime` and `proofSize`, where `refTime` is the amount of computational time that can be used for execution and `proofSize` is the amount of storage in bytes that can be used. For each parameter, you can follow these guidelines:
-    - For `transactRequiredAtMost`, the value must include the `asDerivative` extrinsic as well. However, this does not include the weight of the XCM instructions. For this example, set `refTime` to `1000000000` weight units and `proofSize` to `0`
-    - For `overallWeight`, the value must be the total of **transactRequiredWeightAtMost** plus the weight needed to cover the XCM instructions execution costs in the destination chain. If you do not provide this value, the pallet will use the element in storage (if exists), and add it to **transactRequiredWeightAtMost**. For this example, set `refTime` to `2000000000` weight units and `proofSize` to `0`
+
+4. 设置`weightInfo`，其包含所需的`transactRequiredWeightAtMost`权重和可选的`overallWeight`参数。两个权重参数都要求您指定`refTime`和`proofSize`，其中`refTime`是可用于执行的计算时间量，`proofSize`是可使用的存储量（以字节为单位）。对于每个参数，您可以遵循以下准则：
+
+    - 对于`transactRequiredAtMost`，该值必须包含`asDerivative` extrinsic。然而，这并不包含XCM指令的权重。在本示例中，将`refTime`设置为 `1000000000`的权重单位，将`proofSize`设置为`0`
+    - 对于`overallWeight`，该值必须是**transactRequiredWeightAtMost**加上在目标链中XCM指令执行成本所需的权重之和。如果您不提供此值，pallet将使用存储中的元素（若有）。在本示例中，将`refTime`设置为`2000000000`权重单位，将将`proofSize`设置为`0`
     ```js
     const weightInfo = {
       transactRequiredWeightAtMost: { refTime: 1000000000n, proofSize: 0 },
       overallWeight: { refTime: 2000000000n, proofSize: 0 },
     };
     ```
-Now that you have the values for each of the parameters, you can write the script for the transaction. You'll take the following steps:
- 1. Provide the input data for the call. This includes:
-     - The Moonbase Alpha endpoint URL to create the provider
-     - The values for each of the parameters of the `transactThroughSigned` function
- 2. Create a Keyring instance that will be used to send the transaction
- 3. Create the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
- 4. Craft the `xcmTransactor.transactThroughSigned` extrinsic with the `dest`, `fee`, `call` and `weightInfo` values
- 5. Send the transaction using the `signAndSend` extrinsic and the Keyring instance you created in the second step
-!!! remember
-    This is for demo purposes only. Never store your private key in a JavaScript file.
+
+现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您可以执行以下步骤：
+
+ 1. 提供调用的输入数据，这包含：
+
+     - 用于创建提供商的Moonbase Alpha端点URL
+     - `transactThroughSigned`函数的每个参数的值
+
+ 2. 创建一个用于发送交易的Keyring实例
+ 3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}提供商
+ 4. 使用`dest`、`fee`、`call`和`weightInfo`值制作`xcmTransactor.transactThroughSigned` extrinsic
+ 5. 使用`signAndSend` extrinsic和在第二个步骤创建的Keyring实例发送交易
+
+!!! 请记住
+    本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
+
 ```js
 --8<-- 'code/xcm-transactor/transact-signed.js'
 ```
 
-!!! note
-    You can view an example of the above script, which sends 1 xcUNIT to Alice's account on the relay chain, on [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700){target=_blank} using the following encoded calldata: `0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700`.
+!!! 注意事项
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff05 4915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee00010 30094357700`。
 
-Once the transaction is processed, Alice should've received one token in her address on the destination chain.
+交易处理后，Alice应该在目标链的地址上收到1个Token。
 
 ## XCM Transactor预编译 {: #xcmtransactor-precompile }
 
 XCM Transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM Transactor Pallet功能。与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}相似，XCM Transactor预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.xcm_transactor}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.xcm_transactor}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.xcm_transactor}}
      ```
 
-XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。 XCM Transactor旧版预编译位于以下地址：
+XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。XCM Transactor旧版预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.xcm_transactor_legacy}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.xcm_transactor_legacy}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.xcm_transactor_legacy}}
      ```
 
 --8<-- 'text/precompiles/security.md'
 
-### XCM Transactor Solidity接口 {: #xcmtrasactor-solidity-interface } 
+### XCM Transactor Solidity接口 {: #xcmtrasactor-solidity-interface }
 
 [XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM Transactor Pallet进行交互。
 
