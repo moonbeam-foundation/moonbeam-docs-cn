@@ -1,6 +1,6 @@
 ---
 title: 通过XCM进行远程执行
-description: 通过使用XCM-Transactor Pallet，如何在其他链进行远程XCM调用。XCM-Transactor预编译允许通过以太坊API访问核心功能。
+description: 通过使用XCM Transactor Pallet，如何在其他链进行远程XCM调用。XCM Transactor预编译允许通过以太坊API访问核心功能。
 ---
 
 # 使用XCM Transactor Pallet进行远程执行
@@ -32,7 +32,7 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
  - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在目标链中执行。从持有资产中提取用于支付执行费用。支付的费用取决于目标链
  - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} - 在目标链中执行。从给定原始链派遣编码的调用数据
 
-当由XCM-Transactor Pallet创建的XCM消息执行后，必须支付费用。所有的相关信息可以在[XCM费用](/builders/interoperability/xcm/fees/){target=_blank}页面的[XCM-Transactor费用部分](/builders/interoperability/xcm/fees/#xcm-transactor-fees){target=_blank}找到。
+当由XCM Transactor Pallet创建的XCM消息执行后，必须支付费用。所有的相关信息可以在[XCM费用](/builders/interoperability/xcm/fees/){target=_blank}页面的[XCM Transactor费用部分](/builders/interoperability/xcm/fees/#xcm-transactor-fees){target=_blank}找到。
 
 ## 相关XCM定义 {: #general-xcm-definitions }
 
@@ -129,18 +129,19 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
     - 定义币种ID并提供资产详情
     - 设置费用金额
-      === "External XC-20s"
+
+    === "External XC-20s"
 
         ```js
-        const fee = {
-          currency: {
-            AsCurrencyId: { ForeignAsset: 35487752324713722007834302681851459189n },
-          },
-          feeAmount: 50000000000000000n,
-        };
+         const fee = {
+           currency: {
+           AsCurrencyId: { ForeignAsset: 354     7752324713722007834302681851459189n },
+           },
+           feeAmount: 50000000000000000n,
+         };
         ```
 
-      === "Local XC-20s"
+    === "Local XC-20s"
 
         ```js
         const fee = {
@@ -244,7 +245,7 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 [XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM Transactor Pallet进行交互。
 
 !!! 注意事项
-    XCM-Transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
+    XCM Transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：
 
