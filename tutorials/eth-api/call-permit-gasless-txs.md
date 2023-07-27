@@ -5,6 +5,8 @@ description: 使用Moonbeam调用许可预编译在您的dApp启用Gasless交易
 
 # 使用调用许可预编译发送Gasless交易
 
+![Banner Image](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-banner.png)
+
 _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -46,8 +48,8 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
     npm i ethers
     ```
 
--
---8<-- 'text/common/endpoint-examples.md'
+- 
+ --8<-- 'text/common/endpoint-examples.md'
 
 ## 配置您的项目 {: #configure-your-project }
 
@@ -148,7 +150,7 @@ const userSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
 const thirdPartyGasSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
 ```
 
-!!! 注意事项
+!!! 请记住
     请勿将您的私钥存储至JavaScript或TypeScript文件中。
 
 现在我们需要设置初始配置，让我们来了解如何构建EIP-712签署消息。
@@ -460,7 +462,7 @@ const nonce = await callPermit.nonces(userSigner.address);
 
 到目前为止，我们已经创建了域分隔器，定义了EIP-712消息的数据结构，并组装了消息的数据。接下来，我们需要请求EIP-712类型消息的签名！
 
-## 获取EIP-712类型签名{: #use-ethers-to-sign-eip712-messages }
+## 获取EIP-712类型签名 {: #use-ethers-to-sign-eip712-messages }
 
 对于下一步，我们将使用Ethers签名者和`signer.signTypedData`函数来提示用户签署我们组装的EIP-712类型消息。该签名将允许交易费用的第三方账户调度调用许可预编译的的`dispatch`函数。第三方账户会代我们支付交易费用，并购买一个航程！
 
@@ -522,7 +524,7 @@ console.log(`Transaction hash: ${dispatch.hash}`);
     --8<-- 'code/precompiles/call-permit/dispatch-call-permit.js'
     ```
 
-    !!! 注意事项
+    !!! 请记住
         请勿将您的私钥存储在JavaScript或TypeScript文件中。
 
 交易完成后，将从第三方账户的GLMR余额中扣除Gas费，并从用户的余额中扣除1 TMAP，并代用户购买一个航程。如您所见，用户无需担心GLMR余额！
