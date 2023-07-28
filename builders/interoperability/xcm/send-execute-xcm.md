@@ -344,7 +344,7 @@ const dest = [
 3. 定义`xcmSend`函数所需的参数，该参数将是XCM消息的目标链和编码的调用数据
 4. 发送XCM消息
 
-!!! 请注意
+!!! 请记住
     以下代码片段仅用于演示目的，请勿将您的私钥存储至JavaScript或Python文件中。
 
 === "Ethers.js"
