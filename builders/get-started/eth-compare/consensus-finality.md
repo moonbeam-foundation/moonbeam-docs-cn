@@ -38,11 +38,8 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 然而，Moonbeam的最终确定性可用于提供比以太坊目前更好的用户体验。检查交易确定性的策略相当简单：
 
  1. 您查询网络最新终结区块的哈希
-
  2. 您使用哈希截取区块编号
-
  3. 您使用区块编号对比您的交易，如果您的交易被包含在先前区块当中代表它已经被确认
-
  4. 进行安全检查，按编号检索区块，并验证给定的交易哈希被包含在该区块当中
 
 以下部分将会列出您该如何使用以太坊JSON-RPC（自定义Web3请求）和Substrate（波卡）JSON-RPC检查交易终结的进度。
@@ -64,18 +61,27 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 !!! 注意事项
     以下所提供的代码片段并不适用于每个生产环境，请确保您已根据实际案例进行修改或调整。
 
-=== "Web3.js"
-    --8<-- 'code/vs-ethereum/web3.md'
-
 === "Ethers.js"
-    --8<-- 'code/vs-ethereum/ethers.md'
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/ethers.js'
+    ```
+
+=== "Web3.js"
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.js'
+    ```
 
 === "Web3.py"
-    --8<-- 'code/vs-ethereum/web3py.md'
 
-## Checking Tx Finality with Substrate Libraries {: #checking-tx-finality-with-substrate-libraries }
+    ```py
+    --8<-- 'code/vs-ethereum/consensus-finality/web3.py'
+    ```
 
-[Polkadot.js API组件](https://polkadot.js.org/docs/api/start)和[Python Substrate Interface组件](https://github.com/polkascan/py-substrate-interface)提供开发者使用Javascript操作Substrate链的方法。
+## 使用Substrate库查询交易确定性 {: #checking-tx-finality-with-substrate-libraries }
+
+[Polkadot.js API组件](/builders/build/substrate-api/polkadot-js-api){target=_blank}和[Python Substrate Interface组件](/builders/build/substrate-api/py-substrate-interface){target=_blank}提供开发者使用Javascript操作Substrate链的方法。
 
 给定一个交易哈希（`tx_hash`），以下代码片段会获取当前的最终区块，并将其与您提供的交易的区块高度进行比较。该代码依赖于来自 Substrate JSON-RPC的三个RPC请求：
 
@@ -86,7 +92,13 @@ Moonbeam添加了对`moon_isBlockFinalized`和`moon_isTxFinalized`自定义RPC�
 您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc)和[Python Substrate Interface官方文档网站](https://polkascan.github.io/py-substrate-interface/)查询所有关于这两个库的详细JSON RPC信息。
 
 === "Polkadot.js"
-    --8<-- 'code/vs-ethereum/polkadotjs.md'
+
+    ```js
+    --8<-- 'code/vs-ethereum/consensus-finality/polkadotjs.js'
+    ```
 
 === "py-substrate-interface"
-    --8<-- 'code/vs-ethereum/pysubstrateinterface.md'
+
+    ```py
+    --8<-- 'code/vs-ethereum/consensus-finality/pysubstrateinterface.py'
+    ```

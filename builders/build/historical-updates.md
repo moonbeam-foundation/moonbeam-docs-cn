@@ -100,6 +100,8 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 
 关于更多信息，您可以在[GitHub上查看相关的Frontier PR](https://github.com/PureStake/frontier/pull/46/files){target=_blank}.
 
+***
+
 #### 错误时间戳单位 {: #incorrect-timestamp-units } 
 
 EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用的Substrate时间戳使用毫秒。此漏洞仅影响EIP-2612的实现，而非`block.timestamp`数值。

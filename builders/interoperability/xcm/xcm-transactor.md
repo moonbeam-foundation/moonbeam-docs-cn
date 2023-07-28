@@ -234,6 +234,16 @@ XCM-Transactor Pallet包含以下只读函数以获取pallet常量：
 
 XCM-Transactor预编译合约允许开发者通过基于Moonbeam网络的以太坊API访问XCM-Transactor Pallet功能。与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}相似，XCM-Transactor预编译位于以下地址：
 
+=== "Moonbeam"
+     ```
+     {{networks.moonbeam.precompiles.xcm_transactor}}
+     ```
+
+=== "Moonriver"
+     ```
+     {{networks.moonriver.precompiles.xcm_transactor}}
+     ```
+
 === "Moonbase Alpha"
      ```
      {{networks.moonbase.precompiles.xcm_transactor}}

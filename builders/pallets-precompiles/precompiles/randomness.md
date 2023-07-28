@@ -152,128 +152,110 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.png)
 
-## 通过彩票合约与Solidity接口交互 {: #interact-with-the-solidity-interfaces }
+## 使用随机预编译生成随机数 {: #interact-with-the-solidity-interfaces }
 
-在接下来的教程中，您将会学习如何与随机数预编译交互，包含需要您拥有多个账户以参与彩票抽奖的彩票合约。预设彩票合约将最小参与者人量设置为3，然而您可以根据需求更改合约中的数值。
+在接下来的教程中，您将学习如何使用随机数预编译和随机数消费者创建生成随机数的智能合约。如果您只想探索随机数预编译的一些功能，可以跳到[使用Remix直接与随机数预编译交互](#interact-directly)部分。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
-如您使用预设合约，您需要准备以下内容：
+跟随本指南，您需要准备以下内容：
 
-- [安装成功的MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
-- 在Moonbase Alpha上创建或是拥有3个账户以测试彩票合约
-- 所有账户皆需拥有`DEV ` Token。
+- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- 一个拥有`DEV` Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### 范例彩票合约 {: #example-contract }
+### 创建随机数生成器合约 {: #create-random-generator-contract }
 
-在此教程中，您将会与使用随机数预编译和消费者接口的彩票合约交互。您将会生成用于公平选取彩票获胜者的随机词。您可以在Moonbeam Docs GitHub库中寻找将被用于此教程的彩票合约文档，[`RandomnessLotteryDemo.sol`](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/randomness/RandomnessLotteryDemo.sol){target=_blank}。
+这一部分创建的合约将包含请求随机数和消费履行随机数请求的结果所需的基本函数。
 
-此彩票合约导入`Randomness.sol`预编译以及`RandomnessConsumer.sol`接口，并衍生自客户合约。在合约的架构中，您可以制定随机数的来源为本地VRF或BABE Epoch随机数。
+**此合约仅用于演示目的，不可用于生产环境。**
 
-一般而言，彩票合约包含查看随机数请求状态的功能，其将被用于决定彩票是否将持续接受新的参与者、是否开始或是否过期。它将会根据您希望使用的随机数来源使用`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`函数选取随机词。除外，它将会执行`fulfillRandomWords`方法并回调将会完成请求以及使用随机词随机地选取彩票获胜者。
+此合约将包含以下函数：
 
-同样合约中具有一些能够编辑的常量，尤其是能够用于产生独特结果的`SALT_PREFIX` 。
+- 构造函数，接受请求随机数所需的保证金
+- 提交随机数请求的函数。在本示例中，随机数来源为本地VRF，但是可以轻松修改合约以使用BABE epoch随机数
+- 通过调用随机数预编译的`fulfillRequest`函数履行请求的函数。此函数将是`payable`，因为需要在随机数请求时提交履行费用
+- 消费履行请求结果的函数。此函数的签名必须与随机数消费者合约的[`fulfillRandomWords`函数的签名](#:~:text=fulfillRandomWords(uint256 requestId, uint256[] memory randomWords))相匹配
 
-### Remix设置 {: #remix-set-up }
+合约如下所示：
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与随机数预编译和消费者合约交互。要将接口新增至Remix并跟随其后教程，您需要跟随以下步骤：
-
-1. 复制[`RandomnessLotteryDemo.sol`](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/randomness/RandomnessLotteryDemo.sol){target=_blank}文件
-2. 将文件内容粘贴至一个命名为**RandomnessLotteryDemo.sol**的文件
-
-![Add contracts to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-1.png)
-
-### 编译并部署彩票合约 {: #compile-lottery }
-
-接着，您需要在Remix中编译`RandomnessLotteryDemo.sol`文件：
-
-1. 确保**RandomnessLotteryDemo.sol**文件已打开
-2. 点击从上至下的第二个**Compile**标签
-3. 点击**Compile RandomnessLotteryDemo.sol**编译合约
-
-![Compile RandomnessLotteryDemo](/images/builders/pallets-precompiles/precompiles/randomness/randomness-2.png)
-
-如果合约成功被编译，您将会在**Compile**标签旁看见绿色的打勾标志。
-
-当合约成功被编译，您可以跟随以下步骤部署合约：
-
-1. 在Remix中的**Compile**标签下方点击**Deploy and Run**标签
-2. 确保在**ENVIRONMENT**下拉菜单中的**Injected Provider - Metamask**已被选取。选取后，您将会看见MetaMask跳出弹窗要求您将账户连接至Remix
-3. 确保正确的账户在**ACCOUNT**下方显示
-4. 您将会需要为随机数请求支付所需的保证金。以此合约来说，需要的保证金为{{ networks.moonbase.randomness.req_deposit_amount.dev }}个DEV。因此将数值设定为`{{ networks.moonbase.randomness.req_deposit_amount.wei }}`并在右方的下拉菜单中选取**Wei**
-5. 确保**CONTRACT**下拉菜单中的**RandomnessLotteryDemo - RandomnessLotteryDemo.sol**已被选取
-6. 接着在**Deploy**旁输入随机数来源，这与[`RandomnessSource`](#enums)枚举相关。以本地VRF来说，输入`0`，BABE Epoch随机数的话，请输入`1`。为跟随此范例，您可以输入`0`并点击**Deploy**
-7. 在MetaMask弹窗中点击**Confirm**确认交易
-
-![Deploy RandomnessLotteryDemo](/images/builders/pallets-precompiles/precompiles/randomness/randomness-3.png)
-
-**RANDOMNESSLOTTERYDEMO**合约将出现在**Deployed Contracts**的列表之中。
-
-### 参与彩票 {: #participate-in-lottery }
-
-预设合约需要最少3跟参与者，您可以跟随以下步骤参与：
-
-1. 确保您在MetaMask中切换至您希望用于参与的账户，您可以在**ACCOUNT**下方确认账户是否已连接
-2. 在**VALUE**一栏输入您希望贡献值彩票池的数量，数值需大于或等于预设合约中设置的`100000 gwei`的`PARTICIPATION_FEE`
-3. 点击**participate**
-4. 在MetaMask中确认交易
-
-![Participate in the lottery](/images/builders/pallets-precompiles/precompiles/randomness/randomness-4.png)
-
-由于最少需要3个人以开启彩票活动，您需要使用不同账户重复上述步骤以开启活动。
-
-### 开启彩票活动 {: #start-the-lottery } 
-
-如果您仔细查看`RandomnessLotteryDemo.sol`合约中的`startLottery`函数，您将会注意到它有`onlyOwner`修饰符。因此，您将需要确认在开始彩票活动之前切换为先前部署此合约的账户。
-
-要开始抽奖并提交随机数请求（这将调用预编译的`requestLocalVRFRandomWords`），您可以跟随以下步骤：
-
-1. 确认账户属于所有人
-2. 您需要支付费用以开启抽奖，其将用于完成随机数请求。您可以将**VALUE**设置为`200000`并选取**Gwei**，超过的费用将被退还给`msg.sender`
-3. 点击**startLottery**
-4. 在MetaMask之中确认交易
-
-![Start the lottery](/images/builders/pallets-precompiles/precompiles/randomness/randomness-5.png)
-
-当交易完成，彩票活动将会开始并不让任何人加入。在您完成随机数请求以挑选获胜者之前，您需要等待延迟，预设`VRF_BLOCKS_DELAY`为`2`个区块。
-
-### 挑选获胜者 {: #pick-the-winners }
-
-要完成请求，您可以使用`fulfillRequest`函数，该函数将使用合约的`requestId`变量来发起一个内部交易(internal transaction)并调用随机数预编译(randomness precompile)的`fulfillRequest`函数。如果成功，请求将被完成且会通过另一个内部交易生成随机词并执行`RandomnessLotteryDemo.sol`合约中定义的`fulfillRandomWords`函数。 `fulfillRandomWords`函数回调后(callback)将调用`pickWinners`并将累积奖金通过2个以上的内部交易分配给随机选取的获胜者们，每个内部交易对应一个获胜者。此外，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何剩余费用和要求的保证金都会被转移到指定的退款地址。
-
-您可以在延迟经过后在任何账户跟随以下步骤发起完成请求：
-
-1. 确保您连接至您希望完成请求的账户，可以是任何账户
-2. 点击**fulfillRequest**
-3. MetaMask在为交易估算gas使用上限时并不考虑内部交易.就这点而论，我们推荐在MetaMask里手动修改gas使用上限至`200,000`
-4. 在MetaMask中确认交易
-
-![Fulfill the randomness request](/images/builders/pallets-precompiles/precompiles/randomness/randomness-6.png)
-
-如果交易显示以下错误，您可以调用`increaseRequestFee`：
-
-```
-{ 
-  "code": -32603,
-  "message": "VM Exception while processing transaction: revert",
-  "data": "0x476173206c696d69742061742063757272656e74207072696365206d757374206265206c657373207468616e206665657320616c6c6f74746564"
-}
+```sol
+--8<-- 'code/randomness/RandomNumber.sol'
 ```
 
-`data`被转移为ASCII文本阅读为：`Gas limit at current price must be less than fees allotted`。因此，您可以使用`increaseRequestFee`函数为交易提高费用并重新尝试。
+如您所见，合约中还有一些常量可以根据需要进行调整，尤其是可用于生成独特结果的`SALT_PREFIX`。
 
-当交易完成，您可以在Remix控制台查看交易细节。您可以下滑页面查看**logs**，您应当看到4个事件以及事件细节。以下为您应当看到的事件：
+在以下部分中，您将使用Remix部署合约并与其交互。
 
-- **`"event": "Ended"`** - 在彩票活动结束后传送的事件，这将触发参与者数量、头奖以及整体获胜者数量。在`RandomnessLotteryDemo.sol`合约中被定义
-- **`"event": "Awarded"`** - 在获胜者获得奖励后传送的事件，将被触发两次因预设合约中设定为2个设置。其将会触发获胜者、随机词以及获胜数量。在`RandomnessLotteryDemo.sol`合约中被定义
-- **`"event": "FulFillmentSucceeded"`** - 在请求被成功完成后传送的事件。在`Randomness.sol`预编译中被定义
+### Remix设置 {: #remix-set-up}
 
-![Fulfill the randomness request](/images/builders/pallets-precompiles/precompiles/randomness/randomness-7.png)
+要添加合约至Remix并遵循本教程操作，您需要在Remix中创建一个名为`RandomnessNumber.sol`的新文件并将`RandomNumber`合约粘贴至该文件。
 
-恭喜！您已经成功使用随机数预编译和消费者合约参与和启用彩票活动，并使用随机词选取胜者。
+![Add the random number generator contract to Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-2.png)
 
-## 直接与预编译Solidity接口交互 {: #interact-directly }
+### 编译部署随机数生成器合约 {: #compile-deploy-random-number }
+
+要在Remix中编译`RandomNumber.sol`合约，请执行以下步骤：
+
+1. 点击**Compile**标签（从上到下第二个）
+2. 点击**Compile RandomNumber.sol**按钮
+
+成功编译合约后，您将在**Compile**标签旁边看到一个绿色的勾号。
+
+![Compile the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-3.png)
+
+现在您可以开始执行以下步骤部署合约：
+
+1. 点击位于**Compile**标签正下方的**Deploy and Run**标签
+2. 确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**。选择**Injected Provider - Metamask**后，MetaMask将提示您链接账户至Remix
+3. 确保**ACCOUNT**下方显示是正确的账户
+4. 在**VALUE**字段中输入保证金金额，即`{{ networks.moonbase.randomness.req_deposit_amount.wei }}` Wei（`{{ networks.moonbase.randomness.req_deposit_amount.dev }}` Ether）
+5. 确保在**CONTRACT**下拉菜单中已选择**RandomNumber - RandomNumber.sol**
+6. 点击**Deploy**
+7. 在MetaMask跳出的弹窗中，点击**Confirm**确认交易
+
+![Deploy the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-4.png)
+
+**RANDOMNUMBER**合约将出现在**Deployed Contracts**列表中。
+
+### 提交生成随机数的请求 {: #request-randomness }
+
+要请求随机数，您需要使用合约的`requestRandomness`函数，这将要求您按照随机数预编译中的定义提交保证金。您可以通过以下步骤提交随机数请求并支付保证金：
+
+1. 在**VALUE**字段中输入数量用于支付履行费用，该数值需等于或高于`RandomNumber`合约中指定的最低费用，即`15000000` Gwei
+2. 展开**RANDOMNUMBER**合约
+3. 点击**requestRandomness**按钮
+4. 在MetaMask中确认交易
+
+![Request a random number using the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-5.png)
+
+提交交易后，`requestId`将更新为请求的ID。您可以使用随机数合约的`requestId`调用来获取请求ID，并使用随机数预编译的`getRequestStatus`函数来检查此请求ID的状态。
+
+### 履行请求并保存随机数 {: #fulfill-request-save-number }
+
+提交随机数请求后，您需要等待延迟时间段才能完成请求。对于`RandomNumber.sol`合约，延迟时间段设置为随机数预编译中定义的最小区块延迟，即{{ networks.moonbase.randomness.min_vrf_blocks_delay }}个区块。您必须在延迟时间段结束之前完成请求。对于本地VRF，请求在{{ networks.moonbase.randomness.block_expiration }}个区块后过期，对于BABE epoch随机数，请求在{{ networks.moonbase.randomness.epoch_expiration }}个epoch后过期。
+
+假设您已等待最小区块数（如果您使用的是BABE epoch随机数，则为epoch）通过并且请求尚未过期，您可以通过以下步骤来完成请求：
+
+1. 点击**fulfillRequest**按钮
+2. 在MetaMask中确认交易
+
+![Fulfill the randomness request using the random number generator contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-6.png)
+
+履行请求后，您可以查看生成的随机数：
+
+1. 展开**random**函数
+2. 由于合约只请求一个随机词，您可以通过访问`random`数组的`0`索引来获取随机数
+3. 点击**call**
+4. 随机数将出现在**call**按钮下方
+
+![Retrieve the random number that was generated by the random number contract in Remix.](/images/builders/pallets-precompiles/precompiles/randomness/randomness-7.png)
+
+成功完成后，多余的费用和保证金将发送到指定的退款地址。
+
+如果请求刚好在完成之前过期，您可以直接与随机数预编译交互以清除请求并解锁保证金和费用。有关如何执行此操作的说明，请参考以下部分。
+
+## 使用Remix直接与随机数预编译交互 {: #interact-directly }
 
 除了通过智能合约与随机预编译进行交互外，您还可以在Remix中直接与其交互以执行创建随机请求、检查请求状态和清除过期请求等操作。请记住，您需要有一个从消费者合约继承的合约才能满足请求，因此如果您直接使用预编译来完成请求，则无法使用结果。
 

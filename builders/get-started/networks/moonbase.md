@@ -35,7 +35,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 要开始在Moonbase Alpha上开发部署，您可以在通过Moonbase Alpha水龙头或手动申请获得DEV测试代币。对于特定金额的测试代币，您可以随时通过我们的社区渠道直接与我们联系。
 
-您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
+您可以输入您的地址以自动从[Moonbase Alpha Faucet](https://faucet.moonbeam.network/){target=_blank}网站请求DEV测试代币。水龙头每24小时最多分配{{ networks.moonbase.website_faucet_amount }}枚DEV。
 
 ![Moonbase Alpha Faucet Website.](/images/builders/get-started/networks/moonbase/moonbase-1.png)
 

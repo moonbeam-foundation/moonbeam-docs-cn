@@ -7,7 +7,7 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 ![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/overview/overview-banner.png)
 
-## 概述 {: #introduction } 
+## 概述 {: #introduction }
 
 在Moonbeam上，预编译合约是拥有以太坊格式地址的原生Substrate代码，与其他智能合约一样能够可以使用以太坊API进行调用。预编译允许您直接调用Substrate runtime，其通常在Moonbeam的以太坊这端无法访问。
 
@@ -36,49 +36,53 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 ### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 
 === "Moonbeam"
-    |                                                                    合约                                                                    |                             地址                             |
-    |:------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
-    |  [Parachain Staking](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}  |         {{ networks.moonbeam.precompiles.staking }}          |
-    | [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank} |        {{ networks.moonbeam.precompiles.crowdloan }}         |
-    |         [ERC-20 Interface](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}          |          {{ networks.moonbeam.precompiles.erc20 }}           |
-    |     [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}      |        {{ networks.moonbeam.precompiles.democracy }}         |
-    |                [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                 |         {{ networks.moonbeam.precompiles.xtokens }}          |
-    |        [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}        |      {{ networks.moonbeam.precompiles.relay_encoder }}       |
-    |  [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}  |   {{networks.moonbeam.precompiles.xcm_transactor_legacy }}   |
-    |  [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}  |      {{ networks.moonbeam.precompiles.author_mapping }}      |
-    |                   [Batch](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}                    |          {{ networks.moonbeam.precompiles.batch }}           |
-    |            [Randomness](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}            |         {{networks.moonbeam.precompiles.randomness}}         |
-    |           [Call Permit](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}           |        {{networks.moonbeam.precompiles.call_permit }}        |
-    |                   [Proxy](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}                    |           {{networks.moonbeam.precompiles.proxy }}           |
-    |            [XCM Utilities](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}            |         {{networks.moonbeam.precompiles.xcm_utils }}         |
-    |        [Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        |    {{networks.moonbeam.precompiles.collective_council }}     |
-    |  [Technical Committee Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}  | {{networks.moonbeam.precompiles.collective_tech_committee }} |
-    |   [Treasury Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}    |    {{networks.moonbeam.precompiles.collective_treasury }}    |
+    |                                                                      合约                                                                       |                             地址                             |
+    |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
+    |    [Parachain Staking](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}     |         {{ networks.moonbeam.precompiles.staking }}          |
+    |   [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}    |        {{ networks.moonbeam.precompiles.crowdloan }}         |
+    |            [ERC-20 Interface](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}            |          {{ networks.moonbeam.precompiles.erc20 }}           |
+    |        [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}        |        {{ networks.moonbeam.precompiles.democracy }}         |
+    |                   [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                   |         {{ networks.moonbeam.precompiles.xtokens }}          |
+    |          [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}           |      {{ networks.moonbeam.precompiles.relay_encoder }}       |
+    | [XCM Transactor Legacy](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank} |   {{networks.moonbeam.precompiles.xcm_transactor_legacy }}   |
+    |    [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}     |      {{ networks.moonbeam.precompiles.author_mapping }}      |
+    |                      [Batch](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}                      |          {{ networks.moonbeam.precompiles.batch }}           |
+    |              [Randomness](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}               |         {{networks.moonbeam.precompiles.randomness}}         |
+    |             [Call Permit](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}              |        {{networks.moonbeam.precompiles.call_permit }}        |
+    |                      [Proxy](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}                      |           {{networks.moonbeam.precompiles.proxy }}           |
+    |              [XCM Utilities](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}               |         {{networks.moonbeam.precompiles.xcm_utils }}         |
+    |    [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}     |       {{networks.moonbeam.precompiles.xcm_transactor}}       |
+    |          [Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}           |    {{networks.moonbeam.precompiles.collective_council }}     |
+    |    [Technical Committee Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}     | {{networks.moonbeam.precompiles.collective_tech_committee }} |
+    |      [Treasury Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}      |    {{networks.moonbeam.precompiles.collective_treasury }}    |
+    | [Precompile Registry](https://github.com/PureStake/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |         {{networks.moonbeam.precompiles.registry }}          |
 
 === "Moonriver"
-    |                                                                    合约                                                                    |                                 地址                                  |
-    |:------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
-    |  [Parachain Staking](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}  |              {{ networks.moonriver.precompiles.staking}}              |
-    | [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank} |            {{ networks.moonriver.precompiles.crowdloan }}             |
-    |         [ERC-20 Interface](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}          |              {{ networks.moonriver.precompiles.erc20 }}               |
-    |     [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}      |            {{ networks.moonriver.precompiles.democracy }}             |
-    |                [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                 |             {{ networks.moonriver.precompiles.xtokens }}              |
-    |        [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}        |          {{ networks.moonriver.precompiles.relay_encoder }}           |
-    |  [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}  |       {{networks.moonriver.precompiles.xcm_transactor_legacy }}       |
-    |  [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}  |          {{ networks.moonriver.precompiles.author_mapping }}          |
-    |                   [Batch](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}                    |              {{ networks.moonriver.precompiles.batch }}               |
-    |            [Randomness](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}            |             {{networks.moonriver.precompiles.randomness}}             |
-    |           [Call Permit](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}           |            {{networks.moonriver.precompiles.call_permit }}            |
-    |                   [Proxy](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}                    |               {{networks.moonriver.precompiles.proxy }}               |
-    |            [XCM Utilities](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}            |             {{networks.moonriver.precompiles.xcm_utils }}             |
-    |        [Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        |        {{networks.moonriver.precompiles.collective_council }}         |
-    |  [Technical Committee Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}  |     {{networks.moonriver.precompiles.collective_tech_committee }}     |
-    |   [Treasury Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}    |        {{networks.moonriver.precompiles.collective_treasury }}        |
-    |             [Referenda](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}              |             {{networks.moonriver.precompiles.referenda }}             |
-    |  [Conviction Voting](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}  |         {{networks.moonriver.precompiles.conviction_voting }}         |
-    |               [Preimage](https://github.com/PureStake/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}               |             {{networks.moonriver.precompiles.preimage }}              |
-    |      [OpenGov Tech Committee](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}      | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
-    
+    |                                                                      合约                                                                       |                                 地址                                  |
+    |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
+    |    [Parachain Staking](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}     |              {{ networks.moonriver.precompiles.staking}}              |
+    |   [Crowdloan Rewards](https://github.com/PureStake/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}    |            {{ networks.moonriver.precompiles.crowdloan }}             |
+    |            [ERC-20 Interface](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}            |              {{ networks.moonriver.precompiles.erc20 }}               |
+    |        [Democracy](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}        |            {{ networks.moonriver.precompiles.democracy }}             |
+    |                   [Xtokens](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}                   |             {{ networks.moonriver.precompiles.xtokens }}              |
+    |          [Relay Encoder](https://github.com/PureStake/moonbeam/blob/master/precompiles/relay-encoder/RelayEncoder.sol){target=_blank}           |          {{ networks.moonriver.precompiles.relay_encoder }}           |
+    | [XCM Transactor Legacy](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank} |       {{networks.moonriver.precompiles.xcm_transactor_legacy }}       |
+    |    [Author Mapping](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}     |          {{ networks.moonriver.precompiles.author_mapping }}          |
+    |                      [Batch](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}                      |              {{ networks.moonriver.precompiles.batch }}               |
+    |              [Randomness](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}               |             {{networks.moonriver.precompiles.randomness}}             |
+    |             [Call Permit](https://github.com/PureStake/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}              |            {{networks.moonriver.precompiles.call_permit }}            |
+    |                      [Proxy](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}                      |               {{networks.moonriver.precompiles.proxy }}               |
+    |              [XCM Utilities](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}               |             {{networks.moonriver.precompiles.xcm_utils }}             |
+    |    [XCM Transactor](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}     |           {{networks.moonriver.precompiles.xcm_transactor}}           |
+    |          [Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}           |        {{networks.moonriver.precompiles.collective_council }}         |
+    |    [Technical Committee Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}     |     {{networks.moonriver.precompiles.collective_tech_committee }}     |
+    |      [Treasury Council Collective](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}      |        {{networks.moonriver.precompiles.collective_treasury }}        |
+    |                [Referenda](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}                |             {{networks.moonriver.precompiles.referenda }}             |
+    |    [Conviction Voting](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}     |         {{networks.moonriver.precompiles.conviction_voting }}         |
+    |                 [Preimage](https://github.com/PureStake/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}                  |             {{networks.moonriver.precompiles.preimage }}              |
+    |        [OpenGov Tech Committee](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}         | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
+    | [Precompile Registry](https://github.com/PureStake/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |             {{networks.moonriver.precompiles.registry }}              |
+
 === "Moonbase Alpha"
     |                                                                      合约                                                                       |                                 地址                                 |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
@@ -103,3 +107,4 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |    [Conviction Voting](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}     |         {{networks.moonbase.precompiles.conviction_voting }}         |
     |                 [Preimage](https://github.com/PureStake/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}                  |             {{networks.moonbase.precompiles.preimage }}              |
     |        [OpenGov Tech Committee](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}         | {{networks.moonbase.precompiles.collective_opengov_tech_committee }} |
+    | [Precompile Registry](https://github.com/PureStake/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |             {{networks.moonbase.precompiles.registry }}              |

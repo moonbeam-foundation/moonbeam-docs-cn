@@ -118,25 +118,22 @@ Moonkey也提供一些其他的功能，具体如下所示：
 首先，您需要拥有最低Token质押量（即收集人自身绑定的最低数量）才有资格成为候选收集人。只有一定数量的总质押量（包括收集人自身绑定的数量和委托的质押量）排名靠前的候选收集人才会进入收集人有效集。
 
 === "Moonbeam"
-    |         变量          |                          值                           |
-    |:-------------------------:|:--------------------------------------------------------:|
-    | 最低自身绑定数量  |     {{ networks.moonbeam.staking.min_can_stk }}枚GLMR     |
-    | 最低总绑定数量 |     {{ networks.moonbeam.staking.min_col_stk }}枚GLMR     |
-    |      有效集上限      | {{ networks.moonbeam.staking.max_candidates }}名collators |
+    |       变量       |                            值                             |
+    |:----------------:|:---------------------------------------------------------:|
+    | 最低自身绑定数量 |     {{ networks.moonbeam.staking.min_can_stk }}枚GLMR     |
+    |    有效集上限    | {{ networks.moonbeam.staking.max_candidates }}名collators |
 
 === "Moonriver"
-    |         变量          |                           值                           |
-    |:-------------------------:|:---------------------------------------------------------:|
-    | 最低自身绑定数量  |     {{ networks.moonriver.staking.min_can_stk }}枚MOVR     |
-    | 最低总绑定数量 |     {{ networks.moonriver.staking.min_col_stk }}枚MOVR     |
-    |      有效集上限      | {{ networks.moonriver.staking.max_candidates }}名collators |
+    |       变量       |                             值                             |
+    |:----------------:|:----------------------------------------------------------:|
+    | 最低自身绑定数量 |     {{ networks.moonriver.staking.min_can_stk }}枚MOVR     |
+    |    有效集上限    | {{ networks.moonriver.staking.max_candidates }}名collators |
 
 === "Moonbase Alpha"
-    |         变量          |                          值                           |
-    |:-------------------------:|:--------------------------------------------------------:|
-    | 最低自身绑定数量  |     {{ networks.moonbase.staking.min_can_stk }}枚DEV      |
-    | 最低总绑定数量 |     {{ networks.moonbase.staking.min_col_stk }}枚DEV      |
-    |      有效集上限      | {{ networks.moonbase.staking.max_candidates }}名collators |
+    |       变量       |                            值                             |
+    |:----------------:|:---------------------------------------------------------:|
+    | 最低自身绑定数量 |     {{ networks.moonbase.staking.min_can_stk }}枚DEV      |
+    |    有效集上限    | {{ networks.moonbase.staking.max_candidates }}名collators |
 
 
 ### 密钥关联绑定数量 {: #key-association-bond }
@@ -144,18 +141,18 @@ Moonkey也提供一些其他的功能，具体如下所示：
 其次，您将需要为密钥关联绑定数量。当[映射author ID](/node-operators/networks/collators/account-management){target=_blank}（会话密钥）与您的帐户获取区块奖励时，将发送绑定数量，并且该绑定数量是根据的author ID注册的。
 
 === "Moonbeam"
-    |   变量   |                         值                          |
-    |:------------:|:------------------------------------------------------:|
+    |     变量     |                           值                            |
+    |:------------:|:-------------------------------------------------------:|
     | 最低绑定数量 | {{ networks.moonbeam.staking.collator_map_bond }}枚GLMR |
 
 === "Moonriver"
-    |   变量   |                          值                          |
-    |:------------:|:-------------------------------------------------------:|
+    |     变量     |                            值                            |
+    |:------------:|:--------------------------------------------------------:|
     | 最低绑定数量 | {{ networks.moonriver.staking.collator_map_bond }}枚MOVR |
 
 === "Moonbase Alpha"
-    |   变量   |                         值                         |
-    |:------------:|:-----------------------------------------------------:|
+    |     变量     |                           值                           |
+    |:------------:|:------------------------------------------------------:|
     | 最低绑定数量 | {{ networks.moonbase.staking.collator_map_bond }}枚DEV |
 
 ## 收集人问卷调查 {: #collator-questionnaire }
