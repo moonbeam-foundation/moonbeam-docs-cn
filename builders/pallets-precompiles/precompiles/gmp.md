@@ -42,7 +42,7 @@ GMP预编译位于以下地址：
 
 用户必须与预编译交互的最常见实例是在恢复的情况下，也就是中继器不完成MRL事务。举例来说，用户必须搜索其源链交易附带的VAA，然后手动调用`wormholeTransferERC20`函数。
 
-## 为Wormhole构建有效负载{: #building-the-payload-for-wormhole }
+## 为Wormhole构建有效负载 {: #building-the-payload-for-wormhole }
 
 目前GMP预编译仅支持使用Wormhole通过Moonbeam发送流动性以及发送到其他平行链。GMP预编译不协助从平行链返回Moonbeam以及其他Wormhole连接链的路线。
 
@@ -158,4 +158,4 @@ GMP预编译仍然在其发展的早期阶段，目前还是有许多限制，�
 - 预编译并不会确保目标链是否支持传送的Token。**错误的multilocation有可能导致资金损失**
 - 错误的构建multilocation将导致回溯，Token将会被锁住并导致资金损失
 - 目前并没有从平行链至其他如以太坊的链的返回路径。这会是一个在一键方案实现前需要研究的协议层级课题
-  - 由于ERC-20 XC资产的限制，通过Moonbeam从平行链发送回Token的唯一方法是在原始平行链上拥有xcGLMR，并在发送回Token时将其用作费用
+    - 由于ERC-20 XC资产的限制，通过Moonbeam从平行链发送回Token的唯一方法是在原始平行链上拥有xcGLMR，并在发送回Token时将其用作费用
