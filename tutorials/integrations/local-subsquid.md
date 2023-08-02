@@ -7,7 +7,7 @@ description: 通过此教程了解如何使用Subsquid检索本地部署在Moonb
 
 ![Subsquid Banner](/images/tutorials/integrations/local-subsquid/local-subsquid-banner.png)
 
-_本教程更新于2023年4月14日｜作者：Erin Shaben_
+_作者：Erin Shaben_
 
 ## 概览 {: #introduction }
 

@@ -15,41 +15,30 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 本教程将引导您如何管理您的收集人账户，包括创建和转换会话密钥、注册和更新会话密钥、设置身份以及创建代理账户。
 
+## 新增和更新会话密钥的流程 {: #process }
+
+第一次新增会话密钥的流程与轮换会话密钥的流程相同。具体流程如下：
+
+1. 使用`author_rotateKeys` RPC函数[生成会话密钥](#session-keys)。调用此函数将返回一个128个十六进制字符，其中包含Nimbus ID和VRF会话密钥的公钥
+2. [加入候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}（如果已加入请忽略此步骤）
+3. 使用[Author Mapping Pallet](#author-mapping-interface)的`setKeys(keys)` extrinsic[将会话密钥映射](#mapping-extrinsic)至您的候选人账户，这将接受整个128个十六进制字符作为值输入。当你第一次调用`setKeys`时，您将需要提交[映射保证金](#mapping-bonds)。如果您要轮换您的密钥并且先前已经提交了映射保证金，则不需要提交新的保证金
+
+此流程的每个步骤将如下所示。
+
 ## 生成会话密钥 {: #session-keys }
 
 --8<-- 'text/collators/generate-session-keys.md'
 
-## 需要的保证金 {: #mapping-bonds }
+## 管理会话密钥 {: #manage-session-keys }
 
-在会话密钥映射到您的账户时，系统将会发送一定数量的Token绑定。此绑定按注册的会话密钥来的。绑定的Token数量设置如下所示：
+一旦您已经创建或轮换您的会话密钥，您将能够使用Author Mapping Pallet中的extrinsics管理您的会话密钥。您也可以映射您的会话密钥，验证链上映射并移除会话密钥。
 
-=== "Moonbeam"
-    ```
-    {{ networks.moonbeam.staking.collator_map_bond }} GLMR
-    ```
-
-=== "Moonriver"
-    ```
-    {{ networks.moonriver.staking.collator_map_bond }} MOVR
-    ```
-
-=== "Moonbase Alpha"
-    ```
-    {{ networks.moonbase.staking.collator_map_bond }} DEV
-    ```
-
-## 作者映射Pallet接口 {: #author-mapping-interface }
+### 作者映射Pallet接口 {: #author-mapping-interface }
 
 `authorMapping`模块具有以下extrinsics编程：
 
- - **setKeys**(keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币](#mapping-bonds)。替换弃用的`addAssociation`和`updateAssociation`函数
+- **setKeys**(keys) —— 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立即设置会话密钥。在密钥轮换或迁移后很有用。调用`setKeys` 需要[绑定代币](#mapping-bonds)。替换弃用的`addAssociation`和`updateAssociation`函数
 - **removeKeys**() - 删除会话密钥。替换已弃用的`clearAssociation` extrinsic
-
-以下函数**已弃用**，但仍存在向后兼容性：
-
- - **addAssociation**(nimbusID) —— 将您的Nimbus ID映射到发送交易的H160账户，确认这是其私钥的真正持有者。这将需要一定的[绑定数量](#需要的保证金--mapping-bonds)。此函数通过默认将`keys`设置为Nimbus ID来保持向后兼容性
- - **updateAssociation**(oldNimbusID, newNimbusID) —— 将旧的Nimbus ID映射到新的Nimbus ID，对私钥转换和迁移极为实用。这将自动执行`add`和`clear`两个关联函数，使得私钥转换无需第二次绑定。此函数通过默认将`newKeys`设置为Nimbus ID来保持向后兼容性
- - **clearAssociation**(nimbusID) — 清除Nimbus ID与发送交易的H160帐户的关联，该帐户需要是该Nimbus ID的所有者。也退还押金
 
 这个模块同时也新增以下RPC调用（链状态）：
 
@@ -58,9 +47,33 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 ### 映射会话密钥 {: #mapping-extrinsic }
 
-生成会话密钥后的下一步是映射你的会话密钥到H160账户（即以太坊格式的地址）。确保您拥有该账户的私钥，这将用于接收区块奖励。
+有了新生成的会话密钥后，接下来您可以将您的会话密钥映射至H160账户（以太坊格式的地址）。确保您持有此账户的私钥，因为该账户将用于接收区块奖励。
 
-如果您想要将您的会话密钥映射到您的账户，您需要成为[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中的一员。当您成为候选人后，您需要传送您的映射extrinsic。请注意，每一次注册作者ID时将会绑定Token。
+要映射您的会话密钥至您的账户，您需要在[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}中。当您成为候选人后，您需要发送映射extrinsic，这将需要您提交一笔映射保证金。
+
+#### 映射保证金 {: #mapping-bonds }
+
+映射保证金是按会话密钥注册的。映射到您帐户的保证金数量如下：
+
+=== "Moonbeam"
+
+    ```text
+    {{ networks.moonbeam.staking.collator_map_bond }} GLMR
+    ```
+
+=== "Moonriver"
+
+    ```text
+    {{ networks.moonriver.staking.collator_map_bond }} MOVR
+    ```
+
+=== "Moonbase Alpha"
+
+    ```text
+    {{ networks.moonbase.staking.collator_map_bond }} DEV
+    ```
+
+#### 使用Polkadot.js Apps映射会话密钥 {: #use-polkadotjs-apps }
 
 在本指南中，您将学习如何从Polkadot.js应用映射会话密钥。 要了解如何通过作者映射预编译合约创建映射，您可以参考[与作者映射预编译交互](/builders/pallets-precompiles/precompiles/author-mapping){target=_blank}页面。
 
@@ -74,9 +87,10 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 ![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
 
-如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
+!!! 注意事项
+    如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
 
-如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
+如果交易成功，您将在屏幕上看到确认通知。如果没有，请确认您是否已加入[候选人池](/node-operators/networks/collators/activities/#become-a-candidate){target=_blank}。
 
 ### 检查映射设定 {: #checking-the-mappings }
 
@@ -88,7 +102,7 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 要使用`mappingWithDeposit`方法检查特定收集人的映射，您需要获取Nimbus ID。 为此，您可以使用串联公钥的前64个十六进制字符来获取Nimbus ID。要验证Nimbus ID是否正确，您可以运行以下命令，并将前64个字符传递到`params`数组中：
 
-```
+```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d   '{
   "jsonrpc":"2.0",
   "id":1,
@@ -126,6 +140,22 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 ![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-6.png)
 
 您应该能够看到与所提供的H160帐户关联的Nimbus ID。 如果没有提供账户，这将返回存储在链上的所有映射。
+
+### 移除会话密钥 {: #removing-session-keys }
+
+在移除会话密钥之前，您需要确保已停止参与收集活动并离开候选池。首先，您需要发起离开候选池的请求，等待退出期生效后，再执行该请求。关于分步教程，请参阅Moonbeam收集人活动页面的[停止参与收集活动](/node-operators/networks/collators/activities/#stop-colating){target=_blank}部分。
+
+当您离开候选人池后，您可以移除您的会话密钥。然后，映射保证金将返还至您的账户。
+
+从[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}，点击页面上方的**Developer**，在下拉菜单中选择**Extrinsics**选项，然后执行以下步骤：
+
+1. 选择账户
+2. 选择**authorMapping** pallet和**removeKeys** extrinsic
+3. 点击**Submit Transaction**
+
+![Remove session keys on Polkadot.js Apps](/images/node-operators/networks/collators/account-management/account-7.png)
+
+交易进行后，映射保证金将返还给您。确保密钥已移除，您可以通过[检查映射](#checking-the-mappings)部分进行查看。
 
 ## 设置身份 {: #setting-an-identity }
 

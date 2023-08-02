@@ -7,9 +7,9 @@ description: 学习如何使用Moonbeam上的批处理预编译（Batch Precompi
 
 ![Banner Image](/images/tutorials/eth-api/batch-approve-swap/batch-banner.png)
 
-_2022年12月21日 | 作者：Erin Shaben_
+_作者：Erin Shaben_
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Token授权对于安全地与智能合约交互非常重要，能够防止智能合约在无许可的情况下访问用户Token。当智能合约被授权访问用户Token时，能够访问的Token数量通常是无限量的，具体取决于DApp。
 

@@ -496,11 +496,11 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-### XCM相关Pallet {: #xcm-related-pallets } 
+### XCM相关Pallet {: #xcm-related-pallets }
 
-#### 更新交易信息存储项 {: #update-transaction-info } 
+#### 更新交易信息存储项 {: #update-transaction-info }
 
-此处于XCM-transactor pallet的`TransactInfo`存储项进行迁移，更改了以下内容：
+此处于XCM Transactor Pallet的`TransactInfo`存储项进行迁移，更改了以下内容：
 
 - 添加`max_weight`以防止交易者在目标链中拖延队列
 - 删除`fee_per_byte`、`metadata_size`和`base_weight`，因为XCM交易不需要这些内容

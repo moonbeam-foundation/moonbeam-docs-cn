@@ -7,7 +7,7 @@ description: 想要创建一个彩票智能合约？遵循本分步教程使用M
 
 ![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
 
-_本文档更新至2022年3月15日｜作者：Erin Shaben_
+_作者：Erin Shaben_
 
 ## 概览 {: #introduction }
 
@@ -135,7 +135,7 @@ uint64 public FULFILLMENT_GAS_LIMIT = 100000;
 
 // 开始抽奖所需的最低费用。这并不能保证有足够的费用来支付履行所使用的gas。
 // 理想情况下，考虑到可能的gas价格波动，应该设一个较大的值。额外费用将退还给调用者
-uint256 public MIN_FEE = FULFILLMENT_GAS_LIMIT * 1 gwei;
+uint256 public MIN_FEE = FULFILLMENT_GAS_LIMIT * 150 gwei;
 
 // 一个字符串，用于允许使用与其他合约不同的salt
 bytes32 public SALT_PREFIX = "my_demo_salt_change_me";
