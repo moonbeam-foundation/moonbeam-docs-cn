@@ -21,7 +21,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 ![Happy path for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
 
-本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
+本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
 
 !!! 注意事项
     远程EVM调用通过[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}完成。因此，建议您在尝试通过XCM执行远程EVM调用之前熟悉XCM Transactor概念。
@@ -50,7 +50,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 第一条指令`DescendOrigin`将通过[XCM相关定义部分](#general-xcm-definitions)中描述的**Multilocation衍生账户**机制在Moonbeam端转移XCM调用的源头。远程EVM调用是从该无密钥帐户（或相关的[代理](/tokens/manage/proxy-accounts/){target=_blank}）派遣的。因此，由于交易并没有签署，它没有真正签名的`v-r-s`值，反而会是`0x1`。
 
-由于远程EVM调用没有签名的实际`v-r-s`值，因此EVM交易哈希可能存在冲突问题，因为它被计算为已签名交易blob的keccak256哈希。如果两个具有相同随机数的账户提交相同的交易对象，它们最终会得到相同的EVM交易哈希。因此，所有远程EVM交易都使用附加到[Ethereum XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中的全网随机数。
+由于远程EVM调用没有签名的实际`v-r-s`值，因此EVM交易哈希可能存在冲突问题，因为它被计算为已签名交易blob的keccak256哈希。如果两个具有相同随机数的账户提交相同的交易对象，它们最终会得到相同的EVM交易哈希。因此，所有远程EVM交易都使用附加到[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中的全网随机数。
 
 另一个显着差异是在Gas价格方面。远程EVM调用的费用依照XCM的执行层收取。因此，EVM级别的Gas价格为零，EVM不会因执行本身收费。这也可以从远程EVM调用交易的接收收据中看出。因此，XCM消息必须被配置，以便让`BuyExecution`函数能够购买足够的权重来支付Gas的成本。
 
@@ -62,7 +62,7 @@ XCM队列的配置表明XCM消息应该设置为`20,000,000,000`权重单位（�
 
 简单来说，以下为常规和远程EVM调用之间的主要区别：
 
-- 远程EVM调用使用全网随机数（由[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}拥有）而不是每个账户的随机数
+- 远程EVM调用使用全网随机数（由[Ethereum-XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}拥有）而不是每个账户的随机数
 - 远程EVM调用的签名的`v-r-s`值为`0x1`。无法通过一般函数从签名中检索发送者（例如，通过[ECRECOVER](/builders/pallets-precompiles/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}）。然而，`from`被包含在交易收据和通过哈希获取交易数据时（使用以太坊 JSON RPC）
 - 所有远程EVM调用的Gas为零。EVM执行在XCM执行层而非在EVM层收费
 - 您可以为远程EVM调用设置的当前最大Gas限制为`720,000 ` Gas单位
@@ -71,7 +71,7 @@ XCM队列的配置表明XCM消息应该设置为`20,000,000,000`权重单位（�
 
 ### Extrinsics {: #extrinsics }
 
-Ethereum XCM Pallet提供以下extrinsics（函数），可以通过`Transact`指令调用以通过XCM访问Moonbeam的EVM：
+Ethereum XCM pallet提供以下extrinsics（函数），可以通过`Transact`指令调用以通过XCM访问Moonbeam的EVM：
 
 - **transact**(xcmTransaction) — 通过XCM远程调用EVM的函数。只能通过执行XCM消息调用
 - **transactThroughProxy**(transactAs, xcmTransaction) — 类似于`transact` extrinsic，但此函数使用`transactAs`作为附加字段。此函数允许从具有已知密钥（`msg.sender`）的给定帐户派遣远程EVM调用。此帐户需要将**multilocation衍生账户**设置为Moonbeam上类型为`any`的代理账户。相反而言，远程EVM调用的调度将失败。交易费用仍由**multilocation衍生账户**支付
@@ -170,13 +170,13 @@ yarn calculate-multilocation-derivative-account \
 
 所有数值被整理成以下表格：
 
-|            名称             |                             数值                             |
-| :-------------------------: | :----------------------------------------------------------: |
-|        原链编码地址         |      `5EnnmEp2R92wZ7T8J2fKMxpc1nPW5uP8r5K3YUQGiFrw8uG6`      |
-|        原链解码地址         | `0x78914a4d7a946a0e4ed641f336b498736336e05096e342c799cc33c0f868d62f` |
-|        源链账户名称         |                          `Westend`                           |
+|            名称             |                                                                           数值                                                                            |
+|:---------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|        原链编码地址         |                                                    `5EnnmEp2R92wZ7T8J2fKMxpc1nPW5uP8r5K3YUQGiFrw8uG6`                                                     |
+|        原链解码地址         |                                           `0x78914a4d7a946a0e4ed641f336b498736336e05096e342c799cc33c0f868d62f`                                            |
+|        源链账户名称         |                                                                         `Westend`                                                                         |
 | 目标链中接收的Multilocation | `{"parents":1,"interior":{"x1":{"accountId32":{"network": {"westend":null},"id":"0x78914a4d7a946a0e4ed641f336b498736336e05096e342c799cc33c0f868d62f"}}}}` |
-|  多地点衍生账户（20字节）   |         `0xda51eac6eb3502b0a113effcb3950c52e873a24c`         |
+|  多地点衍生账户（20字节）   |                                                       `0xda51eac6eb3502b0a113effcb3950c52e873a24c`                                                        |
 
 在本示例中，Moonbase Alpha的**multilocation衍生账户**是`0xda51eac6eb3502b0a113effcb3950c52e873a24c`。请注意，只有Alice是唯一可以通过中继链的远程交易访问此帐户的人，因为她是其私钥的所有者，并且**multilocation衍生帐户**是无密钥的。
 
@@ -238,7 +238,7 @@ const xcmTransaction = {
 
 在本示例中，您将构建一条XCM消息，通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} XCM指令和[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的`transact`函数从其中继链在Moonbase Alpha种执行远程EVM调用。
 
-现在，您已经生成了[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}[编码调用数据](#ethereumxcm-transact-data)，您将会使用在中继链上XCM Pallet来实施一个远程执行。为此，您将使用`send`函数，此函数接受两个参数：`dest`和`message`。您可以执行以下步骤组装这些参数：
+现在，您已经生成了[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}[编码调用数据](#ethereumxcm-transact-data)，您将会使用在中继链上XCM Pallet来实施一个远程执行。为此，您将使用`send`函数，此函数接受两个参数：`dest`和`message`。您可以执行以下步骤组装这些参数：
 
 1. 构建目标链的multilocation，其为Moonbase Alpha：
 
@@ -390,7 +390,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 }
 ```
 
-请注意，`v-r-s`值设置为`0x1`，Gas价格相关部分设置为`0x0`。另外，`nonce`字段对应[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数，而不是调度者帐户的交易数量。
+请注意，`v-r-s`值设置为`0x1`，Gas价格相关部分设置为`0x0`。另外，`nonce`字段对应[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数，而不是调度者帐户的交易数量。
 
 !!! 注意事项
-    您可能会在Moonbase Alpha测试网中找到一些交易哈希冲突，因为通过XCM进行远程EVM调用的早期版本没有使用[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数。
+    您可能会在Moonbase Alpha测试网中找到一些交易哈希冲突，因为通过XCM进行远程EVM调用的早期版本没有使用[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数。

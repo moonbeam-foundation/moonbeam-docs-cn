@@ -33,7 +33,7 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 
 ## XCM Utilities Solidity接口 {: #xcmutils-solidity-interface } 
 
-[XcmUtils.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}是一个与预编译交互的接口：
+[XcmUtils.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}是一个与预编译交互的接口：
 
 !!! 注意事项
     预编译将在之后更新以包含更多其他功能。欢迎您在[Discord](https://discord.gg/PfpUATX){target=_blank}给出其他实用性函数的建议。
@@ -56,7 +56,7 @@ XCM Utilities预编译允许用户无需前往波卡库即可通过Ethereum JSON
 // SPDX-License-Identifier: GPL-3.0-only
 pragma solidity >=0.8.3;
 
-import "https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol";
+import "https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol";
 
 contract MultilocationWhitelistExample {
     XcmUtils xcmutils = XcmUtils(0x000000000000000000000000000000000000080C);

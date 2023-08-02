@@ -13,7 +13,7 @@ XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/
 
 然而，从头开始构建XCM消息还是比较困难。此外，XCM消息从根账户（即SUDO或通过民主投票）发送给生态系统中的其他参与者，这对于希望通过简单交易实现远程跨链调用的项目来说并不合适。
 
-要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM Transactor Pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM Transactor Pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
+要克服这些困难，开发者可以利用wrapper函数或pallet来使用波卡或Kusama上的XCM功能，例如[XCM Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}。另外，XCM Transactor Pallet允许用户从主权账户衍生出来的账户（称为衍生账户）执行远程跨链调用，从而可通过简单的交易轻松执行。
 
 pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocation计算的衍生账户进行交易。每个extrinsic都相应命名。
 

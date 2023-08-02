@@ -15,7 +15,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 如果您完整地遵循本教程操作，您将拥有一个在本地环境中运行的Moonbeam开发节点，其中包含10个[预注资的账户](#pre-funded-development-accounts)。
 
 !!! 注意事项
-    本教程使用[Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=_blank}组件正处于积极开发阶段。
+    本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=_blank}组件正处于积极开发阶段。
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 ## 启动Moonbeam开发节点 {: #spin-up-a-node }
@@ -28,7 +28,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 1. 执行以下命令下载最新Moonbeam镜像：
 
-    ```
+    ```bash
     docker pull purestake/moonbeam:{{ networks.development.build_tag }}
     ```
 
@@ -39,21 +39,24 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 2. 通过运行以下Docker命令启动Moonbeam开发节点，该命令将以即时封装模式启动节点以进行本地测试，以便在收到交易时立即创建区块：
 
     === "Ubuntu"
-        ```
+
+        ```bash
         docker run --rm --name {{ networks.development.container_name }} --network host \
         purestake/moonbeam:{{ networks.development.build_tag }} \
         --dev
         ```
 
     === "MacOS"
-        ```
+
+        ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
         purestake/moonbeam:{{ networks.development.build_tag }} \
         --dev --ws-external --rpc-external
         ```
 
     === "Windows"
-        ```
+
+        ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
         purestake/moonbeam:{{ networks.development.build_tag }} ^
         --dev --ws-external --rpc-external
@@ -65,7 +68,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
-```
+```bash
 docker run --rm --name {{ networks.development.container_name }} \
 purestake/moonbeam \
 --help
@@ -76,26 +79,26 @@ purestake/moonbeam \
 ## 使用二进制文件启动节点 {: #getting-started-with-the-binary-file }
 
 !!! 注意事项
-    如果您了解目前所在执行的操作，您可以直接在[Moonbeam版本发布页面](https://github.com/PureStake/moonbeam/releases){target=_blank}上下载每个版本附带的预编译二进制文件。但这并不适用于所有系统，例如：二进制文件仅适用于具有特定依赖项版本的x86-64 Linux。确保兼容性的最安全方法是在运行二进制文件的系统中编译二进制文件。
+    如果您了解目前所在执行的操作，您可以直接在[Moonbeam版本发布页面](https://github.com/moonbeam-foundation/moonbeam/releases){target=_blank}上下载每个版本附带的预编译二进制文件。但这并不适用于所有系统，例如：二进制文件仅适用于具有特定依赖项版本的x86-64 Linux。确保兼容性的最安全方法是在运行二进制文件的系统中编译二进制文件。
 
 要构建二进制文件，您可以执行以下步骤：
 
-1. 克隆Moonbeam代码库的特定标签，你可以在[Moonbeam GitHub代码库](https://github.com/PureStake/moonbeam/){target=_blank}上找到它：
+1. 克隆Moonbeam代码库的特定标签，你可以在[Moonbeam GitHub代码库](https://github.com/moonbeam-foundation/moonbeam/){target=_blank}上找到它：
 
-    ```
-    git clone -b {{ networks.development.build_tag }} https://github.com/PureStake/moonbeam
+    ```bash
+    git clone -b {{ networks.development.build_tag }} https://github.com/moonbeam-foundation/moonbeam
     cd moonbeam
     ```
 
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
-    ```
+    ```bash
     --8<-- 'code/setting-up-node/installrust.md'
     ```
 
 3. 运行以下命令更新您的PATH环境变量：
 
-    ```
+    ```bash
     --8<-- 'code/setting-up-node/updatepath.md'
     ```
 
@@ -104,11 +107,11 @@ purestake/moonbeam \
     !!! 注意事项
         如果您使用的是Ubuntu 20.04或22.04，那么您需要在构建二进制文件之前安装这些额外的依赖项：
 
-        ```
+        ```bash
         apt install clang protobuf-compiler libprotobuf-dev -y 
         ```
 
-    ```
+    ```bash
     --8<-- 'code/setting-up-node/build.md'
     ```
 
@@ -121,7 +124,7 @@ purestake/moonbeam \
 
 然后，您可以通过以下命令运行开发节点：
 
-```
+```bash
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
@@ -134,7 +137,7 @@ purestake/moonbeam \
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
-```
+```bash
 ./target/release/moonbeam --help
 ```
 
@@ -142,11 +145,11 @@ purestake/moonbeam \
 
 现在您已知道如何启动和运行标准的Moonbeam开发节点，您可能还想知道如何配置它。以下部分将介绍一些在启动节点时可以使用的常见配置。
 
-### 配置节点的常用标志 {: #node-flags } 
+### 配置节点的常用标志 {: #node-flags }
 
 标志不带参数。要使用标志，请将其添加到命令末尾。例如：
 
-```
+```bash
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
@@ -159,16 +162,16 @@ purestake/moonbeam \
 
 选项接受一个选项右侧的参数。例如：
 
-```
+```bash
 --8<-- 'code/setting-up-node/runnodewithsealinginterval.md'
 ```
 
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON RPC日志，命令应如下所示：`-l json=trace`
 - **`--sealing <interval>`** - 什么时候区块需要被封装在开发服务中。可接受的时间间隔参数为：`instant`、`manual`、或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`。请参阅下面的[配置区块生产](#configure-block-production)部分以获取更多信息
-- **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
-- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数。默认值是{{ networks.parachain.ws }}
-- **`--rpc-max-connections <connections>`** - *自[客户端v0.30.0](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
-- **`--ws-max-connections <connections>`** - 指定WS RPC服务器连接的最大数量。自[客户端v0.30.0](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起，此标志调整HTTP和WS连接的总限制。默认为100个连接。
+- **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
+- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数。默认值是{{ networks.parachain.ws }}
+- **`--rpc-max-connections <connections>`** - *自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
+- **`--ws-max-connections <connections>`** - 指定WS RPC服务器连接的最大数量。自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起，此标志调整HTTP和WS连接的总限制。默认为100个连接。
 
 如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
 
@@ -184,13 +187,13 @@ purestake/moonbeam \
 
 该标志应按以下格式附加到启动命令中：
 
-```
+```bash
 --sealing <interval>
 ```
 
 如果选择`manual`，您需要自己手动使用`engine_createBlock` JSON RPC方法来创建区块：
 
-```
+```bash
 engine_createBlock(createEmpty: *bool*, finalize: *bool*, parentHash?: *BlockHash*)
 ```
 
@@ -262,7 +265,7 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
  - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:9944#/explorer){target=_blank}在WS端口`{{ networks.parachain.ws }}`
  - **基于JSON-RPC的以太坊API** — [Moonbeam Basic浏览器](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank}在HTTP端口`{{ networks.parachain.ws }}`
 
-## 调试（Debug）、追踪（Trace）和TxPool API {: #debug-trace-txpool-apis } 
+## 调试（Debug）、追踪（Trace）和TxPool API {: #debug-trace-txpool-apis }
 
 您也可以通过运行追踪节点访问一些非标准的RPC方法，这将允许开发者在runtime期间检查和调试交易。追踪节点使用的是与标准Moonbeam开发节点不同的Docker镜像。
 
@@ -276,21 +279,21 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 
 如果您使用Docker和`-v`标志来启动您的节点，为您的Docker容器指定挂载目录，您将需要清除该目录。为此，请运行以下命令：
 
-```
+```bash
 sudo rm -rf {{ networks.moonbase.node_directory }}/*
 ```
 
 如果您按照本指南中的说明进行操作并且未使用`-v`标志，您可停止并删除Docker容器，关联的数据也将与其一起被删除。为此，请运行以下命令：
 
-```
+```bash
 sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 ```
 
-### 清除由二进制文件启动的节点 {: #purge-binary-node } 
+### 清除由二进制文件启动的节点 {: #purge-binary-node }
 
 通过二进制文件运行节点时，数据存储在本地目录中，该目录通常位于`~/.local/shared/moonbeam/chains/development/db`。如果要启动该节点的新实例，您可以删除该文件夹的内容，或者在`moonbeam`文件夹中运行以下命令：
 
-```
+```bash
 ./target/release/moonbeam purge-chain --dev -y
 ```
 

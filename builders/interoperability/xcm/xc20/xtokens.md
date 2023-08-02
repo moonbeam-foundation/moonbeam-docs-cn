@@ -115,9 +115,8 @@ X-Tokens Pallet包括以下用于获取pallet常量的只读函数：
     |    X1     |  AccountId32   |
     |  Network  |      Any       |
     |    Id     | Target Account |
-    
-8. 将目标权重设置为`Limited`，并将其值设置为`1000000000`。请注意，在Moonbase Alpha上，每个XCM操作需要大概`100000000`权重单位。一个`transfer`包含4个XCM操作，因此目标权重应当设置为`400000000`左右
 
+8. 将目标权重设置为`Limited`，并将其值设置为`1000000000`。请注意，在Moonbase Alpha上，每个XCM操作需要大概`100000000`权重单位。一个`transfer`包含4个XCM操作，因此目标权重应当设置为`400000000`左右
 9. 点击**Submit Transaction**按钮并签署交易
 
 !!! 注意事项
@@ -146,7 +145,7 @@ X-Tokens Pallet包括以下用于获取pallet常量的只读函数：
     |  Version  |  V1   |
     |  Parents  |   1   |
     | Interior  | Here  |
-    
+
     如果您要将本教程修改成适应可铸造XC-20资产，您需要指定创建资产和资产ID的pallet。因此，您需要设置以下参数：
 
     |   参数    |     数值      |
@@ -156,7 +155,7 @@ X-Tokens Pallet包括以下用于获取pallet常量的只读函数：
     |    Interior    |       X2       |
     | PalletInstance |       36       |
     |  GeneralIndex  |    Asset ID    |
-    
+
 5. 将资产类别设置为**Fungible**
 
 6. 设置需要转移的Token数量。在本示例中，您将转移1个`xcUNIT`，但您需要注意`xcUNIT`后有12位小数位
@@ -204,7 +203,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 --8<-- 'text/precompiles/security.md'
 
-### X-Tokens Solidity接口  {: #xtokens-solidity-interface } 
+### X-Tokens Solidity接口  {: #xtokens-solidity-interface }
 
 [Xtokens.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与X-Tokens Pallet交互的接口。
 
@@ -214,7 +213,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
     - 对于[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}，您可以提供[XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#current-xc20-assets){target=_blank}
     - 对于[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}，您可以遵循[计算预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}的操作说明
     - 对于原生Token（如GLMR、MOVR和DEV），您可以提供[ERC-20预编译](/builders/build/canonical-contracts/precompiles/erc20/#the-erc20-interface){target=_blank}地址，即`{{networks.moonbeam.precompiles.erc20 }}`
- 
+
     `destination` multilocation将会以一种特殊形式构建（我们将在下一部分提及）
 
  - **transferMultiasset**(*Multilocation* *memory* asset, *uint256* amount, *Multilocation* *memory* destination, *uint64* weight) —— 用于表示[先前示例](#xtokens-transfer-multiasset-function)中提及的`transferMultiasset`函数。两种multilocation将会以一种特殊形式构建（我们将在下一部分提及）
@@ -257,7 +256,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 使用库与X-Token交互 {: #using-libraries-to-interact-with-xtokens}
 
-当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[X-Tokens 传输函数](#xtokens-transfer-function)、[X-Tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[X-Tokens的合约ABI](https://raw.githubusercontent.com/Moonbeam-Foundation/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
+当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[X-Tokens 传输函数](#xtokens-transfer-function)、[X-Tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[X-Tokens的合约ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
 
 === "Ethers.js"
 

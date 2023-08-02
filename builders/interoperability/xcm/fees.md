@@ -223,7 +223,7 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 例如，`WithdrawAsset`指令是可替代XCM指令集的一部分。因此，它没有进行基准测试，`WithdrawAsset`指令的总权重成本为`{{ networks.moonbase.xcm.instructions.weight_units.display }}`。
 
-[`BuyExecution`指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L136){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
+[`BuyExecution`指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L136){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
 
 ```
 {{ networks.moonbase.xcm.instructions.buy_exec.base_weight }} + 4 * {{ networks.moonbase.db_weights.rocksdb_read }} = {{ networks.moonbase.xcm.instructions.buy_exec.total_weight }}
@@ -234,17 +234,17 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 === "Moonbeam"
     |                                                                                                 XCM指令成本                                                                                                 |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
+    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
 
 === "Moonriver"
     |                                                                                                  XCM指令成本                                                                                                  |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonriver/src/xcm_config.rs#L211){target=_blank} |
+    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonriver/src/xcm_config.rs#L211){target=_blank} |
 
 === "Moonbase Alpha"
     |                                                                          基准测试过的指令                                                                           |                                                                           无基准测试的指令                                                                            |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [通用XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L25){target=_blank} |
+    | [通用XCM指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L25){target=_blank} |
 
 
 以下部分教程将会包含如何在基于Moonbeam的网络计算XCM费用，有两个主要的应用场景：
@@ -258,7 +258,7 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 |                                                                               Moonbeam                                                                               |                                                                               Moonriver                                                                               |                                                                                             Moonbase Alpha                                                                                             |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L138){target=_blank} |
+| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L138){target=_blank} |
 
 这意味着以Moonbeam为例，计算一个XCM指令以储备资产作为费用的公式如下：
 
