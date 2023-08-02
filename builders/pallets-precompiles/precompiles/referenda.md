@@ -13,23 +13,29 @@ description: 学习如何直接通过Moonbeam上的Referenda Precompile的Solidi
 
 Referenda Precompile直接与Substrate的[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda/){target=_blank}交互。此pallet以Rust编码，通常不能从Moonbeam的以太坊端访问。然而，Referenda Precompile允许您直接从Solidity接口访问查看公投、提交公投和管理所需决定保证金的函数，所有这些函数均是Substrate Referenda Pallet的一部分。
 
-Referenda Precompile目前可用于OpenGov（即仅可在Moonriver和Moonbase Alpha上使用）。如果您想在Moonbeam上使用类似功能，即Governance v1，请参考[Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank}文档。
-
 Referenda Precompile位于以下地址：
 
-=== "Moonriver"
+=== "Moonbeam"
+
+     ```text
+     {{ networks.moonbeam.precompiles.referenda }}
      ```
+
+=== "Moonriver"
+
+     ```text
      {{ networks.moonriver.precompiles.referenda }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{ networks.moonbase.precompiles.referenda }}
      ```
 
 --8<-- 'text/precompiles/security.md'
 
-## Referenda Solidity接口 {: #the-referenda-solidity-interface } 
+## Referenda Solidity接口 {: #the-referenda-solidity-interface }
 
 [`Referenda.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。具体函数如下所示：
 
@@ -108,7 +114,7 @@ Referenda Precompile位于以下地址：
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
-### 查看先决条件 {: #checking-prerequisites } 
+### 查看先决条件 {: #checking-prerequisites }
 
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
@@ -116,7 +122,7 @@ Referenda Precompile位于以下地址：
  - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### Remix设置 {: #remix-set-up } 
+### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
 
@@ -124,7 +130,7 @@ Referenda Precompile位于以下地址：
 
 ![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.png)
 
-### 编译合约 {: #compile-the-contract } 
+### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 
@@ -132,7 +138,7 @@ Referenda Precompile位于以下地址：
 
 ![Compile the Referenda.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-2.png)
 
-### 获取合约 {: #access-the-contract } 
+### 获取合约 {: #access-the-contract }
 
 1. 点击位于Remix的**Compile**标签正下方的**Deploy and Run**标签。请注意：您并不是在此部署合约，您是在获取一个已经部署的预编译合约
 

@@ -13,17 +13,23 @@ description: 学习如何通过提交原像执行在链上提交提案的首个�
 
 Preimage Precompile直接与Substrate的Preimage Pallet交互。此pallet以Rust编码，通常不能从Moonbeam的以太坊端访问。然而，Preimage Precompile允许您从Solidity接口访问创建和管理原像所需的函数，所有这些函数均是Substrate Preimage Pallet的一部分。
 
-Preimage Precompile目前可用于OpenGov（即仅可在Moonriver和Moonbase Alpha上使用）。如果您想在Moonbeam上使用类似功能，即Governance v1，请参考[Democracy Precompile](/builders/pallets-precompiles/precompiles/democracy){target=_blank}文档。
-
 Preimage Precompile位于以下地址：
 
-=== "Moonriver"
+=== "Moonbeam"
+
+     ```text
+     {{ networks.moonbeam.precompiles.preimage }}
      ```
+
+=== "Moonriver"
+
+     ```text
      {{ networks.moonriver.precompiles.preimage }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{ networks.moonbase.precompiles.preimage }}
      ```
 

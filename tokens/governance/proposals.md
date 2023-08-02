@@ -14,13 +14,11 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）来创建提案、附议提案和投票提案。
 
-Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (Goverance v2)。在推出过程中，OpenGov将在Moonriver上经过严格测试，然后再通过提案部署至Moonbeam。在正式上线Moonbeam之前，Moonbeam将继续使用Governance v1。因此，**本教程仅适用于Moonriver或Moonbase Alpha上的提案**。如果想要在Moonbeam上提交提案，请参考[如何在Governance v1发起提案](/tokens/governance/proposals/proposals){target=_blank}的教程。
+本教程将分步概述如何在OpenGov (Governance v2)提交提案以便Token持有者投票。此教程将展示如何在Moonbase Alpha上提交提案，这也同样适用于Moonbeam或Moonriver。关于如何[在OpenGov对提案进行投票](/tokens/governance/voting/opengov-voting){target=_blank}有单独的教程。
 
-本教程将分步概述如何在OpenGov (Governance v2)提交提案以便Token持有者投票。此教程将展示如何在Moonbase Alpha上提交提案，这也同样适用于Moonriver。关于如何[在OpenGov对提案进行投票](/tokens/governance/voting/opengov-voting){target=_blank}有单独的教程。
+关于Moonbeam治理系统的更多信息，请参考[治理概览页面](/learn/features/governance/){target=_blank}。
 
-关于Moonbeam治理系统的更多信息，包括Governance v1和OpenGov（Governance v2），请参考[治理概览页面](/learn/features/governance/){target=_blank}。
-
-## 定义 {: #definitions } 
+## 定义 {: #definitions }
 
 本教程中重要参数定义如下：
 
@@ -32,21 +30,39 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 
 --8<-- 'text/governance/lead-in-definitions.md'
 
-请确保您查看每个网络和track的[治理参数](/learn/features/governance/#governance-parameters-v2)。
+请确保您查看每个网络和track的[治理参数](/learn/features/governance/#governance-parameters-v2){target=_blank}。
 
 ## 提案步骤 {: #roadmap-of-a-proposal }
 
 本教程将涵盖提案步骤图的前几个步骤，如下图突出显示的步骤所示。您将学习如何提交提案想法至[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}、提交原像以及使用原像哈希在链上提交提案。
 
-您可以在[治理概览页面的OpenGov (Governance v2)提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
+您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
 
 ![Proposal Roadmap](/images/tokens/governance/proposals/v2/proposal-roadmap.png)
 
---8<-- 'text/governance/submit-idea.md'
+## 提交您的想法至论坛 {: #submitting-your-idea-to-the-forum }
+
+在开始操作提交提案的步骤之前，您需要先熟悉[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}平台。强烈建议您先在论坛上发布任何提案相关的帖子以接收社区反馈。在继续提交原像和提案之前，您需要预留5天时间供社区讨论并在Moonbeam社区论坛帖子上提供反馈。
+
+要访问Moonbeam社区论坛，您必须是[Moonbeam Discord](https://discord.com/invite/PfpUATX){target=_blank}的社区成员之一。然后，您可以使用您的Discord注册以访问论坛。
+
+登陆后，您可以查看最新讨论、加入对话，并为您拥有的提案想法创建自己的讨论。在首次发布帖子或发表评论前，请确保您已熟悉[常见问答](https://forum.moonbeam.foundation/faq){target=_blank}并了解社区准则。
+
+![Moonbeam Forum Home](/images/tokens/governance/treasury-proposals/treasury-proposal-1.png)
+
+如果您已准备好发布提案详情的帖子，您可以前往**Governance**页面并点击**Democracy Proposals**。
+
+![Governance page on Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-1.png)
+
+然后点击**Open Draft**，使用提供的模板开始准备提案草案。确保更新帖子标题并添加相关标签，比如**Moonbeam**（如果提案与Moonbeam相关）。标题应遵循[Proposal: XX][Status: Idea]提案标题的格式。例如，[Proposal: XX][Status: Idea]注册XC-20 xcMYTOK。其中XX将在提案正式在链上提交后需要被更新为提案ID。
+
+![Add a proposal to the Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-2.png)
+
+填写完提案详情后，点击**Create Topic**保存至论坛并打开讨论。根据收到的反馈，您可以在提交之前更新提案。
 
 ## 发起提案 {: #proposing-an-action }
 
-此部分将介绍使用OpenGov (Governance v2)在Moonbase Alpha上创建提案的流程。操作步骤也同样适用于Moonriver。
+此部分将介绍使用OpenGov (Governance v2)在Moonbase Alpha上创建提案的流程。操作步骤也同样适用于Moonbeam或Moonriver。
 
 您需要用到Polkadot.js Apps界面发起提案。为此，您需要先导入以太坊格式账户（即H160地址），您也可以遵循[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
@@ -54,9 +70,9 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 
 您可以选择任何想要发起提案的内容，请确保将其分配给正确的Origin和Track，以便其具有执行提案的正确权限。
 
-出于本教程的目的，提案将使用General Admin Origin和Track来注册一个新的[可铸造的XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}。
+For the purposes of this guide, the action will be to set an on-chain remark using the General Admin Origin and Track.
 
-### 提交提案原像 {: #submitting-a-preimage-of-the-proposal } 
+### 提交提案原像 {: #submitting-a-preimage-of-the-proposal }
 
 第一步是提交提案原像。这是因为大型原像包含关于提案本身的所有信息，储存成本很高。在这一设置下，资金较多的账户可以负责提交原像，另一个账户提交提案。
 
@@ -67,13 +83,9 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 此处，您需要提供以下信息：
 
  1. 选择提交原像的账户
-
- 2. 选择希望交互的pallet以及可调用的函数（或请求）进行提案。所选请求将决定接下来的步骤中要填写的内容。在本示例中为**assetManager** pallet和**registerLocalAsset** extrinsic
-
- 3. 输入分配extrinsic所需的其他内容。在本示例中，Alice是**creator**，Bob是**owner**，**isSufficient**设置为**No**，以及**minBalance**设置为**0**
-
+ 2. 选择希望交互的pallet以及可调用的函数（或请求）进行提案。所选请求将决定接下来的步骤中要填写的内容。在本示例中为**system** pallet和**remark** extrinsic
+ 3. Enter any additional fields required for the extrinsic to be dispatched. For this example, you can enter the remark in hex or ascii format
  4. 复制原像哈希。这个数值代表着提案，在提交正式提案时会用到
-
  5. 点击**Submit preimage**按钮并签署交易
 
 ![Fill in the Preimage Information](/images/tokens/governance/proposals/v2/proposals-5.png)
@@ -85,30 +97,23 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov (
 
 交易提交后，您将在Polkadot.js Apps界面的右上角看到一些确认信息，原像将被添加到**preimages**列表当中。
 
-### 提交提案 {: #submitting-a-proposal-v2 } 
+### 提交提案 {: #submitting-a-proposal-v2 }
 
 提交原像（查看上一部分）后，下一步就是提交与这一原像相关的提案。为此，需要在**Governance**下拉菜单中选择**Referenda**，并点击**Submit proposal**。
 
-要提交提案，您将需要选择您希望提案执行的Origin级别。**选择错误的Track/Origin会导致提案执行失败**。关于每个Origin级别的更多信息，请参考[治理概览页面的Governance v2部分](/learn/features/governance/#general-definitions-gov2){target=_blank}。
+要提交提案，您将需要选择您希望提案执行的Origin级别。**选择错误的Track/Origin会导致提案执行失败**。For more information on each Origin class, please refer to the [General Definitions](/learn/features/governance/#general-definitions-gov2){target=_blank} section on the Governance on Moonbeam overview page.
 
 ![Submit proposal](/images/tokens/governance/proposals/v2/proposals-6.png)
 
 此处，您需要提供以下信息：
 
  1. 选择提交提案的账户（在本示例中为Alice）
-
- 2. 选择Track以提交提案。与Track关联的Origin需要有足够的权限来执行提案操作。在本示例中，要注册一个可铸造XC-20，您可以在**submission track**下拉菜单中选择**2 / General Admin**
-
+ 2. Choose the Track to submit the proposal to. The Origin associated with the Track will need to have enough authority to execute the proposed action. For this example, to add an on-chain remark, you can select **2 / General Admin** from the **submission track** dropdown
  3. 在**origin**下拉菜单选择**Origins**
-
  4. 在**Origins**下拉菜单选择Origin，在本示例中为**GeneralAdmin**
-
- 5. 输入与提案相关的原像。在本示例中为上一部分操作得到的`assetManager.registerLocalAsset`原像哈希
-
+ 5. 输入与提案相关的原像。在本示例中为上一部分操作得到的`system.remark`原像哈希
  6. 选择生效的时间点，或在一定数量区块后，或在某一特定区块，但条件是必须满足最短生效等待期，具体要求请参考OpenGov的[治理参数](/learn/features/governance/#governance-parameters-v2)
-
  7. 输入生效提案的区块数量或特定区块
-
  8. 点击**Submit proposal**并签署交易
 
 ![Fill in the Proposal Information](/images/tokens/governance/proposals/v2/proposals-7.png)

@@ -7,7 +7,7 @@ description: 通过本教程学习如何使用投票以及锁定Token以支持�
 
 ![Governance Moonbeam Banner](/images/tokens/governance/voting/voting-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 公投是简单的、包容的和基于质押的投票方案。每一次公投都有一个与之相关的具体的提议。在OpenGov中，每个公投都有一个指定的Origin级别来执行提案，并且每个Origin都有一个自己的Track，用于处理提案。尽管公投是通过共同过程完成的，但批准的要求是特定于Track的。
 
@@ -15,14 +15,12 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
 在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）来创建提案、附议提案和投票提案。
 
-Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov（Governance v2）。在推出过程中，OpenGov将在Moonriver上经过严格测试，然后再通过提案部署至Moonbeam。在正式上线Moonbeam之前，Moonbeam将继续使用Governance v1。因此，**本教程仅适用于Moonriver或Moonbase Alpha上的提案**。如果想要对Moonbeam上的提案进行投票，请参考[如何在Governance v1对提案进行投票](/tokens/governance/voting/voting){target=_blank}的教程。
-
-本教程将分步概述如何在Moonbeam的OpenGov（Governance v2）对公投进行投票。此教程将展示如何在Moonbase Alpha上进行投票，这也同样适用于Moonriver。关于Moonbeam治理系统的更多信息，包括Governance v1和OpenGov（Governance v2），请参考[治理概览页面](/learn/features/governance/){target=_blank}。
+本教程将分步概述如何在Moonbeam的OpenGov（Governance v2）对公投进行投票。此教程将展示如何在Moonbase Alpha上进行投票，这也同样适用于Moonbeam或Moonriver。
 
 !!! 注意事项
     本教程将介绍如何在技术层面上投票的机制。Token持有者可以使用[Polkassembly](https://moonbeam.network/tutorial/participate-in-moonbeam-governance-with-polkassembly/){target=_blank}等用户友好性界面的平台进行投票。
 
-## 定义 {: #definitions } 
+## 定义 {: #definitions }
 
 本教程中重要参数定义如下：
 
@@ -30,13 +28,21 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
  - **最大投票数** — 每个账户的最大并发投票数
 
-    === "Moonriver"
+     === "Moonbeam"
+
+        ```text
+        {{ networks.moonbeam.governance.max_votes }} votes
         ```
+
+    === "Moonriver"
+
+        ```text
         {{ networks.moonriver.governance.max_votes }} votes
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```text
         {{ networks.moonbase.governance.max_votes }} votes
         ```
 
@@ -62,9 +68,9 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 --8<-- 'text/governance/forum-discussion.md'
 
-## 参与公投 {: #voting-on-a-referendum } 
+## 参与公投 {: #voting-on-a-referendum }
 
-此部分将介绍Moonbase Alpha上OpenGov（Governance v2）公投的投票流程。操作步骤也同样适用于Moonriver。本教程使用已经创建的公投进行讲解，如果您想要参与目前已开放的公投， 您也可以同样使用这些步骤进行投票。
+此部分将介绍Moonbase Alpha上OpenGov（Governance v2）公投的投票流程。操作步骤也同样适用于Moonbeam或Moonriver。本教程使用已经创建的公投进行讲解，如果您想要参与目前已开放的公投， 您也可以同样使用这些步骤进行投票。
 
 要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
@@ -142,7 +148,7 @@ Moonbeam的治理系统正在更新中。下一个阶段的治理称为OpenGov�
 
 生效等待期由提案的作者在最初提交时设置，但至少需要是最短生效等待期。
 
-### 委托投票 {: #delegate-voting } 
+### 委托投票 {: #delegate-voting }
 
 Token持有者可以选择将投票权委托给其它信任的账户。受委托的账户不需要进行额外的操作。在受委托账户进行投票时，委托账户的投票权重（委托者锁定的Token数量乘以委托者选择的信念乘数）会直接加到受委托账户的投票中。
 
@@ -200,7 +206,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
 ![Refund the Decision Deposit on Polkadot.js Apps.](/images/tokens/governance/voting/v2/vote-11.png)
 
-### 解锁Token {: #unlocking-locked-tokens } 
+### 解锁Token {: #unlocking-locked-tokens }
 
 Token持有者在投票时，使用的Token将被锁定且不能进行转移。您可以在**Accounts**标签下展开账户详情查看Token锁定情况。在详情中可以看到不同的余额类型。如果您的Token锁定在公投中，您将在余额详情中看到**referenda**，可以将鼠标放在它上面以了解有关您的token被锁定的公投的详细信息。其中不同的锁定状态有：
 
