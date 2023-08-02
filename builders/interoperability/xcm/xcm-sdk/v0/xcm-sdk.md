@@ -1,9 +1,9 @@
 ---
-title: XCM SDK
+title: XCM SDK v0
 description: 使用Moonbeam XCM SDK轻松从波卡及其生态系统中的平行链向Moonbeam充提跨链资产。
 ---
 
-# 使用Moonbeam XCM SDK
+# 使用Moonbeam XCM SDK: v0
 
 ![XCM SDK Banner](/images/builders/interoperability/xcm/sdk/xcm-sdk-banner.png)
 
@@ -13,7 +13,9 @@ Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中�
 
 XCM SDK提供简单的协助函数，如`deposit`和`withdraw`，提供非常简单的接口以在波卡和Kusama生态中进行两条链之间的XCM转移。除外，XCM的配置包允许任何平行链项目以标准方法添加信息，使他们能够被XCM SDK支持。
 
-关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/reference){target=_blank}页面。
+关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/v0/reference){target=_blank}页面。
+
+如果您使用的是 v1.x，请参阅[v1 特定的 SDK 指南](/builders/interoperability/xcm/xcm-sdk/v1/){target=_blank}。
 
 此教程中的示例将在Moonbeam中执行，但步骤也同样适用于Moonriver和Moonbase Alpha。
 
@@ -75,7 +77,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonbeam.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
@@ -103,11 +105,11 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonriver.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
-    const polkadotKeyring = keyring.addFromUri('INSERT-MNEMONIC');
+    const polkadotKeyring = keyring.addFromUri('INSERT_MNEMONIC');
     ```
 
 === "Moonbase Alpha"
@@ -131,7 +133,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonbase.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
@@ -170,8 +172,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbeam } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
@@ -180,8 +182,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonriver } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
@@ -190,14 +192,14 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbase } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
 ## 使用SDK接口 {: #using-the-api }
 
-Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-interfaces){target=_blank}的API。
+Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-interfaces){target=_blank}的API。
 
 请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initialization)。
 
@@ -348,7 +350,7 @@ moonChain: {
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 
-Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-methods){target=_blank}。
+Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-methods){target=_blank}。
 
 确保您已经[初始化](#initialization)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
 
@@ -382,7 +384,7 @@ async function deposit() {
   );
 
   const { asset, sourceBalance, source, min, send } = await from(polkadot).get(
-    'INSERT-MOONBEAM-ADDRESS',
+    'INSERT_MOONBEAM_ADDRESS',
     polkadotKeyring, // See the Get section for other accepted arguments
   );
 
@@ -393,7 +395,7 @@ async function deposit() {
     ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
-  await send('INSERT-AMOUNT', (event) => console.log(event));
+  await send('INSERT_AMOUNT', (event) => console.log(event));
 }
 
 deposit();
@@ -447,8 +449,8 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
-  'INSERT-POLKADOT-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
+  'INSERT_POLKADOT_ADDRESS',
 );
 ```
 
@@ -464,8 +466,8 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
-  'INSERT-POLKADOT-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
+  'INSERT_POLKADOT_ADDRESS',
   { polkadotSigner },
 );
 ```
@@ -483,7 +485,7 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
   polkadotKeyring,
 )
 ```
@@ -572,11 +574,11 @@ async function getDepositFee() {
 
   const { from } = moonbeam.deposit(dot);
   const { asset, getFee } = await from(polkadot).get(
-    'INSERT-MOONBEAM-ADDRESS',
+    'INSERT_MOONBEAM_ADDRESS',
     polkadotKeyring, // See the Get section for other accepted arguments
   );
 
-  const fee = await getFee('INSERT-AMOUNT'));
+  const fee = await getFee('INSERT_AMOUNT'));
   console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals).toFixed()} ${dot}`);
 }
 
@@ -612,7 +614,7 @@ async function withdraw() {
 
   const { asset, destination, destinationBalance, min, send } = await to(
     polkadot,
-  ).get('INSERT-POLKADOT-ADDRESS', {
+  ).get('INSERT_POLKADOT_ADDRESS', {
     ethersSigner: signer, // Only required if you didn't pass the signer in on initialization
   });
 
@@ -623,7 +625,7 @@ async function withdraw() {
     ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
-  await send('INSERT-AMOUNT', (event) => console.log(event));
+  await send('INSERT_AMOUNT', (event) => console.log(event));
 }
 
 withdraw();
@@ -677,7 +679,7 @@ const polkadot = ChainKey.Polkadot;
 const { to } = moonbeam.deposit(dot);
 const response =  await to(
     polkadot,
-  ).get('INSERT-POLKADOT-ADDRESS', 
+  ).get('INSERT_POLKADOT_ADDRESS', 
   { ethersSigner: signer } // Only required if you didn't pass the signer in on initialization
 )
 ```
@@ -767,11 +769,11 @@ async function getWithdrawFee() {
 
   const { to } = moonbeam.withdraw(dot);
   const { asset, getFee } = await from(polkadot).get(
-    'INSERT-POLKADOT-ADDRESS',
+    'INSERT_POLKADOT_ADDRESS',
     { ethersSigner }, // Only required if you didn't pass the signer in on initialization
   );
 
-  const fee = await getFee('INSERT-AMOUNT');
+  const fee = await getFee('INSERT_AMOUNT');
   console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals).toFixed()} ${moonbeam.moonAsset.originSymbol}`);
 }
 
@@ -785,26 +787,26 @@ getWithdrawFee();
 === "Moonbeam"
 
     ```js
-    moonbeam.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonbeam.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 === "Moonriver"
 
     ```js
-    moonriver.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonriver.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 === "Moonbase Alpha"
 
     ```js
-    moonbase.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonbase.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 以下范例检索Moonbeam上给定帐户的余额信息，并将每个支持资产的余额输出到控制台：
 
 ```js
 const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
-  'INSERT-MOONBEAM-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
   (balances) => {
     balances.forEach(({ asset, balance, origin }) => {
       console.log(
