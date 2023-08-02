@@ -287,7 +287,7 @@ const message = {
 
 我们将从计算`data`值开始。我们可以通过创建Cartographer V1合约的接口并使用`interface.encodeFunctionData`函数，以编程方式使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}计算`data`值。
 
-如果您查看[`DPSCartographer.sol`合约的代码](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code){target=_blank}，您会看到[`buyVoyages`函数](https ://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code#F1#L75){target=_blank}。`buyVoyages`函数接受三个参数：
+如果您查看[`DPSCartographer.sol`合约的代码](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code){target=_blank}，您会看到[`buyVoyages`函数](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code#F1#L75){target=_blank}。`buyVoyages`函数接受三个参数：
 
 - *uint16* `_voyageType` - 指定要购买的航程类型，即简单、中等、困难等。该值对应于[`VOYAGE_TYPE` enum](https://moonscan.io/address/0x72a33394f0652e2bf15d7901f3cd46863d968424#code){target=_blank}中航程的索引。在本示例中，我们将进行一次简单的航行，因此我们将传入`0`作为值
 - *uint256* `_amount` - 对应于购买的航程数。我们将购买一次航程
