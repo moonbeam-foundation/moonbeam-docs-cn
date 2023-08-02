@@ -7,24 +7,24 @@ description: 如何通过XCM从任何已建立XCM通道的波卡平行链远程�
 
 ![Remote EVM Calls Banner](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-banner.png)
 
-## 概览 {: #introduction} 
+## 概览 {: #introduction}
 
-[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
+[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
 
-Moonbeam的EVM仅能通过[Ethereum pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}访问。在许多事情外，这个pallet在将交易放入交易池前处理交易的某些验证步骤。接着，它会在将池子中的交易插入区块之前执行其他的验证步骤。最后，它会通过`transact`函数提供接口以执行经过验证的交易。以上所有步骤在结构和签名机制方面都遵循与以太坊交易相同的步骤。
+Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}访问。在许多事情外，这个pallet在将交易放入交易池前处理交易的某些验证步骤。接着，它会在将池子中的交易插入区块之前执行其他的验证步骤。最后，它会通过`transact`函数提供接口以执行经过验证的交易。以上所有步骤在结构和签名机制方面都遵循与以太坊交易相同的步骤。
 
-但是，您无法直接通过一个XCM [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}调用[Ethereum pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}。主要因为远程EVM调用的调度者账户（在以太坊中为`msg.sender`）并不会在Moonbeam端签署XCM交易。XCM extrinsic会在其原始链中签名，接着XCM执行器会通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}指令，让与原链中的发送者链接的已知调用者调度调用的动作。在这种情况下，Ethereum pallet将会无法验证签名，及最终的验证交易步骤。
+但是，您无法直接通过一个XCM [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}调用[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}。主要因为远程EVM调用的调度者账户（在以太坊中为`msg.sender`）并不会在Moonbeam端签署XCM交易。XCM extrinsic会在其原始链中签名，接着XCM执行器会通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}指令，让与原链中的发送者链接的已知调用者调度调用的动作。在这种情况下，Ethereum pallet将会无法验证签名，及最终的验证交易步骤。
 
-为解决此问题，引入了[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}。它充当XCM [Transact](https://github.com/paritytech/xcm-format#transact){target=_blank}指令和[Ethereum pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}之间的中间件，因为在通过XCM远程执行EVM调用时需要特别注意。Pallet将执行必要的检查并验证交易。接着，Pallet会调用Ethereum pallet将交易派遣给EVM。根据访问EVM的方式，常规和远程EVM的调用之间存在一些差异。
+为解决此问题，引入了[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}。它充当XCM [Transact](https://github.com/paritytech/xcm-format#transact){target=_blank}指令和[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}之间的中间件，因为在通过XCM远程执行EVM调用时需要特别注意。Pallet将执行必要的检查并验证交易。接着，Pallet会调用Ethereum pallet将交易派遣给EVM。根据访问EVM的方式，常规和远程EVM的调用之间存在一些差异。
 
 下列流程图描绘了通过XCM进行常规和远程EVM调用的路径：
 
-![Happy parth for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
+![Happy path for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
 
-本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum-XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
+本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
 
 !!! 注意事项
-    远程EVM调用通过[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}完成。因此，建议您在尝试通过XCM执行远程EVM调用之前熟悉XCM-transactor概念。
+    远程EVM调用通过[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}完成。因此，建议您在尝试通过XCM执行远程EVM调用之前熟悉XCM Transactor概念。
 
 **请注意，通过XCM对Moonbeam执行EVM的远程调用仍在积极开发中**。此外，**开发人员必须了解，发送不正确的XCM消息将导致资金损失。**因此，在迁移到生产环境之前须在测试网上测试XCM功能。
 
@@ -34,7 +34,7 @@ Moonbeam的EVM仅能通过[Ethereum pallet](https://github.com/paritytech/fronti
 
  - **衍生账户** — 从另一个帐户衍生的帐户。衍生账户是无密钥的，也就是私钥未知。因此，与XCM特定用例相关的衍生账户只能通过XCM相关的extrinsics访问。对于远程的EVM调用，主要类型如下：
      - **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
- - **交换信息** — 与XCM-transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM-transactor就计算费用数值，并向XCM-transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
+ - **交换信息** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM Transactor就计算费用数值，并向XCM Transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
 
 ## 通过XCM执行常规和远程EVM调用的差异 {: #differences-regular-remote-evm}
 

@@ -63,4 +63,4 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 --8<-- 'code/vs-ethereum/transfers-api/sidecar-transfer.md'
 
-关于安装和运行Sidecar服务实例，以及如何解码Moonbeam交易的Sidecar区块等更多信息，请参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/)。
+关于安装和运行Sidecar服务实例，以及如何解码Moonbeam交易的Sidecar区块等更多信息，请参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}。
