@@ -9,6 +9,7 @@ nav:
   - 'Conviction Voting（信念投票）': 'conviction-voting.md'
   - '民主': 'democracy.md'
   - '以太坊原生': 'eth-mainnet.md'
+  - 'GMP': 'gmp.md'
   - '原生Token ERC-20': 'erc20.md'
   - 'Precompile Registry': 'registry.md'
   - 'Preimage（原像）': 'preimage.md'
