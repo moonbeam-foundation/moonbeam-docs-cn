@@ -32,7 +32,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
-- **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/PureStake/moonbeam/blob/master/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
+- **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
 - **交换信息** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM Transactor就计算费用数值，并向XCM Transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
 
 ## 通过XCM执行常规和远程EVM调用的差异 {: #differences-regular-remote-evm}
@@ -142,7 +142,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 }
 ```
 
-这是用于计算**multilocation衍生账户**的multilocation。您可以使用这个[计算**multilocation衍生账户**脚本](https://github.com/PureStake/xcm-tools){target=_blank}来帮助您获取它的值。您可以通过运行以下指令来获取：
+这是用于计算**multilocation衍生账户**的multilocation。您可以使用这个[计算**multilocation衍生账户**脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=_blank}来帮助您获取它的值。您可以通过运行以下指令来获取：
 
 ```sh
 yarn calculate-multilocation-derivative-account \
@@ -182,14 +182,14 @@ yarn calculate-multilocation-derivative-account \
 
 ### Ethereum XCM处理调用数据 {: #ethereumxcm-transact-data}
 
-在将XCM消息从中继链发送到Moonbase Alpha之前，您需要获取将通过执行 [`Transact`](https://github.com/paritytech/xcm-format #transact){target=_blank} XCM指令调度的编码调用数据。
+在将XCM消息从中继链发送到Moonbase Alpha之前，您需要获取将通过执行 [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} XCM指令调度的编码调用数据。
 
-在本示例中，您将会与[以太坊XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm)中的函数交互，其中将会接受`xcmTransaction`作为参数。
+在本示例中，您将会与[以太坊XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm)中的函数交互，其中将会接受`xcmTransaction`作为参数。
 
 `xcmTransaction`参数需要您定义：
 
 - Gas限制
-- 要被执行的动作，包含两个选项：`Call`和`Create`。当前[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm)的实现并不支持`CREATE`的应用。因此，您无法通过远程EVM调用执行一个智能合约。在使用`Call`时，您需要执行您与之交互的合约地址
+- 要被执行的动作，包含两个选项：`Call`和`Create`。当前[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm)的实现并不支持`CREATE`的应用。因此，您无法通过远程EVM调用执行一个智能合约。在使用`Call`时，您需要执行您与之交互的合约地址
 - 要发送的原生Token的值
 - 合约交互的编码调用数据输入
 
@@ -236,9 +236,9 @@ const xcmTransaction = {
 
 ### 为远程XCM执行构建XCM {: #build-xcm-remote-evm}
 
-在本示例中，您将构建一条XCM消息，通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} XCM指令和[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的`transact`函数从其中继链在Moonbase Alpha种执行远程EVM调用。
+在本示例中，您将构建一条XCM消息，通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} XCM指令和[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的`transact`函数从其中继链在Moonbase Alpha种执行远程EVM调用。
 
-现在，您已经生成了[Ethereum XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}[编码调用数据](#ethereumxcm-transact-data)，您将会使用在中继链上XCM Pallet来实施一个远程执行。为此，您将使用`send`函数，此函数接受两个参数：`dest`和`message`。您可以执行以下步骤组装这些参数：
+现在，您已经生成了[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}[编码调用数据](#ethereumxcm-transact-data)，您将会使用在中继链上XCM Pallet来实施一个远程执行。为此，您将使用`send`函数，此函数接受两个参数：`dest`和`message`。您可以执行以下步骤组装这些参数：
 
 1. 构建目标链的multilocation，其为Moonbase Alpha：
 
@@ -325,7 +325,7 @@ const xcmTransaction = {
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x630003000100a10f030c00040000010403001300008a5d78456301130000010403001300008a5d784563010006010300286bee007901260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00){target=_blank}上查看上述脚本的输出示例：`0x630003000100a10f030c00040000010403001300008a5d78456301130000010403001300008a5d784563010006010300286bee007901260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics/decode/0x630003000100a10f030c00040000010403000f0000c16ff28623130000010403000f0000c16ff2862300060103004775e87a5d02007901260001785d02000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00){target=_blank}上查看上述脚本的输出示例：`0x630003000100a10f030c00040000010403000f0000c16ff28623130000010403000f0000c16ff2862300060103004775e87a5d02007901260001785d02000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
 
 一旦交易处理完毕，您可以在[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x2a0e40a2e5261e792190826ce338ed513fe44dec16dd416a12f547d358773f98){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/0x7570d6fa34b9dccd8b8839c2986260034eafef732bbc09f8ae5f857c28765145){target=_blank}查看相关extrinsics和事件。
 
@@ -390,7 +390,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 }
 ```
 
-请注意，`v-r-s`值设置为`0x1`，Gas价格相关部分设置为`0x0`。另外，`nonce`字段对应[Ethereum XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数，而不是调度者帐户的交易数量。
+请注意，`v-r-s`值设置为`0x1`，Gas价格相关部分设置为`0x0`。另外，`nonce`字段对应[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数，而不是调度者帐户的交易数量。
 
 !!! 注意事项
-    您可能会在Moonbase Alpha测试网中找到一些交易哈希冲突，因为通过XCM进行远程EVM调用的早期版本没有使用[Ethereum XCM pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数。
+    您可能会在Moonbase Alpha测试网中找到一些交易哈希冲突，因为通过XCM进行远程EVM调用的早期版本没有使用[Ethereum XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}的全网随机数。
