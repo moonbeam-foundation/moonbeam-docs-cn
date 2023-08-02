@@ -81,4 +81,4 @@ contract MultilocationWhitelistExample {
 }
 ```
 
-查看如何使用`xcmExecute`函数在本地执行自定义XCM消息的示例，请参阅[创建并执行自定义XCM消息](/builders/interoperability/xcm/send-execute-xcm/#execute -xcm-utils-precompile){target=_blank} 指南。
+查看如何使用`xcmExecute`函数在本地执行自定义XCM消息的示例，请参阅[创建并执行自定义XCM消息](/builders/interoperability/xcm/send-execute-xcm/#execute-xcm-utils-precompile){target=_blank} 指南。
