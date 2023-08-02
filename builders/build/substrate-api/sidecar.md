@@ -7,11 +7,11 @@ description: 了解如何使用基于Substrate的REST服务在Moonbeam网络上�
 
 ![Substrate API Sidecar](/images/builders/build/substrate-api/sidecar/sidecar-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块链的区块、账户余额和其他信息。这对于需要在Moonbeam网络上持续追踪账户余额和其他状态更新的交易所、钱包或其他类型的应用程序非常有用。本文将介绍如何为Moonbeam安装和运行Substrate API Sidecar，以及常用API端点。
 
-## 安装和运行Substrate API Sidecar {: #installing-and-running-substrate-api-sidecar } 
+## 安装和运行Substrate API Sidecar {: #installing-and-running-substrate-api-sidecar }
 
 有多种方式可以安装和运行Substrate API Sidecar。本教程将介绍通过NPM在本地安装和运行Substrate API Sidecar。通过Docker运行或从源代码构建和运行Substrate API Sidecar，请参考[Substrate API Sidecar Github Repository](https://github.com/paritytech/substrate-api-sidecar#readme)。
 
@@ -72,7 +72,7 @@ echo $SAS_SUBSTRATE_URL
 
 这将显示您设置的网络端点。
 
-## 运行Substrate API Sidecar {: #running-substrate-api-sidecar } 
+## 运行Substrate API Sidecar {: #running-substrate-api-sidecar }
 
 根据设置的网络端点环境变量，在安装的根目录运行以下命令：
 
@@ -84,7 +84,7 @@ node_modules/.bin/substrate-api-sidecar
 
 ![Successful Output](/images/builders/build/substrate-api/sidecar/sidecar-1.png)
 
-## Substrate API Sidecar端点 {: #substrate-api-sidecar-endpoints } 
+## Substrate API Sidecar端点 {: #substrate-api-sidecar-endpoints }
 
 常用的Substrate API Sidecar端点包括：
 
@@ -154,7 +154,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
             |--accessList
             |--oddYParity
             |--r
-            |--s      
+            |--s
         ...
     ```
 
@@ -168,7 +168,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
             |--action
             |--value
             |--input
-            |--signature       
+            |--signature
         ...
     ```
 
@@ -183,10 +183,10 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
             |--action
             |--value
             |--input
-            |--accessList 
+            |--accessList
             |--oddYParity
             |--r
-            |--s      
+            |--s
         ...
     ```
 
@@ -300,13 +300,13 @@ Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EI
 EVM智能合约发出的其他事件也可以以类似的方式进行解码，但事件主题和JSON字段的内容将根据事件的定义而改变。
 
 !!! 注意事项
-    转账金额以Wei和十六进制格式给出。 
+    转账金额以Wei和十六进制格式给出。
 
 ## 监听原生代币转帐示例代码 { #sample-code-for-monitoring-native-token-transfers }
 
 [转帐API页面](/builders/get-started/eth-compare/transfers-api/#using-substrate-api-sidecar){target=_blank}有一段代码片段演示了如何使用Substrate API Sidecar监听和解码使用Substrate或Ethereum API发送的原生代币转帐。您可以将其作为起点来构建基于Sidecar API的后端。
 
-## 计算交易费用 {: #calculating-transaction-fees } 
+## 计算交易费用 {: #calculating-transaction-fees }
 
 有关如何使用Substrate Sidecar API计算交易费用的更多详细信息和示例代码，请查看[计算 交易费用](/builders/get-started/eth-compare/tx-fees/){target=_blank}页。
 

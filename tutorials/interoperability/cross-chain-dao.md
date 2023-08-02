@@ -7,9 +7,9 @@ description: 在本教程中，您将了解互连合约以及如何在Moonbeam�
 
 ![Banner Image](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-banner.png)
 
-_本文档更新于2023年3月24日｜作者：Jeremy Boetticher_
+_作者：Jeremy Boetticher_
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Moonbeam致力于支持互操作性和跨链逻辑。其[互连合约（Connected Contracts）](https://moonbeam.network/builders/connected-contracts/){target=_blank}需要更新之前理解的智能合约概念，以适应跨链世界。虽然一些跨链原语（例如跨链Token）已经存在多年，但是其他的跨链原语（例如跨链swap、AMM和本教程中使用的DAO）现在才开始使用。
 

@@ -6,9 +6,10 @@ description: 学习如何使用Hardhat开发、测试、部署智能合约以及
 # Hardhat开发流程
 
 ![Learn about the typical Hardhat Ethereum Developer workflow from start to finish.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-banner.png)
-_本文档更新至2023年1月16日｜作者：Kevin Neilson & Erin Shaben_
 
-## 概览 {: #introduction } 
+_作者：Kevin Neilson & Erin Shaben_
+
+## 概览 {: #introduction }
 
 在本教程中，我们将从头至尾详细演示在[Hardhat开发环境](https://hardhat.org/){target=_blank}中启动[pooled staking DAO（汇集质押DAO）合约](https://github.com/PureStake/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}的典型开发流程。
 
@@ -205,7 +206,7 @@ module.exports = {
       },
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
     ```      
     dev: {
         url: '{{ networks.development.rpc_url }}',
