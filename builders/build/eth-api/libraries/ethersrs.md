@@ -164,7 +164,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
     }
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```rust
     // 1. Import ethers crate
