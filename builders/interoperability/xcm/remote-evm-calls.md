@@ -19,7 +19,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 下列流程图描绘了通过XCM进行常规和远程EVM调用的路径：
 
-![Happy parth for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
+![Happy path for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
 
 本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
 

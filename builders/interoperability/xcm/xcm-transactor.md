@@ -103,7 +103,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 要在发送extrinsics，您需要准备以下内容：
 
  - 在原始链上的账户拥有一定[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
- - 资金所在的目标链上的multilocation衍生账户。您可以通过使用 [`calculate-multilocation-derivative-account.ts`脚本](https://github.com/PureStake/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=_blank}计算该地址
+ - 资金所在的目标链上的multilocation衍生账户。您可以通过使用 [`calculate-multilocation-derivative-account.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=_blank}计算该地址
 
 在本示例中，使用的账户如下：
 
@@ -195,7 +195,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff05 4915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee00010 30094357700`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700`。
 
 交易处理后，Alice应该在目标链的地址上收到1个Token。
 
@@ -245,10 +245,10 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 
 ### XCM Transactor Solidity接口 {: #xcmtrasactor-solidity-interface }
 
-[XcmTransactor.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM Transactor Pallet进行交互。
+[XcmTransactor.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}是一个接口，开发者可以用其通过以太坊API与XCM Transactor Pallet进行交互。
 
 !!! 注意事项
-    XCM Transactor预编译的[旧版本](https://github.com/PureStake/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
+    XCM Transactor预编译的[旧版本](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v1/XcmTransactorV1.sol){target=_blank}将在不久的将来被弃用，因此所有实现都必须迁移到较新的接口。
 
 此接口包含以下函数：
 
