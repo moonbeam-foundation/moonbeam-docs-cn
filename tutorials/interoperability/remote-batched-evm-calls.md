@@ -86,7 +86,7 @@ _作者：Kevin Neilson_
 
 用于本教程目的，我们将使用[Remix](http://remix.ethereum.org/){target=_blank}可视化和构造我们的calldata。如需要，[批量预编译页面](/builders/pallets-precompiles/precompiles/batch/#remix-set-up){target=_blank}提供了分步教程，引导您如何在Remix中使用批量预编译开始操作。
 
-首先，复制[`Batch.sol`](https://raw.githubusercontent.com/PureStake/moonbeam/master/precompiles/batch/Batch.sol){target=_blank}并编译它。从Remix的**Deploy**标签下，将Remix的环境指定为**Injected Web3**，并确保您的钱包已切换至Moonbase Alpha网络。由于这是一个预编译，因此我们无需部署任何东西，而是在其各自的地址访问批量预编译：
+首先，复制[`Batch.sol`](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam/master/precompiles/batch/Batch.sol){target=_blank}并编译它。从Remix的**Deploy**标签下，将Remix的环境指定为**Injected Web3**，并确保您的钱包已切换至Moonbase Alpha网络。由于这是一个预编译，因此我们无需部署任何东西，而是在其各自的地址访问批量预编译：
 
 === "Moonbeam"
 
