@@ -15,7 +15,6 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
  - [**Relay**](https://docs.openzeppelin.com/defender/relay){target=_blank} —— 通过具备私有中继器部署、安全的私有交易基础设施进行构建
  - [**Autotasks**](https://docs.openzeppelin.com/defender/autotasks){target=_blank} —— 创建自动化脚本，与智能合约交互
  - [**Sentinel**](https://docs.openzeppelin.com/defender/sentinel){target=_blank} —— 监控智能合约的事件、功能及交易，并通过邮件接收通知
- - [**Advisor**](https://docs.openzeppelin.com/defender/advisor){target=_blank} —— 学习并应用开发、测试、监控及运行等环节的最佳实践
 
 OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网。本教程将介绍如何使用Defender，并演示如何通过Admin组件暂停部署于Moonbase Alpha的智能合约，也可适用于Moonbeam和Moonriver。
 

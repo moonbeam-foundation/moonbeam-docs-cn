@@ -12,7 +12,7 @@ keywords: staking, substrate, pallet, moonbeam, polkadot
 
 Moonbeam使用委托权益证明(DPoS)共识，该共识根据收集人在网络中的总质押数额决定哪些收集人有资格生产区块。有关质押的一般信息，例如术语、质押变量等，请参阅[质押](/learn/features/staking){target=_blank}页面。
 
-DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank}，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链质押pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
+DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/parachain-staking/src){target=_blank}，允许Token持有者（委托人）以准确表示他们希望支持的候选人（收集人）以及对收集人的质押量。此项平行链质押pallet的设计使得委托人和候选人（收集人）之间强制共享链上的风险/奖励。
 
 平行链质押pallet的一些功能也可以通过质押预编译获得。预编译使您能够通过以太坊 API执行质押操作。请参阅 [质押预编译](/builders/pallets-precompiles/precompiles/staking){target=_blank}页面了解更多相关信息。
 
@@ -128,7 +128,7 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/PureStake/moonb
 - **maxTopDelegationsPerCandidate**() - 返回每个候选人（收集人）的最多的排名靠前的委托数
 - **minBlocksPerRound**() - 返回每个轮次的最低区块数
 - **minCandidateStk**() - 返回成为候选人（收集人）所需的最低质押
-- **minCollatorStk**() - 返回成为收集人活跃集中所需的最低质押
+- **minCollatorStk**() - *运行时2400弃用* - 返回成为收集人活跃集中所需的最低质押
 - **minDelegation**() - 返回最低委托数
 - **minDelegatorStk**() - 返回账户成为委托人的最低质押
 - **minSelectedCandidates**() - 返回每个轮次在活跃集中选出的收集人（收集人）的最低数量

@@ -12,9 +12,9 @@
 
 ## 贡献
 
-如果您对贡献此库感兴趣，请随时复制repo、更改、开启PR✨。在更改前，请先查阅[`.CONTRIBUTING.md` file](https://github.com/PureStake/moonbeam-docs-cn/blob/master/.CONTRIBUTING.md)中的贡献参与指南。
+如果您对贡献此库感兴趣，请随时复制repo、更改、开启PR✨。在更改前，请先查阅[`.CONTRIBUTING.md` file](https://github.com/moonbeam-foundation/moonbeam-docs-cn/blob/master/.CONTRIBUTING.md)中的贡献参与指南。
 
-您也可以在此[提出问题](https://github.com/PureStake/moonbeam-docs-cn/issues/new)。感谢您的时间和精力为此库作出贡献💜。
+您也可以在此[提出问题](https://github.com/moonbeam-foundation/moonbeam-docs-cn/issues/new)。感谢您的时间和精力为此库作出贡献💜。
 
 ## Moonbeam社区
 

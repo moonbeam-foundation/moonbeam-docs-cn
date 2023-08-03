@@ -18,24 +18,28 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 创建一个本地目录以储存链上数据：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     mkdir {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     mkdir {{ networks.moonriver.node_directory }}
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     mkdir {{ networks.moonbase.node_directory }}
     ```
 
 接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`DOCKER_USER`）：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbeam.node_directory }}
 
@@ -44,7 +48,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonriver.node_directory }}
 
@@ -53,7 +58,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbase.node_directory }}
 
@@ -66,7 +72,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
  - 在两处替换 `YOUR-NODE-NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-如果您使用的是MacOS，您可以在[这页](https://www.github.com/PureStake/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
+如果您使用的是MacOS，您可以在[这页](https://www.github.com/moonbeam-foundation/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
 
 !!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
@@ -76,7 +82,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 ### 全节点 {: #full-node }
 
 === "Moonbeam"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
@@ -95,7 +102,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 === "Moonriver"
 
-    ```
+    ```bash
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
@@ -113,7 +120,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
@@ -136,7 +144,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 ### 收集人 {: #collator }
 
 === "Moonbeam"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
@@ -154,7 +163,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
@@ -172,7 +182,8 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
@@ -199,7 +210,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 !!! 注意事项
     您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
 
-```
+```bash
 docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} # rest of code goes here
 ```
 
@@ -220,11 +231,11 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 1. 停止Docker容器：
 
-    ```
+    ```bash
     sudo docker stop `CONTAINER_ID`
     ```
     
-2. 从[Moonbeam GitHub Release](https://github.com/PureStake/moonbeam/releases/)页面获取Moonbeam的最新版本
+2. 从[Moonbeam GitHub Release](https://github.com/moonbeam-foundation/moonbeam/releases/)页面获取Moonbeam的最新版本
 
 3. 使用最新版本启动您的节点。您需要将[全节点](#full-node)或[收集人](#collator)命令的版本替换成最新版本，并运行它
 
@@ -236,7 +247,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 首先，您想需要停止Docker容器：
 
-```
+```bash
   sudo docker stop `CONTAINER_ID`
 ```
 
@@ -245,51 +256,60 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 如果您使用`-v`标志启动节点，则需要清除指定的目录。例如，对于直接关联的数据，您可以运行以下命令来清除您的平行链和中继链数据：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/*
     ```
 
 仅为指定链移除平行链数据，您可运行以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
     ```
 
 同样地，仅移除中继链数据，您可运行以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```
 

@@ -39,13 +39,13 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 可铸造XC-20 token的Solidity接口是以下三个接口的组合：
 
- - [ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}
- - [许可接口（符合EIP-712）](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-permit-interface){target=_blank}
- - [可铸造接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank} — 请参看[下一节](#additional-functions)
+ - [ERC-20接口](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}
+ - [许可接口（符合EIP-712）](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank} — 请参看[XC-20概述页面](/builders/interoperability/xcm/xc20/overview/#the-erc20-permit-interface){target=_blank}
+ - [可铸造接口](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank} — 请参看[下一节](#additional-functions)
 
 ## 可铸造XC-20的特殊功能 {: #additional-functions }
 
-可铸造XC-20包含所有者或是指定账户才能使用的特殊功能，其被包含在[LocalAsset.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}接口当中，具体如下所示：
+可铸造XC-20包含所有者或是指定账户才能使用的特殊功能，其被包含在[LocalAsset.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}接口当中，具体如下所示：
 
 - **mint(*address* to, *uint256* value)** —— 铸造一定数量的Token至指定地址，仅有所有者（Owner）和发行者（Issuer）能够使用此函数
 
@@ -204,7 +204,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 首先，您需要添加`LocalAsset`至[Remix](https://remix.ethereum.org/){target=_blank}，接着跟随以下步骤进行操作：
 
-1. 获得[LocalAsset.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}复制文件
+1. 获得[LocalAsset.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/LocalAsset.sol){target=_blank}复制文件
 2. 将其内容贴入Remix文件并命名为**ILocalAsset.sol**
 
 ![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-6.png)

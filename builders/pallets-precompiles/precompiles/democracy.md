@@ -29,7 +29,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ## 民主预编译Solidity接口 {: #the-democracy-solidity-interface }
 
-[DemocracyInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}是一个能够用于Solidity合约与民主pallet交互的接口。预编译的精妙之处在于您无需学习Substrate API，就可以使用熟悉的以太坊界面与质押功能交互。
+[DemocracyInterface.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}是一个能够用于Solidity合约与民主pallet交互的接口。预编译的精妙之处在于您无需学习Substrate API，就可以使用熟悉的以太坊界面与质押功能交互。
 
 接口包含以下函数：
 
@@ -80,7 +80,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 ### 设置Remix {: #remix-set-up }
 
 1. 点击**File explorer**标签
-2. 复制[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
+2. 复制[`DemocracyInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}并粘贴至命名为`Democracy.sol`的[Remix](https://remix.ethereum.org/){target=_blank}文件中
 
 ![Copying and Pasting the Democracy Interface into Remix](/images/builders/pallets-precompiles/precompiles/democracy/democracy-1.png)
 
@@ -104,7 +104,7 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ### 提交提案 {: #submit-a-proposal } 
 
-如果您有提案的原像哈希，您可以通过[民主预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}的`propose`函数提交提案。但是，在提交提案之前，您首先需要通过将编码的提案数据传递给`notePreimage`函数来提交原像，该函数现在属于[原像Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}。
+如果您有提案的原像哈希，您可以通过[民主预编译](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}的`propose`函数提交提案。但是，在提交提案之前，您首先需要通过将编码的提案数据传递给`notePreimage`函数来提交原像，该函数现在属于[原像Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}。
 
 --8<-- 'text/precompiles/governance/submit-preimage.md'
 
@@ -183,4 +183,4 @@ Moonbeam的链上治理系统得益于[Substrate民主pallet](https://docs.rs/pa
 
 ![Call the vote function](/images/builders/pallets-precompiles/precompiles/democracy/democracy-12.png)
 
-恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[`DemocracyInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[Discord](https://discord.gg/moonbeam){target=_blank}询问。
+恭喜，您已完成在民主预编译教程中的全部步骤。除此之外，仍有数个函数被记录与[`DemocracyInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/pallet-democracy/DemocracyInterface.sol){target=_blank}当中，如果您对于那些函数或是民主预编译有任何问题，欢迎至我们官方[Discord](https://discord.gg/moonbeam){target=_blank}询问。
