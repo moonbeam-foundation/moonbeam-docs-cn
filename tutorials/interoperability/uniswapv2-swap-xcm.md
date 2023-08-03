@@ -36,14 +36,14 @@ _作者：Alberto Viera_
 
 所有在[概览](#introduction)部分中列出的步骤皆需满足以下的先决条件：
 
-- 您需要在中继链上拥有UNIT来支付发送XCM时所需的交易费用。如果您有一个具有DEV Token的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV交换xcUNIT。然后从Moonbase Alpha通过[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}。
+- 您需要在中继链上拥有UNIT来支付发送XCM时所需的交易费用。如果您有一个具有DEV Token的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV交换xcUNIT。然后从Moonbase Alpha通过[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}。
 - 您的[多地点衍生账户](/builders/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}必须持有`DEV` Token来为Uniswap V2兑换提供资金，以及支付XCM的执行费用（尽管这可以用UNIT Token以`xcUNIT`方式支付）。我们将在下一节中计算多地点衍生账户的地址
 
 --8<-- 'text/faucet/faucet-sentence.md'
 
 ## 计算您的多地点衍生账户 {: #calculating-your-multilocation-derivative-account }
 
-复制您在[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}的现有或新创建的账户。您将需要它来计算相应的多地点衍生账户，这是一种特殊类型的无密钥账户（其私钥未知）。来自多地点衍生账户的交易只能通过来自中继链上相应账户的有效XCM指令启动。换句话说，您是唯一可以在您的多地点衍生账户上发起交易的人——如果您无法访问您的Moonbase中继链账户，您也将无法访问您的多地点衍生账户。
+复制您在[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}的现有或新创建的账户。您将需要它来计算相应的多地点衍生账户，这是一种特殊类型的无密钥账户（其私钥未知）。来自多地点衍生账户的交易只能通过来自中继链上相应账户的有效XCM指令启动。换句话说，您是唯一可以在您的多地点衍生账户上发起交易的人——如果您无法访问您的Moonbase中继链账户，您也将无法访问您的多地点衍生账户。
 
 如要产生多地点衍生账户，首先请复制[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}代码库，运行`yarn`指令以安装所有必要代码包并运行以下指令：
 
@@ -341,7 +341,7 @@ generateCallData();
 ```
 
 !!! 注意事项
-    您也可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}中手动构建函数以获得SCALE编码调用数据。
+    您也可以在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}中手动构建函数以获得SCALE编码调用数据。
 
 让我们检视上方代码段的主要组成部分：
 
@@ -438,7 +438,7 @@ sendXCM();
 
 就是这样！您发送了一条XCM消息，该消息通过XCM执行了远程EVM调用，并在Moonbase Alpha中产生了Uniswap V2格式的交换。但是，让我们来更详细地了解究竟发生什么事情。
 
-此操作将触发不同的事件。第一个是[在中继链中](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x85cad5f3cef5d578f6acc60c721ece14842be332fa333c9b9eafdfe078bc0290){target=_blank}唯一相关的，它被命名为`xcmPallet.Sent`，其来自`xcmPallet.send` extrinsic。在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0x1f60aeb1f2acbc2cf6e19b7ad969661f21f4847f7b40457c459e7d39f6bc0779){target=_blank}中，来自`parachainSystem.setValidationData` extrinsic（处理所有输入XCM消息）的以下事件值得关注：
+此操作将触发不同的事件。第一个是[在中继链中](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/0x85cad5f3cef5d578f6acc60c721ece14842be332fa333c9b9eafdfe078bc0290){target=_blank}唯一相关的，它被命名为`xcmPallet.Sent`，其来自`xcmPallet.send` extrinsic。在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.api.moonbase.moonbeam.network#/explorer/query/0x1f60aeb1f2acbc2cf6e19b7ad969661f21f4847f7b40457c459e7d39f6bc0779){target=_blank}中，来自`parachainSystem.setValidationData` extrinsic（处理所有输入XCM消息）的以下事件值得关注：
 
  - `parachainSystem.DownwardMessagesReceived` — 表示收到一个XCM消息
  - `evm.Log` — 不同合约调用发出的内部事件。结构皆相同：合约地址、主题和相关数据
