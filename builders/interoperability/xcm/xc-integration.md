@@ -343,7 +343,7 @@ cd xcm-tools && \
 yarn
 ```
 
-[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}有一个用于HRMP交互的特定脚本，称为[`hrmp-channel-manipulator.ts`](https:/ /github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/hrmp-channel-manipulator.ts){target=_blank}。此命令为特定HRMP操作生成编码的调用数据，只需提供正确的详细信息即可。该脚本使用DepositAsset XCM指令构建XCM消息，但不是RefundSurplus。
+[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}有一个用于HRMP交互的特定脚本，称为[`hrmp-channel-manipulator.ts`](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/hrmp-channel-manipulator.ts){target=_blank}。此命令为特定HRMP操作生成编码的调用数据，只需提供正确的详细信息即可。该脚本使用DepositAsset XCM指令构建XCM消息，但不是RefundSurplus。
 
 `hrmp-channel-manipulator.ts`脚本是通用的。它将先尝试使用[XCM-Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}的`hrmpManage` extrinsic，但是如果该pallet在其使用的平行链上不存在，将切换到更容易被平行链使用的[Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){ target=_blank}，直接构建与中继链上的HRMP pallet交互的XCM消息。**请注意，pallet可以命名为`polkadotXcm`，因为extrinsic将构建为`api.tx.polkadotXcm.send()`。**
 
@@ -507,7 +507,7 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 `UnitsPerSecond`是执行XCM消息时每秒收取的Token数。XCM转账的目标成本在注册时为`$0.02`。随着Token价格的波动，`UnitsPerSecond`可能会通过治理进行更新。
 
-计算资产的`UnitsPerSecond`最简单方法是通过[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}的[`calculate-units-per-second.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate- units-per-second.ts){target=_blank}。要运行脚本，您必须提供以下内容：
+计算资产的`UnitsPerSecond`最简单方法是通过[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}的[`calculate-units-per-second.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-units-per-second.ts){target=_blank}。要运行脚本，您必须提供以下内容：
 
 - `--d` - 您正在计算每秒单位的Token的小数位数
 - `--xwc` - 整个XCM消息执行的总权重成本
