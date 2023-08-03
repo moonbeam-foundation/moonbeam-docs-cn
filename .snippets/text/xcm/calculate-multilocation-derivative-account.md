@@ -15,4 +15,4 @@ yarn calculate-multilocation-derivative-account \
 - `--ws-provider` 或 `-w` 标志对应我们用于获得此信息的端点
 - `--address` 或 `-a`标志对应您的Moonbase中继链账户地址
 - `--para-id` 或 `-p`标志对应原链（如有）的平行链ID。如果您从中继链传送XCM则无需提供此参数
-- The `-parents` flag corresponds to the parents value of the origin chain in relation to the destination chain. If you're deriving a multi-location derivative account on a parachain destination from a relay chain origin, this value would be `1`. If left out, the parents value defaults to `0`
+-`-parents`标签与目标链在源链上的父值相关。如果您正从中继链源头在平行链目标链生成multi-location衍生账户，此数值将会是`1`。如果不是，父值预设为`0`
