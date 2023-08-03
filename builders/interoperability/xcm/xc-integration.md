@@ -17,10 +17,10 @@ XCMP（或HRMP）通道开通后，两条链的相应资产需要先注册才能
 
 本教程将涵盖如何在平行链和基于Moonbeam的网络之间开通和接受HRMP通道。另外，本教程提供在平行链上注册基于Moonbeam网络资产的所需数据以及在任何基于Moonbeam网络上注册资产时所需的数据。
 
-本教程的所有操作将使用CLI工具进行整个流程的开发，您可以在[xcm-tools GitHub repository](https://github.com/PureStake/xcm-tools){target=_blank}中找到此工具。
+本教程的所有操作将使用CLI工具进行整个流程的开发，您可以在[xcm-tools GitHub repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}中找到此工具。
 
 ```
-git clone https://github.com/PureStake/xcm-tools && \
+git clone https://github.com/Moonsong-Labs/xcm-tools && \
 cd xcm-tools && \
 yarn
 ```
@@ -73,7 +73,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 
 ### 计算平行链主权账户并注入资金  {: #calculate-and-fund-the-parachain-sovereign-account }
 
-您可以使用[xcm-tools repository的脚本](https://github.com/PureStake/xcm-tools){target=_blank}计算您的平行链主权账户。要运行脚本，您需要提供平行链ID和相关联的中继链名称。中继链可接受的值为`polkadot`（默认）、`kusama`和`moonbase`。
+您可以使用[xcm-tools repository的脚本](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}计算您的平行链主权账户。要运行脚本，您需要提供平行链ID和相关联的中继链名称。中继链可接受的值为`polkadot`（默认）、`kusama`和`moonbase`。
 
 例如，Moonbase Alpha的中继链和其他平行链的主权账户可以通过运行以下命令获得：
 
@@ -333,19 +333,19 @@ Currently, the support for local XC-20s is only on Moonbase Alpha. You can use t
 !!! 注意事项
     您可以添加[DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=_blank}以在执行后返还剩余资金。如果没有提供此函数，将无法退款。另外，你也可以在[Transact](https://github.com/paritytech/xcm- format#transact){target=_blank}后添加[RefundSurplus](https://github.com/paritytech/xcm-format#refundsurplus){target=_blank}，以获取未用于Transact的任何剩余资金。但是您必须计算是否值得支付额外XCM指令的执行成本。
 
-为了将这些XCM消息发送到中继链，通常会调用[Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){target=_blank}。Moonbeam 还有一个[XCM-Transactor Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}，这将流程简化为抽象XCM消息传递构造函数的调用。
+为了将这些XCM消息发送到中继链，通常会调用[Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){target=_blank}。Moonbeam 还有一个[XCM-Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}，这将流程简化为抽象XCM消息传递构造函数的调用。
 
-您可以使用Polkadot.js Apps为HRMP操作生成调用数据，但是[xcm-tools GitHub repository](https://github.com/PureStake/xcm-tools){target=_blank}可以为您构建，这是该过程的推荐工具。其应该适用于任何包含 [Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){target=_blank}的链，它们会先通过[XCM-Transactor Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}操作。
+您可以使用Polkadot.js Apps为HRMP操作生成调用数据，但是[xcm-tools GitHub repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}可以为您构建，这是该过程的推荐工具。其应该适用于任何包含 [Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){target=_blank}的链，它们会先通过[XCM-Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}操作。
 
 ```
-git clone https://github.com/PureStake/xcm-tools && \
+git clone https://github.com/Moonsong-Labs/xcm-tools && \
 cd xcm-tools && \
 yarn
 ```
 
-[xcm-tools repository](https://github.com/PureStake/xcm-tools){target=_blank}有一个用于HRMP交互的特定脚本，称为[`hrmp-channel-manipulator.ts`](https:/ /github.com/PureStake/xcm-tools/blob/main/scripts/hrmp-channel-manipulator.ts){target=_blank}。此命令为特定HRMP操作生成编码的调用数据，只需提供正确的详细信息即可。该脚本使用DepositAsset XCM指令构建XCM消息，但不是RefundSurplus。
+[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}有一个用于HRMP交互的特定脚本，称为[`hrmp-channel-manipulator.ts`](https:/ /github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/hrmp-channel-manipulator.ts){target=_blank}。此命令为特定HRMP操作生成编码的调用数据，只需提供正确的详细信息即可。该脚本使用DepositAsset XCM指令构建XCM消息，但不是RefundSurplus。
 
-`hrmp-channel-manipulator.ts`脚本是通用的。它将先尝试使用[XCM-Transactor Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}的`hrmpManage` extrinsic，但是如果该pallet在其使用的平行链上不存在，将切换到更容易被平行链使用的[Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){ target=_blank}，直接构建与中继链上的HRMP pallet交互的XCM消息。**请注意，pallet可以命名为`polkadotXcm`，因为extrinsic将构建为`api.tx.polkadotXcm.send()`。**
+`hrmp-channel-manipulator.ts`脚本是通用的。它将先尝试使用[XCM-Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/xcm-transactor){target=_blank}的`hrmpManage` extrinsic，但是如果该pallet在其使用的平行链上不存在，将切换到更容易被平行链使用的[Polkadot XCM Pallet](https://github.com/paritytech/polkadot/tree/master/xcm/pallet-xcm){ target=_blank}，直接构建与中继链上的HRMP pallet交互的XCM消息。**请注意，pallet可以命名为`polkadotXcm`，因为extrinsic将构建为`api.tx.polkadotXcm.send()`。**
 
 以下部分将介绍在基于Moonbeam的网络中创建/接受开放通道请求的步骤，这也同样适应于您的平行链。
 
@@ -353,7 +353,7 @@ yarn
 
 当一条平行链收到来自另一条平行链的HRMP通道打开请求时，必须先向中继链发出接受该通道的信号，然后才可以使用该通道。这需要使用Transact指令调用`hrmp` pallet和`hrmpAcceptOpenChannel` extrinsic向中继链发送XCM消息。
 
-[xcm-tools](https://github.com/PureStake/xcm-tools){target=_blank} GitHub repository的`hrmp-channel-manipulator.ts`脚本可以为您构建XCM！
+[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank} GitHub repository的`hrmp-channel-manipulator.ts`脚本可以为您构建XCM！
 
 运行以下命令将提供编码的调用数据以接受Moonbeam网络上的开放HRMP通道请求。将`YOUR_PARACHAIN_ID`替换为您的平行链的 ID：
 
@@ -392,7 +392,7 @@ yarn
 
 平行链在彼此之间发送XCM之前需要双向HRMP通道。建立HRMP通道的第一步是创建开放通道请求。这需要向中继链发送一条XCM消息，其中包含调用`hrmp` pallet和`hrmpInitOpenChannel` extrinsic的Transact指令。
 
-[xcm-tools](https://github.com/PureStake/xcm-tools){target=_blank} GitHub repository的`hrmp-channel-manipulator.ts`脚本能够帮您构建XCM！
+[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank} GitHub repository的`hrmp-channel-manipulator.ts`脚本能够帮您构建XCM！
 
 运行以下命令将提供编码的调用数据，以从Moonbeam网络创建HRMP通道请求。最大消息大小和容量值可以从中继链`configuration` pallet和`activeConfig` extrinsic获得。将`YOUR_PARACHAIN_ID`替换成平行链ID：
 
@@ -432,14 +432,14 @@ yarn
 
 ## 注册外部资产 {: #register-a-foreign-asset }
 
-创建XCM集成的主要原因之一是在Moonbeam之间发送跨链资产。在Moonbeam上注册资产是通过[Asset Manager Pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/asset-manager/src/lib.rs){target=_blank}完成的。在Moonbeam上创建的资产称为[XC-20s](/builders/interoperability/xcm/xc20/){target=_blank}，其具有与智能合约交互的ERC-20接口。
+创建XCM集成的主要原因之一是在Moonbeam之间发送跨链资产。在Moonbeam上注册资产是通过[Asset Manager Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/asset-manager/src/lib.rs){target=_blank}完成的。在Moonbeam上创建的资产称为[XC-20s](/builders/interoperability/xcm/xc20/){target=_blank}，其具有与智能合约交互的ERC-20接口。
 
-本教程将使用`xcm-asset-registrator.ts`脚本。请注意，如果您没有[Asset Manager Pallet](https://github.com/PureStake/moonbeam/blob/master/pallets/asset-manager/src/lib.rs){target=_blank}将无法在您的平行链上使用此脚本。
+本教程将使用`xcm-asset-registrator.ts`脚本。请注意，如果您没有[Asset Manager Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/asset-manager/src/lib.rs){target=_blank}将无法在您的平行链上使用此脚本。
 
 运行以下命令将提供编码的调用数据，以在Moonbeam网络上注册您的跨链资产。在运行命令之前替换以下值：
 
 - `YOUR_PARACHAIN_ID`，平行链ID
-- `YOUR_ASSET_MULTILOCATION`，从Moonbeam网络查看资产的[JSON格式的multilocation](https://github.com/PureStake/xcm-tools#example){target=_blank}
+- `YOUR_ASSET_MULTILOCATION`，从Moonbeam网络查看资产的[JSON格式的multilocation](https://github.com/Moonsong-Labs/xcm-tools#example){target=_blank}
 - `YOUR_TOKEN_SYMBOL`，要注册的Token符号。**请在符号前面加上“xc”前缀，表示该资产是启用XCM的资产**
 - `YOUR_TOKEN_DECIMALS`，资产的小数位数，例如`18`
 - `YOUR_TOKEN_NAME`，用于注册的Token名称
@@ -507,7 +507,7 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 `UnitsPerSecond`是执行XCM消息时每秒收取的Token数。XCM转账的目标成本在注册时为`$0.02`。随着Token价格的波动，`UnitsPerSecond`可能会通过治理进行更新。
 
-计算资产的`UnitsPerSecond`最简单方法是通过[xcm-tools](https://github.com/PureStake/xcm-tools){target=_blank}的[`calculate-units-per-second.ts`脚本](https://github.com/PureStake/xcm-tools/blob/main/scripts/calculate- units-per-second.ts){target=_blank}。要运行脚本，您必须提供以下内容：
+计算资产的`UnitsPerSecond`最简单方法是通过[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}的[`calculate-units-per-second.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate- units-per-second.ts){target=_blank}。要运行脚本，您必须提供以下内容：
 
 - `--d` - 您正在计算每秒单位的Token的小数位数
 - `--xwc` - 整个XCM消息执行的总权重成本
@@ -547,7 +547,7 @@ The UnitsPerSecond needs to be set 34106412005
 
 ## 整合批处理操作 {: #batch-actions-into-one }
 
-在平行链上完成XCM流程的最有效方法是将所有交易批处理整合到一起。[xcm-tools repository](https://github.com/PureStake/xcm-tools){target=_blank}提供了一个脚本，用于将extrinsic调用批处理为单个调用，因此只需要一个交易。如果您的平行链想要打开HRMP通道并同时注册资产，这将有助于您快速完成。在 Moonbeam网络上提议通道注册时，**建议使用**此方式。 
+在平行链上完成XCM流程的最有效方法是将所有交易批处理整合到一起。[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}提供了一个脚本，用于将extrinsic调用批处理为单个调用，因此只需要一个交易。如果您的平行链想要打开HRMP通道并同时注册资产，这将有助于您快速完成。在 Moonbeam网络上提议通道注册时，**建议使用**此方式。 
 
 您现在将使用前三个命令调用的编码调用数据输出，并将其插入到以下命令中以将批处理提案发送给民主。为要批处理的每个调用添加一个`--call "YOUR_CALL"`。在运行命令之前替换以下值：
 
@@ -592,7 +592,7 @@ The UnitsPerSecond needs to be set 34106412005
 
 ## XCM-Tools的附加标志 {: #additional-flags-xcm-tools }
 
-[xcm-tools GitHub repository](https://github.com/PureStake/xcm-tools){target=_blank}及其大部分函数都可以使用一些附加标志来调用，这些标志会在所采取的操作周围创建一些包装器。例如，您可能希望将XCM消息的发送包装在sudo中，或通过民主提案。
+[xcm-tools GitHub repository](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}及其大部分函数都可以使用一些附加标志来调用，这些标志会在所采取的操作周围创建一些包装器。例如，您可能希望将XCM消息的发送包装在sudo中，或通过民主提案。
 
 您可以与以下脚本一起使用的完整选项：
 

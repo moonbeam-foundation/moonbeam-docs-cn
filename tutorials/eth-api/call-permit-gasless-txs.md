@@ -363,7 +363,7 @@ const message = {
 
 最后，我们需要获取`from`帐户的`nonce`。如前所述，我们可以使用调用许可预编译的`nonce`函数来获取该值。为此，您需要为调用许可预编译创建一个合约实例：
 
-1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/precompiles/call-permit/abi.js){target=_blank}
+1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/precompiles/call-permit/abi.js){target=_blank}
 2. 将ABI导入您的Ethers文件中
 3. 使用预编译的地址和预编译的ABI创建调用许可预编译的实例。您可以使用提供商或签名者。由于我们稍后将在本教程中发送许可证，因此我们将使用与第三方帐户关联的签名者来支付交易费用，但如果您只需要访问`nonces`函数，则可以使用提供商
 4. 调用`nonces`函数并输入用户的`signer.account` ，与`from`账户相同
