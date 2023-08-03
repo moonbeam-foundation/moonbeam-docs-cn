@@ -166,15 +166,18 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 4. 设置`weightInfo`，其包含所需的`transactRequiredWeightAtMost`权重和可选的`overallWeight`参数。两个权重参数都要求您指定`refTime`和`proofSize`，其中`refTime`是可用于执行的计算时间量，`proofSize`是可使用的存储量（以字节为单位）。对于每个参数，您可以遵循以下准则：
 
-    - 对于`transactRequiredAtMost`，该值必须包含`asDerivative` extrinsic。然而，这并不包含XCM指令的权重。在本示例中，将`refTime`设置为 `1000000000`的权重单位，将`proofSize`设置为`0`
-    - 对于`overallWeight`，该值必须是**transactRequiredWeightAtMost**加上在目标链中XCM指令执行成本所需的权重之和。如果您不提供此值，pallet将使用存储中的元素（若有）。在本示例中，将`refTime`设置为`2000000000`权重单位，将将`proofSize`设置为`0`
+    - 对于`transactRequiredAtMost`，该值必须包含`asDerivative` extrinsic。然而，这并不包含XCM指令的权重。在本示例中，将`refTime`设置为 `1000000000`的权重单位，将`proofSize`设置为`40000`
+    - 对于`overallWeight`，该值必须是**transactRequiredWeightAtMost**加上在目标链中XCM指令执行成本所需的权重之和。如果您不提供此值，pallet将使用存储中的元素（若有）。在本示例中，将`refTime`设置为`2000000000`权重单位，将将`proofSize`设置为`50000`
 
     ```js
     const weightInfo = {
-      transactRequiredWeightAtMost: { refTime: 1000000000n, proofSize: 0 },
-      overallWeight: { refTime: 2000000000n, proofSize: 0 },
+      transactRequiredWeightAtMost: { refTime: 1000000000n, proofSize: 40000n },
+      overallWeight: { refTime: 2000000000n, proofSize: 50000n },
     };
     ```
+
+    !!! note
+        For accurate estimates of the `refTime` and `proofSize` figures, you can use the [`paymentInfo` method of the Polkadot.js API](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=_blank} as described in the Remote EVM Calls guide.
 
 现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您可以执行以下步骤：
 
@@ -196,7 +199,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee0001030094357700`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d0300){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d0300`。
 
 交易处理后，Alice应该在目标链的地址上收到1个Token。
 
