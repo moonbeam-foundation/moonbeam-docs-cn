@@ -7,6 +7,7 @@ template: main.html
 # 通过XCM在波卡中执行Uniswap V2兑换
 
 ![Banner Image](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-banner.png)
+
 _作者：Alberto Viera_
 
 ## 概览 {: #introduction }
@@ -20,12 +21,9 @@ _作者：Alberto Viera_
 在此教程中，我们将执行Uniswap V2兑换的账户命名为Alice。此教程包含许多跳转的内容部分，因此让我们先将其整理总结成列表以及流程图：
 
 1. Alice在中继链上拥有一个账户，她希望在[Moonbeam-Swap](https://moonbeam-swap.netlify.app){target=_blank}（Moonbase Alpha上的Uniswap V2克隆演示版本）将`DEV` Token兑换成`MARS` Token（Moonbase Alpha上的ERC-20 Token）。Alice此时需要自其中继链账户传送一个XCM消息至Moonbase Alpha
-
 2. XCM消息将由Moonbase Alpha接收并执行其指令。这些指令表明Alice打算在Moonbase Alpha中购买一些区块执行时间并执行对Moonbase的EVM的调用，具体来说是Uniswap V2（Moonbeam-Swap）路由合约。EVM调用是通过XCM消息经由在Moonbase Alpha上Alice控制的一个特殊账户发送的。此帐户称为[多地点衍生账户](/builders/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}。即使这是一个无密钥帐户（私钥未知），公共地址可以[以确定性的方式计算](/builders/xcm/remote-evm-calls/#calculate-multilocation-derivative){target=_blank}
-
 3. XCM执行将会导致兑换经由EVM执行，而Alice将会在其特别账户获得其`MARS` Token
-
-4. 经由XCM的远程EVM执行将会得到浏览器获取的一些EVM记录，有任何人皆能够查询验证的EVM交易和收据。
+4. 经由XCM的远程EVM执行将会得到浏览器获取的一些EVM记录，有任何人皆能够查询验证的EVM交易和收据
 
 ![Remote EVM Call Through XCM for Uniswap V2 Swap Diagram](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-1.png)
 
@@ -75,11 +73,8 @@ _作者：Alberto Viera_
 获得调用数据的最简单方法为通过[Moonbeam Uniswap V2 Demo](https://moonbeam-swap.netlify.app/){target=_blank}页面。当您进入该页面，请跟随以下步骤：
 
  1. 设置兑换的**from**数值及Token以及兑换的**to** Token。以此例子来说，我们希望能够以0.01 `DEV`兑换`MARS`
-
  2. 点击**Swap**按钮。MetaMask将会弹出，**请不要签署交易**
-
  3. 在MetaMask中，点击**hex**标签，您将能看到编码的调用数据
-
  4. 点击**Copy raw transaction data**按钮，这将会复制编码的调用数据至剪贴板
 
 ![Calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-3.png)
@@ -90,22 +85,15 @@ _作者：Alberto Viera_
 当您获得编码调用数据，请在您的钱包中取消交易。我们获得的兑换调用数据编码将如以下所示（除函数选择器外的所有内容均以32字节或64个十六进制字符表示）：
 
  1. 函数选择器，4个字节长（8个十六进制字符）代表您调用的函数
-
  2. 我们希望从兑换中获得的最小数量（考虑滑点），以此范例来说，`10b3e6f66568aaee`为`1.2035`个`MARS` Token
-
  3. 路径参数（动态类型）的数据部分的位置（指针）。十六进制的`80`是十进制的`128`，代表有关路径的信息显示在从头开始的128个字节之后（不包括函数选择器）。因此，关于路径的下一位信息出现在第6个元素中
-
  4. 兑换后接收Token的地址，在此范例中为调用中的`msg.sender`
-
  5. 兑换的期限限制
-
  6. 代表路径的地址数组的长度
-
  7. 首个参与兑换的Token，也就是进行了包装的`DEV`（Wrapped DEV）
-
  8. 第二个参与兑换的Token，`MARS`，所以其为最后一个参与Token
 
-```
+```text
 1. 0x7ff36ab5
 2. 00000000000000000000000000000000000000000000000010b3e6f66568aaee -> Min Amount Out
 3. 0000000000000000000000000000000000000000000000000000000000000080
@@ -124,7 +112,7 @@ _作者：Alberto Viera_
 
 **目前我们仅在测试，请勿在真实的生产环境中使用此代码！**我们编码的调用数据应如下所示（为了可见性而保留换行符）：
 
-```
+```text
 0x7ff36ab5
 0000000000000000000000000000000000000000000000000de0b6b3a7640000 -> New Min Amount
 0000000000000000000000000000000000000000000000000000000000000080
@@ -137,7 +125,7 @@ _作者：Alberto Viera_
 
 以一行的方式表现如下：
 
-```
+```text
 0x7ff36ab50000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000061cd3e07fe7d7f6d4680e3e322986b7877f108dd00000000000000000000000000000000000000000000000000000000A036B1B90000000000000000000000000000000000000000000000000000000000000002000000000000000000000000d909178cc99d318e4d46e7e66a972955859670e10000000000000000000000001fc56b105c4f0a1a8038c2b429932b122f6b631f
 ```
 
@@ -148,7 +136,6 @@ _作者：Alberto Viera_
 现在我们有了Uniswap V2兑换编码调用数据，我们需要生成来自XCM消息的`Transact`XCM指令将执行的字节。请注意，这些字节表示将在远程链中执行的操作。在此例子中，我们希望XCM消息执行自我们获得编码的调用数据进入EVM并进行兑换。
 
 要为交易参数获得SCALE（编码类型）编码数据，我们可以利用以下[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}脚本（请注意此处需要`@polkadot/api`和`ethers`）。
-
 
 ```js
 --8<-- 'code/tutorials/interoperability/uniswapv2-swap/generate-moonbeam-encoded-calldata.js'
@@ -166,13 +153,9 @@ _作者：Alberto Viera_
      - 我们先前计算的Uniswap V2兑换编码数据
 
  2. 创建必要的providers。一个为[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider，我们可以通过它直接调用[Moonbeam pallets](https://docs.moonbeam.network/builders/pallets-precompiles/pallets/){target=_blank}。另外一个为以太坊API provider，可以通过Ethers.js创建
-
  3. 这一步主要是一个最佳做法。在这里，我们估算将通过XCM执行的EVM调用的gas，因为稍后需要。您也可以硬编码gas limit值，但并不推荐
-
  4. [构建远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-remove-evm-call-xcm){target=_blank}。我们将Gas增加了`10000`个单位，以便在情况发生变化时提供处理空间。输入与用于gas估算的输入相同
-
  5. 为`transact`函数创建以太坊XCM pallet调用，提供我们先前构建的调用参数
-
  6. 获取特定交易参数的SCALE调用数据，我们稍后需要将其提供给`Transact` XCM指令。请注意，在这种特定情况下，因为我们只需要交易参数的调用数据，所以我们必须使用 `tx.method.toHex()`
 
 当您设定好代码，您可以通过`node`执行，您将会获得Moonbase Alpha远程EVM调用数据：
@@ -181,7 +164,7 @@ _作者：Alberto Viera_
 
 此处范例的编码调用数据如下：
 
-```
+```text
 0x260001eeed020000000000000000000000000000000000000000000000000000000000008a1932d6e26433f3037bd6c3a40c816222a6ccd40000c16ff286230000000000000000000000000000000000000000000000000091037ff36ab50000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000061cd3e07fe7d7f6d4680e3e322986b7877f108dd00000000000000000000000000000000000000000000000000000000a036b1b90000000000000000000000000000000000000000000000000000000000000002000000000000000000000000d909178cc99d318e4d46e7e66a972955859670e10000000000000000000000001fc56b105c4f0a1a8038c2b429932b122f6b631f00
 ```
 
@@ -219,21 +202,13 @@ _作者：Alberto Viera_
      - 我们在先前教程中计算的`transact` XCM指令字节
 
  2. 为XCM消息定义目标多地点。在此例中为Moonbase Alpha平行链
-
  3. 首个XCM指令，`WithdrawAsset`。您需要提供资产多地点以及您希望提取的数量，两个变量皆已在先前提及
-
  4. 第二个XCM指令，`BuyExecution`。在此，我们通过提供`DEV` Token的多地点和我们用之前的指令取出的数量来支付Moonbase Alpha区块执行时间。接下来，我们用`0.001 DEV` Token购买所有可能的执行（`Unlimited`权重），这应该是大约200亿个权重单位，对于我们的范例来说足够了
-
  5. 第三个XCM指令，`Transact`。此指令将会使用购买的部分权重（被定义为`requireWeightAtMost`）并执行提供的任意字节（`transactBytes`）
-
  6. 第四个XCM指令，`DepositAsset`。在之前执行的操作之后剩下的在holding里的任何东西（在这种情况下，它应该为`DEV` Token）被存入多地点衍生账户，设置为 `beneficiary`。
-
  7. 通过在`V2`数组中连接指令构建XCM消息
-
  8. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank} provider
-
  9. 使用目标链和XCM消息制作`xcmPallet.send`函数。此函数会将[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令附加到我们的XCM消息中，该指令将提供必要的信息计算多地点衍生账户
-
  10. 获取SCALE编码调用数据。请注意，在这种特定情况下，因为我们需要完整的SCALE编码调用数据，所以我们必须使用`tx.toHex()`。这是因为我们将使用调用数据提交此交易
 
 !!! 挑战
@@ -245,7 +220,7 @@ _作者：Alberto Viera_
 
 此范例的编码调用数据如下：
 
-```
+```text
 0x4d0604630003000100a10f031000040000010403000f0000c16ff28623130000010403000f0000c16ff286230006010700902f500982b92a00fd04260001eeed020000000000000000000000000000000000000000000000000000000000008a1932d6e26433f3037bd6c3a40c816222a6ccd40000c16ff286230000000000000000000000000000000000000000000000000091037ff36ab50000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000061cd3e07fe7d7f6d4680e3e322986b7877f108dd00000000000000000000000000000000000000000000000000000000a036b1b90000000000000000000000000000000000000000000000000000000000000002000000000000000000000000d909178cc99d318e4d46e7e66a972955859670e10000000000000000000000001fc56b105c4f0a1a8038c2b429932b122f6b631f000d01000001030061cd3e07fe7d7f6d4680e3e322986b7877f108dd
 ```
 

@@ -35,9 +35,9 @@ Pallet用于制定和扩展基于Substrate区块链的功能。这些可以被�
 !!! 注意事项
     由于pallet都是开源的，因此开发者可以编辑预先存在的pallet。这种灵活性是使用Polkadot Substrate的优势之一。但同样重要的是，通过Polkadot中继链连接的每个平行链都会强制执行一些标准。
 
-由Polkadot Substrate构建的Moonbeam runtime可以在[Moonbeam GitHub repository](https://github.com/PureStake/moonbeam){target=_blank}中找到。在repo代码库中，您可以在[`pallets`文件](https://github.com/PureStake/moonbeam/tree/master/pallets){target=_blank}当中看到由Moonbeam团队编写和编辑的其他自定义pallet。您可以可以在Moonbeam文档资料库的[Pallets部分](/builders/pallets-precompiles/pallets/){target=_blank}查看一些与Moonbeam有关的Substrate pallet。
+由Polkadot Substrate构建的Moonbeam runtime可以在[Moonbeam GitHub repository](https://github.com/moonbeam-foundation/moonbeam){target=_blank}中找到。在repo代码库中，您可以在[`pallets`文件](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets){target=_blank}当中看到由Moonbeam团队编写和编辑的其他自定义pallet。您可以可以在Moonbeam文档资料库的[Pallets部分](/builders/pallets-precompiles/pallets/){target=_blank}查看一些与Moonbeam有关的Substrate pallet。
 
-您可以使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}、[Python Substrate Interface]( /builders/build/substrate-api/py-substrate-interface){target=_blank}和[Substrate API Sidecar](/builders/build/substrate-api/sidecar){target=_blank}这类的开发者工具与这些pallet公开的Substrate功能交互。
+您可以使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}、[Python Substrate Interface](/builders/build/substrate-api/py-substrate-interface){target=_blank}和[Substrate API Sidecar](/builders/build/substrate-api/sidecar){target=_blank}这类的开发者工具与这些pallet公开的Substrate功能交互。
 
 ## 无分叉升级 {: #forkless-upgrades }
 

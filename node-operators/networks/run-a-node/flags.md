@@ -17,10 +17,10 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 - **`--collator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
 - **`--port`** —— 指定端对端协议的TCP端口。平行链的默认端口为`{{ networks.parachain.p2p }}`，嵌入的中继链则为`{{ networks.relay_chain.p2p }}`
-- **`--rpc-port`** —— *从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* —— 指定HTTP RPC服务器的TCP端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.rpc }}` 
-- **`--ws-port`** —— 指定WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
-- **`--rpc-max-connections`** - *自[客户端v0.30.0](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
-- **`--ws-max-connections`** —— 指定WS RPC服务器连接的最大数量。自[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}起，此命令行标志调节HTTP和WS连接的总限制。默认值为100
+- **`--rpc-port`** —— *从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* —— 指定HTTP RPC服务器的TCP端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.rpc }}` 
+- **`--ws-port`** —— 指定WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
+- **`--rpc-max-connections`** - *自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
+- **`--ws-max-connections`** —— 指定WS RPC服务器连接的最大数量。自[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起，此命令行标志调节HTTP和WS连接的总限制。默认值为100
 - **`--execution`** —— 指定所有执行内容该使用的执行策略。Substrate runtime被编译为本地可执行文件，该执行文件被包含在节点本地的一部分，以及存储在链上的WebAssembly二进制文件中。可用的选项如下：
     - **`native`** —— 仅执行本地文件
     - **`wasm`** —— 仅执行Wasm文件
@@ -49,7 +49,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 ### Docker {: #docker }
 
 === "Moonbeam"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
@@ -57,7 +58,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
@@ -65,7 +67,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
@@ -75,7 +78,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 ### Systemd {: #systemd }
 
 === "Moonbeam"
-    ```
+
+    ```bash
     # If you used the release binary
     ./{{ networks.moonbeam.binary_name }} --help
 
@@ -84,7 +88,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     # If you used the release binary
     ./{{ networks.moonriver.binary_name }} --help
 
@@ -93,7 +98,8 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     # If you used the release binary
     ./{{ networks.moonbase.binary_name }} --help
 

@@ -1,5 +1,5 @@
 title: XCM SDK
 nav:
   - index.md
-  - '参考': 'reference.md'
-  - '使用 SDK': 'xcm-sdk.md'
+  - 'v0'
+  - 'v1'

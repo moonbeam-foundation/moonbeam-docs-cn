@@ -71,7 +71,7 @@ Alice请求的资产转移过程如下：
 
 6. [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 在波卡上执行。此指令会移除暂存区域的资产并将其传送至波卡上的目标账户
 
-要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送xcDOT至波卡，您可以查看[X-Tokens Open Runtime Module Librar](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.client_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.client_version}}/xtokens/src/lib.rs#L683){target=_blank}函数，您将会看到其调用`WithdrawAsset`和`InitiateReserveWithdraw`，并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`InitiateReserveWithdraw` 指令](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/xcm/xcm-executor/src/lib.rs#L412){target=_blank}。此XCM消息由使用`xcm`参数的`WithdrawAsset`和`ClearOrigin`指令组成，如上所述其中包含`BuyExecution`和`DepositAsset`指令。
+要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送xcDOT至波卡，您可以查看[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.client_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.client_version}}/xtokens/src/lib.rs#L683){target=_blank}函数，您将会看到其调用`WithdrawAsset`和`InitiateReserveWithdraw`，并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`InitiateReserveWithdraw` 指令](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.client_version}}/xcm/xcm-executor/src/lib.rs#L412){target=_blank}。此XCM消息由使用`xcm`参数的`WithdrawAsset`和`ClearOrigin`指令组成，如上所述其中包含`BuyExecution`和`DepositAsset`指令。
 
 ## 中继链XCM费用计算 {: #rel-chain-xcm-fee-calc }
 
@@ -223,7 +223,7 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 例如，`WithdrawAsset`指令是可替代XCM指令集的一部分。因此，它没有进行基准测试，`WithdrawAsset`指令的总权重成本为`{{ networks.moonbase.xcm.instructions.weight_units.display }}`。
 
-[`BuyExecution`指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L136){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
+[`BuyExecution`指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L136){target=_blank}有一个`{{ networks.moonbase.xcm.instructions.buy_exec.base_weight }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
 
 ```
 {{ networks.moonbase.xcm.instructions.buy_exec.base_weight }} + 4 * {{ networks.moonbase.db_weights.rocksdb_read }} = {{ networks.moonbase.xcm.instructions.buy_exec.total_weight }}
@@ -234,17 +234,17 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 === "Moonbeam"
     |                                                                                                 XCM指令成本                                                                                                 |
     |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
+    | [{{ networks.moonbeam.xcm.instructions.weight_units.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/xcm_config.rs#L201){target=_blank} |
 
 === "Moonriver"
     |                                                                                                  XCM指令成本                                                                                                  |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonriver/src/xcm_config.rs#L211){target=_blank} |
+    | [{{ networks.moonriver.xcm.instructions.weight_units.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonriver/src/xcm_config.rs#L211){target=_blank} |
 
 === "Moonbase Alpha"
     |                                                                          基准测试过的指令                                                                           |                                                                           无基准测试的指令                                                                            |
     |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-    | [通用XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/PureStake/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L25){target=_blank} |
+    | [通用XCM指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_generic.rs#L203){target=_blank} | [可替代XCM指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.parachain_release_tag}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L25){target=_blank} |
 
 
 以下部分教程将会包含如何在基于Moonbeam的网络计算XCM费用，有两个主要的应用场景：
@@ -258,7 +258,7 @@ Moonbeam和Moonriver为每个XCM指令使用固定数量的权重。但是，Moo
 
 |                                                                               Moonbeam                                                                               |                                                                               Moonriver                                                                               |                                                                                             Moonbase Alpha                                                                                             |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/PureStake/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L138){target=_blank} |
+| [{{ networks.moonbeam.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbeam.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonriver.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonriver.parachain_release_tag}}/runtime/moonbeam/src/lib.rs#L129){target=_blank} | [{{ networks.moonbase.xcm.instructions.wei_per_weight.display }}](https://github.com/moonbeam-foundation/moonbeam/blob/f19ba9de013a1c789425d3b71e8a92d54f2191af/runtime/moonbase/src/lib.rs#L138){target=_blank} |
 
 这意味着以Moonbeam为例，计算一个XCM指令以储备资产作为费用的公式如下：
 
@@ -338,9 +338,9 @@ XCM-Cost = ({{ networks.moonbeam.xcm.units_per_second.xcdot.transfer_numbers_onl
 
 Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.transfer.xcdot_cost }} xcDOT`。
 
-## XCM-Transactor费用 {: #xcm-transactor-fees }
+## XCM Transactor费用 {: #xcm-transactor-fees }
 
-[XCM-transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
+[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}构建了一个能够在其他生态链上远程交易的XCM消息。
 
 开发者有两种方法通过pallet远程交易：
 
@@ -362,7 +362,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.message.tra
 
 通过衍生函数交易包含3个XCM指令：[`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank}、[`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}以及[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}。
 
-在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM交易者pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
+在[通过主权衍生账户进行交易](/builders/interoperability/xcm/xcm-transactor/#xcmtransactor-transact-through-derivative){target=_blank}时，交易费用由原链的主权账户支付目标链，但由衍生账户调度。因此，XCM Transactor Pallet将销毁一定数量的相应XC-20 Token，以释放主权账户中的一些余额用于支付XCM执行费。
 
 您可以想像以下情景：Alice想要从Moonbeam使用通过主权extrinsic在波卡中进行远程交易（她已经在她的账户中注册了一个索引）。要预估从Alice的账户中将销毁多少XC-20 Token，您需要检查特定于中继链的交易信息。因此，请前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/chainstate){target=_blank}的链状态页面并设置以下选项：
 
@@ -391,7 +391,7 @@ XCM-Planck-DOT-Cost = transactExtraWeight * UnitsPerSecond / WeightToSeconds
 XCM-DOT-Cost = XCM-Planck-DOT-Cost / DOTDecimalConversion
 ```
 
-因此，以下为一个通过衍生调用的XCM-transactor交易费用的实际计算：
+因此，以下为一个通过衍生调用的XCM Transactor交易费用的实际计算：
 
 ```
 XCM-Planck-DOT-Cost = {{ networks.polkadot.xcm_message.transact.numbers_only }} * {{ networks.moonbeam.xcm.units_per_second.xcdot.transact_numbers_only }} / 10^12
@@ -440,7 +440,7 @@ XCM-Wei-Token-Cost = transactExtraWeight * UnitsPerSecond / WeightToSeconds
 XCM-Token-Cost = XCM-Wei-Token-Cost / TokensDecimalConversion
 ```
 
-因此，实际一个通过衍生调用的XCM-transactor交易费用的实际计算如下：
+因此，实际一个通过衍生调用的XCM Transactor交易费用的实际计算如下：
 
 ```
 XCM-Wei-Token-Cost = {{ networks.moonbase_beta.xcm_message.transact.numbers_only }} * {{ networks.moonbase.xcm.units_per_second.xcbetadev.transact_numbers_only }}
