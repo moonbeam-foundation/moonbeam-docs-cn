@@ -22,7 +22,7 @@ _作者：Kevin Neilson_
 
 出于开发目的，本教程是为使用测试网资金的Moonbase Alpha和Moonbase中继链网络编写的。先决条件如下：
 
-- 拥有一个具有一些UNIT的Moonbase Alpha中继链账户，UNIT是Moonbase中继链的原生Token。如果您拥有一个具有DEV的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV兑换xcUNIT。然后从Moonbase Alpha通过使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
+- 拥有一个具有一些UNIT的Moonbase Alpha中继链账户，UNIT是Moonbase中继链的原生Token。如果您拥有一个具有DEV的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV兑换xcUNIT。然后从Moonbase Alpha通过使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
 - 您将会需要计算您Moonbase Alpha中继链的[多地点衍生账户（multilocation derivative account）](#calculating-your-multilocation-derivative-account)和使其拥有足够的DEV Token。
   --8<-- 'text/faucet/faucet-list-item.md'
 
@@ -61,7 +61,7 @@ _作者：Kevin Neilson_
 
 ### 从Polkadot.js Apps传送XCM指令 {: #sending-the-xcm-instructions-from-polkadot-js-apps }
 
-如果您希望通过Polkadot API以代码形式执行此XCM指令，您可以跳至[以下部分教程](#sending-the-xcm-instructions-via-the-polkadot-api)。否则，在另外一个页面标签，请导向至[Moonbase relay Polkadot.Js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffrag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}。点击**Developer**标签后点击**Extrinsics**。
+如果您希望通过Polkadot API以代码形式执行此XCM指令，您可以跳至[以下部分教程](#sending-the-xcm-instructions-via-the-polkadot-api)。否则，在另外一个页面标签，请导向至[Moonbase relay Polkadot.Js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}。点击**Developer**标签后点击**Extrinsics**。
 
 ![Moonbase Relay Polkadot JS Apps Home](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-4.png)
 
