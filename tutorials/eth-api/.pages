@@ -3,6 +3,7 @@ hide: false
 nav:
   - index.md
   - '[ChatGPT] 使用GPT-4编写和调试智能合约': 'chat-gpt.md'
+  - '[Ethers.js] 如何构建一个DApp': 'how-to-build-a-dapp.md'
   - '[Foundry]从开始到结束的开发生命周期': 'foundry-start-to-end.md'
   - '[Hardhat]从开始到结束的开发生命周期': 'hardhat-start-to-end.md'
   - '[Precompiles] 通过批处理预编译进行授权和兑换': 'batch-approve-swap.md'

@@ -567,7 +567,7 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbeam with HardHat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
+![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
 
 恭喜您，您的合约已上线Moonbeam！请保存地址，其将在后续步骤中用于与合约实例交互。
 
