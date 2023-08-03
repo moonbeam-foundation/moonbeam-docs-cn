@@ -28,28 +28,13 @@ _作者：Kevin Neilson_
 
 ## 计算您的多地点衍生账户 {: #calculating-your-multilocation-derivative-account }
 
-复制您在[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}的现有或新创建的账户。您将需要它来计算相应的多地点衍生账户，这是一种特殊类型的无密钥账户（其私钥未知）。来自多地点衍生账户的交易只能通过来自中继链上相应账户的有效XCM指令启动。换句话说，您是唯一可以在您的多地点衍生账户上发起交易的人——如果您无法访问您的Moonbase中继链账户，您也将无法访问您的多地点衍生账户。
-
-如要生成多地点衍生账户，首先请复制Alberto的[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}代码库，运行`yarn`指令以安装所有必要代码包并运行以下指令：
-
-```
-ts-node calculateMultilocationDerivative.ts \
-  --w wss://wss.api.moonbase.moonbeam.network \
-  --a YOUR-MOONBASE-RELAY-ACCOUNT-HERE \
-  --n 0x57657374656e64
-```
-
-接着，让我们回顾以上指令中输入的相关参数：
-
-- `-w`标志对应我们用于检索此信息的终端
-- `-a`标志对应您的Moonbase中继链地址
-- `-n`标志对应“westend”（Moonbase中继基于的中继链名称）的编码
+--8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
 
 该脚本将返回32字节和20字节的地址。此处，我们感兴趣的是以太坊格式的帐户，即20字节的帐户。请随时在[Moonscan](https://moonbase.moonscan.io/){target=blank}上查找您的多地点衍生账户。您会注意到此帐户是空的。您需要至少用1.1个DEV为该帐户注入资金。由于这是水龙头分配的量，您需要至少发起两次水龙头请求，或者您可以随时通过[Discord](https://discord.com/invite/amTRXQ9ZpW){target=blank}联系我们请求更多的DEV Token。
 
 ## 准备在Moonbase Alpha上质押 {: #preparing-to-stake-on-moonbase-alpha }
 
-首先也是最重要的，您需要您希望委托的收集人的地址。如要找到该地址，请在第二个视窗中前往[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}。接着，确保您在正确的网络上，然后点击**Select Collator**。在您想要的委托人旁边，点击**Copy**图标。您还需要记下该委托人拥有的委托数量。下面显示的[PS-31 collator](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=_blank}在撰写本文时共有`60`个委托。
+首先也是最重要的，您需要您希望委托的收集人的地址。如要找到该地址，请在第二个视窗中前往[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}。接着，确保您在正确的网络上，然后点击**Select Collator**。在您想要的委托人旁边，点击**Copy**图标。您还需要记下该委托人拥有的委托数量。下面显示的[PS-31 collator](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=_blank}在撰写本文时共有`64`个委托。
 
 ![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
 
@@ -62,17 +47,11 @@ ts-node calculateMultilocationDerivative.ts \
 在以下步骤中，您将准备一个交易，但您需要避免在此处直接提交交易，以便能够完整地完成本教程。我们将准备此质押操作，并从中获取生成的编码调用数据，并在其后的步骤中通过XCM从中继链发送它。在**Extrinsics**页面中，请执行以下步骤：
 
 1. 选择**parachainStaking** Pallet
-
 2. 选择**delegate**函数
-
 3. 粘贴您选择的收集人地址。您可以[通过Polkadot.js API使用这些指令](/tokens/staking/stake/#retrieving-the-list-of-candidates){target=_blank}检索收集人候选人列表
-
-4. 粘贴您希望质押的数量（以Wei为单位）。在此范例中，将会输入1个DEV或是`1000000000000000000` Wei。您可以在[Moonscan](https://moonscan.io/unitconverter){target=_blank}上找到单位转换器。
-
+4. 粘贴您希望质押的数量（以Wei为单位）。在此范例中，将会输入1个DEV或是`1000000000000000000` Wei。您可以在[Moonscan](https://moonscan.io/unitconverter){target=_blank}上找到单位转换器
 5. 输入收集人现有委托的数量（可以在[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}上收集人姓名/地址旁边找到，或者[从Polkadot.js API获取](/tokens/staking/stake/#get-the-candidate-delegation-count){target=_blank}）。或者，您可以输入`{{networks.moonbase.staking.max_del_per_can}}`的上限，因为此估计仅用于确定调用的权重
-
 6. 从您的多地点衍生账户输入您现有的委托数量。这很可能是`0`，但由于此估计仅用于确定调用的权重，因此您可以在此处指定`{{networks.moonbase.staking.max_del_per_del}}`的上限。或者，如果您希望，可以使用Polkadot.js API根据[这些指令](/tokens/staking/stake/#get-your-number-of-existing-delegations){target=_blank}检索您现有委托的准确数量
-
 7. 最后，将编码调用数据复制到文本文件或其他易于访问的地方，因为您稍后会用到它。不要复制编码调用哈希，也不要提交交易
 
 !!! 注意事项
@@ -80,8 +59,7 @@ ts-node calculateMultilocationDerivative.ts \
 
 ![Moonbase Alpha Polkadot JS Apps Extrinsics Page](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-3.png)
 
-
-### 从Polkadot.js Apps传送XCM指令 {: #sending-the-xcm-instructions-from-polkadot-js-apps } 
+### 从Polkadot.js Apps传送XCM指令 {: #sending-the-xcm-instructions-from-polkadot-js-apps }
 
 如果您希望通过Polkadot API以代码形式执行此XCM指令，您可以跳至[以下部分教程](#sending-the-xcm-instructions-via-the-polkadot-api)。否则，在另外一个页面标签，请导向至[Moonbase relay Polkadot.Js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=_blank}。点击**Developer**标签后点击**Extrinsics**。
 
@@ -92,27 +70,24 @@ ts-node calculateMultilocationDerivative.ts \
 让我们来开始构建XCM消息，将我们的远程指令传送至Moonbase Alpha平行链，并最终质押我们所选数量的DEV Token至选定收集人。请跟随以下步骤进行操作：
 
 1. 不像先前步骤中选择账户可为不相关的账户，此处选择的账户必须与您的多地点衍生账户有关
-
 2. 选择**xcmPallet** pallet
-
 3. 选择**send**函数
-
 4. 选择目标版本为**V1**
-
 5. 要将Moonbase Alpha设定为目标地址，需将目的地设为如下：
 
-```
-{
-  "parents":0,
-  "interior":
+    ```
     {
-    "x1":
-      {
-      "Parachain": 1000
+      "parents":0,
+      "interior":
+        {
+        "x1":
+          {
+          "Parachain": 1000
+        }
+      }
     }
-  }
-}
-```
+    ```
+
 6. 将消息版本设置为**V2**
 
 ![Moonbase Relay Polkadot JS Apps Extrinsics Page](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-5.png)
@@ -122,9 +97,7 @@ ts-node calculateMultilocationDerivative.ts \
 ### 准备XCM消息的结构 {: #preparing-the-structure-of-the-xcm-message }
 
 1. 为**XcmVersionedXcm**选择**V2**
-
 2. 我们的XCM消息将会拥有3个不同XCM指令，因此，点击**Add item**三次
-
 3. 在首个XCM指令**WithdrawAsset**的下方，我们需要添加我们将取出的资产，因此请点击**WithdrawAsset**下方的**Add Item**一次
 
 ![Preparing the structure of the XCM message](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-6.png)
@@ -195,7 +168,7 @@ ts-node calculateMultilocationDerivative.ts \
 
 就这样！要验证您的委托是否成功，您可以访问[Subscan](https://moonbase.subscan.io/){target=_blank}查看您的质押余额。请注意，您的质押余额可能需要几分钟才能在Subscan上显示。此外，请注意，您将无法在Moonscan上看到此质押操作，因为我们直接通过平行链质押pallet（在Substrate端）而不是通过质押预编译（在EVM上）启动此委托操作。
 
-## 经由Polkadot API通过XCM远程质押 {: #remote-staking-via-xcm-with-the-polkadot-api } 
+## 经由Polkadot API通过XCM远程质押 {: #remote-staking-via-xcm-with-the-polkadot-api }
 
 在此，我们将会采取与上述相同的一系列步骤，只是这次我们将会使用Polkadot API而非[Polkadot.js Apps](#remote-staking-via-xcm-with-polkadot-js-apps)。
 
