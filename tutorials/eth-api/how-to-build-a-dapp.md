@@ -173,7 +173,7 @@ npx hardhat compile
     }
 ```
 
-??? code "MintableERC20.sol file"
+??? code "MintableERC20.sol文档"
 
     ```sol
     // SPDX-License-Identifier: UNLICENSED
@@ -339,7 +339,7 @@ npm run start
 
 通常，使用Ethers.js的前端将要求您创建一个提供者，连接到用户的钱包（如适用），并创建一个钱包对象。在较大的项目中，这个过程可能会变得难以处理，尤其是在MetaMask之外还存在大量钱包的情况下。
 
-??? code "Example of unwieldy MetaMask handling"
+??? code "MetaMask难以处理的示例"
 
     ```javascript
     // Detect if the browser has MetaMask installed
@@ -489,7 +489,7 @@ function App() {
 }
 ```
 
-??? code "App.js file"
+??? code "App.js文档"
 
     ```js
     import { useEthers } from '@usedapp/core';
@@ -597,7 +597,7 @@ function App() {
 }
 ```
 
-??? code "App.js file"
+??? code "App.js文档"
 
     ```javascript
     import { useEthers } from '@usedapp/core';
@@ -733,7 +733,7 @@ export default function MintingComponent({ contract }) {
 }
 ```
 
-??? code "MintingComponent.js file"
+??? code "MintingComponent.js文档"
 
     ```js
     import { useState } from 'react';
@@ -812,7 +812,7 @@ function App() {
 }
 ```
 
-??? code "App.js file"
+??? code "App.js文档"
 
     ```javascript
     import { useEthers } from '@usedapp/core';
@@ -966,7 +966,7 @@ export default function PurchaseOccurredEvents({ contract }) {
 }
 ```
 
-??? code "PurchaseOccurredEvents.js file"
+??? code "PurchaseOccurredEvents.js文档"
 
     ```js
     import { useLogs, useBlockNumber } from '@usedapp/core';
@@ -1039,7 +1039,7 @@ function App() {
 }
 ```
 
-??? code "App.js file"
+??? code "App.js文档"
 
     ```js
     import { useEthers } from '@usedapp/core';
