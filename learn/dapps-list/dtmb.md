@@ -11,7 +11,7 @@ description: 如何将您的Moonbeam或Moonriver项目收录在Downtown Moonbeam
 
 [Downtown Moonbeam](https://www.dtmb.xyz/){target=_blank}提供了在Moonbeam和Moonriver生态系统内构建的项目列表，包括每个DApp的基本信息，如网站信息、项目简介和联系方式。
 
-您可以根据网络筛选DApp，或通过网站首页查看不同分类的列表，包括最新更新的DApp、受欢迎的DeFi项目、受欢迎的NFT项目、受欢迎的游戏项目。在与Downtown Moonbeam集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/PureStake/moonbeam-project-directory){target=_blank}处于维护阶段。目前，该登记口已被弃用，并由[Dapps List](/learn/dapps-list/){target=_blank}部分下面的收录平台所取代。
+您可以根据网络筛选DApp，或通过网站首页查看不同分类的列表，包括最新更新的DApp、受欢迎的DeFi项目、受欢迎的NFT项目、受欢迎的游戏项目。在与Downtown Moonbeam集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/moonbeam-foundation/moonbeam-project-directory){target=_blank}处于维护阶段。目前，该登记口已被弃用，并由[Dapps List](/learn/dapps-list/){target=_blank}部分下面的收录平台所取代。
 
 ![Downtown Moonbeam Home Page](/images/learn/dapps-list/dtmb/dtmb-1.png)
 

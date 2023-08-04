@@ -40,24 +40,28 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 如果您之前未运行过标准的完整Moonbeam节点，您将需要设置一个目录来存储链数据：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     mkdir {{ networks.moonbeam.node_directory }}
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     mkdir {{ networks.moonriver.node_directory }}
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     mkdir {{ networks.moonbase.node_directory }}
     ```
 
 在开始操作之前，您将需要为指定或目前的用户设置必要的权限（将`DOCKER_USER`替换为要运行`docker`命令的实际用户）：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbeam.node_directory }}
 
@@ -66,7 +70,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonriver.node_directory }}
 
@@ -75,7 +80,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     # chown to a specific user
     chown DOCKER_USER {{ networks.moonbase.node_directory }}
 
@@ -98,7 +104,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 运行一个追踪节点的完整命令如下所示：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonbeam.tracing_tag }} \
@@ -117,7 +124,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonriver.tracing_tag }} \
@@ -136,7 +144,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.moonbase.tracing_tag }} \
@@ -155,7 +164,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     docker run --network="host" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.development.tracing_tag }} \
@@ -182,66 +192,75 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 ### 设置Wasm Overrides {: #setup-the-wasm-overrides }
 
-您将需要为Wasm runtime overrides创建一个目录，并从GitHub上的[Moonbeam Runtime Overrides repository](https://github.com/PureStake/moonbeam-runtime-overrides){target=_blank}中获取。
+您将需要为Wasm runtime overrides创建一个目录，并从GitHub上的[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=_blank}中获取。
 
 您可以将代码库复制到本地计算机上的任何位置。简单来说，您可以使用存储链上数据的目录。要设置Wasm override文件，您可以执行以下步骤：
 
-1. 复制[Moonbeam Runtime Overrides repository](https://github.com/PureStake/moonbeam-runtime-overrides){target=_blank}
+1. 复制[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=_blank}
 
+    ```bash
+    git clone https://github.com/moonbeam-foundation/moonbeam-runtime-overrides.git
     ```
-    git clone https://github.com/PureStake/moonbeam-runtime-overrides.git
-    ```
-    
+
 2. 将Wasm overrides移到链上数据目录：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         mv moonbeam-runtime-overrides/wasm {{ networks.moonbeam.node_directory }}
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         mv moonbeam-runtime-overrides/wasm {{ networks.moonriver.node_directory }}
         ```
-    
+
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         mv moonbeam-runtime-overrides/wasm {{ networks.moonbase.node_directory }}
         ```
-    
+
 3. 您可以为未运行网络删除override文件
 
     === "Moonbeam"
-        ```
+
+        ```bash
         rm {{ networks.moonbeam.node_directory }}/wasm/moonriver-runtime-* &&  rm {{ networks.moonbeam.node_directory }}/wasm/moonbase-runtime-*
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         rm {{ networks.moonriver.node_directory }}/wasm/moonbeam-runtime-* &&  rm {{ networks.moonriver.node_directory }}/wasm/moonbase-runtime-*
         ```
-    
+
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         rm {{ networks.moonbase.node_directory }}/wasm/moonbeam-runtime-* &&  rm {{ networks.moonbase.node_directory }}/wasm/moonriver-runtime-*
         ```
-    
+
 4. 为overrides设置用户权限：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         chmod +x {{ networks.moonbeam.node_directory }}/wasm/*
         chown moonbeam_service {{ networks.moonbeam.node_directory }}/wasm/*
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         chmod +x {{ networks.moonriver.node_directory }}/wasm/*
         chown moonriver_service {{ networks.moonriver.node_directory }}/wasm/*
         ```
-    
+
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         chmod +x {{ networks.moonbase.node_directory }}/wasm/*
         chown moonbase_service {{ networks.moonbase.node_directory }}/wasm/*
         ```
@@ -371,7 +390,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 您也可以运行以下命令查看启用的追踪节点的日志：
 
-```
+```bash
 journalctl -f -u moonbeam.service
 ```
 

@@ -79,7 +79,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 
 要同步一个节点，您可以使用[Alphanet中继链规格](https://drive.google.com/drive/folders/1JVyj518T8a77xKXOBgcBe77EEsjnSFFO){target=_blank}（注意：中继链基于Westend，同步需要约1天的时间）。
 
-您可参考[Moonbase Alpha的规格文件](https://raw.githubusercontent.com/PureStake/moonbeam/runtime-1103/specs/alphanet/parachain-embedded-specs-v8.json){target=_blank}，并将其调整为适应于您的链。
+您可参考[Moonbase Alpha的规格文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam/runtime-1103/specs/alphanet/parachain-embedded-specs-v8.json){target=_blank}，并将其调整为适应于您的链。
 
 您需要准备以下内容：
 

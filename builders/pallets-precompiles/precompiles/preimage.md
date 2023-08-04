@@ -31,7 +31,7 @@ Preimage Precompile位于以下地址：
 
 ## Preimage Solidity接口 {: #the-preimage-solidity-interface }
 
-[`Preimage.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的两个函数交互：
+[`Preimage.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的两个函数交互：
 
 - **notePreimage**(*bytes memory* encodedPropsal) - 给定编码的提案，为即将到来的提案在链上注册原像并返回原像哈希。这不需要提案在分配列队中，但需要一笔保证金，该保证金将在提案生效后退还。使用preimage pallet的[`notePreimage`](/builders/pallets-precompiles/pallets/preimage/#:~:text=notePreimage(encodedProposal)){target=_blank}函数
 - **unnotePreimage**(*bytes32* hash) - 给定要删除的原像哈希，从存储中清除未请求的原像。使用preimage pallet的[`unnotePreimage`](/builders/pallets-precompiles/pallets/preimage/#:~:text=notePreimage(hash)){target=_blank}函数
@@ -55,7 +55,7 @@ Preimage Precompile位于以下地址：
 
 1. 点击**File explorer**标签
 
-2. 将[`Preimage.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Preimage.sol`
+2. 将[`Preimage.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Preimage.sol`
 
 ![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-1.png)
 

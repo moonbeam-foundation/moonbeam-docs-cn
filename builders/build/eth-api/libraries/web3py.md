@@ -98,25 +98,11 @@ touch balances.py
 
 2. 定义`address_from`和`address_to`变量
 
-3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.fromWei`格式化结果
+3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.from_wei`格式化结果
 
 ```python
-# 1. Add the Web3 provider logic here:
-# {...}
-
-# 2. Create address variables
-address_from = "ADDRESS-FROM-HERE"
-address_to = "ADDRESS-TO-HERE"
-
-# 3. Fetch balance data
-balance_from = web3.fromWei(web3.eth.get_balance(address_from), "ether")
-balance_to = web3.fromWei(web3.eth.get_balance(address_to), "ether")
-
-print(f"The balance of { address_from } is: { balance_from } ETH")
-print(f"The balance of { address_to } is: { balance_to } ETH")
+--8<-- 'code/web3py-tx/balances.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/balances.py){target=_blank}。
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -144,51 +130,13 @@ touch transaction.py
 
 4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
 
-5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.toWei`函数将数字格式化成以Wei为单位的易读数字
+5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.to_wei`函数将数字格式化成以Wei为单位的易读数字
 
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
-# 1. Import the gas strategy
-from web3.gas_strategies.rpc import rpc_gas_price_strategy
-
-# 2. Add the Web3 provider logic here:
-# {...}
-
-# 3. Create address variables
-account_from = {
-    "private_key": "YOUR-PRIVATE-KEY-HERE",
-    "address": "PUBLIC-ADDRESS-OF-PK-HERE",
-}
-address_to = "ADDRESS-TO-HERE"
-
-print(
-    f'Attempting to send transaction from { account_from["address"] } to { address_to }'
-)
-
-# 4. Set the gas price strategy
-web3.eth.set_gas_price_strategy(rpc_gas_price_strategy)
-
-# 5. Sign tx with PK
-tx_create = web3.eth.account.sign_transaction(
-    {
-        "nonce": web3.eth.get_transaction_count(account_from["address"]),
-        "gasPrice": web3.eth.generate_gas_price(),
-        "gas": 21000,
-        "to": address_to,
-        "value": web3.toWei("1", "ether"),
-    },
-    account_from["private_key"],
-)
-
-# 6. Send tx and wait for receipt
-tx_hash = web3.eth.send_raw_transaction(tx_create.rawTransaction)
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-
-print(f"Transaction successful with hash: { tx_receipt.transactionHash.hex() }")
+--8<-- 'code/web3py-tx/transaction.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-tx/transaction.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -246,49 +194,15 @@ touch deploy.py
 
 4. 使用`web3.eth.contract`函数并传入合约的ABI和字节码创建合约实例
 
-5. 使用合约实例并传入需要增量的数值创建构造交易。在本示例中，您可以将数值设置为`5`。随后，您将使用`buildTransaction`函数传入交易信息，包括发送者的`from`和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
+5. 使用合约实例并传入需要增量的数值创建构造交易。在本示例中，您可以将数值设置为`5`。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
 
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入构造交易和发送者的`private_key`
 
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
-# 1. Import the ABI and bytecode
-from compile import abi, bytecode
-
-# 2. Add the Web3 provider logic here:
-# {...}
-
-# 3. Create address variable
-account_from = {
-    'private_key': 'YOUR-PRIVATE-KEY-HERE',
-    'address': 'PUBLIC-ADDRESS-OF-PK-HERE',
-}
-
-print(f'Attempting to deploy from account: { account_from["address"] }')
-
-# 4. Create contract instance
-Incrementer = web3.eth.contract(abi=abi, bytecode=bytecode)
-
-# 5. Build constructor tx
-construct_txn = Incrementer.constructor(5).buildTransaction(
-    {
-        'from': account_from['address'],
-        'nonce': web3.eth.get_transaction_count(account_from['address']),
-    }
-)
-
-# 6. Sign tx with PK
-tx_create = web3.eth.account.sign_transaction(construct_txn, account_from['private_key'])
-
-# 7. Send tx and wait for receipt
-tx_hash = web3.eth.send_raw_transaction(tx_create.rawTransaction)
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-
-print(f'Contract deployed at address: { tx_receipt.contractAddress }')
+--8<-- 'code/web3py-contract/deploy.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/deploy.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -323,27 +237,8 @@ touch get.py
 5. 使用合约实例，您随后可以调用`number`函数
 
 ```python
-# 1. Import the ABI
-from compile import abi
-
-# 2. Add the Web3 provider logic here:
-# {...}
-
-# 3. Create address variable
-contract_address = 'CONTRACT-ADDRESS-HERE'
-
-print(f'Making a call to contract at address: { contract_address }')
-
-# 4. Create contract instance
-Incrementer = web3.eth.contract(address=contract_address, abi=abi)
-
-# 5. Call Contract
-number = Incrementer.functions.number().call()
-
-print(f'The current number stored is: { number } ')
+--8<-- 'code/web3py-contract/get.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/get.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -371,53 +266,15 @@ touch increment.py reset.py
 
 4. 使用`web3.eth.Contract`函数并传入已部署合约的ABI和地址以创建合约实例
 
-5. 使用合约实例和传入要增量的数值创建构造交易。随后，您将使用`buildTransaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
+5. 使用合约实例和传入要增量的数值创建构造交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
 
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入增量交易和发送者的`private_key`
 
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
-# 1. Import the ABI
-from compile import abi
-
-# 2. Add the Web3 provider logic here:
-# {...}
-
-# 3. Create variables
-account_from = {
-    'private_key': 'YOUR-PRIVATE-KEY-HERE',
-    'address': 'PUBLIC-ADDRESS-OF-PK-HERE',
-}
-contract_address = 'CONTRACT-ADDRESS-HERE'
-value = 3
-
-print(
-    f'Calling the increment by { value } function in contract at address: { contract_address }'
-)
-
-# 4. Create contract instance
-Incrementer = web3.eth.contract(address=contract_address, abi=abi)
-
-# 5. Build increment tx
-increment_tx = Incrementer.functions.increment(value).buildTransaction(
-    {
-        'from': account_from['address'],
-        'nonce': web3.eth.get_transaction_count(account_from['address']),
-    }
-)
-
-# 6. Sign tx with PK
-tx_create = web3.eth.account.sign_transaction(increment_tx, account_from['private_key'])
-
-# 7. Send tx and wait for receipt
-tx_hash = web3.eth.send_raw_transaction(tx_create.rawTransaction)
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-
-print(f'Tx successful with hash: { tx_receipt.transactionHash.hex() }')
+--8<-- 'code/web3py-contract/increment.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/increment.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -439,50 +296,15 @@ python3 increment.py
 
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址以创建合约实例
 
-5. 使用合约实例构建重置交易。随后，您将使用`buildTransaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
+5. 使用合约实例构建重置交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
 
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入重置交易和发送者的`private_key`
 
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
-# 1. Import the ABI
-from compile import abi
-
-# 2. Add the Web3 provider logic here:
-# {...}
-
-# 3. Create variables
-account_from = {
-    'private_key': 'YOUR-PRIVATE-KEY-HERE',
-    'address': 'PUBLIC-ADDRESS-OF-PK-HERE',
-}
-contract_address = 'CONTRACT-ADDRESS-HERE'
-
-print(f'Calling the reset function in contract at address: { contract_address }')
-
-# 4. Create contract instance
-Incrementer = web3.eth.contract(address=contract_address, abi=abi)
-
-# 5. Build reset tx
-reset_tx = Incrementer.functions.reset().buildTransaction(
-    {
-        'from': account_from['address'],
-        'nonce': web3.eth.get_transaction_count(account_from['address']),
-    }
-)
-
-# 6. Sign tx with PK
-tx_create = web3.eth.account.sign_transaction(reset_tx, account_from['private_key'])
-
-# 7. Send tx and wait for receipt
-tx_hash = web3.eth.send_raw_transaction(tx_create.rawTransaction)
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-
-print(f'Tx successful with hash: { tx_receipt.transactionHash.hex() }')
+--8<-- 'code/web3py-contract/reset.py'
 ```
-
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/web3py-contract/reset.py){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 

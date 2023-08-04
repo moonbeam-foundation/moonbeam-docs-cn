@@ -76,10 +76,10 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
 
 要开始在测试网上开发，您将需要向您的账户注入一些DEV Token以发送交易。请注意，DEV Token并无真实价值，仅用于测试目的。
 
-|                                         测试网                                          |                                                                               从哪里获取Token                                                                                |
-|:---------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|        [Moonbase Alpha](/builders/get-started/networks/moonbase){target=_blank}         | 从[Moonbase Alpha Faucet](https://apps.moonbeam.network/moonbase-alpha/faucet/){target=_blank}网站。 <br>水龙头会每24个小时分配{{ networks.moonbase.website_faucet_amount }} |
-| [Moonbeam Development Node](/builders/get-started/networks/moonbeam-dev){target=_blank} |                  您开发节点附带的 [10个预注资账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}中的任何一个                  |
+|                                         测试网                                          |                                                                     从哪里获取Token                                                                      |
+|:---------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|        [Moonbase Alpha](/builders/get-started/networks/moonbase){target=_blank}         | 从[Moonbase Alpha Faucet](https://faucet.moonbeam.network/){target=_blank}网站。 <br>水龙头会每24个小时分配{{ networks.moonbase.website_faucet_amount }} |
+| [Moonbeam Development Node](/builders/get-started/networks/moonbeam-dev){target=_blank} |        您开发节点附带的 [10个预注资账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}中的任何一个        |
 
 ## 开发工具 {: #development-tools }
 
@@ -96,6 +96,7 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
     |        [Remix](/builders/build/eth-api/dev-env/remix){target=_blank}         | Dev Environment |
     |      [Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}       | Dev Environment |
     |      [Truffle](/builders/build/eth-api/dev-env/truffle){target=_blank}       | Dev Environment |
+    |     [thirdweb](/builders/build/eth-api/dev-env/thirdweb){target=_blank}      | Dev Environment |
     | [Waffle & Mars](/builders/build/eth-api/dev-env/waffle-mars){target=_blank}  | Dev Environment |
     | [Scaffold-Eth](/builders/build/eth-api/dev-env/scaffold-eth){target=_blank}  | Dev Environment |
     
@@ -111,9 +112,9 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
     |:------------------------------------------------------------------:|:---------------:|
     | [Web3.py](/builders/build/eth-api/libraries/web3py){target=_blank} |     Library     |
     | [Brownie](/builders/build/eth-api/dev-env/brownie){target=_blank}  | Dev Environment |
+    |   [thirdweb](https://portal.thirdweb.com/python){target=_blank}    | Dev Environment |
 
 === "Substrate"
     |                                             工具                                              |  类型   |
     |:---------------------------------------------------------------------------------------------:|:-------:|
     | [Py Substrate Interface](/builders/build/substrate-api/py-substrate-interface){target=_blank} | Library |
-

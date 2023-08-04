@@ -12,7 +12,7 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 本教程将向您展示通过以太坊上常用的智能合约开发工具[Truffle](https://www.trufflesuite.com/){target=_blank}将基于Solidity智能合约部署至Moonbeam节点的操作过程。鉴于Moonbeam兼容以太坊的特性，Truffle可与Moonbeam节点一起直接使用。
 
-为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/PureStake/moonbeam-truffle-box){target=_blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/purestake/moonbeam-truffle-plugin){target=_blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+为简化使用Truffle的步骤，您可以使用[Moonbeam Truffle box](https://github.com/moonbeam-foundation/moonbeam-truffle-box){target=_blank}。这将提供一个模板设置以加快在Moonbeam上的部署流程。Moonbeam Truffle box自带[Moonbeam Truffle plugin](https://github.com/moonbeam-foundation/moonbeam-truffle-plugin){target=_blank}，使您可以快速开始使用[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
 本教程将向您展示如何在本地运行的开发节点上使用Moonbeam Truffle box和Moonbeam Truffle plugin部署合约并之其交互。这教程也同样适用于Moonbeam、Moonriver和Moonbase Alpha测试网。
 
@@ -27,7 +27,7 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 
 在以下示例中，您无需全网安装Truffle，因其已作为依赖项包含在Moonbeam Truffle box中。但是，如果您希望使用`truffle`命令直接替代运行中的`npx truffle`或`./node_modules/.bin/truffle`，您可以通过运行以下命令进行全网安装：
 
-```
+```bash
 npm install -g truffle
 ```
 
@@ -37,23 +37,23 @@ npm install -g truffle
 
 1. 如果您已全网安装Truffle，您可以执行：
 
-    ```
+    ```bash
     mkdir moonbeam-truffle-box && cd moonbeam-truffle-box
-    truffle unbox PureStake/moonbeam-truffle-box
+    truffle unbox moonbeam-foundation/moonbeam-truffle-box
     ```
-    
+
     ![Unbox Moonbeam Truffle box](/images/builders/build/eth-api/dev-env/truffle/truffle-1.png)
 
     否则，您可以直接复制以下代码库：
 
-    ```
-    git clone https://github.com/PureStake/moonbeam-truffle-box
+    ```bash
+    git clone https://github.com/moonbeam-foundation/moonbeam-truffle-box
     cd moonbeam-truffle-box
     ```
-    
+
 2. 使用本地系统中的文件，您可以通过运行以下命令安装所有依赖项：
 
-    ```
+    ```bash
     npm install
     ```
 
@@ -75,25 +75,25 @@ npm install -g truffle
 
 1. 下载对应的Docker镜像：
 
-    ```
+    ```bash
     truffle run moonbeam install
     ```
-    
+
     ![Docker image download](/images/builders/build/eth-api/dev-env/truffle/truffle-2.png)
 
 2. 下载后，您可以运行以下命令开始生成本地节点：
 
-    ```
+    ```bash
     truffle run moonbeam start
     ```
-    
+
     您将看到节点启动的提示消息，紧随其后的是两个有效终端。
 
     ![Moonbeam local node started](/images/builders/build/eth-api/dev-env/truffle/truffle-3.png)
 
 当您使用完Moonbeam开发节点后，您可以运行以下命令行停止运行Moonbeam开发节点并将Docker镜像移除：
 
-```
+```bash
 truffle run moonbeam stop && \
 truffle run moonbeam remove
 ```
@@ -102,7 +102,7 @@ truffle run moonbeam remove
 
 您可以选择暂停和取消暂停您的Moonbeam开发节点：
 
-```
+```bash
 truffle run moonbeam pause
 truffle run moonbeam unpause
 ```
@@ -166,7 +166,8 @@ module.exports = {
 您也需要为网络上拥有资金的账户更新私钥：
 
 === "Moonbeam"
-    ```
+
+    ```js
     moonbeam: {
       provider: () => {
         ...
@@ -180,7 +181,8 @@ module.exports = {
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     moonriver: {
       provider: () => {
         ...
@@ -194,7 +196,8 @@ module.exports = {
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     moonbase: {
       provider: () => {
         ...
@@ -251,10 +254,10 @@ module.exports = function (deployer) {
 
 1. 编译合约：
 
-    ```
+    ```bash
     truffle compile
     ```
-    
+
     如果成功，您将看到如下所示的输出：
 
     ![Truffle compile success message](/images/builders/build/eth-api/dev-env/truffle/truffle-6.png)
@@ -262,25 +265,29 @@ module.exports = function (deployer) {
 2. 部署已编译的合约：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         truffle migrate --network moonbeam
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         truffle migrate --network moonriver
         ```
-    
+
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         truffle migrate --network moonbase
         ```
-    
+
     === "Moonbeam开发节点"
-        ```
+
+        ```bash
         truffle migrate --network dev
         ```
-    
+
     如果成功，您将看到部署成功的信息，包括已部署合约的地址：
 
     ![Successful contract deployment actions](/images/builders/build/eth-api/dev-env/truffle/truffle-7.png)
@@ -293,7 +300,7 @@ module.exports = function (deployer) {
 
 在Truffle项目中，您可以通过运行以下命令安装Ganache CLI：
 
-```
+```bash
 npm install ganache
 ```
 
@@ -335,7 +342,7 @@ npm install ganache
 
 要验证您是否已经分叉好网络，您可以查询最新区块号：
 
-```
+```bash
 curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
 ```
 
@@ -346,12 +353,14 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 要与已部署合约交互，您可以使用Ethers.js或Web3.js在`scripts`目录中创建新脚本。首先，您将需要安装你选择的JavaScript库：
 
 === "Ethers.js"
-    ```
+
+    ```bash
     npm install ethers
     ```
 
 === "Web3.js"
-    ```
+
+    ```bash
     npm install web3
     ```
 
@@ -360,13 +369,13 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 === "Ethers.js"
 
     ```js
-    const ethers = require("ethers");
+    const ethers = require('ethers');
     
     async function main() {
-      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545/");
+      const provider = new ethers.JsonRpcProvider('http://127.0.0.1:8545/');
       
       const contract = new ethers.Contract(
-          'INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI', provider
+          'INSERT_CONTRACT_ADDRESS', 'INSERT_CONTRACT_ABI', provider
       );
     }
     
@@ -379,12 +388,12 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 === "Web3.js"
 
     ```js
-    const Web3 = require("web3");
+    const Web3 = require('web3');
     
     async function main() {
-      const web3 = new Web3("http://127.0.0.1:8545/");
+      const web3 = new Web3('http://127.0.0.1:8545/');
       
-      const contract = new web3.eth.Contract('INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI');
+      const contract = new web3.eth.Contract('INSERT_CONTRACT_ADDRESS', 'INSERT_CONTRACT_ABI');
     }
     
     main().catch((error) => {
@@ -395,8 +404,8 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 
 要运行脚本，您可以使用以下命令：
 
-```
-truffle exec INSERT-PATH-TO-FILE
+```bash
+truffle exec INSERT_PATH_TO_FILE
 ```
 
 --8<-- 'text/disclaimers/third-party-content.md'

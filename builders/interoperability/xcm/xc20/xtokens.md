@@ -1,27 +1,19 @@
 ---
 title: 将XC-20发送至其他链
-description: 学习如何使用X-Tokens pallet将XC-20发送至其他链。另外，X-Tokens预编译允许您通过以太坊API访问核心功能。
+description: 学习如何使用X-Tokens Pallet将XC-20发送至其他链。另外，X-Tokens预编译允许您通过以太坊API访问核心功能。
 ---
 
 # 使用X-Tokens Pallet发送XC-20s
 
-![x-tokens Precompile Contracts Banner](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-banner.png)
+![X-Tokens Precompile Contracts Banner](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-banner.png)
 
 ## 概览 {: #introduction }
 
-Building an XCM message for fungible asset transfers is not an easy task. Consequently, there are wrapper functions and pallets that developers can leverage to use XCM features on Polkadot and Kusama.
-
 为同质化资产转移构建XCM信息通道并非一件易事。因此，开发者可以通过利用wrapper函数/pallet在Polkadot/Kusama上使用XCM功能。
 
-One example of such wrappers is the [X-Tokens](https://github.com/open-web3-stack/open-runtime-module-library/tree/master/xtokens){target=_blank} Pallet, which provides different methods to transfer fungible assets via XCM.
+此类包装器的一个示例是[X-Tokens](https://github.com/open-web3-stack/open-runtime-module-library/tree/master/xtokens){target=_blank} Pallet，用于提供通过XCM转移同质化资产的不同方法。
 
-此类包装器的一个示例是[x-tokens](https://github.com/open-web3-stack/open-runtime-module-library/tree/master/xtokens){target=_blank} pallet，用于提供通过XCM转移同质化资产的不同方法。
-
-This guide will show you how to leverage the X-Tokens Pallet to send [XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank} from a Moonbeam-based network to other chains in the ecosystem (relay chain/parachains). Moreover, you'll also learn how to use the X-Tokens Precompile to perform the same actions via the Ethereum API.
-
-本教程将向您展示如何利用x-tokens pallet在生态系统（中继链/平行链）中从基于Moonbeam的网络发送XC-20至其他链。此外，您还将学习到如何使用x-tokens预编译通过以太坊API执行同样的操作。
-
-**Developers must understand that sending incorrect XCM messages can result in the loss of funds.** Consequently, it is essential to test XCM features on a TestNet before moving to a production environment.
+本教程将向您展示如何利用X-Tokens Pallet在生态系统（中继链/平行链）中从基于Moonbeam的网络发送[XC-20](/builders/interoperability/xcm/xc20/overview/){target=_blank}至其他链。此外，您还将学习到如何使用X-Tokens预编译通过以太坊API执行同样的操作。
 
 **开发者须知若发送不正确的XCM信息可能会导致资金丢失。**因此，XCM功能需先在测试网上进行测试后才可移至生产环境。
 
@@ -33,11 +25,11 @@ For this guide specifically, you'll need to have an understanding of the followi
 
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
-## X-tokens Pallet接口 {: #x-tokens-pallet-interface }
+## X-Tokens Pallet接口 {: #x-tokens-pallet-interface }
 
 ### Extrinsics {: #extrinsics }
 
-X-tokens pallet提供以下extrinsics（函数）：
+X-Tokens Pallet提供以下extrinsics（函数）：
 
  - **transfer**(currencyId, amount, dest, destWeightLimit) — 转移一个币种，根据原生Token（自身储备）或是资产ID定义
  - **transferMultiasset**(asset, dest, destWeightLimit) — 转移一种可替代资产，根据其multilocation定义
@@ -55,44 +47,35 @@ X-tokens pallet提供以下extrinsics（函数）：
     - `LocalAssetReserve` - refers to the asset ID of a [Mintable XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank} (not to be confused with the XC-20 address). It is recommended to use [Local XC-20s](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank} instead via the `Erc20` currency type
     - `Erc20` - refers to the contract address of a [Local XC-20 (ERC-20)](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
 
- - **currencyId/currencies** — 将通过XCM转移的币种ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例子，`SelfReserve`代表原生Token，`ForeignAsset`代表其XC-20资产ID（而不是其XC-20地址）
-
  - **amount** — 将通过XCM转移的Token数量
-
-  - **dest** — a multilocation to define the destination address for the tokens being sent via XCM. It supports different address formats, such as 20 or 32-byte addresses (Ethereum or Substrate)
  - **dest** — 一个multilocation，用于定义将通过XCM转移Token的目标地址。其支持不同地址格式，如20或32字节的地址（以太坊或是Substrate格式）
-
-
  - **destWeightLimit** — an enum that represents the maximum amount of execution time you want to provide in the destination chain to execute the XCM message being sent. The enum contains the following options:
 
-    - `Unlimited` - allows for the entire amount used for gas to be used to pay for weight
-    - `Limited` - limits the amount used for gas to a particular value
+    - `Unlimited` - 选项允许将所有用于gas的资产用于支付权重（weight
+    - `Limited` - 选项将gas的使用量限制为特定值
 
-    If not enough weight is provided, the execution of the XCM will fail, and funds might get locked in either the Sovereign account or a special pallet. **It is important to correctly set the destination weight to avoid failed XCM executions**
- - **destWeightLimit** — 一个枚举类型（enum），表示您提供给目标链希望其执行XCM信息的最大执行时间。`Unlimited`选项允许将所有用于gas的资产用于支付权重（weight）。`Limited`选项将gas的使用量限制为特定值。如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
-
- - **asset/assets** — a multilocation to define the asset/assets being sent via XCM. Each parachain has a different way to reference assets. For example, Moonbeam-based networks reference their native tokens with the Balances Pallet index
+    如果您提供的信息不足，XCM将会执行失败，且资金将会被锁定在主权账户或是特定的pallet中。**设置目标权重非常重要，这将避免XCM失败**
+    
  - **asset/assets** — 一个用于定义将通过XCM转移资产的multilocation。每条平行链将会有不同定义资产的方式。举例而言，基于Moonbeam的网络将会经由其原生Token的pallet余额索引定义
-
  - **fee** — 一个用于定义支付XCM在目标链上执行的multilocation
  - **feeItem** — 一个用于定义多样资产发送地点的索引，将用于支付XCM在目标链上的执行。举例而言，如果仅有一种资产被发送，`feeItem`将会是`0`
 
 ### 存储方法 {: #storage-methods }
 
-X-tokens pallet包括以下只读存储方式：
+X-Tokens Pallet包括以下只读存储方式：
 
-- **palletVersion**() - 提供正在使用的x-tokens pallet的版本
+- **palletVersion**() - 提供正在使用的X-Tokens Pallet的版本
 
 ### Pallet常量 {: #constants }
 
-X-tokens pallet包括以下用于获取pallet常量的只读函数：
+X-Tokens Pallet包括以下用于获取pallet常量的只读函数：
 
 - **baseXcmWeight**() - 返回执行所需的基本XCM重量
 - **selfLocation**() - 返回本地的multilocation
 
-## 使用x-tokens Pallet构建XCM信息 {: #build-xcm-xtokens-pallet}
+## 使用X-Tokens Pallet构建XCM信息 {: #build-xcm-xtokens-pallet}
 
-此教程将会包含使用x-tokens pallet构建XCM信息的过程，更详细来说为使用`transfer`和`transferMultiasset`函数。然而，这两种情况仍然可以外推至其他函数，特别是当您熟悉了多重地点的使用之后。
+此教程将会包含使用X-Tokens Pallet构建XCM信息的过程，更详细来说为使用`transfer`和`transferMultiasset`函数。然而，这两种情况仍然可以外推至其他函数，特别是当您熟悉了多重地点的使用之后。
 
 !!! 注意事项
     每条平行链皆能够通过pallet允许/禁止特定函数。因此，开发者需要确认使用的函数是被平行链允许的。相反来说，如果使用了被禁止的函数，交易将会如同`system.CallFiltered`显示一般失败。
@@ -124,14 +107,23 @@ You can adapt this guide for another [external XC-20 or a local XC-20](/builders
 
 ### X-Tokens转移函数 {: #xtokens-transfer-function}
 
-In this example, you'll build an XCM message to transfer xcUNIT from Moonbase Alpha back to its relay chain through the `transfer` function of the X-Tokens Pallet. To do this, you can use the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}.
+在本示例中，您将会构建一个XCM信息，通过X-Tokens Pallet的`transfer`函数将`xcUNIT`从Moonbase Alpha转移回其[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}上。
 
 Since you'll be interacting with the `transfer` function of the X-Tokens Pallet, you can take the following steps to gather the arguments for the `currencyId`, `amount`, `dest`, and `destWeightLimit`:
 
 1. Define the `currencyId`. For external XC-20s, you'll use the `ForeignAsset` currency type and the asset ID of the asset, which in this case is `42259045809535163221576417993425387648`. For a local XC-20, you'll need the address of the token. In JavaScript, this translates to:
 
+    | 参数 |     数值      |
+    |:---------:|:--------------:|
+    |  Version  |       V1       |
+    |  Parents  |       1        |
+    | Interior  |       X1       |
+    |    X1     |  AccountId32   |
+    |  Network  |      Any       |
+    |    Id     | Target Account |
 
-In this example, you'll build an XCM message to transfer xcUNIT from Moonbase Alpha back to its relay chain through the `transfer` function of the X-Tokens Pallet. To do this, you can use the [Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}.
+8. 将目标权重设置为`Limited`，并将其值设置为`1000000000`。请注意，在Moonbase Alpha上，每个XCM操作需要大概`100000000`权重单位。一个`transfer`包含4个XCM操作，因此目标权重应当设置为`400000000`左右
+9. 点击**Submit Transaction**按钮并签署交易
 
 Since you'll be interacting with the `transfer` function of the X-Tokens Pallet, you can take the following steps to gather the arguments for the `currencyId`, `amount`, `dest`, and `destWeightLimit`:
 
@@ -310,7 +302,7 @@ Now that you have the values for each of the parameters, you can write the scrip
 Once the transaction is processed, the account on the relay chain should have received the transferred amount minus a small fee that is deducted to execute the XCM on the destination chain.
 ## X-Tokens预编译 {: #xtokens-precompile}
 
-X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太坊API访问XCM Token转移功能。如同其他[预编译合约](/builders/build/canonical-contracts/precompiles/){target=_blank}，x-tokens预编译位于以下地址：
+X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太坊API访问XCM Token转移功能。如同其他[预编译合约](/builders/build/canonical-contracts/precompiles/){target=_blank}，X-Tokens预编译位于以下地址：
 
 === "Moonbeam"
      ```
@@ -329,9 +321,9 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 --8<-- 'text/precompiles/security.md'
 
-### X-Tokens Solidity接口  {: #xtokens-solidity-interface } 
+### X-Tokens Solidity接口  {: #xtokens-solidity-interface }
 
-[Xtokens.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与x-tokens pallet交互的接口。
+[Xtokens.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与X-Tokens Pallet交互的接口。
 
 此接口包含以下函数：
 
@@ -353,11 +345,11 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 构建预编译Multilocation {: #building-the-precompile-multilocation }
 
-在x-tokens预编译接口中，`Multilocation`架构根据下列函数定义：
+在X-Tokens预编译接口中，`Multilocation`架构根据下列函数定义：
 
 --8<-- 'text/xcm/xcm-precompile-multilocation.md'
 
-以下代码片段包含`Multilocation`架构的部分示例，因为其将会在x-tokens预编译函数中使用：
+以下代码片段包含`Multilocation`架构的部分示例，因为其将会在X-Tokens预编译函数中使用：
 
 ```js
 // Multilocation targeting the relay chain or its asset from a parachain
@@ -389,7 +381,7 @@ X-tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 使用库与X-Token交互 {: #using-libraries-to-interact-with-xtokens}
 
-当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[x-tokens 传输函数](#xtokens-transfer-function)、[x-tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[x-tokens的合约ABI](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
+当使用库与Ethereum API交互时，Multilocation结构可以像任何其他结构一样格式化。以下代码片段包括前面的[X-Tokens 传输函数](#xtokens-transfer-function)、[X-Tokens 多资产传输函数](#xtokens-transfer-multiasset-function)和示例Multilocation结构示例。您可以在Github上找到[X-Tokens的合约ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
 
 === "Ethers.js"
 

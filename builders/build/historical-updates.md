@@ -41,7 +41,7 @@ Moonbeam上的交易费用模型有20%的费用进入链上财政库，80%作为
 |   Moonriver    |    RT49    | RT800 |      0 - 684728      |
 | Moonbase Alpha |    RT40    | RT800 |      0 - 915684      |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/732){target=_blank}.
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/732){target=_blank}.
 
 ***
 
@@ -73,7 +73,7 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 |   Moonriver    |   RT49   |  RT1300  |  0 - 1541735   |
 | Moonbase Alpha |   RT40   |  RT1300  |  0 - 1761128   |
 
-关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/PureStake/moonbeam/pull/1291){target=_blank}。
+关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1291){target=_blank}。
 
 ***
 
@@ -98,7 +98,7 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 |   Moonriver    |   RT49   |  RT1401  |  0 - 1705939   |
 | Moonbase Alpha |   RT40   |  RT1400  |  0 - 1962557   |
 
-关于更多信息，您可以在[GitHub上查看相关的Frontier PR](https://github.com/PureStake/frontier/pull/46/files){target=_blank}.
+关于更多信息，您可以在[GitHub上查看相关的Frontier PR](https://github.com/moonbeam-foundation/frontier/pull/46/files){target=_blank}.
 
 ***
 
@@ -114,7 +114,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |   RT49   |  RT1605  |  0 - 2077598   |
 | Moonbase Alpha |   RT40   |  RT1603  |  0 - 2285346   |
 
-关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/PureStake/moonbeam/pull/1451){target=_blank}。
+关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1451){target=_blank}。
 
 ***
 
@@ -130,7 +130,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |  RT1001  |  RT1801  | 1052242 - 2572555 |
 | Moonbase Alpha |  RT1001  |  RT1800  | 1285916 - 2748785 |
 
-关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/PureStake/moonbeam/pull/1719){target=_blank}。
+关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1719){target=_blank}。
 
 ***
 
@@ -160,7 +160,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |   RT1201   | RT1401 |  1471037 - 1705939   |
 | Moonbase Alpha |   RT1200   | RT1400 |  1648994 - 1962557   |
 
-关于更多信息，您可以查看[相关Frontier PR](https://github.com/PureStake/frontier/pull/45){target=_blank}.
+关于更多信息，您可以查看[相关Frontier PR](https://github.com/moonbeam-foundation/frontier/pull/45){target=_blank}.
 
 ***
 
@@ -176,7 +176,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |  RT1201  |  RT1504  | 1471037 - 1910639 |
 | Moonbase Alpha |  RT1200  |  RT1504  | 1648994 - 2221772 |
 
-关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/PureStake/moonbeam/pull/1528){target=_blank}。
+关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1528){target=_blank}。
 
 ***
 
@@ -192,7 +192,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |  RT1201  |  RT1701  | 1471037 - 2281722 |
 | Moonbase Alpha |  RT1200  |  RT1700  | 1648994 - 2529735 |
 
-关于更多信息，您可以在GitHub上查看[相关Frontier PR](https://github.com/PureStake/frontier/pull/86){target=_blank}和[Moonbeam PR](https://github.com/PureStake/moonbeam/pull/1678/files){target=_blank}。
+关于更多信息，您可以在GitHub上查看[相关Frontier PR](https://github.com/moonbeam-foundation/frontier/pull/86){target=_blank}和[Moonbeam PR](https://github.com/moonbeam-foundation/moonbeam/pull/1678/files){target=_blank}。
 
 ***
 
@@ -229,7 +229,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |    RT800    |  684728  |
 | Moonbase Alpha |    RT800    |  915684  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/679){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/679){target=_blank}。
 
 ***
 
@@ -245,7 +245,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |   RT1502    | 1814458  |
 | Moonbase Alpha |   RT1502    | 2112058  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1407){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1407){target=_blank}。
 
 ***
 
@@ -261,7 +261,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |   RT1605    | 2077599  |
 | Moonbase Alpha |   RT1603    | 2285347  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1525){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1525){target=_blank}。
 
 ***
 
@@ -279,7 +279,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |   RT1300    | 1541735  |
 | Moonbase Alpha |   RT1300    | 1761128  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1744){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1744){target=_blank}。
 
 ***
 
@@ -300,7 +300,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT2000    | 3202604  |
 | Moonbase Alpha |   RT2000    | 2673234  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1962){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1962){target=_blank}。
 
 ***
 
@@ -322,7 +322,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |    RT53     |   9696   |
 | Moonbase Alpha |    RT52     |  238827  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/505){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/505){target=_blank}。
 
 ***
 
@@ -337,7 +337,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |    RT53     |   9696   |
 | Moonbase Alpha |    RT52     |  238827  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/502){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/502){target=_blank}。
 
 ***
 
@@ -352,7 +352,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |    RT200    |  259002  |
 | Moonbase Alpha |    RT200    |  457614  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/610){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/610){target=_blank}。
 
 ***
 
@@ -368,7 +368,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1001    | 1052242  |
 | Moonbase Alpha |   RT1001    | 1285916  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/970){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/970){target=_blank}。
 
 ***
 
@@ -389,7 +389,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1001    | 1052242  |
 | Moonbase Alpha |   RT1001    | 1285916  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/810){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/810){target=_blank}。
 
 ***
 
@@ -405,7 +405,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1101    | 1188000  |
 | Moonbase Alpha |   RT1100    | 1426319  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1096){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1096){target=_blank}。
 
 ***
 
@@ -425,7 +425,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1201    | 1471037  |
 | Moonbase Alpha |   RT1200    | 1648994  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1117){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1117){target=_blank}。
 
 ***
 
@@ -441,7 +441,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1300    | 1541735  |
 | Moonbase Alpha |   RT1300    | 1761128  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1291){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1291){target=_blank}。
 
 ***
 
@@ -457,7 +457,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1502    | 1814458  |
 | Moonbase Alpha |   RT1502    | 2112058  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1408){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1408){target=_blank}。
 
 ***
 
@@ -473,7 +473,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1701    | 2281723  |
 | Moonbase Alpha |   RT1700    | 2529736  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1604){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1604){target=_blank}。
 
 ***
 
@@ -492,15 +492,15 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1901    | 2911863  |
 | Moonbase Alpha |   RT1900    | 3069635  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1878){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1878){target=_blank}。
 
 ***
 
-### XCM相关Pallet {: #xcm-related-pallets } 
+### XCM相关Pallet {: #xcm-related-pallets }
 
-#### 更新交易信息存储项 {: #update-transaction-info } 
+#### 更新交易信息存储项 {: #update-transaction-info }
 
-此处于XCM-transactor pallet的`TransactInfo`存储项进行迁移，更改了以下内容：
+此处于XCM Transactor Pallet的`TransactInfo`存储项进行迁移，更改了以下内容：
 
 - 添加`max_weight`以防止交易者在目标链中拖延队列
 - 删除`fee_per_byte`、`metadata_size`和`base_weight`，因为XCM交易不需要这些内容
@@ -514,7 +514,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1201    | 1471037  |
 | Moonbase Alpha |   RT1200    | 1648994  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1114){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1114){target=_blank}。
 
 ***
 
@@ -534,7 +534,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1201    | 1471037  |
 | Moonbase Alpha |   RT1200    | 1648994  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1159){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1159){target=_blank}。
 
 ***
 
@@ -550,7 +550,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1300    | 1541735  |
 | Moonbase Alpha |   RT1300    | 1761128  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/1118){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1118){target=_blank}。
 
 ***
 
@@ -568,4 +568,4 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT1502    | 1814458  |
 | Moonbase Alpha |   RT1502    | 2112058  |
 
-关于更多信息，您可以查看Github上的[相关Nimbus PR](https://github.com/PureStake/nimbus/pull/45/){target=_blank}和[Moonbeam PR](https://github.com/PureStake/moonbeam/pull/1400){target=_blank}。
+关于更多信息，您可以查看Github上的[相关Nimbus PR](https://github.com/moonbeam-foundation/nimbus/pull/45/){target=_blank}和[Moonbeam PR](https://github.com/moonbeam-foundation/moonbeam/pull/1400){target=_blank}。

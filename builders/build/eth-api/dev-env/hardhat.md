@@ -125,18 +125,10 @@ touch secrets.json
 
 请确保将文件添加至项目的`.gitignore`中，切勿泄漏您的私钥。
 
-!!! 注意事项
+!!! 请记住
     请妥善管理您的私钥，使用指定的secret manager或类似管理器。切勿将您的私钥保存或提交至代码库。
 
-接下来您可以遵循以下步骤修改`hardhat.config.js`文件并将Moonbase Alpha添加为网络：
-
-1. 导入Ethers plugin
-
-2. 导入`secrets.json`文件
-
-3. 在`module.exports`中，您需要提供Solidity版本（根据我们的合约文件，Solidity版本为`0.8.1`）
-
-4. 添加Moonbase Alpha网络配置
+--8<-- 'text/hardhat/hardhat-configuration-file.md'
 
 ```js
 // 1. Import the Ethers plugin required to interact with the contract
