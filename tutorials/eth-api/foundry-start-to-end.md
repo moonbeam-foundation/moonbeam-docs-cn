@@ -393,7 +393,7 @@ forge test -vvvv
 
 ## 使用Solidity脚本在Foundry中部署 {: #deploy-in-foundry-with-solidity-scripts }
 
-Foundry中的测试和脚本均以Solidity编写。与其他开发者环境一样，可以编写脚本来帮助与已部署智能合约交互，或协助完成手动难以实现的复杂部署流程。即使脚本是用Solidity编写，但是这些脚本不会部署到链上。相反，大部分的逻辑实际上是在链下运行的，因此使用Foundry无需担心像HardHat这类JavaScript环境会产生任何额外的gas费用。
+Foundry中的测试和脚本均以Solidity编写。与其他开发者环境一样，可以编写脚本来帮助与已部署智能合约交互，或协助完成手动难以实现的复杂部署流程。即使脚本是用Solidity编写，但是这些脚本不会部署到链上。相反，大部分的逻辑实际上是在链下运行的，因此使用Foundry无需担心像Hardhat这类JavaScript环境会产生任何额外的gas费用。
 
 ### 在Moonbase Alpha上部署 {: #deploy-on-moonbase-alpha }
 
