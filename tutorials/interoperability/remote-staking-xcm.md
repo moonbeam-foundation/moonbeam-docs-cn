@@ -72,7 +72,7 @@ _作者：Kevin Neilson_
 
 如果您不希望搭建一个本地环境，您可以选择在[Polkadot.js Apps的JavaScript控制台](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=_blank}运行以下代码段。
 
-??? code "Code to run in the Polkadot.js Apps JavaScript console"
+??? code "在Polkadot.js Apps JavaScript控制台运行代码"
 
     ```javascript
     --8<-- 'code/tutorials/interoperability/remote-staking/polkadotjs-apps-encoded-call-data.js'
