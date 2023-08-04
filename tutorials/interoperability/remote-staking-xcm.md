@@ -42,7 +42,7 @@ _作者：Kevin Neilson_
 
 ![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
 
-## 通过XCM在Polkadot.js API进行远程质押{: #remote-staking-via-xcm-with-the-polkadot-api }
+## 通过XCM在Polkadot.js API进行远程质押 {: #remote-staking-via-xcm-with-the-polkadot-api }
 
 本教程将涵盖执行远程质押的两个步骤。第一步：我们将生成用于委托收集人的编码调用数据。第二步：我们将通过XCM从中继链发送编码的调用数据给Moonbase Alpha，这将执行委托。
 
@@ -161,7 +161,7 @@ XCM Pallet的`send`函数接收两个参数：`dest`和`message`。您可以通�
  4. 使用`dest`和`message`创建`xcmPallet.send` extrinsic
  5. 使用`signAndSend` extrinsic和第三步创建的Keyring实例发送交易
 
-!!! 请注意
+!!! 请记住
     此操作仅用于演示目的。请勿将您的私钥存储在JavaScript文件中。
 
 ```javascript
