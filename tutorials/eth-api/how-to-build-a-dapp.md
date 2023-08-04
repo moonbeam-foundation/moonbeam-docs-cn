@@ -1122,3 +1122,7 @@ function App() {
 如果您有兴趣深入了解从Web2到Web3的内容，您可以阅读关于[Web2与Web3开发的不同之处](https://moonbeam.network/blog/web2-vs-web3-development-heres-what-you-need-to-know-to-make-the-leap-to-blockchain/){target=_blank}的博客文章。
 
 希望通过阅读本指南，您能够顺利在Moonbeam上创建新颖的DApp！
+
+--8<-- 'text/disclaimers/educational-tutorial.md'
+
+--8<-- 'text/disclaimers/third-party-content.md'
