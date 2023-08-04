@@ -61,7 +61,7 @@ _作者：Jeremy Boetticher_
 
 事实上还有其他额外的元素会被加入至JSON-RPC请求中，但这四个最为常见。
 
-在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/builders/build/eth-api/libraries){target=_blank}，我们将在本教程中使用[Ethers.js](/builders/build/eth -api/libraries/ethersjs){target=_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
+在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/builders/build/eth-api/libraries){target=_blank}，我们将在本教程中使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
 
 ## 智能合约 {: #smart-contracts }
 
@@ -83,7 +83,7 @@ _作者：Jeremy Boetticher_
 npx hardhat init
 ```
 
-创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation -hardhat-toolbox#hardhat-toolbox){target=_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
+创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox#hardhat-toolbox){target=_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
 
 ```bash
 npm install --save-dev  hardhat @nomiclabs/hardhat-ethers ethers
@@ -447,7 +447,7 @@ function App() {
 
 只要我们知道我们想要读取什么，读取合约非常容易。对于我们的应用，我们将读取可以铸造的最大Token数量以及已铸造的Token数量。通过这种方式，我们可以向用户显示仍然可以铸造多少Token，并希望引起一些FOMO的注意……
 
-如果您只是使用JSON-RPC，您可以使用`eth_call`来获取此数据，但这样做非常困难，因为您必须[对您的请求进行编码](https://docs.soliditylang.org/en/latest /abi-spec.html){target=_blank}采用称为ABI编码的非直接方法。幸运的是，Ethers.js允许我们轻松创建以人类可读的方式表示合约的对象，只要我们拥有合约的ABI。我们在Hardhat项目的`artifacts`目录中拥有`MintableERC20.sol`合约的ABI、`MintableERC20.json`！
+如果您只是使用JSON-RPC，您可以使用`eth_call`来获取此数据，但这样做非常困难，因为您必须[对您的请求进行编码](https://docs.soliditylang.org/en/latest/abi-spec.html){target=_blank}采用称为ABI编码的非直接方法。幸运的是，Ethers.js允许我们轻松创建以人类可读的方式表示合约的对象，只要我们拥有合约的ABI。我们在Hardhat项目的`artifacts`目录中拥有`MintableERC20.sol`合约的ABI、`MintableERC20.json`！
 
 因此，让我们首先将`MintableERC20.json`文件移动到我们的前端目录中。每次更改并重新编译智能合约时，您还必须更新前端中的ABI。有些项目的开发者设置会自动从同一源提取ABI，但在这种情况下，我们只需将其复制过来：
 
