@@ -322,7 +322,7 @@ ExecutionTime = ({{ networks.moonbeam.xcm.instructions.weight_units.numbers_only
 
 这代表4个XCM指令需花费`{{ networks.moonbeam.xcm.message.transfer.exec_time }}`秒的区块执行时间。
 
-要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/interoperability/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}查询资产的单位位数。
+要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/interoperability/xcm/xc20/overview/#list-xchain-assets){target=_blank}查询资产的单位位数。
 
 区块执行的公式可以用于决定Alice转移DOT至Alith在Moonbeam上账户所需的花费，以下为总花费的计算公式：
 
