@@ -376,7 +376,7 @@ XCM-Token-Cost = XCM-Wei-Token-Cost / DecimalConversion
 因此，实际一个通过衍生调用的XCM Transactor交易费用的实际计算如下：
 
 ```text
-XCM-Wei-Token-Cost = {{ networks.moonbase_beta.xcm_message.transact.numbers_only }} * {{ networks.moonbase.xcm.units_per_second.xcbetadev.transact_numbers_only }}
+XCM-Wei-Token-Cost = {{ networks.moonbase_beta.xcm_message.transact.weight.numbers_only }} * {{ networks.moonbase.xcm.units_per_second.xcbetadev.transact_numbers_only }}
 XCM-Token-Cost = {{ networks.moonbase_beta.xcm_message.transact.wei_betadev_cost }} / 10^18
 ```
 
