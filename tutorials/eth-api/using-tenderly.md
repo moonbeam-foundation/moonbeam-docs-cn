@@ -39,7 +39,7 @@ Tenderly提供的大多数服务都是免费使用的，但您需要订阅付费
 
 要添加智能合约至您的Tenderly项目，点击**Inspect**标题下**Contracts**标签，接着点击**Add Contracts**。然后，执行以下步骤：
 
-1. 输入合约地址。在此教程中，我们会使用Multichain的USDC合约`0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b`
+1. 输入合约地址。在此教程中，我们会使用FRAX稳定币合约`0x322E86852e492a7Ee17f28a78c663da38FB33bfb`
 2. 选取合约部署至的网络，此例中我们会选取**Moonbeam**
 3. 命名合约以更好地在操作界面中辨识
 4. 点击**Add Contract**
@@ -62,11 +62,11 @@ Tenderly提供的大多数服务都是免费使用的，但您需要订阅付费
 
 ![Simulate a transaction against Moonbeam](/images/tutorials/eth-api/using-tenderly/tenderly-3.png)
 
-显然，这个模拟交易将会失败，因为我们试图发送我们没有的10,000 USDC。但是，使用[Tenderly模拟器](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=_blank}，我们可以修改区块链状态并运行假设不同条件的模拟。例如，我们假设Baltathar实际上持有10,000 USDC的余额来运行模拟。点击右上角的**Re-Simulate**，然后执行以下步骤：
+显然，这个模拟交易将会失败，因为我们试图发送我们没有的10,000 FRAX。但是，使用[Tenderly模拟器](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=_blank}，我们可以修改区块链状态并运行假设不同条件的模拟。例如，我们假设Baltathar实际上持有10,000 FRAX的余额来运行模拟。点击右上角的**Re-Simulate**，然后执行以下步骤：
 
 1. 展开**State Overrides**部分
 2. 点击**Add State Override**
-3. 选取相关合约，此处为USDC的合约
+3. 选取相关合约，此处为FRAX的合约
 4. 在**Storage Variables**部分的项目，我们将会通过指定私钥：`balanceOf[0x3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0]`和数值：`10000000000`来取代Baltathar持有余额的映射。请注意您正在**Storage Variables**部分中执行此步骤，而非**Balance**部分
 5. 点击**Add**以确认点击状态覆盖
 6. 点击**Simulate Transaction**
@@ -98,33 +98,33 @@ Tenderly提供的大多数服务都是免费使用的，但您需要订阅付费
 3. 如果您仅需要某个特定区块截至的数值，您可以关闭**Use Latest Block滑块并指定区块编码。或者，您可以保持原状让其包含至最新区块的所有区块
 4. 点击**Create**
 
-![Create a fork](/images/tutorials/eth-api/using-tenderly/tenderly-7.png)
+![Create a fork](/images/tutorials/eth-api/using-tenderly/tenderly-6.png)
 
 ### 与分叉交互 {: #interacting-with-the-fork }
 
-在下一部分中，我们将演示分叉的状态性以及它们如何帮助您测试单个模拟之外的场景。使用您刚刚创建的分叉，尝试调用`transfer`函数将一些USDC从Baltahar发送到Alice，就像您之前在[模拟部分](#simulate-a-transaction)中所做的那样，但没有状态覆盖。不出所料的操作失败，因为Baltahar没有USDC余额。但是，让我们通过在分叉环境中为Baltahar铸造一些USDC来改变这一点。为此，请执行以下步骤：
+在下一部分中，我们将演示分叉的状态性以及它们如何帮助您测试单个模拟之外的场景。使用您刚刚创建的分叉，尝试调用`transfer`函数将一些FRAX从Baltahar发送到Alice，就像您之前在[模拟部分](#simulate-a-transaction)中所做的那样，但没有状态覆盖。不出所料的操作失败，因为Baltahar没有FRAX余额。但是，让我们通过在分叉环境中为Baltahar铸造一些FRAX来改变这一点。为此，请执行以下步骤：
 
 1. 选取您希望交互的合约
-2. 选取您希望调用的函数，此出我们会选取`mint`
+2. 选取您希望调用的函数，此出我们会选取`minter_mint`
 3. 输入Baltathar地址：`0x3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0`
 4. 输入铸造数量，如`10000000000000`
-5. 铸造在USDC合约中扮演一个特权的角色。我们需要在我们的分叉中执行此交易的传送者为[USDC合约的授权铸造者](https://moonbeam.moonscan.io/token/0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b#readContract){target=_blank}，即为`0xEC4486a90371c9b66f499Ff3936F29f0D5AF8b7E`
+5. 铸造在FRAX合约中扮演一个特权的角色。我们需要在我们的分叉中执行此交易的传送者为[FRAX合约的授权铸造者](https://moonbeam.moonscan.io/token/0x322e86852e492a7ee17f28a78c663da38fb33bfb#readContract){target=_blank}，即为`0x343e4f06bf240d22fbdfd4a2fe5858bc66e79f12`
 6. 点击**Simulate Transaction**
 
-![Run simulation on fork to mint USDC](/images/tutorials/eth-api/using-tenderly/tenderly-6.png)
+![Run simulation on fork to mint FRAX](/images/tutorials/eth-api/using-tenderly/tenderly-7.png)
 
-很好！让我们继续并尝试执行Baltathar，因其已经拥有了足够的USDC。您可以点击**New Simulation**，然后执行以下步骤：
+很好！让我们继续并尝试执行Baltathar，因其已经拥有了足够的FRAX。您可以点击**New Simulation**，然后执行以下步骤：
 
-1. 在下拉选单中选取`USDC`合约
+1. 在下拉选单中选取`FRAX`合约
 2. 选取您希望调用的合约函数，此处我们将选取`transfer`
 3. 接着，我们将会输入函数的相关参数。输入Alith的地址作为目标地址：`0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`
 4. 您可以指定任何非零数量，如`123`
 5. 指定来源地址为Baltathar`0x3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0`
 6. 点击**Simulate Transaction**
 
-![Run simulation on fork to transfer USDC](/images/tutorials/eth-api/using-tenderly/tenderly-8.png)
+![Run simulation on fork to transfer FRAX](/images/tutorials/eth-api/using-tenderly/tenderly-8.png)
 
-请注意，右上角的**ForkParameters**下的父区块为**Previous Simulation**。这代表我们现在提交的模拟将建立在前一个模拟中所做的任何状态更改的基础上。如果您发现错误表明余额不足，这可能是由于意外覆盖区块编号以使用与原始 `mint`交易相同的区块编号造成的。
+请注意，右上角的**ForkParameters**下的父区块为**Previous Simulation**。这代表我们现在提交的模拟将建立在前一个模拟中所做的任何状态更改的基础上。如果您发现错误表明余额不足，这可能是由于意外覆盖区块编号以使用与原始 `minter_mint`交易相同的区块编号造成的。
 
 Tenderly同样为您的分叉生成一个自定义的RPC url，类似于`https://rpc.tenderly.co/fork/YOUR_UNIQUE_FORK_IDENTIFIER`。您可以使用此RPC url来从[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}、[Foundry](/builders/build/eth-api/dev-env/foundry){target=_blank}或是其他任意[开发环境](/builders/build/eth-api/dev-env/){target=_blank}来传送交易至您的分叉。
 
