@@ -110,7 +110,6 @@ contract Box {
 在部署合约至Moonbase Alpha之前，您将需要修改Hardhat配置文件，并创建一个安全的文件以便您存储私钥。
 
 --8<-- 'text/hardhat/hardhat-configuration-file.md'
-
     您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
 
     === "Moonbeam"

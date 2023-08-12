@@ -127,7 +127,6 @@ npm install --save-dev @nomicfoundation/hardhat-toolbox
 对于本教程中的范例，您需要为Moonbase Alpha上的两个账户添加私钥。由于一些测试将在开发节点上完成，因此您还需要添加两个具有预备资金的开发节点账户的私钥，在本例中，我们可以使用Alice和Bob。此外，您还需要添加Moonscan API密钥，该密钥可用于Moonbase Alpha和Moonbeam。
 
 --8<-- 'text/hardhat/hardhat-configuration-file.md'
-
     您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
 
     === "Moonbeam"
