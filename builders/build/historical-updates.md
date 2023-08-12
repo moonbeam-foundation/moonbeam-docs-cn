@@ -270,6 +270,20 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
+#### Remote EVM Calls Return Identical Transaction Hashes {: #remote-evm-calls-return-identical-tx-hashes }
+
+当从具有相同交易负载和随机数的不同账户发送多个远程EVM调用时，每个调用都会返回相同的交易哈希。这是极有可能的，因为远程EVM调用通过无密钥账户执行，因此如果发送者都具有相同的随机数并且发送相同的交易对象，则交易哈希的计算将会没有差异。此问题已通过向以太坊使远程EVM调用成为可能的XCM Pallet添加全局随机数解决。
+
+此漏洞仅影响Moonbase Alpha并存在于以下Runtime和区块区间：
+
+|      网络      | 出现时间 | 修复时间 |  影响的区块区间   |
+|:--------------:|:----------:|:------:|:--------------------:|
+| Moonbase Alpha |   RT1700   | RT1900 |  2529736 - 3069634   |
+
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1790){target=_blank}。
+
+***
+
 ## 迁移 {: #migrations }
 
 当更改或添加存储项并需要用数据填充时，迁移是必要的。下面列出的迁移部分是由受影响的pallet来分类的。
@@ -386,7 +400,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 #### 修补总质押数量 {: #patch-total-staked-amount }
 
-由于一个可能导致数量不正确的潜在漏洞，此处对平行链质押pallet中`CollatorState`存储项的`total`质押金额进行了迁移。
+由于一个可能导致数量不正确的潜在漏洞，此处对平行链质押Pallet中`CollatorState`存储项的`total`质押金额进行了迁移。
 
 此迁移仅适用于Moonriver和Moonbase Alpha，并在以下Runtime和区块中执行：
 
