@@ -109,7 +109,7 @@ Ethereum XCM Pallet提供以下extrinsics（函数），可以通过`Transact`�
   DescendOrigin: {
     X1: {
       AccountId32: {
-        network: 'Westend',
+        network: { westend: null },
         id: decodedAddress,
       },
     },
@@ -133,7 +133,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
     interior: {
       X1: {
         AccountId32: {
-          network: 'Westend',
+          network: { westend: null },
           id: decodedAddress,
         },
       },
@@ -144,7 +144,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 
 --8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
 
-For example, for Alice's relay chain account of `5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`, you can calculate her Moonbase Alpha **multilocation-derivative account** by running:
+以Alice的中继链账户`5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`为例，您可以通过运行以下命令来计算他的Moonbase Alpha **multilocation衍生账户**：
 
 ```sh
 yarn calculate-multilocation-derivative-account \
@@ -220,15 +220,15 @@ const xcmTransaction = {
 
 您将会在以下部分中使用`Transact`指令的编码调用数据。
 
-### Estimate Weight Required At Most {: #estimate-weight-required-at-most }
+### 必要的预估权重 {: #estimate-weight-required-at-most }
 
-When using the `Transact` instruction, you'll need to define the `requireWeightAtMost` field, which is the required weight for the transaction. This field accepts two arguments: the `refTime` and `proofSize`. The `refTime` is the amount of computational time that can be used for execution, and the `proofSize` is the amount of storage in bytes that can be used.
+在使用`Transact`指令时，您需要定义`requireWeightAtMost`字段，也就是该交易的所需权重。此字段接受两个参数：`refTime`和`proofSize`。`refTime`为用于执行的计算时间量，而`proofSize`为能够使用的存储数值（以字节为单位）。
 
-To get an estimate for the `refTime` and `proofSize`, you can use the `paymentInfo` method of the Polkadot.js API. Since these weights are required for the `Transact` call data, you can extend the script from the previous section to add in the call to `paymentInfo`.
+要预估`refTime`和`proofSize`，您可以使用Polkadot.js API的函数`paymentInfo`。由于`Transact`调用数据需要这些权重，您可以扩展先前教程部分的脚本来添加`paymentInfo`的调用。
 
-The `paymentInfo` method accepts the same parameters you would normally pass to the `.signAndSend` method, which is the sending account and, optionally, some additional values such as a nonce or signer.
+此`paymentInfo`函数接受您输入至`.signAndSend`函数的相同参数，也就是传送账户以及如随机数和签署者等根据需求添加的额外数值。
 
-To modify the encoded call data script, you'll need to add in logic to create a Keyring for the sender, which in this case is Alice. Then you'll simply need to take the `tx` and call the `paymentInfo` method and pass in Alice's Keyring.
+要更动编码调用数据的脚本，您需要添加逻辑为传送者（此例中为Alice）创建一个Keyring。接着您可以简单的使用`tx`并调用`paymentInfo`函数和输入Alice的Keyring。
 
 ### 为远程XCM执行构建XCM {: #build-xcm-remote-evm}
 
@@ -279,7 +279,7 @@ To modify the encoded call data script, you'll need to add in logic to create a 
 4. 构建`Transact`指令，其将需要您定义：
 
     - Origin类别
-    - 交易所需的权重。您将需要为`refTime`定义一个值，可用于执行的计算时间量，并同样为`proofSize`定义一个数值，可使用于存储量（以字节为单位）。 Both figures can be calculated using the `paymentInfo` method of the Polkadot.js API. To calculate these values, you can modify the encoded call data script to call the `paymentInfo` method of the `ethereumXcm.transact(xcmTransaction)` transaction. To call the `paymentInfo` method, you'll need to pass in the senders account. You can pass in Alice's account on the relay chain: `5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`:
+    - 交易所需的权重。您将需要为`refTime`定义一个值，可用于执行的计算时间量，并同样为`proofSize`定义一个数值，可使用于存储量（以字节为单位）。这两个数字都可以使用Polkadot.js API的`paymentInfo`函数计算。要计算这些值，您可以修改编码的调用数据脚本以调用`ethereumXcm.transact(xcmTransaction)`交易的`paymentInfo`函数。要调用`paymentInfo`函数，您需要传入传送者账户。您可以在中继链上传入Alice的账户：`5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`：
 
         ```js
         ...
@@ -290,13 +290,13 @@ To modify the encoded call data script, you'll need to add in logic to create a 
         console.log(`Required Weight: ${info.weight.toString()}`);
         ```
 
-        ??? code "Complete modified script"
+        ??? code "完整脚本"
 
             ```js
             --8<-- 'code/remote-execution/estimate-required-weight.js'
             ```
 
-        The script, at the time of writing, returns an estimate of `3900000000` for `refTime` and `38750` for `proofSize`.
+        截至撰写本脚本时，`refTime`和`proofSize`会分别返回`3900000000`和`38750`的预估数值
 
     - 您在[Ethereum XCM Transact调用数据](#ethereumxcm-transact-data)部分中生成的编码调用数据
 
