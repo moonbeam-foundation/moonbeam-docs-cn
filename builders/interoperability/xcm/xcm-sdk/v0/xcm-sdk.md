@@ -33,7 +33,7 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 
 要安装XCM SDK以及XCM配置包，您可以运行以下指令：
 
-```
+```bash
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
@@ -41,7 +41,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 
 您可以运行以下指令来安装它们：
 
-```
+```bash
 npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto ethers
 ```
 
@@ -121,7 +121,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     // Set up Ethers provider and signer
     const providerRPC = {
       moonbase: {
-        name: 'moonbase-alpha',
+        name: 'moonbase_alpha',
         rpc: '{{ networks.moonbase.rpc_url }}',
         chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
       },
@@ -474,7 +474,6 @@ const response = await from(polkadot).get(
 
 如果您拥有先前在[初始化](#initializing)部分设置的波卡Keyring对，您可以输入`polkadotKeyring`作为第二个参数：
 
-
 ```js
 import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
 
@@ -537,20 +536,20 @@ const response = await from(polkadot).get(
 
 获得的数值如下所示：
 
-|         数值         |                             描述                             |
-| :------------------: | :----------------------------------------------------------: |
-|       `asset`        |                   被转移的[资产](#assets)                    |
+|         数值         |                                                                                                                                            描述                                                                                                                                            |
+|:--------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|       `asset`        |                                                                                                                                  被转移的[资产](#assets)                                                                                                                                   |
 | `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
-|        `min`         |                        最小可转移数量                        |
-|    `moonChainFee`    | 支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起) |
-|       `native`       |                 原链上的原生[资产](#assets)                  |
-|       `origin`       |                     资产所属原链的链信息                     |
-|       `source`       |                 被转移资产从哪里发送的链信息                 |
-|   `sourceBalance`    |                   从原链上被转移资产的余额                   |
-|  `sourceFeeBalance`  | 原链原生资产中的余额，用于支付资产 转移的费用（如适用)，否则将返回`undefined` |
-|  `sourceMinBalance`  |                  在原链上资产转移的最小余额                  |
-|       `getFee`       |      预估转移一定数量[所需费用](#get-fee-deposit)的函数      |
-|        `send`        |         用于[传送](#send-deposit)存入转移数据的函数          |
+|        `min`         |                                                                                                                                       最小可转移数量                                                                                                                                       |
+|    `moonChainFee`    |                                      支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起)                                       |
+|       `native`       |                                                                                                                                原链上的原生[资产](#assets)                                                                                                                                 |
+|       `origin`       |                                                                                                                                    资产所属原链的链信息                                                                                                                                    |
+|       `source`       |                                                                                                                                被转移资产从哪里发送的链信息                                                                                                                                |
+|   `sourceBalance`    |                                                                                                                                  从原链上被转移资产的余额                                                                                                                                  |
+|  `sourceFeeBalance`  |                                                                                                       原链原生资产中的余额，用于支付资产 转移的费用（如适用)，否则将返回`undefined`                                                                                                        |
+|  `sourceMinBalance`  |                                                                                                                                 在原链上资产转移的最小余额                                                                                                                                 |
+|       `getFee`       |                                                                                                                     预估转移一定数量[所需费用](#get-fee-deposit)的函数                                                                                                                     |
+|        `send`        |                                                                                                                        用于[传送](#send-deposit)存入转移数据的函数                                                                                                                         |
 
 #### Send函数 {: #send-deposit }
 
@@ -731,20 +730,20 @@ const response =  await to(
 
 获得的数值如下所示：
 
-|         数值         |                             描述                             |
-| :------------------: | :----------------------------------------------------------: |
-|       `asset`        |                   被转移的[资产](#assets)                    |
-|    `destination`     |                  资产被转移的目标链的链信息                  |
-| `destinationBalance` |                   目标链上账户中资产的余额                   |
-|   `destinationFee`   |                 资产转移至目标链上所需的费用                 |
-| `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
-|        `min`         |                  被转让资产的最小可转移数量                    |
-|   `minXcmFeeAsset`   |            需要一起发送以支付费用的资产的最小可转移数量           |
-|       `native`       |                  原链的原生[资产](#assets)                   |
-|       `origin`       |                      资产所属原链的链信息                     |
-| `originXcmFeeAssetBalance` |   与转账一起发送以支付费用（如果有）的资产的原始账户中的余额   |
-|       `getFee`       |       预估存入一定数量[所需费用](#get-fee-withdraw)的函数       |
-|        `send`        |           用于[传送](#send-withdraw)取出转移数据的函数         |
+|            数值            |                                                                                                                                            描述                                                                                                                                            |
+|:--------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|          `asset`           |                                                                                                                                  被转移的[资产](#assets)                                                                                                                                   |
+|       `destination`        |                                                                                                                                 资产被转移的目标链的链信息                                                                                                                                 |
+|    `destinationBalance`    |                                                                                                                                  目标链上账户中资产的余额                                                                                                                                  |
+|      `destinationFee`      |                                                                                                                                资产转移至目标链上所需的费用                                                                                                                                |
+|    `existentialDeposit`    | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
+|           `min`            |                                                                                                                                 被转让资产的最小可转移数量                                                                                                                                 |
+|      `minXcmFeeAsset`      |                                                                                                                        需要一起发送以支付费用的资产的最小可转移数量                                                                                                                        |
+|          `native`          |                                                                                                                                 原链的原生[资产](#assets)                                                                                                                                  |
+|          `origin`          |                                                                                                                                    资产所属原链的链信息                                                                                                                                    |
+| `originXcmFeeAssetBalance` |                                                                                                                 与转账一起发送以支付费用（如果有）的资产的原始账户中的余额                                                                                                                 |
+|          `getFee`          |                                                                                                                    预估存入一定数量[所需费用](#get-fee-withdraw)的函数                                                                                                                     |
+|           `send`           |                                                                                                                        用于[传送](#send-withdraw)取出转移数据的函数                                                                                                                        |
 
 #### Send函数 {: #send-withdraw }
 

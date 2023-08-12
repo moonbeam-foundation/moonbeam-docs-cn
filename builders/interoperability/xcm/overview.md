@@ -116,11 +116,11 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的[操作/指](https:/
 
 Moonbeam作为波卡生态系统中的平行链，其中最重要的XCM实现是使波卡和其他平行链的资产转移至Moonbeam，这将能够使用户将其Token带入Moonbeam以及其他dApp中。
 
-为扩展至Moonbeam独特的以太坊兼容功能，外部资产将会通过预编译合约以标准的[ERC-20接口](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}形式呈现。Moonbeam上的XCM资产将会被称为XC-20以与通过EVM产生的原生XCM资产区分。预编译合约将会使用适当的Substrate功能以执行要求动作。然而，以开发者的眼光来看，XC-20为具有XCM跨链资产优势的ERC-20 Token，dApp也将能以熟悉的ERC-20接口支持他们。
+为扩展至Moonbeam独特的以太坊兼容功能，外部资产将会通过预编译合约以标准的[ERC-20接口](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}形式呈现。Moonbeam上的XCM资产将会被称为XC-20以与通过EVM产生的原生XCM资产区分。预编译合约将会使用适当的Substrate功能以执行要求动作。然而，以开发者的眼光来看，XC-20为具有XCM跨链资产优势的ERC-20 Token，dApp也将能以熟悉的ERC-20接口支持他们。
 
 ![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-4.png)
 
-预编译本身并不支持跨链转账尽量保持与原始ERC-20接口相同。所以，开发者将会需要仰赖Substrate API和XCM将其资产转移回原先转入的链，或是在不同的[预编译合约](https://github.com/PureStake/moonbeam/tree/master/precompiles/xtokens){target=_blank}使用来自以太坊API的XCM基础功能。
+预编译本身并不支持跨链转账尽量保持与原始ERC-20接口相同。所以，开发者将会需要仰赖Substrate API和XCM将其资产转移回原先转入的链，或是在不同的[预编译合约](https://github.com/moonbeam-foundation/moonbeam/tree/master/precompiles/xtokens){target=_blank}使用来自以太坊API的XCM基础功能。
 
 根据目标区块链的不同，资产转移可以通过传送（Teleporting）和远程转移的方式进行，后者是最常使用的方法。目前，Moonbeam仅支持远程转移。
 

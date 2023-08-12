@@ -11,13 +11,13 @@ _作者：Kevin Neilson & Erin Shaben_
 
 ## 概览 {: #introduction }
 
-在本教程中，我们将从头至尾详细演示在[Hardhat开发环境](https://hardhat.org/){target=_blank}中启动[pooled staking DAO（汇集质押DAO）合约](https://github.com/PureStake/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}的典型开发流程。
+在本教程中，我们将从头至尾详细演示在[Hardhat开发环境](https://hardhat.org/){target=_blank}中启动[pooled staking DAO（汇集质押DAO）合约](https://github.com/moonbeam-foundation/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}的典型开发流程。
 
 我们将组装staking DAO的组件并编译必要合约。然后，使用staking DAO相关的各类测试用例构建测试套件并在本地开发节点上运行。最后，我们将staking DAO部署至Moonbase Alpha和Moonbeam并通过[Hardhat Etherscan插件](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}验证合约。如果您尚未了解Hardhat，建议您先阅读[Hardhat教程](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
 
 _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonbeam文档网站（https://docs.moonbeam.network/）上列出和描述的任何项目背书。_
 
-## 查看先决条件 {: #checking-prerequisites } 
+## 查看先决条件 {: #checking-prerequisites }
 
 开始之前，您需要准备以下内容：
 
@@ -25,7 +25,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
     --8<-- 'text/faucet/faucet-list-item.md'
  - [Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}
  - 在[测试部分](#running-your-tests)您将需要拥有[一个启动且正在运行的Moonbeam本地节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}
-  - 
+  -
 --8<-- 'text/common/endpoint-examples.md'
 
 ## 创建Hardhat项目 {: #creating-a-hardhat-project }
@@ -33,19 +33,26 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 如果您尚未拥有Hardhat项目，您可以通过完成以下步骤创建一个：
 
 1. 为您的项目创建一个目录
-    ```
+
+    ```bash
     mkdir stakingDAO && cd stakingDAO
     ```
+
 2. 初始化将要创建一个`package.json`文件的项目
-    ```
+
+    ```bash
     npm init -y
     ```
+
 3. 安装Hardhat
-    ```
+
+    ```bash
     npm install hardhat
     ```
+
 4. 创建项目
-    ```
+
+    ```bash
     npx hardhat
     ```
 
@@ -60,7 +67,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
 ## 添加智能合约 {: #add-smart-contracts }
 
-本教程中使用的智能合约比[Hardhat概览](/builders/build/eth-api/dev-env/hardhat/){target=_blank}中的更为复杂，但是此合约的特性更适合展示Hardhat的一些高级功能。[`DelegationDAO.sol`](https://github.com/PureStake/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}是一个pooled staking DAO，当其达到特定的阈值时使用[`StakingInterface.sol`](/builders/pallets-precompiles/precompiles/staking/){target=_blank}来自动委托给[收集人](/learn/platform/glossary/#collators){target=_blank}。像[`DelegationDAO.sol`](https://github.com/PureStake/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}这样的质押合约允许低于最低协议保证金的委托人联合起来通过将资金放在同一个委托池中赚取部分质押奖励。
+本教程中使用的智能合约比[Hardhat概览](/builders/build/eth-api/dev-env/hardhat/){target=_blank}中的更为复杂，但是此合约的特性更适合展示Hardhat的一些高级功能。[`DelegationDAO.sol`](https://github.com/moonbeam-foundation/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}是一个pooled staking DAO，当其达到特定的阈值时使用[`StakingInterface.sol`](/builders/pallets-precompiles/precompiles/staking/){target=_blank}来自动委托给[收集人](/learn/platform/glossary/#collators){target=_blank}。像[`DelegationDAO.sol`](https://github.com/moonbeam-foundation/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}这样的质押合约允许低于最低协议保证金的委托人联合起来通过将资金放在同一个委托池中赚取部分质押奖励。
 
 !!! 注意事项
     `DelegationDAO.sol`未经过审核和审计，仅用于演示目的。其中可能会包含漏洞或者逻辑错误而导致资产损失，请勿在生产环境中使用。
@@ -68,31 +75,38 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 要开始操作，请执行以下步骤：
 
 1. 创建`contracts`目录以存放项目的智能合约
-    ```
+
+    ```bash
     mkdir contracts
     ```
+
 2. 创建名为`DelegationDAO.sol`的新文件
-    ```
+
+    ```bash
     touch contracts/DelegationDAO.sol
     ```
-3. 将[DelegationDAO.sol](https://raw.githubusercontent.com/PureStake/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中的内容复制并粘贴至`DelegationDAO.sol` 
+
+3. 将[DelegationDAO.sol](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中的内容复制并粘贴至`DelegationDAO.sol`
 4. 在`contracts`目录中创建名为`StakingInterface.sol`的新文件
-    ```
+
+    ```bash
     touch contracts/StakingInterface.sol
     ```
-5. 将[StakingInterface.sol](https://raw.githubusercontent.com/PureStake/moonbeam/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}内容复制并粘贴至`StakingInterface.sol`
+
+5. 将[StakingInterface.sol](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}内容复制并粘贴至`StakingInterface.sol`
 6. `DelegationDAO.sol`依赖于几个标准[OpenZeppelin](https://www.openzeppelin.com/){target=_blank}合约。使用以下命令添加库：
-    ```
+
+    ```bash
     npm install @openzeppelin/contracts
     ```
 
-## Hardhat配置文件 {: #hardhat-configuration-file } 
+## Hardhat配置文件 {: #hardhat-configuration-file }
 
 在将合约部署至Moonbase Alpha之前，您需要修改Hardhat配置文件并创建一个安全文件用于存储私钥和[Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}。
 
 您可以运行以下命令来创建一个`secrets.json`文件以存储私钥：
 
-```
+```bash
 touch secrets.json
 ```
 
@@ -103,11 +117,11 @@ touch secrets.json
 
 ```json
 {
-    "privateKey": "YOUR-PRIVATE-KEY-HERE",
-    "privateKey2": "YOUR-SECOND-PRIVATE-KEY-HERE",
+    "privateKey": "YOUR_PRIVATE_KEY_HERE",
+    "privateKey2": "YOUR_SECOND_PRIVATE_KEY_HERE",
     "alicePrivateKey": "0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133",
     "bobPrivateKey": "0x8075991ce870b93a8870eca0c0f91913d12f47948ca0fd25b49c6fa7cdbeee8b",
-    "moonbeamMoonscanAPIKey": "YOUR-MOONSCAN-API-KEY-HERE"
+    "moonbeamMoonscanAPIKey": "YOUR_MOONSCAN_API_KEY_HERE"
 }
 ```
 
@@ -124,7 +138,7 @@ touch secrets.json
 
 设置`hardhat.config.js`文件时，我们需要导入一些教程所需的插件。开始之前，需要准备好[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox){target=_blank}，这可以轻松地将一些后续用于测试的包打包在一起。我们也会用到[Hardhat Etherscan插件](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}，其将用于验证合约。这两个插件可以通过以下命令安装：
 
-```
+```bash
 npm install --save-dev @nomicfoundation/hardhat-toolbox @nomiclabs/hardhat-etherscan
 ```
 
@@ -180,36 +194,44 @@ module.exports = {
 您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
 
 === "Moonbeam"
-    ```
+
+    ```js
     moonbeam: {
         url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
+
         chainId: {{ networks.moonbeam.chain_id }}, // (hex: {{ networks.moonbeam.hex_chain_id }})
         accounts: [privateKey]
       },
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     moonriver: {
         url: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
+
         chainId: {{ networks.moonriver.chain_id }}, // (hex: {{ networks.moonriver.hex_chain_id }})
         accounts: [privateKey]
       },
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     moonbase: {
         url: '{{ networks.moonbase.rpc_url }}',
+
         chainId: {{ networks.moonbase.chain_id }}, // (hex: {{ networks.moonbase.hex_chain_id }})
         accounts: [privateKey]
       },
     ```
 
-=== "Moonbeam Dev Node"
-    ```      
+=== "Moonbeam开发节点"
+
+    ```js
     dev: {
         url: '{{ networks.development.rpc_url }}',
+
         chainId: {{ networks.development.chain_id }}, // (hex: {{ networks.development.hex_chain_id }})
         accounts: [privateKey]
       },
@@ -217,11 +239,11 @@ module.exports = {
 
 现在您可以开始编译并测试合约。
 
-## 编译合约 {: #compiling-the-contract } 
+## 编译合约 {: #compiling-the-contract }
 
 您可以简单运行以下命令以编译合约：
 
-```
+```bash
 npx hardhat compile
 ```
 
@@ -252,14 +274,19 @@ Hardhat测试通常使用Mocha和Chai编写，[Mocha](https://mochajs.org/){targ
 要设置测试文件，请执行以下步骤：
 
 1. 创建`tests`目录
-    ```
+
+    ```bash
     mkdir tests
     ```
+
 2. 创建一个名为`Dao.js`的新文件
-    ```
+
+    ```bash
     touch tests/Dao.js
     ```
+
 3. 然后复制并粘贴以下内容以设置测试文件的初始结构。请仔细阅读注释，因为它们阐明了每行代码的目的
+
     ``` javascript
     // 导入Hardhat和Hardhat Toolbox
     const { ethers } = require("hardhat");
@@ -347,7 +374,7 @@ it("should initially have 0 funds in the DAO", async function () {
 
 现在，您将使用稍微不同的架构来实现更复杂的测试用例。在上述示例中，您已验证函数返回预期值。在这一部分中，您将验证函数是否会还原。您将更改调用者的地址以测试仅限管理员的功能。
 
-在[staking DAO合约](https://github.com/PureStake/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中，只有管理员有权限添加新成员至DAO。我们可以编写一个测试查看管理员是否有权限添加新成员，但是可能更重要的测试是确保*非管理员*不能添加新成员。要在不同的账户下运行此测试用例，您需要在调用`ethers.getSigners()`时请求另一个地址，并在断言中使用`connect(member1)`指定调用者。最后，在函数调用后，您将附加`.to.be.reverted`以指示如果函数还原则测试用例成功。反之则代表测试失败。
+在[staking DAO合约](https://github.com/moonbeam-foundation/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中，只有管理员有权限添加新成员至DAO。我们可以编写一个测试查看管理员是否有权限添加新成员，但是可能更重要的测试是确保*非管理员*不能添加新成员。要在不同的账户下运行此测试用例，您需要在调用`ethers.getSigners()`时请求另一个地址，并在断言中使用`connect(member1)`指定调用者。最后，在函数调用后，您将附加`.to.be.reverted`以指示如果函数还原则测试用例成功。反之则代表测试失败。
 
 ```javascript
 it("should not allow non-admins to grant membership", async function () {
@@ -383,7 +410,7 @@ it("should only allow members to access member-only functions", async function (
 
 ### 运行测试 {: #running-your-tests }
 
-如果您已遵循上述部分，则您的[`Dao.js`](https://raw.githubusercontent.com/PureStake/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/Dao.js){target=_blank}测试文件应该都准备好了。否则，您需要[从GitHub将完整的代码段](https://github.com/PureStake/moonbeam-docs/blob/master/.snippets/code/hardhat/dao-js-test-file.js){target=_blank}复制到`Dao.js`测试文件中。
+如果您已遵循上述部分，则您的[`Dao.js`](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/Dao.js){target=_blank}测试文件应该都准备好了。否则，您需要[从GitHub将完整的代码段](https://github.com/moonbeam-foundation/moonbeam-docs/blob/master/.snippets/code/hardhat/dao-js-test-file.js){target=_blank}复制到`Dao.js`测试文件中。
 
 由于我们的测试用例主要包含staking DAO的配置和设置，不涉及实际委托操作，因此我们将在Moonbeam开发节点（本地节点）上运行我们的测试。请注意，Alice（`0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`）是本地开发节点上唯一的收集人。您可以使用标志`--network moonbase`来使用Moonbase Alpha运行测试。在这种情况下，请确保您的部署者地址有足够的DEV token。
 
@@ -394,7 +421,7 @@ it("should only allow members to access member-only functions", async function (
 
 您可以使用以下命令运行测试：
 
-```
+```bash
 npx hardhat test --network dev tests/Dao.js
 ```
 
@@ -402,7 +429,7 @@ npx hardhat test --network dev tests/Dao.js
 
 ![Run your test suite of test cases with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-4.png)
 
-## 部署至Moonbase Alpha {: #deploying-to-moonbase-alpha } 
+## 部署至Moonbase Alpha {: #deploying-to-moonbase-alpha }
 
 在以下步骤中，我们将部署`DelegationDAO`至Moonbase Alpha测试网。在部署至Moonbase Alpha或Moonbeam之前，请确认您所使用的账户不是Alice和Bob账户，这两个账户仅用于本地开发节点。
 
@@ -410,13 +437,13 @@ npx hardhat test --network dev tests/Dao.js
 
 要部署`DelegationDAO.sol`，您可以编写一个简单的脚本。您可以为脚本创建一个新的目录，并命名为`scripts`：
 
-```
+```bash
 mkdir scripts
 ```
 
 然后，添加名为`deploy.js`的新文件：
 
-```
+```bash
 touch scripts/deploy.js
 ```
 
@@ -425,7 +452,7 @@ touch scripts/deploy.js
 接着，执行以下步骤：
 
 1. 指定DAO要委托的活跃收集人地址。在本示例中，我们将使用PS-1收集人的地址（注意：这与本地开发节点上的Alice收集人的地址不同）
-2. 将部署者地址指定为DAO的管理员。部署者作为DAO管理员这点很重要，用以确保后续测试按预期工作 
+2. 将部署者地址指定为DAO的管理员。部署者作为DAO管理员这点很重要，用以确保后续测试按预期工作
 3. 使用`getContractFactory`函数创建一个合约的本地实例
 4. 使用已存在于此实例中的`deploy`函数来实例化智能合约
 5. 部署后，您可以使用合约实例获取合约地址
@@ -462,7 +489,7 @@ main()
 
 确保您已在账户中存入Moonbase Alpha DEV Token。现在您可以使用`run`命令部署`DelegationDAO.sol`，并指定`moonbase`作为网络（已在`hardhat.config.js`文件中配置）：
 
-```
+```bash
 npx hardhat run --network moonbase scripts/deploy.js
 ```
 
@@ -486,7 +513,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 要验证合约，您可以运行`verify`命令并传入部署`DelegationDao`合约的网络、合约地址，以及在`deploy.js`文件中给出的两个构造函数参数，即目标收集人地址和部署智能合约的部署者地址（来源于`secrets.json`文件）。
 
-```
+```bash
 npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "{{ networks.moonbase.staking.candidates.address1 }}" "DEPLOYER-ADDRESS"
 ```
 
@@ -505,7 +532,7 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "{{ networks.moonbase.s
 在以下步骤中，我们将部署`DelegationDAO`合约至Moonbeam主网。如果您尚未设置网络，请先将Moonbeam网络添加到您的[`hardhat.config.js`](#hardhat-configuration-file)中并使用您在Moonbeam上的帐户私钥更新您的`secrets.json`文件。在将`DelegationDAO`部署到Moonbeam之前，由于我们在Moonbase Alpha上的目标收集人在Moonbeam上并不存在，我们需要更改目标收集人的地址。前往您的部署脚本并将目标收集人更改为`0x1C86E56007FCBF759348dcF0479596a9857Ba105`或您选择的[另一个Moonbeam收集人](https://apps.moonbeam.network/moonbeam/staking){target=_blank}。因此，您的`deploy.js`脚本应如下所示：
 
 ```javascript
-// 1. The PureStake-03 collator on Moonbeam is chosen as the DAO's target
+// 1. The moonbeam-foundation-03 collator on Moonbeam is chosen as the DAO's target
 const targetCollator = "0x1C86E56007FCBF759348dcF0479596a9857Ba105"
 
 async function main() {
@@ -532,7 +559,7 @@ main()
 
 现在您可以使用`run`命令部署`DelegationDAO.sol`并将`moonbeam`指定为网络：
 
-```
+```bash
 npx hardhat run --network moonbeam scripts/deploy.js
 ```
 
@@ -540,7 +567,7 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbeam with HardHat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
+![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
 
 恭喜您，您的合约已上线Moonbeam！请保存地址，其将在后续步骤中用于与合约实例交互。
 
@@ -554,7 +581,7 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 要验证合约，您可以运行`verify`命令并传入部署`DelegationDao`合约的网络、合约地址，以及在`deploy.js`文件中给出的两个构造函数参数，即目标收集人地址和部署智能合约的部署者地址（来源于`secrets.json`文件）。请注意：Moonbeam上的staking DAO的目标收集人与Moonbase Alpha上的staking DAO的目标收集人不同。
 
-```
+```bash
 npx hardhat verify --network moonbeam <CONTRACT-ADDRESS> "0x1C86E56007FCBF759348dcF0479596a9857Ba105" "DEPLOYER-ADDRESS"
 ```
 

@@ -6,7 +6,7 @@ description: Moonbeam测试网（Moonbase Alpha当前配置的概述，以及如
 # Moonbeam测试网（Moonbase Alpha）
 
 !!! 注意事项
-    随着[Moonbase Alpha v8](https://github.com/PureStake/moonbeam/releases/tag/v0.8.0){target=_blank}版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
+    随着[Moonbase Alpha v8](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.8.0){target=_blank}版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
 
 ## 目标 {: #goal }
 
@@ -28,22 +28,22 @@ Moonbase Alpha具有以下配置：
 需要注意的一些重要变量和配置包括：
 
 === "通用"
-    |       变量        |                                  值                                  |
-    |:---------------------:|:-----------------------------------------------------------------------:|
-    |   最低Gas价格   |               {{ networks.moonbase.min_gas_price }} Gwei                |
-    |   目标区块时间   |  {{ networks.moonbase.block_time }} 秒 (预计为6秒)  |
-    |    区块Gas上限    | {{ networks.moonbase.gas_block }} (预计提升至少4倍) |
-    | 交易Gas上限 |  {{ networks.moonbase.gas_tx }} (预计提升至少4倍)   |
+    |     变量     |                         值                          |
+    |:------------:|:---------------------------------------------------:|
+    | 最低Gas价格  |     {{ networks.moonbase.min_gas_price }} Gwei      |
+    | 目标区块时间 |  {{ networks.moonbase.block_time }} 秒 (预计为6秒)  |
+    | 区块Gas上限  | {{ networks.moonbase.gas_block }} (预计提升至少4倍) |
+    | 交易Gas上限  |  {{ networks.moonbase.gas_tx }} (预计提升至少4倍)   |
 
 === "质押"
-    |             变量              |                                                  值                                                  |
-    |:---------------------------------:|:-------------------------------------------------------------------------------------------------------:|
-    |     最低委托数量      |                            {{ networks.moonbase.staking.min_del_stake }} DEV                            |
-    | 单个候选人最大有效委托人数 |                             {{ networks.moonbase.staking.max_del_per_can }}                             |
-    |  单个委托人可委托的最大委托人数  |                             {{ networks.moonbase.staking.max_del_per_del }}                             |
-    |               轮次               | {{ networks.moonbase.staking.round_blocks }}区块 ({{ networks.moonbase.staking.round_hours }}小时) |
-    |           增加委托时长           |               委托将会在下一个轮次生效（资金可随时提取）               |
-    |          减少委托时长          |                  {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次                 |
+    |              变量              |                                                 值                                                 |
+    |:------------------------------:|:--------------------------------------------------------------------------------------------------:|
+    |          最低委托数量          |                         {{ networks.moonbase.staking.min_del_stake }} DEV                          |
+    |   单个候选人最大有效委托人数   |                          {{ networks.moonbase.staking.max_del_per_can }}                           |
+    | 单个委托人可委托的最大委托人数 |                          {{ networks.moonbase.staking.max_del_per_del }}                           |
+    |              轮次              | {{ networks.moonbase.staking.round_blocks }}区块 ({{ networks.moonbase.staking.round_hours }}小时) |
+    |          增加委托时长          |                             委托将会在下一个轮次生效（资金可随时提取）                             |
+    |          减少委托时长          |                 {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次                 |
 
 --8<-- 'text/testnet/connect.md'
 

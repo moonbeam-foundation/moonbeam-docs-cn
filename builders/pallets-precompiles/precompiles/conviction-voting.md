@@ -37,7 +37,7 @@ Conviction Voting Precompile位于以下地址：
 
 ## Conviction Voting Solidity接口 {: #the-conviction-voting-solidity-interface }
 
-[`ConvictionVoting.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。
+[`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。
 
 The interfaces includes a `Conviction` enum that defines the Conviction multiplier types. The enum has the following variables:
 
@@ -92,7 +92,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 1. 点击**File explorer**标签
 
-2. 将[`ConvictionVoting.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}复制粘贴至一个[Remix文件](https://remix.ethereum.org/){target=_blank}，命名为`ConvictionVoting.sol`
+2. 将[`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}复制粘贴至一个[Remix文件](https://remix.ethereum.org/){target=_blank}，命名为`ConvictionVoting.sol`
 
 ![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-1.png)
 
@@ -174,4 +174,4 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 现在委托账户可以代表您参与投票！如果您想要取消委托，您可以使用Conviction Voting Precompile的`undelegate`函数移除委托。
 
-这样就可以了！您已经基本了解了Conviction Voting Precompile。在[`ConvictionVoting.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}文档中记录了更多的函数，如果您对这些函数或在Conviction Voting Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=_blank}上联系我们。
+这样就可以了！您已经基本了解了Conviction Voting Precompile。在[`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}文档中记录了更多的函数，如果您对这些函数或在Conviction Voting Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=_blank}上联系我们。

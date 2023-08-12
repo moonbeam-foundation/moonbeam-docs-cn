@@ -35,19 +35,13 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 
 ## 作者映射Solidity接口 {: #the-solidity-interface }
 
-[`AuthorMappingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的方法交互。
+[`AuthorMappingInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的方法交互。
 
 - **removeKeys**() — 移除作者ID和会话密钥。替代已弃用的`clearAssociation` extrinsic
 - **setKeys**(*bytes memory* keys) — 接受调用`author_rotateKeys`的结果，这是您的Nimbus和VRF密钥的串联公钥，并立刻设置作者ID和会话密钥。在密钥轮换或迁移后会非常有用。调用`setKeys`需要一笔[保证金](#mapping-bonds)。替代已弃用的`addAssociation`和`updateAssociation` extrinsics
 - **nimbusIdOf**(*address* who) - 获取给定地址的Nimbus ID。如果给定地址不存在，返回`0`
 - **addressOf**(*bytes32* nimbusId) - 获取与给定Nimbus ID关联的地址。如果Nimbus ID未知，则返回`0`
 - **keysOf**(*bytes32* nimbusId) - 获取与给定的Nimbus ID关联的密钥。如果Nimbus ID未知，则返回空字节
-
-以下方式将被**弃用**，但仍将存在以实现向后兼容性：
-
- - **addAssociation**(*bytes32* nimbusId) — 将您的作者ID从交易发送处映射到H160账户，确保这是私钥的真正所有者。这需要一笔[保证金](#mapping-bonds)。此方法通过将`keys`默认设置为作者ID来维持向后兼容性
- - **updateAssociation**(*bytes32* oldNimbusId, *bytes32* newNimbusId) — 将映射从旧的作者ID更新为新的作者ID。在密钥轮换或迁移后会非常有用。这将自动执行`add`和`clear`关联的extrinsics，无需第二笔保证金便能启用密钥轮换。此方法通过将`newKeys`默认设置为作者ID来维持向后兼容性
- - **clearAssociation**(*bytes32* nimbusId) — 清除作者ID与发送交易的H160账户的关联，该帐户需要是该作者ID的所有者。同时，将退还保证金
 
 ## 需要的保证金 {: #bonds }
 
@@ -100,13 +94,13 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 
 如之前所述，您可以使用Ledger将其连接至MetaMask，详情请参考[Ledger](/tokens/connect/ledger/){target=_blank}教程将您的Ledger导入MetaMask。请注意，不建议您使用Ledger用于生产目的。更多信息请参考[收集人要求页面的账户要求部分](/node-operators/networks/collators/requirements/#account-requirements){target=_blank}。
 
-### 生成会话密钥 {: #generate-session-keys } 
+### 生成会话密钥 {: #generate-session-keys }
 
 --8<-- 'text/collators/generate-session-keys.md'
 
-### Remix设置 {: #remix-set-up } 
+### Remix设置 {: #remix-set-up }
 
-首先，获取[`AuthorMappingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}的副本并执行以下操作：
+首先，获取[`AuthorMappingInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/author-mapping/AuthorMappingInterface.sol){target=_blank}的副本并执行以下操作：
 
 1. 点击**File explorer**标签
 2. 将文件内容复制并粘贴至命名为`AuthorMappingInterface.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}

@@ -7,7 +7,7 @@ description: Moonbeam是波卡（Polkadot）生态系统中的一个开源协议
 
 Moonbeam是一个开源协议，您可以在这里找到Moonbeam的repo：
 
-[:fontawesome-brands-github: https://github.com/PureStake/moonbeam](https://github.com/PureStake/moonbeam)
+[:fontawesome-brands-github: https://github.com/moonbeam-foundation/moonbeam](https://github.com/moonbeam-foundation/moonbeam)
 
 Moonbeam基于Substrate框架，您可以在这里找到Substrate的源代码：
 

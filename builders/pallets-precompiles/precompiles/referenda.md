@@ -37,7 +37,7 @@ Referenda Precompile位于以下地址：
 
 ## Referenda Solidity接口 {: #the-referenda-solidity-interface }
 
-[`Referenda.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。具体函数如下所示：
+[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。具体函数如下所示：
 
 - **referendumCount**() - 只读函数，返回公投总数
 - **submissionDeposit**() - 只读函数，返回每个公投所需的提交保证金
@@ -126,7 +126,7 @@ Referenda Precompile位于以下地址：
 
 1. 点击**File explorer**标签
 
-2. 将[`Referenda.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Referenda.sol`
+2. 将[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Referenda.sol`
 
 ![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.png)
 
@@ -214,4 +214,4 @@ Referenda Precompile位于以下地址：
 
 ![Refund the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-6.png)
 
-这样就可以了！您已经基本了解Referenda Precompile。在[`Referenda.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}文档中记录了更多的函数，如果您对这些函数或在Referenda Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=_blank}上联系我们。
+这样就可以了！您已经基本了解Referenda Precompile。在[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}文档中记录了更多的函数，如果您对这些函数或在Referenda Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=_blank}上联系我们。
