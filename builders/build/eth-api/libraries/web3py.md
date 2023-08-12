@@ -29,7 +29,7 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
 
-```
+```bash
 mkdir web3-examples && cd web3-examples
 ```
 
@@ -88,16 +88,14 @@ pip3 install web3 py-solc-x
 
 您仅需要一个文件以查看交易发送前后两个地址的余额。首先，您可以运行以下命令创建一个`balances.py`文件：
 
-```
+```bash
 touch balances.py
 ```
 
 接下来，您将为此文件创建脚本并完成以下步骤：
 
 1. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 2. 定义`address_from`和`address_to`变量
-
 3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.from_wei`格式化结果
 
 ```python
@@ -106,7 +104,7 @@ touch balances.py
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
-```
+```bash
 python3 balances.py
 ```
 
@@ -116,22 +114,17 @@ python3 balances.py
 
 您仅需要一个文件即可在账户之间执行交易。在本示例中，您将从拥有私钥的发送地址转移1个DEV Token至另一个地址。首先，您可以运行以下命令创建一个`transaction.py`文件：
 
-```
+```bash
 touch transaction.py
 ```
 
 接下来，您将为此文件创建脚本并完成以下步骤：
 
-1. 导入将在接下来的步骤中使用的`rpc_gas_price_strategy`以获取用于交易的gas价格
-
+1. 添加导入，包含Web3.py和`rpc_gas_price_strategy`，将会用于以下步骤以获得交易使用的Gas价格
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`account_from`，包括`private_key`和`address_to`变量。此处需要私钥以签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-
 4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
-
 5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.to_wei`函数将数字格式化成以Wei为单位的易读数字
-
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
@@ -140,7 +133,7 @@ touch transaction.py
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 python3 transaction.py
 ```
 
@@ -158,18 +151,15 @@ python3 transaction.py
 
 在这一部分，您将创建一个脚本，此脚本使用Solidity编译器为`Incrementer.sol`合约输出字节码和接口（ABI）。首先，您可以运行以下命令创建一个`compile.py`文件：
 
-```
+```bash
 touch compile.py
 ```
 
 接下来，您将为此文件创建脚本并完成以下步骤：
 
 1. 导入`solcx`程序包
-
 2. **（可选）**如果您还未安装Solidity编译器，您可以通过`solcx.install_solc`函数进行安装
-   
 3. 使用`solcx.compile_files`函数编译`Incrementer.sol`函数
-
 4. 导出合约的ABI和字节码
 
 ```python
@@ -180,24 +170,18 @@ touch compile.py
 
 有了用于编译`Incrementer.sol`合约的脚本，您就可以使用结果以发送部署的签名交易。首先，您可以为部署的脚本创建一个名为`deploy.py`的文件：
 
-```
+```bash
 touch deploy.py
 ```
 
 接下来，您将为此文件创建脚本并完成以下步骤：
 
-1. 导入ABI和字节码
-
+1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-
 4. 使用`web3.eth.contract`函数并传入合约的ABI和字节码创建合约实例
-
 5. 使用合约实例并传入需要增量的数值创建构造交易。在本示例中，您可以将数值设置为`5`。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
-
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入构造交易和发送者的`private_key`
-
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
@@ -206,7 +190,7 @@ touch deploy.py
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 python3 deploy.py
 ```
 
@@ -220,20 +204,16 @@ python3 deploy.py
 
 首先，您需要创建一个文件并命名为`get.py`：
 
-```
+```bash
 touch get.py
 ```
 
 接下来，您可以遵循以下步骤创建脚本：
 
-1. 导入ABI
-
+1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址创建合约实例
-
 5. 使用合约实例，您随后可以调用`number`函数
 
 ```python
@@ -242,7 +222,7 @@ touch get.py
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 python3 get.py
 ```
 
@@ -252,24 +232,18 @@ python3 get.py
 
 发送函数是修改合约存储（更改变量）的交互类型，这意味着需要签署和发送交易。在这一部分，您将创建两个脚本：一个是增量，另一个是重置增量器。首先，您可以为每个脚本创建一个文件，并分别命名为`increment.py`和`reset.py`：
 
-```
+```bash
 touch increment.py reset.py
 ```
 
 接下来，打开`increment.py`文件并执行以下步骤以创建脚本：
 
-1. 导出ABI
-
+1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`account_from`，包括`private_key`、已部署合约`contract_address`以及要增量的`value`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-
 4. 使用`web3.eth.Contract`函数并传入已部署合约的ABI和地址以创建合约实例
-
 5. 使用合约实例和传入要增量的数值创建构造交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
-
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入增量交易和发送者的`private_key`
-
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
@@ -278,7 +252,7 @@ touch increment.py reset.py
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 python3 increment.py
 ```
 
@@ -288,18 +262,12 @@ python3 increment.py
 
 接下来，您可以打开`reset.py`文件并执行以下步骤以创建脚本：
 
-1. 导入ABI
-
+1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`account_from`，包括`private_key`和已部署合约`contract_address`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址以创建合约实例
-
 5. 使用合约实例构建重置交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
-
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入重置交易和发送者的`private_key`
-
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
@@ -308,7 +276,7 @@ python3 increment.py
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 python3 reset.py
 ```
 
