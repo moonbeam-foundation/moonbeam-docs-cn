@@ -117,7 +117,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
       通常生效时间如下所示：
 
       - **Moonriver** - 提案需在[OpenGov](/learn/features/governance/#opengov){target=_blank}的General Admin Track完成，其中决定期约为{{ networks.moonriver.governance.tracks.general_admin.decision_period.time }}，执行期至少为{{ networks.moonriver.governance.tracks.general_admin.min_enactment_period.time }}
-      - **Moonbeam** - 约为{{ networks.moonbeam.democracy.vote_period.days }}天的投票期 + {{ networks.moonbeam.democracy.enact_period.days }}天的执行期
+      - **Moonbeam** - 提案需在[OpenGov](/learn/features/governance/#opengov){target=_blank}的General Admin Track完成，其中决定期约为{{ networks.moonbeam.governance.tracks.general_admin.decision_period.time }}，执行期至少为{{ networks.moonbeam.governance.tracks.general_admin.min_enactment_period.time }}
     
 4. 在连接的平行链上接受从Moonriver/Moonbeam传出的HRMP通道
 
