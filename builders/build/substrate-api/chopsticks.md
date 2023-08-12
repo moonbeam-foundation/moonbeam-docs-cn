@@ -15,23 +15,24 @@ description: 学习如何通过Chopsticks重放区块、解析状态更迭、测
 
 ## Forking Moonbeam用Chopsticks {: #forking-moonbeam }
 
-To use Chopsticks, you can install it as a package with the [Node package manager](https://nodejs.org/en){target=_blank} or [Yarn](https://yarnpkg.com/){target=_blank}:  
+要使用Chopsticks，您可以通过[Node包管理器](https://nodejs.org/en){target=_blank}或 [Yarn](https://yarnpkg.com/){target=_blank}将其安装为包：
 
-```
+```bash
 npm i @acala-network/chopsticks@latest
 ```
 
-Once installed, you can run commands with the Node package executor. For example, this runs Chopstick's base command:  
+在安装完毕后，您可以通过Node包执行器运行指令。举例来说，以下部分运行Chopstick的基础指令：
 
-```
+```bash
 npx @acala-network/chopsticks
 ```
 
-To run Chopsticks, you will need some sort of configuration, typically through a file. Chopsticks' source repository includes a set of [YAML](https://yaml.org/){target=_blank} configuration files that can be used to create a local copy of a variety of Substrate chains. You can download the configuration files from the [source repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}.  
+要运行Chopsticks，您需要某种配置，通常为通过文件进行配置。Chopsticks的源库包含一组 [YAML](https://yaml.org/){target=_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以从[源库的`configs`文件夹](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}下载配置文件。
 
 Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示例配置为Moonbeam网络当前使用的配置
 
 === "Moonbeam"
+
     ```yaml
     endpoint: wss://wss.api.moonbeam.network
     mock-signature-host: true
@@ -57,6 +58,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
     ```
 
 === "Moonriver"
+
     ```yaml
     endpoint: wss://wss.moonriver.moonbeam.network
     mock-signature-host: true
@@ -82,6 +84,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
     ```
 
 === "Moonbase Alpha"
+
     ```yaml
     endpoint: wss://wss.api.moonbase.moonbeam.network
     mock-signature-host: true
@@ -126,53 +129,59 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
 |           `html`           |                  包含此标志以生成区块之间存储差异的预览。                  |
 |   `mock-signature-host`    |  模拟签名主机，让任何以0xdeadbeef开头并由0xcd填充的签名都被认为是有效的。  |
 
-You can use the configuration file with the base command `npx @acala-network/chopsticks` to fork assets by providing it with the `--config` flag.  
+您可以将配置文件与基本指令`npx @acala-network/chopsticks`结合使用，通过为其提供`--config`标志来分叉资产。
 
-You can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply use the chain's name for the `--config` flag. For example, the following commands all use Moonbeam's configuration in the same way:  
+您可以使用默认配置文件的原始GitHub URL、本地配置文件的路径，或者仅使用链的名称作为`--config`标志。例如，以下指令都以相同的方式使用Moonbeam的配置：
 
 === "Chain Name"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks --config=moonbeam
     ```
 
 === "GitHub URL"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
 === "Local File Path"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks --config=configs/moonbeam.yml
     ```
 
-!!! note
-    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}, or have created your own.
+!!! 注意事项
+    如果使用文件路径，请确保您已下载[Moonbeam配置文件](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}，或已创建您自己的。
 
-A configuration file is not necessary, however. All of the settings (except `genesis` and `timestamp`) can also be passed as flags to configure the environment completely in the command line. For example, the following command forks Moonbase Alpha at block 100.
+然而，配置文件不是必需的。所有设置（除了`genesis`和`timestamp`）也可以作为标志传递，以在指令行中完全地配置环境。例如，以下指令为在区块100处分叉Moonbase Alpha：
 
-```
+```bash
 npx @acala-network/chopsticks --endpoint {{ networks.moonbase.rpc_url }} --block 100
 ```
 
 ### Quick Start {: #quickstart }
 
-The simplest way to fork Moonbeam is through the configuration files that are stored in the Chopsticks GitHub repository:  
+分叉Moonbeam最简单的方法是通过存储在Chopsticks GitHub库中的配置文件进行：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonriver.yml
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbase-alpha.yml
     ```
@@ -181,8 +190,8 @@ The simplest way to fork Moonbeam is through the configuration files that are st
 
 当您在运行分叉时，默认情况下，您可以在进行访问:
 
-```
-`ws://localhost:8000`
+```text
+ws://localhost:8000
 ```
 
 您将能够通过[Polkadot.js](https://github.com/polkadot-js/common){target=blank}等库及其[它的用户界面Polkadot.js Apps](https://github.com/polkadot-js/apps){target=_blank}与平行链进行交互。
@@ -206,8 +215,8 @@ The simplest way to fork Moonbeam is through the configuration files that are st
 
 如果您想重放一个区块并检索其信息以剖析extrinsic，您可以使用`npx @acala-network/chopsticks run-block`命令。它有以下标志：
 
-|           标志           |                          描述                          |
-|:------------------------:|:------------------------------------------------------:|
+|            标志            |                          描述                          |
+|:--------------------------:|:------------------------------------------------------:|
 |         `endpoint`         |                 进行分叉的平行链端点。                 |
 |          `block`           |         用于指定重放分叉的区块哈希或是区块号。         |
 |      `wasm-override`       |            用作平行链的WASM路径，而非端点。            |
@@ -219,7 +228,7 @@ The simplest way to fork Moonbeam is through the configuration files that are st
 
 举例来说，运行以下命令将会重新运行Moonbeam的区块1000，并在`moonbeam-output.json`文件中写入存储差异和其他数据：
 
-```
+```bash
 npx @acala-network/chopsticks run-block  \
 --endpoint wss://wss.api.moonbeam.network  \
 --output-path=./moonbeam-output.json  \
@@ -230,7 +239,7 @@ npx @acala-network/chopsticks run-block  \
 
 要在网络间测试XCM消息，您可以在本地分叉多个平行链和中继链。举例来说，假设你已经从的源Github repository下载了[`configs`文件夹](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}，以下命令将会分叉Moonriver、Karura和Kusama：
 
-```
+```bash
 npx @acala-network/chopsticks xcm \
 --r=kusama.yml \
 --p=moonriver.yml \
@@ -239,7 +248,7 @@ npx @acala-network/chopsticks xcm \
 
 您应当能看到类似于以下输出的内容：
 
-```
+```bash
 [13:50:57.807] INFO (rpc/64805): Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonriver.yml
 [13:50:59.655] INFO (rpc/64805): Moonriver RPC listening on port 8000
 [13:50:59.656] INFO (rpc/64805): Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/karura.yml
@@ -251,18 +260,18 @@ npx @acala-network/chopsticks xcm \
 [13:51:08.386] INFO (xcm/64805): Connected relaychain 'Kusama' with parachain 'Karura'
 ```
 
-Including the `r` flag as the relay chain is optional, as Chopsticks will automatically mock a relay chain between networks. You can also use a raw GitHub URL or the name of a popular branch, similar to the base command.
+您可以自行决定是否要包含`r`标志作为中继链，因Chopsticks将会自动在网络之间模仿中继链。您同样可以使用原始的GitHub URL或是知名分支的名称，如同使用基础指令一般。
 
 ## WebSocket命令 {: #websocket-commands }
 
 Chopsticks的内部websocket服务器有特殊的端点，允许操作本地Substrate链。这些是可以调用的方法：
 
-|      方法      |       参数        |                    描述                    |
-|:--------------:|:-----------------:|:------------------------------------------:|
-|  `dev_newBlock`  |      `options`      |           生成一个或多个新区块。           |
+|       方法       |         参数          |                    描述                    |
+|:----------------:|:---------------------:|:------------------------------------------:|
+|  `dev_newBlock`  |       `options`       |           生成一个或多个新区块。           |
 | `dev_setStorage` | `values`, `blockHash` |          创建或覆盖任何存储的值。          |
-| `dev_timeTravel` |       `date`        |       将区块的时间戳设置为`date`值。       |
-|  `dev_setHead`   |   `hashOrNumber`    | 将区块链的块头设置为特定的哈希值或区块号。 |
+| `dev_timeTravel` |        `date`         |       将区块的时间戳设置为`date`值。       |
+|  `dev_setHead`   |    `hashOrNumber`     | 将区块链的块头设置为特定的哈希值或区块号。 |
 
 The parameters above are formatted in the following ways:  
 
@@ -282,7 +291,7 @@ The parameters above are formatted in the following ways:
 
 每个方法都可以通过连接到websocket（默认为`ws://localhost:8000`）并以以下格式发送数据和参数来调用。将`METHOD_NAME`替换为方法名称，将`PARAMETER_1`和`PARAMETER_2`替换或删除为与方法相关的参数数据：
 
-```
+```json
 {
     "jsonrpc": "2.0",
     "id": 1,
