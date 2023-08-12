@@ -28,7 +28,7 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
  - **最大投票数** — 每个账户的最大并发投票数
 
-     === "Moonbeam"
+    === "Moonbeam"
 
         ```text
         {{ networks.moonbeam.governance.max_votes }} votes
