@@ -252,6 +252,8 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/paritytech/frontier/pull/638){target=_blank}。
 
+***
+
 #### 非交易调用的过高Gas限制 {: #gas-limit-too-high-for-non-transactional-calls }
 
 当进行非交易调用时，例如`eth_call`或`eth_estimateGas`，在没有为过去的区块指定Gas限制的情况下进行时，客户端默认使用Gas限制乘数（10x），这会导致Gas限制验证失败。因为它是针对区块Gas限制的上限进行验证的。因此，如果给定调用的Gas限制大于区块Gas限制，则会返回Gas限制过高错误的结果。
@@ -549,6 +551,24 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 | Moonbase Alpha |   RT1900    | 3069635  |
 
 关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1878){target=_blank}。
+
+***
+
+### Referenda Pallet {: #referenda-pallet }
+
+为支持在已关闭公投中退还提交的押金，添加了一个更新`ReferendumInfo`类别的迁移。以下`ReferendumInfo`的不变量的更改，让第二个参数`Deposit<AccountId, Balance>`现能够自定义，`Option<Deposit<AccountId, Balance>>`：`Approved` `Rejected`、`Cancelled`和`TimedOut`。
+
+此处源于[Substrate](https://github.com/paritytech/substrate/pull/12788){target=_blank} repository的上游变更。
+
+此迁移在以下Runtime和区块中执行：
+
+|      网络      | 执行Runtime | 应用区块 |
+|:--------------:|:----------------:|:-------------:|
+|    Moonbeam    |      RT2302      |    3456477    |
+|   Moonriver    |      RT2302      |    4133065    |
+| Moonbase Alpha |      RT2301      |    4172407    |
+
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/2134){target=_blank}。
 
 ***
 

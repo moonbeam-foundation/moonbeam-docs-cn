@@ -10,7 +10,7 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 表决, 投票,
 
 ## 概览 {: #introduction }
 
-The Referenda Pallet allows token holders to make, delegate, and manage Conviction-weighted votes on referenda. 
+The Referenda Pallet allows token holders to make, delegate, and manage Conviction-weighted votes on referenda.
 
 Referenda Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。
 
@@ -29,6 +29,7 @@ Referenda Pallet提供以下extrinsics（函数）：
 - **kill**(index) - 根据要取消的公投索引，取消正在进行中的公投并没收保证金。此类操作需要创建提案并将其分配给Emergency Killer Track
 - **placeDecisionDeposit**(index) - 根据公投索引为公投发布决定保证金（Decision Deposit）
 - **refundDecisionDeposit**(index) - 根据公投索引将已结束公投的决定保证金（Decision Deposit）退还给充值者
+- **refundSubmissionDeposit**(index) - 根据公投索引，将结束公投的提交押金退还给存款人
 - **submit**(proposalOrigin, proposal, enactmentMoment) - 根据提案应该被执行的Origin、提案，以及提案应该被生效的时间，对优先处理的提案发起公投
 
 ### 存储函数 {: #storage-methods }
