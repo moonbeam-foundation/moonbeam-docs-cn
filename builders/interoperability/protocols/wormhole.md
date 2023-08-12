@@ -414,4 +414,10 @@ npm run start
 
 ![Message relay in the logs](/images/builders/interoperability/protocols/wormhole/wormhole-9.png)
 
+## Moonbeam路由流动性集成 {: #moonbeam-routed-liquidity-integration }
+
+Wormhole将通过Moonbeam路由流动性（Moonbeam Routed Liquidity，MRL）计划为平行链提供流动性。该计划允许通过Moonbeam网络发送流动性，将流动性从Wormhole连接的链一键转移到平行链钱包中。
+
+MRL利用[GMP预编译](/builders/pallets-precompiles/precompiles/gmp){target=_blank}，GMP预编译的文档解释了跨链消息如何通过预编译来正确构建。现仅在Moonbase Alpha上可用。
+
 --8<-- 'text/disclaimers/third-party-content.md'
