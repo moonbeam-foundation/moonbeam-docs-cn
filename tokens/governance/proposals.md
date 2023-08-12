@@ -1,7 +1,6 @@
 ---
 title: 如何在OpenGov发起提案
 description: 按照这些分步说明来了解如何提交民主提案以供其他token持有者在Moonbeam上的Governance v2 (OpenGov)中投票。 
-
 ---
 
 # 如何在OpenGov (Governance v2)发起提案
@@ -70,7 +69,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 您可以选择任何想要发起提案的内容，请确保将其分配给正确的Origin和Track，以便其具有执行提案的正确权限。
 
-For the purposes of this guide, the action will be to set an on-chain remark using the General Admin Origin and Track.
+本教程旨在使用General Admin Origin和Track创建一个链上备注。
 
 ### 提交提案原像 {: #submitting-a-preimage-of-the-proposal }
 
@@ -84,7 +83,7 @@ For the purposes of this guide, the action will be to set an on-chain remark usi
 
  1. 选择提交原像的账户
  2. 选择希望交互的pallet以及可调用的函数（或请求）进行提案。所选请求将决定接下来的步骤中要填写的内容。在本示例中为**system** pallet和**remark** extrinsic
- 3. Enter any additional fields required for the extrinsic to be dispatched. For this example, you can enter the remark in hex or ascii format
+ 3. 输入要调度的extrinsic所需的任何其他字段。以本例来说，您可以以十六进制或ascii格式输入备注
  4. 复制原像哈希。这个数值代表着提案，在提交正式提案时会用到
  5. 点击**Submit preimage**按钮并签署交易
 
@@ -101,14 +100,14 @@ For the purposes of this guide, the action will be to set an on-chain remark usi
 
 提交原像（查看上一部分）后，下一步就是提交与这一原像相关的提案。为此，需要在**Governance**下拉菜单中选择**Referenda**，并点击**Submit proposal**。
 
-要提交提案，您将需要选择您希望提案执行的Origin级别。**选择错误的Track/Origin会导致提案执行失败**。For more information on each Origin class, please refer to the [General Definitions](/learn/features/governance/#general-definitions-gov2){target=_blank} section on the Governance on Moonbeam overview page.
+要提交提案，您将需要选择您希望提案执行的Origin级别。**选择错误的Track/Origin会导致提案执行失败**。有关每个Origin类的更多信息，请参阅Moonbeam治理概览页面上的[一般定义](/learn/features/governance/#general-definitions-gov2){target=_blank}部分。
 
 ![Submit proposal](/images/tokens/governance/proposals/v2/proposals-6.png)
 
 此处，您需要提供以下信息：
 
  1. 选择提交提案的账户（在本示例中为Alice）
- 2. Choose the Track to submit the proposal to. The Origin associated with the Track will need to have enough authority to execute the proposed action. For this example, to add an on-chain remark, you can select **2 / General Admin** from the **submission track** dropdown
+ 2. 选择要提交提案的Track。与Track关联的Origin需要有足够的权限来执行建议的操作。在此示例中，要添加链上备注，您可以从 **submission track** 下拉选单中选择 **2 / General Admin**
  3. 在**origin**下拉菜单选择**Origins**
  4. 在**Origins**下拉菜单选择Origin，在本示例中为**GeneralAdmin**
  5. 输入与提案相关的原像。在本示例中为上一部分操作得到的`system.remark`原像哈希

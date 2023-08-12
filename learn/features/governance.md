@@ -15,7 +15,7 @@ Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同
 
 随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=_blank}。
 
-As of runtime 2400, all Moonbeam networks use OpenGov as their governance system.
+在Runtime 2400时，所有Moonbeam网络使用OpenGov作为他们的治理系统。
 
 ## 原则 {: #principles }
 
