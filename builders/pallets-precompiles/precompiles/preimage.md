@@ -49,7 +49,7 @@ Preimage Precompile位于以下地址：
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
-### 查看先决条件 {: #checking-prerequisites } 
+### 查看先决条件 {: #checking-prerequisites }
 
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
@@ -57,37 +57,31 @@ Preimage Precompile位于以下地址：
  - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### Remix设置 {: #remix-set-up } 
+### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-
 2. 将[`Preimage.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Preimage.sol`
 
 ![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-1.png)
 
-### 编译合约 {: #compile-the-contract } 
+### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
-
 2. 然后在编译界面，点击**Compile Preimage.sol**
 
 ![Compile the Preimage.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-2.png)
 
-### 获取合约 {: #access-the-contract } 
+### 获取合约 {: #access-the-contract }
 
 1. 点击位于Remix的**Compile**标签正下方的**Deploy and Run**标签。请注意：您并不是在此部署合约，您是在获取一个已经部署的预编译合约
-
 2. 确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**
-
 3. 确保在**CONTRACT**下拉菜单中已选择**Preimage.sol**。由于这是一个预编译的合约，因此无需部署，但是您需要在**At Address**字段中提供预编译的地址
-
 4. 为Moonbase Alpha提供Preimage Precompile的地址：`{{ networks.moonbase.precompiles.preimage }}`并点击**At Address**
-
 5. Preimage Precompile将会出现在**Deployed Contracts**列表当中
 
 ![Access the Preimage.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-3.png)
 
-### 提交提案原像 {: #submit-a-preimage } 
+### 提交提案原像 {: #submit-a-preimage }
 
 要提交提案，您需要先提交该提案的原像，即本质上定义提议的链上操作。您可以使用Preimage Precompile的`notePreimage`函数提交原像。`notePreimage`函数接受编码的提案，因此您需要先获取编码的提案，可通过使用Polkadot.js Apps轻松获得。
 
@@ -96,11 +90,8 @@ Preimage Precompile位于以下地址：
 现在，您可以获取从[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/democracy){target=_blank}获得的编码提案的**bytes**，并通过Preimage Precompile的`notePreimage`函数提交。要通过`notePreimage`函数提交原像，请执行以下步骤：
 
 1. 展开Preimage Precompile合约查看可用函数
-
 2. 找到**notePreimage**函数，点击按钮展开此部分
-
 3. 输入上述部分获得的编码提案的**bytes**。请注意，编码提案并非与原像哈希相同，确保您在此字段输入正确的数值
-
 4. 点击**transact**并在MetaMask确认交易
 
 ![Submit the preimage using the notePreimage function of the Preimage Precompile.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-4.png)

@@ -57,7 +57,7 @@ Referenda Precompile位于以下地址：
 
 - **referendumStatus**(*uint32* referendumIndex) - 只读函数，返回给定公投的状态的。`ReferendumStatus` enum定义以下可能出现的状态：
 
-     ```
+     ```sol
      enum ReferendumStatus {
           Ongoing,
           Approved,
@@ -125,7 +125,6 @@ Referenda Precompile位于以下地址：
 ### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-
 2. 将[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Referenda.sol`
 
 ![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.png)
@@ -133,7 +132,6 @@ Referenda Precompile位于以下地址：
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
-
 2. 然后在编译界面，点击**Compile Referenda.sol**
 
 ![Compile the Referenda.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-2.png)
@@ -141,13 +139,9 @@ Referenda Precompile位于以下地址：
 ### 获取合约 {: #access-the-contract }
 
 1. 点击位于Remix的**Compile**标签正下方的**Deploy and Run**标签。请注意：您并不是在此部署合约，您是在获取一个已经部署的预编译合约
-
 2. 确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**
-
 3. 确保在**CONTRACT**下拉菜单中已选择**Referenda.sol**。由于这是一个预编译的合约，因此无需部署，但是您需要在**At Address**字段中提供预编译的地址
-
 4. 为Moonbase Alpha提供Referenda Precompile的地址：`{{ networks.moonbase.precompiles.referenda }}`并点击**At Address**
-
 5. Referenda Precompile将会出现在**Deployed Contracts**列表当中
 
 ![Access the Referenda.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-3.png)
@@ -163,17 +157,11 @@ Referenda Precompile位于以下地址：
 当您获取Track ID、原像哈希和原像长度后，您可以使用Referenda Precompile提交提案。在Remix，请执行以下步骤：
 
 1. 展开Referenda Precompile合约查看可用函数
-
 2. 找到**submitAt**函数，点击按钮展开此部分
-
 3. 输入提案的Track ID
-
 4. 输入原像哈希。您可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档的操作步骤获取
-
 5. 输入原像长度
-
 6. 输入执行原像的区块号
-
 7. 点击**transact**并在MetaMask确认交易
 
 ![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.png)
@@ -189,9 +177,7 @@ Referenda Precompile位于以下地址：
 要提交保证金，请执行以下步骤：
 
 1. 找到**placeDecisionDeposit**函数，点击按钮展开此部分
-
 2. 输入公投的索引
-
 3. 点击**transact**并在MetaMask确认交易
 
 ![Place the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-5.png)
@@ -207,9 +193,7 @@ Referenda Precompile位于以下地址：
 要退还决定保证金，您可以使用Referenda Precompile的`refundDecisionDeposit`函数。然后，请执行以下步骤：
 
 1. 找到**placeDecisionDeposit**函数，点击按钮展开此部分
-
 2. 输入公投的索引
-
 3. 点击**transact**并在MetaMask确认交易
 
 ![Refund the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-6.png)

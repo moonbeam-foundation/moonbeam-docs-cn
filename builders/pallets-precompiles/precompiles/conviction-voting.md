@@ -91,7 +91,6 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 ### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-
 2. 将[`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}复制粘贴至一个[Remix文件](https://remix.ethereum.org/){target=_blank}，命名为`ConvictionVoting.sol`
 
 ![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-1.png)
@@ -99,7 +98,6 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
-
 2. 然后在编译界面，点击**Compile ConvictionVoting.sol**
 
 ![Compile the ConvictionVoting.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-2.png)
@@ -107,13 +105,9 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 ### 获取合约 {: #access-the-contract }
 
 1. 在Remix点击**Compile**标签正下方的**Deploy and Run**标签。请注意：不是在此处部署合约，而是获取已部署的预编译合约
-
 2. 确保在**ENVIRONMENT**下拉菜单中已选择**Injected Provider - Metamask**
-
 3. 确保在**CONTRACT**下拉菜单中已选择**ConvictionVoting.sol**。由于这是一个预编译的合约，因此无需部署，但是您需要在**At Address**字段中提供预编译的地址
-
 4. 为Moonbase Alpha提供Conviction Voting Precompile的地址：`{{ networks.moonbase.precompiles.conviction_voting }}`并点击**At Address**
-
 5. Conviction Voting Precompile将会出现在**Deployed Contracts**列表当中
 
 ![Access the ConvictionVoting.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-3.png)
@@ -125,9 +119,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 首先，您需要获取您想要参与投票的公投索引。前往[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}并执行以下步骤以获取公投索引：
 
 1. 从**Governance**下拉菜单中选择**Referenda**
-
 2. 寻找您想要参与投票的公投。您可以通过点击三角形图标查看特定公投的更多详情。如果没有三角形图标，则说明未提交提案的原像，只有提案哈希
-
 3. 记录公投索引
 
 ![View the list of referenda on Polkadot.js Apps.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-4.png)
@@ -137,15 +129,10 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 要提交投票，请执行以下步骤：
 
 1. 展开Conviction Voting Precompile合约查看可用函数
-
 2. 找到你想用于投票的**voteYes**或**voteNo**函数，并点击按钮展开此部分
-
 3. 输入您想要投票的公投索引
-
 4. 输入要锁定的Token数量（以Wei为单位）。此处请勿输入所有余额数量，需要预留部分以支付交易手续费
-
 5. 输入您想要投票的信念值
-
 6. 点击**transact**并在MetaMask确认交易
 
 ![Vote on the proposal using the voteYes function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-5.png)
@@ -159,15 +146,10 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 为此，请执行以下步骤：
 
 1. 找到**delegate**函数并点击按钮展开此部分
-
 2. 输入您想要用于委托的Track的Track ID。您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}找到所有Track ID
-
 3. 输入代表您参与投票的委托账户
-
 4. 输入您想要用于投票的Token数量（以Wei为单位）。此处请勿输入所有余额数量，需要预留部分以支付交易手续费
-
 5. 输入您想要投票的信念值
-
 6. 点击**transact**并在MetaMask确认交易
 
 ![Delegate a vote using the delegate function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-6.png)
