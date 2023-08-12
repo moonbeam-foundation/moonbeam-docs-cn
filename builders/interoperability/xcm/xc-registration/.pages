@@ -1,6 +1,6 @@
-title: XC Registration
+title: XC注册
 nav:
   - index.md
-  - 'Forum Templates': 'forum-templates.md'
-  - 'XC Channel Registration': 'xc-integration.md'
-  - 'XC Asset Registration': 'assets.md'
+  - '论坛模板': 'forum-templates.md'
+  - 'XC通道注册': 'xc-integration.md'
+  - 'XC资产注册': 'assets.md'

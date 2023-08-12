@@ -1,6 +1,6 @@
-To use the script, you'll need to provide the following required arguments:
+要使用该脚本，您需要提供以下的必须参数：
 
-- `--parachain-ws-provider` or `--w` - specifies the parachain WebSocket provider that will be issuing the requests
-- `--relay-ws-provider` or `--wr` - specifies the relay chain WebSocket provider that will be issuing the requests
-- `--hrmp-action` or `--hrmp` - accepts the following action to take, which can be any of the following: `accept`, `cancel`, `close`, and `open`
-- `--target-para-id` or `-p` - the target parachain ID for the requests
+- `--parachain-ws-provider` or `--w` - 指定发起请求的平行链WebSocket提供者
+- `--relay-ws-provider` or `--wr` - 指定发起请求的中继链WebSocket提供者
+- `--hrmp-action` or `--hrmp` - 接收以下动作，可能动作分别为：`accept`、`cancel`、`close`和`open`
+- `--target-para-id` or `-p` - 该请求的目标平行链ID
