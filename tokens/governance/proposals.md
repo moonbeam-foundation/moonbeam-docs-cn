@@ -37,7 +37,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
 
-![Proposal Roadmap](/images/tokens/governance/proposals/v2/proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/proposals/proposal-roadmap.png)
 
 ## 提交您的想法至论坛 {: #submitting-your-idea-to-the-forum }
 
@@ -51,11 +51,11 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 如果您已准备好发布提案详情的帖子，您可以前往**Governance**页面并点击**Democracy Proposals**。
 
-![Governance page on Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-1.png)
+![Governance page on Moonbeam Forum](/images/tokens/governance/proposals/proposals-1.png)
 
 然后点击**Open Draft**，使用提供的模板开始准备提案草案。确保更新帖子标题并添加相关标签，比如**Moonbeam**（如果提案与Moonbeam相关）。标题应遵循[Proposal: XX][Status: Idea]提案标题的格式。例如，[Proposal: XX][Status: Idea]注册XC-20 xcMYTOK。其中XX将在提案正式在链上提交后需要被更新为提案ID。
 
-![Add a proposal to the Moonbeam Forum](/images/tokens/governance/proposals/v1/proposals-2.png)
+![Add a proposal to the Moonbeam Forum](/images/tokens/governance/proposals/proposals-2.png)
 
 填写完提案详情后，点击**Create Topic**保存至论坛并打开讨论。根据收到的反馈，您可以在提交之前更新提案。
 
@@ -65,7 +65,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 您需要用到Polkadot.js Apps界面发起提案。为此，您需要先导入以太坊格式账户（即H160地址），您也可以遵循[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在这个示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-3.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.png)
 
 您可以选择任何想要发起提案的内容，请确保将其分配给正确的Origin和Track，以便其具有执行提案的正确权限。
 
@@ -77,7 +77,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}，所有治理相关操作均在**Governance**标签下，包括原像。在**Governance**下拉菜单中选择**Preimages**，然后点击**Add preimage**按钮。
 
-![Add preimage in Polkadot.js](/images/tokens/governance/proposals/v1/proposals-4.png)
+![Add preimage in Polkadot.js](/images/tokens/governance/proposals/proposals-4.png)
 
 此处，您需要提供以下信息：
 
@@ -87,7 +87,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
  4. 复制原像哈希。这个数值代表着提案，在提交正式提案时会用到
  5. 点击**Submit preimage**按钮并签署交易
 
-![Fill in the Preimage Information](/images/tokens/governance/proposals/v2/proposals-5.png)
+![Fill in the Preimage Information](/images/tokens/governance/proposals/proposals-5.png)
 
 !!! 注意事项
     请确保复制原像哈希，在提交提案时必须用到这一数据。
@@ -102,7 +102,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 要提交提案，您将需要选择您希望提案执行的Origin级别。**选择错误的Track/Origin会导致提案执行失败**。有关每个Origin类的更多信息，请参阅Moonbeam治理概览页面上的[一般定义](/learn/features/governance/#general-definitions-gov2){target=_blank}部分。
 
-![Submit proposal](/images/tokens/governance/proposals/v2/proposals-6.png)
+![Submit proposal](/images/tokens/governance/proposals/proposals-6.png)
 
 此处，您需要提供以下信息：
 
@@ -115,7 +115,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
  7. 输入生效提案的区块数量或特定区块
  8. 点击**Submit proposal**并签署交易
 
-![Fill in the Proposal Information](/images/tokens/governance/proposals/v2/proposals-7.png)
+![Fill in the Proposal Information](/images/tokens/governance/proposals/proposals-7.png)
 
 !!! 注意事项
     由于提案进入公投阶段所需时间不可预测（也有可能无法进入公投阶段），因此Token可能无限期锁定。
