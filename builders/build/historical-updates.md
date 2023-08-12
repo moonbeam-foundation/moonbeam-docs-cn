@@ -118,6 +118,22 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
+#### Substrate Tips Missing Treasury Distribution {: #substrate-tips }
+
+基于Substrate的交易提示并未被正确处理。小费的整个部分都被销毁了，因为它没有在Runtime代码中处理。我们进行了修复，将其中20%将存入财政库，80%被销毁，与所有其他费用行为一致。
+
+此漏洞存在于以下Runtime和区块区间：
+
+|      网络      | 出现时间 | 修复时间 | 影响的区块区间 |
+|:--------------:|:--------:|:--------:|:--------------:|
+|    Moonbeam    |  RT900   |  RT2403  |  0 - 4163078   |
+|   Moonriver    |   RT49   |  RT2401  |  0 - 4668844   |
+| Moonbase Alpha |   RT40   |  RT2401  |  0 - 4591616   |
+
+关于更多信息，您可以在[GitHub上查看相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/2291){target=_blank}。
+
+***
+
 #### 错误委托奖励计算 {: #incorrect-delegation-reward-calculation }
 
 每当有待处理请求时，所有委托和收集人的奖励支出都被低估了。委托奖励是根据每个委托人绑定的Token数量相对于给定收集人的总占比计算的。通过计算待处理请求的委托金额，收集人及其委托的奖励低于原本应有的水平。
@@ -277,8 +293,8 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 此漏洞仅影响Moonbase Alpha并存在于以下Runtime和区块区间：
 
 |      网络      | 出现时间 | 修复时间 |  影响的区块区间   |
-|:--------------:|:----------:|:------:|:--------------------:|
-| Moonbase Alpha |   RT1700   | RT1900 |  2529736 - 3069634   |
+|:--------------:|:--------:|:--------:|:-----------------:|
+| Moonbase Alpha |  RT1700  |  RT1900  | 2529736 - 3069634 |
 
 关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/1790){target=_blank}。
 
@@ -577,10 +593,10 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 此迁移在以下Runtime和区块中执行：
 
 |      网络      | 执行Runtime | 应用区块 |
-|:--------------:|:----------------:|:-------------:|
-|    Moonbeam    |      RT2302      |    3456477    |
-|   Moonriver    |      RT2302      |    4133065    |
-| Moonbase Alpha |      RT2301      |    4172407    |
+|:--------------:|:-----------:|:--------:|
+|    Moonbeam    |   RT2302    | 3456477  |
+|   Moonriver    |   RT2302    | 4133065  |
+| Moonbase Alpha |   RT2301    | 4172407  |
 
 关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/2134){target=_blank}。
 
