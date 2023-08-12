@@ -80,8 +80,8 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 === "EIP-1559"
     ```
-    GasPrice = BaseFee + MaxPriorityFeePerGas < MaxFeePerGas ? 
-                BaseFee + MaxPriorityFeePerGas : 
+    GasPrice = BaseFee + MaxPriorityFeePerGas < MaxFeePerGas ?
+                BaseFee + MaxPriorityFeePerGas :
                 MaxFeePerGas;
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
@@ -98,7 +98,7 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 ### 基础费用 {: #base-fee}
 
-[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}计算基础费用，它是根据区块拥塞情况来进行调整。从runtime 2300（运行时2300）开始，动态费用机制已推广到所有基于Moonbeam的网络。
+`BaseFee`是在传送交易时被收取的最小费用，数值由网络本身设置。[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}计算基础费用，它是根据区块拥塞情况来进行调整。从runtime 2300（运行时2300）开始，动态费用机制已推广到所有基于Moonbeam的网络。
 
 每个网络的最低汽油价格（Minimum Gas Price）如下：
 
@@ -161,6 +161,12 @@ RESPONSE JSON Storage Object:
 
 ### GasPrice，MaxFeePerGas和MaxPriorityFeePerGas {: #gasprice-maxfeepergas-maxpriorityfeepergas }
 
+`GasPrice`为用于指定在[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}前遗留交易的Gas价格。`MaxFeePerGas`和`MaxPriorityFeePerGas`在EIP-1559与`BaseFee`一同出现。`MaxFeePerGas`定义了允许支付以Gas为单位的最大费用，为`BaseFee`和`MaxPriorityFeePerGas`的总和。`MaxPriorityFeePerGas`为由交易的传送者配置的最大优先费用，用于在区块中激励优先处理该交易。
+
+尽管Moonbeam与以太坊兼容，但它的核心还是基于Substrate的链，并且优先级在Substrate中的工作方式与在以太坊中不同。在Substrate中，交易并不按Gas价格确定优先顺序。为了解决这个问题，Moonbeam使用了修改后的优先级系统，该系统使用以太坊优先的解决方案重新确定Substrate交易的优先级。Substrate交易仍会经历有效性过程，在此过程中会为其分配交易标签、寿命和优先级。然后，原始优先级将被基于每Gas交易费用的新优先级覆盖，该费用源自交易的小费和权重。如果交易是以太坊交易，则根据优先费设置优先级。
+
+值得注意的是，优先级并不是负责确定区块中交易顺序的唯一组件。其他组件（例如交易的寿命）也在排序过程中发挥作用。
+
 适用交易类型的`GasPrice`, `MaxFeePerGas`和`MaxPriorityFeePerGas`的值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，特定区块中以太坊交易的数据可以从以下区块端点中提取：
 
 ```
@@ -206,6 +212,8 @@ extrinsics[extrinsic_number].events[event_number].data[0].weight
   - [动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}类似于[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}，但实现不同
 
   - Moonbeam交易费用模型中使用的gas数量是通过固定比例{{ networks.moonbase.tx_weight_to_gas_ratio }}从交易的Substrate extrinsic权重值映射而来。通过此数值乘以单位gas价格来计算交易费用。此费用模型意味着通过以太坊API发送如基本转账等交易可能会比Substrate API更为便宜。
+
+  - EVM被设计为仅具有Gas容量，Moonbeam则在Gas之外的额外指标。更准确地说，Moonbeam需要记录证明大小的能力，也就是在Moonbeam上从中继链验证者用以验证状态转移所需的存储数量。当证明大小的容量限制已经在当前区块达到极限（区块极限的25%），则将会出现“Out of Gas”的错误。即使在存储Gas中还有*剩余的*Gas，此情况仍然有发生的可能性。此处额外的函数同样影响退款。退款将会根据执行后使用的资源是否更多而定。换句话来说，如果相对遗留的Gas使用较多的证明大小，退款将会使用证明大小来计算
 
 ### 费用记录端点 {: #eth-feehistory-endpoint }
 
