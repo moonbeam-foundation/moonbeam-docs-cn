@@ -3,6 +3,7 @@ nav:
   - index.md
   - 'Conviction Voting（信念投票）': 'conviction-voting.md'
   - '民主': 'democracy.md'
+  - 'Multisig': 'multisig.md'
   - '质押功能': 'staking.md'
   - 'Preimage（原像）': 'preimage.md'
   - '代理': 'proxy.md'
@@ -10,4 +11,4 @@ nav:
   - 'Referenda（公投）': 'referenda.md'
   - 'Utility': 'utility.md'
   - 'X-Tokens': '/builders/interoperability/xcm/xc20/xtokens/#x-tokens-pallet-interface'
-  - 'XCM-Transactor': '/builders/interoperability/xcm/xcm-transactor/#xcm-transactor-pallet-interface'
+  - 'XCM Transactor': '/builders/interoperability/xcm/xcm-transactor/#xcm-transactor-pallet-interface'

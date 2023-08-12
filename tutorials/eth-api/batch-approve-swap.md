@@ -7,9 +7,9 @@ description: 学习如何使用Moonbeam上的批处理预编译（Batch Precompi
 
 ![Banner Image](/images/tutorials/eth-api/batch-approve-swap/batch-banner.png)
 
-_2022年12月21日 | 作者：Erin Shaben_
+_作者：Erin Shaben_
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Token授权对于安全地与智能合约交互非常重要，能够防止智能合约在无许可的情况下访问用户Token。当智能合约被授权访问用户Token时，能够访问的Token数量通常是无限量的，具体取决于DApp。
 
@@ -124,7 +124,7 @@ contract SimpleDex {
 }
 ```
 
-在`Batch.sol`文件中，您可以粘贴[批处理预编译合约的内容](https://github.com/PureStake/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}。
+在`Batch.sol`文件中，您可以粘贴[批处理预编译合约的内容](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}。
 
 ### 编译和部署合约 {: #compile-deploy-contracts }
 
@@ -335,7 +335,7 @@ npx hardhat run --network moonbase scripts/swap.js
 
 如上述示例所述，我们可以修改两个交易的过程，以使用批处理预编译将授权和`swapExactTokensForETH`函数批处理到单个交易中。
 
-此示例将基于[Uniswap V2在Moonbase Alpha上的部署](https://github.com/PureStake/moonbeam-uniswap){target=_blank}。我们将授权路由器支付ERTH Token，然后将ERTH换成DEV Token。在深入此示例之前，请确保您已在[Moonbeam-swap DApp](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将一些DEV兑换成ERTH Token，从而您可以将一些ERTH授权并换回 DEV。
+此示例将基于[Uniswap V2在Moonbase Alpha上的部署](https://github.com/papermoonio/moonbeam-uniswap){target=_blank}。我们将授权路由器支付ERTH Token，然后将ERTH换成DEV Token。在深入此示例之前，请确保您已在[Moonbeam-swap DApp](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将一些DEV兑换成ERTH Token，从而您可以将一些ERTH授权并换回 DEV。
 
 同样，我们将使用批处理预编译的`batchAll`函数。因此，我们需要获取编码的调用数据用于授权和兑换。要获取编码的调用数据，我们将使用Ether的`interface.encodeFunctionData`函数并传入必要参数。
 
@@ -343,7 +343,7 @@ npx hardhat run --network moonbase scripts/swap.js
 
 对于`swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline)`函数，我们需要指定要发送的Token数量、必须接收的最小输出Token数量以使交易不会还原、兑换的Token地址、原生资产的接收方以及交易在之后将还原的截止日期。要将ERTH兑换成DEV，路径是从ERTH到WETH，因此路径数组将需要包括ERTH Token地址和WETH Token地址：`[0x08B40414525687731C23F430CEBb424b332b3d35, 0xD909178CC99d318e4D46e7E66a972955859670E1]`。
 
-除了ERTH和WETH地址，您也需要用到[路由器地址](https://github.com/PureStake/moonbeam-uniswap/blob/f494f9a7a07bd3c5b94ac46484c9c7e6c781203f/uniswap-contracts-moonbeam/address.json#L14){target=_blank}创建路由器合约的合约实例，即`0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4`。
+除了ERTH和WETH地址，您也需要用到[路由器地址](https://github.com/papermoonio/moonbeam-uniswap/blob/f494f9a7a07bd3c5b94ac46484c9c7e6c781203f/uniswap-contracts-moonbeam/address.json#L14){target=_blank}创建路由器合约的合约实例，即`0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4`。
 
 代码将与下方内容类似：
 

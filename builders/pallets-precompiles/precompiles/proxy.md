@@ -37,7 +37,7 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
 
 ## 代理Solidity接口 {: #the-proxy-solidity-interface }
 
-[`Proxy.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}是一个接口，通过Solidity合约可以与代理Pallet交互。您无需熟悉Substrate API，您可直接使用您所熟悉的以太坊接口与之交互。
+[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}是一个接口，通过Solidity合约可以与代理Pallet交互。您无需熟悉Substrate API，您可直接使用您所熟悉的以太坊接口与之交互。
 
 接口包含以下函数：
 
@@ -89,7 +89,7 @@ enum ProxyType {
 
 ### Remix设置 {: #remix-set-up }
 
-开始之前，获取[`Proxy.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}副本，并执行以下步骤：
+开始之前，获取[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}副本，并执行以下步骤：
 
 1. 点击**File explorer**标签
 

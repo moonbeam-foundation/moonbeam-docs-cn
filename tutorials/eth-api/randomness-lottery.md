@@ -7,9 +7,9 @@ description: 想要创建一个彩票智能合约？遵循本分步教程使用M
 
 ![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
 
-_本文档更新至2022年3月15日｜作者：Erin Shaben_
+_作者：Erin Shaben_
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种加密函数，它接受一些输入并产生随机值以及这些随机值是由提交者生成的真实性证明。此证明可以由任何人验证，以确保生成的随机数值计算正确。
 
@@ -31,7 +31,7 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 - 一个已配置Moonbase Alpha测试网的空白Hardhat项目。要获取分步操作教程，请参考[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和我们Hardhat文档页面的[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
 - 安装[Hardhat Ethers插件](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
 
-    ```
+    ```bash
     npm install @nomiclabs/hardhat-ethers
     ```
 
@@ -48,17 +48,17 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 
 如果您尚未在Hardhat项目中创建`contracts`目录，您需要创建一个新目录：
 
-```
+```bash
 mkdir contracts && cd contracts
 ```
 
 然后您可以创建以下三个文件，每个文件对应上述合约：
 
-```
+```bash
 touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 ```
 
-在`Randomness.sol`文件中，您可以粘贴[随机数预编译合约](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}。同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴[随机数消费者合约](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol){target=_blank}。
+在`Randomness.sol`文件中，您可以粘贴[随机数预编译合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}。同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴[随机数消费者合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol){target=_blank}。
 
 我们将在以下部分开始添加功能至`Lottery.sol`合约。
 
@@ -128,14 +128,14 @@ uint256 public PARTICIPATION_FEE = 100000 gwei;
 
 接下来，您可以添加以下参数：
 
-```
+```sol
 // 用于执行的gas限制，其取决于执行的代码和请求的字词个数。
 // 根据请求的大小和fulfillRandomWords()函数中回调请求的处理来测试和调整这个限制
 uint64 public FULFILLMENT_GAS_LIMIT = 100000;
 
 // 开始抽奖所需的最低费用。这并不能保证有足够的费用来支付履行所使用的gas。
 // 理想情况下，考虑到可能的gas价格波动，应该设一个较大的值。额外费用将退还给调用者
-uint256 public MIN_FEE = FULFILLMENT_GAS_LIMIT * 1 gwei;
+uint256 public MIN_FEE = FULFILLMENT_GAS_LIMIT * 150 gwei;
 
 // 一个字符串，用于允许使用与其他合约不同的salt
 bytes32 public SALT_PREFIX = "my_demo_salt_change_me";
@@ -153,7 +153,7 @@ uint256 public globalRequestCount;
 - 彩票合约的所有者。这是必不可少的，因为只有合约所有者才有权限开启抽奖
 - 所使用的随机数来源（本地VRF或BABE epoch）
 
-```
+```sol
 // The current request id
 uint256 public requestId;
 
@@ -175,11 +175,11 @@ Randomness.RandomnessSource randomnessSource;
 
 现在，我们已经完成了彩票所需的所有变量的初始设置，接下来我们可以开始编写函数以设置彩票。首先，我们将从创建构造函数开始。
 
-构造函数接受一个*uint8*参数作为随机数来源，这对应位于随机数预编译中的[`RandomnessSource` enum](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L44-L47){target=_blank}中定义的随机数类型的索引。因此，我们需要为本地VRF传入`0`或者为BABE epoch随机数传入`1`。此函数将是`payable`，因为我们需要在部署时提交保证金并在后续用于执行随机数请求
+构造函数接受一个*uint8*参数作为随机数来源，这对应位于随机数预编译中的[`RandomnessSource` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L44-L47){target=_blank}中定义的随机数类型的索引。因此，我们需要为本地VRF传入`0`或者为BABE epoch随机数传入`1`。此函数将是`payable`，因为我们需要在部署时提交保证金并在后续用于执行随机数请求
 
-[保证金](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L17){target=_blank}在随机数预编译中定义，这是和执行费用一样必不可少的。在完成请求后，保证金将退还给初始请求者，在本示例中为合约的所有者。如果未完成请求，则该请求会过期且需要被清除。请求清除后，保证金将被退还。
+[保证金](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L17){target=_blank}在随机数预编译中定义，这是和执行费用一样必不可少的。在完成请求后，保证金将退还给初始请求者，在本示例中为合约的所有者。如果未完成请求，则该请求会过期且需要被清除。请求清除后，保证金将被退还。
 
-```
+```sol
 constructor(
     Randomness.RandomnessSource source
 ) payable RandomnessConsumer() {
@@ -205,7 +205,7 @@ constructor(
 
 `participate`函数将包含以下逻辑：
 
-- 使用随机数预编译的[`getRequestStatus`函数](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L96-L99){target=_blank}检查彩票是否尚未开始。此函数将返回通过[`RequestStatus` enum](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L34-L39){target=_blank}定义的状态。如果状态不是`DoesNotExist`，则表示彩票已开始
+- 使用随机数预编译的[`getRequestStatus`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L96-L99){target=_blank}检查彩票是否尚未开始。此函数将返回通过[`RequestStatus` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L34-L39){target=_blank}定义的状态。如果状态不是`DoesNotExist`，则表示彩票已开始
 - 检查参与费是否满足要求
 - 如果上述两项都符合要求，则参与者将被添加至参与者列表当中，他们的参与费将被加入到奖池中
 
@@ -242,7 +242,7 @@ function participate() external payable {
 - 检查是否达到要求的参与者数量
 - 检查执行费用是否满足最低要求
 - 检查合约余额是否足够支付保证金。还记得构造函数是如何接受请求保证金的吗？保证金将存储于合约中直到此函数被调用
-- 如果上述条件均返回true，我们将通过随机数预编译连同履行费用一起提交随机数请求。根据随机数来源，随机数预编译的[`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`函数](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L110-L167){target=_blank}将和以下参数一起被调用：
+- 如果上述条件均返回true，我们将通过随机数预编译连同履行费用一起提交随机数请求。根据随机数来源，随机数预编译的[`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L110-L167){target=_blank}将和以下参数一起被调用：
     - 接收多余费用退款的地址
     - 履行费用
     - 履行请求的gas上限
@@ -252,7 +252,7 @@ function participate() external payable {
 
 由于彩票功能仅限所有者调用，因此我们也需要添加`onlyOwner`修饰符来要求`msg.sender`为`owner`。
 
-```
+```sol
 function startLottery() external payable onlyOwner {
     // Check we haven't started the randomness request yet
     if (
@@ -313,14 +313,13 @@ modifier onlyOwner() {
 
 在这一部分，我们将添加履行请求和处理请求结果的两个函数：`fulfillRequest`和`fulfillRandomWords`。
 
-`fulfillRequest`函数将调用随机数预编译的[`fulfillRequest`函数](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L173){target=_blank}。在调用此函数时，会在下面调用随机数消费者的[`rawFulfillRandomWords`函数](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L114-L125){target=_blank}，这将验证调用来自随机数预编译。从那里，调用随机数消费者合约的[`fulfillRandomWords`函数](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L107-L109){target=_blank}，并使用区块的随机数结果和给定的salt计算请求的随机词，然后将其返回。如果请求成功完成，将发出`FulfillmentSucceeded`事件；反之，将发出`FulfillmentFailed`事件。
+`fulfillRequest`函数将调用随机数预编译的[`fulfillRequest`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L173){target=_blank}。在调用此函数时，会在下面调用随机数消费者的[`rawFulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L114-L125){target=_blank}，这将验证调用来自随机数预编译。从那里，调用随机数消费者合约的[`fulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L107-L109){target=_blank}，并使用区块的随机数结果和给定的salt计算请求的随机词，然后将其返回。如果请求成功完成，将发出`FulfillmentSucceeded`事件；反之，将发出`FulfillmentFailed`事件。
 
 对于已完成的请求，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何多余的费用和请求保证金将转移给指定退款地址。
 
 `fulfillRandomWords`函数定义回调函数`pickWinners`，其负责处理完成请求。在本示例中，回调函数将使用随机词挑选获胜者并支付奖励。`fulfillRandomWords`函数的签名必须与随机数消费者的`fulfillRandomWords`函数的签名一致。
 
-
-```
+```sol
 function fulfillRequest() public {
     randomness.fulfillRequest(requestId);
 }
@@ -349,7 +348,7 @@ function fulfillRandomWords(
 - 使用随机词确定获胜者
 - 为每位获胜者分发奖励，确保在分发之前将奖励从奖池中移除
 
-```
+```sol
 // This function is called only by the fulfillment callback
 function pickWinners(uint256[] memory randomWords) internal {
     // Get the total number of winners to select
@@ -374,7 +373,7 @@ function pickWinners(uint256[] memory randomWords) internal {
 }
 ```
 
-恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在gitHub上查看[`Lottery.sol`合约](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/randomness/Lottery.sol){target=_blank}的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
+恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在gitHub上查看[`Lottery.sol`合约](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/randomness/Lottery.sol){target=_blank}的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
 
 !!! 挑战
     您可以在开始创建彩票、选择获胜者或分配奖励给获胜者时添加一些事件，以便让合约更易于使用。
@@ -387,7 +386,7 @@ function pickWinners(uint256[] memory randomWords) internal {
 
 要编译合约，您可以简单运行：
 
-```
+```bash
 npx hardhat compile
 ```
 
@@ -399,7 +398,7 @@ npx hardhat compile
 
 您可以为脚本创建一个新目录并命名为`scripts`，然后向其添加名为`deploy.js`的新文件：
 
-```
+```bash
 mkdir scripts && 
 touch scripts/deploy.js
 ```
@@ -447,7 +446,7 @@ main()
 
 要部署彩票合约，我们将使用`run`命令并将`moonbase`指定为网络：
 
-```
+```bash
 npx hardhat run --network moonbase scripts/deploy.js
 ```
 
@@ -461,7 +460,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 我们可以继续使用我们的Hardhat项目，另外创建脚本来与彩票合约交互并调用它的一些功能。例如，我们可以在`scripts`目录中创建另一个脚本来参与彩票抽奖：
 
-```
+```bash
 touch participate.js
 ```
 
@@ -486,7 +485,7 @@ participate()
 
 要运行此脚本，您可以使用以下命令：
 
-```
+```bash
 npx hardhat run --network moonbase scripts/participate.js
 ```
 

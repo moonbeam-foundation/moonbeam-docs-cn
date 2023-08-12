@@ -164,7 +164,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
     }
     ```
 
-=== "Moonbeam Dev Node"
+=== "Moonbeam开发节点"
 
     ```rust
     // 1. Import ethers crate
@@ -302,7 +302,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-rust/send-tx/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/send-tx/main.rs){target=_blank}。
 
 要运行发送交易并在交易发送后检查余额的脚本，您可以运行以下命令：
 
@@ -488,7 +488,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
 
 要运行部署合约和返回存储在`Incrementer`合约中的当前值的脚本，您可以在终端中输入以下命令：
 
@@ -549,7 +549,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
 
 要运行脚本，您可以在终端输入以下命令：
 
@@ -610,6 +610,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ![Terminal logs from resetting the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-4.png)
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
 
 --8<-- 'text/disclaimers/third-party-content.md'
