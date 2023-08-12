@@ -1,0 +1,8 @@
+title: 使用XCM构建跨链应用
+hide: false
+nav:
+  - index.md
+  - "[Polkadot's XCM Pallet] 从波卡在Moonbeam上远程质押": '/tutorials/interoperability/remote-staking-xcm'
+  - "[Polkadot's XCM Pallet] 从波卡在Moonbeam上执行Uniswap V2 Swap": '/tutorials/interoperability/uniswapv2-swap-xcm'
+  - "[Polkadot's XCM Pallet] 从波卡在Moonbeam上执行批量远程EVM调用": '/tutorials/interoperability/remote-batched-evm-calls'
+  

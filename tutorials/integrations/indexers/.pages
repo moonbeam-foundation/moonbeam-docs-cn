@@ -1,0 +1,6 @@
+title: 使用索引器查询链数据
+hide: false
+nav:
+  - index.md
+  - '[Subsquid] 检索一个本地开发节点': '/tutorials/integrations/local-subsquid'
+  - '[Subsquid] 检索NFT转账': '/tutorials/integrations/nft-subsquid'

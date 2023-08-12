@@ -1,0 +1,5 @@
+title: 通过跨链协议创建互连合约
+hide: false
+nav:
+  - index.md
+  - '[LayerZero] 创建一个跨链DAO': '/tutorials/interoperability/cross-chain-dao'

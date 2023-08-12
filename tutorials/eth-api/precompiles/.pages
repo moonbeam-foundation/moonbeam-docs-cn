@@ -1,0 +1,7 @@
+title: 与预编译交互
+hide: false
+nav:
+  - index.md
+  - '[Batch] 在单一交易里批准和兑换Token': '/tutorials/eth-api/batch-approve-swap'
+  - '[Randomness] 创建一个彩票': '/tutorials/eth-api/randomness-lottery'
+  - '[Call Permit] 发送Gasless交易': '/tutorials/eth-api/call-permit-gasless-txs'
