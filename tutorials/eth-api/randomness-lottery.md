@@ -29,10 +29,10 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 - 所有账户必须拥有一些`DEV` Token
  --8<-- 'text/faucet/faucet-list-item.md'
 - 一个已配置Moonbase Alpha测试网的空白Hardhat项目。要获取分步操作教程，请参考[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和我们Hardhat文档页面的[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
-- 安装[Hardhat Ethers插件](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
+- 安装[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
 
     ```bash
-    npm install @nomiclabs/hardhat-ethers
+    npm install @nomicfoundation/hardhat-ethers ethers
     ```
 
 !!! 注意事项
