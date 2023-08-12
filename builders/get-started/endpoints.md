@@ -27,7 +27,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 --8<-- 'text/endpoints/moonbase.md'
 
-## 端点提供商 {: #endpoint-providers }
+## RPC端点提供商 {: #endpoint-providers }
 
 您可以使用以下任意API提供商，创建适用于开发环境或生产环境的端点：
 
@@ -170,3 +170,19 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 复制提供的节点URL即可以开始发出请求；无需注册或KYC
 
 ![Ankr](/images/builders/get-started/endpoints/endpoints-5.png) -->
+
+## 追踪RPC端点提供者 {: #tracing-providers }
+
+追踪RPC端点允许您访问非标准RPC函数，如那些属于Geth的`debug`和`txpool` API以及属于OpenEthereum `trace`模块。要查看在Moonbeam上支持用于调试和追踪的非标准RPC函数，请查看[调试API和追踪模块](/builders/build/eth-api/debug-trace){target=_blank}教程。
+
+以下提供者提供追踪RPC端点：
+
+- [OnFinality](#onfinality-tracing)
+
+### OnFinality {: #onfinality-tracing }
+
+[OnFinality](https://onfinality.io/){target=_blank}的追踪API能够用于在Moonbeam和Moonriver上快速追踪和调试交易。但仅适用于那些在[成长和最终计划](https://onfinality.io/pricing){target=_blank}中的用户。
+
+要使用追踪API，您可以从您的[私人RPC终端](#onfinality)选择中调用追踪函数。关于支持的网络和追踪函数，请查看[OnFinality追踪API的文档网站](https://documentation.onfinality.io/support/trace-api#TraceAPI-SupportedNetworks){target=_blank}。
+
+请注意，如果您正在追踪历史区块，建议使用您自己的专用跟踪节点来回填任何数据，一旦追上区块，您可以切换到使用追踪API。您可以查看[如何在OnFinality上为Moonbeam部署追踪节点](https://onfinality.medium.com/how-to-deploy-a-trace-node-for-moonbeam-on-onfinality-85683181d290) {target=-_blank}教程，了解有关如何启动您自己的专用追踪节点的更多信息。
