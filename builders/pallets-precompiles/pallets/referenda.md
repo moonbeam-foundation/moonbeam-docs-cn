@@ -25,8 +25,8 @@ Referenda Pallet的一些功能可以通过[Referenda Precompile](/builders/pall
 
 Referenda Pallet提供以下extrinsics（函数）：
 
-- **cancel**(index) - 根据要取消的公投索引，取消正在进行中的公投。此类操作需要创建提案并将其分配给Emergency Canceller Track
-- **kill**(index) - 根据要取消的公投索引，取消正在进行中的公投并没收保证金。此类操作需要创建提案并将其分配给Emergency Killer Track
+- **cancel**(index) - 根据要取消的公投索引，取消正在进行中的公投。此类操作需要创建提案并将其分配给Root Track或Emergency Canceller Track
+- **kill**(index) - 根据要取消的公投索引，取消正在进行中的公投并没收保证金。此类操作需要创建提案并将其分配给Root Track或Emergency Canceller Track
 - **placeDecisionDeposit**(index) - 根据公投索引为公投发布决定保证金（Decision Deposit）
 - **refundDecisionDeposit**(index) - 根据公投索引将已结束公投的决定保证金（Decision Deposit）退还给充值者
 - **refundSubmissionDeposit**(index) - 根据公投索引，将结束公投的提交押金退还给存款人

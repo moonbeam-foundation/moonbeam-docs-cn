@@ -232,9 +232,11 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 如果发现已经进入投票阶段的提案有问题，则需要阻止该提案通过。这些实例可能涉及恶意活动或由于近期的网络升级而无法实施更改的技术问题。
 
-取消公投需要通过网络投票才可执行。取消提案的流程会比普通提案更快，因为该提案必须在生效之前快速决定，但遵循与其他公投相同的过程。目前有两种Cancellation Origins，Emergency Canceller用于处理包含不可预见问题的公投，Emergency Killer用于处理蓄意损害网络的不良公投。这两个Track降低了通过门槛，因此带入期较短，批准和支持要求也偏低。
+取消公投需要通过网络投票才可执行。取消提案的流程会比普通提案更快，因为该提案必须在生效之前快速决定，但遵循与其他公投相同的过程。
 
-Emergency Canceller的track会导致提案被拒绝，决定保证金被退回。而Emergency Killer的track会导致提案被取消，保证金被没收，即决定保证金被销毁。
+有一个取消Origin用于对抗包含不可预见问题的公投，称为Emergency Canceller。Emergency Canceller Origin和Root Origin可以取消公投。无论Origin如何，如果提案被取消，它将被拒绝，并且Decision Deposit将被退还。
+
+另外，还有一个Kill Origin，用于恶意公投，意图危害网络，称为Emergency Killer。Emergency Killer Origin和Root Origin具有否决公投的能力。在这种情况下，提案将被取消，Decision Deposit将被削减，这意味着无论Origin如何，押金的金额都会被销毁。
 
 ### OpenGov技术委员会的权力 {: #rights-of-the-opengov-technical-committee }
 

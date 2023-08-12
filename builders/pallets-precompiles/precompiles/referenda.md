@@ -196,7 +196,7 @@ Referenda Precompile位于以下地址：
 
 ### 退还决定保证金 {: #refund-decision-deposit }
 
-一旦公投通过或者拒绝，决定保证金将被退还。但是此步骤的前提是公投没有因为评判为不良公投被取消。如果提案被评判为不良公投并通过Emergency Killer Track被终止，则决定保证金将被没收。
+一旦公投通过或者拒绝，决定保证金将被退还。但是此步骤的前提是公投没有因为评判为不良公投被取消。如果提案被评判为不良公投并通过Root Track或Emergency Killer Track被终止，则决定保证金将被没收。
 
 要退还决定保证金，您可以使用Referenda Precompile的`refundDecisionDeposit`函数。然后，请执行以下步骤：
 
