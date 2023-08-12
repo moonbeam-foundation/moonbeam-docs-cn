@@ -7,7 +7,7 @@ description: 学习如何直接通过Moonbeam上的Conviction Voting Precompile�
 
 ![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 作为波卡平行链和去中心化网络，Moonbeam具有原生链上治理，能够使Token持有者直接参与网络。随着OpenGov（也称为Governance v2）的推出，Conviction Voting Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、原则、机制等，请参考[Moonbeam上的治理](/learn/features/governance){target=_blank}页面。
 
@@ -29,13 +29,11 @@ Conviction Voting Precompile位于以下地址：
 
 --8<-- 'text/precompiles/security.md'
 
-## Conviction Voting Solidity接口 {: #the-conviction-voting-solidity-interface } 
+## Conviction Voting Solidity接口 {: #the-conviction-voting-solidity-interface }
 
 [`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。
 
-The interfaces includes a `Conviction` enum that defines the Conviction multiplier types. The enum has the following variables:
-
-接口包含定义Conviction乘数类型的`Conviction`枚举（enum）。这个枚举具有以下变量：
+接口包含定义[Conviction乘数](/learn/features/governance/#conviction-multiplier-v2){target=_blank}类型的`Conviction`枚举（enum）。这个枚举具有以下变量：
 
  - **None** -  0.1倍的投票，无锁定期
  - **Locked1x** - 1倍的投票，投票成功后锁定1个生效等待期
@@ -47,8 +45,12 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 接口包含以下函数：
 
+- **votingFor**(*address* who, *uint16* trackId) - 返回给定账户和Track的投票
+- **classLocksFor**(*address* who) - 返回给定账户的类别锁定
 - **voteYes**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“赞成”票（包含信念值权重）
 - **voteNo**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“反对”票（包含信念值权重）
+- **voteSplit**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - 分开投票，在给定投票（公投）中一定数量为"Aye"锁定或是一定数量为"Nay"锁定
+- **voteSplitAbstain**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - 在民意投票（公投）中，投出分开弃权票，其中“Aye”锁定一定数量，“Nay”锁定一定数量，弃权票（支持）锁定一定数量
 - **removeVote**(*uint32* pollIndex) - 在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **removeOtherVote**(*address* target, *uint16* trackId, *uint32* pollIndex) - 为另一个投票者在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **delegate**(*uint16* trackId, *address* representative, *Conviction* conviction, *uint256* amount) - 委托另一个账户作为代表为特定Track的发送账户进行信念值权重投票
@@ -66,7 +68,10 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 接口也包含以下事件：
 
 - **Voted**(*uint32 indexed* pollIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - 当账户投票时发出
-- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - 当账户（`voter`）的投票被移除时发出
+- **VoteSplit**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay) - 在一个账户进行分开投票时发出
+- **VoteSplitAbstained**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay, *uint256* nay) - 在一个账户进行分开弃权投票后发出
+- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - 在一个账户（`voter`）的投票从正在进行的投票（公投）中被移除后发出
+- **VoteRemovedForTrack**(*uint32 indexed* pollIndex, *uint16* trackId, *address* voter) - 在一个账户（`voter`）的投票从指定Track的正在进行的投票（公投）中移除后发出
 - **VoteRemovedOther**(*uint32 indexed* pollIndex, *address* caller, *address* target, *uint16* trackId) - 当一个账户（`caller`）为另一个账户（`target`）移除投票时发出
 - **Delegated**(*uint16 indexed* trackId, *address* from, *address* to, *uint256* delegatedAmount, *uint8* conviction) - 当一个账户（`from`）委托给定数量的信念值权重投票给另一个账户（`to`）时发出
 - **Undelegated**(*uint16 indexed* trackId, *address* caller) - 当为特定Track移除帐户（`caller`）委托时发出
@@ -74,7 +79,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
-### 查看先决条件 {: #checking-prerequisites } 
+### 查看先决条件 {: #checking-prerequisites }
 
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
@@ -82,7 +87,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
  - 拥有DEV Token的账户。
  --8<-- 'text/faucet/faucet-list-item.md'
 
-### Remix设置 {: #remix-set-up } 
+### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
 
@@ -90,7 +95,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 ![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-1.png)
 
-### 编译合约 {: #compile-the-contract } 
+### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 
@@ -98,7 +103,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 ![Compile the ConvictionVoting.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-2.png)
 
-### 获取合约 {: #access-the-contract } 
+### 获取合约 {: #access-the-contract }
 
 1. 在Remix点击**Compile**标签正下方的**Deploy and Run**标签。请注意：不是在此处部署合约，而是获取已部署的预编译合约
 
@@ -112,7 +117,7 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 ![Access the ConvictionVoting.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-3.png)
 
-### 参与公投 {: #vote-on-a-referendum } 
+### 参与公投 {: #vote-on-a-referendum }
 
 您可以在带入期或决定期随时锁定Token并参与公投。为了促进公投通过，则需要最低批准数和支持数，但不同的track也会有不同的标准。关于不同时期和Track类别所需的批准和支持要求的更多信息，请参考[治理概览页面的OpenGov部分](/learn/features/governance/#opengov){target=_blank}。
 
