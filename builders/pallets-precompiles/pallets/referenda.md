@@ -10,12 +10,9 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 表决, 投票,
 
 ## 概览 {: #introduction }
 
-The Referenda Pallet allows token holders to make, delegate, and manage Conviction-weighted votes on referenda. 
-
 Referenda Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。
 
---8<-- 'text/pallets/gov1-gov2.md'
-Referenda Pallet的一些功能可以通过[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}使用。
+治理相关功能是基于3个新的pallet和预编译：[Preimage Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}和[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}、[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda){target=_blank}和[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}，以及[Conviction Voting Pallet](/builders/pallets-precompiles/pallets/conviction-voting){target=_blank}和[Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}。上述预编译是Solidity接口，使您能够使用以太坊API执行治理功能。
 
 本教程将概述Moonbeam上Referenda Pallet中的可用extrinsics、存储函数和pallet常量的获取方式。本教程假设您已熟悉治理相关的专业术语，反之您可以在[治理概览页面](/learn/features/governance/#opengov){target=_blank}获取更多信息。
 
