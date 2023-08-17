@@ -15,7 +15,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 但是，您无法直接通过一个XCM [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}调用[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}。主要因为远程EVM调用的调度者账户（在以太坊中为`msg.sender`）并不会在Moonbeam端签署XCM交易。XCM extrinsic会在其原始链中签名，接着XCM执行器会通过[`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank}指令，让与原链中的发送者链接的已知调用者调度调用的动作。在这种情况下，Ethereum Pallet将会无法验证签名，及最终的验证交易步骤。
 
-为解决此问题，引入了[Ethereum XCM Pallet](https://github.com/PureStake/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}。它充当XCM [Transact](https://github.com/paritytech/xcm-format#transact){target=_blank}指令和[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}之间的中间件，因为在通过XCM远程执行EVM调用时需要特别注意。Pallet将执行必要的检查并验证交易。接着，Pallet会调用Ethereum Pallet将交易派遣给EVM。根据访问EVM的方式，常规和远程EVM的调用之间存在一些差异。
+为解决此问题，引入了[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}。它充当XCM [Transact](https://github.com/paritytech/xcm-format#transact){target=_blank}指令和[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}之间的中间件，因为在通过XCM远程执行EVM调用时需要特别注意。Pallet将执行必要的检查并验证交易。接着，Pallet会调用Ethereum Pallet将交易派遣给EVM。根据访问EVM的方式，常规和远程EVM的调用之间存在一些差异。
 
 下列流程图描绘了通过XCM进行常规和远程EVM调用的路径：
 

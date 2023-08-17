@@ -36,8 +36,8 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 ### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 
 === "Moonbeam"
-    |                                                                      合约                                                                       |                             地址                             |
-    |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                             地址                             |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}     |         {{ networks.moonbeam.precompiles.staking }}          |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}    |        {{ networks.moonbeam.precompiles.crowdloan }}         |
     |            [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}            |          {{ networks.moonbeam.precompiles.erc20 }}           |
@@ -56,10 +56,11 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |    [Technical Committee Collective](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}     | {{networks.moonbeam.precompiles.collective_tech_committee }} |
     |      [Treasury Council Collective](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}      |    {{networks.moonbeam.precompiles.collective_treasury }}    |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |         {{networks.moonbeam.precompiles.registry }}          |
+    |                         [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |            {{networks.moonbeam.precompiles.gmp }}            |
 
 === "Moonriver"
-    |                                                                      合约                                                                       |                                 地址                                  |
-    |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                                 地址                                  |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}     |              {{ networks.moonriver.precompiles.staking}}              |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}    |            {{ networks.moonriver.precompiles.crowdloan }}             |
     |            [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}            |              {{ networks.moonriver.precompiles.erc20 }}               |
@@ -82,10 +83,11 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |                 [Preimage](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}                  |             {{networks.moonriver.precompiles.preimage }}              |
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}         | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |             {{networks.moonriver.precompiles.registry }}              |
+    |                         [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonriver.precompiles.gmp }}                |
 
 === "Moonbase Alpha"
-    |                                                                      合约                                                                       |                                 地址                                 |
-    |:-----------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                                 地址                                 |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}     |              {{ networks.moonbase.precompiles.staking}}              |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=_blank}    |            {{ networks.moonbase.precompiles.crowdloan }}             |
     |            [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}            |              {{ networks.moonbase.precompiles.erc20 }}               |
@@ -108,3 +110,4 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |                 [Preimage](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}                  |             {{networks.moonbase.precompiles.preimage }}              |
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}         | {{networks.moonbase.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}  |             {{networks.moonbase.precompiles.registry }}              |
+    |                         [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonbase.precompiles.gmp }}                |
