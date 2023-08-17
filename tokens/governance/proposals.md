@@ -122,7 +122,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 交易提交后，您将在Polkadot.js Apps界面的右上角看到一些确认信息。您也将看到提案出现在关联的Origin部分的列表中，显示已发起的提案、提议者以及更多信息。
 
-如果您用创建提案的同一个账户登陆[Polkassembly](https://moonbeam.polkassembly.network/){target=_blank}，您将能够编辑提案描述，添加在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}提案讨论的链接。该步骤必不可少，虽然Polkassembly会为每个提案自动生成一个帖子，但它不会提供有关提案的详细信息。
+如果您用创建提案的同一个账户登陆[Polkassembly](https://moonbeam.polkassembly.io/opengov){target=_blank}，您将能够编辑提案描述，添加在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}提案讨论的链接。该步骤必不可少，虽然Polkassembly会为每个提案自动生成一个帖子，但它不会提供有关提案的详细信息。
 
 提案目前处于带入期并可以准备开始投票。为了使您的提案从带入期进入下一阶段，至少需要经过准备期，以便有足够的时间讨论提案，还需要确保选择的Track有足够的提案容量，并且需要提交决定保证金。保证金可以由任何Token持有者支付。如果没有足够的容量或没有提交决定保证金，准备期过了之后，提案将保留在带入期，直到满足所有标准。
 

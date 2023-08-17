@@ -166,7 +166,7 @@ Referenda Precompile位于以下地址：
 
 ![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.png)
 
-交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.network/){target=_blank}查看提案（Polkassembly根据Track来分类提案）。
+交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.io/opengov){target=_blank}查看提案（Polkassembly根据Track来分类提案）。
 
 ### 提交决定保证金 {: #submit-decision-deposit }
 
