@@ -54,7 +54,7 @@ npm install --save-dev @nomicfoundation/hardhat-verify
 ```
 
 !!! 注意事项
-    `@nomiclabs/hardhat-verify`的3.0.1版本中已添加对基于Moonbeam网络的支持。您可以通过查看`devDependencies`部分的`package.json`来确认所使用的版本并更新至3.0.1或以上的版本（若需要）。
+    `@nomicfoundation/hardhat-verify`的3.0.1版本中已添加对基于Moonbeam网络的支持。您可以通过查看`devDependencies`部分的`package.json`来确认所使用的版本并更新至3.0.1或以上的版本（若需要）。
 
 您可以将您的Moonscan API密钥与您的私钥一起添加到`hardhat.config.js`文件中。在本示例中，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
 
