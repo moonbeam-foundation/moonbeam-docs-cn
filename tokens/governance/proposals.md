@@ -13,7 +13,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 在Moonbeam，用户可以使用其H160地址和私钥（也就是以太坊账户）来创建提案、附议提案和投票提案。
 
-本教程将分步概述如何在OpenGov (Governance v2)提交提案以便Token持有者投票。此教程将展示如何在Moonbase Alpha上提交提案，这也同样适用于Moonbeam或Moonriver。关于如何[在OpenGov对提案进行投票](/tokens/governance/voting/opengov-voting){target=_blank}有单独的教程。
+本教程将分步概述如何在OpenGov (Governance v2)提交提案以便Token持有者投票。此教程将展示如何在Moonbase Alpha上提交提案，这也同样适用于Moonbeam或Moonriver。关于如何[在OpenGov对提案进行投票](/tokens/governance/voting/){target=_blank}有单独的教程。
 
 关于Moonbeam治理系统的更多信息，请参考[治理概览页面](/learn/features/governance/){target=_blank}。
 
@@ -126,4 +126,4 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 提案目前处于带入期并可以准备开始投票。为了使您的提案从带入期进入下一阶段，至少需要经过准备期，以便有足够的时间讨论提案，还需要确保选择的Track有足够的提案容量，并且需要提交决定保证金。保证金可以由任何Token持有者支付。如果没有足够的容量或没有提交决定保证金，准备期过了之后，提案将保留在带入期，直到满足所有标准。
 
-要了解如何对提案进行投票，请参考[如何在OpenGov对提案进行投票](/tokens/governance/voting/opengov-voting){target=_blank}教程。
+要了解如何对提案进行投票，请参考[如何在OpenGov对提案进行投票](/tokens/governance/voting/){target=_blank}教程。

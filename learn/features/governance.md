@@ -11,7 +11,7 @@ description: 作为波卡平行链，Moonbeam使用链上治理系统来允许�
 
 Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同使命中，治理过程寻求包括所有Token持有者。关于协议的任何以及所有更改都必须通过公投，以便所有的Token持有者可以根据质押权重对决策提出建议。
 
-如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}和[Polkassembly](https://moonbeam.polkassembly.network/){target=_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=_blank}将社区团结起来，共同完成推进协议的使命。
+如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}和[Polkassembly](https://moonbeam.polkassembly.io/){target=_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=_blank}将社区团结起来，共同完成推进协议的使命。
 
 随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=_blank}。
 
@@ -297,8 +297,8 @@ OpenGov技术委员会由拥有基于Moonbeam网络方面技术知识和专业�
 
 关于如何使用OpenGov在Moonbeam上提交公投和投票，请查看以下指南：
 
- - [如何提交提案](/tokens/governance/proposals/opengov-proposals){target=_blank}
- - [如何对提案投票](/tokens/governance/voting/opengov-voting){target=_blank}
+ - [如何提交提案](/tokens/governance/proposals/){target=_blank}
+ - [如何对提案投票](/tokens/governance/voting/){target=_blank}
  - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}
  - [如何与公投预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/referenda/){target=_blank}
  - [如何与信念投票预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/conviction-voting/){target=_blank}
