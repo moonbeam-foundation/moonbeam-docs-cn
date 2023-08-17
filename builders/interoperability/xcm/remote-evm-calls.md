@@ -159,7 +159,6 @@ yarn calculate-multilocation-derivative-account \
 |:---------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |        原链编码地址         |                                                    `5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`                                                     |
 |        原链解码地址         |                                           `0x3ec5f48ad0567c752275d87787954fef72f557b8bfa5eefc88665fa0beb89a56`                                            |
-|        源链账户名称         |                                                                         `Westend`                                                                         |
 | 目标链中接收的Multilocation | `{"parents":1,"interior":{"x1":{"accountId32":{"network": {"westend":null},"id":"0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0afb2e78fdbbbf4ce26c2556c"}}}}` |
 |  多地点衍生账户（32字节）   |                                           `0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0afb2e78fdbbbf4ce26c2556c`                                            |
 |  多地点衍生账户（20字节）   |                                                       `0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0`                                                        |
