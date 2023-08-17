@@ -9,7 +9,7 @@ description: 如何通过XCM从任何已建立XCM通道的波卡平行链远程�
 
 ## 概览 {: #introduction}
 
-[XCM Transactor pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
+[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
 
 Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/frontier/tree/master/frame/ethereum){target=_blank}访问。除此之外，这个pallet在将交易放入交易池前处理交易的某些验证步骤。接着，它会将池子中的交易插入区块之前执行其他的验证步骤。最后，它会通过`transact`函数提供接口以执行经过验证的交易。以上所有步骤在结构和签名机制方面都遵循与以太坊交易相同的步骤。
 
@@ -62,16 +62,16 @@ XCM队列的配置表明XCM消息应该设置为`20,000,000,000`权重单位（�
 
 简单来说，以下为常规和远程EVM调用之间的主要区别：
 
-- 远程EVM调用使用全网随机数（由[Ethereum-XCM pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}拥有）而不是每个账户的随机数
+- 远程EVM调用使用全网随机数（由[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}拥有）而不是每个账户的随机数
 - 远程EVM调用的签名的`v-r-s`值为`0x1`。无法通过一般函数从签名中检索发送者（例如，通过[ECRECOVER](/builders/pallets-precompiles/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}）。然而，`from`被包含在交易收据和通过哈希获取交易数据时（使用以太坊 JSON RPC）
 - 所有远程EVM调用的Gas为零。EVM执行在XCM执行层而非在EVM层收费
-- 您可以为远程EVM调用设置的当前最大Gas限制为`720,000 ` Gas单位
+- 您可以为远程EVM调用设置的当前最大Gas限制为`720,000` Gas单位
 
 ## Ethereum XCM Pallet接口 {: #ethereum-xcm-pallet-interface}
 
 ### Extrinsics {: #extrinsics }
 
-Ethereum XCM pallet提供以下extrinsics（函数），可以通过`Transact`指令调用以通过XCM访问Moonbeam的EVM：
+Ethereum XCM Pallet提供以下extrinsics（函数），可以通过`Transact`指令调用以通过XCM访问Moonbeam的EVM：
 
 - **transact**(xcmTransaction) — 通过XCM远程调用EVM的函数。只能通过执行XCM消息调用
 - **transactThroughProxy**(transactAs, xcmTransaction) — 类似于`transact` extrinsic，但此函数使用`transactAs`作为附加字段。此函数允许从具有已知密钥（`msg.sender`）的给定帐户派遣远程EVM调用。此帐户需要将**multilocation衍生账户**设置为Moonbeam上类型为`any`的代理账户。相反而言，远程EVM调用的调度将失败。交易费用仍由**multilocation衍生账户**支付
@@ -109,7 +109,7 @@ Ethereum XCM pallet提供以下extrinsics（函数），可以通过`Transact`�
   DescendOrigin: {
     X1: {
       AccountId32: {
-        network: 'Westend',
+        network: { westend: null },
         id: decodedAddress,
       },
     },
@@ -133,7 +133,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
     interior: {
       X1: {
         AccountId32: {
-          network: 'Westend',
+          network: { westend: null },
           id: decodedAddress,
         },
       },
@@ -142,43 +142,28 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 }
 ```
 
-这是用于计算**multilocation衍生账户**的multilocation。您可以使用这个[计算**multilocation衍生账户**脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=_blank}来帮助您获取它的值。您可以通过运行以下指令来获取：
+--8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
+
+以Alice的中继链账户`5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`为例，您可以通过运行以下命令来计算他的Moonbase Alpha **multilocation衍生账户**：
 
 ```sh
 yarn calculate-multilocation-derivative-account \
---w wss://wss.api.moonbase.moonbeam.network \
---a INSERT_MOONBASE_RELAY_ACCOUNT \
---p PARACHAIN_ID_IF_APPLIES \
---n westend
-```
-
-接着，让我们检查以上指令中输入的相关参数：
-
-- `-w`标志对应我们用于获得此信息的端点
-- `-a`标志对应您的Moonbase中继链账户地址
-- `-p`标志对应原链（如有）的平行链ID。如果您从中继链传送XCM则无需提供此参数
-- `-n`标志对应“westend”（Moonbase中继基于的中继链名称）的编码
-
-以我们的例子来说，我们将会通过Alice账户经由XCM传送远程EVM调用，也就是`5EnnmEp2R92wZ7T8J2fKMxpc1nPW5uP8r5K3YUQGiFrw8uG6`，因此指令和获得的结果将会如同下方图示。
-
-```sh
-yarn calculate-multilocation-derivative-account \
---w wss://wss.api.moonbase.moonbeam.network \
---a 5EnnmEp2R92wZ7T8J2fKMxpc1nPW5uP8r5K3YUQGiFrw8uG6 \
---n westend
+--ws-provider wss://wss.api.moonbase.moonbeam.network \
+--address 5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT \
+--parents 1
 ```
 
 所有数值被整理成以下表格：
 
 |            名称             |                                                                           数值                                                                            |
 |:---------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|        原链编码地址         |                                                    `5EnnmEp2R92wZ7T8J2fKMxpc1nPW5uP8r5K3YUQGiFrw8uG6`                                                     |
-|        原链解码地址         |                                           `0x78914a4d7a946a0e4ed641f336b498736336e05096e342c799cc33c0f868d62f`                                            |
-|        源链账户名称         |                                                                         `Westend`                                                                         |
-| 目标链中接收的Multilocation | `{"parents":1,"interior":{"x1":{"accountId32":{"network": {"westend":null},"id":"0x78914a4d7a946a0e4ed641f336b498736336e05096e342c799cc33c0f868d62f"}}}}` |
-|  多地点衍生账户（20字节）   |                                                       `0xda51eac6eb3502b0a113effcb3950c52e873a24c`                                                        |
+|        原链编码地址         |                                                    `5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`                                                     |
+|        原链解码地址         |                                           `0x3ec5f48ad0567c752275d87787954fef72f557b8bfa5eefc88665fa0beb89a56`                                            |
+| 目标链中接收的Multilocation | `{"parents":1,"interior":{"x1":{"accountId32":{"network": {"westend":null},"id":"0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0afb2e78fdbbbf4ce26c2556c"}}}}` |
+|  多地点衍生账户（32字节）   |                                           `0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0afb2e78fdbbbf4ce26c2556c`                                            |
+|  多地点衍生账户（20字节）   |                                                       `0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0`                                                        |
 
-在本示例中，Moonbase Alpha的**multilocation衍生账户**是`0xda51eac6eb3502b0a113effcb3950c52e873a24c`。请注意，只有Alice是唯一可以通过中继链的远程交易访问此帐户的人，因为她是其私钥的所有者，并且**multilocation衍生帐户**是无密钥的。
+在本示例中，Moonbase Alpha的**multilocation衍生账户**是`0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0`。请注意，只有Alice是唯一可以通过中继链的远程交易访问此帐户的人，因为她是其私钥的所有者，并且**multilocation衍生帐户**是无密钥的。
 
 ### Ethereum XCM处理调用数据 {: #ethereumxcm-transact-data}
 
@@ -197,7 +182,7 @@ yarn calculate-multilocation-derivative-account \
 
 与`increment`函数交互的编码调用数据为`0xd09de08a`，即`increment()`的keccak256哈希的前8个十六进制字符（或4个字节）。如果函数有输入参数，它们也需要编码。获取编码调用数据最简单的方法是在[Remix](/builders/build/eth-api/dev-env/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask){target=_blank}或[Moonscan](https://moonbase.moonscan.io/address/0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8#code){target=_blank}进行模拟交易。接下来，在MetaMask 中，在签名之前检查**HEX**标签下的**HEX DATA: 4 BYTES**选择器。您无需签署交易。
 
-现在，您已经有了编码的合约交互数据，您可以使用[`eth_estimateGas` JSON RPC函数](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas){target=_blank}决定此调用的Gas限制。在此范例中，您可以将Gas限制设置为`71000`。
+现在，您已经有了编码的合约交互数据，您可以使用[`eth_estimateGas` JSON RPC函数](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas){target=_blank}决定此调用的Gas限制。在此范例中，您可以将Gas限制设置为`155000`。
 
 关于值部分，由于特定交互并不需要DEV（对于Moonbeam/Moonriver来说为GLMR/MOVR），您可以将其设置为`0`。至于那些需要DEV的交互，您可以根据需求修改此数值。
 
@@ -206,7 +191,7 @@ yarn calculate-multilocation-derivative-account \
 ```js
 const xcmTransaction = {
   V2: {
-    gasLimit: 71000,
+    gasLimit: 155000,
     action: { Call: '0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8' }, // Call the incrementer contract
     value: 0,
     input: '0xd09de08a', // Call the increment function
@@ -230,9 +215,19 @@ const xcmTransaction = {
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00){target=_blank}上查看上述脚本的输出示例：`0x260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x260001785d02000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00){target=_blank}上查看上述脚本的输出示例：`0x260001785d02000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00`。
 
 您将会在以下部分中使用`Transact`指令的编码调用数据。
+
+### 必要的预估权重 {: #estimate-weight-required-at-most }
+
+在使用`Transact`指令时，您需要定义`requireWeightAtMost`字段，也就是该交易的所需权重。此字段接受两个参数：`refTime`和`proofSize`。`refTime`为用于执行的计算时间量，而`proofSize`为能够使用的存储数值（以字节为单位）。
+
+要预估`refTime`和`proofSize`，您可以使用Polkadot.js API的函数`paymentInfo`。由于`Transact`调用数据需要这些权重，您可以扩展先前教程部分的脚本来添加`paymentInfo`的调用。
+
+此`paymentInfo`函数接受您输入至`.signAndSend`函数的相同参数，也就是传送账户以及如随机数和签署者等根据需求添加的额外数值。
+
+要更动编码调用数据的脚本，您需要添加逻辑为传送者（此例中为Alice）创建一个Keyring。接着您可以简单的使用`tx`并调用`paymentInfo`函数和输入Alice的Keyring。
 
 ### 为远程XCM执行构建XCM {: #build-xcm-remote-evm}
 
@@ -256,7 +251,7 @@ const xcmTransaction = {
       WithdrawAsset: [
         {
           id: { Concrete: { parents: 0, interior: { X1: { PalletInstance: 3 } } } },
-          fun: { Fungible: 100000000000000000n }, // 1 DEV
+          fun: { Fungible: 10000000000000000n }, // 0.01 DEV
         },
       ],
     };
@@ -273,7 +268,7 @@ const xcmTransaction = {
       BuyExecution: [
         {
           id: { Concrete: { parents: 0, interior: { X1: { PalletInstance: 3 } } } },
-          fun: { Fungible: 100000000000000000n }, // 1 DEV
+          fun: { Fungible: 10000000000000000n }, // 0.01 DEV
         },
         { Unlimited: null },
       ],
@@ -283,17 +278,35 @@ const xcmTransaction = {
 4. 构建`Transact`指令，其将需要您定义：
 
     - Origin类别
-    - 交易所需的权重。您将需要为`refTime`定义一个值，可用于执行的计算时间量，并同样为`proofSize`定义一个数值，可使用于存储量（以字节为单位）。我们建议，该指令提供的权重为您希望通过XCM执行的EVM调用Gas限制乘以`25000`后再多10%
+    - 交易所需的权重。您将需要为`refTime`定义一个值，可用于执行的计算时间量，并同样为`proofSize`定义一个数值，可使用于存储量（以字节为单位）。这两个数字都可以使用Polkadot.js API的`paymentInfo`函数计算。要计算这些值，您可以修改编码的调用数据脚本以调用`ethereumXcm.transact(xcmTransaction)`交易的`paymentInfo`函数。要调用`paymentInfo`函数，您需要传入传送者账户。您可以在中继链上传入Alice的账户：`5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`：
+
+        ```js
+        ...
+
+        const tx = api.tx.ethereumXcm.transact(xcmTransaction);
+        const alice = '5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT';
+        const info = await tx.paymentInfo(alice);
+        console.log(`Required Weight: ${info.weight.toString()}`);
+        ```
+
+        ??? code "完整脚本"
+
+            ```js
+            --8<-- 'code/remote-execution/estimate-required-weight.js'
+            ```
+
+        截至撰写本脚本时，`refTime`和`proofSize`会分别返回`3900000000`和`38750`的预估数值
+
     - 您在[Ethereum XCM Transact调用数据](#ethereumxcm-transact-data)部分中生成的编码调用数据
 
     ```js
     const instr3 = {
       Transact: {
         originKind: 'SovereignAccount',
-        requireWeightAtMost: { refTime: 4000000000n, proofSize: 0 },
+        requireWeightAtMost: { refTime: 3900000000n, proofSize: 38750n },
         call: {
           encoded:
-            '0x260001581501000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00',
+            '0x260001785d02000000000000000000000000000000000000000000000000000000000000a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8000000000000000000000000000000000000000000000000000000000000000010d09de08a00',
         },
       },
     };
@@ -342,7 +355,7 @@ const xcmTransaction = {
 
 如先前所述，[常规和远程XCM EVM调用之间存在一些差异](#differences-regular-remote-evm)。使用Ethereum JSON RPC通过其哈希检索交易时可以看到一些主要差异。
 
-为此，您首先需要检索要查询的交易哈希。 在本示例中，您可以使用[先前部分教程](#build-remove-evm-call-xcm)的交易哈希，为[0x85735a6be6aa0b3ad5f6ce877d8b9048137876517d9ca5b309bcd93ae997bf7a](https://moonbase.moonscan.io/tx/0x85735a6be6aa0b3ad5f6ce877d8b9048137876517d9ca5b309bcd93ae997bf7a){target=_blank}。接着打开终端，执行以下命令：
+为此，您首先需要检索要查询的交易哈希。 在本示例中，您可以使用[先前部分教程](#build-remove-evm-call-xcm)的交易哈希，为[0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f](https://moonbase.moonscan.io/tx/0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f){target=_blank}。接着打开终端，执行以下命令：
 
 ```sh
 curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
@@ -351,7 +364,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
     "jsonrpc":"2.0",
     "id":1,
     "method":"eth_getTransactionByHash",
-    "params": ["0x85735a6be6aa0b3ad5f6ce877d8b9048137876517d9ca5b309bcd93ae997bf7a"]
+    "params": ["0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f"]
   }
 '
 ```
@@ -362,22 +375,22 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 {
     "jsonrpc": "2.0",
     "result": {
-        "hash": "0x85735a6be6aa0b3ad5f6ce877d8b9048137876517d9ca5b309bcd93ae997bf7a",
-        "nonce": "0x1",
-        "blockHash": "0xc4b573da6943cc94e55c2fb429160c5b24d91a9da6798102a28dd611c3b76cc0",
-        "blockNumber": "0x2e7cf1",
+        "hash": "0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f",
+        "nonce": "0x129",
+        "blockHash": "0xeb8222567e434215f472f0c53f68a606c77ea8f475e5fbc3a5b715db6cce8887",
+        "blockNumber": "0x46c268",
         "transactionIndex": "0x0",
-        "from": "0x4e21340c3465ec0aa91542de3d4c5f4fc1def526",
+        "from": "0xdd2399f3b5ca0fc584c4637283cda4d73f6f87c0",
         "to": "0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8",
         "value": "0x0",
         "gasPrice": "0x0",
         "maxFeePerGas": "0x0",
         "maxPriorityFeePerGas": "0x0",
-        "gas": "0x11558",
+        "gas": "0x25d78",
         "input": "0xd09de08a",
         "creates": null,
-        "raw": "0xa902e7800180808301155894a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d88084d09de08ac0010101",
-        "publicKey": "0x3a9b57bdedea5ddd864355487de6285e032eb8798316da6848587c7f67d71a7a7592a1094ba2123f95659827f40a7096ab4fc278fdde688e3a90ee16eed5f720",
+        "raw": "0x02eb820507820129808083025d7894a72f549a1a12b9b49f30a7f3aeb1f4e96389c5d88084d09de08ac0010101",
+        "publicKey": "0x14745b9075ac0f0426c61c9a2895f130ea6f3b964e8f49cefdb4e2d248306f19396361d877f8b9ad60a94a5ec28325a1b9baa2ae59e7a9f6fe1731caec130ab4",
         "chainId": "0x507",
         "standardV": "0x1",
         "v": "0x1",
