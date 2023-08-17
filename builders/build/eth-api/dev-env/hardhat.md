@@ -490,13 +490,17 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 要与已部署合约交互，您可以使用`ethers`在`scripts`目录中创建新的脚本。因为您将使用Hardhat运行此脚本，因此您无需导入任何库。在脚本中，您可以使用以下代码片段访问网络上的实时合约。
 
 ```js
-const hre = require("hardhat");
+const hre = require('hardhat');
 
 async function main() {
-  const provider = new ethers.providers.StaticJsonRpcProvider("http://127.0.0.1:8545/");
-  
+  const provider = new ethers.providers.StaticJsonRpcProvider(
+    'http://127.0.0.1:8545/'
+  );
+
   const contract = new ethers.Contract(
-      'INSERT-CONTRACT-ADDRESS', 'INSERT-CONTRACT-ABI', provider
+    'INSERT_CONTRACT_ADDRESS',
+    'INSERT_CONTRACT_ABI',
+    provider
   );
 }
 

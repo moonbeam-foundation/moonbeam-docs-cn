@@ -452,7 +452,7 @@ touch scripts/deploy.js
 
 ```javascript
 // 1. The PS-1 collator on Moonbase Alpha is chosen as the DAO's target
-const targetCollator = '{{ networks.moonbase.staking.candidates.address1 }}'
+const targetCollator = '{{ networks.moonbase.staking.candidates.address1 }}';
 
 async function main() {
   // 2. Get the address of the deployer to later be set as the admin of the DAO
