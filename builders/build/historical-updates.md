@@ -118,7 +118,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### Substrate Tips Missing Treasury Distribution {: #substrate-tips }
+#### Substrate Tips缺少财政库分配 {: #substrate-tips }
 
 基于Substrate的交易提示并未被正确处理。小费的整个部分都被销毁了，因为它没有在Runtime代码中处理。我们进行了修复，将其中20%将存入财政库，80%被销毁，与所有其他费用行为一致。
 
@@ -212,7 +212,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### Ethereum Transations Duplicated in Storage {: #ethereum-transactions-duplicated-in-storage }
+#### 以太坊交易在存储中重复 {: #ethereum-transactions-duplicated-in-storage }
 
 以太坊Pallet中的Frontier引入了一个上游错误，导致Runtime升级时存在的待处理交易在两个不同区块的存储中发生重复。此错误仅影响引入此错误的Runtime升级后的前两个区块。
 
@@ -286,7 +286,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### Remote EVM Calls Return Identical Transaction Hashes {: #remote-evm-calls-return-identical-tx-hashes }
+#### 远程EVM调用返回相同的交易哈希 {: #remote-evm-calls-return-identical-tx-hashes }
 
 当从具有相同交易负载和随机数的不同账户发送多个远程EVM调用时，每个调用都会返回相同的交易哈希。这是极有可能的，因为远程EVM调用通过无密钥账户执行，因此如果发送者都具有相同的随机数并且发送相同的交易对象，则交易哈希的计算将会没有差异。此问题已通过向以太坊使远程EVM调用成为可能的XCM Pallet添加全局随机数解决。
 
