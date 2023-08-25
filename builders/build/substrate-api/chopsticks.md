@@ -133,7 +133,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
 
 您可以使用默认配置文件的原始GitHub URL、本地配置文件的路径，或者仅使用链的名称作为`--config`标志。例如，以下指令都以相同的方式使用Moonbeam的配置：
 
-=== "Chain Name"
+=== "链名称"
 
     ```bash
     npx @acala-network/chopsticks --config=moonbeam
@@ -146,7 +146,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
-=== "Local File Path"
+=== "本地文件路径"
 
     ```bash
     npx @acala-network/chopsticks --config=configs/moonbeam.yml
@@ -275,7 +275,7 @@ Chopsticks的内部websocket服务器有特殊的端点，允许操作本地Subs
 
 The parameters above are formatted in the following ways:  
 
-|   Parameter    |               Format                |                                Example                                 |
+|   参数    |               格式                |                                示例                                 |
 |:--------------:|:-----------------------------------:|:----------------------------------------------------------------------:|
 |   `options`    | `{ "to": number, "count": number }` |                            `{ "count": 5 }`                            |
 |    `values`    |              `Object`               | `{ "Sudo": { "Key": "0x6Be02d1d3665660d22FF9624b7BE0551ee1Ac91b" } }`  |
