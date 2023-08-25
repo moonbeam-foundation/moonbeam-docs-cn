@@ -57,7 +57,7 @@ yarn
 
 ![Overview of the proposal process](/images/builders/interoperability/xcm/xc-registration/assets/assets-3.png)
 
-### 计算资产的每秒单位{: #calculate-units-per-second }
+### 计算资产的每秒单位 {: #calculate-units-per-second }
 
 每秒单位数是执行XCM消息时每秒收取的Token数量。在注册时，XCM转账的目标成本为0.02美元。随着Token价格的波动，每秒的单位数可能会通过治理进行更新。
 
@@ -101,7 +101,7 @@ Token Price is $7.33
 The UnitsPerSecond needs to be set 34106412005
 ```
 
-### 为资产注册生成编码调用数据{: #generate-encoded-calldata-for-asset-registration }
+### 为资产注册生成编码调用数据 {: #generate-encoded-calldata-for-asset-registration }
 
 如果您对Moonbeam的治理系统不熟悉，可以在[Moonbeam治理](/learn/features/governance){target=_blank}页面了解更多信息。对于Moonbeam上的任何治理提案，您都需要提交一个原像，它定义了要执行的操作，然后您可以使用原像提交提案。
 
@@ -221,7 +221,7 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 您可以在[xcm-tools库的`README.md`中查看其他示例](https://github.com/Moonsong-Labs/xcm-tools#example-to-note-pre-image-and-propose-through-opengov2-with-custom-track){target=_blank}。
 
-### 在Moonbeam上测试资产注册{: #test-asset-registration }
+### 在Moonbeam上测试资产注册 {: #test-asset-registration }
 
 您的资产注册后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=_blank}地址。
 
@@ -262,13 +262,13 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 如果您需要DEV Token（Moonbase Alpha的原生Token）来使用您的XC-20资产，您可以从[Moonbase Alpha水龙头](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=_blank}，每24小时分配 {{networks.moonbase.website_faucet_amount }}。如果您需要更多信息，请随时通过 [Telegram](https://t.me/Moonbeam_Official){target=_blank}或[Discord](https://discord.gg/PfpUATX){target=_blank}与团队联系。
 
-## 在其他链上注册Moonbeam资产{: #register-moonbeam-assets-on-another-chain }
+## 在其他链上注册Moonbeam资产 {: #register-moonbeam-assets-on-another-chain }
 
 为了实现Moonbeam资产（包括Moonbeam原生资产，GLMR、MOVR、DEV，和部署在Moonbeam上的本地XC-20资产，也就是支持XCM的ERC-20资产）在Moonbeam和另一条链之间进行跨链转移，您需要将资产注册到另一条链上。由于每个链存储跨链资产的方式不同，因此在另一个链上注册Moonbeam资产的具体步骤会根据链的不同而有所不同。至少，您需要了解Moonbeam上资产的元数据和multilocation。
 
 除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-integration){target=_blank}教程。
 
-### 在其他链上注册Moonbeam原生资产{: #register-moonbeam-native-assets }
+### 在其他链上注册Moonbeam原生资产 {: #register-moonbeam-native-assets }
 
 每个网络的元数据如下：
 

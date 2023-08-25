@@ -192,7 +192,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
  4. 使用`currencyId`、`amount`、`dest`和`destWeightLimit`构建`xTokens.transfer` extrinsic
  5. 使用`signAndSend` extrinsic（函数）和第二步创建的Keyring实例发送交易
 
-!!! 请注意
+!!! 请记住
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
@@ -291,7 +291,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
  4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transferMultiasset` extrinsic
  5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
 
-!!! 请注意
+!!! 请记住
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
