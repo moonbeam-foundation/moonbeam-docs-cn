@@ -10,8 +10,7 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 原像
 
 Preimage Pallet允许用户和Runtime在链上存储原像哈希。其他pallet也可使用此pallet来存储和管理大的字节码（byte-blob）。例如，Token持有者可以使用原像哈希通过Democracy Pallet提交民主提案。
 
---8<-- 'text/pallets/gov1-gov2.md'
-Preimage Pallet的一些功能可以通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}使用。
+治理相关功能是基于3个新的pallet和预编译：[Preimage Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}和[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}、[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda){target=_blank}和[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}，以及[Conviction Voting Pallet](/builders/pallets-precompiles/pallets/conviction-voting){target=_blank}和[Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}。上述预编译是Solidity接口，使您能够使用以太坊API执行治理功能。
 
 本教程将概述Moonbeam上Preimage Pallet中的可用extrinsics、存储函数和pallet常量的获取方式。本教程假设您已熟悉治理相关的专业术语，反之您可以在[治理概览页面](/learn/features/governance/#opengov){target=_blank}获取更多信息。
 

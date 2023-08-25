@@ -60,7 +60,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 只有指定P2P端口才需要对流入流量开放。**收集人节点不可以开放任何WS或RPC端口。**
 
 !!! 注意事项
-    从[v0.30.0客户端版本](https://github.com/PureStake/moonbeam/releases/tag/v0.30.0){target=_blank}开始，端口{{ networks.parachain.rpc }}的HTTP RPC端点已被弃用。端口{{ networks.parachain.ws }}的WS RPC端点应该同时用于HTTP和WS连接.
+    从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，端口{{ networks.parachain.rpc }}的HTTP RPC端点已被弃用。端口{{ networks.parachain.ws }}的WS RPC端点应该同时用于HTTP和WS连接.
 
 ### 平行链全节点的默认端口 {: #default-ports-for-a-parachain-full-node }
 

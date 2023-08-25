@@ -89,7 +89,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. 设置合约名称（仅用于显示）
  2. 选择需管理合约所在的网络。如果该合约已经以相同地址部署到多个网络中，这一步将尤其有用。在这一示例中，输入`Moonbase Alpha`
  3. 输入合约地址
- 4. 粘贴合约ABI。可以通过[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}或者在编译过程（例如在Truffle或HardHat）中创建的`.json`文件中找到
+ 4. 粘贴合约ABI。可以通过[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}或者在编译过程（例如在Truffle或Hardhat）中创建的`.json`文件中找到
  5. 检查合约功能是否被正确识别
  6. 检查所有信息后，点击**Add**（添加）按钮
 

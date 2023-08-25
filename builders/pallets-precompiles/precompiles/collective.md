@@ -43,7 +43,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 ## 团体Solidity接口 {: #the-call-permit-interface }
 
-[`Collective.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的5个方式进行交互。
+[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的5个方式进行交互。
 
 接口包含以下函数：
 
@@ -94,7 +94,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 ### Remix设置 {: #remix-set-up }
 
-1. 获取[`Collective.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}的副本
+1. 获取[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}的副本
 2. 将文件内容复制并粘贴至名为`Collective.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}
 
 ![Copying and Pasting the Collective Interface into Remix](/images/builders/pallets-precompiles/precompiles/collective/collective-1.png)

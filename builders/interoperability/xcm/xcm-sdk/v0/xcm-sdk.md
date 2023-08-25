@@ -1,9 +1,9 @@
 ---
-title: XCM SDK
+title: XCM SDK v0
 description: 使用Moonbeam XCM SDK轻松从波卡及其生态系统中的平行链向Moonbeam充提跨链资产。
 ---
 
-# 使用Moonbeam XCM SDK
+# 使用Moonbeam XCM SDK: v0
 
 ## 概览 {: #introduction }
 
@@ -11,7 +11,9 @@ Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中�
 
 XCM SDK提供简单的协助函数，如`deposit`和`withdraw`，提供非常简单的接口以在波卡和Kusama生态中进行两条链之间的XCM转移。除外，XCM的配置包允许任何平行链项目以标准方法添加信息，使他们能够被XCM SDK支持。
 
-关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/reference){target=_blank}页面。
+关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/v0/reference){target=_blank}页面。
+
+如果您使用的是 v1.x，请参阅[v1 特定的 SDK 指南](/builders/interoperability/xcm/xcm-sdk/v1/){target=_blank}。
 
 此教程中的示例将在Moonbeam中执行，但步骤也同样适用于Moonriver和Moonbase Alpha。
 
@@ -29,7 +31,7 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 
 要安装XCM SDK以及XCM配置包，您可以运行以下指令：
 
-```
+```bash
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
@@ -37,7 +39,7 @@ npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 
 您可以运行以下指令来安装它们：
 
-```
+```bash
 npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto ethers
 ```
 
@@ -73,7 +75,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonbeam.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
@@ -101,11 +103,11 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonriver.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
-    const polkadotKeyring = keyring.addFromUri('INSERT-MNEMONIC');
+    const polkadotKeyring = keyring.addFromUri('INSERT_MNEMONIC');
     ```
 
 === "Moonbase Alpha"
@@ -117,7 +119,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     // Set up Ethers provider and signer
     const providerRPC = {
       moonbase: {
-        name: 'moonbase-alpha',
+        name: 'moonbase_alpha',
         rpc: '{{ networks.moonbase.rpc_url }}',
         chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
       },
@@ -129,7 +131,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         name: providerRPC.moonbase.name,
       }
     );
-    const ethersSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
@@ -168,8 +170,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbeam } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
@@ -178,8 +180,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonriver } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
@@ -188,14 +190,14 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbase } = init({
-      ethersSigner: 'INSERT-ETHERS-SIGNER',
-      polkadotSigner: 'INSERT-POLKADOT-SIGNER'
+      ethersSigner: 'INSERT_ETHERS_SIGNER',
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
     })
     ```
 
 ## 使用SDK接口 {: #using-the-api }
 
-Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-interfaces){target=_blank}的API。
+Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-interfaces){target=_blank}的API。
 
 请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initialization)。
 
@@ -346,7 +348,7 @@ moonChain: {
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 
-Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/reference/#core-sdk-methods){target=_blank}。
+Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-methods){target=_blank}。
 
 确保您已经[初始化](#initialization)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
 
@@ -380,7 +382,7 @@ async function deposit() {
   );
 
   const { asset, sourceBalance, source, min, send } = await from(polkadot).get(
-    'INSERT-MOONBEAM-ADDRESS',
+    'INSERT_MOONBEAM_ADDRESS',
     polkadotKeyring, // See the Get section for other accepted arguments
   );
 
@@ -391,7 +393,7 @@ async function deposit() {
     ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
-  await send('INSERT-AMOUNT', (event) => console.log(event));
+  await send('INSERT_AMOUNT', (event) => console.log(event));
 }
 
 deposit();
@@ -445,8 +447,8 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
-  'INSERT-POLKADOT-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
+  'INSERT_POLKADOT_ADDRESS',
 );
 ```
 
@@ -462,14 +464,13 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
-  'INSERT-POLKADOT-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
+  'INSERT_POLKADOT_ADDRESS',
   { polkadotSigner },
 );
 ```
 
 如果您拥有先前在[初始化](#initializing)部分设置的波卡Keyring对，您可以输入`polkadotKeyring`作为第二个参数：
-
 
 ```js
 import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
@@ -481,7 +482,7 @@ const polkadot = ChainKey.Polkadot;
 
 const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
-  'INSERT-MOONBEAM-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
   polkadotKeyring,
 )
 ```
@@ -533,20 +534,20 @@ const response = await from(polkadot).get(
 
 获得的数值如下所示：
 
-|         数值         |                             描述                             |
-| :------------------: | :----------------------------------------------------------: |
-|       `asset`        |                   被转移的[资产](#assets)                    |
+|         数值         |                                                                                                                                            描述                                                                                                                                            |
+|:--------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|       `asset`        |                                                                                                                                  被转移的[资产](#assets)                                                                                                                                   |
 | `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
-|        `min`         |                        最小可转移数量                        |
-|    `moonChainFee`    | 支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起) |
-|       `native`       |                 原链上的原生[资产](#assets)                  |
-|       `origin`       |                     资产所属原链的链信息                     |
-|       `source`       |                 被转移资产从哪里发送的链信息                 |
-|   `sourceBalance`    |                   从原链上被转移资产的余额                   |
-|  `sourceFeeBalance`  | 原链原生资产中的余额，用于支付资产 转移的费用（如适用)，否则将返回`undefined` |
-|  `sourceMinBalance`  |                  在原链上资产转移的最小余额                  |
-|       `getFee`       |      预估转移一定数量[所需费用](#get-fee-deposit)的函数      |
-|        `send`        |         用于[传送](#send-deposit)存入转移数据的函数          |
+|        `min`         |                                                                                                                                       最小可转移数量                                                                                                                                       |
+|    `moonChainFee`    |                                      支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起)                                       |
+|       `native`       |                                                                                                                                原链上的原生[资产](#assets)                                                                                                                                 |
+|       `origin`       |                                                                                                                                    资产所属原链的链信息                                                                                                                                    |
+|       `source`       |                                                                                                                                被转移资产从哪里发送的链信息                                                                                                                                |
+|   `sourceBalance`    |                                                                                                                                  从原链上被转移资产的余额                                                                                                                                  |
+|  `sourceFeeBalance`  |                                                                                                       原链原生资产中的余额，用于支付资产 转移的费用（如适用)，否则将返回`undefined`                                                                                                        |
+|  `sourceMinBalance`  |                                                                                                                                 在原链上资产转移的最小余额                                                                                                                                 |
+|       `getFee`       |                                                                                                                     预估转移一定数量[所需费用](#get-fee-deposit)的函数                                                                                                                     |
+|        `send`        |                                                                                                                        用于[传送](#send-deposit)存入转移数据的函数                                                                                                                         |
 
 #### Send函数 {: #send-deposit }
 
@@ -570,11 +571,11 @@ async function getDepositFee() {
 
   const { from } = moonbeam.deposit(dot);
   const { asset, getFee } = await from(polkadot).get(
-    'INSERT-MOONBEAM-ADDRESS',
+    'INSERT_MOONBEAM_ADDRESS',
     polkadotKeyring, // See the Get section for other accepted arguments
   );
 
-  const fee = await getFee('INSERT-AMOUNT'));
+  const fee = await getFee('INSERT_AMOUNT'));
   console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals).toFixed()} ${dot}`);
 }
 
@@ -610,7 +611,7 @@ async function withdraw() {
 
   const { asset, destination, destinationBalance, min, send } = await to(
     polkadot,
-  ).get('INSERT-POLKADOT-ADDRESS', {
+  ).get('INSERT_POLKADOT_ADDRESS', {
     ethersSigner: signer, // Only required if you didn't pass the signer in on initialization
   });
 
@@ -621,7 +622,7 @@ async function withdraw() {
     ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
   );
 
-  await send('INSERT-AMOUNT', (event) => console.log(event));
+  await send('INSERT_AMOUNT', (event) => console.log(event));
 }
 
 withdraw();
@@ -675,7 +676,7 @@ const polkadot = ChainKey.Polkadot;
 const { to } = moonbeam.deposit(dot);
 const response =  await to(
     polkadot,
-  ).get('INSERT-POLKADOT-ADDRESS', 
+  ).get('INSERT_POLKADOT_ADDRESS', 
   { ethersSigner: signer } // Only required if you didn't pass the signer in on initialization
 )
 ```
@@ -727,20 +728,20 @@ const response =  await to(
 
 获得的数值如下所示：
 
-|         数值         |                             描述                             |
-| :------------------: | :----------------------------------------------------------: |
-|       `asset`        |                   被转移的[资产](#assets)                    |
-|    `destination`     |                  资产被转移的目标链的链信息                  |
-| `destinationBalance` |                   目标链上账户中资产的余额                   |
-|   `destinationFee`   |                 资产转移至目标链上所需的费用                 |
-| `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
-|        `min`         |                  被转让资产的最小可转移数量                    |
-|   `minXcmFeeAsset`   |            需要一起发送以支付费用的资产的最小可转移数量           |
-|       `native`       |                  原链的原生[资产](#assets)                   |
-|       `origin`       |                      资产所属原链的链信息                     |
-| `originXcmFeeAssetBalance` |   与转账一起发送以支付费用（如果有）的资产的原始账户中的余额   |
-|       `getFee`       |       预估存入一定数量[所需费用](#get-fee-withdraw)的函数       |
-|        `send`        |           用于[传送](#send-withdraw)取出转移数据的函数         |
+|            数值            |                                                                                                                                            描述                                                                                                                                            |
+|:--------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|          `asset`           |                                                                                                                                  被转移的[资产](#assets)                                                                                                                                   |
+|       `destination`        |                                                                                                                                 资产被转移的目标链的链信息                                                                                                                                 |
+|    `destinationBalance`    |                                                                                                                                  目标链上账户中资产的余额                                                                                                                                  |
+|      `destinationFee`      |                                                                                                                                资产转移至目标链上所需的费用                                                                                                                                |
+|    `existentialDeposit`    | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
+|           `min`            |                                                                                                                                 被转让资产的最小可转移数量                                                                                                                                 |
+|      `minXcmFeeAsset`      |                                                                                                                        需要一起发送以支付费用的资产的最小可转移数量                                                                                                                        |
+|          `native`          |                                                                                                                                 原链的原生[资产](#assets)                                                                                                                                  |
+|          `origin`          |                                                                                                                                    资产所属原链的链信息                                                                                                                                    |
+| `originXcmFeeAssetBalance` |                                                                                                                 与转账一起发送以支付费用（如果有）的资产的原始账户中的余额                                                                                                                 |
+|          `getFee`          |                                                                                                                    预估存入一定数量[所需费用](#get-fee-withdraw)的函数                                                                                                                     |
+|           `send`           |                                                                                                                        用于[传送](#send-withdraw)取出转移数据的函数                                                                                                                        |
 
 #### Send函数 {: #send-withdraw }
 
@@ -765,11 +766,11 @@ async function getWithdrawFee() {
 
   const { to } = moonbeam.withdraw(dot);
   const { asset, getFee } = await from(polkadot).get(
-    'INSERT-POLKADOT-ADDRESS',
+    'INSERT_POLKADOT_ADDRESS',
     { ethersSigner }, // Only required if you didn't pass the signer in on initialization
   );
 
-  const fee = await getFee('INSERT-AMOUNT');
+  const fee = await getFee('INSERT_AMOUNT');
   console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals).toFixed()} ${moonbeam.moonAsset.originSymbol}`);
 }
 
@@ -783,26 +784,26 @@ getWithdrawFee();
 === "Moonbeam"
 
     ```js
-    moonbeam.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonbeam.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 === "Moonriver"
 
     ```js
-    moonriver.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonriver.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 === "Moonbase Alpha"
 
     ```js
-    moonbase.subscribeToAssetsBalanceInfo('INSERT-ADDRESS', cb)
+    moonbase.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
     ```
 
 以下范例检索Moonbeam上给定帐户的余额信息，并将每个支持资产的余额输出到控制台：
 
 ```js
 const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
-  'INSERT-MOONBEAM-ADDRESS',
+  'INSERT_MOONBEAM_ADDRESS',
   (balances) => {
     balances.forEach(({ asset, balance, origin }) => {
       console.log(

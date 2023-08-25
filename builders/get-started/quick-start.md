@@ -94,6 +94,7 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
     |        [Remix](/builders/build/eth-api/dev-env/remix){target=_blank}         | Dev Environment |
     |      [Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}       | Dev Environment |
     |      [Truffle](/builders/build/eth-api/dev-env/truffle){target=_blank}       | Dev Environment |
+    |     [thirdweb](/builders/build/eth-api/dev-env/thirdweb){target=_blank}      | Dev Environment |
     | [Waffle & Mars](/builders/build/eth-api/dev-env/waffle-mars){target=_blank}  | Dev Environment |
     | [Scaffold-Eth](/builders/build/eth-api/dev-env/scaffold-eth){target=_blank}  | Dev Environment |
     
@@ -109,9 +110,9 @@ Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另
     |:------------------------------------------------------------------:|:---------------:|
     | [Web3.py](/builders/build/eth-api/libraries/web3py){target=_blank} |     Library     |
     | [Brownie](/builders/build/eth-api/dev-env/brownie){target=_blank}  | Dev Environment |
+    |   [thirdweb](https://portal.thirdweb.com/python){target=_blank}    | Dev Environment |
 
 === "Substrate"
     |                                             工具                                              |  类型   |
     |:---------------------------------------------------------------------------------------------:|:-------:|
     | [Py Substrate Interface](/builders/build/substrate-api/py-substrate-interface){target=_blank} | Library |
-

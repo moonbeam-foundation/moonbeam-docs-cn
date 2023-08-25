@@ -39,7 +39,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数Solidity接口 {: #the-randomness-interface }
 
-[Randomness.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
+[Randomness.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
 
 此接口包含函数、常量、事件以及枚举，如下列部分所包含。
 
@@ -117,7 +117,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数消费者Solidity接口 {: #randomness-consumer-solidity-interface }
 
-[`RandomnessConsumer.sol`](https://github.com/PureStake/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
+[`RandomnessConsumer.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
 
 消费者接口包含以下函数：
 
@@ -178,63 +178,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 合约如下所示：
 
 ```sol
-// SPDX-License-Identifier: GPL-3.0-only
-pragma solidity >=0.8.0;
-
-import "https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol";
-import {RandomnessConsumer} from "https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol";
-
-contract RandomNumber is RandomnessConsumer {
-    // The Randomness Precompile Interface
-    Randomness public randomness =
-        Randomness(0x0000000000000000000000000000000000000809);
-
-    // Variables required for randomness requests
-    uint256 public requiredDeposit = randomness.requiredDeposit();
-    uint64 public FULFILLMENT_GAS_LIMIT = 100000;
-    // The fee can be set to any value as long as it is enough to cover
-    // the fulfillment costs. Any leftover fees will be refunded to the
-    // refund address specified in the requestRandomness function below
-    uint256 public MIN_FEE = FULFILLMENT_GAS_LIMIT * 5 gwei;
-    uint32 public VRF_BLOCKS_DELAY = MIN_VRF_BLOCKS_DELAY;
-    bytes32 public SALT_PREFIX = "change-me-to-anything";
-
-    // Storage variables for the current request
-    uint256 public requestId;
-    uint256[] public random;
-
-    constructor() payable RandomnessConsumer() {
-        // Because this contract can only perform 1 random request at a time,
-        // We only need to have 1 required deposit.
-        require(msg.value >= requiredDeposit);
-    }
-
-    function requestRandomness() public payable {
-        // Make sure that the value sent is enough
-        require(msg.value >= MIN_FEE);
-        // Request local VRF randomness
-        requestId = randomness.requestLocalVRFRandomWords(
-            msg.sender, // Refund address
-            msg.value, // Fulfillment fee
-            FULFILLMENT_GAS_LIMIT, // Gas limit for the fulfillment
-            SALT_PREFIX ^ bytes32(requestId++), // A salt to generate unique results
-            1, // Number of random words
-            VRF_BLOCKS_DELAY // Delay before request can be fulfilled
-        );
-    }
-
-    function fulfillRequest() public {
-        randomness.fulfillRequest(requestId);
-    }
-
-    function fulfillRandomWords(
-        uint256, /* requestId */
-        uint256[] memory randomWords
-    ) internal override {
-        // Save the randomness results
-        random = randomWords;
-    }
-}
+--8<-- 'code/randomness/RandomNumber.sol'
 ```
 
 如您所见，合约中还有一些常量可以根据需要进行调整，尤其是可用于生成独特结果的`SALT_PREFIX`。
@@ -276,7 +220,7 @@ contract RandomNumber is RandomnessConsumer {
 
 要请求随机数，您需要使用合约的`requestRandomness`函数，这将要求您按照随机数预编译中的定义提交保证金。您可以通过以下步骤提交随机数请求并支付保证金：
 
-1. 在**VALUE**字段中输入数量用于支付履行费用，该数值需等于或高于`RandomNumber`合约中指定的最低费用，即`500000` Gwei
+1. 在**VALUE**字段中输入数量用于支付履行费用，该数值需等于或高于`RandomNumber`合约中指定的最低费用，即`15000000` Gwei
 2. 展开**RANDOMNUMBER**合约
 3. 点击**requestRandomness**按钮
 4. 在MetaMask中确认交易
@@ -317,7 +261,7 @@ contract RandomNumber is RandomnessConsumer {
 
 要将接口添加至Remix并跟随以下教程步骤，您将需要：
 
-1. 复制[`Randomness.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
+1. 复制[`Randomness.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
 2. 在Remix文件中粘贴文件内容并命名为**Randomness.sol**
 
 ![Add precompile to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-8.png)

@@ -15,7 +15,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 **Q: 我可以在哪里获得帮助？**
 
-**A:** 在[Discord](https://discord.gg/RyVefR79FA){target=_blank}有一个活跃且友好的收集人社区。在您需要帮助之前先加入Discord收集人频道，并介绍自己。私信**PureStake-Gil#0433**或**PureStake-Art#6950** ，并进行自我介绍，负责人会根据您的问题给到相应的解决方案
+**A:** 在[Discord](https://discord.gg/RyVefR79FA){target=_blank}有一个活跃且友好的收集人社区。在您需要帮助之前先加入Discord收集人频道，并介绍自己。私信**gilmouta**或**artkaseman** ，并进行自我介绍，负责人会根据您的问题给到相应的解决方案
 
 ***
 
@@ -48,12 +48,12 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 硬件推荐如下所示：
 
 - 高配CPU：
-  - Ryzen 9 5950x or 5900x 
+  - Ryzen 9 5950x or 5900x
   - Intel Xeon E-2386 or E-2388
 - 在不同数据库和国家的主裸机服务器和备份裸机服务器，Hetzner可以满足两者
 - 不与其他任何App共享的Moonbeam独立服务器
 - 1 TB NVMe HDD
-- 32 GB RAM 
+- 32 GB RAM
 
 ***
 
@@ -63,19 +63,19 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 ***
 
-**Q: 有哪些网络可以选择？** 
+**Q: 有哪些网络可以选择？**
 
 **A:** 有三个网络可供选择，每个网络均需要独立硬件设备。Moonbase Alpha测试网是用于测试和熟悉设置，可免费使用。
 
 - **Moonbeam** - 波卡上的生产网络
-- **Moonriver** - Kusama上的生产网络 
+- **Moonriver** - Kusama上的生产网络
 - **Moonbase Alpha TestNet** - 开发网络
 
 ***
 
 **Q: 我的防火墙允许哪些端口？**
 
-**A:** 
+**A:**
 
 - 允许TCP端口上的所有传入请求{{ networks.parachain.p2p }}和{{ networks.relay_chain.p2p }}
 - 在TCP端口22上允许来自您的管理IP的请求
@@ -83,23 +83,23 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 ***
 
-**Q: 是否有CPU优化的二进制文件？** 
+**Q: 是否有CPU优化的二进制文件？**
 
-**A:** 在每个[版本更新页面](https://github.com/PureStake/moonbeam/releases){target=_blank}都有CPU优化的二进制文件。为您的CPU架构选择二进制文件。
+**A:** 在每个[版本更新页面](https://github.com/moonbeam-foundation/moonbeam/releases){target=_blank}都有CPU优化的二进制文件。为您的CPU架构选择二进制文件。
 
 - **Moonbeam-znver3** - Ryzen 9
-- **Moonbeam-skylake** - Intel 
+- **Moonbeam-skylake** - Intel
 - **Moonbeam** - 可用于所有其他CPU
 
 ***
 
-**Q: 监控节点有什么推荐？** 
+**Q: 监控节点有什么推荐？**
 
 **A:** 监控对于网络的健康和收益最大化至关重要。我们建议使用[Grafana Labs](https://grafana.com){target=_blank}。他们有一个免费的处理层，可以用于处理6个以上的Moonbeam服务器。
 
 ***
 
-**Q: 有哪些KPI需要监控？** 
+**Q: 有哪些KPI需要监控？**
 
 **A:** 主要的关键性能指标是生产的区块。对此prometheus metric被称为`substrate_proposer_block_constructed_count`。
 
@@ -129,7 +129,7 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 ***
 
-**Q: 我需要在日志中寻找什么？** 
+**Q: 我需要在日志中寻找什么？**
 
 **A:** 日志对于决定您是否完成同步并准备好加入收集人池非常有用。查看日志末尾内容并确定以下内容：
 

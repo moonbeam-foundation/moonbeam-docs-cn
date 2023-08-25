@@ -66,7 +66,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 
 首先是从GitHub上获取Moonkey二进制文件。您可以下载二进制文件（在Linux/Ubuntu上进行测试）：
 
-`https://github.com/PureStake/moonbeam/releases/download/v0.8.0/moonkey`
+`https://github.com/moonbeam-foundation/moonbeam/releases/download/v0.8.0/moonkey`
 
 下载该工具后，确保您拥有正确的访问权限以执行二进制文件。接下来，通过检查已下载的文件哈希确认是否为正确版本。
 

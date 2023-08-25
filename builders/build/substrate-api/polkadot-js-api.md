@@ -118,6 +118,7 @@ api.disconnect();
 ```
 
 ??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/substrate-api/state-queries.js'
     ```
@@ -146,6 +147,7 @@ api.disconnect();
 ```
 
 ??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/substrate-api/rpc-queries.js'
     ```
@@ -190,7 +192,8 @@ await api.query.system.account(addr, ({ nonce, data: balance }) => {
 api.disconnect();
 ```
 
-??? code "View the complete script"
+??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/substrate-api/query-subscriptions.js'
     ```
@@ -258,6 +261,7 @@ api.disconnect();
 ```
 
 ??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/substrate-api/basic-transactions.js'
     ```
@@ -315,7 +319,8 @@ api.tx.utility
 api.disconnect();
 ```
 
-??? code "View the complete script"
+??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/substrate-api/batch-transactions.js'
     ```

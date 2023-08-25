@@ -195,7 +195,7 @@ const balances = async () => {
 balances();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/balances.js){target=_blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-tx-local/balances.js){target=_blank}。
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -262,7 +262,7 @@ const send = async () => {
 send();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-tx-local/transaction.js){target=_blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-tx-local/transaction.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -349,7 +349,7 @@ const deploy = async () => {
 deploy();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/deploy.js){target=_blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-contract-local/deploy.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -414,7 +414,7 @@ const get = async () => {
 get();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/get.js){target=_blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-contract-local/get.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -487,7 +487,7 @@ const increment = async () => {
 increment();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/increment.js){target=_blank}。
+您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-contract-local/increment.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -551,7 +551,7 @@ const reset = async () => {
 reset();
 ```
 
-您可以查看在[GitHub上的完整脚本](https://raw.githubusercontent.com/PureStake/moonbeam-docs/master/.snippets/code/ethers-contract-local/reset.js){target=_blank}。
+您可以查看在[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-contract-local/reset.js){target=_blank}。
 
 您可以在终端运行以下命令以运行脚本：
 

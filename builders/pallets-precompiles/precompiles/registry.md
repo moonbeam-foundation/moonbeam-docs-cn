@@ -32,7 +32,7 @@ Registry Precompile位于以下地址：
 
 ## Registry Precompile Solidity接口 {: #the-solidity-interface }
 
-[`PrecompileRegistry.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}是一个Solidity接口，允许开发者与预编译函数交互。
+[`PrecompileRegistry.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}是一个Solidity接口，允许开发者与预编译函数交互。
 
 ??? code "PrecompileRegistry.sol"
     
@@ -53,7 +53,7 @@ Registry Precompile位于以下地址：
 
 ### 使用Remix与Precompile Registry交互 {: #use-remix }
 
-要快速开始使用[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}，[Precompile Registry合约已从GitHub加载](https://remix.ethereum.org/#url=https://github.com/PureStake/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}。您也可以在Remix创建一个新文件并手动在[`PrecompileRegistry.sol`](#the-solidity-interface)合约中粘贴内容。
+要快速开始使用[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}，[Precompile Registry合约已从GitHub加载](https://remix.ethereum.org/#url=https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}。您也可以在Remix创建一个新文件并手动在[`PrecompileRegistry.sol`](#the-solidity-interface)合约中粘贴内容。
 
 ![Add the Precompile Registry Interface to Remix](/images/builders/pallets-precompiles/precompiles/registry/registry-1.png)
 

@@ -12,7 +12,7 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
 
 这种预编译的主要优势之一是消除了将协议Token包装为ERC-20智能合约必要性，例如以太坊上的WETH。此外，还可以防止具有相同协议Token的多个包装。因此，需要通过ERC-20接口与协议Token交互的DApp无需单独的智能合约即可实现。
 
-在后台，[ERC-20预编译](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/src/lib.rs)执行与Substrate Balances Pallet相关的特定Substrate操作，由Rust编码。Balances Pallet提供处理[Moonbeam各种余额类型](/builders/get-started/eth-compare/balances/#moonbeam-account-balances)、设置余额、转移余额等功能。
+在后台，[ERC-20预编译](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/src/lib.rs)执行与Substrate Balances Pallet相关的特定Substrate操作，由Rust编码。Balances Pallet提供处理[Moonbeam各种余额类型](/builders/get-started/eth-compare/balances/#moonbeam-account-balances)、设置余额、转移余额等功能。
 
 本教程将向您展示如何通过ERC-20预编译用Moobase Alpha测试网的原生协议Token——DEV Token交互。
 
@@ -37,7 +37,7 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
 
 ## ERC-20接口 {: #the-erc20-interface }
 
-Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)接口遵循[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，即智能合约中Token的标准API接口。此标准定义了Token合约必须实现与不同应用程序互操作所需的功能和事件。
+Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)接口遵循[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，即智能合约中Token的标准API接口。此标准定义了Token合约必须实现与不同应用程序互操作所需的功能和事件。
 
 --8<-- 'text/erc20-interface/erc20-interface.md'
 
@@ -83,7 +83,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与ERC-20预编译交互。为此，您需要执行以下操作：
 
-1. 获取[`ERC20.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}副本
+1. 获取[`ERC20.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=_blank}副本
 2. 将文档内容粘贴至名为`IERC20.sol`的Remix文档
 
 ### 编译合约 {: #compile-the-contract }

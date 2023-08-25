@@ -2,12 +2,16 @@ title: 以太坊API
 hide: false
 nav:
   - index.md
-  - 'Get Started with Smart Contracts':
+  - '使用智能合约开始操作':
     - 'get-started.index.md'
+    - '[ChatGPT] 使用GPT-4编写和调试智能合约': 'chat-gpt.md'
+    - '[Ethers.js] 如何构建一个DApp': 'how-to-build-a-dapp.md'
     - '[Foundry]从开始到结束的开发生命周期': 'foundry-start-to-end.md'
     - '[Hardhat]从开始到结束的开发生命周期': 'hardhat-start-to-end.md'
     - '[Truffle]从开始到结束的开发生命周期': 'truffle-start-to-end.md'
-  - 'Interact with Precompiles':
+    - '[Tenderly] 使用Tenderly进行调试和模拟交易': 'using-tenderly.md'
+  - '与预编译交互':
     - 'precompiles.index.md'
-    - '[批] 通过批处理预编译进行授权和兑换': 'batch-approve-swap.md'
-    - '[随机] 使用随机数预编译创建彩票': 'randomness-lottery.md'
+    - '[批量] 在单一交易里批准和兑换Token': 'batch-approve-swap.md'
+    - '[随机数] 创建一个彩票': 'randomness-lottery.md'
+    - '[调用许可] 发送Gasless交易': 'call-permit-gasless-txs.md'

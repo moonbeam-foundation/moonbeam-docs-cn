@@ -64,7 +64,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 ## 平行链质押Solidity接口 {: #the-parachain-staking-solidity-interface }
 
-[`StakingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}是一个接口，通过Solidity合约与平行链质押交互。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
+[`StakingInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}是一个接口，通过Solidity合约与平行链质押交互。因此，Solidity开发者无需学习Substrate API，即可使用熟悉的以太坊界面操作质押功能。
 
 Solidity接口包含以下的函数：
 
@@ -143,7 +143,7 @@ Solidity接口包含以下的函数：
 ### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-2. 获得[`StakingInterface.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的拷贝，并将文档内容复制并粘贴至名为`StakingInterface.sol`的Remix文档
+2. 获得[`StakingInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的拷贝，并将文档内容复制并粘贴至名为`StakingInterface.sol`的Remix文档
 
 ![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/staking-1.png)
 

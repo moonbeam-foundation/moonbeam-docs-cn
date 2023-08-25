@@ -5,7 +5,7 @@ description: 学习如何使用以太坊开发平台Tenderly在Moonbeam上构建
 
 # 在Moonbeam上使用Tenderly
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 [Tenderly](https://tenderly.co/){target=_blank}是一个Web3开发平台，包含一套旨在帮助开发者贯穿DApp开发生命周期的工具。通过Tenderly，您可以构建、调试、测试、优化、监控、设置警报，以及查看分析Moonbeam和Moonriver上的智能合约。
 
@@ -30,7 +30,7 @@ Tenderly平台提供以下功能：
 - **[Sandbox](https://sandbox.tenderly.co/){target=_blank}** - 在您的浏览器使用内置的JavaScript和Solidity编辑器来直接编写、编译、执行和调试您的智能合约。每次您运行您的代码，Tenderly会创建一个临时分叉，其中包含10个预注资的账户，每个账户有用于测试使用的100个Token
 
 !!! 注意事项
-    对Moonbeam和Moonriver的支持现分为两个阶段实现。目前集成正处于第一阶段，您可以[在Tenderly文档网站上查看局限性](https://docs.tenderly.co/supported-networks-and-languages#footnotes){target=_blank}。在第二阶段，对Moonbeam和Moonriver的支持将完全启动。
+    除Web3网关外，Tenderly完全支持Moonbeam和Moonriver。Tenderly目前不支持Moonbase Alpha。关于支持的功能和网络的更多信息，请查看[Tenderly的官方文档网站](https://docs.tenderly.co/supported-networks-and-languages#footnotes){target=_blank}。
 
 ## 开始操作 {: #getting-started }
 
@@ -100,6 +100,6 @@ Tenderly使通过数据面板创建分叉变得非常简单。首先，点击左
 
 要创建额外的模拟，您可以点击**New Simulation**按钮并输入模拟的配置。更多关于模拟的信息，请参考[Tenderly的如何模拟交易的文档](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=_blank}。
 
-现在您已经了解如何在Moonbeam上使用一些Tenderly的功能，您可以随时查看并了解其开发平台上的其他可用工具。更多信息请访问[Tenderly的文档网站](https://docs.tenderly.co/){target=_blank}。
+现在您已经了解如何在Moonbeam上使用一些Tenderly的功能，您可以随时查看并了解其开发平台上的其他可用工具。更多信息请访问[Tenderly的文档网站](https://docs.tenderly.co/){target=_blank}。您同样也可以查看Moonbeam的相关教程，[使用Tenderly模拟和调试交易](/tutorials/eth-api/using-tenderly/){target=_blank}。
 
 --8<-- 'text/disclaimers/third-party-content.md'

@@ -1,9 +1,9 @@
 ---
-title: XCM SDK参考
+title: XCM SDK参考页面：v0版本
 description: Moonbeam XCM SDK中接口和方法的参考，可用于Moonbeam和生态中其他链之间的XCM转移。
 ---
 
-# Moonbeam XCM SDK参考
+# Moonbeam XCM SDK参考页面：v0版本
 
 ## 概览 {: #introduction }
 

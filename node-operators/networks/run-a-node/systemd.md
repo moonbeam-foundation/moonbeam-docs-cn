@@ -22,21 +22,21 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 ## 发布的二进制文件 {: #the-release-binary }
 
-使用`wget`快速获取最新[发布的二进制文件](https://github.com/PureStake/moonbeam/releases)：
+使用`wget`快速获取最新[发布的二进制文件](https://github.com/moonbeam-foundation/moonbeam/releases)：
 
 === "Moonbeam"
     ```
-    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbeam.parachain_release_tag }}/moonbeam
+    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonbeam.parachain_release_tag }}/moonbeam
     ```
 
 === "Moonriver"
     ```
-    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonriver.parachain_release_tag }}/moonbeam
+    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonriver.parachain_release_tag }}/moonbeam
     ``` 
 
 === "Moonbase Alpha"
     ```
-    wget https://github.com/PureStake/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
+    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
     ```
 
 您可以在您的终端运行`sha256sum`命令来确认您所下载的是否为正确版本，您应该看到以下输出：
@@ -66,32 +66,32 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 1. 克隆Moonbeam repo。
 
-    ```
-    git clone https://github.com/PureStake/moonbeam
+    ```bash
+    git clone https://github.com/moonbeam-foundation/moonbeam
     cd moonbeam
     ```
 
 2. 检查最新版本：
 
-    ```
+    ```bash
     git checkout tags/$(git describe --tags)
     ```
 
 3. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请通过执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install)安装Rust和其先决条件：
 
-    ```
+    ```bash
     --8<-- 'code/setting-up-node/installrust.md'
     ```
 
 4. 接下来，通过运行以下命令更新您的PATH环境变量：
 
-    ```
+    ```bash
     --8<-- 'code/setting-up-node/updatepath.md'
     ```
 
 5. 编译平行链二进制文件：
 
-    ```
+    ```bash
     cargo build --release
     ```
 
@@ -99,7 +99,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 如果在终端显示_cargo not found error_的错误提示，请将Rust手动添加至您的系统路径或重启系统：
 
-```
+```bash
 --8<-- 'code/setting-up-node/updatepath.md'
 ```
 
@@ -112,68 +112,80 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 1. 首先，创建一个服务账户：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         adduser moonbeam_service --system --no-create-home
         ```
 
     === "Moonriver"
-        ```
+
+        ```bash
         adduser moonriver_service --system --no-create-home
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         adduser moonbase_service --system --no-create-home
         ```
    
 2. 创建一个目录来存储二进制文件和数据（您可能需要`sudo`）：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         mkdir {{ networks.moonbeam.node_directory }}
         ```
 
     === "Moonriver"
-        ```
+
+        ```bash
         mkdir {{ networks.moonriver.node_directory }}
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         mkdir {{ networks.moonbase.node_directory }}
         ```  
 
 3. 将上一小节所创建的二进制文件复制到创建的文件夹中。如果您是自己[编译二进制文件](#compile-the-binary)，则需要将二进制文件移动到目标目录（`./target/release/`）。或者，将Moonbeam二进制文件移动到根目录（可能需要`sudo`）：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
         ```
 
     === "Moonriver"
-        ```
+
+        ```bash
         mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
         ```
 
 4. 在存储链上数据的本地目录设置相应的权限:
 
     === "Moonbeam"
-        ```
+
+        ```bash
         sudo chown -R moonbeam_service {{ networks.moonbeam.node_directory }}
         ```
 
     === "Moonriver"
-        ```
+
+        ```bash
         sudo chown -R moonriver_service {{ networks.moonriver.node_directory }}
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         sudo chown -R moonbase_service {{ networks.moonbase.node_directory }}
         ```
 
@@ -402,7 +414,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 您也可以执行以下命令检查日志：
 
-```
+```bash
 journalctl -f -u moonbeam.service
 ```
 
@@ -410,7 +422,7 @@ journalctl -f -u moonbeam.service
 
 如果出于任何原因需要停止服务，可以运行：
 
-```
+```bash
 systemctl stop moonbeam.service
 ```
 
@@ -422,50 +434,55 @@ systemctl stop moonbeam.service
 
 1. 停止systemd服务：
 
-    ```
+    ```bash
     sudo systemctl stop moonbeam.service
     ```
     
 2. 移除二进制文件的旧版本：
-   
+
     === "Moonbeam"
-        ```
+
+        ```bash
         rm  {{ networks.moonbeam.node_directory }}/moonbeam
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         rm  {{ networks.moonriver.node_directory }}/moonbeam
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         rm  {{ networks.moonbase.node_directory }}/moonbeam
         ```
-        
-3. 从[Moonbeam GitHub Release](https://github.com/PureStake/moonbeam/releases/)页面获取Moonbeam的最新版本
+
+3. 从[Moonbeam GitHub Release](https://github.com/moonbeam-foundation/moonbeam/releases/)页面获取Moonbeam的最新版本
 
 4. 如果您使用的是发布的二进制文件，更新版本并运行以下命令：
 
+    ```bash
+    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/<NEW VERSION TAG HERE>/moonbeam
     ```
-    wget https://github.com/PureStake/moonbeam/releases/download/<NEW VERSION TAG HERE>/moonbeam
-    ```
-    
+
     如果您想要编译二进制文件，请参考[编译二进制文件](#compile-the-binary)指引，确保您已通过运行`git checkout`获取最新版本。
 
 5. 将二进制文件移动到数据目录：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         # If you used the release binary:
         mv ./{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
     
         # Or if you compiled the binary:
         mv ./target/release/{{ networks.moonbeam.binary_name }} {{ networks.moonbeam.node_directory }}
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         # If you used the release binary:
         mv ./{{ networks.moonriver.binary_name }} {{ networks.moonriver.node_directory }}
     
@@ -474,38 +491,41 @@ systemctl stop moonbeam.service
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         # If you used the release binary:
         mv ./{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
     
         # Or if you compiled the binary:
         mv ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
         ```
-    
 
 6. 更新权限：
 
     === "Moonbeam"
-        ```
+
+        ```bash
         chmod +x moonbeam
         chown moonbeam_service moonbeam
         ```
-    
+
     === "Moonriver"
-        ```
+
+        ```bash
         chmod +x moonbeam
         chown moonriver_service moonbeam
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```bash
         chmod +x moonbeam
         chown moonbase_service moonbeam
         ```
-    
+
 7. 启动您的服务：
 
-    ```
+    ```bash
     systemctl start moonbeam.service
     ```
 
@@ -521,59 +541,67 @@ systemctl stop moonbeam.service
 
 首先，您需要停止systemd服务：
 
-```
+```bash
 sudo systemctl stop moonbeam
 ```
 
 您可以运行以下命令清除您的平行链和中继链数据：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/*
     ```
 
 仅为指定链移除平行链数据，您可运行以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/chains/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/chains/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/chains/*
     ```
-
 
 同样地，仅移除中继链数据，您可运行以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbeam.node_directory }}/polkadot/*
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonriver.node_directory }}/polkadot/*
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```
 
@@ -583,7 +611,7 @@ sudo systemctl stop moonbeam
 
 如果您想要启动一个新的节点实例，您可以使用一些`purge-chain`命令，它们将按照指令删除以前的链数据。清除平行链和中继链数据的基本命令如下所示：
 
-```
+```bash
 ./target/release/moonbeam purge-chain
 ```
 
@@ -598,19 +626,19 @@ sudo systemctl stop moonbeam
 
 只清除您的Moonbase Alpha数据，您需要运行以下命令：
 
-```
+```bash
 ./target/release/moonbeam purge-chain --parachain --chain alphanet
 ```
 
 清除开发链的指定chainspec路径，您可以运行以下命令：
 
-```
+```bash
 ./target/release/moonbeam purge-chain --chain example-moonbeam-dev-service.json
 ```
 
 想要获得可用的`purge-chain`命令的完整列表，您可以通过运行以下命令访问帮助菜单：
 
-```
+```bash
 ./target/release/moonbeam purge-chain --help
 ```
 
