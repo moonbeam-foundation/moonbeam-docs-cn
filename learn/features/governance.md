@@ -7,15 +7,17 @@ description: 作为波卡平行链，Moonbeam使用链上治理系统来允许�
 
 ![Governance Moonbeam Banner](/images/learn/features/governance/governance-overview-banner.png)
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同使命中，治理过程寻求包括所有Token持有者。关于协议的任何以及所有更改都必须通过公投，以便所有的Token持有者可以根据质押权重对决策提出建议。
 
-如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}和[Polkassembly](https://moonbeam.polkassembly.network/){target=_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=_blank}将社区团结起来，共同完成推进协议的使命。
+如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}和[Polkassembly](https://moonbeam.polkassembly.io/opengov){target=_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=_blank}将社区团结起来，共同完成推进协议的使命。
 
-随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=_blank}。**OpenGov现已上线Moonriver，经过严密测试后，将提出上线Moonbeam的提案。**截至目前为止，Moonbeam仍在使用Governance v1版本。
+随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=_blank}。
 
-## 原则 {: #principles } 
+在Runtime 2400时，所有Moonbeam网络使用OpenGov作为他们的治理系统。
+
+## 原则 {: #principles }
 
 参与Moonbeam治理流程的“基本”原则包括：
 
@@ -28,7 +30,7 @@ Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同
 
 以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，尤其是[如何以诚信（和礼貌）的方式参与区块链治理](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=blank}这篇Medium文章。
 
-## 链上治理机制 {: #on-chain-governance-mechanics } 
+## 链上治理机制 {: #on-chain-governance-mechanics }
 
 Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确保与Moonbeam网络相关的关键决策由多数Token作出。这些决策将以提案公投的形式出现，并根据投票权重得出投票结果。
 
@@ -43,7 +45,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 ## Governance v2: OpenGov {: #opengov }
 
-此部分将涵盖您需要了解的关于Moonriver和Moonbase Alpha上OpenGov的所有信息。关于Moonbeam的治理相关信息，请参考[Goveranance v1](#governance-v1)部分。
+此部分将涵盖您需要了解的关于Moonbeam上OpenGov的所有信息。
 
 ### 一般定义 {: #general-definitions-gov2 }
 
@@ -78,6 +80,13 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 ### 治理参数 {: #governance-parameters-v2 }
 
+=== "Moonbeam"  
+    |         变量         |                             值                             |
+    |:--------------------:|:----------------------------------------------------------:|
+    |    原像基础保证金    |     {{ networks.moonbeam.preimage.base_deposit }} GLMR     |
+    | 每个字节的原像保证金 |     {{ networks.moonbeam.preimage.byte_deposit }} GLMR     |
+    |    提案提交保证金    | {{ networks.moonbeam.governance.submission_deposit }} GLMR |
+
 === "Moonriver"
     |         变量         |                             值                              |
     |:--------------------:|:-----------------------------------------------------------:|
@@ -93,6 +102,15 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
     |    提案提交保证金    | {{ networks.moonbase.governance.submission_deposit }} DEV |
 
 #### Track的基本参数 {: #general-parameters-by-track }
+
+=== "Moonbeam"
+    |         Track          | Track ID |                                      容量                                      |                                决定<br>保证金                                 |
+    |:----------------------:|:--------:|:------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|
+    |          Root          |    0     |     {{ networks.moonbeam.governance.tracks.root.max_deciding }} proposals      |     {{ networks.moonbeam.governance.tracks.root.decision_deposit }} GLMR      |
+    |      Whitelisted       |    1     |  {{ networks.moonbeam.governance.tracks.whitelisted.max_deciding }} proposals  |  {{ networks.moonbeam.governance.tracks.whitelisted.decision_deposit }} GLMR  |
+    |     General Admin      |    2     | {{ networks.moonbeam.governance.tracks.general_admin.max_deciding }} proposals | {{ networks.moonbeam.governance.tracks.general_admin.decision_deposit }} GLMR |
+    | Emergency<br>Canceller |    3     |   {{ networks.moonbeam.governance.tracks.canceller.max_deciding }} proposals   |   {{ networks.moonbeam.governance.tracks.canceller.decision_deposit }} GLMR   |
+    |  Emergency<br>Killer   |    4     |    {{ networks.moonbeam.governance.tracks.killer.max_deciding }} proposals     |    {{ networks.moonbeam.governance.tracks.killer.decision_deposit }} GLMR     |
 
 === "Moonriver"
     |         Track          | Track ID |                                      容量                                       |                                 决定<br>保证金                                 |
@@ -114,6 +132,15 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 #### Track的时间期限参数 {: #period-parameters-by-track }
 
+=== "Moonbeam"
+    |         Track          |                                                                                 准备期                                                                                 |                                                                                  决定期                                                                                  |                                                                                 确认期                                                                                 |                                                                                   最短生效等待期                                                                                   |
+    |:----------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |          Root          |          {{ networks.moonbeam.governance.tracks.root.prepare_period.blocks }} blocks <br>({{ networks.moonbeam.governance.tracks.root.prepare_period.time }})          |          {{ networks.moonbeam.governance.tracks.root.decision_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.root.decision_period.time }})          |          {{ networks.moonbeam.governance.tracks.root.confirm_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.root.confirm_period.time }})          |          {{ networks.moonbeam.governance.tracks.root.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.root.min_enactment_period.time }})          |
+    |      Whitelisted       |   {{ networks.moonbeam.governance.tracks.whitelisted.prepare_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.whitelisted.prepare_period.time }})   |   {{ networks.moonbeam.governance.tracks.whitelisted.decision_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.whitelisted.decision_period.time }})   |   {{ networks.moonbeam.governance.tracks.whitelisted.confirm_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.whitelisted.confirm_period.time }})   |   {{ networks.moonbeam.governance.tracks.whitelisted.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.whitelisted.min_enactment_period.time }})   |
+    |     General Admin      | {{ networks.moonbeam.governance.tracks.general_admin.prepare_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.general_admin.prepare_period.time }}) | {{ networks.moonbeam.governance.tracks.general_admin.decision_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.general_admin.decision_period.time }}) | {{ networks.moonbeam.governance.tracks.general_admin.confirm_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.general_admin.confirm_period.time }}) | {{ networks.moonbeam.governance.tracks.general_admin.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.general_admin.min_enactment_period.time }}) |
+    | Emergency<br>Canceller |     {{ networks.moonbeam.governance.tracks.canceller.prepare_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.canceller.prepare_period.time }})     |     {{ networks.moonbeam.governance.tracks.canceller.decision_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.canceller.decision_period.time }})     |     {{ networks.moonbeam.governance.tracks.canceller.confirm_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.canceller.confirm_period.time }})     |     {{ networks.moonbeam.governance.tracks.canceller.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.canceller.min_enactment_period.time }})     |
+    |  Emergency<br>Killer   |        {{ networks.moonbeam.governance.tracks.killer.prepare_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.killer.prepare_period.time }})        |        {{ networks.moonbeam.governance.tracks.killer.decision_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.killer.decision_period.time }})        |        {{ networks.moonbeam.governance.tracks.killer.confirm_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.killer.confirm_period.time }})        |        {{ networks.moonbeam.governance.tracks.killer.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbeam.governance.tracks.killer.min_enactment_period.time }})        |
+
 === "Moonriver"
     |         Track          |                                                                                  准备期                                                                                  |                                                                                   决定期                                                                                   |                                                                                  确认期                                                                                  |                                                                                    最短生效等待期                                                                                    |
     |:----------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -133,6 +160,15 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
     |  Emergency<br>Killer   |        {{ networks.moonbase.governance.tracks.killer.prepare_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.killer.prepare_period.time }})        |        {{ networks.moonbase.governance.tracks.killer.decision_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.killer.decision_period.time }})        |        {{ networks.moonbase.governance.tracks.killer.confirm_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.killer.confirm_period.time }})        |        {{ networks.moonbase.governance.tracks.killer.min_enactment_period.blocks }} blocks<br> ({{ networks.moonbase.governance.tracks.killer.min_enactment_period.time }})        |
 
 #### Track的支持和批准参数 {: #support-and-approval-parameters-by-track }
+
+=== "Moonbeam"
+    |         Track          |  批准曲线  |                                                                                                                                                                                                                                        批准参数                                                                                                                                                                                                                                        |  支持曲线  |                                                                                                                                                                                                                                     支持参数                                                                                                                                                                                                                                     |
+    |:----------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+    |          Root          | Reciprocal |                            {{ networks.moonbeam.governance.tracks.root.min_approval.time0 }}: {{ networks.moonbeam.governance.tracks.root.min_approval.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.root.min_approval.time1 }}: {{ networks.moonbeam.governance.tracks.root.min_approval.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.root.min_approval.time2 }}: {{ networks.moonbeam.governance.tracks.root.min_approval.percent2 }}%                            |   Linear   |                                                                                                 {{ networks.moonbeam.governance.tracks.root.min_support.time0 }}: {{ networks.moonbeam.governance.tracks.root.min_support.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.root.min_support.time1 }}: {{ networks.moonbeam.governance.tracks.root.min_support.percent1 }}%                                                                                                 |
+    |      Whitelisted       | Reciprocal |       {{ networks.moonbeam.governance.tracks.whitelisted.min_approval.time0 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_approval.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.whitelisted.min_approval.time1 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_approval.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.whitelisted.min_approval.time2 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_approval.percent2 }}%       | Reciprocal |       {{ networks.moonbeam.governance.tracks.whitelisted.min_support.time0 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_support.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.whitelisted.min_support.time1 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_support.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.whitelisted.min_support.time2 }}: {{ networks.moonbeam.governance.tracks.whitelisted.min_support.percent2 }}%       |
+    |     General Admin      | Reciprocal | {{ networks.moonbeam.governance.tracks.general_admin.min_approval.time0 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_approval.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.general_admin.min_approval.time1 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_approval.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.general_admin.min_approval.time2 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_approval.percent2 }}% | Reciprocal | {{ networks.moonbeam.governance.tracks.general_admin.min_support.time0 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_support.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.general_admin.min_support.time1 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_support.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.general_admin.min_support.time2 }}: {{ networks.moonbeam.governance.tracks.general_admin.min_support.percent2 }}% |
+    | Emergency<br>Canceller | Reciprocal |             {{ networks.moonbeam.governance.tracks.canceller.min_approval.time0 }}: {{ networks.moonbeam.governance.tracks.canceller.min_approval.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.canceller.min_approval.time1 }}: {{ networks.moonbeam.governance.tracks.canceller.min_approval.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.canceller.min_approval.time2 }}: {{ networks.moonbeam.governance.tracks.canceller.min_approval.percent2 }}%             | Reciprocal |             {{ networks.moonbeam.governance.tracks.canceller.min_support.time0 }}: {{ networks.moonbeam.governance.tracks.canceller.min_support.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.canceller.min_support.time1 }}: {{ networks.moonbeam.governance.tracks.canceller.min_support.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.canceller.min_support.time2 }}: {{ networks.moonbeam.governance.tracks.canceller.min_support.percent2 }}%             |
+    |  Emergency<br>Killer   | Reciprocal |                      {{ networks.moonbeam.governance.tracks.killer.min_approval.time0 }}: {{ networks.moonbeam.governance.tracks.killer.min_approval.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.killer.min_approval.time1 }}: {{ networks.moonbeam.governance.tracks.killer.min_approval.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.killer.min_approval.time2 }}: {{ networks.moonbeam.governance.tracks.killer.min_approval.percent2 }}%                      | Reciprocal |                      {{ networks.moonbeam.governance.tracks.killer.min_support.time0 }}: {{ networks.moonbeam.governance.tracks.killer.min_support.percent0 }}%<br>{{ networks.moonbeam.governance.tracks.killer.min_support.time1 }}: {{ networks.moonbeam.governance.tracks.killer.min_support.percent1 }}%<br>{{ networks.moonbeam.governance.tracks.killer.min_support.time2 }}: {{ networks.moonbeam.governance.tracks.killer.min_support.percent2 }}%                      |
 
 === "Moonriver"
     |         Track          |  批准曲线  |                                                                                                                                                                                                                                           批准参数                                                                                                                                                                                                                                           |  支持曲线  |                                                                                                                                                                                                                                        支持参数                                                                                                                                                                                                                                        |
@@ -160,6 +196,17 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 每个网络的信念乘数如下所示：
 
+=== "Moonbeam"
+    | 生效后的锁定期 | 信念乘数 |                          预计锁定时间                          |
+    |:--------------:|:--------:|:--------------------------------------------------------------:|
+    |       0        |   0.1    |                              None                              |
+    |       1        |    1     | {{networks.moonbeam.conviction.lock_period.conviction_1}} day  |
+    |       2        |    2     | {{networks.moonbeam.conviction.lock_period.conviction_2}} days |
+    |       4        |    3     | {{networks.moonbeam.conviction.lock_period.conviction_3}} days |
+    |       8        |    4     | {{networks.moonbeam.conviction.lock_period.conviction_4}} days |
+    |       16       |    5     | {{networks.moonbeam.conviction.lock_period.conviction_5}} days |
+    |       32       |    6     | {{networks.moonbeam.conviction.lock_period.conviction_6}} days |
+
 === "Moonriver"
     | 生效后的锁定期 | 信念乘数 |                          预计锁定时间                           |
     |:--------------:|:--------:|:---------------------------------------------------------------:|
@@ -185,7 +232,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 !!! 注意事项
     预计锁定时间基于常规的{{ networks.moonriver.block_time }}秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
 
-### 提案步骤 {: #roadmap-of-a-proposal-v2 } 
+### 提案步骤 {: #roadmap-of-a-proposal-v2 }
 
 在提交提案之前，提案的作者可以将其提案的想法提交到[Moonbeam治理论坛](https://forum.moonbeam.foundation/c/governance/2){target=_blank}的Democracy Proposals部分，以获得来自社区的至少五天的反馈。作者可以根据收集的反馈对提案进行调整。
 
@@ -203,7 +250,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 下方图片显示了提案步骤：
 
-![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/v2/proposal-roadmap.png)
+![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/proposal-roadmap.png)
 
 ### 提案示例流程 {: #proposal-example-walkthrough }
 
@@ -220,7 +267,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 === "Approval"
     ```
-    Approval = 100 * ( Total Conviction-weighted "Aye" votes / Total Conviction-weighted votes ) 
+    Approval = 100 * ( Total Conviction-weighted "Aye" votes / Total Conviction-weighted votes )
     ```
 
 === "Support"
@@ -246,145 +293,12 @@ Emergency Canceller的track会导致提案被拒绝，决定保证金被退回�
 
 OpenGov技术委员会由拥有基于Moonbeam网络方面技术知识和专业知识的社区成员组成。
 
-### Governance v2相关指南 {: #try-it-out } 
+### OpenGov相关指南 {: #try-it-out }
 
-关于如何使用Governance v2在Moonbeam上提交公投和投票，请查看以下指南：
+关于如何使用OpenGov在Moonbeam上提交公投和投票，请查看以下指南：
 
- - [如何提交提案](/tokens/governance/proposals/opengov-proposals){target=_blank}
- - [如何对提案投票](/tokens/governance/voting/opengov-voting){target=_blank}
+ - [如何提交提案](/tokens/governance/proposals/){target=_blank}
+ - [如何对提案投票](/tokens/governance/voting/){target=_blank}
  - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}
  - [如何与公投预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/referenda/){target=_blank}
  - [如何与信念投票预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/conviction-voting/){target=_blank}
-
-## Governance v1 {: #governance-v1 }
-
-目前OpenGov在Moonriver上进行测试，Moonbeam将继续使用governance v1版本。此部分将涵盖Moonbeam上governance v1的所有信息。
-
-### 一般定义 {: #general-definitions } 
-
-权力越大，责任越大。在参与Moonbeam治理之前，请先了解一些重要参数：
-
- - **提案 **— Token持有者提出的行动方案或事项。创建提案有两种主要方式：
-    - **民主提案** - 由社区成员提交提案，并向所有Token持有者开放寻求其认可。获得最多Token数量支持的民主提案将在启动期结束时被选为公投
-    - **外部提案** - 由理事会创建的提案，若由理事会接受，则提交给Token持有者进行投票。当理事会提交外部提案时，会设置投票计数指标
-        - **快速通道提案** —— 技术委员会可以选择快速处理外部提案，这意味着更改默认参数，例如投票期和生效等待期。快速处理的公投可以与现有的活跃公投一起创建。也就是说，紧急公投不会取代目前进行中的公投
-- **公投** — 由Token持有者投票的提案。每个公投与更改Moonbeam系统的特定提案相关联，包括关键参数的值、代码升级或治理系统本身的更改
-- **启动期** — 公开提交的提案将收集背书的投票期之前的时间段
-- **投票期** —  Token持有者对提案进行公投的时期（一次公投的时间段）
-
---8<-- 'text/governance/vote-conviction-definitions.md'
-
-- **投票计数指标** — 投票计数指标有三种：(i) 正投票率偏向（绝对多数投票通过），(ii) 负投票率偏向（绝对多数投票反对），(iii) 简单多数。获取关于这些不同的投票计数指标运作模式的更多信息，请参考[波卡关于计票的Wiki网页](https://wiki.polkadot.network/docs/learn-governance#tallying){target=_blank}
-    - 投票计数指标的应用取决于公投的类型：
-        - 民主提案 - 应用[正投票率偏向（绝对多数投票通过）](#positive-turnout-bias)投票计数指标
-        - 外部提案 - 由理事会设置投票计数指标
-- **生效等待期** — 提案通过和正式生效（制定法律）之间的时间段。这也是锁定资金以正式执行所需的最短期限
-- **锁定期** — 提案生效之后，获胜投票者Token被锁定的时间。 用户仍然可以使用这些Token进行质押或投票
-- **冷静期** — 提案遭到技术委员会否决直至可以再次提交的持续时长
-- **委托** — 将自己的投票权委托给其他账户，以积累一定信念值的行为
-
-### 治理参数 {: #governance-parameters }
-
-Moonbeam上的治理参数如下所示：
-
-|         变量         |                                                           值                                                            |
-|:--------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
-|        启动期        | {{ networks.moonbeam.democracy.launch_period.blocks}} blocks ({{ networks.moonbeam.democracy.launch_period.days}} days) |
-|        投票期        |   {{ networks.moonbeam.democracy.vote_period.blocks}} blocks ({{ networks.moonbeam.democracy.vote_period.days}} days)   |
-|      生效等待期      |  {{ networks.moonbeam.democracy.enact_period.blocks}} blocks ({{ networks.moonbeam.democracy.enact_period.days}} days)  |
-|        冷静期        |   {{ networks.moonbeam.democracy.cool_period.blocks}} blocks ({{ networks.moonbeam.democracy.cool_period.days}} days)   |
-|    原像基础保证金    |                                   {{ networks.moonbeam.preimage.base_deposit }} GLMR                                    |
-| 每个字节的原像保证金 |                                   {{ networks.moonbeam.preimage.byte_deposit }} GLMR                                    |
-|      提案保证金      |                                   {{ networks.moonbeam.democracy.min_deposit }} GLMR                                    |
-|       提案上限       |                                     {{ networks.moonbeam.democracy.max_proposals }}                                     |
-|  公投上限（单次）*   |                                     {{ networks.moonbeam.democracy.max_referenda }}                                     |
-
-**单次最大公投数量不包括快速通道公投。* 
-
-!!! 注意事项
-    外部提案的投票期和生效等待期可能会发生变化。
-
-#### 信念乘数 {: #conviction-multiplier }
-
-信念乘数与公投通过批准后进入生效等待期的Token锁定期限数量有关。如果您愿意锁定Token的时间越长，则您的投票权重就越大。 您也可以选择不锁定Token，但投票权重会大大降低（在公投期间Token仍处于锁定状态）。
-
-举例来说，如果您以6倍的信念投票1000个Token，您的投票权重将为6000。也就是说，1000个锁定的Token乘以信念（在本示例中为6倍）。但是如果您决定不在生效后锁定您的Token，您可以以0.1倍的信念进行投票。在这种情况下，您的投票权重为100。
-
-Moonbeam的信念乘数如下所示：
-
-=== "Moonbeam"
-    | 生效后的锁定期 | 信念乘数 |                        预计锁定时间                        |
-    |:--------------:|:--------:|:----------------------------------------------------------:|
-    |       0        |   0.1    |                            None                            |
-    |       1        |    1     | {{networks.moonbeam.democracy.lock_period.conviction_1}}天 |
-    |       2        |    2     | {{networks.moonbeam.democracy.lock_period.conviction_2}}天 |
-    |       4        |    3     | {{networks.moonbeam.democracy.lock_period.conviction_3}}天 |
-    |       8        |    4     | {{networks.moonbeam.democracy.lock_period.conviction_4}}天 |
-    |       16       |    5     | {{networks.moonbeam.democracy.lock_period.conviction_5}}天 |
-    |       32       |    6     | {{networks.moonbeam.democracy.lock_period.conviction_6}}天 |
-
-!!! 注意事项
-    预计锁定时间基于常规的{{ networks.moonbeam.block_time }}-秒区块时间。区块生产可能会有所不同，因此显示的锁定时间仅供参考。
-
-### 提案步骤 {: #roadmap-of-a-proposal } 
-
-在提交提案之前，提案的作者可以将其提案的想法提交到[Moonbeam治理论坛](https://forum.moonbeam.foundation/c/governance/2){target=_blank}的Democracy Proposals部分，以获得来自社区的至少五天的反馈。作者可以根据收集的反馈对提案进行调整。
-
-当提案准备在链上提交时，需要先将提案原像提交至链上。原像定义要执行的操作。提交者按存储的每个字节支付费用：原像越大，费用越高。提交后，则会返回原像哈希。
-
-提议者可以使用原像哈希提交提案，并在此过程中锁定Token。 提交交易被接受后，提案就会被公开列出。从而，您能够在[Polkassembly](https://moonbeam.polkassembly.network/){target=_blank}上查看提案。
-
-提案对外列出后，Token持有者可以通过锁定提议者锁定的相同数量的Token来支持提案（作为担保）。附议最多的提案将转向公投。 这种情况下，公投将列在[Polkassembly的链上提案页面](https://moonbeam.polkassembly.network/proposals){target=_blank}。
-
-在公投中，Token持有者可以通过锁定Token为提案进行**赞成**或者**反对**的投票。有两个因素会影响投票权重：锁定的Token数量和锁定期限。如果提案生效，则会在一定时间后执行。
-
-下方图片显示了民主提案步骤：
-
-![Proposal Roadmap](/images/learn/features/governance/proposal-roadmap.png)
-
-### 理事会和技术委员会的投票权利 {: #voting-rights-of-the-council-and-the-technical-committee }
-
-理事会和技术委员会是两个团体，具有以下特殊投票权：
-
-|    团体    | 可以提交<br>外部提案 | 可以提交<br>快速通道提案 | 可以取消<br>恶意的民主提案 | 可以否决<br>外部提案 |
-|:----------:|:--------------------:|:------------------------:|:--------------------------:|:--------------------:|
-|   理事会   |          ✓           |            X             |             ✓              |          X           |
-| 技术委员会 |          X           |            ✓             |             ✓              |          ✓           |
-
-投票期限为一天或更长时间的快速通道提案需要技术委员会二分之一的批准。 投票期少于一天的快速通道提案称为“即时快速通道提案”，需要技术委员会五分之三的批准。
-
-如上述表格所示，技术委员会可以否决外部提案。技术委员会的任何成员只有一次否决提案的机会，并且只能在冷静期期间有效。
-
-### 正投票率偏向 {: #positive-turnout-bias } 
-
-公投使用正投票率偏向指标，即绝对多数投票通过的公式。 计算方式如下所示：
-
-![Positive Turnout Bias](/images/learn/features/governance/vote-bias.png)
-
-其中：
-
- - **赞成** — “赞成”票的数量（包括信念乘数）
- - **反对** — “反对”票的数量（包括信念乘数）
- - **投票数** — 参与投票的Token总量（不包括信念乘数）
- - **总选票** — 网络发行的Token总量
-
-在前面的示例中，这些数字是：
-
-|   变量   |          值           |
-|:--------:|:---------------------:|
-|   赞成   |   10800 (1800 x 6)    |
-|   反对   |    80 (800 x 0.1)     |
-|  投票数  |   2600 (1800 + 800)   |
-|  总选票  |         1.22M         |
-| **结果** | 1.5 < 9.8 (Aye wins!) |
-
-简而言之，在投票数偏低的情况下，需要绝对多数“赞成”票才能批准提案，但随着投票数的增加，则会变成简单多数的形式。
-
-### Governance v1上的相关指南 {: #try-it-out } 
-
-关于如何使用Governance v1在Moonbeam上提交公投和投票，请查看以下指南：
-
- - [如何提交提案](/tokens/governance/proposals/proposals){target=_blank}
- - [如何对提案投票](/tokens/governance/voting/voting){target=_blank}
- - [如何与民主预编译合约（Solidity接口）交互)](/builders/pallets-precompiles/precompiles/democracy/){target=_blank}
-

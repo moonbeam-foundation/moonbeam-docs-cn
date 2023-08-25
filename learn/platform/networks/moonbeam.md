@@ -5,8 +5,6 @@ description: Moonbeam在波卡上部署的当前配置和部署概览，以及�
 
 # Moonbeam
 
-_更新至2021年5月26日_
-
 ## 目标 {: #goal }
 
 Moonbeam将于2021年12月17日作为平行链部署至波卡（Polkadot）。Moonbeam是波卡（Polkadot）生态系统中最兼容以太坊的智能合约平行链，允许开发者以最小程度的代码更改（甚至无需更改）将其项目部署至Moonbeam，使他们可以访问波卡（Polkadot）生态系统及其所有资产。
@@ -33,17 +31,6 @@ Moonbeam完全启动后将拥有以下配置：
     |    区块Gas上限    | {{ networks.moonbeam.gas_block }}（预计提升至少4倍） |
     | 交易Gas上限 |  {{ networks.moonbeam.gas_tx }}（预计提升至少4倍）   |
 
-=== "治理配置"
-    |         变量         |                                                            值                                                             |
-    |:------------------------:|:----------------------------------------------------------------------------------------------------------------------------:|
-    |      投票期       |      {{ networks.moonbeam.democracy.vote_period.blocks}}区块（{{networks.moonbeam.democracy.vote_period.days}}天）      |
-    | 快速投票期 | {{ networks.moonbeam.democracy.fast_vote_period.blocks}}区块（{{networks.moonbeam.democracy.fast_vote_period.days}}天） |
-    |     颁布期     |     {{ networks.moonbeam.democracy.enact_period.blocks}}区块（{{networks.moonbeam.democracy.enact_period.days}}天）     |
-    |     冷却期      |      {{ networks.moonbeam.democracy.cool_period.blocks}}区块（{{networks.moonbeam.democracy.cool_period.days}}天）      |
-    |     最低充值金额      |                                      {{ networks.moonbeam.democracy.min_deposit }}枚GLMR                                      |
-    |      最高投票数       |                                         {{ networks.moonbeam.democracy.max_votes }}                                          |
-    |    最高提案数     |                                       {{ networks.moonbeam.democracy.max_proposals }}                                        |
-
 === "质押配置"
     |             变量              |                                                  值                                                  |
     |:---------------------------------:|:-------------------------------------------------------------------------------------------------------:|
@@ -54,16 +41,15 @@ Moonbeam完全启动后将拥有以下配置：
     |           委托生效期           |   委托在下一轮开始生效 （资金会马上绑定）  |
     |           解绑期           |   {{ networks.moonbeam.delegator_timings.del_bond_less.rounds }}轮次  |
 
-
 _*阅读更多关于[Token面额](#token-denominations)_
 
 --8<-- 'text/moonbeam/connect.md'
 
-## 遥测功能 {: #telemetry } 
+## 遥测功能 {: #telemetry }
 
 您可以点击[波卡遥测仪表盘](https://telemetry.polkadot.io/#list/0xfe58ea77779b7abda7da4ec526d14db9b1e9cd40a217c34892af80a9b332b76d){target=_blank}来查看及时的Moonbeam遥测资讯。
 
-## Tokens {: #tokens } 
+## Tokens {: #tokens }
 
 Moonbeam的Token被称为Glimmer（GLMR）。想要获取更多资讯，请访问Moonbeam基金会网站[Glimmer Token页面](https://moonbeam.foundation/glimmer-token/){target=_blank}。
 

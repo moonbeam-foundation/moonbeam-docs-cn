@@ -5,3 +5,4 @@ nav:
   - '[互连合约] 构建跨链DAO': 'cross-chain-dao.md'
   - '[XCM] 从波卡在Moonbeam上执行远程质押': 'remote-staking-xcm.md'
   - '[XCM] 在波卡在Moonbeam上执行Uniswap V2兑换': 'uniswapv2-swap-xcm.md'
+  - '[XCM] 执行远程批量EVM调用' : 'remote-batched-evm-calls.md'
