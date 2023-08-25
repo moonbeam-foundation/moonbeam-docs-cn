@@ -90,7 +90,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 从技术层面来看，Moonbeam和Moonriver创建HRMP通道的流程差不多相同。然而，在提案通过之前获得Moonbeam社区的参与度也是必不可少的。
 
-在开始之前，请先查看[Moonriver](https://moonriver.polkassembly.network/referenda/0){target=_blank}和[Moonbeam](https://moonbeam.polkassembly.network/proposal/21){target=_blank}上社区投票的HRMP通道准则。
+在开始之前，请先查看[Moonriver](https://moonriver.polkassembly.io/referenda/0){target=_blank}和[Moonbeam](https://moonbeam.polkassembly.io/proposal/21){target=_blank}上社区投票的HRMP通道准则。
 
 流程可概括为以下步骤：
 
