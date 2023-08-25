@@ -5,17 +5,15 @@ description: Moonbeam和Moonriver上历史更新概览，包含应用于Moonbeam
 
 # 历史更新
 
-![Historical Updates Banner](/images/builders/build/historical-updates/banner.png)
-
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 此页面提供一个关于Moonbeam和Moonriver上的历史更新概览，例如Moonbeam源代码的漏洞修复记录和应用的数据迁移。
 
 此页面旨在提供与需要执行数据迁移更新有关的意外行为和数据不一致的信息。
 
-## 漏洞修复 {: #bug-fixes } 
+## 漏洞修复 {: #bug-fixes }
 
-#### 无效交易存储 {: #invalid-transactions-stored } 
+#### 无效交易存储 {: #invalid-transactions-stored }
 
 对于无法支付交易成本的无效交易，EVM pallet会将交易元数据插入存储系统而非丢弃它，因为没有交易成本的验证。因此，runtime存储系统因无效交易数据而变得不必要的膨胀。
 
@@ -36,16 +34,16 @@ Moonbeam上的交易费用模型有20%的费用进入链上财政库，80%作为
 
 此漏洞仅影响Moonriver和Moonbase Alpha并存在于以下Runtime和区块区间：
 
-|      网络      |   出现时间   | 修复时间 |    影响的区块区间    |
-|:--------------:|:----------:|:-----:|:--------------------:|
-|   Moonriver    |    RT49    | RT800 |      0 - 684728      |
-| Moonbase Alpha |    RT40    | RT800 |      0 - 915684      |
+|      网络      | 出现时间 | 修复时间 | 影响的区块区间 |
+|:--------------:|:--------:|:--------:|:--------------:|
+|   Moonriver    |   RT49   |  RT800   |   0 - 684728   |
+| Moonbase Alpha |   RT40   |  RT800   |   0 - 915684   |
 
 关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/732){target=_blank}.
 
 ***
 
-#### 遗失返还资金 {: #missing-refunds } 
+#### 遗失返还资金 {: #missing-refunds }
 
 Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0，代表所有账户不需要最低余额数量即可被视为活跃。对于具有此配置的基于Substrate的链而言，由于零余额帐户被视为不存在，因此遗漏对该帐户的退款。
 
@@ -61,7 +59,7 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 
 ***
 
-#### 错误收集人选择 {: #incorrect-collator-selection } 
+#### 错误收集人选择 {: #incorrect-collator-selection }
 
 当通过`delegatorBondMore` extrinsic增加委托时，收集人候选人的总委托并未正确更新。这导致增加的委托金额未包含在候选人的总金额中，而该金额是用于确定哪些候选人会在活跃的收集人集中。因此，即使一些候选人实际上应该进入活动集中，但他们因此问题而没有被选中进入活跃收集人集中，从而影响他们自己和他们的委托人的奖励。
 
@@ -102,7 +100,7 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 
 ***
 
-#### 错误时间戳单位 {: #incorrect-timestamp-units } 
+#### 错误时间戳单位 {: #incorrect-timestamp-units }
 
 EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用的Substrate时间戳使用毫秒。此漏洞仅影响EIP-2612的实现，而非`block.timestamp`数值。
 
@@ -118,7 +116,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### 错误委托奖励计算 {: #incorrect-delegation-reward-calculation } 
+#### 错误委托奖励计算 {: #incorrect-delegation-reward-calculation }
 
 每当有待处理请求时，所有委托和收集人的奖励支出都被低估了。委托奖励是根据每个委托人绑定的Token数量相对于给定收集人的总占比计算的。通过计算待处理请求的委托金额，收集人及其委托的奖励低于原本应有的水平。
 
@@ -134,7 +132,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### 区块母哈希错误计算 {: #block-parent-hash-calculated-incorrectly } 
+#### 区块母哈希错误计算 {: #block-parent-hash-calculated-incorrectly }
 
 在EIP-1559推出后，其包含的新以太坊交易种类，让区块头的母哈希被错误计算为`H256::default`。
 
@@ -154,17 +152,17 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 此漏洞存在于以下Runtime和区块区间：
 
-|      网络      |   出现时间   | 修复时间 |    影响的区块区间     |
-|:--------------:|:----------:|:------:|:--------------------:|
-|    Moonbeam    |   RT1201   | RT1401 |   415946 - 915320    |
-|   Moonriver    |   RT1201   | RT1401 |  1471037 - 1705939   |
-| Moonbase Alpha |   RT1200   | RT1400 |  1648994 - 1962557   |
+|      网络      | 出现时间 | 修复时间 |  影响的区块区间   |
+|:--------------:|:--------:|:--------:|:-----------------:|
+|    Moonbeam    |  RT1201  |  RT1401  |  415946 - 915320  |
+|   Moonriver    |  RT1201  |  RT1401  | 1471037 - 1705939 |
+| Moonbase Alpha |  RT1200  |  RT1400  | 1648994 - 1962557 |
 
 关于更多信息，您可以查看[相关Frontier PR](https://github.com/moonbeam-foundation/frontier/pull/45){target=_blank}.
 
 ***
 
-#### 支付给收集人的交易费用 {: #transaction-fees-paid-to-collators } 
+#### 支付给收集人的交易费用 {: #transaction-fees-paid-to-collators }
 
 对于包含优先费用的EIP-1559交易的区块，交易费用被错误地计算并分配给了区块的收集人。Moonbeam上用于交易和智能合约执行的费用模型经过设计，20%的费用将存入链上财政库，80%将作为通货紧缩力量而销毁。由于这个漏洞，受影响交易的交易费用没有按预期销毁。
 
@@ -212,13 +210,13 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-## 迁移 {: #migrations } 
+## 迁移 {: #migrations }
 
 当更改或添加存储项并需要用数据填充时，迁移是必要的。下面列出的迁移部分是由受影响的pallet来分类的。
 
 ### 作者映射pallet {: #author-mapping }
 
-#### 更新映射存储项 {: #update-mapping-storage-item } 
+#### 更新映射存储项 {: #update-mapping-storage-item }
 
 此迁移更新了作者映射pallet现已弃用的`Mapping`存储项，以使用更安全的哈希器类型。哈希器类型已更新为[Blake2_128Concat](https://paritytech.github.io/substrate/master/frame_support/struct.Blake2_128Concat.html){target=_blank}而非[Twox64Concat](https://paritytech.github.io/substrate/master/frame_support/struct.Twox64Concat.html){target=_blank}。
 
@@ -249,7 +247,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-#### 一个Nimbus ID对应一个账户ID {: #one-nimbus-id-per-account-id } 
+#### 一个Nimbus ID对应一个账户ID {: #one-nimbus-id-per-account-id }
 
 此处应用迁移以确保一个帐户ID只能有一个Nimbus ID。此迁移接受给定帐户拥有的第一个Nimbus ID，并清除与该帐户关联的任何其他Nimbus ID。对于任何已清除的相关内容，该相关内容的保证金将被退还。
 
@@ -265,9 +263,9 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-### 基础费用Pallet {: #base-fee } 
+### 基础费用Pallet {: #base-fee }
 
-#### 设置弹性存储项数值 {: #set-elasticity } 
+#### 设置弹性存储项数值 {: #set-elasticity }
 
 此迁移部分将基础费用pallet的`Elasticity`存储项设置为0，从而使`BaseFeePerGas`保持不变。
 
@@ -283,7 +281,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 ***
 
-### 民主Pallet {: #democracy } 
+### 民主Pallet {: #democracy }
 
 #### 原像存储转移至新的原像Pallet
 
@@ -306,7 +304,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ### 平行链质押Pallet {: #parachain-staking }
 
-#### 更新收集人状态存储项 {: #update-collator-state-storage-item } 
+#### 更新收集人状态存储项 {: #update-collator-state-storage-item }
 
 此处应用迁移将平行链质押pallet的`Collator`存储项更新为新的`Collator2`存储项。此变动更新了收集人状态以包括以下内容：
 
@@ -326,7 +324,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-#### 修补总质押数量 {: #patch-total-staked-amount } 
+#### 修补总质押数量 {: #patch-total-staked-amount }
 
 由于一个可能导致数量不正确的潜在漏洞，此处对平行链质押pallet中`CollatorState`存储项的`total`质押金额进行了迁移。
 
@@ -341,7 +339,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-#### 支持延迟提名人（委托人）离开 {: #support-delayed-nominator-exits } 
+#### 支持延迟提名人（委托人）离开 {: #support-delayed-nominator-exits }
 
 用于处理候选人退出的退出队列已更新成包括对延迟提名人（委托人）退出和撤销的支持，这需要迁移以将`ExitQueue`平行链质押pallet存储项更新为`ExitQueue2`。 `NominatorState`存储项也被迁移到`NominatorState2`，以防止提名人在已经安排退出时执行更多提名。
 
@@ -372,7 +370,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-#### 支持手动离开和DPoS术语 {: #support-manual-exits-dpos-terminology } 
+#### 支持手动离开和DPoS术语 {: #support-manual-exits-dpos-terminology }
 
 平行链质押pallet已更新成包括手动退出。如果候选人或委托人想要减少或撤销他们的绑定金额，或是离开候选人或委托人池，他们需要先安排一个请求，等待延迟期结束，然后手动执行请求。因此，此处应用迁移以使用手动退出API替换自动退出队列，包括`ExitQueue2`存储项。
 
@@ -477,7 +475,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-#### 支持自动复利 {: #auto-compounding-support } 
+#### 支持自动复利 {: #auto-compounding-support }
 
 为支持自动复利，此处对平行链质押pallet中的`AtStake`存储项应用了两个迁移：
 
@@ -554,9 +552,9 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-### Nimbus作者筛选Pallet {: #nimbus } 
+### Nimbus作者筛选Pallet {: #nimbus }
 
-#### 替换可用比率为可用计数 {: #replace-eligible-ratio } 
+#### 替换可用比率为可用计数 {: #replace-eligible-ratio }
 
 此处对Nimbus库应用了一项重大更改，该存储库弃用了`EligibleRatio`以支持`EligibleCount`配置。因此，迁移被应用到Moonbeam库，如果`EligibleRatio`值存在，该存储库将填充新的`EligibleCount`值作为在该区块高度上定义的潜在作者的百分比。否则，该值被设置为默认值`50`。
 

@@ -5,9 +5,7 @@ description: 如果您习惯了以太坊的开发环境，那么转至波卡（P
 
 # 以太坊兼容性
 
-![Ethereum Compatibility Banner](/images/learn/features/eth-compatibility/banner-image.png)
-
-## Moonbeam和以太坊的差异之处 {: #differences-between-moonbeam-and-ethereum } 
+## Moonbeam和以太坊的差异之处 {: #differences-between-moonbeam-and-ethereum }
 
 虽然目前Moonbeam已在努力实现兼容以太坊Web3 API和EVM，但Moonbeam相比于以太坊仍存在一定的区别。
 
@@ -15,7 +13,7 @@ description: 如果您习惯了以太坊的开发环境，那么转至波卡（P
 
 另外一个和以太坊的重要区别是Moonbeam还拥有一系列基于Substrate功能的链上治理特点，这些链上治理模块可实现基于代币权重来投票进行区块链升级的功能。
 
-## Moonbeam和以太坊的相同之处 {: #what-stays-the-same } 
+## Moonbeam和以太坊的相同之处 {: #what-stays-the-same }
 
 以太坊Layer 1现有的工作量和状态只需要经过少量的修改便可转移到Moonbeam（上述差异部分提到的情况除外），而其他的应用程序、合约和工具则将基本保持不变。
 
@@ -58,7 +56,7 @@ EVM内部是标准的H160以太坊式账户，并且它们具有关联数据，�
 - **[pallet-evm-precompile-simple](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_simple/){target=_blank}** - 包括五个基本预编译: ECRecover, ECRecoverPublicKey, Identity, RIPEMD160, SHA256
 - **[pallet-evm-precompile-blake2](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_blake2/struct.Blake2F.html){target=_blank}** - 包括 BLAKE2 预编译
 - **[pallet-evm-precompile-bn128](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/index.html){target=_blank}** - 包括三个 BN128 预编译: BN128Add、BN128Mul和BN128Pairing
-- **[pallet-evm-precompile-modexp](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_modexp/struct.Modexp.html){target=_blank}** - 包括模幂预编译 
+- **[pallet-evm-precompile-modexp](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_modexp/struct.Modexp.html){target=_blank}** - 包括模幂预编译
 - **[pallet-evm-precompile-sha3fips](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_sha3fips/struct.Sha3FIPS256.html){target=_blank}** - 包括标准SHA3预编译
 - **[pallet-evm-precompile-dispatch](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_dispatch/struct.Dispatch.html){target=_blank}** - 包括调度（dispatch）预编译
 

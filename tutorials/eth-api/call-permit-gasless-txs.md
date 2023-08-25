@@ -5,8 +5,6 @@ description: 使用Moonbeam调用许可预编译在您的dApp启用Gasless交易
 
 # 使用调用许可预编译发送Gasless交易
 
-![Banner Image](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-banner.png)
-
 _作者：Erin Shaben_
 
 ## 概览 {: #introduction }

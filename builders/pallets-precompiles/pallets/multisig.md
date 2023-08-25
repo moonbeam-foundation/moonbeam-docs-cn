@@ -5,8 +5,6 @@ description: 通过本文了解Multisig Pallet，其利用Substrate功能提供�
 
 # Multisig Pallet
 
-![Multisig Moonbeam Banner](/images/builders/pallets-precompiles/pallets/multisig-banner.png)
-
 ## 概览 {: #introduction }
 
 多签钱包是一种特殊类型的钱包，顾名思义，需要多个签名才能执行交易。多签有一组签名者，并定义了批准交易所需签名数量的阈值。这种类型的钱包提供了额外的安全性和去中心化层。

@@ -5,8 +5,6 @@ description: 跟随教程中的详细步骤以了解如何操作Tenderly，包�
 
 # 使用Tenderly模拟和调试交易
 
-![Banner Image](/images/tutorials/eth-api/using-tenderly/tenderly-banner.png)
-
 _作者：Kevin Neilson_
 
 ## 概览 {: #introduction }

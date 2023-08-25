@@ -5,8 +5,6 @@ description: 本教程将向您展示thirdweb的一些功能，可用于开发�
 
 # 在Moonbeam上使用thirdweb
 
-![thirdweb banner](/images/builders/build/eth-api/dev-env/thirdweb/thirdweb-banner.png)
-
 ## 概览 {: #introduction }
 
 [thirdweb](https://thirdweb.com/){target=_blank}是一个完整的Web3开发框架，提供开发智能合约、构建DApp等所需要的一切。

@@ -5,8 +5,6 @@ description: 通过解析一个范例项目，深入了解去中心化应用（D
 
 # 如何构建一个DApp：完整的DApp架构
 
-![Learn about the entire architecture of DApps.](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-banner.png)
-
 _作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction }

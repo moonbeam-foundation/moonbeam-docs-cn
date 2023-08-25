@@ -5,8 +5,6 @@ description: 学习如何使用OpenAI的ChatGPT（GPT-4）生成AI LLM以在Moon
 
 # 使用GPT-4来编写和调试Solidity智能合约
 
-![Banner Image](/images/tutorials/eth-api/chatgpt/chatgpt-banner.png)
-
 _作者：Kevin Neilson_
 
 ## 概览 {: #introduction }
