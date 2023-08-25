@@ -329,7 +329,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### X-Tokens Solidity接口 {: #xtokens-solidity-interface }
 
-[Xtokens.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与X-Tokens Pallet交互的接口。
+[Xtokens.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xtokens/Xtokens.sol){target=_blank}是一个开发者能够使用以太坊API与X-Tokens Pallet交互的接口。
 
 此接口包含以下函数：
 

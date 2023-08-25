@@ -19,19 +19,19 @@ description: 本教程包含所有您需要在注册本地或是外部XC-20资�
 
 ### ERC-20 Solidity接口 {: #the-erc20-interface }
 
-如同先前提及的，您可以通过一个ERC-20接口与XC-20资产交互。在Moonbeam上的[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口跟随[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，也就是在智能合约中Token的标准API接口。此标准定义了一个Token合约需要能够与不同应用互操作的所需的函数和事件。
+如同先前提及的，您可以通过一个ERC-20接口与XC-20资产交互。在Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口跟随[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，也就是在智能合约中Token的标准API接口。此标准定义了一个Token合约需要能够与不同应用互操作的所需的函数和事件。
 
 --8<-- 'text/erc20-interface/erc20-interface.md'
 
 ### ERC-20 Permit Solidity接口 {: #the-erc20-permit-interface }
 
-外部XC-20资产同样拥有ERC-20 Permit接口。在Moonbeam上的[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口跟随[EIP-2612标准](https://eips.ethereum.org/EIPS/eip-2612){target=_blank}，也就是使用了`permit` 函数拓展ERC-20接口。Permit为能够用于变动一个账户ERC-20余额的签署信息。请注意，本地XC-20资产同样具有Permit接口，但这对他们来说并不是适用于XCM所需的条件。
+外部XC-20资产同样拥有ERC-20 Permit接口。在Moonbeam上的[Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口跟随[EIP-2612标准](https://eips.ethereum.org/EIPS/eip-2612){target=_blank}，也就是使用了`permit` 函数拓展ERC-20接口。Permit为能够用于变动一个账户ERC-20余额的签署信息。请注意，本地XC-20资产同样具有Permit接口，但这对他们来说并不是适用于XCM所需的条件。
 
 标准ERC-20 `approve`函数在设计时已被限制，因`allowance`仅能够由交易的传送者修改，也就是`msg.sender`。您能够在[OpenZeppelin的ERC-20接口实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L136){target=_blank}中查看，其通过[`msgSender`函数](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol#L17){target=_blank}设置`owner`并最终设置为`msg.sender`。
 
 用户可以签署一条消息，而不是签署`approve`交易，并且该签名可用于调用`permit`函数来修改`allowance`。因此，它允许Gasless Token转账。此外，用户不再需要发送两笔交易来批准和转移Token。要查看`permit`函数的范例，您可以查看[OpenZeppelin对ERC-20 Permit扩展程序的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L41){target=_blank}。
 
-[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}包含以下函数：
+[Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}包含以下函数：
 
 - **permit**(*address* owner, *address* spender, *uint256*, value, *uint256*, deadline, *uint8* v, *bytes32* r, *bytes32* s) - 使用一个批准permit，任何人皆可以调用
 - **nonces**(*address* owner) - 根据给定所有者返回当前随机数
@@ -56,13 +56,13 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 !!! 注意事项
     在Runtime 1600版本升级前，**name**栏位并不跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现。
 
-您可以在[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现中查看域名分隔器的计算，以及在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中查看完整的范例。
+您可以在[Moonbeam的EIP-2612](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现中查看域名分隔器的计算，以及在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中查看完整的范例。
 
-除了域名分隔器之外，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于具有给定函数参数的`permit`函数。它使用给定的随机数来确保签名不会受到重放攻击。哈希结构的计算可以参见[Moonbeam的EIP-2612](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现，其中展示了[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}的完整范例。
+除了域名分隔器之外，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于具有给定函数参数的`permit`函数。它使用给定的随机数来确保签名不会受到重放攻击。哈希结构的计算可以参见[Moonbeam的EIP-2612](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现，其中展示了[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}的完整范例。
 
-域名分隔器和哈希结构能够用于构建完全编码消息的[最终哈希](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L177-L181){target=_blank}。您可以在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}查看完整范例。
+域名分隔器和哈希结构能够用于构建完全编码消息的[最终哈希](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L177-L181){target=_blank}。您可以在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}查看完整范例。
 
-通过最终哈希和`v`、`r`以及`s`数值，签名将能够被[验证和恢复](https://github.com/PureStake/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L212-L224){target=_blank}。如果成功通过验证，随机数将会增加1且余额将会更新。
+通过最终哈希和`v`、`r`以及`s`数值，签名将能够被[验证和恢复](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L212-L224){target=_blank}。如果成功通过验证，随机数将会增加1且余额将会更新。
 
 ## 使用一个ERC-20接口与外部XC-20资产交互 {: #interact-with-the-precompile-using-remix }
 
@@ -70,7 +70,7 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 
 要与外部XC-20资产交互，您需要计算您希望交互的XC-20资产得预编译地址。接着，您可以与ERC-20接口交互，正如与其他ERC-20接口交互一样。
 
-您可以调节此部分教程中针对[Permit.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口的指令。
+您可以调节此部分教程中针对[Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口的指令。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
@@ -105,7 +105,7 @@ address = '0xFFFFFFFF...' + DecimalToHex(AssetId)
 
 您现可以使用[Remix](https://remix.ethereum.org/){target=_blank}与ERC-20接口交互。首先，您需要添加接口至Remix：
 
-1. 获得[ERC20.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的副本
+1. 获得[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的副本
 2. 将文件内容贴至名称为**IERC20.sol**的Remix文件中
 
 ![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/overview/overview-1.png)
