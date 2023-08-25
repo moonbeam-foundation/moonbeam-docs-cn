@@ -7,7 +7,6 @@ nav:
   - '调用许可': 'call-permit.md' 
   - '团体': 'collective.md'
   - 'Conviction Voting（信念投票）': 'conviction-voting.md'
-  - '民主': 'democracy.md'
   - '以太坊原生': 'eth-mainnet.md'
   - 'GMP': 'gmp.md'
   - '原生Token ERC-20': 'erc20.md'

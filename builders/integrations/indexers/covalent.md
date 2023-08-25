@@ -153,7 +153,7 @@ Covalent API将返回ERTH代币持有者名单。如果您未持有ERTH代币，
 
 输出内容应与以下内容相似。余额终端将返回所有ERC-20和NFT代币余额（包括ERC-721和ERC-1155）列表，以及它们目前的现货价格（若有）。
 
-![Javascript Console Output](/images/builders/integrations/indexers/covalent/covalentjs.png)
+![Javascript Console Output](/images/builders/integrations/indexers/covalent/covalent-2.png)
 
 ## Python示例 {: #python-example }
 Covalent没有官方的API包装器，用户需要使用Python [请求库](https://pypi.org/project/requests/){target=_blank}才能直接调用API。通过`pip install requests`从指令行中将请求安装到运行环境中，然后将其导入，并在您的代码中使用。使用HTTP verbs get方法从API中返回相关信息。复制粘贴以下代码块到您选择的环境并运行。输出内容将与以上截图相似，但形式可能有所不同，这取决于运行环境。

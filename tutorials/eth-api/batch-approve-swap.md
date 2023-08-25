@@ -31,14 +31,14 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 
 ### 安装依赖项 {: #install-dependencies }
 
-当您准备好[Hardhat项目](/builders/build/eth-api/dev-env/hardhat){target=_blank}后，您可以安装[Ethers插件](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与网络交互。
+当您准备好[Hardhat项目](/builders/build/eth-api/dev-env/hardhat){target=_blank}后，您可以安装[Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与网络交互。
 
 您也可以安装[OpenZeppelin合约库](https://docs.openzeppelin.com/contracts/){target=_blank}，因为我们将在我们的合约中导入`ERC20.sol`合约和`IERC20.sol`接口。
 
 要安装必要依赖项，请运行以下命令：
 
-```
-npm install @nomiclabs/hardhat-ethers @openzeppelin/contracts
+```bash
+npm install @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
 ```
 
 ## 合约设置 {: #contracts }
@@ -54,13 +54,13 @@ npm install @nomiclabs/hardhat-ethers @openzeppelin/contracts
 
 如果您的Hardhat项目中还没有`contracts`目录，您可以创建一个新目录：
 
-```
+```bash
 mkdir contracts && cd contracts
 ```
 
 然后，您可以创建一个用于存储`DemoToken`和`SimpleDex`合约代码的文件，和一个用于批处理预编译的文件：
 
-```
+```bash
 touch SimpleDex.sol Batch.sol
 ```
 
@@ -130,7 +130,7 @@ contract SimpleDex {
 
 要编译合约，请运行以下Hardhat命令：
 
-```
+```bash
 npx hardhat compile
 ```
 
@@ -144,7 +144,7 @@ npx hardhat compile
 
 在部署合约之前，我们将需要创建部署脚本。我们将先为脚本创建一个新目录，命名为`scripts`，并添加一个名为`deploy.js`的新文件：
 
-```
+```bash
 mkdir scripts && touch scripts/deploy.js
 ```
 
@@ -152,13 +152,13 @@ mkdir scripts && touch scripts/deploy.js
 
 ```js
 async function main() {
-  // Liquidity to add in DEV (i.e., ".5") to be converted to Wei
-  const value = ethers.utils.parseEther("INSERT-AMOUNT-OF-DEV");
-
+  // Liquidity to add in DEV (i.e., '.5') to be converted to Wei
+  const value = ethers.utils.parseEther('INSERT_AMOUNT_OF_DEV');
+  
   // Deploy the SimpleDex contract, which will also automatically deploy
   // the DemoToken contract and add liquidity to the contract
-  const SimpleDex = await ethers.getContractFactory("SimpleDex",);
-  const simpleDex = await SimpleDex.deploy({ value })
+  const SimpleDex = await ethers.getContractFactory('SimpleDex',);
+  const simpleDex = await SimpleDex.deploy({ value });
   await simpleDex.deployed();
 
   console.log(`SimpleDex deployed to ${simpleDex.address}`);
@@ -172,12 +172,12 @@ main().catch((error) => {
 
 现在，我们可以使用`run`命令部署`SimpleDex`合约并指定`moonbase`作为网络：
 
-```
+```bash
 npx hardhat run --network moonbase scripts/deploy.js
 ```
 
 !!! 注意事项
-    如果你想要使用`node <script>`以独立方式运行脚本，您需要在`deploy.js`文件中使用`const hre = require("hardhat");`显式要求Hardhat运行环境（Runtime Environment）。
+    如果你想要使用`node <script>`以独立方式运行脚本，您需要在`deploy.js`文件中使用`const hre = require('hardhat');`显式要求Hardhat运行环境（Runtime Environment）。
 
 ![Deploy contracts](/images/tutorials/eth-api/batch-approve-swap/batch-2.png)
 
@@ -189,7 +189,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 简单起见，我们会创建一个名为`swap.js`的脚本来处理来回兑换DEV和DTOK所需的所有逻辑。我们将此文件添加至`scripts`目录：
 
-```
+```bash
 touch scripts/swap.js
 ```
 
@@ -204,25 +204,25 @@ touch scripts/swap.js
 您可以添加以下代码至`swap.js`文件：
 
 ```js
-const simpleDexAddress = "INSERT-ADDRESS-OF-DEX";
+const simpleDexAddress = 'INSERT_ADDRESS_OF_DEX';
 
 async function main() {
   // Create instance of SimpleDex.sol
   const simpleDex = await ethers.getContractAt(
-    "SimpleDex",
+    'SimpleDex',
     simpleDexAddress
   );
 
   // Create instance of DemoToken.sol
   const demoTokenAddress = await simpleDex.token();
   const demoToken = await ethers.getContractAt(
-    "DemoToken",
+    'DemoToken',
     demoTokenAddress
   );
 
   // Create instance of Batch.sol
-  const batchAddress = "{{ networks.moonbase.precompiles.batch }}";
-  const batch = await ethers.getContractAt("Batch", batchAddress);
+  const batchAddress = '{{ networks.moonbase.precompiles.batch }}';
+  const batch = await ethers.getContractAt('Batch', batchAddress);
 }
 main();
 ```
@@ -277,15 +277,15 @@ async function main() {
   // ...
 
   // Parse the value to swap to Wei
-  const amountDtok = ethers.utils.parseEther("INSERT-AMOUNT-OF-DTOK-TO-SWAP");
+  const amountDtok = ethers.utils.parseEther('INSERT_AMOUNT_OF_DTOK_TO_SWAP');
 
   // Get the encoded call data for the approval and swap
-  const approvalCallData = demoToken.interface.encodeFunctionData("approve", [
+  const approvalCallData = demoToken.interface.encodeFunctionData('approve', [
     simpleDexAddress,
     amountDtok,
   ]);
   const swapCallData = simpleDex.interface.encodeFunctionData(
-    "swapDemoTokenForDev",
+    'swapDemoTokenForDev',
     [amountDtok]
   );
 
@@ -307,13 +307,14 @@ async function main() {
 如果您将兑换的金额设置为0.2个DTOK，则DEX余额将会增加0.2个DTOK，并且签署账户的余额将会减少0.2个DTOK。兑换的交易哈希将显示在终端，您可以通过[Moonscan](https://moonbase.moonscan.io){target=_blank}查看交易的更多信息。
 
 ??? code "查看完整脚本"
+
     ```js
     --8<-- 'code/tutorials/eth-api/batch-approve-swap/swap.js'
     ```
 
 要运行脚本，您可以使用以下命令：
 
-```
+```bash
 npx hardhat run --network moonbase scripts/swap.js
 ```
 
@@ -349,9 +350,9 @@ npx hardhat run --network moonbase scripts/swap.js
 
 ```js
 // Define contract addresses
-const erthTokenAddress = "0x08B40414525687731C23F430CEBb424b332b3d35";
-const routerAddress = "0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4";
-const wethTokenAddress = "0xD909178CC99d318e4D46e7E66a972955859670E1";
+const erthTokenAddress = '0x08B40414525687731C23F430CEBb424b332b3d35';
+const routerAddress = '0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4';
+const wethTokenAddress = '0xD909178CC99d318e4D46e7E66a972955859670E1';
 
 async function main() {
   // Create contract instances for the ERTH token, the Uniswap V2 router contract,
@@ -360,8 +361,8 @@ async function main() {
 
   // Access the interface of the ERTH contract instance to get the encoded 
   // call data for the approval
-  const amountErth = ethers.utils.parseEther("INSERT-AMOUNT-OF-ERTH-TO-SWAP");
-  const approvalCallData = earth.interface.encodeFunctionData("approve", [
+  const amountErth = ethers.utils.parseEther('INSERT_AMOUNT_OF_ERTH_TO_SWAP');
+  const approvalCallData = earth.interface.encodeFunctionData('approve', [
     routerAddress,
     amountErth,
   ]);
@@ -369,16 +370,16 @@ async function main() {
   // Access the interface of the Uniswap V2 router contract instance to get
   // the encoded call data for the swap
   const swapCallData = router.interface.encodeFunctionData(
-    "swapExactTokensForETH",
+    'swapExactTokensForETH',
     [
       amountErth, // amountIn
-      "INSERT-AMOUNT-OUT-MIN", // amountOutMin
+      'INSERT_AMOUNT_OUT_MIN', // amountOutMin
      [
       erthTokenAddress, // ERTH token address
       wethTokenAddress // WETH token address
       ], // path 
-     "INSERT-YOUR-ADDRESS", // to
-     "INSERT-DEADLINE" // deadline
+     'INSERT_YOUR_ADDRESS', // to
+     'INSERT_DEADLINE' // deadline
     ]
   );
 
