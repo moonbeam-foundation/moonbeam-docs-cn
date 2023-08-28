@@ -33,7 +33,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 - [1RPC](#1rpc)
 - [Blast](#blast)
-- [BlockSpaces](#blockspaces)
 - [Dwellir](#dwellir)
 - [GetBlock](#getblock)
 - [OnFinality](#onfinality)
@@ -65,18 +64,6 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
 
-### BlockSpaces {: #blockspaces}
-
-[BlockSpaces](https://www.blockspaces.com/){target=_blank}是一个多网络集成平台，提供免费的RPC端点服务以支持社区。您只需提供您的电子邮件，即可获得您的端点与Moonbeam/Moonriver进行交互！所有端点都是免费的，并且每天支持多达1千万笔交易。
-
-要开始使用，您需要前往[BlockSpaces](https://www.blockspaces.com/web3-infrastructure){target=_blank}，然后输入您的电子邮件地址。 就是这样！进入后，将您的dApp指向我们的Moonbeam或Moonriver端点，您就可以启动并运行了。
-
-1. 访问[BlockSpaces](https://www.blockspaces.com/web3-infrastructure){target=_blank}
-2. 提交您的**邮箱**
-3. 将Moonbeam/Moonriver端点复制到剪贴板
-
- ![BlockSpaces](/images/builders/get-started/endpoints/endpoints-3.png)
-
 ### Dwellir {: #dwellir }
 
 [Dwellir](https://www.dwellir.com/){target=_blank}是一个区块链运行服务，确保全球可扩展性、低延迟特性以及99.99%正常运行的保证，为所有类型的业务提供快速且可值得信赖的节点运营。公共端点服务商全球化地分布于裸机服务器。由于服务为公开的，并不需要注册或是API私钥以进行管理。
@@ -86,7 +73,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 1. 进入[Dwellir](https://www.dwellir.com/contact){target=_blank}页面
 2. 提交您的**邮箱地址**和节点要求
 
-![Dwellir](/images/builders/get-started/endpoints/endpoints-4.png)
+![Dwellir](/images/builders/get-started/endpoints/endpoints-3.png)
 
 ### GetBlock {: #getblock }
 
@@ -100,7 +87,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 为您的API密钥输入一个名称
 3. 点击 **Create** 生成您的API密钥
 
-![GetBlock](/images/builders/get-started/endpoints/endpoints-5.png)
+![GetBlock](/images/builders/get-started/endpoints/endpoints-4.png)
 
 ### OnFinality {: #onfinality }
 
@@ -112,7 +99,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 在下拉菜单中选择网络
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-6.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-5.png)
 
 ### Pocket Network {: #pokt }
 
@@ -125,7 +112,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 输入你的DApp名称，选择你对应的网络
 4. 您的新端点将生成并显示在以下应用程序屏幕中
 
-![Pocket Network](/images/builders/get-started/endpoints/endpoints-7.png)
+![Pocket Network](/images/builders/get-started/endpoints/endpoints-6.png)
 
 您不必为每个端点生成一个新的DApp！您可以将新链添加到您现有的DApp中：
 
