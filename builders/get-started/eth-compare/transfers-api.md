@@ -59,7 +59,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 开发者也可以使用[Substrate API Sidecar](https://github.com/paritytech/substrate-api-sidecar){target=_blank}检索Moonbeam区块并监控通过Substrate和Ethereum API发送的交易。Substrate API Sidecar是一种REST API服务，用于与使用Substrate框架构建的区块链交互。
 
-以下代码片段使用Axios HTTP客户端查询Sidecar端点`/blocks/head`(https://paritytech.github.io/substrate-api-sidecar/dist/){target=_blank}以获取最新确认的区块头。然后，在EVM和Substrate API级别解码原生Token转账的`from`、`to`、`value`、`tx hash`和`transaction status` 区块。
+以下代码片段使用Axios HTTP客户端查询Sidecar端点`/blocks/head`(https://paritytech.github.io/substrate-api-sidecar/dist/){target=_blank}以获取最新确认的区块头。然后，在EVM和Substrate API级别解码原生Token转账的`from`、`to`、`value`、`tx hash`、和`transaction status` 区块。
 
 --8<-- 'code/vs-ethereum/transfers-api/sidecar-transfer.md'
 
