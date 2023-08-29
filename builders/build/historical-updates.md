@@ -598,7 +598,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT2302    | 4133065  |
 | Moonbase Alpha |   RT2301    | 4172407  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/2134){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/2134){target=_blank}。
 
 ***
 
