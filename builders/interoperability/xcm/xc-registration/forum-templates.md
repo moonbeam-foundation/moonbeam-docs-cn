@@ -5,8 +5,6 @@ description: 学习如何在创建一个与Moonbeam的跨链集成时，撰写�
 
 # XCM集成的Moonbeam社区论坛模板
 
-![Forum Templates Banner](/images/builders/interoperability/xcm/xc-registration/forum-templates/forum-banner.png)
-
 ## 概览 {: #introduction }
 
 在Moonriver或Moonbeam主网上启动XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布两个初步帖子，以便投票社区能够拥有提供反馈的机会。这两个初步帖子是XCM公开帖子和XCM提案帖子。**连接到Moonbase Alpha时无需执行此步骤。**

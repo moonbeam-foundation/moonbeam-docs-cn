@@ -5,8 +5,6 @@ description: 本教程包含您在注册本地或是外部XC-20资产所需了�
 
 # 如何注册跨链资产
 
-![Forum Templates Banner](/images/builders/interoperability/xcm/xc-registration/assets/assets-banner.png)
-
 ## 概览 {: #introduction }
 
 通过XCM进行资产跨链转移，两条链之间需要有一个开放的通道，并且资产需要在目标链上注册。如果两条链之间不存在通道，则需要打开一个通道。请查看[XC资产通道注册](/builders/interoperability/xcm/xc-registration/xc-integration){target=_blank}教程，了解如何在Moonbeam和其他链之间建立通道的相关信息。

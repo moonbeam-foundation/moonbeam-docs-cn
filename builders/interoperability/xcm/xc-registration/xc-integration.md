@@ -5,8 +5,6 @@ description: 学习如何与基于Moonbeam的网络建立跨链集成，包括�
 
 # 与Moonbeam建立XC集成
 
-![Forum Templates Banner](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-banner.png)
-
 ## 概览 {: #introduction }
 
 跨链消息传递（Cross-Chain Message Passing，XCMP）仍在开发当中，暂替方案是水平中继路由消息传递（Horizontal Relay-routed Message Passing，HRMP）。HRMP具有与XCMP相同的接口和功能，但其消息通过中继链存储和读取，而对于XCMP，只有消息相关的元数据存储在中继链。由于所有的消息通过HRMP的中继链传递，因此对资源的要求更高。HRMP将会在XCMP实施后被弃用。

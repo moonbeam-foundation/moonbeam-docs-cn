@@ -5,8 +5,6 @@ description: 本教程包含所有您需要在注册本地或是外部XC-20资�
 
 # 在Moonbeam上与XC-20资产交互
 
-![Interact with XC-20s Banner](/images/builders/interoperability/xcm/xc20/interact/interact-banner.png)
-
 ## 概览 {: #introduction }
 
 正如[XC-20资产概览](/builders/interoperability/xcm/xc20/overview){target=_blank}页面中所述，XC-20资产是Moonbeam上的独特资产类别。尽管它们是Substrate原生资产，但它们也具有ERC-20接口，并且可以像任何其他ERC-20资产一般进行交互。此外，ERC-20 Permit接口可用于所有外部XC-20资产。

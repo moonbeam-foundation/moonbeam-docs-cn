@@ -5,8 +5,6 @@ description: Moonbeam和Moonriver上历史更新概览，包含应用于Moonbeam
 
 # 历史更新
 
-![Historical Updates Banner](/images/builders/build/historical-updates/banner.png)
-
 ## 概览 {: #introduction }
 
 此页面提供一个关于Moonbeam和Moonriver上的历史更新概览，例如Moonbeam源代码的漏洞修复记录和应用的数据迁移。
