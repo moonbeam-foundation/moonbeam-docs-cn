@@ -32,4 +32,4 @@ Moonbeam使用[Nimbus平行链共识框架](/learn/features/consensus/){target=_
  - **collators** —— 收集人讨论频道。这是一个活跃和友好的收集人社区，如果您有任何问题，可以随时在此频道询问。如果需要收集人注意的问题，我们也将在此频道邀请收集人进行回复
  - **meet-the-collators** —— 您可以在此频道向所有潜在委托人进行自我介绍
 
-加入Discord后，欢迎您随时私信*PureStake - Gil#0433*或*PureStake-Art#6950*介绍自己。这方便我们了解您，如您的节点有问题，可以随时与我们取得联系。另外，我们也将分配相关的Discord收集人角色，使您能够在*meet-the-collators*频道发布消息。
+加入Discord后，欢迎您随时私信*gilmouta*或*artkaseman*介绍自己。这方便我们了解您，如您的节点有问题，可以随时与我们取得联系。另外，我们也将分配相关的Discord收集人角色，使您能够在*meet-the-collators*频道发布消息。

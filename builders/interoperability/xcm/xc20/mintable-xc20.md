@@ -69,7 +69,9 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 要获取Moonbase Alpha测试网上目前可用的可铸造XC-20资产列表，请导向至[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}并确保您已连接至Moonbase Alpha。不同于外部XC-20资产，可铸造XC-20资产并不会在**Assets**栏位下出现。要查询可用的可铸造XC-20资产，您需要导向至**Developer**标签，并在下拉菜单中选择**Chain State**，然后跟随以下步骤：
 
 1.   在**selected state query**下拉菜单中，选择**localAssets**
---8<-- 'text/xc-20/list-of-assets.md'
+2. 选择 **asset** extrinsic
+3. 关掉 **include option** 滑块
+4. 点击 **+** 按钮发送查询
 
 ![Fetch list of cross-chain assets](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-1.png)
 

@@ -9,6 +9,8 @@ description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的
 
 Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}或[Blockscout](https://docs.blockscout.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
 
+要查看追踪RPC提供者，请查看[网络端点](/builders/get-started/endpoints#tracing-providers){target=_blank}页面。
+
 本教程将介绍Moonbeam上支持的RPC方法，以及如何通过使用curl命令对本地Moonbase Alpha追踪节点来调用这些方法。
 
 ## 支持的RPC方法 {: #supported-rpc-methods }
@@ -22,8 +24,6 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
   - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_content){target=_blank}
   - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_inspect){target=_blank}
   - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_status){target=_blank}
-
-  
 
 ## Debug API {: #debug-api }
 

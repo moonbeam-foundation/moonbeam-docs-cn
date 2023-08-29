@@ -25,13 +25,13 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 --8<-- 'text/endpoints/moonbase.md'
 
-## 端点提供商 {: #endpoint-providers } 
+## RPC端点提供商 {: #endpoint-providers }
 
 您可以使用以下任意API提供商，创建适用于开发环境或生产环境的端点：
 
 - [1RPC](#1rpc)
 - [Blast](#blast)
-- [BlockSpaces](#blockspaces)
+- [Dwellir](#dwellir)
 - [GetBlock](#getblock)
 - [OnFinality](#onfinality)
 - [Pocket Network](#pokt)
@@ -62,17 +62,16 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
 
-### BlockSpaces {: #blockspaces}
+### Dwellir {: #dwellir }
 
-[BlockSpaces](https://www.blockspaces.com/){target=_blank}是一个多网络集成平台，提供免费的RPC端点服务以支持社区。您只需提供您的电子邮件，即可获得您的端点与Moonbeam/Moonriver进行交互！所有端点都是免费的，并且每天支持多达1千万笔交易。
+[Dwellir](https://www.dwellir.com/){target=_blank}是一个区块链运行服务，确保全球可扩展性、低延迟特性以及99.99%正常运行的保证，为所有类型的业务提供快速且可值得信赖的节点运营。公共端点服务商全球化地分布于裸机服务器。由于服务为公开的，并不需要注册或是API私钥以进行管理。
 
-要开始使用，您需要前往[BlockSpaces](https://www.blockspaces.com/web3-infrastructure){target=_blank}，然后输入您的电子邮件地址。 就是这样！进入后，将您的dApp指向我们的Moonbeam或Moonriver端点，您就可以启动并运行了。
+要开始操作开发者端点或是专属端点，您可以通过以下方式联系我们：
 
-1. 访问[BlockSpaces](https://www.blockspaces.com/web3-infrastructure){target=_blank}
-2. 提交您的**邮箱**
-3. 将Moonbeam/Moonriver端点复制到剪贴板
+1. 进入[Dwellir](https://www.dwellir.com/contact){target=_blank}页面
+2. 提交您的**邮箱地址**和节点要求
 
- ![BlockSpaces](/images/builders/get-started/endpoints/endpoints-3.png)
+![Dwellir](/images/builders/get-started/endpoints/endpoints-3.png)
 
 ### GetBlock {: #getblock }
 
@@ -86,7 +85,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 为您的API密钥输入一个名称
 3. 点击 **Create** 生成您的API密钥
 
-![GetBlock](/images/builders/get-started/endpoints/endpoints-5.png)
+![GetBlock](/images/builders/get-started/endpoints/endpoints-4.png)
 
 ### OnFinality {: #onfinality }
 
@@ -98,7 +97,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 在下拉菜单中选择网络
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-6.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-5.png)
 
 ### Pocket Network {: #pokt }
 
@@ -111,7 +110,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 输入你的DApp名称，选择你对应的网络
 4. 您的新端点将生成并显示在以下应用程序屏幕中
 
-![Pocket Network](/images/builders/get-started/endpoints/endpoints-7.png)
+![Pocket Network](/images/builders/get-started/endpoints/endpoints-6.png)
 
 您不必为每个端点生成一个新的DApp！您可以将新链添加到您现有的DApp中：
 
@@ -156,3 +155,19 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 复制提供的节点URL即可以开始发出请求；无需注册或KYC
 
 ![Ankr](/images/builders/get-started/endpoints/endpoints-5.png) -->
+
+## 追踪RPC端点提供者 {: #tracing-providers }
+
+追踪RPC端点允许您访问非标准RPC函数，如那些属于Geth的`debug`和`txpool` API以及属于OpenEthereum `trace`模块。要查看在Moonbeam上支持用于调试和追踪的非标准RPC函数，请查看[调试API和追踪模块](/builders/build/eth-api/debug-trace){target=_blank}教程。
+
+以下提供者提供追踪RPC端点：
+
+- [OnFinality](#onfinality-tracing)
+
+### OnFinality {: #onfinality-tracing }
+
+[OnFinality](https://onfinality.io/){target=_blank}的追踪API能够用于在Moonbeam和Moonriver上快速追踪和调试交易。但仅适用于那些在[成长和最终计划](https://onfinality.io/pricing){target=_blank}中的用户。
+
+要使用追踪API，您可以从您的[私人RPC终端](#onfinality)选择中调用追踪函数。关于支持的网络和追踪函数，请查看[OnFinality追踪API的文档网站](https://documentation.onfinality.io/support/trace-api#TraceAPI-SupportedNetworks){target=_blank}。
+
+请注意，如果您正在追踪历史区块，建议使用您自己的专用跟踪节点来回填任何数据，一旦追上区块，您可以切换到使用追踪API。您可以查看[如何在OnFinality上为Moonbeam部署追踪节点](https://onfinality.medium.com/how-to-deploy-a-trace-node-for-moonbeam-on-onfinality-85683181d290) {target=-_blank}教程，了解有关如何启动您自己的专用追踪节点的更多信息。
