@@ -196,7 +196,7 @@ _作者：Alberto Viera_
 
      - Moonbase Alpha中继链终端URL以创建provider
      - 从多地点衍生账户中提取的Token数量（以Wei为单位）。以此例子来说，`0.01`个Token绰绰有余。要了解如何获取此值，请参考[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}
-     - Moonbase Alpha上看到的[`DEV` Token的多地点](/builders/interoperability/xcm/xc-integration/#register-moonbeams-asset-on-your-parachain){target=_blank}
+     - Moonbase Alpha上看到的[`DEV` Token的多地点](/builders/interoperability/xcm/xc-registration/assets/#register-moonbeam-native-assets){target=_blank}
      - `transact` XCM指令的权重。这可以通过将`25000`和之前获得的gas limit相乘得到。建议增加大约10%的估计值。您可以在[通过XCM进行远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=_blank}页面中阅读有关此数值的更多信息
      - 多地点衍生账户，因其将会在其后的XCM指令中用到
      - 我们在先前教程中计算的`transact` XCM指令字节
