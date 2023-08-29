@@ -32,7 +32,7 @@ Conviction Voting Pallet提供以下extrinsics（函数）：
         - 如果民意投票结束，结果与Token持有者的投票（包含给定的信念值）一致，并且信念值的锁定期尚未结束，则用于投票的Token将被整合到整个账户的锁定中。这可能会涉及_overlocking_（将两个锁定合并成一个锁定，即为锁定量和锁定期的最大值）
 - **undelegate**(class) - 取消特定级别（Origin）民意投票（公投）的投票权。Token将在委托的信念值锁定期到期后解锁。发出`Undelegated`事件
 - **unlock**(class, target) - 移除已过期的特定级别（Origin）内先前的投票/委托投票的锁定
-- **vote**(pollIndex, vote) - 在民意投票（公投）中提交投票。如果投票为“赞成”("aye")，则为生效提案；如果投票为“反对”("nay")则维持现状
+- **vote**(pollIndex, vote) - 在民意投票（公投）中提交投票。如果投票为“赞成”("Aye")，则为生效提案；如果投票为“反对”("Nay")则维持现状
 
 ### 存储函数 {: #storage-methods }
 

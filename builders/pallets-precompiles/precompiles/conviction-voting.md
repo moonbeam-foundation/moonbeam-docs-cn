@@ -39,9 +39,7 @@ Conviction Voting Precompile位于以下地址：
 
 [`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。
 
-The interfaces includes a `Conviction` enum that defines the Conviction multiplier types. The enum has the following variables:
-
-接口包含定义Conviction乘数类型的`Conviction`枚举（enum）。这个枚举具有以下变量：
+接口包含定义[Conviction乘数](/learn/features/governance/#conviction-multiplier-v2){target=_blank}类型的`Conviction`枚举（enum）。这个枚举具有以下变量：
 
  - **None** -  0.1倍的投票，无锁定期
  - **Locked1x** - 1倍的投票，投票成功后锁定1个生效等待期
@@ -53,8 +51,12 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 
 接口包含以下函数：
 
+- **votingFor**(*address* who, *uint16* trackId) - 返回给定账户和Track的投票
+- **classLocksFor**(*address* who) - 返回给定账户的类别锁定
 - **voteYes**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“赞成”票（包含信念值权重）
 - **voteNo**(*uint32* pollIndex, *uint256* voteAmount, *Conviction* conviction) - 在全民投票（公投）中投“反对”票（包含信念值权重）
+- **voteSplit**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - 分开投票，在给定投票（公投）中一定数量为"Aye"锁定或是一定数量为"Nay"锁定
+- **voteSplitAbstain**(*uint32* pollIndex, *uint256* aye, *uint256* nay) - 在民意投票（公投）中，投出分开弃权票，其中“Aye”锁定一定数量，“Nay”锁定一定数量，弃权票（支持）锁定一定数量
 - **removeVote**(*uint32* pollIndex) - 在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **removeOtherVote**(*address* target, *uint16* trackId, *uint32* pollIndex) - 为另一个投票者在全民投票（公投）中[移除投票](/builders/pallets-precompiles/pallets/conviction-voting/#extrinsics){target=_blank}
 - **delegate**(*uint16* trackId, *address* representative, *Conviction* conviction, *uint256* amount) - 委托另一个账户作为代表为特定Track的发送账户进行信念值权重投票
@@ -72,7 +74,10 @@ The interfaces includes a `Conviction` enum that defines the Conviction multipli
 接口也包含以下事件：
 
 - **Voted**(*uint32 indexed* pollIndex, *address* voter, *bool* aye, *uint256* voteAmount, *uint8* conviction) - 当账户投票时发出
-- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - 当账户（`voter`）的投票被移除时发出
+- **VoteSplit**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay) - 在一个账户进行分开投票时发出
+- **VoteSplitAbstained**(*uint32 indexed* pollIndex, *address* voter, *uin256* aye, *uint256* nay, *uint256* nay) - 在一个账户进行分开弃权投票后发出
+- **VoteRemoved**(*uint32 indexed* pollIndex, *address* voter) - 在一个账户（`voter`）的投票从正在进行的投票（公投）中被移除后发出
+- **VoteRemovedForTrack**(*uint32 indexed* pollIndex, *uint16* trackId, *address* voter) - 在一个账户（`voter`）的投票从指定Track的正在进行的投票（公投）中移除后发出
 - **VoteRemovedOther**(*uint32 indexed* pollIndex, *address* caller, *address* target, *uint16* trackId) - 当一个账户（`caller`）为另一个账户（`target`）移除投票时发出
 - **Delegated**(*uint16 indexed* trackId, *address* from, *address* to, *uint256* delegatedAmount, *uint8* conviction) - 当一个账户（`from`）委托给定数量的信念值权重投票给另一个账户（`to`）时发出
 - **Undelegated**(*uint16 indexed* trackId, *address* caller) - 当为特定Track移除帐户（`caller`）委托时发出
