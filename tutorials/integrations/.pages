@@ -4,5 +4,5 @@ nav:
   - index.md
   - 'Use Indexers to Query Chain Data':
     - 'indexers.index.md'
-    - '[Subsquid]检索本地开发节点': 'local-subsquid.md'
-    - '[Subsquid]索引NFT转账': 'nft-subsquid.md'
+    - '[Subsquid] 检索本地开发节点': 'local-subsquid.md'
+    - '[Subsquid] 索引NFT转账': 'nft-subsquid.md'
