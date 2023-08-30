@@ -1,6 +1,6 @@
 ---
 title: 作者映射预编译
-description: 通过此教程收集人将学习如何使用作者映射solidity接口将会话密钥映射至用于支付奖励的Moonbeam地址。
+description: 通过此教程收集人将学习如何使用作者映射Solidity接口将会话密钥映射至用于支付奖励的Moonbeam地址。
 keywords: Solidity，以太坊，作者映射，收集人，moonbeam，预编译，合约，区块生产者
 ---
 

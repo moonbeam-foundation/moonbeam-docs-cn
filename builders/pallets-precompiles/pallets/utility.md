@@ -1,6 +1,6 @@
 ---
 title: Utility Pallet
-description: 学习Moonbeam上utility pallet的可用extrinsics以及如何使用Polkadot.js Apps和Polkadot.js API与其交互。
+description: 学习Moonbeam上Utility Pallet的可用extrinsics以及如何使用Polkadot.js Apps和Polkadot.js API与其交互。
 keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 ---
 
@@ -8,9 +8,9 @@ keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 
 ## 概览 {: #introduction }
 
-通过Substrate的utility pallet，Moonbeam上的用户可以通过2个可用批量extrinsics将多个调用包含在单个交易中，并使用衍生账户发送调用。
+通过Substrate的Utility Pallet，Moonbeam上的用户可以通过2个可用批量extrinsics将多个调用包含在单个交易中，并使用衍生账户发送调用。
 
-本教程将提供utility pallet的概述和示例，关于其中可用的pallet常量的extrinsic和getter。
+本教程将提供Utility Pallet的概述和示例，关于其中可用的pallet常量的extrinsic和getter。
 
 ## 衍生账户 {: #derivative-accounts }
 
@@ -24,7 +24,7 @@ keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 
 ### Extrinsics {: #extrinsics }
 
-Utility pallet提供以下extrinsics（函数）：
+Utility Pallet提供以下extrinsics（函数）：
 
 - **asDerivative**(index, call) - 在给定索引数和调用的情况下，通过发送者的索引匿名发送调用
 - **batch**(calls) - 发送一批派遣的调用。若调用失败，将处理该时间点的任何成功调用，并触发`BatchInterrupted`事件。若所有调用成功，将触发`BatchCompleted`。调用次数不得超过[限制](#constants)
@@ -33,13 +33,13 @@ Utility pallet提供以下extrinsics（函数）：
 
 ### Pallet常量 {: #constants }
 
-Utility pallet包含以下只读函数来获取pallet常量：
+Utility Pallet包含以下只读函数来获取pallet常量：
 
 - **batchedCallsLimit**() - 返回批量调用次数限制
 
 ## 使用Batch Extrinsics  {: #using-the-batch-extrinsics }
 
-您可以使用Polkadot.js Apps接口或通过Polkadot.js API获取batch extrinsics。此示例将向您展示如何从Polkadot.js Apps使用`batch` extrinsic。如果您使用Polkadot.js API，您可以通过`api.tx.utility.batch`接口获取utility pallet。更多关于使用API批量处理交易，请参考[Polkadot.js API Library](/builders/build/substrate-api/polkadot-js-api/#batching-transactions){target=_blank}页面。
+您可以使用Polkadot.js Apps接口或通过Polkadot.js API获取batch extrinsics。此示例将向您展示如何从Polkadot.js Apps使用`batch` extrinsic。如果您使用Polkadot.js API，您可以通过`api.tx.utility.batch`接口获取Utility Pallet。更多关于使用API批量处理交易，请参考[Polkadot.js API Library](/builders/build/substrate-api/polkadot-js-api/#batching-transactions){target=_blank}页面。
 
 首先，您可以前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}并连接至Moonbase Alpha。此操作流程也同样适用于Moonbeam和Moonriver。
 
@@ -53,7 +53,7 @@ Utility pallet包含以下只读函数来获取pallet常量：
 
 3. 选择**batch** extrinsic
 
-4. 首个调用的字段将会自动填充，要添加第二个调用可点击**Add item** 
+4. 首个调用的字段将会自动填充，要添加第二个调用可点击**Add item**
 
 5. 关于首个调用，选择**balances**
 

@@ -1,6 +1,6 @@
 ---
 title: Gelato Ops and Relay SDK
-description: 使用Gelato自动化您的智能合约交互并将您的Moonbeam和Moonriver dev ops需求外包至最信赖的多链机器网络
+description: 使用Gelato自动化您的智能合约交互并将您的Moonbeam和Moonriver DevOps需求外包至最信赖的多链机器网络
 ---
 
 # 开始使用Gelato

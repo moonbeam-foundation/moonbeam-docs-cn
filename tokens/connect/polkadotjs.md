@@ -1,6 +1,6 @@
 ---
 title: 如何使用Polkadot.js Apps
-description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H160地址并使用Polkadot.js发送交易。
+description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H160地址并使用Polkadot.js Apps发送交易。
 ---
 
 # 如何使用Polkadot.js Apps与Moonbeam交互

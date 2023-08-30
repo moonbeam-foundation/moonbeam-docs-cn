@@ -1,6 +1,6 @@
 ---
 title: 运行节点
-description: 了解为Moonbeam网络运行平行链全节点以便您拥有自己的RPC端点或生成区块的所有必要细节
+description: 了解为Moonbeam网络运行平行链全节点以便您拥有自己的RPC端点或生成区块的所有必要细节。
 ---
 
 # 在Moonbeam上运行节点

@@ -1,6 +1,6 @@
 ---
 title: Moonbeam自定义API
-description: 此页面涵盖Moonbeam自定义API端点和特定于Moonbeam的JSON RPC方法信息。
+description: 此页面涵盖Moonbeam自定义API端点（特定于Moonbeam的JSON RPC方法信息）。
 ---
 
 # Moonbeam自定义API

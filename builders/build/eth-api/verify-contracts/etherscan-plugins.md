@@ -1,6 +1,6 @@
 ---
 title: 使用Plugins验证智能合约
-description: 学习如何使用Hardhat和Truffle提供的Etherscan插件在Moonbeam网络上验证智能合约
+description: 学习如何使用Hardhat，Truffle，和Foundry提供的Etherscan插件在Moonbeam网络上验证智能合约
 ---
 
 # 使用Etherscan插件验证智能合约
