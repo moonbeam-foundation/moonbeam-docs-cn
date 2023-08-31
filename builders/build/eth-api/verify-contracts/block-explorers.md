@@ -33,7 +33,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 2. 记录任何在Solidity开源文件开头使用的任何SPDX证照识别码
 
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     ```
     

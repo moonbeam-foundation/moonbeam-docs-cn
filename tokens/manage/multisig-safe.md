@@ -47,7 +47,7 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 您可以前往[Remix](https://remix.ethereum.org/){target=_blank}并为以下`SetText.sol`合约创建一个新文件：
 
-```
+```solidity
 pragma solidity ^0.8.0;
 
 contract SetText {
@@ -356,17 +356,20 @@ contract SetText {
 Moonbeam、Moonriver和Moonbase Alpha也支持用API来与Moonbeam Safe进行交互。
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.multisig.api_page }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.multisig.api_page}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.multisig.api_page}}
      ```
 

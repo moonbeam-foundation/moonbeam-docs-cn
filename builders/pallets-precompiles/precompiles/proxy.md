@@ -19,15 +19,18 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
 代理预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.proxy}}
      ```
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.proxy}}
      ```
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.proxy}}
      ```
 

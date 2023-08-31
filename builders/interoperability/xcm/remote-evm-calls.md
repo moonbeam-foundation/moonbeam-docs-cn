@@ -369,7 +369,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 
 如果JSON RPC请求发送正确，应获得以下结果：
 
-```JSON
+```json
 {
     "jsonrpc": "2.0",
     "result": {

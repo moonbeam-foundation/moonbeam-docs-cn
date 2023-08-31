@@ -25,34 +25,40 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 使用`wget`快速获取最新[发布的二进制文件](https://github.com/moonbeam-foundation/moonbeam/releases)：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonbeam.parachain_release_tag }}/moonbeam
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonriver.parachain_release_tag }}/moonbeam
     ``` 
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     wget https://github.com/moonbeam-foundation/moonbeam/releases/download/{{ networks.moonbase.parachain_release_tag }}/moonbeam
     ```
 
 您可以在您的终端运行`sha256sum`命令来确认您所下载的是否为正确版本，您应该看到以下输出：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.parachain_sha256sum }}
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.parachain_sha256sum }}
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.parachain_sha256sum }}
     ```
 
@@ -207,7 +213,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 ### 全节点 {: #full-node }
 
 === "Moonbeam"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -239,7 +246,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -271,7 +279,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
@@ -308,7 +317,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 ### 收集人 {: #collator }
 
 === "Moonbeam"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -340,7 +350,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ```
     
 === "Moonriver"
-    ```
+
+    ```text
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -372,7 +383,8 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target

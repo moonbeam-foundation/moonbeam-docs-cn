@@ -21,17 +21,20 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 此预编译合约位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{ networks.moonbeam.precompiles.randomness }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{ networks.moonriver.precompiles.randomness }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{ networks.moonbase.precompiles.randomness }}
      ```
 

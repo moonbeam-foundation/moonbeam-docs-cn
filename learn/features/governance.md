@@ -264,12 +264,14 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 批准和支持的比例可以使用以下方式计算：
 
 === "Approval"
-    ```
+
+    ```text
     Approval = 100 * ( Total Conviction-weighted "Aye" votes / Total Conviction-weighted votes )
     ```
 
 === "Support"
-    ```
+
+    ```text
     Support = 100 * ( Total non-Conviction-weighted votes / Total supply )
     ```
 

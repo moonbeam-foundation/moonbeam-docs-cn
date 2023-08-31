@@ -94,7 +94,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 可铸造XC-20预编译地址通过以下公式计算：
 
-```
+```text
 address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 ```
 
@@ -123,17 +123,20 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 要在Moonbeam上创建可铸造XC-20资产，首个步骤为创建提案。资产的创建者（Creator）将需要存入一定资产，每个网络所需的锁定数量如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.mintable_xc20.asset_deposit }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.mintable_xc20.asset_deposit }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.mintable_xc20.asset_deposit }} DEV
     ```
 
@@ -169,17 +172,20 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 当提案通过并颁布后，您设定为所有者（Owner）的账户将能够设定资产元数据，包含资产名称、符号以及资产位数。您需要存入一定数量Token以设置元数据，以下为每个网络的要求：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.mintable_xc20.metadata_base_deposit }} GLMR base fee + ({{ networks.moonbeam.mintable_xc20.metadata_byte_deposit }} GLMR x number of bytes stored)
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.mintable_xc20.metadata_base_deposit }} MOVR base fee + ({{ networks.moonriver.mintable_xc20.metadata_byte_deposit }} MOVR x number of bytes stored)
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.mintable_xc20.metadata_base_deposit }} DEV base fee + ({{ networks.moonbase.mintable_xc20.metadata_byte_deposit }} DEV x number of bytes stored)
     ```
 

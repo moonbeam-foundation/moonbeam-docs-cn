@@ -15,17 +15,20 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.author_mapping }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.author_mapping }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.author_mapping }}
      ```
 
@@ -48,34 +51,40 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 加入候选人池的最低保证金设置如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.staking.min_can_stk }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.staking.min_can_stk }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.staking.min_can_stk }} DEV
     ```
 
 用您的账户映射您的会话密钥时会发送一笔保证金。此保证金由每个会话密钥注册时获得。保证金设置如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.staking.collator_map_bond }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.staking.collator_map_bond }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.staking.collator_map_bond }} DEV
     ```
 

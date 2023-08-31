@@ -27,13 +27,13 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
 
-```
+```bash
 mkdir web3-examples && cd web3-examples
 ```
 
 在本教程中，您将需要安装Web3.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
 
-```
+```bash
 npm install web3 solc@0.8.0
 ```
 
@@ -90,7 +90,7 @@ npm install web3 solc@0.8.0
 
 您仅需要一个文件以查看交易发送前后两个地址的余额。首先，您可以运行以下命令创建一个`balances.js`文件：
 
-```
+```bash
 touch balances.js
 ```
 
@@ -132,7 +132,7 @@ balances();
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
-```
+```bash
 node balances.js
 ```
 
@@ -142,7 +142,7 @@ node balances.js
 
 您仅需要一个文件即可在账户之间执行交易。在本示例中，您将从拥有私钥的发送地址转移1个DEV Token至另一个地址。首先，您可以运行以下命令创建一个`transaction.js`文件：
 
-```
+```bash
 touch transaction.js
 ```
 
@@ -198,7 +198,7 @@ send();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node transaction.js
 ```
 
@@ -220,7 +220,7 @@ node transaction.js
 
 有了用于编译`Incrementer.sol`合约的脚本，您就可以使用这些结果发送部署的签名交易。首先，您可以为部署的脚本创建一个名为`deploy.js`的文件：
 
-```
+```bash
 touch deploy.js
 ```
 
@@ -298,7 +298,7 @@ deploy();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node deploy.js
 ```
 
@@ -312,7 +312,7 @@ node deploy.js
 
 首先，您需要创建一个文件并命名为`get.js`：
 
-```
+```bash
 touch get.js
 ```
 
@@ -363,7 +363,7 @@ get();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node get.js
 ```
 
@@ -373,7 +373,7 @@ node get.js
 
 发送函数是修改合约存储（更改变量）的交互类型，这意味着需要签署和发送交易。在这一部分，您将创建两个脚本：一个是增量，另一个是重置增量器。首先，您可以为每个脚本创建一个文件，并分别命名为`increment.js`和`reset.js`：
 
-```
+```bash
 touch increment.js reset.js
 ```
 
@@ -446,7 +446,7 @@ increment();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node increment.js
 ```
 
@@ -520,7 +520,7 @@ reset();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node reset.js
 ```
 

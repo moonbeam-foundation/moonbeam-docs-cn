@@ -35,7 +35,7 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 保证金计算公式：
 
-```
+```text
 deposit base + deposit factor * number of proxies
 ```
 

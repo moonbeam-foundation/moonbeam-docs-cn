@@ -14,17 +14,20 @@ Precompile Registry还有另外一个作用，允许任何用户为预编译设�
 Registry Precompile位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.registry }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.registry }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.registry }}
      ```
 

@@ -27,7 +27,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 首先，您需要通过应用程序包管理器（如`yarn`）为您的项目安装Polkadot.js API库。您可以通过运行以下命令将其安装至您的项目目录：
 
-```
+```bash
 yarn add @polkadot/api
 ```
 

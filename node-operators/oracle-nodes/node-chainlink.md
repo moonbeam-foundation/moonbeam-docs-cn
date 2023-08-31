@@ -5,7 +5,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 # 在Moonbeam上运行Chainlink预言机节点
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 作为一个开放、无许可的网络，任何人都可以在Moonbeam上运行预言机，为智能合约提供数据。
 
@@ -16,11 +16,11 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 --8<-- 'text/disclaimers/third-party-content-intro.md'
 
-## 基本请求模型 {: #basic-request-model } 
+## 基本请求模型 {: #basic-request-model }
 
 --8<-- 'text/chainlink/brm.md'
 
-## 高级用户 {: #advanced-users } 
+## 高级用户 {: #advanced-users }
 
 如果您已经熟悉如何运行Chainlink预言机节点，可以通过以下信息快速进行Moonbase Alpha测试网部署：
 
@@ -28,7 +28,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha WSS EndPoint: `wss://wss.api.moonbase.moonbeam.network`
  - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
- - 
+ -
  --8<-- 'text/faucet/faucet-list-item.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
@@ -40,7 +40,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  --8<-- 'text/faucet/faucet-list-item.md'
  - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=blank}教程
 
-## 如何操作 {: #getting-started } 
+## 如何操作 {: #getting-started }
 
 本教程将介绍设置预言机节点的步骤，简单概括如下：
 
@@ -51,78 +51,78 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - 绑定节点与预言机
  - 使用客户端合约进行测试
 
-## 节点设置 {: #node-setup } 
+## 节点设置 {: #node-setup }
 
 请执行以下步骤开始设置节点：
 
 1. 创建一个新目录，将所有必要文档放入目录内
 
-    ```
+    ```bash
     mkdir -p ~/.chainlink-moonbeam && cd ~/.chainlink-moonbeam
     ```
 
 2. 用Docker创建Postgres DB (MacOS users请将`--network host \`替换为`-p 5432:5432`)
 
-    ```
-docker run -d --name chainlink_postgres_db \
+    ```bash
+        docker run -d --name chainlink_postgres_db \
         --volume chainlink_postgres_data:/var/lib/postgresql/data \
-        -e 'POSTGRES_PASSWORD={YOUR-PASSWORD-HERE}' \
+        -e 'POSTGRES_PASSWORD=INSERT_PASSWORD' \
         -e 'POSTGRES_USER=chainlink' \
         --network host \
         -t postgres:11
     ```
-    
-    请确保将`{YOUR_PASSWORD_HERE}`替换为真实的密码。如果尚未下载必要的镜像，Docker将继续下载
+
+    请确保将`{INSERT_PASSWORD}`替换为真实的密码。如果尚未下载必要的镜像，Docker将继续下载
 
 3. 在`chainlink-moonbeam`目录下创建Chainlink环境文档。该文档将在Chainlink容器创建过程中被读取。MacOS用户请将`localhost`替换成`host.docker.internal`
 
-    ```
-echo "ROOT=/chainlink
+    ```text
+    echo "ROOT=/chainlink
     LOG_LEVEL=debug
     ETH_CHAIN_ID=1287
     MIN_OUTGOING_CONFIRMATIONS=2
-    LINK_CONTRACT_ADDRESS={LINK-TOKEN-CONTRACT-ADDRESS}
+    LINK_CONTRACT_ADDRESS=INSERT_LINK_TOKEN_CONTRACT_ADDRESS
     CHAINLINK_TLS_PORT=0
     SECURE_COOKIES=false
     GAS_UPDATER_ENABLED=false
     ALLOW_ORIGINS=*
     ETH_URL=wss://wss.api.moonbase.moonbeam.network
-    DATABASE_URL=postgresql://chainlink:{YOUR-PASSWORD-HERE}@localhost:5432/chainlink?sslmode=disable
+    DATABASE_URL=postgresql://chainlink:INSERT_PASSWORD@localhost:5432/chainlink?sslmode=disable
     MINIMUM_CONTRACT_PAYMENT=0" > ~/.chainlink-moonbeam/.env
     ```
-    
-    除了密码（`{YOUR_PASSWORD_HERE}`）以外，还需要提供LINK Token合约（`{LINK TOKEN CONTRACT ADDRESS}`）。
+
+    除了密码（`INSERT_PASSWORD`）以外，还需要提供LINK Token合约（`INSERT_LINK_TOKEN_CONTRACT_ADDRESS`）。
 
 4. 创建`.api`文档来储存用户和密码，用于进入节点API、节点运营用户界面以及Chainlink命令模式
 
-    ```
+    ```bash
     touch .api
     ```
 
 5. 设置一个邮件地址和另一个密码
 
-    ```
-    echo "{AN-EMAIL-ADDRESS}" > ~/.chainlink-moonbeam/.api
-    echo "{ANOTHER-PASSWORD}" >> ~/.chainlink-moonbeam/.api
+    ```bash
+    echo "INSERT_EMAIL_ADDRESS" > ~/.chainlink-moonbeam/.api
+    echo "INSERT_ANOTHER_PASSWORD" >> ~/.chainlink-moonbeam/.api
     ```
 
 6. 最后，还需要另一个文档来储存节点地址的钱包密码
 
-    ```
+    ```bash
     touch .password
     ```
 
-7. Set the third password 
+7. Set the third password
 
     设置第三个密码
 
-    ```
-    echo "{THIRD-PASSWORD}" > ~/.chainlink-moonbeam/.password
+    ```bash
+    echo "INSERT_THIRD_PASSWORD" > ~/.chainlink-moonbeam/.password
     ```
 
 8. 激活容器（MacOS用户请将`--network host \`替换成`-p 6688:6688`）
 
-    ```
+    ```bash
     docker run -d --name chainlink_oracle_node \
       --volume $(pwd):/chainlink \
       --env-file=.env \
@@ -138,14 +138,14 @@ echo "ROOT=/chainlink
 
 通过以下命令来验证运行是否正常，以及日志是否持续记录：
 
-```
+```bash
 docker ps #Containers Running
 docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 ```
 
 ![Docker logs](/images/node-operators/oracle-nodes/chainlink/chainlink-node-1.png)
 
-## 合约设置 {: #contract-setup } 
+## 合约设置 {: #contract-setup }
 
 预言机节点运行后，您可以开始配置智能合约。首先，请执行以下步骤为预言机节点注入资金：
 
@@ -164,7 +164,7 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/contracts/src/v0.6/Oracle.sol){target=blank}中找到。在本示例中，您将使用Remix来与Moonbase Alpha交互并部署合约。在[Remix](https://remix.ethereum.org/){target=blank}环境下，可以复制以下代码：
 
-```
+```solidity
 pragma solidity ^0.6.6;
 
 import "@chainlink/contracts/src/v0.6/Oracle.sol";
@@ -189,7 +189,7 @@ import "@chainlink/contracts/src/v0.6/Oracle.sol";
 
 ![Authorize Chainlink Oracle Node](/images/node-operators/oracle-nodes/chainlink/chainlink-node-5.png)
 
-## 创建Job {: #creating-a-job } 
+## 创建Job {: #creating-a-job }
 
 Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官方文档](https://docs.chain.link/chainlink-nodes/oracle-jobs/v1/job-specifications){target=_blank}：
 
@@ -211,7 +211,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
       "initiators": [
         {
           "type": "runlog",
-          "params": { "address": "YOUR-ORACLE-CONTRACT-ADDRESS" }
+          "params": { "address": "INSERT_YOUR_ORACLE_CONTRACT_ADDRESS" }
         }
       ],
       "tasks": [
@@ -233,7 +233,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
     }
     ```
 
-2. 请务必输入您的预言机合约地址（`YOUR-ORACLE-CONTRACT-ADDRESS`）。
+2. 请务必输入您的预言机合约地址（`INSERT_YOUR_ORACLE_CONTRACT_ADDRESS`）。
 
 3. 点击**Create Job**以创建Job
 
@@ -252,7 +252,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
   "initiators": [
     {
       "type": "runlog",
-      "params": { "address": "YOUR-ORACLE-CONTRACT-ADDRESS" }
+      "params": { "address": "INSERT_YOUR_ORACLE_CONTRACT_ADDRESS" }
     }
   ],
   "tasks": [
@@ -267,7 +267,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 
 如果您需要一个更定制化的系统，您可以查阅Chainlink的文档了解如何构建您自己的[外部适配器](https://docs.chain.link/docs/developers/){target=_blank}。
 
-## 预言机测试 {: #test-the-oracle } 
+## 预言机测试 {: #test-the-oracle }
 
 要验证预言机的在线状态以及是否能正常完成请求，请查阅[Chainlink预言机](/integrations/oracles/chainlink/)教程。主要步骤是：部署一个客户端合约，向预言机发送请求，并使预言机向客户端合约中写入所请求的数据。
 

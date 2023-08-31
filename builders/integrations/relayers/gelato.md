@@ -76,32 +76,32 @@ Gelato已上线Moonbeam和Moonriver，允许开发者和终端用户通过Gelato
 
 Gelato Relay SDK是一个能够通过以下命令在当前目录本地安装的[NPM包](https://www.npmjs.com/package/@gelatonetwork/gelato-relay-sdk){target=_blank}：
 
-```
+```bash
 npm install @gelatonetwork/gelato-relay-sdk
 ```
 
 您也可以通过以下命令安装Ethers.js库：
 
-```
+```bash
 npm install ethers
 ```
 
 接着，您需要通过运行以下命令创建`hello-world.js`的Javascript文件：
 
-```
+```bash
 touch hello-world.js
 ```
 
 现在您已经完成事前准备。接着，您需要导入Gelato Relay SDK和Ethers.js：
 
-```
+```js
   import { Wallet, utils } from "ethers";
   import { GelatoRelaySDK } from "@gelatonetwork/gelato-relay-sdk";
 ```
 
 接着，创建一个包含脚本逻辑的函数：
 
-```
+```js
 const forwardRequestExample = async () => {
 
 }
@@ -109,7 +109,7 @@ const forwardRequestExample = async () => {
 
 在`forwardRequestExample`函数中，定义链ID以及您希望交互的[`HelloWorld.sol` 合约](https://moonscan.io/address/0x3456E168d2D7271847808463D6D383D079Bd5Eaa#code){target=_blank}。
 
-```
+```js
   const chainId = {{ networks.moonbeam.chain_id }};
   // `HelloWorld.sol` contract on Moonbeam
   const target = "0x3456E168d2D7271847808463D6D383D079Bd5Eaa";
@@ -117,7 +117,7 @@ const forwardRequestExample = async () => {
 
 [`HelloWorld.sol`合约](https://moonscan.io/address/0x3456E168d2D7271847808463D6D383D079Bd5Eaa#code){target=_blank}将会在生产以下内容，以支持无需Gas费用的交易。
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
@@ -149,7 +149,7 @@ contract HelloWorld is ERC2771Context {
 
 接着，您可以创建一个新的测试账户以提交无需Gas费用的交易。此账户不安全且不应当被用于生产环境。本示例使用预设数值定义`test_token`作为展示，但您可以依据需求制定任何Token。
 
-```
+```js
   const test_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
   // Create mock wallet
   const wallet = Wallet.createRandom();
@@ -175,7 +175,7 @@ contract HelloWorld is ERC2771Context {
 
 此ABI编码调用数据制定了调用的合约函数以及任何相关参数，并可以通过MetaMask或Remix获取。另外，您或许可以通过Ether.js或是Web3.js获取ABI编码调用数据。有一些额外的参数在以下示例中定义，如`paymentType`、`maxFee`以及`gas`。您可以选取不同可用的支付类型。为简单起见，重复播放保护未包含在此示例中。
 
-```
+```js
   // ABI encode for HelloWorld.sayHiVanilla(address _feeToken)
   const data = `0x4b327067000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeaeeeeeeeeeeeeeeeee`;
   const paymentType = 1;
@@ -205,7 +205,6 @@ contract HelloWorld is ERC2771Context {
     enforceSponsorNonce,
     sponsor
   );
-
 ```
 
 最后，`forwardRequest`对象将被创建，且具有先前步骤中定义的所有相关函数。在最终步骤，`forwardRequest`对象将会与所需的签名被传送至Gelato Relay API。
@@ -214,7 +213,7 @@ contract HelloWorld is ERC2771Context {
 
 最后的几个步骤包含散列请求对象以及签署结果的哈希。最后一步为提交请求和签名至Gelato Relay API。您可以在`forwardRequest`对象后复制并粘贴以下代码：
 
-```
+```js
   // Get EIP-712 hash (aka digest) of forwardRequest
   const digest = GelatoRelaySDK.getForwardRequestDigestToSign(forwardRequest);
 
@@ -233,7 +232,7 @@ contract HelloWorld is ERC2771Context {
 
 要执行脚本并调用无需Gas交易至Gelato Relay API，您可以使用以下命令：
 
-```
+```bash
 node hello-world.js
 ```
 
@@ -243,7 +242,7 @@ node hello-world.js
 
 完整的`hello-world.js`文件应包含以下内容：
 
-```
+```js
 import { Wallet, utils } from "ethers";
 import { GelatoRelaySDK } from "@gelatonetwork/gelato-relay-sdk";
 

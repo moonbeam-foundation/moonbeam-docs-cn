@@ -107,7 +107,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 
 Moonbase Alpha测试网会频繁进行升级。因此，您可能会看到以下消息：
 
-```
+```text
 DATE [Relaychain] Bootnode with peer id `ID` is on a different
 chain (our genesis: GENESIS_ID theirs: OTHER_GENESIS_ID)
 ```

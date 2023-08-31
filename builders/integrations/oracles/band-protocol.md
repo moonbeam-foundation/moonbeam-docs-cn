@@ -42,7 +42,7 @@ Moonbeam上的Band Protocol智能合约可通过实现`StdReference`合约接口
  - 基础货币价格最后更新时间（UNIX时间戳）
  - 报价货币价格最后更新时间（UNIX时间戳）
 
-```
+```solidity
 struct ReferenceData {
    uint256 rate; 
    uint256 lastUpdatedBase; 
@@ -184,19 +184,19 @@ interface TestInterface {
 
 辅助库也支持相似的`getReferenceData`函数。使用此方法，首先要根据以下指令安装辅助库：
 
-```
+```bash
 npm install @bandprotocol/bandchain.js
 ```
 
 该辅助库提供了需要一个可以指向终端的构造函数。这将返回一个实例，支持所有必要的方法，如 `getReferenceData`函数。在获取信息时，向函数输入数据阵列，阵列中每个元素就是需要报价的基础货币/报价货币对。例如：
 
-```
+```js
 getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 ```
 
 然后，函数将返回以下结构的数据阵列：
 
-```
+```js
 [
   {
     pair: 'BTC/USD',
@@ -215,6 +215,7 @@ getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
   }
 ]
 ```
+
 `lastUpdatedBase`和`lastUpdatedQuote`显示的是基础货币和报价货币各自价格的最后更新时间（UNIX时间戳）。
 
 ### 应用示例 {: #example-usage }

@@ -33,7 +33,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 
 合约通过执行桥接合约接口可调用`getResult`和`getJob`函数以使用Razor Network预言机来获取代币价格等链上数据。
 
-```
+```solidity
 pragma solidity 0.6.11;
 
 interface Razor {

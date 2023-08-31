@@ -33,14 +33,14 @@ description: 使用Docker启动并运行您自己的Graph节点，为Moonbeam上
 
 首先，克隆[Graph节点代码库](https://github.com/graphprotocol/graph-node/){target=_blank}：
 
-```
+```bash
 git clone https://github.com/graphprotocol/graph-node/ \
 && cd graph-node/docker
 ```
 
 接下来，执行`setup.sh`文档。这一步将拉出所有必要的Docker镜像，并在`docker-compose.yml`文档中写入必要信息。
 
-```
+```bash
 ./setup.sh
 ```
 
@@ -51,28 +51,32 @@ git clone https://github.com/graphprotocol/graph-node/ \
 设置好所有相关内容后，需要在`docker-compose.yml`文档中修改“Ethereum environment”，让其指向运行该Graph节点的节点终端。请注意，`setup.sh`文档会检测`Host IP`并写入一个值，因此您需要进行相应修改。
 
 === "Moonbeam"
-    ```
+
+    ```yaml
     ethereum: 'moonbeam:{{ networks.development.rpc_url }}'
     ```
 
 === "Moonriver"
-    ```
+
+    ```yaml
     ethereum: 'moonriver:{{ networks.development.rpc_url }}'
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```yaml
     ethereum: 'mbase:{{ networks.development.rpc_url }}'
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```yaml
     ethereum: 'mbase:{{ networks.development.rpc_url }}'
     ```
 
 整个`docker-compose.yml`文档应与以下内容相似：
 
-```
+```yaml
 version: '3'
 services:
   graph-node:
@@ -115,7 +119,7 @@ services:
 
 最后，只需运行以下指令即可运行Graph节点：
 
-```
+```bash
 docker-compose up
 ```
 

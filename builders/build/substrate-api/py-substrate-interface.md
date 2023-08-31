@@ -26,7 +26,7 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 
 您可以通过`pip`为您的项目安装Python Substrate Interface库。在您的项目目录中运行以下命令：
 
-```
+```bash
 pip install substrate-interface
 ```
 

@@ -25,7 +25,7 @@ MetaMask向网站注入一个用户访问的全局以太坊API `window.ethereum`
 
 建议使用MetaMask的`detect-provider`实用性工具包，以检测在`window.ethereum`注入的提供商。工具包为MetaMask扩展程序和MetaMask Mobile检测提供商。运行以下命令在您的JavaScript项目安装工具包：
 
-```
+```bash
 npm install @metamask/detect-provider
 ```
 

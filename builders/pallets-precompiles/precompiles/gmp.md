@@ -15,17 +15,20 @@ GMP预编译充当Moonbeam路由流动性的接口，作为来自GMP协议的承
 GMP预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.gmp}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.gmp}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.gmp}}
      ```
 

@@ -48,7 +48,7 @@ forge remappings > remappings.txt
 
 该文件中的每一行都是可以在项目的智能合约中引用的依赖项之一。可以编辑和重命名依赖项，以便在处理智能合约时更容易引用不同的文件夹和文件。如果正确安装了OpenZeppelin，将显示与下方类似的输出：
 
-```
+```text
 ds-test/=lib/forge-std/lib/ds-test/src/
 forge-std/=lib/forge-std/src/
 openzeppelin-contracts/=lib/openzeppelin-contracts/
@@ -445,7 +445,7 @@ touch .env
 
 在此文件中，添加以下内容：
 
-```
+```text
 PRIVATE_KEY=YOUR_PRIVATE_KEY
 MOONSCAN_API_KEY=YOUR_MOONSCAN_API_KEY
 ```

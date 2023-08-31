@@ -38,7 +38,7 @@ description: 以太坊开发者在Moonbeam上进行开发时需要了解的安�
 
 若要获得编码的调用数据，您可以使用[Solidity文档中罗列的任何一个ABI编码函数 ](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#abi-encoding-and-decoding-functions){target=_blank}，包括下列函数所示的`abi.encodeWithSelector`：
 
-```
+```solidity
 function getBytes(address _erc20Contract, address _arbitraryCallContract, address _to) public view returns (bytes memory) {
     // Load ERC-20 interface of contract
     IERC20 erc20 = IERC20(_erc20Contract);
@@ -51,7 +51,7 @@ function getBytes(address _erc20Contract, address _arbitraryCallContract, addres
 
 获得编码的调用数据后，您就可以对[原生ERC-20预编译合约](/builders/pallets-precompiles/precompiles/erc20){target=_blank}进行任意调用，将调用值设置为`0`，并以字节单位传递调用数据：
 
-```
+```solidity
 function makeArbitraryCall(address _target, bytes calldata _bytes) public {
     // Value: 0 does not protect against native ERC-20 precompile calls or XCM precompiles
     (bool success,) = _target.call{value: 0}(_bytes);
@@ -69,7 +69,7 @@ function makeArbitraryCall(address _target, bytes calldata _bytes) public {
 
 当您完成将函数选择器列入白名单后，您可以使用内联汇编来从编码的调用数据中获得函数选择器，并使用[require函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}进行比较。如果从编码的调用数据中获得的函数选择器与列入白名单的函数选择器相匹配，您就可以进行调用。否则将会异常。
 
-```
+```solidity
 function makeArbitraryCall(address _target, bytes calldata _bytes) public {
     // Get the function selector from the encoded call data
     bytes4 selector;
@@ -94,7 +94,7 @@ function makeArbitraryCall(address _target, bytes calldata _bytes) public {
 
 若要把一个合约列入白名单，您可以使用[require函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}，该函数将把目标合约地址与列入白名单的合约地址进行比较。如果地址相匹配，该调用则可以被执行。否则将会异常。
 
-```
+```solidity
 function makeArbitraryCall(address _target, bytes calldata _bytes) public {
     // Ensure the contract address is safe
     require(_target == INSERT-CONTRACT-ADDRESS);
@@ -116,7 +116,7 @@ function makeArbitraryCall(address _target, bytes calldata _bytes) public {
 
 您可以使用[require 函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}比较`tx.origin`和`msg.sender`。如果它们是相同的地址，则确保只有EOA可以调用该函数。如果`msg.sender`是合约地址，将抛出异常。
 
-```
+```solidity
 function transferFunds(address payable _target) payable public {
     require(tx.origin == msg.sender);
     _target.call{value: msg.value};
@@ -137,7 +137,7 @@ function transferFunds(address payable _target) payable public {
 
 在Substrate中，功能不同，并且不存在该要求。因此，用户可能会在调用该函数时，用到比他们实际持有的token数量大得多的销毁数量，该调用会成功，但只会销毁他们持有的token数量。话虽如此，您将需要使用[require函数](https://docs.soliditylang.org/en/v0.8.17/control-structures.html#panic-via-assert-and-error-via-require){target=_blank}手动要求该账户具有足够token，如下所示：
 
-```
+```solidity
 require(mintableERC20.balanceOf(from) >= value, "burn amount exceeds balance")
 ```
 

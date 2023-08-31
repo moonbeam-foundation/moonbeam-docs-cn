@@ -153,7 +153,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
 此教程也同样适用于Moonriver或Moonbase Alpha，但请确保将数据源更新为正确的网络：
 
 === "Moonbeam"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbeam", {type: "Substrate"}),
@@ -161,7 +162,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonriver", {type: "Substrate"}),
@@ -169,7 +171,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbase", {type: "Substrate"}),

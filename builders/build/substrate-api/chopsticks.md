@@ -21,22 +21,22 @@ description: 学习如何通过Chopsticks重放区块、解析状态更迭、测
 
 ## 配置Chopsticks {: configuring-chopsticks }
 
-一共有两种方式来使用Chopsticks。第一种也是推荐的方法是将它作为一个包安装： 
+一共有两种方式来使用Chopsticks。第一种也是推荐的方法是将它作为一个包安装：
 
-```
+```bash
 yarn add @acala-network/chopsticks
 ```
 
 另一种选择是从Chopsticks的GitHub库安装Chopsticks，添加依赖项并构建它。请注意，本指南中的命令将假设您正在使用包安装，它使用 `npx @acala-network/chopsticks`或`yarn dlx`而不是`npm run`或`yarn start`进行本地构建：
 
-```
+```bash
 git clone --recurse-submodules https://github.com/AcalaNetwork/chopsticks.git && \
 cd chopsticks && \
 yarn && \
 yarn build-wasm
 ```
 
-Chopsticks中包含一组[YAML](https://yaml.org/){target=_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以在[源代码库](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}的`configs`文件夹中查看每个默认的配置文件。Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示例配置为Moonbeam网络当前使用的配置： 
+Chopsticks中包含一组[YAML](https://yaml.org/){target=_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以在[源代码库](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}的`configs`文件夹中查看每个默认的配置文件。Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示例配置为Moonbeam网络当前使用的配置：
 
 ```yaml
 endpoint: wss://wss.api.moonbeam.network
@@ -74,17 +74,20 @@ import-storage:
 分叉Moonbeam最简单的方法是使用先前介绍的配置文件：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks dev --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks dev --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonriver.yml
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     npx @acala-network/chopsticks dev --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbase-alpha.yml
     ```
 
@@ -145,7 +148,7 @@ import-storage:
 
 举例来说，运行以下命令将会重新运行Moonbeam的区块1000，并在`moonbeam-output.json`文件中写入存储差异和其他数据：
 
-```
+```bash
 npx @acala-network/chopsticks run-block --endpoint wss://wss.api.moonbeam.network --block 1000 --output-path=./moonbeam-output.json
 ```
 
@@ -153,13 +156,13 @@ npx @acala-network/chopsticks run-block --endpoint wss://wss.api.moonbeam.networ
 
 要在网络间测试XCM消息，您可以在本地分叉多个平行链和中继链。举例来说，假设你已经从Github repository下载了[config文件夹](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}，以下命令将会分叉Moonriver、Karura和Kusama：
 
-```
+```bash
 npx @acala-network/chopsticks xcm --relaychain=configs/kusama.yml --parachain=configs/moonriver.yml --parachain=configs/karura.yml
 ```
 
 您应当能看到类似于以下输出的内容：
 
-```
+```text
 [12:48:58.766] INFO (rpc/21840): Moonriver RPC listening on port 8000
 [12:49:03.266] INFO (rpc/21840): Karura RPC listening on port 8001
 [12:49:03.565] INFO (xcm/21840): Connected parachains [2000,2023]
@@ -183,18 +186,18 @@ Chopsticks的内部websocket服务器有特殊的端点，允许操作本地Subs
 
 每个方法都可以通过连接到websocket（默认为`ws://localhost:8000`）并以以下格式发送数据和参数来调用。将`METHOD_NAME`替换为方法名称，将`PARAMETER_1`和`PARAMETER_2`替换或删除为与方法相关的参数数据：
 
-```
+```json
 {
     "jsonrpc": "2.0",
     "id": 1,
     "method": "METHOD_NAME",
-    "params": [PARAMETER_1, PARAMETER_2...]
+    "params": ["PARAMETER_1", "PARAMETER_2", "..."]
 }
 ```
 
 以下是参数的描述：
 
-- **`options` { "to": number, "count": number }** - 可选，保留`null`以创建一个区块。使用`"to"`创建达到特定值的区块，使用`"count"`增加特定数量的区块 
+- **`options` { "to": number, "count": number }** - 可选，保留`null`以创建一个区块。使用`"to"`创建达到特定值的区块，使用`"count"`增加特定数量的区块
 - **`values` Object** - 类似于存储值路径的JSON对象，类似于您通过Polkadot.js检索的内容
 - **`blockHash` string** - 可选，存储值发生变更的区块哈希
 - **`date` string** - 一个日期字符串（与JavaScript日期库兼容），它将更改时间戳，从该时间戳开始创建下一个区块。所有未来的区块将在该时间点之后依次出现

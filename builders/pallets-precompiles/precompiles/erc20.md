@@ -19,17 +19,20 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
 预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.erc20 }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 

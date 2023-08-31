@@ -13,17 +13,20 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 质押模块采用Rust进行编码，其为Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于以下指定地址的预编译合约中的以太坊API使用质押功能：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.staking}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.staking}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.staking}}
      ```
 

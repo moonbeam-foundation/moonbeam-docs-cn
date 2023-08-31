@@ -29,7 +29,7 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 首先，您可以使用Cargo工具创建一个新的Rust项目：
 
-```
+```bash
 cargo init ethers-examples && cd ethers-examples
 ```
 
@@ -53,7 +53,7 @@ serde = "1.0.149"
 
 如果这是您第一次使用`solc-select`，您将需要使用以下命令来安装和配置Solidity版本：
 
-```
+```bash
 solc-select install 0.8.17 && solc-select use 0.8.17
 ```
 
@@ -304,7 +304,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行发送交易并在交易发送后检查余额的脚本，您可以运行以下命令：
 
-```
+```bash
 cargo run
 ```
 
@@ -394,7 +394,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 Rust是typesafe，这就是为什么需要`Incrementer.sol`合约的ABI来生成typesafe Rust结构。在本示例中，您应该在名为`Incrementer_ABI.json`的Cargo项目的根目录中创建一个新文件：
 
-```
+```bash
 touch Incrementer_ABI.json
 ```
 
@@ -490,7 +490,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行部署合约和返回存储在`Incrementer`合约中的当前值的脚本，您可以在终端中输入以下命令：
 
-```
+```bash
 cargo run
 ```
 
@@ -551,7 +551,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行脚本，您可以在终端输入以下命令：
 
-```
+```bash
 cargo run
 ```
 

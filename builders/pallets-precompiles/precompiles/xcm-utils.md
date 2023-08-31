@@ -13,17 +13,20 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}类似，XCM Utilities预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.xcm_utils }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.xcm_utils }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.xcm_utils}}
      ```
 

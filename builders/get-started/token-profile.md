@@ -33,18 +33,21 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 开始操作前，请确保登陆您的Moonscan账户。成功登陆后，您可以前往想要增加Token简介的页面。对于ERC-20 Token，您可以在搜索栏搜索Token名称。对于其他Token，您可以手动输入URL。
 
 === "Moonbeam"
-    ```
-    https://moonscan.io/token/<insert-contract-address>
+
+    ```text
+    https://moonscan.io/token/INSERT_CONTRACT_ADDRESS
     ```
 
 === "Moonriver"
-    ```
-    https://moonriver.moonscan.io/token/<insert-contract-address> 
+
+    ```text
+    https://moonriver.moonscan.io/token/INSERT_CONTRACT_ADDRESS 
     ```
 
 === "Moonbase Alpha"
-    ```
-    https://moonbase.moonscan.io/token/<insert-contract-address>
+
+    ```text
+    https://moonbase.moonscan.io/token/INSERT_CONTRACT_ADDRESS
     ```
 
 在Social Profiles旁边，您可以点击**Update**。

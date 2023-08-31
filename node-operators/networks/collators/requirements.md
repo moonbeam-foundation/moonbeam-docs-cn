@@ -5,7 +5,7 @@ description: 了解在Moonbeam网络上成为收集人和维护收集人节点�
 
 # 收集人要求
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 在开始运行收集人节点之前您需要了解一些基本要求。首先，您需要遵循社区准则并满足技术要求。您需要拥有高配硬件设备、安全创建且存储的账户、满足绑定数量要求以及完成收集人问卷调查。
 
@@ -29,7 +29,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 - 贡献与生态系统相关的开源软件
 - 积极参与治理和投票
 
-## 硬件设备要求 {: #hardware-requirements } 
+## 硬件设备要求 {: #hardware-requirements }
 
 收集人必须运行带有收集选项的全节点。您可遵循[运行节点](/node-operators/networks/run-a-node/overview/)的教程以及[使用Systemd](/node-operators/networks/run-a-node/systemd/)的安装步骤进行操作。请确保您为收集人使用特定代码段。
 
@@ -48,7 +48,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 - 您需要在不同数据库和国家的主裸机服务器和备份裸机服务器，Hetzner适用于这些服务器，但是不能同时用于两种服务器
 - 您的Moonbeam服务器仅供Moonbeam使用，请勿与其他App共享同一个服务器
 
-## 账户要求 {: #account-requirements } 
+## 账户要求 {: #account-requirements }
 
 和波卡（Polkadot）验证人相似，收集人也需要创建账户。Moonbeam使用的是拥有私钥的H160账户或以太坊式账户。作为收集人，您有责任正确管理您的私钥，否则将导致资产丢失。
 
@@ -62,7 +62,7 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 
 但是我们还是建议您提前做好研究，使用您认为值得信赖的工具。
 
-### 开始使用Moonkey {: #getting-started-with-moonkey } 
+### 开始使用Moonkey {: #getting-started-with-moonkey }
 
 首先是从GitHub上获取Moonkey二进制文件。您可以下载二进制文件（在Linux/Ubuntu上进行测试）：
 
@@ -72,13 +72,13 @@ Moonbeam基金会首要目标之一是维护Moonriver和Moonbeam网络的去中�
 
 对于基于Linux系统，如Ubuntu，打开终端，并前往Moonkey二进制文件所在的文件夹。您可以在此处使用sha256sum工具来计算SHA256哈希：
 
-```
+```text
 019c3de832ded3fccffae950835bb455482fca92714448cc0086a7c5f3d48d3e
 ```
 
 在您成功验证哈希后，建议将二进制文件移到实体隔离（即无网络接口）的设备中。您也可以直接在实体隔离的设备中查看文件的哈希。
 
-### 使用Moonkey生成账户 {: #generating-an-account-with-moonkey } 
+### 使用Moonkey生成账户 {: #generating-an-account-with-moonkey }
 
 Moonkey二进制文件使用起来非常简单，您只需执行二进制，所有与新创建账户的相关信息都会显示。
 
@@ -94,7 +94,7 @@ Moonkey二进制文件使用起来非常简单，您只需执行二进制，所�
 
 建议您在实体隔离的设备中使用二进制文件。
 
-### 其他Moonkey功能 {: #other-moonkey-features } 
+### 其他Moonkey功能 {: #other-moonkey-features }
 
 Moonkey也提供一些其他的功能，具体如下所示：
 
@@ -107,7 +107,7 @@ Moonkey也提供一些其他的功能，具体如下所示：
 - `-account-index` – 提供要在派生路径中使用的帐户索引
 - `-mnemonic` – 提供助记词
 
-## 绑定数量要求 {: #bonding-requirements } 
+## 绑定数量要求 {: #bonding-requirements }
 
 作为收集人您需要知道两个绑定数量：一个是加入收集人池的绑定数量，另一个是密钥关联的绑定数量。
 

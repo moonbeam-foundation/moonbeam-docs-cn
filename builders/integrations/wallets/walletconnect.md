@@ -24,7 +24,8 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
 如果您已经具有一个支持WalletConnect的DApp并想要支持Moonbeam，您可以使用以下的网络配置：
 
 === "Moonbeam"
-    ```
+
+    ```js
     {
       name: "Moonbeam",
       short_name: "moonbeam",
@@ -44,7 +45,8 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     {
       name: "Moonriver",
       short_name: "moonriver",
@@ -64,7 +66,8 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     {
       name: "Moonbase Alpha",
       short_name: "moonbase",
@@ -87,7 +90,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
 
 在本教程中，您将会使用以[React](https://reactjs.org/){target=_blank}构建的简易终端DApp通过WalletConnect连接至移动端钱包。因此，您将会需要一个React项目以及MetaMask移动端钱包以进行测试。目前已经有建立好的范本，其中包含需要的工具包、基础撰写模式以及需要加入逻辑和UI元素的占位符。然而，如果您要使用您自己的DApp进行测试，您将需要安装以下所需依赖项：
 
-```
+```bash
 npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 ```
 

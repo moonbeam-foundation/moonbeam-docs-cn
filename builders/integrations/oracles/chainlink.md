@@ -27,7 +27,7 @@ Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonba
 
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
-```
+```solidity
 pragma solidity ^0.8.0;
 
 interface AggregatorV3Interface {
@@ -159,17 +159,20 @@ interface AggregatorV3Interface {
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 
     === "Moonbeam"
-        ```
+
+        ```text
         {{ networks.moonbeam.chainlink.feed.proxy.btc_usd }}
         ```
 
     === "Moonriver"
-        ```
+
+        ```text
         {{ networks.moonriver.chainlink.feed.proxy.btc_usd }}
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```text
         {{ networks.moonbase.chainlink.feed.proxy.btc_usd }}
         ```
 
@@ -208,7 +211,7 @@ Moonbeam运行的预部署合约和预言机节点支持一组有限的job ID，
 
 部署在Moonbase Alpha的客户端合约如下：
 
-```
+```solidity
 pragma solidity ^0.6.6;
 
 import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
@@ -394,7 +397,7 @@ interface ChainlinkInterface {
 
 使用`ChainlinkClient`构建您自己的客户端合约前，首先您需要导入合约：
 
-```
+```solidity
 import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/ChainlinkClient.sol";
 ```
 
@@ -412,7 +415,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/Cha
 
 下方客户端合约是关于如何使用在您客户端合约中的任何API的举例：
 
-```
+```solidity
 pragma solidity ^0.8.7;
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";

@@ -279,7 +279,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
 
 === "Moonbeam"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -313,7 +314,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -347,7 +349,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target

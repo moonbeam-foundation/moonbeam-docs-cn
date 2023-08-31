@@ -232,7 +232,7 @@ Moonbeam拥有[统一账户](/learn/features/unified-accounts){target=_blank}系
 
 您的Moonbeam开发节点带有十个预注资的以太坊风格的开发帐户。这些地址源自于Substrate的规范开发助记词：
 
-```
+```text
 bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
@@ -250,12 +250,14 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 您可以使用以下RPC和WSS端点访问您的Moonbeam开发节点：
 
 === "HTTP"
-    ```
+
+    ```text
     {{ networks.development.rpc_url }}
     ```
 
 === "WSS"
-    ```
+
+    ```text
     {{ networks.development.wss_url }}
     ```
 

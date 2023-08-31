@@ -28,7 +28,8 @@ Moonbeam节点现已添加对两个自定义JSON RPC端点`moon_isBlockFinalized
 您可以通过以下curl示例尝试这些端点。这些示例查询的是Moonbase Alpha的公共RPC端点，但是您可以通过更改RPC端点的URL，并使用您从所支持的[端点提供商](/builders/get-started/endpoints/){target=_blank}获得自己的端点和API密钥与Moonbeam和Moonriver一同使用。
 
 === "moon_isBlockFinalized"
-    ```
+
+    ```bash
     curl -H "Content-Type: application/json" -X POST --data
         '[{
             "jsonrpc":"2.0",
@@ -40,7 +41,8 @@ Moonbeam节点现已添加对两个自定义JSON RPC端点`moon_isBlockFinalized
     ```
 
 === "moon_isTxFinalized"
-    ```
+
+    ```bash
     curl -H "Content-Type: application/json" -X POST --data
         '[{
             "jsonrpc":"2.0",
