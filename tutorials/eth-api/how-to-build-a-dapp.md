@@ -173,7 +173,7 @@ npx hardhat compile
 
 ??? code "MintableERC20.sol文档"
 
-    ```sol
+    ```solidity
     // SPDX-License-Identifier: UNLICENSED
     pragma solidity ^0.8.17;
 
@@ -449,7 +449,7 @@ function App() {
 
 因此，让我们首先将`MintableERC20.json`文件移动到我们的前端目录中。每次更改并重新编译智能合约时，您还必须更新前端中的ABI。有些项目的开发者设置会自动从同一源提取ABI，但在这种情况下，我们只需将其复制过来：
 
-```JSON
+```text
 |--artifacts
     |--@openzeppelin
     |--build-info

@@ -19,13 +19,13 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 所有关于通过Substrate API发送的交易费用数据的信息都可以从以下区块端点中提取：
 
-```
+```text
 GET /blocks/{blockId}
 ```
 
 区块端点将返回与一个或多个区块相关的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}上阅读有关区块端点的更多信息。读取结果为JSON对象，相关嵌套结构如下所示：
 
-```JSON
+```text
 RESPONSE JSON Block Object:
     ...
     |--number
@@ -62,13 +62,13 @@ RESPONSE JSON Block Object:
 
 交易费用相关信息可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
-```
+```text
 pallet: "transactionPayment", method: "TransactionFeePaid" 
 ```
 
 随后，将用于支付此extrinsic的总交易费用映射至Block JSON对象的以下字段中：
 
-```
+```text
 extrinsics[extrinsic_number].events[event_number].data[1]
 ```
 
@@ -77,18 +77,21 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 要计算通过以太坊API在Moonbeam交易产生的费用，可以使用以下计算公式：
 
 === "EIP-1559"
-    ```
+
+    ```text
     GasPrice = BaseFee + MaxPriorityFeePerGas < MaxFeePerGas ?
                 BaseFee + MaxPriorityFeePerGas :
                 MaxFeePerGas;
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 === "Legacy"
-    ```
+
+    ```text
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 === "EIP-2930"
-    ```
+
+    ```text
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 
@@ -119,31 +122,31 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 === "Moonbeam"
 
-    ```
+    ```text
     BaseFee = NextFeeMultiplier * 125000000000 / 10^18
     ```
 
 === "Moonriver"
 
-    ```
+    ```text
     BaseFee = NextFeeMultiplier * 1250000000 / 10^18
     ```
 
 === "Moonbase Alpha"
 
-    ```
+    ```text
     BaseFee = NextFeeMultiplier * 125000000 / 10^18
     ```
 
 通过以下端点，可以从Substrate Sidecar API检索`NextFeeMultiplier`的值：
 
-```
+```text
 GET /pallets/transaction-payment/storage/nextFeeMultiplier?at={blockId}
 ```
 
 Sidecar的pallet端点返回与pallet相关的数据，例如pallet存储中的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-pallets){target=_blank}中阅读更多关于pallet端点的信息。需要从存储中获取的手头数据是`nextFeeMultiplier`，它可以在`transaction-payment` pallet中找到。存储的`nextFeeMultiplier`值可以直接从Sidecar存储结构中读取。读取结果为JSON对象，相关嵌套结构如下：
 
-```JSON
+```text
 RESPONSE JSON Storage Object:
     |--at
         |--hash
@@ -167,7 +170,7 @@ RESPONSE JSON Storage Object:
 
 适用交易类型的`GasPrice`, `MaxFeePerGas`和`MaxPriorityFeePerGas`的值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，特定区块中以太坊交易的数据可以从以下区块端点中提取：
 
-```
+```text
 GET /blocks/{blockId}
 ```
 
@@ -193,13 +196,13 @@ GET /blocks/{blockId}
 
 `TransactionWeight`是一类Substrate机制，用于衡量给定交易在一个区块内执行所需的执行时间。对于所有交易类型，`TransactionWeight`可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
 
-```
+```text
 pallet: "system", method: "ExtrinsicSuccess" 
 ```
 
 随后，`TransactionWeight`将被映射至Block JSON对象的以下字段中：
 
-```
+```text
 extrinsics[extrinsic_number].events[event_number].data[0].weight
 ```
 
@@ -222,6 +225,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 以下curl示例将使用`eth_feeHistory`返回从各自Moonbeam网络上的最新区块开始的最后10个区块的gas信息：
 
 === "Moonbeam"
+
     ```sh
     curl --location \
          --request POST '{{ networks.moonbeam.rpc_url }}' \
@@ -234,6 +238,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
          }'
     ```
 === "Moonriver"
+
     ```sh
     curl --location \
          --request POST '{{ networks.moonriver.rpc_url }}' \
@@ -246,6 +251,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
          }'
     ```
 === "Moonbase Alpha"
+
     ```sh
     curl --location \
          --request POST '{{ networks.moonbase.rpc_url }}' \
@@ -258,6 +264,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
          }'
     ```
 === "Moonbeam开发节点"
+
     ```sh
     curl --location \
          --request POST '{{ networks.development.rpc_url }}' \
