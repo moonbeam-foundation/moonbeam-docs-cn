@@ -184,7 +184,7 @@ _作者：Kevin Neilson_
 
      - 创建提供商的[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}端点URL
      - 从multilocation衍生账户提取的Token数量（以Wei为单位）。在本示例中，`0.01` Token已经足够了。想要了解如何获取此值，请参考[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}
-     - [DEV token的multilocation](/builders/interoperability/xcm/xc-integration/#register-moonbeams-asset-on-your-parachain){target=_blank}，如Moonbase Alpha所见
+     - [DEV token的multilocation](/builders/interoperability/xcm/xc-registration/assets/#register-moonbeam-native-assets){target=_blank}，如Moonbase Alpha所见
      - `transact` XCM指令的权重。这可以通过将`25000`乘以之前获得的gas限制来获得。建议在预估值的基础上增加10%左右。您可以在[通过XCM远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=_blank}的页面获取关于此值的更多信息
      - multilocation衍生账户，这将用于后续XCM指令
      - 我们上一部分计算的`transact` XCM指令的字节

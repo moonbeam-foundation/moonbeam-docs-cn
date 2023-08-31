@@ -25,7 +25,7 @@ yarn
 
 如果Moonbeam和资产的源链之间尚不存在通道，则需要打开一个通道。您可以将与通道相关的调用和资产注册调用进行批量处理，如此您只需提交一个提案。您首先需要创建几个论坛帖子：一个[XCM公开](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-disclosures){target=_blank}帖子和一个[XCM提案](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-proposals){target=_blank}帖子。
 
-收集社区成员的反馈后，您可以创建提案以打开通道并注册任何资产。有关打开通道的更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-integration/){target=_blank}指南。
+收集社区成员的反馈后，您可以创建提案以打开通道并注册任何资产。有关打开通道的更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration/){target=_blank}指南。
 
 ![Asset registration if XC channel doesn't exist](/images/builders/interoperability/xcm/xc-registration/assets/assets-1.png)
 
@@ -264,7 +264,7 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 为了实现Moonbeam资产（包括Moonbeam原生资产，GLMR、MOVR、DEV，和部署在Moonbeam上的本地XC-20资产，也就是支持XCM的ERC-20资产）在Moonbeam和另一条链之间进行跨链转移，您需要将资产注册到另一条链上。由于每个链存储跨链资产的方式不同，因此在另一个链上注册Moonbeam资产的具体步骤会根据链的不同而有所不同。至少，您需要了解Moonbeam上资产的元数据和multilocation。
 
-除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-integration){target=_blank}教程。
+除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=_blank}教程。
 
 ### 在其他链上注册Moonbeam原生资产 {: #register-moonbeam-native-assets }
 
