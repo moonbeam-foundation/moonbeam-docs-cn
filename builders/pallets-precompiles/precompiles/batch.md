@@ -1,12 +1,10 @@
 ---
 title:  批量预编译合约
-description:  学习如何一次通过Moonbeam预编译批量合约执行多个转账交易以及合约交互。
+description: 了解如何通过Solidity接口与Moonbeam批量预编译合约同时处理多个转账和合约交互。
 keywords: solidity、以太坊、批量、交易、moonbeam、预编译、合约
 ---
 
 # 与批量预编译合约交互
-
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/batch/batch-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -19,17 +17,20 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 此预编译合约位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.batch }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.batch }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.batch }}
      ```
 
@@ -194,7 +195,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 此处将会有三个子交易，所有将会三个地址被输入在`to`输入数组中。第一个为公共Gerald账户，其次为预先部署的`SimpleContract.sol`合约。您可以使用您自身的`SimpleContract.sol`实例来取代，或是仅取代其中之一，您可以在单一信息中与多个合约交互。
 
-```
+```text
 [
   "0x6Be02d1d3665660d22FF9624b7BE0551ee1Ac91b",
   "0xd14b70a55F6cBAc06d4FA49b99be0370D0e1BD39", 
@@ -204,13 +205,13 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 同样地， `value`数组需要三个数值。`to`输入数组中的第一个地址需要执行的动作为传送1 DEV，因此1 DEV将会以Wei为单位输入在数组之中，接续的两个数值为0以为其子交易并不接受或是需要原生资产。
 
-```
+```text
 ["1000000000000000000", "0", "0"]
 ```
 
 如上， `callData`数组也需要三个数值。由于传送原生资产并不需要调用数据，字符串可以以空白显示。而数组中的第二和第三个数值与**setMessage**的调用有关，将会把id设置为5和6。
 
-```
+```text
 [
   "0x", 
   "0x648345c8000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000009796f752061726520610000000000000000000000000000000000000000000000", 
@@ -220,7 +221,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 最后一个输入数值为`gas_input`，此数组可以为空白以将剩余的Gas用于其他子交易之中。
 
-```
+```text
 []
 ```
 

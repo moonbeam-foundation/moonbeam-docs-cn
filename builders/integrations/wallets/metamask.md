@@ -5,8 +5,6 @@ description: 本教程向您展示如何将MetaMask集成到DApp中，并通过�
 
 # 将MetaMask集成至DApp
 
-![Intro banner](/images/builders/integrations/wallets/metamask/metamask-banner.png)
-
 ## 概览 {: #introduction }
 
 随着MetaMask的[自定义网络API](https://consensys.net/blog/metamask/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api/){target=_blank}的发布，现在可以提示用户添加Moonbeam的测试网Moonbase Alpha。
@@ -27,7 +25,7 @@ MetaMask向网站注入一个用户访问的全局以太坊API `window.ethereum`
 
 建议使用MetaMask的`detect-provider`实用性工具包，以检测在`window.ethereum`注入的提供商。工具包为MetaMask扩展程序和MetaMask Mobile检测提供商。运行以下命令在您的JavaScript项目安装工具包：
 
-```
+```bash
 npm install @metamask/detect-provider
 ```
 

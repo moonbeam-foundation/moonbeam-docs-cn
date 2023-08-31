@@ -6,8 +6,6 @@ template: main.html
 
 # 通过XCM执行远程批量EVM调用
 
-![Banner Image](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-banner.png)
-
 _作者：Kevin Neilson_
 
 ## 概览 {: #introduction }

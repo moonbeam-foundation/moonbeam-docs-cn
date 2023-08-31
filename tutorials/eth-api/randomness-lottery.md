@@ -5,8 +5,6 @@ description: 想要创建一个彩票智能合约？遵循本分步教程使用M
 
 # 使用随机数预编译创建一个彩票合约
 
-![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/randomness/randomness-banner.png)
-
 _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -76,7 +74,7 @@ touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 - 继承RandomnessConsumer接口
 - 创建一个随机数预编译变量randomness，以便我们后续轻松访问其函数
 
-```sol
+```solidity
 // SPDX-License-Identifier: GPL-3.0-only
 pragma solidity >=0.8.0;
 
@@ -101,7 +99,7 @@ contract Lottery is RandomnessConsumer {
 
 在`Lottery`合约中，您可以添加以下参数：
 
-```sol
+```solidity
 // 中奖人数。此数字对应多少个随机词将被请求。不能超过MAX_RANDOM_WORDS（来自随机数预编译）
 uint8 public NUM_WINNERS = 2;
 
@@ -128,7 +126,7 @@ uint256 public PARTICIPATION_FEE = 100000 gwei;
 
 接下来，您可以添加以下参数：
 
-```sol
+```solidity
 // 用于执行的gas限制，其取决于执行的代码和请求的字词个数。
 // 根据请求的大小和fulfillRandomWords()函数中回调请求的处理来测试和调整这个限制
 uint64 public FULFILLMENT_GAS_LIMIT = 100000;
@@ -153,7 +151,7 @@ uint256 public globalRequestCount;
 - 彩票合约的所有者。这是必不可少的，因为只有合约所有者才有权限开启抽奖
 - 所使用的随机数来源（本地VRF或BABE epoch）
 
-```sol
+```solidity
 // The current request id
 uint256 public requestId;
 
@@ -179,7 +177,7 @@ Randomness.RandomnessSource randomnessSource;
 
 [保证金](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L17){target=_blank}在随机数预编译中定义，这是和执行费用一样必不可少的。在完成请求后，保证金将退还给初始请求者，在本示例中为合约的所有者。如果未完成请求，则该请求会过期且需要被清除。请求清除后，保证金将被退还。
 
-```sol
+```solidity
 constructor(
     Randomness.RandomnessSource source
 ) payable RandomnessConsumer() {
@@ -209,7 +207,7 @@ constructor(
 - 检查参与费是否满足要求
 - 如果上述两项都符合要求，则参与者将被添加至参与者列表当中，他们的参与费将被加入到奖池中
 
-```sol
+```solidity
 function participate() external payable {
     // We check that the lottery hasn't started yet
     if (
@@ -252,7 +250,7 @@ function participate() external payable {
 
 由于彩票功能仅限所有者调用，因此我们也需要添加`onlyOwner`修饰符来要求`msg.sender`为`owner`。
 
-```sol
+```solidity
 function startLottery() external payable onlyOwner {
     // Check we haven't started the randomness request yet
     if (
@@ -319,7 +317,7 @@ modifier onlyOwner() {
 
 `fulfillRandomWords`函数定义回调函数`pickWinners`，其负责处理完成请求。在本示例中，回调函数将使用随机词挑选获胜者并支付奖励。`fulfillRandomWords`函数的签名必须与随机数消费者的`fulfillRandomWords`函数的签名一致。
 
-```sol
+```solidity
 function fulfillRequest() public {
     randomness.fulfillRequest(requestId);
 }
@@ -348,7 +346,7 @@ function fulfillRandomWords(
 - 使用随机词确定获胜者
 - 为每位获胜者分发奖励，确保在分发之前将奖励从奖池中移除
 
-```sol
+```solidity
 // This function is called only by the fulfillment callback
 function pickWinners(uint256[] memory randomWords) internal {
     // Get the total number of winners to select

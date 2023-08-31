@@ -5,8 +5,6 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 
 # 使用Ledger和Ethereum App与Moonbeam交互
 
-![Intro banner](/images/tokens/connect/ledger/ledger-banner.png)
-
 ## 概览 {: #introduction }
 
 硬件钱包可提供一个相对安全的加密资产存储方式，因其私钥（用于签署交易）是以离线的方式储存。截至本教程撰写时，Ledger可提供两种硬件钱包的解决方案：Ledger Nano S和Ledger Nano X。

@@ -5,8 +5,6 @@ description: Moonbeam和Moonriver上历史更新概览，包含应用于Moonbeam
 
 # 历史更新
 
-![Historical Updates Banner](/images/builders/build/historical-updates/banner.png)
-
 ## 概览 {: #introduction }
 
 此页面提供一个关于Moonbeam和Moonriver上的历史更新概览，例如Moonbeam源代码的漏洞修复记录和应用的数据迁移。
@@ -598,7 +596,7 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 |   Moonriver    |   RT2302    | 4133065  |
 | Moonbase Alpha |   RT2301    | 4172407  |
 
-关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/PureStake/moonbeam/pull/2134){target=_blank}。
+关于更多信息，您可以查看[GitHub上的相关PR](https://github.com/moonbeam-foundation/moonbeam/pull/2134){target=_blank}。
 
 ***
 

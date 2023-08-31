@@ -5,8 +5,6 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 
 # Razor Network预言机
 
-![Razor Network Moonbeam Diagram](/images/builders/integrations/oracles/razor/razor-banner.png)
-
 ## 概览 {: #introduction } 
 
 开发者现在可以使用Razor Network预言机在Moonbase Alpha测试网上部署桥接合约，从而获取价格信息。桥接合约作为中间件发出事件信息，该信息被Razor Network预言机基础设施获取，并向桥接合约发送报价。
@@ -35,7 +33,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 
 合约通过执行桥接合约接口可调用`getResult`和`getJob`函数以使用Razor Network预言机来获取代币价格等链上数据。
 
-```
+```solidity
 pragma solidity 0.6.11;
 
 interface Razor {
@@ -116,7 +114,7 @@ contract Demo {
 
 测试预言机功能最简单的方式就是将接口指向部署在`{{ networks.moonbase.razor.bridge_address }}`的桥接合约：
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 
 interface Razor {

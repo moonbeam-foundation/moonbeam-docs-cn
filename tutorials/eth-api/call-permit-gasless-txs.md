@@ -5,8 +5,6 @@ description: 使用Moonbeam调用许可预编译在您的dApp启用Gasless交易
 
 # 使用调用许可预编译发送Gasless交易
 
-![Banner Image](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-banner.png)
-
 _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -221,7 +219,7 @@ const thirdPartyGasSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
 
 如果您查看[调用许可预编译的`dispatch`函数](/builders/pallets-precompiles/precompiles/call-permit/#the-call-permit-interface){target=_blank}，您将会看到我们需要发送的数据以及关联的类型如下：
 
-```sol
+```solidity
 function dispatch(
     address from,
     address to,

@@ -1,11 +1,9 @@
 ---
 title: 与XC-20资产交互
-description: 本教程包含所有您需要在注册本地或是外部XC-20资产所需的内容，让您能够通过XCM进行跨链资产转账
+description: 查看XC-20 Solidity接口，包括ERC-20和ERC-20 Permit接口，以及如何使用这些接口与外部XC-20交互。
 ---
 
 # 在Moonbeam上与XC-20资产交互
-
-![Interact with XC-20s Banner](/images/builders/interoperability/xcm/xc20/interact/interact-banner.png)
 
 ## 概览 {: #introduction }
 

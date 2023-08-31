@@ -5,8 +5,6 @@ description: 学习如何使用SubQuery为Moonbeam和Moonriver索引Substrate和
 
 # 使用SubQuery索引Moonbeam
 
-![SubQuery Banner](/images/builders/integrations/indexers/subquery/subquery-banner.png)
-
 ## 概览 {: #introduction }
 
 [SubQuery](https://subquery.network/){target=_blank}是一个数据聚合层，在Layer 1区块链（例如Moonbeam和波卡）和DApp之间运行。这项服务解锁区块链数据并转换至可查询状态，以便能够在直观的应用程序中使用。这允许DApp开发者聚焦于核心用例和前端，无需在构建为处理数据的自定义后端上浪费时间。
@@ -37,19 +35,19 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 1. 全网安装SubQuery CLI：
 
-    ```
+    ```bash
     npm install -g @subql/cli
     ```
-    
+  
     !!! 注意事项
         截至本教程撰写时，所用版本为1.3.1。
-    
+
 2. 使用以下命令初始化您的SubQuery项目：
 
-    ```
+    ```bash
     subql init PROJECT_NAME
     ```
-    
+
 3. 随后，根据提示完成一系列问题：
 
     1. 关于**Select a network**，您可以选择**Substrate**
@@ -58,19 +56,19 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
     2. 系统将提示您**Select a network（选择网络）**。截至本教程撰写时，Moonriver是唯一选项。您可以继续操作，选择**Moonriver**，这也同样适用于Moonbeam和Moonbase Alpha
 
-        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2.png)    
+        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2.png)
 
     3. 随后，系统将提示您**Select a template project（选择一个示例项目）**。您可以选择EVM启动项目或从git端点创建一个项目。本教程将基于Moonriver EVM启动项目操作，您可以选择**moonriver-evm-starter**
 
-        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-3.png)    
+        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-3.png)
 
     4. 这将为您复制启动项目，随后根据提示回答一些额外的问题。您可以直接按回车键输入默认值或者根据需求输入自定义值
 
-        ![Create project](/images/builders/integrations/indexers/subquery/subquery-4.png)   
+        ![Create project](/images/builders/integrations/indexers/subquery/subquery-4.png)
 
 4. 这将为您的SubQuery项目自动创建一个目录。您只需要从项目目录中安装依赖项：
 
-    ```
+    ```bash
     cd PROJECT_NAME && yarn install
     ```
 
@@ -99,7 +97,8 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 每个网络的`network`配置如下所示：
 
 === "Moonbeam"
-    ```
+
+    ```yaml
     network:
     chainId: '0xfe58ea77779b7abda7da4ec526d14db9b1e9cd40a217c34892af80a9b332b76d'
     endpoint: '{{ networks.moonbeam.rpc_url }}'
@@ -109,6 +108,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
     ```
 
 === "Moonriver"
+
     ```yaml
     network:
     chainId: '0x401a1f9dca3da46f5c4091016c8a2f26dcea05865116b286f60f668207d1474b'
@@ -119,13 +119,14 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```yaml
     network:
     chainId: '0x91bc6e169807aaa54802737e1c504b2577d4fafedd5a02c10293b1cd60e39527'
     endpoint: '{{ networks.moonbase.rpc_url }}'
     dictionary: 'https://api.subquery.network/sq/subquery/moonbase-alpha-dictionary'
     chaintypes:
-      file: ./dist/chaintypes.js    
+      file: ./dist/chaintypes.js
     ```
 
 ## Moonbeam自定义数据源 {: #moonbeam-custom-data-source }
@@ -134,7 +135,7 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 SubQuery已经创建了专门用来和Moonbeam [Frontier](https://github.com/paritytech/frontier){target=blank}实现一起工作的数据处理器。这允许您参照处理器使用的特定ABI源以解析参数和事件来源或者调用的智能合约地址。概括来说，SubQuery作为中间件，能够提供额外筛选和数据转换。如果您使用的是示例模板，则Frontier EVM处理器已注入依赖项。如果您使用的是scratch，请确保您运行以下命令安装：
 
-```
+```bash
 yarn add @subql/frontier-evm-processor
 ```
 
@@ -153,7 +154,7 @@ yarn add @subql/frontier-evm-processor
 
 在`schema.graphql`文件中，您可以更新该文件以包含一个`Transaction`和`Approval`实体。关于交易事件和批准调用将会在本教程后半部分讲述。
 
-```
+```gql
 type Transaction @entity {
   id: ID! # Transaction hash
   value: BigInt!
@@ -173,11 +174,11 @@ type Approval @entity {
 
 要生成架构文件中定义的所需GraphQL模型，您可以运行以下命令：
 
-```
+```bash
 yarn codegen
 ```
 
-![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-5.png) 
+![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-5.png)
 
 这些模型将在下一部分介绍映射处理器中使用。
 
@@ -224,30 +225,30 @@ mapping:
 
 要部署您的项目至SubQuery管理的服务器，您必须在上传前构建您的配置。您可以通过运行以下代码完成配置：
 
-```
+```bash
 yarn build
 ```
 
-![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)   
+![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)
 
 接下来，使用Docker[发布您的项目](https://academy.subquery.network/run_publish/publish.html){target=_blank}至[SubQuery项目](https://project.subquery.network/){target=_blank}或[本地运行一个SubQuery节点](https://academy.subquery.network/run_publish/run.html){target=_blank}。为此，您可以运行以下命令：
 
-```
+```bash
 docker-compose pull && docker-compose up
 ```
 
-![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-7.png)   
+![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-7.png)
 
 !!! 注意事项
     第一次下载所需安装包可能会需要一些时间，但不久您便可以看到一个正在运行的SubQuery节点。
 
 启动您的数据库和同步节点可能会需要一些时间，但最终您将看到您的节点开始生产区块。
 
-![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.png)   
+![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.png)
 
 现在您可以打开浏览器输入[http://localhost:3000](http://localhost:3000){target=_blank}查询您的项目，在该页面，您将找到GraphQL playground。在playground的右上角，点击**Docs**按钮可以打开文档。该文档自动生成，可协助寻找您可查询的实体或者函数。
 
-![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.png)   
+![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.png)
 
 恭喜您！现在您已经拥有一个接受GraphQL API查询的Moonbeam SubQuery项目！请注意，根据您所配置的初始区块，索引Moonbeam可能需要几天时间。
 

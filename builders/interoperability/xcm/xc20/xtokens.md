@@ -5,8 +5,6 @@ description: 学习如何使用X-Tokens pallet将XC-20s发送至其他链。另�
 
 # 使用X-Tokens Pallet发送XC-20s
 
-![X-Tokens Precompile Contracts Banner](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-banner.png)
-
 ## 概览 {: #introduction }
 
 为同质化资产转移构建XCM消息通道并非一件易事。因此，开发者可以通过利用wrapper函数/pallet在Polkadot/Kusama上使用XCM功能。

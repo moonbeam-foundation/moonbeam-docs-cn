@@ -5,8 +5,6 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 # Web3.py Python代码库
 
-![Intro diagram](/images/builders/build/eth-api/libraries/web3py/web3py-banner.png)
-
 ## 概览 {: #introduction }
 
 [Web3.py](https://web3py.readthedocs.io/)是一组代码库，允许开发者使用Python，并通过HTTP、IPC或WebSocket协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Web3.py库与Moonbeam节点交互，与在以太坊操作相同。
@@ -35,7 +33,7 @@ mkdir web3-examples && cd web3-examples
 
 在本教程中，您将需要安装Web3.py代码库和Solidity编译器。您可以通过运行以下命令来安装两者的安装包：
 
-```
+```bash
 pip3 install web3 py-solc-x
 ```
 

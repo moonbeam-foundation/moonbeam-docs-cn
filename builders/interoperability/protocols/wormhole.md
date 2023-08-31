@@ -5,8 +5,6 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 # Wormhole Network
 
-![Wormhole Moonbeam banner](/images/builders/interoperability/protocols/wormhole/wormhole-banner.png)
-
 ## 概览
 
 [Wormhole](https://wormhole.com/){target=_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://book.wormhole.com/wormhole/5_guardianNetwork.html){target=_blank}赋能, Wormhole可以让dApps跨链传输任意消息.
@@ -102,7 +100,7 @@ function addTrustedAddress(bytes32 sender, uint16 _chainId) external {
 
 注意`sender`参数是一个_bytes32_类型，而非_address_类型。Wormhole的VAAs以_bytes32_的形式提供发射器（源）地址，所以它们以_bytes32_的形式存储和检查。若要将_address_类型转换为_bytes32_，您将需要再加上24个0。这是因为_address_的值是20个bytes，小于_bytes32_的32个。每个byte有两个十六进制字符，所以：
 
-```
+```text
 zeros to add = (32 bytes - 20 bytes) * 2 hexadecimal characters
 zeros to add = 24
 ```
@@ -140,7 +138,7 @@ zeros to add = 24
 
 首先需要设置。使用npm包管理器通过命令行安装依赖项（像以太币和中继引擎本身）。
 
-```
+```bash
 npm install
 cd plugins/simplegeneralmessage_plugin
 npm install
@@ -163,7 +161,7 @@ npm install
 
 最好按顺序处理这四个组件的配置和设置，所以从间谍节点开始。间谍节点使用Docker，所以在尝试运行节点前确保docker处于活跃状态。启动Docker容器的命令很长，所以为了简化步骤，已经以npm脚本形式添加至代码库的父目录。您只需运行：
 
-```
+```bash
 npm run testnet-spy
 ```
 
@@ -245,7 +243,7 @@ npm run testnet-spy
 
 如果您还记得组件列表的话，第三个是Redis数据库组件。与数据库相关的大部分代码对用户隐藏，因为`relayer-engine`包会从其写入和阅读，并将任何相关数据注入插件代码。要运行Redis数据库，只需在父目录中运行以下命令：
 
-```
+```bash
 npm run redis
 ```
 
@@ -354,7 +352,7 @@ async handleWorkflow(
 
 然后，该代码会尝试用VAA执行函数`processMyMessage(bytes32 VAA)`，这是此前被定义为用于中继消息的函数。该函数名字是为智能合约随意设置的，因为中继器可以指定调用任何函数。这说明了开发者可以更改该中继器代码！
 
-```
+```js
 await execute.onEVM({
   chainId: destChainID,
   f: async (wallet, chainId) => {
@@ -364,7 +362,6 @@ await execute.onEVM({
   },
 });
 ```
-
 
 最后一步就是检查`relayer-engine-config/common.json`。该配置文件控制着整个中继器的执行。请确保您在使用的TestNet EVM是列出在该文件中`supportedChains`对象内的。如果其未被列出，该插件不会正常运行。如果您在运行的一条链未被列出，您将需要以下列格式从[Wormhole的开发者文档](https://book.wormhole.com/reference/contracts.html#testnet){target=_blank}导入数据至配置文件。
 
@@ -387,7 +384,7 @@ await execute.onEVM({
 
 配置这样就行了！现在需要运行它。在您的终端实例（未运行间谍节点的实例），导航至父文件夹。运行下列命令：
 
-```
+```bash
 npm run start
 ```
 

@@ -5,8 +5,6 @@ description: 学习如何使用API3在Moonbeam网络上通过API3 Airnodes和dAP
 
 # 使用API3请求链下数据
 
-![API3 Moonbeam Diagram](/images/builders/integrations/oracles/api3/api3-banner.png)
-
 ## 概览 {: #introduction }
 
 API3是一个去中心化解决方案，以易访问和可扩展的方式向智能合约平台提供传统API服务。它由去中心化自治组织（DAO）——API3 DAO负责管理。API3让开发者能够在无需担心安全问题前提下，从智能合约中访问链下资源。API3通过第一方预言机——Airnodes，以及源自预言机的链上数据源使这一切成为可能。

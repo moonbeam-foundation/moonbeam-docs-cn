@@ -1,6 +1,6 @@
 ---
 title: 跨链通信
-description: 概述跨链共识消息(XCM)的工作原理，以及开发者如何利用Polkadot/Kusama XCM将资产转移到 Moonbeam，或从Moonbeam转移出资产。
+description: 本文概述了跨共识消息（XCM）的运作方式以及如何利用XCM在Moonbeam转入或转出资产。
 template: subsection-index-page.html
 hide:
   - toc

@@ -5,8 +5,6 @@ description: 通过使用XCM Transactor Pallet，如何在其他链进行远程X
 
 # 使用XCM Transactor Pallet进行远程执行
 
-![XCM Transactor Precompile Contracts Banner](/images/builders/interoperability/xcm/xcm-transactor/xcmtransactor-banner.png)
-
 ## 概览 {: #introduction }
 
 XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}组成。这些指令的组合会产生预先确定的操作，例如跨链Token转移，更有趣的是，远程跨链执行。

@@ -5,8 +5,6 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 # Ethers.rs Rust库
 
-![Intro diagram](/images/builders/build/eth-api/libraries/ethersrs/ethers-rust-banner.png)
-
 ## 概览 {: #introduction } 
 
 [Ethers.rs](https://ethers.rs){target=_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=_blank}获取更多关于如何使用Ethers.rs的信息。
@@ -31,7 +29,7 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 首先，您可以使用Cargo工具创建一个新的Rust项目：
 
-```
+```bash
 cargo init ethers-examples && cd ethers-examples
 ```
 
@@ -55,7 +53,7 @@ serde = "1.0.149"
 
 如果这是您第一次使用`solc-select`，您将需要使用以下命令来安装和配置Solidity版本：
 
-```
+```bash
 solc-select install 0.8.17 && solc-select use 0.8.17
 ```
 
@@ -306,7 +304,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行发送交易并在交易发送后检查余额的脚本，您可以运行以下命令：
 
-```
+```bash
 cargo run
 ```
 
@@ -396,7 +394,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 Rust是typesafe，这就是为什么需要`Incrementer.sol`合约的ABI来生成typesafe Rust结构。在本示例中，您应该在名为`Incrementer_ABI.json`的Cargo项目的根目录中创建一个新文件：
 
-```
+```bash
 touch Incrementer_ABI.json
 ```
 
@@ -492,7 +490,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行部署合约和返回存储在`Incrementer`合约中的当前值的脚本，您可以在终端中输入以下命令：
 
-```
+```bash
 cargo run
 ```
 
@@ -553,7 +551,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 要运行脚本，您可以在终端输入以下命令：
 
-```
+```bash
 cargo run
 ```
 

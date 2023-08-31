@@ -5,8 +5,6 @@ description: Moonbeam XCM SDK中接口和方法的参考，可用于Moonbeam和�
 
 # Moonbeam XCM SDK参考页面：v0版本
 
-![XCM SDK Banner](/images/builders/interoperability/xcm/sdk/reference-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中继链和其他平行链向Moonbeam或Moonriver充提资产。通过使用SDK，您无需担心确定原始或目标资产的multilocation或在哪个网络上使用extrinsics来发送XCM转移。

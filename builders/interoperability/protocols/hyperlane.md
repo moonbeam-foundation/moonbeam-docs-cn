@@ -1,11 +1,9 @@
 ---
 title: 通过Hyperlane进行跨链操作
-description: 学习如何使用Hyperlane协议和API桥接资产以及将Moonbeam dApp连接到多个区块链上的资产和功能的其他方法。
+description: 了解用于跨链资产转移的GMP协议Hyperlane，以及如何在Moonbeam上使用Hyperlane开始构建跨链应用程序。
 ---
 
 # Hyperlane协议
-
-![Hyperlane Moonbeam banner](/images/builders/interoperability/protocols/hyperlane/hyperlane-banner.png)
 
 ## 概览 {: #introduction }
 

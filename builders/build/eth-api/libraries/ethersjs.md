@@ -5,8 +5,6 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 # Ethers.js JavaScript代码库
 
-![Intro diagram](/images/builders/build/eth-api/libraries/ethers/ethersjs-banner.png)
-
 ## 概览 {: #introduction }
 
 [Ethers.js](https://docs.ethers.io/){target=_blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于Web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Ethers.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在此[博客文章](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3){target=_blank}了解更多关于Ethers.js的信息。
@@ -29,13 +27,13 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
 
-```
+```bash
 mkdir ethers-examples && cd ethers-examples
 ```
 
 在本教程中，您将需要安装Ethers.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
 
-```
+```bash
 npm install ethers solc@0.8.0
 ```
 
@@ -159,7 +157,7 @@ npm install ethers solc@0.8.0
 
 您仅需要一个文件查看交易发送前后两个地址的余额。首先，您可以运行以下命令创建一个`balances.js`文件：
 
-```
+```bash
 touch balances.js
 ```
 
@@ -201,7 +199,7 @@ balances();
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
-```
+```bash
 node balances.js
 ```
 
@@ -211,7 +209,7 @@ node balances.js
 
 在本示例中，您将从拥有私钥的发送地址转移1个DEV Token至另一个地址。首先，您可以运行以下命令创建一个`transaction.js`文件：
 
-```
+```bash
 touch transaction.js
 ```
 
@@ -268,7 +266,7 @@ send();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node transaction.js
 ```
 
@@ -290,7 +288,7 @@ node transaction.js
 
 有了用于编译`Incrementer.sol`合约的脚本，您就可以使用这些结果发送部署的签名交易。首先，您可以为部署的脚本创建一个名为`deploy.js`的文件：
 
-```
+```bash
 touch deploy.js
 ```
 
@@ -355,7 +353,7 @@ deploy();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node deploy.js
 ```
 
@@ -369,7 +367,7 @@ node deploy.js
 
 首先，您需要创建一个文件并命名为`get.js`：
 
-```
+```bash
 touch get.js
 ```
 
@@ -420,7 +418,7 @@ get();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node get.js
 ```
 
@@ -430,7 +428,7 @@ node get.js
 
 发送函数是修改合约存储（更改变量）的交互类型，这意味着需要签署和发送交易。在这一部分，您将创建两个脚本：一个是增量，另一个是重置增量器。首先，您可以为每个脚本创建一个文件，并分别命名为`increment.js`和`reset.js`：
 
-```
+```bash
 touch increment.js reset.js
 ```
 
@@ -493,7 +491,7 @@ increment();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node increment.js
 ```
 
@@ -557,7 +555,7 @@ reset();
 
 您可以在终端运行以下命令以运行脚本：
 
-```
+```bash
 node reset.js
 ```
 

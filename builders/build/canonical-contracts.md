@@ -6,8 +6,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约
 
 # 标准合约
 
-![Canonical contracts banner](/images/builders/build/canonical-contracts/canonical-contracts-banner.png)
-
 ## 公用基础设施合约 {: #common-goods-contracts}
 
 以下为已创建的合约地址：

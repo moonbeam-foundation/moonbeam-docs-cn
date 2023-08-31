@@ -5,8 +5,6 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 # 可铸造XC-20
 
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/mintable-xc20/mintable-xc20-banner.png)
-
 ## 概览 {: #introduction }
 
 如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，[XC-20有两种类型](/builders/interoperability/xcm/xc20/overview#types-of-xc-20s){target=_blank}：[外部的](/builders/interoperability/xcm/xc20/xc20){target=_blank}和可铸造的。外部和可铸造的XC-20之间最大的不同为可铸造XC-20代表那些直接在Moonbeam网络上铸造和销毁，但是具有原生XCM可互操作性的资产。同样如同[XC-20概况](/builders/interoperability/xcm/xc20/overview){target=_blank}文章内所述，可铸造XC-20资产如已在其他链上注册为XCM类型资产，即可自由的在所有注册的平行链上转移。相反地，外部XC-20资产则是锁定在Moonbeam，同时在中继链或是其他平行链上拥有的主权账户中。此教程将涵盖可铸造XC-20类型的资产。
@@ -96,7 +94,7 @@ description: 学习如何在基于Moonbeam网络铸造和销毁以及通过XCM�
 
 可铸造XC-20预编译地址通过以下公式计算：
 
-```
+```text
 address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 ```
 
@@ -125,17 +123,20 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 要在Moonbeam上创建可铸造XC-20资产，首个步骤为创建提案。资产的创建者（Creator）将需要存入一定资产，每个网络所需的锁定数量如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.mintable_xc20.asset_deposit }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.mintable_xc20.asset_deposit }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.mintable_xc20.asset_deposit }} DEV
     ```
 
@@ -171,17 +172,20 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 当提案通过并颁布后，您设定为所有者（Owner）的账户将能够设定资产元数据，包含资产名称、符号以及资产位数。您需要存入一定数量Token以设置元数据，以下为每个网络的要求：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.mintable_xc20.metadata_base_deposit }} GLMR base fee + ({{ networks.moonbeam.mintable_xc20.metadata_byte_deposit }} GLMR x number of bytes stored)
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.mintable_xc20.metadata_base_deposit }} MOVR base fee + ({{ networks.moonriver.mintable_xc20.metadata_byte_deposit }} MOVR x number of bytes stored)
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.mintable_xc20.metadata_base_deposit }} DEV base fee + ({{ networks.moonbase.mintable_xc20.metadata_byte_deposit }} DEV x number of bytes stored)
     ```
 

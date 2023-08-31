@@ -6,8 +6,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, token, 原
 
 # 原生Token ERC-20预编译
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/erc20/erc20-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口与原生协议Token交互。尽管GLMR和MOVR并非ERC-20 Token，您现在可以假设他们为原生ERC-20资产与他们交互！
@@ -21,17 +19,20 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
 预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.erc20 }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 

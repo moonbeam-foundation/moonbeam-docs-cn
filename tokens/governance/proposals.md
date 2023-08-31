@@ -5,8 +5,6 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 # 如何在OpenGov (Governance v2)发起提案
 
-![Governance Moonbeam Banner](/images/tokens/governance/proposals/governance-proposal-banner.png)
-
 ## 概览 {: #introduction }
 
 提案是指Token持有者在链上提出建议并由系统生效。提案是治理系统的核心要素之一，因为这是参与者能够提出建议/更改的主要工具，随后参与者可以对其进行投票。

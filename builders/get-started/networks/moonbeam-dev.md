@@ -1,6 +1,6 @@
 ---
 title: 运行Moonbeam开发节点
-description: 通过此教程学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot.js GUI并加以控制
+description: 遵循本教程学习如何启动您的首个Moonbeam开发节点，以及如何配置以用于开发目的并连接它。
 ---
 
 # 设置Moonbeam开发节点
@@ -232,7 +232,7 @@ Moonbeam拥有[统一账户](/learn/features/unified-accounts){target=_blank}系
 
 您的Moonbeam开发节点带有十个预注资的以太坊风格的开发帐户。这些地址源自于Substrate的规范开发助记词：
 
-```
+```text
 bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
@@ -250,12 +250,14 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 您可以使用以下RPC和WSS端点访问您的Moonbeam开发节点：
 
 === "HTTP"
-    ```
+
+    ```text
     {{ networks.development.rpc_url }}
     ```
 
 === "WSS"
-    ```
+
+    ```text
     {{ networks.development.wss_url }}
     ```
 

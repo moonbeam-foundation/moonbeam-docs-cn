@@ -6,8 +6,6 @@ template: main.html
 
 # 通过XCM在波卡中执行Uniswap V2兑换
 
-![Banner Image](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-banner.png)
-
 _作者：Alberto Viera_
 
 ## 概览 {: #introduction }

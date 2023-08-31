@@ -1,11 +1,9 @@
 ---
 title: 运行收集人节点
-description: 关于运行节点后如何深入了解并成为Moonbeam网络中收集人的说明
+description: 关于运行节点后如何深入了解并成为Moonbeam网络中收集人的说明。
 ---
 
 # 在Moonbeam上运行收集人
-
-![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
 
 ## 概览 {: #introduction }
 

@@ -5,8 +5,6 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 # 使用Brownie在Moonbeam上进行部署
 
-![Brownie banner](/images/builders/build/eth-api/dev-env/brownie/brownie-banner.png)
-
 ## 概览 {: #introduction }
 
 [Brownie](https://eth-brownie.readthedocs.io/){target=_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
@@ -28,29 +26,30 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 您将会需要安装Brownie并创建一个Brownie项目（如果您尚未创建）。您可以选择创建一个空白的项目或是使用[Brownie mix](https://eth-brownie.readthedocs.io/en/stable/init.html?highlight=brownie%20mix#creating-a-project-from-a-template){target=_blank}（基础的项目模板）创建项目。本教程将以创建一个空白的项目为例，您可以通过跟随以下步骤进行操作：
 
 1. 为您的项目创建目录
-   
-    ```
+
+    ```bash
     mkdir brownie && cd brownie
     ```
-    
+
 2. 如果您尚未安装`pipx`，执行以下命令进行安装
-   
-    ```
+
+    ```bash
     python3 -m pip install --user pipx
     python3 -m pipx ensurepath
     ```
-    
+
 3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
-   
-    ```
+
+    ```bash
     pipx install eth-brownie
     ```
+
     !!! 注意事项
         [`pipx`](https://github.com/pypa/pipx){target=_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
-    
+
 4. 创建项目
-   
-    ```
+
+    ```bash
     brownie init
     ```
 
@@ -73,7 +72,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 从版本1.18.2开始，Brownie开箱即可支持Moonbeam、Moonriver和Moonbase Alpha。要查看支持的网络的完整列表，您可以运行以下命令：
 
-```
+```bash
 brownie networks list
 ```
 
@@ -83,7 +82,7 @@ brownie networks list
 
 要添加Moonbeam开发节点配置，您可以运行以下命令：
 
-```
+```bash
 brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url }} name=Development chainid={{ networks.development.chain_id }}
 ```
 
@@ -92,46 +91,54 @@ brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url 
 要部署Moonbeam网络或是在特定网络上进行测试，您可以通过以下命令扩展至指定的网络：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     --network moonbeam-main
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     --network moonriver-main
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     --network moonbeam-test
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     --network moonbeam-dev
     ```
 
 如果您希望设置默认网络，您可以通过添加以下代码段至`brownie-config.yaml`配置文件进行操作：
 
 === "Moonbeam"
+
     ```yaml
     networks:
         default: moonbeam-main
     ```
 
 === "Moonriver"
+
     ```yaml
     networks:
         default: moonriver-main
     ```
 
 === "Moonbase Alpha"
+
     ```yaml
     networks:
         default: moonbeam-test
     ```
 
 === "Moonbeam开发节点"
+
     ```yaml
     networks:
         default: moonbeam-dev
@@ -144,11 +151,11 @@ brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url 
 
 在您部署合约之前，您需要配置您的账户，其同样为通过命令行进行操作。您可以运行以下命令添加新的账户：
 
-```
-brownie accounts new {INSERT-ACCOUNT-NAME}
+```bash
+brownie accounts new {INSERT_ACCOUNT_NAME}
 ```
 
-请确认您将`{INSERT-ACCOUNT-NAME}`替换成您想要设置的账户名称。在本教程中，`alice`将会是账户名称。
+请确认您将`{INSERT_ACCOUNT_NAME}`替换成您想要设置的账户名称。在本教程中，`alice`将会是账户名称。
 
 系统将跳出弹窗提示您输入私钥和加密账户密码。如果账户被成功配置，您将会在终端中看到您的账户地址。
 
@@ -158,7 +165,7 @@ brownie accounts new {INSERT-ACCOUNT-NAME}
 
 接着您可以在`contracts`目录中创建合约。在本教程中，您将部署的智能合约为`Box`，用于存储后续读取的数据。您可以运行以下命令创建一个`Box.sol`合约：
 
-```
+```bash
 cd contracts && touch Box.sol
 ```
 
@@ -191,7 +198,7 @@ contract Box {
 
 要编译合约您可以运行以下命令：
 
-```
+```bash
 brownie compile
 ```
 
@@ -216,7 +223,7 @@ compiler:
 
 当Brownie接收到更改的消息时，您的合约才会重新编译。您可以运行以下命令强制执行新的编译：
 
-```
+```bash
 brownie compile --all
 ```
 
@@ -224,7 +231,7 @@ brownie compile --all
 
 要部署`Box.sol`智能合约，您将需要撰写一个简单的部署脚本。您可以在`scripts`目录中创建一个新文件并将其命名为`deploy.py`：
 
-```
+```bash
 cd scripts && touch deploy.py
 ```
 
@@ -253,22 +260,26 @@ def main():
 您可以使用`run`命令并指定网络来部署`Box.sol`合约：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     brownie run scripts/deploy.py --network moonbeam-mainnet
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     brownie run scripts/deploy.py --network moonriver-mainnet
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     brownie run scripts/deploy.py --network moonbeam-test
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     brownie run scripts/deploy.py --network moonbeam-dev
     ```
 
@@ -287,49 +298,53 @@ def main():
 要与您新部署的合约交互，您可以在Brownie控制台中运行以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     brownie console --network moonbeam-mainnet
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     brownie console --network moonriver-mainnet
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     brownie console --network moonbeam-test
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     brownie console --network moonbeam-dev
     ```
 
 随后，合约实例将会自动在终端中可见且可访问。它将会被打包在`ContractContainer`中，并允许您部署新的合约实例。要访问部署的合约，您可以使用`Box[0]`。您可以跟随以下步骤，调用`store`函数并将数值设置为`5`：
 
 1. 为合约创建一个变量
-   
-    ```
+
+    ```bash
     box = Box[0]
     ```
-    
+
 2. 使用您的账户调用`store`函数并将数值设置为`5`
-   
-    ```
+
+    ```bash
     box.store(5, {'from': accounts.load('alice'), 'gas_limit': '50000'})
     ```
-    
+
 3. 输入您账户的密码
 
 此交易将会由您的账户签署并传送至网络。现在，您可以通过以下步骤获取数据：
 
 1. 调用`retrieve`函数
-   
-    ```
+
+    ```bash
     box.retrieve({'from': accounts.load('alice')})
     ```
-    
+
 2. 输入密码
 
 您将会看见`5`或是任何您先前储存的数据。
@@ -344,7 +359,7 @@ def main():
 
 您还可以编写一个脚本来与您新部署的合约进行交互。首先，您可以在`scripts`目录中创建一个新文件：
 
-```
+```bash
 cd scripts && touch store-and-retrieve.py
 ```
 
@@ -372,22 +387,26 @@ def main():
 要运行脚本，您可以使用以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     brownie run scripts/store-and-retrieve.py --network moonbeam-mainnet
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     brownie run scripts/store-and-retrieve.py --network moonriver-mainnet
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     brownie run scripts/store-and-retrieve.py --network moonbeam-test
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     brownie run scripts/store-and-retrieve.py --network moonbeam-dev
     ```
 

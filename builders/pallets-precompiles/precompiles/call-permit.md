@@ -6,8 +6,6 @@ keywords: solidity、以太坊、调用许可、许可、无需Gas费交易、mo
 
 # 与调用许可预编译交互
 
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/call-permit/call-permit-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的许可（一个签署的[EIP-712](https://eips.ethereum.org/EIPS/eip-712){target=_blank}消息）且该许可能够由任何人或任何智能合约调度。这与[ERC-20许可Solidity接口](/builders/interoperability/xcm/xc20/overview/#the-erc20-permit-interface){target=_blank}相似，但其适用于除了批准外的任何EVM调用。
@@ -19,17 +17,20 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 此预编译合约位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.call_permit }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.call_permit }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.call_permit }}
      ```
 
@@ -174,7 +175,7 @@ contract SetMessage {
 - `value` - 在本示例中可以为`0`，因为您将用于设置消息而非转移资金
 - `data` - 您可以传送任何消息，您仅需要通过`SetMessage.sol`合约设置消息的十六进制表现方式。这将会包含`set`函数的函数选择器以及消息的字节。在本示例中，您可以传送`hello world`，以下为其十六进制表现：
 
-     ```
+     ```text
      0x4ed3885e0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000
      ```
 - `gasLimit` - `100000`将足够用于传送调度的调用
@@ -218,20 +219,20 @@ Ethers.js的CDN应当在**Resources**下方的库列表出现
 
 要使用JavaScript和[MetaMask的`@metamask/eth-sig-util` npm包](https://www.npmjs.com/package/@metamask/eth-sig-util){target=_blank}，您首先需要在本地创建项目。您可以通过以下命令创建：
 
-```
+```bash
 mkdir call-permit-example && cd call-permit-example && touch getSignature.js
 npm init -y
 ```
 
 您现在应该有一个文件，您可以在其中创建脚本以获取签名以及`package.json`文件。打开`package.json`文件，接着在`"dependencies"`部分添加：
 
-```
+```json
 "type": "module"
 ```
 
 接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.io/){target=_blank}：
 
-```
+```bash
 npm i @metamask/eth-sig-util ethers
 ```
 
@@ -246,7 +247,7 @@ npm i @metamask/eth-sig-util ethers
 
 您可以使用以下命令运行脚本：
 
-```
+```bash
 node getSignature.js
 ```
 
@@ -267,7 +268,7 @@ node getSignature.js
 3. 在**value**字段输入`0`
 4. 为`set`函数输入函数选择器以及您希望为`SetMessage.sol`合约传送消息的十六进制表现方式，在本示例中我们可以使用`hello world`：
 
-     ```
+     ```text
      0x4ed3885e0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000
      ```   
 5. 在**gasLimit**字段输入`100000`

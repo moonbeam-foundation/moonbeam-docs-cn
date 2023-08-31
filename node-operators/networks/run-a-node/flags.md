@@ -5,8 +5,6 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 # 有助于在Moonbeam上运行节点的标志
 
-![Full Node Moonbeam Banner](/images/node-operators/networks/run-a-node/flags/flags-banner.png)
-
 ## 概览 {: #introduction }
 
 当您在启动自己的Moonbeam节点时，有些必需的或是可选的标志供您使用。

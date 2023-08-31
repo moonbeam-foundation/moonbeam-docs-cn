@@ -1,15 +1,13 @@
 ---
 title: 运行追踪节点
-description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上运行追踪节点
+description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的Trace模块在Moonbeam上运行追踪节点。
 ---
 
 # 运行追踪节点
 
-![Debug & Trace Moonbeam Banner](/images/node-operators/networks/tracing-node/tracing-node-banner.png)
-
 ## 概览 {: #introduction }
 
-Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非标准RPC方法以获得交易处理的深度信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}或[Blockscout](https://docs.blockscout.com/){target=_blank}等项目仰赖这些方法检索区块链数据。 
+Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非标准RPC方法以获得交易处理的深度信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}或[Blockscout](https://docs.blockscout.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
 
 想要使用支持的RPC方法，您需要运行一个追踪节点。与运行一个全节点略有不同，追踪节点使用一个不同的Docker镜像，名为`purestake/moonbeam-tracing`，运用其来实现追踪功能。同时，也需使用额外的标志来告诉节点需要支持哪个非标准功能。
 
@@ -24,7 +22,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 运行一个`debug`、`txpool`和`tracing`节点类似于[运行一个全节点](/node-operators/networks/run-a-node/overview/){target=_blank}。另外，您可以根据您启用的特定追踪功能使用以下标志：
 
   - **`--ethapi=debug`** —— 选择性标志，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
-  - **`--ethapi=trace`** —— 选择性标志，启用`trace_filter` 
+  - **`--ethapi=trace`** —— 选择性标志，启用`trace_filter`
   - **`--ethapi=txpool`** —— 选择性标志，启用`txpool_content`、`txpool_inspect`和`txpool_status`
   - **`--wasm-runtime-overrides=<path/to/overrides>`** —— **必备**标志，用于追踪指定存储本地WASM runtime路径。如果您使用的是Docker，路径则为`/moonbeam/<network>-substitutes-tracing`。接受网络作为参数： `moonbeam`、`moonriver`或`moonbase`（用于开发节点和 Moonbase Alpha）
   - **`--runtime-cache-size 64`** —— **必备**标志，将内存缓存中保留的不同runtime版本的数量配置为64
@@ -93,7 +91,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 下一步，执行Docker运行的命令。注意，您需要替换：
 
- - 在两处替换 `YOUR-NODE-NAME` 
+ - 在两处替换 `YOUR-NODE-NAME`
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
 !!! 注意事项
@@ -277,16 +275,17 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 !!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-    
+
     对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
 
 === "Moonbeam"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
     StartLimitIntervalSec=0
-    
+
     [Service]
     Type=simple
     Restart=on-failure
@@ -315,12 +314,13 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
     StartLimitIntervalSec=0
-    
+
     [Service]
     Type=simple
     Restart=on-failure
@@ -349,7 +349,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target

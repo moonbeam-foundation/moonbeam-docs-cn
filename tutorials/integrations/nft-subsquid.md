@@ -1,11 +1,9 @@
 ---
 title: 使用Subsquid索引NFT转账
-description: 通过本教程学习如何使用Subsquid（一种基于Substrate区块链的检索节点框架）为Moonbeam和Moonriver网络进行索引和处理Substrate和EVM数据。
+description: 学习如何使用Subsquid（基于Substrate链的查询节点框架）索引和处理Moonbeam和Moonriver的NFT转移数据。
 ---
 
 # 使用Subsquid索引在Moonbeam上的NFT转账
-
-![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
 
 _作者：Massimo Luraschi_
 
@@ -155,7 +153,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
 此教程也同样适用于Moonriver或Moonbase Alpha，但请确保将数据源更新为正确的网络：
 
 === "Moonbeam"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbeam", {type: "Substrate"}),
@@ -163,7 +162,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonriver", {type: "Substrate"}),
@@ -171,7 +171,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbase", {type: "Substrate"}),

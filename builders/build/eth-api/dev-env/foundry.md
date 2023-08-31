@@ -5,8 +5,6 @@ description: 学习如何使用以太坊部署环境Foundry在Moonbeam编译、�
 
 # 使用Foundry部署合约至Moonbeam
 
-![Foundry Create Project](/images/builders/build/eth-api/dev-env/foundry/foundry-banner.png)
-
 ## 概览 {: #introduction }
 
 [Foundry](https://github.com/foundry-rs/foundry){target=_blank}是一个用Rust语言编写的以太坊部署环境，能够帮助开发者管理依赖项、编译项目、运行测试、部署合约以及从命令行与区块链交互。Foundry可以直接与Moonbeam的以太坊API交互，所以可以直接用于将智能合约部署至Moonbeam。

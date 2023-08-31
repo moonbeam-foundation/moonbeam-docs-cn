@@ -5,8 +5,6 @@ description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的
 
 # Debug API与Trace模块
 
-![Debug & Trace Moonbeam Banner](/images/builders/build/eth-api/debug-trace/debug-trace-banner.png)
-
 ## 概览 {: #introduction }
 
 Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}或[Blockscout](https://docs.blockscout.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
@@ -81,7 +79,7 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 运行跟踪节点后，您可以在终端中开启另一个窗口，在其中运行`curl`命令并调用任何可用的JSON RPC方法。例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
 
-```
+```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
   '{
     "jsonrpc":"2.0",
@@ -99,7 +97,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条追踪结果）：
 
-```
+```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
   '{
     "jsonrpc":"2.0",
@@ -116,7 +114,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 由于目前支持的txpool方法都不需要参数，因此您可以通过更改任何txpool方法以适配以下curl命令：
 
-```
+```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
   '{
     "jsonrpc":"2.0",

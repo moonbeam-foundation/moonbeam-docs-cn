@@ -5,8 +5,6 @@ description: 如何通过XCM从任何已建立XCM通道的波卡平行链远程�
 
 # 通过XCM远程调用EVM
 
-![Remote EVM Calls Banner](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-banner.png)
-
 ## 概览 {: #introduction}
 
 [XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor/){target=_blank}提供了一个能够通过XCM进行远程跨链调用的简易接口。然而，这并没有考虑对Moonbeam的EVM进行远程调用的可能性，而只是对Substrate特定的pallets（功能）进行调用。
@@ -371,7 +369,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 
 如果JSON RPC请求发送正确，应获得以下结果：
 
-```JSON
+```json
 {
     "jsonrpc": "2.0",
     "result": {

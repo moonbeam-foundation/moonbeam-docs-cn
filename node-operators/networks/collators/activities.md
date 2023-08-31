@@ -5,8 +5,6 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
 
 # 收集人活动
 
-![Collator Activities Banner](/images/node-operators/networks/collators/activities/activities-banner.png)
-
 ## 概览 {: #introduction }
 
 在基于Moonbeam的网络上成为收集人需要您满足[绑定要求](/node-operators/networks/collators/requirements/#bonding-requirements){target=_blank}并加入候选人池。在您加入候选人池后，您可以调整您的自身绑定数量或决定何时离开候选人池。

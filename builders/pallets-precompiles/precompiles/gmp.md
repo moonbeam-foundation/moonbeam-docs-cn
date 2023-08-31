@@ -6,8 +6,6 @@ keywords: solidity, ethereum, GMP, wormhole, moonbeam, bridge, connected, contra
 
 # 与GMP预编译交互
 
-![GMP Precompile Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/gmp/gmp-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam路由流动性（MRL）是指Moonbeam作为端口平行链的用例，适用于从源链到其他波卡平行链的流动性。此用例因为通用消息传递（GMP）的出现而实现，其中带有任意数据和Token的消息可以通过[与链无关的GMP协议](/builders/interoperability/protocols){target=_blank}在非平行链区块链上发送。这些GMP协议可以与[波卡的XCM消息传递系统](/builders/interoperability/xcm/overview){target=_blank}结合，以实现无缝流动性路由。
@@ -17,17 +15,20 @@ GMP预编译充当Moonbeam路由流动性的接口，作为来自GMP协议的承
 GMP预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.gmp}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.gmp}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.gmp}}
      ```
 

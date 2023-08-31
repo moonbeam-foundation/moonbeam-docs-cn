@@ -5,8 +5,6 @@ description: 学习如何在Moonbeam上访问Precompile Registry并与其交互�
 
 # Moonbeam上的Precompile Registry
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/registry/registry-banner.png)
-
 ## 概览 {: #introduction }
 
 Precompile Registry作为[Moonbeam上可用预编译](/builders/pallets-precompiles/precompiles/overview){target=_blank}的单一数据源。Precompile Registry可用于确定地址是否对应于预编译，以及是否处于活跃状态或已启用。当Substrate和Polkadot生态系统中存在上游变化导致预编译发生向后不兼容的变化时，Precompile Registry的作用将非常有效。开发者可以设计退出策略，以确保其dApp在这些场景中能够正常恢复。
@@ -16,17 +14,20 @@ Precompile Registry还有另外一个作用，允许任何用户为预编译设�
 Registry Precompile位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.registry }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.registry }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.registry }}
      ```
 
@@ -38,7 +39,7 @@ Registry Precompile位于以下地址：
 
 ??? code "PrecompileRegistry.sol"
     
-    ```sol
+    ```solidity
     --8<-- 'code/precompiles/registry/PrecompileRegistry.sol'
     ```
 

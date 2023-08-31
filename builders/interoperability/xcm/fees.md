@@ -5,8 +5,6 @@ description: 学习XCM指令的内容，包含如何处理XCM执行费用以及�
 
 # Moonbeam上的XCM费用
 
-![XCM Fees Banner](/images/builders/interoperability/xcm/fees/fees-banner.png)
-
 ## 概览 {: #introduction}
 
 XCM旨在成为共识系统之间沟通的语言。传送XCM消息包含一系列在原链和目标链上执行的指令。XCM指令的集合将执行如Token转账等不同的动作。要处理和执行每个XCM指令，基本上皆需支付一定数量的相关费用。

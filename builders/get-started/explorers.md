@@ -5,8 +5,6 @@ description: 当前在Moonbeam上支持导航Substrate和以太坊层的区块�
 
 # 区块浏览器
 
-![Explorer Banner](/images/builders/get-started/explorers/explorers-banner.png)
-
 ## 概览 {: #introduction }
 
 区块浏览器如同区块链的搜寻引擎，允许用户搜索余额、合约和交易等资讯。更多高级区块浏览器还提供索引编辑的功能，使用户能够在网络中直接提供像ERC-20 Token一样完整的一套信息，甚至还有可能提供API服务，可直接通过外部设备连接。

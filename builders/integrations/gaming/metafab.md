@@ -5,8 +5,6 @@ description: 使用MetaFab在Moonbeam上开发您的区块链游戏！MetaFab通
 
 # 使用MetaFab开发者工具包在Moonbeam上构建Web3游戏
 
-![MetaFab Moonbeam Banner](/images/builders/integrations/gaming/metafab/metafab-banner.png)
-
 ## 概览 {: #introduction }
 
 任何开发者皆可以使用[MetaFab](https://www.trymetafab.com/){target=_blank}所提供的API构建无摩擦的区块链游戏。MetaFab为一个针对游戏和游戏类应用与区块链基础机构快速集成方面提供免费、端对端且自主使用的解决方案。

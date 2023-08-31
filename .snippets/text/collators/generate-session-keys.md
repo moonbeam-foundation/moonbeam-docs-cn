@@ -8,7 +8,7 @@
 
 举例而言，如果您的收集人HTTP端点位于端口`9944`，则JSON-RPC调用可能如下所示：
 
-```
+```bash
 curl http://127.0.0.1:9944 -H \
 "Content-Type:application/json;charset=utf-8" -d \
   '{

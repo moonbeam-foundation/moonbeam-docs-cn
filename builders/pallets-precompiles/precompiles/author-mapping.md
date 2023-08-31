@@ -1,12 +1,10 @@
 ---
 title: 作者映射预编译
-description: 通过此教程收集人将学习如何使用作者映射solidity接口将会话密钥映射至用于支付奖励的Moonbeam地址。
+description: 通过此教程收集人将学习如何使用作者映射Solidity接口将会话密钥映射至用于支付奖励的Moonbeam地址。
 keywords: Solidity，以太坊，作者映射，收集人，moonbeam，预编译，合约，区块生产者
 ---
 
 # 使用作者映射预编译交互
-
-![Precomiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -17,17 +15,20 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.author_mapping }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.author_mapping }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.author_mapping }}
      ```
 
@@ -50,34 +51,40 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 加入候选人池的最低保证金设置如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.staking.min_can_stk }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.staking.min_can_stk }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.staking.min_can_stk }} DEV
     ```
 
 用您的账户映射您的会话密钥时会发送一笔保证金。此保证金由每个会话密钥注册时获得。保证金设置如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.staking.collator_map_bond }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.staking.collator_map_bond }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.staking.collator_map_bond }} DEV
     ```
 

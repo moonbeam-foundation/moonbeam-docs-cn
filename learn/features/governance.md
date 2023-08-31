@@ -5,8 +5,6 @@ description: 作为波卡平行链，Moonbeam使用链上治理系统来允许�
 
 # Moonbeam上的治理
 
-![Governance Moonbeam Banner](/images/learn/features/governance/governance-overview-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同使命中，治理过程寻求包括所有Token持有者。关于协议的任何以及所有更改都必须通过公投，以便所有的Token持有者可以根据质押权重对决策提出建议。
@@ -266,12 +264,14 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 批准和支持的比例可以使用以下方式计算：
 
 === "Approval"
-    ```
+
+    ```text
     Approval = 100 * ( Total Conviction-weighted "Aye" votes / Total Conviction-weighted votes )
     ```
 
 === "Support"
-    ```
+
+    ```text
     Support = 100 * ( Total non-Conviction-weighted votes / Total supply )
     ```
 

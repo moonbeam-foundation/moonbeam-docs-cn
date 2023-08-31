@@ -6,8 +6,6 @@ keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128
 
 # 在Moonbase Alpha上的以太坊主网预编译合约
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/eth-mainnet/eth-mainnet-banner.png)
-
 ## 概览 {: #introduction }
 
 [Moonbase Alpha v2](https://moonbeam.network/blog/moonbase-alpha-v2-contract-events-pub-sub-capabilities/)版本中新增的另外一个功能是提供以太坊上的一些原生[预编译合约](https://docs.klaytn.com/smart-contract/precompiled-contracts)。
@@ -22,15 +20,16 @@ keywords: 以太坊, moonbeam, ecrecover, sha256, sha3FIPS256, ripemd-160, Bn128
 
 撰写本教程时，所用版本分别为15.2.1和7.0.8。另外，我们还将需要通过执行以下命令安装Web3安装包：
 
-```
+```bash
 npm install --save web3
 ```
 
 您需要使用`ls`命令来验证所安装的Web3版本：
 
-```
+```bash
 npm ls web3
 ```
+
 撰写本教程时，所用版本为1.3.0。此外，我们还将使用[Remix](/builders/build/eth-api/dev-env/remix/)，并通过[MetaMask](/tokens/connect/metamask/)将其连接至Moonbase Alpha测试网。
 
 --8<-- 'text/common/endpoint-examples.md'

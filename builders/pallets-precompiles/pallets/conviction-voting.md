@@ -6,8 +6,6 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 表决, 投票,
 
 # Conviction Voting Pallet
 
-![Conviction Voting Moonbeam Banner](/images/builders/pallets-precompiles/pallets/conviction-voting-banner.png)
-
 ## 概览 {: #introduction }
 
 Conviction Voting Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。

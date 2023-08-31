@@ -5,8 +5,6 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 # Moonbeam上预编译合约的概述
 
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/overview/overview-banner.png)
-
 ## 概述 {: #introduction }
 
 在Moonbeam上，预编译合约是拥有以太坊格式地址的原生Substrate代码，与其他智能合约一样能够可以使用以太坊API进行调用。预编译允许您直接调用Substrate runtime，其通常在Moonbeam的以太坊这端无法访问。

@@ -1,13 +1,11 @@
 ---
 title: Chainlink预言机
-description: 查看Moonbeam上可用的价格信息，和如何通过智能合约或者Javascript使用Chainlink预言机实现智能合约喂价。
+description: 查看基于Moonbeam网络的喂价合约并学习如何使用智能合约或JavaScript从您DApp中的Chainlink预言机请求数据。
 ---
 
 # Chainlink预言机
 
-![Chainlink Moonbeam Banner](/images/builders/integrations/oracles/chainlink/chainlink-banner.png)
-
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。
 
@@ -29,7 +27,7 @@ Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonba
 
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
-```
+```solidity
 pragma solidity ^0.8.0;
 
 interface AggregatorV3Interface {
@@ -161,17 +159,20 @@ interface AggregatorV3Interface {
 5. 在**At Address**字段输入`BTC to USD`对应的Data Feed地址，点击**At Address**按钮
 
     === "Moonbeam"
-        ```
+
+        ```text
         {{ networks.moonbeam.chainlink.feed.proxy.btc_usd }}
         ```
-        
+
     === "Moonriver"
-        ```
+
+        ```text
         {{ networks.moonriver.chainlink.feed.proxy.btc_usd }}
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```text
         {{ networks.moonbase.chainlink.feed.proxy.btc_usd }}
         ```
 
@@ -188,7 +189,7 @@ interface AggregatorV3Interface {
 
 如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX){target=_blank}联系我们。
 
-## 基本请求模型 {: #basic-request-model } 
+## 基本请求模型 {: #basic-request-model }
 
 --8<-- 'text/chainlink/brm.md'
 
@@ -210,7 +211,7 @@ Moonbeam运行的预部署合约和预言机节点支持一组有限的job ID，
 
 部署在Moonbase Alpha的客户端合约如下：
 
-```
+```solidity
 pragma solidity ^0.6.6;
 
 import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
@@ -383,7 +384,7 @@ interface ChainlinkInterface {
 
 如果您想要添加其他特定的报价对，请直接通过[Discord](https://discord.com/invite/PfpUATX){target=_blank}联系Moonbeam团队。
 
-### 创建自定义客户端合约 {: #create-a-custom-client-contract } 
+### 创建自定义客户端合约 {: #create-a-custom-client-contract }
 
 如果您想要使用Moonbeam运行的预言机节点来运行自己的自定义客户端合约，请看以下信息：
 
@@ -396,7 +397,7 @@ interface ChainlinkInterface {
 
 使用`ChainlinkClient`构建您自己的客户端合约前，首先您需要导入合约：
 
-```
+```solidity
 import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/ChainlinkClient.sol";
 ```
 
@@ -414,7 +415,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/Cha
 
 下方客户端合约是关于如何使用在您客户端合约中的任何API的举例：
 
-```
+```solidity
 pragma solidity ^0.8.7;
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";

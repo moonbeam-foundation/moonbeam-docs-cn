@@ -5,8 +5,6 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 # 设置代理账户
 
-![Setting up a Proxy Account](/images/tokens/manage/proxy-accounts/proxies-banner.png)
-
 ## 概览 {: #introduction }
 
 代理帐户可以代表用户执行有限数量的操作，并起到保护底层帐户的作用。这允许用户将其主账户进行安全冷存储，同时使代理能够主动执行功能并利用主账户中的Token权重参与网络。
@@ -37,7 +35,7 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 
 保证金计算公式：
 
-```
+```text
 deposit base + deposit factor * number of proxies
 ```
 

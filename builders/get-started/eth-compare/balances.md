@@ -5,8 +5,6 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在账户�
 
 # 账户余额
 
-![Moonbeam v Ethereum - Account Balances Banner](/images/builders/get-started/eth-compare/balances/balances-banner.png)
-
 ## 概览 {: #introduction }
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在账户余额方面与以太坊之间一些重要的差异。

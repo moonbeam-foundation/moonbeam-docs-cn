@@ -5,8 +5,6 @@ description: 学习如何使用Hardhat开发、测试、部署智能合约以及
 
 # Hardhat开发流程
 
-![Learn about the typical Hardhat Ethereum Developer workflow from start to finish.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-banner.png)
-
 _作者：Kevin Neilson & Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -90,7 +88,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
     ??? code "DelegationDAO.sol"
 
-        ```sol
+        ```solidity
         --8<-- 'code/tutorials/eth-api/hardhat-start-to-end/DelegationDAO.sol'
         ```
 
@@ -104,7 +102,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
     ??? code "StakingInterface.sol"
 
-        ```sol
+        ```solidity
         --8<-- 'code/precompiles/staking/StakingInterface.sol'
         ```
 
