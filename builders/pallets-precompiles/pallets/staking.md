@@ -1,6 +1,6 @@
 ---
 title: 平行链质押Pallet
-description: 学习关于Moonbeam上平行链质押Pallet可用extrinsics，以及通过使用Polkadot.js Apps和Polkadot.js API，如何与其交互。
+description: 了解Moonbeam上的平行链质押Pallet接口，该接口可用于执行委托人和收集人活动，并检索质押信息。
 keywords: staking, substrate, pallet, moonbeam, polkadot 
 ---
 

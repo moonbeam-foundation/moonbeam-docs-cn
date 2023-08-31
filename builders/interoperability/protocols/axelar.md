@@ -1,6 +1,6 @@
 ---
 title: 通过Axelar跨链
-description: 学习如何桥接资产，以及使用Axelar网络和API将您的Moonbeam dApp在多条链上连接资产和函数。
+description: 了解用于跨链资产转移的GMP协议Axelar，以及如何在Moonbeam上使用Axelar开始构建跨链应用程序。
 ---
 
 # Axelar Network

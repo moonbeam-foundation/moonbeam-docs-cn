@@ -1,11 +1,11 @@
 ---
 title: Chainlink预言机
-description: 查看Moonbeam上可用的价格信息，和如何通过智能合约或者Javascript使用Chainlink预言机实现智能合约喂价。
+description: 查看基于Moonbeam网络的喂价合约并学习如何使用智能合约或JavaScript从您DApp中的Chainlink预言机请求数据。
 ---
 
 # Chainlink预言机
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。
 
@@ -162,7 +162,7 @@ interface AggregatorV3Interface {
         ```
         {{ networks.moonbeam.chainlink.feed.proxy.btc_usd }}
         ```
-        
+
     === "Moonriver"
         ```
         {{ networks.moonriver.chainlink.feed.proxy.btc_usd }}
@@ -186,7 +186,7 @@ interface AggregatorV3Interface {
 
 如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX){target=_blank}联系我们。
 
-## 基本请求模型 {: #basic-request-model } 
+## 基本请求模型 {: #basic-request-model }
 
 --8<-- 'text/chainlink/brm.md'
 
@@ -381,7 +381,7 @@ interface ChainlinkInterface {
 
 如果您想要添加其他特定的报价对，请直接通过[Discord](https://discord.com/invite/PfpUATX){target=_blank}联系Moonbeam团队。
 
-### 创建自定义客户端合约 {: #create-a-custom-client-contract } 
+### 创建自定义客户端合约 {: #create-a-custom-client-contract }
 
 如果您想要使用Moonbeam运行的预言机节点来运行自己的自定义客户端合约，请看以下信息：
 

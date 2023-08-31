@@ -1,6 +1,6 @@
 ---
 title: 使用Subsquid索引NFT转账
-description: 通过本教程学习如何使用Subsquid（一种基于Substrate区块链的检索节点框架）为Moonbeam和Moonriver网络进行索引和处理Substrate和EVM数据。
+description: 学习如何使用Subsquid（基于Substrate链的查询节点框架）索引和处理Moonbeam和Moonriver的NFT转移数据。
 ---
 
 # 使用Subsquid索引在Moonbeam上的NFT转账

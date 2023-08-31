@@ -1,6 +1,6 @@
 ---
 title:  批量预编译合约
-description:  学习如何一次通过Moonbeam预编译批量合约执行多个转账交易以及合约交互。
+description: 了解如何通过Solidity接口与Moonbeam批量预编译合约同时处理多个转账和合约交互。
 keywords: solidity、以太坊、批量、交易、moonbeam、预编译、合约
 ---
 

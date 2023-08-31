@@ -1,6 +1,6 @@
 ---
 title: Moonbeam快速上手
-description: 学习如何通过RPC和WSS端点快速连接至基于波卡的Moonbeam。
+description: 学习如何通过RPC和WSS端点连接至Moonbeam，如何连接MetaMask至Moonbeam，以及了解可用的Moonbeam区块浏览器。
 ---
 
 # 开始使用Moonbeam

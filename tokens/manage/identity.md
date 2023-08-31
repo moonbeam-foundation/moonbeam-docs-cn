@@ -1,6 +1,6 @@
 ---
 title: 管理身份
-description: 学习如何在基于Moonbeam的网络上创建和清除身份，包括您的姓名和社交账号等个人信息
+description: 学习如何在基于Moonbeam的网络上创建和管理链上身份，其中包括个人信息（例如：姓名和社交媒体名称）。
 ---
 
 # 管理您的账户身份
@@ -22,8 +22,8 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 - **自定义字段包含** —— 任何相关信息。举例而言，您可以包含您的Discord用户名
 
 === "Moonbeam"
-    |      变量      |               定义               |                        值                        |
-    |:--------------:|:--------------------------------:|:------------------------------------------------:|
+    |      变量      |               定义               |                       值                        |
+    |:--------------:|:--------------------------------:|:-----------------------------------------------:|
     |    基础押金    |      用于设置身份的押金数量      | {{ networks.moonbeam.identity.basic_dep }} GLMR |
     |    字段押金    | 用于设置身份的每个字段的押金数量 | {{ networks.moonbeam.identity.field_dep }} GLMR |
     | 最大附加字段数 |  可储存于一个ID的最大附加字段数  |   {{ networks.moonbeam.identity.max_fields }}   |
@@ -205,21 +205,21 @@ description: 学习如何在基于Moonbeam的网络上创建和清除身份，�
 目前的注册服务商如下：
 
 === "Moonbeam"
-    |                                                               注册服务商                                                               |                              运营商                              |                  地址                   | 索引（Index） |
-    |:-------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-----:|
-    |        [Registrar #0](https://forum.moonbeam.foundation/t/referendum-73-status-passed-identity-registrar-0/208){target=_blank}        | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0xbE6E642b25Fa7925AFA1600C48Ab9aA3461DC7f1 |   0   |
-    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-82-status-passed-new-registrar-proposal-registrar-1/319){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0xeaB597B91b66d9C3EA5E3a39e22C524c287d61a5 |   1   |
+    |                                                              注册服务商                                                               |                               运营商                               |                    地址                    | 索引（Index） |
+    |:-------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
+    |        [Registrar #0](https://forum.moonbeam.foundation/t/referendum-73-status-passed-identity-registrar-0/208){target=_blank}        | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0xbE6E642b25Fa7925AFA1600C48Ab9aA3461DC7f1 |       0       |
+    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-82-status-passed-new-registrar-proposal-registrar-1/319){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0xeaB597B91b66d9C3EA5E3a39e22C524c287d61a5 |       1       |
 
 === "Moonriver"
-    |                                                               注册服务商                                                                |                              运营商                              |                  地址                   | 索引（Index） |
-    |:--------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-----:|
-    |         [Registrar #0](https://forum.moonbeam.foundation/t/proposal-32-status-voting-identity-registrar-0/187){target=_blank}          | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0x031590D13434CC554f7257A89B2E0B10d67CCCBa |   0   |
-    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-125-status-passed-new-registrar-proposal-registrar-1/303){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0x2d18250E01312A155E81381F938B8bA8bb4d97B3 |   1   |
+    |                                                               注册服务商                                                               |                               运营商                               |                    地址                    | 索引（Index） |
+    |:--------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
+    |         [Registrar #0](https://forum.moonbeam.foundation/t/proposal-32-status-voting-identity-registrar-0/187){target=_blank}          | [Moonbeam Foundation](https://moonbeam.foundation/){target=_blank} | 0x031590D13434CC554f7257A89B2E0B10d67CCCBa |       0       |
+    | [Registrar #1](https://forum.moonbeam.foundation/t/referendum-125-status-passed-new-registrar-proposal-registrar-1/303){target=_blank} |         [Chevdor](https://www.chevdor.com/){target=_blank}         | 0x2d18250E01312A155E81381F938B8bA8bb4d97B3 |       1       |
 
 === "Moonbase Alpha"
-    |                                      注册服务商                                      |                      运营商                      |                  地址                   | 索引（Index） |
-    |:-----------------------------------------------------------------------------------:|:--------------------------------------------------:|:------------------------------------------:|:-----:|
-    | [Registrar #1](https://www.chevdor.com/post/2020/07/14/reg-updates/){target=_blank} | [Chevdor](https://www.chevdor.com/){target=_blank} | 0x4aD549e07E96BaD335A8b99C8fd32e95EE538904 |   1   |
+    |                                     注册服务商                                      |                       运营商                       |                    地址                    | 索引（Index） |
+    |:-----------------------------------------------------------------------------------:|:--------------------------------------------------:|:------------------------------------------:|:-------------:|
+    | [Registrar #1](https://www.chevdor.com/post/2020/07/14/reg-updates/){target=_blank} | [Chevdor](https://www.chevdor.com/){target=_blank} | 0x4aD549e07E96BaD335A8b99C8fd32e95EE538904 |       1       |
 
 
 您想获得当前注册服务商的完整列表，包括每个注册服务商收取的费用，可以前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}，选择**Developer**选项卡，从下拉菜单中选择 **Chain State**，然后执行以下步骤：

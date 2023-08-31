@@ -1,6 +1,6 @@
 ---
 title: XC-20和跨链资产
-description: 学习如何使用预编译的资产Solidity合约通过ERC-20接口与Moonbeam上的跨链Token交互。
+description: 了解Moonbeam跨链资产类型（尤其是本地XC-20和外部XC-20），并查看Moonbeam上的外部XC-20列表。
 ---
 
 # XC-20概述

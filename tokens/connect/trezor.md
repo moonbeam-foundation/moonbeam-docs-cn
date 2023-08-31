@@ -1,11 +1,11 @@
 ---
 title: 如何连接和使用Trezor
-description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性，连接和使用Trezor硬件钱包在Moonbeam内签署交易
+description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Trezor在Moonbeam上签署交易。
 ---
 
 # Trezor硬件钱包
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 硬件钱包可提供一个相对安全的加密资产存储方式，因其密钥（用于签署交易）是以离线的方式储存。截至本教程撰写时，Trezor可提供两种硬件钱包的解决方案：Trezor One和Trezor Model T。
 
@@ -17,7 +17,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 --8<-- 'text/disclaimers/third-party-content-intro.md'
 
-## 查看先决条件 {: #checking-prerequisites } 
+## 查看先决条件 {: #checking-prerequisites }
 
 在您开始之前，请将您的[Trezor Suite](https://suite.trezor.io/){target=_blank}更新至最新的可用版本。 与此同时，请确认您的Trezor硬件钱包运行的是最新的固件。Trezor wiki有提供如何更新[Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1){target=_blank}和[Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware){target=_blank}设备固件的教程。
 
@@ -29,7 +29,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 除此之外，您还需要MetaMask作为您Trezor设备与Moonbase Alpha之间的媒介，请确保您的[MetaMask已成功连接至Moonbase Alpha](/integrations/wallets/metamask/){target=_blank}。请注意，您的Trezor设备会在您连接至MetaMask的网络内签署交易。
 
-## 将您的Trezor账户导入MetaMask {: #importing-your-trezor-account-to-metamask } 
+## 将您的Trezor账户导入MetaMask {: #importing-your-trezor-account-to-metamask }
 
 首先，您需要设置一个钱包（标准或是隐藏钱包）。当您成功连接至您的Trezor设备，请将其解锁，并在Trezor Suite获得一个钱包设置。接着，将您的Trezor以太坊账户导入MetaMask，您可以跟随以下步骤进行操作：
 
@@ -80,7 +80,7 @@ description: 通过本教程学习如何利用Moonbeam兼容以太坊的特性�
 
 您现在已成功从Trezor设备导入一个兼容Moonbeam的账户且准备好[使用您的硬件钱包签署交易](#使用您的Trezor签署交易)。
 
-## 使用您的Trezor签署交易 {: #signing-a-transaction-using-your-trezor } 
+## 使用您的Trezor签署交易 {: #signing-a-transaction-using-your-trezor }
 
 如果您已成功[将您的Trezor账户导入MetaMask](#将您的Trezor账户导入MetaMask)，并准备好使用您的Trezor设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
 

@@ -1,6 +1,6 @@
 ---
 title: 团体预编译合约
-description: 学习如何使用Moonbeam团体预编译通过理事会、技术委员会或财政库委员会团体执行民主功能
+description: 了解如何使用Moonbeam Collective预编译通过Moonbeam上的任何团体（例如财政委员会）执行民主功能。
 keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbeam, 预编译, 合约
 ---
 
