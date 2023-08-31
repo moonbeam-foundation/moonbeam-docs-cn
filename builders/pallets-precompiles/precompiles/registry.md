@@ -36,7 +36,7 @@ Registry Precompile位于以下地址：
 
 ??? code "PrecompileRegistry.sol"
     
-    ```sol
+    ```solidity
     --8<-- 'code/precompiles/registry/PrecompileRegistry.sol'
     ```
 

@@ -177,7 +177,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 合约如下所示：
 
-```sol
+```solidity
 --8<-- 'code/randomness/RandomNumber.sol'
 ```
 

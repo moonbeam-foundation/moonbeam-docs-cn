@@ -135,7 +135,7 @@ mkdir -p contracts && touch contracts/MyTok.sol
 
 现在我们可以编辑`MyTok.sol`文件并包含以下合约，它将生成MYTOK的初始供应数并仅允许合约所有者生成额外的Token：
 
-```sol
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 

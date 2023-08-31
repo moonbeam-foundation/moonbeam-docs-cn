@@ -376,7 +376,7 @@ contract("NftMarketplace", (accounts) => {
 
 在我们的首个测试，确保我们正在按预期铸造新的Dizzy Dragon NFT。我们将会使用来自交易的事件日志以确保`DizzyDragons`合约中的`NftMinted`事件已发出。事件日志将会返回传递至`NftMinted`事件的参数，其将会是Token ID：
 
-```sol
+```solidity
 event NftMinted(uint256);
 ```
 
@@ -428,7 +428,7 @@ npx truffle test --network dev
 
 对于我们的下一个测试，我们将测试我们是否可以使用`NftMarketplace`合约的`listNft`功能成功上架我们新铸造的NFT。因此，我们将再次使用我们的事件日志来测试是否已发出`NftListed`事件以及正确的状态变量，例如卖家和Token ID。事件日志将返回传递给`NftMinted`事件的参数，这将是卖家的地址、NFT的地址、Token ID和标价：
 
-```sol
+```solidity
 event NftListed(
     address indexed seller,
     address indexed nftAddress,
@@ -497,7 +497,7 @@ event NftListed(
 
 最后，让我们测试是否可以使用`NftMarketplace`合约的`purchaseNft`功能购买我们市场上的NFT。与我们之前的测试类似，我们将使用事件日志来测试是否已发出`NftPurchased`事件以及正确的状态变量，例如买家和Token ID。事件日志将返回传递给`NftPurchased`事件的参数，即买家地址、NFT地址、Token ID和购买价格：
 
-```sol
+```solidity
 event NftListed(
     address indexed buyer,
     address indexed nftAddress,

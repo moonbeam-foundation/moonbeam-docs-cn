@@ -219,7 +219,7 @@ const thirdPartyGasSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
 
 如果您查看[调用许可预编译的`dispatch`函数](/builders/pallets-precompiles/precompiles/call-permit/#the-call-permit-interface){target=_blank}，您将会看到我们需要发送的数据以及关联的类型如下：
 
-```sol
+```solidity
 function dispatch(
     address from,
     address to,

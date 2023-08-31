@@ -88,7 +88,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
     ??? code "DelegationDAO.sol"
 
-        ```sol
+        ```solidity
         --8<-- 'code/tutorials/eth-api/hardhat-start-to-end/DelegationDAO.sol'
         ```
 
@@ -102,7 +102,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
     ??? code "StakingInterface.sol"
 
-        ```sol
+        ```solidity
         --8<-- 'code/precompiles/staking/StakingInterface.sol'
         ```
 

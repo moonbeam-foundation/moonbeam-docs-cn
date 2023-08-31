@@ -114,7 +114,7 @@ contract Demo {
 
 测试预言机功能最简单的方式就是将接口指向部署在`{{ networks.moonbase.razor.bridge_address }}`的桥接合约：
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 
 interface Razor {

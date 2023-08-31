@@ -46,7 +46,7 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
 
 `proxyType`参数由以下`ProxyType`枚举定义，其中值从`0`开始，具有最宽松的代理类型，并由`uint8`值表示：
 
-```sol
+```solidity
 enum ProxyType {
     Any,
     NonTransfer,

@@ -55,7 +55,7 @@ Referenda Precompile位于以下地址：
 
 - **referendumStatus**(*uint32* referendumIndex) - 只读函数，返回给定公投的状态的。`ReferendumStatus` enum定义以下可能出现的状态：
 
-     ```sol
+     ```solidity
      enum ReferendumStatus {
           Ongoing,
           Approved,

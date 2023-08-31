@@ -16,7 +16,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 --8<-- 'text/disclaimers/third-party-content-intro.md'
 
-## 支持的代币 {: #supported-token } 
+## 支持的代币 {: #supported-token }
 只要是平台支持的基础货币和报价货币（_报价对显示方式：基础货币代码_/_报价货币代码_），您都可以获取其报价。例如：
 
  - `BTC/USD`
@@ -25,7 +25,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 
 您可通过此[Band标准数据集](https://data.bandprotocol.com){target=_blank}查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
-## 获取报价 {: #querying-prices } 
+## 获取报价 {: #querying-prices }
 如上所述，开发者可以通过两种方法从Band预言机获取报价：
 
  - Moonbeam上的Band智能合约（目前已部署在Moonbase Alpha测试网上）
@@ -56,11 +56,11 @@ struct ReferenceData {
  - `BTC/ETH`
  - `ETH/EUR`
 
-### 合约示例 {: #example-contract } 
+### 合约示例 {: #example-contract }
 
 以下智能合约代码以简单的示例展示了`StdReference`合约和`getReferenceData`函数。合约仅为举例，不作实际之用。`IStdReference.sol`接口明确了ReferenceData结构和可用于获取报价的函数。
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -94,7 +94,7 @@ interface IStdReference {
 
 部署时，构造函数需要聚合合约地址以连接到目标网络。
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -150,11 +150,11 @@ contract DemoOracle {
 }
 ```
 
-### 在Moonbase Alpha上进行测试 {: #try-it-in-moonbase alpha } 
+### 在Moonbase Alpha上进行测试 {: #try-it-in-moonbase alpha }
 
 Moonbase Alpha测试网已经预先部署了一个合约（地址为`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`），方便开发者查看Band Protocol预言机的喂价信息。为此，您需要部署以下接口合约：
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -180,7 +180,7 @@ interface TestInterface {
 
 ![Band Protocol Remix check price](/images/builders/integrations/oracles/band/band-demo-2.png)
 
-## BandChain.js Javascript辅助库 {: #bandchainjs-javascript-helper-library } 
+## BandChain.js Javascript辅助库 {: #bandchainjs-javascript-helper-library }
 
 辅助库也支持相似的`getReferenceData`函数。使用此方法，首先要根据以下指令安装辅助库：
 
@@ -217,7 +217,7 @@ getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 ```
 `lastUpdatedBase`和`lastUpdatedQuote`显示的是基础货币和报价货币各自价格的最后更新时间（UNIX时间戳）。
 
-### 应用示例 {: #example-usage } 
+### 应用示例 {: #example-usage }
 
 下面这个Javascript脚本是`getReferenceData`函数的一个简单示例。
 
