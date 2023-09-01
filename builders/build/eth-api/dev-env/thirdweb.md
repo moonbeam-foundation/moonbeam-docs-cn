@@ -140,7 +140,7 @@ npx thirdweb install
 
 将您的应用程序包装在`thirdwebProvider`组件中，并将`activeChain`更改为Moonbeam。
 
-```jsx
+```js
 import { thirdwebProvider } from '@thirdweb-dev/react';
 import { Moonbeam } from '@thirdweb-dev/chains';
 
@@ -157,7 +157,7 @@ const App = () => {
 
 要与您的合约连接，使用SDK的[`getContract`](https://portal.thirdweb.com/typescript/sdk.thirdwebsdk.getcontract){target=_blank}函数。
 
-```jsx
+```js
 import { useContract } from '@thirdweb-dev/react';
 
 function App() {
@@ -171,7 +171,7 @@ function App() {
 
 - 使用NFT扩展程序通过[`useOwnedNFTs` hook](https://portal.thirdweb.com/react/react.useownednfts){target=_blank}访问某个地址拥有的NFT列表：
 
-    ```jsx
+    ```js
     import { useOwnedNFTs, useContract, useAddress } from '@thirdweb-dev/react';
     
     // Your smart contract address
@@ -186,7 +186,7 @@ function App() {
 
 - 使用[`useContractRead` hook](https://portal.thirdweb.com/react/react.usecontractread){target=_blank}通过传入要使用的函数名称，以此在合约上调用任何可读函数：
 
-    ```jsx
+    ```js
     import { useContractRead, useContract } from '@thirdweb-dev/react';
     
     // Your smart contract address
@@ -201,7 +201,7 @@ function App() {
 
 - 使用[`useContractWrite` hook](https://portal.thirdweb.com/react/react.usecontractwrite){target=_blank}通过传入要使用的函数名称在合约上调用任何编写函数：
 
-    ```jsx
+    ```js
     import {
       useContractWrite,
       useContract,
@@ -237,7 +237,7 @@ function App() {
 
 以下示例将向您展示如何使用`ConnectWallet`组件。为此，您将需要指定支持的钱包并将其传给提供商。
 
-```jsx
+```js
 import {
   thirdwebProvider,
   metamaskWallet,
@@ -273,7 +273,7 @@ function MyApp() {
 
 接下来，您需要添加connect wallet按钮，引导终端用户使用任何上述支持的钱包登陆。
 
-```jsx
+```js
 import { ConnectWallet } from '@thirdweb-dev/react';
 
 function App() {

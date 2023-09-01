@@ -38,7 +38,7 @@ Registry Precompile位于以下地址：
 [`PrecompileRegistry.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}是一个Solidity接口，允许开发者与预编译函数交互。
 
 ??? code "PrecompileRegistry.sol"
-    
+
     ```solidity
     --8<-- 'code/precompiles/registry/PrecompileRegistry.sol'
     ```

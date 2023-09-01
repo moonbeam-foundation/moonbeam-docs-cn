@@ -140,7 +140,7 @@ const connect = async () => {
 
 现在您已经成功设定了`connect`函数，您可以创建一个**Connect Wallet**按钮并称为`onClick`。您可以在[范本](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/App.js#L124){target=_blank}中使用以下按钮取代`{/* buttons and network details will go here */}`留言：
 
-```html
+```js
 <Button onClick={connect}>Connect Wallet</Button>
 ```
 
@@ -205,7 +205,7 @@ const killSession = () => {
 
 现在您已经具有了所有的逻辑以处理解除连接的操作，您将会需要一个**Disconnect**按纽包含`onClick` 以触发 `killSession` 函数。由于您仅希望在用户已连接时显示**Disconnect**按钮，您可以使用 [conditional renderering](https://reactjs.org/docs/conditional-rendering.html){target=_blank}。条件渲染（Conditional renderering）使您能够查看指定的参数，如果当前条件符合您的设定您将可以渲染一个元件或是其他元件。在此例当中，如果您获取的并不是先前连接和连接器的存在，您可以渲染**Disconnect**按钮，否则渲染**Connect Wallet**按钮。您可以使用以下部分取代已存在的`<Button>` ：
 
-```html
+```js
 {connector && !fetching ? (
   <OutlinedButton onClick={killSession}>Disconnect</OutlinedButton>
 ) : (
@@ -293,7 +293,7 @@ useEffect(() => {
 
 接着在页面上渲染状态变量，您可以在**Disconnect**按钮包含额外的UI元素。同样，您可以使用条件渲染以显示具体详情或是在连接至错误网络时显示错误信息：
 
-```html
+```js
 {connector && !fetching ? (
   <LoadedData>
     <Data>
@@ -407,7 +407,7 @@ if ((!chainId || !account || !balance) && connector.connected) {
 
 最后，您可以在用户连接至支持网络时显示账户余额。您可以使用先前创建的`symbol`状态变量在Moonbase Alpha显示**DEV**余额。
 
-```html
+```js
 {supported ? (
   <>
     <Data>
@@ -445,7 +445,7 @@ const sendTransaction = async () => {
 
 要在DApp中发起交易，您需要创建一个按钮包含`onClick`以触发`sendTransaction`函数。此动作仅会在连接至支持网络时被执行。
 
-```html
+```js
 {supported ? (
   <>
     <Data>
