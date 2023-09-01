@@ -302,8 +302,8 @@ touch deploy.js
 1. 从`compile.js`导入合约文件
 2. [设置Ethers提供者](#setting-up-the-ethers-provider)
 3. 为初始账户定义`privateKey` ，此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
-4. 为已编译合约储存`bytecode`和`abi`
-5. 使用先前步骤的`privateKey`和`provider`创建钱包。此钱包实例将会被用于签署交易
+4. 使用先前步骤的`privateKey`和`provider`创建钱包。此钱包实例将会被用于签署交易
+5. 加载已编译合约的合约`bytecode`和`abi`
 6. 使用`ethers.ContractFactory`函数创建具有签名者的合约实例，提供`abi`、`bytecode`以及`wallet`参数
 7. 创建用于部署合约的异步`deploy`函数
 8. 在`deploy`函数中，使用`incrementer`合约实例以连接`deploy`并输入初始数值。在本示例中，您可以将初始值设置为`5`。这将会为交易部署传送交易，您可以使用合约部署交易的`deployed`以等待交易记录
@@ -321,12 +321,12 @@ const accountFrom = {
   privateKey: 'INSERT_YOUR_PRIVATE_KEY',
 };
 
-// 4. Save the bytecode and ABI
+// 4. Create wallet
+let wallet = new ethers.Wallet(accountFrom.privateKey, provider);
+
+// 5. Load contract information
 const bytecode = contractFile.evm.bytecode.object;
 const abi = contractFile.abi;
-
-// 5. Create wallet
-let wallet = new ethers.Wallet(accountFrom.privateKey, provider);
 
 // 6. Create contract instance with signer
 const incrementer = new ethers.ContractFactory(abi, bytecode, wallet);
