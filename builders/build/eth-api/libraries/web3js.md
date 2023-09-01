@@ -33,9 +33,17 @@ mkdir web3-examples && cd web3-examples
 
 在本教程中，您将需要安装Web3.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
 
-```bash
-npm install web3 solc@0.8.0
-```
+=== "npm"
+
+    ```bash
+    npm install web3 solc@0.8.0
+    ```
+
+=== "yarn"
+
+    ```bash
+    yarn add web3 solc@0.8.0
+    ```
 
 ## 在Moonbeam上设置Web3.js {: #setup-web3-with-moonbeam }
 
@@ -102,7 +110,7 @@ touch balances.js
 
 3. 创建打包了`web3.eth.getBalance`函数的异步`balances`函数
 
-4. 使用`web3.eth.getBalance`函数获取`addressFrom`和`addressTo`地址的余额。您也可以使用`web3.utils.fromWei`函数将余额转换成以ETH为单位的数字便于阅读
+4. 使用`web3.eth.getBalance`函数获取`addressFrom`和`addressTo`地址的余额。您也可以使用`web3.utils.fromWei`函数将余额转换成以DEV为单位的数字便于阅读
 
 5. 最后，运行`balances`函数
 
@@ -120,15 +128,19 @@ const balances = async () => {
   const balanceFrom = web3.utils.fromWei(await web3.eth.getBalance(addressFrom), 'ether');
   const balanceTo = web3.utils.fromWei(await web3.eth.getBalance(addressTo), 'ether');
 
-  console.log(`The balance of ${addressFrom} is: ${balanceFrom} ETH`);
-  console.log(`The balance of ${addressTo} is: ${balanceTo} ETH`);
+  console.log(`The balance of ${addressFrom} is: ${balanceFrom} DEV`);
+  console.log(`The balance of ${addressTo} is: ${balanceTo} DEV`);
 };
 
 // 5. Call balances function
 balances();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-tx-local/balances.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-tx-local/balances.js'
+    ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
 
@@ -136,7 +148,7 @@ balances();
 node balances.js
 ```
 
-如果成功，发送地址和接收地址的余额将以ETH为单位显示在终端。
+如果成功，发送地址和接收地址的余额将以DEV为单位显示在终端。
 
 ### 发送交易脚本 {: #send-transaction-script }
 
@@ -149,15 +161,10 @@ touch transaction.js
 接下来，您将为此文件创建脚本并完成以下步骤：
 
 1. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 2. 定义`addressFrom`，包括`privateKey`和`addressTo`变量。此处需要私钥以创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
-
 3. 创建打包了交易标的以及签署和发送函数的异步`send`函数
-
 4. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`gas`、`addressTo`和`value`以及发送者的`privateKey`
-
 5. 使用`web3.eth.sendSignedTransaction`函数发送已签署的交易，然后使用`await`等待交易处理完毕并返回交易回执
-
 6. 最后，运行`send`函数
 
 ```js
@@ -194,7 +201,11 @@ const send = async () => {
 send();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-tx-local/transaction.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-tx-local/transaction.js'
+    ```
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -227,23 +238,14 @@ touch deploy.js
 接下来，您将为此文件创建脚本并完成以下步骤：
 
 1. 从`compile.js`导入合约文件
-
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义`addressFrom`，包括`privateKey`和`addressTo`变量。此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
-
 4. 为已编译的合约保存`bytecode`和`abi`
-
 5. 创建将用于部署合约的异步`deploy`函数
-
 6. 使用`web3.eth.Contract`函数创建合约实例
-
 7. 创建构造函数并为增量器传入`bytecode`和初始值。在本示例中，您可以将初始值设置为`5`
-
 8. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`data`、`gas`以及发送者的`privateKey`
-
 9. 使用`web3.eth.sendSignedTransaction`发送已签署的交易并传入原始交易，然后使用`await`等待交易处理完毕并返回交易回执
-
 10. 最后，运行`deploy`函数
 
 ```js
@@ -294,7 +296,11 @@ const deploy = async () => {
 deploy();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-contract-local/deploy.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-contract-local/deploy.js'
+    ```
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -319,17 +325,11 @@ touch get.js
 接下来，您可以遵循以下步骤创建脚本：
 
 1. 从`compile.js`文件导入`abi`
-
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 使用已部署合约的地址创建`contractAddress`变量
-
 4. 使用`web3.eth.Contract`函数并传入`abi`和`contractAddress`以创建合约实例
-
 5. 创建异步`get`函数
-
 6. 使用合约实例以调用其中一个合约函数并输入任何需要的信息。在本示例中，您将调用`number`函数（此函数无需任何输入）。您可以使用`await`，这将在请求解决后返回请求的数值
-
 7. 最后，调用`get`函数
 
 ```js
@@ -359,7 +359,11 @@ const get = async () => {
 get();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-contract-local/get.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-contract-local/get.js'
+    ```
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -380,21 +384,13 @@ touch increment.js reset.js
 接下来，打开`increment.js`文件并执行以下步骤以创建脚本：
 
 1. 从`compile.js`文件导入`abi`
-
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义初始账户的`privateKey`、已部署合约的`contractAddress`以及要增量的`_value`。此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
-
 4. 使用`web3.eth.Contract`函数并传入`abi`和`contractAddress`创建合约实例
-
 5. 通过合约实例使用`methods.increment`函数并传入`_value`作为输入值来构建增量交易
-
 6. 创建异步`increment`函数
-
 7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`和`gas`
-
 8. 使用`web3.eth.sendSignedTransaction`发送已签署的交易并传入原始交易，然后使用`await`等待交易处理完毕并返回交易回执
-
 9. 最后，调用`increment`函数
 
 ```js
@@ -423,7 +419,7 @@ const increment = async () => {
     `Calling the increment by ${_value} function in contract at address: ${contractAddress}`
   );
 
-  // Sign Tx with PK
+  // 7. Prepare and sign tx with PK
   const createTransaction = await web3.eth.accounts.signTransaction(
     {
       to: contractAddress,
@@ -433,7 +429,7 @@ const increment = async () => {
     accountFrom.privateKey
   );
 
-  // Send Tx and Wait for Receipt
+  // 8. Send tx and wait for receipt
   const createReceipt = await web3.eth.sendSignedTransaction(createTransaction.rawTransaction);
   console.log(`Tx successful with hash: ${createReceipt.transactionHash}`);
 };
@@ -442,7 +438,11 @@ const increment = async () => {
 increment();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-contract-local/increment.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-contract-local/increment.js'
+    ```
 
 您可以在终端运行以下命令以运行脚本：
 
@@ -457,21 +457,13 @@ node increment.js
 接下来，您可以打开`reset.js`文件并执行以下步骤以创建脚本：
 
 1. 从`compile.js`文件导入`abi`
-
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-
 3. 定义初始账户的`privateKey`、已部署合约的`contractAddress`。此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
-
 4. 使用`web3.eth.Contract`函数并传入`abi`和`contractAddress`以创建合约实例
-
 5. 使用`methods.reset`函数通过合约实例构建重置交易
-
 6. 创建异步`reset`函数
-
 7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`和`gas`
-
 8. 使用`web3.eth.sendSignedTransaction`发送已签署的交易，然后使用`await`等待交易处理完毕并返回交易回执
-
 9. 最后，调用`reset`函数
 
 ```js
@@ -516,7 +508,11 @@ const reset = async () => {
 reset();
 ```
 
-您可以查看[GitHub上的完整脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/web3-contract-local/reset.js){target=_blank}。
+??? code "查看完整脚本"
+
+    ```js
+    --8<-- 'code/web3-contract-local/reset.js'
+    ```
 
 您可以在终端运行以下命令以运行脚本：
 
