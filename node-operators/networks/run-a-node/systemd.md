@@ -14,7 +14,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 !!! 注意事项
     Moonbase Alpha仍被视为是一个Alpha网络，因此其正常运行时间_不会_达到100%。平行链将不时地进行清理。在开发自己的应用程序时，请确保您已采取方法快速地将合约与账户重新部署到新的平行链。[Discord channel](https://discord.gg/PfpUATX)会至少提前24小时发布清理区块链的通知。
 
-## 上手指南 {: #getting-started } 
+## 上手指南 {: #getting-started }
 
 以下小节将介绍使用二进制以及作为systemd服务运行Moonbeam全节点的操作流程。本教程所使用的示例基于Ubuntu 18.04的环境。Moonbeam也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu版本。
 
@@ -134,7 +134,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
         ```bash
         adduser moonbase_service --system --no-create-home
         ```
-   
+
 2. 创建一个目录来存储二进制文件和数据（您可能需要`sudo`）：
 
     === "Moonbeam"
@@ -199,7 +199,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 接下来，创建systemd配置文件。如果您设定的是收集人节点，请确认您使用的是[收集人](#收集人--collator)的代码段。您需执行以下操作：
 
- - 替换两处`YOUR-NODE-NAME`
+ - 替换两处`INSERT_YOUR_NODE_NAME`
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置。
  - 再次检查确认二进制文件是否位于以下正确路径 (*ExecStart*)
  - 如果您使用不同目录，请再次检查基本路径
@@ -207,7 +207,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 !!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-    
+
     对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
 
 ### 全节点 {: #full-node }
@@ -236,10 +236,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
@@ -269,10 +269,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
@@ -302,10 +302,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
 
     [Install]
     WantedBy=multi-user.target
@@ -340,15 +340,15 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
     ```
-    
+
 === "Moonriver"
 
     ```text
@@ -373,10 +373,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
@@ -406,10 +406,10 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
 
     [Install]
     WantedBy=multi-user.target
@@ -449,7 +449,7 @@ systemctl stop moonbeam.service
     ```bash
     sudo systemctl stop moonbeam.service
     ```
-    
+
 2. 移除二进制文件的旧版本：
 
     === "Moonbeam"
@@ -475,7 +475,7 @@ systemctl stop moonbeam.service
 4. 如果您使用的是发布的二进制文件，更新版本并运行以下命令：
 
     ```bash
-    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/<NEW VERSION TAG HERE>/moonbeam
+    wget https://github.com/moonbeam-foundation/moonbeam/releases/download/INSERT_NEW_VERSION_TAG/moonbeam
     ```
 
     如果您想要编译二进制文件，请参考[编译二进制文件](#compile-the-binary)指引，确保您已通过运行`git checkout`获取最新版本。

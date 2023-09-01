@@ -55,13 +55,13 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     mkdir {{ networks.moonbase.node_directory }}
     ```
 
-在开始操作之前，您将需要为指定或目前的用户设置必要的权限（将`DOCKER_USER`替换为要运行`docker`命令的实际用户）：
+在开始操作之前，您将需要为指定或目前的用户设置必要的权限（将`INSERT_DOCKER_USER`替换为要运行`docker`命令的实际用户）：
 
 === "Moonbeam"
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonbeam.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonbeam.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbeam.node_directory }}
@@ -71,7 +71,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonriver.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonriver.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonriver.node_directory }}
@@ -81,7 +81,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonbase.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonbase.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
@@ -91,7 +91,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 下一步，执行Docker运行的命令。注意，您需要替换：
 
- - 在两处替换 `YOUR-NODE-NAME`
+ - 在两处替换 `INSERT_YOUR_NODE_NAME`
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
 !!! 注意事项
@@ -109,7 +109,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonbeam.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonbeam.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
+    --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -118,7 +118,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
+    --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
 === "Moonriver"
@@ -129,7 +129,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonriver.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonriver.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
+    --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -138,7 +138,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
+    --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
 === "Moonbase Alpha"
@@ -149,7 +149,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     {{ networks.moonbase.tracing_tag }} \
     --base-path=/data \
     --chain {{ networks.moonbase.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
+    --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 0 \
     --db-cache <50% RAM in MB> \
@@ -158,7 +158,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --runtime-cache-size 64 \
     -- \
     --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
+    --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
 === "Moonbeam开发节点"
@@ -167,7 +167,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     docker run --network="host" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     {{ networks.development.tracing_tag }} \
-    --name="YOUR-NODE-NAME" \
+    --name="INSERT_YOUR_NODE_NAME" \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     --runtime-cache-size 64 \
@@ -183,7 +183,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 当您使用Systemd运行一个节点时，您需要先设置Moonbeam二进制文件。您可遵循[使用Systemd在Moonbeam上运行一个节点](/node-operators/networks/run-a-node/systemd/){target=_blank}的操作说明进行操作。一般来说，您将需要：
 
 1. 通过[已发布的二进制文件](/node-operators/networks/run-a-node/systemd/#the-release-binary){target=_blank}说明设置Moonbeam二进制文件。您也可以遵循[编译二进制文件](/node-operators/networks/run-a-node/systemd/#compile-the-binary){target=_blank}的说明自行编译二进制文件
-
 2. 遵循[设置服务器](/node-operators/networks/run-a-node/systemd/#setup-the-service){target=_blank}的说明进行操作
 
 当您完成操作说明中的特定部分，您可以继续执行以下操作。
@@ -267,7 +266,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 接下来是创建systemd配置文件，您将需要：
 
- - 在两个不同的地方替换`YOUR-NODE-NAME`
+ - 在两个不同的地方替换`INSERT_YOUR_NODE_NAME`
  - 将`<50% RAM in MB>`替换成服务器实际RAM的50%。举例而言，对于32 GB RAM，数值必须设置为`16000`。最低值为`2000`，但这低于推荐的规格
  - 再次确认二进制文件在正确的路径，如下所述 (_ExecStart_)
  - 如果您使用的是不同的目录，请再次确认基本路径
@@ -304,10 +303,10 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --wasm-runtime-overrides={{ networks.moonbeam.node_directory }}/wasm \
          --runtime-cache-size 64 \
          --chain {{ networks.moonbeam.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
@@ -339,10 +338,10 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --wasm-runtime-overrides={{ networks.moonriver.node_directory }}/wasm \
          --runtime-cache-size 64 \
          --chain {{ networks.moonriver.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
@@ -374,10 +373,10 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --wasm-runtime-overrides={{ networks.moonbase.node_directory }}/wasm \
          --runtime-cache-size 64 \
          --chain {{ networks.moonbase.chain_spec }} \
-         --name "YOUR-NODE-NAME" \
+         --name "INSERT_YOUR_NODE_NAME" \
          -- \
          --execution wasm \
-         --name="YOUR-NODE-NAME (Embedded Relay)"
+         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
     WantedBy=multi-user.target
