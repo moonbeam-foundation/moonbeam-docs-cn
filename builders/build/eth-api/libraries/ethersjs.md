@@ -25,12 +25,13 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 !!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-## 创建一个JavaScript项目 {: #create-a-javascript-project }
+安装Scaffold-ETH
+## 安装Ethers.js {: #install-ethersjs }
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
 
 ```bash
-mkdir ethers-examples && cd ethers-examples
+mkdir ethers-examples && cd ethers-examples && npm init --y
 ```
 
 在本教程中，您将需要安装Ethers.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：

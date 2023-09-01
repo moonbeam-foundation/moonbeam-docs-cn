@@ -23,12 +23,12 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
 !!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-## 创建Javascript项目 {: #create-a-javascript-project }
+## 安装Web3.js {: #install-web3js }
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
 
 ```bash
-mkdir web3-examples && cd web3-examples
+mkdir web3-examples && cd web3-examples && npm init --y
 ```
 
 在本教程中，您将需要安装Web3.js代码库和Solidity编译器。您可以通过运行以下命令来安装两者的NPM安装包：
