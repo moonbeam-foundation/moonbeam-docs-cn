@@ -165,7 +165,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     !!! 注意事项
         对于`AccountId32`、`AccountIndex64`或`AccountKey20`，您可以选择指定`network`参数。如果不指定，则默认为`None`。
 
-4. 将`destWeightLimit`设置为`Unlimited`。在JavaScript中，您需要将`Unlimited`设置为`null`（如[`XcmV3WeightLimit`的TypeScript接口](https://github.com/moonbeam-foundation/moonbeam/blob/v0.32.1/typescript-api/src/moonbase/interfaces/augment-api-tx.ts#L5796){target=_blank}中所述）：
+4. 将`destWeightLimit`设置为`Unlimited`。在JavaScript中，您需要将`Unlimited`设置为`null`（如[`XcmV3WeightLimit`的TypeScript接口](https://github.com/moonbeam-foundation/moonbeam/blob/v0.32.2/typescript-api/src/moonbase/interfaces/augment-api-tx.ts#L5796){target=_blank}中所述）：
 
     ```js
     const destWeightLimit = { Unlimited: null };
@@ -264,7 +264,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     !!! 注意事项
         对于`AccountId32`、`AccountIndex64`或`AccountKey20`，您可以选择指定`network`参数。如果不指定，则默认为`None`。
 
-3. 将目的地权重限制设置为`Unlimited`。在JavaScript中，您需要将`Unlimited`设置为`null`（如[`XcmV3WeightLimit`的TypeScript接口](https://github.com/moonbeam-foundation/moonbeam/blob/v0.32.1/typescript-api/src/moonbase/interfaces/augment-api-tx.ts#L5796){target=_blank}中所述：
+3. 将目的地权重限制设置为`Unlimited`。在JavaScript中，您需要将`Unlimited`设置为`null`（如[`XcmV3WeightLimit`的TypeScript接口](https://github.com/moonbeam-foundation/moonbeam/blob/v0.32.2/typescript-api/src/moonbase/interfaces/augment-api-tx.ts#L5796){target=_blank}中所述：
 
     ```js
     const destWeightLimit = { Unlimited: null };
