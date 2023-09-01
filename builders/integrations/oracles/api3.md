@@ -168,11 +168,11 @@ contract Requester is RrpRequesterV0 {
 
 要资助dAPI，您需要点击**Fund Gas**按钮。根据代理合约是否已部署，您将看到不同的UI。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-5.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.png)
 
 使用Gas预测器选取dAPI需要多少Gas。点击**Send DEV**发送您先前为指定dAPI输入的数量。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.png)
 
 当交易完成并在区块链上确认后将会出现在屏幕上。
 
@@ -185,7 +185,7 @@ contract Requester is RrpRequesterV0 {
 
 如果您在资助过程中部署代理合约，则可以点击**Get Proxy**按钮将向您的钱包发起一笔交易，该交易将部署代理合约。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-8.png)
 
 当交易完成并在区块链上确认后，代理合约地址将会在界面中显示。
 
