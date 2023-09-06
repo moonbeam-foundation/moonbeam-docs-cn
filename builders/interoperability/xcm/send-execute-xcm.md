@@ -80,7 +80,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     ```js
     const instr2 = {
       DepositAsset: {
-        assets: { Wild: 'All' },
+        assets: { Wild: { AllCounted: 1 } },
         beneficiary: {
           parents: 0,
           interior: {
