@@ -1,5 +1,5 @@
 ---
-title: 使用ethers.js代码库发送交易和部署合约
+title: 使用Ethers.js代码库发送交易和部署合约
 description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moonbeam上发送交易和部署Solidity智能合约。
 ---
 
@@ -422,7 +422,7 @@ node get.js
 
 如果成功，数值将显示在终端。
 
-### 交互合约（发送函数）{: #interact-with-contract }
+### 交互合约（发送函数） {: #interact-with-contract }
 
 发送函数是修改合约存储（更改变量）的交互类型，这意味着需要签署和发送交易。在这一部分，您将创建两个脚本：一个是增量，另一个是重置增量器。首先，您可以为每个脚本创建一个文件，并分别命名为`increment.js`和`reset.js`：
 

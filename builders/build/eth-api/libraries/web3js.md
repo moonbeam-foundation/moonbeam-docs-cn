@@ -1,5 +1,5 @@
 ---
-title: 使用web3.js发送交易和部署合约
+title: 使用Web3.js发送交易和部署合约
 description: 通过本教程学习如何使用以太坊web3.js JavaScript代码库在Moonbeam上发送交易和部署Solidity智能合约。
 ---
 
@@ -312,7 +312,7 @@ node deploy.js
 
 ![Deploy Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-2.png)
 
-### 读取合约数据（调用函数）{: #read-contract-data }
+### 读取合约数据（调用函数） {: #read-contract-data }
 
 调用函数是无需修改合约存储（更改变量）的交互类型，这意味着无需发送交易，只需读取已部署合约的各种存储变量。
 
