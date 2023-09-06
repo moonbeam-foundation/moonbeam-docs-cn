@@ -23,7 +23,6 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 !!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-安装Scaffold-ETH
 ## 安装Ethers.js {: #install-ethersjs }
 
 首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
@@ -45,6 +44,7 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
     ```bash
     yarn add ethers solc@0.8.0
     ```
+
 ## 设置Ethers提供商 {: #setting-up-the-ethers-provider }
 
 在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.org/v6/api/providers/){target=_blank}与网络交互。
