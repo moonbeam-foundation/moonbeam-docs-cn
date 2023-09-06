@@ -5,8 +5,6 @@ description: 了解财政库提案的整个周期，从Moonbeam社区论坛上�
 
 # 如何发起财政库支出提案
 
-![Governance Moonbeam Banner](/images/tokens/governance/treasury-proposals/treasury-proposal-banner.png)
-
 ## 概览 {: #introduction } 
 
 正如[财政库概览页面](/learn/features/governance/#definitions){target=_blank}所述，Moonbeam财政库是在网络创始之时的一笔链上资金。网络上线之际，Token总供应量的0.5%分配至财政库，另外持续累计的交易费用的一定比例（约为{{ networks.moonbeam.treasury.tx_fees_allocated }}%）将存入财政库。Moonbeam财政库将协助维护重要项目的发展和Moonbeam网络的增长，并为其提供资金支持。
@@ -97,7 +95,7 @@ Moonbeam采纳了由社区提出的[Interim Treasury Program提案](https://moon
 
 提交财政库提案后，刷新Polkadot.js Apps，您将看到您的提案已出现在列表中。如果您未看到您的提案出现，您的账号可能没有足够的资金支付所需保证金。
 
-如果您用创建财政库支出提案的同一个账户登陆[Polkassembly](https://moonbeam.polkassembly.network/){target=_blank}，您将能够编辑提案描述，以添加[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}提案讨论的链接。该步骤必不可少，虽然Polkassembly会为每个提案自动生成一个帖子，但它不会提供有关提案的详细信息。
+如果您用创建财政库支出提案的同一个账户登陆[Polkassembly](https://moonbeam.polkassembly.io/opengov){target=_blank}，您将能够编辑提案描述，以添加[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}提案讨论的链接。该步骤必不可少，虽然Polkassembly会为每个提案自动生成一个帖子，但它不会提供有关提案的详细信息。
 
 提交链上提案后，您需要在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}编辑提案，标题需要包含提案ID，状态更新为`Submitted`。关于编辑Moonbeam社区论坛提案的详细说明可以在[使用Moonbeam社区论坛的教程](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=_blank}中找到。
 

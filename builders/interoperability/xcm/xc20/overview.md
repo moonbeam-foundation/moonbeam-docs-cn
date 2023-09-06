@@ -1,144 +1,139 @@
 ---
 title: XC-20和跨链资产
-description: 学习如何使用预编译的资产Solidity合约通过ERC-20接口与Moonbeam上的跨链Token交互。
+description: 了解Moonbeam跨链资产类型（尤其是本地XC-20和外部XC-20），并查看Moonbeam上的外部XC-20列表。
 ---
 
-# XC-20概况
-
-![Cross-Chain Assets Precompiled Contracts Banner](/images/builders/interoperability/xcm/xc20/overview/overview-banner.png)
+# XC-20概述
 
 ## 概览 {: #introduction }
 
-[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}定义了两条互操作的区块链之间传递信息的方式。此格式为Moonbeam/Moonriver与中继链或是其他波卡/Kusama生态内平行链之间打开了传递信息和资产的大门。
+[跨共识信息格式（XCM）](https://wiki.polkadot.network/docs/learn-crosschain){target=_blank}定义了两条互操作区块链之间传递信息的方式。此格式为Moonbeam/Moonriver与中继链或是其他波卡/Kusama生态内平行链之间打开了传递信息和资产的大门。
 
 Substrate资产具有原生可互操作性。然而，开发者需要使用Substrate API与其交互。而这使开发者的体验感降低，尤其是来自以太坊生态的开发者。因此，为了协助开发者上手波卡和Kusama提供的原生互操作性，Moonbeam引入了XC-20概念。
 
-XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}与之交互。除此之外，开发者能够使用常用以太坊开发框架或dApp集成XC-20资产。
+XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](/builders/interoperability/xcm/xc20/interact#the-erc20-interface){target=_blank}与之交互。在EVM方面，XC-20具有[ERC-20接口](/builders/interoperability/xcm/xc20/interact#the-erc20-interface){target=_blank}，因此智能合约和用户可以轻松地与其交互 ，并且无需了解 Substrate。这最终为开发人员在处理这些类型的资产时提供了更大的灵活性，并允许与基于EVM的智能合约（例如DEX和借贷平台等）无缝集成。 此外，开发人员可以将XC-20与常规的[以太坊开发框架](/builders/build/eth-api/dev-env/){target=_blank}或dApp集成，并使用此类资产创建互连合约策略。此外，随着[RT2301](https://github.com/moonbeam-foundation/moonbeam/tree/runtime-2301){target=_blank}的引入，所有ERC-20都已支持XCM，这意味着它们也可以作为XC-20。
 
 ![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-4.png)
 
+此页面涵盖了XC-20的基本概念，如果您想要了解如何与之交互或转移XC-20，请参考[与XC-20交互](/builders/interoperability/xcm/xc20/interact){target=_blank}或[使用X-Tokens Pallet发送XC-20](/builders/interoperability/xcm/xc20/xtokens){target=_blank}教程。
+
 ## XC-20类型 {: #types-of-xc-20s }
 
-目前有两种XC-20类型：[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}和[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}。
+目前有两种XC-20类型：本地XC-20和外部XC-20。
 
-外部XC-20是从其他平行链或中继链转移到Moonbeam的原生跨链资产。因此，实际的Token存在于每条链的Moonbeam主权账户中。所有的外部XC-20资产使用_xc_作为其名称的前缀与其他资产类别进行区分。
+### 什么是本地XC-20？ {: #local-xc20s }
 
-可铸造XC-20也是跨链资产，但其可以直接在Moonbeam上铸造和销毁，也可以转移至其他平行链。由于可铸造XC-20是在Moonbeam上创建，不是其他平行链或中继链的原生资产，因此资产的名称、符号和小数点都是完全可配置的。正是如此，无需在这类资产的名称或符号前加_xc_作为前缀。
+本地XC-20是EVM上存在的所有ERC-20，可以通过XCM跨链传输。为了将本地XC-20转移到另一个平行链，资产需要在该链上注册。转移本地XC-20时，实际的Token存在于Moonbeam上目标链的主权账户中。本地XC-20必须遵循[本教程中ERC-20接口](/builders/interoperability/xcm/xc20/interact#the-erc20-interface){target=_blank}部分，它们不能自定义ERC-20。 更具体地说，`transfer`函数的函数选择器必须如[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=_blank}中所述：
 
-两种XC-20类型的核心都是Substrate资产，在底层通过Substrate API进行交互。然而，Moonbeam提供了ERC-20接口与这些资产进行交互，因此无需Substrate基本知识也可直接操作。从用户角度来看，两种类型的XC-20都以相同的方式进行交互，唯一的区别在于可铸造XC-20包含了ERC-20接口的扩展，具有一些管理资产的额外功能，例如制造和销毁。
-
-XC-20的跨链转移是通过[X-Tokens pallet](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}来完成的。转移外部XC-20资产和可铸造XC-20资产的操作说明根据特定资产的多位置会有些许不同。
-
-## XC-20与ERC-20 {: #xc-20-vs-erc-20 }
-
-尽管XC-20和ERC-20有很多相似之处，但仍需要注意两者之间的差异。
-
-首先，XC-20是基于Substrate的资产，因此，它们也受到治理等Substrate功能的直接影响。此外，通过Substrate API完成的XC-20交易不会在基于EVM的区块浏览器中可见，例如[Moonscan](https://moonscan.io){target=_blank}。只有通过以太坊API完成的交易才能通过此类浏览器看到。
-
-尽管如此，XC-20可以通过ERC-20接口进行交互，因此它们具有可以从Substrate和Ethereum API交互的特性。这为开发者在使用这类资产时提供了更大的灵活性，并允许与基于EVM的智能合约（如DEX、借贷平台等）无缝集成。
-
-## ERC-20接口 {: #the-erc20-interface }
-
-Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口遵循[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，这是智能合约中Token的标准API接口。此标准定义了一个Token合约必须实现与应用程序互操作所需的函数和动作。
-
---8<-- 'text/erc20-interface/erc20-interface.md'
-
-可铸造XC-20还包括仅允许Token合约或指定账户的所有者调用的附加功能。请查看[Mintable XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}页面获取关于附加功能和可用指定角色的更多信息。
-
-## ERC-20 Permit接口 {: #the-erc20-permit-interface }
-
-Moonbeam上的[Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口遵循[EIP-2612标准](https://eips.ethereum.org/EIPS/eip-2612){target=_blank}，使用`permit`函数扩展了ERC-20接口。Permit是可用于更改帐户的ERC-20限额的签名消息。
-
-标准的ERC-20 `approve`函数在其设计中受到限制，因为`allowance`仅能由交易的发送者`msg.sender`进行修改。您可在[OpenZeppelin的ERC-20接口的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L136){target=_blank}中找到，通过[`msgSender`函数](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol#L17){target=_blank}设置`owner`，最终将其设置为`msg.sender`。
-
-用户可以签署信息而非签署`approve`交易，该签名可以用于调用`permit`函数以修改`allowance`。如此一来，仅需少量gas即可进行Token转移。另外，用户也无需发送两次交易来批准和转移Token。关于`permit`函数的示例，请查看[OpenZeppelin的ERC-20 Permit扩展的实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L41){target=_blank}。
-
-The [Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口包含以下函数：
-
-- **permit**(*address* owner, *address* spender, *uint256*, value, *uint256*, deadline, *uint8* v, *bytes32* r, *bytes32* s) —— 任何人均可调用批准permit
-- **nonces**(*address* owner) —— 反馈给定所有者当前的nonce
-- **DOMAIN_SEPARATOR**() —— 返回用于避免重放攻击的EIP-712域分隔符。这遵循[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现
-
-**DOMAIN_SEPARATOR()**是在[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中定义，计算如下：
-
-```
-keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
+```js
+function transfer(address _to, uint256 _value) public returns (bool success)
 ```
 
-哈希的参数可以分解为：
+如果`transfer`函数的函数选择器偏离标准，则跨链转账将会失败。
 
- - **PERMIT_DOMAIN** —— `EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)`的`keccak256`
- - **name** —— 一种Token名称，但包含以下注意事项：
-     - 如果Token的定义了名称，则域名的**name**为`XC20: <name>`，其中`<name>`是Token名称
-     - 如果Token的未定义名称，则域名的**name**为`XC20: No name`
- - **version** —— 签名域的版本，在本示例中，**version**设置为 `1`
- - **chainId** —— 网络的chain ID
- - **verifyingContract** —— XC-20地址
+### 什么是外部XC-20？ {: #external-xc20s }
 
-!!! 注意事项
-    在之前的Runtime 1600升级中，**name**字段未遵循标准的[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现。
+外部XC-20是从其他平行链或中继链转移到Moonbeam的原生跨链资产。这些资产的核心是Substrate资产。当转移外部XC-20时，实际的Token存在于每条链的Moonbeam主权账户中。所有的外部XC-20资产使用_xc_作为其名称的前缀与其他资产类别进行区分。
 
-域分隔符的计算可以在[Moonbeam的EIP-2612](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L130-L154){target=_blank}实现中看到，在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中显示了一个实际的示例。
+### 本地XC-20与外部XC-20的区别 {: #xc-20-comparison }
 
-除了域分隔符，[`hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct){target=_blank}保证签名只能用于给定函数参数的`permit`函数。这使用了一个给定数值确保签名不会受到重放攻击。哈希结构的计算可以在[Moonbeam的EIP-2612](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L167-L175){target=_blank}实现中看到，在[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}中显示了一个实际的示例。
+与其他Substrate资产一样，两种类型的XC-20都可以通过以太坊和Substrate API轻松发送到生态系统中的其他平行链。 但是，使用Substrate API进行XCM转移将为本地XC-20发出EVM日志，但不会为外部XC-20发出EVM日志。建议使用以太坊API，通过基于EVM的浏览器（例如[Moonscan](https://moonscan.io){target=_blank}）提供对XCM操作的更多可见性。
 
-域分隔符和哈希结构可以用于构建[最终哈希](https://github.com/moonbeam-foundation/moonbeam/blob/perm-runtime-1502/precompiles/assets-erc20/src/eip2612.rs#L177-L181){target=_blank}的完全编码消息。在[OpenZeppelin的`EIP712`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L101){target=_blank}中显示了一个实际的示例。
+在 Moonbeam上，本地XC-20只能通过其常规ERC-20接口进行转移。 相反，外部XC-20可以通过两个接口（Substrate和ERC-20）进行转移。如果外部XC-20通过Substrate API转移，则基于EVM的区块浏览器将看不到该交易。只有通过以太坊API完成的交易才能通过此类浏览器可见。
 
-使用最终哈希以及`v`、`r`和`s`数值，通过[ECRECOVER预编译](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}可以验证和恢复签名。如果验证成功，nonce和限额将会更新。
+两种资产类型的主要区别在于本地XC-20时EVM ERC-20，其具有XCM功能，然而外部XC-20是Substrate资产，顶部具有ERC-20接口。
 
-## 使用Remix与预编译交互 {: #interact-with-the-precompile-using-remix }
+XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}完成。要了解如何使用X-Tokens Pallet转移XC-20s，您可以参考[使用X-Tokens Pallet发送XC-20s](/builders/interoperability/xcm/xc20/xtokens){target=_blank}的教程。
 
-无论是外部资产还是铸造资产，其交互的方式是一样的。但是，如果您是可铸造Token合约或具有特定功能的指定账户的所有者，还有一些额外的函数可供您交互。更多信息，请查看Mintable XC-20页面的[与可铸造XC-20特定函数交互](/builders/interoperability/xcm/xc20/mintable-xc20/#interact-with-the-precompile-using-remix){target=_blank}部分。
+## 当前可用的外部XC-20列表 {: #current-xc20-assets }
 
-### 查看先决条件 {: #checking-prerequisites }
+每个网络当前可用的外部XC-20资产列表如下所示：
 
-要通过XC-20预编译批准花费或转移XC-20，您将需要准备以下内容：
+=== "Moonbeam"
+    |   来源    |  符号  |                                                             XC-20地址                                                             |
+    |:---------:|:------:|:---------------------------------------------------------------------------------------------------------------------------------:|
+    | Polkadot  | xcDOT  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonscan.io/token/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |   Acala   | xcaUSD | [0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda](https://moonscan.io/token/0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda){target=_blank} |
+    |   Acala   | xcACA  | [0xffffFFffa922Fef94566104a6e5A35a4fCDDAA9f](https://moonscan.io/token/0xffffFFffa922Fef94566104a6e5A35a4fCDDAA9f){target=_blank} |
+    |   Astar   | xcASTR | [0xFfFFFfffA893AD19e540E172C10d78D4d479B5Cf](https://moonscan.io/token/0xFfFFFfffA893AD19e540E172C10d78D4d479B5Cf){target=_blank} |
+    |  Bifrost  | xcBNC  | [0xffffffff7cc06abdf7201b350a1265c62c8601d2](https://moonscan.io/token/0xffffffff7cc06abdf7201b350a1265c62c8601d2){target=_blank} |
+    | Darwinia  | xcRING | [0xFfffFfff5e90e365eDcA87fB4c8306Df1E91464f](https://moonscan.io/token/0xFfffFfff5e90e365eDcA87fB4c8306Df1E91464f){target=_blank} |
+    | Interlay  | xcIBTC | [0xFFFFFfFf5AC1f9A51A93F5C527385edF7Fe98A52](https://moonscan.io/token/0xFFFFFfFf5AC1f9A51A93F5C527385edF7Fe98A52){target=_blank} |
+    | Interlay  | xcINTR | [0xFffFFFFF4C1cbCd97597339702436d4F18a375Ab](https://moonscan.io/token/0xFffFFFFF4C1cbCd97597339702436d4F18a375Ab){target=_blank} |
+    | Parallel  | xcPARA | [0xFfFffFFF18898CB5Fe1E88E668152B4f4052A947](https://moonscan.io/token/0xFfFffFFF18898CB5Fe1E88E668152B4f4052A947){target=_blank} |
+    |   Phala   | xcPHA  | [0xFFFfFfFf63d24eCc8eB8a7b5D0803e900F7b6cED](https://moonscan.io/token/0xFFFfFfFf63d24eCc8eB8a7b5D0803e900F7b6cED){target=_blank} |
+    | Statemint | xcUSDT | [0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d](https://moonscan.io/token/0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d){target=_blank} |
 
-- [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
-- 在Moonbase Alpha上创建或拥有2个账户
-- 至少有一个账户拥有`DEV` Token
---8<-- 'text/faucet/faucet-list-item.md'
-- 您想要交互的XC-20预编译地址。计算预编译地址的操作说明会有些许不同，这取决于XC-20资产是迁移至Moonbeam的外部资产或是直接在Moonbeam上铸造
-    - [计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20/#calculate-xc20-address){target=_blank}
-    - [计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20/#calculate-xc20-address){target=_blank}
+     _*您可以在Polkadot.js Apps上查看每个[资产ID](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/assets){target=_blank}_
 
-此教程将涵盖如何与[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口交互。您可以修改以下操作说明并使用[Permit.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/Permit.sol){target=_blank}接口。
+=== "Moonriver"
+    |     来源     |  符号  |                                                                  XC-20地址                                                                  |
+    |:------------:|:------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+    |    Kusama    | xcKSM  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonriver.moonscan.io/token/0xffffffff1fcacbd218edc0eba20fc2308c778080){target=_blank} |
+    |   Bifrost    | xcBNC  | [0xFFfFFfFFF075423be54811EcB478e911F22dDe7D](https://moonriver.moonscan.io/token/0xFFfFFfFFF075423be54811EcB478e911F22dDe7D){target=_blank} |
+    |   Calamari   | xcKMA  | [0xffffffffA083189F870640B141AE1E882C2B5BAD](https://moonriver.moonscan.io/token/0xffffffffA083189F870640B141AE1E882C2B5BAD){target=_blank} |
+    |     Crab     | xcCRAB | [0xFFFffFfF8283448b3cB519Ca4732F2ddDC6A6165](https://moonriver.moonscan.io/token/0xFFFffFfF8283448b3cB519Ca4732F2ddDC6A6165){target=_blank} |
+    | Crust-Shadow | xcCSM  | [0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7](https://moonriver.moonscan.io/token/0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7){target=_blank} |
+    |    Heiko     | xcHKO  | [0xffffffFF394054BCDa1902B6A6436840435655a3](https://moonriver.moonscan.io/token/0xffffffFF394054BCDa1902B6A6436840435655a3){target=_blank} |
+    |  Integritee  | xcTEER | [0xFfFfffFf4F0CD46769550E5938F6beE2F5d4ef1e](https://moonriver.moonscan.io/token/0xFfFfffFf4F0CD46769550E5938F6beE2F5d4ef1e){target=_blank} |
+    |    Karura    | xcKAR  | [0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5](https://moonriver.moonscan.io/token/0xFfFFFFfF08220AD2E6e157f26eD8bD22A336A0A5){target=_blank} |
+    |    Karura    | xcaUSD | [0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228](https://moonriver.moonscan.io/token/0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228){target=_blank} |
+    |    Khala     | xcPHA  | [0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603](https://moonriver.moonscan.io/token/0xffFfFFff8E6b63d9e447B6d4C45BDA8AF9dc9603){target=_blank} |
+    |   Kintsugi   | xcKINT | [0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2](https://moonriver.moonscan.io/token/0xfffFFFFF83F4f317d3cbF6EC6250AeC3697b3fF2){target=_blank} |
+    |   Kintsugi   | xckBTC | [0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0](https://moonriver.moonscan.io/token/0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0){target=_blank} |
+    |    Litmus    | xcLIT  | [0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0](https://moonriver.moonscan.io/token/0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0){target=_blank} |
+    |  Robonomics  | xcXRT  | [0xFffFFffF51470Dca3dbe535bD2880a9CcDBc6Bd9](https://moonriver.moonscan.io/token/0xFffFFffF51470Dca3dbe535bD2880a9CcDBc6Bd9){target=_blank} |
+    |    Shiden    | xcSDN  | [0xFFFfffFF0Ca324C842330521525E7De111F38972](https://moonriver.moonscan.io/token/0xFFFfffFF0Ca324C842330521525E7De111F38972){target=_blank} |
+    |  Statemine   | xcRMRK | [0xffffffFF893264794d9d57E1E0E21E0042aF5A0A](https://moonriver.moonscan.io/token/0xffffffFF893264794d9d57E1E0E21E0042aF5A0A){target=_blank} |
+    |  Statemine   | xcUSDT | [0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d](https://moonriver.moonscan.io/token/0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d){target=_blank} |
 
-### 添加&编译接口 {: #add-the-interface-to-remix }
+    _*您可以在Polkadot.js Apps上查看每个[资产ID](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network#/assets){target=_blank}_
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与XC-20预编译交互，首先您需要将ERC-20接口添加至Remix：
+=== "Moonbase Alpha"
+    |         来源          |   符号   |                                                                 XC-20地址                                                                  |
+    |:---------------------:|:--------:|:------------------------------------------------------------------------------------------------------------------------------------------:|
+    | Relay Chain Alphanet  |  xcUNIT  | [0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080](https://moonbase.moonscan.io/token/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080){target=_blank} |
+    |   Basilisk Alphanet   |  xcBSX   | [0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA](https://moonbase.moonscan.io/token/0xFFfFfFfF4d0Ff56d0097BBd14920eaC488540BFA){target=_blank} |
+    |    Clover Alphanet    |  xcCLV   | [0xFfFfFffFD3ba399d7D9d684D94b22767a5FA1cCA](https://moonbase.moonscan.io/token/0xFfFfFffFD3ba399d7D9d684D94b22767a5FA1cCA){target=_blank} |
+    | Crust/Shadow Alphanet |  xcCSM   | [0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7](https://moonbase.moonscan.io/token/0xffFfFFFf519811215E05eFA24830Eebe9c43aCD7){target=_blank} |
+    |  Integritee Alphanet  |  xcTEER  | [0xFfFfffFf4F0CD46769550E5938F6beE2F5d4ef1e](https://moonbase.moonscan.io/token/0xFfFfffFf4F0CD46769550E5938F6beE2F5d4ef1e){target=_blank} |
+    |   Kintsugi Alphanet   |  xckBTC  | [0xFffFfFff5C2Ec77818D0863088929C1106635d26](https://moonbase.moonscan.io/token/0xFffFfFff5C2Ec77818D0863088929C1106635d26){target=_blank} |
+    |   Kintsugi Alphanet   |  xcKINT  | [0xFFFfffff27C019790DFBEE7cB70F5996671B2882](https://moonbase.moonscan.io/token/0xFFFfffff27C019790DFBEE7cB70F5996671B2882){target=_blank} |
+    |   Litentry Alphanet   |  xcLIT   | [0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0](https://moonbase.moonscan.io/token/0xfffFFfFF31103d490325BB0a8E40eF62e2F614C0){target=_blank} |
+    |   Pangolin Alphanet   | xcPARING | [0xFFFffFfF8283448b3cB519Ca4732F2ddDC6A6165](https://moonbase.moonscan.io/token/0xFFFffFfF8283448b3cB519Ca4732F2ddDC6A6165){target=_blank} |
+    |  Statemine Alphanet   |  xcTT1   | [0xfFffFfFf75976211C786fe4d73d2477e222786Ac](https://moonbase.moonscan.io/token/0xfFffFfFf75976211C786fe4d73d2477e222786Ac){target=_blank} |
 
-1. 获取[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}的复制文档
-2. 将文档内容粘贴至名为**IERC20.sol**的Remix文档
+     _*您可以在Polkadot.js Apps上查看每个[资产ID](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}_
 
-![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/overview/overview-1.png)
+### 检索外部XC-20列表 {: #list-xchain-assets }
 
-当您成功在Remix读取ERC-20接口后，您将需要编译：
+要获取当前可用的外部XC-20列表以及其关联的元数据，您可以使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}查询链状态。为此，您可以遵循以下步骤：
 
-1. 点击（从上至下的）第二个**Compile**标签
-2. 编译**IERC20.sol**文档
+1. 为您想要获取其资产列表的网络创建一个API提供商。 您可以为每个网络使用以下WSS端点：
 
-![Compiling IERC20.sol](/images/builders/interoperability/xcm/xc20/overview/overview-2.png)
+    === "Moonbeam"
 
-当接口已成功被编译后，您将会在**Compile**标签旁看到绿色的打勾符号。
+        ```text
+        wss://wss.api.moonbeam.network
+        ```
 
-### 访问预编译 {: #access-the-precompile }
+    === "Moonriver"
 
-您将使用获得的XC-20预编译地址访问接口，而非部署ERC-20预编译：
+        ```text
+        wss://wss.api.moonriver.moonbeam.network
+        ```
 
-1. 在Remix内的**Compile**标签下点击**Deploy and Run**标签。请注意，预编译合约已被部署
-2. 确保已在**ENVIRONMENT**下拉菜单中选择**Injected Web3**。当您已经选择**Injected Web3**，MetaMask将会跳出弹窗要求将您的账户连接至Remix
-3. 确认**ACCOUNT**下显示的为正确账户
-4. 确认已在**CONTRACT**下拉菜单中选择**IERC20 - IERC20.sol**。由于此为预编译合约，您不需要部署任何代码。同时，我们将会在**At Address**字段内显示预编译地址
-5. 提供在[计算外部XC-20预编译地址](/builders/interoperability/xcm/xc20/xc20){target=_blank}或[计算可铸造XC-20预编译地址](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}操作说明计算得到的XC-20预编译地址。在本示例中为`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`，然后点击**At Address**
+    === "Moonbase Alpha"
 
-![Access the address](/images/builders/interoperability/xcm/xc20/overview/overview-3.png)
+        ```text
+        {{ networks.moonbase.wss_url }}
+        ```
 
-!!! 注意事项
-    如果您希望确保运行顺利，您可以使用您的搜寻引擎查询校验工具以校验您的XC-20预编译地址。当地址校验成功，您可以将其用在**At Address**字段中。
+2. 查询所有资产的`assets` pallet
+3. 迭代资产列表以获取所有资产ID及其关联的元数据
 
-XC-20的**IERC20**预编译将会在**Deployed Contracts**列表下显示。现在您可以使用任何ERC-20函数以获得XC-20的信息或是转移XC-20。
+```js
+--8<-- 'code/xc20/retrieve-xc20s.js'
+```
 
-![Interact with the precompile functions](/images/builders/interoperability/xcm/xc20/overview/overview-4.png)
-
-如果您想更深入学习每个函数，您可以查看[ERC-20预编译教程](/builders/build/canonical-contracts/precompiles/erc20/){target=_blank}并加以修改来适用XC-20预编译交互。
+结果将显示资产ID以及所有已注册外部XC-20的一些附加信息。

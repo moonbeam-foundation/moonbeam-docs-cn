@@ -5,8 +5,6 @@ description: 了解如何使用 OpenZeppelin Contracts Wizard创建常见智能�
 
 # OpenZeppelin合约&库
 
-![OpenZeppelin Contracts Banner](/images/builders/build/eth-api/dev-env/openzeppelin/contracts/oz-contracts-banner.png)
-
 ## 概览 {: #introduction } 
 
 [OpenZeppelin](https://openzeppelin.com/){target=_blank}合约和库已成为行业标准，其开源代码模板经历了太坊及其他区块链的实战考验，帮助开发者最大限度降低风险。OpenZeppelin代码包括使用度最高的ERC标准及拓展部署，已被社区在各类指南以及操作教程中大量使用。 
@@ -72,7 +70,7 @@ Contracts Wizard由以下环节组成：
  2. 确保文档已创建成功。点击文档，利用文本编辑器打开文档
  3. 使用文档编辑器编写智能合约。在本示例中，我们使用了以下代码：
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -128,7 +126,7 @@ contract MyToken is ERC20, Ownable {
 
 下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -193,7 +191,7 @@ OpenZeppelin的ERC-1155代币合约提供只能在`constructor`函数中调用�
 
 和[ERC-20](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";

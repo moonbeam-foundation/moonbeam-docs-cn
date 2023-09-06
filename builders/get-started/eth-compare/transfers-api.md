@@ -5,8 +5,6 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在可用�
 
 # 在Moonbeam上转账和订阅余额变化
 
-![Moonbeam v Ethereum - Transfers API Banner](/images/builders/get-started/eth-compare/transfers-api-banner.png)
-
 ## 概览 {: #introduction }
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在原生Token（例如：GLMR和MOVR）余额转账方面与以太坊之间的主要差异。
@@ -59,7 +57,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 开发者也可以使用[Substrate API Sidecar](https://github.com/paritytech/substrate-api-sidecar){target=_blank}检索Moonbeam区块并监控通过Substrate和Ethereum API发送的交易。Substrate API Sidecar是一种REST API服务，用于与使用Substrate框架构建的区块链交互。
 
-以下代码片段使用Axios HTTP客户端查询Sidecar端点`/blocks/head`(https://paritytech.github.io/substrate-api-sidecar/dist/){target=_blank}以获取最新确认的区块头。然后，在EVM和Substrate API级别解码原生Token转账的`from`、`to`、`value`、`tx hash`和`transaction status` 区块。
+以下代码片段使用Axios HTTP客户端查询Sidecar端点`/blocks/head`(https://paritytech.github.io/substrate-api-sidecar/dist/){target=_blank}以获取最新确认的区块头。然后，在EVM和Substrate API级别解码原生Token转账的`from`、`to`、`value`、`tx hash`、和`transaction status` 区块。
 
 --8<-- 'code/vs-ethereum/transfers-api/sidecar-transfer.md'
 

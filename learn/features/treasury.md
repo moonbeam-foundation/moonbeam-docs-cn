@@ -5,8 +5,6 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由财政库
 
 # Moonbeam财政库
 
-![Treasury Moonbeam Banner](/images/learn/features/treasury/treasury-overview-banner.png)
-
 ## 概览 {: #introduction } 
 
 财政库（Treasury）是用于链上资金的管理。每个基于Moonbeam的网络都设立了一个社区财政库，用于支持网络计划以促进未来网络的发展。网络交易费用的一部分将被存储于对应网络的财政库，并由理事会（Council）管理。

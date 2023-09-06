@@ -5,8 +5,6 @@ description: 学习如何通过Chopsticks重放区块、解析状态更迭、测
 
 # 如何使用Chopsticks分叉Moonbeam
 
-![Chopsticks diagram](/images/builders/build/substrate-api/chopsticks/chopsticks-banner.png)
-
 ## 概览 {: #introduction }
 
 [Chopsticks](https://github.com/AcalaNetwork/chopsticks){target=_blank}提供了一种开发者友好型方法，让其可以在本地分叉现有的基于Substrate的链。它允许重放区块以轻松检查extrinsics是如何影响状态，或是为XCM测试进行多个区块分叉等等。这允许开发者在本地开发环境中测试和试验他们自己的自定义区块链配置时，无需部署实时网络。
@@ -296,7 +294,7 @@ The parameters above are formatted in the following ways:
     "jsonrpc": "2.0",
     "id": 1,
     "method": "METHOD_NAME",
-    "params": [PARAMETER_1, PARAMETER_2...]
+    "params": ["PARAMETER_1", "PARAMETER_2", "..."]
 }
 ```
 

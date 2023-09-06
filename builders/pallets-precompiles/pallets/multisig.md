@@ -5,8 +5,6 @@ description: 通过本文了解Multisig Pallet，其利用Substrate功能提供�
 
 # Multisig Pallet
 
-![Multisig Moonbeam Banner](/images/builders/pallets-precompiles/pallets/multisig-banner.png)
-
 ## 概览 {: #introduction }
 
 多签钱包是一种特殊类型的钱包，顾名思义，需要多个签名才能执行交易。多签有一组签名者，并定义了批准交易所需签名数量的阈值。这种类型的钱包提供了额外的安全性和去中心化层。
@@ -78,7 +76,7 @@ Multisig Pallet包含以下只读函数来获取Pallet常量：
 
 现在，您已创建多签账户，您可以从构建多签账户的其中一个账户创建一个多签调用。在本示例中将从Alice的账户创建调用。因此，Alice将需要提交一笔押金。押金的计算方式如下：
 
-```
+```text
 Deposit = depositBase + threshold * depositFactor
 ```
 
@@ -102,12 +100,14 @@ Deposit = depositBase + threshold * depositFactor
 确保您已复制并存储编码的调用数据和编码的调用哈希，您将在本教程的后部分操作中用于批准多签调用。在本示例中，编码的调用数据和编码的哈希如下所示：
 
 === "Encoded call data"
-    ```
+
+    ```text
     0x0300798d4ba9baf0064ec19eb4f0a1a45785ae9d6dfc1300008a5d78456301
     ```
 
 === "Encoded call hash"
-    ```
+
+    ```text
     0x76d1a0a8f6eb177dd7a561ef954e83893823fa5d77f576910f3fdc6cb4666dea
     ```
 

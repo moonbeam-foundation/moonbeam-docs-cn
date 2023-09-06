@@ -5,8 +5,6 @@ description: 学习XCM指令的内容，包含如何处理XCM执行费用以及�
 
 # Moonbeam上的XCM费用
 
-![XCM Fees Banner](/images/builders/interoperability/xcm/fees/fees-banner.png)
-
 ## 概览 {: #introduction}
 
 XCM旨在成为共识系统之间沟通的语言。传送XCM消息包含一系列在原链和目标链上执行的指令。XCM指令的集合将执行如Token转账等不同的动作。要处理和执行每个XCM指令，基本上皆需支付一定数量的相关费用。
@@ -308,7 +306,7 @@ ExecutionTime = {{ networks.moonbeam.xcm.transfer_dot.total_weight.numbers_only 
 
 这代表4个XCM指令需花费`{{ networks.moonbeam.xcm.transfer_dot.exec_time }}`秒的区块执行时间。
 
-要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/interoperability/xcm/xc20/xc20/#x-chain-assets-metadata){target=_blank}查询资产的单位位数。
+要计算以xcDOT为单位的总花费，您将需要资产的单位位数作为查询，以xcDOT为例，其资产单位为10个位数。您可以通过[检索资产元数据](/builders/interoperability/xcm/xc20/overview/#list-xchain-assets){target=_blank}查询资产的单位位数。
 
 区块执行的公式可以用于决定Alice转移DOT至Alith在Moonbeam上账户所需的花费，以下为总花费的计算公式：
 

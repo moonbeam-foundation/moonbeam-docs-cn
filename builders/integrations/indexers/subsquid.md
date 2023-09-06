@@ -5,8 +5,6 @@ description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate
 
 # 在Moonbeam上使用Subsquid进行检索
 
-![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
-
 ## 概览 {: #introduction }
 
 [Subsquid](https://subsquid.io){target=_blank}是基于Substrate的区块链所使用的一种检索节点框架。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（Extract-Transform-Load，数据提取、转换与加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。
@@ -34,7 +32,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 
 1. 通过运行以下命令创建基于Substrate模板的Subsquid项目：
 
-    ```
+    ```bash
     sqd init <insert-squid-name> --template substrate
     ```
 
@@ -43,24 +41,28 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 2. 要配置您的Subsquid项目以在Moonbeam上运行，您需要更新`typegen.json`文件。`typegen.json`文件负责为您的数据生成TypeScript接口类。根据您在其上索引数据的网络，`typegen.json`文件中的`specVersions`值应配置如下：
 
     === "Moonbeam"
-        ```
+
+        ```json
         "specVersions": "https://moonbeam.archive.subsquid.io/graphql",
         ```
 
     === "Moonriver"
-        ```
+
+        ```json
         "specVersions": "https://moonriver.archive.subsquid.io/graphql",
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```json
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
 3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
     === "Moonbeam"
-        ```
+
+        ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonbeam.rpc_url }},
@@ -70,7 +72,8 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```
 
     === "Moonriver"
-        ```
+
+        ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonriver.rpc_url }},
@@ -80,7 +83,8 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonbase.rpc_url }},
@@ -98,12 +102,14 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 1. 您可以使用通用[EVM 模板](https://github.com/subsquid-labs/squid-evm-template){target=_blank}为EVM数据创建Subsquid项目，也可以使用[ABI模板](https://github.com/subsquid-labs/squid-abi-template){target=_blank}用于索引与特定合约相关的数据：
 
     === "EVM"
-        ```
+
+        ```bash
         sqd init <insert-squid-name> --template evm
         ```
 
     === "ABI"
-        ```
+
+        ```bash
         sqd init <insert-squid-name> --template abi
         ```
 
@@ -115,24 +121,28 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 2. 要配置您的Subsquid项目以在Moonbeam上运行，您需要更新`typegen.json`文件。`typegen.json`文件负责为您的数据生成TypeScript接口类。根据您在其上索引数据的网络，`typegen.json`文件中的`specVersions`值应配置如下：
 
     === "Moonbeam"
-        ```
+
+        ```json
         "specVersions": "https://moonbeam.archive.subsquid.io/graphql",
         ```
 
     === "Moonriver"
-        ```
+
+        ```json
         "specVersions": "https://moonriver.archive.subsquid.io/graphql",
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```json
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
 3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
-    === "Moonbeam"
-        ```
+    === "Moonbea
+    m"
+        ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonbeam.rpc_url }},
@@ -141,8 +151,9 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         });
         ```
 
-    === "Moonriver"
-        ```
+    === "Moonriv
+    er"
+        ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonriver.rpc_url }},
@@ -152,7 +163,8 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```
 
     === "Moonbase Alpha"
-        ```
+
+        ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
           chain: {{ networks.moonbase.rpc_url }},

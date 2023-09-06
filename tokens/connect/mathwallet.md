@@ -5,8 +5,6 @@ description: 通过此教程学习如何将Mathwallet（浏览器版）钱包连
 
 # 使用MathWallet与Moonbeam交互
 
-![Intro banner](/images/tokens/connect/mathwallet/mathwallet-banner.png)
-
 ## 概览 {: #introduction } 
 
 MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生支持每一个[Moonbeam网络](/learn/platform/networks)，意味着用户现在能通MathWallet来与任何一个Moonbeam网络进行交互。

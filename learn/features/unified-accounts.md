@@ -1,19 +1,17 @@
 ---
 title: 统一账户
-description: 目前Moonbeam使用基于以太坊的H160账户系统且获得Polkadot.js Apps的支持。
+description: Moonbeam取代了默认 Substrate账户系统，并原生支持基于以太坊的H160账户和ECDSA密钥。获取更多信息！
 ---
 
 # 统一账户
 
-![Intro diagram](/images/learn/features/unified-accounts/unified-accounts-banner.png)
-
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 由于Moonbeam的架构为波卡上与以太坊兼容的平行链，因此底层账户系统将默认的Substrate格式账户和密钥替换为以太坊格式账户和密钥。所以您可以使用 [MetaMask](/tokens/connect/metamask){target=_blank}和其它您已经熟悉的以太坊工具，例如[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}和[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}。
 
 您还可以使用Polkadot.js Apps与您的Moonbeam帐户进行交互，因为它原生支持H160格式地址和ECDSA格式密钥。有关此集成的更多信息，您可以查看 [使用Polkadot.js应用程序与Moonbeam交互](/tokens/connect/polkadotjs/){target=_blank}指南。
 
-## Substrate EVM兼容的区块链 {: #substrate-evm-compatible-blockchain } 
+## Substrate EVM兼容的区块链 {: #substrate-evm-compatible-blockchain }
 
 波卡（Polkadot）生态系统中所有平行链都可实现完全兼容EVM，让Solidity智能合约仅需稍作修改甚至不需要修改即可执行。Substrate让这一集成成为可能——只需将[EVM模块](https://docs.rs/pallet-evm/2.0.1/pallet_evm/){target=_blank}插入运行时间，以获取EVM支持，并且插入[Ethereum Pallet with Frontier](https://github.com/paritytech/frontier){target=_blank}获得以太坊RPC兼容性。Moonbeam和Parity共同开发了这些开源模块，让许多平行链能够兼容以太坊。
 
@@ -27,7 +25,7 @@ description: 目前Moonbeam使用基于以太坊的H160账户系统且获得Polk
 
 然而这样一来，Alice的用户体验可能非常差。首先，她需要先将代币转移到H160映射的H256地址上才能进行交易，并通过EVM部署合约。其次，她还需要在另外一个H256地址（她有不同的私钥）上持有一定的余额，才能使用Substrate功能。简而言之，Alice需要至少两个私钥才能同时使用Substrate和EVM上的全部功能。
 
-## Moonbeam统一账户 {: #moonbeam-unified-accounts } 
+## Moonbeam统一账户 {: #moonbeam-unified-accounts }
 
 Moonbeam致力于在Polkadot上创造一个完全兼容以太坊的环境，并提供最好的用户体验。除了基本的以太坊功能以外，还提供了链上治理、质押挖矿、跨链整合等额外功能。
 

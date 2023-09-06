@@ -5,8 +5,6 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 # 常见问题
 
-![Collator FAQ Banner](/images/node-operators/networks/collators/faq-banner.png)
-
 ## 概览 {: #introduction }
 
 收集人是其所参与的平行链中必不可少的一个部分。他们接收交易并为中继链验证人创建状态转换证明。

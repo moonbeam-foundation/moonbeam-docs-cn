@@ -4,34 +4,35 @@ description:  学习如何在Moonbeam上访问并交互原生Token ERC-20，以�
 keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, token, 原生
 ---
 
-#  原生Token ERC-20预编译
-
-![Precompiled Contracts Banner](/images/builders/pallets-precompiles/precompiles/erc20/erc20-banner.png)
+# 原生Token ERC-20预编译
 
 ## 概览 {: #introduction }
 
-Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口与原生协议Token交互。
+Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口与原生协议Token交互。尽管GLMR和MOVR并非ERC-20 Token，您现在可以假设他们为原生ERC-20资产与他们交互！
 
 这种预编译的主要优势之一是消除了将协议Token包装为ERC-20智能合约必要性，例如以太坊上的WETH。此外，还可以防止具有相同协议Token的多个包装。因此，需要通过ERC-20接口与协议Token交互的DApp无需单独的智能合约即可实现。
 
 在后台，[ERC-20预编译](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/src/lib.rs)执行与Substrate Balances Pallet相关的特定Substrate操作，由Rust编码。Balances Pallet提供处理[Moonbeam各种余额类型](/builders/get-started/eth-compare/balances/#moonbeam-account-balances)、设置余额、转移余额等功能。
 
-本教程将向您展示如何通过ERC-20预编译用Moobase Alpha测试网的原生协议Token——DEV Token交互。
+本教程将向您展示如何通过ERC-20预编译用Moobase Alpha测试网的原生协议Token——DEV Token交互。您也可以跟随并调整以下教程以了解该如何以ERC-20的形式使用GLMR或MOVR。
 
 预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.erc20 }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
@@ -81,7 +82,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 
 这样就意味着您已成功将DEV Token作为自定义ERC-20 Token添加至Moonbase Alpha测试网。
 
-### 设置Remix {: #remix-set-up } 
+### 设置Remix {: #remix-set-up }
 
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与ERC-20预编译交互。为此，您需要执行以下操作：
 

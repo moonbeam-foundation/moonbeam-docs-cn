@@ -5,8 +5,6 @@ description: Moonbeam测试网（Moonbase Alpha当前配置的概述，以及如
 
 # Moonbeam测试网（Moonbase Alpha）
 
-更新于2021年5月26日
-
 !!! 注意事项
     随着[Moonbase Alpha v8](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.8.0){target=_blank}版本的发布，最低Gas价格被设定为1 GDEV（类似于以太坊上的GWei）。如果您之前的部署时所设置的Gas价格为`0`的话，这对您来说可能是突破性的变化。
 
@@ -25,7 +23,7 @@ Moonbase Alpha具有以下配置：
  - 中继链上会有由PureStake运营的验证者节点来决定中继链上的区块。其中一个会被选来最终确定每一个由Moonbeam收集者提交的区块。此设定为将来扩展为两个平行链配置提供了空间。
  - 拥有提供商提供的[API端点](/builders/get-started/endpoints/){target=_blank}以连接到网络。项目也可以运行和访问[自己的私有节点](/node-operators/networks/run-a-node/){target=_blank}。
 
-![TestNet Diagram](/images/learn/platform/networks/moonbase-diagram-v7.png)
+![TestNet Diagram](/images/learn/platform/networks/moonbase-diagram.png)
 
 需要注意的一些重要变量和配置包括：
 
@@ -36,17 +34,6 @@ Moonbase Alpha具有以下配置：
     | 目标区块时间 |  {{ networks.moonbase.block_time }} 秒 (预计为6秒)  |
     | 区块Gas上限  | {{ networks.moonbase.gas_block }} (预计提升至少4倍) |
     | 交易Gas上限  |  {{ networks.moonbase.gas_tx }} (预计提升至少4倍)   |
-
-=== "治理"
-    |      变量      |                                                              值                                                              |
-    |:--------------:|:----------------------------------------------------------------------------------------------------------------------------:|
-    |     投票期     |       {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{networks.moonbase.democracy.vote_period.days}}天)        |
-    | 快速通道投票期 | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{networks.moonbase.democracy.fast_vote_period.hours}}小时) |
-    |     执行期     |      {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{networks.moonbase.democracy.enact_period.days}})天       |
-    |     冷静期     |       {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{networks.moonbase.democracy.cool_period.days}}天)        |
-    |   最低存入量   |                                      {{ networks.moonbase.democracy.min_deposit }} DEV                                       |
-    |   最高投票数   |                                         {{ networks.moonbase.democracy.max_votes }}                                          |
-    |   最多提案量   |                                       {{ networks.moonbase.democracy.max_proposals }}                                        |
 
 === "质押"
     |              变量              |                                                 值                                                 |

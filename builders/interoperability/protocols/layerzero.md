@@ -1,11 +1,9 @@
 ---
 title: 通过LayerZero进行跨链操作
-description: 学习如何使用LayerZero协议和API桥接资产以及将Moonbeam dApp连接到多个区块链上的资产和功能的其他方法。
+description: 了解用于跨链资产转移的GMP协议LayerZero，以及如何在Moonbeam上使用LayerZero开始构建跨链应用程序。
 ---
 
 # LayerZero协议
-
-![LayerZero Moonbeam banner](/images/builders/interoperability/protocols/layerzero/layerzero-banner.png)
 
 ## 概览 {: #introduction }
 

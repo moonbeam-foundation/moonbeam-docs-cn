@@ -6,8 +6,6 @@ keywords: solidity, 以太坊, xcm, utils, moonbeam, 预编译, 合约
 
 # 与XCM Utilities预编译交互
 
-![Precomiled XCM Utilities Banner](/images/builders/pallets-precompiles/precompiles/xcm-utils/xcm-utils-banner.png)
-
 ## 概览 {: #xcmutils-precompile}
 
 XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的实用性函数。这允许开发者能够更轻松地与其他XCM相关的预编译进行交易和交互。
@@ -15,17 +13,20 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 与其他[预编译合约](/builders/pallets-precompiles/precompiles/){target=_blank}类似，XCM Utilities预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.xcm_utils }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.xcm_utils }}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.xcm_utils}}
      ```
 
@@ -42,7 +43,7 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 
  - **multilocationToAddress**(*Multilocation memory* multilocation) — 只读函数，为给定multilocation返回multilocation的衍生账户
  - **weightMessage**(*bytes memory* message) — 只读函数，返回XCM消息将在链上消耗的权重。消息参数必须为SCALE编码的XCM版本化的XCM消息
- - **getUnitsPerSecond**(*Multilocation memory* multilocation) — 只读函数，为以`Multilocation`形式给定的资产获取每秒单位数。multilocation必须描述一个可以支持作为费用支付的资产，例如[外部XC-20](/builders/interoperability/xcm/xc20/xc20){target=_blank}，否则此函数将回退当前调用(revert)
+ - **getUnitsPerSecond**(*Multilocation memory* multilocation) — 只读函数，为以`Multilocation`形式给定的资产获取每秒单位数。multilocation必须描述一个可以支持作为费用支付的资产，例如[外部XC-20](/builders/interoperability/xcm/xc20/overview/#external-xc20s){target=_blank}，否则此函数将回退当前调用(revert)
 
 在XCM Utilities预编译中的`Multilocation`结构构建与[XCM Transactor预编译的Multilocation](/builders/interoperability/xcm/xcm-transactor#building-the-precompile-multilocation){target=_blank}相同。
 

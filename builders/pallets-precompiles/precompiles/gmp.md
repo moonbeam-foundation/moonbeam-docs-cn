@@ -6,8 +6,6 @@ keywords: solidity, ethereum, GMP, wormhole, moonbeam, bridge, connected, contra
 
 # 与GMP预编译交互
 
-![GMP Precompile Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/gmp/gmp-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam路由流动性（MRL）是指Moonbeam作为端口平行链的用例，适用于从源链到其他波卡平行链的流动性。此用例因为通用消息传递（GMP）的出现而实现，其中带有任意数据和Token的消息可以通过[与链无关的GMP协议](/builders/interoperability/protocols){target=_blank}在非平行链区块链上发送。这些GMP协议可以与[波卡的XCM消息传递系统](/builders/interoperability/xcm/overview){target=_blank}结合，以实现无缝流动性路由。
@@ -17,17 +15,20 @@ GMP预编译充当Moonbeam路由流动性的接口，作为来自GMP协议的承
 GMP预编译位于以下地址：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.gmp}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.gmp}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.gmp}}
      ```
 
@@ -35,7 +36,7 @@ GMP预编译位于以下地址：
 
 ## GMP Solidity接口 {: #the-gmp-solidity-interface }
 
-[`Gmp.sol`](https://github.com/PureStake/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}是一个允许开发者与预编译交互的Solidity接口：
+[`Gmp.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}是一个允许开发者与预编译交互的Solidity接口：
 
 - **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=_blank}
   - VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://book.wormhole.com/wormhole/6_relayers.html?search=#specialized-relayers){target=_blank}发现。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
@@ -46,7 +47,7 @@ GMP预编译位于以下地址：
 
 目前GMP预编译仅支持使用Wormhole通过Moonbeam发送流动性以及发送到其他平行链。GMP预编译不协助从平行链返回Moonbeam以及其他Wormhole连接链的路线。
 
-要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://book.wormhole.com/technical/evm/tokenLayer.html#contract-controlled-transfer){target=_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=_blank}的[origin-chain部署](https://book.wormhole.com/reference/contracts.html#token-bridge){target=_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/PureStake/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39){target=_blank}中的SCALE编码multilocation对象。
+要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://book.wormhole.com/technical/evm/tokenLayer.html#contract-controlled-transfer){target=_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=_blank}的[origin-chain部署](https://book.wormhole.com/reference/contracts.html#token-bridge){target=_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/moonbeam-foundation/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39){target=_blank}中的SCALE编码multilocation对象。
 
 如果您不熟悉波卡生态系统，您可能不熟悉SCALE编码和multilocation。[SCALE编码](https://docs.substrate.io/reference/scale-codec/){target=_blank}是波卡使用的一种紧凑形式的编码。[`MultiLocation`类型](https://wiki.polkadot.network/docs/learn-xcvm){target=_blank}用于定义波卡中的相对点，例如特定平行链上的特定账户（Polkadot区块链）。
 
@@ -109,7 +110,7 @@ import { TypeRegistry, Enum, Struct } from '@polkadot/types';
 const registry = new TypeRegistry();
 
 // Define the precompile's input types VersionedUserAction and XcmRoutingUserAction
-// https://github.com/PureStake/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39
+// https://github.com/moonbeam-foundation/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39
 class VersionedUserAction extends Enum {
  constructor(value) {
    super(registry, { V1: XcmRoutingUserAction }, value);

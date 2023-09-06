@@ -1,12 +1,10 @@
 ---
 title: 随机数Pallet
-description: 学习Moonbeam上随机数pallet中的可用extrinsics、存储方法和常量，以检索随机请求和结果的数据。
+description: 学习Moonbeam上随机数Pallet中的可用extrinsics、存储方法和常量，以检索随机请求和结果的数据。
 keywords: randomness, VRF, substrate, pallet, moonbeam, polkadot
 ---
 
 # 随机数Pallet
-
-![Randomness Moonbeam Banner](/images/builders/pallets-precompiles/pallets/randomness-banner.png)
 
 ## 概览 {: #introduction }
 

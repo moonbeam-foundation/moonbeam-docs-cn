@@ -1,11 +1,9 @@
 ---
 title: 使用Subsquid索引NFT转账
-description: 通过本教程学习如何使用Subsquid（一种基于Substrate区块链的检索节点框架）为Moonbeam和Moonriver网络进行索引和处理Substrate和EVM数据。
+description: 学习如何使用Subsquid（基于Substrate链的查询节点框架）索引和处理Moonbeam和Moonriver的NFT转移数据。
 ---
 
 # 使用Subsquid索引在Moonbeam上的NFT转账
-
-![Subsquid Banner](/images/builders/integrations/indexers/subsquid/subsquid-banner.png)
 
 _作者：Massimo Luraschi_
 
@@ -105,7 +103,7 @@ sqd codegen
 
 Subsquid维护[工具](https://docs.subsquid.io/substrate-indexing/squid-substrate-typegen/){target=_blank}，用于自动生成TypeScript类，以处理Substrate数据源（事件、extrinsics、存储项）。Runtime升级已考虑在内，并会自动检测。
 
-类似的功能可以通过[`squid-evm-typegen`](https://docs.subsquid.io/evm-indexing/squid-evm-typegen/){target=_blank}用于EVM索引。它将根据合约的[JSON ABI](https://docs.ethers.io/v5/api/utils/abi/){target=_blank}生成TypeScript模块，用于处理EVM日志和交易。
+类似的功能可以通过[`squid-evm-typegen`](https://docs.subsquid.io/evm-indexing/squid-evm-typegen/){target=_blank}用于EVM索引。它将根据合约的[JSON ABI](https://docs.ethers.org/v5/api/utils/abi/){target=_blank}生成TypeScript模块，用于处理EVM日志和交易。
 
 对于我们的squid，我们将需要一个用于满足合约接口的兼容[ERC-721](https://eips.ethereum.org/EIPS/eip-721){target=_blank}部分的模块。再次提醒，此模板的代码库已将其包含在里面，但是解释索引不同类型合约时需要完成的事项仍然很重要。
 
@@ -155,7 +153,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
 此教程也同样适用于Moonriver或Moonbase Alpha，但请确保将数据源更新为正确的网络：
 
 === "Moonbeam"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbeam", {type: "Substrate"}),
@@ -163,7 +162,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonriver"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonriver", {type: "Substrate"}),
@@ -171,7 +171,8 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
       archive: lookupArchive("moonbase", {type: "Substrate"}),

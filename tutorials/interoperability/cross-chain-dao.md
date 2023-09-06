@@ -5,8 +5,6 @@ description: 在本教程中，您将了解互连合约以及如何在Moonbeam�
 
 # 使用OpenZeppelin的Governor合约构建跨链DAO
 
-![Banner Image](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-banner.png)
-
 _作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction }
@@ -71,7 +69,7 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 要安装两个依赖项，您可以运行以下命令：
 
-```
+```bash
 npm install @openzeppelin/contracts @layerzerolabs/solidity-examples
 ```
 
@@ -754,7 +752,7 @@ proposals[proposalId].voteFinished = true;
 
 最后，需要添加允许用户投票的投票机制。该机制与[`GovernorCountingSimple`智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/extensions/GovernorCountingSimple.sol){target=_blank}中的机制近乎相同，可以复制大部分的代码：
 
-```
+```solidity
 function castVote(uint256 proposalId, uint8 support) public virtual returns (uint256 balance)
 {
     RemoteProposal storage proposal = proposals[proposalId];

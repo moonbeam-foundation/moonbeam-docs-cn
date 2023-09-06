@@ -1,6 +1,6 @@
 ---
 title: Pallets
-description: 了解Moonbeam上可用的pallet，以及如何通过相关的extrinsic和它们的Solidity接口（如果适用）与它们交互。
+description: Pallet是基于Substrate区块链（例如Moonbeam）的可开发区块。 探索Moonbeam上可用的Pallet及其公开的功能。
 template: subsection-index-page.html
 hide:
   - toc

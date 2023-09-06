@@ -6,8 +6,6 @@ keywords: 标准合约, 以太坊, moonbeam, 预编译, 智能合约, solidity
 
 # 与质押预编译交互
 
-![Staking Moonbeam Banner](/images/builders/pallets-precompiles/precompiles/staking/staking-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallets/staking){target=_blank}的委托权益证明Pallet，使Token持有者（委托人）能够准确表达他们愿意支持的候选收集人以及希望质押的数量。除此之外，平行链质押Pallet的设计也将使链上的委托人和候选收集人共享风险与回报。有关质押的一般信息，例如一般术语、质押变量等，请参阅[Moonbeam质押](/learn/features/staking){target=_blank}页面。
@@ -15,17 +13,20 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 质押模块采用Rust进行编码，其为Pallet的一部分，正常来说无法从Moonbeam的以太坊一侧访问和使用。然而，一个质押预编译能让开发者通过在位于以下指定地址的预编译合约中的以太坊API使用质押功能：
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.precompiles.staking}}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.precompiles.staking}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.precompiles.staking}}
      ```
 

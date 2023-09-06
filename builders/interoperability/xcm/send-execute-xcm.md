@@ -5,8 +5,6 @@ description: 学习如何通过组合和试验不同的XCM指令来构建自定�
 
 # 发送和执行XCM消息
 
-![Custom XCM Messages Banner](/images/builders/interoperability/xcm/send-execute-xcm/send-execute-xcm-banner.png)
-
 ## 概览 {: #introduction }
 
 XCM消息由[一系列的指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}组成，由跨共识虚拟机（XCVM）执行。这些指令的组合会执行预定的操作，例如跨链Token转移。您可以通过组合各种XCM指令创建自定义XCM消息。

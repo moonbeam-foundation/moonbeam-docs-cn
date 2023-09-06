@@ -1,6 +1,6 @@
 在下几个部分中您将要编译和部署的合约是一个简单的增量合约，命名为`Incrementer.sol`。您可以先为合约创建一个文件：
 
-```
+```bash
 touch Incrementer.sol
 ```
 

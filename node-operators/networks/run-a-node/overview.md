@@ -1,11 +1,9 @@
 ---
 title: 运行节点
-description: 了解为Moonbeam网络运行平行链全节点以便您拥有自己的RPC端点或生成区块的所有必要细节
+description: 了解为Moonbeam网络运行平行链全节点以便您拥有自己的RPC端点或生成区块的所有必要细节。
 ---
 
 # 在Moonbeam上运行节点
-
-![Full Node Moonbeam Banner](/images/node-operators/networks/run-a-node/overview/full-node-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -109,7 +107,7 @@ Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusa
 
 Moonbase Alpha测试网会频繁进行升级。因此，您可能会看到以下消息：
 
-```
+```text
 DATE [Relaychain] Bootnode with peer id `ID` is on a different
 chain (our genesis: GENESIS_ID theirs: OTHER_GENESIS_ID)
 ```

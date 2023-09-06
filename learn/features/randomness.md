@@ -5,8 +5,6 @@ description: 学习Moonbeam上的VRF随机数来源，包含请求和完成过�
 
 # Moonbeam上的随机数
 
-![Randomness Moonbeam Banner](/images/learn/features/randomness/randomness-banner.png)
-
 ## 概览 {: #introduction }
 
 对于多种区块链应用创建无争议、无法预测且独特结果来说，随机数是必要元素。然而，获得稳定的随机数来源是一个挑战。计算机具有确定性，也就是当您给它同样的输入，会获得同样的输出。因此，计算机生成的随机数被称为伪随机，因为它们看起来是统计随机的，但在相同的输入下，输出很容易重复。

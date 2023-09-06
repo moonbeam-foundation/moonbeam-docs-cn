@@ -5,8 +5,6 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 # 使用区块浏览器验证智能合约
 
-![Explorer Banner](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-banner.png)
-
 ## 概览 {: #introduction }
 
 通过区块浏览器上验证智能合约，这对于部署在Moonbeam上的智能合约是能够大幅提升透明度和安全性的方法。用户直接查看已被验证的智能合约的源代码，同时也可以使用部分区块浏览器的接口与合约的公开函数/代码互动。
@@ -35,7 +33,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 2. 记录任何在Solidity开源文件开头使用的任何SPDX证照识别码
 
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     ```
     

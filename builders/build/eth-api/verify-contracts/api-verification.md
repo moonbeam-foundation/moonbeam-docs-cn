@@ -5,8 +5,6 @@ description: 学习如何使用现有的基于API的验证函数在Moonbeam网�
 
 # 基于API的合约验证
 
-![API Verification Banner](/images/builders/build/eth-api/verify-contracts/api-verification/api-verification-banner.png)
-
 ## 概览 {: #introduction }
 
 验证智能合约能够大幅提升他们的透明性和安全性，在Moonbeam网络上部署的智能合约能够使用基于API的工具进行验证，包含Moonscan API和Sourcify。
@@ -29,17 +27,20 @@ The Moonscan API URL for Moonbeam networks is as follows:
 Moonbeam相关网络的Moonscan API URL如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     https://api-moonbeam.moonscan.io/api
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     https://api-moonriver.moonscan.io/api
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     https://api-moonbase.moonscan.io/api
     ```
 
@@ -463,7 +464,7 @@ Foundry的Forge工具内置了对Sourcify验证的支持，类似于[内置支�
 
 使用Sourcify的Foundry项目必须让其编译器发出元数据文件。这可以在 `foundry.toml` 文件中配置：
 
-```
+```toml
 [profile.default]
 # Input your custom or default config options here
 extra_output_files = ["metadata"]
@@ -471,28 +472,31 @@ extra_output_files = ["metadata"]
 
 如果您已经部署了示例合约，您可以使用`verify-contract`命令对其进行验证。在验证合约之前，您需要对构造函数参数进行ABI编码。要对示例合约执行此操作，您可以运行以下命令：
 
-```
+```bash
 cast abi-encode "constructor(uint256)" 100
 ```
 
 结果应该是`0x0000000000000000000000000000000000000000000000000000000000000064`。然后，您可以使用以下命令验证合约：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     forge verify-contract --chain-id {{ networks.moonbeam.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     forge verify-contract --chain-id {{ networks.moonriver.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     forge verify-contract --chain-id {{ networks.moonbase.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
@@ -503,7 +507,8 @@ cast abi-encode "constructor(uint256)" 100
 如果您想同时部署示例合约并进行验证，则可以使用以下命令：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonbeam.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \
@@ -512,7 +517,8 @@ cast abi-encode "constructor(uint256)" 100
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonriver.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \
@@ -521,7 +527,8 @@ cast abi-encode "constructor(uint256)" 100
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     forge create --rpc-url {{ networks.moonbase.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \

@@ -6,16 +6,11 @@ keywords: 民主, substrate, pallet, moonbeam, polkadot, 波卡, 表决, 投票,
 
 # Referenda Pallet
 
-![Referenda Moonbeam Banner](/images/builders/pallets-precompiles/pallets/referenda-banner.png)
-
 ## 概览 {: #introduction }
-
-The Referenda Pallet allows token holders to make, delegate, and manage Conviction-weighted votes on referenda. 
 
 Referenda Pallet允许Token持有者在公投中进行、委托以及管理信念值权重投票。
 
---8<-- 'text/pallets/gov1-gov2.md'
-Referenda Pallet的一些功能可以通过[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}使用。
+治理相关功能是基于3个新的pallet和预编译：[Preimage Pallet](/builders/pallets-precompiles/pallets/preimage){target=_blank}和[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}、[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda){target=_blank}和[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}，以及[Conviction Voting Pallet](/builders/pallets-precompiles/pallets/conviction-voting){target=_blank}和[Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}。上述预编译是Solidity接口，使您能够使用以太坊API执行治理功能。
 
 本教程将概述Moonbeam上Referenda Pallet中的可用extrinsics、存储函数和pallet常量的获取方式。本教程假设您已熟悉治理相关的专业术语，反之您可以在[治理概览页面](/learn/features/governance/#opengov){target=_blank}获取更多信息。
 
@@ -25,10 +20,11 @@ Referenda Pallet的一些功能可以通过[Referenda Precompile](/builders/pall
 
 Referenda Pallet提供以下extrinsics（函数）：
 
-- **cancel**(index) - 根据要取消的公投索引，取消正在进行中的公投。此类操作需要创建提案并将其分配给Emergency Canceller Track
-- **kill**(index) - 根据要取消的公投索引，取消正在进行中的公投并没收保证金。此类操作需要创建提案并将其分配给Emergency Killer Track
+- **cancel**(index) - 根据要取消的公投索引，取消正在进行中的公投。此类操作需要创建提案并将其分配给Root Track或Emergency Canceller Track
+- **kill**(index) - 根据要取消的公投索引，取消正在进行中的公投并没收保证金。此类操作需要创建提案并将其分配给Root Track或Emergency Canceller Track
 - **placeDecisionDeposit**(index) - 根据公投索引为公投发布决定保证金（Decision Deposit）
 - **refundDecisionDeposit**(index) - 根据公投索引将已结束公投的决定保证金（Decision Deposit）退还给充值者
+- **refundSubmissionDeposit**(index) - 根据公投索引，将结束公投的提交押金退还给存款人
 - **submit**(proposalOrigin, proposal, enactmentMoment) - 根据提案应该被执行的Origin、提案，以及提案应该被生效的时间，对优先处理的提案发起公投
 
 ### 存储函数 {: #storage-methods }

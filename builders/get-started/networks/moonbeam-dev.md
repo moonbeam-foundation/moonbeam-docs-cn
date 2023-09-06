@@ -1,6 +1,6 @@
 ---
 title: 运行Moonbeam开发节点
-description: 通过此教程学习如何设置您的第一个Moonbeam节点，以及如何将其连接到Polkadot.js GUI并加以控制
+description: 遵循本教程学习如何启动您的首个Moonbeam开发节点，以及如何配置以用于开发目的并连接它。
 ---
 
 # 设置Moonbeam开发节点
@@ -172,6 +172,7 @@ purestake/moonbeam \
 - **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数。默认值是{{ networks.parachain.ws }}
 - **`--rpc-max-connections <connections>`** - *自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
 - **`--ws-max-connections <connections>`** - 指定WS RPC服务器连接的最大数量。自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起，此标志调整HTTP和WS连接的总限制。默认为100个连接。
+- **`--rpc-cors <origins>`** - 指定允许浏览器源头访问HTTP和WS RPC服务器。该源头可以是允许访问的以逗号分隔的来源列表，或者您也可以指定`null`。当运行一个开发节点时，预设为允许所有源头
 
 如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
 
@@ -231,7 +232,7 @@ Moonbeam拥有[统一账户](/learn/features/unified-accounts){target=_blank}系
 
 您的Moonbeam开发节点带有十个预注资的以太坊风格的开发帐户。这些地址源自于Substrate的规范开发助记词：
 
-```
+```text
 bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
@@ -249,12 +250,14 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 您可以使用以下RPC和WSS端点访问您的Moonbeam开发节点：
 
 === "HTTP"
-    ```
+
+    ```text
     {{ networks.development.rpc_url }}
     ```
 
 === "WSS"
-    ```
+
+    ```text
     {{ networks.development.wss_url }}
     ```
 

@@ -1,6 +1,6 @@
 ---
 title: Gaming Infrastructure
-description: Want to build a gaming dApp on Moonbeam? Check out the gaming infrastructure providers you can use to quickly and securely spin up a scalable gaming dApp.
+description: 想要在Moonbeam上构建游戏DApp？请查看游戏基础设施提供商，以帮助您快速并安全启动可扩展的游戏DApp。
 template: subsection-index-page.html
 hide: 
  - toc

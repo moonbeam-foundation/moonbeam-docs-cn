@@ -5,8 +5,6 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 # Moonbeam共识和确定性
 
-![Moonbeam v Ethereum - Consensus and Finality Banner](/images/builders/get-started/eth-compare/consensus-finality-banner.png)
-
 ## 概览 {: #introduction }
 
 虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在共识和确定性方面与以太坊之间的主要差异。
@@ -85,7 +83,7 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
     --8<-- 'code/vs-ethereum/consensus-finality/web3.py'
     ```
 
-您可以修改这些脚本以使用`moon_isBlockFinalized`和`moon_isTxFinalized`。为此，您可以使用[Web3.js](https://web3js.readthedocs.io/){target=_blank}和[Ethers.js](https://docs.ethers.io/){target=_blank}的`send`方法对Substrate JSON-RPC进行自定义调用。自定义RPC请求也可以使用 [Web3.py](https://web3py.readthedocs.io/){target=_blank}和`make_request`方法。您需要将方法名称和参数传递给自定义请求，您可以在[Moonbeam自定义API](/builders/build/moonbeam-custom-api/){target=_blank}页面上找到该请求。
+您可以修改这些脚本以使用`moon_isBlockFinalized`和`moon_isTxFinalized`。为此，您可以使用[Web3.js](https://web3js.readthedocs.io/){target=_blank}和[Ethers.js](https://docs.ethers.org/){target=_blank}的`send`方法对Substrate JSON-RPC进行自定义调用。自定义RPC请求也可以使用 [Web3.py](https://web3py.readthedocs.io/){target=_blank}和`make_request`方法。您需要将方法名称和参数传递给自定义请求，您可以在[Moonbeam自定义API](/builders/build/moonbeam-custom-api/){target=_blank}页面上找到该请求。
 
 === "Ethers.js"
 

@@ -5,8 +5,6 @@ description: Moonbeam提供质押功能，使Token持有者能够使用手中的
 
 # 如何在Moonbeam上质押
 
-![Staking Moonbeam Banner](/images/learn/features/staking/staking-overview-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot.network/docs/learn-consensus){target=_blank}的区块生产机制，也就是以收集人和验证人的形式。[收集人](https://wiki.polkadot.network/docs/learn-collator){target=_blank}负责通过收集来自用户的交易并为中继链的[验证人](https://wiki.polkadot.network/docs/learn-validator){target=_blank}生产状态转移证明。

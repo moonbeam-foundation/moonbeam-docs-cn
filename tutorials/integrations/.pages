@@ -2,5 +2,7 @@ title: 集成
 hide: false
 nav:
   - index.md
-  - '[索引]使用Subsquid检索本地开发节点': 'local-subsquid.md'
-  - '[索引]使用Subsquid索引NFT转账': 'nft-subsquid.md'
+  - '使用索引器查询链数据':
+    - 'indexers.index.md'
+    - '[Subsquid] 检索本地开发节点': 'local-subsquid.md'
+    - '[Subsquid] 索引NFT转账': 'nft-subsquid.md'

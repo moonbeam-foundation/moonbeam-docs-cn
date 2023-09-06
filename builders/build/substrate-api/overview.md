@@ -5,8 +5,6 @@ description: 探索Polkadot的Substrate开发者框架，并了解它如何影�
 
 # Moonbeam上的Polkadot Substrate
 
-![Substrate banner](/images/builders/build/substrate-api/substrate/substrate-banner.png)
-
 ## 什么是Substrate？ {: #what-is-substrate }
 
 Polkadot的Substrate是一个开源的模块化SDK，用于在Rust中构建区块链。它是由Parity Technologies进行开发，与Polkadot背后的团队是同一团队。

@@ -5,8 +5,6 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 # OpenZeppelin Defender
 
-![OpenZeppelin Defender Banner](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-banner.png)
-
 ## 概览 {: #introduction } 
 
 [OpenZeppelin Defender](https://docs.openzeppelin.com/defender/){target=_blank}是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：
@@ -32,7 +30,7 @@ OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网�
 
 本教程使用的合约是在[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=_blank}中的`Box.sol`合约的拓展，是OpenZeppelin文档中抽取的合约。此外，本合约可升级、[可暂停](https://docs.openzeppelin.com/contracts/4.x/api/security#Pausable){target=_blank}，能够充分发挥Admin组件的优势。您可以使用以下代码进行合约部署，并根据[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=_blank}进行操作：
 
-```sol
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 

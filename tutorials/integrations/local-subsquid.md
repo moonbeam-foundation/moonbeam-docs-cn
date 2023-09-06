@@ -5,8 +5,6 @@ description: 通过此教程了解如何使用Subsquid检索本地部署在Moonb
 
 # 使用Subsquid检索本地Moonbeam开发节点
 
-![Subsquid Banner](/images/tutorials/integrations/local-subsquid/local-subsquid-banner.png)
-
 _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -82,25 +80,25 @@ _作者：Erin Shaben_
 
 在本部分教程中，我们将为本地Moonbeam开发节点配置我们的Hardhat项目，创建ERC-20合约，并编写脚本以部署我们的合约并与之交互。
 
-在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html){target=_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
+在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
 
 === "npm"
 
     ```bash
-    npm install @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
+    npm install @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
     ```
 
 === "yarn"
 
     ```bash
-    yarn add @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts
+    yarn add @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
     ```
 
 ### 为一个本地开发节点配置Hardhat {: #create-a-hardhat-project }
 
 在更新配置文件之前，我们需要获得其中一个开发帐户的私钥，该私钥将用于部署我们的合约和发送交易。在此例子中，我们将使用Alith的私钥：
 
-```
+```text
 0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133
 ```
 
@@ -112,7 +110,7 @@ _作者：Erin Shaben_
 现在我们可以编辑`hardhat.config.js`为我们的Moonbeam开发节点包含以下网络和帐户配置：
 
 ```js
-require('@nomiclabs/hardhat-ethers');
+require('@nomicfoundation/hardhat-ethers');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -137,7 +135,7 @@ mkdir -p contracts && touch contracts/MyTok.sol
 
 现在我们可以编辑`MyTok.sol`文件并包含以下合约，它将生成MYTOK的初始供应数并仅允许合约所有者生成额外的Token：
 
-```sol
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 

@@ -5,8 +5,6 @@ description: 使用Moonbeam XCM SDK轻松从波卡及其生态系统中的平行
 
 # 使用Moonbeam XCM SDK: v0
 
-![XCM SDK Banner](/images/builders/interoperability/xcm/sdk/xcm-sdk-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中继链和其他平行链向Moonbeam或Moonriver充提资产。通过使用SDK，您无需担心定义原始或目标资产的multilocation或在哪个网络上使用extrinsics来发送XCM传输。要存入或是取出资产，您可以简单定义您希望存入或是取出的资产和原链，以及传送账户的签署者和传送数量。
@@ -37,7 +35,7 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
-您将需要安装依赖项，如[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
+您将需要安装依赖项，如[Ethers.js](https://docs.ethers.org/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
 
 您可以运行以下指令来安装它们：
 
@@ -50,7 +48,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 
 ### 创建签署者 {: creating-signers }
 
-在与XCM SDK中的`deposit`和`withdraw`函数交互时，您将需要提供一个[Ethers.js](https://docs.ethers.io/){target=_blank}和[Polkadot.js](https://polkadot.js.org/docs/api/){target=_blank}签署者，用于签署和传送交易。Ethers签署者用于在Moonbeam上签署交易，波卡签署者将用于在您存入资产的原链上签署交易。
+在与XCM SDK中的`deposit`和`withdraw`函数交互时，您将需要提供一个[Ethers.js](https://docs.ethers.org/){target=_blank}和[Polkadot.js](https://polkadot.js.org/docs/api/){target=_blank}签署者，用于签署和传送交易。Ethers签署者用于在Moonbeam上签署交易，波卡签署者将用于在您存入资产的原链上签署交易。
 
 举例而言，您可以将一个[MetaMask签署者传递至Ethers](https://docs.ethers.org/v6/getting-started/#starting-connecting){target=_blank}或是其他兼容钱包。如同波卡，您可以[使用`@polkadot/extension-dapp` 库传递一个兼容钱包给签署者](https://polkadot.js.org/docs/extension/){target=_blank}。
 

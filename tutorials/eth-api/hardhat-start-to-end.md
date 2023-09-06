@@ -5,8 +5,6 @@ description: 学习如何使用Hardhat开发、测试、部署智能合约以及
 
 # Hardhat开发流程
 
-![Learn about the typical Hardhat Ethereum Developer workflow from start to finish.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-banner.png)
-
 _作者：Kevin Neilson & Erin Shaben_
 
 ## 概览 {: #introduction }
@@ -87,6 +85,13 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
     ```
 
 3. 将[DelegationDAO.sol](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中的内容复制并粘贴至`DelegationDAO.sol`
+
+    ??? code "DelegationDAO.sol"
+
+        ```solidity
+        --8<-- 'code/tutorials/eth-api/hardhat-start-to-end/DelegationDAO.sol'
+        ```
+
 4. 在`contracts`目录中创建名为`StakingInterface.sol`的新文件
 
     ```bash
@@ -94,6 +99,13 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
     ```
 
 5. 将[StakingInterface.sol](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam/master/precompiles/parachain-staking/StakingInterface.sol){target=_blank}内容复制并粘贴至`StakingInterface.sol`
+
+    ??? code "StakingInterface.sol"
+
+        ```solidity
+        --8<-- 'code/precompiles/staking/StakingInterface.sol'
+        ```
+
 6. `DelegationDAO.sol`依赖于几个标准[OpenZeppelin](https://www.openzeppelin.com/){target=_blank}合约。使用以下命令添加库：
 
     ```bash
@@ -102,66 +114,79 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
 ## Hardhat配置文件 {: #hardhat-configuration-file }
 
-在将合约部署至Moonbase Alpha之前，您需要修改Hardhat配置文件并创建一个安全文件用于存储私钥和[Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}。
-
-您可以运行以下命令来创建一个`secrets.json`文件以存储私钥：
+设置`hardhat.config.js`文件时，我们需要导入一些我们将在本教程中使用的插件。因此，我们首先需要[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox){target=_blank}，它可以方便地将Hardhat插件捆绑在一起，用于使用Ethers部署合约并与之交互、使用Mocha和Chai测试合约、使用Etherscan验证合约等等。您可以运行以下命令来安装插件：
 
 ```bash
-touch secrets.json
-```
-
-然后，为您在Moonbase Alpha上的两个账户添加私钥。由于一些测试会在开发节点上完成，您也需要为两个预注资的开发节点账户添加私钥（在本示例中，我们将使用Alice和Bob两个账户）。另外，您需要添加Moonscan API密钥，可用于Moonbase Alpha和Moonbeam。
-
-!!! 注意事项
-    任何发送至Alice和Bob开发账户的真实资产将会马上丢失。采取预防措施，切勿将主网资产发送至公开的开发账户。
-
-```json
-{
-    "privateKey": "YOUR_PRIVATE_KEY_HERE",
-    "privateKey2": "YOUR_SECOND_PRIVATE_KEY_HERE",
-    "alicePrivateKey": "0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133",
-    "bobPrivateKey": "0x8075991ce870b93a8870eca0c0f91913d12f47948ca0fd25b49c6fa7cdbeee8b",
-    "moonbeamMoonscanAPIKey": "YOUR_MOONSCAN_API_KEY_HERE"
-}
-```
-
-如果您有单独的Moonbeam主网账户，您可以为单独的账户添加不同的变量或在准备部署至主网时更新`privateKey`和`privateKey2`变量。
-
-您的`secrets.json`应类似于以下内容：
-
-![Add Moonscan API Key to secrets.json.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.png)
-
-确保添加此文件至您项目的`.gitignore`中，并保管好您的私钥，切勿将其泄露给他人。
-
-!!! 请记住
-    请始终使用指定私钥管理器或类似服务来管理您的私钥。切勿在代码库中存储或提交您的私钥。
-
-设置`hardhat.config.js`文件时，我们需要导入一些教程所需的插件。开始之前，需要准备好[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox){target=_blank}，这可以轻松地将一些后续用于测试的包打包在一起。我们也会用到[Hardhat Etherscan插件](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}，其将用于验证合约。这两个插件可以通过以下命令安装：
-
-```bash
-npm install --save-dev @nomicfoundation/hardhat-toolbox @nomiclabs/hardhat-etherscan
+npm install --save-dev @nomicfoundation/hardhat-toolbox
 ```
 
 如果您需要其他的Hardhat插件，请访问[官方Hardhat插件完整列表](https://hardhat.org/hardhat-runner/plugins){target=_blank}。
 
+对于本教程中的范例，您需要为Moonbase Alpha上的两个账户添加私钥。由于一些测试将在开发节点上完成，因此您还需要添加两个具有预备资金的开发节点账户的私钥，在本例中，我们可以使用Alice和Bob。此外，您还需要添加Moonscan API密钥，该密钥可用于Moonbase Alpha和Moonbeam。
+
 --8<-- 'text/hardhat/hardhat-configuration-file.md'
+    您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
+
+    === "Moonbeam"
+
+        ```js
+        moonbeam: {
+            url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
+
+            chainId: {{ networks.moonbeam.chain_id }}, // (hex: {{ networks.moonbeam.hex_chain_id }})
+            accounts: [privateKey]
+          },
+        ```
+
+    === "Moonriver"
+
+        ```js
+        moonriver: {
+            url: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
+
+            chainId: {{ networks.moonriver.chain_id }}, // (hex: {{ networks.moonriver.hex_chain_id }})
+            accounts: [privateKey]
+          },
+        ```
+
+    === "Moonbase Alpha"
+
+        ```js
+        moonbase: {
+            url: '{{ networks.moonbase.rpc_url }}',
+
+            chainId: {{ networks.moonbase.chain_id }}, // (hex: {{ networks.moonbase.hex_chain_id }})
+            accounts: [privateKey]
+          },
+        ```
+
+    === "Moonbeam开发节点"
+
+        ```js
+        dev: {
+            url: '{{ networks.development.rpc_url }}',
+
+            chainId: {{ networks.development.chain_id }}, // (hex: {{ networks.development.hex_chain_id }})
+            accounts: [privateKey]
+          },
+        ```
+
 5. 导入[Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}，用于本教程后续验证部分
 
 ```js
 // 1. Import the Ethers, Hardhat Toolbox, and Etherscan plugins 
 // required to interact with our contracts
-require("@nomicfoundation/hardhat-toolbox");
-require("@nomiclabs/hardhat-etherscan");
-require('@nomiclabs/hardhat-ethers');
+require('@nomicfoundation/hardhat-toolbox');
 
-// 2. Import your private key from your pre-funded Moonbase Alpha testing 
-// account and your Moonscan API key
-const { privateKey, privateKey2, moonbeamMoonscanAPIKey, alicePrivateKey, bobPrivateKey } = require('./secrets.json');
+// 2. Create variables for your private keys from your pre-funded Moonbase Alpha 
+// testing accounts and your Moonscan API key
+const privateKey = 'INSERT_PRIVATE_KEY';
+const privateKey2 = 'INSERT_ANOTHER_PRIVATE_KEY';
+const moonscanAPIKey = 'INSERT_MOONSCAN_API_KEY';
 
 module.exports = {
   // 3. Specify the Solidity version
-  solidity: "0.8.17",
-
+  solidity: '0.8.17',
   networks: {
     // 4. Add the Moonbase Alpha network specification
     moonbase: {
@@ -170,9 +195,12 @@ module.exports = {
       accounts: [privateKey, privateKey2]
     },
     dev: {
-      url: 'http://127.0.0.1:9933',
+      url: '{{ networks.development.rpc_url }}',
       chainId: 1281, // {{ networks.development.hex_chain_id }} in hex
-      accounts: [alicePrivateKey, bobPrivateKey]
+      accounts: [
+        '0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133', // Alice's PK
+        '0x8075991ce870b93a8870eca0c0f91913d12f47948ca0fd25b49c6fa7cdbeee8b' // Bob's PK
+      ]
     },
     moonbeam: {
       url: '{{ networks.moonbeam.public_rpc_url }}', // Or insert your own RPC URL here
@@ -184,58 +212,15 @@ module.exports = {
   // Moonbeam and Moonbase Alpha Moonscan use the same API key
   etherscan: {
     apiKey: {
-      moonbaseAlpha: moonbeamMoonscanAPIKey, // Moonbase Moonscan API Key
-      moonbeam: moonbeamMoonscanAPIKey, // Moonbeam Moonscan API Key    
+      moonbaseAlpha: moonscanAPIKey, // Moonbase Moonscan API Key
+      moonbeam: moonscanAPIKey, // Moonbeam Moonscan API Key     
     }
   }
 };
 ```
 
-您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
-
-=== "Moonbeam"
-
-    ```js
-    moonbeam: {
-        url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
-
-        chainId: {{ networks.moonbeam.chain_id }}, // (hex: {{ networks.moonbeam.hex_chain_id }})
-        accounts: [privateKey]
-      },
-    ```
-
-=== "Moonriver"
-
-    ```js
-    moonriver: {
-        url: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
-
-        chainId: {{ networks.moonriver.chain_id }}, // (hex: {{ networks.moonriver.hex_chain_id }})
-        accounts: [privateKey]
-      },
-    ```
-
-=== "Moonbase Alpha"
-
-    ```js
-    moonbase: {
-        url: '{{ networks.moonbase.rpc_url }}',
-
-        chainId: {{ networks.moonbase.chain_id }}, // (hex: {{ networks.moonbase.hex_chain_id }})
-        accounts: [privateKey]
-      },
-    ```
-
-=== "Moonbeam开发节点"
-
-    ```js
-    dev: {
-        url: '{{ networks.development.rpc_url }}',
-
-        chainId: {{ networks.development.chain_id }}, // (hex: {{ networks.development.hex_chain_id }})
-        accounts: [privateKey]
-      },
-    ```
+!!! 注意事项
+    任何发送至Alice和Bob开发账户的真实资产将会马上丢失。采取预防措施，切勿将主网资产发送至公开的开发账户。
 
 现在您可以开始编译并测试合约。
 
@@ -247,7 +232,7 @@ module.exports = {
 npx hardhat compile
 ```
 
-![Learn how to compile your Solidity contracts with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-3.png)
+![Learn how to compile your Solidity contracts with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.png)
 
 编译合约后，会创建一个`artifacts`目录，该目录包含合约的字节码和元数据，即`.json`文件。建议您将此目录添加至`.gitignore`。
 
@@ -259,13 +244,13 @@ Hardhat测试通常使用Mocha和Chai编写，[Mocha](https://mochajs.org/){targ
 
 因为我们最初将在本地Moonbeam节点上运行测试，所以需要指定Alice的地址作为目标收集人的地址（Alice的账户是本地开发节点的唯一收集人）。
 
-```
+```text
 0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac
 ```
 
 相反，如果您想要通过Moonbase Alpha运行测试，则可以选择以下收集人，或者任何您想要DAO委托给的[Moonbase Alpha上的其他收集人](https://apps.moonbeam.network/moonbase-alpha/staking){target=_blank}：
 
-```
+```text
 {{ networks.moonbase.staking.candidates.address1 }}
 ```
 
@@ -288,15 +273,14 @@ Hardhat测试通常使用Mocha和Chai编写，[Mocha](https://mochajs.org/){targ
 3. 然后复制并粘贴以下内容以设置测试文件的初始结构。请仔细阅读注释，因为它们阐明了每行代码的目的
 
     ``` javascript
-    // 导入Hardhat和Hardhat Toolbox
-    const { ethers } = require("hardhat");
-    require("@nomicfoundation/hardhat-toolbox");
+    // 导入Ethers
+    const { ethers } = require('hardhat');
     
     // 在此处导入Chai以使用其断言函数
-    const { expect } = require("chai");
+    const { expect } = require('chai');
     
     // 指定Alice的地址作为本地开发节点上的目标收集人
-    const targetCollator = "0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac";
+    const targetCollator = '0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac';
     ```
 
 ### 部署Staking DAO用于测试 {: #deploying-a-staking-dao-for-testing }
@@ -311,21 +295,22 @@ Mocha的`describe`函数使您能够组织您的测试。多个`describe`函数�
 // The describe function receives the name of a section of your test suite, and a
 // callback. The callback must define the tests of that section. This callback
 // can't be an async function
-describe("Dao contract", function () {
+describe('Dao contract', function () {
   async function deployDao() {
     // Get the contract factory and signers here
     const [deployer, member1] = await ethers.getSigners();
-    const delegationDao = await ethers.getContractFactory("DelegationDAO");
+    const delegationDao = await ethers.getContractFactory('DelegationDAO');
     
     // Deploy the staking DAO and wait for the deployment transaction to be confirmed
     const deployedDao = await delegationDao.deploy(targetCollator, deployer.address);
-    await deployedDao.deployed();
+    await deployedDao.waitForDeployment();
 
     // Add a new member to the DAO
     await deployedDao.grant_member(member1.address);
 
-    // Return the deployed DAO to allow the tests to access and interact with it
-    return { deployedDao };
+    // Return the deployed DAO and the first member of the DAO to allow the tests to 
+    // access and interact with them
+    return { deployedDao, member1 };
   }
 
   // The test cases should be added here
@@ -341,18 +326,18 @@ describe("Dao contract", function () {
 
 ```javascript
 // You can nest calls to create subsections
-describe("Deployment", function () {
+describe('Deployment', function () {
   // Mocha's it function is used to define each of your tests.
   // It receives the test name, and a callback function.
   // If the callback function is async, Mocha will await it
-  it("should store the correct target collator in the DAO", async function () {
+  it('should store the correct target collator in the DAO', async function () {
     
     // Set up our test environment by calling deployDao
     const { deployedDao } = await deployDao();
 
     // The expect function receives a value and wraps it in an assertion object.
     // This test will pass if the DAO stored the correct target collator
-    expect(await deployedDao.target()).to.equal(targetCollator);
+    expect(await deployedDao.targetCollator()).to.equal(targetCollator);
   });
 
   // The following test cases should be added here
@@ -362,7 +347,7 @@ describe("Deployment", function () {
 现在，添加另一个测试用例。当staking DAO启动时，不会有任何资金。该测试验证确实如此。请将以下测试用例添加到`Dao.js`文件中：
 
 ```javascript
-it("should initially have 0 funds in the DAO", async function () {
+it('should initially have 0 funds in the DAO', async function () {
   const { deployedDao } = await deployDao();
 
   // This test will pass if the DAO has no funds as expected before any contributions
@@ -377,15 +362,12 @@ it("should initially have 0 funds in the DAO", async function () {
 在[staking DAO合约](https://github.com/moonbeam-foundation/moonbeam-intro-course-resources/blob/main/delegation-dao-lesson-one/DelegationDAO.sol){target=_blank}中，只有管理员有权限添加新成员至DAO。我们可以编写一个测试查看管理员是否有权限添加新成员，但是可能更重要的测试是确保*非管理员*不能添加新成员。要在不同的账户下运行此测试用例，您需要在调用`ethers.getSigners()`时请求另一个地址，并在断言中使用`connect(member1)`指定调用者。最后，在函数调用后，您将附加`.to.be.reverted`以指示如果函数还原则测试用例成功。反之则代表测试失败。
 
 ```javascript
-it("should not allow non-admins to grant membership", async function () {
-  const { deployedDao } = await deployDao();
-
-  // We ask ethers for two accounts back this time
-  const [deployer, member1] = await ethers.getSigners();
+it('should not allow non-admins to grant membership', async function () {
+  const { deployedDao, member1 } = await deployDao();
 
   // We use connect to call grant_member from member1's account instead of admin.
   // This test will succeed if the function call reverts and fails if the call succeeds
-  await expect(deployedDao.connect(member1).grant_member("0x0000000000000000000000000000000000000000")).to.be.reverted;
+  await expect(deployedDao.connect(member1).grant_member('0x0000000000000000000000000000000000000000')).to.be.reverted;
 });
 ```
 
@@ -394,11 +376,12 @@ it("should not allow non-admins to grant membership", async function () {
 在本示例中，您将验证新添加的DAO成员是否可以调用staking DAO的`check_free_balance()`函数，该函数有访问修饰符，仅限成员访问。
 
 ```javascript
-it("should only allow members to access member-only functions", async function () {
-  const { deployedDao } = await deployDao();
+it('should only allow members to access member-only functions', async function () {
+  const { deployedDao, member1 } = await deployDao();
 
-  // We ask ethers for two accounts back this time
-  const [deployer, member1] = await ethers.getSigners();
+  // Add a new member to the DAO
+  const transaction = await deployedDao.grant_member(member1.address);
+  await transaction.wait();
 
   // This test will succeed if the DAO member can call the member-only function.
   // We use connect here to call the function from the account of the new member
@@ -410,14 +393,20 @@ it("should only allow members to access member-only functions", async function (
 
 ### 运行测试 {: #running-your-tests }
 
-如果您已遵循上述部分，则您的[`Dao.js`](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/Dao.js){target=_blank}测试文件应该都准备好了。否则，您需要[从GitHub将完整的代码段](https://github.com/moonbeam-foundation/moonbeam-docs/blob/master/.snippets/code/hardhat/dao-js-test-file.js){target=_blank}复制到`Dao.js`测试文件中。
+如果您已遵循上述部分，则您的[`Dao.js`](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-intro-course-resources/main/delegation-dao-lesson-one/Dao.js){target=_blank}测试文件应该都准备好了。
+
+??? code "Dao.js"
+
+    ```js
+    --8<-- 'code/hardhat/dao-js-test-file.js'
+    ```
 
 由于我们的测试用例主要包含staking DAO的配置和设置，不涉及实际委托操作，因此我们将在Moonbeam开发节点（本地节点）上运行我们的测试。请注意，Alice（`0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`）是本地开发节点上唯一的收集人。您可以使用标志`--network moonbase`来使用Moonbase Alpha运行测试。在这种情况下，请确保您的部署者地址有足够的DEV token。
 
 !!! 挑战
     尝试创建一个额外的测试用例，以验证满足`minDelegationStk`时staking DAO是否成功委托给收集人。您需要在Moonbase Alpha而不是本地开发节点上进行测试。
 
-首先，遵循[启动本地开发节点的指南](/builders/get-started/networks/moonbeam-dev/){target=_blank}确保您的本地Moonbeam节点正在运行。如果您将Alice和Bob私钥导入到`secrets.json`文件中，请注意，如果您将真实资金发送到这些账户会导致这些资金损失。
+首先，遵循[启动本地开发节点的指南](/builders/get-started/networks/moonbeam-dev/){target=_blank}确保您的本地Moonbeam节点正在运行。请采取预防措施，因为您可能会无意中将真实资金发送到Alice和Bob开发账户，这会导致这些资金损失。
 
 您可以使用以下命令运行测试：
 
@@ -427,7 +416,7 @@ npx hardhat test --network dev tests/Dao.js
 
 如果设置无误，您将看到以下输出：
 
-![Run your test suite of test cases with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-4.png)
+![Run your test suite of test cases with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-3.png)
 
 ## 部署至Moonbase Alpha {: #deploying-to-moonbase-alpha }
 
@@ -461,22 +450,23 @@ touch scripts/deploy.js
 
 ```javascript
 // 1. The PS-1 collator on Moonbase Alpha is chosen as the DAO's target
-const targetCollator = "{{ networks.moonbase.staking.candidates.address1 }}"
+const targetCollator = '{{ networks.moonbase.staking.candidates.address1 }}';
 
 async function main() {
   // 2. Get the address of the deployer to later be set as the admin of the DAO
   const [deployer] = await ethers.getSigners();
-  console.log("Deploying contracts with the account:", deployer.address);
+  console.log('Deploying contracts with the account:', deployer.address);
   
   // 3. Get an instance of DelegationDAO
-  const delegationDao = await ethers.getContractFactory("DelegationDAO");
+  const delegationDao = await ethers.getContractFactory('DelegationDAO');
   
   // 4. Deploy the contract specifying two params: the desired collator to
   // delegate to and the address of the deployer (the initial DAO admin)
   const deployedDao = await delegationDao.deploy(targetCollator, deployer.address);
+  await deployedDao.waitForDeployment();
   
   // 5. Print out the address of the deployed staking DAO contract
-  console.log("DAO address:", deployedDao.address);
+  console.log('DAO address:', deployedDao.target);
 }
 
 main()
@@ -495,7 +485,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbase Alpha with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-5.png)
+![Deploy a Contract to Moonbase Alpha with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-4.png)
 
 恭喜您，您的合约已上线Moonbase Alpha！请保存地址，这将在后续步骤中用于与此合约实例交互。
 
@@ -507,14 +497,10 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 在开始合约验证流程之前，您需要先[获取Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}。注意：Moonbeam和Moonbase Alpha使用相同的[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥，而[Moonriver](https://moonriver.moonscan.io/){target=_blank}需要不同的API密钥。
 
-请再次确认您的`secrets.json`文件包含了您的[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。
-
-![Add Moonscan API Key to Secret.json.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.png)
-
-要验证合约，您可以运行`verify`命令并传入部署`DelegationDao`合约的网络、合约地址，以及在`deploy.js`文件中给出的两个构造函数参数，即目标收集人地址和部署智能合约的部署者地址（来源于`secrets.json`文件）。
+要验证合约，您可以运行`verify`命令并传入部署`DelegationDao`合约的网络、合约地址，以及在`deploy.js`文件中给出的两个构造函数参数，即目标收集人地址和部署智能合约的部署者地址（来源于`hardhat.config.js`文件）。
 
 ```bash
-npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "{{ networks.moonbase.staking.candidates.address1 }}" "DEPLOYER-ADDRESS"
+npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS {{ networks.moonbase.staking.candidates.address1 }} INSERT_DEPLOYER_ADDRESS
 ```
 
 !!! 注意事项
@@ -522,31 +508,33 @@ npx hardhat verify --network moonbase <CONTRACT-ADDRESS> "{{ networks.moonbase.s
 
 在您的终端中，您会看到合约源代码已成功提交以用于验证。如果验证成功，您会看到**Successfully verified contract**并且会有一个指向[Moonscan for Moonbase Alpha](https://moonbase.moonscan.io/){target=_blank}上的合约代码的链接。如果插件返回错误，请仔细检查您的API密钥配置是否正确，以及您是否已在验证命令中指定所有必要的参数。您可以通过[Hardhat Etherscan插件指南](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}获取更多信息。
 
-![Verify contracts on Moonbase Alpha using the Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-6.png)
+![Verify contracts on Moonbase Alpha using the Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-5.png)
 
 ## 部署到Moonbeam主网上的生产环境 {: #deploying-to-production-on-moonbeam-mainnet }
 
 !!! 注意事项
     `DelegationDAO.sol`未经过审核和审计，仅用于演示目的。其中可能会包含漏洞或者逻辑错误而导致资产损失，请勿在生产环境中使用。
 
-在以下步骤中，我们将部署`DelegationDAO`合约至Moonbeam主网。如果您尚未设置网络，请先将Moonbeam网络添加到您的[`hardhat.config.js`](#hardhat-configuration-file)中并使用您在Moonbeam上的帐户私钥更新您的`secrets.json`文件。在将`DelegationDAO`部署到Moonbeam之前，由于我们在Moonbase Alpha上的目标收集人在Moonbeam上并不存在，我们需要更改目标收集人的地址。前往您的部署脚本并将目标收集人更改为`0x1C86E56007FCBF759348dcF0479596a9857Ba105`或您选择的[另一个Moonbeam收集人](https://apps.moonbeam.network/moonbeam/staking){target=_blank}。因此，您的`deploy.js`脚本应如下所示：
+在以下步骤中，我们将部署`DelegationDAO`合约至Moonbeam主网。如果您尚未设置网络，请先将Moonbeam网络添加到您的[`hardhat.config.js`](#hardhat-configuration-file)中并使用您在Moonbeam上的帐户私钥更新您。在将`DelegationDAO`部署到Moonbeam之前，由于我们在Moonbase Alpha上的目标收集人在Moonbeam上并不存在，我们需要更改目标收集人的地址。前往您的部署脚本并将目标收集人更改为`0x1C86E56007FCBF759348dcF0479596a9857Ba105`或您选择的[另一个Moonbeam收集人](https://apps.moonbeam.network/moonbeam/staking){target=_blank}。因此，您的`deploy.js`脚本应如下所示：
 
 ```javascript
 // 1. The moonbeam-foundation-03 collator on Moonbeam is chosen as the DAO's target
-const targetCollator = "0x1C86E56007FCBF759348dcF0479596a9857Ba105"
+const targetCollator = '0x1C86E56007FCBF759348dcF0479596a9857Ba105';
 
 async function main() {
   // 2. Get the address of the deployer to later be set as the admin of the DAO
   const [deployer] = await ethers.getSigners();
-  console.log("Deploying contracts with the account:", deployer.address);
+  console.log('Deploying contracts with the account:', deployer.address);
   
   // 3. Get an instance of DelegationDAO
-  const delegationDao = await ethers.getContractFactory("DelegationDAO");
+  const delegationDao = await ethers.getContractFactory('DelegationDAO');
   
   // 4. Deploy the contract specifying two params: the desired collator to delegate
   // to and the address of the deployer (synonymous with initial DAO admin)
   const deployedDao = await delegationDao.deploy(targetCollator, deployer.address);
-  console.log("DAO address:", deployedDao.address);
+  await deployedDao.waitForDeployment();
+  
+  console.log('DAO address:', deployedDao.address);
 }
 
 main()
@@ -567,7 +555,7 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
+![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-6.png)
 
 恭喜您，您的合约已上线Moonbeam！请保存地址，其将在后续步骤中用于与合约实例交互。
 
@@ -575,14 +563,10 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 在这一部分，我们将验证刚刚部署至Moonbeam的合约。在开始合约验证流程之前，您需要先[获取Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}。注意：Moonbeam和Moonbase Alpha使用相同的[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥，而[Moonriver](https://moonriver.moonscan.io/){target=_blank}需要不同的API密钥。
 
-请再次确认您的`secrets.json`文件包含了[Moonbeam Moonscan](https://moonscan.io/) API密钥。
-
-![Add Moonscan API Key to Secret.json.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.png)
-
 要验证合约，您可以运行`verify`命令并传入部署`DelegationDao`合约的网络、合约地址，以及在`deploy.js`文件中给出的两个构造函数参数，即目标收集人地址和部署智能合约的部署者地址（来源于`secrets.json`文件）。请注意：Moonbeam上的staking DAO的目标收集人与Moonbase Alpha上的staking DAO的目标收集人不同。
 
 ```bash
-npx hardhat verify --network moonbeam <CONTRACT-ADDRESS> "0x1C86E56007FCBF759348dcF0479596a9857Ba105" "DEPLOYER-ADDRESS"
+npx hardhat verify --network moonbeam INSERT_CONTRACT_ADDRESS 0x1C86E56007FCBF759348dcF0479596a9857Ba105 INSERT_DEPLOYER_ADDRESS
 ```
 
 !!! 注意事项
@@ -590,7 +574,7 @@ npx hardhat verify --network moonbeam <CONTRACT-ADDRESS> "0x1C86E56007FCBF759348
 
 在您的终端中，您会看到合约源代码已成功提交以用于验证。如果验证成功，您会看到**Successfully verified contract**并且会有一个指向[Moonbeam Moonscan](https://moonscan.io/){target=_blank}上的合约代码的链接。如果插件返回错误，请仔细检查您的API密钥配置是否正确，以及您是否已在验证命令中指定所有必要的参数。您可以通过[Hardhat Etherscan插件指南](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}获取更多信息。
 
-![Verify contracts on Moonbeam using Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-8.png)
+![Verify contracts on Moonbeam using Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
 
 这样就可以了！我们在本教程中介绍了很多基础知识。如果您想深入了解，可以访问以下链接获取更多信息：
 

@@ -5,8 +5,6 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 # 与Moonbeam Safe多签钱包交互
 
-![Moonbeam Multisig Safe Banner](/images/tokens/manage/multisig-safe/safe-banner.png)
-
 ## 概览 {: #introduction }
 
 单签名钱包（简称singlesig）是一种只有一个所有者持有私钥的钱包，可以控制账户持有的所有资产。因此，如果私钥丢失将导致永久无法访问钱包并损失资金。
@@ -49,7 +47,7 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 您可以前往[Remix](https://remix.ethereum.org/){target=_blank}并为以下`SetText.sol`合约创建一个新文件：
 
-```
+```solidity
 pragma solidity ^0.8.0;
 
 contract SetText {
@@ -358,17 +356,20 @@ contract SetText {
 Moonbeam、Moonriver和Moonbase Alpha也支持用API来与Moonbeam Safe进行交互。
 
 === "Moonbeam"
-     ```
+
+     ```text
      {{networks.moonbeam.multisig.api_page }}
      ```
 
 === "Moonriver"
-     ```
+
+     ```text
      {{networks.moonriver.multisig.api_page}}
      ```
 
 === "Moonbase Alpha"
-     ```
+
+     ```text
      {{networks.moonbase.multisig.api_page}}
      ```
 

@@ -5,8 +5,6 @@ description: 通过解析一个范例项目，深入了解去中心化应用（D
 
 # 如何构建一个DApp：完整的DApp架构
 
-![Learn about the entire architecture of DApps.](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-banner.png)
-
 _作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction }
@@ -86,7 +84,7 @@ npx hardhat init
 创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox#hardhat-toolbox){target=_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
 
 ```bash
-npm install --save-dev  hardhat @nomiclabs/hardhat-ethers ethers
+npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers
 ```
 
 在我们开始编写智能合约之前，让我们先将JSON-RPC URL添加至配置之中，我们可以使用以下代码设置`hardhat.config.js`文件，并将`YOUR_PRIVATE_KEY`取代为您具有资金账户的私钥。
@@ -95,7 +93,7 @@ npm install --save-dev  hardhat @nomiclabs/hardhat-ethers ethers
     这仅用于测试目的，**请勿将您具有真实资金的账户私钥以文字的方式储存**。
 
 ```javascript
-require('@nomiclabs/hardhat-ethers');
+require('@nomicfoundation/hardhat-ethers');
 module.exports = {
   solidity: '0.8.17',
   networks: {
@@ -175,7 +173,7 @@ npx hardhat compile
 
 ??? code "MintableERC20.sol文档"
 
-    ```sol
+    ```solidity
     // SPDX-License-Identifier: UNLICENSED
     pragma solidity ^0.8.17;
 
@@ -451,7 +449,7 @@ function App() {
 
 因此，让我们首先将`MintableERC20.json`文件移动到我们的前端目录中。每次更改并重新编译智能合约时，您还必须更新前端中的ABI。有些项目的开发者设置会自动从同一源提取ABI，但在这种情况下，我们只需将其复制过来：
 
-```JSON
+```text
 |--artifacts
     |--@openzeppelin
     |--build-info

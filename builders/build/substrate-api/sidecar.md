@@ -1,11 +1,9 @@
 ---
 title: 在Moonbeam上使用Substrate API Sidecar
-description: 了解如何使用基于Substrate的REST服务在Moonbeam网络上来查询区块、账户余额、计算交易费用等。
+description: 学习如何使用Sidecar（基于Substrate的REST服务）和基于Moonbeam网络访问区块、账户余额、使用的计算gas等。
 ---
 
 # 在Moonbeam上使用Substrate API Sidecar
-
-![Substrate API Sidecar](/images/builders/build/substrate-api/sidecar/sidecar-banner.png)
 
 ## 概览 {: #introduction }
 
@@ -25,7 +23,7 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 
 在当前目录下本地安装Substrate API Sidecar服务，请在命令行运行以下命令：
 
-```
+```bash
 npm install @substrate/api-sidecar@{{ networks.moonbase.substrate_api_sidecar.stable_version }}
 ```
 
@@ -34,7 +32,7 @@ npm install @substrate/api-sidecar@{{ networks.moonbase.substrate_api_sidecar.st
 
 Substrate API Sidecar v{{ networks.moonbase.substrate_api_sidecar.stable_version }}是当前经过测试过可与Moonbeam网络共同使用的稳定版本。您可以通过在安装的根目录运行以下命令来验证是否成功安装：
 
-```
+```bash
 node_modules/.bin/substrate-api-sidecar --version
 ```
 
@@ -43,22 +41,26 @@ node_modules/.bin/substrate-api-sidecar --version
 在Sidecar将运行的终端中，导出网络WS端点的环境变量，例如：
 
 === "Moonbeam"
-    ```
+
+    ```bash
     export SAS_SUBSTRATE_URL=wss://wss.api.moonbeam.network
     ```
 
 === "Moonriver"
-    ```
+
+    ```bash
     export SAS_SUBSTRATE_URL=wss://wss.api.moonriver.moonbeam.network
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```bash
     export SAS_SUBSTRATE_URL=wss://wss.api.moonbase.moonbeam.network
     ```
 
 === "Moonbeam开发节点"
-    ```
+
+    ```bash
     export SAS_SUBSTRATE_URL=ws://127.0.0.1:9944
     ```
 
@@ -66,7 +68,7 @@ node_modules/.bin/substrate-api-sidecar --version
 
 设置环境变量后，您可以使用`echo`命令，运行以下命令检查环境变量是否正确设置：
 
-```
+```bash
 echo $SAS_SUBSTRATE_URL
 ```
 
@@ -76,7 +78,7 @@ echo $SAS_SUBSTRATE_URL
 
 根据设置的网络端点环境变量，在安装的根目录运行以下命令：
 
-```
+```bash
 node_modules/.bin/substrate-api-sidecar 
 ```
 
@@ -101,7 +103,7 @@ node_modules/.bin/substrate-api-sidecar
 
 Substrate API Sidecar将Moonbeam区块作为JSON对象返回。与Moonbeam交易的EVM执行相关信息位于`extrinsics`顶级字段下，其中个人extrinsics以数字方式组织为嵌套的JSON对象。嵌套结构如下所示：
 
-```JSON
+```text
 RESPONSE JSON Block Object:
     |--extrinsics
         |--{extrinsic_number}
@@ -130,7 +132,7 @@ RESPONSE JSON Block Object:
 
 Moonbeam EVM交易可以通过在当前extrinsic对象下的`method`字段进行验证，`method`字段可设置为：
 
-```
+```text
 {extrinsic_number}.method.pallet = "ethereum"
 {extrinsic_number}.method.method = "transact"
 ```
@@ -140,7 +142,8 @@ Moonbeam EVM交易可以通过在当前extrinsic对象下的`method`字段进行
 Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。这些对应上述JSON对象示意图中的`transaction type`字段。每个交易类型的交易负载包含以下字段：
 
 === "EIP1559"
-    ```JSON
+
+    ```text
         ...
         |--eip1559
             |--chainId
@@ -159,7 +162,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
     ```
 
 === "Legacy"
-    ```JSON
+
+    ```text
         ...
         |--legacy
             |--nonce
@@ -173,7 +177,8 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
     ```
 
 === "EIP2930"
-    ```JSON
+
+    ```text
         ...
         |--eip2930
             |--chainId
@@ -196,7 +201,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 
 要获取EVM发送方地址、接收方地址，以及任何EVM交易类型的EVM哈希，检查在当前extrinsic对象下的`events`字段并验证`method`字段已设置为：
 
-```
+```text
 {event_number}.method.method: "Executed" 
 {event_number}.method.pallet: "ethereum"
 ```
@@ -255,7 +260,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
 
 智能合约（例如部署在Moonbeam上的ERC-20合约）发出的事件可以从Sidecar区块的JSON对象中解码。它的嵌套结构如下：
 
-```JSON
+```text
 RESPONSE JSON Block Object:
     |--extrinsics
         |--{extrinsic_number}
@@ -287,7 +292,6 @@ RESPONSE JSON Block Object:
 ```
 
 Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=_blank}事件，可解码如下：
-
 
 |    交易信息    |                             对应JSON字段                              |
 |:--------------:|:---------------------------------------------------------------------:|

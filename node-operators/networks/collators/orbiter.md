@@ -5,8 +5,6 @@ description: 了解针对收集人的Moonbeam Orbiter计划，包含参与条件
 
 # Moonbeam Orbiter计划
 
-![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
-
 ## 概况 {: #introduction }
 
 Moonbeam基金会宣布orbiter计划将进入试验阶段。类似于[Kusama 1000验证人计划](https://thousand-validators.kusama.network/){target=_blank}，此计划允许收集人参与网络的多样性和安全性，无需其拥有特定的资金数量或是处在活跃收集人集中。此计划是基于社区意见进行开发。
@@ -39,51 +37,60 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
 计划收集人由Moonbeam基金会运营，并分配权限给orbiter以生产区块。以下为每个网络单个orbiter计划收集人池最高可提供的orbiter数量：
 
 === "Moonbeam"
-    ```
+
+    ```text
     每池 {{ networks.moonbeam.orbiter.max_orbiters_per_collator }} 个 orbiters
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     每池 {{ networks.moonriver.orbiter.max_orbiters_per_collator }} 个 orbiters
     ```
     
 === "Moonbase Alpha"
-    ```
+
+    ```text
     每池 {{ networks.moonbase.orbiter.max_orbiters_per_collator }} 个 orbiters
     ```
 
 除此之外，Moonbeam和Moonriver上的orbiter计划收集人池在活跃收集人中具有一定的限制，而Moonbase Alpha则不受到限制，以下为各个网络最高的orbiter计划收集人池数量：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.orbiter.max_collators }} 个 orbiter 池
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.orbiter.max_collators }} 个 orbiter 池
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.orbiter.max_collators }} 个 orbiter 池
     ```
 
 每个orbiter将会在下个orbiter取代之前运行特定轮次，以下为每个网络能够运行的轮次数量：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.orbiter.active.rounds }} 轮次 (~{{ networks.moonbeam.orbiter.active.hours }} 小时)
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.orbiter.active.rounds }} 轮次 (~{{ networks.moonriver.orbiter.active.hours }} 小时)
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.orbiter.active.rounds }} 轮次 (~{{ networks.moonbase.orbiter.active.hours }} 小时)
     ```
 
@@ -112,17 +119,20 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
 在author ID映射到您的账户时，系统将会发送一笔资金绑定到您的账户。这笔资金由author ID注册获得。绑定的资金设置如下所示：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.staking.collator_map_bond }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.staking.collator_map_bond }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.staking.collator_map_bond }} DEV
     ``` 
 
@@ -131,17 +141,20 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
 如上所述，每个orbiter必须提交一笔绑定资金才能参与该计划。绑定的资金与活跃收集人集不同，因绑定资金并不会获得任何提名奖励。目前的绑定规则如下：
 
 === "Moonbeam"
-    ```
+
+    ```text
     {{ networks.moonbeam.orbiter.bond }} GLMR
     ```
 
 === "Moonriver"
-    ```
+
+    ```text
     {{ networks.moonriver.orbiter.bond }} MOVR
     ```
 
 === "Moonbase Alpha"
-    ```
+
+    ```text
     {{ networks.moonbase.orbiter.bond }} DEV
     ```
 
