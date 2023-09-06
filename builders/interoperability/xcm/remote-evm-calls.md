@@ -30,7 +30,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
-- **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
+- **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
 - **交换信息** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM Transactor就计算费用数值，并向XCM Transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
 
 ## 通过XCM执行常规和远程EVM调用的差异 {: #differences-regular-remote-evm}
@@ -81,7 +81,7 @@ Ethereum XCM Pallet提供以下extrinsics（函数），可以通过`Transact`�
 
 ## 通过XCM构建一个远程EVM调用 {: #build-remove-evm-call-xcm}
 
-本教程涵盖使用从中继链到Moonbase Alpha的[XCM Pallet](https://github.com/paritytech/polkadot/blob/master/xcm/pallet-xcm/src/lib.rs){target=_blank}为远程EVM调用构建XCM消息。详细而言，它将使用`transact`函数。使用`transactThroughProxy`函数的步骤则是相同的。但是，您需要提供`transactAs`帐户并确保该帐户已将**multilocation衍生账户**设置为Moonbase Alpha上的`any`类型的代理账户。
+本教程涵盖使用从中继链到Moonbase Alpha的[XCM Pallet](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/pallet-xcm/src/lib.rs){target=_blank}为远程EVM调用构建XCM消息。详细而言，它将使用`transact`函数。使用`transactThroughProxy`函数的步骤则是相同的。但是，您需要提供`transactAs`帐户并确保该帐户已将**multilocation衍生账户**设置为Moonbase Alpha上的`any`类型的代理账户。
 
 !!! 注意事项
     当在使用`transactThroughProxy`时，只要此帐户已将**multilocation衍生账户**设置为您正在使用的基于Moonbeam的网络中类型为`any`的代理，EVM调用将根据您提供的**transactAs**帐户调度，并作为`msg.sender`。但是，交易费用仍由**multilocation衍生账户**支付，因此您需要确保它有足够的资金来支付这些费用。
@@ -100,7 +100,7 @@ Ethereum XCM Pallet提供以下extrinsics（函数），可以通过`Transact`�
 
 如先前所述，远程EVM调用是从被称为**multilocation衍生账户**的帐户派遣的。这是使用[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令提供的信息计算的。因此，计算账户直接取决于指令的构造方式。
 
-举例来说，从中继链中，[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令是由[XCM Pallet](https://github.com/paritytech/polkadot/blob/master/xcm/pallet-xcm/src/lib.rs){target=_blank}本地输入的。在Moonbase Alpha的中继链（基于Westend）的情况下，具有以下格式（multilocation连接）：
+举例来说，从中继链中，[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令是由[XCM Pallet](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/pallet-xcm/src/lib.rs){target=_blank}本地输入的。在Moonbase Alpha的中继链（基于Westend）的情况下，具有以下格式（multilocation连接）：
 
 ```js
 {
