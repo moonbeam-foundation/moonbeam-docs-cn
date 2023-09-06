@@ -344,7 +344,7 @@ if ((!chainId || !account) && connector.connected) {
 
 ## 新增账户余额 {: #add-account-balance }
 
-根据您的需求，您或许会希望在连接的网络上显示账户余额，您可以使用[Ethers](https://docs.ethers.io/){target=_blank}创建一个提供者，用于获取连接账户的余额。
+根据您的需求，您或许会希望在连接的网络上显示账户余额，您可以使用[Ethers](https://docs.ethers.org/){target=_blank}创建一个提供者，用于获取连接账户的余额。
 
 您可以通过为`balance`加入另一个状态变量开始进行操作：
 

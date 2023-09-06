@@ -196,7 +196,7 @@ python3 deploy.py
 
 ![Deploy Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-2.png)
 
-### 读取合约数据（调用函数）{: #read-contract-data }
+### 读取合约数据（调用函数） {: #read-contract-data }
 
 调用函数是无需修改合约存储（更改变量）的交互类型，这意味着无需发送交易，只需读取已部署合约的各种存储变量。
 
@@ -226,7 +226,7 @@ python3 get.py
 
 如果成功，数值将显示在终端。
 
-### 交互合约（发送函数）{: #interact-with-contract }
+### 交互合约（发送函数） {: #interact-with-contract }
 
 发送函数是修改合约存储（更改变量）的交互类型，这意味着需要签署和发送交易。在这一部分，您将创建两个脚本：一个是增量，另一个是重置增量器。首先，您可以为每个脚本创建一个文件，并分别命名为`increment.py`和`reset.py`：
 

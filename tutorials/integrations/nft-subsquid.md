@@ -103,7 +103,7 @@ sqd codegen
 
 Subsquid维护[工具](https://docs.subsquid.io/substrate-indexing/squid-substrate-typegen/){target=_blank}，用于自动生成TypeScript类，以处理Substrate数据源（事件、extrinsics、存储项）。Runtime升级已考虑在内，并会自动检测。
 
-类似的功能可以通过[`squid-evm-typegen`](https://docs.subsquid.io/evm-indexing/squid-evm-typegen/){target=_blank}用于EVM索引。它将根据合约的[JSON ABI](https://docs.ethers.io/v5/api/utils/abi/){target=_blank}生成TypeScript模块，用于处理EVM日志和交易。
+类似的功能可以通过[`squid-evm-typegen`](https://docs.subsquid.io/evm-indexing/squid-evm-typegen/){target=_blank}用于EVM索引。它将根据合约的[JSON ABI](https://docs.ethers.org/v5/api/utils/abi/){target=_blank}生成TypeScript模块，用于处理EVM日志和交易。
 
 对于我们的squid，我们将需要一个用于满足合约接口的兼容[ERC-721](https://eips.ethereum.org/EIPS/eip-721){target=_blank}部分的模块。再次提醒，此模板的代码库已将其包含在里面，但是解释索引不同类型合约时需要完成的事项仍然很重要。
 

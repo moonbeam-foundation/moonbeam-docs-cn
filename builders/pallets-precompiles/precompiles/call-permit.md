@@ -162,7 +162,7 @@ contract SetMessage {
 2. 将组合用户需要签署数据的JSON结构并包含所有`dispatch`函数和随机数需要的种类。这将会得出`CallPermit`种类并将作为`primaryType`储存
 3. 域名分隔器将使用`"Call Permit Precompile"`创建，需要完全相同的名称、DApp或平台的版本、使用签名的网络的链ID以及将验证签名的合约地址
 4. 所有组合的数据，`types`、`domain`、`primaryType`以及`message`将会使用MetaMask签署（不论是在浏览器或是用过MetaMask的JavaScript签名库）
-5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.io/){target=_blank} [`Signature.from` 函数](https://docs.ethers.org/v6/api/crypto/#Signature_from){target=_blank}回传签名的`v`、`r`和`s`数值。
+5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.org/){target=_blank} [`Signature.from` 函数](https://docs.ethers.org/v6/api/crypto/#Signature_from){target=_blank}回传签名的`v`、`r`和`s`数值。
 
 ### 调用许可参数 {: #call-permit-arguments }
 
@@ -230,7 +230,7 @@ npm init -y
 "type": "module"
 ```
 
-接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.io/){target=_blank}：
+接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.org/){target=_blank}：
 
 ```bash
 npm i @metamask/eth-sig-util ethers
