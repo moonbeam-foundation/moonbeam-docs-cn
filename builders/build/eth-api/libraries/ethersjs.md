@@ -45,7 +45,7 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
     ```bash
     yarn add ethers solc@0.8.0
     ```
-## 设置Ehters提供商 {: #setting-up-the-ethers-provider }
+## 设置Ethers提供商 {: #setting-up-the-ethers-provider }
 
 在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.org/v6/api/providers/){target=_blank}与网络交互。
 
