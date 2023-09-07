@@ -78,7 +78,7 @@ Solidity接口包含以下的函数：
  - **awardedPoints**(*uint32* round, *address* candidate) —— 只读函数，返回在给定轮次中授予给给定收集人的总分。如果返回`0`，可能是因为没有生成区块或者该轮的存储已被删除。使用质押Pallet的[`points`](/builders/pallets-precompiles/pallets/staking/#:~:text=awardedPts(u32, AccountId20)){target=_blank}函数
  - **delegationAmount**(*address* delegator, *address* candidate) —— 只读函数，返回给定委托人为支持给定候选人而委托的金额。使用质押pallet的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
  - **isInTopDelegations**(*address* delegator, *address* candidate) —— 只读函数，它返回一个布尔值，标示给定的委托人是否在给定候选人的最高委托中。使用质押pallet的[`topDelegations`](/builders/pallets-precompiles/pallets/staking/#:~:text=topDelegations(AccountId20)){target=_blank}函数
- - **minDelegation**() —— 获取最小委托数量的只读函数。使用质押Pallet的`minDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=minDelegation()){target=_blank}函数
+ - **minDelegation**() —— 获取最小委托数量的只读函数。使用质押Pallet的[`minDelegation`](/builders/pallets-precompiles/pallets/staking/#:~:text=minDelegation()){target=_blank}函数
  - **candidateCount**() —— 获取当前候选收集人数量的只读函数。使用质押Pallet的[`candidatePool`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidatePool()){target=_blank}函数
  - **round**() —— 返回当前轮数的只读函数。使用质押Pallet的[`round`](/builders/pallets-precompiles/pallets/staking/#:~:text=round()){target=_blank}函数
  - **candidateDelegationCount**(*address* candidate) —— 返回指定候选收集人地址的委托数量的只读函数。使用质押Pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
@@ -110,7 +110,7 @@ Solidity接口包含以下的函数：
  - **getDelegatorTotalStaked**(*address* delegator) —— 只读函数，返回给定委托人的总质押金额，与候选人无关。使用质押pallet 的[`delegatorState`](/builders/pallets-precompiles/pallets/staking/#:~:text=delegatorState(AccountId20)){target=_blank}函数
  - **getCandidateTotalCounted**(*address* candidate) —— 只读函数，返回给定候选人的质押总额。使用质押pallet的[`candidateInfo`](/builders/pallets-precompiles/pallets/staking/#:~:text=candidateInfo(AccountId20)){target=_blank}函数
 
-从运行时1800开始，以下方法已被**弃用**：
+ 从运行时1800开始，以下方法已被**弃用**，并且从运行时2500开始，已被删除：
 
  - **scheduleLeaveDelegators**() —— 发起离开委托人集并撤回所有进行中的委托的请求。发起请求并不会自动执行，需要等待[退出延迟](#exit-delays)，您可以通过`executeLeaveDelegators`函数执行请求。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`scheduleLeaveDelegators`请求
  - **executeLeaveDelegators**(*address* delegator, *uint256* delegatorDelegationCount) —— 执行离开委托人集和撤回所有委托的可用请求。可以使用[批量处理方法](/builders/pallets-precompiles/pallets/utility/#using-the-batch-extrinsics){target=_blank}来打包多个`executeLeaveDelegators`请求
@@ -132,7 +132,7 @@ Solidity接口包含以下的函数：
 
 ## 与Solidity接口进行交互 {: #interact-with-solidity-interface }
 
-### 查看先决条件 {: #checking-prerequisites } 
+### 查看先决条件 {: #checking-prerequisites }
 
 以下的示例将会在Moonbase Alpha上演示。同样适用于其他网络，包括Moonbeam和Moonriver。
 
@@ -157,7 +157,7 @@ Solidity接口包含以下的函数：
 
 ![Compiling StakingInteface.sol](/images/builders/pallets-precompiles/precompiles/staking/staking-2.png)
 
-### 读取合约 {: #access-the-contract } 
+### 读取合约 {: #access-the-contract }
 
 1. 点击Remix界面中**Compile**标签正下方的**Deploy and Run**标签。注意：我们现在并不是在这里部署合约，而是使用先前部署的预编译合约
 2. 确认已选取**ENVIRONMENT**下拉菜单中的**Injected Provider - Metamask**
