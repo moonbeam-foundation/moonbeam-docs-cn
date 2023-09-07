@@ -80,7 +80,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     ```js
     const instr2 = {
       DepositAsset: {
-        assets: { Wild: 'All' },
+        assets: { Wild: { AllCounted: 1 } },
         beneficiary: {
           parents: 0,
           interior: {
@@ -103,11 +103,11 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 4. 指定`maxWeight`，其中包括您需要定义的`refTime`和`proofSize`值
 
-    - `refTime`是可用于执行的计算时间量。在本示例中，您可以设置为`100000000000n`
-    - `proofSize`是可使用的存储量（以字节为单位）。在本示例中，您可以设置为`0`
+    - `refTime`是可用于执行的计算时间量。在本示例中，您可以设置为`400000000n`
+    - `proofSize`是可使用的存储量（以字节为单位）。在本示例中，您可以设置为`14484n`
 
     ```js
-    const maxWeight = { refTime: 100000000000n, proofSize: 0 } ;
+    const maxWeight = { refTime: 400000000n, proofSize: 14484n } ;
     ```
 
 现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您需要执行以下步骤：
@@ -130,7 +130,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c03030800040000010403001300008a5d784563010d0100000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e00700e876481700){target=_blank}上查看上述脚本的示例，该脚本将1个DEV发送给Moonbeam上Bob的账户：`0x1c03030800040000010403001300008a5d784563010d0100000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e00700e876481700`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c03030800040000010403001300008a5d784563010d010204000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e002105e5f51e2){target=_blank}上查看上述脚本的示例，该脚本将1个DEV发送给Moonbeam上Bob的账户：`0x1c03030800040000010403001300008a5d784563010d010204000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e002105e5f51e2`。
 
 交易处理后，0.1 DEV Token和相关联的XCM费用从Alice的账户提取，Bob将在其账户收到0.1 DEV Token。`polkadotXcm.Attempted`事件将与结果一同发出。
 
@@ -173,8 +173,29 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 1. 创建提供商和签署者
 2. 创建用于交互的XCM Utilities Precompile的实例
-3. 定义`xcmExecute`函数所需的参数，这些参数将是XCM消息的编码调用数据以及用于执行消息的最大权重。您可以将`maxWeight`设置为`100000000000n`，它对应于`refTime`。`proofSize`将自动设置为默认值，即64KB
+3. 定义`xcmExecute`函数所需的参数，这些参数将是XCM消息的编码调用数据以及用于执行消息的最大权重。您可以将`maxWeight`设置为`400000000n`，它对应于`refTime`。`proofSize`将自动设置为默认值，即64KB
 4. 执行XCM消息
+
+!!! 请记住
+    请勿将您的私钥存储至JavaScript或Python文件中。
+
+=== "Ethers.js"
+
+    ```js
+    --8<-- 'code/polkadotXcm/xcmExecute/ethers.js'
+    ```
+
+=== "Web3.js"
+
+    ```js
+    --8<-- 'code/polkadotXcm/xcmExecute/web3.js'
+    ```
+
+=== "Web3.py"
+
+    ```py
+    --8<-- 'code/polkadotXcm/xcmExecute/web3.py'
+    ```
 
 ## 跨链发送XCM消息 {: #send-xcm-message }
 
@@ -285,7 +306,7 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c03030800040000010403001300008a5d784563010d0100000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e00700e876481700){target=_blank}上查看上述脚本的示例，该脚本将1个UNIT发送给中继链上Bob的账户：`0x1c00030100030c000400010000070010a5d4e81300010000070010a5d4e8000d0100010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1c03030800040000010403001300008a5d784563010d010204000103003cd0a705a2dc65e5b1e1205896baa2be8a07c6e002105e5f51e2){target=_blank}上查看上述脚本的示例，该脚本将1个UNIT发送给中继链上Bob的账户：`0x1c00030100030c000400010000070010a5d4e81300010000070010a5d4e8000d0100010101000c36e9ba26fa63c60ec728fe75fe57b86a450d94e7fee7f9f9eddd0d3f400d67`。
 
 交易处理后，`polkadotXcm.sent`事件将与发送的XCM消息详情一同发出。
 

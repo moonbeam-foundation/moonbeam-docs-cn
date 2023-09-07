@@ -33,13 +33,13 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     mkdir {{ networks.moonbase.node_directory }}
     ```
 
-接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`DOCKER_USER`）：
+接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`INSERT_DOCKER_USER`）：
 
 === "Moonbeam"
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonbeam.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonbeam.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbeam.node_directory }}
@@ -49,7 +49,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonriver.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonriver.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonriver.node_directory }}
@@ -59,7 +59,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
     ```bash
     # chown to a specific user
-    chown DOCKER_USER {{ networks.moonbase.node_directory }}
+    chown INSERT_DOCKER_USER {{ networks.moonbase.node_directory }}
 
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
@@ -67,7 +67,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     
 下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是[收集人](#收集人--collator)代码段。注意，您需要替换：
 
- - 在两处替换 `YOUR-NODE-NAME` 
+ - 在两处替换 `INSERT_YOUR_NODE_NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
 如果您使用的是MacOS，您可以在[这页](https://www.github.com/moonbeam-foundation/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
@@ -79,124 +79,204 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 ### 全节点 {: #full-node }
 
-=== "Moonbeam"
+???+ code "Linux snippets"
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonbeam.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --execution wasm \
-    --wasm-execution compiled \
-    --state-pruning archive \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonbeam"
 
-=== "Moonriver"
+        ```bash
+        docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbeam.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonriver.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --execution wasm \
-    --wasm-execution compiled \
-    --state-pruning archive \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonriver"
 
-=== "Moonbase Alpha"
+        ```bash
+        docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonriver.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonbase.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --execution wasm \
-    --wasm-execution compiled \
-    --state-pruning archive \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonbase Alpha"
+
+        ```bash
+        docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbase.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+??? code "MacOS snippets"
+
+    === "Moonbeam"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonbeam \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "Moonriver"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonriver \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "Moonbase Alpha"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        --base-path=/data \
+        --chain alphanet \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
 !!! 注意事项
     如果您想要运行RPC终端、连接至Polkadot.js Apps或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
 
 ### 收集人 {: #collator }
 
-=== "Moonbeam"
+???+ code "Linux snippets"
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonbeam.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --collator \
-    --execution wasm \
-    --wasm-execution compiled \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonbeam"
 
-=== "Moonriver"
+        ```bash
+        docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbeam.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonriver.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --collator \
-    --execution wasm \
-    --wasm-execution compiled \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonriver"
 
-=== "Moonbase Alpha"
+        ```bash
+        docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonriver.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
-    ```bash
-    docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
-    --base-path=/data \
-    --chain {{ networks.moonbase.chain_spec }} \
-    --name="YOUR-NODE-NAME" \
-    --collator \
-    --execution wasm \
-    --wasm-execution compiled \
-    --trie-cache-size 0 \
-    --db-cache <50% RAM in MB> \
-    -- \
-    --execution wasm \
-    --name="YOUR-NODE-NAME (Embedded Relay)"
-    ```
+    === "Moonbase Alpha"
+
+        ```bash
+        docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbase.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        --db-cache <50% RAM in MB> \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+??? code "MacOS snippets"
+
+    === "Moonbeam"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonbeam \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "Moonriver"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonriver \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "Moonbase Alpha"
+
+        ```bash
+        docker run -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        --base-path=/data \
+        --chain alphanet \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --collator \
+        --trie-cache-size 1073741824 \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
 
 !!! 注意事项
     有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
@@ -230,7 +310,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 1. 停止Docker容器：
 
     ```bash
-    sudo docker stop `CONTAINER_ID`
+    sudo docker stop INSERT_CONTAINER_ID
     ```
     
 2. 从[Moonbeam GitHub Release](https://github.com/moonbeam-foundation/moonbeam/releases/)页面获取Moonbeam的最新版本
@@ -246,7 +326,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 首先，您想需要停止Docker容器：
 
 ```bash
-  sudo docker stop `CONTAINER_ID`
+  sudo docker stop INSERT_CONTAINER_ID
 ```
 
 如果您在启动节点的时候未使用`-v`标志来指定用于存储链数据的本地目录，则数据文件夹会与Docker容器本身相关。因此，移除Docker容器将移除链数据。
