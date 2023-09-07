@@ -100,7 +100,7 @@ XCM消息包含一系列由跨共识虚拟机(XCVM)执行的[操作/指](https:/
 当在注册一个XCM资产时，函数需要包含以下部分（除其他事项外）：
 
 - 原始资产所在网络的平行链ID
-- 资产类别。截至本文撰写时，您可以注册原生平行链Token或是使用通过[Pallet资产](https://github.com/paritytech/substrate/blob/master/frame/assets/src/lib.rs){target=_blank}创建资产的相应索引。
+- 资产类别。截至本文撰写时，您可以注册原生平行链Token或是使用通过[Pallet资产](https://github.com/paritytech/polkadot-sdk/blob/master/substrate/frame/assets/src/lib.rs){target=_blank}创建资产的相应索引。
 - 资产名称、标志和单位（十进制）
 - 最低额度
 

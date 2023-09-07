@@ -36,7 +36,7 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
 
 --8<-- 'text/xcm/general-xcm-definitions2.md'
 
-- **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot/blob/master/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
+- **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
 - **Transact information** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM Transactor计算此费用，并向XCM Transactor extrinsic的发送者收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
 
 ## XCM Transactor Pallet接口 {: #xcm-transactor-pallet-interface}
@@ -73,7 +73,7 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
      - **overallWeight** — XCM Transactor extrinsic可以使用的所有权重。这包含所有XCM指令以及调用本身(**transactRequiredWeightAtMost**)的权重
  - **call** — 类似于`innerCall`，但是并没有用`asDerivative` extrinsic包装
  - **feePayer** — 将通过主权账户支付远程XCM执行交易费用的地址。费用将根据对应的[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}收取
- - **originKind** — 在目标链中远程调用的派遣者。目前有[四种派遣者类型](https://github.com/paritytech/polkadot/blob/0a34022e31c85001f871bb4067b7d5f5cab91207/xcm/src/v0/mod.rs#L60){target=_blank}可使用
+ - **originKind** — 在目标链中远程调用的派遣者。目前有[四种派遣者类型](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/src/v2/mod.rs#L84){target=_blank}可使用
 
 ### 存储方法 {: #storage-methods }
 
