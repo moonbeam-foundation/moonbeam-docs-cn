@@ -64,7 +64,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ### 权重和冗余执行 {: #weight-and-extra-execution }
 
-Nimbus将生产者验证执行代码放在一个[Substrate模块](https://substrate.dev/docs/en/knowledgebase/runtime/pallets){target=_blank}中，看上去似乎为一个区块增加了很多执行负担（和链下验证相比）。但如果从验证人的角度来考虑：
+Nimbus将生产者验证执行代码放在一个[Substrate模块](https://docs.substrate.io/reference/frame-pallets/){target=_blank}中，看上去似乎为一个区块增加了很多执行负担（和链下验证相比）。但如果从验证人的角度来考虑：
 
 验证人也需要验证区块生产者的身份。通过将区块生产者验证的执行逻辑放在一个模块里，执行时间就可以进行对标，并根据相应的权重进行量化。如果这一执行时间没有计算在内，一个区块就有可能超出中继链的Wasm执行极限（目前为0.5秒）。
 
@@ -80,6 +80,6 @@ Nimbus将生产者验证执行代码放在一个[Substrate模块](https://substr
 
 平行链开发团队有时可能需要对共识机制进行修改、调整。如果没有Nimbus插拔共识机制，修改和调整可能需要通过客户端升级和硬分叉才能完成。
 
-而有了Nimbus框架后，编写共识引擎就像编写[Substrate](https://substrate.dev/docs/en/knowledgebase/runtime/pallets){target=_blank}模块一样简单。因此，插拔共识机制也就像模块升级一样简单。
+而有了Nimbus框架后，编写共识引擎就像编写[Substrate](https://docs.substrate.io/reference/frame-pallets/){target=_blank}模块一样简单。因此，插拔共识机制也就像模块升级一样简单。
 
 虽然热插拔仍与Nimbus内部的共识引擎（过滤器）绑定，但对于那些仍未选好长远共识机制的团队来说，它也会带来很大帮助。
