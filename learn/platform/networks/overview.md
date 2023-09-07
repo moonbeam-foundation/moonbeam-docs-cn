@@ -11,7 +11,6 @@ description: 基于Moonbeam的所有MainNet和TestNet部署概述；Moonbeam是�
 
  - Moonbeam: 部署于Polkadot上（2021 十二月）
  - Moonriver: 部署于Kusama上（2021 六月）
- - Moonrock: 部署于Rococo测试网上（2021 五月）
  - Moonbase Alpha: PureStake主导平行链测试网(2020 九月)
 
 这个策略能让我们在保持适当的更新速度同时，降低Polkadot 主网上Moonbeam软件升级的风险。同时，我们会在网络开放的时候提供更多关于如何使用不同以Moonbeam为基础的网络细节。
@@ -31,12 +30,6 @@ Moonbeam的生产环境主网自2021年12月17日起以平行链的形式部署�
 随着平行链功能的开通，Moonriver将会支持[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)等相关功能。
 
 [更多了解Moonriver](/learn/platform/networks/moonriver/)。
-
-## Moonrock {: #moonrock }
-
-我们决定不参与Rococo第一波的平行链部署活动，自2020年9月我们发布测试网以来，我们一直在运行自己的平行链/中继链。
-
-然而，当互操作性功能开通之后，我们仍期望将Moonbeam以平行链的形式部署在Rococo测试网上。这提供了一个与其他链测试这些功能的地方。
 
 ## Moonbase Alpha {: #moonbase-alpha }
 
