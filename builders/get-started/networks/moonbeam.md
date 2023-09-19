@@ -12,7 +12,6 @@ description: 学习如何通过RPC和WSS端点连接至Moonbeam，如何连接Me
 您可以使用以下浏览器来浏览Moonbeam：
 
  - **以太坊API（类似Etherscan）**—— [Moonscan](https://moonbeam.moonscan.io/){target=_blank}
- - **具有索引功能的以太坊API** —— [Blockscout](https://blockscout.moonbeam.network/){target=_blank}
  - **基于以太坊API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam){target=_blank}
  - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/){target=_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=_blank}
 

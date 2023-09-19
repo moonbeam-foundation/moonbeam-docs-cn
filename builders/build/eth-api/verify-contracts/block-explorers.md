@@ -30,17 +30,14 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 为验证合约，您将需要收集合约编译器和部署细节的相关信息以保证验证能够顺利进行。
 
 1. 记录用于编译和部署合约的Solidity编译器版本。通常Solidity编译器的版本会在使用的部署工具中提及和描述
-
 2. 记录任何在Solidity开源文件开头使用的任何SPDX证照识别码
 
     ```solidity
     // SPDX-License-Identifier: MIT
     ```
-    
+
 3. （可选） 如果在编译过程中开启过Optimization，记录Optimization运行系数的数值
-
 4. （可选）如果合约构造方法接受参数，记录构造函数的[ABI编码形式](https://docs.soliditylang.org/en/develop/abi-spec.html)
-
 5. 在部署后，记录智能合约部署的合约地址。合约的部署地址可以通过使用Truffle、Hardhat或以太坊库等基于命令行的开发工具，在控制台输出中获得，也可以通过Remix IDE等工具中在GUI中复制获得
 
 ![Example Compiler Options in Remix IDE](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-1.png)
@@ -56,63 +53,27 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 在Moonscan中跟随以下步骤以验证合约：
 
 1. 在Moonscan中导向至[Verify & Publish Contract Source Code](https://moonbase.moonscan.io/verifyContract)页面
-
 2. 在第一个输入框中填入`0x`开头的合约部署地址
-
 3. 选择编译器类型。在此`Incrementer.sol`示例中，选取**Solidity（Single file）**
-
 4. 选取完编译器类型后，选取用于部署合约的编译器版本。如果所使用的编译器版本为nightly commit，取消输入框下的勾选框，即选取nightly版本
-
 5. 选取所使用的开源证照。在此`Incrementer.sol`示例中，选取**MIT License（MIT）**。如果未使用任何证照，选取**No License（None）**
-
 6. 在表格底下点击**Continue**按钮以进入下个页面
 
-    ![First Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-3.png)
+![First Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-3.png)
 
 在第二个页面，**Contract Address**、**Compiler**和**Constructor Arguments**的输入框应该都已自动填写完毕，您只需填写以下信息：
 
 1. 在文字输入框中粘贴复制的合约内容
-
 2. （可选）如果在编译时曾经开启**Optimization**，则选取**Yes**，并在**Misc Settings/Runs (Optmizer)**下输入运行次数
-
 3. （可选）如果曾使用合约库及其地址，则新增合约库和地址
-
 4. （可选）勾选任何可应用至您的合约的输入框，并根据指示填写信息
-
 5. 在页面底下点击CAPTCHA和**Verify and Publish**按钮以确认信息并开始验证
 
-   ![Second Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-4.png)
+![Second Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-4.png)
 
 经过一段时间后，验证的结果将会显示在浏览器上，成功结果的页面将会显示合约的ABI编码构造函数、合约名称、字节码和ABI。
 
-​    ![Result Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-5.png)
-
-### BlockScout {: #blockscout }
-
-在[BlockScout](https://moonbase-blockscout.testnet.moonbeam.network/)上通过搜寻地址导向至指定网络的合约页面，并在**Code**标签下点击**Verify & Publish**按钮
-
-​    ![BlockScout Verify Button](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-6.png)
-
-在验证页面，合约地址将会被自动填写，您只需输入以下信息：
-
-1. 输入合约名称，这必须与合约定义上的名称相同。在本示例中，合约名称为`Incrementer`
-
-2. 填写**Compiler**、**EVM Version**和**Optimization**输入框（如果Optimization在编译时曾被开启）
-
-3. 复制Solidity智能合约的完整内容并粘贴至文字输入框
-
-4. （可选）将**Try to fetch constructor arguments automatically**切换至**Yes**，即自动获取构造函数，或是在合约构造函数接受参数的情况下手动输入ABI编码的构造函数argument
-
-5. （可选）如果曾使用合约库及其地址，则新增合约库和地址
-
-6. 在所有信息填写完毕后点击页面下方的**Verify & Publish**按钮
-
-![BlockScout Verify Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-7.png)
-
-经过一段时间后，如果验证完全成功，浏览器将会回到合约的**Code**页面，显示合约的相关信息，包含构造函数ABI编码、合约名称、字节面、ABI和源代码。合约页面将同时拥有两个新的标签，**Read Contract**和**Write Contract**，方便用户阅读和直接撰写合约。
-
-​    ![BlockScout Result Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-8.png)
-
+​![Result Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-5.png)
 
 ## 智能合约扁平化 {: #smart-contract-flattening }
 
@@ -128,6 +89,6 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 在**Compiler Type**（上述示例中的第三个步骤）选取**Solidity (Multi-part files)**。在下个页面，选取并上传所有组成其智能合约的不同Solidity文件，包含嵌入依赖项的合约文件。
 
- ![Moonscan Multifile Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-9.png)
+![Moonscan Multifile Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-6.png)
 
 除此之外，其余验证过程与在Moonscan上验证单一文件合约的过程相同。
