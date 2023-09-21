@@ -12,7 +12,6 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 您可以使用任意区块浏览器查看Moonbase Alpha：
 
  - **Ethereum API（等同于Etherscan）** —— [Moonscan](https://moonbase.moonscan.io/){target=_blank}
- - **带索引的Ethereum API** —— [Blockscout](https://moonbase-blockscout.testnet.moonbeam.network/){target=_blank}
  - **基于Ethereum API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=MoonbaseAlpha){target=_blank}
  - **Substrate API** —— [Subscan](https://moonbase.subscan.io/){target=_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}
 
