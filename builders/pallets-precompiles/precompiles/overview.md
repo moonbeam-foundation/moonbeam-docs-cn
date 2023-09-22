@@ -17,7 +17,7 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 ![Precompiled Contracts Diagram](/images/builders/pallets-precompiles/precompiles/overview/overview-1.png)
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 预编译合约地址 {: #precompiled-contract-addresses }
 
@@ -27,9 +27,9 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 - **1024-2047** - [不在以太坊也不是特定于Moonbeam](#non-moonbeam-specific-nor-ethereum-precomiles)的预编译
 - **2048-4095** - [特定于Moonbeam的预编译](#moonbeam-specific-precompiles)
 
---8<-- 'text/precompiles/eth-mainnet.md'
+--8<-- 'text/builders/build/canonical-contracts/eth-mainnet.md'
 
---8<-- 'text/precompiles/non-specific.md'
+--8<-- 'text/builders/build/canonical-contracts/non-specific.md'
 
 ### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 

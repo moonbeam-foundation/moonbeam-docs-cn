@@ -47,9 +47,9 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 ### 一般定义 {: #general-definitions-gov2 }
 
---8<-- 'text/governance/proposal-definitions.md'
+--8<-- 'text/learn/features/governance/proposal-definitions.md'
 
---8<-- 'text/governance/preimage-definitions.md'
+--8<-- 'text/learn/features/governance/preimage-definitions.md'
 
  - **Origin** - 基于授权的调度来源，用于决定公投发布的Track
 
@@ -63,18 +63,18 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
     | Emergency Canceller |       用于取消公投。保证金退还       |                      错误的公投                       |
     |  Emergency Killer   |     用于处理不良公投。保证金没收     |                       不良公投                        |
 
---8<-- 'text/governance/vote-conviction-definitions.md'
+--8<-- 'text/learn/features/governance/vote-conviction-definitions.md'
 
---8<-- 'text/governance/approval-support-definitions.md'
+--8<-- 'text/learn/features/governance/approval-support-definitions.md'
 
---8<-- 'text/governance/lead-in-definitions.md'
+--8<-- 'text/learn/features/governance/lead-in-definitions.md'
     请参考[治理参数](#governance-parameters-v2)部分获取更多信息
 
  - **决定期** - Token持有者继续在公投上进行投票。如果公投在期限结束时未通过，则提案会被拒绝，决定保证金将被退还
  - **确认期** - 决定期内的一段时间，在此期间公投需要获得足够的批准和支持数量才能进入生效等待期
  - **生效等待期** - 一段指定的时间，它是在提案创建时定义的，是已批准的公投在发送之前的等待时间。每个Track有一个最短等待期限
 
---8<-- 'text/governance/delegation-definitions.md'
+--8<-- 'text/learn/features/governance/delegation-definitions.md'
 
 ### 治理参数 {: #governance-parameters-v2 }
 

@@ -13,7 +13,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 ![Wormhole Technology Stack diagram](/images/builders/interoperability/protocols/wormhole/wormhole-1.png)
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 开始操作 {: #getting-started }
 
@@ -45,7 +45,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - [安装Docker](https://docs.docker.com/get-docker/){target=_blank}
 - 准备一个账户，为该账户提供一定数量的`DEV` token.
-   --8<-- 'text/faucet/faucet-list-item.md'
+   --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 使用同一个账户，从您选择的Wormhole连接的EVM中提供原生资产至该账户。Faucet[如下方图表所示](#deploying-the-wormhole-contract-with-remix-on-moonbase-alpha)
 
 ### 使用Remix在Moonbase Alpha上部署Wormhole合约 {:deploying-the-wormhole-contract-with-remix-on-moonbase-alpha}
@@ -417,4 +417,4 @@ Wormhole将通过Moonbeam路由流动性（Moonbeam Routed Liquidity，MRL）计
 
 MRL利用[GMP预编译](/builders/pallets-precompiles/precompiles/gmp){target=_blank}，GMP预编译的文档解释了跨链消息如何通过预编译来正确构建。现仅在Moonbase Alpha上可用。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

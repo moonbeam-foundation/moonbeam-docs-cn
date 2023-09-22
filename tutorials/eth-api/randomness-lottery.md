@@ -25,7 +25,7 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 
 - 在Moonbase Alpha上创建/拥有三个账户，用于测试彩票合约
 - 所有账户必须拥有一些`DEV` Token
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 一个已配置Moonbase Alpha测试网的空白Hardhat项目。要获取分步操作教程，请参考[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和我们Hardhat文档页面的[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
 - 安装[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
 
@@ -34,7 +34,7 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
     ```
 
 !!! 注意事项
-    --8<-- 'text/common/endpoint-examples.md'
+    --8<-- 'text/_common/endpoint-examples.md'
 
 ## 合约设置 {: #contracts }
 
@@ -371,7 +371,7 @@ function pickWinners(uint256[] memory randomWords) internal {
 }
 ```
 
-恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在gitHub上查看[`Lottery.sol`合约](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/randomness/Lottery.sol){target=_blank}的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
+恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在gitHub上查看[`Lottery.sol`合约](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/randomness-lottery/Lottery.sol){target=_blank}的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
 
 !!! 挑战
     您可以在开始创建彩票、选择获胜者或分配奖励给获胜者时添加一些事件，以便让合约更易于使用。
@@ -493,6 +493,6 @@ npx hardhat run --network moonbase scripts/participate.js
 
 这样就可以了！您可以继续创建另外的脚本来执行彩票的后续步骤，例如启动彩票抽奖和挑选获胜者。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

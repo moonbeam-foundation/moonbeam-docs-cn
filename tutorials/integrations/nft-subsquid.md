@@ -17,7 +17,7 @@ Subsquid拥有原生和全面的以太坊虚拟机数据和Substrate数据支持
 
 本教程将介绍如何从在Moonriver上索引Moonsama转账的模板中创建Subsquid项目（也称为*"squid"*），并将其改为在Moonbeam网络上索引ERC-721 Token转账。这样一来，您将查看`Transfer` EVM事件主题。本教程也同样适用于Moonbase Alpha。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -148,7 +148,7 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
 
 此处只需要调整模板代码以处理Gromlins合约并将处理器设置为使用从[archive registry](https://github.com/subsquid/archive-registry){target=_blank}中检索到的`moonbeam` archive URL。
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 此教程也同样适用于Moonriver或Moonbase Alpha，但请确保将数据源更新为正确的网络：
 
@@ -288,6 +288,6 @@ Subsquid提供SaaS解决方案来管理由社区创建的项目。所有的模�
 
 如果您对本教程中未完整解释的某些方面感到好奇，请前往[Subsquid的文档网站](https://docs.subsquid.io/){target=_blank}获取更详细的内容。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

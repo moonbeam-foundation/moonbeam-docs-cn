@@ -36,13 +36,13 @@ Moonbeam上的原生Token ERC-20预编译合约允许开发者通过ERC-20接口
      {{networks.moonriver.precompiles.erc20 }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## ERC-20接口 {: #the-erc20-interface }
 
 Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol)接口遵循[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，即智能合约中Token的标准API接口。此标准定义了Token合约必须实现与不同应用程序互操作所需的功能和事件。
 
---8<-- 'text/erc20-interface/erc20-interface.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/erc20/erc20-interface.md'
 
 !!! 注意事项
     ERC-20预编译不包括`deposit`和`withdraw`功能，以及包装的Token合约预期的后续事件，例如WETH。
@@ -56,7 +56,7 @@ Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/m
 - [安装MetaMask并连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或拥有两个账户，以测试ERC-20预编译不同的功能
 - 具有拥有一定数量DEV的账户。
---8<-- 'text/faucet/faucet-list-item.md'
+--8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 添加Token至MetaMask {: #add-token-to-metamask }
 

@@ -102,4 +102,4 @@ Tenderly使通过数据面板创建分叉变得非常简单。首先，点击左
 
 现在您已经了解如何在Moonbeam上使用一些Tenderly的功能，您可以随时查看并了解其开发平台上的其他可用工具。更多信息请访问[Tenderly的文档网站](https://docs.tenderly.co/){target=_blank}。您同样也可以查看Moonbeam的相关教程，[使用Tenderly模拟和调试交易](/tutorials/eth-api/using-tenderly/){target=_blank}。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

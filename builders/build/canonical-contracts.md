@@ -52,9 +52,9 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
 - **1024-2047** - [不在以太坊中且不特定于Moonbeam](#non-moonbeam-specific-nor-ethereum-precomiles)的预编译
 - **2048-4095** - [Moonbeam特定预编译](#moonbeam-specific-precompiles)
 
---8<-- 'text/precompiles/eth-mainnet.md'
+--8<-- 'text/builders/build/canonical-contracts/eth-mainnet.md'
 
---8<-- 'text/precompiles/non-specific.md'
+--8<-- 'text/builders/build/canonical-contracts/non-specific.md'
 
 ### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 

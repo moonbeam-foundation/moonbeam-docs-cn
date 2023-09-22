@@ -46,7 +46,7 @@ description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配�
 
 _*更多关于[代币面额](#token-denominations)_
 
---8<-- 'text/moonriver/connect.md'
+--8<-- 'text/builders/get-started/networks/moonriver/connect.md'
 
 ## 遥测功能 {: #telemetry }
 

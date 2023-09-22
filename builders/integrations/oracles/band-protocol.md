@@ -14,7 +14,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 | :------------: | ---- | :----------------------------------------: |
 | Moonbase Alpha |      | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 支持的代币 {: #supported-token }
 只要是平台支持的基础货币和报价货币（_报价对显示方式：基础货币代码_/_报价货币代码_），您都可以获取其报价。例如：
@@ -242,4 +242,4 @@ queryData();
 
 请注意，与通过智能合约获取报价相比，通过这种方法获得的返回结果将直接在正确的单位中显示。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

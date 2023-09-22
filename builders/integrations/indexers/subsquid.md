@@ -13,7 +13,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 
 本指南将向您展示如何使用Subsquid创建Substrate和EVM项目，并将其配置为可以在Moonbeam上索引数据。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -177,4 +177,4 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 
 如果您对开始索引在Moonbeam上数据的分步教程感兴趣，可以查看[使用Subsquid索引在Moonbeam上的NFT代币转账](/tutorials/integrations/nft-subsquid){target=_blank}教程！
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

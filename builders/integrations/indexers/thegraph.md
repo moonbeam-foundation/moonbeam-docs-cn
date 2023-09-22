@@ -15,7 +15,7 @@ description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgra
 
 因为Moonbeam支持以太坊跟踪模块，The Graph可以索引Moonbeam上的区块链数据。本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。本教程也可以在Moonbeam和Moonriver网络上使用。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 快速开始 {: #quick-start }
 
@@ -319,4 +319,4 @@ npx graph deploy <username>/<subgraphName> \
 
 现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

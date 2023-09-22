@@ -17,9 +17,9 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 - 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ## 创建Hardhat项目 {: #creating-a-hardhat-project }
 
@@ -107,7 +107,7 @@ contract Box {
 
 在部署合约至Moonbase Alpha之前，您将需要修改Hardhat配置文件，并创建一个安全的文件以便您存储私钥。
 
---8<-- 'text/hardhat/hardhat-configuration-file.md'
+--8<-- 'text/builders/build/eth-api/dev-env/hardhat/hardhat-configuration-file.md'
     您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
 
     === "Moonbeam"
@@ -508,4 +508,4 @@ main().catch((error) => {
 });
 ```
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

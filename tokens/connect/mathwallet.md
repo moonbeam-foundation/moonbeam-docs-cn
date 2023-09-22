@@ -11,7 +11,7 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 在本教程中，我们将带您了解如何设置MathWallet，使其能够连接到[Moonbeam](#connect-to-moonbeam)，[Moonriver](#connect-to-moonriver)，和[Moonbase Alpha](#connect-to-moonbase-alpha)。除此之外，我们也会提供一个简短的例子，来说明如何在其他工具中，譬如[Remix](/builders/build/eth-api/dev-env/remix/)，将MathWallet当作一个Web3的提供者来使用。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites } 
 
@@ -109,4 +109,4 @@ MathWallet先前[宣布](https://mathwallet.org/moonbeam-wallet/en/)其可原生
 
 点击**Accept**代表您正在签名这项交易，接着合约即将被部署至Moonbase Alpha测试网。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

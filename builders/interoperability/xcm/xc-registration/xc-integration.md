@@ -162,7 +162,7 @@ xcm-tools repository有一个用于HRMP交互的特定脚本，称为[`hrmp-chan
 
 [xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank} GitHub库的`hrmp-channel-manipulator.ts`脚本可以为您构建XCM！
 
---8<-- 'text/xcm/xc-integration/hrmp-manipulator-args.md'
+--8<-- 'text/builders/interoperability/xcm/xc-registration/xc-integration/hrmp-manipulator-args.md'
 
 运行以下命令将提供编码的调用数据以接受Moonbeam网络上的开放HRMP通道请求。将`YOUR_PARACHAIN_ID`替换为您的平行链ID：
 
@@ -208,7 +208,7 @@ xcm-tools repository有一个用于HRMP交互的特定脚本，称为[`hrmp-chan
 
 [xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank} GitHub库的`hrmp-channel-manipulator.ts`脚本能够帮您构建XCM！
 
---8<-- 'text/xcm/xc-integration/hrmp-manipulator-args.md'
+--8<-- 'text/builders/interoperability/xcm/xc-registration/xc-integration/hrmp-manipulator-args.md'
 
 运行以下命令将提供编码的调用数据，以从Moonbeam网络创建HRMP通道请求。最大消息大小和容量值可以从中继链的Configuration Pallet和`activeConfig` extrinsic获得。将`YOUR_PARACHAIN_ID`替换成平行链ID：
 

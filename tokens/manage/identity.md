@@ -49,7 +49,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 - 您需要在PolkadotJS App浏览器上连接至[Moonbase Alpha测试网](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}。此教程也适用于[Moonbeam](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}和[Moonriver](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network){target=_blank}
 - 同时，您也需要在PolkadotJS Apps创建或是导入一个账户。如果您尚未创建或导入账户，请跟随以下教程来[创建或导入一个H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}
 - 请确认账户中有足够资金。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 开始使用 {: #get-started }
 

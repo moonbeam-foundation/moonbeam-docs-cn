@@ -70,7 +70,7 @@ _作者：Erin Shaben_
 我们的开发节点具有10个预先拥有资金的账户。
 
 ??? note "开发账户地址和私钥"
-    --8<-- 'code/setting-up-node/dev-accounts.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
 关于更多运行Moonbeam开发节点的信息，请查看[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}的教程。
 
@@ -588,6 +588,6 @@ query MyQuery {
 
 就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=_blank}上查看完整的项目内容。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

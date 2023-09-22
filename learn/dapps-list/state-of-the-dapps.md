@@ -69,5 +69,5 @@ State of the DApps团队通常会在一个工作日内审核您提交的信息�
 
 <div class="page-disclaimer">
   State of Dapps包含用户生成内容，此类内容不由Moonbeam基金会审核也和Moonbeam立场无关。
-  --8<-- 'text/disclaimers/user-generated-content.md'
+  --8<-- 'text/_disclaimers/user-generated-content.md'
 </div>

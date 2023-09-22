@@ -15,8 +15,8 @@ description: 跨共识信息格式（XCM）运作机制概览，以及开发者�
 
 ## General XCM Definitions {: #general-xcm-definitions }
 
---8<-- 'text/xcm/general-xcm-definitions.md'
---8<-- 'text/xcm/general-xcm-definitions2.md'
+--8<-- 'text/builders/interoperability/xcm/general-xcm-definitions.md'
+--8<-- 'text/builders/interoperability/xcm/general-xcm-definitions2.md'
 
 ## XCM Instructions {: #xcm-instructions }
 

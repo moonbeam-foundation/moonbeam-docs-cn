@@ -31,7 +31,7 @@ description: 本指南将引导您了解如何将基于浏览器的以太坊钱�
 
 想要一键连接至Moonbase Alpha，先通过[如何将MetaMask按钮连接至您的dapp](/builders/integrations/wallets/metamask/){target=_blank}进行设置。本教程也适用于其他Moonbeam网络。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 安装MetaMask扩展程序 {: #install-the-metamask-extension }
 
@@ -55,9 +55,9 @@ description: 本指南将引导您了解如何将基于浏览器的以太坊钱�
 
 为该开发节点预先提供资金的开发账户的详细信息如下：
 
---8<-- 'code/setting-up-node/dev-accounts.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
---8<-- 'code/setting-up-node/dev-testing-account.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-testing-account.md'
 
 在导入页面，选择**Private Key**并粘贴以上对应私钥（在本教程示例中，我们使用Gerald的密钥）：
 
@@ -134,4 +134,4 @@ description: 本指南将引导您了解如何将基于浏览器的以太坊钱�
 !!! 注意事项
     如果您最终使用Substrate purge-chain命令重置您的开发节点，您需要选择**Setting**下**Advanced**，然后点击**Reset Account**这些步骤来重置您的MetaMask的初始账户。重置账户将清除您的交易历史记录并重置交易nonce（交易号）。请确保不要重置任何的其他设置。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

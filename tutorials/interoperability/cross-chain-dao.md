@@ -15,7 +15,7 @@ Moonbeam致力于支持互操作性和跨链逻辑。其[互连合约（Connecte
 
 本教程的目的不是对跨链DAO的最终定义，而是提供一个后续能够用于编写复杂跨链DApp的示例。本教程将聚焦于架构，尤其是跨链智能合约逻辑，而非部署和测试。**以下智能合约尚未测试，不建议用于生产环境**。也就是说，您可以从这些设计中获取灵感来编写自己的跨链DAO。[此GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=_blank}中提供了DAO的完整代码和演示，以及相关操作说明。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 想法和计划 {: #intuition-and-planning }
 
@@ -879,6 +879,6 @@ spoke链的`DAOSatellite`智能合约中有一个经常被忽视的缺陷，当�
 
 例如，hub链会等待30个区块，然后才会忽略来自spoke链的投票数据。如果DAO的参与者认为A链应该从未来的投票中移除，他们可以启动一个提案来完成，类似于OpenZeppelin的`GovernorSettings`合约。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

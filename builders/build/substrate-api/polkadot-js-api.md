@@ -19,9 +19,9 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 在开始安装和使用Polkadot.js API库之前，您需要先安装Node.js。
 
---8<-- 'text/common/install-nodejs.md'
+--8<-- 'text/_common/install-nodejs.md'
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ### 安装Polkadot.js API库 {: #installing-polkadot.js-api-library }
 
@@ -35,7 +35,7 @@ yarn add @polkadot/api
 
 与[以太坊API库](/builders/build/eth-api/libraries/){target=_blank}相似，您必须先实例化一个Polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 === "Moonbeam"
     ```javascript
@@ -120,7 +120,7 @@ api.disconnect();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/substrate-api/state-queries.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/state-queries.js'
     ```
 
 ### Moonbeam RPC查询 {: #rpc-queries }
@@ -149,7 +149,7 @@ api.disconnect();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/substrate-api/rpc-queries.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/rpc-queries.js'
     ```
 
 ### 查询订阅 {: #query-subscriptions }
@@ -195,7 +195,7 @@ api.disconnect();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/substrate-api/query-subscriptions.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/query-subscriptions.js'
     ```
 
 ## 为Moonbeam账户创建Keyring {: #keyrings }
@@ -219,7 +219,7 @@ const keyring = new Keyring({ type: 'ethereum' });
 将账户添加至keyring实例有多种方式，包括通过助记词和短格式密钥。以下范例代码将为您提供一些示例：
 
 ```javascript
---8<-- 'code/substrate-api/adding-accounts.js'
+--8<-- 'code/builders/build/substrate-api/polkadot-js-api/adding-accounts.js'
 ```
 
 ## 通过Polkadot.js API在Moonbeam上发送交易 {: #transactions }
@@ -263,7 +263,7 @@ api.disconnect();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/substrate-api/basic-transactions.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/basic-transactions.js'
     ```
 
 请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=_blank} 来获取正确数据，包括内存池（mempool）中的事务。
@@ -322,7 +322,7 @@ api.disconnect();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/substrate-api/batch-transactions.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/batch-transactions.js'
     ```
 
 !!! 注意事项
@@ -423,4 +423,4 @@ console.log(keccakAsHex(encoded_tx))
 
 您可以查看相应的[NPM存储库页面](https://www.npmjs.com/package/@polkadot/util-crypto/v/0.32.19){target=_blank}以获取其中的可用方法列表库及其相关文档。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

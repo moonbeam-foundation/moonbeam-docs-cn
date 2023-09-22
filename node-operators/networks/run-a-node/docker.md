@@ -70,8 +70,6 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
  - 在两处替换 `INSERT_YOUR_NODE_NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-如果您使用的是MacOS，您可以在[这页](https://www.github.com/moonbeam-foundation/moonbeam-docs-cn/blob/master/.snippets/text/full-node/macos-node.md){target=_blank}找到所有适用于MacOS的代码段。
-
 !!! 注意事项
     对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
 
@@ -391,4 +389,4 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```
 
---8<-- 'text/purge-chain/post-purge.md'
+--8<-- 'text/node-operators/networks/run-a-node/post-purge.md'

@@ -68,7 +68,7 @@ Moonbeam是波卡上完全兼容以太坊的智能合约平台。如此一来，
 
 Moonbeam提供两种不同类型的浏览器：一种是查询以太坊API，另一种专用于Substrate API。所有基于EVM的交易可以通过以太坊API访问，其中Substrate API可以依赖于Substrate原生功能，例如治理、质押和一些基于EVM交易的信息。关于每个浏览器的更多信息，请查阅[区块浏览器](/builders/get-started/explorers){target=_blank}页面。
 
---8<-- 'text/explorers/explorers.md'
+--8<-- 'text/builders/get-started/explorers/explorers.md'
 
 ## 注资测试网账户 {: #testnet-tokens }
 

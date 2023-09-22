@@ -43,7 +43,7 @@ Moonbeam完全启动后将拥有以下配置：
 
 _*阅读更多关于[Token面额](#token-denominations)_
 
---8<-- 'text/moonbeam/connect.md'
+--8<-- 'text/builders/get-started/networks/moonbeam/connect.md'
 
 ## 遥测功能 {: #telemetry }
 

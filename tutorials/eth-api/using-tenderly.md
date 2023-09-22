@@ -158,6 +158,6 @@ Tenderly同样为您的分叉生成一个自定义的RPC url，类似于`https:/
 
 要更详细地了解如何使用Tenderly调试器，请查看[Tenderly调试器指南](https://docs.tenderly.co/debugger/how-to-use-tenderly-debugger){target=_blank}。就是这样！您已顺利掌握Tenderly，这肯定会节省您的时间并简化您在Moonbeam上构建dApp的开发体验。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

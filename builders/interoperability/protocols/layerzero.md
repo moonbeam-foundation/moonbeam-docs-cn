@@ -15,7 +15,7 @@ LayerZero是一个传输层，能够通过低级通信原语实现资产传输�
 
 LayerZero API为开发Web3应用提供了丰富的套件，确保开发者拥有构建所需的工具。借助这些工具和API，开发者可以使用LayerZero协议及其API，来编写可以轻松部署在与所有LayerZero连接的生态系统的dApp。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 开始操作 {: #getting-started }
 
@@ -31,4 +31,4 @@ LayerZero API为开发Web3应用提供了丰富的套件，确保开发者拥有
 - **主网合约** - [Moonbeam](https://layerzero.gitbook.io/docs/technical-reference/mainnet/supported-chain-ids#moonbeam){target=_blank}
 - **测试网合约** - [Moonbase Alpha](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses#moonbeam-testnet){target=_blank}
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

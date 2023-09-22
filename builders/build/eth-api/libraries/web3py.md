@@ -16,12 +16,12 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 在开始本教程示例之前，您将需要提前准备以下内容：
 
  - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 !!! 注意事项
-    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 创建Python项目 {: #create-a-python-project }
 
@@ -40,7 +40,7 @@ pip3 install web3 py-solc-x
 ## 在Moonbeam上设置Web3.py {: #setup-web3-with-moonbeam }
 
 您可以为任何Moonbeam网络配置Web3.py。
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 每个网络最简单的设置方式如下所示：
 
@@ -97,7 +97,7 @@ touch balances.py
 3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.from_wei`格式化结果
 
 ```python
---8<-- 'code/web3py-tx/balances.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/balances.py'
 ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -126,7 +126,7 @@ touch transaction.py
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/web3py-tx/transaction.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/transaction.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -143,7 +143,7 @@ python3 transaction.py
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/libraries/contract.md'
+--8<-- 'text/builders/build/eth-api/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
@@ -161,7 +161,7 @@ touch compile.py
 4. 导出合约的ABI和字节码
 
 ```python
---8<-- 'code/web3py-contract/compile.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/compile.py'
 ```
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -183,7 +183,7 @@ touch deploy.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/web3py-contract/deploy.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/deploy.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -215,7 +215,7 @@ touch get.py
 5. 使用合约实例，您随后可以调用`number`函数
 
 ```python
---8<-- 'code/web3py-contract/get.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/get.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -245,7 +245,7 @@ touch increment.py reset.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/web3py-contract/increment.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/increment.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -269,7 +269,7 @@ python3 increment.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/web3py-contract/reset.py'
+--8<-- 'code/builders/build/eth-api/libraries/web3-py/reset.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -282,4 +282,4 @@ python3 reset.py
 
 ![Reset Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-4.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

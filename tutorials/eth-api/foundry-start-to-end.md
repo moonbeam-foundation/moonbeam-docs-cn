@@ -18,9 +18,9 @@ Foundry已成为越来越受欢迎的用于开发智能合约的开发环境，�
 开始之前，您将需要准备以下内容：
 
  - 拥有资金的账户
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
  -
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
  - [安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
  - 一个[Moonscan API密钥](/builders/build/eth-api/verify-contracts/api-verification/#generating-a-moonscan-api-key){target=_blank}
 
@@ -487,6 +487,6 @@ forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --
 
 这样就可以了！您已经从无到有，完成了一个完全经过测试、部署和验证的Foundry项目。现在您可以稍作调整将Foundry用于您自己的项目！
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

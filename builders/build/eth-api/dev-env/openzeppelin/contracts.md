@@ -240,4 +240,4 @@ contract MyToken is ERC1155, Ownable, Pausable {
 
 至此，我们已经使用OpenZeppelin合约和库完成了ERC-1155代币合约的部署。接下来，我们就可以通过Remix与代币合约进行交互。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

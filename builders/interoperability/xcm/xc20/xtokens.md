@@ -21,7 +21,7 @@ description: 学习如何使用X-Tokens pallet将XC-20s发送至其他链。另�
 
 对于本指南，您需要了解以下定义：
 
---8<-- 'text/xcm/general-xcm-definitions2.md'
+--8<-- 'text/builders/interoperability/xcm/general-xcm-definitions2.md'
 
 ## X-Tokens Pallet接口 {: #x-tokens-pallet-interface }
 
@@ -85,7 +85,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
 要跟随本教程操作，您需要准备以下内容：
 
 - 一个拥有资金的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 一些xcUNIT Token。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将DEV Token（Moonbase Alpha的原生Token）兑换成xcUNIT。Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议。
 
     ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-1.png)
@@ -194,7 +194,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
---8<-- 'code/xtokens/transfer.js'
+--8<-- 'code/builders/interoperability/xcm/xc20/xtokens/transfer.js'
 ```
 
 !!! 注意事项
@@ -293,7 +293,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
---8<-- 'code/xtokens/transferMultiAsset.js'
+--8<-- 'code/builders/interoperability/xcm/xc20/xtokens/transferMultiAsset.js'
 ```
 
 !!! 注意事项
@@ -323,7 +323,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
      {{networks.moonbase.precompiles.xtokens}}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ### X-Tokens Solidity接口 {: #xtokens-solidity-interface }
 
@@ -345,7 +345,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 在X-Tokens预编译接口中，`Multilocation`结构根据下列函数定义：
 
---8<-- 'text/xcm/xcm-precompile-multilocation.md'
+--8<-- 'text/builders/interoperability/xcm/xcm-precompile-multilocation.md'
 
 以下代码片段介绍了`Multilocation`结构的一些示例，因为它们需要输入到X-Tokens预编译函数中：
 
@@ -379,24 +379,24 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 使用库与X-Tokens交互 {: #using-libraries-to-interact-with-xtokens}
 
-使用库与以太坊API交互时，Multilocation结构可以像任何其他结构一样进行格式化。以下代码片段包括上述提及的[X-Tokens转移函数](#xtokens-transfer-function)、[X-Tokens多资产转移函数](#xtokens-transfer-multiasset-function)和Multilocation结构示例。您可以在Github上找到[X-Tokens ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/xtokens/abi.js){target=_blank}。
+使用库与以太坊API交互时，Multilocation结构可以像任何其他结构一样进行格式化。以下代码片段包括上述提及的[X-Tokens转移函数](#xtokens-transfer-function)、[X-Tokens多资产转移函数](#xtokens-transfer-multiasset-function)和Multilocation结构示例。您可以在Github上找到[X-Tokens ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/interoperability/xcm/xc20/xtokens/abi.js){target=_blank}。
 
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/xtokens/ethers.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/xtokens/web3.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/xtokens/web3.py'
+    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/web3.py'
     ```
 
 !!! 注意事项

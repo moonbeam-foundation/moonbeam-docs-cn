@@ -19,7 +19,7 @@ description: 查看XC-20 Solidity接口，包括ERC-20和ERC-20 Permit接口，�
 
 如同先前提及的，您可以通过一个ERC-20接口与XC-20资产交互。在Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=_blank}接口跟随[EIP-20 Token标准](https://eips.ethereum.org/EIPS/eip-20){target=_blank}，也就是在智能合约中Token的标准API接口。此标准定义了一个Token合约需要能够与不同应用互操作的所需的函数和事件。
 
---8<-- 'text/erc20-interface/erc20-interface.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/erc20/erc20-interface.md'
 
 ### ERC-20 Permit Solidity接口 {: #the-erc20-permit-interface }
 
@@ -77,7 +77,7 @@ keccak256(PERMIT_DOMAIN, name, version, chain_id, address)
 - [已安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}测试网
 - 在Moonbase Alpha上创建或拥有两个账户
 - 至少一个账户需要拥有`DEV`Token。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 计算外部XC-20资产预编译地址 {: #calculate-xc20-address }
 

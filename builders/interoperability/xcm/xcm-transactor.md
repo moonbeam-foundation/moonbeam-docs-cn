@@ -34,7 +34,7 @@ pallet的两个主要extrinsic是通过主权衍生账户或从给定multilocati
 
 ## 相关XCM定义 {: #general-xcm-definitions }
 
---8<-- 'text/xcm/general-xcm-definitions2.md'
+--8<-- 'text/builders/interoperability/xcm/general-xcm-definitions2.md'
 
 - **Multilocation-derivative account** — 这会生产一个从[Descend Origin](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的mulitlocation设置的新来源衍生的无私钥账户。对于基于Moonbeam的网络，[衍生方法](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}是计算multilocation的`blake2`哈希，包括原始平行链ID并将哈希截断为正确的长度（以太坊格式的账户为20个字节）。`Transact`指令执行时会发生XCM调用[原始转换](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L343){target=_blank}。因此，每个平行链可以使用自己想要的程序转换起点，从而发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户支付交易费用，并设置为调用的派遣员
 - **Transact information** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息相关。这是必要的，因为XCM交易费用由主权账户进行支付。因此，XCM Transactor计算此费用，并向XCM Transactor extrinsic的发送者收取对应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的预估费用来偿还主权账户
@@ -193,7 +193,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/xcm-transactor/transact-signed.js'
+--8<-- 'code/builders/interoperability/xcm/xcm-transactor/transact-signed.js'
 ```
 
 !!! 注意事项
@@ -243,7 +243,7 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
      {{networks.moonbase.precompiles.xcm_transactor_legacy}}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ### XCM Transactor Solidity接口 {: #xcmtrasactor-solidity-interface }
 
@@ -265,7 +265,7 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 
 在XCM Transactor预编译接口中，`Multilocation`结构定义为如下：
 
---8<-- 'text/xcm/xcm-precompile-multilocation.md'
+--8<-- 'text/builders/interoperability/xcm/xcm-precompile-multilocation.md'
 
 下面的代码片段介绍了`Multilocation`结构的一些示例，他们需要被输入到XCM Transactor预编译函数中：
 

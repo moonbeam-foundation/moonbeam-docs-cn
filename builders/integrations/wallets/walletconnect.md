@@ -97,7 +97,7 @@ npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 本教程将会使用MetaMask移动端钱包以进行测试。您可以前往[metamask.io/download/](https://metamask.io/download/){target=_blank}并切换**iOS**或**Android**标签下载MetaMask移动端钱包。
 
 最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。
- --8<-- 'text/faucet/faucet-sentence.md'
+ --8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 开始测试 {: #getting-started }
 

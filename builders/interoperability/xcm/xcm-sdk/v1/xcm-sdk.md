@@ -106,7 +106,7 @@ const ethersSigner = new ethers.Wallet(privateKey, provider);
     ```
 
 !!! 注意事项
-    --8<-- 'text/common/endpoint-setup.md'
+    --8<-- 'text/_common/endpoint-setup.md'
 
 ### 创建一个Polkadot签署人 {: #create-a-polkadot-signer }
 

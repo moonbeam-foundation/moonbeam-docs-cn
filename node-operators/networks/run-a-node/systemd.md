@@ -86,13 +86,13 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 3. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请通过执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install)安装Rust和其先决条件：
 
     ```bash
-    --8<-- 'code/setting-up-node/installrust.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
     ```
 
 4. 接下来，通过运行以下命令更新您的PATH环境变量：
 
     ```bash
-    --8<-- 'code/setting-up-node/updatepath.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/updatepath.md'
     ```
 
 5. 编译平行链二进制文件：
@@ -106,7 +106,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 如果在终端显示_cargo not found error_的错误提示，请将Rust手动添加至您的系统路径或重启系统：
 
 ```bash
---8<-- 'code/setting-up-node/updatepath.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/updatepath.md'
 ```
 
 现在，您可以使用Moonbeam二进制文件运行systemd服务。
@@ -420,7 +420,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 ## 运行服务 {: #run-the-service }
 
---8<-- 'text/systemd/run-service.md'
+--8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
 ![Service Status](/images/node-operators/networks/run-a-node/systemd/full-node-binary-2.png)
 
@@ -617,7 +617,7 @@ sudo systemctl stop moonbeam
     sudo rm -rf {{ networks.moonbase.node_directory }}/polkadot/*
     ```
 
---8<-- 'text/purge-chain/post-purge.md'
+--8<-- 'text/node-operators/networks/run-a-node/post-purge.md'
 
 ### 清除编译的二进制文件 {: #purge-compiled-binary }
 
@@ -654,4 +654,4 @@ sudo systemctl stop moonbeam
 ./target/release/moonbeam purge-chain --help
 ```
 
---8<-- 'text/purge-chain/post-purge.md'
+--8<-- 'text/node-operators/networks/run-a-node/post-purge.md'

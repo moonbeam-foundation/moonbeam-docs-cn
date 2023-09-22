@@ -41,7 +41,7 @@ _作者：Kevin Neilson_
 
 - 能访问[ChatGPT的免费OpenAI账户](https://chat.openai.com/){target=_blank}
 - 一个能够用于Moonbase Alpha测试网并拥有足够DEV Token的账户，协助您部署合约
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 注册一个OpenAI账户 {: #sign-up-for-an-openai-account }
 
@@ -168,6 +168,6 @@ function withdrawBalance() public {
 
 重要的是要记住，ChatGPT只能作为开发者的辅助工具，不能完成任何类型的审计或审查。开发者必须注意，像ChatGPT这样的生成式AI工具可能会生成不准确、有错误或无法工作的代码。本教程中生成的任何代码仅用于演示目的，不应在生产环境中使用。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

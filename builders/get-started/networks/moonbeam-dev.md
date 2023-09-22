@@ -16,7 +16,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 !!! 注意事项
     本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=_blank}组件正处于积极开发阶段。
-    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 启动Moonbeam开发节点 {: #spin-up-a-node }
 
@@ -93,13 +93,13 @@ purestake/moonbeam \
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
     ```bash
-    --8<-- 'code/setting-up-node/installrust.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
     ```
 
 3. 运行以下命令更新您的PATH环境变量：
 
     ```bash
-    --8<-- 'code/setting-up-node/updatepath.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/updatepath.md'
     ```
 
 4. 运行以下命令构建开发节点：
@@ -112,7 +112,7 @@ purestake/moonbeam \
         ```
 
     ```bash
-    --8<-- 'code/setting-up-node/build.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/build.md'
     ```
 
     构建输出的末尾应如下所示：
@@ -125,7 +125,7 @@ purestake/moonbeam \
 然后，您可以通过以下命令运行开发节点：
 
 ```bash
---8<-- 'code/setting-up-node/runnode.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/runnode.md'
 ```
 
 !!! 注意事项
@@ -150,7 +150,7 @@ purestake/moonbeam \
 标志不带参数。要使用标志，请将其添加到命令末尾。例如：
 
 ```bash
---8<-- 'code/setting-up-node/runnode.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/runnode.md'
 ```
 
 - **`--dev`** - 指定开发链
@@ -163,7 +163,7 @@ purestake/moonbeam \
 选项接受一个选项右侧的参数。例如：
 
 ```bash
---8<-- 'code/setting-up-node/runnodewithsealinginterval.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/runnodewithsealinginterval.md'
 ```
 
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON RPC日志，命令应如下所示：`-l json=trace`
@@ -237,11 +237,11 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
 ??? note "开发账户地址和私钥"
-    --8<-- 'code/setting-up-node/dev-accounts.md'
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
 另外，开发节点中还包括一个用于测试目的的额外预注资帐户：
 
---8<-- 'code/setting-up-node/dev-testing-account.md'
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-testing-account.md'
 
 你可以将这些帐户中的任何一个通过使用他们的私钥连接到[MetaMask](/tokens/connect/metamask/){target=_blank}、[Talisman](/tokens/connect/talisman/){target=_blank}、[Polkadot.js Apps](/tokens/connect/polkadotjs/){target=_blank}等。
 

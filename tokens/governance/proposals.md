@@ -19,13 +19,13 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 本教程中重要参数定义如下：
 
---8<-- 'text/governance/proposal-definitions.md'
+--8<-- 'text/learn/features/governance/proposal-definitions.md'
 
---8<-- 'text/governance/preimage-definitions.md'
+--8<-- 'text/learn/features/governance/preimage-definitions.md'
 
  - **提交保证金** — 提交公投提案所需的最低保证金
 
---8<-- 'text/governance/lead-in-definitions.md'
+--8<-- 'text/learn/features/governance/lead-in-definitions.md'
 
 请确保您查看每个网络和track的[治理参数](/learn/features/governance/#governance-parameters-v2){target=_blank}。
 

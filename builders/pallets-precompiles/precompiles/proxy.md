@@ -34,7 +34,7 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
      {{networks.moonbase.precompiles.proxy}}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 代理Solidity接口 {: #the-proxy-solidity-interface }
 
@@ -85,7 +85,7 @@ enum ProxyType {
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 拥有DEV的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 第二个账户，将作为代理账户（资金可选）
 
 ### Remix设置 {: #remix-set-up }

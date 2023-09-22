@@ -14,11 +14,11 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 !!! 注意事项
     文中所用示例仅作演示用途。请**务必**妥善管理密码，请勿将密码储存在纯文本中。文中示例均在Ubuntu 18.04环境下运行，但也有包含了MacOs的调用。本教程仅适用于开发设置，并不适用于生产环境。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 基本请求模型 {: #basic-request-model }
 
---8<-- 'text/chainlink/brm.md'
+--8<-- 'text/builders/integrations/oracles/chainlink/brm.md'
 
 ## 高级用户 {: #advanced-users }
 
@@ -29,7 +29,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
  - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
  -
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -37,7 +37,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
  - 为运行Postgres DB和Chainlink节点容器[安装Docker](https://docs.docker.com/get-docker/){target=_blank}
  - 带资金的账户。您可以在[MetaMask](/tokens/connect/metamask/){target=blank}创建一个账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=blank}教程
 
 ## 如何操作 {: #getting-started }
@@ -156,7 +156,7 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 2. 进入**Configuration Page**页面，并复制节点地址
 
 3. 注入资金。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
   
     ![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
 
@@ -271,4 +271,4 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 
 要验证预言机的在线状态以及是否能正常完成请求，请查阅[Chainlink预言机](/integrations/oracles/chainlink/)教程。主要步骤是：部署一个客户端合约，向预言机发送请求，并使预言机向客户端合约中写入所请求的数据。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'
