@@ -18,7 +18,7 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
  - 具有拥有一定数量资金的账户。 
  --8<-- 'text/faucet/faucet-list-item.md'
  - 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/common/endpoint-examples-list-item.md'
 
 !!! 注意事项
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
@@ -143,7 +143,7 @@ python3 transaction.py
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/libraries/contract.md'
+--8<-- 'text/eth-api/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
