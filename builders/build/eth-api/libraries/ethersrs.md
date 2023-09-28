@@ -5,20 +5,20 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 # Ethers.rs Rust库
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 [Ethers.rs](https://ethers.rs){target=_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=_blank}获取更多关于如何使用Ethers.rs的信息。
 
 在本教程中，您将学习如何使用Ethers.rs库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于 [Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}和[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
-## 查看先决条件 {: #checking-prerequisites } 
+## 查看先决条件 {: #checking-prerequisites }
 
 在本教程的示例中，您将需要准备以下内容：
 
  - 拥有资金的账户。
     --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/_common/endpoint-examples.md'
+    --8<-- 'text/_common/endpoint-examples-list-item.md'
  - 在设备上[安装Rust](https://www.rust-lang.org/tools/install){target=_blank}
  - 在设备上[安装solc](https://docs.soliditylang.org/en/v0.8.9/installing-solidity.html)。Ethers.rs包的建议使用[solc-select](https://github.com/crytic/solc-select){target=_blank}
 

@@ -18,7 +18,7 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
  - 具有拥有一定数量资金的账户。 
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/_common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 !!! 注意事项
     --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
@@ -225,7 +225,12 @@ node transaction.js
 
 ### 编译合约脚本 {: #compile-contract-script }
 
+--8<-- 'text/builders/build/eth-api/libraries/compile-js.md'
 --8<-- 'text/builders/build/eth-api/libraries/compile.md'
+
+```js
+--8<-- 'code/eth-api/libraries/compile.js'
+```
 
 ### 部署合约脚本 {: #deploy-contract-script }
 
