@@ -30,7 +30,7 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
      {{networks.moonbase.precompiles.xcm_utils}}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## XCM Utilities Solidity接口 {: #xcmutils-solidity-interface } 
 

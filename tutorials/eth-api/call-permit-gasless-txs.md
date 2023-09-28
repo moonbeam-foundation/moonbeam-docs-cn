@@ -38,7 +38,7 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
 在此教程中，您需要以下先决条件：
 
 - 拥有资金的账户
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
   
 - 已安装[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}的项目
 
@@ -47,7 +47,7 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
     ```
 
 - 
- --8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples.md'
 
 ## 配置您的项目 {: #configure-your-project }
 
@@ -163,7 +163,7 @@ const thirdPartyGasSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
 
 我们首先将会从域名分隔器开始，这将定义调用许可预编译为签署域名。许可将会通过调用许可预编译的`dispatch`函数调度，这就是为何调用许可预编译将永远是签署域名的原因。如同先前提及的，域名分隔器的目标是预防重放攻击。
 
---8<-- 'text/precompiles/call-permit/domain-separator.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/call-permit/domain-separator.md'
 
 我们将在本示例中使用Ethers，这要求域分隔符采用[`TypedDataDomain`接口指定的格式](https://docs.ethers.org/v6/api/hashing/#TypedDataDomain){target =_blank}，但如果需要，您可以使用调用许可预编译的[`DOMAIN_SEPARATOR()`函数将域分隔符生成为 *bytes32* 表示形式](/builders/pallets-precompiles/precompiles/call-permit/# :~:text=DOMAIN_SEPARATOR()){target=_blank}。
 
@@ -361,7 +361,7 @@ const message = {
 
 最后，我们需要获取`from`帐户的`nonce`。如前所述，我们可以使用调用许可预编译的`nonce`函数来获取该值。为此，您需要为调用许可预编译创建一个合约实例：
 
-1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/precompiles/call-permit/abi.js){target=_blank}
+1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/pallets-precompiles/precompiles/call-permit/abi.js){target=_blank}
 2. 将ABI导入您的Ethers文件中
 3. 使用预编译的地址和预编译的ABI创建调用许可预编译的实例。您可以使用提供商或签名者。由于我们稍后将在本教程中发送许可证，因此我们将使用与第三方帐户关联的签名者来支付交易费用，但如果您只需要访问`nonces`函数，则可以使用提供商
 4. 调用`nonces`函数并输入用户的`signer.account` ，与`from`账户相同
@@ -519,7 +519,7 @@ console.log(`Transaction hash: ${dispatch.hash}`);
 
 ??? code "查看完整腳本"
     ```js
-    --8<-- 'code/precompiles/call-permit/dispatch-call-permit.js'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/call-permit/dispatch-call-permit.js'
     ```
 
     !!! 请记住
@@ -538,5 +538,5 @@ console.log(`Transaction hash: ${dispatch.hash}`);
 
 就这样可以了！恭喜您，您已经了解如何在Moonbeam上使用调用许可预编译实现Gasless交易。您现在可以将此教程中的逻辑应用至您的dApp！
 
---8<-- 'text/disclaimers/educational-tutorial.md'
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

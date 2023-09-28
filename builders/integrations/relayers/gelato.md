@@ -11,7 +11,7 @@ description: 使用Gelato自动化您的智能合约交互并将您的Moonbeam�
 
 Gelato已上线Moonbeam和Moonriver，允许开发者和终端用户通过Gelato Ops以及Gelato Relay SDK自动化智能合约交互。首先，此教程将会包含使用Gelato Ops自动化智能合约交互的详细步骤。现在，您可以通过实际演示与Gelato Relay SDK交互。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## Gelato Ops {: #gelato-ops }
 
@@ -307,4 +307,4 @@ const forwardRequestExample = async () => {
 forwardRequestExample();
 ```
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

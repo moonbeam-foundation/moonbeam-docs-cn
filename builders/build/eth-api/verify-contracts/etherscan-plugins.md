@@ -19,7 +19,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 
 - [安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/)测试网
 - 一个拥有`DEV` Token的账户
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 一个您将尝试验证合约网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥
 - 安装和配置Git
 
@@ -216,4 +216,4 @@ cast abi-encode "constructor(uint256)" 100
 
 ![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-6.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

@@ -34,11 +34,11 @@ _作者：Alberto Viera_
 - 您需要在中继链上拥有UNIT来支付发送XCM时所需的交易费用。如果您有一个具有DEV Token的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV交换xcUNIT。然后从Moonbase Alpha通过[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}。
 - 您的[多地点衍生账户](/builders/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}必须持有`DEV` Token来为Uniswap V2兑换提供资金，以及支付XCM的执行费用（尽管这可以用UNIT Token以`xcUNIT`方式支付）。我们将在下一节中计算多地点衍生账户的地址
 
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 计算您的多地点衍生账户 {: #calculating-your-multilocation-derivative-account }
 
---8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
+--8<-- 'text/builders/interoperability/xcm/calculate-multilocation-derivative-account.md'
 
 以我们的例子来说，我们将会通过Alice账户经由XCM传送远程EVM调用，也就是`5GKh9gMK5dn9SJp6qfMNcJiMMnY7LReYmgug2Fr5fKE64imn`，因此指令和获得的结果将会如同下方图示。
 
@@ -55,7 +55,7 @@ _作者：Alberto Viera_
 
 该脚本将返回32字节和20字节的地址。我们关心的是以太坊形式的账户——20字节的账户，即`0x61cd3e07fe7d7f6d4680e3e322986b7877f108dd`。请随时在[Moonscan](https://moonbase.moonscan.io/){target=_blank}上查找您的多地点衍生帐户。接下来，您可以使用DEV Token为该帐户提供资金。
 
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 获得Uniswap V2兑换调用数据 {: #getting-uniswapv2-swap-calldata }
 
@@ -259,4 +259,4 @@ _作者：Alberto Viera_
 !!! 挑战
     为您想要的任何其他Token执行`MARS`的Uniswap V2兑换。请注意，在这种情况下，您必须首先通过XCM远程执行一个ERC-20 `approve`，以允许Uniswap V2路由代表您使用Token。在成功批准后，您将可以发送兑换本身的XCM消息。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'

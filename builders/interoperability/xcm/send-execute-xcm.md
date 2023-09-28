@@ -36,7 +36,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 开始操作本教程之前，请先准备以下内容：
 
 - 您的账户必须拥有一些DEV Token
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 本地执行XCM消息 {: #execute-an-xcm-message-locally }
 
@@ -126,7 +126,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/polkadotXcm/xcmExecute/executeWithPolkadot.js'
+--8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/executeWithPolkadot.js'
 ```
 
 !!! 注意事项
@@ -164,7 +164,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 整个脚本如下所示：
 
 ```js
---8<-- 'code/polkadotXcm/xcmExecute/generateEncodedCalldata.js'
+--8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/generateEncodedCalldata.js'
 ```
 
 #### 执行XCM消息 {: #execute-xcm-message }
@@ -182,19 +182,19 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/polkadotXcm/xcmExecute/ethers.js'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/polkadotXcm/xcmExecute/web3.js'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/polkadotXcm/xcmExecute/web3.py'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/web3.py'
     ```
 
 ## 跨链发送XCM消息 {: #send-xcm-message }
@@ -302,7 +302,7 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/polkadotXcm/xcmSend/sendWithPolkadot.js'
+--8<-- 'code/builders/interoperability/xcm/send-execute-xcm/send/sendWithPolkadot.js'
 ```
 
 !!! 注意事项
@@ -342,7 +342,7 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
 完整脚本如下所示：
 
 ```js
---8<-- 'code/polkadotXcm/xcmSend/generateEncodedCalldata.js'
+--8<-- 'code/builders/interoperability/xcm/send-execute-xcm/send/generateEncodedCalldata.js'
 ```
 
 #### 发送XCM消息 {: #send-xcm-message }
@@ -369,19 +369,19 @@ const dest = [
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/polkadotXcm/xcmSend/ethers.js'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/send/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/polkadotXcm/xcmSend/web3.js'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/send/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/polkadotXcm/xcmSend/web3.py'
+    --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/send/web3.py'
     ```
 
 这样就可以了！您已成功使用Polkadot XCM Pallet和XCM-Utilities预编译从Moonbase Alpha上发送消息至另一条链。

@@ -25,7 +25,7 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
 
 ## 生成会话密钥 {: #session-keys }
 
---8<-- 'text/collators/generate-session-keys.md'
+--8<-- 'text/node-operators/collators/account-management/generate-session-keys.md'
 
 ## 管理会话密钥 {: #manage-session-keys }
 

@@ -15,7 +15,7 @@ API3是一个去中心化解决方案，以易访问和可扩展的方式向智�
 
 ![API3 Airnode](/images/builders/integrations/oracles/api3/api3-1.png)
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 从一个Airnode请求链下数据 {: #calling-an-airnode }
 
@@ -364,4 +364,4 @@ contract RemixQrngExample is RrpRequesterV0 {
 - [API3 DAO GitHub](https://github.com/api3dao/){target=_blank}
 - [API3 Medium](https://medium.com/api3){target=_blank}
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

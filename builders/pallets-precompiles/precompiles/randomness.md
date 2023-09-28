@@ -38,11 +38,17 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
      {{ networks.moonbase.precompiles.randomness }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 随机数Solidity接口 {: #the-randomness-interface }
 
 [Randomness.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
+
+??? code "Randomness.sol"
+
+    ```solidity
+    --8<-- 'code/builders/pallets-precompiles/precompiles/randomness/Randomness.sol'
+    ```
 
 此接口包含函数、常量、事件以及枚举，如下列部分所包含。
 
@@ -122,6 +128,12 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 [`RandomnessConsumer.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
 
+??? code "RandomnessConsumer.sol"
+
+    ```solidity
+    --8<-- 'code/builders/pallets-precompiles/precompiles/randomness/Randomness.sol'
+    ```
+
 消费者接口包含以下函数：
 
 - **fulfillRandomWords**(*uint256* requestId, *uint256[] memory* randomWords) - 根据给定的请求处理VRF回应，此函数将会通过`rawFulfillRandomWords`的调用而启动
@@ -163,7 +175,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 一个拥有`DEV` Token的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 创建随机数生成器合约 {: #create-random-generator-contract }
 
@@ -181,7 +193,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 合约如下所示：
 
 ```solidity
---8<-- 'code/randomness/RandomNumber.sol'
+--8<-- 'code/builders/pallets-precompiles/precompiles/randomness/RandomNumber.sol'
 ```
 
 如您所见，合约中还有一些常量可以根据需要进行调整，尤其是可用于生成独特结果的`SALT_PREFIX`。

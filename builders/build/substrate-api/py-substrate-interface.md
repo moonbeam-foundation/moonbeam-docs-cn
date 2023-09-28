@@ -14,13 +14,13 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 在开始操作之前，您将需要准备以下内容：
 
  - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
- --8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples.md'
  - 安装[`pip`](https://pypi.org/project/pip/){target=_blank}
 
 !!! 注意事项
-    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ### 安装Python Substrate Interface {: #installing-python-substrate-interface }
 
@@ -34,7 +34,7 @@ pip install substrate-interface
 
 与ETH API库相似，您必须先将Python Substrate Interface API的API实例进行实例化。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 === "Moonbeam"
 
@@ -396,4 +396,4 @@ except SubstrateRequestException as e:
 
 关于如何通过Python Substrate Interface使用自定义RPC调用以检查给定交易哈希的最终性，请参考[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#checking-tx-finality-with-substrate-libraries)的示例。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

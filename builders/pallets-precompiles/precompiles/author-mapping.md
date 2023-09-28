@@ -32,7 +32,7 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
      {{networks.moonbase.precompiles.author_mapping }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 作者映射Solidity接口 {: #the-solidity-interface }
 
@@ -103,7 +103,7 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 
 ### 生成会话密钥 {: #generate-session-keys }
 
---8<-- 'text/collators/generate-session-keys.md'
+--8<-- 'text/node-operators/collators/account-management/generate-session-keys.md'
 
 ### Remix设置 {: #remix-set-up }
 

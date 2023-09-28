@@ -13,7 +13,7 @@ description: 遵循此教程学习如何使用Moonbeam的以太坊格式的H160�
 
 本教程涵盖如何在Talisman设置账户以及如何通过Polkadot.js Apps使用Talisman与Moonbeam交互的所有操作步骤。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 设置Talisman {: #setting-up-talisman }
 
@@ -105,4 +105,4 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 
 这样就可以了！这些步骤展示了使用Talisman在Polkadot.js Apps中与导入的H160账户进行交互的简便性和强大的安全性。这均归功于Moonbeam的统一账户结构，这是Moonbeam致力于最佳用户体验的很好展示。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

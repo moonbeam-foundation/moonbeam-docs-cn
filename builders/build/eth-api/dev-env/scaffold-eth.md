@@ -13,15 +13,13 @@ Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
---8<-- 'text/common/install-nodejs.md'
-
 要运行Scaffold-ETH的The Graph组件，您还需要在您的系统安装以下程序以从Docker运行本地The Graph节点：
 
  - [Docker](https://docs.docker.com/get-docker/){target=_blank}
  - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
  - [JQ](https://stedolan.github.io/jq/download/){target=_blank}
 
- --8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples.md'
 
 ### 安装Scaffold-ETH {: #installing-scaffold-eth }
 
@@ -47,7 +45,7 @@ yarn install
 
 您需要对组成Scaffold-ETH的三个主要组件进行配置修改。
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ### Hardhat组件 {: #hardhat-component }
 
@@ -314,3 +312,5 @@ yarn install
 ![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.png)
 
 关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}。
+
+--8<-- 'text/_disclaimers/third-party-content.md'

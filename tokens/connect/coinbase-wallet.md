@@ -11,7 +11,7 @@ description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移�
 
 本教程将向您展示设置Coinbase Wallet移动端应用程序并为其配置Moonbeam网络的步骤。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 安装Coinbase Wallet App {: #install-the-coinbase-wallet-app }
 
@@ -120,4 +120,4 @@ description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移�
  - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/)
  - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile)
 
- --8<-- 'text/disclaimers/third-party-content.md'
+ --8<-- 'text/_disclaimers/third-party-content.md'

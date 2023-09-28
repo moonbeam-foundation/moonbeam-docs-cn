@@ -31,7 +31,7 @@ Conviction Voting Precompile位于以下地址：
      {{ networks.moonbase.precompiles.conviction_voting }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## Conviction Voting Solidity接口 {: #the-conviction-voting-solidity-interface }
 
@@ -89,7 +89,7 @@ Conviction Voting Precompile位于以下地址：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 拥有DEV Token的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up }
 

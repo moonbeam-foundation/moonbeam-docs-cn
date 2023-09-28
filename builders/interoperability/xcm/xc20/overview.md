@@ -133,7 +133,7 @@ XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperabili
 3. 迭代资产列表以获取所有资产ID及其关联的元数据
 
 ```js
---8<-- 'code/xc20/retrieve-xc20s.js'
+--8<-- 'code/builders/interoperability/xcm/xc20/overview/retrieve-xc20s.js'
 ```
 
 结果将显示资产ID以及所有已注册外部XC-20的一些附加信息。

@@ -293,4 +293,4 @@ npx thirdweb deploy --app
 
 如果您还有任何疑问或在操作过程中遇到任何问题，请通过[support.thirdweb.com](http://support.thirdweb.com/){target=_blank}联系thirdweb客服。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

@@ -31,7 +31,7 @@ Registry Precompile位于以下地址：
      {{networks.moonriver.precompiles.registry }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## Registry Precompile Solidity接口 {: #the-solidity-interface }
 
@@ -40,7 +40,7 @@ Registry Precompile位于以下地址：
 ??? code "PrecompileRegistry.sol"
 
     ```solidity
-    --8<-- 'code/precompiles/registry/PrecompileRegistry.sol'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/PrecompileRegistry.sol'
     ```
 
 - **isPrecompile**(*address* a) - 返回*bool*指示给定地址是否为预编译。对于活跃或已启用的预编译返回`true`
@@ -52,7 +52,7 @@ Registry Precompile位于以下地址：
 以下部分将概述如何从[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}和[以太坊库](/builders/build/eth-api/libraries/){target=_blank}（例如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}、[Web3.js](/builders/build/eth-api/libraries/web3js){target=_blank}和[Web3.py](/builders/build/eth-api/libraries/web3py){target=_blank}）与Registry Precompile交互。
 
 以下操作将以Moonbase Alpha为例。
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ### 使用Remix与Precompile Registry交互 {: #use-remix }
 
@@ -89,7 +89,7 @@ Registry Precompile位于以下地址：
 ??? code "Precompile Registry ABI"
 
     ```js
-    --8<-- 'code/precompiles/registry/abi.js'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/abi.js'
     ```
 
 有了ABI之后，您可以根据您的选择使用以太坊库与Registry交互。通常情况下，您需要执行以下步骤：
@@ -106,17 +106,17 @@ Registry Precompile位于以下地址：
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/precompiles/registry/ethers.js'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/precompiles/registry/web3.js'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/precompiles/registry/web3.py'
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/web3.py'
     ```

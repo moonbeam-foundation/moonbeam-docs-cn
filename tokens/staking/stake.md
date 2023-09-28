@@ -301,6 +301,6 @@ console.log(`${delegation.value}%`);
 
 委托人可以选择自动复合他们的奖励，以便他们的奖励自动应用于他们的总委托金额。 如果委托人有多个委托，则需要为每个委托设置自动复合。
 
---8<-- 'text/disclaimers/staking-risks.md'
+--8<-- 'text/_disclaimers/staking-risks.md'
 *质押的MOVR/GLMR代币将被锁定，取回它们需要{{ networks.moonriver.delegator_timings.del_bond_less.days }}天/{{ networks.moonbeam.delegator_timings.del_bond_less.days }}天等待期。*
---8<-- 'text/disclaimers/staking-risks-part-2.md'
+--8<-- 'text/_disclaimers/staking-risks-part-2.md'

@@ -22,11 +22,11 @@ _作者：Kevin Neilson_
 
 - 拥有一个具有一些UNIT的Moonbase Alpha中继链账户，UNIT是Moonbase中继链的原生Token。如果您拥有一个具有DEV的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV兑换xcUNIT。然后从Moonbase Alpha通过使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
 - 您将会需要计算您Moonbase Alpha中继链的[多地点衍生账户（multilocation derivative account）](#calculating-your-multilocation-derivative-account)和使其拥有足够的DEV Token。
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 计算您的Multilocation衍生账户 {: #calculating-your-multilocation-derivative-account }
 
---8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
+--8<-- 'text/builders/interoperability/xcm/calculate-multilocation-derivative-account.md'
 
 此处，我们指定了父值为`1`，因为中继链是请求的来源（并且中继链被视为Moonbase Alpha平行链的父级）。 中继链没有平行链ID，因此该字段被省略。
 
@@ -173,4 +173,4 @@ XCM Pallet的`send`函数接收两个参数：`dest`和`message`。您可以通�
 
 这样就可以了！要验证您的委托是否成功，您可以前往[Subscan](https://moonbase.subscan.io/){target=_blank}查看您的质押余额。请注意，可能需要几分钟时间才能在 Subscan上看到您的质押余额。此外，因为我们直接通过[Parachain Staking Pallet](/builders/pallets-precompiles/pallets/staking){target=_blank}（在Substrate端），而不是通过[Staking Precompile](/builders/pallets-precompiles/precompiles/staking){target=_blank}（在EVM上）进行操作，您将无法在Moonscan上看到此质押操作。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'

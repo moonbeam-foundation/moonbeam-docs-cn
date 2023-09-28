@@ -21,7 +21,7 @@ _作者：Erin Shaben_
 
 - 一个在Moonbase Alpha测试网上拥有足够DEV Token以及在Moonbeam主网上拥有足够GLMR Token的账户
 
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 - 您拥有的Moonbeam终端和对应API密钥，您可以从支持的[端点提供者](/builders/get-started/endpoints/){target=_blank}处获得
 
@@ -678,6 +678,6 @@ npx truffle run verify NftMarketplace DizzyDragons --network moonbeam
 
 这样就可以了！在本地Moonbeam开发节点和Moonbase Alpha测试网上对合约进行全面测试后，您已成功将合约部署到Moonbeam主网！恭喜！您已经使用Truffle完成了整个开发生命周期！
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

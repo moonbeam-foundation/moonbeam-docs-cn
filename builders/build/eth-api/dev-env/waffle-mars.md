@@ -21,9 +21,9 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
  - 已安装MetaMask并[连接到 Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
-
---8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
+ - 
+ --8<-- 'text/_common/endpoint-examples.md'
 
 创建帐户后，您需要导出私钥，以便于在本教程中使用。
 
@@ -171,7 +171,7 @@ npm run build
 
 您将针对 Moonbase Alpha测试网运行测试，并需要相应的RPC URL来连接至`{{ networks.moonbase.rpc_url }}`。
 
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
 
@@ -342,7 +342,7 @@ describe ('MyToken', () => {
 在编译合约之后并准备部署合约之前，您必须为Mars生成合约工件。 Mars使用合约工件在部署中进行类型检查。然后您需要创建一个部署脚本并部署`MyToken`智能合约。
 
 请知晓：合约将部署至Moonbase Alpha并需要使用测试网进行配置： `{{ networks.moonbase.rpc_url }}`。
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 部署将分为三个部分：[生成工件](#generate-artifacts)、[创建部署脚本](#create-a-deployment-script)和[使用Mars部署](#deploy-with-mars)。
 
@@ -435,4 +435,4 @@ describe ('MyToken', () => {
 
 如果您想在Moonbeam上查看Waffle和Mars项目的完整示例，请查看以下由EthWorks（Waffle和Mars背后的团队）成员创建的[moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example){target=_blank}。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

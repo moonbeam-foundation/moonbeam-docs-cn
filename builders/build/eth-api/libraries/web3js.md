@@ -16,12 +16,12 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
 在开始本教程示例之前，您将需要提前准备以下内容：
 
  - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 !!! 注意事项
-    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 安装Web3.js {: #install-web3js }
 
@@ -48,7 +48,7 @@ mkdir web3-examples && cd web3-examples && npm init --y
 ## 在Moonbeam上设置Web3.js {: #setup-web3-with-moonbeam }
 
 您可以为任何Moonbeam网络配置web3.js。
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 每个网络最简单的设置方式如下所示：
 
@@ -139,7 +139,7 @@ balances();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-tx-local/balances.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/balances.js'
     ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -204,7 +204,7 @@ send();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-tx-local/transaction.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/transaction.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -221,11 +221,16 @@ node transaction.js
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/libraries/contract.md'
+--8<-- 'text/builders/build/eth-api/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
---8<-- 'text/libraries/compile.md'
+--8<-- 'text/builders/build/eth-api/libraries/compile-js.md'
+--8<-- 'text/builders/build/eth-api/libraries/compile.md'
+
+```js
+--8<-- 'code/eth-api/libraries/compile.js'
+```
 
 ### 部署合约脚本 {: #deploy-contract-script }
 
@@ -299,7 +304,7 @@ deploy();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-contract-local/deploy.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/deploy.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -362,7 +367,7 @@ get();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-contract-local/get.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/get.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -441,7 +446,7 @@ increment();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-contract-local/increment.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/increment.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -511,7 +516,7 @@ reset();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/web3-contract-local/reset.js'
+    --8<-- 'code/builders/build/eth-api/libraries/web3-js/reset.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -524,4 +529,4 @@ node reset.js
 
 ![Reset Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-4.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

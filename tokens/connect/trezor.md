@@ -15,7 +15,7 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
 
 请注意，您的Trezor设备会在您MetaMask连接至的网络内签署交易。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -110,4 +110,4 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
 
 使用您的Trezor设备与智能合约互操作的过程与本教程基本相同。请在同意交易之前，再次检查签署于您的Trezor设备的数据。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

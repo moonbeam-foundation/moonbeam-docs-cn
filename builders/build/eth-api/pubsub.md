@@ -18,10 +18,10 @@ Moonbeam支持以太坊式事件的事件订阅。这允许您订阅事件并进
 
  - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 在Moonbase上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/){target=_blank}进行操作，但首先要确保MetaMask指向Moonbase
 
---8<-- 'text/common/install-nodejs.md'
+--8<-- 'text/_common/install-nodejs.md'
 
 在撰写本教程时，所用版本分别为14.6.0 和6.14.6版本。此外，您还需执行以下命令安装Web3安装包：
 
