@@ -326,7 +326,7 @@ api.disconnect();
     ```
 
 !!! 注意事项
-​    您可以通过添加`console.log(api.tx.parachainStaking);`到代码，查看`parachainStaking`模块的全部可用功能。
+    您可以通过添加`console.log(api.tx.parachainStaking);`到代码，查看`parachainStaking`模块的全部可用功能。
 
 ## Substrate和自定义RPC请求 {: #substrate-and-custom-json-rpc-endpoints }
 

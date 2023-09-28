@@ -13,10 +13,10 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 
 在开始操作之前，您将需要准备以下内容：
 
- - 具有拥有一定数量资金的账户。 
+ - 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
- --8<-- 'text/_common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
  - 安装[`pip`](https://pypi.org/project/pip/){target=_blank}
 
 !!! 注意事项

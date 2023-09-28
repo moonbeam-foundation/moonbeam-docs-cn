@@ -22,10 +22,10 @@ Foundry由四个工具组成：
 
 开始之前，您将需要准备以下内容：
 
- - 拥有资金的账户
-    --8<-- 'text/_common/faucet/faucet-list-item.md'
+ - 拥有资金的账户。
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/_common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
  - 提前[安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
 
 ## 创建Foundry项目 {: #creating-a-foundry-project }

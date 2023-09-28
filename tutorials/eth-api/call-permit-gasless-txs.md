@@ -47,7 +47,7 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
     ```
 
 - 
- --8<-- 'text/_common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 ## 配置您的项目 {: #configure-your-project }
 

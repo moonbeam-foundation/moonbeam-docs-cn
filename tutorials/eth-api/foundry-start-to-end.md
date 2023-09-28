@@ -19,7 +19,7 @@ Foundry已成为越来越受欢迎的用于开发智能合约的开发环境，�
 
  - 拥有资金的账户
     --8<-- 'text/_common/faucet/faucet-list-item.md'
- -
+ - 
 --8<-- 'text/_common/endpoint-examples.md'
  - [安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
  - 一个[Moonscan API密钥](/builders/build/eth-api/verify-contracts/api-verification/#generating-a-moonscan-api-key){target=_blank}

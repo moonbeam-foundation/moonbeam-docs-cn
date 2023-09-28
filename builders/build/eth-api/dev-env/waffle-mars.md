@@ -23,7 +23,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
  - 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
- --8<-- 'text/_common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 创建帐户后，您需要导出私钥，以便于在本教程中使用。
 
