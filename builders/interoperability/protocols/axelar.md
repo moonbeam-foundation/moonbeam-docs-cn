@@ -15,7 +15,7 @@ Axelar为一个支持资产转移、[通用消息传递](https://docs.axelar.dev
 
 Axelar API提供一个完整开发Web3应用的套件，确保开发者拥有他们开发所需的工具。通过这些工具和APIs，开发者能够使用Axelar网络以及API构建能够轻松在所有Axelar连接的生态中部署的dApp。换句话来说，Axelar将跨链互操作性浓缩为一组简单的API请求。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 开始操作 {: #getting-started }
 
@@ -36,4 +36,4 @@ Axelar API提供一个完整开发Web3应用的套件，确保开发者拥有他
 - **主网合约** - [Moonbeam](https://docs.axelar.dev/dev/reference/mainnet-contract-addresses){target=_blank}
 - **测试网合约** - [Moonbase Alpha](https://docs.axelar.dev/dev/reference/testnet-contract-addresses){target=_blank}
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

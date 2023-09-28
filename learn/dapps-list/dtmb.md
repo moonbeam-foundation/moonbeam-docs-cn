@@ -55,5 +55,5 @@ Downtown Moonbeam团队会审核您所提交的信息，若符合收录要求，
 
 <div class="page-disclaimer">
   Downtown Moonbeam包含用户生成的内容，Moonbeam基金会尚未审查此类内容也和Moonbeam立场无关。
-  --8<-- 'text/disclaimers/user-generated-content.md'
+  --8<-- 'text/_disclaimers/user-generated-content.md'
 </div>

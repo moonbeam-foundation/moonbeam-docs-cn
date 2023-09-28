@@ -13,7 +13,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 本教程将涵盖通过Dapplooker平台注册项目所需的所有详情以及如何使用SQL编辑器构建分析。本教程适用于Moonbeam、Moonriver和Moonbase Alpha网络。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -98,4 +98,4 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 - [Dapplooker Explorer for Moonbeam](https://dapplooker.com/category/moonbeam?type=dashboard){target=_blank} —— 搜索Moonbeam上的常用数据面板
 - [Dapplooker Explorer for Moonriver](https://dapplooker.com/category/moonriver?type=dashboard){target=_blank} —— 搜索Moonriver上的常用数据面板
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

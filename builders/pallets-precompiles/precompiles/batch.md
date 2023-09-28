@@ -34,13 +34,29 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
      {{networks.moonbase.precompiles.batch }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 批量Solidity接口 {: #the-batch-interface }
 
 [`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。
 
---8<-- 'text/batch/batch-interface.md'
+该接口包括以下功能：
+
+- **batchSome**(*address[]* to, *uint256[]* value, *bytes[]* callData, *uint64[]* gasLimit) — 执行多个调用，其中每个数组的相同索引合并到单个子调用所需的信息。如果某一子调用回滚状态，仍将尝试执行其余子调用
+- **batchSomeUntilFailure**(*address[]* to, *uint256[]* value, *bytes[]* callData, *uint64[]* gasLimit) — 执行多次调用，其中每个数组的相同索引合并到单个子调用所需的信息。如果某一子调用回滚状态，则不会尝试执行后续子调用
+- **batchAll**(*address[]* to, *uint256[]* value, *bytes[]* callData, *uint64[]* gasLimit) — 以原子方式执行多个子调用，其中每个数组的相同索引组合成单个子调用所需的信息。如果任何子调用执行失败，所有子调用都将回滚状态
+
+这些函数中每个都具有以下参数：
+
+- ***address[]* to** - 与子调用数组对应的地址数组，每个地址对应一个子调用
+- ***uint256[]* value** - 与子调用数组对应的原生代币数额组，其中索引对应于*to*数组中相同索引的子调用。如果此数组比*to*数组短，则后面所有子调用数额将默认为0
+- ***bytes[]* callData** - 与子调用数组对应的的callData数组，其中索引对应于*to*数组中相同索引的子调用。如果此数组比*to*数组短，则以下所有子事务都将不包含callData
+- ***uint64[]* gasLimit** - 与子调用数组对应的gas上限数组，其中索引对应于*to*数组中相同索引的子调用。 0值被默认为无限制，并将转发批量交易的所有剩余给gas。如果此数组比*to*数组短，则以下所有子调用都将转发所有剩余的gas
+
+该界面还包括以下必需的事件：
+
+- **SubcallSucceeded**(*uint256* index) - 当给定索引的子调用成功时发出
+- **SubcallFailed**(*uint256* index) - 当给定索引的子调用失败时发出
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
@@ -51,15 +67,15 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha上创建或是拥有两个账户以测试批量预编译合约的不同功能
 - 至少拥有一个具有`DEV`的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 范例合约 {: #example-contract}
 
 此`SimpleContract.sol`合约将会作为批量合约交互的范例，但在实际操作上所有合约皆可以进行交互。
 
- --8<-- 'code/batch/simple-contract.md'
+ --8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-contract.md'
 
-### 设置Remix {: #remix-set-up } 
+### 设置Remix {: #remix-set-up }
 
 您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
 
@@ -147,7 +163,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 现在您已经拥有该交易的调用数据！根据范例数据的`1` 和`"moonbeam"`，我们可以在调用数据中查找这些被编码的数据：
 
- --8<-- 'code/batch/simple-message-call-data.md'
+ --8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-message-call-data.md'
 
 调用数据可以被拆分为五行：
 
@@ -237,12 +253,12 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。
 
 === "Web3.js"
-     --8<-- 'code/batch/web3js-batch.md'
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3js-batch.md'
 
 === "Ethers.js"
-     --8<-- 'code/batch/ethers-batch.md'
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/ethers-batch.md'
 
 === "Web3.py"
-     --8<-- 'code/batch/web3py-batch.md'
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3py-batch.md'
 
 最后，您应当已经了解如何与批量预编译进行交互，如同您与[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}中的合约进行交互一样。

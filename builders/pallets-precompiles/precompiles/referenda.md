@@ -31,7 +31,7 @@ Referenda Precompile位于以下地址：
      {{ networks.moonbase.precompiles.referenda }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## Referenda Solidity接口 {: #the-referenda-solidity-interface }
 
@@ -118,7 +118,7 @@ Referenda Precompile位于以下地址：
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 拥有DEV Token的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up }
 

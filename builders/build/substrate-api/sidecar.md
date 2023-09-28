@@ -17,7 +17,7 @@ Substrate API Sidecar允许应用程序通过REST API访问基于Substrate区块
 
 通过NPM在本地运行此服务需要先安装node.js。
 
---8<-- 'text/common/install-nodejs.md'
+--8<-- 'text/_common/install-nodejs.md'
 
 ### 安装Substrate API Sidecar {: #installing-the-substrate-api-sidecar }
 
@@ -314,4 +314,4 @@ EVM智能合约发出的其他事件也可以以类似的方式进行解码，�
 
 有关如何使用Substrate Sidecar API计算交易费用的更多详细信息和示例代码，请查看[计算 交易费用](/builders/get-started/eth-compare/tx-fees/){target=_blank}页。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

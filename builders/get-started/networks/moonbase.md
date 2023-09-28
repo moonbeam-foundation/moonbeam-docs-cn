@@ -5,7 +5,7 @@ description: Moonbeam测试网（Moonbase Alpha）是进入波卡（Polkadot）�
 
 # 快速上手Moonbase Alpha测试网
 
---8<-- 'text/testnet/connect.md'
+--8<-- 'text/builders/get-started/networks/moonbase/connect.md'
 
 ## 区块浏览器 {: #block-explorers }
 

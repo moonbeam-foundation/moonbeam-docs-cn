@@ -5,7 +5,7 @@ description: 学习如何通过RPC和WSS端点连接至Moonbeam，如何连接Me
 
 # 开始使用Moonbeam
 
---8<-- 'text/moonbeam/connect.md'
+--8<-- 'text/builders/get-started/networks/moonbeam/connect.md'
 
 ## 区块浏览器 {: #block-explorers }
 

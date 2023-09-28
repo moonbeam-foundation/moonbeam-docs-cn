@@ -16,12 +16,13 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 在开始本教程示例之前，您将需要提前准备以下内容：
 
  - 具有拥有一定数量资金的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/common/endpoint-examples-list-item.md'
+--8<-- 'text/_common/endpoint-examples-list-item.md'
 
 !!! 注意事项
-    --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
+    --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 安装Ethers.js {: #install-ethersjs }
 
@@ -49,7 +50,7 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
 
 在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.org/v6/api/providers/){target=_blank}与网络交互。
 
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 为创建一个提供者，您可以遵循以下步骤：
 
@@ -200,7 +201,7 @@ balances();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-tx/balances.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/balances.js'
     ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -265,7 +266,7 @@ send();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-tx/transaction.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/transaction.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -286,11 +287,11 @@ node transaction.js
 
 ### 编译合约脚本 {: #compile-contract-script }
 
---8<-- 'text/eth-api/libraries/compile-js.md'
---8<-- 'text/eth-api/libraries/compile.md'
+--8<-- 'text/builders/build/eth-api/libraries/compile-js.md'
+--8<-- 'text/builders/build/eth-api/libraries//compile.md'
 
 ```js
---8<-- 'code/eth-api/libraries/compile.js'
+--8<-- 'code/builders/build/eth-api/libraries/compile.js'
 ```
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -353,7 +354,7 @@ deploy();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-contract/deploy.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/deploy.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -416,7 +417,7 @@ get();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-contract/get.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/get.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -486,7 +487,7 @@ increment();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-contract/increment.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/increment.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -547,7 +548,7 @@ reset();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/ethers-js-contract/reset.js'
+    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/reset.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -560,4 +561,4 @@ node reset.js
 
 ![Reset Contract Ethers](/images/builders/build/eth-api/libraries/ethers/ethers-4.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

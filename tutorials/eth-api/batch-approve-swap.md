@@ -22,10 +22,10 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 在本教程中，您将需要准备以下内容：
 
 - 拥有资金的账户
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
 - 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ### 安装依赖项 {: #install-dependencies }
 
@@ -262,7 +262,7 @@ async function checkBalances(demoToken) {
 
 获得编码的调用数据后，我们可以用其来调用批处理预编译的`batchAll`函数。此函数将以原子方式执行多个调用，其中每个数组的相同索引组合成单个子调用所需的信息。如果一个子调用还原（revert），则所有子调用都将还原。`batchAll`函数需要以下参数：
 
---8<-- 'text/batch/batch-parameters.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/batch/batch-parameters.md'
 
 因此，每个数组的第一个索引将对应授权调用，第二个将对应兑换调用。
 
@@ -399,5 +399,5 @@ main();
 
 这将导致授权和交换被批处理到单个交易中，交易哈希将显示在控制台。您现在可以修改此逻辑并应用到Uniswap V2风格的应用程序中！
 
---8<-- 'text/disclaimers/educational-tutorial.md'
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

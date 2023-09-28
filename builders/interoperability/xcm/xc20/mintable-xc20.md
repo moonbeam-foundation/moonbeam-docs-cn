@@ -116,7 +116,7 @@ address = "0xFFFFFFFE..." + DecimalToHex(AssetId)
 
 - [安装MetaMask并将其连接至Moonbase Alpha测试网](/tokens/connect/metamask/){target=_blank}
 - 具有拥有一定数量DEV的账户
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 创建提案 {: #create-a-proposal } 
 

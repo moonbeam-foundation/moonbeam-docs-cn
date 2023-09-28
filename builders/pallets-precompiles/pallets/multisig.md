@@ -70,7 +70,7 @@ Multisig Pallet包含以下只读函数来获取Pallet常量：
 ![View the multisig account on the Accounts page of Polkadot.js Apps](/images/builders/pallets-precompiles/pallets/multisig/multisig-3.png)
 
 您可以单击多签账户旁边的彩色图标来复制地址并使用DEV Token为其提供资金。
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 如何创建多签交易 {: #create-a-multisig-transaction }
 

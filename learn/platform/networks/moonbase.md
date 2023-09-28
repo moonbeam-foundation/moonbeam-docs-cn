@@ -45,7 +45,7 @@ Moonbase Alpha具有以下配置：
     |          增加委托时长          |                             委托将会在下一个轮次生效（资金可随时提取）                             |
     |          减少委托时长          |                 {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次                 |
 
---8<-- 'text/testnet/connect.md'
+--8<-- 'text/builders/get-started/networks/moonbase/connect.md'
 
 ## Alphanet中继链 {: #relay-chain }
 

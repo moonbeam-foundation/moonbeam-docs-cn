@@ -28,7 +28,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 ## 相关XCM定义 {: #general-xcm-definitions }
 
---8<-- 'text/xcm/general-xcm-definitions2.md'
+--8<-- 'text/builders/interoperability/xcm/general-xcm-definitions2.md'
 
 - **Multilocation衍生账户** — 这会生成一个无密钥帐户，该帐户从由 [`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令和提供的Multilocation设置的新来源所衍生。对于基于Moonbeam的网络，[衍生函数](https://github.com/moonbeam-foundation/moonbeam/blob/v0.31.1/primitives/xcm/src/location_conversion.rs#L31-L37){target=_blank}计算Multilocation的`blake2`哈希，包括原始平行链ID，并截取正确长度的哈希（以太坊格式的帐户为20个字节）。XCM调用[原转换](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L343){target=_blank}在`Transact`指令执行时发生。因此，每条平行链都可以使用自己想要的程序转换来源，因此发起交易的用户可能在每条平行链上拥有不同的衍生账户。该衍生账户用于支付交易费用，并被设置为调用的调度者
 - **交换信息** — 与XCM Transactor extrinsic的XCM远程执行部分的额外权重和费用信息有关。这部分为必要的，因主权账户将支付XCM交易费用。因此，XCM Transactor就计算费用数值，并向XCM Transactor extrinsic的发送方收取相应[XC-20 Token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计数量以偿还主权账户
@@ -140,7 +140,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 }
 ```
 
---8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
+--8<-- 'text/builders/interoperability/xcm/calculate-multilocation-derivative-account.md'
 
 以Alice的中继链账户`5DV1dYwnQ27gKCKwhikaw1rz1bYdvZZUuFkuduB4hEK3FgDT`为例，您可以通过运行以下命令来计算他的Moonbase Alpha **multilocation衍生账户**：
 
@@ -209,7 +209,7 @@ const xcmTransaction = {
 4. 获得函数的编码调用数据。您不需要签署和传送交易
 
 ```js
---8<-- 'code/remote-execution/generate-encoded-call-data.js'
+--8<-- 'code/builders/interoperability/xcm/remote-evm-calls/generate-encoded-call-data.js'
 ```
 
 !!! 注意事项
@@ -290,7 +290,7 @@ const xcmTransaction = {
         ??? code "完整脚本"
 
             ```js
-            --8<-- 'code/remote-execution/estimate-required-weight.js'
+            --8<-- 'code/builders/interoperability/xcm/remote-evm-calls/estimate-required-weight.js'
             ```
 
         截至撰写本脚本时，`refTime`和`proofSize`会分别返回`3900000000`和`38750`的预估数值
@@ -332,7 +332,7 @@ const xcmTransaction = {
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/remote-execution/send.js'
+--8<-- 'code/builders/interoperability/xcm/remote-evm-calls/send.js'
 ```
 
 !!! 注意事项

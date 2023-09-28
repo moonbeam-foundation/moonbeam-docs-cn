@@ -99,4 +99,4 @@ MetaFab生态系统产品允许统一的成就跟踪（以及更多）、许可�
 - [API Reference](https://docs.trymetafab.com/reference){target=_blank}
 - [GitHub Repos](https://github.com/orgs/MetaFabInc/repositories){target=_blank}
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

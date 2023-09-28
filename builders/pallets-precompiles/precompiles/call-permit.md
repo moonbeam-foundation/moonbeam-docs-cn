@@ -34,7 +34,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
      {{networks.moonbase.precompiles.call_permit }}
      ```
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 调用许可Solidity接口 {: #the-call-permit-interface }
 
@@ -56,7 +56,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 - **nonces**(*address* owner) - 回传当前随机数给指定所有者
 - **DOMAIN_SEPARATOR**() - 回传用于避免重复攻击的EIP-712域名分隔器，跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现执行
 
---8<-- 'text/precompiles/call-permit/domain-separator.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/call-permit/domain-separator.md'
 
 当已调用`dispatch`，此许可需要在该调用被调度前获得验证。首个步骤为[计算域名分隔器](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L138){target=_blank}，您可以在[Moonbeam的实现](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L112-L126){target=_blank}中找到计算过程，或是您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中找到实际范例。
 
@@ -79,7 +79,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 - [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
 - 在Moonbase Alpha创建或是拥有两个账户以测试调用许可预编译的不同功能
 - 至少其中一个账户需要拥有`DEV` Token
-   --8<-- 'text/faucet/faucet-list-item.md'
+   --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### 范例合约 {: #example-contract }
 
@@ -204,7 +204,7 @@ Ethers.js的CDN应当在**Resources**下方的库列表出现
 在**Javascript**代码框中复制并贴下方JavaScript代码段，确保取代`to`变量，或是任何您需要修改的变量：
 
 ```js
---8<-- 'code/precompiles/call-permit/browser-getSignature.js'
+--8<-- 'code/builders/pallets-precompiles/precompiles/call-permit/browser-getSignature.js'
 ```
 
 要运行代码，在页面上方点击**Run**，或者您可以使用`control`和`s`。MetaMask应跳出弹窗要求您连接账户。确保您选择您希望用于签署消息的账户，接着签署消息。
@@ -242,7 +242,7 @@ npm i @metamask/eth-sig-util ethers
 在`getSignature.js`文件中，您可以复制以下代码段：
 
 ```js
---8<-- 'code/precompiles/call-permit/getSignature.js'
+--8<-- 'code/builders/pallets-precompiles/precompiles/call-permit/getSignature.js'
 ```
 
 您可以使用以下命令运行脚本：

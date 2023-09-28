@@ -16,9 +16,9 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 在本教程的示例中，您将需要准备以下内容：
 
  - 拥有资金的账户。
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
-    --8<-- 'text/common/endpoint-examples.md'
+    --8<-- 'text/_common/endpoint-examples-list-item.md'
  - 在设备上[安装Rust](https://www.rust-lang.org/tools/install){target=_blank}
  - 在设备上[安装solc](https://docs.soliditylang.org/en/v0.8.9/installing-solidity.html)。Ethers.rs包的建议使用[solc-select](https://github.com/crytic/solc-select){target=_blank}
 
@@ -61,7 +61,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
 
 在整个教程中，您将编写多个函数，用于提供不同的功能，例如发送交易、部署合约，以及与部署的合约交互。在大部分这些脚本中，您将需要使用[Ethers provider](https://docs.rs/ethers-providers/latest/ethers_providers/index.html){target=_blank}或[Ethers signer client](https://docs.rs/ethers/1.0.2/ethers/middleware/struct.SignerMiddleware.html){target=_blank}与网络进行交互。
 
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 
 创建提供商和签署者有多种方式，但是最简单的方式是通过`try_from`操作：
 
@@ -300,7 +300,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/send-tx/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/send-tx/main.rs){target=_blank}。
 
 要运行发送交易并在交易发送后检查余额的脚本，您可以运行以下命令：
 
@@ -314,7 +314,7 @@ cargo run
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/eth-api/libraries/contract.md'
+--8<-- 'text/builders/build/eth-api/libraries/contract.md'
 
 在这一部分中，您将创建几个函数，这将包含在`main.rs`文件中，以避免从实现模块带来的额外复杂性。第一个函数将编译和部署合约。剩下的函数将用于与部署的合约交互。
 
@@ -486,7 +486,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
 
 要运行部署合约和返回存储在`Incrementer`合约中的当前值的脚本，您可以在终端中输入以下命令：
 
@@ -547,7 +547,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
 
 要运行脚本，您可以在终端输入以下命令：
 
@@ -608,6 +608,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ![Terminal logs from resetting the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-4.png)
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/ethers-rust/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

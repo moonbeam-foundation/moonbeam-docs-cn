@@ -18,9 +18,9 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 在本教程中，您将学会如何使用Moonriver app在Moonriver开始使用您的Ledger硬件钱包。本教程以Ledger Nano X设备为例进行演示操作，但操作步骤也同样适用于Ledger Nano S。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
---8<-- 'text/ledger/checking-prereqs.md'
+--8<-- 'text/tokens/connect/ledger/checking-prereqs.md'
 
 如果您更偏向使用MetaMask作为媒介来完成Ledger设备与Moonbeam之间的操作，请确保您的MetaMask[已连接至Moonbeam](/tokens/connect/metamask/){target=_blank}。
 
@@ -30,7 +30,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要先安装Ethereum app。请注意Moonriver app仅适用于Moonriver网络，并不适用于Moonbeam或Moonbase Alpha。
 
---8<-- 'text/ledger/install-eth-app.md'
+--8<-- 'text/tokens/connect/ledger/install-eth-app.md'
 4. 在**App catalog**搜索Moonriver (MOVR)并点击**Install**。随后，您的Ledger设备将会显示**Processing**。安装完成后，Moonriver app将会出现在您的Ledger设备上
 
 在Ledger Live app，您将在**Manager**页面的**Apps installed**标签下看到您所安装的Ethereum app和Moonriver app。app成功安装后，您可以关闭Ledger Live。
@@ -41,23 +41,23 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 现在您已成功安装了Ledger Live app，接下来您可以将您的Ledger连接至电脑并将其解锁，然后打开Moonriver app。
 
---8<-- 'text/ledger/import-ledger/step-1.md'
+--8<-- 'text/tokens/connect/ledger/import-ledger/step-1.md'
 
 ![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-2.png)
 
---8<-- 'text/ledger/import-ledger/step-2.md'
+--8<-- 'text/tokens/connect/ledger/import-ledger/step-2.md'
 
 ![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-3.png)
 
---8<-- 'text/ledger/import-ledger/step-3.md'
+--8<-- 'text/tokens/connect/ledger/import-ledger/step-3.md'
 
 ![Ledger on Chrome](/images/tokens/connect/ledger/moonriver/ledger-4.png)
 
---8<-- 'text/ledger/import-ledger/step-4.md'
+--8<-- 'text/tokens/connect/ledger/import-ledger/step-4.md'
 
 如果MetaMask能成功连接至您的Ledger设备，您将能看到一个包含5个Moonriver/以太坊式账户的列表。如果您并未见到上述画面，请再次检查Ledger Live是否已关闭、Ledger设备是否已连接至您的电脑并成功解锁，并确保Moonriver app已开启。
 
---8<-- 'text/ledger/import-accounts.md'
+--8<-- 'text/tokens/connect/ledger/import-accounts.md'
 
 ![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/moonriver/ledger-5.png)
 
@@ -69,7 +69,7 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 您已经成功从您的Ledger设备导入一个兼容Moonriver的账户，现在您可以开始使用您的Ledger设备进行交互。
 
---8<-- 'text/ledger/receive-tokens.md'
+--8<-- 'text/tokens/connect/ledger/receive-tokens.md'
 
 ![MetaMask Copy Account](/images/tokens/connect/ledger/moonriver/ledger-7.png)
 
@@ -81,8 +81,8 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 ![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/moonriver/ledger-8.png)
 
---8<-- 'text/ledger/send-tokens/set-of-steps-1.md'
---8<-- 'text/ledger/send-tokens/set-of-steps-2.md'
+--8<-- 'text/tokens/connect/ledger/send-tokens/set-of-steps-1.md'
+--8<-- 'text/tokens/connect/ledger/send-tokens/set-of-steps-2.md'
 
 ![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/moonriver/ledger-9.png)
 
@@ -92,8 +92,8 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 这样就可以了！您已成功签署交易并使用您的Ledger硬件钱包发送了一些MOVR Token。
 
---8<-- 'text/ledger/blind-signing.md'
+--8<-- 'text/tokens/connect/ledger/blind-signing.md'
 
 ![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/moonriver/ledger-11.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

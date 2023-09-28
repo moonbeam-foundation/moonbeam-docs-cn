@@ -36,12 +36,12 @@ _作者：Kevin Neilson_
 根据[概览](#introduction)中总结的所有步骤，需要考虑以下先决条件：
 
 - 您需要在中继链上拥有UNIT，在发送XCM时用于支付交易费用。如果您有一个拥有DEV Token的Moonbase Alpha账户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}将一些DEV Token兑换成xcUNIT。然后使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}从Moonbase Alpha提取一些xcUNIT至[Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
-  --8<-- 'text/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 您的[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}必须持有DEV Token以调用Batch Precompile，并支付XCM执行费用（虽然此费用将以xcUNIT形式的UNIT Token进行支付）。我们将在下一个部分计算multilocation衍生账户地址
 
 ## 计算您的Multilocation衍生账户 {: #calculating-your-multilocation-derivative-account }
 
---8<-- 'text/xcm/calculate-multilocation-derivative-account.md'
+--8<-- 'text/builders/interoperability/xcm/calculate-multilocation-derivative-account.md'
 
 在本示例中，我们将通过XCM从Alice的账户（即`5Fe4nNwxJ9ai9hVkUubiy4e6BVs1tzJGDLXAdhUKuePq9CLp`）发送远程EVM调用。由于我们将从中继链发送XCM指令，因此命令中省略了平行链ID。父值`1`表示中继链为目标平行链父链。命令和响应如下图所示：
 
@@ -58,7 +58,7 @@ _作者：Kevin Neilson_
 
 此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址：`0xf0615483cbe76f5b2aa80a8ce2b2e9a8206deb65`。您可以根据需求在[Moonscan](https://moonbase.moonscan.io/){target=_blank}上查看您的multilocation衍生账户。接下来，您可以为此账户充值DEV Token。
 
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 准备Mint EVM Calldata {: #preparing-the-mint-evm-calldata }
 
@@ -249,4 +249,4 @@ XCM已成功被执行！如果您访问[Moonbase Alpha Moonscan](https://moonbas
 !!! 挑战
     通过XCM使用批量预编译和远程EVM调用，将MARS批准和Uniswap V2兑换结合到您想要的任何其他Token。作为一个想法实验，请仔细考虑哪种批量预编译方法最适合结合批准和交换交易。[通过XCM从波卡进行Uniswap V2兑换教程](/tutorials/interoperability/uniswapv2-swap-xcm/){target=_blank}和[批量预编译教程](/tutorials/eth-api/batch-approve-swap/){target=_blank}将能帮助您快速操作。
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'

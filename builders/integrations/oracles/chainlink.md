@@ -9,7 +9,7 @@ description: 查看基于Moonbeam网络的喂价合约并学习如何使用智�
 
 开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 喂价 {: #price-feeds }
 
@@ -191,7 +191,7 @@ interface AggregatorV3Interface {
 
 ## 基本请求模型 {: #basic-request-model }
 
---8<-- 'text/chainlink/brm.md'
+--8<-- 'text/builders/integrations/oracles/chainlink/brm.md'
 
 ### 获取数据 {: #fetching-data }
 
@@ -484,4 +484,4 @@ contract Client is ChainlinkClient {
 
 一旦您已经在Remix上部署合约，您可以开始请求容量数据。在发出请求之后，您可以通过[您节点的**Job**](http://localhost:6688/jobs){target=_blank}查看Job的状态。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

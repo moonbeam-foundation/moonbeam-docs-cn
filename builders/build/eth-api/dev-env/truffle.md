@@ -19,9 +19,9 @@ description: 通过本教程学习如何通过Truffle将基于Solidity的智能�
 ## 查看先决条件 {: #checking-prerequisites }
 
 本教程将使用Moonbeam Truffle box和Moonbeam Truffle plugin，所以您无需创建一个新账户，也无需为账户充值。Moonbeam开发节点拥有10个预充值帐户。然而，如果您想要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要一个拥有资金的账户。
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 使用Moonbeam Truffle plugin之前，您需要准备已经安装的[Docker](https://docs.docker.com/get-docker/){target=_blank}。
 
@@ -162,7 +162,7 @@ module.exports = {
     出于本教程目的，一些配置文件已从上述示例中移除。
 
 如果您要使用Moonbeam、Moonriver或Moonbase Alpha，您将需要为对应网络更新配置文件。
---8<-- 'text/common/endpoint-setup.md'
+--8<-- 'text/_common/endpoint-setup.md'
 您也需要为网络上拥有资金的账户更新私钥：
 
 === "Moonbeam"
@@ -408,4 +408,4 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 truffle exec INSERT_PATH_TO_FILE
 ```
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

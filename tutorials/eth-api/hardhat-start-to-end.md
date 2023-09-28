@@ -20,11 +20,11 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 开始之前，您需要准备以下内容：
 
  - 拥有DEV的Moonbase Alpha账户
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
  - [Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}
  - 在[测试部分](#running-your-tests)您将需要拥有[一个启动且正在运行的Moonbeam本地节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}
   -
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ## 创建Hardhat项目 {: #creating-a-hardhat-project }
 
@@ -103,7 +103,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
     ??? code "StakingInterface.sol"
 
         ```solidity
-        --8<-- 'code/precompiles/staking/StakingInterface.sol'
+        --8<-- 'code/builders/pallets-precompiles/precompiles/staking/StakingInterface.sol'
         ```
 
 6. `DelegationDAO.sol`依赖于几个标准[OpenZeppelin](https://www.openzeppelin.com/){target=_blank}合约。使用以下命令添加库：
@@ -124,7 +124,7 @@ npm install --save-dev @nomicfoundation/hardhat-toolbox
 
 对于本教程中的范例，您需要为Moonbase Alpha上的两个账户添加私钥。由于一些测试将在开发节点上完成，因此您还需要添加两个具有预备资金的开发节点账户的私钥，在本例中，我们可以使用Alice和Bob。此外，您还需要添加Moonscan API密钥，该密钥可用于Moonbase Alpha和Moonbeam。
 
---8<-- 'text/hardhat/hardhat-configuration-file.md'
+--8<-- 'text/builders/build/eth-api/dev-env/hardhat/hardhat-configuration-file.md'
     您可以修改`hardhat.config.js`文件，使其可用于任何Moonbeam网络：
 
     === "Moonbeam"
@@ -398,7 +398,7 @@ it('should only allow members to access member-only functions', async function (
 ??? code "Dao.js"
 
     ```js
-    --8<-- 'code/hardhat/dao-js-test-file.js'
+    --8<-- 'code/tutorials/eth-api/hardhat-start-to-end/dao-js-test-file.js'
     ```
 
 由于我们的测试用例主要包含staking DAO的配置和设置，不涉及实际委托操作，因此我们将在Moonbeam开发节点（本地节点）上运行我们的测试。请注意，Alice（`0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac`）是本地开发节点上唯一的收集人。您可以使用标志`--network moonbase`来使用Moonbase Alpha运行测试。在这种情况下，请确保您的部署者地址有足够的DEV token。
@@ -581,6 +581,6 @@ npx hardhat verify --network moonbeam INSERT_CONTRACT_ADDRESS 0x1C86E56007FCBF75
 - [测试合约的Hardhat指南](https://hardhat.org/hardhat-runner/docs/guides/test-contracts){target=_blank}
 - [编写任务和脚本](https://hardhat.org/hardhat-runner/docs/guides/tasks-and-scripts){target=_blank}
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

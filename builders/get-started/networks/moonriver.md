@@ -5,7 +5,7 @@ description: 学习如何通过RPC和WSS端点连接到Moonriver网络 - Moonbea
 
 # Moonriver快速上手
 
---8<-- 'text/moonriver/connect.md'
+--8<-- 'text/builders/get-started/networks/moonriver/connect.md'
 
 ## 区块链浏览器 {: #block-explorers }
 

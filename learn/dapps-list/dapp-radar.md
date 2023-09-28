@@ -51,5 +51,5 @@ DappRader团队会审核您所提交的信息，若符合收录要求，该DApp�
 
 <div class="page-disclaimer">
   DappRadar包含用户生成内容，此类内容不由Moonbeam基金会审核也和Moonbeam立场无关。
-  --8<-- 'text/disclaimers/user-generated-content.md'
+  --8<-- 'text/_disclaimers/user-generated-content.md'
 </div>

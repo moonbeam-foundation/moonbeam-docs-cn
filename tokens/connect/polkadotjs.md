@@ -11,7 +11,7 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 
 同时，Polkadot.js Apps交互界面现已原生支持H160地址和ECDSA密钥。本教程将带领大家了解在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/accounts){target=_blank}上这个基于以太坊账户的整合。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 !!! 注意事项
     Polkadot.js Apps正在逐步取消对存储在本地浏览器缓存中的帐户的支持。相反，建议您使用浏览器插件，例如[Talisman将您的帐户导入 Polkadot.js Apps](/tokens/connect/talisman){target=_blank}。
@@ -98,4 +98,4 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 
 这样就可以了！我们非常高兴Polkadot.js Apps能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam网络的用户体验和以太坊兼容功能。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

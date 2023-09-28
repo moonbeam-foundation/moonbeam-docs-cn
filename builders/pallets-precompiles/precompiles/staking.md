@@ -32,7 +32,7 @@ Moonbeam使用一种名为[平行链质押](/builders/pallets-precompiles/pallet
 
 本指南将介绍质押预编译接口中的可用方法。此外，它将向您展示如何通过质押预编译和以太坊API与质押pallet进行交互。本指南中的示例是在Moonbase Alpha上完成的，但它们可以适用于Moonbeam 或Moonriver。
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 退出延迟 {: #exit-delays }
 
@@ -138,7 +138,7 @@ Solidity接口包含以下的函数：
 
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 账户余额至少`{{networks.moonbase.staking.min_del_stake}}`枚
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 !!! 注意事项
     由于需要最低的委托数量以及gas费用，以下示例中需要持有超过`{{networks.moonbase.staking.min_del_stake}}`枚Token才可进行操作。若想获取更多超过水龙头分配的Token，请随时通过Discord联系我们，我们很高兴为您提供帮助。

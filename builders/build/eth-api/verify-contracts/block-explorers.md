@@ -22,7 +22,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 所使用的合约为简单的增量函数，根据功能命名为`Incrementer.sol`。内含的Solidity代码如以下所示：
 
 ```solidity
---8<-- 'code/web3-contract-local/Incrementer.sol'
+--8<-- 'code/builders/build/eth-api/libraries/web3-js/Incrementer.sol'
 ```
 
 ### 收集验证合约所需信息 {: #collecting-information-for-contract-verification}

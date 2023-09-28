@@ -60,7 +60,7 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 
 下方代码片段遵循[上一部分](#strategy-to-check-tx-finality)中概述的策略来检查交易确定性。其使用[默认块参数](https://ethereum.org/en/developers/docs/apis/json-rpc/#default-block){target=_blank}的`finalized`选项来获取最新最终确定的区块。
 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 !!! 注意事项
     下方教程中提供的代码片段不适用于生产环境。请确保针对每个用例进行调整。
@@ -68,19 +68,19 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/consensus-finality/ethers.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/consensus-finality/web3.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/vs-ethereum/consensus-finality/web3.py'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/web3.py'
     ```
 
 您可以修改这些脚本以使用`moon_isBlockFinalized`和`moon_isTxFinalized`。为此，您可以使用[Web3.js](https://web3js.readthedocs.io/){target=_blank}和[Ethers.js](https://docs.ethers.org/){target=_blank}的`send`方法对Substrate JSON-RPC进行自定义调用。自定义RPC请求也可以使用 [Web3.py](https://web3py.readthedocs.io/){target=_blank}和`make_request`方法。您需要将方法名称和参数传递给自定义请求，您可以在[Moonbeam自定义API](/builders/build/moonbeam-custom-api/){target=_blank}页面上找到该请求。
@@ -88,19 +88,19 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/consensus-finality/custom-rpc/ethers.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/consensus-finality/custom-rpc/web3.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/vs-ethereum/consensus-finality/custom-rpc/web3.py'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.py'
     ```
 
 ## 使用Substrate库检查交易确定性 {: #checking-tx-finality-with-substrate-libraries }
@@ -118,13 +118,13 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 === "Polkadot.js"
 
     ```js
-    --8<-- 'code/vs-ethereum/consensus-finality/polkadotjs.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/polkadotjs.js'
     ```
 
 === "py-substrate-interface"
 
     ```py
-    --8<-- 'code/vs-ethereum/consensus-finality/pysubstrateinterface.py'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/pysubstrateinterface.py'
     ```
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

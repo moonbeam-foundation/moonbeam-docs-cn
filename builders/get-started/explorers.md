@@ -13,7 +13,7 @@ Moonbeam现在提供两种不同的浏览器：一种用于查询以太坊API，
 
 ## 相关链接 {: #quick-links }
 
---8<-- 'text/explorers/explorers.md'
+--8<-- 'text/builders/get-started/explorers/explorers.md'
 
 ## 以太坊API {: #ethereum-api }
 

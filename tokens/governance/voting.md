@@ -22,7 +22,7 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
 本教程中重要参数定义如下：
 
---8<-- 'text/governance/vote-conviction-definitions.md'
+--8<-- 'text/learn/features/governance/vote-conviction-definitions.md'
 
  - **最大投票数** — 每个账户的最大并发投票数
 
@@ -44,15 +44,15 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
         {{ networks.moonbase.governance.max_votes }} votes
         ```
 
---8<-- 'text/governance/approval-support-definitions.md'
+--8<-- 'text/learn/features/governance/approval-support-definitions.md'
 
---8<-- 'text/governance/lead-in-definitions.md'
+--8<-- 'text/learn/features/governance/lead-in-definitions.md'
 
  - **决定期** — Token持有者继续在公投上进行投票。如果公投在期限结束时未通过，则提案会被拒绝，决定保证金将被退还
  - **确认期** — 决定期内的一段时间，在此期间公投需要获得足够的批准和支持数量才能进入生效等待期
  - **生效等待期** — 一段指定的时间，它是在提案创建时定义的，是已批准的公投在发送之前的等待时间。每个Track有一个最短等待期限
 
---8<-- 'text/governance/delegation-definitions.md'
+--8<-- 'text/learn/features/governance/delegation-definitions.md'
 
 关于Track的特定参数更多信息，例如决定期、确认期、生效等待期、批准和支持要求等，请参考[治理概览的OpenGov（Governance V2）的治理参数部分](/learn/features/governance/#governance-parameters-v2){target=_blank}。
 

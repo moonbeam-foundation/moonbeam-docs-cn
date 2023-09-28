@@ -17,9 +17,9 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
  - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。 
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
- --8<-- 'text/common/endpoint-examples.md'
+ --8<-- 'text/_common/endpoint-examples.md'
 
 ## 创建Brownie项目 {: #creating-a-brownie-project }
 
@@ -353,8 +353,6 @@ def main():
 
 恭喜您！您已经成功通过Brownie部署合约并与之交互！
 
---8<-- 'text/disclaimers/third-party-content.md'
-
 ### 使用脚本 {: #using-a-script }
 
 您还可以编写一个脚本来与您新部署的合约进行交互。首先，您可以在`scripts`目录中创建一个新文件：
@@ -414,4 +412,4 @@ def main():
 
 恭喜，您已成功部署并使用Brownie与合约交互！
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

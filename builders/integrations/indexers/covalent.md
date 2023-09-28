@@ -9,7 +9,7 @@ description: 使用Covalent API在Moonbeam上查询区块链数据，包括余�
 
 [Covalent](https://www.covalenthq.com/){target=_blank}通过统一的API为所有区块链网络上的资产提供完全的公开透明。简而言之，用户无需任何代码，就可以从各个区块链上获取详细的区块链交易数据。通过统一的[Covalent API](https://www.covalenthq.com/docs/api/#/0/0/USD/1){target=_blank}界面，用户可以创建全新的应用程序或者调整现有的应用程序，无需重新配置或维护基础设施。Covalent现已支持Moonbase Alpha，并且计划支持Moonbeam和Moonriver。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 快速上手 {: #quick-start }
 
@@ -74,7 +74,7 @@ Covalent API有两类终端：
 
  - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。
- --8<-- 'text/faucet/faucet-list-item.md'
+ --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## Covalent API使用测试 {: #try-it-out }
 首先确保您已获得以“ckey_”开头的[API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}。Token Holders终端将返回某一特定代币所有持有者的列表，调用这个API需要执行以下操作：
@@ -178,4 +178,4 @@ fetch_wallet_balance('0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8')
 !!! 注意事项
     `auth`的第二个参数留空，因为不需要密码，只需要您的API密钥。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

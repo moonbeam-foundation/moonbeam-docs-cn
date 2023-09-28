@@ -30,7 +30,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 ![MetaMask installation with a balance](/images/builders/build/eth-api/dev-env/remix/using-remix-2.png)
 
 如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确认您连接的是正确的网络并拥有具有一定资金的账户。
---8<-- 'text/faucet/faucet-sentence.md'
+--8<-- 'text/_common/faucet/faucet-sentence.md'
 
 ## 开始使用Remix {: #getting-started-with-remix }
 
@@ -45,7 +45,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 接着，将以下智能合约粘贴至弹窗的编辑框内：
 
 ```solidity
---8<-- 'code/remix-local/contract.md'
+--8<-- 'code/builders/build/eth-api/dev-env/remix/MyToken.sol'
 ```
 
 ![Paste the contract into the editor](/images/builders/build/eth-api/dev-env/remix/using-remix-5.png)
@@ -148,4 +148,4 @@ Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbe
 
 Moonbeam Remix Plugin能够在Remix中无缝使用，所以您可以随时切换使用传统的Remix编译功能进行部署，或是选择使用Moonbeam Remix Plugin。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

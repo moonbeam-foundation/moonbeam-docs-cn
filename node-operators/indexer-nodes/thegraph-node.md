@@ -14,7 +14,7 @@ description: 使用Docker启动并运行您自己的Graph节点，为Moonbeam上
 !!! 注意事项
     本教程示例基于Ubuntu 18.04和MacOS的环境，用户需根据其所使用其他系统进行微调。
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 查看先决条件 {: #checking-prerequisites } 
 
@@ -27,7 +27,7 @@ description: 使用Docker启动并运行您自己的Graph节点，为Moonbeam上
 在教程中，我们将用`tracing`标记Graph节点，对应Moonbase Alpha完整节点运行。如果您想运行开启`tracing`的全节点，请参考[运行追踪节点](/node-operators/networks/tracing-node){target=_blank}指南。
 
 此教程也适用于Moonbeam和Moonriver。
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
 
 ## 运行Graph节点 {: #running-a-graph-node } 
 
@@ -131,4 +131,4 @@ docker-compose up
 
 这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam和Moonriver。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

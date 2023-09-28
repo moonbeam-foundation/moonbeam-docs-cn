@@ -23,9 +23,9 @@ Foundry由四个工具组成：
 开始之前，您将需要准备以下内容：
 
  - 拥有资金的账户
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
---8<-- 'text/common/endpoint-examples.md'
+--8<-- 'text/_common/endpoint-examples.md'
  - 提前[安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
 
 ## 创建Foundry项目 {: #creating-a-foundry-project }
@@ -467,4 +467,4 @@ npm run test
 
 最后，虽非必要，但可以将所有JavaScript脚本从`scripts`文件夹移动到Foundry的`script`文件夹中，并删除`scripts`文件夹，这样就不会出现两个具有相同用途的文件夹。
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

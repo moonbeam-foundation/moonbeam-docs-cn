@@ -39,7 +39,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
      |        财政库委员会         |        {{networks.moonbase.precompiles.collective_treasury }}        |
      |      OpenGov技术委员会      | {{networks.moonbase.precompiles.collective_opengov_tech_committee }} |
 
---8<-- 'text/precompiles/security.md'
+--8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
 ## 团体Solidity接口 {: #the-call-permit-interface }
 
@@ -84,7 +84,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
  - 安装MetaMask并[连接至基于Moonbeam的网络](/tokens/connect/metamask/){target=_blank}
  - 准备一个拥有资金的账户。如果使用的是Moonbeam开发节点，则开发账户已经注入资金。如果使用的是Moonbeam、Moonriver或Moonbase Alpha，您将需要充值一定资金到您的账户。
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 如果您使用的是Moonbeam开发节点和开发账户，您将需要完成以下操作：
 

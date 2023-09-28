@@ -22,7 +22,7 @@ _作者：Jeremy Boetticher_
 要开始进行操作，您需要具备以下条件：
 
  - 一个拥有DEV的Moonbase Alpha账户
-    --8<-- 'text/faucet/faucet-list-item.md'
+    --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 已安装版本16或是以上的[Node.js](https://nodejs.org/en/download/){target=_blank}
  - [VS Code](https://code.visualstudio.com/){target=_blank}与Juan Blanco的[Solidity扩展](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=_blank}是推荐的IDE
  - JavaScript和React的相关背景知识
@@ -1121,6 +1121,6 @@ function App() {
 
 希望通过阅读本指南，您能够顺利在Moonbeam上创建新颖的DApp！
 
---8<-- 'text/disclaimers/educational-tutorial.md'
+--8<-- 'text/_disclaimers/educational-tutorial.md'
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'

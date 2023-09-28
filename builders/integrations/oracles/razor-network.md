@@ -15,9 +15,9 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 |:--------------:|-|:------------------------------------------:|
 | Moonbase Alpha | | 0xa7f180fb18EF0d65049fE03d4308bA33a28b6513 |
 
---8<-- 'text/disclaimers/third-party-content-intro.md'
+--8<-- 'text/_disclaimers/third-party-content-intro.md'
 
-## Jobs {: #jobs } 
+## Jobs {: #jobs }
 
 每个喂价数据都与一个Job ID相对应，例如：
 
@@ -138,4 +138,4 @@ interface Razor {
 
 ![Razor check price](/images/builders/integrations/oracles/razor/razor-demo-2.png)
 
---8<-- 'text/disclaimers/third-party-content.md'
+--8<-- 'text/_disclaimers/third-party-content.md'
