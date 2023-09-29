@@ -23,8 +23,8 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
     --8<-- 'text/_common/faucet/faucet-list-item.md'
  - [Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}
  - 在[测试部分](#running-your-tests)您将需要拥有[一个启动且正在运行的Moonbeam本地节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}
-  -
---8<-- 'text/_common/endpoint-examples.md'
+ - 
+    --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 ## 创建Hardhat项目 {: #creating-a-hardhat-project }
 

@@ -15,10 +15,10 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 在开始本教程示例之前，您将需要提前准备以下内容：
 
- - 具有拥有一定数量资金的账户。 
- --8<-- 'text/_common/faucet/faucet-list-item.md'
+ - 具有拥有一定数量资金的账户。
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
- --8<-- 'text/_common/endpoint-examples-list-item.md'
+  --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 !!! 注意事项
     --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'

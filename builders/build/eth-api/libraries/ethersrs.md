@@ -16,9 +16,9 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 在本教程的示例中，您将需要准备以下内容：
 
  - 拥有资金的账户。
-    --8<-- 'text/_common/faucet/faucet-list-item.md'
+  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
-    --8<-- 'text/_common/endpoint-examples-list-item.md'
+  --8<-- 'text/_common/endpoint-examples-list-item.md'
  - 在设备上[安装Rust](https://www.rust-lang.org/tools/install){target=_blank}
  - 在设备上[安装solc](https://docs.soliditylang.org/en/v0.8.9/installing-solidity.html)。Ethers.rs包的建议使用[solc-select](https://github.com/crytic/solc-select){target=_blank}
 

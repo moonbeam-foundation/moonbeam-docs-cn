@@ -18,13 +18,9 @@ _作者：Erin Shaben_
 要跟随此教程操作，您需要准备以下内容：
 
 - 完成[Docker安装](https://docs.docker.com/get-docker/){target=_blank}
-
-- 一个在Moonbase Alpha测试网上拥有足够DEV Token以及在Moonbeam主网上拥有足够GLMR Token的账户
-
+- 一个在Moonbase Alpha测试网上拥有足够DEV Token以及在Moonbeam主网上拥有足够GLMR Token的账户。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
-
 - 您拥有的Moonbeam终端和对应API密钥，您可以从支持的[端点提供者](/builders/get-started/endpoints/){target=_blank}处获得
-
 - [生成Moonscan API密钥](https://docs.moonbeam.network/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}，用于验证我们的合约
 
 ## 创建一个Truffle项目 {: #create-a-truffle-project }

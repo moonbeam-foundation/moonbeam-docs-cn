@@ -16,10 +16,10 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 在开始之前，您将需要准备以下内容：
 
 - 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
-- 具有拥有一定数量资金的账户。 
+- 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
-
---8<-- 'text/_common/endpoint-examples.md'
+- 
+  --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 ## 创建Hardhat项目 {: #creating-a-hardhat-project }
 
