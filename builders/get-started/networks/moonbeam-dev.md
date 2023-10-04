@@ -62,9 +62,12 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         --dev --ws-external --rpc-external
         ```
 
-    如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
+!!! note
+    如果您的电脑使用的是Apple芯片, Docker可能无法完美运行您使用的镜像文件. 为了提升性能, 请尝试 [使用二进制文件启动节点](#getting-started-with-the-binary-file).
 
-    ![Docker - output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-2.png)
+如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
+
+![Docker - output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-2.png)
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -92,6 +95,10 @@ purestake/moonbeam \
 
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
+!!! note
+        安装路径包含空格会造成编译错误
+
+
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
     ```
@@ -111,6 +118,14 @@ purestake/moonbeam \
         apt install clang protobuf-compiler libprotobuf-dev -y 
         ```
 
+        MacOS用户请使用Homebrew来安装依赖项:
+        
+        ```bash
+        brew install llvm
+        brew install protobuf
+        ```
+    
+    
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/build.md'
     ```
