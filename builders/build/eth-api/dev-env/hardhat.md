@@ -46,7 +46,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 4. 创建项目
 
     ```sh
-    npx hardhat
+    npx hardhat init
     ```
 
     !!! 注意事项
@@ -82,6 +82,7 @@ touch Box.sol
 
 ```solidity
 // contracts/Box.sol
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
 
 contract Box {
