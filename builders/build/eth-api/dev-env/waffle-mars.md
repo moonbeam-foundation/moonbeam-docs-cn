@@ -72,18 +72,18 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
     ```json
     {
-      "compilerOptions": {
-        "strict": true,
-        "target": "ES2019",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "module": "CommonJS",
-        "composite": true,
-        "sourceMap": true,
-        "declaration": true,
-        "noEmit": true
-      }
+        "compilerOptions": {
+            "strict": true,
+            "target": "ES2019",
+            "moduleResolution": "node",
+            "resolveJsonModule": true,
+            "esModuleInterop": true,
+            "module": "CommonJS",
+            "composite": true,
+            "sourceMap": true,
+            "declaration": true,
+            "noEmit": true
+        }
     }
     ```
 
@@ -133,17 +133,17 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
     ```json
     {
-      "compilerType": "solcjs", // Specifies compiler to use
-      "compilerVersion": "0.8.0", // Specifies version of the compiler
-      "compilerOptions": {
-        "optimizer": { // Optional optimizer settings
-          "enabled": true, // Enable optimizer
-          "runs": 20000 // Optimize how many times you want to run the code
-        }
-      },
-      "sourceDirectory": "./contracts", // Path to directory containing smart contracts
-      "outputDirectory": "./build", // Path to directory where Waffle saves compiler output
-      "typechainEnabled": true // Enable typed artifact generation
+        "compilerType": "solcjs",
+        "compilerVersion": "0.8.0",
+        "compilerOptions": {
+            "optimizer": {
+                "enabled": true,
+                "runs": 20000
+            }
+        },
+        "sourceDirectory": "./contracts",
+        "outputDirectory": "./build",
+        "typechainEnabled": true
     }
     ```
 
@@ -151,7 +151,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
     ```json
     "scripts": {
-      "build": "waffle"
+        "build": "waffle"
     },
     ```
 
@@ -176,6 +176,7 @@ npm run build
 由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
+
     ```bash
     mkdir test && cd test && touch MyToken.test.ts
     ```
@@ -214,9 +215,9 @@ npm run build
     ```typescript
       beforeEach(async () => {
         // This is for demo purposes only. Never store your private key in a JavaScript/TypeScript file
-        const PRIVATE_KEY = '<insert-your-private-key-here>'
+        const privateKey = 'INSERT_PRIVATE_KEY'
         // Create a wallet instance using your private key & connect it to the provider
-        wallet = new Wallet(PRIVATE_KEY).connect(provider);
+        wallet = new Wallet(privateKey).connect(provider);
 
         // Create a random account to transfer tokens to & connect it to the provider
         walletTo = Wallet.createRandom().connect(provider);
@@ -233,6 +234,7 @@ npm run build
     ```
 
 4. 现在您可以创建您的第一个测试用例。第一次测试用例将检查您的初始余额，以确保您收到了10个代币的初始供应量。请注意测试用例应考虑成功和失败的情况，为了遵循测试结果，需先编写失败的测试的代码：
+
     ```typescript
     it('Mints the correct initial balance', async () => {
       expect(await token.balanceOf(wallet.address)).to.equal(1); // This should fail
@@ -240,24 +242,27 @@ npm run build
     ```
 
 5. 在运行第一个测试用例之前，您需要回到根方向并添加一个`.mocharc.json` Mocha配置文件：
+
     ```bash
     cd .. && touch .mocharc.json
     ```
 
 6. 现在，您可以编辑`.mocharc.json`文件来配置Mocha：
+
     ```json
     {
-      "require": "ts-node/register/transpile-only", // Use ts-node to transpile the code for tests
-      "timeout": 600000, // Set timeout to 10 minutes
-      "extension": "test.ts" // Specify extension for test files
+        "require": "ts-node/register/transpile-only",
+        "timeout": 600000,
+        "extension": "test.ts"
     }
     ```
 
 7. 您还需要在`package.json`中添加一个脚本来运行你的测试用例：
+
     ```json
     "scripts": {
-      "build": "waffle",
-      "test": "mocha",
+        "build": "waffle",
+        "test": "mocha"
     },
     ```
 
@@ -267,7 +272,7 @@ npm run build
     npm run test
     ```
 
-请注意，因为测试是针对Moonbase Alpha运行的，所以处理可能需要几分钟时间。但如果一切都按预期进行，您应该会有一个失败的测试。
+    请注意，因为测试是针对Moonbase Alpha运行的，所以处理可能需要几分钟时间。但如果一切都按预期进行，您应该会有一个失败的测试。
 
 9. 接下来，您可以返回并编辑测试，检查10个代币：
 
@@ -306,7 +311,7 @@ import { MyToken, MyTokenFactory } from '../build/types';
 
 use(solidity);
 
-describe ('MyToken', () => {
+describe('MyToken', () => {
   let provider: Provider = new ethers.providers.JsonRpcProvider(
     '{{ networks.moonbase.rpc_url }}'
   );
@@ -316,8 +321,8 @@ describe ('MyToken', () => {
 
   beforeEach(async () => {
     // This is for demo purposes only. Never store your private key in a JavaScript/TypeScript file
-    const PRIVATE_KEY = '<insert-your-private-key-here>'
-    wallet = new Wallet(PRIVATE_KEY).connect(provider);
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    wallet = new Wallet(privateKey).connect(provider);
     walletTo = Wallet.createRandom().connect(provider);
     token = await new MyTokenFactory(wallet).deploy();
     let contractTransaction = await token.initialize(10);
@@ -332,7 +337,7 @@ describe ('MyToken', () => {
     await (await token.transfer(walletTo.address, 7)).wait();
     expect(await token.balanceOf(walletTo.address)).to.equal(7);
   });
-})
+});
 ```
 
 如果您想自己编写更多测试用例，您可以考虑测试从没有任何资金的账户转账或从没有足够资金的账户转账。
@@ -354,8 +359,8 @@ describe ('MyToken', () => {
 
     ```json
     "scripts": {
-      "build": "waffle && mars",
-      "test": "mocha",
+        "build": "waffle && mars",
+        "test": "mocha",
     },
     ```
 
@@ -376,38 +381,45 @@ describe ('MyToken', () => {
 在此步骤中，您将创建部署脚本，该脚本将定义应如何部署合约。Mars提供了一个`deploy`功能，您可以向它传递选项，例如用于部署合约的帐户私钥、所要部署的网络等。`deploy`函数内部用于定义要部署的合约的地方。 Mars有一个`contract`函数，用来接受`name`、`artifact`和 `constructorArgs`。此函数将用于部署`MyToken`合约，初始供应量为10个MYTOK。
 
 1. 创建一个`src`目录来包含你的部署脚本并创建脚本来部署`MyToken`合约：
+
     ```bash
     mkdir src && cd src && touch deploy.ts
     ```
 
 2. 在`deploy.ts`中，使用Mars的`deploy`函数创建一个脚本，使用您账户的私钥部署至 Moonbase Alpha：
+
     ```javascript
     import { deploy } from 'ethereum-mars';
     // This is for demo purposes only. Never store your private key in a JavaScript/TypeScript file
-    const privateKey = "<insert-your-private-key-here>";
-    deploy({network: '{{ networks.moonbase.rpc_url }}', privateKey},(deployer) => {
-      // Deployment logic will go here
-    });
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    deploy(
+      { network: '{{ networks.moonbase.rpc_url }}', privateKey },
+      (deployer) => {
+        // Deployment logic will go here
+      }
+    );
     ```
 
 3. 设置`deploy`函数来部署在上述步骤中创建的`MyToken`合约：
+
     ```javascript
     import { deploy, contract } from 'ethereum-mars';
     import { MyToken } from '../build/artifacts';
     // This is for demo purposes only. Never store your private key in a JavaScript/TypeScript file
-    const privateKey = "<insert-your-private-key-here>";
-    deploy({network: '{{ networks.moonbase.rpc_url }}', privateKey}, () => {
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    deploy({ network: '{{ networks.moonbase.rpc_url }}', privateKey }, () => {
       contract('myToken', MyToken, [10]);
     });
     ```
 
 4. 将部署脚本添加到`package.json`中的`scripts`对象：
+
     ```json
-      "scripts": {
+    "scripts": {
         "build": "waffle && mars",
         "test": "mocha",
         "deploy": "ts-node src/deploy.ts"
-      },
+    },
     ```
 
 到目前为止，您应该已经在`deploy.ts`中创建了一个部署脚本，用于将`MyToken`合约部署至Moonbase Alpha，并添加了轻松调用脚本和部署合约的功能。
@@ -417,6 +429,7 @@ describe ('MyToken', () => {
 若您已配置了部署，现在可以真正部署至Moonbase Alpha了。
 
 1. 使用您刚刚创建的脚本部署合约：
+
     ```bash
     npm run deploy
     ```

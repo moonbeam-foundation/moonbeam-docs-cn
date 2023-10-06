@@ -57,7 +57,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 === "Moonbeam"
 
     ```js
-    import { ethers } from "ethers";
+    import { ethers } from 'ethers';
     import { Keyring } from '@polkadot/api';
     
     // Set up Ethers provider and signer
@@ -68,24 +68,21 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         chainId: {{ networks.moonbeam.chain_id }}, // {{ networks.moonbeam.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonbeam.rpc, 
-      {
-        chainId: providerRPC.moonbeam.chainId,
-        name: providerRPC.moonbeam.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonbeam.rpc, {
+      chainId: providerRPC.moonbeam.chainId,
+      name: providerRPC.moonbeam.name,
+    });
     const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
-    const polkadotKeyring = keyring.addFromUri(mnemonic);
+    const polkadotKeyring = keyring.addFromUri('INSERT_MNEMONIC');
     ```
 
 === "Moonriver"
 
     ```js
-    import { ethers } from "ethers";
+    import { ethers } from 'ethers';
     import { Keyring } from '@polkadot/api';
     
     // Set up Ethers provider and signer
@@ -96,13 +93,10 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         chainId: {{ networks.moonriver.chain_id }}, // {{ networks.moonriver.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonriver.rpc, 
-      {
-        chainId: providerRPC.moonriver.chainId,
-        name: providerRPC.moonriver.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonriver.rpc, {
+      chainId: providerRPC.moonriver.chainId,
+      name: providerRPC.moonriver.name,
+    });
     const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
@@ -113,7 +107,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 === "Moonbase Alpha"
 
     ```js
-    import { ethers } from "ethers";
+    import { ethers } from 'ethers';
     import { Keyring } from '@polkadot/api';
     
     // Set up Ethers provider and signer
@@ -124,18 +118,15 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
         chainId: {{ networks.moonbase.chain_id }}, // {{ networks.moonbase.hex_chain_id }} in hex,
       },
     };
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonbase.rpc, 
-      {
-        chainId: providerRPC.moonbase.chainId,
-        name: providerRPC.moonbase.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonbase.rpc, {
+      chainId: providerRPC.moonbase.chainId,
+      name: providerRPC.moonbase.name,
+    });
     const ethersSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     // Set up Polkadot keyring
     const keyring = new Keyring({ type: 'sr25519' });
-    const polkadotKeyring = keyring.addFromUri(mnemonic);
+    const polkadotKeyring = keyring.addFromUri('INSERT_MNEMONIC');
     ```
 
 ### 初始化 {: #initializing }
@@ -146,21 +137,21 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
-    const { moonbeam } = init()
+    const { moonbeam } = init();
     ```
 
 === "Moonriver"
 
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
-    const { moonriver } = init()
+    const { moonriver } = init();
     ```
 
 === "Moonbase Alpha"
 
     ```js
     import { init } from '@moonbeam-network/xcm-sdk';
-    const { moonbase } = init()
+    const { moonbase } = init();
     ```
 
 如果您希望支持某个特定钱包，您可以直接将签署者传递至`init`函数。否则，您仅能在为存款或提现构建转移数据时直接传递签署者。要为[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}和[波卡](/builders/build/substrate-api/polkadot-js-api){target=_blank}传递签署者，您可以使用以下代码段：
@@ -171,8 +162,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbeam } = init({
       ethersSigner: 'INSERT_ETHERS_SIGNER',
-      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
-    })
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER',
+    });
     ```
 
 === "Moonriver"
@@ -181,8 +172,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonriver } = init({
       ethersSigner: 'INSERT_ETHERS_SIGNER',
-      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
-    })
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER',
+    });
     ```
 
 === "Moonbase Alpha"
@@ -191,8 +182,8 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     import { init } from '@moonbeam-network/xcm-sdk';
     const { moonbase } = init({
       ethersSigner: 'INSERT_ETHERS_SIGNER',
-      polkadotSigner: 'INSERT_POLKADOT_SIGNER'
-    })
+      polkadotSigner: 'INSERT_POLKADOT_SIGNER',
+    });
     ```
 
 ## 使用SDK接口 {: #using-the-api }
@@ -383,15 +374,17 @@ async function deposit() {
 
   const { asset, sourceBalance, source, min, send } = await from(polkadot).get(
     'INSERT_MOONBEAM_ADDRESS',
-    polkadotKeyring, // See the Get section for other accepted arguments
+    polkadotKeyring // See the Get section for other accepted arguments
   );
 
   console.log(
     `Your ${asset.originSymbol} balance in ${source.name}: ${toDecimal(
       sourceBalance,
-      asset.decimals,
-    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
-  );
+      asset.decimals
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(
+      min,
+      asset.decimals
+    ).toFixed()}`
 
   await send('INSERT_AMOUNT', (event) => console.log(event));
 }
@@ -484,7 +477,7 @@ const { from } = moonbeam.deposit(dot);
 const response = await from(polkadot).get(
   'INSERT_MOONBEAM_ADDRESS',
   polkadotKeyring,
-)
+);
 ```
 
 以下为调用`get`以从波卡传送DOT至Moonbeam的范例：
@@ -572,11 +565,16 @@ async function getDepositFee() {
   const { from } = moonbeam.deposit(dot);
   const { asset, getFee } = await from(polkadot).get(
     'INSERT_MOONBEAM_ADDRESS',
-    polkadotKeyring, // See the Get section for other accepted arguments
+    polkadotKeyring // See the Get section for other accepted arguments
   );
 
-  const fee = await getFee('INSERT_AMOUNT'));
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, asset.decimals).toFixed()} ${dot}`);
+  const fee = await getFee('INSERT_AMOUNT');
+  console.log(
+    `Fee to deposit is estimated to be: ${toDecimal(
+      fee,
+      asset.decimals
+    ).toFixed()} ${dot}`
+  );
 }
 
 getDepositFee();
@@ -606,11 +604,11 @@ async function withdraw() {
 
   console.log(
     `\nYou can withdraw ${dot} to these chains: `,
-    chains.map((chain) => chain.name),
+    chains.map((chain) => chain.name)
   );
 
   const { asset, destination, destinationBalance, min, send } = await to(
-    polkadot,
+    polkadot
   ).get('INSERT_POLKADOT_ADDRESS', {
     ethersSigner: signer, // Only required if you didn't pass the signer in on initialization
   });
@@ -618,8 +616,11 @@ async function withdraw() {
   console.log(
     `Your ${asset.originSymbol} balance in ${destination.name}: ${toDecimal(
       destinationBalance,
-      asset.decimals,
-    ).toFixed()}. Minimum transferable amount is: ${toDecimal(min, asset.decimals).toFixed()}`,
+      asset.decimals
+    ).toFixed()}. Minimum transferable amount is: ${toDecimal(
+      min,
+      asset.decimals
+    ).toFixed()}`
   );
 
   await send('INSERT_AMOUNT', (event) => console.log(event));
@@ -674,8 +675,8 @@ const dot = AssetSymbol.DOT;
 const polkadot = ChainKey.Polkadot;
 
 const { to } = moonbeam.deposit(dot);
-const response =  await to(
-    polkadot,
+const response = await to(
+    polkadot
   ).get('INSERT_POLKADOT_ADDRESS', 
   { ethersSigner: signer } // Only required if you didn't pass the signer in on initialization
 )
@@ -767,11 +768,16 @@ async function getWithdrawFee() {
   const { to } = moonbeam.withdraw(dot);
   const { asset, getFee } = await from(polkadot).get(
     'INSERT_POLKADOT_ADDRESS',
-    { ethersSigner }, // Only required if you didn't pass the signer in on initialization
+    { ethersSigner } // Only required if you didn't pass the signer in on initialization
   );
 
   const fee = await getFee('INSERT_AMOUNT');
-  console.log(`Fee to deposit is estimated to be: ${toDecimal(fee, moonbeam.moonChain.decimals).toFixed()} ${moonbeam.moonAsset.originSymbol}`);
+  console.log(
+    `Fee to deposit is estimated to be: ${toDecimal(
+      fee,
+      moonbeam.moonChain.decimals
+    ).toFixed()} ${moonbeam.moonAsset.originSymbol}`
+  );
 }
 
 getWithdrawFee();
@@ -784,19 +790,19 @@ getWithdrawFee();
 === "Moonbeam"
 
     ```js
-    moonbeam.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
+    moonbeam.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb);
     ```
 
 === "Moonriver"
 
     ```js
-    moonriver.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
+    moonriver.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb);
     ```
 
 === "Moonbase Alpha"
 
     ```js
-    moonbase.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb)
+    moonbase.subscribeToAssetsBalanceInfo('INSERT_ADDRESS', cb);
     ```
 
 以下范例检索Moonbeam上给定帐户的余额信息，并将每个支持资产的余额输出到控制台：
@@ -807,12 +813,13 @@ const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
   (balances) => {
     balances.forEach(({ asset, balance, origin }) => {
       console.log(
-        `${balance.symbol}: ${toDecimal(balance.balance, balance.decimals).toFixed()} (${
-          origin.name
-        } ${asset.originSymbol})`,
+        `${balance.symbol}: ${toDecimal(
+          balance.balance,
+          balance.decimals
+        ).toFixed()} (${origin.name} ${asset.originSymbol})`
       );
     });
-  },
+  }
 );
 
 unsubscribe();
@@ -842,8 +849,8 @@ import { init, isXcmSdkDeposit } from '@moonbeam-network/xcm-sdk';
 
 ...
 
-const deposit = moonbeam.deposit(moonbeam.symbols[0])
-console.log(isXcmSdkDeposit(deposit)) // Returns true
+const deposit = moonbeam.deposit(moonbeam.symbols[0]);
+console.log(isXcmSdkDeposit(deposit)); // Returns true
 ```
 
 ```js
@@ -851,8 +858,8 @@ import { init, isXcmSdkDeposit } from '@moonbeam-network/xcm-sdk';
 
 ...
 
-const withdraw = moonbeam.withdraw(moonbeam.symbols[0])
-console.log(isXcmSdkDeposit(withdraw)) // Returns false
+const withdraw = moonbeam.withdraw(moonbeam.symbols[0]);
+console.log(isXcmSdkDeposit(withdraw)); // Returns false
 ```
 
 #### 查看转移数据是否用于取出 {: #withdraw-check }
@@ -866,8 +873,8 @@ import { init, isXcmSdkWithdraw } from '@moonbeam-network/xcm-sdk';
 
 ...
 
-const withdraw = moonbeam.withdraw(moonbeam.symbols[0])
-console.log(isXcmSdkWithdraw(withdraw)) // Returns true
+const withdraw = moonbeam.withdraw(moonbeam.symbols[0]);
+console.log(isXcmSdkWithdraw(withdraw)); // Returns true
 ```
 
 ```js
@@ -875,8 +882,8 @@ import { init, isXcmSdkWithdraw } from '@moonbeam-network/xcm-sdk';
 
 ...
 
-const deposit = moonbeam.deposit(moonbeam.symbols[0])
-console.log(isXcmSdkDeposit(deposit)) // Returns false
+const deposit = moonbeam.deposit(moonbeam.symbols[0]);
+console.log(isXcmSdkDeposit(deposit)); // Returns false
 ```
 
 #### 将余额转换为十进制或BigInt {: #decimals }

@@ -466,19 +466,20 @@ touch participate.js
 
 ```js
 async function participate() {
-    const lottery = await ethers.getContractAt('Lottery', 'INSERT-CONTRACT-ADDRESS');
-
-    const participationFee = await lottery.PARTICIPATION_FEE();
-    const tx = await lottery.participate({ value: participationFee });
-    console.log('Participation transaction hash:', tx.hash);
+  const lottery = await ethers.getContractAt(
+    'Lottery',
+    'INSERT_CONTRACT_ADDRESS'
+  );
+  const participationFee = await lottery.PARTICIPATION_FEE();
+  const tx = await lottery.participate({ value: participationFee });
+  console.log('Participation transaction hash:', tx.hash);
 }
-
 participate()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 ```
 
 要运行此脚本，您可以使用以下命令：

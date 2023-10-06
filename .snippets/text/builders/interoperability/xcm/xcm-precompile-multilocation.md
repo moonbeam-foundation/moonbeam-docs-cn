@@ -1,5 +1,5 @@
-```js
- struct Multilocation {
+```solidity
+struct Multilocation {
     uint8 parents;
     bytes[] interior;
 }

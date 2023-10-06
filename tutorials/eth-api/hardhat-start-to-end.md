@@ -131,44 +131,40 @@ npm install --save-dev @nomicfoundation/hardhat-toolbox
 
         ```js
         moonbeam: {
-            url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
-
-            chainId: {{ networks.moonbeam.chain_id }}, // (hex: {{ networks.moonbeam.hex_chain_id }})
-            accounts: [privateKey]
-          },
+          url: '{{ networks.moonbeam.rpc_url }}', // Insert your RPC URL here
+          chainId: {{ networks.moonbeam.chain_id }}, // (hex: {{ networks.moonbeam.hex_chain_id }})
+          accounts: [privateKey]
+        },
         ```
 
     === "Moonriver"
 
         ```js
         moonriver: {
-            url: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
-
-            chainId: {{ networks.moonriver.chain_id }}, // (hex: {{ networks.moonriver.hex_chain_id }})
-            accounts: [privateKey]
-          },
+          url: '{{ networks.moonriver.rpc_url }}', // Insert your RPC URL here
+          chainId: {{ networks.moonriver.chain_id }}, // (hex: {{ networks.moonriver.hex_chain_id }})
+          accounts: [privateKey]
+        },
         ```
 
     === "Moonbase Alpha"
 
         ```js
         moonbase: {
-            url: '{{ networks.moonbase.rpc_url }}',
-
-            chainId: {{ networks.moonbase.chain_id }}, // (hex: {{ networks.moonbase.hex_chain_id }})
-            accounts: [privateKey]
-          },
+          url: '{{ networks.moonbase.rpc_url }}',
+          chainId: {{ networks.moonbase.chain_id }}, // (hex: {{ networks.moonbase.hex_chain_id }})
+          accounts: [privateKey]
+        },
         ```
 
     === "Moonbeam开发节点"
 
         ```js
         dev: {
-            url: '{{ networks.development.rpc_url }}',
-
-            chainId: {{ networks.development.chain_id }}, // (hex: {{ networks.development.hex_chain_id }})
-            accounts: [privateKey]
-          },
+          url: '{{ networks.development.rpc_url }}',
+          chainId: {{ networks.development.chain_id }}, // (hex: {{ networks.development.hex_chain_id }})
+          accounts: [privateKey]
+        },
         ```
 
 5. 导入[Moonscan API密钥](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}，用于本教程后续验证部分
@@ -214,8 +210,8 @@ module.exports = {
     apiKey: {
       moonbaseAlpha: moonscanAPIKey, // Moonbase Moonscan API Key
       moonbeam: moonscanAPIKey, // Moonbeam Moonscan API Key     
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -311,7 +307,7 @@ describe('Dao contract', function () {
     // Return the deployed DAO and the first member of the DAO to allow the tests to 
     // access and interact with them
     return { deployedDao, member1 };
-  }
+  };
 
   // The test cases should be added here
 
@@ -367,7 +363,11 @@ it('should not allow non-admins to grant membership', async function () {
 
   // We use connect to call grant_member from member1's account instead of admin.
   // This test will succeed if the function call reverts and fails if the call succeeds
-  await expect(deployedDao.connect(member1).grant_member('0x0000000000000000000000000000000000000000')).to.be.reverted;
+  await expect(
+    deployedDao
+      .connect(member1)
+      .grant_member('0x0000000000000000000000000000000000000000')
+  ).to.be.reverted;
 });
 ```
 
@@ -462,7 +462,10 @@ async function main() {
   
   // 4. Deploy the contract specifying two params: the desired collator to
   // delegate to and the address of the deployer (the initial DAO admin)
-  const deployedDao = await delegationDao.deploy(targetCollator, deployer.address);
+  const deployedDao = await delegationDao.deploy(
+    targetCollator,
+    deployer.address
+  );
   await deployedDao.waitForDeployment();
   
   // 5. Print out the address of the deployed staking DAO contract
@@ -531,7 +534,10 @@ async function main() {
   
   // 4. Deploy the contract specifying two params: the desired collator to delegate
   // to and the address of the deployer (synonymous with initial DAO admin)
-  const deployedDao = await delegationDao.deploy(targetCollator, deployer.address);
+  const deployedDao = await delegationDao.deploy(
+    targetCollator,
+    deployer.address
+  );
   await deployedDao.waitForDeployment();
   
   console.log('DAO address:', deployedDao.address);

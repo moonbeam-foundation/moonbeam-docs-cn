@@ -49,7 +49,9 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 以下代码片段使用[`subscribeFinalizedHeads`](https://polkadot.js.org/docs/substrate/rpc/#subscribefinalizedheads-header){target=_blank}订阅最新确认的区块头，并循环访问之中的每个事件。然后，检查是否与一个`balances.Transfer`事件对应。如果是，这将提取一个转账的`from`、`to`以及`amount`并显示在控制台上。请注意，`amount`是以最小的单位（Wei）来显示的。您可以在他们的[官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}找到关于Polkadot.js和Substrate JSON RPC的所有可用信息。
 
---8<-- 'code/builders/get-started/eth-compare/transfers-api/balance-event.md'
+```ts
+--8<-- 'code/builders/get-started/eth-compare/transfers-api/balance-event.ts'
+```
 
 此外，您可以在[此脚本](https://gist.github.com/crystalin/b2ce44a208af60d62b5ecd1bad513bce){target=_blank}中找到更多余额转账相关具体案例的代码片段。
 
@@ -59,6 +61,8 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 以下代码片段使用Axios HTTP客户端查询Sidecar端点`/blocks/head`(https://paritytech.github.io/substrate-api-sidecar/dist/){target=_blank}以获取最新确认的区块头。然后，在EVM和Substrate API级别解码原生Token转账的`from`、`to`、`value`、`tx hash`、和`transaction status` 区块。
 
---8<-- 'code/builders/get-started/eth-compare/transfers-api/sidecar-transfer.md'
+```js
+--8<-- 'code/builders/get-started/eth-compare/transfers-api/sidecar-transfer.js'
+```
 
 关于安装和运行Sidecar服务实例，以及如何解码Moonbeam交易的Sidecar区块等更多信息，请参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}。
