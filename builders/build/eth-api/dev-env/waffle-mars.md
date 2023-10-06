@@ -173,7 +173,7 @@ npm run build
 
 --8<-- 'text/_common/endpoint-setup.md'
 
-由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Ganache](https://www.trufflesuite.com/ganache){target=_blank}可获得的快速迭代体验相似。
+由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Hardhat Network](https://hardhat.org/hardhat-network/docs/overview){target=_blank}可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
     ```bash
