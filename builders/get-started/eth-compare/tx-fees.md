@@ -9,68 +9,184 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 与Moonbeam上[用于发送转账的以太坊和Substrate API](/builders/get-started/eth-compare/transfers-api/){target=_blank}类似，Moonbeam上的Substrate和EVM也有不同的交易费用模型，开发者应知道何时需要计算和继续追踪其交易的交易费用。
 
-本教程假设您通过[Substrate API Sidecar](/builders/build/substrate-api/sidecar/){target=_blank}服务与Moonbeam区块交互。也有其他与Moonbeam区块交互的方式，例如使用[Polkadot.js API library](/builders/build/substrate-api/polkadot-js-api/){target=_blank}。检索区块后，两种方式的逻辑都是相同的。
+首先，以太坊上的交易都会消耗gas，gas是根据交易的复杂性和数据存储需求计算得出的。与之相对，Substrate交易使用“weight”这个概念来计算交易费用。在本教程中，您将学习如何计算Substrate和以太坊的交易费用。在以太坊的部分您还会学到Moonbeam与以太坊在交易费计算上的关键差异。
 
-您可以参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}获取关于安装和运行自己的Sidecar服务实例，以及如何为Moonbeam交易编码Sidecar区块的更多细节。
+### Moonbeam与以太坊的主要差异 {: #key-differences-with-ethereum}
 
-**请注意，此页面信息假定您运行的是版本{{ networks.moonbase.substrate_api_sidecar.stable_version }} 的Substrate Sidecar REST API。**
+Moonbeam和以太坊的交易费计算模型有一些主要差异，开发者在开发Moonbeam时应当注意这些不同：
 
-## Substrate API交易费用 {: #substrate-api-transaction-fees }
+  - [动态交易费机制{](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}与[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}类似，但实现方式不同。
 
-所有关于通过Substrate API发送的交易费用数据的信息都可以从以下区块端点中提取：
+  - Moonbeam交易费计算模型中使用的gas是通过Substrate extrinsic weight计算得来。首先将Substrate extrinsic weight数值映射为 {{ networks.moonbase.tx_weight_to_gas_ratio }} 的固定因子，计算得出交易的gas unit; 然后将该值与单位价格相乘来计算总gas费用。这个费用模型意味着通过以太坊API实现基本交易，比如转账，可能会比通过Substrate API更便宜。
 
-```text
-GET /blocks/{blockId}
-```
+  - 与EVM不同，除gas之外Moonbeam交易还包含一些其他指标，其中很重要的一个就是proof size。Proof size是中继链验证节点验证Moonbeam state变换时所需的存储空间。当一个交易的proof size超过限制（区块proof size的25%）时，该交易将抛出“Out of Gas”错误（即便 gasometer 中还有剩余gas）。此附加指标还会影响交易的退款（refund）。Moonbeam的退款是根据交易执行后使用最多的资源计算得出，如果一个交易消耗的proof size大于残留的gas，则退款数额将基于proof size计算。
 
-区块端点将返回与一个或多个区块相关的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}上阅读有关区块端点的更多信息。读取结果为JSON对象，相关嵌套结构如下所示：
+  - Moonbeam实现了[MBIP-5](https://github.com/moonbeam-foundation/moonbeam/blob/master/MBIPS/MBIP-5.md){target=_blank}中定义的一个新机制，该机制限制了区块能使用的存储上限，并且如果一个交易会造成存储数据增加，那它将需要支付更多gas。此功能目前仅在Moonbase Alpha上启用。
 
-```text
-RESPONSE JSON Block Object:
-    ...
-    |--number
-    |--extrinsics
-        |--{extrinsic_number}
-            |--method
-            |--signature
-            |--nonce
-            |--args
-            |--tip           
-            |--hash
-            |--info
-            |--era
-            |--events
-                |--{event_number}
-                    |--method
-                        |--pallet: "transactionPayment"
-                        |--method: "TransactionFeePaid"
-                    |--data
-                        |--0
-                        |--1
-                        |--2
-    ...
+## MBIP-5概述 {: #overview-of-mbip-5 }
 
-```
+MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam交易费机制的改动。与以太坊不同，MBIP-5 通过提高特定交易的gas以及限制单个区块的储存总量来控制网络存储增长速度。
 
-对象映射总结如下：
+这个提案将影响以下三类交易：合约部署（导致链上state增加）；创建新存储条目的交易；以及创建新帐户的预编译合约调用。
 
-|      交易信息      |                          JSON对象字段                         |
-|:------------------:|:-----------------------------------------------------------:|
-| Fee paying account | `extrinsics[extrinsic_number].events[event_number].data[0]` |
-|  Total fees paid   | `extrinsics[extrinsic_number].events[event_number].data[1]` |
-|        Tip         | `extrinsics[extrinsic_number].events[event_number].data[2]` |
+单个区块的存储增长限制为40KB，它定义了单个区块中所有交易造成储存量增长的上限。
 
-交易费用相关信息可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
+储存单位（bytes）与gas的转换率为：
 
 ```text
-pallet: "transactionPayment", method: "TransactionFeePaid" 
+转化率 = 区块gas上限 / (区块储存上限 * 1024 Bytes)
 ```
 
-随后，将用于支付此extrinsic的总交易费用映射至Block JSON对象的以下字段中：
+鉴于Moonbase的区块gas上限为{{ networks.moonbase.gas_block }}，区块存储增长上限为{{ networks.moonbase.mbip_5.block_storage_limit }}KB，gas与存储的比率为{{ networks.moonbase.mbip_5.gas_storage_ratio }}，计算方法如下：
 
 ```text
-extrinsics[extrinsic_number].events[event_number].data[1]
+比率 = {{ networks.moonbase.gas_block_numbers_only }} / ({{ networks.moonbase.mbip_5.block_storage_limit }} * 1024)
+比率 = {{ networks.moonbase.mbip_5.gas_storage_ratio }} 
 ```
+
+然后，您可以用交易的实际存储增长（以byte为单位）乘以gas与存储的比率，来计算该交易实际需要额外支付的gas单位。例如，如果执行交易使存储增加了 {{ networks.moonbase.mbip_5.example_storage }} byte，则可以使用以下公式来计算额外gas
+
+```text
+额外Gas = {{ networks.moonbase.mbip_5.example_storage }} * {{ networks.moonbase.mbip_5.gas_storage_ratio }}
+额外Gas = {{ networks.moonbase.mbip_5.example_addtl_gas }}
+```
+
+我们可以通过在以太坊与Moonbeam分别部署两个不同的合约并且对比他们的gas预算来感受这个MBIP造成的主要影响，部署的两个合约一个修改链上的储存状态，另一个不修改。例如下面这个合约会在链上存储一个名字，然后使用这个名字来发送一个消息。
+
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SayHello {
+    mapping(address => string) public addressToName;
+
+    constructor(string memory _name) {
+        addressToName[msg.sender] = _name;
+    }
+
+    // Store a name associated to the address of the sender
+    function setName(string memory _name) public {
+        addressToName[msg.sender] = _name;
+    } 
+    
+    // Use the name in storage associated to the sender
+    function sayHello() external view returns (string memory) {
+        return string(abi.encodePacked("Hello ", addressToName[msg.sender]));
+    }
+}
+```
+
+你可以将这个合约部署到Moonbeam的测试网Moonbase Alpha, 以及以太网的测试网Sepolia, 或者直接与已部署好的合约交互:
+
+=== "Moonbase Alpha"
+
+    ```text
+    0xDFF8E772A9B212dc4FbA19fa650B440C5c7fd7fd
+    ```
+
+=== "Sepolia"
+
+    ```text
+    0x8D0C059d191011E90b963156569A8299d7fE777d
+    ```
+
+接下来，您可以使用`eth_estimateGas`方法来获取调用每个网络上的`setName`和`sayHello`函数的gas预估值。为此，您需要准备每个交易的bytecode，bytecode中包括了函数选择器，以及`setName`函数的`_name`参数。下面的实例将名称设置为“Chloe”：
+
+=== "Set Name"
+
+    ```text
+    0xc47f00270000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000543686c6f65000000000000000000000000000000000000000000000000000000
+    ```
+
+=== "Say Hello"
+
+    ```text
+    0xef5fb05b
+    ```
+
+现在, 您可以使用下面这个curl命令来获取Moonbase Alpha上的这个合约的gas预估值:
+
+=== "Set Name"
+
+    ```sh
+    curl {{ networks.moonbase.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
+    '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_estimateGas",
+        "params":[{
+            "to": "0xDFF8E772A9B212dc4FbA19fa650B440C5c7fd7fd",
+            "data": "0xc47f00270000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000543686c6f65000000000000000000000000000000000000000000000000000000"
+        }]
+    }'
+    ```
+
+=== "Say Hello"
+
+    ```sh
+    curl {{ networks.moonbase.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
+    '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_estimateGas",
+        "params":[{
+            "to": "0xDFF8E772A9B212dc4FbA19fa650B440C5c7fd7fd",
+            "data": "0xef5fb05b"
+        }]
+    }'
+    ```
+
+在Sepolia上, 您能够在`data` 使用同样的bytecode，您只需要修改RPC URL与合约地址:
+
+=== "Set Name"
+
+    ```sh
+    curl https://sepolia.publicgoods.network -H "Content-Type:application/json;charset=utf-8" -d \
+    '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_estimateGas",
+        "params":[{
+            "to": "0x8D0C059d191011E90b963156569A8299d7fE777d",
+            "data": "0xc47f00270000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000543686c6f65000000000000000000000000000000000000000000000000000000"
+        }]
+    }'
+    ```
+
+=== "Say Hello"
+
+    ```sh
+    curl https://sepolia.publicgoods.network -H "Content-Type:application/json;charset=utf-8" -d \
+    '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_estimateGas",
+        "params":[{
+            "to": "0x8D0C059d191011E90b963156569A8299d7fE777d",
+            "data": "0xef5fb05b"
+        }]
+    }'
+    ```
+
+在写这篇文章的时候, 这两个网络的gas预估值如下所示:
+
+=== "Moonbase Alpha"
+
+    |   Method   | Gas Estimate |
+    |:----------:|:------------:|
+    |  `setName` |     45977    |
+    | `sayHello` |     25938    |
+
+=== "Sepolia"
+
+    |   Method   | Gas Estimate |
+    |:----------:|:------------:|
+    |  `setName` |     21520    |
+    | `sayHello` |     21064    |
+
+
+您会看到在Sepolia上，这两个调用的gas估计值非常相似，而在Moonbase Alpha上，这两个调用之间存在明显的差异，并且修改存储的`setName`调用比`sayHello`调用使用更多的 gas。
 
 ## 以太坊API交易费用 {: #ethereum-api-transaction-fees }
 
@@ -84,11 +200,13 @@ extrinsics[extrinsic_number].events[event_number].data[1]
                 MaxFeePerGas;
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
+
 === "Legacy"
 
     ```text
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
+
 === "EIP-2930"
 
     ```text
@@ -101,7 +219,7 @@ extrinsics[extrinsic_number].events[event_number].data[1]
 
 `BaseFee`是在传送交易时被收取的最小费用，数值由网络本身设置。[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}计算基础费用，它是根据区块拥塞情况来进行调整。从runtime 2300（运行时2300）开始，动态费用机制已推广到所有基于Moonbeam的网络。
 
-每个网络的最低汽油价格（Minimum Gas Price）如下：
+每个网络的最低gas价格（Minimum Gas Price）如下：
 
 === "Moonbeam"
     |        变量       |    值     |
@@ -206,16 +324,6 @@ pallet: "system", method: "ExtrinsicSuccess"
 extrinsics[extrinsic_number].events[event_number].data[0].weight
 ```
 
-### 与以太坊的关键性差异 {: #ethereum-api-transaction-fees}
-
-如上所述，Moonbeam和以太坊上的交易费用模型有一些关键性的差异，开发者在Moonbeam上构建时需要注意以下部分：
-
-  - [动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}类似于[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}，但实现不同
-
-  - Moonbeam交易费用模型中使用的gas数量是通过固定比例{{ networks.moonbase.tx_weight_to_gas_ratio }}从交易的Substrate extrinsic权重值映射而来。通过此数值乘以单位gas价格来计算交易费用。此费用模型意味着通过以太坊API发送如基本转账等交易可能会比Substrate API更为便宜。
-
-  - EVM被设计为仅具有Gas容量，Moonbeam则在Gas之外的额外指标。更准确地说，Moonbeam需要记录证明大小的能力，也就是在Moonbeam上从中继链验证者用以验证状态转移所需的存储数量。当证明大小的容量限制已经在当前区块达到极限（区块极限的25%），则将会出现“Out of Gas”的错误。即使在存储Gas中还有*剩余的*Gas，此情况仍然有发生的可能性。此处额外的函数同样影响退款。退款将会根据执行后使用的资源是否更多而定。换句话来说，如果相对遗留的Gas使用较多的证明大小，退款将会使用证明大小来计算
-
 ### 费用记录端点 {: #eth-feehistory-endpoint }
 
 Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory){target_blank} JSON-RPC端点作为对EIP-1559支持的一部分。
@@ -287,4 +395,66 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 --8<-- 'code/builders/get-started/eth-compare/tx-fees/tx-fees-block-dynamic.md'
 
+## Substrate API交易费用 {: #substrate-api-transaction-fees }
+
+本教程假设您通过[Substrate API Sidecar](/builders/build/substrate-api/sidecar/){target=_blank}服务与Moonbeam区块交互。也有其他与Moonbeam区块交互的方式，例如使用[Polkadot.js API library](/builders/build/substrate-api/polkadot-js-api/){target=_blank}。检索区块后，两种方式的逻辑都是相同的。
+
+您可以参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}获取关于安装和运行自己的Sidecar服务实例，以及如何为Moonbeam交易编码Sidecar区块的更多细节。
+
+**请注意，此页面信息假定您运行的是版本{{ networks.moonbase.substrate_api_sidecar.stable_version }} 的Substrate Sidecar REST API。**
+
+所有关于通过Substrate API发送的交易费用数据的信息都可以从以下区块端点中提取：
+
+```text
+GET /blocks/{blockId}
+```
+
+区块端点将返回与一个或多个区块相关的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}上阅读有关区块端点的更多信息。读取结果为JSON对象，相关嵌套结构如下所示：
+
+```text
+RESPONSE JSON Block Object:
+    ...
+    |--number
+    |--extrinsics
+        |--{extrinsic_number}
+            |--method
+            |--signature
+            |--nonce
+            |--args
+            |--tip           
+            |--hash
+            |--info
+            |--era
+            |--events
+                |--{event_number}
+                    |--method
+                        |--pallet: "transactionPayment"
+                        |--method: "TransactionFeePaid"
+                    |--data
+                        |--0
+                        |--1
+                        |--2
+    ...
+
+```
+
+对象映射总结如下：
+
+|      交易信息      |                          JSON对象字段                         |
+|:------------------:|:-----------------------------------------------------------:|
+| Fee paying account | `extrinsics[extrinsic_number].events[event_number].data[0]` |
+|  Total fees paid   | `extrinsics[extrinsic_number].events[event_number].data[1]` |
+|        Tip         | `extrinsics[extrinsic_number].events[event_number].data[2]` |
+
+交易费用相关信息可以在相关extrinsic的事件下获取，其中`method`字段设置如下：
+
+```text
+pallet: "transactionPayment", method: "TransactionFeePaid" 
+```
+
+随后，将用于支付此extrinsic的总交易费用映射至Block JSON对象的以下字段中：
+
+```text
+extrinsics[extrinsic_number].events[event_number].data[1]
+```
 --8<-- 'text/_disclaimers/third-party-content.md'
