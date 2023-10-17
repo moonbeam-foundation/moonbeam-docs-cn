@@ -373,9 +373,9 @@ import abi from './callPermitABI.js'
 ...
 
 const callPermit = new ethers.Contract(
-    '{{ networks.moonbeam.precompiles.call_permit }}', 
-    abi, 
-    thirdPartyGasSigner
+  '{{ networks.moonbeam.precompiles.call_permit }}', 
+  abi, 
+  thirdPartyGasSigner,
 );
 
 const nonce = await callPermit.nonces(userSigner.address);
@@ -401,8 +401,8 @@ const nonce = await callPermit.nonces(userSigner.address);
     });
     
     // Insert your own signer logic or use the following for testing purposes
-    const userSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
-    const thirdPartyGasSigner = new ethers.Wallet('INSERT-PRIVATE-KEY', provider);
+    const userSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
+    const thirdPartyGasSigner = new ethers.Wallet('INSERT_PRIVATE_KEY', provider);
     
     const domain = {
       name: 'Call Permit Precompile',
@@ -439,7 +439,7 @@ const nonce = await callPermit.nonces(userSigner.address);
     const callPermit = new ethers.Contract(
       '{{ networks.moonbeam.precompiles.call_permit }}', 
       abi, 
-      thirdPartyGasSigner
+      thirdPartyGasSigner,
     );
     
     const nonce = await callPermit.nonces(userSigner.address);
@@ -483,7 +483,7 @@ sign(keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message)))
 const signature = await signer.signTypedData(
   domain, // The domain separator
   types, // The typed data structure
-  message // The message data
+  message, // The message data
 );
 console.log(`Signature hash: ${signature}`);
 ```
@@ -518,6 +518,7 @@ console.log(`Transaction hash: ${dispatch.hash}`);
 ```
 
 ??? code "查看完整腳本"
+
     ```js
     --8<-- 'code/builders/pallets-precompiles/precompiles/call-permit/dispatch-call-permit.js'
     ```

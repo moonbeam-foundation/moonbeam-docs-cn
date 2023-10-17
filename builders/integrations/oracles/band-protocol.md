@@ -6,17 +6,19 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 # Band Protocol预言机
 
 ## 概览 {: #introduction }
+
 开发者可通过两种方法从Band预言机获取价格。第一，可以通过Moonbeam上的Band智能合约在固定时间段或价格滑点大于目标值（不同代币的目标值不同）时获取链上最新数据。第二，使用JavaScript辅助库，该库绕过区块链直接从Band Protocol API（与智能合约相似的函数）中获取数据。如果DApp前端需要直接获取数据，则可以使用这种方法。
 
 聚合合约地址可以在以下列表找到：
 
-|      网络      |      |                聚合合约地址                |
-| :------------: | ---- | :----------------------------------------: |
-| Moonbase Alpha |      | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
+|      网络      |                聚合合约地址                |
+|:--------------:|:------------------------------------------:|
+| Moonbase Alpha | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
 ## 支持的代币 {: #supported-token }
+
 只要是平台支持的基础货币和报价货币（_报价对显示方式：基础货币代码_/_报价货币代码_），您都可以获取其报价。例如：
 
  - `BTC/USD`
@@ -26,6 +28,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
 您可通过此[Band标准数据集](https://data.bandprotocol.com){target=_blank}查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
 ## 获取报价 {: #querying-prices }
+
 如上所述，开发者可以通过两种方法从Band预言机获取报价：
 
  - Moonbeam上的Band智能合约（目前已部署在Moonbase Alpha测试网上）
@@ -44,9 +47,9 @@ Moonbeam上的Band Protocol智能合约可通过实现`StdReference`合约接口
 
 ```solidity
 struct ReferenceData {
-   uint256 rate; 
-   uint256 lastUpdatedBase; 
-   uint256 lastUpdatedQuote;
+  uint256 rate; 
+  uint256 lastUpdatedBase; 
+  uint256 lastUpdatedQuote;
 }
 ```
 
@@ -85,6 +88,7 @@ interface IStdReference {
         returns (ReferenceData[] memory);
 }
 ```
+
 接下来可以使用`DemoOracle`脚本。该脚本含有4个函数：
 
  - **getPrice**(*string[]* base, *string[]* quotes) - 请求单一基础货币报价的_视图_函数。在此示例中，`BTC`以`USD`为报价单位
@@ -212,7 +216,7 @@ getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
     pair: 'ETH/EUR',
     rate: rate,
     updated: { base: lastUpdatedBase, quote: lastUpdatedQuote}
-  }
+  },
 ]
 ```
 
@@ -229,7 +233,11 @@ const queryData = async () => {
   const endpoint = 'https://poa-api.bandchain.org';
 
   const bandchain = new BandChain(endpoint);
-  const dataQuery = await bandchain.getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR']);
+  const dataQuery = await bandchain.getReferenceData([
+    'BTC/USD',
+    'BTC/ETH',
+    'ETH/EUR',
+  ]);
   console.log(dataQuery);
 };
 

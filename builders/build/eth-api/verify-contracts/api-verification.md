@@ -49,137 +49,191 @@ Moonbeam相关网络的Moonscan API URL如下：
 要使用Moonscan API验证合约源代码，您需要拟定一个包含所有相关合约创建信息的POST请求，并将其请求传送至Moonscan的REST API。以下为使用JavaScript和[Axios](https://axios-http.com/docs/intro){target=_blank}（HTTP用户端）的范例代码：
 
 === "Moonbeam"
+
     ```javascript
     // Submit Source Code for Verification
-    const response = await axios.post("https://api-moonbeam.moonscan.io/api", {
-        apikey: "INSERT-API-KEY-HERE",
-        module: "contract",
-        action: "verifysourcecode",
-        contractAddress: "INSERT-CONTRACT-ADDRESS-HERE",
-        sourceCode: "INSERT-SOURCE-CODE-HERE", // flattened if necessary
-        codeformat: "solidity-single-file" // or you can use "solidity-standard-json-input"
-        contractname: "INSERT-CONTRACT-NAME-HERE", // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
-        compilerversion: "INSERT-COMPILER-VERSION-HERE" // see https://etherscan.io/solcversions for list of support versions
-        optimizationUsed: 0 // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
-        runs: 200 // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file) 
-        constructorArguements: "INSERT-CONSTRUCTOR-ARGUMENTS-HERE" // if applicable
-        evmversion: "INSERT-EVM-VERSION-HERE", // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
+    const response = await axios.post(
+      'https://api-moonbeam.moonscan.io/api',
+      {
+        apikey: 'INSERT_API_KEY',
+        module: 'contract',
+        action: 'verifysourcecode',
+        contractAddress: 'INSERT_CONTRACT_ADDRESS',
+        sourceCode: 'INSERT_SOURCE_CODE', // flattened if necessary
+        codeformat: 'solidity-single-file', // or you can use "solidity-standard-json-input"
+        contractname: 'INSERT_CONTRACT_NAME', // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
+        compilerversion: 'INSERT_COMPILER_VERSION', // see https://etherscan.io/solcversions for list of support versions
+        optimizationUsed: 0, // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
+        runs: 200, // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file)
+        constructorArguements: 'INSERT_CONSTRUCTOR_ARGUMENTS', // if applicable
+        evmversion: 'INSERT_EVM_VERSION', // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
         licenseType: 1, // valid codes 1-14 where 1=No License ... 14=Business Source License 1.1, see https://etherscan.io/contract-license-types
-        libraryname1: "INSERT-LIBRARY-NAME-HERE" // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
-        libraryaddress1: "INSERT-LIBRARY-ADDRESS-HERE" // if applicable, enter the address of the first library used
-        libraryname2: "INSERT-LIBRARY-NAME-HERE", // if applicable, enter the name of the second library used
-        libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
+        libraryname1: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
+        libraryaddress1: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the first library used
+        libraryname2: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the second library used
+        libraryaddress2: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the second library used
         // ...
-    }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
+      },
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    );
 
-    if (response.data.status == "1") {
-        // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
-        // average time of processing is 30-60 seconds
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
-        // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
+    if (response.data.status == '1') {
+      // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
+      // average time of processing is 30-60 seconds
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
+      // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
     } else {
-        // 0 = error
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
+      // 0 = error
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
     }
     ```
 
 === "Moonriver"
+
     ```javascript
     // Submit Source Code for Verification
-    const response = await axios.post("https://api-moonriver.moonscan.io/api", {
-        apikey: "INSERT-API-KEY-HERE",
-        module: "contract",
-        action: "verifysourcecode",
-        contractAddress: "INSERT-CONTRACT-ADDRESS-HERE",
-        sourceCode: "INSERT-SOURCE-CODE-HERE", // flattened if necessary
-        codeformat: "solidity-single-file" // or you can use "solidity-standard-json-input"
-        contractname: "INSERT-CONTRACT-NAME-HERE", // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
-        compilerversion: "INSERT-COMPILER-VERSION-HERE" // see https://etherscan.io/solcversions for list of support versions
-        optimizationUsed: 0 // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
-        runs: 200 // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file) 
-        constructorArguements: "INSERT-CONSTRUCTOR-ARGUMENTS-HERE" // if applicable
-        evmversion: "INSERT-EVM-VERSION-HERE", // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
+    const response = await axios.post(
+      'https://api-moonriver.moonscan.io/api', 
+      {
+        apikey: 'INSERT_API_KEY',
+        module: 'contract',
+        action: 'verifysourcecode',
+        contractAddress: 'INSERT_CONTRACT_ADDRESS',
+        sourceCode: 'INSERT_SOURCE_CODE', // flattened if necessary
+        codeformat: 'solidity-single-file', // or you can use "solidity-standard-json-input"
+        contractname: 'INSERT_CONTRACT_NAME', // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
+        compilerversion: 'INSERT_COMPILER_VERSION', // see https://etherscan.io/solcversions for list of support versions
+        optimizationUsed: 0, // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
+        runs: 200, // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file)
+        constructorArguements: 'INSERT_CONSTRUCTOR_ARGUMENTS', // if applicable
+        evmversion: 'INSERT_EVM_VERSION', // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
         licenseType: 1, // valid codes 1-14 where 1=No License ... 14=Business Source License 1.1, see https://etherscan.io/contract-license-types
-        libraryname1: "INSERT-LIBRARY-NAME-HERE" // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
-        libraryaddress1: "INSERT-LIBRARY-ADDRESS-HERE" // if applicable, enter the address of the first library used
-        libraryname2: "INSERT-LIBRARY-NAME-HERE", // if applicable, enter the name of the second library used
-        libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
+        libraryname1: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
+        libraryaddress1: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the first library used
+        libraryname2: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the second library used
+        libraryaddress2: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the second library used
         // ...
-    }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
+      },
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    );
 
-    if (response.data.status == "1") {
-        // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
-        // average time of processing is 30-60 seconds
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
-        // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
+    if (response.data.status == '1') {
+      // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
+      // average time of processing is 30-60 seconds
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
+      // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
     } else {
-        // 0 = error
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
+      // 0 = error
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
     }
     ```
 
-=== "Moonbase"
+=== "Moonbase Alpha"
+
     ```javascript
     // Submit Source Code for Verification
-    const response = await axios.post("https://api-moonbase.moonscan.io/api", {
-        apikey: "INSERT-API-KEY-HERE",
-        module: "contract",
-        action: "verifysourcecode",
-        contractAddress: "INSERT-CONTRACT-ADDRESS-HERE",
-        sourceCode: "INSERT-SOURCE-CODE-HERE", // flattened if necessary
-        codeformat: "solidity-single-file" // or you can use "solidity-standard-json-input"
-        contractname: "INSERT-CONTRACT-NAME-HERE", // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
-        compilerversion: "INSERT-COMPILER-VERSION-HERE" // see https://etherscan.io/solcversions for list of support versions
-        optimizationUsed: 0 // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
-        runs: 200 // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file) 
-        constructorArguements: "INSERT-CONSTRUCTOR-ARGUMENTS-HERE" // if applicable
-        evmversion: "INSERT-EVM-VERSION-HERE", // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
+    const response = await axios.post(
+      'https://api-moonbase.moonscan.io/api', 
+      {
+        apikey: 'INSERT_API_KEY',
+        module: 'contract',
+        action: 'verifysourcecode',
+        contractAddress: 'INSERT_CONTRACT_ADDRESS',
+        sourceCode: 'INSERT_SOURCE_CODE', // flattened if necessary
+        codeformat: 'solidity-single-file', // or you can use "solidity-standard-json-input"
+        contractname: 'INSERT_CONTRACT_NAME', // if codeformat = solidity-standard-json-input, then enter contractname as ex: erc20.sol:erc20
+        compilerversion: 'INSERT_COMPILER_VERSION', // see https://etherscan.io/solcversions for list of support versions
+        optimizationUsed: 0, // 0 = no optimization, 1 = optimization was used (applicable when codeformat=solidity-single-file)
+        runs: 200, // set to 200 as default unless otherwise (applicable when codeformat=solidity-single-file)
+        constructorArguements: 'INSERT_CONSTRUCTOR_ARGUMENTS', // if applicable
+        evmversion: 'INSERT_EVM_VERSION', // options: homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg, istanbul (applicable when codeformat=solidity-single-file)
         licenseType: 1, // valid codes 1-14 where 1=No License ... 14=Business Source License 1.1, see https://etherscan.io/contract-license-types
-        libraryname1: "INSERT-LIBRARY-NAME-HERE" // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
-        libraryaddress1: "INSERT-LIBRARY-ADDRESS-HERE" // if applicable, enter the address of the first library used
-        libraryname2: "INSERT-LIBRARY-NAME-HERE", // if applicable, enter the name of the second library used
-        libraryaddress2: "INSERT-LIBRARY-ADDRESS-HERE", // if applicable, enter the address of the second library used
+        libraryname1: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the first library used, i.e. SafeMath (up to 10 libraries can be used)
+        libraryaddress1: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the first library used
+        libraryname2: 'INSERT_LIBRARY_NAME', // if applicable, enter the name of the second library used
+        libraryaddress2: 'INSERT_LIBRARY_ADDRESS', // if applicable, enter the address of the second library used
         // ...
-    }, headers: { "Content-Type": "application/x-www-form-urlencoded" })
+      },
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    );
 
-    if (response.data.status == "1") {
-        // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
-        // average time of processing is 30-60 seconds
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
-        // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
+    if (response.data.status == '1') {
+      // 1 = submission success, use the guid returned (response.data.response.data) to check the status of your submission
+      // average time of processing is 30-60 seconds
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
+      // response.data.response.data is the GUID receipt for the submission, you can use this guid for checking the verification status
     } else {
-        // 0 = error
-        console.log(response.data.status + "; " + response.data.message + "; " + response.data.result)
+      // 0 = error
+      console.log(
+        response.data.status +
+          '; ' +
+          response.data.message +
+          '; ' +
+          response.data.result
+      );
     }
     ```
 
 在成功提交后，将会获得一个GUID作为结果。此GUID将会用于查看提交状态。
 
 === "Moonbeam"
+
     ```bash
     curl https://api-moonbeam.moonscan.io/api
-            ?module=contract
-            &action=checkverifystatus
-            &guid=INSERT-GUID-FROM-RESPONSE-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=checkverifystatus
+      &guid=INSERT_GUID_FROM_RESPONSE
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonriver"
+
     ```bash
     curl https://api-moonriver.moonscan.io/api
-            ?module=contract
-            &action=checkverifystatus
-            &guid=INSERT-GUID-FROM-RESPONSE-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=checkverifystatus
+      &guid=INSERT_GUID_FROM_RESPONSE
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonbase Alpha"
+
     ```bash
     curl https://api-moonbase.moonscan.io/api
-            ?module=contract
-            &action=checkverifystatus
-            &guid=INSERT-GUID-FROM-RESPONSE-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=checkverifystatus
+      &guid=INSERT_GUID_FROM_RESPONSE
+      &apikey=INSERT_API_KEY
     ```
 
 ### 检索验证合约的ABI {: #retrieve-contract-abi-for-verified-contracts }
@@ -187,30 +241,33 @@ Moonbeam相关网络的Moonscan API URL如下：
 当您合约已在Moonscan上获得验证，您可以使用以下端点检索合约ABI：
 
 === "Moonbeam"
+
     ```bash
     curl https://api-moonbeam.moonscan.io/api
-            ?module=contract
-            &action=getabi
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getabi
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonriver"
+
     ```bash
     curl https://api-moonriver.moonscan.io/api
-            ?module=contract
-            &action=getabi
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getabi
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonbase Alpha"
+
     ```bash
     curl https://api-moonbase.moonscan.io/api
-            ?module=contract
-            &action=getabi
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getabi
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 ### 检索验证合约的源代码 {: #retrieve-contract-source-code-for-verified-contracts }
@@ -218,30 +275,33 @@ Moonbeam相关网络的Moonscan API URL如下：
 当您的合约已在Moonscan上获得验证，您可以使用以下端点检索合约源代码：
 
 === "Moonbeam"
+
     ```bash
     curl https://api-moonbeam.moonscan.io/api
-            ?module=contract
-            &action=getsourcecode
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getsourcecode
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonriver"
+
     ```bash
     curl https://api-moonriver.moonscan.io/api
-            ?module=contract
-            &action=getsourcecode
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getsourcecode
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 === "Moonbase Alpha"
+
     ```bash
     curl https://api-moonbase.moonscan.io/api
-            ?module=contract
-            &action=getsourcecode
-            &address=INSERT-CONTRACT-ADDRESS-HERE
-            &apikey=INSERT-API-KEY-TOKEN-HERE
+      ?module=contract
+      &action=getsourcecode
+      &address=INSERT_CONTRACT_ADDRESS
+      &apikey=INSERT_API_KEY
     ```
 
 ## 使用Sourcify API {: #using-sourcify-api }
@@ -254,12 +314,13 @@ Sourcify API端点可通过以下公共服务器访问：
 
 === "Production"
 
-    ```bash
+    ```text
     https://sourcify.dev/server
     ```
 
 === "Staging"
-    ```bash
+
+    ```text
     https://staging.sourcify.dev/server
     ```
 
@@ -268,17 +329,20 @@ Sourcify API端点可通过以下公共服务器访问：
 Sourcify使用链ID验证请求的目标网络。Moonbeam相关网络的链ID如下：
 
 === "Moonbeam"
-    ```bash
+
+    ```text
     {{ networks.moonbeam.chain_id }}
     ```
 
 === "Moonriver"
-    ```bash
+
+    ```text
     {{ networks.moonriver.chain_id }}
     ```
 
 === "Moonbase"
-    ```bash
+
+    ```text
     {{ networks.moonbase.chain_id }}
     ```
 
@@ -295,86 +359,89 @@ Sourcify支持两种验证匹配结果。
 您可以使用POST请求在Sourcify验证合约，以下为使用JavaScript撰写的范例代码：
 
 === "Moonbeam"
+
     ```javascript
     // Submit Contract Source Code and Metadata for Verification
-    const response = await axios.post("https://sourcify.dev/server/verify", {
-        "address": "INSERT-CONTRACT-ADDRESS-HERE"
-        "chain": {{ networks.moonbeam.chain_id }}, // chain ID of Moonbeam
-        "files": {
-            "metadata-1.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 1
-            "metadata-2.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 2
-            "file1-name.sol": "INSERT-SOL-FILE-HERE", // contract source file 1
-            "file2-name.sol": "INSERT-SOL-FILE-HERE" // contract source file 2
-            //...
-        },
-        "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
-    })
+    const response = await axios.post('https://sourcify.dev/server/verify', {
+      address: 'INSERT_CONTRACT_ADDRESS',
+      chain: {{ networks.moonbeam.chain_id }}, // chain ID of Moonbeam
+      files: {
+        'metadata-1.json': 'INSERT_JSON_FILE', // metadata file for contract file 1
+        'metadata-2.json': 'INSERT_JSON_FILE', // metadata file for contract file 2
+        'file1-name.sol': 'INSERT_SOL_FILE', // contract source file 1
+        'file2-name.sol': 'INSERT_SOL_FILE', // contract source file 2
+        //...
+      },
+      chosenContract: 1, // (optional) index of the contract, if the provided files contain multiple metadata files
+    });
 
-    if (result.status == "perfect") {
-        // perfect match
-        console.log(result.status + ";" + result.address);
-    } elseif (result.status == "partial") {
-        // partial match
-        console.log(result.status + ";" + result.address);
+    if (result.status == 'perfect') {
+      // perfect match
+      console.log(result.status + ';' + result.address);
+    } else if (result.status == 'partial') {
+      // partial match
+      console.log(result.status + ';' + result.address);
     } else {
-        // non-matching
-        console.log(result.status + ";" + result.address);
+      // non-matching
+      console.log(result.status + ';' + result.address);
     }
     ```
 
 === "Moonriver"
+
     ```javascript
     // Submit Contract Source Code and Metadata for Verification
-    const response = await axios.post("https://sourcify.dev/server/verify", {
-        "address": "INSERT-CONTRACT-ADDRESS-HERE"
-        "chain": {{ networks.moonriver.chain_id }}, // chain ID of Moonriver
-        "files": {
-            "metadata-1.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 1
-            "metadata-2.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 2
-            "file1-name.sol": "INSERT-SOL-FILE-HERE", // contract source file 1
-            "file2-name.sol": "INSERT-SOL-FILE-HERE" // contract source file 2
-            //...
-        },
-        "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
-    })
+    const response = await axios.post('https://sourcify.dev/server/verify', {
+      address: 'INSERT_CONTRACT_ADDRESS',
+      chain: {{ networks.moonriver.chain_id }}, // chain ID of Moonriver
+      files: {
+        'metadata-1.json': 'INSERT_JSON_FILE', // metadata file for contract file 1
+        'metadata-2.json': 'INSERT_JSON_FILE', // metadata file for contract file 2
+        'file1-name.sol': 'INSERT_SOL_FILE', // contract source file 1
+        'file2-name.sol': 'INSERT_SOL_FILE', // contract source file 2
+        //...
+      },
+      chosenContract: 1, // (optional) index of the contract, if the provided files contain multiple metadata files
+    });
 
-    if (result.status == "perfect") {
-        // perfect match
-        console.log(result.status + ";" + result.address);
-    } elseif (result.status == "partial") {
-        // partial match
-        console.log(result.status + ";" + result.address);
+    if (result.status == 'perfect') {
+      // perfect match
+      console.log(result.status + ';' + result.address);
+    } else if (result.status == 'partial') {
+      // partial match
+      console.log(result.status + ';' + result.address);
     } else {
-        // non-matching
-        console.log(result.status + ";" + result.address);
+      // non-matching
+      console.log(result.status + ';' + result.address);
     }
     ```
 
-=== "Moonbase"
+=== "Moonbase Alpha"
+
     ```javascript
     // Submit Contract Source Code and Metadata for Verification
-    const response = await axios.post("https://sourcify.dev/server/verify", {
-        "address": "INSERT-CONTRACT-ADDRESS-HERE"
-        "chain": {{ networks.moonbase.chain_id }}, // chain ID of Moonbase Alpha
-        "files": {
-            "metadata-1.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 1
-            "metadata-2.json": "INSERT-JSON-FILE-HERE", // metadata file for contract file 2
-            "file1-name.sol": "INSERT-SOL-FILE-HERE", // contract source file 1
-            "file2-name.sol": "INSERT-SOL-FILE-HERE" // contract source file 2
-            //...
-        },
-        "chosenContract": 1 // (optional) index of the contract, if the provided files contain multiple metadata files          
-    })
+    const response = await axios.post('https://sourcify.dev/server/verify', {
+      address: 'INSERT_CONTRACT_ADDRESS',
+      chain: {{ networks.moonbase.chain_id }}, // chain ID of Moonbase Alpha
+      files: {
+        'metadata-1.json': 'INSERT_JSON_FILE', // metadata file for contract file 1
+        'metadata-2.json': 'INSERT_JSON_FILE', // metadata file for contract file 2
+        'file1-name.sol': 'INSERT_SOL_FILE', // contract source file 1
+        'file2-name.sol': 'INSERT_SOL_FILE', // contract source file 2
+        //...
+      },
+      chosenContract: 1, // (optional) index of the contract, if the provided files contain multiple metadata files
+    });
 
-    if (result.status == "perfect") {
-        // perfect match
-        console.log(result.status + ";" + result.address);
-    } elseif (result.status == "partial") {
-        // partial match
-        console.log(result.status + ";" + result.address);
+    if (result.status == 'perfect') {
+      // perfect match
+      console.log(result.status + ';' + result.address);
+    } else if (result.status == 'partial') {
+      // partial match
+      console.log(result.status + ';' + result.address);
     } else {
-        // non-matching
-        console.log(result.status + ";" + result.address);
+      // non-matching
+      console.log(result.status + ';' + result.address);
     }
     ```
 
@@ -390,37 +457,37 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
 
     ```bash
     curl https://sourcify.dev/server/check-by-addresses
-            ?addresses={INSERT-ADDRESS-1-HERE, INSERT-ADDRESS-2-HERE, ...}
-            &chainIds={INSERT-CHAIN-ID-1, INSERT-CHAIN-ID-2, ...}
+      ?addresses={INSERT_ADDRESS_1, INSERT_ADDRESS_2, ...}
+      &chainIds={INSERT_CHAIN_ID_1, INSERT_CHAIN_ID_2, ...}
     ```
     
 === "部分匹配"
 
     ```bash
     curl https://sourcify.dev/server/check-all-by-addresses
-            ?addresses={INSERT-ADDRESS-1-HERE, INSERT-ADDRESS-2-HERE, ...}
-            &chainIds={INSERT-CHAIN-ID-1, INSERT-CHAIN-ID-2, ...}
+      ?addresses={INSERT_ADDRESS_1, INSERT_ADDRESS_2, ...}
+      &chainIds={INSERT_CHAIN_ID_1, INSERT_CHAIN_ID_2, ...}
     ```
 
 您将会获得一个JSON对象的响应，结构如下所示：
 
 ```json
 [
-  {
-    "address": "address1",
-    "status": "perfect",
-    "chainIds": [
-      "chainId1",
-      "chaindId2"
-    ]
-  },
-  {
-    "address": "address2",
-    "status": "partial",
-    "chainIds": [
-      "chaindId2"
-    ]
-  }
+    {
+        "address": "address1",
+        "status": "perfect",
+        "chainIds": [
+            "chainId1",
+            "chaindId2"
+        ]
+    },
+    {
+        "address": "address2",
+        "status": "partial",
+        "chainIds": [
+            "chaindId2"
+        ]
+    }
 ]
 ```
 
@@ -431,31 +498,41 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
 此终端有两种变化，其中之一为完美匹配的源文件：
 
 === "Moonbeam"
+
     ```bash
-    curl https://sourcify.dev/server/files/{{ networks.moonbeam.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/{{ networks.moonbeam.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
+
 === "Moonriver"
+
     ```bash
-    curl https://sourcify.dev/server/files/{{ networks.moonriver.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/{{ networks.moonriver.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
+
 === "Moonbase"
+
     ```bash
-    curl https://sourcify.dev/server/files/{{ networks.moonbase.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/{{ networks.moonbase.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
 
 另外一个为完美匹配和部分匹配的源文件：
 
 === "Moonbeam"
+
     ```bash
-    curl https://sourcify.dev/server/files/any/{{ networks.moonbeam.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/any/{{ networks.moonbeam.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
+
 === "Moonriver"
+
     ```bash
-    curl https://sourcify.dev/server/files/any/{{ networks.moonriver.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/any/{{ networks.moonriver.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
+
 === "Moonbase"
+
     ```bash
-    curl https://sourcify.dev/server/files/any/{{ networks.moonbase.chain_id }}/INSERT-YOUR-CONTRACT-ADDRESS-HERE
+    curl https://sourcify.dev/server/files/any/{{ networks.moonbase.chain_id }}/INSERT_CONTRACT_ADDRESS
     ```
 
 ### 在Foundry中使用Sourcify {: #using-sourcify-with-foundry }
@@ -483,7 +560,7 @@ cast abi-encode "constructor(uint256)" 100
     ```bash
     forge verify-contract --chain-id {{ networks.moonbeam.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
-    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    --verifier sourcify INSERT_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
 === "Moonriver"
@@ -491,7 +568,7 @@ cast abi-encode "constructor(uint256)" 100
     ```bash
     forge verify-contract --chain-id {{ networks.moonriver.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
-    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    --verifier sourcify INSERT_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
 === "Moonbase Alpha"
@@ -499,7 +576,7 @@ cast abi-encode "constructor(uint256)" 100
     ```bash
     forge verify-contract --chain-id {{ networks.moonbase.chain_id }} \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
-    --verifier sourcify YOUR_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
+    --verifier sourcify INSERT_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
 ![Foundry Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-1.png)
@@ -512,7 +589,7 @@ cast abi-encode "constructor(uint256)" 100
     forge create --rpc-url {{ networks.moonbeam.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \
-    --private-key YOUR_PRIVATE_KEY \
+    --private-key INSERT_YOUR_PRIVATE_KEY \
     src/MyToken.sol:MyToken  
     ```
 
@@ -522,7 +599,7 @@ cast abi-encode "constructor(uint256)" 100
     forge create --rpc-url {{ networks.moonriver.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \
-    --private-key YOUR_PRIVATE_KEY \
+    --private-key INSERT_YOUR_PRIVATE_KEY \
     src/MyToken.sol:MyToken  
     ```
 
@@ -532,7 +609,7 @@ cast abi-encode "constructor(uint256)" 100
     forge create --rpc-url {{ networks.moonbase.rpc_url }} \
     --constructor-args 100 \
     --verify --verifier sourcify \
-    --private-key YOUR_PRIVATE_KEY \
+    --private-key INSERT_YOUR_PRIVATE_KEY \
     src/MyToken.sol:MyToken    
     ```
 

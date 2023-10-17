@@ -43,10 +43,10 @@ _作者：Jeremy Boetticher_
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "eth_getBalance",
-  "params": ["0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac", "latest"]
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_getBalance",
+    "params": ["0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac", "latest"]
 }
 ```
 
@@ -87,7 +87,7 @@ npx hardhat init
 npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers
 ```
 
-在我们开始编写智能合约之前，让我们先将JSON-RPC URL添加至配置之中，我们可以使用以下代码设置`hardhat.config.js`文件，并将`YOUR_PRIVATE_KEY`取代为您具有资金账户的私钥。
+在我们开始编写智能合约之前，让我们先将JSON-RPC URL添加至配置之中，我们可以使用以下代码设置`hardhat.config.js`文件，并将`INSERT_YOUR_PRIVATE_KEY`取代为您具有资金账户的私钥。
 
 !!! 注意事项
     这仅用于测试目的，**请勿将您具有真实资金的账户私钥以文字的方式储存**。
@@ -100,7 +100,7 @@ module.exports = {
     moonbase: {
       url: '{{ networks.moonbase.rpc_url }}',
       chainId: {{ networks.moonbase.chain_id }},
-      accounts: ['YOUR_PRIVATE_KEY']
+      accounts: ['INSERT_YOUR_PRIVATE_KEY']
     }
   }
 };
@@ -472,14 +472,14 @@ function App() {
 
 #### 创建一个智能合约实例 {: #create-a-contract-instance }
 
-让我们在`App.js`中导入JSON文件和Ethers `Contract`对象。我们可以使用地址和ABI创建一个合约对象实例，因此将`YOUR_CONTRACT_ADDRESS_HERE`替换为您[部署时](#deploying-smart-contracts)复制的合约地址：
+让我们在`App.js`中导入JSON文件和Ethers `Contract`对象。我们可以使用地址和ABI创建一个合约对象实例，因此将`INSERT_CONTRACT_ADDRESS`替换为您[部署时](#deploying-smart-contracts)复制的合约地址：
 
 ```javascript
 // ... other imports
 import MintableERC20 from './MintableERC20.json'; 
 import { Contract } from 'ethers';
 
-const contractAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+const contractAddress = 'INSERT_CONTRACT_ADDRESS';
 
 function App() {
   const contract = new Contract(contractAddress, MintableERC20.abi);
@@ -503,7 +503,7 @@ function App() {
       alignCenter: { textAlign: 'center' },
     };
     
-    const contractAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+    const contractAddress = 'INSERT_CONTRACT_ADDRESS';
     
     function App() {
       const contract = new Contract(contractAddress, MintableERC20.abi);
@@ -611,7 +611,7 @@ function App() {
       card: { borderRadius: 4, padding: 4, maxWidth: '550px', width: '100%' },
       alignCenter: { textAlign: 'center' },
     };
-    const contractAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+    const contractAddress = 'INSERT_CONTRACT_ADDRESS';
     
     function App() {
       const { activateBrowserWallet, deactivate, account } = useEthers();
@@ -817,7 +817,7 @@ function App() {
     import { Button, Grid, Card } from '@mui/material';
     import { Box } from '@mui/system';
     import { Contract } from 'ethers';
-    import MintableERC20 from './MintableERC20.json'; 
+    import MintableERC20 from './MintableERC20.json';
     import SupplyComponent from './SupplyComponent';
     import MintingComponent from './MintingComponent';
     
@@ -827,7 +827,7 @@ function App() {
       card: { borderRadius: 4, padding: 4, maxWidth: '550px', width: '100%' },
       alignCenter: { textAlign: 'center' },
     };
-    const contractAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+    const contractAddress = 'INSERT_CONTRACT_ADDRESS';
     
     function App() {
       const { activateBrowserWallet, deactivate, account } = useEthers();
@@ -1055,7 +1055,7 @@ function App() {
       card: { borderRadius: 4, padding: 4, maxWidth: '550px', width: '100%' },
       alignCenter: { textAlign: 'center' },
     };
-    const contractAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+    const contractAddress = 'INSERT_CONTRACT_ADDRESS';
     
     function App() {
       const { activateBrowserWallet, deactivate, account } = useEthers();
