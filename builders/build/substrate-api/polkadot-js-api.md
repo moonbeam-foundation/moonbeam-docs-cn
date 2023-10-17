@@ -98,7 +98,7 @@ yarn add @polkadot/api
     import { ApiPromise, WsProvider } from '@polkadot/api';
     const main = async () => {
       // Construct API provider
-      const wsProvider = new WsProvider('{{ networks.dev.wss_url }}');
+      const wsProvider = new WsProvider('{{ networks.development.wss_url }}');
       const api = await ApiPromise.create({ provider: wsProvider });
 
       // Code goes here
