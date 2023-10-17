@@ -49,7 +49,7 @@ pip3 install web3 py-solc-x
     ```python
     from web3 import Web3
     
-    web3 = Web3(Web3.HTTPProvider('{{ networks.moonbeam.rpc_url }}')) # Insert your RPC URL here
+    web3 = Web3(Web3.HTTPProvider("{{ networks.moonbeam.rpc_url }}")) # Insert your RPC URL here
     ```
 
 === "Moonriver"
@@ -57,7 +57,7 @@ pip3 install web3 py-solc-x
     ```python
     from web3 import Web3
     
-    web3 = Web3(Web3.HTTPProvider('{{ networks.moonriver.rpc_url }}')) # Insert your RPC URL here
+    web3 = Web3(Web3.HTTPProvider("{{ networks.moonriver.rpc_url }}")) # Insert your RPC URL here
     ```
 
 === "Moonbase Alpha"
@@ -65,7 +65,7 @@ pip3 install web3 py-solc-x
     ```python
     from web3 import Web3
     
-    web3 = Web3(Web3.HTTPProvider('{{ networks.moonbase.rpc_url }}'))
+    web3 = Web3(Web3.HTTPProvider("{{ networks.moonbase.rpc_url }}"))
     ```
 
 === "Moonbeam开发节点"
@@ -73,7 +73,7 @@ pip3 install web3 py-solc-x
     ```python
     from web3 import Web3
     
-    web3 = Web3(Web3.HTTPProvider('{{ networks.development.rpc_url }}'))
+    web3 = Web3(Web3.HTTPProvider("{{ networks.development.rpc_url }}"))
     ```
 
 ## 发送交易 {: #send-a-transaction }

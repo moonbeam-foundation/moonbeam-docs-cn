@@ -248,13 +248,8 @@ cd scripts && touch deploy.py
 from brownie import Box, accounts
 
 def main():
-    account = accounts.load('alice')
-    return Box.deploy(
-        {
-            'from': account,
-            'gas_limit': '200000'
-        }
-    )
+    account = accounts.load("alice")
+    return Box.deploy({"from": account, "gas_limit": "200000"})
 ```
 
 您可以使用`run`命令并指定网络来部署`Box.sol`合约：
@@ -373,13 +368,10 @@ cd scripts && touch store-and-retrieve.py
 from brownie import Box, accounts
 
 def main():
-    account = accounts.load('alice')
+    account = accounts.load("alice")
     box = Box[0]
-    store = box.store(5, {'from': accounts.load('alice'), 'gas_limit': '50000'})
-    retrieve = box.retrieve({'from': accounts.load('alice')})
-
-    print("Transaction hash for updating the stored value: " + store)
-    print("Stored value: " + retrieve)
+    store = box.store(5, {"from": accounts.load("alice"), "gas_limit": "50000"})
+    retrieve = box.retrieve({"from": accounts.load("alice")})
 ```
 
 要运行脚本，您可以使用以下命令：

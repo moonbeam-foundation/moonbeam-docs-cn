@@ -68,7 +68,9 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 此`SimpleContract.sol`合约将会作为批量合约交互的范例，但在实际操作上所有合约皆可以进行交互。
 
- --8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-contract.md'
+```solidity
+--8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-contract.sol'
+```
 
 ### 设置Remix {: #remix-set-up }
 
@@ -130,7 +132,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 1. 确保您连接的钱包中至少有0.5个DEV
 2. 在**Deployed Contracts**中展开批量预编译合约
 3. 展开**batchAll**函数
-4. 在**to**输入栏中，根据以下格式输入您的地址：`["ADDRESS-1-HERE", "ADDRESS-2-HERE"]`，其中第一个地址代表您希望传送资产的第一个地址，而第二个地址为您希望传送资产的第二个地址
+4. 在**to**输入栏中，根据以下格式输入您的地址：`["INSERT_ADDRESS_1", "INSERT_ADDRESS_2"]`，其中第一个地址代表您希望传送资产的第一个地址，而第二个地址为您希望传送资产的第二个地址
 5. 在**value**输入栏中，输入您希望转移至个别地址以Wei为单位的数量。举例而言，`["100000000000000000", "200000000000000000"]`将会转移0.1 DEV至第一个地址和0.2 DEV至第二个地址
 6. 在剩下的**callData**和**gasLimit**输入栏中输入`[]`，调用数据和Gas限制在传送原生资产时不需要考虑
 7. 点击**transact**
@@ -158,7 +160,9 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 现在您已经拥有该交易的调用数据！根据范例数据的`1` 和`"moonbeam"`，我们可以在调用数据中查找这些被编码的数据：
 
- --8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-message-call-data.md'
+```text
+--8<-- 'code/builders/pallets-precompiles/precompiles/batch/simple-message-call-data.md'
+```
 
 调用数据可以被拆分为五行：
 
@@ -179,9 +183,9 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 1. 在`SimpleContract.sol`标题右方的复制按钮复制其合约地址，请确保您拥有来自[先前部分教程的调用数据](#finding-a-contract-interactions-call-data)
 2. 在**Deployed Contracts**下方展开批量预编译合约
 3. 展开**batchAll**函数
-4. 在**to**输入栏中，以下述格式插入您先前复制的`SimpleContract.sol`合约地址：`["SIMPLE-CONTRACT-ADDRESS-HERE"]`
-5. 在数值输入栏中，由于`["SIMPLE-CONTRACT-ADDRESS-HERE"]`并不需要支付任何原生资产，输入`["0"]`代表0 Wei
-6. 在**callData**输入栏位中，以下格式插入您在先前部分教程获得的函数数据：`["CALL-DATA-HERE"]`
+4. 在**to**输入栏中，以下述格式插入您先前复制的`SimpleContract.sol`合约地址：`["INSERT_SIMPLE_CONTRACT_ADDRESS"]`
+5. 在数值输入栏中，由于`["INSERT_SIMPLE_CONTRACT_ADDRESS"]`并不需要支付任何原生资产，输入`["0"]`代表0 Wei
+6. 在**callData**输入栏位中，以下格式插入您在先前部分教程获得的函数数据：`["INSERT_CALL_DATA"]`
 7. 在**gasLimit**输入栏中，插入`[]`。您也可以输入Gas限制的数据，依据您的需求决定
 8. 点击**transact**
 9. 在MetaMask跳出的弹窗中点击**Confirm**以确认交易
@@ -247,13 +251,22 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 !!! 注意事项
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。
 
-=== "Web3.js"
-     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3js-batch.md'
-
 === "Ethers.js"
-     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/ethers-batch.md'
+
+     ```js
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/ethers-batch.js'
+     ```
+
+=== "Web3.js"
+
+     ```js
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3js-batch.js'
+     ```
 
 === "Web3.py"
-     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3py-batch.md'
+
+     ```py
+     --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3py-batch.py'
+     ```
 
 最后，您应当已经了解如何与批量预编译进行交互，如同您与[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}中的合约进行交互一样。

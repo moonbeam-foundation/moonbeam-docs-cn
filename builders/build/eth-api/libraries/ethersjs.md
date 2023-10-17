@@ -72,13 +72,10 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonbeam.rpc, 
-      {
-        chainId: providerRPC.moonbeam.chainId,
-        name: providerRPC.moonbeam.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonbeam.rpc, {
+      chainId: providerRPC.moonbeam.chainId,
+      name: providerRPC.moonbeam.name,
+    });
     ```
 
 === "Moonriver"
@@ -96,13 +93,10 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonriver.rpc, 
-      {
-        chainId: providerRPC.moonriver.chainId,
-        name: providerRPC.moonriver.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonriver.rpc, {
+      chainId: providerRPC.moonriver.chainId,
+      name: providerRPC.moonriver.name,
+    });
     ```
 
 === "Moonbase Alpha"
@@ -120,13 +114,10 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.moonbase.rpc, 
-      {
-        chainId: providerRPC.moonbase.chainId,
-        name: providerRPC.moonbase.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.moonbase.rpc, {
+      chainId: providerRPC.moonbase.chainId,
+      name: providerRPC.moonbase.name,
+    });
     ```
 
 === "Moonbeam开发节点"
@@ -144,13 +135,10 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
       },
     };
     // 3. Create ethers provider
-    const provider = new ethers.JsonRpcProvider(
-      providerRPC.dev.rpc, 
-      {
-        chainId: providerRPC.dev.chainId,
-        name: providerRPC.dev.name,
-      }
-    );
+    const provider = new ethers.JsonRpcProvider(providerRPC.dev.rpc, {
+      chainId: providerRPC.dev.chainId,
+      name: providerRPC.dev.name,
+    });
     ```
 
 ## 发送交易 {: #send-a-transaction }
@@ -531,7 +519,9 @@ const incrementer = new ethers.Contract(contractAddress, abi, wallet);
 
 // 6. Create reset function
 const reset = async () => {
-  console.log(`Calling the reset function in contract at address: ${contractAddress}`);
+  console.log(
+    `Calling the reset function in contract at address: ${contractAddress}`
+  );
 
   // 7. sign and send tx and wait for receipt
   const createReceipt = await incrementer.reset();

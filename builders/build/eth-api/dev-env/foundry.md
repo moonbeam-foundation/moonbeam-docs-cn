@@ -284,7 +284,7 @@ curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H
 从这里，您可以将新合约部署到您的Moonbeam的分叉实例或与已部署的合约进行交互。在本教程的上述示例的基础上，您可以使用Cast进行调用，来检查您部署合约的帐户中铸造的MYTOK Token的余额：
 
 ```bash
-cast call INSERT-CONTRACT-ADDRESS  "balanceOf(address)(uint256)" INSERT-YOUR-ADDRESS --rpc-url http://localhost:8545
+cast call INSERT_CONTRACT_ADDRESS  "balanceOf(address)(uint256)" INSERT_YOUR_ADDRESS --rpc-url http://localhost:8545
 ```
 
 ## 使用Chisel {: #using-chisel }

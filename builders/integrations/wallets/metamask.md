@@ -48,33 +48,33 @@ npm install @metamask/detect-provider
     ```javascript
     import detectEthereumProvider from '@metamask/detect-provider';
     const configureMoonbaseAlpha = async () => {
-        const provider = await detectEthereumProvider({ mustBeMetaMask: true });
-        if (provider) {
-            // Logic will go here    
-        } else {
-            console.error("Please install MetaMask");
-        }
-    }
+      const provider = await detectEthereumProvider({ mustBeMetaMask: true });
+      if (provider) {
+        // Logic will go here
+      } else {
+        console.error('Please install MetaMask');
+      }
+    };
     ```
-    
+
 2. 通过调用`eth_requestAccounts`函数来请求获取用户的账户。这将提示MetaMask跳出弹窗，要求用户选择想要连接的账户。在后台，通过调用`wallet_requestPermissions`函数来检查账户的权限。目前仅限于`eth_accounts`可用于连接。因此，您最终要验证您是否有权访问从`eth_accounts`返回的用户地址。如果您有兴趣了解更多权限系统的相关信息，请查看[EIP-2255](https://eips.ethereum.org/EIPS/eip-2255){target=_blank}
 
     ```javascript
-import detectEthereumProvider from '@metamask/detect-provider';
+    import detectEthereumProvider from '@metamask/detect-provider';
     const configureMoonbaseAlpha = async () => {
-        const provider = await detectEthereumProvider({ mustBeMetaMask: true });
-        if (provider) {
-            try {
-                await provider.request({ method: "eth_requestAccounts"});
-            } catch(e) {
-                console.error(e);
-            }  
-        } else {
-            console.error("Please install MetaMask");
+      const provider = await detectEthereumProvider({ mustBeMetaMask: true });
+      if (provider) {
+        try {
+          await provider.request({ method: 'eth_requestAccounts' });
+        } catch (e) {
+          console.error(e);
         }
-    }
+      } else {
+        console.error('Please install MetaMask');
+      }
+    };
     ```
-    
+
     ![Add accounts to MetaMask](/images/builders/integrations/wallets/metamask/metamask-1.png)
 
 3. 通过调用`wallet_addEthereumChain`函数将Moonbase Alpha添加为新的网络。这将提示用户提供将Moonbase Alpha添加为自定义网络的权限。成功添加网络后，将提示用户切换网络至Moonbase Alpha
@@ -82,35 +82,36 @@ import detectEthereumProvider from '@metamask/detect-provider';
     ```javascript
     import detectEthereumProvider from '@metamask/detect-provider';
     const configureMoonbaseAlpha = async () => {
-        const provider = await detectEthereumProvider({ mustBeMetaMask: true });
-        if (provider) {
-            try {
-                await provider.request({ method: "eth_requestAccounts"});
-                await provider.request({
-                    method: "wallet_addEthereumChain",
-                    params: [
-                        {
-                            chainId: "{{ networks.moonbase.hex_chain_id }}", // Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
-                            chainName: "Moonbase Alpha",
-                            nativeCurrency: {
-                                name: 'DEV',
-                                symbol: 'DEV',
-                                decimals: 18
-                            },
-                        rpcUrls: ["{{ networks.moonbase.rpc_url }}"],
-                        blockExplorerUrls: ["{{ networks.moonbase.block_explorer }}"]
-                        },
-                    ]
-                })
-            } catch(e) {
-                console.error(e);
-            }  
-        } else {
-            console.error("Please install MetaMask");
+      const provider = await detectEthereumProvider({ mustBeMetaMask: true });
+      if (provider) {
+        try {
+          await provider.request({ method: 'eth_requestAccounts' });
+          await provider.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                 // Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
+                chainId: '{{ networks.moonbase.hex_chain_id }}',
+                chainName: 'Moonbase Alpha',
+                nativeCurrency: {
+                  name: 'DEV',
+                  symbol: 'DEV',
+                  decimals: 18,
+                },
+                rpcUrls: ['{{ networks.moonbase.rpc_url }}'],
+                blockExplorerUrls: ['{{ networks.moonbase.block_explorer }}'],
+              },
+            ],
+          });
+        } catch (e) {
+          console.error(e);
         }
-    }
+      } else {
+        console.error('Please install MetaMask');
+      }
+    };
     ```
-    
+
     ![Add and switch networks in MetaMask](/images/builders/integrations/wallets/metamask/metamask-2.png)
 
 现在，您应该已经完成按钮创建，用户只需点击按钮，根据操作指示即可将MetaMask账户连接至Moonbase Alpha。
@@ -120,15 +121,15 @@ import detectEthereumProvider from '@metamask/detect-provider';
 您可能会有知道用户是否将其MetaMask连接至Moonbase Alpha的逻辑。如果用户已经连接，您也可以禁用此按钮。要确认用户是否已经连接至Moonbase Alpha，您可以调用`eth_chainId`函数，它将返回用户当前chain ID：
 
 ```javascript
-    const chainId = await provider.request({
-        method: 'eth_chainId'
-    })
-    // Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
-    if (chainId === "{{ networks.moonbase.hex_chain_id }}"){
-        // At this point, you might want to disable the "Connect" button
-        // or inform the user that they are already connected to the
-        // Moonbase Alpha testnet
-    }
+const chainId = await provider.request({
+  method: 'eth_chainId',
+});
+// Moonbase Alpha's chainId is {{ networks.moonbase.chain_id }}, which is {{ networks.moonbase.hex_chain_id }} in hex
+if (chainId === '{{ networks.moonbase.hex_chain_id }}') {
+  // At this point, you might want to disable the "Connect" button
+  // or inform the user that they are already connected to the
+  // Moonbase Alpha testnet
+}
 ```
 
 ## 监听账户变化 {: #listen-to-account-changes }
@@ -136,12 +137,12 @@ import detectEthereumProvider from '@metamask/detect-provider';
 为了确保您的项目或dApp与最新的账户信息保持同步，您可以添加MetaMask提供的`accountsChanged`事件监听器。当`eth_accounts`返回的值发生变化时，MetaMask将发出此事件。如果返回地址，则它是您的用户最近提供访问权限的帐户。如果没有返回地址，则表示用户没有提供任何具有访问权限的帐户。
 
 ```javascript
-    provider.on("accountsChanged", (accounts) => {
-        if (accounts.length === 0) {
-            // MetaMask is locked or the user doesn't have any connected accounts
-            console.log('Please connect to MetaMask.');
-        } 
-    })
+provider.on('accountsChanged', (accounts) => {
+  if (accounts.length === 0) {
+    // MetaMask is locked or the user doesn't have any connected accounts
+    console.log('Please connect to MetaMask.');
+  }
+});
 ```
 
 ## 监听链变化 {: #listen-to-chain-changes }
@@ -149,10 +150,10 @@ import detectEthereumProvider from '@metamask/detect-provider';
 为了使您的项目或dApp与连接链的变化保持同步，您可以订阅`chainChanged`事件。当连接的链发生变化时，MetaMask将发出此事件。
 
 ```javascript
-    provider.on("chainChanged", () => {
-        // MetaMask recommends reloading the page unless you have good reason not to
-        window.location.reload();
-    })
+provider.on('chainChanged', () => {
+  // MetaMask recommends reloading the page unless you have good reason not to
+  window.location.reload();
+});
 ```
 
 若非必要情况，MetaMask建议在链变化时重新加载页面，因为与链更改保持一致至关重要。
