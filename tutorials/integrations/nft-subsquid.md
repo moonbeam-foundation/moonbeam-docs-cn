@@ -9,7 +9,7 @@ _作者：Massimo Luraschi_
 
 ## 概览 {: #introduction }
 
-[Subsquid](https://subsquid.io){target=_blank}是一个全栈区块链索引SDK，其具有专门的数据湖（Archives），对大量历史链上数据的提取进行了优化。
+[Subsquid](https://subsquid.io){target=_blank}是一个数据网络，开发者可以通过Subsquid的去中心化数据湖和开源SDK快速且高效地检索超过100种区块链的数据。
 
 SDK提供高度可自定义的Extract-Transform-Load-Query栈，索引事件和交易时其索引速度高达每秒超过50,000区块以上。
 

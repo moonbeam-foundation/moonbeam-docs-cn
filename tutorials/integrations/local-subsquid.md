@@ -11,7 +11,7 @@ _作者：Erin Shaben_
 
 在开发dApp时，使用本地的开发环境而非如测试网或主网等实际运作的网络来开发智能合约是有益的。在本地进行开发，可以消除在实际网络开发时会遇到的一些麻烦，例如必须为开发账户提供资金和等待区块生成等等。在Moonbeam，开发者可以启动他们自己的本地[Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}以快速轻松地构建和测试应用。
 
-但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？通过[Subsquid](/builders/integrations/indexers/subsquid){target=_blank}，一个用于如Moonbeam等基于Substrate区块链的查询节点框架，现在可以在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
+但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？[Subsquid](/builders/integrations/indexers/subsquid){target=_blank} 是一个为Moonbeam等基于Substrate区块链开发的数据网络。它包含了超过100种区块链的数据，开发者现在也可以用它在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
 
 本教程将带您了解使用Subsquid在本地Moonbeam开发节点上检索数据的过程。我们将会创建一个ERC-20合约并使用Subsquid来检索我们的ERC-20的转账记录。
 
