@@ -423,7 +423,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 ```bash
 npm init
 npm install --save-dev hardhat @nomicfoundation/hardhat-foundry
-npx hardhat
+npx hardhat init
 ```
 
 更多信息，请参考[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}的文档。

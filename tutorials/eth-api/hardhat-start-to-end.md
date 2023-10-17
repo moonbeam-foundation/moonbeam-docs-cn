@@ -51,7 +51,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 4. 创建项目
 
     ```bash
-    npx hardhat
+    npx hardhat init
     ```
 
     !!! 注意事项
