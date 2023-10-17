@@ -21,7 +21,7 @@ Moonbeam支持以下几点：
 
  - **基于Solidity的智能合约**
  - **生态系统工具**（例如区块浏览器、前端开发库、钱包等）
- - **开发工具**（例如Truffle、Remix、MetaMask等）
+ - **开发工具**（例如Hardhat、Remix、MetaMask等）
  - **通过桥接的以太坊代币**（例如代币转移、状态可视化、消息传达等）
 
 ## Frontier {: #frontier }

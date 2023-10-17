@@ -60,7 +60,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 ## 验证合约源代码 {: #verifying-contract-source-code }
 
-您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Truffle部署合约，您也可以使用其对应的[Etherscan plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}验证。
+您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Foundry部署合约，您也可以使用其对应的[Etherscan整合](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}验证。
 
 要直接从Moonscan验证您的合约源代码，您可以点击**tool**链接。
 
