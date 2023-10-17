@@ -208,19 +208,19 @@ XCM Transactor预编译合约允许开发者通过基于Moonbeam网络的以太�
 === "Moonbeam"
 
      ```text
-     {{networks.moonbeam.precompiles.xcm_transactor}}
+     {{networks.moonbeam.precompiles.xcm_transactor_v2}}
      ```
 
 === "Moonriver"
 
      ```text
-     {{networks.moonriver.precompiles.xcm_transactor}}
+     {{networks.moonriver.precompiles.xcm_transactor_v2}}
      ```
 
 === "Moonbase Alpha"
 
      ```text
-     {{networks.moonbase.precompiles.xcm_transactor}}
+     {{networks.moonbase.precompiles.xcm_transactor_v2}}
      ```
 
 XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。XCM Transactor旧版预编译位于以下地址：
@@ -228,19 +228,19 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 === "Moonbeam"
 
      ```text
-     {{networks.moonbeam.precompiles.xcm_transactor_legacy}}
+     {{networks.moonbeam.precompiles.xcm_transactor_v1}}
      ```
 
 === "Moonriver"
 
      ```text
-     {{networks.moonriver.precompiles.xcm_transactor_legacy}}
+     {{networks.moonriver.precompiles.xcm_transactor_v1}}
      ```
 
 === "Moonbase Alpha"
 
      ```text
-     {{networks.moonbase.precompiles.xcm_transactor_legacy}}
+     {{networks.moonbase.precompiles.xcm_transactor_v1}}
      ```
 
 --8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
