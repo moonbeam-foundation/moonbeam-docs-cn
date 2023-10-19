@@ -22,7 +22,7 @@ npm i @acala-network/chopsticks@latest
 在安装完毕后，您可以通过Node包执行器运行指令。举例来说，以下部分运行Chopstick的基础指令：
 
 ```bash
-npx @acala-network/chopsticks
+npx @acala-network/chopsticks@latest
 ```
 
 要运行Chopsticks，您需要某种配置，通常为通过文件进行配置。Chopsticks的源库包含一组 [YAML](https://yaml.org/){target=_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以从[源库的`configs`文件夹](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}下载配置文件。
@@ -127,27 +127,27 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
 |           `html`           |                  包含此标志以生成区块之间存储差异的预览。                  |
 |   `mock-signature-host`    |  模拟签名主机，让任何以0xdeadbeef开头并由0xcd填充的签名都被认为是有效的。  |
 
-您可以将配置文件与基本指令`npx @acala-network/chopsticks`结合使用，通过为其提供`--config`标志来分叉资产。
+您可以将配置文件与基本指令`npx @acala-network/chopsticks@latest`结合使用，通过为其提供`--config`标志来分叉资产。
 
 您可以使用默认配置文件的原始GitHub URL、本地配置文件的路径，或者仅使用链的名称作为`--config`标志。例如，以下指令都以相同的方式使用Moonbeam的配置：
 
 === "链名称"
 
     ```bash
-    npx @acala-network/chopsticks --config=moonbeam
+    npx @acala-network/chopsticks@latest --config=moonbeam
     ```
 
 === "GitHub URL"
 
     ```bash
-    npx @acala-network/chopsticks \
+    npx @acala-network/chopsticks@latest \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
 === "本地文件路径"
 
     ```bash
-    npx @acala-network/chopsticks --config=configs/moonbeam.yml
+    npx @acala-network/chopsticks@latest --config=configs/moonbeam.yml
     ```
 
 !!! 注意事项
@@ -156,7 +156,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
 然而，配置文件不是必需的。所有设置（除了`genesis`和`timestamp`）也可以作为标志传递，以在指令行中完全地配置环境。例如，以下指令为在区块100处分叉Moonbase Alpha：
 
 ```bash
-npx @acala-network/chopsticks --endpoint {{ networks.moonbase.rpc_url }} --block 100
+npx @acala-network/chopsticks@latest --endpoint {{ networks.moonbase.wss_url }} --block 100
 ```
 
 ### Quick Start {: #quickstart }
@@ -166,21 +166,21 @@ npx @acala-network/chopsticks --endpoint {{ networks.moonbase.rpc_url }} --block
 === "Moonbeam"
 
     ```bash
-    npx @acala-network/chopsticks \
+    npx @acala-network/chopsticks@latest \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
     ```
 
 === "Moonriver"
 
     ```bash
-    npx @acala-network/chopsticks \
+    npx @acala-network/chopsticks@latest \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonriver.yml
     ```
 
 === "Moonbase Alpha"
 
     ```bash
-    npx @acala-network/chopsticks \
+    npx @acala-network/chopsticks@latest \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbase-alpha.yml
     ```
 
@@ -211,7 +211,7 @@ ws://localhost:8000
 
 ## 重放区块 {: #replaying-blocks }
 
-如果您想重放一个区块并检索其信息以剖析extrinsic，您可以使用`npx @acala-network/chopsticks run-block`命令。它有以下标志：
+如果您想重放一个区块并检索其信息以剖析extrinsic，您可以使用`npx @acala-network/chopsticks@latest run-block`命令。它有以下标志：
 
 |            标志            |                          描述                          |
 |:--------------------------:|:------------------------------------------------------:|
@@ -227,7 +227,7 @@ ws://localhost:8000
 举例来说，运行以下命令将会重新运行Moonbeam的区块1000，并在`moonbeam-output.json`文件中写入存储差异和其他数据：
 
 ```bash
-npx @acala-network/chopsticks run-block  \
+npx @acala-network/chopsticks@latest run-block  \
 --endpoint wss://wss.api.moonbeam.network  \
 --output-path=./moonbeam-output.json  \
 --block 1000
@@ -238,7 +238,7 @@ npx @acala-network/chopsticks run-block  \
 要在网络间测试XCM消息，您可以在本地分叉多个平行链和中继链。举例来说，假设你已经从的源Github repository下载了[`configs`文件夹](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}，以下命令将会分叉Moonriver、Karura和Kusama：
 
 ```bash
-npx @acala-network/chopsticks xcm \
+npx @acala-network/chopsticks@latest xcm \
 --r=kusama.yml \
 --p=moonriver.yml \
 --p=karura.yml
