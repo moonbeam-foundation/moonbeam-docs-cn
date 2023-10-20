@@ -65,7 +65,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbeam.rpc_url }},
+          chain: '{{ networks.moonbeam.rpc_url }}',
           // Resolves to 'https://moonbeam.archive.subsquid.io'
           archive: lookupArchive('moonbeam', { type: 'Substrate' }),
         });
@@ -76,7 +76,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonriver.rpc_url }},
+          chain: '{{ networks.moonriver.rpc_url }}',
           // Resolves to 'https://moonriver.archive.subsquid.io'
           archive: lookupArchive('moonriver', { type: 'Substrate' }),
         });
@@ -87,7 +87,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbase.rpc_url }},
+          chain: '{{ networks.moonbase.rpc_url }}',
           // Resolves to 'https://moonbase.archive.subsquid.io'
           archive: lookupArchive('moonbase', { type: 'Substrate' }),
         });
@@ -145,7 +145,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbeam.rpc_url }},
+          chain: '{{ networks.moonbeam.rpc_url }}',
           // Resolves to 'https://moonbeam-evm.archive.subsquid.io'
           archive: lookupArchive('moonbeam', { type: 'EVM' })
         });
@@ -156,7 +156,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonriver.rpc_url }},
+          chain: '{{ networks.moonriver.rpc_url }}',
           // Resolves to 'https://moonriver-evm.archive.subsquid.io'
           archive: lookupArchive('moonriver', { type: 'EVM' }),
         });
@@ -167,7 +167,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbase.rpc_url }},
+          chain: '{{ networks.moonbase.rpc_url }}',
           // Resolves to 'https://moonbase-evm.archive.subsquid.io'
           archive: lookupArchive('moonbase', { type: 'EVM' }),
         });
