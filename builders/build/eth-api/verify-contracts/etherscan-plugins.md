@@ -145,7 +145,7 @@ cast abi-encode "constructor(uint256)" 100
     INSERT_YOUR_MOONSCAN_API_KEY
     ```
 
-![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-5.png)
+![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.png)
 
 如果您想要部署示例合约的同时进行验证，您可以使用以下命令：
 
@@ -179,6 +179,6 @@ cast abi-encode "constructor(uint256)" 100
     src/MyToken.sol:MyToken
     ```
 
-![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-6.png)
+![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-5.png)
 
 --8<-- 'text/_disclaimers/third-party-content.md'
