@@ -95,9 +95,8 @@ purestake/moonbeam \
 
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
-!!! note
-        安装路径包含空格会造成编译错误
-
+!!! 注意事项
+    安装路径包含空格会造成编译错误
 
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
