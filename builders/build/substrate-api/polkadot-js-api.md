@@ -331,7 +331,7 @@ console.log(`Transaction weight: ${weight}`);
 console.log(`Transaction fee: ${partialFee.toHuman()}`);
 ```
 
-??? code "View the complete script"
+??? code "查看完整文件"
 
     ```js
     --8<-- 'code/substrate-api/payment-info.js'
