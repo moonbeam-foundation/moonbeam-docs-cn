@@ -134,6 +134,7 @@ api.<type>.<module>.<section>
 
 形式提供数据。
 这些数据适合以下`<type>`类别之一
+
 - `query` - 获取state信息的端口
 - `tx` - 或许交易的端口
 - `rpc` - 用来发送RPC请求的端口
