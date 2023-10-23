@@ -197,7 +197,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d0300){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d0300`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d030000){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送给中继链上Alice的账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010300943577420d030000`。
 
 交易处理后，Alice应该在目标链的地址上收到1个Token。
 
@@ -208,19 +208,19 @@ XCM Transactor预编译合约允许开发者通过基于Moonbeam网络的以太�
 === "Moonbeam"
 
      ```text
-     {{networks.moonbeam.precompiles.xcm_transactor}}
+     {{networks.moonbeam.precompiles.xcm_transactor_v2}}
      ```
 
 === "Moonriver"
 
      ```text
-     {{networks.moonriver.precompiles.xcm_transactor}}
+     {{networks.moonriver.precompiles.xcm_transactor_v2}}
      ```
 
 === "Moonbase Alpha"
 
      ```text
-     {{networks.moonbase.precompiles.xcm_transactor}}
+     {{networks.moonbase.precompiles.xcm_transactor_v2}}
      ```
 
 XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但是，**旧版本将在不久的将来被弃用**，因此所有实现都必须迁移到较新的接口。XCM Transactor旧版预编译位于以下地址：
@@ -228,19 +228,19 @@ XCM Transactor旧版预编译仍可在所有基于Moonbeam网络中使用。但�
 === "Moonbeam"
 
      ```text
-     {{networks.moonbeam.precompiles.xcm_transactor_legacy}}
+     {{networks.moonbeam.precompiles.xcm_transactor_v1}}
      ```
 
 === "Moonriver"
 
      ```text
-     {{networks.moonriver.precompiles.xcm_transactor_legacy}}
+     {{networks.moonriver.precompiles.xcm_transactor_v1}}
      ```
 
 === "Moonbase Alpha"
 
      ```text
-     {{networks.moonbase.precompiles.xcm_transactor_legacy}}
+     {{networks.moonbase.precompiles.xcm_transactor_v1}}
      ```
 
 --8<-- 'text/builders/pallets-precompiles/precompiles/security.md'

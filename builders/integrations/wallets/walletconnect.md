@@ -122,11 +122,14 @@ Moonbeam WalletConnect范本提供了所有您目前为止需要的内容，为�
 3. 查看连接是否已成功建立，如果并未成功建立即创建一个新的连接要求
 
 ```js
-const connect = async () => { 
+const connect = async () => {
   setFetching(true);
 
   // 1. Create connector
-  const connector = new WalletConnect({ bridge: "https://bridge.walletconnect.org", qrcodeModal: QRCodeModal });
+  const connector = new WalletConnect({
+    bridge: 'https://bridge.walletconnect.org',
+    qrcodeModal: QRCodeModal,
+  });
 
   // 2. Update the connector state
   setConnector(connector);
@@ -206,11 +209,13 @@ const killSession = () => {
 现在您已经具有了所有的逻辑以处理解除连接的操作，您将会需要一个**Disconnect**按纽包含`onClick` 以触发 `killSession` 函数。由于您仅希望在用户已连接时显示**Disconnect**按钮，您可以使用 [conditional renderering](https://reactjs.org/docs/conditional-rendering.html){target=_blank}。条件渲染（Conditional renderering）使您能够查看指定的参数，如果当前条件符合您的设定您将可以渲染一个元件或是其他元件。在此例当中，如果您获取的并不是先前连接和连接器的存在，您可以渲染**Disconnect**按钮，否则渲染**Connect Wallet**按钮。您可以使用以下部分取代已存在的`<Button>` ：
 
 ```js
-{connector && !fetching ? (
-  <OutlinedButton onClick={killSession}>Disconnect</OutlinedButton>
-) : (
-  <Button onClick={connect}>Connect Wallet</Button>
-)}
+{
+  connector && !fetching ? (
+    <OutlinedButton onClick={killSession}>Disconnect</OutlinedButton>
+  ) : (
+    <Button onClick={connect}>Connect Wallet</Button>
+  );
+}
 ```
 
 如果您在测试解除连接逻辑的时候发现您点击**Connect Wallet**的时候不会出现任何反应或是弹窗，请确认您是否手动在MetaMask行动钱包解除了任何先前存在的连接。如果您仍遇到问题，请重新刷新您的浏览器。
@@ -226,7 +231,7 @@ const killSession = () => {
 在`disconnect`获得响应后，您可以新增`resetApp`函数。如此一来，当任何`disconnect`事件被发出，您将能够重置您DApp的状态。
 
 ```js
-connector.on("disconnect", async (error) => {
+connector.on('disconnect', async (error) => {
   if (error) {
     // Handle errors as you see fit
     console.error(error);
@@ -263,7 +268,9 @@ const onConnect = async (chainId, connectedAccount) => {
   setChainId(chainId);
 
   // get chain data
-  const networkData = SUPPORTED_NETWORKS.filter((chain) => chain.chain_id === chainId)[0];
+  const networkData = SUPPORTED_NETWORKS.filter(
+    (chain) => chain.chain_id === chainId
+  )[0];
 
   if (!networkData) {
     setSupported(false);
@@ -294,33 +301,36 @@ useEffect(() => {
 接着在页面上渲染状态变量，您可以在**Disconnect**按钮包含额外的UI元素。同样，您可以使用条件渲染以显示具体详情或是在连接至错误网络时显示错误信息：
 
 ```js
-{connector && !fetching ? (
-  <LoadedData>
-    <Data>
-      <strong>Connected Account: </strong>
-      {account}
-    </Data>
-    <Data>
-      <strong>Chain ID: </strong>
-      {chainId}
-    </Data>
-    {supported ? (
-      <>
-        <Data>
-          <strong>Network: </strong>
-          {network}
-        </Data>
-      </>
-    ) : (
-      <strong>
-        Network not supported. Please disconnect, switch networks, and connect again.
-      </strong>
-    )}
-    <OutlinedButton onClick={killSession}>Disconnect</OutlinedButton>
-  </LoadedData>
-) : (
-  <Button onClick={connect}>Connect Wallet</Button>
-)}
+{
+  connector && !fetching ? (
+    <LoadedData>
+      <Data>
+        <strong>Connected Account: </strong>
+        {account}
+      </Data>
+      <Data>
+        <strong>Chain ID: </strong>
+        {chainId}
+      </Data>
+      {supported ? (
+        <>
+          <Data>
+            <strong>Network: </strong>
+            {network}
+          </Data>
+        </>
+      ) : (
+        <strong>
+          Network not supported. Please disconnect, switch networks, and connect
+          again.
+        </strong>
+      )}
+      <OutlinedButton onClick={killSession}>Disconnect</OutlinedButton>
+    </LoadedData>
+  ) : (
+    <Button onClick={connect}>Connect Wallet</Button>
+  );
+}
 ```
 
 您可以调整以上代码段以更好地处理错误。
@@ -368,9 +378,11 @@ const [balance, setBalance] = useState(null);
 const onConnect = async (chainId, address) => {
   setAccount(address);
 
-  const networkData = SUPPORTED_NETWORKS.filter((network) => network.chain_id === chainId)[0];  
+  const networkData = SUPPORTED_NETWORKS.filter(
+    (network) => network.chain_id === chainId
+  )[0];
 
-  if (!networkData){
+  if (!networkData) {
     setSupported(false);
   } else {
     setSupported(true);
@@ -381,7 +393,7 @@ const onConnect = async (chainId, address) => {
     // 1. Create an Ethers provider
     const provider = new ethers.JsonRpcProvider(networkData.rpc_url, {
       chainId,
-      name: networkData.name
+      name: networkData.name,
     });
 
     // 2. Get the account balance
@@ -408,20 +420,25 @@ if ((!chainId || !account || !balance) && connector.connected) {
 最后，您可以在用户连接至支持网络时显示账户余额。您可以使用先前创建的`symbol`状态变量在Moonbase Alpha显示**DEV**余额。
 
 ```js
-{supported ? (
-  <>
-    <Data>
-      <strong>Network: </strong>
-      {network}
-    </Data>
-    <Data>
-      <strong>Balance: </strong>
-      {balance} {symbol}
-    </Data>
-  </>
-) : (
-  <strong>Network not supported. Please disconnect, switch networks, and connect again.</strong>
-)}
+{
+  supported ? (
+    <>
+      <Data>
+        <strong>Network: </strong>
+        {network}
+      </Data>
+      <Data>
+        <strong>Balance: </strong>
+        {balance} {symbol}
+      </Data>
+    </>
+  ) : (
+    <strong>
+      Network not supported. Please disconnect, switch networks, and connect
+      again.
+    </strong>
+  );
+}
 ```
 
 此示例可以修改为从Ethers获取其他所需数据。
@@ -435,7 +452,11 @@ if ((!chainId || !account || !balance) && connector.connected) {
 ```js
 const sendTransaction = async () => {
   try {
-    await connector.sendTransaction({ from: account, to: account, value: "0x1BC16D674EC80000" });
+    await connector.sendTransaction({
+      from: account,
+      to: account,
+      value: '0x1BC16D674EC80000',
+    });
   } catch (e) {
     // Handle the error as you see fit
     console.error(e);
@@ -446,21 +467,28 @@ const sendTransaction = async () => {
 要在DApp中发起交易，您需要创建一个按钮包含`onClick`以触发`sendTransaction`函数。此动作仅会在连接至支持网络时被执行。
 
 ```js
-{supported ? (
-  <>
-    <Data>
-      <strong>Network: </strong>
-      {network}
-    </Data>
-    <Data>
-      <strong>Balance: </strong>
-      {balance} {symbol}
-    </Data>
-    <OutlinedButton onClick={sendTransaction}>Send Transaction</OutlinedButton>
-  </>
-) : (
-  <strong>Network not supported. Please disconnect, switch networks, and connect again.</strong>
-)}
+{
+  supported ? (
+    <>
+      <Data>
+        <strong>Network: </strong>
+        {network}
+      </Data>
+      <Data>
+        <strong>Balance: </strong>
+        {balance} {symbol}
+      </Data>
+      <OutlinedButton onClick={sendTransaction}>
+        Send Transaction
+      </OutlinedButton>
+    </>
+  ) : (
+    <strong>
+      Network not supported. Please disconnect, switch networks, and connect
+      again.
+    </strong>
+  );
+}
 ```
 
 当您点击**Send Transaction**，MetaMask移动端钱包将会跳出弹窗显示交易细节：

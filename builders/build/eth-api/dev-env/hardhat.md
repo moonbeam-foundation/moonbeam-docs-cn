@@ -46,7 +46,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 4. 创建项目
 
     ```sh
-    npx hardhat
+    npx hardhat init
     ```
 
     !!! 注意事项
@@ -82,6 +82,7 @@ touch Box.sol
 
 ```solidity
 // contracts/Box.sol
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
 
 contract Box {
@@ -211,26 +212,26 @@ touch deploy.js
 ```js
 // scripts/deploy.js
 async function main() {
-   // 1. Get the contract to deploy
-   const Box = await ethers.getContractFactory('Box');
-   console.log('Deploying Box...');
+  // 1. Get the contract to deploy
+  const Box = await ethers.getContractFactory('Box');
+  console.log('Deploying Box...');
 
-   // 2. Instantiating a new Box smart contract
-   const box = await Box.deploy();
+  // 2. Instantiating a new Box smart contract
+  const box = await Box.deploy();
 
-   // 3. Waiting for the deployment to resolve
-   await box.waitForDeployment();
+  // 3. Waiting for the deployment to resolve
+  await box.waitForDeployment();
 
-   // 4. Use the contract instance to get the contract address
-   console.log('Box deployed to:', box.target);
+  // 4. Use the contract instance to get the contract address
+  console.log('Box deployed to:', box.target);
 }
 
 main()
-   .then(() => process.exit(0))
-   .catch((error) => {
-      console.error(error);
-      process.exit(1);
-   });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 ```
 
 您现在可以使用`run`命令并指定`moonbase`作为网络来部署`Box.sol`合约：
@@ -272,7 +273,7 @@ npx hardhat console --network moonbase
 3. 与此合约交互。在本示例中，您可以调用`store`方法并存储一个简单的值
 
     ```js
-    await box.store(5)
+    await box.store(5);
     ```
 
 交易将通过您的Moonbase账户进行签署并传送至网络。后台输出将如下所示：
@@ -434,12 +435,12 @@ npx patch-package hardhat
     ```js
     ...
     networks: {
-        hardhat: {
-            forking: {
-            url: "{{ networks.moonbeam.rpc_url }}",
-            }
-        }
-    }
+      hardhat: {
+        forking: {
+          url: '{{ networks.moonbeam.rpc_url }}',
+        },
+      },
+    },
     ...
     ```
 
@@ -448,12 +449,12 @@ npx patch-package hardhat
     ```js
     ...
     networks: {
-        hardhat: {
-            forking: {
-            url: "{{ networks.moonriver.rpc_url }}",
-            }
-        }
-    }
+      hardhat: {
+        forking: {
+          url: '{{ networks.moonriver.rpc_url }}',
+        },
+      },
+    },
     ...
     ```
 
@@ -462,12 +463,12 @@ npx patch-package hardhat
     ```js
     ...
     networks: {
-        hardhat: {
-            forking: {
-            url: "{{ networks.moonbase.rpc_url }}",
-            }
-        }
-    }
+      hardhat: {
+        forking: {
+          url: '{{ networks.moonbase.rpc_url }}',
+        },
+      },
+    },
     ...
     ```
 
@@ -494,7 +495,6 @@ async function main() {
   const provider = new ethers.providers.StaticJsonRpcProvider(
     'http://127.0.0.1:8545/'
   );
-
   const contract = new ethers.Contract(
     'INSERT_CONTRACT_ADDRESS',
     'INSERT_CONTRACT_ABI',

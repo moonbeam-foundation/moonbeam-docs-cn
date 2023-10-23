@@ -393,7 +393,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 您可以将以下代码片段用于任何基于Moonbeam的网络，但您需要相应地修改`baseFee`。您可以参考[基本费用](#base-fee)部分以获取每个网络的计算结果。
 
---8<-- 'code/builders/get-started/eth-compare/tx-fees/tx-fees-block-dynamic.md'
+```js
+--8<-- 'code/builders/get-started/eth-compare/tx-fees/tx-fees-block-dynamic.js'
+```
 
 ## Substrate API交易费用 {: #substrate-api-transaction-fees }
 

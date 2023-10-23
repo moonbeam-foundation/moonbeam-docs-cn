@@ -16,7 +16,7 @@ const Web3 = require('web3'); // Load Web3 library
 .
 .
 // Create local Web3 instance - set Moonbeam as provider
-const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
+const web3 = new Web3('INSERT_RPC_API_ENDPOINT'); // Insert your RPC URL here
 ```
 
 如果使用的是[Ethers.js库](/builders/build/eth-api/libraries/ethersjs){target=_blank}，您可以使用`ethers.JsonRpcProvider(providerURL, {object})`来定义提供者，并且将提供者URL设定至Moonbeam：
@@ -24,7 +24,7 @@ const web3 = new Web3("RPC-API-ENDPOINT-HERE"); // Insert your RPC URL here
 ```js
 const ethers = require('ethers'); // Load Ethers library
 
-const providerURL = "https://rpc.api.moonbeam.network";
+const providerURL = 'INSERT_RPC_API_ENDPOINT';
 // Define provider
 const provider = new ethers.JsonRpcProvider(providerURL, {
     chainId: 1284,
@@ -34,6 +34,6 @@ const provider = new ethers.JsonRpcProvider(providerURL, {
 
 任何以太坊钱包都应当能够为Moonbeam生成有效地址（例如：[MetaMask](https://metamask.io/){target=_blank}）。
 
-## Chain ID {: #chain-id } 
+## Chain ID {: #chain-id }
 
 Moonbeam的Chain ID为`1284`，hex为`0x504`。

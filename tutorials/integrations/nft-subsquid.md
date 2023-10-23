@@ -157,7 +157,7 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
-      archive: lookupArchive("moonbeam", {type: "Substrate"}),
+      archive: lookupArchive('moonbeam', { type: 'Substrate' }),
     });
     ```
 
@@ -166,7 +166,7 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
-      archive: lookupArchive("moonriver", {type: "Substrate"}),
+      archive: lookupArchive('moonriver', { type: 'Substrate' }),
     });
     ```
 
@@ -175,7 +175,7 @@ Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.
     ```js
     processor.setDataSource({
       chain: process.env.RPC_ENDPOINT, // TODO: Add the endpoint to your .env file
-      archive: lookupArchive("moonbase", {type: "Substrate"}),
+      archive: lookupArchive('moonbase', { type: 'Substrate' }),
     });
     ```
 

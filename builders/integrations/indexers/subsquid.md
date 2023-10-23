@@ -33,7 +33,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 1. 通过运行以下命令创建基于Substrate模板的Subsquid项目：
 
     ```bash
-    sqd init <insert-squid-name> --template substrate
+    sqd init INSERT_SQUID_NAME --template substrate
     ```
 
     有关开始使用此模板的更多信息，请查看Subsquid文档网站上的[快速入门：Substrate链](https://docs.subsquid.io/quickstart/quickstart-substrate/){target=_blank}指南。
@@ -65,9 +65,9 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbeam.rpc_url }},
-          // Resolves to "https://moonbeam.archive.subsquid.io"
-          archive: lookupArchive("moonbeam", { type: "Substrate" }),
+          chain: '{{ networks.moonbeam.rpc_url }}',
+          // Resolves to 'https://moonbeam.archive.subsquid.io'
+          archive: lookupArchive('moonbeam', { type: 'Substrate' }),
         });
         ```
 
@@ -76,9 +76,9 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonriver.rpc_url }},
-          // Resolves to "https://moonriver.archive.subsquid.io"
-          archive: lookupArchive("moonriver", { type: "Substrate" }),
+          chain: '{{ networks.moonriver.rpc_url }}',
+          // Resolves to 'https://moonriver.archive.subsquid.io'
+          archive: lookupArchive('moonriver', { type: 'Substrate' }),
         });
         ```
 
@@ -87,9 +87,9 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new SubstrateBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbase.rpc_url }},
-          // Resolves to "https://moonbase.archive.subsquid.io"
-          archive: lookupArchive("moonbase", { type: "Substrate" }),
+          chain: '{{ networks.moonbase.rpc_url }}',
+          // Resolves to 'https://moonbase.archive.subsquid.io'
+          archive: lookupArchive('moonbase', { type: 'Substrate' }),
         });
         ```
 
@@ -104,13 +104,13 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
     === "EVM"
 
         ```bash
-        sqd init <insert-squid-name> --template evm
+        sqd init INSERT_SQUID_NAME --template evm
         ```
 
     === "ABI"
 
         ```bash
-        sqd init <insert-squid-name> --template abi
+        sqd init INSERT_SQUID_NAME --template abi
         ```
 
     有关开始使用这两个模板的更多信息，请查看以下Subsquid文档：
@@ -140,25 +140,25 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
 
 3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
-    === "Moonbea
-    m"
+    === "Moonbeam"
+
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbeam.rpc_url }},
-          // Resolves to "https://moonbeam-evm.archive.subsquid.io"
-          archive: lookupArchive("moonbeam", { type: "EVM" })
+          chain: '{{ networks.moonbeam.rpc_url }}',
+          // Resolves to 'https://moonbeam-evm.archive.subsquid.io'
+          archive: lookupArchive('moonbeam', { type: 'EVM' })
         });
         ```
 
-    === "Moonriv
-    er"
+    === "Moonriver"
+
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonriver.rpc_url }},
-          // Resolves to "https://moonriver-evm.archive.subsquid.io"
-          archive: lookupArchive("moonriver", { type: "EVM" }),
+          chain: '{{ networks.moonriver.rpc_url }}',
+          // Resolves to 'https://moonriver-evm.archive.subsquid.io'
+          archive: lookupArchive('moonriver', { type: 'EVM' }),
         });
         ```
 
@@ -167,9 +167,9 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         ```js
         const processor = new EvmBatchProcessor();
         processor.setDataSource({
-          chain: {{ networks.moonbase.rpc_url }},
-          // Resolves to "https://moonbase-evm.archive.subsquid.io"
-          archive: lookupArchive("moonbase", { type: "EVM" }),
+          chain: '{{ networks.moonbase.rpc_url }}',
+          // Resolves to 'https://moonbase-evm.archive.subsquid.io'
+          archive: lookupArchive('moonbase', { type: 'EVM' }),
         });
         ```
 

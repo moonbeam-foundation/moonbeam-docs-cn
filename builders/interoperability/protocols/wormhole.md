@@ -67,13 +67,13 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 如需在每条链上部署，您将需要Wormhole核心桥接的本地实例以及每条对应链的chain ID。如下所示为选定的几个测试网提供了这些数据。您可以在Wormhole的[文档网站](https://book.wormhole.com/reference/contracts.html#testnet){target=_blank}找到其他网络的端点。请注意，为本文设计的智能合约和中继器仅支持EVM，因此在本次演示只能使用EVM。
 
-|                          网络 & 水龙头                           |             核心桥地址            | Wormhole 链ID |
-|:-------------------------------------------------------------------:|:------------------------------------------:|:-----------------:|
-| [Polygon Mumbai](https://faucet.polygon.technology/){target=_blank} | 0x0CBE91CF822c73C2315FB05100C2F714765d5c20 |         5         |
-|    [Avalanche Fuji](https://faucet.avax.network/){target=_blank}    | 0x7bbcE28e64B3F8b84d876Ab298393c38ad7aac4C |         6         |
-|   [Fantom TestNet](https://faucet.fantom.network/){target=_blank}   | 0x1BB3B4119b7BA9dfad76B0545fb3F531383c3bB7 |         10        |
-|         [Goerli](https://goerlifaucet.com/){target=_blank}          | 0x706abc4E45D419950511e474C7B9Ed348A4a716c |         2         |
-| [Moonbase Alpha](https://docs.moonbeam.network/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=_blank} | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 | 16 |
+|                                                        网络 & 水龙头                                                         |                 核心桥地址                 | Wormhole 链ID |
+|:----------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
+|                             [Polygon Mumbai](https://faucet.polygon.technology/){target=_blank}                              | 0x0CBE91CF822c73C2315FB05100C2F714765d5c20 |       5       |
+|                                [Avalanche Fuji](https://faucet.avax.network/){target=_blank}                                 | 0x7bbcE28e64B3F8b84d876Ab298393c38ad7aac4C |       6       |
+|                               [Fantom TestNet](https://faucet.fantom.network/){target=_blank}                                | 0x1BB3B4119b7BA9dfad76B0545fb3F531383c3bB7 |      10       |
+|                                      [Goerli](https://goerlifaucet.com/){target=_blank}                                      | 0x706abc4E45D419950511e474C7B9Ed348A4a716c |       2       |
+| [Moonbase Alpha](https://docs.moonbeam.network/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=_blank} | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 |      16       |
 
 1. 确保选择的合约为**SimpleGeneralMessage**
 2. 点击箭头按钮打开部署菜单
@@ -177,20 +177,18 @@ npm run testnet-spy
 
 请确保编辑`spyServiceFilters`数组以便中继器监听您部署的两个合约。
 
-
-```javascript
- "spyServiceFilters": [
-   {
-     "chainId": 16,
-     "emitterAddress": "0x428097dCddCB00Ab65e63AB9bc56Bb48d106ECBE"
-   },
-   {
-     "chainId": 10,
-     "emitterAddress": "0x5017Fd40aeA8Ab94693bE41b3bE4e90F45860bA4"
-   }
- ]
+```json
+"spyServiceFilters": [
+    {
+        "chainId": 16,
+        "emitterAddress": "0x428097dCddCB00Ab65e63AB9bc56Bb48d106ECBE"
+    },
+    {
+        "chainId": 10,
+        "emitterAddress": "0x5017Fd40aeA8Ab94693bE41b3bE4e90F45860bA4"
+    }
+]
 ```
-
 
 在`simplegeneralmessage_plugin`文件夹中，打开`src/plugin.ts`。该文件包含中继器的监听器和执行器两个组件的插件代码，但注释已明确说明哪些函数与哪个组件相关。该文件的片段如下所示，请遵循教程操作。若没有执行操作，您可以在[它的Github repository](https://github.com/jboetticher/relayer-engine-docs-example/blob/main/plugins/simplegeneralmessage_plugin/src/plugin.ts){target=_blank}获取整个文件。
 
@@ -238,7 +236,6 @@ npm run testnet-spy
   }
 ```
 
-
 这就是所有关于监听器组件的所需内容。大部分代码藏于`relayer-engine`包中，对用户不可见。
 
 如果您还记得组件列表的话，第三个是Redis数据库组件。与数据库相关的大部分代码对用户隐藏，因为`relayer-engine`包会从其写入和阅读，并将任何相关数据注入插件代码。要运行Redis数据库，只需在父目录中运行以下命令：
@@ -259,7 +256,7 @@ npm run redis
 
 泄露密钥可能导致资金流失，因此请妥善保管您的密钥。虽然`executor.json`在存储库中被git忽略，请确保您在测试网使用的钱包中没有任何主网资金。
 
-```javascript
+```json
 {
    "privateKeys": {
        "16": [
@@ -277,7 +274,6 @@ npm run redis
        "10": [
            "0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1d"
        ],
-
    }
 }
 ```
@@ -286,9 +282,9 @@ npm run redis
 
 如果您正在使用一条并未在上方EVM测试网列表中列出的链，您将需要添加您自己的数组。该数组的密钥应该在另一个您之前决定部署的EVM的Wormhole chain ID。例如，如果您在Fantom TestNet上部署，您将添加以下对象，因为Fantom TestNet的Wormhole chain ID是10。
 
-```javascript
+```json
 "10": [
-    "YOUR PRIVATE KEY"
+    "INSERT_YOUR_PRIVATE_KEY"
 ]
 ```
 
@@ -304,7 +300,6 @@ npm run redis
 
 有了Ethers解码的数据，我们可以知道负载所传送至的目标合约以及目标链，因为数据被打包至消息中了。该函数检查指定的目标chain ID是否属于一个EVM，并将使用上述的`execute.onEVM(options)`函数执行。否则，它将记录一个错误，因为系统会因简单起见而不与非EVM链交互。
 
-
 ```javascript
 // Consumes a workflow for execution
 async handleWorkflow(
@@ -319,17 +314,24 @@ async handleWorkflow(
   this.logger.info(`Parsed VAA. seq: ${parsed.sequence}`);
 
   // Here we are parsing the payload so that we can send it to the right recipient
-  const hexPayload = parsed.payload.toString("hex");
-  let [recipient, destID, sender, message] = ethers.utils.defaultAbiCoder.decode(["bytes32", "uint16", "bytes32", "string"], "0x" + hexPayload);
+  const hexPayload = parsed.payload.toString('hex');
+  let [recipient, destID, sender, message] =
+    ethers.utils.defaultAbiCoder.decode(
+      ['bytes32', 'uint16', 'bytes32', 'string'],
+      '0x' + hexPayload
+    );
   recipient = this.formatAddress(recipient);
   sender = this.formatAddress(sender);
   const destChainID = destID as ChainId;
-  this.logger.info(`VAA: ${sender} sent "${message}" to ${recipient} on chain ${destID}.`);
+  this.logger.info(
+    `VAA: ${sender} sent "${message}" to ${recipient} on chain ${destID}.`
+  );
 
   // Execution logic
   if (wh.isEVMChain(destChainID)) {
     // This is where you do all of the EVM execution.
-    // Add your own private wallet for the executor to inject in relayer-engine-config/executor.json
+    // Add your own private wallet for the executor to inject in 
+    // relayer-engine-config/executor.json
     await execute.onEVM({
       chainId: destChainID,
       f: async (wallet, chainId) => {
@@ -338,14 +340,16 @@ async handleWorkflow(
         this.logger.info(result);
       },
     });
+  } else {
+    // The relayer plugin has a built-in Solana wallet handler, which you could use
+    // here. NEAR & Algorand are supported by Wormhole, but they're not supported by
+    // the relayer plugin. If you want to interact with NEAR or Algorand you'd have
+    // to make your own wallet management system, that's all
+    this.logger.error(
+      'Requested chainID is not an EVM chain, which is currently unsupported.'
+    );
   }
-  else {
-    // The relayer plugin has a built-in Solana wallet handler, which you could use here.
-    // NEAR & Algorand are supported by Wormhole, but they're not supported by the relayer plugin.
-    // If you want to interact with NEAR or Algorand you'd have to make your own wallet management system, that's all.      
-    this.logger.error("Requested chainID is not an EVM chain, which is currently unsupported.");
-  }
-}
+};
 ```
 
 在回调函数中，使用Ethers包创建一个[合约对象](https://docs.ethers.org/v6/api/contract/#Contract){target=_blank}。其导入的ABI从`SimpleGeneralMessage`合约的编译中导出，所以该代码假设VAA中指定的消息接收者是或从`SimpleGeneralMessage`合约继承。
@@ -367,20 +371,18 @@ await execute.onEVM({
 
 该中继器还有许多其他配置。例如，`mode`字符串设置为`“BOTH”`以确保使用监听器和执行器插件，也可根据开发者需求选择只运行其中一个。此外，还有多个日志级别可供指定，如`“error”`可用来只记录错误消息。然而，在本次演示中只需保留配置设置即可。
 
-
-```javascript
+```json
  "mode": "BOTH",
  "logLevel": "debug",
  ...
-   {
-     "chainId": 16,
-     "chainName": "Moonbase Alpha",
-     "nodeUrl": "https://rpc.api.moonbase.moonbeam.network",
-     "bridgeAddress": "0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901",
-     "tokenBridgeAddress": "0xbc976D4b9D57E57c3cA52e1Fd136C45FF7955A96"
-   },
+    {
+        "chainId": 16,
+        "chainName": "Moonbase Alpha",
+        "nodeUrl": "https://rpc.api.moonbase.moonbeam.network",
+        "bridgeAddress": "0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901",
+        "tokenBridgeAddress": "0xbc976D4b9D57E57c3cA52e1Fd136C45FF7955A96"
+    },
 ```
-
 
 配置这样就行了！现在需要运行它。在您的终端实例（未运行间谍节点的实例），导航至父文件夹。运行下列命令：
 

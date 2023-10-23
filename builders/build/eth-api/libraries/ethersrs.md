@@ -92,7 +92,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
         // Do not include the private key in plain text in any production code
         // This is just for demonstration purposes
         // Do not include '0x' at the start of the private key
-        let wallet: LocalWallet = "YOUR PRIVATE KEY"
+        let wallet: LocalWallet = "INSERT_YOUR_PRIVATE_KEY"
             .parse::<LocalWallet>()?
             .with_chain_id(Chain::Moonbeam);
     
@@ -122,7 +122,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
         // Do not include the private key in plain text in any production code
         // This is just for demonstration purposes
         // Do not include '0x' at the start of the private key
-        let wallet: LocalWallet = "YOUR PRIVATE KEY"
+        let wallet: LocalWallet = "INSERT_YOUR_PRIVATE_KEY"
             .parse::<LocalWallet>()?
             .with_chain_id(Chain::Moonriver);
     
@@ -152,7 +152,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
         // Do not include the private key in plain text in any production code
         // This is just for demonstration purposes
         // Do not include '0x' at the start of the private key
-        let wallet: LocalWallet = "YOUR PRIVATE KEY"
+        let wallet: LocalWallet = "INSERT_YOUR_PRIVATE_KEY"
             .parse::<LocalWallet>()?
             .with_chain_id(Chain::Moonbase);
     
@@ -182,7 +182,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
         // Do not include the private key in plain text in any production code
         // This is just for demonstration purposes
         // Do not include '0x' at the start of the private key
-        let wallet: LocalWallet = "YOUR PRIVATE KEY"
+        let wallet: LocalWallet = "INSERT_YOUR_PRIVATE_KEY"
             .parse::<LocalWallet>()?
             .with_chain_id(Chain::MoonbeamDev);
     
