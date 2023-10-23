@@ -319,6 +319,7 @@ transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取
 `paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/xcm-transactor/){target=_blank}时非常有用.
 
 假设您已成功[初始化API](#creating-an-API-provider-instance)，以下代码片段展示了如何获取一个简单转账交易的weight信息：
+
 ```javascript
 // Transaction to get weight information
 const tx = api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345));
