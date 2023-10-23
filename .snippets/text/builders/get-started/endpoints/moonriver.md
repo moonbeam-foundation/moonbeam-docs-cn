@@ -7,8 +7,8 @@
     |  UnitedBloc  |                       <pre>```https://moonriver.unitedbloc.com```</pre>                        |
 
 === "WSS"
-    |   供应商   |                           RPC URL                            |
-    |:----------:|:------------------------------------------------------------:|
-    |   Blast    |     <pre>```wss://moonriver.public.blastapi.io```</pre>      |
-    |  Dwellir   |       <pre>```wss://moonriver-rpc.dwellir.com```</pre>       |
-    | UnitedBloc |       <pre>```wss://moonriver.unitedbloc.com```</pre>        |
+    |   供应商   |                       RPC URL                       |
+    |:----------:|:---------------------------------------------------:|
+    |   Blast    | <pre>```wss://moonriver.public.blastapi.io```</pre> |
+    |  Dwellir   |  <pre>```wss://moonriver-rpc.dwellir.com```</pre>   |
+    | UnitedBloc |   <pre>```wss://moonriver.unitedbloc.com```</pre>   |

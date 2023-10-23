@@ -8,8 +8,8 @@
     |  UnitedBloc  |                       <pre>```https://moonbeam.unitedbloc.com```</pre>                        |
 
 === "WSS"
-    |   供应商   |                           RPC URL                           |
-    |:----------:|:-----------------------------------------------------------:|
-    |   Blast    |     <pre>```wss://moonbeam.public.blastapi.io```</pre>      |
-    |  Dwellir   |       <pre>```wss://moonbeam-rpc.dwellir.com```</pre>       |
-    | UnitedBloc |       <pre>```wss://moonbeam.unitedbloc.com```</pre>        |
+    |   供应商   |                      RPC URL                       |
+    |:----------:|:--------------------------------------------------:|
+    |   Blast    | <pre>```wss://moonbeam.public.blastapi.io```</pre> |
+    |  Dwellir   |  <pre>```wss://moonbeam-rpc.dwellir.com```</pre>   |
+    | UnitedBloc |   <pre>```wss://moonbeam.unitedbloc.com```</pre>   |
