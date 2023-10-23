@@ -62,7 +62,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         --dev --ws-external --rpc-external
         ```
 
-!!! note
+!!! 注意事项
     如果您的电脑使用的是Apple芯片, Docker可能无法完美运行您使用的镜像文件. 为了提升性能, 请尝试 [使用二进制文件启动节点](#getting-started-with-the-binary-file).
 
 如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
