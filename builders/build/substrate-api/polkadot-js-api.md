@@ -278,13 +278,15 @@ const keyring = new Keyring({ type: 'ethereum' });
 将账户添加至keyring实例有多种方式，包括通过助记词和短格式密钥：
 
 === "From Mnemonic"
+
     ```javascript
-    --8<-- 'code/substrate-api/adding-accounts-mnemonic.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/adding-accounts-mnemonic.js'
     ```
 
 === "From Private Key"
+
     ```javascript
-    --8<-- 'code/substrate-api/adding-accounts-private-key.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/adding-accounts-private-key.js'
     ```
 
 ## 在Moonbeam上发送交易  {: #transactions }
@@ -350,7 +352,7 @@ console.log(`Transaction fee: ${partialFee.toHuman()}`);
 ??? code "查看完整文件"
 
     ```js
-    --8<-- 'code/substrate-api/payment-info.js'
+    --8<-- 'code/builders/build/substrate-api/polkadot-js-api/payment-info.js'
     ```
 
 ### 交易事件 {: #transaction-events }
