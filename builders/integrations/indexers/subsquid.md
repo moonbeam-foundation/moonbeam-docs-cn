@@ -7,7 +7,7 @@ description: 学习如何在Moonbeam和Moonriver上使用Subsquid运行Substrate
 
 ## 概览 {: #introduction }
 
-[Subsquid](https://subsquid.io){target=_blank}是基于Substrate的区块链所使用的一种检索节点框架。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（Extract-Transform-Load，数据提取、转换与加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。
+[Subsquid](https://subsquid.io){target=_blank}是一个数据网络，通过Subsquid的分布式数据湖和开源软件开发工具包（SDK），用户能够快速高效地检索过百个区块链的数据。简单而言，Subsquid可以被当成一个包含GraphQL服务器的ETL（Extract-Transform-Load，数据提取、转换与加载）工具，提供全面的筛选、分页甚至是全文字搜索等服务。
 
 Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整支持。由于Moonbeam是一个基于Substrate的EVM兼容的智能合约平台，Subsquid可用于索引EVM的和基于Substrate的数据。Subsquid提供了一个Substrate Archive和Processor，还有一个EVM Archive和Processor。 Substrate Archive和Processor可用于索引Substrate和EVM数据。这使得开发者在单个项目中可以从任何Moonbeam网络中提取链上数据并处理EVM记录和Substrate实体（事件、extrinsics和储存项），并利用单个GraphQL端点提供搜索结果的相关数据。如果你只想索引EVM数据，推荐使用EVM Archive和Processor。
 

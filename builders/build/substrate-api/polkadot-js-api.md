@@ -7,13 +7,11 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 ## 概览 {: #introduction }
 
-[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用JavaScript与节点的Polkadot或Substrate接口交互。在本教程中您将找到可用功能的概述和一些常用的代码示例，助您快速使用Polkadot.js API库与Moonbeam网络交互。
-
-## 什么是Polkadot.js？ {: #what-is-polkadotjs }
-
-[Polkadot.js](https://wiki.polkadot.network/docs/polkadotjs){target=_blank}是一组工具，可让您与Polkadot及其平行链（例如Moonbeam）进行交互。Polkadot.js API是Polkadot.js集合的一个组件，是一种JavaScript API，允许您与Moonbeam节点交互以读取和写入数据到网络。
+[Polkadot.js](https://wiki.polkadot.network/docs/polkadotjs){target=_blank}是一组工具，可让您与Polkadot及其平行链（例如Moonbeam）进行交互。[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}是Polkadot.js集合的一个组件，它也是一个的=Javascript库。它能帮助开发者访问Moonbeam节点，与Substrate界面交互，让开发者能读取和写入数据到网络。
 
 您可以使用Polkadot.js API查询链上数据并从Moonbeam的Substrate端发送extrinsic。您可以查询Moonbeam的runtime（运行时）常量、链状态、事件、交易（extrinsic）数据等。
+
+在这篇文章中，你能找到Polkadot.js API库中可用功能的概述，以及一些使用Polkadot.js API库与Moonbeam网络交互的常用代码示例。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -27,9 +25,19 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 首先，您需要通过应用程序包管理器（如`yarn`）为您的项目安装Polkadot.js API库。您可以通过运行以下命令将其安装至您的项目目录：
 
-```bash
-yarn add @polkadot/api
-```
+=== "npm"
+
+    ```bash
+    npm i @polkadot/api
+    ```
+
+=== "yarn"
+
+    ```bash
+    yarn add @polkadot/api
+    ```
+
+该库还包括其他核心组件，如用于账户管理的Keyring，或一些别的在本指南中会使用到的其它组件。
 
 ## 创建API Provider实例 {: #creating-an-API-provider-instance }
 
@@ -40,6 +48,7 @@ yarn add @polkadot/api
 === "Moonbeam"
 
     ```javascript
+
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
     const main = async () => {
@@ -68,6 +77,7 @@ yarn add @polkadot/api
       // Code goes here
 
       await api.disconnect();
+
     }
 
     main();
@@ -113,7 +123,19 @@ yarn add @polkadot/api
 
 在深入了解通过Polkadot.js API库执行不同任务的细节之前，您需要先了库的一些基本运作原理。
 
-当Polkadot.js API连接至节点时，首要做的一件事是检索元数据并根据元数据信息修饰API。元数据有效地以`api.<type>.<module>.<section>`形式提供数据，这些数据适合以下`<type>`类别之一：`consts`、`query`和`tx`。
+当Polkadot.js API连接至节点时，首要做的一件事是检索元数据并根据元数据信息修饰API。元数据有效地以
+
+```text
+api.<type>.<module>.<section>
+```
+
+形式提供数据。
+这些数据适合以下`<type>`类别之一
+
+- `query` - 获取state信息的端口
+- `tx` - 或许交易的端口
+- `rpc` - 用来发送RPC请求的端口
+- `consts` - 用来获取runtime常数的端口
 
 因此，`api.{consts, query, tx}.<module>.<method>`端点中包含的所有信息都不是硬编码在API中的。这将允许如Moonbeam这样的平行链通过其[Pallet](/builders/pallets-precompiles/pallets/){target=_blank}自定义端点，这些端点可以通过Polkadot.js API库直接访问。
 
@@ -123,13 +145,15 @@ yarn add @polkadot/api
 
 ### Moonbeam链状态查询 {: #state-queries }
 
-这个类别的查询将检索与链当前状态的相关信息。这些端点通常采用`api.query.<module>.<method>`形式，其中模块和函数修饰是通过元数据生成。您可以通过检查`api.query`对象、通过`console.log(api.query)`或其他方式查看所有可用端点的列表。
-
-以下是一个代码示例，用于检索给定地址的基本账户信息：
+这个类别的查询将检索与链当前状态的相关信息。这些端点通常采用`api.query.<module>.<method>`形式，其中模块和函数修饰是通过元数据生成。您可以通过检查`api.query`对象、通过`console.log(api.query)`来查看所有可用端点的列表：
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
+console.log(api.query);
+```
+
+假设您已成功[初始化API](#creating-an-API-provider-instance), 这里是一个获取给定地址的基本账户信息的代码示例：:
+
+```javascript
 
 // Define wallet address
 const addr = 'INSERT_ADDRESS';
@@ -139,6 +163,7 @@ const now = await api.query.timestamp.now();
 
 // Retrieve the account balance & current nonce via the system module
 const { nonce, data: balance } = await api.query.system.account(addr);
+
 
 // Retrieve the given account's next index/nonce, taking txs in the pool into account
 const nextNonce = await api.rpc.system.accountNextIndex(addr);
@@ -159,14 +184,15 @@ api.disconnect();
 
 ### Moonbeam RPC查询 {: #rpc-queries }
 
-RPC调用为与节点之间的数据传输提供了骨干网。这意味着所有API端点，如`api.query`、`api.tx`和`api.derive`只是包装RPC调用，以节点预期的编码格式提供信息。
+RPC调用为与节点之间的数据传输提供了骨干网。这意味着所有API端点，如`api.query`、`api.tx`和`api.derive`只是包装RPC调用，以节点预期的编码格式提供信息。您可以通过检查`api.rpc`对象来查看所有可用端点的列表：
+
+```javascript
+console.log(api.rpc);
+```
 
 `api.rpc`接口遵循`api.query`类似的格式，例如：
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
-
 // Retrieve the chain name
 const chain = await api.rpc.system.chain();
 
@@ -174,6 +200,7 @@ const chain = await api.rpc.system.chain();
 const lastHeader = await api.rpc.chain.getHeader();
 
 // Log the information
+
 console.log(
   `${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`
 );
@@ -190,12 +217,9 @@ api.disconnect();
 
 ### 查询订阅 {: #query-subscriptions }
 
-RPC支持使用订阅函数。您可以修改先前的示例，使其开始使用订阅函数来监听新的区块。
+`rpc` API也提供了订阅（subscription）端口. RPC支持使用订阅函数。您可以通过修改先前的示例，使其开始使用订阅函数来监听新的区块。请注意在复用示例代码时，您需要删除API disconnect部分, 否则WSS连接将会关闭.
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
-
 // Retrieve the chain name
 const chain = await api.rpc.system.chain();
 
@@ -206,8 +230,7 @@ await api.rpc.chain.subscribeNewHeads((lastHeader) => {
   );
 });
 
-// Disconnect the API
-api.disconnect();
+// Remove await api.disconnect()!
 ```
 
 `api.rpc.subscribe*`函数的基本模式是将回调传递给订阅函数，这将在每个新条目被导入时触发。
@@ -215,9 +238,6 @@ api.disconnect();
 其他在`api.query.*`下的调用可以通过类似的方式修改以使用订阅函数，包括具有参数的调用。以下是一个如何订阅账户余额变化的示例：
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
-
 // Define wallet address
 const addr = 'INSERT_ADDRESS';
 
@@ -228,8 +248,7 @@ await api.query.system.account(addr, ({ nonce, data: balance }) => {
   );
 });
 
-// Disconnect the API
-api.disconnect();
+// Remove await api.disconnect()!
 ```
 
 ??? code "查看完整脚本"
@@ -256,27 +275,31 @@ const keyring = new Keyring({ type: 'ethereum' });
 
 ### 添加账户到Keyring {: #adding-accounts }
 
-将账户添加至keyring实例有多种方式，包括通过助记词和短格式密钥。以下范例代码将为您提供一些示例：
+将账户添加至keyring实例有多种方式，包括通过助记词和短格式密钥：
+
+=== "From Mnemonic"
+    ```javascript
+    --8<-- 'code/substrate-api/adding-accounts-mnemonic.js'
+    ```
+
+=== "From Private Key"
+    ```javascript
+    --8<-- 'code/substrate-api/adding-accounts-private-key.js'
+    ```
+
+## 在Moonbeam上发送交易  {: #transactions }
+
+交易端口通常为 `api.tx.<module>.<method>`形式, 其中模块和方法包装都是通过元数据生成的。这允许您提交事务使其包含在区块中，如传送、部署合约、与Pallet交互或者Moonbeam支持的其他内容等。您可以通过访问`api.tx`对象来查看所有可用端点的列表，例如：
 
 ```javascript
---8<-- 'code/builders/build/substrate-api/polkadot-js-api/adding-accounts.js'
+console.log(api.tx);
 ```
-
-## 通过Polkadot.js API在Moonbeam上发送交易 {: #transactions }
-
-由元数据确定的事务端点在`api.tx`端点上公开显示。这允许您提交事务使其包含在区块中，如传送、部署合约、与Pallet交互或者Moonbeam支持的其他内容等。
 
 ### 发送交易 {: #sending-basic-transactions }
 
-以下是发送基本交易的示例。此代码示例还将检索交易的编码调用数据，以及交易哈希。
+Polkadot.js API可用于向网络发送交易。假设您已[初始化了 API](#creating-an-API-provider-instance): 和一个 [keyring instance](#creating-a-keyring-instance)，您可以使用以下代码段发送一个基本交易（此代码示例还将返回交易calldata与成功提交后的交易哈希）：
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
-
-// Initialize the keyring instance as in the previous section
-...
-
 // Initialize wallet key pairs
 const alice = keyring.addFromUri('INSERT_ALICES_PRIVATE_KEY');
 const bob = 'INSERT_BOBS_ADDRESS';
@@ -295,9 +318,6 @@ const txHash = await tx
 
 // Show the transaction hash
 console.log(`Submitted with hash ${txHash}`);
-
-// Disconnect the API
-api.disconnect();
 ```
 
 ??? code "查看完整脚本"
@@ -308,7 +328,32 @@ api.disconnect();
 
 请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=_blank} 来获取正确数据，包括内存池（mempool）中的事务。
 
-### 事务事件 {: #transaction-events }
+### 交易费信息 {: #fees}
+
+transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取权重的方法. 您需要在使用特定`module`和`method`构建完整个交易之后使用`paymentInfo`函数。.
+
+`paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/xcm-transactor/){target=_blank}时非常有用.
+
+假设您已成功[初始化API](#creating-an-API-provider-instance)，以下代码片段展示了如何获取一个简单转账交易的weight信息：
+
+```javascript
+// Transaction to get weight information
+const tx = api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345));
+
+// Get weight info
+const { partialFee, weight } = await tx.paymentInfo('INSERT_SENDERS_ADDRESS');
+
+console.log(`Transaction weight: ${weight}`);
+console.log(`Transaction fee: ${partialFee.toHuman()}`);
+```
+
+??? code "查看完整文件"
+
+    ```js
+    --8<-- 'code/substrate-api/payment-info.js'
+    ```
+
+### 交易事件 {: #transaction-events }
 
 任何事务将会发出事件，无论如何这将始终为特定事务发送`system.ExtrinsicSuccess`或`system.ExtrinsicFailed`事件。这些为事务提供整体执行结果，即执行成功或失败。
 
@@ -318,18 +363,9 @@ api.disconnect();
 
 ### 批处理事务 {: #batching-transactions }
 
-Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些批处理事务从同一个发送者按顺序依次处理。事务处理费可以使用`paymentInfo`函数来计算。以下示例进行了多笔转账，同时也使用`api.tx.parachainStaking`模块来发起请求以减少特定候选收集人的绑定量：
+Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些批处理事务从同一个发送者按顺序依次处理。事务处理费可以使用`paymentInfo`函数来计算。假设您已成功[初始化API](#creating-an-API-provider-instance)，取得了[keyring](#creating-a-keyring-instance) 和 [账户](#adding-accounts),以下示例进行了多笔转账，同时也使用`api.tx.parachainStaking`模块来发起请求以减少特定候选收集人的绑定量：
 
 ```javascript
-// Initialize the API provider as in the previous section
-...
-
-// Initialize the keyring instance as in the previous section
-...
-
-// Initialize wallet key pairs as in the previous section
-...
-
 // Construct a list of transactions to batch
 const collator = 'INSERT_COLLATORS_ADDRESS';
 const txs = [

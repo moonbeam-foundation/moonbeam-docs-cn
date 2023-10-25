@@ -122,7 +122,7 @@ cast abi-encode "constructor(uint256)" 100
     YOUR_CONTRACT_ADDRESS \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     src/MyToken.sol:MyToken \
-    INSERT_YOUR_MOONSCAN_API_KEY
+    --etherscan-api-key INSERT_YOUR_MOONSCAN_API_KEY
     ```
 
 === "Moonriver"
@@ -132,7 +132,7 @@ cast abi-encode "constructor(uint256)" 100
     YOUR_CONTRACT_ADDRESS \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     src/MyToken.sol:MyToken \
-    INSERT_YOUR_MOONSCAN_API_KEY
+    --etherscan-api-key INSERT_YOUR_MOONSCAN_API_KEY
     ```
 
 === "Moonbase Alpha"
@@ -142,7 +142,7 @@ cast abi-encode "constructor(uint256)" 100
     YOUR_CONTRACT_ADDRESS \
     --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000064 \
     src/MyToken.sol:MyToken \
-    INSERT_YOUR_MOONSCAN_API_KEY
+    --etherscan-api-key INSERT_YOUR_MOONSCAN_API_KEY
     ```
 
 ![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.png)

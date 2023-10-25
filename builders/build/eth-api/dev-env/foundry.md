@@ -62,7 +62,7 @@ Foundry由四个工具组成：
 
 ## 源代码文件夹 {: #the-src-folder }
 
-`src`文件夹可能已经包含`Contract.sol`（一个最小的Solidity合约），您可以自行删除此合约。相反，您需要部署一个ERC-20合约。在合约目录中，您可以创建一个`MyToken.sol`文件：
+`src`文件夹可能已经包含`Counter.sol`（一个最小的Solidity合约），您可以自行删除此合约。同时为了避免可能出现的报错，您也需要删除 `scripts` 文件夹中的 `Counter.s.sol` 以及 `test` 文件夹中的 `Counter.t.sol`. 下一步您需要部署一个ERC-20合约。在合约目录中，您可以创建一个`MyToken.sol`文件：
 
 ```bash
 cd src
