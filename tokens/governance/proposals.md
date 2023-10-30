@@ -35,7 +35,7 @@ description: 按照这些分步说明来了解如何提交民主提案以供其�
 
 您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
 
-![Proposal Roadmap](/images/tokens/governance/proposals/proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/proposals/proposals-roadmap.png)
 
 ## 提交您的想法至论坛 {: #submitting-your-idea-to-the-forum }
 

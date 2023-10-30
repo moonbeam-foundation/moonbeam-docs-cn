@@ -371,7 +371,12 @@ function pickWinners(uint256[] memory randomWords) internal {
 }
 ```
 
-恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在gitHub上查看[`Lottery.sol`合约](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/randomness-lottery/Lottery.sol){target=_blank}的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
+恭喜您！您已经完成了创建`Lottery.sol`合约的整个过程了！您可以在下面找到`Lottery.sol`合约的完整版本。请注意，**此合约仅用于演示目的，不可用于生产环境。**
+
+??? code "Lottery.sol"
+    ```solidity
+    --8<-- 'code/tutorials/eth-api/randomness-lottery/Lottery.sol'
+    ```
 
 !!! 挑战
     您可以在开始创建彩票、选择获胜者或分配奖励给获胜者时添加一些事件，以便让合约更易于使用。

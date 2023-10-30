@@ -352,7 +352,7 @@ contract RemixQrngExample is RrpRequesterV0 {
     |  Nodary Endpoint ID (uint256)  |   `{{ networks.moonbase.api3.nodaryqrnguint256 }}`    |
     | Nodary Endpoint ID (uint256[]) | `{{ networks.moonbase.api3.nodaryqrnguint256array }}` |
 
-*关于完整的QRNG提供者列表，您可以查看[API3的官方文档网站](https://docs.api3.org/qrng/reference/providers.html){target=_blank}。*
+*关于完整的QRNG提供者列表，您可以查看[API3的官方文档网站](https://docs.api3.org/reference/qrng/providers.html){target=_blank}。*
 
 ## Additional Resources - 参考资料 {: #additional-resources }
 

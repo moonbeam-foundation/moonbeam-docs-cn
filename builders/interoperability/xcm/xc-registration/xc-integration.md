@@ -95,7 +95,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 1. 从您的链打开Moonriver/Moonbeam的HRMP通道（或确保通道已存在）。另外，注册MOVR/GLMR
 2. 为XCM集成创建包含关键信息的[两个Moonbeam社区论坛帖子](#forum-templates)
     - [XCM公开帖子](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-disclosure)，您需要提供关于项目、基础代码和社交媒体渠道的信息
-    - [XCM提案帖子](/builders/interoperability/xcm/xc-registration/forum-templates##xcm-proposals)，您需要提供关于提案本身的技术相关信息
+    - [XCM提案帖子](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-proposals)，您需要提供关于提案本身的技术相关信息
 3. 在Moonbeam/Moonriver上创建一些提案以：
     1. 接受从Moonriver/Moonbeam传入的HRMP通道
     2. 发起从Moonriver/Moonbeam传出的HRMP通道提案

@@ -83,7 +83,7 @@ npm install @openzeppelin/contracts @layerzerolabs/solidity-examples
 
 如上述[想法和计划](#intuition-and-planning){target=_blank}部分所述，我们计划让用户在每条链上进行投票，并且只在收集阶段将投票数据发送到hub链。这意味着投票权重必须存储在每条链上。这很简单，因为我们只要确保将`ERC20Votes`合约部署在每条链上，也就是说，使DAO Token成为跨链Token。
 
-之前我们提到将LayerZero作本教程的跨链协议。选择LayerZero的原因在于其[OFT合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/token/oft/OFT.sol){target=_blank}使ERC-20 Token跨链变得极其简单。但是，这并不代表您必须使用LayerZero，其他的跨链协议都有自己的方法和创建跨链资产的能力。
+之前我们提到将LayerZero作本教程的跨链协议。选择LayerZero的原因在于其[OFT合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/token/oft/v1/OFT.sol){target=_blank}使ERC-20 Token跨链变得极其简单。但是，这并不代表您必须使用LayerZero，其他的跨链协议都有自己的方法和创建跨链资产的能力。
 
 我们将创建一个名为`OFTVotes.sol`的新文件：
 
