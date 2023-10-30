@@ -95,12 +95,12 @@ purestake/moonbeam \
 
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
-!!! 注意事项
-    安装路径包含空格会造成编译错误
+    !!! 注意事项
+        安装路径包含空格会造成编译错误
 
-    ```bash
-    --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
-    ```
+        ```bash
+        --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
+        ```
 
 3. 运行以下命令更新您的PATH环境变量：
 
@@ -123,8 +123,7 @@ purestake/moonbeam \
         brew install llvm
         brew install protobuf
         ```
-    
-    
+
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/build.md'
     ```
@@ -253,6 +252,7 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 ```
 
 ??? note "开发账户地址和私钥"
+
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
 另外，开发节点中还包括一个用于测试目的的额外预注资帐户：
