@@ -167,9 +167,9 @@ touch transaction.js
 接下来，您将为此文件创建脚本并完成以下步骤：
 
 1. [设置Web3提供者](#setup-web3-with-moonbeam)
-2. 定义`addressFrom`，包括`privateKey`和`addressTo`变量。此处需要私钥以创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+2. 定义`accountFrom`，包括`privateKey`和`addressTo`变量。此处需要私钥以创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
 3. 创建打包了交易标的以及签署和发送函数的异步`send`函数
-4. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`gas`、`addressTo`和`value`以及发送者的`privateKey`
+4. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`gas`、`addressTo`、`value`、`gasPrice`、和`nonce`以及发送者的`privateKey`
 5. 使用`web3.eth.sendSignedTransaction`函数发送已签署的交易，然后使用`await`等待交易处理完毕并返回交易回执
 6. 最后，运行`send`函数
 
@@ -196,6 +196,8 @@ const send = async () => {
       gas: 21000,
       to: addressTo,
       value: web3.utils.toWei('1', 'ether'),
+      gasPrice: await web3.eth.getGasPrice(),
+      nonce: await web3.eth.getTransactionCount(accountFrom.address),
     },
     accountFrom.privateKey
   );
@@ -256,12 +258,12 @@ touch deploy.js
 
 1. 从`compile.js`导入合约文件
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-3. 定义`addressFrom`，包括`privateKey`和`addressTo`变量。此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
+3. 定义`accountFrom`，包括`privateKey`和`addressTo`变量。此私钥将用于创建一个钱包实例。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在JavaScript文件中**
 4. 为已编译的合约保存`bytecode`和`abi`
 5. 创建将用于部署合约的异步`deploy`函数
 6. 使用`web3.eth.Contract`函数创建合约实例
 7. 创建构造函数并为增量器传入`bytecode`和初始值。在本示例中，您可以将初始值设置为`5`
-8. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`data`、`gas`以及发送者的`privateKey`
+8. 使用`web3.eth.accounts.signTransaction`函数创建和签署交易，传入交易的`data`、`gas`、`gasPrice`、和`nonce`以及发送者的`privateKey`
 9. 使用`web3.eth.sendSignedTransaction`发送已签署的交易并传入原始交易，然后使用`await`等待交易处理完毕并返回交易回执
 10. 最后，运行`deploy`函数
 
@@ -300,6 +302,8 @@ const deploy = async () => {
     {
       data: incrementerTx.encodeABI(),
       gas: await incrementerTx.estimateGas(),
+      gasPrice: await web3.eth.getGasPrice(),
+      nonce: await web3.eth.getTransactionCount(accountFrom.address),
     },
     accountFrom.privateKey
   );
@@ -408,7 +412,7 @@ touch increment.js reset.js
 4. 使用`web3.eth.Contract`函数并传入`abi`和`contractAddress`创建合约实例
 5. 通过合约实例使用`methods.increment`函数并传入`_value`作为输入值来构建增量交易
 6. 创建异步`increment`函数
-7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`和`gas`
+7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`、`gas`、`gasPrice`、和`nonce`
 8. 使用`web3.eth.sendSignedTransaction`发送已签署的交易并传入原始交易，然后使用`await`等待交易处理完毕并返回交易回执
 9. 最后，调用`increment`函数
 
@@ -422,6 +426,7 @@ const { abi } = require('./compile');
 // 3. Create variables
 const accountFrom = {
   privateKey: 'INSERT_YOUR_PRIVATE_KEY',
+  address: 'INSERT_PUBLIC_ADDRESS_OF_PK',
 };
 const contractAddress = 'INSERT_CONTRACT_ADDRESS';
 const _value = 3;
@@ -444,6 +449,8 @@ const increment = async () => {
       to: contractAddress,
       data: incrementTx.encodeABI(),
       gas: await incrementTx.estimateGas(),
+      gasPrice: await web3.eth.getGasPrice(),
+      nonce: await web3.eth.getTransactionCount(accountFrom.address),
     },
     accountFrom.privateKey
   );
@@ -483,7 +490,7 @@ node increment.js
 4. 使用`web3.eth.Contract`函数并传入`abi`和`contractAddress`以创建合约实例
 5. 使用`methods.reset`函数通过合约实例构建重置交易
 6. 创建异步`reset`函数
-7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`和`gas`
+7. 使用您之前创建的合约实例和增量交易，使用发送者的私钥对交易进行签名。您将使用`web3.eth.accounts.signTransaction`函数并指定交易的`to`地址、`data`、`gas`、`gasPrice`、和`nonce`
 8. 使用`web3.eth.sendSignedTransaction`发送已签署的交易，然后使用`await`等待交易处理完毕并返回交易回执
 9. 最后，调用`reset`函数
 
@@ -497,6 +504,7 @@ const { abi } = require('./compile');
 // 3. Create variables
 const accountFrom = {
   privateKey: 'INSERT_YOUR_PRIVATE_KEY',
+  address: 'INSERT_PUBLIC_ADDRESS_OF_PK',
 };
 const contractAddress = 'INSERT_CONTRACT_ADDRESS';
 
@@ -518,6 +526,8 @@ const reset = async () => {
       to: contractAddress,
       data: resetTx.encodeABI(),
       gas: await resetTx.estimateGas(),
+      gasPrice: await web3.eth.getGasPrice(),
+      nonce: await web3.eth.getTransactionCount(accountFrom.address),
     },
     accountFrom.privateKey
   );
