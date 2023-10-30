@@ -38,8 +38,9 @@ GMP预编译位于以下地址：
 
 [`Gmp.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}是一个允许开发者与预编译交互的Solidity接口：
 
-- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=_blank}
-  - VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://book.wormhole.com/wormhole/6_relayers.html?search=#specialized-relayers){target=_blank}发现。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
+- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=_blank}。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
+
+VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://book.wormhole.com/wormhole/6_relayers.html?search=#specialized-relayers){target=_blank}发现。
 
 用户必须与预编译交互的最常见实例是在恢复的情况下，也就是中继器不完成MRL事务。举例来说，用户必须搜索其源链交易附带的VAA，然后手动调用`wormholeTransferERC20`函数。
 
@@ -101,7 +102,7 @@ Moonbeam的GMP协议需要一个multilocation来代表流动性路由的目的�
     }
     ```
 
-如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点，例如[`@polkadot/types`](https://www.npmjs.com/package/@polkadot/types){target=_blank}。以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
+如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/runtime-2400/precompiles/gmp/src/types.rs#L25-L39){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点，例如[`@polkadot/types`](https://www.npmjs.com/package/@polkadot/types){target=_blank}。以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
 
 ```javascript
 import { TypeRegistry, Enum, Struct } from '@polkadot/types';
@@ -110,7 +111,6 @@ import { TypeRegistry, Enum, Struct } from '@polkadot/types';
 const registry = new TypeRegistry();
 
 // Define the precompile's input types VersionedUserAction and XcmRoutingUserAction
-// https://github.com/moonbeam-foundation/moonbeam/blob/1d664f3938698a6cd341fb8f36ccc4bb1104f1ff/precompiles/gmp/src/types.rs#L25-L39
 class VersionedUserAction extends Enum {
  constructor(value) {
    super(registry, { V1: XcmRoutingUserAction }, value);
@@ -142,7 +142,7 @@ function createMRLPayload(parachainId, account, isEthereumStyle) {
   // Format multilocation object as a Polkadot.js type
   const destination = registry.createType('VersionedMultiLocation', versionedMultiLocation);
 
-  // Wrap and format the MultiLocation object into the precompile's input type
+  // Wrap and format the multiLocation object into the precompile's input type
   const userAction = new XcmRoutingUserAction({ destination });
   const versionedUserAction = new VersionedUserAction({ V1: userAction });
 
