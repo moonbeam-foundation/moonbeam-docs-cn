@@ -182,8 +182,7 @@ const { assets, getTransferData } = Sdk();
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
-const fromPolkadot = async() => {
-
+const fromPolkadot = async () => {
   const { assets, asset } = Sdk.assets();
   console.log(
     `The supported assets are: ${assets.map((asset) => asset.originSymbol)}`
@@ -191,12 +190,18 @@ const fromPolkadot = async() => {
 
   const { sourceChains, source } = Sdk.assets().asset('dot');
   console.log(
-    `The supported source chains are: ${sourceChains.map((chain) => chain.name)}`
+    `The supported source chains are: ${sourceChains.map(
+      (chain) => chain.name
+    )}`
   );
 
-  const { destinationChains, destination } = Sdk.assets().asset('dot').source('polkadot');
+  const { destinationChains, destination } = Sdk.assets()
+    .asset('dot')
+    .source('polkadot');
   console.log(
-    `The supported destination chains are: ${destinationChains.map((chain) => chain.name)}`
+    `The supported destination chains are: ${destinationChains.map(
+      (chain) => chain.name
+    )}`
   );
 
   const data = await Sdk()
@@ -204,10 +209,10 @@ const fromPolkadot = async() => {
     .asset('dot')
     .source('polkadot')
     .destination('moonbeam')
-    .accounts(pair.address, ethersSigner.address {
+    .accounts(pair.address, ethersSigner.address, {
       pair,
     });
-}
+};
 
 fromPolkadot();
 ```
@@ -220,7 +225,7 @@ fromPolkadot();
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
-const fromPolkadot = async() => {
+const fromPolkadot = async () => {
   const data = await Sdk().getTransferData({
     destinationAddress: ethersSigner.address,
     destinationKeyOrChain: 'moonbeam',
@@ -229,7 +234,7 @@ const fromPolkadot = async() => {
     sourceAddress: pair.address,
     sourceKeyOrChain: 'polkadot',
   });
-}
+};
 
 fromPolkadot();
 ```

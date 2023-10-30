@@ -101,7 +101,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     cargo build --release
     ```
 
-![Compiling Binary](/images/node-operators/networks/run-a-node/systemd/full-node-binary-1.png)
+![Compiling Binary](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-1.png)
 
 如果在终端显示_cargo not found error_的错误提示，请将Rust手动添加至您的系统路径或重启系统：
 
@@ -422,7 +422,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 --8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
-![Service Status](/images/node-operators/networks/run-a-node/systemd/full-node-binary-2.png)
+![Service Status](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-2.png)
 
 您也可以执行以下命令检查日志：
 
@@ -430,7 +430,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/node-operators/networks/run-a-node/systemd/full-node-binary-3.png)
+![Service Logs](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-3.png)
 
 如果出于任何原因需要停止服务，可以运行：
 

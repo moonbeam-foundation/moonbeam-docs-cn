@@ -56,25 +56,25 @@ yarn install
     === "Moonbeam"
 
         ```js
-        defaultNetwork = "moonbeam";
+        defaultNetwork = 'moonbeam';
         ```
 
     === "Moonriver"
 
         ```js
-        defaultNetwork = "moonriver";
+        defaultNetwork = 'moonriver';
         ```
 
     === "Moonbase Alpha"
 
         ```js
-        defaultNetwork = "moonbaseAlpha";
+        defaultNetwork = 'moonbaseAlpha';
         ```
 
     === "Moonbeam开发节点"
 
         ```js
-        defaultNetwork = "moonbeamDevNode";
+        defaultNetwork = 'moonbeamDevNode';
         ```
 
 2. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
@@ -82,7 +82,7 @@ yarn install
 3. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
 
     ```js
-    if (defaultNetwork !== "localhost") {
+    if (defaultNetwork !== 'localhost') {
       //console.log(
       //  "☢️ WARNING: No mnemonic file created for a deploy account. Try `yarn run generate` and then `yarn run account`."
       //);
@@ -205,7 +205,7 @@ yarn install
 2. 在同一个文件`App.jsx`中，将`networkOptions`设置为您的DApp所支持的网络，例如：
 
     ```js
-    const networkOptions = [initialNetwork.name, "moonbeam", "moonriver"];
+    const networkOptions = [initialNetwork.name, 'moonbeam', 'moonriver'];
     ```
 
 ## 部署并启动DApp {: #deploy-and-launch-the-dapp }

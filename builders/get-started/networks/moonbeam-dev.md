@@ -62,7 +62,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         --dev --ws-external --rpc-external
         ```
 
-!!! note
+!!! 注意事项
     如果您的电脑使用的是Apple芯片, Docker可能无法完美运行您使用的镜像文件. 为了提升性能, 请尝试 [使用二进制文件启动节点](#getting-started-with-the-binary-file).
 
 如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
@@ -95,9 +95,8 @@ purestake/moonbeam \
 
 2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
 
-!!! note
-        安装路径包含空格会造成编译错误
-
+!!! 注意事项
+    安装路径包含空格会造成编译错误
 
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
@@ -220,7 +219,9 @@ import { ethers } from 'ethers';
 
 const produceBlock = async () => {
   // Connect to the Ethereum node (if applicable, replace the URL with your node's address)
-  const provider = new ethers.JsonRpcProvider('{{ networks.development.rpc_url }}');
+  const provider = new ethers.JsonRpcProvider(
+    '{{ networks.development.rpc_url }}'
+  );
 
   // Set the custom JSON-RPC method and parameters
   const method = 'engine_createBlock';

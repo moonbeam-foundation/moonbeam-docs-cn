@@ -30,25 +30,27 @@ Moonbeam节点现已添加对两个自定义JSON RPC端点`moon_isBlockFinalized
 === "moon_isBlockFinalized"
 
     ```bash
-    curl -H "Content-Type: application/json" -X POST --data
-        '[{
-            "jsonrpc":"2.0",
-            "id":"1",
-            "method":"moon_isBlockFinalized",
-            "params":["Put-Block-Hash-Here"
-        ]}]'
-        {{ networks.moonbase.rpc_url }}
+    curl -H "Content-Type: application/json" -X POST --data '[
+      {
+        "jsonrpc": "2.0",
+        "id": "1",
+        "method": "moon_isBlockFinalized",
+        "params": ["INSERT_BLOCK_HASH"]
+      }
+    ]'
+    {{ networks.moonbase.rpc_url }}
     ```
 
 === "moon_isTxFinalized"
 
     ```bash
-    curl -H "Content-Type: application/json" -X POST --data
-        '[{
-            "jsonrpc":"2.0",
-            "id":"1",
-            "method":"moon_isTxFinalized",
-            "params":["Put-Tx-Hash-Here"
-        ]}]'
-        {{ networks.moonbase.rpc_url }}
+    curl -H "Content-Type: application/json" -X POST --data '[
+      {
+        "jsonrpc": "2.0",
+        "id": "1",
+        "method": "moon_isTxFinalized",
+        "params": ["INSERT_TX_HASH"]
+      }
+    ]'
+    {{ networks.moonbase.rpc_url }}
     ```

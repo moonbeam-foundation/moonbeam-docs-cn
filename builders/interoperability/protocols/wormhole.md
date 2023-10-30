@@ -276,7 +276,6 @@ npm run redis
        "10": [
            "0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1d"
        ],
-
    }
 }
 ```
@@ -303,7 +302,6 @@ npm run redis
 
 有了Ethers解码的数据，我们可以知道负载所传送至的目标合约以及目标链，因为数据被打包至消息中了。该函数检查指定的目标chain ID是否属于一个EVM，并将使用上述的`execute.onEVM(options)`函数执行。否则，它将记录一个错误，因为系统会因简单起见而不与非EVM链交互。
 
-
 ```ts
 // Consumes a workflow for execution
 async handleWorkflow(
@@ -320,15 +318,19 @@ async handleWorkflow(
   // Here we are parsing the payload so that we can send it to the right recipient
   const hexPayload = parsed.payload.toString('hex');
   let [recipient, destID, sender, message] = ethers.utils.defaultAbiCoder.decode(['bytes32', 'uint16', 'bytes32', 'string'], '0x' + hexPayload);
+
   recipient = this.formatAddress(recipient);
   sender = this.formatAddress(sender);
   const destChainID = destID as ChainId;
-  this.logger.info(`VAA: ${sender} sent "${message}" to ${recipient} on chain ${destID}.`);
+  this.logger.info(
+    `VAA: ${sender} sent "${message}" to ${recipient} on chain ${destID}.`
+  );
 
   // Execution logic
   if (wh.isEVMChain(destChainID)) {
     // This is where you do all of the EVM execution.
-    // Add your own private wallet for the executor to inject in relayer-engine-config/executor.json
+    // Add your own private wallet for the executor to inject in 
+    // relayer-engine-config/executor.json
     await execute.onEVM({
       chainId: destChainID,
       f: async (wallet, chainId) => {
@@ -337,7 +339,16 @@ async handleWorkflow(
         this.logger.info(result);
       },
     });
+  } else {
+    // The relayer plugin has a built-in Solana wallet handler, which you could use
+    // here. NEAR & Algorand are supported by Wormhole, but they're not supported by
+    // the relayer plugin. If you want to interact with NEAR or Algorand you'd have
+    // to make your own wallet management system, that's all
+    this.logger.error(
+      'Requested chainID is not an EVM chain, which is currently unsupported.'
+    );
   }
+
   else {
     // The relayer plugin has a built-in Solana wallet handler, which you could use here.
     // NEAR & Algorand are supported by Wormhole, but they're not supported by the relayer plugin.
@@ -366,18 +377,17 @@ await execute.onEVM({
 
 该中继器还有许多其他配置。例如，`mode`字符串设置为`"BOTH"`以确保使用监听器和执行器插件，也可根据开发者需求选择只运行其中一个。此外，还有多个日志级别可供指定，如`"error"`可用来只记录错误消息。然而，在本次演示中只需保留配置设置即可。
 
-
 ```json
  "mode": "BOTH",
  "logLevel": "debug",
  ...
-   {
-     "chainId": 16,
-     "chainName": "Moonbase Alpha",
-     "nodeUrl": "https://rpc.api.moonbase.moonbeam.network",
-     "bridgeAddress": "0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901",
-     "tokenBridgeAddress": "0xbc976D4b9D57E57c3cA52e1Fd136C45FF7955A96"
-   },
+    {
+        "chainId": 16,
+        "chainName": "Moonbase Alpha",
+        "nodeUrl": "https://rpc.api.moonbase.moonbeam.network",
+        "bridgeAddress": "0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901",
+        "tokenBridgeAddress": "0xbc976D4b9D57E57c3cA52e1Fd136C45FF7955A96"
+    },
 ```
 
 配置这样就行了！现在需要运行它。在您的终端实例（未运行间谍节点的实例），导航至父文件夹。运行下列命令：

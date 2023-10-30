@@ -83,9 +83,9 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 如果您查看`package.json`文件，您将会发现`chaintypes`已经导出在该文件中。如果未发现此情况，或者您正在扩展现有Substrate项目以添加Moonbeam网络支持，您将需要包含以下代码段：
 
 ```json
-  "exports": {
+"exports": {
     "chaintypes": "src/chaintypes.ts"
-  }
+}
 ```
 
 ## 更新网络配置 {: #updating-the-network-configuration }

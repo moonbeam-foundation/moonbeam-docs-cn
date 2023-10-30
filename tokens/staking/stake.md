@@ -49,7 +49,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
  - **setAutoCompound**(*address* candidate, *uint8* value, *uint256* candidateAutoCompoundingDelegationCount, *uint256* delegatorDelegationCount) - 为现有委托设置一个自动复合数值
 
-## 获取质押数值 {: #retrieving-staking-parameters } 
+## 获取质押数值 {: #retrieving-staking-parameters }
 
 您可以使用Polkadot.js Apps查看任何常量质押数值，例如最大委托数量、最低质押要求、委托请求的退出延迟等。
 
@@ -86,7 +86,7 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ![Staking Account](/images/tokens/staking/stake/stake-2.png)
 
-### 获取候选人的委托数量 {: #get-the-candidate-delegation-count } 
+### 获取候选人的委托数量 {: #get-the-candidate-delegation-count }
 
 首先，您需要获取`candidateInfo`，其中将包含委托人数量，因为您需要在以后的交易中提交此参数。要检索参数，请确保您仍在 **Developer** 页面的 **Chain State** 选项卡上，然后执行以下步骤：
 
@@ -105,11 +105,12 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ```js
 // Simple script to get the number of auto-compounding delegations for a given candidate.
-// Remember to replace CANDIDATE-ADDRESS-HERE with the candidate's address you want to delegate.
-const candidateAccount = 'CANDIDATE-ADDRESS-HERE'; 
-const autoCompoundingDelegations = await api.query.parachainStaking.autoCompoundingDelegations(candidateAccount);
+// Remember to replace INSERT_CANDIDATE_ADDRESS with the candidate's address you want to delegate.
+const candidateAccount = 'INSERT_CANDIDATE_ADDRESS';
+const autoCompoundingDelegations =
+  await api.query.parachainStaking.autoCompoundingDelegations(candidateAccount);
 console.log(autoCompoundingDelegations.toHuman().length);
-``` 
+```
 
 要运行该代码段，请确保您位于Polkadot.js Apps的 **JavaScript** 页面（可以从 **Developer** 下拉列表中选择），并执行以下步骤：
 
@@ -126,15 +127,14 @@ console.log(autoCompoundingDelegations.toHuman().length);
 
 ```js
 // Simple script to get your number of existing delegations.
-// Remember to replace YOUR-ADDRESS-HERE with your delegator address.
-const yourDelegatorAccount = 'YOUR-ADDRESS-HERE'; 
+// Remember to replace INSERT_YOUR_ADDRESS with your delegator address.
+const yourDelegatorAccount = 'INSERT_YOUR_ADDRESS'; 
 const delegatorInfo = 
   await api.query.parachainStaking.delegatorState(yourDelegatorAccount);
-
 if (delegatorInfo.toHuman()) {
-  console.log(delegatorInfo.toHuman()["delegations"].length);
+  console.log(delegatorInfo.toHuman()['delegations'].length);
 } else {
-  console.log(0)
+  console.log(0);
 }
 ```
 
@@ -195,12 +195,16 @@ if (delegatorInfo.toHuman()) {
 
 ```js
 // Simple script to verify your auto-compounding percentage for a given candidate.
-// Remember to replace CANDIDATE-ADDRESS-HERE with the candidate's address you want to delegate
-// And replace DELEGATOR-ADDRESS-HERE with the address used to delegate with
-const candidateAccount = 'CANDIDATE-ADDRESS-HERE'; 
-const delegationAccount = 'DELEGATOR-ADDRESS-HERE'
-const autoCompoundingDelegations = await api.query.parachainStaking.autoCompoundingDelegations(candidateAccount);
-const delegation = autoCompoundingDelegations.find(del => del.delegator == delegationAccount)
+// Remember to replace INSERT_CANDIDATE_ADDRESS with the candidate's address you
+// want to delegate and replace INSERT_DELEGATOR_ADDRESS with the address used to 
+// delegate with
+const candidateAccount = 'INSERT_CANDIDATE_ADDRESS';
+const delegationAccount = 'INSERT_DELEGATOR_ADDRESS';
+const autoCompoundingDelegations =
+  await api.query.parachainStaking.autoCompoundingDelegations(candidateAccount);
+const delegation = autoCompoundingDelegations.find(
+  (del) => del.delegator == delegationAccount
+);
 
 console.log(`${delegation.value}%`);
 ```

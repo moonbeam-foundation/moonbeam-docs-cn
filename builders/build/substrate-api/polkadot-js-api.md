@@ -51,7 +51,6 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
-
     const main = async () => {
       // Construct API provider
       const wsProvider = new WsProvider('{{ networks.moonbeam.wss_url }}');
@@ -59,7 +58,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
       // Code goes here
 
-      await api.disconnect()
+      await api.disconnect();
     }
 
     main();
@@ -70,7 +69,6 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
     ```javascript
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
-
     const main = async () => {
       // Construct API provider
       const wsProvider = new WsProvider('{{ networks.moonriver.wss_url }}');
@@ -78,7 +76,8 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
       // Code goes here
 
-      await api.disconnect()
+      await api.disconnect();
+
     }
 
     main();
@@ -89,7 +88,6 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
     ```javascript
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
-
     const main = async () => {
       // Construct API provider
       const wsProvider = new WsProvider('{{ networks.moonbase.wss_url }}');
@@ -97,7 +95,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
       // Code goes here
 
-      await api.disconnect()
+      await api.disconnect();
     }
 
     main();
@@ -108,7 +106,6 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
     ```javascript
     // Import
     import { ApiPromise, WsProvider } from '@polkadot/api';
-
     const main = async () => {
       // Construct API provider
       const wsProvider = new WsProvider('{{ networks.development.wss_url }}');
@@ -116,7 +113,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
       // Code goes here
 
-      await api.disconnect()
+      await api.disconnect();
     }
 
     main();
@@ -134,6 +131,7 @@ api.<type>.<module>.<section>
 
 形式提供数据。
 这些数据适合以下`<type>`类别之一
+
 - `query` - 获取state信息的端口
 - `tx` - 或许交易的端口
 - `rpc` - 用来发送RPC请求的端口
@@ -166,7 +164,16 @@ const now = await api.query.timestamp.now();
 // Retrieve the account balance & current nonce via the system module
 const { nonce, data: balance } = await api.query.system.account(addr);
 
-console.log(`${now}: balance of ${balance.free} and a current nonce of ${nonce}`);
+
+// Retrieve the given account's next index/nonce, taking txs in the pool into account
+const nextNonce = await api.rpc.system.accountNextIndex(addr);
+
+console.log(
+  `${now}: balance of ${balance.free} and a current nonce of ${nonce}`
+);
+
+// Disconnect the API
+api.disconnect();
 ```
 
 ??? code "查看完整脚本"
@@ -193,7 +200,13 @@ const chain = await api.rpc.system.chain();
 const lastHeader = await api.rpc.chain.getHeader();
 
 // Log the information
-console.log(`${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`);
+
+console.log(
+  `${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`
+);
+
+// Disconnect the API
+api.disconnect();
 ```
 
 ??? code "查看完整脚本"
@@ -212,7 +225,9 @@ const chain = await api.rpc.system.chain();
 
 // Subscribe to the new headers
 await api.rpc.chain.subscribeNewHeads((lastHeader) => {
-  console.log(`${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`);
+  console.log(
+    `${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`
+  );
 });
 
 // Remove await api.disconnect()!
@@ -228,7 +243,9 @@ const addr = 'INSERT_ADDRESS';
 
 // Subscribe to balance changes for a specified account
 await api.query.system.account(addr, ({ nonce, data: balance }) => {
- console.log(`Free balance is ${balance.free} with ${balance.reserved} reserved and a nonce of ${nonce}`);
+  console.log(
+    `Free balance is ${balance.free} with ${balance.reserved} reserved and a nonce of ${nonce}`
+  );
 });
 
 // Remove await api.disconnect()!
@@ -289,15 +306,15 @@ const bob = 'INSERT_BOBS_ADDRESS';
 
 // Form the transaction
 const tx = await api.tx.balances
-  .transfer(bob, 12345n)
+  .transfer(bob, 12345n);
 
 // Retrieve the encoded calldata of the transaction
-const encodedCalldata = tx.method.toHex()
-console.log(`Encoded calldata: ${encodedCallData}`);
+const encodedCalldata = tx.method.toHex();
+console.log(encodedCallData);
 
 // Sign and send the transaction
 const txHash = await tx
-    .signAndSend(alice);
+  .signAndSend(alice);
 
 // Show the transaction hash
 console.log(`Submitted with hash ${txHash}`);
@@ -318,6 +335,7 @@ transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取
 `paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/xcm-transactor/){target=_blank}时非常有用.
 
 假设您已成功[初始化API](#creating-an-API-provider-instance)，以下代码片段展示了如何获取一个简单转账交易的weight信息：
+
 ```javascript
 // Transaction to get weight information
 const tx = api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345));
@@ -329,7 +347,7 @@ console.log(`Transaction weight: ${weight}`);
 console.log(`Transaction fee: ${partialFee.toHuman()}`);
 ```
 
-??? code "View the complete script"
+??? code "查看完整文件"
 
     ```js
     --8<-- 'code/substrate-api/payment-info.js'
@@ -351,30 +369,25 @@ Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些�
 // Construct a list of transactions to batch
 const collator = 'INSERT_COLLATORS_ADDRESS';
 const txs = [
-  api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345)),
-  api.tx.balances.transfer('INSERT_CHARLEYS_ADDRESS', BigInt(12345)),
-  api.tx.parachainStaking.scheduleDelegatorBondLess(collator, BigInt(12345))
+  api.tx.balances.transfer(bob, 12345n),
+  api.tx.balances.transfer(charlie, 12345n),
+  api.tx.parachainStaking.scheduleDelegatorBondLess(collator, 12345n),
 ];
 
 // Estimate the fees as RuntimeDispatchInfo, using the signer (either
 // address or locked/unlocked keypair) 
-const info = await api.tx.utility
-  .batch(txs)
-  .paymentInfo(alice);
+const info = await api.tx.utility.batch(txs).paymentInfo(alice);
 
 console.log(`estimated fees: ${info}`);
 
 // Construct the batch and send the transactions
-api.tx.utility
-  .batch(txs)
-  .signAndSend(alice, ({ status }) => {
-    if (status.isInBlock) {
-      console.log(`included in ${status.asInBlock}`);
+api.tx.utility.batch(txs).signAndSend(alice, ({ status }) => {
+  if (status.isInBlock) {
+    console.log(`included in ${status.asInBlock}`);
 
-      // Disconnect API here!
-    }
-  });
-
+    // Disconnect API here!
+  }
+});
 ```
 
 ??? code "查看完整脚本"
@@ -455,28 +468,26 @@ import { numberToHex } from '@polkadot/util';
 
 // Define the raw signed transaction
 const txData = {
-    nonce: numberToHex(1),
-    gasPrice: numberToHex(21000000000),
-    gasLimit: numberToHex(21000),
-    to: '0xc390cC49a32736a58733Cf46bE42f734dD4f53cb',
-    value: numberToHex(1000000000000000000),
-    data: '',
-    v: "0507",
-    r: "0x5ab2f48bdc6752191440ce62088b9e42f20215ee4305403579aa2e1eba615ce8",
-    s: "0x3b172e53874422756d48b449438407e5478c985680d4aaa39d762fe0d1a11683"
-}
-
+  nonce: numberToHex(1),
+  gasPrice: numberToHex(21000000000),
+  gasLimit: numberToHex(21000),
+  to: '0xc390cC49a32736a58733Cf46bE42f734dD4f53cb',
+  value: numberToHex(1000000000000000000),
+  data: '',
+  v: '0507',
+  r: '0x5ab2f48bdc6752191440ce62088b9e42f20215ee4305403579aa2e1eba615ce8',
+  s: '0x3b172e53874422756d48b449438407e5478c985680d4aaa39d762fe0d1a11683',
+};
 // Extract the values to an array
-var txDataArray = Object.keys(txData)
-    .map(function (key) {
-        return txData[key];
-    });
+var txDataArray = Object.keys(txData).map(function (key) {
+  return txData[key];
+});
 
 // Calculate the RLP encoded transaction
-var encoded_tx = encode(txDataArray)
+var encoded_tx = encode(txDataArray);
 
 // Hash the encoded transaction using keccak256
-console.log(keccakAsHex(encoded_tx))
+console.log(keccakAsHex(encoded_tx));
 ```
 
 您可以查看相应的[NPM存储库页面](https://www.npmjs.com/package/@polkadot/util-crypto/v/0.32.19){target=_blank}以获取其中的可用方法列表库及其相关文档。

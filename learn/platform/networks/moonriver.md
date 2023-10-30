@@ -36,8 +36,7 @@ description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配�
 
     |            变量            |                                                 数值                                                  |
     |:--------------------------:|:-----------------------------------------------------------------------------------------------------:|
-    |      最低提名质押数量      |                         {{ networks.moonriver.staking.min_del_stake }}枚Token                         |
-    |        最低提名数量        |                         {{ networks.moonriver.staking.min_nom_amount}}枚token                         |
+    |      最低提名质押数量      |                          {{ networks.moonriver.staking.min_del_stake }} MOVR                          |
     | 收集人可获得最高的提名人数 |                           {{ networks.moonriver.staking.max_del_per_can }}                            |
     | 提名人可提名的最高收集人数 |                           {{ networks.moonriver.staking.max_del_per_del }}                            |
     |            轮次            | {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时） |
