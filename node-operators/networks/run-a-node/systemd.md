@@ -214,7 +214,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonbeam"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -229,16 +229,13 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
-         --execution wasm \
-         --wasm-execution compiled \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -247,7 +244,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonriver"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -262,16 +259,13 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
-         --execution wasm \
-         --wasm-execution compiled \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -280,7 +274,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonbase Alpha"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
@@ -295,16 +289,13 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
-         --execution wasm \
-         --wasm-execution compiled \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
 
     [Install]
@@ -318,7 +309,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonbeam"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -334,15 +325,12 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --collator \
-         --execution wasm \
-         --wasm-execution compiled \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -351,7 +339,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonriver"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -367,15 +355,12 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
          --collator \
-         --execution wasm \
-         --wasm-execution compiled \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --chain {{ networks.moonriver.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -384,7 +369,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 === "Moonbase Alpha"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
@@ -400,15 +385,12 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
          --collator \
-         --execution wasm \
-         --wasm-execution compiled \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --chain {{ networks.moonbase.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
 
     [Install]
