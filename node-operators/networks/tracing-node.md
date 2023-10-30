@@ -111,13 +111,12 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonbeam.chain_spec }} \
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
-    --trie-cache-size 0 \
+    --trie-cache-size 1073741824 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbeam-substitutes-tracing \
     --runtime-cache-size 64 \
     -- \
-    --execution wasm \
     --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
@@ -131,13 +130,12 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonriver.chain_spec }} \
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
-    --trie-cache-size 0 \
+    --trie-cache-size 1073741824 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
     --runtime-cache-size 64 \
     -- \
-    --execution wasm \
     --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
@@ -151,13 +149,12 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --chain {{ networks.moonbase.chain_spec }} \
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
-    --trie-cache-size 0 \
+    --trie-cache-size 1073741824 \
     --db-cache <50% RAM in MB> \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     --runtime-cache-size 64 \
     -- \
-    --execution wasm \
     --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     ```
 
@@ -280,7 +277,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonbeam"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbeam systemd service"
     After=network.target
@@ -295,9 +292,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
-         --execution wasm \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbeam.node_directory }} \
          --ethapi=debug,trace,txpool \
@@ -306,7 +302,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbeam.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -315,7 +310,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonriver"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonriver systemd service"
     After=network.target
@@ -330,9 +325,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
-         --execution wasm \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonriver.node_directory }} \
          --ethapi=debug,trace,txpool \
@@ -341,7 +335,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonriver.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
@@ -350,7 +343,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 === "Moonbase Alpha"
 
-    ```text
+    ```bash
     [Unit]
     Description="Moonbase Alpha systemd service"
     After=network.target
@@ -365,9 +358,8 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     SyslogFacility=local7
     KillSignal=SIGHUP
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
-         --execution wasm \
          --state-pruning=archive \
-         --trie-cache-size 0 \
+         --trie-cache-size 1073741824 \
          --db-cache <50% RAM in MB> \
          --base-path {{ networks.moonbase.node_directory }} \
          --ethapi=debug,trace,txpool \
@@ -376,7 +368,6 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
          --chain {{ networks.moonbase.chain_spec }} \
          --name "INSERT_YOUR_NODE_NAME" \
          -- \
-         --execution wasm \
          --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
     
     [Install]
