@@ -42,7 +42,7 @@ npm ls web3
 每个采用ERC-20代币标准的合约都会发送与代币转移相关的事件信息，即`event Transfer(address indexed from, address indexed to, uint256 value)`。在以下示例中，您将了解如何订阅这些事件日志。请执行以下代码调用Web3.js库：
 
 ```js
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
 
 web3.eth
@@ -103,7 +103,7 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 延续上一小节的例子，我们将尝试通过以下代码订阅代币合约事件：
 
 ```js
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
 
 web3.eth

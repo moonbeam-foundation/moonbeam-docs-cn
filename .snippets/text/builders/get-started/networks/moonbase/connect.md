@@ -11,7 +11,7 @@ Moonbase Alpha有两类端点供用户使用：HTTPS和WSS。
 如果使用的是[Web3.js库](/builders/build/eth-api/libraries/web3js){target=_blank}，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonbase Alpha（同时支持HTTP和WS）：
 
 ```js
-const Web3 = require('web3'); // Load Web3 library
+const { Web3 } = require('web3'); // Load Web3 library
 .
 .   
 .

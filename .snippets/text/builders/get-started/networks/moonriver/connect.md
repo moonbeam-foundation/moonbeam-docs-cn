@@ -11,7 +11,7 @@ Moonriver有两类端点供用户使用：HTTPS和WSS。
 在开始之前，请确保从受支持的[网络端点](/builders/get-started/endpoints/){target=_blank}提供商之一获取您自己的端点和API密钥。如果使用的是[Web3.js库](/builders/build/eth-api/libraries/web3js){target=_blank}，您可以创建一个本地的Web3实例并设定provider（提供者）来连接Moonriver（同时支持HTTP和WS）：
 
 ```js
-const Web3 = require('web3'); // Load Web3 library
+const { Web3 } = require('web3'); // Load Web3 library
 .
 .
 .

@@ -55,7 +55,7 @@ mkdir web3-examples && cd web3-examples && npm init --y
 === "Moonbeam"
 
     ```js
-    const Web3 = require('web3');
+    const { Web3 } = require('web3');
     
     //Create Web3 instance
     const web3 = new Web3('{{ networks.moonbeam.rpc_url }}'); // Insert your RPC URL here
@@ -64,7 +64,7 @@ mkdir web3-examples && cd web3-examples && npm init --y
 === "Moonriver"
 
     ```js
-    const Web3 = require('web3');
+    const { Web3 } = require('web3');
     
     //Create Web3 instance
     const web3 = new Web3('{{ networks.moonriver.rpc_url }}'); // Insert your RPC URL here
@@ -73,7 +73,7 @@ mkdir web3-examples && cd web3-examples && npm init --y
 === "Moonbase Alpha"
 
     ```js
-    const Web3 = require('web3');
+    const { Web3 } = require('web3');
     
     //Create Web3 instance
     const web3 = new Web3('{{ networks.moonbase.rpc_url }}');
@@ -82,7 +82,7 @@ mkdir web3-examples && cd web3-examples && npm init --y
 === "Moonbeam开发节点"
 
     ```js
-    const Web3 = require('web3');
+    const { Web3 } = require('web3');
     
     //Create Web3 instance
     const web3 = new Web3('{{ networks.development.rpc_url }}');
