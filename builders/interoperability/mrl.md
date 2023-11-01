@@ -106,7 +106,7 @@ npm i @polkadot/api ethers
 ???+ code "multiassets转账逻辑"
 
     ```js
-    --8<-- 'code/mrl/transfer-multiassets.js'
+    --8<-- 'code/builders/interoperability/mrl/transfer-multiassets.js'
     ```
 
 在Moonbeam上使用，您需要修改以下参数:
