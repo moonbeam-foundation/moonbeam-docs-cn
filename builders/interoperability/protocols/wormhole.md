@@ -180,16 +180,16 @@ npm run testnet-spy
 请确保编辑`spyServiceFilters`数组以便中继器监听您部署的两个合约。
 
 ```json
- "spyServiceFilters": [
-   {
-     "chainId": 16,
-     "emitterAddress": "0x428097dCddCB00Ab65e63AB9bc56Bb48d106ECBE"
-   },
-   {
-     "chainId": 10,
-     "emitterAddress": "0x5017Fd40aeA8Ab94693bE41b3bE4e90F45860bA4"
-   }
- ]
+"spyServiceFilters": [
+    {
+        "chainId": 16,
+        "emitterAddress": "0x428097dCddCB00Ab65e63AB9bc56Bb48d106ECBE"
+    },
+    {
+        "chainId": 10,
+        "emitterAddress": "0x5017Fd40aeA8Ab94693bE41b3bE4e90F45860bA4"
+    }
+]
 ```
 
 在`simplegeneralmessage_plugin`文件夹中，打开`src/plugin.ts`。该文件包含中继器的监听器和执行器两个组件的插件代码，但注释已明确说明哪些函数与哪个组件相关。该文件的片段如下所示，请遵循教程操作。若没有执行操作，您可以在[它的Github repository](https://github.com/jboetticher/relayer-engine-docs-example/blob/main/plugins/simplegeneralmessage_plugin/src/plugin.ts){target=_blank}获取整个文件。
