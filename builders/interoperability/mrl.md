@@ -176,7 +176,7 @@ npm i @polkadot/api ethers
 ???+ code "将multilocation资产交易与远程EVM调用发送打包"
 
     ```js
-    --8<-- 'code/mrl/batch-extrinsics.js'
+    --8<-- 'code/builders/interoperability/mrl/batch-extrinsics.js'
     ```
 
 ??? code "查看完整脚本"
