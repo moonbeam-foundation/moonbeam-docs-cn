@@ -5,8 +5,6 @@ description: 学习与Moonbeam相关网络建立跨链集成后，如何通过Mo
 
 # Moonbeam路由流动性 - Moonbeam Routed Liquidity（MRL）
 
-![XCM Overview Banner](/images/builders/interoperability/xcm/xc-integration/xc-integration-banner.png)
-
 ## 概览 {: #introduction }
 
 Moonbeam路由流动性（MRL）是Moonbeam的多种用例之一：与Moonbeam连接的任何区块链都能够通过Moonbeam将流动性导入波卡的其它平行链。而这是由多个组件协同工作来实现的：
