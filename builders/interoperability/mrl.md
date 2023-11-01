@@ -182,7 +182,7 @@ npm i @polkadot/api ethers
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/mrl/complete-script.js'
+    --8<-- 'code/builders/interoperability/mrl/complete-script.js'
     ```
 
 如果您想查看一个完全实现了此功能的示例项目，可以访问这个[GitHub repository](https://github.com/jboetticher/mrl-reverse){target=_blank}。
