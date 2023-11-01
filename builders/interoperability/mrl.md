@@ -128,7 +128,7 @@ npm i @polkadot/api ethers
     ??? code "ERC-20接口ABI"
 
         ```js
-        --8<-- 'code/mrl/abi/ERC20.js'
+        --8<-- 'code/builders/interoperability/mrl/abi/ERC20.js'
         ```
 
     ??? code "TokenBridge中继器ABI"
