@@ -7,7 +7,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam提供的�
 
 ## 概览 {: #introduction }
 
-虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在[以太坊API JSON-RPC](https://eth.wiki/json-rpc/API#json-rpc-methods){target=_blank}支持方面与以太坊之间的重要差异。
+虽然Moonbeam致力于兼容以太坊Web3 API和EVM，但开发者仍需了解Moonbeam在[以太坊API JSON-RPC](https://ethereum.org/zh/developers/docs/apis/json-rpc/#json-rpc-methods){target=_blank}支持方面与以太坊之间的重要差异。
 
 Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开发[Frontier](/learn/features/eth-compatibility/#frontier){target=_blank}。Frontier是基于Substrate的以太坊兼容层，它允许开发人员运行未经修改的以太坊DApp。
 
@@ -17,50 +17,50 @@ Moonbeam团队与[Parity](https://www.parity.io/){target=_blank}密切合作开�
 
 截止本文撰写时，Moonbeam支持的以太坊API的基本JSON RPC方法：
 
- - **[eth_protocolVersion](https://eth.wiki/json-rpc/API#eth_protocolversion){target=_blank}** —— 默认返回`1`
- - **[eth_syncing](https://eth.wiki/json-rpc/API#eth_syncing){target=_blank}** —— 返回一个对象，其中包含有关同步状态或`false`的数据
- - **[eth_hashrate](https://eth.wiki/json-rpc/API#eth_hashrate){target=_blank}** —— 默认返回`"0x0"` 
- - **[eth_coinbase](https://eth.wiki/json-rpc/API#eth_coinbase){target=_blank}** —— 返回最新的区块作者。不仅限于已确认的区块
- - **[eth_mining](https://eth.wiki/json-rpc/API#eth_mining){target=_blank}** —— 默认返回`false`
- - **[eth_chainId](https://eth.wiki/json-rpc/API#eth_chainid){target=_blank}** —— 返回用于签署当前区块的Chain ID
- - **[eth_gasPrice](https://eth.wiki/json-rpc/API#eth_gasprice){target=_blank}** —— 返回每个单位gas使用的基本费用。这是目前每个网络的最低gas价格
- - **[eth_accounts](https://eth.wiki/json-rpc/API#eth_accounts){target=_blank}** —— 返回由客户端拥有的地址列表
- - **[eth_blockNumber](https://eth.wiki/json-rpc/API#eth_blocknumber){target=_blank}** —— 返回最高可用区块号
- - **[eth_getBalance](https://eth.wiki/json-rpc/API#eth_getbalance){target=_blank}** —— 返回指定地址的余额
- - **[eth_getStorageAt](https://eth.wiki/json-rpc/API#eth_getstorageat){target=_blank}** —— 返回指定地址的存储内容
- - **[eth_getBlockByHash](https://eth.wiki/json-rpc/API#eth_getblockbyhash){target=_blank}** —— 返回指定哈希的区块信息，包括伦敦升级支持后区块的`baseFeePerGas`
- - **[eth_getBlockByNumber](https://eth.wiki/json-rpc/API#eth_getblockbynumber){target=_blank}** —— 返回指定区块号的区块信息，包含伦敦升级支持后区块的`baseFeePerGas`
- - **[eth_getTransactionCount](https://eth.wiki/json-rpc/API#eth_gettransactioncount){target=_blank}** —— 返回从指定地址发送的交易数量（nonce）
- - **[eth_getBlockTransactionCountByHash](https://eth.wiki/json-rpc/API#eth_getblocktransactioncountbyhash){target=_blank}** —— 返回具有指定区块哈希的区块中的交易数量
- - **[eth_getBlockTransactionCountByNumber](https://eth.wiki/json-rpc/API#eth_getblocktransactioncountbynumber){target=_blank}** —— 返回具有指定区块号的区块中的交易数量
- - **[eth_getUncleCountByBlockHash](https://eth.wiki/json-rpc/API#eth_getunclecountbyblockhash){target=_blank}** —— 默认返回`"0x0"`
- - **[eth_getUncleCountByBlockNumber](https://eth.wiki/json-rpc/API#eth_getunclecountbyblocknumber){target=_blank}** —— 默认返回`"0x0"`
- - **[eth_getCode](https://eth.wiki/json-rpc/API#eth_getcode){target=_blank}** —— 返回指定区块号的指定地址的代码
- - **[eth_sendTransaction](https://eth.wiki/json-rpc/API#eth_sendtransaction){target=_blank}** —— 如果数据字段包含代码，则创建新的消息调用交易或创建合约。返回交易哈希，如果交易尚不可用，则返回零哈希
- - **[eth_sendRawTransaction](https://eth.wiki/json-rpc/API#eth_sendrawtransaction){target=_blank}** —— 为已签名的交易创建新的消息调用交易或创建合约。返回交易哈希，如果交易尚不可用，则返回零哈希
- - **[eth_call](https://eth.wiki/json-rpc/API#eth_call){target=_blank}** —— 立即执行新的消息调用，无需在区块链上创建交易，返回已执行调用的值
- - **[eth_estimateGas](https://eth.wiki/json-rpc/API#eth_estimategas){target=_blank}** —— 返回指定交易成功所需的预计gas费。您可以选择质地指定`gasPrice`或`maxFeePerGas`和`maxPriorityFeePerGas`
+ - **[eth_protocolVersion](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_protocolversion){target=_blank}** —— 默认返回`1`
+ - **[eth_syncing](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_syncing){target=_blank}** —— 返回一个对象，其中包含有关同步状态或`false`的数据
+ - **[eth_hashrate](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_hashrate){target=_blank}** —— 默认返回`"0x0"` 
+ - **[eth_coinbase](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_coinbase){target=_blank}** —— 返回最新的区块作者。不仅限于已确认的区块
+ - **[eth_mining](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_mining){target=_blank}** —— 默认返回`false`
+ - **[eth_chainId](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_chainId){target=_blank}** —— 返回用于签署当前区块的Chain ID
+ - **[eth_gasPrice](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gasprice){target=_blank}** —— 返回每个单位gas使用的基本费用。这是目前每个网络的最低gas价格
+ - **[eth_accounts](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_accounts){target=_blank}** —— 返回由客户端拥有的地址列表
+ - **[eth_blockNumber](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_blocknumber){target=_blank}** —— 返回最高可用区块号
+ - **[eth_getBalance](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getbalance){target=_blank}** —— 返回指定地址的余额
+ - **[eth_getStorageAt](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getstorageat){target=_blank}** —— 返回指定地址的存储内容
+ - **[eth_getBlockByHash](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getblockbyhash){target=_blank}** —— 返回指定哈希的区块信息，包括伦敦升级支持后区块的`baseFeePerGas`
+ - **[eth_getBlockByNumber](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getblockbynumber){target=_blank}** —— 返回指定区块号的区块信息，包含伦敦升级支持后区块的`baseFeePerGas`
+ - **[eth_getTransactionCount](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gettransactioncount){target=_blank}** —— 返回从指定地址发送的交易数量（nonce）
+ - **[eth_getBlockTransactionCountByHash](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbyhash){target=_blank}** —— 返回具有指定区块哈希的区块中的交易数量
+ - **[eth_getBlockTransactionCountByNumber](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbynumber){target=_blank}** —— 返回具有指定区块号的区块中的交易数量
+ - **[eth_getUncleCountByBlockHash](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getunclecountbyblockhash){target=_blank}** —— 默认返回`"0x0"`
+ - **[eth_getUncleCountByBlockNumber](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getunclecountbyblocknumber){target=_blank}** —— 默认返回`"0x0"`
+ - **[eth_getCode](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getcode){target=_blank}** —— 返回指定区块号的指定地址的代码
+ - **[eth_sendTransaction](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_sendtransaction){target=_blank}** —— 如果数据字段包含代码，则创建新的消息调用交易或创建合约。返回交易哈希，如果交易尚不可用，则返回零哈希
+ - **[eth_sendRawTransaction](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_sendrawtransaction){target=_blank}** —— 为已签名的交易创建新的消息调用交易或创建合约。返回交易哈希，如果交易尚不可用，则返回零哈希
+ - **[eth_call](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_call){target=_blank}** —— 立即执行新的消息调用，无需在区块链上创建交易，返回已执行调用的值
+ - **[eth_estimateGas](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_estimategas){target=_blank}** —— 返回指定交易成功所需的预计gas费。您可以选择质地指定`gasPrice`或`maxFeePerGas`和`maxPriorityFeePerGas`
   - **[eth_feeHistory](https://docs.alchemy.com/alchemy/apis/ethereum/eth-feehistory){target=_blank}** —— 返回指定范围内（最多1024个区块）的`baseFeePerGas`、`gasUsedRatio`、`oldestBlock`和`reward`
- - **[eth_getTransactionByHash](https://eth.wiki/json-rpc/API#eth_gettransactionbyhash){target=_blank}** —— 返回指定哈希的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
- - **[eth_getTransactionByBlockHashAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblockhashandindex){target=_blank}** —— 返回指定区块哈希和指定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
- - **[eth_getTransactionByBlockNumberAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblocknumberandindex){target=_blank}** —— 返回指定区块号和制定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
- - **[eth_getTransactionReceipt](https://eth.wiki/json-rpc/API#eth_gettransactionreceipt){target=_blank}** —— 返回指定交易哈希的交易回执。Runtime 1200添加伦敦升级支持后，新的字段`effectiveGasPrice`添加至回执，用于指定交易的gas价格
- - **[eth_getUncleByBlockHashAndIndex](https://eth.wiki/json-rpc/API#eth_getunclebyblockhashandindex){target=_blank}** —— 默认返回`null`
- - **[eth_getUncleByBlockNumberAndIndex](https://eth.wiki/json-rpc/API#eth_getunclebyblocknumberandindex){target=_blank}** —— 默认返回`null`
- - **[eth_getLogs](https://eth.wiki/json-rpc/API#eth_getlogs){target=_blank}** —— 返回匹配指定过滤器对象的所有日志数组
- - **[eth_getWork](https://eth.wiki/json-rpc/API#eth_getwork){target=_blank}** —— 默认返回`["0x0","0x0","0x0"]`
- - **[eth_submitWork](https://eth.wiki/json-rpc/API#eth_submitwork){target=_blank}** —— Moonbeam暂不支持
- - **[eth_submitHashrate](https://eth.wiki/json-rpc/API#eth_submithashrate){target=_blank}** —— Moonbeam暂不支持
+ - **[eth_getTransactionByHash](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gettransactionbyhash){target=_blank}** —— 返回指定哈希的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
+ - **[eth_getTransactionByBlockHashAndIndex](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gettransactionbyblockhashandindex){target=_blank}** —— 返回指定区块哈希和指定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
+ - **[eth_getTransactionByBlockNumberAndIndex](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gettransactionbyblocknumberandindex){target=_blank}** —— 返回指定区块号和制定索引位置的交易信息。EIP-1559交易包含`maxPriorityFeePerGas`和`maxFeePerGas`字段
+ - **[eth_getTransactionReceipt](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_gettransactionreceipt){target=_blank}** —— 返回指定交易哈希的交易回执。Runtime 1200添加伦敦升级支持后，新的字段`effectiveGasPrice`添加至回执，用于指定交易的gas价格
+ - **[eth_getUncleByBlockHashAndIndex](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getunclebyblockhashandindex){target=_blank}** —— 默认返回`null`
+ - **[eth_getUncleByBlockNumberAndIndex](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getunclebyblocknumberandindex){target=_blank}** —— 默认返回`null`
+ - **[eth_getLogs](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getlogs){target=_blank}** —— 返回匹配指定过滤器对象的所有日志数组
+ - **[eth_getWork](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getwork){target=_blank}** —— 默认返回`["0x0","0x0","0x0"]`
+ - **[eth_submitWork](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_submitwork){target=_blank}** —— Moonbeam暂不支持
+ - **[eth_submitHashrate](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_submithashrate){target=_blank}** —— Moonbeam暂不支持
 
 ## 过滤器相关以太坊JSON RPC方法 {: #filter-rpc-methods }
 
 截止本文撰写时，Moonbeam支持的以太坊API的过滤器相关JSON RPC方法：
 
- - **[eth_newFilter](https://eth.wiki/json-rpc/API#eth_newfilter){target=_blank}** —— 根据所提供的输入创建过滤器对象。返回一个过滤器ID
- - **[eth_newBlockFilter](https://eth.wiki/json-rpc/API#eth_newblockfilter){target=_blank}** —— 在节点中创建过滤器以在新的区块到达时进行通知。返回一个过滤器ID
- - **[eth_getFilterChanges](https://eth.wiki/json-rpc/API#eth_getfilterchanges){target=_blank}** —— 过滤器的轮询方法（参考以上方法）。返回自上次轮询以来发生的日志数组
- - **[eth_getFilterLogs](https://eth.wiki/json-rpc/API#eth_getfilterlogs){target=_blank}** —— 返回匹配指定ID过滤器的所有日志数组
- - **[eth_uninstallFilter](https://eth.wiki/json-rpc/API#eth_uninstallfilter){target=_blank}** —— 卸载指定ID的过滤器。应在不需要轮询时使用。一段时间后未使用`eth_getFilterChanges`请求过滤器超时
+ - **[eth_newFilter](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_newfilter){target=_blank}** —— 根据所提供的输入创建过滤器对象。返回一个过滤器ID
+ - **[eth_newBlockFilter](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_newblockfilter){target=_blank}** —— 在节点中创建过滤器以在新的区块到达时进行通知。返回一个过滤器ID
+ - **[eth_getFilterChanges](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getfilterchanges){target=_blank}** —— 过滤器的轮询方法（参考以上方法）。返回自上次轮询以来发生的日志数组
+ - **[eth_getFilterLogs](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_getfilterlogs){target=_blank}** —— 返回匹配指定ID过滤器的所有日志数组
+ - **[eth_uninstallFilter](https://ethereum.org/zh/developers/docs/apis/json-rpc/#eth_uninstallfilter){target=_blank}** —— 卸载指定ID的过滤器。应在不需要轮询时使用。一段时间后未使用`eth_getFilterChanges`请求过滤器超时
 
 ## 事件订阅以太坊JSON RPC方法 {: #event-subscription-rpc-methods }
 
