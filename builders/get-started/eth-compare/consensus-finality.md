@@ -88,19 +88,19 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/ethers.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.py'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.py'
     ```
 
 ## 使用Substrate库检查交易确定性 {: #checking-tx-finality-with-substrate-libraries }
