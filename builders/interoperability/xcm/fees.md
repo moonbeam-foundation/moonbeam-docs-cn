@@ -256,7 +256,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.transfer_glmr.wei_cost }} / 10^18
 
 考虑Alice在Moonbeam上向Alith的账户发送DOT的场景，费用从Alith收到的xcDOT金额中收取。要确定支付多少费用，Moonbeam使用了一个名为`UnitsPerSecond`的概念，代表网络在XCM执行时间内每秒收取的Token单位（包含小数）。 Moonbeam（可能还有其他平行链）将使用此概念来确定使用与其储备不同的资产执行XCM的费用。
 
-此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Statemine](https://polkadot.js.org/apps/?rpc=wss://statemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
+此外，在Moonbeam上执行XCM可以由原本资产来源链的多种资产（[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}）支付。举例来说，在撰写本文时，从[Kusama Asset Hub (Statemine)](https://polkadot.js.org/apps/?rpc=wss://statemine-rpc.polkadot.io#/explorer)发送的XCM消息{target=_blank}可以用xcKSM、xcRMRK 或xcUSDT支付。只要该资产在Moonbeam/Moonriver中设置了`UnitsPerSecond`，它就可以用于为来自该特定链的XCM消息支付XCM执行费用。
 
 要找出给定的资产是否在`UnitsPerSecond`列表中，您可以使用`assetManager.assetTypeUnitsPerSecond`函数并输入想要查看的资产的multilocation。
 
