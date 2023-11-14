@@ -39,7 +39,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小工具，其中确定性过程与区块生产并行完成。此外，最终确定过程结合了区块链的结构，允许中继链验证人对他们认为有效的最高区块进行投票。在这种情况下，投票将适用于最终确定的所有区块，从而加快最终确定过程。当一个区块被包含在中继链后，一个区块就可以在Moonbeam上的一个区块内最终确定。
 
-## 检查交易确定性策略 {: #strategy-to-check-tx-finality }
+## 检查交易确定性策略 {: #check-tx-finality-with-ethereum-rpc-endpoints }
 
 尽管确定性的小工具有所不同，但您可以使用相同的、相对简单的策略来检查以太坊和Moonbeam上的交易确定性：
 
@@ -50,7 +50,7 @@ Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小�
 
 以下部分将概述如何使用Ethereum JSON-RPC（自定义Web3请求）和Substrate (Polkadot) JSON-RPC检查交易确定性。
 
-## 使用Moonbeam RPC端点检查交易确定性 {: #checking-tx-finality-with-moonbeam-rpc-endpoints }
+## 使用Moonbeam RPC端点检查交易确定性 {: #check-tx-finality-with-moonbeam-rpc-endpoints }
 
 Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，可用于检查链上事件是否已完成。
 
@@ -88,22 +88,22 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/ethers.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.js'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/web3.py'
+    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.py'
     ```
 
-## 使用Substrate库检查交易确定性 {: #checking-tx-finality-with-substrate-libraries }
+## 使用Substrate库检查交易确定性 {: #check-tx-finality-with-substrate-rpc-endpoints }
 
 [Polkadot.js API package](/builders/build/substrate-api/polkadot-js-api){target=_blank}和[Python Substrate Interface package](/builders/build/substrate-api/py-substrate-interface){target=_blank}为开发者提供一种使用JavaScript和Python与Substrate链交互的方式。
 
