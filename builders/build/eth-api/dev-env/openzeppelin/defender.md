@@ -5,26 +5,26 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 # OpenZeppelin Defender
 
-## 概览 {: #introduction } 
+## 概览 {: #introduction }
 
 [OpenZeppelin Defender](https://docs.openzeppelin.com/defender/){target=_blank}是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：
 
- - [**Admin**](https://docs.openzeppelin.com/defender/admin){target=_blank} —— 实现所有智能合约运行过程的自动化，例如进入权限控制、升级、暂停等，并提供安全保障
- - [**Relay**](https://docs.openzeppelin.com/defender/relay){target=_blank} —— 通过具备私有中继器部署、安全的私有交易基础设施进行构建
- - [**Autotasks**](https://docs.openzeppelin.com/defender/autotasks){target=_blank} —— 创建自动化脚本，与智能合约交互
- - [**Sentinel**](https://docs.openzeppelin.com/defender/sentinel){target=_blank} —— 监控智能合约的事件、功能及交易，并通过邮件接收通知
+ - [**Admin**](https://docs.openzeppelin.com/defender/v1/admin){target=_blank} —— 实现所有智能合约运行过程的自动化，例如进入权限控制、升级、暂停等，并提供安全保障
+ - [**Relay**](https://docs.openzeppelin.com/defender/v1/relay){target=_blank} —— 通过具备私有中继器部署、安全的私有交易基础设施进行构建
+ - [**Autotasks**](https://docs.openzeppelin.com/defender/v1/autotasks){target=_blank} —— 创建自动化脚本，与智能合约交互
+ - [**Sentinel**](https://docs.openzeppelin.com/defender/v1/sentinel){target=_blank} —— 监控智能合约的事件、功能及交易，并通过邮件接收通知
 
 OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网。本教程将介绍如何使用Defender，并演示如何通过Admin组件暂停部署于Moonbase Alpha的智能合约，也可适用于Moonbeam和Moonriver。
 
 如需了解更多信息，请参阅OpenZeppelin团队撰写的Defender[文档页面](https://docs.openzeppelin.com/defender/)。
 
-## 开始使用Defender {: #getting-started-with-defender } 
+## 开始使用Defender {: #getting-started-with-defender }
 
 本小节将介绍在Moonbase Alpha上开始使用OpenZeppelin的步骤。
 
-### 检查先决条件 {: #checking-prerequisites } 
+### 检查先决条件 {: #checking-prerequisites }
 
-请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/integrations/wallets/metamask/){target=_blank}进行操作。
+请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/builders/integrations/wallets/metamask/){target=_blank}进行操作。
 
 此外，您还需要登录[Defender](https://defender.openzeppelin.com/){target=_blank}网站并注册OpenZeppelin免费账户。
 
@@ -70,19 +70,19 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 }
 ```
 
-### 连接Defender {: #connecting-defender } 
+### 连接Defender {: #connecting-defender }
 
-注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/moonbase/metamask/){target=_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
+注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/builders/get-started/networks/moonbase/#connect-metamask){target=_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
 
 ![OpenZeppelin Defender Connect](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-1.png)
 
 如果操作成功，您可以看到自己的地址，并显示**Connected to Moonbase Alpha**（已连接到Moonbase Alpha）。
 
-## 使用Admin组件 {: #using-the-admin-component } 
+## 使用Admin组件 {: #using-the-admin-component }
 
 本小节将介绍如何使用OpenZeppelin Defender Admin组件管理Moonbase Alpha上的智能合约。
 
-### 导入合约 {: #importing-your-contract } 
+### 导入合约 {: #importing-your-contract }
 
 使用Defender Admin的第一步是添加需管理的合约。点击右上角附近的**Add contract**（添加合约）按钮，进入**import contract**（导入合约）页面，然后进行以下操作：
 
@@ -99,7 +99,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ![OpenZeppelin Defender Admin Contract Added](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-3.png)
 
-### 创建合约提案 {: #create-a-contract-proposal } 
+### 创建合约提案 {: #create-a-contract-proposal }
 
 提案指的是合约即将执行的行动。截至本文撰写时，该合约已产生三个主要提案/行动：
 
@@ -127,7 +127,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ![OpenZeppelin Defender Admin Contract Proposal List](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-6.png)
 
-### 同意合约提案 {: #approve-a-contract-proposal } 
+### 同意合约提案 {: #approve-a-contract-proposal }
 
 创建合约提案后，下一步是同意并执行提案。进入提案，并点击**Approve and Execute**（同意并执行）。
 
