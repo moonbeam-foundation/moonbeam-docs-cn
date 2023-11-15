@@ -24,7 +24,7 @@ OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网�
 
 ### 检查先决条件 {: #checking-prerequisites }
 
-请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/integrations/wallets/metamask/){target=_blank}进行操作。
+请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/builders/integrations/wallets/metamask/){target=_blank}进行操作。
 
 此外，您还需要登录[Defender](https://defender.openzeppelin.com/){target=_blank}网站并注册OpenZeppelin免费账户。
 
@@ -72,7 +72,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ### 连接Defender {: #connecting-defender }
 
-注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/getting-started/moonbase/metamask/){target=_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
+注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/builders/get-started/networks/moonbase/#connect-metamask){target=_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
 
 ![OpenZeppelin Defender Connect](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-1.png)
 

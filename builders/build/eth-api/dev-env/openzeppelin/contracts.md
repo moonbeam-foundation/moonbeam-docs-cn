@@ -19,8 +19,8 @@ OpenZeppelin开发了一种基于网络的线上智能合约交互式工具，�
 
 目前Contracts Wizard支持以下ERC标准：
 
- - [**ERC-20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/){target=_blank} —— 遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=_blank}的同质化代币标准。同质化指的是所有代币均相同，并可互换，也就是说它们具有相同的价值。同质化代币的一个典型例子就是法币，面值相等的纸币其价值相等
- - [**ERC-721**](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/){target=_blank} —— 遵守[EIP-721](https://eips.ethereum.org/EIPS/eip-721){target=_blank}的非同质化代币合约。非同质化指的是每一枚代币都不一样，因此独一无二。ERC-721代币可以用于代表某一特定物品的所有权，例如游戏、房地产中的收藏品等
+ - [**ERC-20**](https://ethereum.org/zh/developers/docs/standards/tokens/erc-20/){target=_blank} —— 遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=_blank}的同质化代币标准。同质化指的是所有代币均相同，并可互换，也就是说它们具有相同的价值。同质化代币的一个典型例子就是法币，面值相等的纸币其价值相等
+ - [**ERC-721**](https://ethereum.org/zh/developers/docs/standards/tokens/erc-721/){target=_blank} —— 遵守[EIP-721](https://eips.ethereum.org/EIPS/eip-721){target=_blank}的非同质化代币合约。非同质化指的是每一枚代币都不一样，因此独一无二。ERC-721代币可以用于代表某一特定物品的所有权，例如游戏、房地产中的收藏品等
  - [**ERC-1155**](https://docs.openzeppelin.com/contracts/5.x/erc1155){target=_blank} —— 遵守[EIP-1155](https://eips.ethereum.org/EIPS/eip-1155){target=_blank}标准，也被称为多代币合约，因为同一个智能合约可以同时代表同质化和非同质化代币
 
 Contracts Wizard由以下环节组成：
@@ -52,7 +52,7 @@ Contracts Wizard由以下环节组成：
 
 请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=_blank}进行合约部署。相关指引请点击以下链接：
 
- - [使用MetaMask与Moonbeam进行交互](/integrations/wallets/metamask/){target=_blank}
+ - [使用MetaMask与Moonbeam进行交互](/builders/integrations/wallets/metamask/){target=_blank}
  - [使用Remix与Moonbeam进行交互](/builders/build/eth-api/dev-env/remix/){target=_blank}
 
 ### 部署ERC-20代币 {: #deploying-an-erc20-token }
