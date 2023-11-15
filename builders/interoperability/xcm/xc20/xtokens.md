@@ -42,7 +42,7 @@ X-Tokens Pallet提供以下extrinsics（函数）：
 
     - `SelfReserve` - 代表原生Token
     - `ForeignAsset` - 代表[外部XC-20](/builders/interoperability/xcm/xc20/overview/#external-xc20s){target=_blank}（请不要与XC-20地址混淆）的资产ID
-    - `LocalAssetReserve` - 代表[可铸造XC-20](/builders/interoperability/xcm/xc20/mintable-xc20){target=_blank}（请不要与XC-20地址混淆）的资产ID。建议您使用[本地XC-20s](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}而不是通过`Erc20`币种类型
+    - `LocalAssetReserve` - *弃用* 通过使用`Erc20`货币类型来使用 [local XC-20s](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
     - `Erc20` - 代表[本地XC-20（ERC-20）](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}的合约地址
 
  - **amount** — 将通过XCM转移的Token数量
