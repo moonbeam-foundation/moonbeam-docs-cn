@@ -622,13 +622,13 @@ Moonbeam中有一个原像受到影响，其从调度程序队列中被丢弃并
 
 ***
 
-#### 添加对Statemine前缀重大更改的支持 {: #add-support-statemine-prefix }
+#### 添加对Kusama Asset Hub (Statemine)前缀重大更改的支持 {: #add-support-statemine-prefix }
 
-以下三个迁移已添加到资产管理器pallet，以避免[Statemine对其表示资产的方式的重大更改](https://github.com/paritytech/cumulus/pull/831){target=_blank}和在未来重大变化可能出现的问题：
+以下三个迁移已添加到资产管理器pallet，以避免Kusama Asset Hub (Statemine)[对其表示资产的方式的重大更改](https://github.com/paritytech/cumulus/pull/831){target=_blank}和在未来重大变化可能出现的问题：
 
 - `UnitsWithAssetType` - 将`AssetTypeUnitsPerSecond`存储项更新为`AssetType`到`units_per_second`的映射，而不是映射`AssetId`到`units_per_second`。这样做是为了避免在出现重大更改时需要进行额外的迁移
 - `PopulateAssetTypeIdStorage` - 创建一个新的`AssetTypeId`存储项，其中包含`AssetType`到`AssetId`的映射，这允许`assetIds`和`AssetTypes`的分开
-- `ChangeStateminePrefixes` - 将已注册的Statemine资产更新为新的形式
+- `ChangeStateminePrefixes` - 将已注册的Kusama Asset Hub (Statemine)资产更新为新的形式
 
 此迁移在以下Runtime和区块中执行：
 
