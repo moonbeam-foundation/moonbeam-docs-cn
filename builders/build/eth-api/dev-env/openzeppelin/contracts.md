@@ -122,7 +122,7 @@ contract MyToken is ERC20, Ownable {
 
 可铸造的ERC-721 OpenZeppelin代币合约有一个`mint`函数，只有合约持有者可以调用这一函数。默认设置下，合约所有者即为合约的部署者地址。
 
-和[ERC-20合约](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=_blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
+和[ERC-20合约](/builders/build/eth-api/dev-env/openzeppelin/contracts/#deploying-an-erc20-token){target=_blank}的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=_blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
 
 下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
@@ -163,7 +163,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 }
 ```
 
-我们从[Contract Wizard](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC721代币智能合约，将`Base URI`设为`Test`，并激活`Mintable`、`Burnable`以及`Enumerable`功能。
+我们从[Contract Wizard](/builders/build/eth-api/dev-env/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC721代币智能合约，将`Base URI`设为`Test`，并激活`Mintable`、`Burnable`以及`Enumerable`功能。
 
 合约编译完成后下一步，您需要：
 
@@ -189,7 +189,7 @@ OpenZeppelin的ERC-1155代币合约提供只能在`constructor`函数中调用�
 
 第一步是进入[Remix](https://remix.ethereum.org/){target=_blank}并创建新文档。在本示例中，文档命名为`ERC1155.sol`。
 
-和[ERC-20](/integrations/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
+和[ERC-20](/builders/build/eth-api/dev-env/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
 ```solidity
 pragma solidity ^0.8.0;
@@ -226,7 +226,7 @@ contract MyToken is ERC1155, Ownable, Pausable {
 }
 ```
 
-我们从[Contract Wizard](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard)中抽取了这个ERC-1155代币智能合约，设置为无`Base URI`，并激活`Pausable`功能。我们对constructor函数进行了修改，可同时铸造同质化和非同质化代币。
+我们从[Contract Wizard](/builders/build/eth-api/dev-env/openzeppelin/contracts/#openzeppelin-contract-wizard){target=_blank}中抽取了这个ERC-1155代币智能合约，设置为无`Base URI`，并激活`Pausable`功能。我们对constructor函数进行了修改，可同时铸造同质化和非同质化代币。
 
 合约编译完成后下一步，您需要：
 
