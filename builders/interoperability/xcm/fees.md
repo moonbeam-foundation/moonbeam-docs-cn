@@ -71,18 +71,18 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 ### Polkadot {: #polkadot }
 
-如同先前提到的，波卡目前对所有XCM指令采取[固定权重数量](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/polkadot/src/xcm_config.rs#L111){target=_blank}的计算方式，也就是每条指令`{{ networks.polkadot.xcm_instructions.weight.display }}`权重单位。
+如同先前提到的，波卡目前对所有XCM指令采取[固定权重数量](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/src/xcm_config.rs#L111){target=_blank}的计算方式，也就是每条指令`{{ networks.polkadot.xcm_instructions.weight.display }}`权重单位。
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
 |                                                                            数据库                                                                             |                      读                       |                       写                       |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
+| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
+|     [ParityDB](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
 
 在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/polkadot/constants/src/lib.rs#L89){targer=blank}。一分为`10^10 / 100`。
+在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/lib.rs#L89){targer=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -134,24 +134,24 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 |                                                                           数据库                                                                            |                         读                         |                         写                          |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:|:---------------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight.display }} | {{ networks.kusama.rocks_db.write_weight.display }} |
-|     [ParityDB](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     |    {{ networks.kusama.parity_db.read_weight }}     |    {{ networks.kusama.parity_db.write_weight }}     |
+| [RocksDB (default)](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight.display }} | {{ networks.kusama.rocks_db.write_weight.display }} |
+|     [ParityDB](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     |    {{ networks.kusama.parity_db.read_weight }}     |    {{ networks.kusama.parity_db.write_weight }}     |
 
 现在您了解Kusama上数据库读写的权重花费，您可以使用指令的基础权重花费计算总花费。
 
-例如，[`WithdrawAsset` 指令](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49-L53){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight.display }}`基础权重，且执行一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
+例如，[`WithdrawAsset` 指令](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=_blank}具有`{{ networks.kusama.xcm_instructions.withdraw.base_weight.display }}`基础权重，且执行一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
 
 ```text
 {{ networks.kusama.xcm_instructions.withdraw.base_weight.numbers_only }} + {{ networks.kusama.rocks_db.read_weight.numbers_only }} + {{ networks.kusama.rocks_db.write_weight.numbers_only }} = {{ networks.kusama.xcm_instructions.withdraw.total_weight.numbers_only }}
 ```
 
-[`BuyExecution`指令](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
+[`BuyExecution`指令](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76-L82){target=_blank}具有`{{ networks.kusama.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.kusama.xcm_instructions.buy_exec.total_weight }}`。
 
-在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49){target=_blank}和[通用资产](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L50){target=_blank}的权重。
+在Kusama上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Kusama Runtime代码中查看[可替代资产](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L49){target=_blank}和[通用资产](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L50){target=_blank}的权重。
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.polkadot.spec_version}}/relay/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -191,10 +191,10 @@ XCM-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.planck_ksm_cost }} /
 
 |                                                                                  指令                                                                                  |                                 重量                                 |                               成本                                |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54){target=_blank} | {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
-|  [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L135){target=_blank}  |   {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}   | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
-|  [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76){target=_blank}  |     {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
-| [`DepositAsset`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132){target=_blank} |  {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
+| [`WithdrawAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=_blank} | {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
+|  [`ClearOrigin`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L135-L141){target=_blank}  |   {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}   | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
+|  [`BuyExecution`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76-L82){target=_blank}  |     {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
+| [`DepositAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=_blank} |  {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
 |                                                                                **总量**                                                                                |        **{{ networks.kusama.xcm_message.transfer.weight }}**         |      **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
 
 ## 基于Moonbeam网络的XCM费用计算 {: #moonbeam-xcm-fee-calc }
@@ -209,7 +209,7 @@ Moonbeam对通用XCM指令进行了基准测试，而可替代的XCM指令仍然
 
 现在您知道了Moonbase Alpha的数据库读取和写入的权重成本，您可以使用指令和额外的数据库读取/写入（如果适用）的基本权重来计算可替代和通用XCM指令的权重成本。
 
-例如，`WithdrawAsset`指令是可替代XCM指令集的一部分。因此，它没有进行基准测试，[`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L38){target=_blank}指令的总权重成本为`{{ xcm.fungible_weights.display }}`。
+例如，`WithdrawAsset`指令是可替代XCM指令集的一部分。因此，它没有进行基准测试，[`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L38){target=_blank}指令的总权重成本为`{{ xcm.fungible_weights.display }}`。
 
 [`BuyExecution`指令](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L128){target=_blank}有一个`{{ xcm.generic_weights.buy_exec.base_weight.display }}`的基础权重，并执行四次数据库读取（`assetManager` pallet以获得 `unitsPerSecond`）。因此，`BuyExecution`指令的总权重成本计算如下：
 
