@@ -84,7 +84,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonbeam.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -100,7 +100,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonriver.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -116,7 +116,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonbase.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -134,7 +134,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
         --base-path=/data \
         --chain moonbeam \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -149,7 +149,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
         --base-path=/data \
         --chain moonriver \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -164,7 +164,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
         --base-path=/data \
         --chain alphanet \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -186,7 +186,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonbeam.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -202,7 +202,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonriver.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -218,7 +218,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
         --base-path=/data \
         --chain {{ networks.moonbase.chain_spec }} \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -236,7 +236,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
         --base-path=/data \
         --chain moonbeam \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -251,7 +251,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/moonriver-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
         --base-path=/data \
         --chain moonriver \
         --name="INSERT_YOUR_NODE_NAME" \
@@ -266,7 +266,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```bash
         docker run -p 9944:9944 -v "/var/lib/alphanet-data:/data" \
         -u $(id -u ${USER}):$(id -g ${USER}) \
-        purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
         --base-path=/data \
         --chain alphanet \
         --name="INSERT_YOUR_NODE_NAME" \

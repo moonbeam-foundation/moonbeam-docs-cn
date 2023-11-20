@@ -9,7 +9,7 @@ description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的
 
 Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非标准RPC方法以获得交易处理的深度信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
 
-想要使用支持的RPC方法，您需要运行一个追踪节点。与运行一个全节点略有不同，追踪节点使用一个不同的Docker镜像，名为`purestake/moonbeam-tracing`，运用其来实现追踪功能。同时，也需使用额外的标志来告诉节点需要支持哪个非标准功能。
+想要使用支持的RPC方法，您需要运行一个追踪节点。与运行一个全节点略有不同，追踪节点使用一个不同的Docker镜像，名为`moonbeamfoundation/moonbeam-tracing`，运用其来实现追踪功能。同时，也需使用额外的标志来告诉节点需要支持哪个非标准功能。
 
 本教程将介绍如何使用`debug`、`txpool`以及`tracing`标志在Moonbeam上运行一个追踪节点。
 
@@ -87,7 +87,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
     ```
 
-您将需要使用`purestake/moonbeam-tracing`图像替代`purestake/moonbeam` docker图像。您可在[Docker Hub的`moonbeam-tracing`图像](https://hub.docker.com/r/purestake/moonbeam-tracing/tags)中找到最新的支持版本。
+您将需要使用`moonbeamfoundation/moonbeam-tracing`图像替代`moonbeamfoundation/moonbeam` docker图像。您可在[Docker Hub的`moonbeam-tracing`图像](https://hub.docker.com/r/moonbeamfoundation/moonbeam-tracing/tags){target=_blank}中找到最新的支持版本。
 
 下一步，执行Docker运行的命令。注意，您需要替换：
 
