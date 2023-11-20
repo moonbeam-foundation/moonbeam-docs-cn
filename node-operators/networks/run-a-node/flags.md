@@ -51,7 +51,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```bash
     docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+    moonbeamfoundation/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
     --help
     ```
 
@@ -60,7 +60,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```bash
     docker run --network="host" -v "{{ networks.moonriver.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
+    moonbeamfoundation/moonbeam:{{ networks.moonriver.parachain_release_tag }} \
     --help
     ```
 
@@ -69,7 +69,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
     ```bash
     docker run --network="host" -v "{{ networks.moonbase.node_directory }}:/data" \
     -u $(id -u ${USER}):$(id -g ${USER}) \
-    purestake/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
+    moonbeamfoundation/moonbeam:{{ networks.moonbase.parachain_release_tag }} \
     --help
     ```
 

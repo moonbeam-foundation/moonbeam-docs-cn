@@ -29,7 +29,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 1. 执行以下命令下载最新Moonbeam镜像：
 
     ```bash
-    docker pull purestake/moonbeam:{{ networks.development.build_tag }}
+    docker pull moonbeamfoundation/moonbeam:{{ networks.development.build_tag }}
     ```
 
     控制台日志的结尾应如下所示：
@@ -42,7 +42,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
         ```bash
         docker run --rm --name {{ networks.development.container_name }} --network host \
-        purestake/moonbeam:{{ networks.development.build_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.development.build_tag }} \
         --dev
         ```
 
@@ -50,7 +50,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
         ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
-        purestake/moonbeam:{{ networks.development.build_tag }} \
+        moonbeamfoundation/moonbeam:{{ networks.development.build_tag }} \
         --dev --ws-external --rpc-external
         ```
 
@@ -58,7 +58,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
         ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
-        purestake/moonbeam:{{ networks.development.build_tag }} ^
+        moonbeamfoundation/moonbeam:{{ networks.development.build_tag }} ^
         --dev --ws-external --rpc-external
         ```
 
@@ -73,7 +73,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 ```bash
 docker run --rm --name {{ networks.development.container_name }} \
-purestake/moonbeam \
+moonbeamfoundation/moonbeam \
 --help
 ```
 
