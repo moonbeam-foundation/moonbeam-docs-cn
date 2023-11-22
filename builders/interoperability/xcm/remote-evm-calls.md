@@ -17,7 +17,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 下列流程图描绘了通过XCM进行常规和远程EVM调用的路径：
 
-![Happy path for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-evm-calls/xcmevm-1.png)
+![Happy path for regular and remote EVM calls through XCM](/images/builders/interoperability/xcm/remote-execution/remote-evm-calls/xcmevm-1.png)
 
 本教程将介绍常规和远程EVM调用之间的差异。此外将展示如何通过[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}中函数执行远程EVM调用。
 
@@ -209,7 +209,7 @@ const xcmTransaction = {
 4. 获得函数的编码调用数据。您不需要签署和传送交易
 
 ```js
---8<-- 'code/builders/interoperability/xcm/remote-evm-calls/generate-encoded-call-data.js'
+--8<-- 'code/builders/interoperability/xcm/remote-execution/remote-evm-calls/generate-encoded-call-data.js'
 ```
 
 !!! 注意事项
@@ -290,7 +290,7 @@ const xcmTransaction = {
         ??? code "完整脚本"
 
             ```js
-            --8<-- 'code/builders/interoperability/xcm/remote-evm-calls/estimate-required-weight.js'
+            --8<-- 'code/builders/interoperability/xcm/remote-execution/remote-evm-calls/estimate-required-weight.js'
             ```
 
         截至撰写本脚本时，`refTime`和`proofSize`会分别返回`3900000000`和`38750`的预估数值
@@ -332,7 +332,7 @@ const xcmTransaction = {
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/builders/interoperability/xcm/remote-evm-calls/send.js'
+--8<-- 'code/builders/interoperability/xcm/remote-execution/remote-evm-calls/send.js'
 ```
 
 !!! 注意事项

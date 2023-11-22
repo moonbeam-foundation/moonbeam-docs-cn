@@ -88,7 +88,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 一些xcUNIT Token。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将DEV Token（Moonbase Alpha的原生Token）兑换成xcUNIT。Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议。
 
-    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/xtokens/xtokens-1.png)
+    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-1.png)
 
 要查看您的xcUNIT余额，您可以使用以下地址将XC-20添加至MetaMask：
 
@@ -194,7 +194,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
---8<-- 'code/builders/interoperability/xcm/xc20/xtokens/transfer.js'
+--8<-- 'code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/transfer.js'
 ```
 
 !!! 注意事项
@@ -293,7 +293,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
 
 ```js
---8<-- 'code/builders/interoperability/xcm/xc20/xtokens/transferMultiAsset.js'
+--8<-- 'code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/transfer-multiasset.js'
 ```
 
 !!! 注意事项
@@ -384,19 +384,19 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/ethers.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/transfer/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/web3.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/transfer/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/builders/interoperability/xcm/xc20/xtokens/web3.py'
+    --8<-- 'code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/transfer/web3.py'
     ```
 
 !!! 注意事项

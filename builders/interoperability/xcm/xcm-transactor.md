@@ -193,7 +193,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     本教程的操作仅用于演示目的，请勿将您的私钥存储至JavaScript文档中。
 
 ```js
---8<-- 'code/builders/interoperability/xcm/xcm-transactor/transact-signed.js'
+--8<-- 'code/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/transact-signed.js'
 ```
 
 !!! 注意事项
