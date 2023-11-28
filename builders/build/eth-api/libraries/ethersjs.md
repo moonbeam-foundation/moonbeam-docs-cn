@@ -25,7 +25,7 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 ## 安装Ethers.js {: #install-ethersjs }
 
-首先，您需要创建一个目录，以存储您在本教程中将要创建的所有文件：
+首先，您需要开始一个基本的JavaScript项目。第一步，创建一个目录来存储您在本教程中将要生成的所有文件，并使用以下命令来初始化该文件夹：
 
 ```bash
 mkdir ethers-examples && cd ethers-examples && npm init --y
@@ -140,6 +140,8 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
       name: providerRPC.dev.name,
     });
     ```
+
+将此代码片段保存起来，因为您将在以下部分使用的脚本中用到它。
 
 ## 发送交易 {: #send-a-transaction }
 
