@@ -1,5 +1,5 @@
 ---
-title: 使用Web3.py发送交易和部署合约
+title: 如何使用Ethereum Web3.py代码库
 description: 通过本教程学习如何使用以太坊Web3 Python代码库在Moonbeam上发送交易和部署Solidity智能合约。
 ---
 
@@ -39,42 +39,56 @@ pip3 install web3 py-solc-x
 
 ## 在Moonbeam上设置Web3.py {: #setup-web3-with-moonbeam }
 
-您可以为任何Moonbeam网络配置Web3.py。
+在这个文章中，您将会创建多个用来实现不同功能的脚本；比如发送交易，部署智能合约，与已部署的智能合约交互。在大部的脚本中您都需要创建一个[Web3.py provider](https://web3py.readthedocs.io/en/stable/providers.html)来与网路互动。
+
 --8<-- 'text/_common/endpoint-setup.md'
 
-每个网络最简单的设置方式如下所示：
+您需要通过以下步骤来创建一个provider:
+
+1. 导入`web3`代码库
+2. 用`Web3(Web3.HTTPProvider())`方法创建一个`web3`provider并提供一个网络终端URL
 
 === "Moonbeam"
 
     ```python
+    # 1. 导入web3.py
     from web3 import Web3
     
+    # 2. 创建web3.py provider
     web3 = Web3(Web3.HTTPProvider("{{ networks.moonbeam.rpc_url }}")) # Insert your RPC URL here
     ```
 
 === "Moonriver"
 
     ```python
+    # 1. 导入web3.py
     from web3 import Web3
     
+    # 2. 创建web3.py provider
     web3 = Web3(Web3.HTTPProvider("{{ networks.moonriver.rpc_url }}")) # Insert your RPC URL here
     ```
 
 === "Moonbase Alpha"
 
     ```python
+    # 1. 导入web3.py
     from web3 import Web3
     
+    # 2. 创建web3.py provider
     web3 = Web3(Web3.HTTPProvider("{{ networks.moonbase.rpc_url }}"))
     ```
 
 === "Moonbeam开发节点"
 
     ```python
+    # 1. 导入web3.py
     from web3 import Web3
     
+    # 2. 创建web3.py provider
     web3 = Web3(Web3.HTTPProvider("{{ networks.development.rpc_url }}"))
     ```
+
+您可以记下这个代码范例，您将在之后部分的脚本示例中使到它。
 
 ## 发送交易 {: #send-a-transaction }
 
@@ -163,6 +177,9 @@ touch compile.py
 ```python
 --8<-- 'code/builders/build/eth-api/libraries/web3-py/compile.py'
 ```
+
+!!! note
+    如果您遇到`Solc is not installed`报错，反注释代码示例的第二步并运行它。
 
 ### 部署合约脚本 {: #deploy-contract-script }
 
@@ -262,7 +279,7 @@ python3 increment.py
 
 1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-3. 定义`account_from`，包括`private_key`和已部署合约`contract_address`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
+3. 定义部署合约中的`contract_address` 
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址以创建合约实例
 5. 使用合约实例构建重置交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入重置交易和发送者的`private_key`
