@@ -205,10 +205,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
  - 如果您使用不同目录，请再次检查基本路径
  - 将文档命名为`/etc/systemd/system/moonbeam.service`
 
-!!! 注意事项
-    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-
-    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
+--8<-- 'text/node-operators/client-changes.md'
 
 ### 全节点 {: #full-node }
 
@@ -303,7 +300,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
     ```
 
 !!! 注意事项
-    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
+    如果您想要运行RPC终端、连接至polkadot.js.org或是运行您自己的应用，使用`--unsafe-rpc-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 ### 收集人 {: #collator }
 

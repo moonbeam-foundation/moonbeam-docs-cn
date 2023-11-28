@@ -31,7 +31,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
   - **`-ethapi-trace-cache-duration <uint>`** —— 设置持续时间（以秒为单位），在此之后给定块的`trace_filter`缓存被丢弃。区块存储在缓存中的默认时间为`300`秒
 
 !!! 注意事项
-    如果您希望运行一个RPC端点以连接Polkadot.js Apps或是运行自有应用，请使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
+    如果您希望运行一个RPC端点以连接Polkadot.js Apps或是运行自有应用，请使用`--unsafe-rpc-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 ## 使用Docker运行一个追踪节点 {: #run-a-tracing-node-with-docker }
 
@@ -94,10 +94,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 在两处替换 `INSERT_YOUR_NODE_NAME`
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-!!! 注意事项
-    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-
-    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
+--8<-- 'text/node-operators/client-changes.md'
 
 运行一个追踪节点的完整命令如下所示：
 
@@ -270,10 +267,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
  - 如果您使用的是不同的目录，请再次确认基本路径
  - 将文件命名为`/etc/systemd/system/moonbeam.service`
 
-!!! 注意事项
-    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-
-    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
+--8<-- 'text/node-operators/client-changes.md'
 
 === "Moonbeam"
 
@@ -373,6 +367,9 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     [Install]
     WantedBy=multi-user.target
     ```
+
+!!! 注意事项
+    如果您希望运行一个RPC端点以连接Polkadot.js Apps或是运行自有应用，请使用`--unsafe-rpc-external`标志以运行一个能够外部访问RPC端口的完整节点。更多细节可以通过运行`moonbeam --help`命令获得。
 
 ### 运行服务器 {: #run-the-service }
 

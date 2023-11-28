@@ -15,10 +15,10 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 - **`--collator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
 - **`--port`** —— 指定端对端协议的TCP端口。平行链的默认端口为`{{ networks.parachain.p2p }}`，嵌入的中继链则为`{{ networks.relay_chain.p2p }}`
-- **`--rpc-port`** —— *从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* —— 指定HTTP RPC服务器的TCP端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.rpc }}` 
-- **`--ws-port`** —— 指定WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
-- **`--rpc-max-connections`** - *自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
-- **`--ws-max-connections`** —— 指定WS RPC服务器连接的最大数量。自[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起，此命令行标志调节HTTP和WS连接的总限制。默认值为100
+- **`--rpc-port`** - 用来配置HTTP与WS连接的统一端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.rpc }}` 
+- **`--ws-port`** - - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。 平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
+- **`--rpc-max-connections`** - 配置HTTP与WS连接的上限总和. 默认连接数为100
+- **`--ws-max-connections`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
 - **`--execution`** —— 指定所有执行内容该使用的执行策略。Substrate runtime被编译为本地可执行文件，该执行文件被包含在节点本地的一部分，以及存储在链上的WebAssembly二进制文件中。可用的选项如下：
     - **`native`** —— 仅执行本地文件
     - **`wasm`** —— 仅执行Wasm文件
