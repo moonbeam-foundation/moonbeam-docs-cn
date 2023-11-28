@@ -23,36 +23,50 @@ XCM SDK提供帮助函数，该函数提供在波卡/Kusama生态中链之间执
 npm install @moonbeam-network/xcm-sdk
 ```
 
-您同样需要安装一些额外的依赖项，用于在此教程中与该SDK交互：
+您同样需要安装一些额外的依赖项，用于在此教程中与该SDK交互。您需要Polkadot.js API来创建一个Polkadot签署人:：
 
 ```bash
-npm install ethers@^5.7.2 @polkadot/api @polkadot/util-crypto
+npm install @polkadot/api @polkadot/util-crypto
 ```
+
+如果您需要与一个兼容以太坊的区块链交互，您也需要一个Ethereum签署人. 本文章使用Ethers.js与viem做例子. 您可以自己选择需要使用的库:
+
+=== "Ethers.js"
+
+    ```bash
+    npm install ethers@^5.7.2
+    ```
+
+=== "viem"
+
+    ```bash
+    npm install
+    ```
 
 ## 创建签署人 {: #create-signers }
 
-当在链之间转移资产时，您需要签署人来负责签署交易。如果您与之交互的是一个使用标准以太坊风格H160地址的EVM兼容链（如Moonbeam），您将需要一个以太坊签署人。更详细地说，是一个[Ethers.js](https://docs.ethers.org/v5/){target=_blank}签署人。要与中继链或其他平行链交互，您需要的是一个[Polkadot](https://polkadot.js.org/docs/api/)签署人。
+当在链之间转移资产时，您需要签署人来负责签署交易。如果您与之交互的是一个使用标准以太坊风格H160地址的EVM兼容链（如Moonbeam），您将需要一个以太坊签署人。更详细地说，它可以是一个[Ethers.js](https://docs.ethers.org/v5/){target=_blank}签署人，也可以是一个[viem钱包客户端](https://viem.sh/docs/clients/wallet.html){target=_blank}。要与中继链或其他平行链交互，您需要的是一个[Polkadot](https://polkadot.js.org/docs/api/)签署人。
 
-举例来说，您可以传送一个[MetaMask签署人进入Ethers](https://docs.ethers.org/v5/getting-started/#getting-started--connecting){target=_blank}或是其他兼容的钱包。同样地，在波卡中，您可以[使用`@polkadot/extension-dapp`库传送一个兼容的钱包给签署人](https://polkadot.js.org/docs/extension/){target=_blank}。
+举例来说，您可以传送一个[浏览器钱包签署人进入Ethers](https://docs.ethers.org/v5/getting-started/#getting-started--connecting){target=_blank}或[viem](https://viem.sh/docs/clients/wallet.html#json-rpc-accounts){target=_blank}, 比如MetaMask。同样地，在波卡中，您可以[使用`@polkadot/extension-dapp`库传送一个兼容的钱包给签署人](https://polkadot.js.org/docs/extension/){target=_blank}。
 
-要为Ethers.js和Polkadot.js创建签署人，您可以参考以下部分教程。
+要创建EVM和Polkadot.js创建签署人，您可以参考以下部分教程。
 
 !!! 请记住
     **永远不要将您的私钥或是助记词存储在JavaScript或是TypeScript文件中。**
 
 ### 创建一个Ethers签署人 {: #create-a-ethers-signer }
 
-要创建一个Ethers签署人，您可以使用以下代码段：
+要创建一个EVM签署人，您可以使用以下代码段：
 
 ```js
 import { ethers } from 'ethers';
 
 const privateKey = 'INSERT_PRIVATE_KEY';
 const provider = new ethers.providers.WebSocketProvider('INSERT_WS_ENDPOINT', {
-  chainId: 'INSERT_CHAIN_ID',
+  chainId: INSERT_CHAIN_ID,
   name: 'INSERT_CHAIN_NAME',
 });
-const ethersSigner = new ethers.Wallet(privateKey, provider);
+const evmSigner = new ethers.Wallet(privateKey, provider);
 ```
 
 关于Moonbeam网络，您可以使用以下配置：
@@ -66,11 +80,11 @@ const ethersSigner = new ethers.Wallet(privateKey, provider);
     const provider = new ethers.providers.WebSocketProvider(
       '{{ networks.moonbeam.wss_url }}', 
       {
-        chainId: '{{ networks.moonbeam.chain_id }}',
+        chainId: {{ networks.moonbeam.chain_id }},
         name: 'moonbeam',
       }
     );
-    const ethersSigner = new ethers.Wallet(privateKey, provider);
+    const evmSigner = new ethers.Wallet(privateKey, provider);
     ```
 
 === "Moonriver"
@@ -82,11 +96,11 @@ const ethersSigner = new ethers.Wallet(privateKey, provider);
     const provider = new ethers.providers.WebSocketProvider(
       '{{ networks.moonriver.wss_url }}', 
       {
-        chainId: '{{ networks.moonriver.chain_id }}',
+        chainId: {{ networks.moonriver.chain_id }},
         name: 'moonriver',
       }
     );
-    const ethersSigner = new ethers.Wallet(privateKey, provider);
+    const evmSigner = new ethers.Wallet(privateKey, provider);
     ```
 
 === "Moonbase Alpha"
@@ -98,11 +112,49 @@ const ethersSigner = new ethers.Wallet(privateKey, provider);
     const provider = new ethers.providers.WebSocketProvider(
       '{{ networks.moonbase.wss_url }}',
       {
-        chainId: '{{ networks.moonbase.chain_id }}',
+        chainId: {{ networks.moonbase.chain_id }},
         name: 'moonbase',
       }
     );
-    const ethersSigner = new ethers.Wallet(privateKey, provider);
+    const evmSigner = new ethers.Wallet(privateKey, provider);
+    ```
+
+或者您也可以创建并使用一个viem钱包客户端作为EVM签署人
+
+=== "Moonbeam"
+
+    ```js
+    import { createWalletClient, custom } from 'viem'
+    import { moonbeam } from 'viem/chains'
+
+    const client = createWalletClient({
+      chain: moonbeam,
+      transport: custom(window.ethereum)
+    })
+    ```
+
+=== "Moonriver"
+
+    ```js
+    import { createWalletClient, custom } from 'viem'
+    import { moonriver } from 'viem/chains'
+
+    const client = createWalletClient({
+      chain: moonriver,
+      transport: custom(window.ethereum)
+    })
+    ```
+
+=== "Moonbase Alpha"
+
+    ```js
+    import { createWalletClient, custom } from 'viem'
+    import { moonbase } from 'viem/chains'
+
+    const client = createWalletClient({
+      chain: moonbase,
+      transport: custom(window.ethereum)
+    })
     ```
 
 !!! 注意事项
@@ -124,6 +176,9 @@ const keyring = new Keyring({
 const pair = keyring.createFromUri(privateKey);
 ```
 
+!!! note
+    上面实例中的`INSERT_PRIVATE_KEY`值可为私钥或助字词.
+
 ## 构建XCM转移数据 {: #build-xcm-transfer-data }
 
 要从一条链上转移资产至另外一条链，您需要构建转移数据，其用于定义被转移的资产、源链及地址、目标链及地址以及交易的相关签署人。第一步为构建转移数据，在下个部分教程中，您将会了解如何使用此转移数据转移资产。
@@ -133,7 +188,7 @@ const pair = keyring.createFromUri(privateKey);
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
-const { assets, getTransferData } = Sdk();
+const sdkInstance = new Sdk();
 ```
 
 您可以选择其一，因两个函数都会返回在源链和目标链之间资产转移的所需数据。使用`assets`将会提供额外的数据，包含支持资产列表，以及在当选定一个资产后，支持转移资产的源链和目标链。
@@ -143,7 +198,7 @@ const { assets, getTransferData } = Sdk();
 1. 调用`assets`函数并根据需求输入您希望获得可用资产转移列表的指定生态系统。可用生态系统包含：`polkadot`、`kusama`和`alphanet-relay`。例如：
 
     ```js
-    const assets = Sdk().assets('polkadot');
+    const { assets, asset } = sdkInstance.assets('polkadot');
     ```
 
     这将会返回支持资产以及`asset`能够定义的转移资产
@@ -152,7 +207,7 @@ const { assets, getTransferData } = Sdk();
 
     ```js
     // Using the key
-    const asset = Sdk().assets().asset('dot');
+    const { sourceChains, source } = asset('dot');
     ```
 
     这将会返回支持源链以及用于定义资产转移源链的`source`函数的列表
@@ -161,7 +216,7 @@ const { assets, getTransferData } = Sdk();
 
     ```js
     // Using the key
-    const asset = Sdk().assets().asset('dot').source('polkadot');
+    const { destinationChains, destination } = source('polkadot');
     ```
 
     这将会在拥有指定资产信息和`destination`函数支持的拥有开放XCM通道的目标链，用于定义转移资产的目标链
@@ -170,7 +225,7 @@ const { assets, getTransferData } = Sdk();
 
     ```js
     // Using the key
-    const asset = Sdk().assets().asset('dot').source('polkadot').destination('moonbeam');
+    const { sourceChains, source } = asset('dot');
     ```
 
     这将会返回`accounts`函数，用于定义源链和目标链地址以及各地址相关的签署人
@@ -182,36 +237,37 @@ const { assets, getTransferData } = Sdk();
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
+const sdkInstance = new Sdk();
+
 const fromPolkadot = async () => {
-  const { assets, asset } = Sdk.assets();
+  const { assets, asset } = sdkInstance.assets();
   console.log(
     `The supported assets are: ${assets.map((asset) => asset.originSymbol)}`
   );
 
-  const { sourceChains, source } = Sdk.assets().asset('dot');
+  const { sourceChains, source } = sdkInstance.assets().asset('dot');
   console.log(
     `The supported source chains are: ${sourceChains.map(
       (chain) => chain.name
     )}`
   );
 
-  const { destinationChains, destination } = Sdk.assets()
-    .asset('dot')
-    .source('polkadot');
+  const { destinationChains, destination } = source('polkadot');
   console.log(
     `The supported destination chains are: ${destinationChains.map(
       (chain) => chain.name
     )}`
   );
 
-  const data = await Sdk()
-    .assets()
-    .asset('dot')
-    .source('polkadot')
-    .destination('moonbeam')
-    .accounts(pair.address, ethersSigner.address, {
-      pair,
-    });
+  const { accounts } = destination('moonbeam');
+  const data = await accounts(
+    pair.address,
+    evmSigner.address, // If using viem, use evmSigner.account.address
+    {
+      evmSigner,
+      polkadotSigner: pair,
+    }
+  );
 };
 
 fromPolkadot();
@@ -226,13 +282,14 @@ fromPolkadot();
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
 const fromPolkadot = async () => {
-  const data = await Sdk().getTransferData({
-    destinationAddress: ethersSigner.address,
+  const data = await sdkInstance.getTransferData({
+    destinationAddress: evmSigner.address,
     destinationKeyOrChain: 'moonbeam',
     keyOrAsset: 'dot',
     polkadotSigner: pair,
     sourceAddress: pair.address,
     sourceKeyOrChain: 'polkadot',
+    evmSigner,
   });
 };
 
