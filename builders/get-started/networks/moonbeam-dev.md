@@ -43,7 +43,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         ```bash
         docker run --rm --name {{ networks.development.container_name }} --network host \
         purestake/moonbeam:{{ networks.development.build_tag }} \
-        --dev
+        --dev --rpc-external
         ```
 
     === "MacOS"
@@ -51,7 +51,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
         purestake/moonbeam:{{ networks.development.build_tag }} \
-        --dev --ws-external --rpc-external
+        --dev --rpc-external
         ```
 
     === "Windows"
@@ -59,7 +59,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
         ```bash
         docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
         purestake/moonbeam:{{ networks.development.build_tag }} ^
-        --dev --ws-external --rpc-external
+        --dev --rpc-external
         ```
 
 !!! 注意事项
@@ -169,8 +169,7 @@ purestake/moonbeam \
 
 - **`--dev`** - 指定开发链
 - **`--tmp`** - 运行一个临时节点，该节点将在流程结束时删除所有配置
-- **`--rpc-external`** - 监听所有RPC接口
-- **`--ws-external`** - 监听所有Websocket接口
+- **`--rpc-external`** - 监听所有RPC与Websocket接口
 
 ### 配置节点的常用选项 {: #node-options }
 
@@ -182,10 +181,10 @@ purestake/moonbeam \
 
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON RPC日志，命令应如下所示：`-l json=trace`
 - **`--sealing <interval>`** - 什么时候区块需要被封装在开发服务中。可接受的时间间隔参数为：`instant`、`manual`、或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`。请参阅下面的[配置区块生产](#configure-block-production)部分以获取更多信息
-- **`--rpc-port <port>`** - *从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始弃用，使用`--ws-port`进行HTTP和WS的连接* - 设置HTTP RPC服务器的TCP端口。接受端口作为参数
-- **`--ws-port <port>`** - 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始，WS端口是用于HTTP和WS连接的统一端口。接受端口作为参数。默认值是{{ networks.parachain.ws }}
-- **`--rpc-max-connections <connections>`** - *自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起已弃用，此值已硬编码为100。请使用`--ws-max-connections`以调整HTTP和WS连接的总限制* - 指定HTTP RPC服务器连接的最大数量
-- **`--ws-max-connections <connections>`** - 指定WS RPC服务器连接的最大数量。自[客户端v0.30.0](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}起，此标志调整HTTP和WS连接的总限制。默认为100个连接。
+- **`--rpc-port <port>`** - 用来配置HTTP与WS连接的统一端口。接收一个port作为参数，默认为{{ networks.parachain.rpc }}
+- **`--ws-port <port>`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始使用，用来设置HTTP与WS连接的统一端口. 接收一个port作为参数
+- **`--rpc-max-connections <connections>`** - 配置HTTP与WS连接的上限总和. 默认连接数为100
+- **`--ws-max-connections <connections>`** - * *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
 - **`--rpc-cors <origins>`** - 指定允许浏览器源头访问HTTP和WS RPC服务器。该源头可以是允许访问的以逗号分隔的来源列表，或者您也可以指定`null`。当运行一个开发节点时，预设为允许所有源头
 
 如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。

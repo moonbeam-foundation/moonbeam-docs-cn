@@ -70,10 +70,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
  - 在两处替换 `INSERT_YOUR_NODE_NAME` 
  - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-!!! 注意事项
-    对于v0.27.0之前的客户端版本，`--state-pruning`标志被命名为`--pruning`。
-
-    对于v0.30.0之前的客户端版本，`--rpc-port`用于指定HTTP连接的端口，`--ws-port`用于指定WS连接的端口。从客户端版本v0.30.0开始，`--rpc-port`已被弃用，`--ws-port`命令行标志同时适用于HTTP连接和WS连接。类似地，`--rpc-max-connections`命令行标志已被弃用，现在被硬编码为100。您可以使用`--ws-max-connections`来调整HTTP和WS连接的总限制。
+--8<-- 'text/node-operators/client-changes.md'
 
 ### 全节点 {: #full-node }
 
@@ -175,7 +172,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         ```
 
 !!! 注意事项
-    如果您想要运行RPC终端、连接至Polkadot.js Apps或是运行您自己的应用，使用`--unsafe-rpc-external`和/或`--unsafe-ws-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
+    如果您想要运行RPC终端、连接至Polkadot.js Apps或是运行您自己的应用，使用`--unsafe-rpc-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
 
 ### 收集人 {: #collator }
 

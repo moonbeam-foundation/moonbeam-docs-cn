@@ -35,7 +35,7 @@ _作者：Erin Shaben_
 
 - `--dev` - 指定使用开发链
 - `--sealing 4000` - 每四秒（4000毫秒）密封一个区块
-- `--ws-external` - 监听所有WebSocket接口
+- `--rpc-external` - 监听所有HTTP与WebSocket接口
 
 要创建一个开发节点，您可以运行以下指令为Moonbeam提供最新的Docker映像：
 
@@ -44,7 +44,7 @@ _作者：Erin Shaben_
     ```bash
     docker run --rm --name {{ networks.development.container_name }} --network host \
     purestake/moonbeam:{{ networks.development.build_tag }} \
-    --dev --sealing 4000 --ws-external --rpc-external
+    --dev --sealing 4000 --rpc-external
     ```
 
 === "MacOS"
@@ -52,7 +52,7 @@ _作者：Erin Shaben_
     ```bash
     docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 \
     purestake/moonbeam:{{ networks.development.build_tag }} \
-    --dev --sealing 4000 --ws-external --rpc-external
+    --dev --sealing 4000 --rpc-external
     ```
 
 === "Windows"
@@ -60,7 +60,7 @@ _作者：Erin Shaben_
     ```bash
     docker run --rm --name {{ networks.development.container_name }} -p 9944:9944 ^
     purestake/moonbeam:{{ networks.development.build_tag }} ^
-    --dev --sealing 4000 --ws-external --rpc-external
+    --dev --sealing 4000 --rpc-external
     ```
 
 这些指令将会启动我们的开发节点，您可以使用9944端口。
