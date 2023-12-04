@@ -1,123 +1,244 @@
 ---
-title: 如何将Coinbase钱包移动应用程序连接到Moonbeam
-description: 本教程讲引导您如何使用Coinbase Wallet扩展程序和移动端App。
+title: Connect Coinbase Wallet to Moonbeam 将Coinbase Wallet连接至Moonbeam
+description: This guide walks you through how to configure the Coinbase Wallet extension and mobile app for Moonbeam and how to create a wallet and send funds on Moonbeam. 
+本教程讲引导您如何为Moonbeam配置Coinbase Wallet扩展程序和移动端App，以及如何在Moonbeam上创建钱包并发送资金。
 ---
 
-# 使用Coinbase Wallet移动端App与Moonbeam交互
+# Interacting with Moonbeam Using Coinbase Wallet - 使用Coinbase Wallet与Moonbeam交互
 
-## 概览 {: #introduction }
+## Introduction - 概览 {: #introduction }
 
-[Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}和[MetaMask](/tokens/connect/metamask/){target=_blank}一样是一个自托管（非托管）的钱包，目前支持iOS和安卓移动端。另外，Coinbase Wallet也有浏览器扩展程序版本，但是该扩展程序目前暂不支持添加自定义网络，因此与Moonbeam不兼容。Coinbase Wallet是一个完全不同于Coinbase Exchange（一个用于买卖加密货币的托管式平台）的产品。您现在可以在Coinbase Wallet上通过添加Moonbeam、Moonriver和Moonbase Alpha测试网为自定义网络并与其交互。
+[Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank} is a self-custody (non-custodial) wallet, like [MetaMask](/tokens/connect/metamask/){target=_blank}, available as a mobile application for iOS and Android and a browser extension. You can use Coinbase Wallet to interact with Moonbeam, Moonriver, and the Moonbase Alpha TestNet after adding them as custom networks.
 
-本教程将向您展示设置Coinbase Wallet移动端应用程序并为其配置Moonbeam网络的步骤。
+[Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}和[MetaMask](/tokens/connect/metamask/){target=_blank}一样是一个自托管（非托管）的钱包，目前支持iOS和安卓移动以及浏览器扩展程序。您现在可以在Coinbase Wallet上通过添加Moonbeam、Moonriver和Moonbase Alpha测试网为自定义网络并与其交互。
+
+Please note that Coinbase Wallet is an entirely different product from Coinbase Exchange, a custodial platform for buying and selling cryptocurrency. Holding a token in your Coinbase Wallet does not imply it is supported on Coinbase Exchange. If you send a token from your Coinbase Wallet to Coinbase Exchange that is not supported by the exchange, you will lose those funds forever.
+
+请注意Coinbase Wallet和Coinbase Exchange是两个完全不同的产品，Coinbase Exchange是一个用于买卖加密货币的托管式平台。在Coinbase Wallet上持有的Token并不代表也能用于Coinbase Exchange。如果您想要从您的Coinbase Wallet发送一些Coinbase Exchange暂未支持的Token至交易平台，这意味着您将永远丢失这些资产。
+
+In this guide, you'll go through the process of setting up the Coinbase Wallet mobile application and browser extension and configuring it for the Moonbeam network.
+
+本教程将向您展示设置Coinbase Wallet移动端和浏览器应用程序并为其配置Moonbeam网络的步骤。
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
-## 安装Coinbase Wallet App {: #install-the-coinbase-wallet-app }
+## Install Coinbase Wallet - 安装Coinbase Wallet {: #install-coinbase-wallet }
 
-您可以从iOS App商店和Google Play商店[下载Coinbase Wallet App](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA)。
+You can [download Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank} as a mobile app from the iOS App Store or Google Play Store, or as a desktop browser extension from the Chrome Store.
 
-## 创建钱包 {: #create-a-wallet }
+您可以从iOS App商店和Google Play商店[下载Coinbase Wallet App](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}或从Chrome商店安装浏览器扩展程序。
 
-安装后打开App，根据提示选择创建新钱包或导入现有钱包。本教程以创建一个新的钱包为例。首先，系统将提示您阅读法律使用条款。随后，您需创建一个独一无二的用户名。如果您想要设置您的用户名对其他钱包用户不可见，请选择**private**。接下来，您将看到您钱包的助记词。请知晓您的助记词可直接访问您的资金，确保将其存储在安全的地方，切勿与他人分享。
+The interfaces for the mobile app and browser extension are quite similar, so you can adapt the following instructions for the browser extension. The one major difference between the two is that when you add Moonbase Alpha as a custom network, you can interact with the network on the browser extension but not from the mobile app. This difference only applies to Moonbase Alpha. If you're connecting to Moonbeam or Moonriver, you'll be able to interact with either network from both the browser extension and mobile app.
 
-![Coinbase Wallet Image 1](/images/tokens/connect/coinbase-wallet/coinbase-wallet-1.png)
+移动端App和浏览器扩展程序基本相似，本教程以移动端App为例，但操作步骤也同样适用于浏览器扩展程序。主要区别在于，当您添加Moonbase Alpha作为自定义网络时，您可以在浏览器扩展程序上与网络交互，而移动端App尚未支持此功能。但此区别仅限于Moonbase Alpha。如果您连接的是Moonbeam或Moonriver，则您可以在移动端App或浏览器扩展程序进行连接。
 
-现在，系统将提示您创建密码或者您可以使用手机自带的认证方式如人脸识别。下一个页面将提醒您备份助记词的重要性。在iOS版本，您可以选择将您的助记词备份至iCloud，或者您可以手动保存这些助记词。在接下来的页面，将要求您确认您的助记词。友情提示：您的助记词可直接获取您的资金，请勿与他人分享。
+## Create a Wallet - 创建钱包 {: #create-a-wallet }
 
-![Coinbase Wallet Image 2](/images/tokens/connect/coinbase-wallet/coinbase-wallet-2.png)
+After installing and opening the app, you'll be greeted with the option to create a new wallet or import an existing one. For this exercise, set up a new wallet by tapping **Create a new wallet**.
 
-恭喜您已完成设置步骤，您的钱包现已准备完毕。接下来，您可以连接Coinbase Wallet至Moonbeam网络。
+安装后打开App，根据提示选择创建新钱包或导入现有钱包。本教程以创建一个新的钱包为例。首先，点击**Create a new wallet**创建新钱包。
 
-## 连接Coinbase Wallet至Moonbeam {: #connect-coinbase-wallet-extension-to-moonbeam }
+You'll be prompted to create a passcode, and once you've entered in your passcode, you'll need to verify it by entering it again a second time.
+
+随后，系统将提示您创建密码。完成密码输入后，您需要再次输入密码进行验证。
+
+![Create an account on the Coinbase Wallet mobile app.](/images/tokens/connect/coinbase-wallet/new/coinbase-1.png)
+
+Once you've created your passcode, your wallet will be created. The last step to take is to secure your account by backing up your wallet's recovery phrase. To back up your wallet, you can take the following steps:
+
+密码创建后即代表钱包已成功创建。最后一步是通过备份您的助记词已确保您的账户安全。为此，您需要执行以下步骤：
+
+1. Navigate to the **Settings** screen
+
+   导向至**Settings**页面
+
+2. Choose **Security** from the menu
+
+   从菜单栏选择**Security**
+
+3. Tap on your wallet that you want to back up; it should say **Not backed up** next to it
+
+   点击您要备份助记词的钱包，该钱包名称旁边应显示**Not backed up**尚未备注
+
+4. Enter your passcode
+
+   输入密码
+
+5. Select how you want to back up your recovery phrase: make an encrypted backup of the seed phrase to iCloud (iOS) or Google Drive (Android), save the phrase manually, or do both. If you are backing up your phrase to the iCloud or Google Drive, you'll have to create a password that will secure your phrase in the cloud. **This password cannot be reset, so you'll need to keep it safe**. If you are manually saving your phrase, make sure you store it exactly as displayed and save it in a secure location
+
+   选择备份助记词的方式有两种：一种是将助记词加密备份到iCloud (iOS)或Google Drive (Android)，另一种是手动保存该助记词，当然您也可以同时执行这两种操作。如果您要将助记词备份到iCloud或Google Drive，则必须创建一个密码来保护云端中的助记词。**此密码无法重置，因此请妥善保管**。如果您选择手动保存助记词，请确保以安全的方式进行存储
+
+6. When you're done, click **Complete backup**
+
+   完成所有步骤后，点击**Complete backup**
+
+![Back up your wallet's recovery phrase through the settings menu.](/images/tokens/connect/coinbase-wallet/new/coinbase-2.png)
+
+!!! note 注意事项
+    If you're using the browser extension, you'll follow a slightly different flow, as you'll be prompted to back up your wallet right away, and you'll only have the option to manually do this.
+
+如果您使用的是浏览器扩展程序，操作流程会有些许不同。系统会提示您立即备份钱包，并且您只能选择手动执行此操作。
+
+Congratulations! You've completed the setup steps, and your wallet is now fully initialized. In the next step, you'll see how you can connect Coinbase Wallet to the Moonbeam network.
+
+恭喜您已完成设置步骤，您的钱包现已准备完毕。接下来，您可以将Coinbase Wallet连接至Moonbeam网络。
+
+### Connect Coinbase Wallet to Moonbeam - 将Coinbase Wallet连接至Moonbeam {: #connect-coinbase-to-moonbeam }
+
+Although Coinbase Wallet has a built-in browser, it doesn't currently support automatically adding custom networks, so you'll have to add the network details manually. To do so, perform the following steps:
 
 尽管Coinbase Wallet有一个内置浏览器，但是目前暂不支持自动添加自定义网络，所以您可以手动添加网络详情。为此，请执行以下步骤：
 
- 1. 通过底部工具栏上的按钮导向至Settings标签
+ 1. Navigate to the **Settings** tab
 
- 2. 点击**Default Network**
+    导向至**Settings**标签
 
- 3. 点击右上角的**+**图标
+ 2. Tap on **Networks**
 
- 4. 在这里，您可以为Moonbeam、Moonriver或Moonbase Alpha测试网填写网络详情。完成后点击**Save**
+    点击**Networks**
 
- 5. 返回至默认网络页面，您可以将默认网络切换至Moonbeam或Moonriver
+ 3. Tap on the **+** icon in the upper right corner
 
-![Coinbase Wallet Image 3](/images/tokens/connect/coinbase-wallet/coinbase-wallet-3.png)
+    点击右上角的**+**图标
 
-每个网络的所有相关参数如下所示：
+ 4. Here, you can fill in the network details for Moonbeam, Moonriver, or the Moonbase Alpha TestNet
 
-=== "Moonbeam"
-    |         变量          |                                      值                                       |
-    |:-------------------------:|:--------------------------------------------------------------------------------:|
-    |       Network Name        |                                    `Moonbeam`                                    |
-    |          RPC URL          |                        `{{ networks.moonbeam.public_rpc_url }}`                           |
-    |          ChainID          | `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`) |
-    |     Symbol (Optional)     |                                      `GLMR`                                      |
-    | Block Explorer (Optional) |                     `{{ networks.moonbeam.block_explorer }}`                     |
+    在这里，您可以为Moonbeam、Moonriver或Moonbase Alpha测试网填写网络详情
 
-=== "Moonriver"
-    |         变量          |                                       值                                        |
-    |:-------------------------:|:----------------------------------------------------------------------------------:|
-    |       Network Name        |                                    `Moonriver`                                     |
-    |          RPC URL          |                         `{{ networks.moonriver.public_rpc_url }}`                         |
-    |          ChainID          | `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`) |
-    |     Symbol (Optional)     |                                       `MOVR`                                       |
-    | Block Explorer (Optional) |                     `{{ networks.moonriver.block_explorer }}`                      |
+    === "Moonbeam"
+        |         Variable - 变量          |                                      Value - 值                                       |
+        |:-------------------------:|:--------------------------------------------------------------------------------:|
+        |       Network Name        |                                    `Moonbeam`                                    |
+        |          RPC URL          |                     `{{ networks.moonbeam.public_rpc_url }}`                     |
+        |          ChainID          | `{{ networks.moonbeam.chain_id }}` (hex: `{{ networks.moonbeam.hex_chain_id }}`) |
+        |     Symbol (Optional)     |                                      `GLMR`                                      |
+        | Block Explorer (Optional) |                     `{{ networks.moonbeam.block_explorer }}`                     |
 
-=== "Moonbase Alpha"
-    |         变量          |                                      值                                       |
-    |:-------------------------:|:--------------------------------------------------------------------------------:|
-    |       Network Name        |                                 `Moonbase Alpha`                                 |
-    |          RPC URL          |                        `{{ networks.moonbase.rpc_url }}`                         |
-    |          ChainID          | `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`) |
-    |     Symbol (Optional)     |                                      `DEV`                                       |
-    | Block Explorer (Optional) |                     `{{ networks.moonbase.block_explorer }}`                     |
+    === "Moonriver"
+        |         Variable          |                                       Value                                        |
+        |:-------------------------:|:----------------------------------------------------------------------------------:|
+        |       Network Name        |                                    `Moonriver`                                     |
+        |          RPC URL          |                     `{{ networks.moonriver.public_rpc_url }}`                      |
+        |          ChainID          | `{{ networks.moonriver.chain_id }}` (hex: `{{ networks.moonriver.hex_chain_id }}`) |
+        |     Symbol (Optional)     |                                       `MOVR`                                       |
+        | Block Explorer (Optional) |                     `{{ networks.moonriver.block_explorer }}`                      |
 
-## 接收资金 {: #receiving-funds }
+    === "Moonbase Alpha"
+        |         Variable - 变量          |                                      Value - 值                                       |
+        |:-------------------------:|:--------------------------------------------------------------------------------:|
+        |       Network Name        |                                 `Moonbase Alpha`                                 |
+        |          RPC URL          |                        `{{ networks.moonbase.rpc_url }}`                         |
+        |          ChainID          | `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id }}`) |
+        |     Symbol (Optional)     |                                      `DEV`                                       |
+        | Block Explorer (Optional) |                     `{{ networks.moonbase.block_explorer }}`                     |
 
-您已根据上述教程创建了一个新钱包，因此App将显示一个包含**No coins found**消息的空白主屏幕。您可以通过发送一些GLMR至此账户来更改设置。要发送资金至您的Coinbase Wallet App，请执行以下步骤：
+ 5. Press **Add Network** once finished
 
- 1. 在App的Wallet标签（或主屏幕），点击**Receive**
+    填写完成后点击**Add Network**
 
- 2. 搜索"GLMR"
+![Add Moonbeam as a custom network through the network settings.](/images/tokens/connect/coinbase-wallet/new/coinbase-3.png)
 
- 3. 点击**Moonbeam** 
+After returning to the **Networks** screen, you can view the newly added network from the **Custom** tab. To interact with Moonbeam, you'll need to mark the network as **Active** by taking the following steps:
 
-  4. 在下一页面，您将看到您地址的二维码。点击**Share address**将您的地址发送至另一台设备
+返回**Networks**页面，您可以从**Custom**标签下看到已添加的网络。接下来，要与Moonbeam网络进行交互，您可以通过执行以下步骤将网络状态转换为**Active**：
 
-出于演示目的，我们将发送1枚GLMR至该Coinbase Wallet账户。在下一部分，您将学习如何从Coinbase Wallet App发送资金。
+1. Tap on **Moonbeam**
 
-![Receiving funds](/images/tokens/connect/coinbase-wallet/coinbase-wallet-4.png)
+   点击**Moonbeam**
 
-## 发送资金 {: #sending-funds }
+2. Scroll down to the bottom of the screen and toggle the **Active network** switch to on
 
-要从您的Coinbase Wallet发送资金，在App的Wallet标签（或主屏幕）点击您要发送的资产类别，随后请执行以下步骤：
+   将屏幕划到底部，打开**Active network**按钮
 
- 1. 点击**Send**
+3. Tap **Save**
 
- 2. 在下一页面，输入您想要发送的资产数量。如果您想要选择不同的资产类别，在底部点击资产名称
+   点击**Save**
 
- 3. 点击**Next**
+![Set Moonbeam as the active network.](/images/tokens/connect/coinbase-wallet/new/coinbase-4.png)
 
- 4. 点击**Details**查看交易Gas费用。Moonbeam没有矿工，该词汇在这里默认为工作量证明网络
+### Receiving Funds - 接收资金 {: #receiving-funds }
 
-  5. 查看交易详情，确定无误后点击**Send**
+To view and manage your assets, you can click on **Assets** from the bottom navigation menu.
 
-![Send funds](/images/tokens/connect/coinbase-wallet/coinbase-wallet-5.png)
+要查看和管理您的资产，您可以点击页面顶部导航栏菜单中的**Assets**。
 
-这样就可以了！您已成功设置您的Coinbase Wallet App，将其连接至Moonbeam网络。另外，您也已成功学会如何发送和接收资金。
+Since you created a new wallet in this demo, the app displays a balance of `$0.00` and doesn't list any assets in the **Crypto** tab. You can change this by sending some GLMR to this account. To send funds to your Coinbase Wallet account, take the following steps:
 
+您已根据上述教程创建了一新钱包，由于该钱包是新钱包，因此app显示的余额为`$0.00`，并且**Crypto**标签中未有任何资产。您可以通过发送一些GLMR至此账户来更改设置。要发送资金至您的Coinbase Wallet App，请执行以下步骤：
 
-## 限制 {: #limitations }
+ 1. Tap on **Receive**
 
- - 目前，Coinbase Wallet仅在您App的交易记录中显示传出交易。您可以通过区块浏览器（如[Moonscan](https://moonscan.io/)）输入您的地址以查看您的完整交易记录，包括传入交易
- - Coinbase Wallet暂不支持导入或导出私钥。如果您需要导入其他现有账户至您的钱包，您可以使用其他钱包，如[MetaMask](/tokens/connect/metamask/){target=_blank}
- - 请注意Coinbase Wallet和Coinbase Exchange是两个完全不同的产品，在Coinbase Wallet上持有的Token并不代表也能用于Coinbase Exchange。如果您想要从您的Coinbase Wallet发送一些Coinbase Exchange暂未支持的Token至交易平台，这意味着您将永远丢失这些资产。
+    点击**Receive**
 
-## 参考内容 {: #additional-resources }
+ 2. Tap on the QR code icon or the copy icon next to **Ethereum address**. Since Moonbeam is Ethereum-compatible, you can use the Ethereum account it provides you on Moonbeam
 
- - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/)
- - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile)
+    点击二维码图标或点击**Ethereum address**旁边的复制图标。Moonbeam兼容以太坊，因此您可以使用Moonbeam上提供的以太坊账户
 
- --8<-- 'text/_disclaimers/third-party-content.md'
+![Copy your Ethereum address so you can receive funds.](/images/tokens/connect/coinbase-wallet/new/coinbase-5.png)
+
+Now that you have your receiving address, you can send assets to it. To view your assets once they arrive, you'll need to make sure that you've activated the correct network from the network's configuration screen in the **Networks** settings, as outlined in the [previous section](#connect-coinbase-to-moonbeam).
+
+现在，您已经有接收资金的地址了，您可以向改地址发送资金。想要查看资产是否达到账户，请确保您已在**Networks**设置中的网络配置页面激活了所选网络，具体步骤如[上一部分](#connect-coinbase-to-moonbeam)所述。
+
+### Sending Funds - 发送资金 {: #sending-funds }
+
+To send funds from your Coinbase Wallet, navigate to the **Assets** tab, then take the following steps:
+
+要从您的Coinbase Wallet发送资金，请导向至**Assets**标签，并执行以下步骤：
+
+ 1. Tap **Send**
+
+    点击**Send**
+
+ 2. On the next screen, enter the amount of the asset you'd like to send
+
+    在下一个页面，输入您想要发送的资产数量
+
+ 3. Tap **Next**
+
+    点击**Next**
+
+ 4. Enter the address you'd like to send it to
+
+    输入接收地址
+
+ 5. Tap **Confirm** to continue
+
+    点击**Confirm**后继续
+
+ 6. Review the transaction details to ensure accuracy, then press **Send**
+
+    查看交易详情，确保无误后，点击**Send**
+
+ 7. Upon successfully sending the transaction, you can tap **Done**
+
+    交易成功发送后，点击**Done**
+
+![Send funds.](/images/tokens/connect/coinbase-wallet/new/coinbase-6.png)
+
+From the **Transactions** tab, you'll be able to see your outgoing transactions, including the address you sent the transaction to, the status of the transaction, and the amount you sent. You can tap on each transaction to find out more information.
+
+在**Transactions**标签下，您可以看到已传出的交易，包括接收地址、交易状态，以及发送的数量/金额。您可以点击每笔交易了解更多信息。
+
+![View your transaction history from the transactions screen.](/images/tokens/connect/coinbase-wallet/new/coinbase-7.png)
+
+And that's it! You've successfully set up your Coinbase Wallet app, connected it to the Moonbeam network, and learned how to send and receive funds.
+
+这样就可以了！您已成功设置您的Coinbase Wallet App，并将其连接至Moonbeam网络。另外，您也已成功学会如何发送和接收资金。
+
+## Limitations - 限制 {: #limitations }
+
+ - At this time, Coinbase Wallet displays only outgoing transactions in your transaction history in the app. You can see your full transaction history, including incoming transactions, by looking up your address on a blockchain explorer such as [Moonscan](https://moonscan.io/){target=_blank}
+ - 目前，Coinbase Wallet仅在您App的交易记录中显示传出交易。您可以通过区块浏览器（如[Moonscan](https://moonscan.io/){target=_blank}）输入您的地址以查看您的完整交易记录，包括传入交易
+
+ - On the Coinbase Wallet mobile app, you can add Moonbase Alpha as a custom network; however, you won't be able to see your balances or send transactions from the app. You'll need to use the browser extension instead
+ - 在Coinbase Wallet移动端App上，您可以将Moonbase Alpha添加为自定义网络。但是，您不能从App端看到余额或传送的交易。如果您想查看这类信息，您需要使用浏览器扩展程序
+
+## Additional Resources - 参考资料 {: #additional-resources }
+
+ - [Coinbase Wallet FAQ](https://wallet.coinbase.com/faq/){target=_blank}
+ - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/){target=_blank}
+ - [Coinbase Wallet Getting Started Guide](https://www.coinbase.com/wallet/getting-started-mobile){target=_blank}
+ - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile){target=_blank}
+
+--8<-- 'text/_disclaimers/third-party-content.md'
