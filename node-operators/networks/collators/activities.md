@@ -69,7 +69,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool } 
 
-节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，点击**Developer**标签，从下拉菜单中选择**JavaScript**，然后进行以下步骤：
+节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，点击**Developer**标签，从下拉菜单中选择**Extrinsics**，然后进行以下步骤：
 
   1. 选择您想用于参与收集活动的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}，并有多余金额用于支付交易费
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
