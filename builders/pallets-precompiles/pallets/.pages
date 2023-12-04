@@ -2,6 +2,7 @@ title: Pallets
 nav:
   - index.md
   - 'Conviction Voting（信念投票）': 'conviction-voting.md'
+  - 'Identity': 'identity.md'
   - 'Multisig': 'multisig.md'
   - '质押功能': 'staking.md'
   - 'Preimage（原像）': 'preimage.md'
