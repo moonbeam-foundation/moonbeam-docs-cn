@@ -15,7 +15,7 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 - **`--collator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
 - **`--port`** —— 指定端对端协议的TCP端口。平行链的默认端口为`{{ networks.parachain.p2p }}`，嵌入的中继链则为`{{ networks.relay_chain.p2p }}`
-- **`--rpc-port`** - 用来配置HTTP与WS连接的统一端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.rpc }}` 
+- **`--rpc-port`** - 用来配置HTTP与WS连接的统一端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}` 
 - **`--ws-port`** - - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。 平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
 - **`--rpc-max-connections`** - 配置HTTP与WS连接的上限总和. 默认连接数为100
 - **`--ws-max-connections`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
