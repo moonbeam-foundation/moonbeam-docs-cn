@@ -144,7 +144,7 @@ contract Requester is RrpRequesterV0 {
 
 dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}与[托管](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}. 托管DAPI仅部署在主网上, 自费dAPI在主网和测试网都有部署。利用dAPI代理来读取自费或托管dAPI数据流程是一样的.
 
-### 访问自费的dAPI {: #access-self-funded-dapis }
+#### 自费dAPIs {: #self-funded-dapis }
 
 [自费dAPI](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}是用户自己付费订阅的单源数据推送. 它们为开发者提供了以最少的前期付出体验数据源的机会，在使用托管dAPI之前提供了低风险的选择。
 
@@ -158,7 +158,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 您可以在[API3的托管dAPI文档页面](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}获取更多关于它的知识。
 
-### 访问自费dAPIs {: #self-funded-dapis}
+### 访问自费的dAPI {: #access-self-funded-dapis}
 
 
 以下为访问自筹数据源的流程：
@@ -208,7 +208,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 当交易完成并在区块链上确认后，代理合约地址将会在界面中显示。
 
-### 读取托管dAPI {: #access-managed-dapis }
+### 读取托管dAPIs {: #access-managed-dapis }
 
 如果您想使用托管dAPI，在选择dAPI后，会有两个选项供您选择：**Managed**或**Self-funded**. 选择**Managed dAPIs**.
 
@@ -221,7 +221,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 | 0.5%      | 24 小时    |
 | 1%        | 24 小时    |
 
-!!! note
+!!! 注意事项
     根据资产和链的不同，并不是所有dAPI都支持全部配置选项。访问[API3市场](https://market.api3.org){target=_blank} 获取更多信息。
 
 在选择偏差临界值和heartbeat之后，检查最后的价格，然后选择**Add to Cart**。您可以添加同一个网络上的多个dAPI进购物车。选择完成后点**Checkout**。请在付款页面确认最后的订单信息和价格。当您检查完后，连接您的钱包并付款。
