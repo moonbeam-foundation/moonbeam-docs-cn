@@ -140,7 +140,7 @@ npm i @polkadot/api ethers
     ??? code "Batch预编译合约ABI"
 
         ```js
-        --8<-- 'code/mrl/abi/Batch.js'
+        --8<-- 'code/builders/interoperability/mrl/abi/Batch.js'
         ```
 
     在Moonbase Alpha这个特定示例中，您还需要一个Wormhole中继器的地址。您可以使用：
