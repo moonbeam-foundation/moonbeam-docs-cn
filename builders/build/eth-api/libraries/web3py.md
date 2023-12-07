@@ -178,7 +178,7 @@ touch compile.py
 --8<-- 'code/builders/build/eth-api/libraries/web3-py/compile.py'
 ```
 
-!!! note
+!!! 注意事项
     如果您遇到`Solc is not installed`报错，反注释代码示例的第二步并运行它。
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -279,7 +279,7 @@ python3 increment.py
 
 1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-3. 定义部署合约中的`contract_address` 
+3. 定义`account_from`，包括`private_key`和已部署合约`contract_address`。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址以创建合约实例
 5. 使用合约实例构建重置交易。随后，您将使用`build_transaction`函数传入交易信息，包括发送者的`from`地址和`nonce`。您可以通过`web3.eth.get_transaction_count`函数获取`nonce`
 6. 使用`web3.eth.account.sign_transaction`函数签署交易并传入重置交易和发送者的`private_key`
