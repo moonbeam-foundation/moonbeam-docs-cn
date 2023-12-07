@@ -103,7 +103,7 @@ Moonbeam的GMP协议需要一个multilocation来代表流动性路由的目的�
     }
     ```
 
-如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/runtime-2400/precompiles/gmp/src/types.rs#L25-L39){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点，例如[`@polkadot/types`](https://www.npmjs.com/package/@polkadot/types){target=_blank}。以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
+如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点，例如[`@polkadot/types`](https://www.npmjs.com/package/@polkadot/types){target=_blank}。以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
 
 ```javascript
 import { TypeRegistry, Enum, Struct } from '@polkadot/types';
