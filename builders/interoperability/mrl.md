@@ -134,7 +134,7 @@ npm i @polkadot/api ethers
     ??? code "TokenBridge中继器ABI"
 
         ```js
-        --8<-- 'code/mrl/abi/TokenRelayer.js'
+        --8<-- 'code/builders/interoperability/mrl/abi/TokenRelayer.js'
         ```
 
     ??? code "Batch预编译合约ABI"
