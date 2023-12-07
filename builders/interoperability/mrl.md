@@ -18,6 +18,8 @@ Moonbeam路由流动性（MRL）是Moonbeam的多种用例之一：与Moonbeam�
 
 GMP协议通常以锁定/铸造或销毁/铸造方式移动资产。这种流动性通常以ERC-20代币的形式存在于Moonbeam上。现在Moonbeam上所有ERC-20代币都已支持XCM，只要代币在其他平行链上注册过，它们就可以在平行链上被认证。Moonbeam上启用XCM的ERC-20代币被称为[本地XC-20代币](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}。
 
+现在MRL仅支持与Wormhole相连的区块链，但任何平行链团队都能用其他GMP提供商来搭建类似路径。
+
 本指南将主要解释一个平行链应该如何与Wormhole SDK和接口集成，以通过Moonbeam从非平行链区块链获得流动性。它也会解释使用时需要的基本配置以及如何有哪些是Wormhole协议支持的代币。
 
 ## 先决条件 {: #prerequisites }
@@ -111,7 +113,7 @@ npm i @polkadot/api ethers
 
 在Moonbeam上使用，您需要修改以下参数:
 
-|           Parameter            | Value |
+|              参数               |   值  |
 |:------------------------------:|:-----:|
 |          Parachain ID          | 2004  |
 |     Balances Pallet Index      |  10   |
@@ -158,7 +160,7 @@ npm i @polkadot/api ethers
 ???+ code "创建远程EVM调用逻辑"
 
     ```js
-    --8<-- 'code/mrl/evm-tx.js'
+    --8<-- 'code/builders/interoperability/mrl/evm-tx.js'
     ```
 
 接下来，您需要创建extrinsic以将远程EVM调用发送到Moonbeam。您需要发送一个XCM消息来执行`Transact`XCM指令。最常见的做法是通过`polkadotXcm.send`发送`WithdrawAsset`, `BuyExecution`, 和 `Transact`指令。也可用 `RefundSurplus`和 `DepositAsset`来确保资产不会被锁，但技术上它们不是必须的。
@@ -166,7 +168,7 @@ npm i @polkadot/api ethers
 ???+ code "发送远程EVM调用逻辑"
 
     ```js
-    --8<-- 'code/mrl/polkadotxcm-send.js'
+    --8<-- 'code/builders/interoperability/mrl/polkadotxcm-send.js'
     ```
 
 #### 构建Batch Extrinsic {: #build-batch-extrinsic }
@@ -195,7 +197,7 @@ npm i @polkadot/api ethers
 
 === "Moonbeam"
 
-    | Token Name |                  Address                   |
+    |     代币名称   |                      地址                     |
     |:----------:|:------------------------------------------:|
     |   WMATIC   | 0x82DbDa803bb52434B1f4F41A6F0Acb1242A7dFa3 |
     |   WGLMR    | 0xAcc15dC74880C9944775448304B263D191c6077F |
