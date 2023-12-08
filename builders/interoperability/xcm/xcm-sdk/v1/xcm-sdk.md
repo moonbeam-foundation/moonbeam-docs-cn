@@ -40,7 +40,7 @@ npm install @polkadot/api @polkadot/util-crypto
 === "viem"
 
     ```bash
-    npm install
+    npm install viem
     ```
 
 ## 创建签署人 {: #create-signers }
