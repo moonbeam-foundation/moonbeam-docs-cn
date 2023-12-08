@@ -143,7 +143,7 @@ SDK提供以下核心函数：
         |:-----------------------:|:--------------------------------:|:------------------------------------------------:|
         |  `destinationAddress`   |             *string*             |              目标链上的接收账户地址              |
         | `destinationKeyorChain` |       *string \| AnyChain*       |            目标链的私钥或`Chain`数据             |
-        |       `evmSigner?`      |  *EthersSigner | WalletClient*   | 使用H160以太坊式账户的以太坊兼容链的Ethers签署人,可以是Ethers signer或是Viem钱包signer|
+        |       `evmSigner?`      |  *EthersSigner \| WalletClient*   | 使用H160以太坊式账户的以太坊兼容链的Ethers签署人,可以是Ethers signer或是Viem钱包signer|
         |      `keyOrAsset`       |        *string \| Asset*         |        正在转移的资产的私钥或`Asset`数据         |
         |    `polkadotSigner?`    | *PolkadotSigner \| IKeyringPair* |              波卡签署人或Keyring对               |
         |     `sourceAddress`     |             *string*             |              在源链上的发送账户地址              |
