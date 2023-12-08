@@ -36,7 +36,7 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 要安装必要依赖项，请运行以下命令：
 
 ```bash
-npm install @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
+npm install @nomicfoundation/hardhat-ethers ethers@6 @openzeppelin/contracts
 ```
 
 ## 合约设置 {: #contracts }
@@ -66,7 +66,7 @@ touch SimpleDex.sol Batch.sol
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -122,7 +122,13 @@ contract SimpleDex {
 }
 ```
 
-在`Batch.sol`文件中，您可以粘贴[批处理预编译合约的内容](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}。
+在`Batch.sol`文件中，您可以粘贴批处理预编译合约的内容。
+
+??? code "Batch.sol"
+
+    ```solidity
+    --8<-- 'code/builders/pallets-precompiles/precompiles/batch/Batch.sol'
+    ```
 
 ### 编译和部署合约 {: #compile-deploy-contracts }
 
@@ -138,7 +144,7 @@ npx hardhat compile
 
 接下来，我们可以部署`SimpleDex`合约，它在部署时会自动部署`DemoToken`合约并铸造1000枚DTOK，并将其中一半Token分配给`SimpleDex`合约，剩下一半给发起部署的地址。
 
-我们也将通过在调用`deploy`时传入`value`为合约添加一些初始流动性。由于此值需要以Wei为单位，我们可以使用`ethers.utils.parseEther`来实现，输入值（比如`"0.5"` DEV）后，此函数会将值转换为以Wei为单位。
+我们也将通过在调用`deploy`时传入`value`为合约添加一些初始流动性。由于此值需要以Wei为单位，我们可以使用`ethers.parseEther`来实现，输入值（比如`"0.5"` DEV）后，此函数会将值转换为以Wei为单位。
 
 在部署合约之前，我们将需要创建部署脚本。我们将先为脚本创建一个新目录，命名为`scripts`，并添加一个名为`deploy.js`的新文件：
 
@@ -151,15 +157,19 @@ mkdir scripts && touch scripts/deploy.js
 ```js
 async function main() {
   // Liquidity to add in DEV (i.e., '.5') to be converted to Wei
-  const value = ethers.utils.parseEther('INSERT_AMOUNT_OF_DEV');
+  const value = ethers.parseEther('INSERT_AMOUNT_OF_DEV');
   
   // Deploy the SimpleDex contract, which will also automatically deploy
   // the DemoToken contract and add liquidity to the contract
   const SimpleDex = await ethers.getContractFactory('SimpleDex',);
   const simpleDex = await SimpleDex.deploy({ value });
-  await simpleDex.deployed();
 
-  console.log(`SimpleDex deployed to ${simpleDex.address}`);
+  // Wait for the deployment transaction to be included in a block
+  await simpleDex.waitForDeployment();
+
+   // Get and print the contract address
+  const myContractDeployedAddress = await simpleDex.getAddress();
+  console.log(`SimpleDex deployed to ${myContractDeployedAddress}`);
 }
 
 main().catch((error) => {
@@ -234,20 +244,22 @@ main();
 ```js
 async function checkBalances(demoToken) {
   // Get the signer
-  const signer = (await ethers.getSigner()).address;
+  const signers = await ethers.getSigners();
+  const signer = signers[0];
+  const signerAddress = signer.address;
 
   // Get the balance of the DEX and print it
-  const dexBalance = ethers.utils.formatEther(
+  const dexBalance = ethers.formatEther(
     await demoToken.balanceOf(simpleDexAddress)
   );
   console.log(`Dex ${simpleDexAddress} has a balance of: ${dexBalance} DTOKs`);
 
   // Get the balance of the signer and print it
-  const signerBalance = ethers.utils.formatEther(
+  const signerBalance = ethers.formatEther(
     await demoToken.balanceOf(signer)
   );
   console.log(
-    `Account ${signer} has a balance of: ${signerBalance} DTOKs`
+    `Account ${signerAddress} has a balance of: ${signerBalance} DTOKs`
   );
 }
 ```
@@ -258,7 +270,7 @@ async function checkBalances(demoToken) {
 
 接下来，我们可以授权DEX代表我们支付一些DTOK Token，以便我们将DTOK兑换成DEV。举例来说，在以太坊上，我们需要发送两笔交易才能将DTOK兑换回DEV，一笔是授权，另一笔是转账。然后，在Moonbeam上，得益于批处理预编译合约，您可以将这两笔交易合并为一笔交易。这允许我们为兑换的准确金额设置授权金额。
 
-因此我们不是直接调用`demoToken.approve(spender, amount)`和`simpleDex.swapDemoTokenForDev(amount)`函数，而是为这两笔交易分别获取编码的调用数据并将其传入批处理预编译的`batchAll`函数中。要获取编码的调用数据，我们将使用Ether的`interface.encodeFunctionData`函数并传入必要参数。举例而言，我们将把0.2个DTOK兑换成0.2个DEV。在本示例中，为了授权，我们将传入DEX地址作为`spender`，并设置`amount`为0.2个DTOK。我们将兑换的`amount`也设置为0.2个DTOK。同样，我们可以使用`ethers.utils.parseEther`函数以将DTOK表示的金额转换为以Wei为单位的数值。
+因此我们不是直接调用`demoToken.approve(spender, amount)`和`simpleDex.swapDemoTokenForDev(amount)`函数，而是为这两笔交易分别获取编码的调用数据并将其传入批处理预编译的`batchAll`函数中。要获取编码的调用数据，我们将使用Ether的`interface.encodeFunctionData`函数并传入必要参数。举例而言，我们将把0.2个DTOK兑换成0.2个DEV。在本示例中，为了授权，我们将传入DEX地址作为`spender`，并设置`amount`为0.2个DTOK。我们将兑换的`amount`也设置为0.2个DTOK。同样，我们可以使用`ethers.parseEther`函数以将DTOK表示的金额转换为以Wei为单位的数值。
 
 获得编码的调用数据后，我们可以用其来调用批处理预编译的`batchAll`函数。此函数将以原子方式执行多个调用，其中每个数组的相同索引组合成单个子调用所需的信息。如果一个子调用还原（revert），则所有子调用都将还原。`batchAll`函数需要以下参数：
 
@@ -275,7 +287,7 @@ async function main() {
   // ...
 
   // Parse the value to swap to Wei
-  const amountDtok = ethers.utils.parseEther('INSERT_AMOUNT_OF_DTOK_TO_SWAP');
+  const amountDtok = ethers.parseEther('INSERT_AMOUNT_OF_DTOK_TO_SWAP');
 
   // Get the encoded call data for the approval and swap
   const approvalCallData = demoToken.interface.encodeFunctionData('approve', [
@@ -359,7 +371,7 @@ async function main() {
 
   // Access the interface of the ERTH contract instance to get the encoded 
   // call data for the approval
-  const amountErth = ethers.utils.parseEther('INSERT_AMOUNT_OF_ERTH_TO_SWAP');
+  const amountErth = ethers.parseEther('INSERT_AMOUNT_OF_ERTH_TO_SWAP');
   const approvalCallData = earth.interface.encodeFunctionData('approve', [
     routerAddress,
     amountErth,
