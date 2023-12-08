@@ -227,7 +227,7 @@ touch get.py
 
 1. 添加导入，包含Web3.py以及ABI和`Incrementer.sol`合约的字节码
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
-3. 定义`account_from`，包括`private_key`变量。此私钥将用于签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
+3. 定义部署合约中的contract_address
 4. 使用`web3.eth.contract`函数并传入已部署合约的ABI和地址创建合约实例
 5. 使用合约实例，您随后可以调用`number`函数
 

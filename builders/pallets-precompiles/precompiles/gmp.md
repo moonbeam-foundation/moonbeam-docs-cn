@@ -48,8 +48,7 @@ VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护�
 
 目前GMP预编译仅支持使用Wormhole通过Moonbeam发送流动性以及发送到其他平行链。GMP预编译不协助从平行链返回Moonbeam以及其他Wormhole连接链的路线。
 
-要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://book.wormhole.com/technical/evm/tokenLayer.html#contract-controlled-transfer){target=_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=_blank}的[origin-chain部署](https://book.wormhole.com/reference/contracts.html#token-bridge){target=_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48）{target=_blank}中的SCALE编码multilocation对象。
-
+要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://book.wormhole.com/technical/evm/tokenLayer.html#contract-controlled-transfer){target=_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=_blank}的[origin-chain部署](https://book.wormhole.com/reference/contracts.html#token-bridge){target=_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=_blank}中的SCALE编码multilocation对象。
 
 如果您不熟悉波卡生态系统，您可能不熟悉SCALE编码和multilocation。[SCALE编码](https://docs.substrate.io/reference/scale-codec/){target=_blank}是波卡使用的一种紧凑形式的编码。[`MultiLocation`类型](https://wiki.polkadot.network/docs/learn-xcvm){target=_blank}用于定义波卡中的相对点，例如特定平行链上的特定账户（Polkadot区块链）。
 
@@ -69,88 +68,57 @@ Moonbeam的GMP协议需要一个multilocation来代表流动性路由的目的�
 
 === "AccountId32"
 
-    ```json
+    ```js
     {
-        "parents": 1,
-        "interior": {
-            "X2": [
-                { "Parachain": "INSERT_PARACHAIN_ID" },
-                { 
-                    "AccountId32": { 
-                        "id": "INSERT_ADDRESS" 
-                    } 
-                }
-            ]
-        }
+      parents: 1,
+      interior: {
+        X2: [
+          { Parachain: 'INSERT_PARACHAIN_ID' },
+          {
+            AccountId32: {
+              id: 'INSERT_ADDRESS',
+            },
+          },
+        ],
+      },
     }
     ```
 
 === "AccountKey20"
 
-    ```json
+    ```js
     {
-        "parents": 1,
-        "interior": {
-            "X2": [
-                { "Parachain": "INSERT_PARACHAIN_ID" },
-                { 
-                    "AccountKey20": { 
-                        "key": "INSERT_ADDRESS" 
-                    } 
-                }
-            ]
-        }
-    }
-    ```
-
-如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点，例如[`@polkadot/types`](https://www.npmjs.com/package/@polkadot/types){target=_blank}。以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
-
-```javascript
-import { TypeRegistry, Enum, Struct } from '@polkadot/types';
-
-// Creates a type registry to properly work with the precompile's input types
-const registry = new TypeRegistry();
-
-// Define the precompile's input types VersionedUserAction and XcmRoutingUserAction
-class VersionedUserAction extends Enum {
- constructor(value) {
-   super(registry, { V1: XcmRoutingUserAction }, value);
- }
-}
-class XcmRoutingUserAction extends Struct {
- constructor(value) {
-   super(registry, { destination: 'VersionedMultiLocation' }, value);
- }
-}
-
-// A function that creates a SCALE encoded payload to use with transferTokensWithPayload
-function createMRLPayload(parachainId, account, isEthereumStyle) {
-  // Create a multilocation object based on the target parachain's account type
-  const versionedMultiLocation = { 
-    v1: {
       parents: 1,
       interior: {
         X2: [
-          { Parachain: parachainId },
-          isEthereumStyle ? 
-            { AccountKey20: { key: account } } : 
-            { AccountId32: { id: account }
-        }]
-      }
+          { Parachain: 'INSERT_PARACHAIN_ID' },
+          {
+            AccountKey20: {
+              key: 'INSERT_ADDRESS',
+            },
+          },
+        ],
+      },
     }
-  };
+    ```
 
-  // Format multilocation object as a Polkadot.js type
-  const destination = registry.createType('VersionedMultiLocation', versionedMultiLocation);
+如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点。
 
-  // Wrap and format the multiLocation object into the precompile's input type
-  const userAction = new XcmRoutingUserAction({ destination });
-  const versionedUserAction = new VersionedUserAction({ V1: userAction });
+The versioned user action expected by the precompile accepts two versions: V1 and V2. V1 accepts the `XcmRoutingUserAction` type, which attempts to route the transferred assets to the destination defined by the multilocation. V2 accepts the `XcmRoutingUserActionWithFee` type, which also attempts to route the transferred assets to the destination but also allows a fee to be paid. Relayers can use V2 to specify a fee to charge on Moonbeam to relay the transaction to the given destination.
 
-  // SCALE encode resultant precompile formatted objects
-  return versionedUserAction.toU8a();
-}
-```
+以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
+
+=== "V1"
+
+    ```typescript
+    --8<-- 'code/builders/pallets-precompiles/precompiles/gmp/v1-payload.ts'
+    ```
+
+=== "V2"
+
+    ```typescript
+    --8<-- 'code/builders/pallets-precompiles/precompiles/gmp/v2-payload.ts'
+    ```
 
 ## 限制 {: #restrictions }
 

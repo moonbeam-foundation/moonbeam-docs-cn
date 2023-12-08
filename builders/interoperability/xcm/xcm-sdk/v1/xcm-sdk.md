@@ -124,37 +124,90 @@ const evmSigner = new ethers.Wallet(privateKey, provider);
 === "Moonbeam"
 
     ```js
-    import { createWalletClient, custom } from 'viem'
-    import { moonbeam } from 'viem/chains'
+    import { createWalletClient, http } from 'viem';
+    import { privateKeyToAccount } from 'viem/accounts'; 
+    import { moonbeam } from 'viem/chains';
 
-    const client = createWalletClient({
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    const account = privateKeyToAccount(privateKey);
+
+    const evmSigner = createWalletClient({
+      account,
       chain: moonbeam,
-      transport: custom(window.ethereum)
-    })
+      transport: http(),
+    });
     ```
 
 === "Moonriver"
 
     ```js
-    import { createWalletClient, custom } from 'viem'
-    import { moonriver } from 'viem/chains'
+    import { createWalletClient, http } from 'viem';
+    import { privateKeyToAccount } from 'viem/accounts'; 
+    import { moonriver } from 'viem/chains';
 
-    const client = createWalletClient({
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    const account = privateKeyToAccount(privateKey);
+
+    const evmSigner = createWalletClient({
+      account,
       chain: moonriver,
-      transport: custom(window.ethereum)
-    })
+      transport: http(),
+    });
     ```
 
 === "Moonbase Alpha"
 
     ```js
-    import { createWalletClient, custom } from 'viem'
-    import { moonbase } from 'viem/chains'
+    import { createWalletClient, http } from 'viem';
+    import { privateKeyToAccount } from 'viem/accounts'; 
+    import { moonbaseAlpha } from 'viem/chains';
 
-    const client = createWalletClient({
-      chain: moonbase,
-      transport: custom(window.ethereum)
-    })
+    const privateKey = 'INSERT_PRIVATE_KEY';
+    const account = privateKeyToAccount(privateKey);
+
+    const evmSigner = createWalletClient({
+      account,
+      chain: moonbaseAlpha,
+      transport: http(),
+    });
+    ```
+
+If you want to pass in a browser extension wallet to viem, you can use the following code:
+
+=== "Moonbeam"
+
+    ```js
+    import { createWalletClient, custom } from 'viem';
+    import { moonbeam } from 'viem/chains';
+
+    const evmSigner = createWalletClient({
+      chain: moonbeam,
+      transport: custom(window.ethereum),
+    });
+    ```
+
+=== "Moonriver"
+
+    ```js
+    import { createWalletClient, custom } from 'viem';
+    import { moonriver } from 'viem/chains';
+
+    const evmSigner = createWalletClient({
+      chain: moonriver,
+      transport: custom(window.ethereum),
+    });
+    ```
+
+=== "Moonbase Alpha"
+
+    ```js
+    import { createWalletClient, custom } from 'viem';
+    import { moonbaseAlpha } from 'viem/chains';
+
+    const evmSigner = createWalletClient({
+      chain: moonbaseAlpha,
+      transport: custom(window.ethereum),
+    });
     ```
 
 !!! 注意事项
@@ -225,7 +278,7 @@ const sdkInstance = new Sdk();
 
     ```js
     // Using the key
-    const { sourceChains, source } = asset('dot');
+    const { accounts } = destination('moonbeam');
     ```
 
     这将会返回`accounts`函数，用于定义源链和目标链地址以及各地址相关的签署人
@@ -245,7 +298,7 @@ const fromPolkadot = async () => {
     `The supported assets are: ${assets.map((asset) => asset.originSymbol)}`
   );
 
-  const { sourceChains, source } = sdkInstance.assets().asset('dot');
+  const { sourceChains, source } = asset('dot');
   console.log(
     `The supported source chains are: ${sourceChains.map(
       (chain) => chain.name
@@ -281,9 +334,11 @@ fromPolkadot();
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
 
+const sdkInstance = new Sdk();
+
 const fromPolkadot = async () => {
   const data = await sdkInstance.getTransferData({
-    destinationAddress: evmSigner.address,
+    destinationAddress: evmSigner.address, // If using viem, use evmSigner.account.address
     destinationKeyOrChain: 'moonbeam',
     keyOrAsset: 'dot',
     polkadotSigner: pair,
@@ -388,6 +443,13 @@ fromPolkadot();
           ss58Format: 0,
           weight: 1000000000,
           ws: 'wss://rpc.polkadot.io'
+        },
+        destinationFeeBalance: e {
+          key: 'dot',
+          originSymbol: 'DOT',
+          amount: 0n,
+          decimals: 10,
+          symbol: 'DOT'
         },
         existentialDeposit: e {
           key: 'dot',
@@ -573,6 +635,13 @@ console.log(`${swapData.source.chain.name} tx hash: ${hash}`);
           id: 1284,
           rpc: 'https://rpc.api.moonbeam.network'
         },
+        destinationFeeBalance: e {
+          key: 'dot',
+          originSymbol: 'DOT',
+          amount: 0n,
+          decimals: 10,
+          symbol: 'DOT'
+        },
         existentialDeposit: e {
           key: 'glmr',
           originSymbol: 'GLMR',
@@ -744,3 +813,5 @@ console.log(
 
 !!! 注意事项
     关于更多资产、资产数量和费用的信息，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=_blank}。
+
+--8<-- 'text/_disclaimers/third-party-content.md'
