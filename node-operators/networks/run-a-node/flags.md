@@ -15,10 +15,10 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 
 - **`--collator`** —— 为候选收集人启用验证人模式，当可用时允许节点活跃参与区块生产
 - **`--port`** —— 指定端对端协议的TCP端口。平行链的默认端口为`{{ networks.parachain.p2p }}`，嵌入的中继链则为`{{ networks.relay_chain.p2p }}`
-- **`--rpc-port`** - 用来配置HTTP与WS连接的统一端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}` 
-- **`--ws-port`** - - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。 平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
-- **`--rpc-max-connections`** - 配置HTTP与WS连接的上限总和. 默认连接数为100
-- **`--ws-max-connections`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
+- **`--rpc-port`** —— 用来配置HTTP与WS连接的统一端口。平行链的默认端口为`{{ networks.parachain.rpc }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
+- **`--ws-port`** —— *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。 平行链的的默认端口为`{{ networks.parachain.ws }}`，嵌入的中继链的默认端口则为`{{ networks.relay_chain.ws }}`
+- **`--rpc-max-connections`** —— 配置HTTP与WS连接的上限总和. 默认连接数为100
+- **`--ws-max-connections`** —— *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
 - **`--execution`** —— 指定所有执行内容该使用的执行策略。Substrate runtime被编译为本地可执行文件，该执行文件被包含在节点本地的一部分，以及存储在链上的WebAssembly二进制文件中。可用的选项如下：
     - **`native`** —— 仅执行本地文件
     - **`wasm`** —— 仅执行Wasm文件
@@ -38,15 +38,14 @@ description: 有助于在Moonbeam上运行一个完整平行链节点的标志�
 - **`--telemetry-url`** —— 指定telemetry服务器所连接的URL。此标志能够用于为多个telemetry端点多次使用。此标志使用两个参数，分别为URL和日志详细级别（Verbosity Level）。日志详细级别范围为0-9，0代表最低级别。预期使用此标志的格式为'<URL VERBOSITY>'，如`--telemetry-url 'wss://foo/bar 0'`
 - **`--in-peers`** —— 指定可接受向内连接的最大数量，默认为`25`
 - **`--out-peers`** —— 指定可接受向外连接的最大数量以维持稳定，默认为`25`
-- **`--runtime-cache-size 64`** - 将保留在内存缓存中的不同运行时版本的数量配置为`64`
-- **`--eth-log-block-cache`** -  - 以字节为单位，限制用于区块数据的LRU缓存的大小。此标志因不同RPC提供商而异。默认值为`300000000`
-- **`--eth-statuses-cache`** - 以字节为单位，限制用于交易状态数据（transaction statuses data的LRU缓存的大小。此标志因不同RPC提供商而异。默认值为`300000000`
-- **--sync** - 设置区块链同步模式，可以用来加快区块链的同步速度。可用选项有：
-    - **`full`** - 下载并验证完整的区块链历史记录
-    - **`fast`** - 下载区块而不执行它们，并下载最新的状态和证明
-    - **`fast-unsafe`** - 与`fast`相同，但会跳过下载状态证明
-    - **`warp`** - 下载最新的状态和证明
-
+- **`--runtime-cache-size 64`** —— 将保留在内存缓存中的不同运行时版本的数量配置为`64`
+- **`--eth-log-block-cache`** ——  以字节为单位，限制用于区块数据的LRU缓存的大小。此标志因不同RPC提供商而异。默认值为`300000000`
+- **`--eth-statuses-cache`** —— 以字节为单位，限制用于交易状态数据（transaction statuses data的LRU缓存的大小。此标志因不同RPC提供商而异。默认值为`300000000`
+- **--sync** —— 设置区块链同步模式，可以用来加快区块链的同步速度。可用选项有：
+    - **`full`** —— 下载并验证完整的区块链历史记录
+    - **`fast`** —— 下载区块而不执行它们，并下载最新的状态和证明
+    - **`fast-unsafe`** —— 与`fast`相同，但会跳过下载状态证明
+    - **`warp`** —— 下载最新的状态和证明
 
 ## 如何访问所有可用标志 {: #how-to-access-all-of-the-available-flags }
 

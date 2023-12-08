@@ -160,7 +160,6 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 ### 访问自费的dAPI {: #access-self-funded-dapis}
 
-
 以下为访问自筹数据源的流程：
 
 1. 探索API3 Market并选取一个dAPI
