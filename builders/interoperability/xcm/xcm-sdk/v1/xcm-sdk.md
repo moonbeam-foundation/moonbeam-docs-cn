@@ -54,9 +54,9 @@ npm install @polkadot/api @polkadot/util-crypto
 !!! 请记住
     **永远不要将您的私钥或是助记词存储在JavaScript或是TypeScript文件中。**
 
-### 创建一个Ethers签署人 {: #create-a-ethers-signer }
+### 创建一个EVM签署人 {: #create-a-evm-signer }
 
-要创建一个EVM签署人，您可以使用以下代码段：
+要创建一个Ethers签署人，您可以使用以下代码段：
 
 ```js
 import { ethers } from 'ethers';
@@ -176,7 +176,7 @@ const keyring = new Keyring({
 const pair = keyring.createFromUri(privateKey);
 ```
 
-!!! note
+!!! 注意事项
     上面实例中的`INSERT_PRIVATE_KEY`值可为私钥或助字词.
 
 ## 构建XCM转移数据 {: #build-xcm-transfer-data }
