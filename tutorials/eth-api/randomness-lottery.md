@@ -56,7 +56,7 @@ mkdir contracts && cd contracts
 touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 ```
 
-在`Randomness.sol`文件中，您可以粘贴[随机数预编译合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}。
+在`Randomness.sol`文件中，您可以粘贴随机数预编译合约。
 
 ??? code "Randomness.sol"
 
@@ -64,7 +64,7 @@ touch Randomness.sol RandomnessConsumer.sol Lottery.sol
     --8<-- 'code/builders/pallets-precompiles/precompiles/randomness/Randomness.sol'
     ```
 
-同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴[随机数消费者合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol){target=_blank}。
+同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴随机数消费者合约。
 
 ??? code "RandomnessConsumer.sol"
 
