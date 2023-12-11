@@ -172,7 +172,7 @@ const evmSigner = new ethers.Wallet(privateKey, provider);
     });
     ```
 
-If you want to pass in a browser extension wallet to viem, you can use the following code:
+将浏览器钱包导入viem，您可以参考一下代码：
 
 === "Moonbeam"
 

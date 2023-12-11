@@ -104,7 +104,7 @@ Moonbeam的GMP协议需要一个multilocation来代表流动性路由的目的�
 
 如果没有正确的工具，可能很难对整个有效负载进行正确的SCALE编码，特别是因为[预编译所需的自定义类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=_blank}。幸运的是，有波卡JavaScript包可以帮助实现这一点。
 
-The versioned user action expected by the precompile accepts two versions: V1 and V2. V1 accepts the `XcmRoutingUserAction` type, which attempts to route the transferred assets to the destination defined by the multilocation. V2 accepts the `XcmRoutingUserActionWithFee` type, which also attempts to route the transferred assets to the destination but also allows a fee to be paid. Relayers can use V2 to specify a fee to charge on Moonbeam to relay the transaction to the given destination.
+这个预编译合约接受的user action有V1和V2两个版本。V1版本接受`XcmRoutingUserAction`类型，它会尝试将资产传送至multilocation定义的目标地址。V2版本接受`XcmRoutingUserActionWithFee`类型，它不仅会尝试将资产传送至目标地址，同时也接受费用的支付。中继节点能够使用V2版来定义处理交易所需要在Moonbeam支付的费用。
 
 以下脚本展示了如何创建可用作GMP预编译有效负载的`Uint8Array`：
 
