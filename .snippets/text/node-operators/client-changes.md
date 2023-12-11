@@ -1,4 +1,4 @@
-!!! note
-    For client versions prior to v0.30.0, `--rpc-port` was used to specify the port for HTTP connections, and `--ws-port` was used to specify the port for WS connections. As of client v0.30.0, these flags have been combined, and the default port for the `--ws-port` flag, which is `9944`, is used for both HTTP and WS connections. The maximum number of connections to that port has been hardcoded to 100 and could be modified with the `--ws-max-connections` flag.
+!!! 注意事项
+    在客户端v0.30.0之前的版本中，--rpc-port参数被用作定义HTTP连接端口，--ws-port参数被用作定义WS连接端口。在客户端v0.30.0之后的版本这两个参数被合并在一起，原本--ws-port的默认端口9944被HTTP与WS连接共同使用。这个端口的最大连接数在源码中的硬编码为100，这个数字可以被--ws-max-connections参数覆盖。
 
-    As of client v0.33.0, the `--ws-port` and `--ws-max-connections` flags have been deprecated and removed in favor of the `--rpc-port` and `--rpc-max-connections` flags. The default port is still `9944`, and the default maximum number of connections is still set to 100.
+    从客户端v0.30.0之后，`--ws-port`与`--ws-max-connections`这两个参数已被弃用，被`--rpc-port`与`--rpc-max-connections`替代。默认端口仍为`9944`，默认最大连接数仍为100。
