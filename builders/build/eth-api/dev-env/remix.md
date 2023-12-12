@@ -254,7 +254,7 @@ Now that you've connected your wallet, you're ready to deploy the contract. Sinc
 
 5. Make sure `MyToken.sol` is the selected contract
 
-   确保所选账户为`MyToken.sol`
+   确保所选合约为`MyToken.sol`
 
 6. Expand the **DEPLOY** dropdown
 
