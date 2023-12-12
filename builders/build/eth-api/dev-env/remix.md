@@ -1,7 +1,7 @@
 ---
 title: Deploy Smart Contracts with Remix - 使用Remix部署智能合约
 description: Discover how to deploy and interact with Solidity smart contracts on Moonbeam using the Remix IDE, one of the most widely used Ethereum development tools.
-学习如何将最受欢迎的以太坊开发工具之一Remix IDE在Moonbeam上部署Solidity智能合约，并与其交互。
+学习如何使用最受欢迎的以太坊开发工具之一Remix IDE在Moonbeam上部署Solidity智能合约，并与其交互。
 ---
 
 # Using Remix to Deploy to Moonbeam - 使用Remix部署合约至Moonbeam
