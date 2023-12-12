@@ -206,7 +206,7 @@ touch deploy.js
 
 1. 通过`getContractFactory`方法为合约创建一个本地实例
 2. 使用此实例中存在的`deploy`方法来实例化智能合约
-3. 使用`deployed`等待部署
+3. 使用`waitForDeployment`等待部署
 4. 部署后，您可以使用合约实例获取合约的地址
 
 ```js

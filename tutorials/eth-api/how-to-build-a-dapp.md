@@ -84,7 +84,7 @@ npx hardhat init
 创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox#hardhat-toolbox){target=_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
 
 ```bash
-npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers
+npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers@6
 ```
 
 在我们开始编写智能合约之前，让我们先将JSON-RPC URL添加至配置之中，我们可以使用以下代码设置`hardhat.config.js`文件，并将`INSERT_YOUR_PRIVATE_KEY`取代为您具有资金账户的私钥。
@@ -95,7 +95,7 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers
 ```javascript
 require('@nomicfoundation/hardhat-ethers');
 module.exports = {
-  solidity: '0.8.17',
+  solidity: '0.8.20',
   networks: {
     moonbase: {
       url: '{{ networks.moonbase.rpc_url }}',
@@ -124,13 +124,13 @@ npm install @openzeppelin/contracts
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MintableERC20 is ERC20, Ownable {
-    constructor() ERC20("Mintable ERC 20", "MERC") {}
+    constructor(address initialOwner) ERC20("Mintable ERC 20", "MERC") Ownable(initialOwner) {}
 }
 ```
 
@@ -175,13 +175,13 @@ npx hardhat compile
 
     ```solidity
     // SPDX-License-Identifier: UNLICENSED
-    pragma solidity ^0.8.17;
+    pragma solidity ^0.8.20;
 
     import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
     import "@openzeppelin/contracts/access/Ownable.sol";
     
     contract MintableERC20 is ERC20, Ownable {
-        constructor() ERC20("Mintable ERC 20", "MERC") {}
+        constructor(address initialOwner) ERC20("Mintable ERC 20", "MERC") Ownable(initialOwner) {}
     
         uint256 public constant MAX_TO_MINT = 1000 ether;
     
@@ -236,11 +236,15 @@ npx hardhat compile
 const hre = require('hardhat');
 
 async function main() {
-  const MintableERC20 = await hre.ethers.getContractFactory('MintableERC20');
-  const token = await MintableERC20.deploy();
-  await token.deployed();
+  const [deployer] = await hre.ethers.getSigners();
 
-  console.log(`Deployed to ${token.address}`);
+  const MintableERC20 = await hre.ethers.getContractFactory('MintableERC20');
+  const token = await MintableERC20.deploy(deployer.address);
+  await token.waitForDeployment();
+
+  // Get and print the contract address
+  const myContractDeployedAddress = await token.getAddress();
+  console.log(`Deployed to ${myContractDeployedAddress}`);
 }
 
 main().catch((error) => {
@@ -344,7 +348,7 @@ npm run start
     let provider, signer;
     if (typeof window.ethereum !== 'undefined') {
       // Create a provider using MetaMask
-      provider = new ethers.providers.Web3Provider(window.ethereum);
+      provider = new ethers.BrowserProvider(window.ethereum);
     
       // Connect to MetaMask
       async function connectToMetaMask() {
@@ -671,7 +675,7 @@ function App() {
 
 ```javascript
 import { useState } from 'react';
-import { useContractFunction, useEthers } from '@usedapp/core';
+import { useContractFunction, useEthers, MoonbaseAlpha } from '@usedapp/core';
 import { Button, CircularProgress, TextField, Grid } from '@mui/material';
 import { utils } from 'ethers';
 
@@ -704,7 +708,7 @@ export default function MintingComponent({ contract }) {
   // ...
 
   // Mint transaction
-  const { account } = useEthers();
+  const { account, chainId, switchNetwork } = useEthers();
   const { state, send } = useContractFunction(contract, 'purchaseMint');
   const handlePurchaseMint = async () => {
     if (chainId !== MoonbaseAlpha.chainId) {
@@ -735,7 +739,7 @@ export default function MintingComponent({ contract }) {
 
     ```js
     import { useState } from 'react';
-    import { useContractFunction, useEthers } from '@usedapp/core';
+    import { useContractFunction, useEthers, MoonbaseAlpha } from '@usedapp/core';
     import { Button, CircularProgress, TextField, Grid } from '@mui/material';
     import { utils } from 'ethers';
     
@@ -743,7 +747,7 @@ export default function MintingComponent({ contract }) {
       const [value, setValue] = useState(0);
       const textFieldStyle = { marginBottom: '16px' };
     
-      const { account } = useEthers();
+      const { account, chainId, switchNetwork } = useEthers();
       const { state, send } = useContractFunction(contract, 'purchaseMint');
       const handlePurchaseMint = async () => {
         if (chainId !== MoonbaseAlpha.chainId) {
