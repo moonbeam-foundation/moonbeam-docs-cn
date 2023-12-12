@@ -58,7 +58,7 @@ Once you've created your passcode, your wallet will be created. The last step to
 
 3. Tap on your wallet that you want to back up; it should say **Not backed up** next to it
 
-   点击您要备份助记词的钱包，该钱包名称旁边应显示**Not backed up**尚未备注
+   点击您要备份助记词的钱包，该钱包名称旁边应显示**Not backed up**尚未备份
 
 4. Enter your passcode
 
