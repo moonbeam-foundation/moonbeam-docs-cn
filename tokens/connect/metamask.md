@@ -60,7 +60,7 @@ After installing [MetaMask](https://metamask.io){target=_blank}, the setup will 
 - **Import an existing wallet** - you already have a seed phrase stored, and you want to restore an account from that recovery phrase
 - **导入现有钱包** - 您已存储助记词，并且想要从该助记词恢复账户
 
-![Metamask Setup Interface](/images/tokens/connect/metamask/new/metamask-1.png)
+![Metamask Setup Interface](/images/tokens/connect/metamask/metamask-1.png)
 
 Once you've clicked on the option that adapts to your needs, follow the steps, and you should be all setup.
 
@@ -81,13 +81,13 @@ For this example, you'll use private keys from the development account. Click th
 
 在本示例中，您将从开发账户使用私钥。点击切换账户的按钮，使用私钥导入账户。此处显示的为**Account 1**。
 
-![Importing account from private key metamask menu](/images/tokens/connect/metamask/new/metamask-2.png)
+![Importing account from private key metamask menu](/images/tokens/connect/metamask/metamask-2.png)
 
 Next, click on **Import Account**.
 
 接下来，点击**Import Account**。
 
-![Importing account from private key account switcher menu](/images/tokens/connect/metamask/new/metamask-3.png)
+![Importing account from private key account switcher menu](/images/tokens/connect/metamask/metamask-3.png)
 
 Finally, enter the private keys of the account you are trying to import. For example, you can use one of the accounts prefunded in the Moonbeam development node. This guide uses Gerald's key. Once you've entered the private key, click on **Import**.
 
@@ -97,13 +97,13 @@ Finally, enter the private keys of the account you are trying to import. For exa
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-testing-account.md'
 
-![Paste your account key into MetaMask](/images/tokens/connect/metamask/new/metamask-4.png)
+![Paste your account key into MetaMask](/images/tokens/connect/metamask/metamask-4.png)
 
 You should end up with an imported **Account 2** that looks like this:
 
 导入后将出现如下图所示的**Account 2**：
 
-![MetaMask displaying your new Account 2](/images/tokens/connect/metamask/new/metamask-5.png)
+![MetaMask displaying your new Account 2](/images/tokens/connect/metamask/metamask-5.png)
 
 ## Connect MetaMask to Moonbeam - 将MetaMask连接至Moonbeam {: #connect-metamask-to-moonbeam }
 
@@ -119,13 +119,13 @@ Once you have [MetaMask](https://metamask.io/){target=_blank} installed and have
 
    选择**Add Network**添加网络
 
-![Add new network in Metamask menu](/images/tokens/connect/metamask/new/metamask-6.png)
+![Add new network in Metamask menu](/images/tokens/connect/metamask/metamask-6.png)
 
 Next, go to the bottom of the page and click on **Add a network manually**:
 
 然后，前往页面底部，点击**Add a network manually**手动添加网络：
 
-![Add network manually in Metamask](/images/tokens/connect/metamask/new/metamask-7.png)
+![Add network manually in Metamask](/images/tokens/connect/metamask/metamask-7.png)
 
 Here, you can configure MetaMask for the following networks:
 
@@ -195,13 +195,13 @@ To do so, fill in the following information:
 
    确认所有信息无误后，点击**Save**保存信息
 
-![Add network in Metamask](/images/tokens/connect/metamask/new/metamask-8.png)
+![Add network in Metamask](/images/tokens/connect/metamask/metamask-8.png)
 
 Once you've added the network, you'll be redirected to a screen stating that you've successfully added a network. Furthermore, you'll be prompted to **Switch to Moonbase Alpha**, the network added in this example.
 
 随后，网络将跳出弹窗说明您已成功添加网络。此外，系统还会提示您**Switch to Moonbase Alpha**切换至Moonbase Alpha，即本示例中添加的网络。
 
-![Successfully added a network in Metamask](/images/tokens/connect/metamask/new/metamask-9.png)
+![Successfully added a network in Metamask](/images/tokens/connect/metamask/metamask-9.png)
 
 ## Interact with the Network - 与网络交互 {: #interact-with-the-network }
 
@@ -238,13 +238,13 @@ To do so, take the following steps:
 
    在MetaMask钱包的主屏幕，点击**Send**按钮
 
-![Initiate balance transfer in Metamask](/images/tokens/connect/metamask/new/metamask-10.png)
+![Initiate balance transfer in Metamask](/images/tokens/connect/metamask/metamask-10.png)
 
 Next, you can enter the address to which you want to send the tokens. For this example, a wallet that has already been imported to Metamask is selected, known as **Bob**.
 
 接下来，您要输入发送Token的地址。在本示例中，我们将选择已经导入MetaMask的钱包，即**Bob**。
 
-![Select account to send tokens to in Metamask](/images/tokens/connect/metamask/new/metamask-11.png)
+![Select account to send tokens to in Metamask](/images/tokens/connect/metamask/metamask-11.png)
 
 On the next screen, take the following steps:
 
@@ -258,19 +258,19 @@ On the next screen, take the following steps:
 
    确认所有信息无误后，点击**Next**按钮
 
-![Set the amount of tokens to send in Metamask](/images/tokens/connect/metamask/new/metamask-12.png)
+![Set the amount of tokens to send in Metamask](/images/tokens/connect/metamask/metamask-12.png)
 
 Lastly, confirm that all the gas-related parameters and fees are correct. After you've verified that everything is OK, click **Confirm**. At this point, your transaction has been sent to the network!
 
 最后，确认所有gas相关的参数和费用是否准确。如果一切信息无误后，点击**Confirm**按钮。随后，交易将发送至网络！
 
-![Confirming a transaction in Metamask](/images/tokens/connect/metamask/new/metamask-13.png)
+![Confirming a transaction in Metamask](/images/tokens/connect/metamask/metamask-13.png)
 
 Once you've confirmed your transaction, you are taken back to the main screen of your wallet, where you'll see the transaction as **Pending**. After less than a minute, the transaction should be **Confirmed**. If you click on your transaction, you can check more details and view it in a block explorer.
 
 交易确认后，返回钱包主屏幕，您会看到交易处于**Pending**待处理状态。约一分钟后，交易应被**Confirmed**确认处理。如果您点击交易，可以在区块浏览器中查看更多详情。
 
-![Transaction confirmed in Metamask](/images/tokens/connect/metamask/new/metamask-14.png)
+![Transaction confirmed in Metamask](/images/tokens/connect/metamask/metamask-14.png)
 
 ### Add an ERC-20 Token - 添加ERC-20 Token {: #add-an-erc20-token }
 
@@ -294,19 +294,19 @@ To add an ERC-20 to your MetaMask wallet, you'll need to import the token using 
 
    点击**Next**
 
-![The tokens tab and the import tokens process in MetaMask, where the token address, symbol, and decimal are defined.](/images/tokens/connect/metamask/new/metamask-15.png)
+![The tokens tab and the import tokens process in MetaMask, where the token address, symbol, and decimal are defined.](/images/tokens/connect/metamask/metamask-15.png)
 
 Next, you'll be able to review the token import details. To finalize the import, you can click **Import**.
 
 接下来，您需要确认Token导入的信息。确认信息无误后，点击**Import**。
 
-![Review the token details and finalize the import in MetaMask.](/images/tokens/connect/metamask/new/metamask-16.png)
+![Review the token details and finalize the import in MetaMask.](/images/tokens/connect/metamask/metamask-16.png)
 
 Under the **Tokens** tab, you'll be able to see the token and the account balance for the token.
 
 在**Tokens**标签下，您能够看到Token和账户余额。
 
-![View the imported token in the list of assets on the tokens tab in MetaMask.](/images/tokens/connect/metamask/new/metamask-17.png)
+![View the imported token in the list of assets on the tokens tab in MetaMask.](/images/tokens/connect/metamask/metamask-17.png)
 
 ### Add an ERC-721 Token - 添加ERC-721 Token {: #add-an-erc721-token }
 
@@ -330,12 +330,12 @@ To add an ERC-721 to your MetaMask wallet, you'll need the token's address:
 
    点击**Import**
 
-![The NFTs tab and the import NFT process in MetaMask, where the address and the token ID of the NFT are defined.](/images/tokens/connect/metamask/new/metamask-18.png)
+![The NFTs tab and the import NFT process in MetaMask, where the address and the token ID of the NFT are defined.](/images/tokens/connect/metamask/metamask-18.png)
 
 Once you've imported your NFT, you'll be able to see a preview of your NFT in the **NFTs** tab. You can click on the NFT to see more details.
 
 导入NFT后，您可以在**NFTs**标签下查看NFT。点击NFT查看更多详情。
 
-![View the imported NFT in the list of NFTs on the NFTs tab in MetaMask.](/images/tokens/connect/metamask/new/metamask-19.png)
+![View the imported NFT in the list of NFTs on the NFTs tab in MetaMask.](/images/tokens/connect/metamask/metamask-19.png)
 
 --8<-- 'text/_disclaimers/third-party-content.md'
