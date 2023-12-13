@@ -88,7 +88,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 一些xcUNIT Token。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将DEV Token（Moonbase Alpha的原生Token）兑换成xcUNIT。Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议。
 
-    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-1.png)
+    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.png)
 
 要查看您的xcUNIT余额，您可以使用以下地址将XC-20添加至MetaMask：
 
