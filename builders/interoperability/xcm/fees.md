@@ -75,8 +75,8 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
 
-|                                                                            数据库                                                                             |                      读                       |                       写                       |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
+|                                                                                    数据库                                                                                    |                      读                       |                       写                       |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
 | [RocksDB (default)](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
 |     [ParityDB](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
 
@@ -132,8 +132,8 @@ XCM-DOT-Cost = {{ networks.polkadot.xcm_instructions.planck_dot_cost }} / 10^10
 
 Kusama上的总权重花费包括：给定指令本身花费和数据库读写的费用。尚未对数据库读写操作进行基准测试，而对指令权重进行了基准测试。以下为数据库执行权重花费的细节：
 
-|                                                                           数据库                                                                            |                         读                         |                         写                          |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:|:---------------------------------------------------:|
+|                                                                                     数据库                                                                                     |                         读                         |                         写                          |
+|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------:|:---------------------------------------------------:|
 | [RocksDB (default)](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.kusama.rocks_db.read_weight.display }} | {{ networks.kusama.rocks_db.write_weight.display }} |
 |     [ParityDB](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/constants/src/weights/paritydb_weights.rs){target=_blank}     |    {{ networks.kusama.parity_db.read_weight }}     |    {{ networks.kusama.parity_db.write_weight }}     |
 
@@ -189,13 +189,13 @@ XCM-KSM-Cost = {{ networks.kusama.xcm_instructions.withdraw.planck_ksm_cost }} /
 
 作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以在Kusama网络上转移xcKSM至KSM的总花费：
 
-|                                                                                  指令                                                                                  |                                 重量                                 |                               成本                                |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| [`WithdrawAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=_blank} | {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
-|  [`ClearOrigin`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L135-L141){target=_blank}  |   {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}   | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
-|  [`BuyExecution`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76-L82){target=_blank}  |     {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
+|                                                                                              指令                                                                                              |                                 重量                                 |                               成本                                |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|:-----------------------------------------------------------------:|
+| [`WithdrawAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=_blank}  | {{ networks.kusama.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.kusama.xcm_instructions.withdraw.ksm_cost }} KSM    |
+|   [`ClearOrigin`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L135-L141){target=_blank}   |   {{ networks.kusama.xcm_instructions.clear_origin.total_weight }}   | {{ networks.kusama.xcm_instructions.clear_origin.ksm_cost }} KSM  |
+|   [`BuyExecution`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L76-L82){target=_blank}    |     {{ networks.kusama.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.kusama.xcm_instructions.buy_exec.ksm_cost }} KSM    |
 | [`DepositAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.kusama.spec_version }}/relay/kusama/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=_blank} |  {{ networks.kusama.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.kusama.xcm_instructions.deposit_asset.ksm_cost }} KSM |
-|                                                                                **总量**                                                                                |        **{{ networks.kusama.xcm_message.transfer.weight }}**         |      **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
+|                                                                                            **总量**                                                                                            |        **{{ networks.kusama.xcm_message.transfer.weight }}**         |      **{{ networks.kusama.xcm_message.transfer.cost }} KSM**      |
 
 ## 基于Moonbeam网络的XCM费用计算 {: #moonbeam-xcm-fee-calc }
 
@@ -203,8 +203,8 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 Moonbeam对通用XCM指令进行了基准测试，而可替代的XCM指令仍然使用每条指令的固定权重。 因此，基准测试过的XCM指令的总权重成本除了给定指令所需的权重之外还考虑了数据库读/写的次数。 数据库操作的权重成本明细如下：
 
-|                                                                          数据库                                                                           |                    读                     |                     写                     |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------:|:------------------------------------------:|
+|                                                                               数据库                                                                                |                    读                     |                     写                     |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------:|:------------------------------------------:|
 | [RocksDB (default)](https://github.com/paritytech/polkadot-sdk/blob/{{polkadot_sdk}}/substrate/frame/support/src/weights/rocksdb_weights.rs#L27-L28){target=_blank} | {{ xcm.db_weights.rocksdb_read.display }} | {{ xcm.db_weights.rocksdb_write.display }} |
 
 现在您知道了Moonbase Alpha的数据库读取和写入的权重成本，您可以使用指令和额外的数据库读取/写入（如果适用）的基本权重来计算可替代和通用XCM指令的权重成本。
@@ -290,8 +290,8 @@ xcDOT的`UnitsPerSecond`数值为`{{ networks.moonbeam.xcm.units_per_second.xcdo
 ExecutionTime = (Weight / Picosecond) * NumberOfInstructions
 ```
 
-|                                                                                                          指令                                                                                                           |                             重量                              |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------:|
+|                                                                                              指令                                                                                               |                             重量                              |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------:|
 | [`ReserveAssetDeposited`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L71){target=_blank} |              {{ xcm.fungible_weights.display }}               |
 |      [`ClearOrigin`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L191){target=_blank}      |        {{ xcm.generic_weights.clear_origin.display }}         |
 |   [`BuyExecution`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L128-L129){target=_blank}   |    {{ xcm.generic_weights.buy_exec.total_weight.display }}    |

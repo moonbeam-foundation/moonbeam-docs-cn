@@ -85,13 +85,13 @@ _作者：Erin Shaben_
 === "npm"
 
     ```bash
-    npm install @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
+    npm install @nomicfoundation/hardhat-ethers ethers@6 @openzeppelin/contracts
     ```
 
 === "yarn"
 
     ```bash
-    yarn add @nomicfoundation/hardhat-ethers ethers @openzeppelin/contracts
+    yarn add @nomicfoundation/hardhat-ethers ethers@6 @openzeppelin/contracts
     ```
 
 ### 为一个本地开发节点配置Hardhat {: #create-a-hardhat-project }

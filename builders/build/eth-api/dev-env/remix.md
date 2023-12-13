@@ -5,7 +5,7 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 
 # 使用Remix部署至Moonbeam
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/NBOLCGT5-ww' frameborder='0' allowfullscreen></iframe></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/TkbYDRzVe7g?si=eX2hFClaMaf0AQLc' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style>
 
 ## 概览 {: #introduction }
@@ -116,36 +116,5 @@ description: 学习如何将最受欢迎的以太坊开发工具之一Remix IDE�
 ![Verify the reduction in account balance](/images/builders/build/eth-api/dev-env/remix/using-remix-16.png)
 
 如果您拥有收款的账户，您也可以通过查看账户余额来确认转账是否成功。
-
-## 使用Moonbeam Remix Plugin {: #using-the-moonbeam-remix-plugin }
-
-Moonbeam团队开发了Remix Plugin以简化部署以太坊智能合约至Moonbeam网络的流程。Moonbeam Remix Plugin综合了所有在编译、部署和交互时所需的功能，能够在无需切换页面的情况下（即在同一个页面内）完成智能合约的部署和开发。Moonbeam Remix plugin支持Moonbeam、Moonriver以及Moonbase Alpha测试网。
-
-### 安装Moonbeam Remix Plugin {: #installing-the-moonbeam-remix-plugin }
-
-请遵循以下步骤安装Moonbeam Remix Plugin：
-
- 1. 点击进入**Plugin manager**页面
- 2. 搜寻**Moonbeam**
- 3. 点击**Activate**，Moonbeam Remix plugin将会直接安装至您的Plugin管理标签当中
-
-![Activating the Moonbeam Remix Plugin](/images/builders/build/eth-api/dev-env/remix/using-remix-17.png)
-
-当您已成功安装插件，代表Moonbeam Remix Plugin的Moonbeam标志将会出现在左手边。
-
-### 开始使用Moonbeam Remix Plugin {: #getting-started-with-the-moonbeam-remix-plugin }
-
-在Remix IDE中点击Moonbeam Logo开启Moonbeam Plugin。请注意，此教程预设您在Remix内已有待编译的合约。您可以在[此网页](https://wizard.openzeppelin.com/){target=_blank}创建ERC-20合约，遵循以下步骤使用Moonbeam Remix Plugin在Moonbase Alpha部署一个ERC-20 Token。
-
- 1. 点击**Connect**，将您的MetaMask钱包连接至Remix
- 2. 确认您选取正确的网络。在此教程中，我们使用的是Moonbase Alpha网络。
- 3. 点击**Compile**或根据需求点击**Auto-Compile**
- 4. 点击**Deploy**和**Confirm**在MetaMask上确认交易
-
-![Compiling and Deploying a Contract with the Moonbeam Remix Plug](/images/builders/build/eth-api/dev-env/remix/using-remix-18.png)
-
-就是这么简单！当合约成功部署后，您将能看到地址以及所有能够与之交互的访问和修改方法。
-
-Moonbeam Remix Plugin能够在Remix中无缝使用，所以您可以随时切换使用传统的Remix编译功能进行部署，或是选择使用Moonbeam Remix Plugin。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

@@ -30,7 +30,7 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 - 安装[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
 
     ```bash
-    npm install @nomicfoundation/hardhat-ethers ethers
+    npm install @nomicfoundation/hardhat-ethers ethers@6
     ```
 
 !!! 注意事项
@@ -56,7 +56,21 @@ mkdir contracts && cd contracts
 touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 ```
 
-在`Randomness.sol`文件中，您可以粘贴[随机数预编译合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}。同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴[随机数消费者合约](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol){target=_blank}。
+在`Randomness.sol`文件中，您可以粘贴随机数预编译合约。
+
+??? code "Randomness.sol"
+
+    ```solidity
+    --8<-- 'code/builders/pallets-precompiles/precompiles/randomness/Randomness.sol'
+    ```
+
+同样的，在`RandomnessConsumer.sol`文件中，您可以粘贴随机数消费者合约。
+
+??? code "RandomnessConsumer.sol"
+
+    ```solidity
+    --8<-- 'code/builders/pallets-precompiles/precompiles/randomness/RandomnessConsumer.sol'
+    ```
 
 我们将在以下部分开始添加功能至`Lottery.sol`合约。
 
@@ -411,7 +425,7 @@ touch scripts/deploy.js
 1. 使用`getContractFactory`函数创建一个彩票合约的本地示例
 2. 使用随机数预编译的`requiredDeposit`函数获取随机数请求所需的保证金
 3. 使用存在于本实例中的`deploy`函数以实例化智能合约。您可以传入`0`以使用本地VRF随机数或者传入`1`以使用BABE epoch随机数。在本示例中，我们使用的是本地VRF随机数。我们也需要在部署时提交保证金
-4. 使用`deployed`等待部署
+4. 使用`waitForDeployment`等待部署
 5. 部署好后，我们可以使用合约实例获取合约地址
 
 ```js
@@ -432,10 +446,10 @@ async function main() {
   console.log('Deploying Lottery...');
 
   // 4. Waiting for the deployment to resolve
-  await lottery.deployed();
+  await lottery.waitForDeployment();
 
   // 5. Use the contract instance to get the contract address
-  console.log('Lottery deployed to:', lottery.address);
+  console.log('Lottery deployed to:', lottery.target);
 }
 
 main()
