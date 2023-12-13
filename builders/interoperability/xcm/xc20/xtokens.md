@@ -379,7 +379,7 @@ X-Tokens预编译合约将会允许开发者通过基于Moonbeam网络的以太�
 
 ### 使用库与X-Tokens交互 {: #using-libraries-to-interact-with-xtokens}
 
-使用库与以太坊API交互时，Multilocation结构可以像任何其他结构一样进行格式化。以下代码片段包括上述提及的[X-Tokens转移函数](#xtokens-transfer-function)、[X-Tokens多资产转移函数](#xtokens-transfer-multiasset-function)和Multilocation结构示例。您可以在Github上找到[X-Tokens ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/interoperability/xcm/xc20/xtokens/abi.js){target=_blank}。
+使用库与以太坊API交互时，Multilocation结构可以像任何其他结构一样进行格式化。以下代码片段包括上述提及的[X-Tokens转移函数](#xtokens-transfer-function)、[X-Tokens多资产转移函数](#xtokens-transfer-multiasset-function)和Multilocation结构示例。您可以在Github上找到[X-Tokens ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/abi.js){target=_blank}。
 
 === "Ethers.js"
 
