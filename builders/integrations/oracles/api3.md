@@ -85,7 +85,7 @@ contract Requester is RrpRequesterV0 {
 }
 ```
 
-您也可以尝试在[Remix上部署范例合约](https://remix.ethereum.org/#url=https://github.com/vanshwassan/RemixContracts/blob/master/contracts/Requester.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js){target=_blank}。
+您也可以尝试在[Remix上部署范例合约](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/Requester.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js){target=_blank}。
 
 ### 合约地址 {: #contract-addresses }
 
@@ -140,11 +140,25 @@ contract Requester is RrpRequesterV0 {
 
 *要了解更多dAPI是如何运作的，您可以查看[API3的文档网站](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=_blank}。*
 
-### 访问自费的dAPI {: #self-funded-dapis}
+### dAPI类型 {: #types-of-dapis }
 
-自费的dAPI为开发者提供了以最少的前期付出体验数据源的机会，在使用托管dAPI之前提供了低风险的选择。
+dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}与[托管](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}. 托管DAPI仅部署在主网上, 自费dAPI在主网和测试网都有部署。利用dAPI代理来读取自费或托管dAPI数据流程是一样的.
+
+#### 自费dAPIs {: #self-funded-dapis }
+
+[自费dAPI](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}是用户自己付费订阅的单源数据推送. 它们为开发者提供了以最少的前期付出体验数据源的机会，在使用托管dAPI之前提供了低风险的选择。
 
 通过自费的dAPI，您可以用自己的资金为dAPI提供资金。您提供的Gas数量将决定您dAPI的可用时间。如果您的Gas耗尽，您可以再次为dAPI提供资金以使其可供使用。
+
+您可以在[API3的自费dAPI文档](https://docs.api3.org/guides/dapis/subscribing-self-funded-dapis/){target=_blank}中获取更多关于它的知识。
+
+#### 托管dAPIs {: #managed-dapis }
+
+[托管dAPI](https://docs.api3.org/reference/dapis/understand/managed.html)的数据由多个不同[一手](https://docs.api3.org/explore/airnode/why-first-party-oracles.html){target=_blank}数据提供商通过Airnode提供。数据提供商的数据会经过Airnode的median函数集成并签名。Gas费用与dAPI的可靠性由[API3 DAO](https://docs.api3.org/explore/dao-members/){target=_blank}管理.
+
+您可以在[API3的托管dAPI文档页面](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}获取更多关于它的知识。
+
+### 访问自费的dAPI {: #access-self-funded-dapis}
 
 以下为访问自筹数据源的流程：
 
@@ -158,6 +172,10 @@ contract Requester is RrpRequesterV0 {
 #### 从API3 Market中选取一个dAPI {: #select-a-dapi }
 
 [API3 Market](https://market.api3.org/dapis){target=_blank}使用户能够连接到dAPI并访问相关的数据馈送服务。它提供了跨多个链（包括测试网）可用的所有dAPI的列表。您可以按链和数据提供商过滤列表。您还可以根据名称搜索特定的dAPI。点击dAPI进入详细信息页面，获取有关dAPI的更多信息。
+
+根据以上信息，您可以自己决定使用自费或托管dAPI.
+
+![API3 Dapi Page](/images/builders/integrations/oracles/api3/api3-5.png)
 
 #### 资助一个赞助商钱包 {: #fund-sponsor-wallet }
 
@@ -189,9 +207,29 @@ contract Requester is RrpRequesterV0 {
 
 当交易完成并在区块链上确认后，代理合约地址将会在界面中显示。
 
+### 读取托管dAPIs {: #access-managed-dapis }
+
+如果您想使用托管dAPI，在选择dAPI后，会有两个选项供您选择：**Managed**或**Self-funded**. 选择**Managed dAPIs**.
+
+托管dAPI提供给用户配置dAPI参数的选项，其中包括[偏差临界](https://docs.api3.org/reference/dapis/understand/deviations.html){target=_blank}和[heartbeat](https://docs.api3.org/reference/dapis/understand/deviations.html#heartbeat){target=_blank}. 您会有以下选项来配置托管dAPI:
+
+|    偏差    | Heartbeat |
+| --------- | ---------  |
+| 0.25%     | 2 分钟     |
+| 0.25%     | 24 小时    |
+| 0.5%      | 24 小时    |
+| 1%        | 24 小时    |
+
+!!! 注意事项
+    根据资产和链的不同，并不是所有dAPI都支持全部配置选项。访问[API3市场](https://market.api3.org){target=_blank} 获取更多信息。
+
+在选择偏差临界值和heartbeat之后，检查最后的价格，然后选择**Add to Cart**。您可以添加同一个网络上的多个dAPI进购物车。选择完成后点**Checkout**。请在付款页面确认最后的订单信息和价格。当您检查完后，连接您的钱包并付款。
+
+在提交订单之后，您将需要等待dAPI的更新。dAPI团队通常需要五个工作日来根据提交的配置信息更新dAPI。当dAPI完成更新后，它就可以开始在您的dApp中使用了。
+
 #### 读取自费的dAPI {: #read-dapis }
 
-以下为一个读取自费dAPI的基础合约范例：
+以下为一个读取dAPI的基础合约范例：
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -227,9 +265,9 @@ contract DataFeedReaderExample is Ownable {
 - `setProxy()` - 用于设置dAPI代理合约的地址
 - `readDataFeed()` - 返回设定dAPI最新价格的`view`函数
 
-[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://gist.githubusercontent.com/vanshwassan/1ec4230956a78c73a00768180cba3649/raw/176b4a3781d55d6fb2d2ad380be0c26f412a7e3c/DapiReader.sol){target=_blank}
+[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/DataFeedReader.sol&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.18+commit.87f61d96.js){target=_blank}
 
-另外，您可以在[API3的官方文档网站](https://docs.api3.org/guides/dapis/subscribing-self-funded-dapis/)中获取更多资讯{target=_blank}。
+另外，您可以在[API3的官方文档网站](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/){target=_blank}中获取更多资讯。
 
 ## API3 QRNG {: #api3-qrng }
 
@@ -319,7 +357,7 @@ contract RemixQrngExample is RrpRequesterV0 {
 !!! 注意事项
     您可以从下面的[QRNG提供商](#qrng-providers)部分获取`airnode`地址和`endpointIdUint256`。
 
-[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/vanshwassan/RemixContracts/blob/master/contracts/QrngRequester.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js){target=_blank}。
+[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/QrngRequesterUpdated.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js&lang=en){target=_blank}。
 
 ### QRNG Airnode和端点提供者 {: #qrng-providers }
 
@@ -363,5 +401,6 @@ contract RemixQrngExample is RrpRequesterV0 {
     - [QRNG Docs](https://docs.api3.org/explore/qrng/){target=_blank}
 - [API3 DAO GitHub](https://github.com/api3dao/){target=_blank}
 - [API3 Medium](https://medium.com/api3){target=_blank}
+- [API3 YouTube](https://www.youtube.com/API3DAO){target=_blank}
 
 --8<-- 'text/_disclaimers/third-party-content.md'

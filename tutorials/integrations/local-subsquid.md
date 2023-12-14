@@ -35,7 +35,7 @@ _作者：Erin Shaben_
 
 - `--dev` - 指定使用开发链
 - `--sealing 4000` - 每四秒（4000毫秒）密封一个区块
-- `--ws-external` - 监听所有WebSocket接口
+- `--rpc-external` - 监听所有HTTP与WebSocket接口
 
 要创建一个开发节点，您可以运行以下指令为Moonbeam提供最新的Docker映像：
 

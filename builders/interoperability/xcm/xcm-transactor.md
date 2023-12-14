@@ -174,7 +174,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     };
     ```
 
-    !!! note
+    !!! 注意事项
         关于`refTime`和`proofSize`数值的准确预估，您可以使用在远程EVM调用教程中描述的[Polkadot.js API的`paymentInfo`函数](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=_blank}。
 
 现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您可以执行以下步骤：
