@@ -13,7 +13,7 @@ Substrate资产具有原生可互操作性。然而，开发者需要使用Subst
 
 XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点（原生可互操作性）但又使开发者能够通过预编译合约（以太坊API）使用熟悉的[ERC-20接口](/builders/interoperability/xcm/xc20/interact#the-erc20-interface){target=_blank}与之交互。在EVM方面，XC-20具有[ERC-20接口](/builders/interoperability/xcm/xc20/interact#the-erc20-interface){target=_blank}，因此智能合约和用户可以轻松地与其交互 ，并且无需了解 Substrate。这最终为开发人员在处理这些类型的资产时提供了更大的灵活性，并允许与基于EVM的智能合约（例如DEX和借贷平台等）无缝集成。 此外，开发人员可以将XC-20与常规的[以太坊开发框架](/builders/build/eth-api/dev-env/){target=_blank}或dApp集成，并使用此类资产创建互连合约策略。此外，随着[RT2301](https://github.com/moonbeam-foundation/moonbeam/tree/runtime-2301){target=_blank}的引入，所有ERC-20都已支持XCM，这意味着它们也可以作为XC-20。
 
-![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-4.png)
+![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-3.png)
 
 此页面涵盖了XC-20的基本概念，如果您想要了解如何与之交互或转移XC-20，请参考[与XC-20交互](/builders/interoperability/xcm/xc20/interact){target=_blank}或[使用X-Tokens Pallet发送XC-20](/builders/interoperability/xcm/xc20/xtokens){target=_blank}教程。
 

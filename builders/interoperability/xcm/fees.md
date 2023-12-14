@@ -294,9 +294,9 @@ ExecutionTime = (Weight / Picosecond) * NumberOfInstructions
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------:|
 | [`ReserveAssetDeposited`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L71){target=_blank} |              {{ xcm.fungible_weights.display }}               |
 |      [`ClearOrigin`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L191){target=_blank}      |        {{ xcm.generic_weights.clear_origin.display }}         |
-|   [`BuyExecution`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L128-129){target=_blank}    |    {{ xcm.generic_weights.buy_exec.total_weight.display }}    |
+|   [`BuyExecution`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/generic.rs#L128-L129){target=_blank}   |    {{ xcm.generic_weights.buy_exec.total_weight.display }}    |
 |     [`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbeam.spec_version }}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L60){target=_blank}      |              {{ xcm.fungible_weights.display }}               |
-|                                                                                            **总量**                                                                                             | {{ networks.moonbeam.xcm.transfer_dot.total_weight.display }} |
+|                                                                                            **TOTAL**                                                                                            | {{ networks.moonbeam.xcm.transfer_dot.total_weight.display }} |
 
 要定义Alice转移DOT至Moonbeam的执行时间（包含4个XCM指令），您可以使用以下计算方式：
 
