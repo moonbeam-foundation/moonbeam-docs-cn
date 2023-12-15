@@ -10,7 +10,7 @@ description: Check out this tutorial to learn how to use the viem TypeScript int
 
 [viem](https://viem.sh/){target=_blank} is a modular TypeScript library that allows developers to interact with abstractions over the JSON-RPC API, making it easy to interact with Ethereum nodes. Since Moonbeam has an Ethereum-like API available that is fully compatible with Ethereum-style JSON RPC invocations, developers can leverage this compatibility to interact with Moonbeam nodes. For more information on viem, check out their [documentation site](https://viem.sh/docs/getting-started.html){target=_blank}.
 
-[viem](https://viem.sh/){target=_blank}是一个模块化的TypeScript库，允许开发者通过JSON-RPC API与抽象交互，从而轻松实现与以太坊节点的交互。由于Moonbeam拥有类似以太坊API，该API完全兼容以太坊格式JSON RPC调用，因此开发者可以利用此兼容性与Moonbeam节点交互。关于viem的更多信息，请参考其[官方文档网站](https://viem.sh/docs/getting-started.html){target=_blank}。
+[viem](https://viem.sh/){target=_blank}是一个模块化的TypeScript库，它提供JSON-RPC API的抽象化封装让开发者能够与之交互，从而轻松与以太坊节点交互。由于Moonbeam的类以太坊API完全兼容以太坊格式的JSON RPC调用，因此开发者可以利用此兼容性与Moonbeam节点交互。关于viem的更多信息，请参考其[官方文档网站](https://viem.sh/docs/getting-started.html){target=_blank}。
 
 In this guide, you'll learn how to use viem to send a transaction and deploy a contract on the Moonbase Alpha TestNet. This guide can be adapted for [Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}, [Moonriver](/builders/get-started/networks/moonriver/){target=_blank}, or a [Moonbeam development node](/builders/get-started/networks/moonbeam-dev/){target=_blank}.
 
@@ -79,7 +79,7 @@ Throughout this guide, you'll be creating a bunch of scripts that provide differ
 
 You can create a viem client for reading chain data, like balances or contract data, using the `createPublicClient` function, or you can create a viem client for writing chain data, like sending transactions, using the `createWalletClient` function.
 
-您可以使用`createPublicClient`函数创建一个用于读取链数据的viem client，例如余额或合约数据；您也可以使用`createWalletClient`函数创建一个用于写入链数据的viem客户端，例如发送交易。
+您可以使用`createPublicClient`函数创建一个用于读取链数据的viem client，例如余额或合约数据；您也可以使用`createWalletClient`函数创建一个用于写入链数据的viem client，例如发送交易。
 
 ### For Reading Chain Data - 用于读取链数据 {: #for-reading-chain-data }
 
@@ -93,7 +93,7 @@ To create a client for reading chain data, you can take the following steps:
 
 2. Create the `client` using the `createPublicClient` function and pass in the network and the HTTP RPC endpoint
 
-   使用`createPublicClient`函数创建`client`，并传入网络和HTTP RPC端点
+   使用`createPublicClient`函数创建`client`，并配置network和HTTP RPC端点
 
 === "Moonbeam"
 
@@ -151,7 +151,7 @@ To create a client for reading chain data, you can take the following steps:
 
 To create a client for reading chain data, you can take the following steps:
 
-要创建一个用于写入链数据的客户端，请执行以下步骤：
+要创建一个用于读取链数据的客户端，请执行以下步骤：
 
 1. Import the `createWalletClient` and `http` functions from `viem`, the `privateKeyToAccount` function for loading your accounts via their private keys, and the network you want to interact with from `viem/chains`. The chain can be any of the following: `moonbeam`, `moonriver`, or `moonbaseAlpha`
 
@@ -336,7 +336,7 @@ Next, you will create the script for this file and complete the following steps:
 
 2. [Set up a viem wallet client](#for-writing-chain-data) for writing chain data, which can be used along with your private key to send transactions. **Note: This is for example purposes only. Never store your private keys in a TypeScript file**
 
-   [设置viem wallet client](#for-writing-chain-data)，用于写入链数据，该客户端可用于与私钥一起发送交易。**请注意：本教程仅用于操作演示，请勿将您的私钥存储于TypeScript文件中**
+   [设置viem wallet client](#for-writing-chain-data)用于写入链数据，该客户端配上私钥一起可用于发送交易。**请注意：本教程仅用于操作演示，请勿将您的私钥存储于TypeScript文件中**
 
 3. [Set up a public viem client](#for-reading-chain-data) for reading chain data, which will be used to wait for the transaction receipt
 
@@ -352,7 +352,7 @@ Next, you will create the script for this file and complete the following steps:
 
 6. Use the `walletClient.sendTransaction` function to sign and send the transaction. You'll need to pass in the transaction object, which only requires the recipient's address and the amount to send. Note that `parseEther` can be used, which handles the necessary unit conversions from Ether to Wei, similar to using `parseUnits(value, decimals)`. Use `await` to wait until the transaction is processed and the transaction hash is returned
 
-   使用`walletClient.sendTransaction`函数签署和发送交易。您需要传入交易对象，仅需提供接收者地址和要发送的金额即可获取。请注意您可以使用`parseEther`，该函数处理Ether和Wei之间的必要单位转换，与`parseUnits(value, decimals)`相似。使用`await`等待交易处理完毕并返回交易哈希值
+   `walletClient.sendTransaction`函数能用于签署和发送交易。该函数只需要传入一个交易对象，交易对象仅需包含接收者地址和发送的金额。请注意您可以使用`parseEther`函数来处理Ether和Wei之间的单位转换，该转换是必要的且类似于`parseUnits(value, decimals)`。使用`await`等待交易处理完毕并返回交易哈希值
 
 7. Use the `publicClient.waitForTransactionReceipt` function to wait for the transaction receipt, signaling that the transaction has been completed. This is particularly helpful if you need the transaction receipt or if you're running the `balances.ts` script directly after this one to check if the balances have been updated as expected
 
@@ -401,7 +401,7 @@ You can also use the `balances.ts` script to check that the balances for the ori
 
 With the script for compiling the `Incrementer.sol` contract in place, you can then use the results to send a signed transaction that deploys it. To do so, you can create a file for the deployment script called `deploy.ts`:
 
-使用编译`Incrementer.sol`合约的脚本后，您可以使用结果发送部署合约脚本的签署交易。为此，您可以为部署脚本创建一个名为`deploy.ts`的文件：
+在使用脚本编译`Incrementer.sol`合约后，您可以将结果用签署的交易部署至链上。首先，您可以为部署脚本创建一个名为`deploy.ts`的文件：
 
 ```bash
 touch deploy.ts
@@ -429,11 +429,11 @@ Next, you will create the script for this file and complete the following steps:
 
 5. Create the asynchronous `deploy` function that will be used to deploy the contract via the `walletClient.deployContract` method
 
-   创建`deploy`异步函数，该函数用于通过 `walletClient.deployContract`函数部署合约
+   创建`deploy`异步函数，该函数使用 `walletClient.deployContract`函数部署合约
 
 6. Use the `walletClient.deployContract` function to sign and send the transaction. You'll need to pass in the contract's ABI and bytecode, the account to deploy the transaction from, and the initial value for the incrementer. Use `await` to wait until the transaction is processed and the transaction hash is returned
 
-   使用`walletClient.deployContract`函数签署和发送交易。您需要传入合约的ABI和字节码、部署交易的账户，以及incrementer的初始值。使用`await`等待交易处理完毕并返回交易哈希值
+   使用`walletClient.deployContract`函数签署和发送交易。您需要传入合约的ABI和字节码，部署交易的账户，以及incrementer的初始值。使用`await`等待交易处理完毕并返回交易哈希值
 
 7. Use the `publicClient.readContract` function to get the transaction receipt for the deployment. Use `await` to wait until the transaction is processed and the contract address is returned
 
@@ -465,7 +465,7 @@ If successful, the contract's address will be displayed in the terminal.
 
 Call methods are the type of interaction that doesn't modify the contract's storage (change variables), meaning no transaction needs to be sent. They simply read various storage variables of the deployed contract.
 
-调用函数是一种不会修改合约存储（更改变量）的交互类型，这意味着无需发送任何交易。他们只是读取已部署合约的各种存储变量。
+Call函数是一种不会修改合约存储（更改变量）的交互类型，这意味着无需发送任何交易。他们只是读取已部署合约的各种存储变量。
 
 To get started, you can create a file and name it `get.ts`:
 
@@ -481,7 +481,7 @@ Then you can take the following steps to create the script:
 
 1. Update your imports to include the `createPublicClient` and `http` functions from `viem`, the network you want to interact with from `viem/chains`, and the `contractFile` from the `compile.ts` file you created in the [Compile Contract Script](#compile-contract-script) section
 
-   更新您的导入以包含`viem`中的`createPublicClient`和`http`函数、您想要从`viem/chains`交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
+   更新您的导入以包含`viem`中的`createPublicClient`和`http`函数，`viem/chains`中您想要交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
 
 2. [Set up a public viem client](#for-reading-chain-data) for reading chain data, which will be used to read the current number of the `Incrementer` contract
 
@@ -525,7 +525,7 @@ If successful, the value will be displayed in the terminal.
 
 Send methods are the type of interactions that modify the contract's storage (change variables), meaning a transaction needs to be signed and sent. In this section, you'll create two scripts: one to increment and one to reset the incrementer. To get started, you can create a file for each script and name them `increment.ts` and `reset.ts`:
 
-发送函数是一种修改合约存储（更改变量）的交互类型，这意味着需要签署并发送交易。在这一部分中，您将创建两个脚本：一个用于增量，一个用于重置增量器。 首先，您可以为每个脚本创建一个文件，并将其分别命名为`increment.ts`和`reset.ts`：
+Send函数是一种修改合约存储（更改变量）的交互类型，这意味着需要签署并发送交易。在这一部分中，您将创建两个脚本：一个用于增量，一个用于重置增量器。 首先，您可以为每个脚本创建一个文件，并将其分别命名为`increment.ts`和`reset.ts`：
 
 ```bash
 touch increment.ts reset.ts
@@ -537,7 +537,7 @@ Open the `increment.ts` file and take the following steps to create the script:
 
 1. Update your imports to include the `createWalletClient` and `http` functions from `viem`, the network you want to interact with from `viem/chains`, and the `contractFile` from the `compile.ts` file you created in the [Compile Contract Script](#compile-contract-script) section
 
-   更新您的导入以包含`viem`中的`createWalletClient`和`http`函数、您想要从`viem/chains`交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
+   更新您的导入以包含`viem`中的`createWalletClient`和`http`函数，`viem/chains`中您想要交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
 
 2. [Set up a viem wallet client](#for-writing-chain-data) for writing chain data, which will be used along with your private key to send a transaction. **Note: This is for example purposes only. Never store your private keys in a TypeScript file**
 
@@ -591,7 +591,7 @@ Next, you can open the `reset.ts` file and take the following steps to create th
 
 1. Update your imports to include the `createWalletClient` and `http` functions from `viem`, the network you want to interact with from `viem/chains`, and the `contractFile` from the `compile.ts` file you created in the [Compile Contract Script](#compile-contract-script) section
 
-   更新您的导入以包含`viem`中的`createWalletClient`和`http`函数、您想要从`viem/chains`交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
+   更新您的导入以包含`viem`中的`createWalletClient`和`http`函数，`viem/chains`中您想要交互的网络，以及从您在[编译合约脚本](#compile-contract-script)部分创建的`compile.ts`文件中的`contractFile`
 
 2. [Set up a viem wallet client](#for-writing-chain-data) for writing chain data, which will be used along with your private key to send a transaction. **Note: This is for example purposes only. Never store your private keys in a TypeScript file**
 
