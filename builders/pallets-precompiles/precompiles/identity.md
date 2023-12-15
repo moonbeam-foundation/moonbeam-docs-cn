@@ -18,7 +18,7 @@ Identity Precompile直接与Substrate的[Identity Pallet](/builders/pallets-prec
 
 The Identity Precompile is only available on Moonbase Alpha and is located at the following address:
 
-Identity Precompile位于以下地址：
+Identity Precompile只在Moonbase Alpha可用，它位于以下地址：
 
 <!-- === "Moonbeam"
 
@@ -148,7 +148,7 @@ Once you have the ABI, you can interact with the precompile using the Ethereum l
 
 1. Create a provider
 
-   创建提供商
+   创建 provider
 
 2. Create a contract instance of the Identity Precompile
 

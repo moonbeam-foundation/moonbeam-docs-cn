@@ -10,15 +10,15 @@ description: This guide covers the available functions in the Identity Pallet on
 
 The [Substrate](/learn/platform/technology/#substrate-framework){target=_blank} Identity Pallet is an out-of-the-box solution for adding personal information to your on-chain account. Personal information can include default fields such as your legal name, display name, website, Twitter handle, and Riot (now known as Element) name. You can also take advantage of custom fields to include any other relevant information.
 
-[Substrate](/learn/platform/technology/#substrate-framework){target=_blank} Identity Pallet是一个可以直接使用的解决方案，用于添加个人信息至链上账户。个人信息包括法定姓名、对外显示的名称、网站、Twitter名称和Riot（现为Element）名称等默认字段。您也可以通过填写自定义字段包含任何其他相关信息。
+[Substrate](/learn/platform/technology/#substrate-framework){target=_blank} Identity Pallet是一个原装的可以直接使用的解决方案，它被用于添加个人信息至链上账户。个人信息包括法定姓名、对外显示的名称、网站、Twitter名称和Riot（现为Element）名称等默认字段。您也可以通过填写自定义字段来加入任何其他相关信息。
 
 The pallet also includes functionality to request judgments and verify on-chain identities from registrars, which are accounts appointed via governance to verify the identity information submitted and provide judgment on their findings for a fee.
 
-此Pallet也包含请求判断和验证注册人链上身份的功能，这些注册人是通过治理指定的账户，用于验证提交的身份信息并根据调查结果提供判断，以收取一定费用。
+此Pallet也包含供注册人使用的请求判决与验证链上身份功能。注册人账户需通过治理指定，他们负责验证提交的身份信息并根据调查结果提供判决，来收取一定费用。
 
 This guide will provide an overview of the extrinsics, storage methods, and getters for the pallet constants available in the Identity Pallet on Moonbeam. This guide assumes you are familiar with identity-related terminology; if not, please check out the [Managing your Account Identity](/tokens/manage/identity){target=_blank} page for more information.
 
-本教程将提供关于Moonbeam上Identity Pallet内的可用pallet常量的extrinsics、存储函数和getter的概述。本教程假定您已熟悉身份相关的术语，若您尚未了解相关内容，请查看[管理您的账户身份](/tokens/manage/identity){target=_blank}页面获取更过信息。
+本教程将提供Moonbeam Identity Pallet内的extrinsics，存储函数和参数getter的概述。本教程假定您已熟悉与identity相关的术语，若您尚未了解相关内容，请查看[管理您的账户身份](/tokens/manage/identity){target=_blank}页面获取更多信息。
 
 ## Identity Pallet Interface - Identity Pallet接口 {: #preimage-pallet-interface }
 
@@ -33,7 +33,7 @@ Identity Pallet提供以下extrinsics（函数）：
 - **addSub**(sub, data) - adds an account as a sub-account of the caller
 - **addSub**(sub, data) - 增加一个账户，作为调用者的子账户
 - **cancelRequest**(regIndex) - cancels the caller's request for judgment from a given registrar
-- **cancelRequest**(regIndex) - 取消调用者对给定注册人的判断请求
+- **cancelRequest**(regIndex) - 取消调用者给指定注册人发送的判定请求
 - **clearIdentity**() - clears the identity for the caller
 - **clearIdentity**() - 清除调用者的身份
 - **killIdentity**(target) - removes an account's identity and sub-accounts
