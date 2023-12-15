@@ -15,7 +15,7 @@ description: Querying blockchain data such as balances, transactions, transfers,
 - [Unified API](#unified-api) - incorporate blockchain data into your app with a familiar REST API
 - [Unified API](#unified-api) - 使用熟悉的REST API将区块链数据合并到您的app中
 - [Increment](#increment) - create and embed custom charts with no-code analytics
-- [Increment](#increment) - 使用无代码分析创建和嵌入自定义图表
+- [Increment](#increment) - 使用无代码分析来创建和嵌入自定义图表
 
 This guide will cover all of the details needed to get started with the [Covalent API](https://www.covalenthq.com/docs/api/){target=_blank} and how to access the API endpoints for Moonbeam using curl commands and JavaScript and Python snippets.
 
@@ -27,7 +27,7 @@ This guide will cover all of the details needed to get started with the [Covalen
 
 Covalent's Unified API is a powerful but easy-to-use REST API that offers visibility to assets across all blockchain networks. It features a consistent request and response object format across networks. For example, a user can fetch all the token balances for a wallet address across any supported blockchain by changing the unique blockchain name or id path parameter in the request URL. Covalent's Unified API can offer more data flexibility than JSON-RPC interfaces, which are typically limited to queries on a specific block. It also allows queries on multiple objects and batch exports of data.
 
-Covalent的Unified API是一个功能强大且易于使用的REST API，为所有区块链网络上的资产提供可见性。其具有跨网络一致的请求和响应对象格式。例如，一个用户可以通过改变请求URL中的唯一区块链名称或ID路径参数来获取跨任何支持区块链的钱包地址的所有Token余额。Covalent的Unified API可以提供比 JSON-RPC接口更多的数据灵活性，后者通常仅限于特定区块上的数据查询。Covalent的Unified API也允许多个对象的查询并批量导出数据。
+Covalent的Unified API是一个功能强大且易于使用的REST API，它为所有区块链网络上的资产提供可见性。对应每一个网络它的请求和响应对象格式都是一致的。例如，一个用户想要获取同一个钱包地址在所有支持链上的不同Token余额，他只要通过改变请求URL中的唯一区块链名称或ID路径参数就能做到。Covalent的Unified API比JSON-RPC接口提供了更多的数据灵活性，后者通常仅限于特定区块上的数据查询。Covalent的Unified API也允许查询多个对象并批量导出数据。
 
 [![Example API response in JSON](/images/builders/integrations/indexers/covalent/covalent-1.png)](https://www.covalenthq.com/docs/api/balances/get-token-balances-for-address/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank} *Click on the above image to try out the request yourself.点击上述图片亲自尝试请求。*
 
@@ -64,11 +64,11 @@ If you're already familiar with Covalent and ready to dive in, you simply need t
  - The default return format for all endpoints is JSON
  - 所有端点的默认返回形式为JSON
  - All requests require authentication; you will need [a free API Key](https://www.covalenthq.com/platform/#/auth/register/){target=_blank} to use the Covalent API
- - 所有请求均要验证，用户需要[可用的API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}才能使用Covalent API
+ - 所有请求均要验证，用户需要获取一个[免费的API密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}来使用Covalent API
  - The cost of an API call is denominated in credits and varies depending on the particular call. Upon creating an API key, you're given a substantial amount of free credits to get started (100,000 at the time of writing). You can track your usage of these free credits on the [Increment Dashboard](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank}
- - API调用的成本以积分计价，并根据特定调用而有所不同。创建API密钥后，您将获得大量免费积分开始操作（截至本文撰写时积分为100,000）。您可以在[Increment数据面板](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank}上追踪这些免费积分的使用情况
+ - API调用的收费以credit计价，并根据特定调用而有所不同。创建API密钥后，您将获得大量免费credit开始操作（截至本文撰写时为100,000）。您可以在[Increment数据面板](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank}上追踪这些免费credit的使用情况
  - The root URL of the API is: [https://api.covalenthq.com/v1/](https://api.covalenthq.com/v1/){target=_blank}
- - API的根URL为[https://api.covalenthq.com/v1/](https://api.covalenthq.com/v1/){target=_blank}
+ - API的root URL为[https://api.covalenthq.com/v1/](https://api.covalenthq.com/v1/){target=_blank}
  - All requests are done over HTTPS (calls over plain HTTP will fail)
  - 所有请求均通过HTTPS完成（通过纯HTTP的调用将失败）
  - The refresh rate of the APIs is real-time: 30s or 2 blocks, and batch 30m or 40 blocks
@@ -81,7 +81,7 @@ The Covalent API has three classes of endpoints:
 Covalent API有三类端点：
 
  - **Class A** — endpoints that return enriched blockchain data applicable to all blockchain networks, eg: balances, transactions, log events, etc
- - **A类** — 可以在所有区块链网络中使用，能够返回详细区块链数据的端点，包括余额、交易和日志事件等
+ - **A类** — A端点提供丰富的在所有区块链网络共通的数据，包括余额、交易和日志事件等
  - **Class B** — endpoints that are for a specific protocol on a blockchain, e.g. Uniswap is Ethereum-only and is not applicable to other blockchain networks
  - **B类** — 专门为特定区块链上的特定协议而设置的端点，例如Uniswap就是仅适用于以太坊的端点，无法在其他区块链网络上使用
  - **Class C** — endpoints that are community built and maintained but powered by Covalent infrastructure.
@@ -91,7 +91,7 @@ Covalent API有三类端点：
 
 For a full list of supported endpoints, refer to the [Covalent API reference](https://www.covalenthq.com/docs/api/guide/overview/){target=_blank}. A subset of the supported endpoints include:
 
-支持端点的完整列表请查看[Covalent API参考文档](https://www.covalenthq.com/docs/api/guide/overview/){target=_blank}。支持端点的子集包括：
+支持端点的完整列表请查看[Covalent API参考文档](https://www.covalenthq.com/docs/api/guide/overview/){target=_blank}。支持端点包括但不限于：
 
  - **Balances** — get token balances for an address. Returns a list of all ERC-20 and NFT token balances including ERC-721 and ERC-1155 along with their current spot prices (if available)
  - **Balances** — 获取某一地址的Token余额。这一函数将返回一个包含所有ERC-20和NFT Token余额（包括ERC-721和ERC-1155）的列表，以及这些Token目前的现货价格（若有）
@@ -194,7 +194,7 @@ To get started with the Covalent API, you will need to have the following:
 要开始使用Covalent API，您需要准备以下内容：
 
  - A free [Covalent API Key](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}
- - 可用的[Covalent AP密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}
+ - 免费的[Covalent AP密钥](https://www.covalenthq.com/platform/#/auth/register/){target=_blank}
  - MetaMask installed and [connected to Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 安装MetaMask并将其[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - An account with funds. 一个拥有资金的账户
@@ -204,7 +204,7 @@ To get started with the Covalent API, you will need to have the following:
 
 One of the supported endpoints is the token holders endpoint, which returns a list of all the token holders of a particular token. For this example, you can check the token holders for the ERTH token. The contract address for the ERTH token on Moonbase Alpha is `0x08B40414525687731C23F430CEBb424b332b3d35`.
 
-其中支持的端点之一是Token Holder端点，该端点将返回特定Token的所有Token持有者的列表。在本示例中，您可以检查ERTH的Token持有者。Moonbase Alpha上的ERTH Token合约地址为：`0x08B40414525687731C23F430CEBb424b332b3d35`。
+Token Holder端点是Covalent支持的端点之一，该端点返回特定Token的所有Token持有者的列表。在本示例中，您可以检查ERTH的Token持有者。Moonbase Alpha上的ERTH Token合约地址为：`0x08B40414525687731C23F430CEBb424b332b3d35`。
 
 Try running the command below in a terminal window after replacing the placeholder with your API key.
 
@@ -325,7 +325,7 @@ fetch_wallet_balance("0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8")
 
 [Increment](https://www.covalenthq.com/docs/increment/){target=_blank} is a no-code charting and reporting tool that enables users to build dynamic, personalized charts with data models. The tool directly encodes business logic—reach, retention, and revenue—into an SQL compiler that outputs valid SQL. Increment can convert any chart made with SQL and bake them into a standardized, open-sourced set of dimensions and measures, known as a model.
 
-[Increment](https://www.covalenthq.com/docs/increment/){target=_blank}是一种无代码图表和报告工具，使用户能够使用数据模型构建动态、个性化的图表。该工具直接将业务逻辑（包括覆盖范围、留存率和收入）编码到一个SQL编译器中，该编译器输出有效的SQL。Increment能够将使用SQL创建的任何图表转换并嵌入到一个标准化的、开源的维度和度量集中，被称为模型。
+[Increment](https://www.covalenthq.com/docs/increment/){target=_blank}是一个无代码图表与报告生成工具，它让用户能够使用数据模型来构建动态、个性化的图表。该工具直接将业务逻辑（包括覆盖范围、留存率和收入）编码到一个SQL编译器中，然后由该编译器输出有效的SQL结果。Increment能够将使用SQL创建的任何图表转换并嵌入进一个标准化且开源的维度(dimension)和度量(measure)集合，其被称为模型。
 
 [![Example Increment chart](/images/builders/integrations/indexers/covalent/covalent-3.png)](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank} *Click on the above image to try out Increment.*
 
