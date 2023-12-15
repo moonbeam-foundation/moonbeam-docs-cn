@@ -129,7 +129,7 @@ npx tsc --init
 2. 使用`privateKeyToAccount`函数创建账户
 3. 使用`createWalletClient`函数创建`client`，并传入账户和HTTP RPC端点
 
-!!! 请注意
+!!! 请记住
     本教程仅用于操作演示，请勿将您的私钥存储于TypeScript文件中。
 
 === "Moonbeam"
