@@ -91,7 +91,7 @@ The examples in this guide will be on Moonbase Alpha. 本教程中的示例将�
 
 在下方示例中，您将了解如何组合设置身份所需的数据、如何设置身份以及如何在设置身份信息后检索身份信息。
 
-!!! 请注意
+!!! 请记住
     以下代码片段仅用于操作演示。请勿将您的私钥存储与JavaScript或Python文件中。
 
 === "Ethers.js"
