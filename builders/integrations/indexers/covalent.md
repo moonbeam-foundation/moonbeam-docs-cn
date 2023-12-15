@@ -267,7 +267,7 @@ fetch_wallet_balance("0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8")
 
 [Increment](https://www.covalenthq.com/docs/increment/){target=_blank}是一个无代码图表与报告生成工具，它让用户能够使用数据模型来构建动态、个性化的图表。该工具直接将业务逻辑（包括覆盖范围、留存率和收入）编码到一个SQL编译器中，然后由该编译器输出有效的SQL结果。Increment能够将使用SQL创建的任何图表转换并嵌入进一个标准化且开源的维度(dimension)和度量(measure)集合，其被称为模型。
 
-[![Example Increment chart](/images/builders/integrations/indexers/covalent/covalent-3.png)](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank} *Click on the above image to try out Increment.*
+[![Example Increment chart](/images/builders/integrations/indexers/covalent/covalent-3.png)](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=_blank} *点击上述图片尝试Increment。*
 
 ### 常见用例 {: #common-use-cases }
 
