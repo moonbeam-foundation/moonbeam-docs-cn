@@ -10,7 +10,7 @@ description: Learn how to integrate Particle Network's Wallet-as-a-Service into 
 
 [Particle Network](https://particle.network/){target=_blank} is a [Smart Wallet-as-a-Service](https://docs.particle.network/getting-started/smart-wallet-as-a-service){target=_blank} provider that allows developers to improve user experience through modular and customizable Externally Owned Account (EOA) and [Account Abstraction (AA)](https://docs.particle.network/developers/account-abstraction){target=_blank} embedded wallet components.
 
-[Particle Network](https://particle.network/){target=_blank}是一个[智能钱包即服务](https://docs.particle.network/getting-started/smart-wallet-as-a-service){target=_blank}提供商，允许开发者通过模块化和可定制化的外部拥有账户（Externally Owned Account，简称EOA）和[账户抽象（Account Abstraction，简称AA）](https://docs.particle.network/developers/account-abstraction){target=_blank}嵌入式钱包组件提升用户体验。
+[Particle Network](https://particle.network/){target=_blank}是一个[智能钱包即服务](https://docs.particle.network/getting-started/smart-wallet-as-a-service){target=_blank}提供商，它允许开发者通过使用可定制的模块化外部拥有账户（Externally Owned Account，简称EOA）和[账户抽象（Account Abstraction，简称AA）](https://docs.particle.network/developers/account-abstraction){target=_blank}嵌入式钱包组件来提升用户体验。
 
 One major component of Particle's Smart Wallet-as-a-Service stack that streamlines user onboarding is [Particle Auth](https://docs.particle.network/developers/auth-service){target=_blank}, which can be used to onboard users via familiar Web2 accounts—such as Google accounts, email addresses, and phone numbers. This is enabled by using [Multi-Party Computation-based Threshold Signature Scheme (MPC-TSS)](https://docs.particle.network/developers/auth-service){target=_blank} technology for key management.
 
@@ -149,7 +149,7 @@ To configure your project, you'll need to:
 
 3. Initialize `ParticleNetwork` using your project credentials that you retrieved from your dashboard and Moonbeam's chain name and ID, and, optionally, you can configure wallet display and security settings
 
-    使用从数据面板检索的项目凭据以及Moonbeam的链名称和ID初始化`ParticleNetwork`，并且您可以选择配置钱包显示和安全设置
+    使用您的项目凭据以及Moonbeam的链名称和ID初始化`ParticleNetwork`，并且您可以在这里选择配置钱包显示和安全设置
 
     !!! note 注意事项
         You can use [dotenv](https://www.dotenv.org/){target=_blank} to securely store your project credentials.
@@ -176,7 +176,7 @@ If you want to use an ERC-4337 AA, you'll need to take a couple additional steps
 
 3. Initialize a [`SmartAccount`](https://docs.particle.network/developers/account-abstraction/sdks/web#initialize-the-smartaccount){target=_blank} using the provider, your project credentials, and the AA implementation and configuration. For Moonbeam, you'll use the `simple` implementation and pass in Moonbeam's chain ID
 
-   使用提供商、项目凭证以及账户抽象实现和配置初始化[`SmartAccount`](https://docs.particle.network/developers/account-abstraction/sdks/web#initialize-the-smartaccount){target=_blank}。对于Moonbeam来说，您需要使用`simple`实现并传入Moonbeam链ID
+   使用提供商、项目凭证以及账户抽象实现和配置来初始化[`SmartAccount`](https://docs.particle.network/developers/account-abstraction/sdks/web#initialize-the-smartaccount){target=_blank}。对于Moonbeam来说，您需要使用`simple`实现并传入Moonbeam链ID
 
 4. Enable ERC-4337 mode, specifying the `SIMPLE` implementation
 
