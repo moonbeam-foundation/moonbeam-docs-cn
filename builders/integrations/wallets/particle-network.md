@@ -105,9 +105,7 @@ Particle通过标准EOA交互和原生[ERC-4337](https://eips.ethereum.org/EIPS/
 3. 使用您的项目凭据以及Moonbeam的链名称和ID初始化`ParticleNetwork`，并且您可以在这里选择配置钱包显示和安全设置
 
     !!! 注意事项
-        You can use [dotenv](https://www.dotenv.org/){target=_blank} to securely store your project credentials.
-
-    您可以使用[dotenv](https://www.dotenv.org/){target=_blank}安全存储您的项目凭证。
+        您可以使用[dotenv](https://www.dotenv.org/){target=_blank}安全存储您的项目凭证。
 
 ```js
 --8<-- 'code/builders/integrations/wallets/particle/configure-particle.js'
