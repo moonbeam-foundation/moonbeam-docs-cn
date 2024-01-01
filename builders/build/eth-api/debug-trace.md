@@ -7,7 +7,7 @@ description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的
 
 ## 概览 {: #introduction }
 
-Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
+Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
 
 要查看追踪RPC提供者，请查看[网络端点](/builders/get-started/endpoints#tracing-providers){target=_blank}页面。
 
@@ -17,21 +17,21 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 可用的RPC方法如下：
 
-  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_tracetransaction){target=_blank}
-  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbynumber){target=_blank}
-  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbyhash){target=_blank}
+  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=_blank}
+  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=_blank}
+  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=_blank}
   - [`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=_blank}
-  - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_content){target=_blank}
-  - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_inspect){target=_blank}
-  - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_status){target=_blank}
+  - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=_blank}
+  - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=_blank}
+  - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=_blank}
 
 ## Debug API {: #debug-api }
 
 有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug){target=_blank}：
 
-  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_tracetransaction){target=_blank}** —— 需要追踪交易的哈希值
-  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbynumber){target=_blank}** —— 需要追踪区块的区块编号
-  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debug_traceblockbyhash){target=_blank}** —— 需要追踪区块的哈希值
+  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=_blank}**  —— 需要追踪交易的哈希值
+  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=_blank}** —— 需要追踪区块的区块编号
+  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=_blank}** —— 需要追踪区块的哈希值
 
 此外，还可提供以下*可选*参数：
 
@@ -43,9 +43,9 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool)：
 
-  - **[`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_content){target=_blank}** —— 无需任何参数
-  - **[`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_inspect){target=_blank}** —— 无需任何参数
-  - **[`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool_status){target=_blank}** —— 无需任何参数
+  - **[`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=_blank}** —— 无需任何参数
+  - **[`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=_blank}** —— 无需任何参数
+  - **[`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=_blank}** —— 无需任何参数
 
 ## Trace模块 {: #trace-module }
 
@@ -77,7 +77,7 @@ Geth的`debug`与`txpool` API，以及OpenEthereum的`trace`模块均提供非�
 
 ## 使用Debug API {: #using-the-debug-api }
 
-运行跟踪节点后，您可以在终端中开启另一个窗口，在其中运行`curl`命令并调用任何可用的JSON RPC方法。例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
+运行跟踪节点后，您可以在终端中开启另一个窗口，在其中运行`curl`命令并调用任何可用的JSON-RPC方法。例如，调用`debug_traceTransaction`后，您可在自己的终端发起以下JSON-RPC请求（在本示例中，交易哈希值为`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`）：
 
 ```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
@@ -93,9 +93,21 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 ![Trace Debug Node Running](/images/builders/build/eth-api/debug-trace/debug-trace-2.png)
 
+如果您使用的是 `debug_traceBlockByNumber` 或 `debug_traceBlockByHash` 方法，您需要在`"params"`中添加`{"tracer": "callTracer"}`。`callTracer` 会返回交易及其下属调用。否则tracer将会尝试使用`raw`为预设值，目前这个模式并不被支持因为它会占用太多资源。举例来说，使用`debug_traceBlockByHash`方法时，您可以在terminal使用以下JSON-RPC请求（例子中使用的区块哈希值为`0x2633b66050c99d80f65fe96de6485fd407b87f0f59b485c33ab8f119e2c6f255`）:
+
+```sh
+curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \
+  '{
+    "jsonrpc":"2.0",
+    "id":1,
+    "method":"debug_traceBlockByHash",
+    "params": ["0x2633b66050c99d80f65fe96de6485fd407b87f0f59b485c33ab8f119e2c6f255", {"tracer": "callTracer"}]
+  }'
+```
+
 ## 使用追踪模块 {: #using-the-tracing-module }
 
-调用`trace_filter`后，您可在自己的终端发起以下JSON RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条追踪结果）：
+调用`trace_filter`后，您可在自己的终端发起以下JSON-RPC请求（在本示例中，过滤范围从区块20000到25000，且接收地址为`0x4E0078423a39EfBC1F8B5104540aC2650a756577`，初始值为零偏移，并提供前20条追踪结果）：
 
 ```bash
 curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charset=utf-8" -d \

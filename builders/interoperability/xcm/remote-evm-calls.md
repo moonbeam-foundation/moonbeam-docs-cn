@@ -61,7 +61,7 @@ XCM队列的配置表明XCM消息应该设置为`20,000,000,000`权重单位（�
 简单来说，以下为常规和远程EVM调用之间的主要区别：
 
 - 远程EVM调用使用全网随机数（由[Ethereum XCM Pallet](https://github.com/moonbeam-foundation/moonbeam/tree/master/pallets/ethereum-xcm){target=_blank}拥有）而不是每个账户的随机数
-- 远程EVM调用的签名的`v-r-s`值为`0x1`。无法通过一般函数从签名中检索发送者（例如，通过[ECRECOVER](/builders/pallets-precompiles/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}）。然而，`from`被包含在交易收据和通过哈希获取交易数据时（使用以太坊 JSON RPC）
+- 远程EVM调用的签名的`v-r-s`值为`0x1`。无法通过一般函数从签名中检索发送者（例如，通过[ECRECOVER](/builders/pallets-precompiles/precompiles/eth-mainnet/#verify-signatures-with-ecrecover){target=_blank}）。然而，`from`被包含在交易收据和通过哈希获取交易数据时（使用以太坊 JSON-RPC）
 - 所有远程EVM调用的Gas为零。EVM执行在XCM执行层而非在EVM层收费
 - 您可以为远程EVM调用设置的当前最大Gas限制为`720,000` Gas单位
 
@@ -180,7 +180,7 @@ yarn calculate-multilocation-derivative-account \
 
 与`increment`函数交互的编码调用数据为`0xd09de08a`，即`increment()`的keccak256哈希的前8个十六进制字符（或4个字节）。如果函数有输入参数，它们也需要编码。获取编码调用数据最简单的方法是在[Remix](/builders/build/eth-api/dev-env/remix/#interacting-with-a-moonbeam-based-erc-20-from-metamask){target=_blank}或[Moonscan](https://moonbase.moonscan.io/address/0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8#code){target=_blank}进行模拟交易。接下来，在MetaMask 中，在签名之前检查**HEX**标签下的**HEX DATA: 4 BYTES**选择器。您无需签署交易。
 
-现在，您已经有了编码的合约交互数据，您可以使用[`eth_estimateGas` JSON RPC函数](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas){target=_blank}决定此调用的Gas限制。在此范例中，您可以将Gas限制设置为`155000`。
+现在，您已经有了编码的合约交互数据，您可以使用[`eth_estimateGas` JSON-RPC函数](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas){target=_blank}决定此调用的Gas限制。在此范例中，您可以将Gas限制设置为`155000`。
 
 关于值部分，由于特定交互并不需要DEV（对于Moonbeam/Moonriver来说为GLMR/MOVR），您可以将其设置为`0`。至于那些需要DEV的交互，您可以根据需求修改此数值。
 
@@ -351,7 +351,7 @@ const xcmTransaction = {
 
 ## 通过哈希执行远程EVM调用交易 {: #remove-evm-call-txhash}
 
-如先前所述，[常规和远程XCM EVM调用之间存在一些差异](#differences-regular-remote-evm)。使用Ethereum JSON RPC通过其哈希检索交易时可以看到一些主要差异。
+如先前所述，[常规和远程XCM EVM调用之间存在一些差异](#differences-regular-remote-evm)。使用Ethereum JSON-RPC通过其哈希检索交易时可以看到一些主要差异。
 
 为此，您首先需要检索要查询的交易哈希。 在本示例中，您可以使用[先前部分教程](#build-remove-evm-call-xcm)的交易哈希，为[0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f](https://moonbase.moonscan.io/tx/0x753588d6e59030eeffd31aabccdd0fb7c92db836fcaa8ad71512cf3a7d0cb97f){target=_blank}。接着打开终端，执行以下命令：
 
@@ -367,7 +367,7 @@ curl --location --request POST 'https://rpc.api.moonbase.moonbeam.network' \
 '
 ```
 
-如果JSON RPC请求发送正确，应获得以下结果：
+如果JSON-RPC请求发送正确，应获得以下结果：
 
 ```json
 {

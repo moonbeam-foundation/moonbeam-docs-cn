@@ -178,7 +178,7 @@ moonbeamfoundation/moonbeam \
 --8<-- 'code/builders/get-started/networks/moonbeam-dev/runnodewithsealinginterval.md'
 ```
 
-- **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON RPC日志，命令应如下所示：`-l json=trace`
+- **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON-RPC日志，命令应如下所示：`-l json=trace`
 - **`--sealing <interval>`** - 什么时候区块需要被封装在开发服务中。可接受的时间间隔参数为：`instant`、`manual`、或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`。请参阅下面的[配置区块生产](#configure-block-production)部分以获取更多信息
 - **`--rpc-port <port>`** - 用来配置HTTP与WS连接的统一端口。接收一个port作为参数，默认为{{ networks.parachain.rpc }}
 - **`--ws-port <port>`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始使用，用来设置HTTP与WS连接的统一端口. 接收一个port作为参数
@@ -204,13 +204,13 @@ moonbeamfoundation/moonbeam \
 --sealing <interval>
 ```
 
-如果选择`manual`，您需要自己手动使用`engine_createBlock` JSON RPC方法来创建区块：
+如果选择`manual`，您需要自己手动使用`engine_createBlock` JSON-RPC方法来创建区块：
 
 ```bash
 engine_createBlock(createEmpty: *bool*, finalize: *bool*, parentHash?: *BlockHash*)
 ```
 
-例如，您可以使用以下代码片段使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}（一个可以轻松地与JSON RPC方法进行交互的以太坊库）手动创建区块：
+例如，您可以使用以下代码片段使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}（一个可以轻松地与JSON-RPC方法进行交互的以太坊库）手动创建区块：
 
 ```js
 import { ethers } from 'ethers';

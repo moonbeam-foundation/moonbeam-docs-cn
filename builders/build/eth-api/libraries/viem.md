@@ -7,7 +7,7 @@ description: 查看本教程学习如何使用以太坊的viem TypeScript接口�
 
 ## 概览 {: #introduction }
 
-[viem](https://viem.sh/){target=_blank}是一个模块化的TypeScript库，它提供JSON-RPC API的抽象化封装让开发者能够与之交互，从而轻松与以太坊节点交互。由于Moonbeam的类以太坊API完全兼容以太坊格式的JSON RPC调用，因此开发者可以利用此兼容性与Moonbeam节点交互。关于viem的更多信息，请参考其[官方文档网站](https://viem.sh/docs/getting-started.html){target=_blank}。
+[viem](https://viem.sh/){target=_blank}是一个模块化的TypeScript库，它提供JSON-RPC API的抽象化封装让开发者能够与之交互，从而轻松与以太坊节点交互。由于Moonbeam的类以太坊API完全兼容以太坊格式的JSON-RPC调用，因此开发者可以利用此兼容性与Moonbeam节点交互。关于viem的更多信息，请参考其[官方文档网站](https://viem.sh/docs/getting-started.html){target=_blank}。
 
 在本教程中，您将学习如何使用viem发送交易并部署合约至Moonbase Alpha测试网。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 

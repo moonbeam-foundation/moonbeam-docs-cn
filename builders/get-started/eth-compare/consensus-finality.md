@@ -113,7 +113,7 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
 - `chain_getHeader` - 第二个请求将获取给定区块哈希的区块头
 - `eth_getTransactionReceipt` - 第三个请求将检索给定区块哈希的交易收据
 
-您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}获取关于Polkadot.js和Substrate JSON RPC的更多信息，并在[PySubstrate官方文档网站](https://polkascan.github.io/py-substrate-interface/){target=_blank}获取关于Python Substrate接口的更多信息。
+您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}获取关于Polkadot.js和Substrate JSON-RPC的更多信息，并在[PySubstrate官方文档网站](https://polkascan.github.io/py-substrate-interface/){target=_blank}获取关于Python Substrate接口的更多信息。
 
 === "Polkadot.js"
 

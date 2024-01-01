@@ -1,13 +1,13 @@
 ---
 title: Moonbeam自定义API
-description: 此页面涵盖Moonbeam自定义API端点（特定于Moonbeam的JSON RPC方法信息）。
+description: 此页面涵盖Moonbeam自定义API端点（特定于Moonbeam的JSON-RPC方法信息）。
 ---
 
 # Moonbeam自定义API
 
 ## Finality RPC端点 {: #finality-rpc-endpoints }
 
-Moonbeam节点现已添加对两个自定义JSON RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，用于检查链上事件是否最终确定。关于这两个端点的基本信息如下所示：
+Moonbeam节点现已添加对两个自定义JSON-RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，用于检查链上事件是否最终确定。关于这两个端点的基本信息如下所示：
 
 === "moon_isBlockFinalized"
     | 变量 |                                                值                                                 |

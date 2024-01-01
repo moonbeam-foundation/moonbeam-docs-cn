@@ -7,7 +7,7 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 ## 概览 {: #introduction }
 
-[Ethers.rs](https://ethers.rs){target=_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=_blank}获取更多关于如何使用Ethers.rs的信息。
+[Ethers.rs](https://ethers.rs){target=_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=_blank}获取更多关于如何使用Ethers.rs的信息。
 
 在本教程中，您将学习如何使用Ethers.rs库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于 [Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}和[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
 
@@ -68,7 +68,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
 1. 从`ethers` crate导入`Provider`和`Http`
 2. 为了方便操作，添加`Client`类型，当您开始创建发送交易和部署合约的函数时，将会使用此函数
 3. 在`async fn main()`上方添加`tokio`属性，用于异步执行
-4. 使用`try_from`尝试从RPC端点实例化JSON RPC提供商对象
+4. 使用`try_from`尝试从RPC端点实例化JSON-RPC提供商对象
 5. 使用私钥创建钱包对象（私钥将用于签署交易）。**请注意：此示例仅用于演示目的，请勿将您的私钥存储于普通的Rust文件中**
 6. 通过将提供商和钱包提供到`SignerMiddleware`对象中，将其包装到客户端中
 

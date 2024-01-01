@@ -17,9 +17,9 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 ## 以太坊转账 {: #ethereum-transfers }
 
-使用以太坊API的简单余额转账依赖于`eth_sendRawTransaction` JSON RPC。这可以直接从一个账户到另一个账户，或通过智能合约。
+使用以太坊API的简单余额转账依赖于`eth_sendRawTransaction` JSON-RPC。这可以直接从一个账户到另一个账户，或通过智能合约。
 
-在以太坊上有不同的策略来监听转账或余额变化，本教程中并未涉及。但它们都集中在使用以太坊JSON RPC的不同策略上。
+在以太坊上有不同的策略来监听转账或余额变化，本教程中并未涉及。但它们都集中在使用以太坊JSON-RPC的不同策略上。
 
 ## Moonbeam转账 {: #moonbeam-transfers }
 
@@ -47,7 +47,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 [Polkadot.js API程序包](https://polkadot.js.org/docs/api/start){target=_blank}为开发人员提供了一种使用Javascript与Substrate链相交互的方式。
 
-以下代码片段使用[`subscribeFinalizedHeads`](https://polkadot.js.org/docs/substrate/rpc/#subscribefinalizedheads-header){target=_blank}订阅最新确认的区块头，并循环访问之中的每个事件。然后，检查是否与一个`balances.Transfer`事件对应。如果是，这将提取一个转账的`from`、`to`以及`amount`并显示在控制台上。请注意，`amount`是以最小的单位（Wei）来显示的。您可以在他们的[官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}找到关于Polkadot.js和Substrate JSON RPC的所有可用信息。
+以下代码片段使用[`subscribeFinalizedHeads`](https://polkadot.js.org/docs/substrate/rpc/#subscribefinalizedheads-header){target=_blank}订阅最新确认的区块头，并循环访问之中的每个事件。然后，检查是否与一个`balances.Transfer`事件对应。如果是，这将提取一个转账的`from`、`to`以及`amount`并显示在控制台上。请注意，`amount`是以最小的单位（Wei）来显示的。您可以在他们的[官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}找到关于Polkadot.js和Substrate JSON-RPC的所有可用信息。
 
 ```ts
 --8<-- 'code/builders/get-started/eth-compare/transfers-api/balance-event.ts'
