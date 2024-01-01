@@ -438,3 +438,5 @@ function transfer(address _to, uint256 _value) public returns (bool success)
       }
     }
     ```
+
+因为在Moonbeam上本地XC-20s就是ERC-20s，在Moonbeam上创建ERC-20并不需要支付押金。但是在别的平行链上注册资产可能需要支付押金。请联系目标平行链团队获取详细信息。

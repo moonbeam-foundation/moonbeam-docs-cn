@@ -71,6 +71,14 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
 - **baseXcmWeight**() - 返回执行所需的基础XCM权重
 - **selfLocation**() - 返回链的multilocation
 
+## XCM Instructions for Transfers via X-Tokens {: #xcm-instructions }
+
+X-Tokens Pallet使用的XCM指令定义于[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}。
+
+无论用的是哪一个传输方法，将原生资产送回其原始链（例如，xcDOT从Moonbeam返回Polkadot）和将原生资产从原始链发送到目标链（例如，DOT从Polkadot发送到Moonbeam）的操作指示都是相同的。
+
+--8<-- 'text/x-tokens/xcm-instructions.md'
+
 ## 使用X-Tokens Pallet构建XCM消息 {: #build-xcm-xtokens-pallet}
 
 此教程将会包含使用X-Tokens Pallet构建XCM消息的过程，更详细来说为使用`transfer`和`transferMultiasset`函数。然而，这两种情况仍然可以外推至其他函数，特别是当您熟悉了multilocation的使用之后。

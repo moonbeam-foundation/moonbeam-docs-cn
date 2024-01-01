@@ -40,26 +40,8 @@ Alice请求的资产转移过程如下：
 
 ### XCM指令 {: #xcm-instructions }
 
-一个XCM消息由一系列的XCM指令组成，而不同的XCM指令组合将会导向不同的执行动作。举例而言，要将DOT传送至Moonbeam，将会使用以下XCM指令：
-
-1. [`TransferReserveAsset`](https://github.com/paritytech/xcm-format#transferreserveasset){target=_blank} - 在波卡上执行。此指令会将资产从原账户存入目标账户。在此例子中，目标账户为Moonbeam在波卡上的主权账户。接着，这将会传送一条XCM消息至目标链，也就是Moonbeam。XCM指令将会在Moonbeam上被执行
-2. [`ReserveAssetDeposited`](https://github.com/paritytech/xcm-format#reserveassetdeposited){target=_blank} - 在Moonbeam上执行。此指令将会把主权账户获得资产在Moonbeam上的表现形式传送至注册持有者中，一个在跨共识虚拟机（XCVM）中的暂时储存地
-3. [`ClearOrigin`](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} - 在Moonbeam上执行。此指令会确保最新的XCM指令不会覆盖XCM作者的授权
-4. [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在Moonbeam上执行。此指令会使用暂存的资产支付执行费用，费用的数量依据目标链决定，在本示例中为Moonbeam
-5. [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 在Moonbeam上执行。此指令会移除暂存区域的资产并将其传送至Moonbeam上的目标账户
-
-要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送DOT至Moonbeam，您可以查看[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_self_reserve_asset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.spec_version}}/xtokens/src/lib.rs#L680){target=_blank}函数，您将会看到其调用`TransferReserveAsset`并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`TransferReserveAsset` 指令](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L514){target=_blank}。此XCM消息由使用`xcm`参数的`ReserveAssetDeposited`和`ClearOrigin`指令组成，如上所示其中包含`BuyExecution`和`DepositAsset`指令。
-
-要将xcDOT从Moonbeam转移回波卡，您可以使用以下指令：
-
-1. [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 在Moonbeam上执行。此指令将会移除资产并将它们存放在暂存处
-2. [`InitiateReserveWithdraw`](https://github.com/paritytech/xcm-format#initiatereservewithdraw){target=_blank} - 在Moonbeam上执行。此指令会将资产从暂存处移除（本质上是销毁它们）并使用`WithdrawAsset`为开头的指令传送一条XCM消息至目标链
-3. [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 在波卡上执行。此指令会移除资产并将它们存放在暂存处
-4. [`ClearOrigin`](https://github.com/paritytech/xcm-format#clearorigin){target=_blank} - 在波卡上执行。此指令会确保最新的XCM指令不会覆盖XCM作者的授权
-5. [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 在波卡上执行。此指令会使用暂存的资产支付执行费用，费用的数量依据目标链决定，在本示例中为波卡网络
-6. [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 在波卡上执行。此指令会移除暂存区域的资产并将其传送至波卡上的目标账户
-
-要检查XCM消息中的指令是如何构建，以传送自有资产至目标链，例如传送xcDOT至波卡，您可以查看[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}（作为范例）。查看 [`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.spec_version}}/xtokens/src/lib.rs#L697){target=_blank}函数，您将会看到其调用`WithdrawAsset`和`InitiateReserveWithdraw`，并输入`assets`、`dest`和`xcm`作为参数。详细来说，`xcm`参数包含`BuyExecution`和`DepositAsset`指令。如果您导向至Polkadot GitHub库，您可以找到[`InitiateReserveWithdraw` 指令](https://github.com/paritytech/polkadot-sdk/blob/{{polkadot_sdk}}/polkadot/xcm/xcm-executor/src/lib.rs#L638){target=_blank}。此XCM消息由使用`xcm`参数的`WithdrawAsset`和`ClearOrigin`指令组成，如上所述其中包含`BuyExecution`和`DepositAsset`指令。
+一个XCM消息由一系列的XCM指令组成，而不同的XCM指令组合将会导向不同的执行动作。
+--8<-- 'text/x-tokens/xcm-instructions.md'
 
 ## 中继链XCM费用计算 {: #rel-chain-xcm-fee-calc }
 
