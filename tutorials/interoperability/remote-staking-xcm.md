@@ -46,19 +46,21 @@ _作者：Kevin Neilson_
 
 ### 生成编码的调用数据 {: #generate-encoded-call-data }
 
-我们将使用[Parachain Staking Pallet](/builders/pallets-precompiles/pallets/staking){target=_blank}的`delegate`函数，此函数接收四个参数，分别为：`candidate`、`amount`、`candidateDelegationCount`和`delegationCount`。
+我们将使用[Parachain Staking Pallet](/builders/pallets-precompiles/pallets/staking){target=_blank}的`delegateWithAutoCompound`函数，此函数接收六个参数，分别为：`candidate`、`autoCompound`、`amount`、`candidateDelegationCount`、`candidateAutoCompoundingDelegationCount`和`delegationCount`。
 
-为了生成编码的调用数据，我们需要为每个`delegate`参数组装参数，并使用它们来构建一个调用`delegate`函数的交易。我们并非在提交一笔交易，而是简单地准备一笔交易来获取编码后的调用数据。 我们将执行以下步骤来构建脚本：
+为了生成编码的调用数据，我们需要为每个`delegateWithAutoCompound`参数组装参数，并使用它们来构建一个调用`delegateWithAutoCompound`函数的交易。我们并非在提交一笔交易，而是简单地准备一笔交易来获取编码后的调用数据。 我们将执行以下步骤来构建脚本：
 
 1. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}提供商
-2. 为`delegate`函数的每个参数组装参数：
+2. 为`delegateWithAutoCompound`函数的每个参数组装参数：
 
     - `candidate` - 在本示例中，我们将使用[PS-31收集人](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=_blank}：`0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D`，要获取完整的候选人列表，请参考[准备质押](#preparing-to-stake-on-moonbase-alpha)部分
     - `amount` - 最低质押量，即1 DEV或者`1000000000000000000` Wei。您可以通过[Moonscan上的单位转换部分](https://moonscan.io/unitconverter){target=_blank}进行单位转换
+     - `autoCompound` - 这里我们将奖励的自动复利参数设置为`100`
     - `candidateDelegationCount` - 我们将使用Parachain Staking Pallet的`candidateInfo`函数进行检索，以获得准确的计数。 或者，您可以输入`300`的上限，因为此预估仅用于确定调用的权重
+    - `candidateAutoCompoundingDelegationCount` - 我们将使用平行链质押pallet中的`autoCompoundingDelegations`函数来获取这个数值。或者您也可以手动设置为该值的上限`300`，因为这个数值只是为了计算调用函数所需要的权重而设置的预估值。
     - `delegationCount` - 我们将使用Parachain Staking Pallet的`delegatorState`函数进行检索，以获取准确的计数。 或者，您可以在此处指定`100`的上限
 
-3. 使用每个所需的参数制作`parachainStaking.delegate` extrinsic
+3. 使用每个所需的参数制作`parachainStaking.delegateWithAutoCompound` extrinsic
 4. 使用交易获取委托的编码调用数据
 
 ```js
@@ -139,7 +141,7 @@ XCM Pallet的`send`函数接收两个参数：`dest`和`message`。您可以通�
         requireWeightAtMost: { refTime: 40000000000n, proofSize: 900000n },
         call: {
           encoded:
-            '0x0c113a7d3048f3cb0391bb44b518e5729f07bcc7a45d000064a7b3b6e00d00000000000000002c01000025000000',
+            '0x0c123a7d3048f3cb0391bb44b518e5729f07bcc7a45d000064a7b3b6e00d000000000000000064430000000600000000000000',
         },
       },
     },    
