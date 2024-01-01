@@ -169,7 +169,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 #### 执行XCM消息 {: #execute-xcm-message }
 
-现在，您已拥有SCALE编码的XCM消息，您可以使用以下代码片段通过您选择的以太坊库以编程方式调用XCM-Utilities预编译的`xcmExecute`函数：
+现在，您已拥有SCALE编码的XCM消息，您可以使用以下代码片段通过您选择的以太坊库以编程方式调用XCM-Utilities预编译的`xcmExecute`函数。以下为基本的执行步骤：
 
 1. 创建提供商和签署者
 2. 创建用于交互的XCM Utilities Precompile的实例
@@ -177,7 +177,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 4. 执行XCM消息
 
 !!! 请记住
-    请勿将您的私钥存储至JavaScript或Python文件中。
+    以下代码仅为demo，在实际操作中请勿将您的私钥存储至JavaScript或Python文件中。
 
 === "Ethers.js"
 
@@ -196,6 +196,8 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     ```py
     --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/execute/web3.py'
     ```
+
+以上就是所需要执行的全部代码。您已在Moonbase Alpha上成功使用Polkadot XCM Pallet与XCM Utilities Precompile执行了一条自定义XCM消息！
 
 ## 跨链发送XCM消息 {: #send-xcm-message }
 
