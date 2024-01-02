@@ -9,11 +9,19 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 在基于Moonbeam的网络运行一个全节点使您能够连接至网络，与bootnode节点同步，获得RPC端点的本地访问，在平行链上创建区块，以及更多其他不同的功能。
 
-## 安装指引 {: #installation-instructions }
+在本指南中，您将学习如何使用[Docker](https://www.docker.com/){target=_blank}快速启动 一个Moonbeam节点，以及如何维护和清理您的节点。
 
-使用Docker可以快速创建Moonbeam节点。关于安装Docker的更多资讯，请访问[此页面](https://docs.docker.com/get-docker/)。截至本文截稿，所使用的Docker版本为19.03.6。当您连接至Kusama上的Moonriver，或Polkadot上的Moonbeam时，将需要数天的时间同步相应中继链内嵌入的数据。请确认您的系统符合以下[要求](/node-operators/networks/run-a-node/overview#requirements)。
+## 检查先决条件 {: #checking-prerequisites }
 
-创建一个本地目录以储存链上数据：
+开始之前,您需要:
+- [安装Docker](https://docs.docker.com/get-docker/){target=_blank}。截止本文截稿, Docker使用的版本为24.0.6
+- 确保您的系统满足[基本要求](/node-operators/networks/run-a-node/overview#requirements){target=_blank}。连接至Kusama上的Moonriver或是Polkadot上的Moonbeam，通常需要几天时间来完成中继链内嵌的同步。
+
+## 设置链数据的储存空间 {: #storage-chain-data }
+
+设置一个目录来储存链数据，您需要：
+
+1. 创建一个本地目录
 
 === "Moonbeam"
 
@@ -33,7 +41,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     mkdir {{ networks.moonbase.node_directory }}
     ```
 
-接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。在本示例中，为特定用户或当前用户设置必要权限许可（为将要运行`docker`命令的用户替换为`INSERT_DOCKER_USER`）：
+2. 接着，请确认您已经为储存链数据的本地目录设定所有权和权限许可。您为特定用户或当前用户设置必要权限许可（将`INSERT_DOCKER_USER`替换为运行`docker`命令的用户）：
 
 === "Moonbeam"
 
@@ -64,17 +72,21 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
     # chown to current user
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
     ```
-    
-下一步，执行Docker运行的命令。如果您设定的是收集人节点，确认您使用的是[收集人](#收集人--collator)代码段。注意，您需要替换：
 
- - 在两处替换 `INSERT_YOUR_NODE_NAME` 
- - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
+## 初始命令 {: #start-up-commands }
 
---8<-- 'text/node-operators/client-changes.md'
+开始节点需要执行`docker run`命令。如果您设定的是收集人节点，确认您使用的是[收集人](#收集人--collator)代码段。
+
+注意，在以下初始命令中，您需要：
+
+ - 将 `INSERT_YOUR_NODE_NAME` 改成您选择的节名名字。您需要在两个地方更改这个数值：平行链一个，中继链一次
+ - 用服务器实际RAM的50%替换`INSERT_RAM_IN_MB`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
+
+了解更多初始命令的不同选项与其他常用选项，请参考文档的[Flags](/node-operators/networks/run-a-node/flags){target=_blank}页面。
 
 ### 全节点 {: #full-node }
 
-???+ code "Linux snippets"
+???+ code "Linux代码片段"
 
     === "Moonbeam"
 
@@ -87,7 +99,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --state-pruning archive \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB \
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
@@ -103,7 +115,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --state-pruning archive \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB\
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
@@ -119,12 +131,12 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --state-pruning archive \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB\
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
 
-??? code "MacOS snippets"
+??? code "MacOS代码片段"
 
     === "Moonbeam"
 
@@ -171,10 +183,82 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
 
-!!! 注意事项
-    如果您想要运行RPC终端、连接至Polkadot.js Apps或是运行您自己的应用，使用`--unsafe-rpc-external`标志来运行能够从外部访问RPC端口的全节点。您能够通过执行`moonbeam --help`以获得更多细节。我们**不建议**收集人节点使用此配置。
+--8<-- 'text/node-operators/networks/run-a-node/external-access.md'
 
-### 收集人 {: #collator }
+??? code "Moonbeam的启动命令示例"
+
+    === "Linux"
+
+        ```bash hl_lines="10"
+        docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbeam.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --db-cache INSERT_RAM_IN_MB \
+        --unsafe-rpc-external \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "MacOS"
+
+        ```bash hl_lines="9"
+        docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonbeam \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --unsafe-rpc-external \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+--8<-- 'text/node-operators/networks/run-a-node/sql-backend.md'
+
+??? code "Moonbeam的启动命令示例"
+
+    === "Linux"
+
+        ```bash hl_lines="11"
+        docker run --network="host" -v "{{ networks.moonbeam.node_directory }}:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain {{ networks.moonbeam.chain_spec }} \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        # This is a comment
+        --db-cache INSERT_RAM_IN_MB \
+        --frontier-backend-type sql \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+        ```
+
+    === "MacOS"
+
+        ```bash hl_lines="9"
+        docker run -p 9944:9944 -v "/var/lib/moonbeam-data:/data" \
+        -u $(id -u ${USER}):$(id -g ${USER}) \
+        purestake/moonbeam:{{ networks.moonbeam.parachain_release_tag }} \
+        --base-path=/data \
+        --chain moonbeam \
+        --name="INSERT_YOUR_NODE_NAME" \
+        --state-pruning archive \
+        --trie-cache-size 1073741824 \
+        --frontier-backend-type sql \
+        -- \
+        --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
+
+
+### 收集人节点 {: #collator }
 
 ???+ code "Linux snippets"
 
@@ -189,7 +273,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --collator \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB\
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
@@ -205,7 +289,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --collator \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB\
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
@@ -221,7 +305,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME" \
         --collator \
         --trie-cache-size 1073741824 \
-        --db-cache <50% RAM in MB> \
+        --db-cache INSERT_RAM_IN_MB\
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
@@ -273,32 +357,22 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
         ```
 
-!!! 注意事项
-    有关上述标志的概述，请参阅开发者文档的[标志](/node-operators/networks/run-a-node/flags){target=_blank}页面。
+## 同步您的节点 {: #syncing-your-node }
 
-在Docker拉取必要的镜像后，您的Moonbeam（或Moonriver）全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等：
+在Docker拉取必要的镜像后，您的全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等。
 
 ![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-1.png)
 
-!!! 注意事项
-    您可使用`--promethues-port XXXX`标志（将`XXXX`替换成真实的端口号）指定自定义Prometheus端口，平行链和嵌入式中继链都可以进行这项操作。
-
-```bash
-docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} # rest of code goes here
-```
-
-在同步过程中，您将看到嵌入式中继链和平行链的消息（无标签）。这些消息将显示目标区块（实时网络状态）和最佳区块（本地节点同步状态）。
+在同步过程中，您既会看到镶嵌中继链([Relaychain])的日志也会看到平行链([🌗])的日志。日志展示了目标区块(实时网络中的state)与最好区块（本地网络同步state）。
 
 ![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.png)
+
+如果您使用的是Moonbase Alpha的安装指南，在同步后您会得到一个本地运行的Moonbase Alpha测试网节点！如果是Moonbeam或Moonriver，如果您按照Moonriver或Moonbeam的节点教程操作，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver/Moonbeam网络上生产的区块！
 
 !!! 注意事项
     同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements)。
 
-如果您按照Moonbase Alpha的节点教程操作，当同步完成，您将获得一个在本地运行的Moonbase Alpha测试网节点！
-
-如果您按照Moonriver或Moonbeam的节点教程操作，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver/Moonbeam网络上生产的区块！请注意，这个部分将会需要数天时间来先同步中继链数据。
-
-## 客户端升级 {: #update-the-client }
+## 维护您的节点 {: #maintain-your-node }
 
 随着Moonbeam网络不断发展，有时需要升级节点软件。升级版本发布后，我们将通过[Discord channel](https://discord.gg/PfpUATX)通知节点运营者，并告知这些升级是否为必要升级（一些客户端升级为可选操作）。升级过程简单直接，并且全节点及收集人的升级过程一样。
 
@@ -310,7 +384,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
     
 2. 从[Moonbeam GitHub Release](https://github.com/moonbeam-foundation/moonbeam/releases/)页面获取Moonbeam的最新版本
 
-3. 使用最新版本启动您的节点。您需要将[全节点](#full-node)或[收集人](#collator)命令的版本替换成最新版本，并运行它
+3. 使用最新版本启动您的节点。您需要将开始命令中的的版本替换成最新版本，并运行它
 
 当您的节点再次运行时，您将在您的终端看到日志。
 

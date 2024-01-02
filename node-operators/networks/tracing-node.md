@@ -92,7 +92,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 下一步，执行Docker运行的命令。注意，您需要替换：
 
  - 在两处替换 `INSERT_YOUR_NODE_NAME`
- - 用服务器实际RAM的50%替换 `<50% RAM in MB>`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
+ - 用服务器实际RAM的50%替换 INSERT_RAM_IN_MB`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
 --8<-- 'text/node-operators/client-changes.md'
 
@@ -109,7 +109,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 1073741824 \
-    --db-cache <50% RAM in MB> \
+    --db-cache INSERT_RAM_IN_MB \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbeam-substitutes-tracing \
     --runtime-cache-size 64 \
@@ -128,7 +128,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 1073741824 \
-    --db-cache <50% RAM in MB> \
+    --db-cache INSERT_RAM_IN_MB \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonriver-substitutes-tracing \
     --runtime-cache-size 64 \
@@ -147,7 +147,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     --name="INSERT_YOUR_NODE_NAME" \
     --state-pruning archive \
     --trie-cache-size 1073741824 \
-    --db-cache <50% RAM in MB> \
+    --db-cache INSERT_RAM_IN_MB \
     --ethapi=debug,trace,txpool \
     --wasm-runtime-overrides=/moonbeam/moonbase-substitutes-tracing \
     --runtime-cache-size 64 \
@@ -262,7 +262,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 接下来是创建systemd配置文件，您将需要：
 
  - 在两个不同的地方替换`INSERT_YOUR_NODE_NAME`
- - 将`<50% RAM in MB>`替换成服务器实际RAM的50%。举例而言，对于32 GB RAM，数值必须设置为`16000`。最低值为`2000`，但这低于推荐的规格
+ - 将INSERT_RAM_IN_MB`替换成服务器实际RAM的50%。举例而言，对于32 GB RAM，数值必须设置为`16000`。最低值为`2000`，但这低于推荐的规格
  - 再次确认二进制文件在正确的路径，如下所述 (_ExecStart_)
  - 如果您使用的是不同的目录，请再次确认基本路径
  - 将文件命名为`/etc/systemd/system/moonbeam.service`
@@ -288,7 +288,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ExecStart={{ networks.moonbeam.node_directory }}/{{ networks.moonbeam.binary_name }} \
          --state-pruning=archive \
          --trie-cache-size 1073741824 \
-         --db-cache <50% RAM in MB> \
+         --db-cache INSERT_RAM_IN_MB \
          --base-path {{ networks.moonbeam.node_directory }} \
          --ethapi=debug,trace,txpool \
          --wasm-runtime-overrides={{ networks.moonbeam.node_directory }}/wasm \
@@ -321,7 +321,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ExecStart={{ networks.moonriver.node_directory }}/{{ networks.moonriver.binary_name }} \
          --state-pruning=archive \
          --trie-cache-size 1073741824 \
-         --db-cache <50% RAM in MB> \
+         --db-cache INSERT_RAM_IN_MB \
          --base-path {{ networks.moonriver.node_directory }} \
          --ethapi=debug,trace,txpool \
          --wasm-runtime-overrides={{ networks.moonriver.node_directory }}/wasm \
@@ -354,7 +354,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     ExecStart={{ networks.moonbase.node_directory }}/{{ networks.moonbase.binary_name }} \
          --state-pruning=archive \
          --trie-cache-size 1073741824 \
-         --db-cache <50% RAM in MB> \
+         --db-cache INSERT_RAM_IN_MB \
          --base-path {{ networks.moonbase.node_directory }} \
          --ethapi=debug,trace,txpool \
          --wasm-runtime-overrides={{ networks.moonbase.node_directory }}/wasm \
