@@ -32,7 +32,7 @@ Token持有者有两种方式来启动Moonbeam上的余额转账功能。一方�
 
 不同的转账场景如下:
 
-- **Substrate转账** — 这将创建一个Extrinsic，`balances.transfer`或`balances.transferKeepAlive`。这将触发**一个**`balances.Transfer`事件
+- **Substrate转账** — 这将创建一个Extrinsic，`balances.transferAllowDeath`或`balances.transferKeepAlive`。这将触发**一个**`balances.Transfer`事件
 - **Substrate功能** — 一些原生Substrate功能可以创建Extrinsic，将Token发送至一个地址。例如，[Treasury](/learn/features/treasury/){target=_blank}可以创建一个Extrinsic，如`treasury.proposeSend`，这将触发**一个或多个**`balances.Transfer`事件
 - **Ethereum转账** — 这将创建一个`ethereum.transact`Extrinsic，为一个空白输入值。这将触发**一个**`balances.Transfer`事件
 - **通过智能合约进行以太坊转账** — 这将创建一个`ethereum.transact`Extrinsic，多个数据成为输入值。这将触发**一个或多个**`balances.Transfer`事件

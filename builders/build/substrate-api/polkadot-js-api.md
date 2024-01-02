@@ -340,7 +340,7 @@ transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取
 
 ```javascript
 // Transaction to get weight information
-const tx = api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345));
+const tx = api.tx.balances.transferAllowDeath('INSERT_BOBS_ADDRESS', BigInt(12345));
 
 // Get weight info
 const { partialFee, weight } = await tx.paymentInfo('INSERT_SENDERS_ADDRESS');
@@ -371,8 +371,8 @@ Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些�
 // Construct a list of transactions to batch
 const collator = 'INSERT_COLLATORS_ADDRESS';
 const txs = [
-  api.tx.balances.transfer(bob, 12345n),
-  api.tx.balances.transfer(charlie, 12345n),
+  api.tx.balances.transferAllowDeath(bob, 12345n),
+  api.tx.balances.transferAllowDeath(charlie, 12345n),
   api.tx.parachainStaking.scheduleDelegatorBondLess(collator, 12345n),
 ];
 
