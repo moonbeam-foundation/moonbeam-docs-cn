@@ -50,7 +50,7 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
         如果您使用的是Ubuntu 20.04或22.04，在构建二进制文件前您将需要另外安装以下依赖项：
 
         ```bash
-        apt install clang protobuf-compiler libprotobuf-dev -y 
+        apt install clang protobuf-compiler libprotobuf-dev pkg-config libssl-dev -y 
         ```
 
     ```bash
