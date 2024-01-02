@@ -114,7 +114,7 @@ moonbeamfoundation/moonbeam \
         如果您使用的是Ubuntu 20.04或22.04，那么您需要在构建二进制文件之前安装这些额外的依赖项：
 
         ```bash
-        apt install clang protobuf-compiler libprotobuf-dev -y 
+        apt install clang protobuf-compiler libprotobuf-dev pkg-config libssl-dev -y 
         ```
 
         MacOS用户请使用Homebrew来安装依赖项:
@@ -283,7 +283,7 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
  - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:9944#/explorer){target=_blank}在WS端口`{{ networks.parachain.ws }}`
  - **基于JSON-RPC的以太坊API** — [Moonbeam Basic浏览器](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank}在HTTP端口`{{ networks.parachain.ws }}`
 
-## 调试（Debug）、追踪（Trace）和TxPool API {: #debug-trace-txpool-apis }
+## 调试（Debug）、追踪（Trace）、和TxPool API {: #debug-trace-txpool-apis }
 
 您也可以通过运行追踪节点访问一些非标准的RPC方法，这将允许开发者在runtime期间检查和调试交易。追踪节点使用的是与标准Moonbeam开发节点不同的Docker镜像。
 

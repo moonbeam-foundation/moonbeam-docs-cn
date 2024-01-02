@@ -34,7 +34,7 @@ mkdir web3-examples && cd web3-examples
 在本教程中，您将需要安装Web3.py代码库和Solidity编译器。您可以通过运行以下命令来安装两者的安装包：
 
 ```bash
-pip3 install web3 py-solc-x
+pip3 install web3 py-solc-x solc-select
 ```
 
 ## 在Moonbeam上设置Web3.py {: #setup-web3-with-moonbeam }

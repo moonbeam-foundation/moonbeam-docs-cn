@@ -9,7 +9,7 @@ description: 使用类似于以太坊的pubsub功能来订阅Moonbeam上的以�
 
 Moonbeam支持以太坊式事件的事件订阅。这允许您订阅事件并进行相应处理，而不需轮询。
 
-对某特定事件的订阅会返回一个 id。对于与订阅匹配的每个事件，带有相关数据的通知将与订阅ID一起发送。
+对某特定事件的订阅会返回一个 ID。对于与订阅匹配的每个事件，带有相关数据的通知将与订阅ID一起发送。
 
 在本指南中，您将学习如何在Moonbase Alpha上订阅事件日志、待处理交易和新的区块。本指南也适用于Moonbeam或Moonriver。
 
@@ -17,14 +17,14 @@ Moonbeam支持以太坊式事件的事件订阅。这允许您订阅事件并进
 
 本教程所使用的示例基于Ubuntu 18.04的环境。除此之外，还需要进行以下操作：
 
- - 安装MetaMask并[连接到Moonbase](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接到Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
  - 具有拥有一定数量资金的账户。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
- - 在Moonbase上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/){target=_blank}进行操作，但首先要确保MetaMask指向Moonbase
+ - 在Moonbase Alpha上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/){target=_blank}进行操作，但首先要确保MetaMask指向Moonbase Alpha
 
 --8<-- 'text/_common/install-nodejs.md'
 
-在撰写本教程时，所用版本分别为14.6.0 和6.14.6版本。此外，您还需执行以下命令安装Web3安装包：
+在撰写本教程时，所用版本分别为16.15.1 和8.11.0版本。此外，您还需执行以下命令安装Web3安装包：
 
 ```bash
 npm install --save web3
@@ -36,34 +36,14 @@ npm install --save web3
 npm ls web3
 ```
 
-在撰写本教程时，所用版本为1.3.0版本。
+在撰写本教程时，所用版本为4.3.0版本。
 
 ## 订阅事件日志 {: #subscribe-to-event-logs }
+
 每个采用ERC-20代币标准的合约都会发送与代币转移相关的事件信息，即`event Transfer(address indexed from, address indexed to, uint256 value)`。在以下示例中，您将了解如何订阅这些事件日志。请执行以下代码调用Web3.js库：
 
 ```js
-const { Web3 } = require('web3');
-const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
-
-web3.eth
-  .subscribe(
-    'logs',
-    {
-      address: 'INSERT_CONTRACT_ADDRESS',
-      topics: [
-        '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-      ],
-    },
-    (error, result) => {
-      if (error) console.error(error);
-    }
-  )
-  .on('connected', function (subscriptionId) {
-    console.log(subscriptionId);
-  })
-  .on('data', function (log) {
-    console.log(log);
-  });
+--8<-- 'code/builders/build/eth-api/pubsub/subscribe-to-event-logs.js'
 ```
 
 请注意，您需连接到Moonbase Alpha的WebSocket终端。调用`web3.eth.subscribe(‘logs’,  options [, callback])`方法订阅过滤后的事件日志。在本示例中，过滤选项有：事件发出的合约地址，以及用于描述事件的主题。更多关于事件主题的信息可以在[了解以太坊事件日志](https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378){target=_blank}这篇Medium文章中找到。如果事件没有主题，用户将订阅该合约发出的所有事件信息。如果仅过滤`Transfer`(代币转帐)事件，需要包含通过以下方式计算的事件签名：
@@ -103,32 +83,7 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 延续上一小节的例子，我们将尝试通过以下代码订阅代币合约事件：
 
 ```js
-const { Web3 } = require('web3');
-const web3 = new Web3('wss://wss.api.moonbase.moonbeam.network');
-
-web3.eth
-  .subscribe(
-    'logs',
-    {
-      address: 'INSERT_CONTRACT_ADDRESS',
-      topics: [
-        null,
-        [
-          '0x00000000000000000000000044236223aB4291b93EEd10E4B511B37a398DEE55',
-          '0x0000000000000000000000008841701Dba3639B254D9CEe712E49D188A1e941e',
-        ],
-      ],
-    },
-    (error, result) => {
-      if (error) console.error(error);
-    }
-  )
-  .on('connected', function (subscriptionId) {
-    console.log(subscriptionId);
-  })
-  .on('data', function (log) {
-    console.log(log);
-  });
+--8<-- 'code/builders/build/eth-api/pubsub/use-wildcards.js'
 ```
 
 在这里使用通配符`null`代替事件签名，可以进行过滤并接收所有订阅合约发送的事件信息。但在这一设置下，您还可以使用另一个（`topic_1`）输入值来定义此前提到的地址过滤器。例如在这个例子中，您要得到的效果是只在当`topic_1`是我们所提供的地址之一时，才接收事件信息。请注意，地址需要以H256形式输入。例如，地址`0x44236223aB4291b93EEd10E4B511B37a398DEE55`需要输入为`0x00000000000000000000000044236223aB4291b93EEd10E4B511B37a398DEE55`。和此前一样，订阅的输出值将在`topic_0`处显示事件签名，告诉您该合约发出的事件。
@@ -163,4 +118,3 @@ web3.eth
 
 !!! 注意事项
     [Frontier](https://github.com/paritytech/frontier){target=_blank}的发布/订阅功能目前还在开发中。在此版本中，用户可以订阅特定的事件类型，但可能仍存在一些限制。
-
