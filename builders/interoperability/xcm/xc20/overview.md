@@ -153,17 +153,25 @@ XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperabili
 结果将显示资产ID以及所有已注册外部XC-20的一些附加信息。
 
 ## 获取本地XC-20元数据信息 {: #retrieve-local-xc20-metadata }
+
 在Moonbeam上本地XC-20s为ERC-20s，它们无法通过XCM传输至其他平行链，您可以将本地XC-20s当作ERC-20来交互。如果您有ERC-20的地址与ABI，您可以通过使用ERC-20标准接口来获取元数据信息，包括它的名字，符号以及小数点位数。
+
 以下实例展示了如何在Moonbase Alpha上获取[Jupiter token](https://moonbase.moonscan.io/token/0x9aac6fb41773af877a2be73c99897f3ddfacf576){target=_blank}的元数据:
+
 === "Ethers.js"
+
     ```js
     --8<-- 'code/xc20/local-xc20s/ethers.js'
     ```
+
 === "Web3.js"
+
     ```js
     --8<-- 'code/xc20/local-xc20s/web3.js'
     ```
+
 === "Web3.py"
+
     ```py
     --8<-- 'code/xc20/local-xc20s/web3.py'
     ```
