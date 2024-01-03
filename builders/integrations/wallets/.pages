@@ -2,5 +2,6 @@ title: 钱包
 nav:
   - index.md
   - 'MetaMask': 'metamask.md'
+  - 'Particle Network': 'particle-network.md'
   - 'WalletConnect': 'walletconnect.md'
   
