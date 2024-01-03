@@ -11,7 +11,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 在本指南中，您将学习如何使用[Systemd](https://systemd.io/){target=_blank}启动Moonbeam节点，以及如何维护和清理您的节点。
 
-如果您有兴趣自己编译二进制文件（请注意这个过程可能需要超过30分钟并需要32GB内存）您可以查看[手动编译Moonbeam二进制文件](/node-operators/networks/run-a-node/compile-binary)指南。
+如果您有兴趣自己编译二进制文件（请注意这个过程可能需要超过30分钟并需要32GB内存）您可以查看[手动编译Moonbeam二进制文件](/node-operators/networks/run-a-node/compile-binary){target=_blank}指南。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
