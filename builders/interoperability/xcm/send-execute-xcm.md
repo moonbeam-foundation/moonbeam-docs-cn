@@ -103,8 +103,8 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 4. 指定`maxWeight`，其中包括您需要定义的`refTime`和`proofSize`值
 
-    - `refTime`是可用于执行的计算时间量。在本示例中，您可以设置为`400000000n`，这是因为 [`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L37){target=_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L59){target=_blank}的`refTime` 分别为`200000000`
-    - `proofSize`是可使用的存储量（以字节为单位）。在本示例中，您可以设置为`14484n`，这是因为[`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L37){target=_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/moonbeam_xcm_benchmarks_fungible.rs#L59){target=_blank}的`proofSize`分别为`7242`
+    - `refTime`是可用于执行的计算时间量。在本示例中，您可以设置为`400000000n`，这是因为 [`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L38){target=_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L60){target=_blank}的`refTime` 分别为`200000000`
+    - `proofSize`是可使用的存储量（以字节为单位）。在本示例中，您可以设置为`14484n`，这是因为[`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L38){target=_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L60){target=_blank}的`proofSize`分别为`7242`
 
     ```js
     const maxWeight = { refTime: 400000000n, proofSize: 14484n } ;
@@ -322,7 +322,7 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
     {{ networks.moonbase.precompiles.xcm_utils }}
     ```
 
-在底层调用中，XCM-Utilities预编译的`xcmSend`函数调用Polkadot XCM Pallet的`send`函数，即用Rust编码的Substrate pallet。使用XCM-Utilities预编译调用`send`的好处是您可以通过以太坊API完成此操作并使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}等以太坊库。要成功执行XCM消息，目标链需要了解消息中的指令。
+在底层调用中，XCM Utilities预编译的`xcmSend`函数调用Polkadot XCM Pallet的`send`函数，即用Rust编码的Substrate pallet。使用XCM Utilities预编译调用`send`的好处是您可以通过以太坊API完成此操作并使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}等以太坊库。要成功执行XCM消息，目标链需要了解消息中的指令。
 
 `xcmSend`函数接受两个参数：目标链的multilocation和要发送的SCALE编码的版本化XCM消息。
 
