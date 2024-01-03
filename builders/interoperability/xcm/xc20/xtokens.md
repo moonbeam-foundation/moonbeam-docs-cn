@@ -71,6 +71,20 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
 - **baseXcmWeight**() - 返回执行所需的基础XCM权重
 - **selfLocation**() - 返回链的multilocation
 
+## XCM Instructions for Transfers via X-Tokens {: #xcm-instructions }
+
+X-Tokens Pallet使用的XCM指令定义于[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}。
+
+无论用的是哪一个传输方法，将原生资产送回其原始链（例如，xcDOT从Moonbeam返回Polkadot）和将原生资产从原始链发送到目标链（例如，DOT从Polkadot发送到Moonbeam）的操作指示都是相同的。
+
+--8<-- 'text/builders/interoperability/xcm/xc20/send-xc20s/overview/DOT-to-xcDOT-instructions.md'
+
+学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将Dot发送至Moonbeam，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}作为例子。您可能需要[`transfer_self_reserve_asset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.spec_version}}/xtokens/src/lib.rs#L680){target=_blank}这个函数。在这个函数中，您会发现它调用了`TransferReserveAsset`函数并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`TransferReserveAsset`](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L514){target=_blank}这个指令。这条XCM消息结合了`ReserveAssetDeposited`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
+
+--8<-- 'text/builders/interoperability/xcm/xc20/send-xc20s/overview/xcDOT-to-DOT-instructions.md'
+
+学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将xcDOT发送至Polkadot，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}作为例子。您可能需要[`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.spec_version}}/xtokens/src/lib.rs#L697){target=_blank}这个函数。在这个函数中，您会发现它调用了`WithdrawAsset`函数，然后调用`InitiateReserveWithdraw`并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`InitiateReserveWithdraw` instruction](https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/xcm/xcm-executor/src/lib.rs#L638){target=_blank}这个指令。这条XCM消息结合了`WithdrawAsset`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
+
 ## 使用X-Tokens Pallet构建XCM消息 {: #build-xcm-xtokens-pallet}
 
 此教程将会包含使用X-Tokens Pallet构建XCM消息的过程，更详细来说为使用`transfer`和`transferMultiasset`函数。然而，这两种情况仍然可以外推至其他函数，特别是当您熟悉了multilocation的使用之后。
