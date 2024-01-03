@@ -292,7 +292,7 @@ await box.retrieve();
 
 ## 使用Hardhat进行分叉 {: #hardhat-forking }
 
-您可以使用Hardhat[分叉（fork）](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=_blank} 包括Moonbeam在内的任何EVM兼容链。分叉是在本地模拟实时Moonbeam网络，使您可以在本地测试环境中与已部署在Moonbeam上的合约交互。因为Hardhat的分叉是基于EVM实现，您可以通过[Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=_blank}和[Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=_blank}支持的标准以太坊JSON RPC方法与分叉网络交互。
+您可以使用Hardhat[分叉（fork）](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=_blank} 包括Moonbeam在内的任何EVM兼容链。分叉是在本地模拟实时Moonbeam网络，使您可以在本地测试环境中与已部署在Moonbeam上的合约交互。因为Hardhat的分叉是基于EVM实现，您可以通过[Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=_blank}和[Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=_blank}支持的标准以太坊JSON-RPC方法与分叉网络交互。
 
 您需要了解一些使用Hardhat进行分叉的注意事项。您无法与任何Moonbeam预编译合约及其函数交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。这将阻止您与Moonbeam上的跨链资产和基于Substrate的功能（例如质押和治理）进行交互。
 
