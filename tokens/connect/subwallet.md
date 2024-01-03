@@ -1,7 +1,7 @@
 ---
 title: How to Connect SubWallet to Moonbeam - 如何连接SubWallet至Moonbeam
 description: This guide walks you through how to connect SubWallet, a comprehensive Polkadot, Substrate, and Ethereum wallet, to Moonbeam. 
-通过本教程学习如何将SubWallet（一款综合性波卡、Substrate和以太坊钱包）钱包连接至Moonbeam。
+通过本教程学习如何将SubWallet（一款波卡、Substrate和以太坊综合性钱包）连接至Moonbeam。
 ---
 
 # Interacting with Moonbeam Using SubWallet - 使用SubWallet与Moonbeam交互
@@ -34,7 +34,7 @@ You can get started by heading to [SubWallet's download page](https://www.subwal
 
 If you choose to use the web-accessible dashboard, you won't need to download anything. You can access the dashboard at [web.subwallet.app](https://web.subwallet.app/welcome){target=_blank}.
 
-如果您选择使用可通过网络访问的数据面板，您无需下载任何东西，只需通过[web.subwallet.app](https://web.subwallet.app/welcome){target=_blank}访问数据面板即可。
+如果您选择使用通过网页访问的数据面板，您无需下载任何东西，只需在[web.subwallet.app](https://web.subwallet.app/welcome){target=_blank}访问数据面板即可。
 
 The interfaces for the mobile app, browser extension, and web dashboard are quite similar, so you can adapt the following instructions, which focus on the browser extension, for the mobile app and web dashboard.
 
@@ -143,7 +143,7 @@ If you select **Import from seed phrase**, there are some incompatibility issues
 
 If you select **Import from Polkadot.{js}**, you'll need to make sure that the account was created in Polkadot.js via private key. If it was created with a seed phrase and you attempt to import it to SubWallet, a different public address will be used. This is because Polkadot.js uses [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=_blank}, whereas Ethereum uses [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=_blank} or [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=_blank}.
 
-如果您选择**Import from Polkadot.{js}**（从Polkadot.{js}导入），您需要确保该账号是通过私钥在Polkadot.js中创建。如果该账户是通过助记词创建，并且您尝试将其导入SubWallet，则会使用不同的公共地址。这是因为Polkadot.js使用的是[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=_blank}，而以太坊使用的是_blank}, whereas Ethereum uses [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=_blank}或[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=_blank}。
+如果您选择**Import from Polkadot.{js}**（从Polkadot.{js}导入），您需要确保该账号是通过私钥在Polkadot.js中创建的。如果该账户是通过助记词创建并且尝试将其导入SubWallet，您将会得到一个一样的公共地址。这是因为Polkadot.js使用的是[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=_blank}，而以太坊使用的是[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=_blank}或[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=_blank}。
 
 ![Select the import option from the Import account screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-5.png)
 
@@ -276,7 +276,7 @@ To copy your address, click on the **Get address** icon.
 
 If you have multiple accounts and have selected **All accounts** from the account dropdown menu, you'll need to select the receiving account you want to send the assets to. Otherwise, make sure that the account you're connected to (which is displayed at the top of the screen) is the account you want to send the assets to. **This should be your Moonbeam account, which is an Ethereum-style address.**
 
-如果您有多个账户，并且从账户下拉菜单中选择了**All accounts**，您需要选择用于接收资产的地址。否则，请确保您连接的账户（显示在页面顶部）是要接收资产的地址。**该账户是Moonbeam账户，即以太坊格式的地址。**
+如果您有多个账户，并且从账户下拉菜单中选择了**All accounts**，您最好手动再次选择用于接收资产的地址。否则，请确认您当前连接的账户（显示在页面顶部）是正确的接收资产地址。**该账户是Moonbeam账户，即以太坊格式的地址。**
 
 ![Select an account to receive tokens on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-16.png)
 
