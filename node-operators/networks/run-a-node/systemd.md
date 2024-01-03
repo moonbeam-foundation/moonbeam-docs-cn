@@ -427,7 +427,7 @@ journalctl -f -u moonbeam.service
 在同步过程中，您既会看到镶嵌中继链([Relaychain])的日志也会看到平行链([🌗])的日志。日志展示了目标区块(实时网络中的state)与最好区块（本地网络同步state）。
 
 !!! 注意事项
-    同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements)。
+    同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements){target=_blank}。
 
 如果出于任何原因需要停止服务，可以运行：
 
