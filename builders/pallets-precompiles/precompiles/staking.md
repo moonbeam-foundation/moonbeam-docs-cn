@@ -127,8 +127,8 @@ Solidity接口包含以下的函数：
  - **nominator_nomination_count**(*address* nominator) —— 返回指定委托人地址委托数的只读函数。请改用`delegatorDelegationCount`
  - **leave_candidates**(*uint256* amount, *uint256* candidateCount) —— 立即从候选收集人池中删除帐户以防止其他人将其选为收集人，并触发解绑。请改用`scheduleLeaveCandidates`和`executeLeaveCandidates`
  - **candidate_bond_less**(*uint256* less) —— 候选收集人根据指定数量减少绑定数量。请改用`scheduleCandidateBondLess`和`execute_candidate_bond_less`
- - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量。请改用`delegate`
- - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托。请改用`scheduleLeaveDelegators`和`executeLeaveDelegators`
+ - **nominate**(*address* collator, *uint256* amount, *uint256* collatorNominationCount, *uint256* nominatorNominationCount) —— 如果执行者并不是委托人，此函数将会将其加入委托人集。如果执行者已经是委托人，此函数将会修改其委托数量。请改用`delegateWithAutoCompound`
+ - **leave_nominators**(*uint256* nominatorNominationCount) —— 离开委托人集并撤销所有正在进行中的委托。请改用[batch utility](/builders/pallets-precompiles/precompiles/batch){target=_blank}与`scheduleRevokeDelegation`来实现
  - **revoke_nominations**(*address* collator) —— 撤销指定委托。请改用`scheduleRevokeDelegation`和`executeDelegationRequest`
  - **nominatorBondMore**(*address* collator, *uint256* more) —— 委托人对指定收集人增加绑定的具体数量。请改用`delegatorBondMore`
  - **nominator_bond_less**(*address* collator, *uint256* less) —— 委托人对指定收集人减少绑定的具体数量。请改用`scheduleDelegatorBondLess`和`executeDelegationRequest`
