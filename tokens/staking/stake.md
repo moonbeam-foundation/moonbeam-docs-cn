@@ -28,7 +28,6 @@ Token持有者可以向候选人质押自己的Token，这一过程称为委托�
 
 ### 加入委托人集 {: #join-or-leave-the-delegator-set }
 
- - **delegate**(*address* candidate, *uint256* amount, *uint256* candidateDelegationCount, *uint256* delegatorDelegationCount) —— 委托收集人函数。数额需要大于最低委托质押量。
  - **delegateWithAutoCompound**(*address* candidate, *uint256* amount, *uint8* autoCompound, *uint256* candidateDelegationCount, *uint256* candidateAutoCompoundingDelegationCount, *uint256* delegatorDelegationCount) —— 与`delegate`类似，它会建立委托来支持收集人候选人。 但是，此函数也设置自动复合的奖励百分比
 
 ### 绑定更多Token或减少绑定Token {: #bond-more-or-less }
@@ -170,8 +169,6 @@ if (delegatorInfo.toHuman()) {
 
 !!! 注意事项
     第7-9步中用到的参数是为了估算Gas，所以不必和实际数据一致。但是，他们不应低于实际数值。 
-
-如果您想在不设置自动复合的情况下进行委托，您可以按照前面的步骤操作，但您可以使用 **delegate** extrinsic 而不是使用 **delegateWithAutoCompound**。
 
 ### 验证委托 {: #verifying-delegations }
 

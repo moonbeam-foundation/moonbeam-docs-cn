@@ -57,7 +57,7 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 - **cancelDelegationRequest**(candidate) -  取消提供候选人（收集人）的地址的任何待定中委托的请求
 - **cancelLeaveCandidates**(candidateCount) - 取消一个候选人（收集人）的待定中的已计划的请求，就目前在池中候选人的数量，以离开该池
 - **candidateBondMore**(more) - 请求增加有具体数量的候选人（收集人）自身绑定量
-- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - 请求添加针对特定候选人（收集人）的给定数量的委托并将自动复合的奖励百分比设置为`0`。如果调用者不是委托人，此函数添加其至委托人池。如果调用者已经是委托人，那么此函数调整其委托数量
+- **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - *从runtime 2400停止使用* - 请求为特定候选人（收集人）添加一定数额的委托。改为通过`delegateWithAutoCompound` extrinsic实现
 - **delegateWithAutoCompound**(candidate, amount, autoCompound, candidateDelegationCount, candidateAutoCompoundingDelegationCount, delegationCount) - 委托一个收集人候选人并用`amount`，一个0-100之间的整数（无小数）设置自动复合奖励百分比。如果调用者不是委托人，则此函数将它们添加到委托人集合中。如果调用者已经是委托人，则调整他们的委托数量。
 - **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
 - **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
@@ -112,9 +112,9 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 平行链质押pallet包括了以下只读函数以获取pallet常量：
 
 - **candidateBondLessDelay**() - 返回必须等待的轮次数，直到已计划的候选人（收集人）减少其自身绑定的请求可以被执行
-- **defaultBlocksPerRound**() - 返回每个轮次的默认区块数
-- **defaultCollatorCommission**() - 返回收集人的默认佣金
-- **defaultParachainBondReservePercent**() - 返回平行链账户预留的默认通胀百分比
+- **defaultBlocksPerRound**() - *从runtime 1900停止使用* - 返回每个轮次的默认区块数
+- **defaultCollatorCommission**() - *从runtime 1900停止使用* - 返回收集人的默认佣金
+- **defaultParachainBondReservePercent**() - *从runtime 1900停止使用* - 返回平行链账户预留的默认通胀百分比
 - **delegationBondLessDelay**() - 返回必须等待的轮次数，直到已计划的减少委托的请求可以被执行
 - **leaveCandidatesDelay**() - 在已计划的候选人（收集人）离开池的请求可以被执行之前，返回必须等待的轮次数
 - **leaveDelegatorsDelay**() - 在已计划的委托人离开委托人集的请求可以被执行之前，返回必须等待的轮次数
