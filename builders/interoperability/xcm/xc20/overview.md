@@ -167,17 +167,17 @@ XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperabili
 === "Ethers.js"
 
     ```js
-    --8<-- 'code/xc20/local-xc20s/ethers.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/overview/local-xc20s/ethers.js'
     ```
 
 === "Web3.js"
 
     ```js
-    --8<-- 'code/xc20/local-xc20s/web3.js'
+    --8<-- 'code/builders/interoperability/xcm/xc20/overview/local-xc20s/web3.js'
     ```
 
 === "Web3.py"
 
     ```py
-    --8<-- 'code/xc20/local-xc20s/web3.py'
+    --8<-- 'code/builders/interoperability/xcm/xc20/overview/local-xc20s/web3.py'
     ```

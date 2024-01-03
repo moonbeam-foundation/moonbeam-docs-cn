@@ -256,7 +256,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
         --frontier-backend-type sql \
         -- \
         --name="INSERT_YOUR_NODE_NAME (Embedded Relay)"
-
+        ```
 
 ### 收集人节点 {: #collator }
 
