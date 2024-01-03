@@ -89,7 +89,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 ### OnFinality {: #onfinality }
 
-[OnFinality](https://onfinality.io/){target=_blank}为客户提供比免费公共端点更高速率限制和性能的基于API密钥的免费端点。您还会收到有关您的应用程序使用情况的深入分析。
+[OnFinality](https://onfinality.io/){target=_blank} 为需要公用端点的客户提供了基于API密钥的免费端口。它也提供付费服务，与免费服务相比，付费节点拥有更高传输速率上限与更好的性能。您也会收到关于应用更详细的使用分析报告。
 
 要创建一个自定义OnFinality端点，首先导向至[OnFinality](https://onfinality.io/){target=_blank}并注册。如果您已注册可直接登录。在OnFinality的**Dashboard**，您可以执行以下操作：
 
