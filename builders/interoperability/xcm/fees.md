@@ -150,7 +150,7 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/lib.rs#L87){target=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
