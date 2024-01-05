@@ -307,8 +307,7 @@ const alice = keyring.addFromUri('INSERT_ALICES_PRIVATE_KEY');
 const bob = 'INSERT_BOBS_ADDRESS';
 
 // Form the transaction
-const tx = await api.tx.balances
-  .transfer(bob, 12345n);
+const tx = await api.tx.balances.transferAllowDeath(bob, 12345n);
 
 // Retrieve the encoded calldata of the transaction
 const encodedCalldata = tx.method.toHex();
@@ -327,6 +326,9 @@ console.log(`Submitted with hash ${txHash}`);
     ```js
     --8<-- 'code/builders/build/substrate-api/polkadot-js-api/basic-transactions.js'
     ```
+
+!!! note
+    Prior to client v0.35.0, the extrinsic used to perform a simple balance transfer was the `balances.transfer` extrinsic. It has since been deprecated and replaced with the `balances.transferAllowDeath` extrinsic.
 
 请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=_blank} 来获取正确数据，包括内存池（mempool）中的事务。
 
