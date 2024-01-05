@@ -84,6 +84,8 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        | {{networks.moonbeam.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank} |             {{networks.moonbeam.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonbeam.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=_blank}   |         {{networks.moonbeam.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=_blank}                 |              {{networks.moonbeam.precompiles.identity}}              |
 
 === "Moonriver"
     |                                                                           合约                                                                           |                                 地址                                  |
@@ -111,6 +113,8 @@ Moonbeam、Moonriver和Moonbase Alpha上包含一组按地址和基于源网络�
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank} |             {{networks.moonriver.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonriver.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=_blank}   |         {{networks.moonriver.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=_blank}                 |              {{networks.moonriver.precompiles.identity}}              |
 
 === "Moonbase Alpha"
     |                                                                           合约                                                                           |                                 地址                                 |

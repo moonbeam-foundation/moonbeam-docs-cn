@@ -59,6 +59,8 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        | {{networks.moonbeam.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank} |             {{networks.moonbeam.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonbeam.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=_blank}   |         {{networks.moonbeam.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=_blank}                 |              {{networks.moonbeam.precompiles.identity}}              |
 
 === "Moonriver"
     |                                                                           合约                                                                           |                                 地址                                  |
@@ -75,7 +77,7 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |              [Randomness](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}              |             {{networks.moonriver.precompiles.randomness}}             |
     |             [Call Permit](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}             |            {{networks.moonriver.precompiles.call_permit }}            |
     |                     [Proxy](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}                      |               {{networks.moonriver.precompiles.proxy }}               |
-    |              [XCM Utilities](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}              |             {{networks.moonriver.precompiles.xcm_utils }}             |
+    |              [XCM Utilities](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=_blank}              |             {{networks.moonbeam.precompiles.xcm_utils }}              |
     |  [XCM Transactor V2](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v2/XcmTransactorV2.sol){target=_blank}   |         {{networks.moonriver.precompiles.xcm_transactor_v2}}          |
     |          [Council Collective](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}          |        {{networks.moonriver.precompiles.collective_council }}         |
     |    [Technical Committee Collective](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}    |     {{networks.moonriver.precompiles.collective_tech_committee }}     |
@@ -86,6 +88,8 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}        | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank} |             {{networks.moonriver.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=_blank}                         |                {{networks.moonriver.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=_blank}   |         {{networks.moonriver.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=_blank}                 |              {{networks.moonriver.precompiles.identity}}              |
 
 === "Moonbase Alpha"
     |                                                                           合约                                                                           |                                 地址                                 |

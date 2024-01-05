@@ -11,9 +11,9 @@ Identity Precompile是一个Solidity接口，用于创建、管理和检索链�
 
 Identity Precompile直接与Substrate的[Identity Pallet](/builders/pallets-precompiles/pallets/identity){target=_blank}交互，以提供创建和管理身份所需的功能。此Pallet以Rust编写，通常无法从Moonbeam的以太坊侧直接访问。然而，Identity Precompile允许您直接从Solidity接口访问此功能。
 
-Identity Precompile只在Moonbase Alpha可用，它位于以下地址：
+Identity Precompile位于以下地址：
 
-<!-- === "Moonbeam"
+=== "Moonbeam"
 
      ```text
      {{networks.moonbeam.precompiles.identity }}
@@ -23,12 +23,12 @@ Identity Precompile只在Moonbase Alpha可用，它位于以下地址：
 
      ```text
      {{networks.moonriver.precompiles.identity }}
-     ``` -->
+     ```
 
 === "Moonbase Alpha"
 
      ```text
-     {{networks.moonriver.precompiles.identity }}
+     {{networks.moonbase.precompiles.identity }}
      ```
 
 --8<-- 'text/builders/build/pallets-precompiles/precompiles/security.md'
