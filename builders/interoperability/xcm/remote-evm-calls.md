@@ -56,7 +56,7 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 XCM队列的配置表明XCM消息应该设置为`20,000,000,000`权重单位（即`0.02`秒的区块执行时间）内可被执行。假设XCM消息因给定区块中的执行时间不足而无法执行，并且权重要求超过`20,000,000,000`。在这种情况下，XCM消息将被标记为`overweight`，并且只能通过民主的方式执行。
 
-每条XCM消息的`20,000,000,000`权重限制设置了可用于通过XCM进行远程EVM调用的Gas限制。对于所有基于Moonbeam的网络，比率为[`25,000` Gas单位每单位权重](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/runtime/moonbase/src/lib.rs#L394){target=_blank} ([`WEIGHT_REF_TIME_PER_SECOND`](https://paritytech.github.io/substrate/master/frame_support/weights/constants/constant.WEIGHT_REF_TIME_PER_SECOND.html){target=_blank} / [`GAS_PER_SECOND`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/runtime/moonbase/src/lib.rs#L390){target=_blank})。考虑到您需要一些XCM消息权重来自行执行XCM指令。因此，远程EVM调用可能还剩下大约`18,000,000,000`的重量，即`720,000` Gas单位。因此，您可以为远程EVM调用提供的最大Gas限制约为`720,000`个Gas单位。请注意，此数值可能会在未来发生变化。
+每条XCM消息的`20,000,000,000`权重限制设置了可用于通过XCM进行远程EVM调用的Gas限制。对于所有基于Moonbeam的网络，比率为[`25,000` Gas单位每单位权重](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/runtime/moonbase/src/lib.rs#L401){target=_blank} ([`WEIGHT_REF_TIME_PER_SECOND`](https://paritytech.github.io/substrate/master/frame_support/weights/constants/constant.WEIGHT_REF_TIME_PER_SECOND.html){target=_blank} / [`GAS_PER_SECOND`](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/runtime/moonbase/src/lib.rs#L397){target=_blank})。考虑到您需要一些XCM消息权重来自行执行XCM指令。因此，远程EVM调用可能还剩下大约`18,000,000,000`的重量，即`720,000` Gas单位。因此，您可以为远程EVM调用提供的最大Gas限制约为`720,000`个Gas单位。请注意，此数值可能会在未来发生变化。
 
 简单来说，以下为常规和远程EVM调用之间的主要区别：
 
