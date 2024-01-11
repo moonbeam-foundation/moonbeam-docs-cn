@@ -70,7 +70,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 要部署至Moonbeam网络，您需要添加并配置网络。Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和生产环境。
 
-从版本1.19.3开始，Brownie开箱即可支持Moonbeam、Moonriver、Moonbase Alpha和Moonbeam开发节点。要查看支持的网络的完整列表，您可以运行以下命令：
+从版本1.19.3开始，Brownie开箱即可支持Moonbeam、Moonriver和Moonbase Alpha。要查看支持的网络的完整列表，您可以运行以下命令：
 
 ```bash
 brownie networks list
@@ -78,6 +78,15 @@ brownie networks list
 
 ![Network list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
 
+如果您希望将合约部署到Moonbeam开发节点，则需要添加网络配置。在后台，Brownie使用Ganache开发环境。但是，由于Moonbeam开发节点将充当您自己的个人开发环境，因此不需要Ganache。因此，您可以将开发节点配置为“live”网络。
+
+要添加Moonbeam开发节点配置，您可以运行以下命令：
+
+```bash
+brownie networks add Moonbeam moonbeam-dev host={{ networks.development.rpc_url }} name=Development chainid={{ networks.development.chain_id }}
+```
+
+如果您成功添加了网络，您将会在终端看到关于网络细节的成功信息。
 
 要部署Moonbeam网络或是在特定网络上进行测试，您可以通过以下命令扩展至指定的网络：
 
@@ -102,7 +111,7 @@ brownie networks list
 === "Moonbeam开发节点"
 
     ```bash
-    --network moonbase
+    --network moonbeam-dev
     ```
 
 如果您希望设置默认网络，您可以通过添加以下代码段至`brownie-config.yaml`配置文件进行操作：
@@ -132,7 +141,7 @@ brownie networks list
 
     ```yaml
     networks:
-        default: moonbase
+        default: moonbeam-dev
     ```
 
 !!! 注意事项
@@ -254,7 +263,7 @@ def main():
 === "Moonriver"
 
     ```bash
-    brownie run scripts/deploy.py --network moonriver-main
+    brownie run scripts/deploy.py --network moonriver-mainn
     ```
 
 === "Moonbase Alpha"
@@ -266,7 +275,7 @@ def main():
 === "Moonbeam开发节点"
 
     ```bash
-    brownie run scripts/deploy.py --network moonbase
+    brownie run scripts/deploy.py --network moonbeam-dev
     ```
 
 在数秒后，合约将会被部署且在终端中可见。
@@ -304,7 +313,7 @@ def main():
 === "Moonbeam开发节点"
 
     ```bash
-    brownie console --network moonbase
+    brownie console --network moonbeam-dev
     ```
 
 随后，合约实例将会自动在终端中可见且可访问。它将会被打包在`ContractContainer`中，并允许您部署新的合约实例。要访问部署的合约，您可以使用`Box[0]`。您可以跟随以下步骤，调用`store`函数并将数值设置为`5`：
@@ -388,7 +397,7 @@ def main():
 === "Moonbeam开发节点"
 
     ```bash
-    brownie run scripts/store-and-retrieve.py --network moonbase
+    brownie run scripts/store-and-retrieve.py --network moonbeam-dev
     ```
 
 您需要输入Alice的密码才能发送交易以更新存储值。交易完成后，您应该会在控制台上看到交易哈希和“5”。
