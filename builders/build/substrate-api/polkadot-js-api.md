@@ -307,8 +307,7 @@ const alice = keyring.addFromUri('INSERT_ALICES_PRIVATE_KEY');
 const bob = 'INSERT_BOBS_ADDRESS';
 
 // Form the transaction
-const tx = await api.tx.balances
-  .transfer(bob, 12345n);
+const tx = await api.tx.balances.transferAllowDeath(bob, 12345n);
 
 // Retrieve the encoded calldata of the transaction
 const encodedCalldata = tx.method.toHex();
@@ -328,6 +327,9 @@ console.log(`Submitted with hash ${txHash}`);
     --8<-- 'code/builders/build/substrate-api/polkadot-js-api/basic-transactions.js'
     ```
 
+!!! 注意事项
+    在v0.35.0之前版本的客户端中，简单的转账交易使用`balances.transfer`方法来实现。这个方法已经停止使用，并且被`balances.transferAllowDeath`方法替代。
+
 请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=_blank} 来获取正确数据，包括内存池（mempool）中的事务。
 
 ### 交易费信息 {: #fees}
@@ -340,7 +342,7 @@ transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取
 
 ```javascript
 // Transaction to get weight information
-const tx = api.tx.balances.transfer('INSERT_BOBS_ADDRESS', BigInt(12345));
+const tx = api.tx.balances.transferAllowDeath('INSERT_BOBS_ADDRESS', BigInt(12345));
 
 // Get weight info
 const { partialFee, weight } = await tx.paymentInfo('INSERT_SENDERS_ADDRESS');
@@ -371,8 +373,8 @@ Polkadot.js API允许通过`api.tx.utility.batch`函数批处理事务。这些�
 // Construct a list of transactions to batch
 const collator = 'INSERT_COLLATORS_ADDRESS';
 const txs = [
-  api.tx.balances.transfer(bob, 12345n),
-  api.tx.balances.transfer(charlie, 12345n),
+  api.tx.balances.transferAllowDeath(bob, 12345n),
+  api.tx.balances.transferAllowDeath(charlie, 12345n),
   api.tx.parachainStaking.scheduleDelegatorBondLess(collator, 12345n),
 ];
 
