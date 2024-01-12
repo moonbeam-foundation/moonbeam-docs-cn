@@ -60,7 +60,7 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 ### Polkadot {: #polkadot }
 
-The total weight costs on Polkadot take into consideration database reads and writes in addition to the weight required for a given instruction. Polkadot uses benchmarked weights for instructions and database read and write operations. The breakdown of weight costs for the database operations is as follows:
+在波卡系统里，权重（weight）的价格包含了数据库的读写以及特定指令本身的权重。波卡为不同指令以及数据库的读写操作设定了它们的基准权重。以下是数据库操作权重计算的细则：
 
 |                                                                                       数据库                                                                                       |                          读                          |                          写                           |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------:|:-----------------------------------------------------:|

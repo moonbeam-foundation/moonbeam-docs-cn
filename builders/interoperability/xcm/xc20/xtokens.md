@@ -71,7 +71,7 @@ X-Tokens Pallet包含以下只读函数以获取pallet常量：
 - **baseXcmWeight**() - 返回执行所需的基础XCM权重
 - **selfLocation**() - 返回链的multilocation
 
-## XCM Instructions for Transfers via X-Tokens {: #xcm-instructions }
+## 用于X-Tokens转账的XCM指令 {: #xcm-instructions }
 
 X-Tokens Pallet使用的XCM指令定义于[X-Tokens Open Runtime Module Library](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/moonbeam-{{ polkadot_sdk }}/xtokens){target=_blank}。
 
