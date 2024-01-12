@@ -39,7 +39,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在共识�
 
 Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小工具，其中确定性过程与区块生产并行完成。此外，最终确定过程结合了区块链的结构，允许中继链验证人对他们认为有效的最高区块进行投票。在这种情况下，投票将适用于最终确定的所有区块，从而加快最终确定过程。当一个区块被包含在中继链后，一个区块就可以在Moonbeam上的一个区块内最终确定。
 
-## 检查交易确定性策略 {: #check-tx-finality-with-ethereum-rpc-endpoints }
+## 通过Ethereum RPC检查交易确定性 {: #check-tx-finality-with-ethereum-rpc-endpoints }
 
 尽管确定性的小工具有所不同，但您可以使用相同的、相对简单的策略来检查以太坊和Moonbeam上的交易确定性：
 
@@ -48,17 +48,7 @@ Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小�
  3. 将其与交易的区块号进行对比。如果交易被包含在之前的区块中，则该交易已完成
  4. 为保证检查的安全性，按编号检索区块并验证给定的交易哈希是否在区块中
 
-以下部分将概述如何使用Ethereum JSON-RPC（自定义Web3请求）和Substrate (Polkadot) JSON-RPC检查交易确定性。
-
-## 使用Moonbeam RPC端点检查交易确定性 {: #check-tx-finality-with-moonbeam-rpc-endpoints }
-
-Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，可用于检查链上事件是否已完成。
-
-您可以前往Moonbeam自定义API页面的[确定性RPC端点](/builders/build/moonbeam-custom-api#finality-rpc-endpoints){target=_blank}部分获取更多信息。
-
-## 使用以太坊库检查交易确定性 {: #checking-tx-finality-with-ethereum-libraries }
-
-下方代码片段遵循[上一部分](#strategy-to-check-tx-finality)中概述的策略来检查交易确定性。其使用[默认块参数](https://ethereum.org/en/developers/docs/apis/json-rpc/#default-block){target=_blank}的`finalized`选项来获取最新最终确定的区块。
+下方代码片段遵循这一策略来检查交易确定性。其使用[默认块参数](https://ethereum.org/en/developers/docs/apis/json-rpc/#default-block){target=_blank}的`finalized`选项来获取最新最终确定的区块。
 
 --8<-- 'text/_common/endpoint-examples.md'
 
@@ -83,35 +73,63 @@ Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTx
     --8<-- 'code/builders/get-started/eth-compare/consensus-finality/web3.py'
     ```
 
+## 使用Moonbeam RPC端点检查交易确定性 {: #check-tx-finality-with-moonbeam-rpc-endpoints }
+
+Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，可用于检查链上事件是否已完成。这两个方法都十分直接，您不需要对比区块数字来确保一个交易的完成性。
+
+您可以前往Moonbeam自定义API页面的[确定性RPC端点](/builders/build/moonbeam-custom-api#finality-rpc-endpoints){target=_blank}部分获取更多信息。
+
 您可以修改这些脚本以使用`moon_isBlockFinalized`和`moon_isTxFinalized`。为此，您可以使用[Web3.js](https://web3js.readthedocs.io/){target=_blank}和[Ethers.js](https://docs.ethers.org/){target=_blank}的`send`方法对Substrate JSON-RPC进行自定义调用。自定义RPC请求也可以使用 [Web3.py](https://web3py.readthedocs.io/){target=_blank}和`make_request`方法。您需要将方法名称和参数传递给自定义请求，您可以在[Moonbeam自定义API](/builders/build/moonbeam-custom-api/){target=_blank}页面上找到该请求。
 
-=== "Ethers.js"
+???+ code "moon_isBlockFinalized"
 
-    ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/ethers.js'
-    ```
+    === "Ethers.js"
 
-=== "Web3.js"
+        ```js
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/ethers.js'
+        ```
 
-    ```js
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.js'
-    ```
+    === "Web3.js"
 
-=== "Web3.py"
+        ```js
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.js'
+        ```
 
-    ```py
-    --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.py'
-    ```
+    === "Web3.py"
+
+        ```py
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/block/web3.py'
+        ```
+
+??? code "moon_isTxFinalized"
+
+    === "Ethers.js"
+
+        ```js
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/tx/ethers.js'
+        ```
+
+    === "Web3.js"
+
+        ```js
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/tx/web3.js'
+        ```
+
+    === "Web3.py"
+
+        ```py
+        --8<-- 'code/builders/get-started/eth-compare/consensus-finality/custom-rpc/tx/web3.py'
+        ```
 
 ## 使用Substrate库检查交易确定性 {: #check-tx-finality-with-substrate-rpc-endpoints }
 
-[Polkadot.js API package](/builders/build/substrate-api/polkadot-js-api){target=_blank}和[Python Substrate Interface package](/builders/build/substrate-api/py-substrate-interface){target=_blank}为开发者提供一种使用JavaScript和Python与Substrate链交互的方式。
-
-给定交易哈希（`tx_hash`），以下代码片段将获取当前最终确定的区块并将其与您提供的交易区块号进行比较。该代码依赖于来自Substrate JSON-RPC的三个RPC请求：
+利用以下三个Substrate JSON-RPC的RPC请求，您能够获取当前最终确定的区块并将其与您提供的交易区块号进行比较：
 
 - `chain_getFinalizedHead` - 第一个请求将获取最后的最终确定区块的区块哈希
 - `chain_getHeader` - 第二个请求将获取给定区块哈希的区块头
 - `eth_getTransactionReceipt` - 第三个请求将检索给定区块哈希的交易收据
+
+[Polkadot.js API package](/builders/build/substrate-api/polkadot-js-api){target=_blank}和[Python Substrate Interface package](/builders/build/substrate-api/py-substrate-interface){target=_blank}为开发者提供一种使用JavaScript和Python与Substrate链交互的方式。
 
 您可以在[Polkadot.js官方文档网站](https://polkadot.js.org/docs/substrate/rpc){target=_blank}获取关于Polkadot.js和Substrate JSON-RPC的更多信息，并在[PySubstrate官方文档网站](https://polkascan.github.io/py-substrate-interface/){target=_blank}获取关于Python Substrate接口的更多信息。
 
