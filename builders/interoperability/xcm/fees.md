@@ -44,11 +44,11 @@ Alice请求的资产转移过程如下：
 
 --8<-- 'text/builders/interoperability/xcm/xc20/send-xc20s/overview/DOT-to-xcDOT-instructions.md'
 
-学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将Dot发送至Moonbeam，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{ networks.polkadot.spec_version }}/xtokens){target=_blank}作为例子。您可能需要[`transfer_self_reserve_asset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{ networks.polkadot.spec_version }}/xtokens/src/lib.rs#L680){target=_blank}这个函数。在这个函数中，您会发现它调用了`TransferReserveAsset`函数并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`TransferReserveAsset`](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L511){target=_blank}这个指令。这条XCM消息结合了`ReserveAssetDeposited`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
+学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将Dot发送至Moonbeam，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/moonbeam-{{ polkadot_sdk }}/xtokens){target=_blank}作为例子。您可能需要[`transfer_self_reserve_asset`](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/moonbeam-{{ polkadot_sdk }}/xtokens/src/lib.rs#L679){target=_blank}这个函数。在这个函数中，您会发现它调用了`TransferReserveAsset`函数并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`TransferReserveAsset`](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L514){target=_blank}这个指令。这条XCM消息结合了`ReserveAssetDeposited`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
 
 --8<-- 'text/builders/interoperability/xcm/xc20/send-xc20s/overview/xcDOT-to-DOT-instructions.md'
 
-学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将xcDOT发送至Polkadot，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/open-web3-stack/open-runtime-module-library/tree/polkadot-{{networks.polkadot.spec_version}}/xtokens){target=_blank}作为例子。您可能需要[`transfer_to_reserve`](https://github.com/open-web3-stack/open-runtime-module-library/blob/polkadot-{{networks.polkadot.spec_version}}/xtokens/src/lib.rs#L697){target=_blank}这个函数。在这个函数中，您会发现它调用了`WithdrawAsset`函数，然后调用`InitiateReserveWithdraw`并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`InitiateReserveWithdraw` instruction](https://github.com/paritytech/polkadot-sdk/blob/{{polkadot_sdk}}/polkadot/xcm/xcm-executor/src/lib.rs#L639){target=_blank}这个指令。这条XCM消息结合了`WithdrawAsset`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
+学习更多关于如何使用搭建XCM指令来传输本地资产至目标链，比如将xcDOT发送至Polkadot，您可以参考[X-Tokens Open Runtime Module Library](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/moonbeam-{{ polkadot_sdk }}/xtokens){target=_blank}作为例子。您可能需要[`transfer_to_reserve`](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/moonbeam-{{ polkadot_sdk }}/xtokens/src/lib.rs#L696){target=_blank}这个函数。在这个函数中，您会发现它调用了`WithdrawAsset`函数，然后调用`InitiateReserveWithdraw`并且使用了`assets`, `dest`, 与 `xcm`三个参数。其中`xcm`参数包括了`BuyExecution`与`DepositAsset`指令。您可以访问Polkadot的Github库，在那您可以找到[`InitiateReserveWithdraw` instruction](https://github.com/paritytech/polkadot-sdk/blob/{{polkadot_sdk}}/polkadot/xcm/xcm-executor/src/lib.rs#L638){target=_blank}这个指令。这条XCM消息结合了`WithdrawAsset`指令，`ClearOrigin`指令与`xcm`参数，`xcm`参数包括`BuyExecution`和`DepositAsset`指令。
 
 ## 中继链XCM费用计算 {: #rel-chain-xcm-fee-calc }
 
@@ -60,18 +60,28 @@ Substrate已推出一个权重系统，决定一个函数的权重，也就是�
 
 ### Polkadot {: #polkadot }
 
-如同先前提到的，波卡目前对所有XCM指令采取[固定权重数量](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/src/xcm_config.rs#L111){target=_blank}的计算方式，也就是每条指令`{{ networks.polkadot.xcm_instructions.weight.display }}`权重单位。
+在波卡系统里，权重（weight）的价格包含了数据库的读写以及特定指令本身的权重。波卡为不同指令以及数据库的读写操作设定了它们的基准权重。以下是数据库操作权重计算的细则：
 
-虽然波卡目前并未使用数据库的权重单位计算花费，但以下仍记载了数据库运行包含的权重单位作为参考。
+|                                                                                       数据库                                                                                       |                          读                          |                          写                           |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------:|:-----------------------------------------------------:|
+| [RocksDB (default)](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight.display }} | {{ networks.polkadot.rocks_db.write_weight.display }} |
+|     [ParityDB](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     |    {{ networks.polkadot.parity_db.read_weight }}     |    {{ networks.polkadot.parity_db.write_weight }}     |
 
-|                                                                                    数据库                                                                                    |                      读                       |                       写                       |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------:|:----------------------------------------------:|
-| [RocksDB (default)](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/rocksdb_weights.rs){target=_blank} | {{ networks.polkadot.rocks_db.read_weight }}  | {{ networks.polkadot.rocks_db.write_weight }}  |
-|     [ParityDB](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/paritydb_weights.rs){target=_blank}     | {{ networks.polkadot.parity_db.read_weight }} | {{ networks.polkadot.parity_db.write_weight }} |
+现在您了解Polkadot上数据库读写的权重花费，您可以使用指令的基础权重花费计算总花费。
 
-在指令权重花费的计算架构完成后，您能够以DOT为单位计算指令的花费。
+例如，[`WithdrawAsset` 指令](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L55-L63){target=_blank}具有`{{ networks.polkadot.xcm_instructions.withdraw.base_weight.display }}`基础权重，且执行一个数据库读取和一个数据库写入。因此，`WithdrawAsset`指令的总权重花费将用以下方式计算：
 
-在波卡中，[`ExtrinsicBaseWeight`](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.polkadot.extrinsic_base_weight.display }}`，也就是[一分的十分之一](https://github.com/paritytech/polkadot/blob/{{networks.polkadot.spec_version}}/runtime/polkadot/constants/src/lib.rs#L89){targer=blank}。一分为`10^10 / 100`。
+```text
+{{ networks.polkadot.xcm_instructions.withdraw.base_weight.numbers_only }} + {{ networks.polkadot.rocks_db.read_weight.numbers_only }} + {{ networks.polkadot.rocks_db.write_weight.numbers_only }} = {{ networks.polkadot.xcm_instructions.withdraw.total_weight.numbers_only }}
+```
+
+[`BuyExecution`指令](https://github.com/polkadot-fellows/runtimes/blob/{{networks.polkadot.spec_version}}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L70-L76){target=_blank}具有`{{ networks.polkadot.xcm_instructions.buy_exec.base_weight }}`基础权重，且不包含任何数据库读写。因此，`BuyExecution` 指令的总权重花费为`{{ networks.polkadot.xcm_instructions.buy_exec.total_weight }}`。
+
+在Polkadot上，基准化的基础权重分为两类：可替代的和通用的。可替代的权重为用于转移资产的XCM指令，而通用的基础权重用于其他类型指令。您可以在Polkadot Runtime代码中查看[可替代资产](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L50){target=_blank}和[通用资产](https://github.com/polkadot-fellows/runtimes/blob/{{networks.polkadot.spec_version}}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L46){target=_blank}的权重。
+
+在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
+
+在Polkadot中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/constants/src/lib.rs#L89){target=blank}。一分为`10^10 / 100`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
@@ -91,31 +101,31 @@ DOTWeightToFeeCoefficient = 10^10 / ( 10 * 100 * DOTExtrinsicBaseWeight )
 DOTWeightToFeeCoefficient = 10^10 / ( 10 * 100 * {{ networks.polkadot.extrinsic_base_weight.numbers_only }} )
 ```
 
-最后`DOTWeightToFeeCoefficient`将会等于`{{ networks.polkadot.xcm_instructions.planck_dot_weight }} Planck-DOT`。现在，您可以开始以DOT为单位计算最终费用，并使用`DOTWeightToFeeCoefficient`常量和`TotalWeight`变量：
+所以，`DOTWeightToFeeCoefficient`与`{{ networks.polkadot.xcm_instructions.planck_dot_weight }} Planck-DOT`相同，现在您可以开始以KSM为单位计算最终费用，使用`DOTWeightToFeeCoefficient`作为常量和`TotalWeight`({{ networks.polkadot.xcm_instructions.withdraw.total_weight.display }})作为变量：
 
 ```text
 XCM-Planck-DOT-Cost = TotalWeight * DOTWeightToFeeCoefficient
 XCM-DOT-Cost = XCM-Planck-DOT-Cost / DOTDecimalConversion
 ```
 
-因此，一个XCM指令的实际计算方式如下：
+因此，以下为`WithdrawAsset`的实际计算方式：
 
 ```text
-XCM-Planck-DOT-Cost = {{ networks.polkadot.xcm_instructions.weight.numbers_only }} * {{ networks.polkadot.xcm_instructions.planck_dot_weight }} 
-XCM-DOT-Cost = {{ networks.polkadot.xcm_instructions.planck_dot_cost }} / 10^10
+XCM-Planck-DOT-Cost = {{ networks.polkadot.xcm_instructions.withdraw.total_weight.numbers_only }} * {{ networks.polkadot.xcm_instructions.planck_dot_weight }} 
+XCM-DOT-Cost = {{ networks.polkadot.xcm_instructions.withdraw.planck_dot_cost }} / 10^10
 ```
 
-总花费为`{{ networks.polkadot.xcm_instructions.dot_cost }} DOT`。
+总花费为`{{ networks.polkadot.xcm_instructions.withdraw.dot_cost }} DOT`。
 
-作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以转移xcDOT至DOT到波卡网络上所需的总花费：
+作为范例，您可以使用以下权重和指令花费计算传送一条XCM消息以在Kusama网络上转移xcKSM至KSM的总花费：
 
-|      指令       |                          重量                           |                           成本                            |
-|:---------------:|:-------------------------------------------------------:|:---------------------------------------------------------:|
-| `WithdrawAsset` | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
-|  `ClearOrigin`  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
-| `BuyExecution`  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
-| `DepositAsset`  | {{ networks.polkadot.xcm_instructions.weight.display }} |   {{ networks.polkadot.xcm_instructions.dot_cost }} DOT   |
-|    **总量**     | **{{ networks.polkadot.xcm_message.transfer.weight }}** | **{{ networks.polkadot.xcm_message.transfer.cost }} DOT** |
+|                                                                                                指令                                                                                                |                                  重量                                  |                                成本                                 |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------:|:-------------------------------------------------------------------:|
+| [`WithdrawAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L55-L63){target=_blank}  | {{ networks.polkadot.xcm_instructions.withdraw.total_weight.display }} |   {{ networks.polkadot.xcm_instructions.withdraw.dot_cost }} DOT    |
+|   [`ClearOrigin`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.polkadot.spec_version}}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L129-L135){target=_blank}   |   {{ networks.polkadot.xcm_instructions.clear_origin.total_weight }}   | {{ networks.polkadot.xcm_instructions.clear_origin.dot_cost }} DOT  |
+|   [`BuyExecution`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.polkadot.spec_version}}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L70-L76){target=_blank}    |     {{ networks.polkadot.xcm_instructions.buy_exec.total_weight }}     |   {{ networks.polkadot.xcm_instructions.buy_exec.dot_cost }} DOT    |
+| [`DepositAsset`](https://github.com/polkadot-fellows/runtimes/blob/{{ networks.polkadot.spec_version }}/relay/polkadot/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L147-L155){target=_blank} |  {{ networks.polkadot.xcm_instructions.deposit_asset.total_weight }}   | {{ networks.polkadot.xcm_instructions.deposit_asset.dot_cost }} DOT |
+|                                                                                              **总量**                                                                                              |        **{{ networks.polkadot.xcm_message.transfer.weight }}**         |      **{{ networks.polkadot.xcm_message.transfer.cost }} DOT**      |
 
 ### Kusama {: #kusama }
 
@@ -140,7 +150,7 @@ Kusama上的总权重花费包括：给定指令本身花费和数据库读写�
 
 在了解指令的权重花费架构后，您可以以KSM为单位计算指令花费。
 
-在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/lib.rs#L87){targer=blank}。一分为`10^12 / 30,000`。
+在Kusama中，[`ExtrinsicBaseWeight`](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/weights/extrinsic_weights.rs#L56){target=_blank}被设置为`{{ networks.kusama.extrinsic_base_weight.display }}`，为[一分的十分之一](https://github.com/polkadot-fellows/runtimes/blob/{{networks.kusama.spec_version}}/relay/kusama/constants/src/lib.rs#L87){target=blank}。一分为`10^12 / 30,000`。
 
 因此您可以使用以下公式计算一个XCM指令的执行费用：
 
