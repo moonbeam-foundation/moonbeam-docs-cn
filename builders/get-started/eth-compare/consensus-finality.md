@@ -48,12 +48,6 @@ Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小�
  3. 将其与交易的区块号进行对比。如果交易被包含在之前的区块中，则该交易已完成
  4. 为保证检查的安全性，按编号检索区块并验证给定的交易哈希是否在区块中
 
-<!-- 以下部分将概述如何使用Ethereum JSON-RPC（自定义Web3请求）和Substrate (Polkadot) JSON-RPC检查交易确定性。
-
-
-
-## 使用以太坊库检查交易确定性 {: #checking-tx-finality-with-ethereum-libraries } -->
-
 下方代码片段遵循这一策略来检查交易确定性。其使用[默认块参数](https://ethereum.org/en/developers/docs/apis/json-rpc/#default-block){target=_blank}的`finalized`选项来获取最新最终确定的区块。
 
 --8<-- 'text/_common/endpoint-examples.md'
@@ -78,6 +72,7 @@ Moonbeam不使用checkpoint区块，而是依赖Polkadot的GRANDPA确定性小�
     ```py
     --8<-- 'code/builders/get-started/eth-compare/consensus-finality/web3.py'
     ```
+
 ## 使用Moonbeam RPC端点检查交易确定性 {: #check-tx-finality-with-moonbeam-rpc-endpoints }
 
 Moonbeam添加了对两个自定义RPC端点`moon_isBlockFinalized`和`moon_isTxFinalized`的支持，可用于检查链上事件是否已完成。这两个方法都十分直接，您不需要对比区块数字来确保一个交易的完成性。
