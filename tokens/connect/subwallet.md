@@ -19,7 +19,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 与SubWallet交互有多种方式，例如**通过浏览器扩展程序、移动端App或网页端数据面板**。
 
-首先前往[SubWallet下载页面](https://www.subwallet.app/download.html){target=_blank}，根据个人使用习惯下载SubWallet。
+首先前往[SubWallet下载页面](https://www.subwallet.app/zh/download.html?lang=1){target=_blank}，根据个人使用习惯下载SubWallet。
 
 如果您选择使用通过网页访问的数据面板，您无需下载任何东西，只需在[web.subwallet.app](https://web.subwallet.app/welcome){target=_blank}访问数据面板即可。
 
