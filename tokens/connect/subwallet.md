@@ -7,7 +7,7 @@ description: 通过本教程学习如何将SubWallet（一款波卡、Substrate�
 
 ## 概览 {: #introduction }
 
-Moonbeam的开发者和用户在使用钱包时有多种选择。得益于Moonbeam与以太坊的无缝兼容性，Moonbeam支持[SubWallet](https://www.subwallet.app/){target=_blank}等多种常用钱包。
+Moonbeam的开发者和用户在使用钱包时有多种选择。得益于Moonbeam与以太坊的无缝兼容性，Moonbeam支持[SubWallet](https://www.subwallet.app/zh/?lang=1){target=_blank}等多种常用钱包。
 
 SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包。尽管Moonbeam是一条基于Substrate的区块链，但是其有一个[统一的账户系统](/learn/features/unified-accounts){target=_blank}，用以太坊格式的账户和密钥替代了默认的Substrate格式的账户和密钥。由于Substrate支持以太坊格式的账户，因此您可以使用SubWallet与Moonbeam账户交互。
 
