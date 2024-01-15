@@ -279,7 +279,7 @@ keypair = Keypair.create_from_private_key(privatekey, crypto_type=KeypairType.EC
 # Form a transaction call
 call = ws_provider.compose_call(
     call_module="Balances",
-    call_function="transfer",
+    call_function="transfer_allow_death",
     call_params={
         "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
         "value": 1 * 10**18,
@@ -317,7 +317,7 @@ try:
     # Construct a transaction call
     call = ws_provider.compose_call(
         call_module="Balances",
-        call_function="transfer",
+        call_function="transfer_allow_death",
         call_params={
             "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
             "value": 1 * 10**18,
@@ -367,7 +367,7 @@ try:
     # Construct the same transaction call that was signed
     call = ws_provider.compose_call(
         call_module="Balances",
-        call_function="transfer",
+        call_function="transfer_allow_death",
         call_params={
             "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
             "value": 1 * 10**18,
@@ -375,12 +375,12 @@ try:
     )
 
     # Construct the signed extrinsic with the generated signature
-    extrinsic = substrate.create_signed_extrinsic(
+    extrinsic = ws_provider.create_signed_extrinsic(
         call=call, keypair=keypair, signature=signature
     )
 
     # Submit the signed extrinsic
-    result = substrate.submit_extrinsic(extrinsic=extrinsic)
+    result = ws_provider.submit_extrinsic(extrinsic=extrinsic)
 
     # Print the execution result
     print(result.extrinsic_hash)

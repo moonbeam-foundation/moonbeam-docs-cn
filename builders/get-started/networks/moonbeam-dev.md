@@ -34,7 +34,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
     控制台日志的结尾应如下所示：
 
-    ![Docker - imaged pulled](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-1.png)
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/docker-pull.md'
 
 2. 通过运行以下Docker命令启动Moonbeam开发节点，该命令将以即时封装模式启动节点以进行本地测试，以便在收到交易时立即创建区块：
 
@@ -67,7 +67,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
 
-![Docker - output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-2.png)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/docker-run.md'
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -130,7 +130,7 @@ moonbeamfoundation/moonbeam \
 
     构建输出的末尾应如下所示：
 
-    ![End of build output](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-3.png)
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/compile.md'
 
 !!! 注意事项
     初始构建将会需要一些时间。取决于您的硬件设备，构建过程大约需要30分钟。
@@ -146,7 +146,7 @@ moonbeamfoundation/moonbeam \
 
 您将看到显示区块待创建的空闲状态界面：
 
-![Output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-4.png)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/run-binary.md'
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
