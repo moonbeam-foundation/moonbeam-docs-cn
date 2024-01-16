@@ -187,7 +187,7 @@ npm i @polkadot/api ethers
     --8<-- 'code/builders/interoperability/mrl/complete-script.js'
     ```
 
-如果您想查看一个完全实现了此功能的示例项目，可以访问这个[GitHub repository](https://github.com/jboetticher/mrl-reverse){target=_blank}。
+如果您想查看一个完全实现了此功能的示例项目，可以访问这个[GitHub repository](https://github.com/jboetticher/mrl-mono){target=_blank}。
 
 请注意，并非每个平行链都包括X-Tokens和其他必要Pallet。基于Substrate的链都非常灵活，甚至没有一个固定标准。如果您认为您的平行链不支持此路径，请在[Moonbeam论坛](https://forum.moonbeam.network/){target=_blank}上和Wormhole团队中提供替代解决方案。
 
