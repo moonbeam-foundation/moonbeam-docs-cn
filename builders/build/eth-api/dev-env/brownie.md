@@ -53,7 +53,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
     brownie init
     ```
 
-![Create Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-1.png)
+    --8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/init.md'
 
 您的Brownie项目应包含以下空白目录：
 
@@ -76,7 +76,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 brownie networks list
 ```
 
-![Network list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/list-networks.md'
 
 如果您希望将合约部署到Moonbeam开发节点，则需要添加网络配置。在后台，Brownie使用Ganache开发环境。但是，由于Moonbeam开发节点将充当您自己的个人开发环境，因此不需要Ganache。因此，您可以将开发节点配置为“live”网络。
 
@@ -159,7 +159,7 @@ brownie accounts new {INSERT_ACCOUNT_NAME}
 
 系统将跳出弹窗提示您输入私钥和加密账户密码。如果账户被成功配置，您将会在终端中看到您的账户地址。
 
-![Add account](/images/builders/build/eth-api/dev-env/brownie/brownie-3.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/new-account.md'
 
 ## 合约文件 {: #the-contract-file }
 
@@ -202,7 +202,7 @@ contract Box {
 brownie compile
 ```
 
-![Compile Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-4.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/compile.md'
 
 !!! 注意事项
     首次编译合约时需要安装`solc`二进制文件，因此可能需要较长的时间。
@@ -280,7 +280,7 @@ def main():
 
 在数秒后，合约将会被部署且在终端中可见。
 
-![Deploy Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-5.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/deploy.md'
 
 恭喜您，您的合约已上线！您可以储存地址，您将会在下个步骤中使用该地址并与之交互。
 
@@ -344,7 +344,7 @@ def main():
 
 您将会看见`5`或是任何您先前储存的数据。
 
-![Interact with Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-6.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/interact.md'
 
 恭喜您！您已经成功通过Brownie部署合约并与之交互！
 
