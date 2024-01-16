@@ -263,7 +263,7 @@ def main():
 === "Moonriver"
 
     ```bash
-    brownie run scripts/deploy.py --network moonriver-mainn
+    brownie run scripts/deploy.py --network moonriver-main
     ```
 
 === "Moonbase Alpha"
