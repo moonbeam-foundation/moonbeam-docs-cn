@@ -3,4 +3,4 @@ nav:
     - index.md
     - '概览': 'overview.md'
     - '与XC-20资产交互': 'interact.md'
-    - 'XC-20转账': 'xtokens.md'
+    - 'send-xc20s'

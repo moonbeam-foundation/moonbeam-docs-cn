@@ -336,7 +336,7 @@ console.log(`Submitted with hash ${txHash}`);
 
 transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取权重的方法. 您需要在使用特定`module`和`method`构建完整个交易之后使用`paymentInfo`函数。.
 
-`paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/xcm-transactor/){target=_blank}时非常有用.
+`paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/remote-execution/){target=_blank}时非常有用.
 
 假设您已成功[初始化API](#creating-an-API-provider-instance)，以下代码片段展示了如何获取一个简单转账交易的weight信息：
 

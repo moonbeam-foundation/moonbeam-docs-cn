@@ -10,9 +10,9 @@ _作者：Kevin Neilson_
 
 ## 概览 {: #introduction }
 
-在本教程中，我们将通过从Moonbase中继链（相当于波卡中继链）上的账户发送XCM指令来远程质押DEV Token。本教程将假定您基本上熟悉[XCM](/builders/interoperability/xcm/overview/){target=_blank}和[通过XCM远程执行](/builders/interoperability/xcm/xcm-transactor/){target=_blank}等相关内容。您不需要是这方面的专家，但您可能会发现拥有一些XCM背景知识会有所帮助。
+在本教程中，我们将通过从Moonbase中继链（相当于波卡中继链）上的账户发送XCM指令来远程质押DEV Token。本教程将假定您基本上熟悉[XCM](/builders/interoperability/xcm/overview/){target=_blank}和[通过XCM远程执行](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/){target=_blank}等相关内容。您不需要是这方面的专家，但您可能会发现拥有一些XCM背景知识会有所帮助。
 
-实际上，有两种可能的方法可以通过XCM在Moonbeam上进行远程质押。我们可以发送一个[远程 EVM调用](/builders/interoperability/xcm/remote-evm-calls/){target=_blank}调用[质押预编译](/builders/pallets-precompiles/precompiles/staking/){target=_blank}，或者我们可以使用XCM直接调用[平行链质押pallet](/builders/pallets-precompiles/pallets/staking/){target=_blank}而无需与EVM交互。在本教程中，我们将采用后者的方法，直接与平行链质押pallet进行交互。
+实际上，有两种可能的方法可以通过XCM在Moonbeam上进行远程质押。我们可以发送一个[远程 EVM调用](/builders/interoperability/xcm/remote-execution/remote-evm-calls/){target=_blank}调用[质押预编译](/builders/pallets-precompiles/precompiles/staking/){target=_blank}，或者我们可以使用XCM直接调用[平行链质押pallet](/builders/pallets-precompiles/pallets/staking/){target=_blank}而无需与EVM交互。在本教程中，我们将采用后者的方法，直接与平行链质押pallet进行交互。
 
 **请注意，通过XCM消息远程执行的操作仍然存在一定限制。**此外，**开发者必须了解发送不正确的XCM消息可能会导致资金损失。**因此，在转移到生产环境之前，在测试网上测试XCM的功能是必要的。
 
@@ -21,10 +21,10 @@ _作者：Kevin Neilson_
 出于开发目的，本教程是为使用测试网资金的Moonbase Alpha和Moonbase中继链网络编写的。先决条件如下：
 
 - 拥有一个具有一些UNIT的Moonbase Alpha中继链账户，UNIT是Moonbase中继链的原生Token。如果您拥有一个具有DEV的Moonbase Alpha帐户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上用一些DEV兑换xcUNIT。然后从Moonbase Alpha通过使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=_blank}提现xcUNIT到[您在Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}
-- 您将会需要计算您Moonbase Alpha中继链的[多地点衍生账户（multilocation derivative account）](#calculating-your-multilocation-derivative-account)和使其拥有足够的DEV Token。
+- 您将会需要计算您Moonbase Alpha中继链的[Computed Origin账户](#calculating-your-computed-origin-account)和使其拥有足够的DEV Token。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
 
-## 计算您的Multilocation衍生账户 {: #calculating-your-multilocation-derivative-account }
+## 计算您的Computed Origin账户 {: #calculating-your-computed-origin-account }
 
 --8<-- 'text/builders/interoperability/xcm/calculate-multilocation-derivative-account.md'
 
@@ -32,7 +32,7 @@ _作者：Kevin Neilson_
 
 ![Calculate Multi-Location Derivative Account](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-1.png)
 
-此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址。您可以在[Moonscan](https://moonbase.moonscan.io/){target=_blank}上查看您的multilocation衍生账户。请注意，此账户为空白账户，您需要为此账户充值至少1.1个DEV Token。您可以通过[水龙头](https://faucet.moonbeam.network/){target=_blank}获取DEV。如果您需要更多的DEV Token，您可以通过[Discord](https://discord.com/invite/amTRXQ9ZpW){target=_blank}联系我们获取更多的DEV Token。
+此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址。您可以在[Moonscan](https://moonbase.moonscan.io/){target=_blank}上查看您的Computed Origin账户。请注意，此账户为空白账户，您需要为此账户充值至少1.1个DEV Token。您可以通过[水龙头](https://faucet.moonbeam.network/){target=_blank}获取DEV。如果您需要更多的DEV Token，您可以通过[Discord](https://discord.com/invite/amTRXQ9ZpW){target=_blank}联系我们获取更多的DEV Token。
 
 ## 准备在Moonbase Alpha上质押 {: #preparing-to-stake-on-moonbase-alpha }
 
@@ -169,7 +169,7 @@ XCM Pallet的`send`函数接收两个参数：`dest`和`message`。您可以通�
 ```
 
 !!! 注意事项
-    请记住，您的multilocation衍生账户必须至少拥有1.1个DEV或更多资金，以确保您有足够的资金进行质押并支付交易费用。
+    请记住，您的Computed Origin账户必须至少拥有1.1个DEV或更多资金，以确保您有足够的资金进行质押并支付交易费用。
 
 上述代码片段中，除了通过XCM交易提交远程质押之外，我们还输出交易哈希以协助任何调试。
 
