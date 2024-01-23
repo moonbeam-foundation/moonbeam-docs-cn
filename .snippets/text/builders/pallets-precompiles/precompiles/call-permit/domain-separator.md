@@ -1,4 +1,4 @@
-**DOMAIN_SEPARATOR()**定义于[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=_blank}中，并由以下公式计算：
+**DOMAIN_SEPARATOR()**定义于[EIP-712标准](https://eips.ethereum.org/EIPS/eip-712){target=\_blank}中，并由以下公式计算：
 
 ```js
 keccak256(PERMIT_DOMAIN, name, version, chain_id, address)

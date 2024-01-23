@@ -9,9 +9,9 @@ description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgra
 
 索引协议可以更有效地组织信息，便于应用程序访问及使用。例如，Google就是通过索引整个互联网的信息，快速为搜索者提供所需信息。
 
-[The Graph](https://thegraph.com/){target=_blank}是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或DApp都可以便捷地利用这些数据。
+[The Graph](https://thegraph.com/){target=\_blank}是一个去中心化、开源的索引协议，可以为以太坊等网络查询信息进行服务。简而言之，The Graph提供了一种更有效的、储存智能合约发出的事件消息数据的方式，让其他项目或DApp都可以便捷地利用这些数据。
 
-此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/en/about/introduction/#what-the-graph-is){target=_blank}了解更多关于The Graph协议的信息。
+此外，开发人员还可以创建相应的API（称为Subgraph）。用户或其他开发人员可以用Subgraph来查询与一系列智能合约相关的数据，数据将通过标准化GraphQL API进行获取。您可以访问[此文档](https://thegraph.com/docs/en/about/introduction/#what-the-graph-is){target=\_blank}了解更多关于The Graph协议的信息。
 
 因为Moonbeam支持以太坊跟踪模块，The Graph可以索引Moonbeam上的区块链数据。本教程将介绍如何在Moonbase Alpha上为彩票合约创建简单的subgraph。本教程也可以在Moonbeam和Moonriver网络上使用。
 
@@ -53,12 +53,12 @@ description: 了解如何使用Moonbeam上的Graph索引协议构建称为subgra
 
 在Moonbase Alpha上使用The Graph有两种方式：
 
- - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/){target=_blank}（也可适用于Moonbeam和Moonriver）
- - 通过[Graph Explorer网站](https://thegraph.com/explorer/){target=_blank}将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币  
+ - 在Moonbase Alpha上运行Graph节点，并将Subgraph指向这一节点。具体操作步骤请见[此教程](/node-operators/indexers/thegraph-node/){target=\_blank}（也可适用于Moonbeam和Moonriver）
+ - 通过[Graph Explorer网站](https://thegraph.com/explorer/){target=\_blank}将您的Subgraph指向The Graph API。为此，您需要创建账户，并获取访问代币  
 
 ## 彩票合约 {: #the-lottery-contract }
 
-我们将使用一个简单的彩票合约作为示例。您可以通过[MoonLotto Repo](https://github.com/papermoonio/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol){target=_blank}找到其Solidity文档。
+我们将使用一个简单的彩票合约作为示例。您可以通过[MoonLotto Repo](https://github.com/papermoonio/moonlotto-subgraph/blob/main/contracts/MoonLotto.sol){target=\_blank}找到其Solidity文档。
 
 合约玩家可以通过这个合约为自己购买彩票，也可以送给另外一位用户。一个小时后，如果参与者达到了十位，并且下一位玩家进入后，就会触发某一函数决定中奖者。所有储存在合约中的资金将发送到中奖者的地址上，然后游戏进入下一轮。
 
@@ -78,7 +78,7 @@ The Graph使用彩票合约发出的事件消息进行数据索引。彩票合�
 
 ## 创建Subgraph {: #creating-a-subgraph }
 
-本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/papermoonio/moonlotto-subgraph){target=_blank}有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您想了解更多关于配置文件和使用Hardhat部署智能合约，可以查看[Hardhat集成教程](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
+本章节将介绍创建Subgraph的流程。彩票Subgraph的[GitHub代码库](https://github.com/papermoonio/moonlotto-subgraph){target=\_blank}有您所需的所有信息。此外，代码库还包含了该彩票合约以及Hardhat配置文件和部署脚本。如果您想了解更多关于配置文件和使用Hardhat部署智能合约，可以查看[Hardhat集成教程](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}。
 
 第一步，克隆代码库并安装附带程序：
 
@@ -98,15 +98,15 @@ npx graph codegen --output-dir src/types/
 
 `codegen`命令也可使用`yarn codegen`执行。
 
-在本示例中，合约的部署地址为`{{ networks.moonbase.thegraph.lotto_contract }}`。[Moonloto代码库](https://github.com/papermoonio/moonlotto-subgraph){target=_blank}中的`README.md`文档也有合约编译与部署的必要步骤指引。
+在本示例中，合约的部署地址为`{{ networks.moonbase.thegraph.lotto_contract }}`。[Moonloto代码库](https://github.com/papermoonio/moonlotto-subgraph){target=\_blank}中的`README.md`文档也有合约编译与部署的必要步骤指引。
 
 ### Subgraph核心架构 {: #subgraphs-core-structure }
 
 一般而言，Subgraph定义了The Graph将从区块链上索引的数据以及其存储方式。Subgraph一般含有以下文档：
 
- - **subgraph.yaml** —— 包含着[Subgraph manifest](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-subgraph-manifest){target=_blank}文件的YAML文档，也就是与Subgraph索引的智能合约相关的信息
- - **schema.graphql** —— [GraphQL schema](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-graph-ql-schema){target=_blank}文档，定义正在创建的Subgraph的数据储存及其架构。通过[GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language){target=_blank}编写。
- - **AssemblyScript mappings** —— TypeScript中的代码（接下来编译为[AssemblyScript](https://github.com/AssemblyScript/assemblyscript){target=_blank}，用于将合约中的事件数据翻译成schema中定义的实体
+ - **subgraph.yaml** —— 包含着[Subgraph manifest](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-subgraph-manifest){target=\_blank}文件的YAML文档，也就是与Subgraph索引的智能合约相关的信息
+ - **schema.graphql** —— [GraphQL schema](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-graph-ql-schema){target=\_blank}文档，定义正在创建的Subgraph的数据储存及其架构。通过[GraphQL interface definition schema](https://graphql.org/learn/schema/#type-language){target=\_blank}编写。
+ - **AssemblyScript mappings** —— TypeScript中的代码（接下来编译为[AssemblyScript](https://github.com/AssemblyScript/assemblyscript){target=\_blank}，用于将合约中的事件数据翻译成schema中定义的实体
 
 创建Subgraph需要对文档进行修改，文档的修改没有特定顺序。
 
@@ -206,7 +206,7 @@ dataSources:
 
 映射文档是将区块链数据转换为在schema文档中定义的实体。`subgraph.yaml`文档中的每一个事件处理函数都需要在映射中有一个后续函数。
 
-彩票合约示例中所用的映射文档可以在[Moonlotto Github Repository](https://github.com/papermoonio/moonlotto-subgraph/blob/main/src/mapping.ts){target=_blank}中找到。
+彩票合约示例中所用的映射文档可以在[Moonlotto Github Repository](https://github.com/papermoonio/moonlotto-subgraph/blob/main/src/mapping.ts){target=\_blank}中找到。
 
 一般而言，处理函数的工作流程是：加载事件数据，检查是否已存在，以最优方式排列数据，并进行保存。例如， `PlayerJoined`事件的处理函数如下：
 
@@ -257,13 +257,13 @@ export function handlePlayerJoined(event: PlayerJoined): void {
 
 ## 部署Subgraph {: #deploying-a-subgraph }
 
-部署Subgraph有几种方式。本教程会介绍使用[托管式服务部署](#using-the-hosted-service){target=_blank}，及使用[本地节点部署](#using-a-local-graph-node){target=_blank}。
+部署Subgraph有几种方式。本教程会介绍使用[托管式服务部署](#using-the-hosted-service){target=\_blank}，及使用[本地节点部署](#using-a-local-graph-node){target=\_blank}。
 
 ### 使用托管式服务 {: #using-the-hosted-service }
 
 如果您准备使用The Graph API（托管式服务），您需要进行以下步骤：
 
- - 首先您需要有Github账户，创建[Graph Explorer](https://thegraph.com/explorer/){target=_blank}账户
+ - 首先您需要有Github账户，创建[Graph Explorer](https://thegraph.com/explorer/){target=\_blank}账户
  - 进入主面板，并输入访问代币
  - 在Graph Explorer网页点击**Add Subgraph**按钮，创建Subgraph。输入Subgraph名称。
 
@@ -279,7 +279,7 @@ npx graph deploy --product hosted-service <username>/<subgraph-name>
  - **access-token** —— 使用Graph API服务的access token
 
 !!! 注意事项
-    以上步骤均可在[此链接](https://thegraph.com/docs/developer/quick-start#4-deploy-your-subgraph){target=_blank}中找到。
+    以上步骤均可在[此链接](https://thegraph.com/docs/developer/quick-start#4-deploy-your-subgraph){target=\_blank}中找到。
 
 ### 使用本地Graph节点 {: #using-a-local-graph-node }
 

@@ -50,7 +50,7 @@ Multisig Pallet包含以下只读函数来获取Pallet常量：
 
 ## 如何创建多签账户 {: #create-a-multisig-account }
 
-您可以从Polkadot.js应用程序界面轻松创建多签账户。最简单的方法是在[**Accounts**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}进行操作。
+您可以从Polkadot.js应用程序界面轻松创建多签账户。最简单的方法是在[**Accounts**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=\_blank}进行操作。
 
 首先，点击**Multisig**。
 
@@ -86,7 +86,7 @@ Deposit = depositBase + threshold * depositFactor
 
 由于此多签有两个阈值，因此如果不是Bob和Charlie同时批准的情况下，需要两位中至少一位批准该调用。最后批准调用的账户还需要调度调用。 当使用`asMulti`函数批准调用时，会自动完成调用的调度。
 
-了解基础知识后，现在可以开始创建多签调用了。 在本示例中，您可以创建一个调用，将0.1 DEV 从ABC多重签名账户转移到Charlie的账户。首先，您需要获取用于转接的编码调用数据。前往Polkadot.js应用程序上的[**Extrinsics** 页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/ extrinsics){target=_blank}并执行以下步骤：
+了解基础知识后，现在可以开始创建多签调用了。 在本示例中，您可以创建一个调用，将0.1 DEV 从ABC多重签名账户转移到Charlie的账户。首先，您需要获取用于转接的编码调用数据。前往Polkadot.js应用程序上的[**Extrinsics** 页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/ extrinsics){target=\_blank}并执行以下步骤：
 
 1. 确保已选择账户。并非一定是ABC多签账户，因为所选的账户并未包含在编码的调用数据中
 2. 选择**balances** pallet和**transfer** extrinsic

@@ -7,11 +7,11 @@ description: 本教程包含您在注册本地或是外部XC-20资产所需了�
 
 ## 概览 {: #introduction }
 
-通过XCM进行资产跨链转移，两条链之间需要有一个开放的通道，并且资产需要在目标链上注册。如果两条链之间不存在通道，则需要打开一个通道。请查看[XC资产通道注册](/builders/interoperability/xcm/xc-registration/xc-integration){target=_blank}教程，了解如何在Moonbeam和其他链之间建立通道的相关信息。
+通过XCM进行资产跨链转移，两条链之间需要有一个开放的通道，并且资产需要在目标链上注册。如果两条链之间不存在通道，则需要打开一个通道。请查看[XC资产通道注册](/builders/interoperability/xcm/xc-registration/xc-integration){target=\_blank}教程，了解如何在Moonbeam和其他链之间建立通道的相关信息。
 
-本教程将向您展示如何在Moonbeam上注册[外部XC-20资产](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}并提供注册Moonbeam资产所需的信息，包括Moonbeam原生资产（GLMR、MOVR和DEV）以及在其他链上的[本地XC-20资产](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}（支持XCM的ERC-20s）。
+本教程将向您展示如何在Moonbeam上注册[外部XC-20资产](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}并提供注册Moonbeam资产所需的信息，包括Moonbeam原生资产（GLMR、MOVR和DEV）以及在其他链上的[本地XC-20资产](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}（支持XCM的ERC-20s）。
 
-此教程中的范例使用一个CLI工具开发以简化整个流程，您可以在[xcm-tools GitHub库](https://github.com/Moonsong-Labs/xcm-tools)中找到{target=_blank}。
+此教程中的范例使用一个CLI工具开发以简化整个流程，您可以在[xcm-tools GitHub库](https://github.com/Moonsong-Labs/xcm-tools)中找到{target=\_blank}。
 
 ```bash
 git clone https://github.com/Moonsong-Labs/xcm-tools && \
@@ -21,11 +21,11 @@ yarn
 
 ## 在Moonbeam上注册外部XC-20资产 {: #register-xc-20s }
 
-在Moonbeam上注册外部XC-20资产是一个多步骤的过程，在较高层面上，包含在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上提议资产注册，以及创建链上治理提案。
+在Moonbeam上注册外部XC-20资产是一个多步骤的过程，在较高层面上，包含在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}上提议资产注册，以及创建链上治理提案。
 
-如果Moonbeam和资产的源链之间尚不存在通道，则需要打开一个通道。您可以将与通道相关的调用和资产注册调用进行批量处理，如此您只需提交一个提案。您首先需要创建几个论坛帖子：一个[XCM公开](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-disclosures){target=_blank}帖子和一个[XCM提案](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-proposals){target=_blank}帖子。
+如果Moonbeam和资产的源链之间尚不存在通道，则需要打开一个通道。您可以将与通道相关的调用和资产注册调用进行批量处理，如此您只需提交一个提案。您首先需要创建几个论坛帖子：一个[XCM公开](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-disclosures){target=\_blank}帖子和一个[XCM提案](/builders/interoperability/xcm/xc-registration/forum-templates#xcm-proposals){target=\_blank}帖子。
 
-收集社区成员的反馈后，您可以创建提案以打开通道并注册任何资产。有关打开通道的更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration/){target=_blank}指南。
+收集社区成员的反馈后，您可以创建提案以打开通道并注册任何资产。有关打开通道的更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration/){target=\_blank}指南。
 
 ![Asset registration if XC channel doesn't exist](/images/builders/interoperability/xcm/xc-registration/assets/assets-1.png)
 
@@ -35,7 +35,7 @@ yarn
 
 ### 创建一个论坛帖子 {: #create-a-forum-post }
 
-要在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上创建论坛帖子，您需要确保将帖子添加到正确的类别并添加相关内容。关于一般准则和需遵循的模板，请参阅[XCM集成的Moonbeam社区论坛模板](/builders/interoperability/xcm/xc-registration/forum-templates#){target=_blank}页面。
+要在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}上创建论坛帖子，您需要确保将帖子添加到正确的类别并添加相关内容。关于一般准则和需遵循的模板，请参阅[XCM集成的Moonbeam社区论坛模板](/builders/interoperability/xcm/xc-registration/forum-templates#){target=\_blank}页面。
 
 ### 创建提案以注册资产 {: #create-a-proposal }
 
@@ -59,7 +59,7 @@ yarn
 
 每秒单位数是执行XCM消息时每秒收取的Token数量。在注册时，XCM转账的目标成本为0.02美元。随着Token价格的波动，每秒的单位数可能会通过治理进行更新。
 
-计算一个资产每秒单位数值的最简单方法是通过在[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}库中的[`calculate-units-per-second.ts` script](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-units-per-second.ts){target=_blank}。该脚本接收以下参数：
+计算一个资产每秒单位数值的最简单方法是通过在[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}库中的[`calculate-units-per-second.ts` script](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-units-per-second.ts){target=\_blank}。该脚本接收以下参数：
 
 - `--decimals`或`--d` - 您计算每秒单位的Token的小数位数
 - `--xcm-weight-cost`或`--xwc` - 整个XCM消息执行的总权重花费。在每个Moonbeam链上的XCM运行预估权重如下：
@@ -83,7 +83,7 @@ yarn
         ```
 
 - `--target`或`--t` - （可选）XCM执行的目标价，预设为`$0.02`
-- `--asset`或`--a` - （可选）Token的[Coingecko API ID](https://www.coingecko.com/){target=_blank}
+- `--asset`或`--a` - （可选）Token的[Coingecko API ID](https://www.coingecko.com/){target=\_blank}
 - `--price`或`--p` - （可选）如果Coingecko API并不支持该Token，您可以手动指定价格
 
 举例来说，要计算DOT（波卡原生Token）的每秒单位，其小数位数为10，您可以在Moonbeam上运行以下命令：
@@ -101,7 +101,7 @@ The UnitsPerSecond needs to be set 34106412005
 
 ### 为资产注册生成编码调用数据 {: #generate-encoded-calldata-for-asset-registration }
 
-如果您对Moonbeam的治理系统不熟悉，可以在[Moonbeam治理](/learn/features/governance){target=_blank}页面了解更多信息。对于Moonbeam上的任何治理提案，您都需要提交一个原像，它定义了要执行的操作，然后您可以使用原像提交提案。
+如果您对Moonbeam的治理系统不熟悉，可以在[Moonbeam治理](/learn/features/governance){target=\_blank}页面了解更多信息。对于Moonbeam上的任何治理提案，您都需要提交一个原像，它定义了要执行的操作，然后您可以使用原像提交提案。
 
 要提交一个原像，您可以为每个您希望执行的extrinsic获得相应的编码调用数据。如同先前提及的，您将会使用`assetManager.registerForeignAsset`，并根据需求使用`assetManager.setAssetUnitsPerSecond`和`system.setStorage` extrinsic。
 
@@ -142,7 +142,7 @@ The UnitsPerSecond needs to be set 34106412005
 - `--revert-code`或`--revert` - （可选） - 在EVM中注册资产预编译的恢复代码。如果已提供代码，脚本将为治理提案创建一个批量交易，该交易至少将注册资产并设置恢复代码。
 
     !!! 注意事项
-        **对于Moonbeam上的提案来说，此标志并非必需的**，因为它包含[OpenGov](/learn/features/governance#opengov) General Admin Origin无法执行的`system.setStorage`调用。稍后可以通过调用[预编译注册表预编译](/builders/pallets-precompiles/precompiles/registry){target=_blank}来设置虚拟EVM字节码，您无需担心需通过治理设置恢复代码！
+        **对于Moonbeam上的提案来说，此标志并非必需的**，因为它包含[OpenGov](/learn/features/governance#opengov) General Admin Origin无法执行的`system.setStorage`调用。稍后可以通过调用[预编译注册表预编译](/builders/pallets-precompiles/precompiles/registry){target=\_blank}来设置虚拟EVM字节码，您无需担心需通过治理设置恢复代码！
 
 作为实际范例，以下命令将会生成编码调用数据以从具有一般密钥的`1`平行链888注册一个资产：
 
@@ -173,7 +173,7 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 - `--send-proposal-as`或`--s` - （可选） - 指定提案该如何传送，可以接受以下选项：
     - `democracy` - 通过使用Governance v1的一般民主传送提案
     - `council-external` - 将提案作为外部提案发送，由理事会使用Governance v1进行投票
-    - `v2` - 通过OpenGov（Governance v2）发送提案。此选项应用于Moonbeam。如果您选择此选项，您还需要使用`--track`引数来指定哪个[Track](/learn/features/governance#general-definitions--general-definitions-gov2){target=_blank}该提案将通过，并使用`--delay`引数指定提案通过之后和提案执行之前的延迟时间（以区块为单位）
+    - `v2` - 通过OpenGov（Governance v2）发送提案。此选项应用于Moonbeam。如果您选择此选项，您还需要使用`--track`引数来指定哪个[Track](/learn/features/governance#general-definitions--general-definitions-gov2){target=\_blank}该提案将通过，并使用`--delay`引数指定提案通过之后和提案执行之前的延迟时间（以区块为单位）
 - `--collectiveThreshold`或`--c` - （可选） - 需要通过提案的理事会投票数量，默认设置为`1`
 - `--at-block` - （可选） - 调用需要被执行的区块编码
 - `--track` - （可选） - 提案需通过的OpenGov提案Track。以Moonbeam来说，需使用General Admin Origin
@@ -217,20 +217,20 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 对于Moonbase Alpha来说，您不需要进行治理。相反，您可以使用`--sudo`标签并将输出提供给 Moonbeam 团队，以便可以通过Sudo快速添加资产和通道。
 
-您可以在[xcm-tools库的`README.md`中查看其他示例](https://github.com/Moonsong-Labs/xcm-tools#example-to-note-pre-image-and-propose-through-opengov2-with-custom-track){target=_blank}。
+您可以在[xcm-tools库的`README.md`中查看其他示例](https://github.com/Moonsong-Labs/xcm-tools#example-to-note-pre-image-and-propose-through-opengov2-with-custom-track){target=\_blank}。
 
 ### 在Moonbeam上测试资产注册 {: #test-asset-registration }
 
-您的资产注册后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/interact/#the-erc20-interface){target=_blank}地址。
+您的资产注册后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/interact/#the-erc20-interface){target=\_blank}地址。
 
-您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到获得40个十六进制字符（加上“0x”）地址。有关如何计算的更多信息，请参阅外部XC-20预编译地址的[计算外部XC-20资产预编译地址](/builders/interoperability/xcm/xc20/interact/#calculate-xc20-address){target=_blank}部分的外部XC-20教程。
+您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到获得40个十六进制字符（加上“0x”）地址。有关如何计算的更多信息，请参阅外部XC-20预编译地址的[计算外部XC-20资产预编译地址](/builders/interoperability/xcm/xc20/interact/#calculate-xc20-address){target=\_blank}部分的外部XC-20教程。
 
 资产成功注册后，您可以尝试将Token从平行链转移到您正在集成的基于Moonbeam的网络。
 
 !!! 注意事项
     请注意基于Moonbeam的网络使用AccountKey20（以太坊格式地址）
 
-作为测试用途，请同样提供您的平行链WSS端点以让[Moonbeam dApp](https://apps.moonbeam.network/){target=_blank}能够与之连接。最后，请为相关账户充值：
+作为测试用途，请同样提供您的平行链WSS端点以让[Moonbeam dApp](https://apps.moonbeam.network/){target=\_blank}能够与之连接。最后，请为相关账户充值：
 
 === "Moonbeam"
 
@@ -256,15 +256,15 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 !!! 注意事项
     对于Moonbeam和Moonriver测试，请将价值50美元的Token发送至上述账户。此外，提供一个以太坊式账户来发送价值50美元的GLMR/MOVR用于测试目的。
 
-[XC-20资产](/builders/interoperability/xcm/xc20/){target=_blank}是具有[ERC-20接口](/builders/interoperability/xcm/xc20/overview/#the-erc20){target=_blank}的基于Substrate的资产。这意味着它们可以添加到MetaMask并与生态系统中存在的任何EVM DApp组合。该组合可以将您与您认为与XC-20集成相关的任何DApp连接起来。
+[XC-20资产](/builders/interoperability/xcm/xc20/){target=\_blank}是具有[ERC-20接口](/builders/interoperability/xcm/xc20/overview/#the-erc20){target=\_blank}的基于Substrate的资产。这意味着它们可以添加到MetaMask并与生态系统中存在的任何EVM DApp组合。该组合可以将您与您认为与XC-20集成相关的任何DApp连接起来。
 
-如果您需要DEV Token（Moonbase Alpha的原生Token）来使用您的XC-20资产，您可以从[Moonbase Alpha水龙头](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=_blank}，每24小时分配 {{networks.moonbase.website_faucet_amount }}。如果您需要更多信息，请随时通过 [Telegram](https://t.me/Moonbeam_Official){target=_blank}或[Discord](https://discord.gg/PfpUATX){target=_blank}与团队联系。
+如果您需要DEV Token（Moonbase Alpha的原生Token）来使用您的XC-20资产，您可以从[Moonbase Alpha水龙头](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=\_blank}，每24小时分配 {{networks.moonbase.website_faucet_amount }}。如果您需要更多信息，请随时通过 [Telegram](https://t.me/Moonbeam_Official){target=\_blank}或[Discord](https://discord.gg/PfpUATX){target=\_blank}与团队联系。
 
 ## 在其他链上注册Moonbeam资产 {: #register-moonbeam-assets-on-another-chain }
 
 为了实现Moonbeam资产（包括Moonbeam原生资产，GLMR、MOVR、DEV，和部署在Moonbeam上的本地XC-20资产，也就是支持XCM的ERC-20资产）在Moonbeam和另一条链之间进行跨链转移，您需要将资产注册到另一条链上。由于每个链存储跨链资产的方式不同，因此在另一个链上注册Moonbeam资产的具体步骤会根据链的不同而有所不同。至少，您需要了解Moonbeam上资产的元数据和multilocation。
 
-除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=_blank}教程。
+除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=\_blank}教程。
 
 ### 在其他链上注册Moonbeam原生资产 {: #register-moonbeam-native-assets }
 
@@ -360,7 +360,7 @@ Moonbeam原生资产的multilocation包括Moonbeam网络的平行链ID和Moonbea
 
 本地XC-20资产的multilocation包括Moonbeam的平行链ID、pallet实例和ERC-20的地址。Pallet实例对应于ERC-20 XCM Bridge Pallet的索引，因为这是允许任何ERC-20通过XCM传输的Pallet。
 
-**要在其他链上注册，本地XC-20资产必须严格遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=_blank}中描述的标准ERC-20接口。其中，尤其是[`transfer`函数](https://eips.ethereum.org/EIPS/eip-20#transfer){target=_blank}必须如EIP-20中所述：**
+**要在其他链上注册，本地XC-20资产必须严格遵守[EIP-20](https://eips.ethereum.org/EIPS/eip-20){target=\_blank}中描述的标准ERC-20接口。其中，尤其是[`transfer`函数](https://eips.ethereum.org/EIPS/eip-20#transfer){target=\_blank}必须如EIP-20中所述：**
 
 ```js
 function transfer(address _to, uint256 _value) public returns (bool success)

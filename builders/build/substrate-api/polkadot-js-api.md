@@ -7,7 +7,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 ## 概览 {: #introduction }
 
-[Polkadot.js](https://wiki.polkadot.network/docs/polkadotjs){target=_blank}是一组工具，可让您与Polkadot及其平行链（例如Moonbeam）进行交互。[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}是Polkadot.js集合的一个组件，它也是一个的=Javascript库。它能帮助开发者访问Moonbeam节点，与Substrate界面交互，让开发者能读取和写入数据到网络。
+[Polkadot.js](https://wiki.polkadot.network/docs/polkadotjs){target=\_blank}是一组工具，可让您与Polkadot及其平行链（例如Moonbeam）进行交互。[Polkadot.js API](https://polkadot.js.org/docs/api/){target=\_blank}是Polkadot.js集合的一个组件，它也是一个的=Javascript库。它能帮助开发者访问Moonbeam节点，与Substrate界面交互，让开发者能读取和写入数据到网络。
 
 您可以使用Polkadot.js API查询链上数据并从Moonbeam的Substrate端发送extrinsic。您可以查询Moonbeam的runtime（运行时）常量、链状态、事件、交易（extrinsic）数据等。
 
@@ -41,7 +41,7 @@ description: 了解如何使用Polkadot.js API与Moonbeam节点交互以获取�
 
 ## 创建API Provider实例 {: #creating-an-API-provider-instance }
 
-与[以太坊API库](/builders/build/eth-api/libraries/){target=_blank}相似，您必须先实例化一个Polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
+与[以太坊API库](/builders/build/eth-api/libraries/){target=\_blank}相似，您必须先实例化一个Polkadot.js API的API实例。使用您想要交互的Moonbeam网络的websocket端点创建`WsProvider`。
 
 --8<-- 'text/_common/endpoint-examples.md'
 
@@ -137,7 +137,7 @@ api.<type>.<module>.<section>
 - `rpc` - 用来发送RPC请求的端口
 - `consts` - 用来获取runtime常数的端口
 
-因此，`api.{consts, query, tx}.<module>.<method>`端点中包含的所有信息都不是硬编码在API中的。这将允许如Moonbeam这样的平行链通过其[Pallet](/builders/pallets-precompiles/pallets/){target=_blank}自定义端点，这些端点可以通过Polkadot.js API库直接访问。
+因此，`api.{consts, query, tx}.<module>.<method>`端点中包含的所有信息都不是硬编码在API中的。这将允许如Moonbeam这样的平行链通过其[Pallet](/builders/pallets-precompiles/pallets/){target=\_blank}自定义端点，这些端点可以通过Polkadot.js API库直接访问。
 
 ## 查询Moonbeam的链上数据 {: #querying-for-information }
 
@@ -330,13 +330,13 @@ console.log(`Submitted with hash ${txHash}`);
 !!! 注意事项
     在v0.35.0之前版本的客户端中，简单的转账交易使用`balances.transfer`方法来实现。这个方法已经停止使用，并且被`balances.transferAllowDeath`方法替代。
 
-请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=_blank} 来获取正确数据，包括内存池（mempool）中的事务。
+请注意`signAndSend`函数也可以接受如`nonce`等可选参数。例如，`signAndSend(alice, { nonce: aliceNonce })`。您可以使用[状态查询的示例代码](/builders/build/substrate-api/polkadot-js-api/#state-queries){target=\_blank} 来获取正确数据，包括内存池（mempool）中的事务。
 
 ### 交易费信息 {: #fees}
 
 transaction端点还提供了一个根据给定 `api.tx.<module>.<method>`获取权重的方法. 您需要在使用特定`module`和`method`构建完整个交易之后使用`paymentInfo`函数。.
 
-`paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/remote-execution/){target=_blank}时非常有用.
+`paymetnInfo` 函数以`refTime` and `proofSize`的形式返回权重信息, 并以此来计算交易费用. 这在[通过 XCM 进行远程执行调用](/builders/interoperability/xcm/remote-execution/){target=\_blank}时非常有用.
 
 假设您已成功[初始化API](#creating-an-API-provider-instance)，以下代码片段展示了如何获取一个简单转账交易的weight信息：
 
@@ -363,7 +363,7 @@ console.log(`Transaction fee: ${partialFee.toHuman()}`);
 
 根据发送的事务，可能还会发出一些其他事件，例如余额转账事件，这其中可能包括一个或多个`balance.Transfer`事件。
 
-转账API页面包含一个[示例代码片段](/builders/get-started/eth-compare/transfers-api/#monitor-all-balance-transfers-with-the-substrate-api){target=_blank}，用于订阅新的最终区块头并检索所有`balance.Transfer`事件。
+转账API页面包含一个[示例代码片段](/builders/get-started/eth-compare/transfers-api/#monitor-all-balance-transfers-with-the-substrate-api){target=\_blank}，用于订阅新的最终区块头并检索所有`balance.Transfer`事件。
 
 ### 批处理事务 {: #batching-transactions }
 
@@ -409,7 +409,7 @@ RPC作为函数在特定模块公开显示。这意味着一旦可使用后，�
 
 一些通过Polkadot.js API可用的方法也可以通过Moonbeam节点上的JSON-RPC端点调用。本节将提供一些示例；您可以通过调用 `api.rpc.rpc.methods()` 或下面列出的 `rpc_methods` 端点来查看公开的RPC端点列表。
 
-- **[`methods()`](https://polkadot.js.org/docs/substrate/rpc/#methods-rpcmethods){target=_blank}**
+- **[`methods()`](https://polkadot.js.org/docs/substrate/rpc/#methods-rpcmethods){target=\_blank}**
     - **接口** -  `api.rpc.rpc.methods`
     - **JSON-RPC** - `rpc_methods`
     - **返回** - 节点公开的RPC方法列表
@@ -425,7 +425,7 @@ RPC作为函数在特定模块公开显示。这意味着一旦可使用后，�
       }'
     ```
 
-- **[`getBlock(hash?: BlockHash)`](https://polkadot.js.org/docs/substrate/rpc/#getblockhash-blockhash-signedblock){target=_blank}**
+- **[`getBlock(hash?: BlockHash)`](https://polkadot.js.org/docs/substrate/rpc/#getblockhash-blockhash-signedblock){target=\_blank}**
     - **接口** - `api.rpc.chain.getBlock`
     - **JSON-RPC** - `chain_getBlock`
     - **返回** - 由区块哈希参数指定的区块header和body
@@ -441,7 +441,7 @@ RPC作为函数在特定模块公开显示。这意味着一旦可使用后，�
       }'
     ```
 
-- **[`getFinalizedHead()`](https://polkadot.js.org/docs/substrate/rpc/#getfinalizedhead-blockhash){target=_blank}**
+- **[`getFinalizedHead()`](https://polkadot.js.org/docs/substrate/rpc/#getfinalizedhead-blockhash){target=\_blank}**
     - **接口** `api.rpc.chain.getFinalizedHead`
     - **JSON-RPC** `chain_getFinalizedHead`
     - **返回** 最新最终确定区块的区块哈希
@@ -457,13 +457,13 @@ RPC作为函数在特定模块公开显示。这意味着一旦可使用后，�
       }'
     ```
 
-[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#){target=_blank}提供了使用自定义RPC调用来检查交易确定性的示例。
+[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#){target=\_blank}提供了使用自定义RPC调用来检查交易确定性的示例。
 
 ## Polkadot.js API实用工具方法 {: #utilities }
 
 Polkadot.js API 还包括许多实用程序库，用于计算常用的加密原语和哈希函数。
 
-以下示例通过首先计算其RLP（[递归长度前缀](https://ethereum.org/zh/developers/docs/data-structures-and-encoding/rlp/){target=_blank}）编码，然后使用keccak256对结果进行哈希来预先计算Legacy类型以太坊交易的交易哈希。
+以下示例通过首先计算其RLP（[递归长度前缀](https://ethereum.org/zh/developers/docs/data-structures-and-encoding/rlp/){target=\_blank}）编码，然后使用keccak256对结果进行哈希来预先计算Legacy类型以太坊交易的交易哈希。
 
 ```javascript
 import { encode } from '@polkadot/util-rlp';
@@ -494,6 +494,6 @@ var encoded_tx = encode(txDataArray);
 console.log(keccakAsHex(encoded_tx));
 ```
 
-您可以查看相应的[NPM存储库页面](https://www.npmjs.com/package/@polkadot/util-crypto/v/0.32.19){target=_blank}以获取其中的可用方法列表库及其相关文档。
+您可以查看相应的[NPM存储库页面](https://www.npmjs.com/package/@polkadot/util-crypto/v/0.32.19){target=\_blank}以获取其中的可用方法列表库及其相关文档。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

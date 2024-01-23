@@ -22,7 +22,7 @@ description: 了解如何在基于Moonbeam的网络上设置代理帐户，以�
 - 至少有一个账户拥有`DEV` Token
 --8<-- 'text/_common/faucet/faucet-list-item.md'
 
-如果您想要把您的账户导入Polkadot.js Apps，请参考[使用Polkadot.js Apps与Moonbeam交互](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}的教程。
+如果您想要把您的账户导入Polkadot.js Apps，请参考[使用Polkadot.js Apps与Moonbeam交互](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=\_blank}的教程。
 
 ## 一般定义 {: #general-definitions } 
 
@@ -70,7 +70,7 @@ deposit base + deposit factor * number of proxies
 - **`Governance`** —— 允许代理账户执行治理相关交易，例如投票或民主提案
 - **`NonTransfer`** —— 允许代理账户提交除余额转账以外的任何交易类型
 - **`Balances`** —— 允许代理账户仅处理发送资金相关交易
-- **`IdentityJudgement`** —— 允许代理账户向注册商请求对[账户身份](/tokens/manage/identity){target=_blank}的判断。可以作出以下判断：
+- **`IdentityJudgement`** —— 允许代理账户向注册商请求对[账户身份](/tokens/manage/identity){target=\_blank}的判断。可以作出以下判断：
     - **unknown** - （默认）尚未做出判断
     - **fee paid** - 表示用户已请求判断并且正在进行中
     - **reasonable** - 信息看似合理，但未进行深入检查（即正式的KYC流程）
@@ -84,9 +84,9 @@ deposit base + deposit factor * number of proxies
 
 ## 创建代理账户 {: #creating-a-proxy-account } 
 
-在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=_blank}中，您可以在**Extrinsics**页面或**Accounts**页面创建代理账户。然而，如果您要创建延时代理，您将需要在**Extrinsics**页面进行操作。时间延迟通过指定基于多个区块的延迟时段为代理提供额外安全层。延迟期结束前，代理账户无法执行交易。这使主账户能够在该时间段审查代理的待处理交易（可能存在恶意操作的交易），在必要时于执行前取消操作。
+在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network){target=\_blank}中，您可以在**Extrinsics**页面或**Accounts**页面创建代理账户。然而，如果您要创建延时代理，您将需要在**Extrinsics**页面进行操作。时间延迟通过指定基于多个区块的延迟时段为代理提供额外安全层。延迟期结束前，代理账户无法执行交易。这使主账户能够在该时间段审查代理的待处理交易（可能存在恶意操作的交易），在必要时于执行前取消操作。
 
-想要创建代理账户，进入**Developer**标签，在下拉菜单中选择[**Extrinsics**](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}。然后执行以下步骤：
+想要创建代理账户，进入**Developer**标签，在下拉菜单中选择[**Extrinsics**](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=\_blank}。然后执行以下步骤：
 
 1. 选择主账户
 2. 在**submit the following extrinsic**下拉菜单中选择**proxy**
@@ -130,7 +130,7 @@ deposit base + deposit factor * number of proxies
 
 您可以通过**Accounts**页面或**Chain state**页面验证您的代理账户是否已成功设置。
 
-在[**Chain state**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}验证您的代理账户，您需执行以下步骤：
+在[**Chain state**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=\_blank}验证您的代理账户，您需执行以下步骤：
 
 1. 在**selected state query**下拉菜单中选择**proxy**
 2. 选择**proxies**函数
@@ -153,7 +153,7 @@ deposit base + deposit factor * number of proxies
 
 完成上述操作后，您已拥有一个代理账户并验证该账户已成功设置，现在您可以使用代理账户代表您的主账户执行交易。
 
-首先进入[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}，随后执行以下操作：
+首先进入[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=\_blank}，随后执行以下操作：
 
 1. 在**using the select account**下拉菜单中选择代理账户提交交易
 2. 在**submit the following extrinsic**下拉菜单中选择**proxy**
@@ -177,7 +177,7 @@ deposit base + deposit factor * number of proxies
 
 与创建代理账户相似，您可以在**Extrinsics**页面或**Accounts**页面移除代理账户。无论您在哪个页面操作，您都可以选择移除单个代理帐户或与您的主帐户关联的所有代理。
 
-在[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}移除代理账户，您需要执行以下步骤：
+在[**Extrinsics**页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=\_blank}移除代理账户，您需要执行以下步骤：
 
 1. 在**using the selected account**下拉菜单选择您的主账户
 2. 选择**proxy**

@@ -7,9 +7,9 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 ## 概览 {: #introduction }
 
-[Ethers.rs](https://ethers.rs){target=_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=_blank}获取更多关于如何使用Ethers.rs的信息。
+[Ethers.rs](https://ethers.rs){target=\_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=\_blank}获取更多关于如何使用Ethers.rs的信息。
 
-在本教程中，您将学习如何使用Ethers.rs库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于 [Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}和[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+在本教程中，您将学习如何使用Ethers.rs库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于 [Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}和[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -19,8 +19,8 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
   --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
   --8<-- 'text/_common/endpoint-examples-list-item.md'
- - 在设备上[安装Rust](https://www.rust-lang.org/tools/install){target=_blank}
- - 在设备上[安装solc](https://docs.soliditylang.org/en/v0.8.9/installing-solidity.html)。Ethers.rs包的建议使用[solc-select](https://github.com/crytic/solc-select){target=_blank}
+ - 在设备上[安装Rust](https://www.rust-lang.org/tools/install){target=\_blank}
+ - 在设备上[安装solc](https://docs.soliditylang.org/en/v0.8.9/installing-solidity.html)。Ethers.rs包的建议使用[solc-select](https://github.com/crytic/solc-select){target=\_blank}
 
 !!! 注意事项
     本教程的示例中假设您拥有基于MacOS或Ubuntu 20.04的环境，且需要针对Windows系统进行相应调整。
@@ -59,7 +59,7 @@ solc-select install 0.8.17 && solc-select use 0.8.17
 
 ## 设置Ethers提供商和客户端 {: #setting-up-the-ethers-provider-and-client }
 
-在整个教程中，您将编写多个函数，用于提供不同的功能，例如发送交易、部署合约，以及与部署的合约交互。在大部分这些脚本中，您将需要使用[Ethers provider](https://docs.rs/ethers-providers/latest/ethers_providers/index.html){target=_blank}或[Ethers signer client](https://docs.rs/ethers/1.0.2/ethers/middleware/struct.SignerMiddleware.html){target=_blank}与网络进行交互。
+在整个教程中，您将编写多个函数，用于提供不同的功能，例如发送交易、部署合约，以及与部署的合约交互。在大部分这些脚本中，您将需要使用[Ethers provider](https://docs.rs/ethers-providers/latest/ethers_providers/index.html){target=\_blank}或[Ethers signer client](https://docs.rs/ethers/1.0.2/ethers/middleware/struct.SignerMiddleware.html){target=\_blank}与网络进行交互。
 
 --8<-- 'text/_common/endpoint-setup.md'
 
@@ -300,7 +300,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/send-tx/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/send-tx/main.rs){target=\_blank}。
 
 要运行发送交易并在交易发送后检查余额的脚本，您可以运行以下命令：
 
@@ -486,7 +486,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub中查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=\_blank}。
 
 要运行部署合约和返回存储在`Incrementer`合约中的当前值的脚本，您可以在终端中输入以下命令：
 
@@ -547,7 +547,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=\_blank}。
 
 要运行脚本，您可以在终端输入以下命令：
 
@@ -608,6 +608,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ![Terminal logs from resetting the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-4.png)
 
-您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=_blank}。
+您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

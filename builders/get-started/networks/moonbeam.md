@@ -11,11 +11,11 @@ description: 学习如何通过RPC和WSS端点连接至Moonbeam，如何连接Me
 
 您可以使用以下浏览器来浏览Moonbeam：
 
- - **以太坊API（类似Etherscan）**—— [Moonscan](https://moonbeam.moonscan.io/){target=_blank}
- - **基于以太坊API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam){target=_blank}
- - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/){target=_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=_blank}
+ - **以太坊API（类似Etherscan）**—— [Moonscan](https://moonbeam.moonscan.io/){target=\_blank}
+ - **基于以太坊API JSON-RPC** —— [Moonbeam Basic Explorer](https://moonbeam-explorer.netlify.app/?network=Moonbeam){target=\_blank}
+ - **Substrate API** —— [Subscan](https://moonbeam.subscan.io/){target=\_blank}或[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=\_blank}
 
-更多可用区块浏览器的相关信息，请访问Moonbeam资料库的[区块浏览器](/builders/get-started/explorers/){target=_blank}部分。
+更多可用区块浏览器的相关信息，请访问Moonbeam资料库的[区块浏览器](/builders/get-started/explorers/){target=\_blank}部分。
 
 ## 连接MetaMask {: #connect-metamask }
 
@@ -27,4 +27,4 @@ description: 学习如何通过RPC和WSS端点连接至Moonbeam，如何连接Me
 !!! 注意事项
     MetaMask会弹出窗口，请求允许将Moonbeam添加为自定义网络。一旦您批准授权，MetaMask将会把您当前的网络切换至Moonbeam。
 
-如果您尚未安装MetaMask，请遵循[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/){target=_blank}的教程开始操作。
+如果您尚未安装MetaMask，请遵循[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/){target=\_blank}的教程开始操作。

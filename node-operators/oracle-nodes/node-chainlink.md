@@ -24,7 +24,7 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 如果您已经熟悉如何运行Chainlink预言机节点，可以通过以下信息快速进行Moonbase Alpha测试网部署：
 
- - Chainlink文档：[运行一个Chainlink节点](https://docs.chain.link/docs/running-a-chainlink-node){target=_blank}
+ - Chainlink文档：[运行一个Chainlink节点](https://docs.chain.link/docs/running-a-chainlink-node){target=\_blank}
  - Moonbase Alpha WSS EndPoint: `wss://wss.api.moonbase.moonbeam.network`
  - Moonbase Alpha ChainId: `{{ networks.moonbase.chain_id }}` (hex: `{{ networks.moonbase.hex_chain_id}}`)
  - Moonbase Alpha上的LINK Token地址: `0xa36085F69e2889c224210F603D836748e7dC0088`
@@ -35,10 +35,10 @@ description: 如何在Moonbeam网络设置Chainlink预言机节点为智能合�
 
 请先准备以下条件后再按照本教程进行操作：
 
- - 为运行Postgres DB和Chainlink节点容器[安装Docker](https://docs.docker.com/get-docker/){target=_blank}
- - 带资金的账户。您可以在[MetaMask](/tokens/connect/metamask/){target=blank}创建一个账户。
+ - 为运行Postgres DB和Chainlink节点容器[安装Docker](https://docs.docker.com/get-docker/){target=\_blank}
+ - 带资金的账户。您可以在[MetaMask](/tokens/connect/metamask/){target=\_blank}创建一个账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
- - 访问[Remix IDE](https://remix.ethereum.org/){target=blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=blank}教程
+ - 访问[Remix IDE](https://remix.ethereum.org/){target=\_blank}，如您想要使用该程序部署预言机合约。更多信息，请查阅[使用Remix部署至Moonbeam](/builders/build/eth-api/dev-env/remix/){target=\_blank}教程
 
 ## 如何操作 {: #getting-started }
 
@@ -149,7 +149,7 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 预言机节点运行后，您可以开始配置智能合约。首先，请执行以下步骤为预言机节点注入资金：
 
-1. 通过登录[Chainlink节点用户界面](http://localhost:6688/){target=_blank} (位于`http://localhost:6688/`)获取预言机节点地址，用于发送交易和写入链上数据。您将需要使用`.api`文档中的证书来获取地址。
+1. 通过登录[Chainlink节点用户界面](http://localhost:6688/){target=\_blank} (位于`http://localhost:6688/`)获取预言机节点地址，用于发送交易和写入链上数据。您将需要使用`.api`文档中的证书来获取地址。
 
     ![Chainlink login](/images/node-operators/oracle-nodes/chainlink/chainlink-node-2.png)
 
@@ -162,7 +162,7 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。
 
-预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/contracts/src/v0.6/Oracle.sol){target=blank}中找到。在本示例中，您将使用Remix来与Moonbase Alpha交互并部署合约。在[Remix](https://remix.ethereum.org/){target=blank}环境下，可以复制以下代码：
+预言机合约的源代码可以在Chainlink的官方[GitHub repository](https://github.com/smartcontractkit/chainlink/tree/develop/contracts/src/v0.6/Oracle.sol){target=\_blank}中找到。在本示例中，您将使用Remix来与Moonbase Alpha交互并部署合约。在[Remix](https://remix.ethereum.org/){target=\_blank}环境下，可以复制以下代码：
 
 ```solidity
 pragma solidity ^0.6.6;
@@ -191,13 +191,13 @@ import "@chainlink/contracts/src/v0.6/Oracle.sol";
 
 ## 创建Job {: #creating-a-job }
 
-Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官方文档](https://docs.chain.link/chainlink-nodes/oracle-jobs/v1/job-specifications){target=_blank}：
+Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官方文档](https://docs.chain.link/chainlink-nodes/oracle-jobs/v1/job-specifications){target=\_blank}：
 
 > 任务参数包含了一系列任务，节点必须执行这些任务才能获得最终结果。一条参数包含至少一个启动程序和一个任务（此前已详细讨论）。参数使用标准化JSON进行定义，实现人类可读，并能够轻易被Chainlink节点所分析。
 
 如果将预言机看作API服务，那么Job就是其中一个函数，您可以调用这个函数并获得返回结果。请执行以下步骤创建您的第一个Job：
 
-1. 进入[您节点的Job板块](http://localhost:6688/jobs){target=_blank}
+1. 进入[您节点的Job板块](http://localhost:6688/jobs){target=\_blank}
 2. 点击**New Job**
 
 ![Chainlink oracle New Job](/images/node-operators/oracle-nodes/chainlink/chainlink-node-6.png)
@@ -245,7 +245,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 
 ### 使用任何API {: #using-any-api }
 
-您也可以创建并使用job spec来处理任何API。您可以您可以通过例如[market.link](https://market.link/){target=_blank}等独立列表服务搜索预有Job。请注意，尽管这些Job可能会为其他网络实现，但您将能够使用job spec在Moonbase Alpha上为您的预言机节点创建Job。当您找到一个可以满足您需求的Job后，您将需要复制这个job spec JSON并使用它来创建一个新的Job。
+您也可以创建并使用job spec来处理任何API。您可以您可以通过例如[market.link](https://market.link/){target=\_blank}等独立列表服务搜索预有Job。请注意，尽管这些Job可能会为其他网络实现，但您将能够使用job spec在Moonbase Alpha上为您的预言机节点创建Job。当您找到一个可以满足您需求的Job后，您将需要复制这个job spec JSON并使用它来创建一个新的Job。
 
 举例来说，之前的job规格可以被更改的更为通用，因此可用于任何API：
 
@@ -267,7 +267,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 }
 ```
 
-如果您需要一个更定制化的系统，您可以查阅Chainlink的文档了解如何构建您自己的[外部适配器](https://docs.chain.link/docs/developers/){target=_blank}。
+如果您需要一个更定制化的系统，您可以查阅Chainlink的文档了解如何构建您自己的[外部适配器](https://docs.chain.link/docs/developers/){target=\_blank}。
 
 ## 预言机测试 {: #test-the-oracle }
 

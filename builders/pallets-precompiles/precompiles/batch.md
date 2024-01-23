@@ -12,7 +12,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 目前来说，要让用户与多个合约进行交互，需要在用户的钱包中执行多个交易确认。举个简单的例子，需要先批准智能合约使用特定Token，然后再进行转账。但预编译合约能够使开发者优化使用者体验，因其可以将用户需要确认的交易数量减少为一个。此外，由于批量执行无需多次支付Gas费（每个交易的起始Gas费为21000单位），还能够节省用户所需的Gas费用。
 
-此预编译合约直接与[Substrate EVM pallet](/learn/features/eth-compatibility#evm-pallet){target=_blank}交互。批量函数的调用者将会在其地址为所有子交易执行`msg.sender`，但与[委托调用（Delegate Call）](https://docs.soliditylang.org/en/v0.8.15/introduction-to-smart-contracts.html#delegatecall-callcode-and-libraries){target=_blank}不同的是，目标合约的存储仍然被影响。实际上是用户签署了多笔交易，但只需要一次确认。
+此预编译合约直接与[Substrate EVM pallet](/learn/features/eth-compatibility#evm-pallet){target=\_blank}交互。批量函数的调用者将会在其地址为所有子交易执行`msg.sender`，但与[委托调用（Delegate Call）](https://docs.soliditylang.org/en/v0.8.15/introduction-to-smart-contracts.html#delegatecall-callcode-and-libraries){target=\_blank}不同的是，目标合约的存储仍然被影响。实际上是用户签署了多笔交易，但只需要一次确认。
 
 此预编译合约位于以下地址：
 
@@ -38,7 +38,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 批量Solidity接口 {: #the-batch-interface }
 
-[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。
+[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=\_blank}为允许开发者与预编译合约三个函数交互的Solidity接口。
 
 该接口包括以下功能：
 
@@ -59,7 +59,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 要跟随此教程操作，您需要准备以下内容：
 
-- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
 - 在Moonbase Alpha上创建或是拥有两个账户以测试批量预编译合约的不同功能
 - 至少拥有一个具有`DEV`的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
@@ -74,7 +74,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ### 设置Remix {: #remix-set-up }
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
+您可以使用[Remix](https://remix.ethereum.org/){target=\_blank}与批量预编译合约交互。您将需要[`Batch.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/batch/Batch.sol){target=\_blank}和[`SimpleContract.sol`](#example-contract)的拷贝。您可以将预编译合约加入至Remix并遵循以下教程：
 
 1. 点击**File explorer**标签
 2. 粘贴`Batch.sol`合约至Remix文件内并命名为**Batch.sol**
@@ -140,14 +140,14 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ![Send Batch Transfer](/images/builders/pallets-precompiles/precompiles/batch/batch-4.png)
 
-当交易完成后，确保您查看两个地址的余额，不论是通过MetaMask或是[区块浏览器](/builders/get-started/explorers/){target=_blank}皆可。恭喜您！您已经成功通过批量预编译合约传送批量交易。
+当交易完成后，确保您查看两个地址的余额，不论是通过MetaMask或是[区块浏览器](/builders/get-started/explorers/){target=\_blank}皆可。恭喜您！您已经成功通过批量预编译合约传送批量交易。
 
 !!! 注意事项
     一般而言如果您希望通过合约传送资产或是传送资产至合约当中，您将会需要在整体交易对象中设定传送数量并与支付函数交互。然而，由于批量预编译合约直接与Substrate代码交互，并不是一个一般的以太坊交易，因此无需设置上述数据。
 
 ### 查看合约交易调用数据 {: #find-a-contract-interactions-call-data }
 
-如[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}般的可视化接口和如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}般顺手的库隐藏了以太坊交易与Solidity智能合约之间的交互。函数的名称和输入数值被储存在[函数选择器](https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector-and-argument-encoding)中{target=_blank}，且输入数值将会被编码，两者将会被整合并以交易的调用数据传送。如果您希望在批量交易中传送子交易，您需要事先了解调用数据。
+如[Remix](/builders/build/eth-api/dev-env/remix){target=\_blank}般的可视化接口和如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}般顺手的库隐藏了以太坊交易与Solidity智能合约之间的交互。函数的名称和输入数值被储存在[函数选择器](https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector-and-argument-encoding)中{target=\_blank}，且输入数值将会被编码，两者将会被整合并以交易的调用数据传送。如果您希望在批量交易中传送子交易，您需要事先了解调用数据。
 
 您可以尝试使用Remix查询交易的调用数据：
 
@@ -168,7 +168,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
  - 第一行为函数选择器
  - 第二行为1，也就是**id**获得的数值
- - 接下来为**message**的输入值。此最后三行相对抽象，因字串属于长度能够变动的[动态种类](https://docs.soliditylang.org/en/v0.8.15/abi-spec.html#use-of-dynamic-types){target=_blank}。第三行是一个偏移量，用于定义字符串数据的开始位置。第四行指的是字符串的长度，在本示例中为8，因为“moonbeam”是8个字符串长度。最后，第五行是向左对齐的”moonbeam“的十六进制格式（8个ASCII字符为16进制字符）并余留0个填充空间
+ - 接下来为**message**的输入值。此最后三行相对抽象，因字串属于长度能够变动的[动态种类](https://docs.soliditylang.org/en/v0.8.15/abi-spec.html#use-of-dynamic-types){target=\_blank}。第三行是一个偏移量，用于定义字符串数据的开始位置。第四行指的是字符串的长度，在本示例中为8，因为“moonbeam”是8个字符串长度。最后，第五行是向左对齐的”moonbeam“的十六进制格式（8个ASCII字符为16进制字符）并余留0个填充空间
 
 ### 通过预编译与函数交互 {: #function-interaction-via-precompile }
 
@@ -246,7 +246,7 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
 
 ## 以太坊开发者库 {: #ethereum-development-libraries }
 
-如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=_blank}函数将能允许您输入函数名称以及获得调用数据的结果。[Web3.js](/builders/build/eth-api/libraries/web3js){target=_blank}也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=_blank}。
+如果您跟随的是Moonbeam上的[Ethers.js教程](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}，您或许会发现难以为单一函数找到其调用数据。其答案则被藏于Ether的`Interface`对象之中，而[encodeFunctionData](https://docs.ethers.org/v6/api/abi/#Interface-encodeFunctionData){target=\_blank}函数将能允许您输入函数名称以及获得调用数据的结果。[Web3.js](/builders/build/eth-api/libraries/web3js){target=\_blank}也具有类似的函数[encodeFunctionCall](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html#encodefunctioncall){target=\_blank}。
 
 !!! 注意事项
     以下部分显示的代码段并非用于生产环境，请确保您根据用例修改。
@@ -269,4 +269,4 @@ Moonbeam上的批量预编译合约允许开发者同时执行多个EVM调用。
      --8<-- 'code/builders/pallets-precompiles/precompiles/batch/web3py-batch.py'
      ```
 
-最后，您应当已经了解如何与批量预编译进行交互，如同您与[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}中的合约进行交互一样。
+最后，您应当已经了解如何与批量预编译进行交互，如同您与[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}中的合约进行交互一样。
