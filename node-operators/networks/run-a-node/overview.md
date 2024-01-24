@@ -11,11 +11,11 @@ description: 了解为Moonbeam网络运行平行链全节点以便您拥有自�
 
 Moonbeam拥有多种不同的部署渠道，包含Moonbase Alpha测试网，Kusama上的Moonriver，以及波卡（Polkadot）上的Moonbeam。以下是网络的环境名称以及其对应的[区块链参数文档](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec)名称：
 
-|      网络      |  |  托管方   |  |             区块链名称              |
-|:--------------:|--|:---------:|--|:-----------------------------------:|
-| Moonbase Alpha |  | PureStake |  | {{ networks.moonbase.chain_spec }}  |
-|   Moonriver    |  |  Kusama   |  | {{ networks.moonriver.chain_spec }} |
-|    Moonbeam    |  | Polkadot  |  | {{ networks.moonbeam.chain_spec }}  |
+|      网络      |  |       托管方        |  |             区块链名称              |
+|:--------------:|--|:-------------------:|--|:-----------------------------------:|
+| Moonbase Alpha |  | Moonbeam Foundation |  | {{ networks.moonbase.chain_spec }}  |
+|   Moonriver    |  |       Kusama        |  | {{ networks.moonriver.chain_spec }} |
+|    Moonbeam    |  |      Polkadot       |  | {{ networks.moonbeam.chain_spec }}  |
 
 !!! 注意事项
     Moonbase Alpha仍被视为是一个Alpha网络，因此其正常运行时间_不会_达到100%。平行链将不时地进行清理。在开发自己的应用程序时，请确保您已采取预案快速地将合约与账户重新部署到新的平行链。[Discord channel](https://discord.gg/PfpUATX)会至少提前24小时发布清理区块链的通知。
