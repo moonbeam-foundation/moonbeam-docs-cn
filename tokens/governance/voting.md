@@ -62,7 +62,7 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
 您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
 
-![Proposal Roadmap](/images/tokens/governance/voting/proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/voting/proposal-roadmap.webp)
 
 ## 论坛讨论 {: #forum-discussion}
 
@@ -70,7 +70,7 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
 Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在链上行动之前接收来自社区反馈的平台。正如[使用Moonbeam社区论坛](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=_blank}的教程中所述，在论坛上创建帖子非常简单且快速。每个提案类型都有对应的类别，包括治理、财政库和grant提案。此步骤可选择操作，但是解释提案的详情并且跟进提出的任何问题可能会增加社区赞成和提案通过的可能性。
 
-![Moonbeam's Community Forum home](/images/tokens/governance/voting/vote-1.png)
+![Moonbeam's Community Forum home](/images/tokens/governance/voting/vote-1.webp)
 
 ## 参与公投 {: #voting-on-a-referendum }
 
@@ -78,7 +78,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
-![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.png)
+![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.webp)
 
 在Moonbeam上对提案进行投票非常简单。前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}，所有治理相关功能都在**Governance**标签下。在**Governance**下拉菜单中选择**Referenda**，您可以看到所有的公投。在**Referenda**页面，您可以看到每个Track的公投列表。要查看特定公投的详情，请点击描述旁边的箭头。提案和描述旁边的数字称为公投编号。
 
@@ -90,7 +90,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 从[Polkadot.js Apps的公投列表](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}中可以发现，有些提案已经处于**Preparing**状态。如果提交公投需要一笔决定保证金，您会看到**Decision deposit**的按钮。要提交保证金，您可以点击按钮进行操作。
 
-![To start to submit a Decision Deposit for a referendum, click on the "Decision deposit" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-2.png)
+![To start to submit a Decision Deposit for a referendum, click on the "Decision deposit" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-2.webp)
 
 然后，请执行以下操作从指定账户提交保证金：
 
@@ -98,7 +98,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 2. **referendum id**和**decision deposit**字段将会根据公投及其所属的Track自动填充
 3. 点击**Place deposit**按钮并签署交易
 
-![To submit the Decision Deposit, choose the account to place the deposit and click on the "Place deposit" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-3.png)
+![To submit the Decision Deposit, choose the account to place the deposit and click on the "Place deposit" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-3.webp)
 
 成功提交保证金后，Polkadot.js Apps将会更新并显示支付保证金的账户信息及其金额。现在公投离满足带入期的标准又近了一步。
 
@@ -110,7 +110,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 要投票和锁定Token以支持或反对公投，您可以通过点击要投票的公投旁边的**Vote**按钮开始。
 
-![To vote on a referendum, click on the "Vote" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-4.png)
+![To vote on a referendum, click on the "Vote" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-4.webp)
 
 然后，请执行以下步骤填写投票的详细信息：
 
@@ -120,14 +120,14 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 4. 设置投票的信念值，即决定投票权重（`vote_weight = tokens * conviction_multiplier`）。请参考[信念乘数](/learn/features/governance/#conviction-multiplier){target=_blank}文档获取更多信息
 5. 点击**Vote**并签署交易
 
-![To submit a vote on a referendum, fill out the details of the vote and click on the "Vote" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-5.png)
+![To submit a vote on a referendum, fill out the details of the vote and click on the "Vote" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-5.webp)
 
 !!! 注意事项
     上图显示的锁定期仅供参考，因其可能会发生变化。
 
 要查看您的投票以及所有其他投票如何影响公投的批准和支持曲线，您可以点击**Vote**按钮旁边的箭头。此处，您会看到两个图表，分别为批准曲线和支持曲线。如果您将鼠标放在图表上，您可以看到特定区块所需的最低批准数/支持数以及当前的批准数/支持数。
 
-![View the Approval and Support curves for a referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-6.png)
+![View the Approval and Support curves for a referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-6.webp)
 
 在Moonbase Alpha上的General Admin Track提交的提案将具有以下特征：
 
@@ -140,7 +140,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 如下图所示，批准和支持数量已达到要求，则将进入确认期。如果公投维持批准和支持的水平，则在区块124,962确认期将结束，随之开始生效等待期。您可以将鼠标停留在图表上获取每个时期的更多信息。假设本次公投将维持在获得批准和支持的水平，生效等待期将在区块132,262结束，提案将被执行。
 
-![View the Approval and Support curves for a referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-7.png)
+![View the Approval and Support curves for a referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-7.webp)
 
 如果公投未在确认期持续获得足够的批准和支持，在决定期还剩下时间的情况下，只要公投在确认期再次持续获得足够的批准和支持则有机会通过。如果公投进入确认期，但决定期设置为在确认期结束前结束，则决定期实际上将延长至确认期结束。如果决定期结束，公投未获得足够的批准和支持，则将被拒绝，决定保证金将被退还。
 
@@ -154,7 +154,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
 前往[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}，点击**Delegate**开始操作。
 
-![To submit a delegate vote on a referendum, click on the "Delegate" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-8.png)
+![To submit a delegate vote on a referendum, click on the "Delegate" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-8.webp)
 
 然后，请执行以下步骤填写委托的详细信息：
 
@@ -166,7 +166,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 6. 在下一个页面，在**delegate to address**选择您想要将投票委托给的账户
 7. 点击**Delegate**并签署交易
 
-![Submit a delegate vote on a referendum by filling in all of the delegation details and clicking on the "Delegate" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-9.png)
+![Submit a delegate vote on a referendum by filling in all of the delegation details and clicking on the "Delegate" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-9.webp)
 
 现在您选择接收委托投票的帐户将能够代表您进行投票。 一旦该账户投票，委托的总投票权重将分配给该账户选择的选项。 在本示例中，Baltahar可以使用Charleth委托的20000的投票权重（10000枚Token乘以信念值2）对公投进行投票。
 
@@ -179,20 +179,20 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 3. 在**class**输入Origin的值。在本示例中是General Admin Track级别，值为`2`。要获取完整的Track ID列表，请参考[治理概览页面的OpenGov部分](/learn/features/governance/#general-parameters-by-track){target=_blank}
 4. 点击**Submit transaction**并签署交易
 
-![Undelegate a vote on Polkadot.js Apps.](/images/tokens/governance/voting/vote-10.png)
+![Undelegate a vote on Polkadot.js Apps.](/images/tokens/governance/voting/vote-10.webp)
 
 ### 退还决定保证金 {: #refund-the-decision-deposit }
 
 如果公投被批准或拒绝，只要不是因为恶意提案被拒绝，则决定保证金将有资格被退还。恶意提案将导致保证金被没收。任何Token持有者可以触发保证金退还提交保证金的原始账户。要退还保证金，您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}执行以下操作。如果公投符合条件且保证金尚未退还，您将看到**Refund deposit**的按钮。点击此按钮开始操作。
 
-![Get started refunding a Decision Deposit from a passed referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-11.png)
+![Get started refunding a Decision Deposit from a passed referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-11.webp)
 
 提交退款交易，请执行以下步骤：
 
 1. 选择您要触发退款的帐户。此账户不需要为初始提交保证金的账户
 2. 点击**Refund deposit**并签署交易
 
-![Refund the Decision Deposit on Polkadot.js Apps.](/images/tokens/governance/voting/vote-12.png)
+![Refund the Decision Deposit on Polkadot.js Apps.](/images/tokens/governance/voting/vote-12.webp)
 
 ### 解锁Token {: #unlocking-locked-tokens }
 
@@ -202,7 +202,7 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
  - 根据信念乘数进行锁定，会显示剩余区块数量和时间
  - 锁定期结束，意味着您可以解锁并取回Token
 
-![View locked balances on the account page of Polkadot.js Apps.](/images/tokens/governance/voting/vote-13.png)
+![View locked balances on the account page of Polkadot.js Apps.](/images/tokens/governance/voting/vote-13.webp)
 
 锁定期结束即可取回Token。请在**Developers**标签下的**Extrinsics**菜单中进行操作。在此，我们需要发送两个不同的extrinsics。首先需要提供以下信息：
 
@@ -212,7 +212,7 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
  4. 输入公投编号。这是**Referenda**标签里左侧显示的数字。
  5. 点击**Submit Transaction**按钮并签署交易
 
-![Submit an extrinsic to remove your vote on a referendum in Polkadot.js Apps.](/images/tokens/governance/voting/vote-14.png)
+![Submit an extrinsic to remove your vote on a referendum in Polkadot.js Apps.](/images/tokens/governance/voting/vote-14.webp)
 
 下一个extrinsic，您需要提供以下信息：
 
@@ -223,6 +223,6 @@ Token持有者在投票时，使用的Token将被锁定且不能进行转移。�
  5. 输入接收解锁Token的目标账户。在本示例中为Alice
  6. 点击**Submit Transaction**按钮并签署交易
 
-![Submit an extrinsic to unlock your tokens that were locked in referenda in Polkadot.js Apps.](/images/tokens/governance/voting/vote-15.png)
+![Submit an extrinsic to unlock your tokens that were locked in referenda in Polkadot.js Apps.](/images/tokens/governance/voting/vote-15.webp)
 
 交易完成后，锁定的Token将被解锁。您可以返回到**Accounts**标签进行检查，并可以看到余额状态显示为**transferable**。

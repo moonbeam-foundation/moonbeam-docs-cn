@@ -37,7 +37,7 @@ git clone https://github.com/scaffold-eth/scaffold-eth.git
 yarn install
 ```
 
-![Scaffold-ETH installation output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-1.png)
+![Scaffold-ETH installation output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-1.webp)
 
 当依赖项已安装且在控制台输出无任何错误（如上图所示），您可以继续修改Scaffold-ETH的不同组件。
 
@@ -218,7 +218,7 @@ yarn install
 
     这将通过Docker镜像启动一个本地节点实例，并控制台输出将显示它正在索引其指向的网络区块
 
-    ![The Graph node output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-2.png)
+    ![The Graph node output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-2.webp)
 
 2. 在终端打开新的标签或窗口。然后，通过运行以下命令编译和部署智能合约：
 
@@ -226,7 +226,7 @@ yarn install
     yarn deploy
     ```
 
-    ![Contract deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-3.png)
+    ![Contract deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-3.webp)
 
     如果您要使用The Graph，请将部署的合约地址填入`subgraph.yaml`。如果不用The Graph，你可以跳到第5步来启动React 服务器
 
@@ -236,7 +236,7 @@ yarn install
     yarn graph-create-local
     ```
 
-    ![Create sub-graph output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-4.png)
+    ![Create sub-graph output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-4.webp)
 
 4. 接下来，部署sub-graph至本地graph节点：
 
@@ -266,7 +266,7 @@ yarn install
 
     系统将提示您为正在部署的sub-graph输入版本名称
 
-    ![Sub-graph deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-5.png)
+    ![Sub-graph deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-5.webp)
 
 5. 最后，您可以通过输入以下命令启动React服务器：
 
@@ -276,11 +276,11 @@ yarn install
 
     这将默认在`http://localhost:3000/`启动基于React的DApp UI
 
-    ![React server output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-6.png)
+    ![React server output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-6.webp)
 
 6. 现在，您可以将您的浏览器指向`http://localhost:3000/`并与React前端交互
 
-    ![React UI](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-7.png)
+    ![React UI](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-7.webp)
 
 ### 验证合约 {: #Verifying-Contracts }
 
@@ -309,7 +309,7 @@ yarn install
 
 稍等片刻，控制台输出将显示验证结果。如果成功，则会显示Moonscan上已验证合约的 URL。
 
-![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.png)
+![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.webp)
 
 关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}。
 

@@ -10,7 +10,7 @@
 
 5. 预言机节点完成请求后，节点使用预言机合约的`fulfillOracleRequest`函数，通过在原始请求中定义的回调函数将结果返回给客户合约
 
-![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.png)
+![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.webp)
 
 当通过客户合约创建数据请求后，需要传入以下参数以确保交易能够进行并返回正确信息：
 

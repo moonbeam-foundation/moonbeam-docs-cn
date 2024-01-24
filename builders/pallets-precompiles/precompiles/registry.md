@@ -58,13 +58,13 @@ Registry Precompile位于以下地址：
 
 要快速开始使用[Remix](/builders/build/eth-api/dev-env/remix){target=_blank}，[Precompile Registry合约已从GitHub加载](https://remix.ethereum.org/#url=https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=_blank}。您也可以在Remix创建一个新文件并手动在[`PrecompileRegistry.sol`](#the-solidity-interface)合约中粘贴内容。
 
-![Add the Precompile Registry Interface to Remix](/images/builders/pallets-precompiles/precompiles/registry/registry-1.png)
+![Add the Precompile Registry Interface to Remix](/images/builders/pallets-precompiles/precompiles/registry/registry-1.webp)
 
 然后，您可以执行以下步骤进行编译、部署并与Precompile Registry交互：
 
 1. 在**Compile**标签下，点击**Compile PrecompileRegistry.sol**开始编译合约。成功编译合约后将会在左侧出现绿色完成标记
 
-    ![Compile the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-2.png)
+    ![Compile the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-2.webp)
 
 2. 在**Deploy and run transactions**标签下，您可以使用地址加载Precompile Registry：
 
@@ -76,11 +76,11 @@ Registry Precompile位于以下地址：
 
     4. Precompile Registry将在**Deployed Contracts**列表中出现
 
-    ![Access the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-3.png)
+    ![Access the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-3.webp)
 
 3. 您可以与任何预编译的函数交互。在**Deployed Contracts**标签下方，展开Precompile Registry查看函数列表。例如，您可以使用**isPrecompile**函数查看该地址是否是预编译
 
-    ![Interact with the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-4.png)
+    ![Interact with the Precompile Registry contract](/images/builders/pallets-precompiles/precompiles/registry/registry-4.webp)
 
 ### 使用以太坊库与Precompile Registry交互 {: #use-ethereum-libraries }
 

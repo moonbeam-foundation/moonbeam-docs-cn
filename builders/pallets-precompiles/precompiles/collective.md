@@ -97,14 +97,14 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 1. 获取[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}的副本
 2. 将文件内容复制并粘贴至名为`Collective.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}
 
-![Copying and Pasting the Collective Interface into Remix](/images/builders/pallets-precompiles/precompiles/collective/collective-1.png)
+![Copying and Pasting the Collective Interface into Remix](/images/builders/pallets-precompiles/precompiles/collective/collective-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 编译接口，点击**Compile Collective.sol**
 
-![Compiling Collective.sol](/images/builders/pallets-precompiles/precompiles/collective/collective-2.png)
+![Compiling Collective.sol](/images/builders/pallets-precompiles/precompiles/collective/collective-2.webp)
 
 ### 获取合约 {: #access-the-contract }
 
@@ -114,7 +114,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 4. 提供团体预编译的地址`{{networks.moonbase.precompiles.collective_treasury}}`并点击**At Address**
 5. 团体预编译将出现在**Deployed Contracts**列表中
 
-![Access the precompile contract](/images/builders/pallets-precompiles/precompiles/collective/collective-3.png)
+![Access the precompile contract](/images/builders/pallets-precompiles/precompiles/collective/collective-3.webp)
 
 ### 创建提案 {: #create-a-proposal }
 
@@ -127,7 +127,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 3. 在**value**一栏输入`10`
 4. 点击**Submit proposal**后签署并提交提案
 
-![Submit a treasury proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-4.png)
+![Submit a treasury proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-4.webp)
 
 您将在**proposals**部分看到您创建的提案出现。如果这是您创建的首个提案，则提案的索引为`0`（这将用于下一部分）。要查看所有的提案，您可以导向至**Developer**标签，选择**Chain State**并执行以下步骤：
 
@@ -137,7 +137,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 4. 点击**+**提交查询
 5. 结果将在下方显示，包括提案索引和提案详情
 
-![View all treasury proposals](/images/builders/pallets-precompiles/precompiles/collective/collective-5.png)
+![View all treasury proposals](/images/builders/pallets-precompiles/precompiles/collective/collective-5.webp)
 
 现在您已经拥有提案及其索引，您可以使用团体预编译在下一部分批准提案。
 
@@ -151,7 +151,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 4. 输入提案索引，以便团体投票批准
 5. 为提案复制**encoded call data（编码的调用数据）**
 
-![Get encoded proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-6.png)
+![Get encoded proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-6.webp)
 
 在本示例中，提案的extrinsic编码调用数据为`0x110200`。
 
@@ -163,13 +163,13 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 4. 点击**transact**
 5. MetaMask将会跳出弹窗要求您确认交易
 
-![Propose the approval](/images/builders/pallets-precompiles/precompiles/collective/collective-7.png)
+![Propose the approval](/images/builders/pallets-precompiles/precompiles/collective/collective-7.webp)
 
 ### 为提案进行投票 {: #vote-on-a-proposal }
 
 要为提案进行投票，您需要将编码后的提案传入到**proposalHash**函数来获取提案哈希。
 
-![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/collective/collective-8.png)
+![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/collective/collective-8.webp)
 
 获取提案哈希之后，请确保您已经连接至财政库委员会成员的账号，然后执行以下步骤：
 
@@ -180,7 +180,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 5. 点击**transact**
 6. MetaMask将会跳出弹窗要求您确认交易
 
-![Vote on the proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-9.png)
+![Vote on the proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-9.webp)
 
 将阈值设置为`2`后，您需要在MetaMask将账号切换成另一个财政库委员会团体成员并重复上述步骤投票以达到阈值。当达到阈值后，您可以结束提案，这意味着提案将自动执行。如果获得批准，提案会进入费用支出的等待列队，提案申请的金额将分配给受益人。在本示例中，当提案进入费用支出期，10个DEV Token将返还给Alith。
 
@@ -196,7 +196,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 6. 点击**transact**
 7. MetaMask将会跳出弹窗要求您确认交易
 
-![Close the proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-10.png)
+![Close the proposal](/images/builders/pallets-precompiles/precompiles/collective/collective-10.webp)
 
 您可以使用Polkadot.js Apps验证提案是否通过。在**Developer**标签处选择**Chain State**，并执行以下步骤：
 
@@ -205,6 +205,6 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 3. 点击**+**以提交查询
 4. 提案将会出现在批准列表中
 
-![Review the treasury approvals](/images/builders/pallets-precompiles/precompiles/collective/collective-11.png)
+![Review the treasury approvals](/images/builders/pallets-precompiles/precompiles/collective/collective-11.webp)
 
 当提案进入费用支出期，提案申请的金额将分配给受益人，初始的保证金将返还给提案者。若财政库用完所有的资金，已批准的提案将一直保存到下一个支出期，即当财政库再次拥有足够的资金。

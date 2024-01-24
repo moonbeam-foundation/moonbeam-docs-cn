@@ -99,7 +99,7 @@ forge install OpenZeppelin/openzeppelin-contracts
 forge build
 ```
 
-![Foundry Contract Compile](/images/builders/build/eth-api/dev-env/foundry/foundry-1.png)
+![Foundry Contract Compile](/images/builders/build/eth-api/dev-env/foundry/foundry-1.webp)
 
 编译完成后，将创建两个文件夹：`out`和`cache`。您合约的ABI和字节码将包含在`out`文件夹中。这两个文件夹已被默认Foundry项目初始化中包含的`.gitignore`忽略。
 
@@ -145,7 +145,7 @@ forge build
 
 几分钟后，合约完成部署，您将在终端看到地址。
 
-![Foundry Contract Deploy](/images/builders/build/eth-api/dev-env/foundry/foundry-2.png)
+![Foundry Contract Deploy](/images/builders/build/eth-api/dev-env/foundry/foundry-2.webp)
 
 恭喜您，您的合约已上线！保存地址，用于后续合约实例交互。
 
@@ -187,7 +187,7 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
 此数据非可读，但您可以使用cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ascii字符以查看“My Token”：
 
-![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.png)
+![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.webp)
 
 ```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
@@ -237,7 +237,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 交易将由您的Moonbase账户签署并传播到网络。输出应如下所示：
 
-![Foundry Contract Interaction](/images/builders/build/eth-api/dev-env/foundry/foundry-4.png)
+![Foundry Contract Interaction](/images/builders/build/eth-api/dev-env/foundry/foundry-4.webp)
 
 恭喜您！您已成功使用Foundry部署和交互合约！
 
@@ -271,7 +271,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 分叉的实例将拥有10个已经预先注资10,000测试Token的开发账户。分叉的实例位于`http://127.0.0.1:8545/`。终端输出应类似于以下内容：
 
-![Forking terminal screen](/images/builders/build/eth-api/dev-env/foundry/foundry-5.png)
+![Forking terminal screen](/images/builders/build/eth-api/dev-env/foundry/foundry-5.webp)
 
 要验证您是否已分叉了网络，您可以查询最新的区块号：
 
@@ -313,7 +313,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 `memdump`将显示当前会话中的所有数据。您可能会看到类似下面这样的内容。如果您不熟悉hex格式或者ABI编码的工作原理，那么您可能无法找到`myData`变量的存储位置。
 
-![memdump in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-6.png)
+![memdump in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-6.webp)
 
 幸运的是，Chisel会轻松帮您找到这些信息存储位置。使用`!rawstack`命令，您可以找到变量值在栈中的位置。
 
@@ -323,7 +323,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 在此情况下，因为字节的长度超过32个字节，因此将显示内存指针。这样您已经从`!memdump`命令了解了整个栈。
 
-![rawstack in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-7.png)
+![rawstack in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-7.webp)
 
 `!rawstack`命令显示`myData`变量存储在`0x80`中，与从`!memdump`命令检索到的内存内容对比时，看起来`myData`存储如下所示：
 
@@ -352,7 +352,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 您应该看到如下所示输出：
 
-![Expressions in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-8.png)
+![Expressions in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-8.webp)
 
 虽然它没有以相同的方式显示数据，但您仍然可以获得数据的内容，并且它还进一步分解了信息的编码方式，例如让您知道`0xa0`值定义了数据长度。
 
@@ -396,7 +396,7 @@ abi.encode(100, true, "Develop on Moonbeam")
     !rawstack myNumber
     ```
 
-![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.png)
+![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.webp)
 
 您甚至可以在使用Chisel时分叉网络：
 
@@ -410,7 +410,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 0x4c5A56ed5A4FF7B09aA86560AfD7d383F4831Cce.balance
 ```
 
-![Forking in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-10.png)
+![Forking in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-10.webp)
 
 如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=_blank}。
 

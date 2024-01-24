@@ -60,14 +60,14 @@ Preimage Precompile位于以下地址：
 1. 点击**File explorer**标签
 2. 将[`Preimage.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/preimage/Preimage.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Preimage.sol`
 
-![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-1.png)
+![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 然后在编译界面，点击**Compile Preimage.sol**
 
-![Compile the Preimage.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-2.png)
+![Compile the Preimage.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-2.webp)
 
 ### 获取合约 {: #access-the-contract }
 
@@ -77,7 +77,7 @@ Preimage Precompile位于以下地址：
 4. 为Moonbase Alpha提供Preimage Precompile的地址：`{{ networks.moonbase.precompiles.preimage }}`并点击**At Address**
 5. Preimage Precompile将会出现在**Deployed Contracts**列表当中
 
-![Access the Preimage.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-3.png)
+![Access the Preimage.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-3.webp)
 
 ### 提交提案原像 {: #submit-a-preimage }
 
@@ -89,7 +89,7 @@ Preimage Precompile位于以下地址：
  2. 从下拉菜单里选择**Preimages**
  3. 在**Preimages**页面点击**+ Add preimage**
 
-![Add a new preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-4.png)
+![Add a new preimage](/images/builders/pallets-precompiles/precompiles/democracy/democracy-4.webp)
 
 然后执行以下步骤：
 
@@ -99,14 +99,14 @@ Preimage Precompile位于以下地址：
  4. 复制原像哈希，这代表着此提案。您将会在通过民主预编译提交提案时使用此哈希
  5. 点击**Submit preimage**按钮，但请不要在下一页签署和确认此交易 
 
-![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.png)
+![Get the proposal hash](/images/builders/pallets-precompiles/precompiles/democracy/democracy-5.webp)
 
 在下个页面，根据以下步骤进行操作：
 
  1. 点击三角形图像以显示字节状态下带编码的提案
  2. 复制带编码的提案——您将在随后步骤中使用**notePreimage**时用到它
 
-![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.png)
+![Get the encoded proposal](/images/builders/pallets-precompiles/precompiles/democracy/democracy-6.webp)
 
 !!! 注意事项
      请**不要**在此签署和提交交易。您将会在随后步骤中通过**notePreimage**提交此信息。
@@ -118,7 +118,7 @@ Preimage Precompile位于以下地址：
 3. 输入上述部分获得的编码提案的**bytes**。请注意，编码提案并非与原像哈希相同，确保您在此字段输入正确的数值
 4. 点击**transact**并在MetaMask确认交易
 
-![Submit the preimage using the notePreimage function of the Preimage Precompile.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-4.png)
+![Submit the preimage using the notePreimage function of the Preimage Precompile.](/images/builders/pallets-precompiles/precompiles/preimage/preimage-4.webp)
 
 现在你已经为您的提案提交原像，您可以提交提案了！关于如何提交提案，请参考[Referenda Precompile](/builders/pallets-precompiles/precompiles/referenda){target=_blank}文档。
 

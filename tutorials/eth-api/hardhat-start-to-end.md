@@ -59,7 +59,7 @@ _此处所有信息由第三方提供，仅供参考之用。Moonbeam不为Moonb
 
 5. 随后会显示菜单，允许您创建新项目或使用示例项目。在本示例中，您可以选择**Create an empty hardhat.config.js**
 
-![Create an empty Hardhat project.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-1.png)
+![Create an empty Hardhat project.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-1.webp)
 
 这将在您的项目目录中创建一个Hardhat配置文件（`hardhat.config.js`）。
 
@@ -228,7 +228,7 @@ module.exports = {
 npx hardhat compile
 ```
 
-![Learn how to compile your Solidity contracts with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.png)
+![Learn how to compile your Solidity contracts with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-2.webp)
 
 编译合约后，会创建一个`artifacts`目录，该目录包含合约的字节码和元数据，即`.json`文件。建议您将此目录添加至`.gitignore`。
 
@@ -416,7 +416,7 @@ npx hardhat test --network dev tests/Dao.js
 
 如果设置无误，您将看到以下输出：
 
-![Run your test suite of test cases with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-3.png)
+![Run your test suite of test cases with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-3.webp)
 
 ## 部署至Moonbase Alpha {: #deploying-to-moonbase-alpha }
 
@@ -488,7 +488,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbase Alpha with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-4.png)
+![Deploy a Contract to Moonbase Alpha with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-4.webp)
 
 恭喜您，您的合约已上线Moonbase Alpha！请保存地址，这将在后续步骤中用于与此合约实例交互。
 
@@ -511,7 +511,7 @@ npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS {{ networks.moonba
 
 在您的终端中，您会看到合约源代码已成功提交以用于验证。如果验证成功，您会看到**Successfully verified contract**并且会有一个指向[Moonscan for Moonbase Alpha](https://moonbase.moonscan.io/){target=_blank}上的合约代码的链接。如果插件返回错误，请仔细检查您的API密钥配置是否正确，以及您是否已在验证命令中指定所有必要的参数。您可以通过[Hardhat Etherscan插件指南](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}获取更多信息。
 
-![Verify contracts on Moonbase Alpha using the Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-5.png)
+![Verify contracts on Moonbase Alpha using the Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-5.webp)
 
 ## 部署到Moonbeam主网上的生产环境 {: #deploying-to-production-on-moonbeam-mainnet }
 
@@ -561,7 +561,7 @@ npx hardhat run --network moonbeam scripts/deploy.js
 
 几秒钟后，合约会成功部署，您将在终端看到地址。
 
-![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-6.png)
+![Deploy a Contract to Moonbeam with Hardhat.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-6.webp)
 
 恭喜您，您的合约已上线Moonbeam！请保存地址，其将在后续步骤中用于与合约实例交互。
 
@@ -580,7 +580,7 @@ npx hardhat verify --network moonbeam INSERT_CONTRACT_ADDRESS 0x1C86E56007FCBF75
 
 在您的终端中，您会看到合约源代码已成功提交以用于验证。如果验证成功，您会看到**Successfully verified contract**并且会有一个指向[Moonbeam Moonscan](https://moonscan.io/){target=_blank}上的合约代码的链接。如果插件返回错误，请仔细检查您的API密钥配置是否正确，以及您是否已在验证命令中指定所有必要的参数。您可以通过[Hardhat Etherscan插件指南](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}获取更多信息。
 
-![Verify contracts on Moonbeam using Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.png)
+![Verify contracts on Moonbeam using Hardhat Etherscan plugin.](/images/tutorials/eth-api/hardhat-start-to-end/hardhat-7.webp)
 
 这样就可以了！我们在本教程中介绍了很多基础知识。如果您想深入了解，可以访问以下链接获取更多信息：
 

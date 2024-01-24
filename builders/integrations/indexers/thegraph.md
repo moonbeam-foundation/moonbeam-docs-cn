@@ -315,7 +315,7 @@ npx graph deploy <username>/<subgraphName> \
 
 上述命令的日志应与以下内容相似：
 
-![The Graph deployed](/images/builders/integrations/indexers/the-graph/the-graph-1.png)
+![The Graph deployed](/images/builders/integrations/indexers/the-graph/the-graph-1.webp)
 
 现在各种DApp均可使用Subgraph终端获取由The Graph协议索引的数据。
 

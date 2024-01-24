@@ -19,7 +19,7 @@ description: Moonriver（Moonbeam在Kusama上部署的平行链）的当前配�
 - 拥有一个由PureStake代表Moonbeam基金会运营并含有{{ networks.moonriver.staking.max_candidates }}位收集人的有效集。
 - 拥有提供商提供的[API端点](/builders/get-started/endpoints/){target=_blank}以连接到网络。项目也可以运行和访问[自己的私有节点](/node-operators/networks/run-a-node/){target=_blank}。
 
-![Moonriver Diagram](/images/learn/platform/networks/moonriver-diagram.png)
+![Moonriver Diagram](/images/learn/platform/networks/moonriver-diagram.webp)
 
 需要注意的重要变量：
 

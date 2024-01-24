@@ -99,7 +99,7 @@ BABE Epoch随机数基于上一个中继链Epoch中产生区块的VRF值的哈�
 
 随机数请求的流程如下所示：
 
-![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.png)
+![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.webp)
 
 ## 安全考虑 {: #security-considerations }
 

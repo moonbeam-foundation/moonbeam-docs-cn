@@ -67,7 +67,7 @@ Utility Pallet包含以下只读函数来获取pallet常量：
 
 10. 点击**Submit Transaction**立即发送调用
 
-![Send batch transaction](/images/builders/pallets-precompiles/pallets/utility/utility-1.png)
+![Send batch transaction](/images/builders/pallets-precompiles/pallets/utility/utility-1.webp)
 
 接下来，您将需要输入您的密码并点击**Sign and Submit**。随后，您可以在[Subscan](https://moonbase.subscan.io/){target=_blank}上查看extrinsic。
 

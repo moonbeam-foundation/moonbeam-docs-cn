@@ -78,7 +78,7 @@ touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 
 从更高层面来说，我们正在创建的彩票合约将定义彩票规则，允许参与并使用随机生成的词来公平挑选获胜者。我们将通过随机数预编译请求随机词。然后，我们将使用随机数消费者接口消费已完成请求的结果，以便我们的合约可以使用随机生成的词挑选获胜者并支付奖励。我们将会在构建彩票合约时演示分步流程。但是现在，您可以查看下图了解整个流程。
 
-![Diagram of the Lottery process.](/images/tutorials/eth-api/randomness-lottery/lottery-1.png)
+![Diagram of the Lottery process.](/images/tutorials/eth-api/randomness-lottery/lottery-1.webp)
 
 **此合约仅用于演示目的，不可用于生产环境。**
 
@@ -407,7 +407,7 @@ function pickWinners(uint256[] memory randomWords) internal {
 npx hardhat compile
 ```
 
-![Compile the contracts using Hardhat's compile command.](/images/tutorials/eth-api/randomness-lottery/lottery-2.png)
+![Compile the contracts using Hardhat's compile command.](/images/tutorials/eth-api/randomness-lottery/lottery-2.webp)
 
 编译后，将会创建`artifacts`目录：这将存放合约的字节码和元数据，即`.json`文件。建议您将此目录添加至`.gitignore`。
 
@@ -471,7 +471,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 几秒钟后，合约成功部署，您将在终端看到合约地址。保存合约地址，我们将在下一部分中用于合约实例交互。
 
-![Deploy the Lottery contract using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-3.png)
+![Deploy the Lottery contract using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-3.webp)
 
 ### 创建脚本以与彩票合约交互 {: #participate-in-lottery }
 
@@ -509,7 +509,7 @@ npx hardhat run --network moonbase scripts/participate.js
 
 交易哈希将在后台显示。您可以使用哈希在[Moonscan](https://moonbase.moonscan.io){target=_blank}查看交易。
 
-![Run the partipation script using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-4.png)
+![Run the partipation script using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-4.webp)
 
 这样就可以了！您可以继续创建另外的脚本来执行彩票的后续步骤，例如启动彩票抽奖和挑选获胜者。
 

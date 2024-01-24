@@ -31,7 +31,7 @@ _作者：Kevin Neilson_
 - ChatGPT生成的代码并未经过审计、检查或验证，有可能包含错误
 - 即使输入此教程中包含的相同内容至GPT-4，但仍然有可能获得不同的输出回答 - 因为ChatGPT作为语言模型的架构所致
 
-![Limitations](/images/tutorials/eth-api/chatgpt/chatgpt-1.png)
+![Limitations](/images/tutorials/eth-api/chatgpt/chatgpt-1.webp)
 
 **请注意，我们今天创建的合约仅用于教育目的，不适合用于真正的生产环境。**
 
@@ -47,7 +47,7 @@ _作者：Kevin Neilson_
 
 您可以访问[OpenAI 网站](https://chat.openai.com/auth/login){target=_blank}注册免费账户以访问ChatGPT。您需要提供电子邮件地址和电话号码。完成本教程不需要订阅ChatGPT Plus。
 
-![Sign up for OpenAI account](/images/tutorials/eth-api/chatgpt/chatgpt-2.png)
+![Sign up for OpenAI account](/images/tutorials/eth-api/chatgpt/chatgpt-2.webp)
 
 ## 创建一个ERC-20 Token合约 {: #create-an-erc-20-token-contract }
 
@@ -57,7 +57,7 @@ _作者：Kevin Neilson_
 2. 选取您希望使用的模型，任何模型皆适用于此教程
 3. 输入您的内容至输入框中并在确认后点击回车键
 
-![Prompt chatGPT](/images/tutorials/eth-api/chatgpt/chatgpt-3.png)
+![Prompt chatGPT](/images/tutorials/eth-api/chatgpt/chatgpt-3.webp)
 
 关于第一个输入内容，我们将会询问ChatGPT如何创建一个ERC-20 Token，具有指定名称、标志和初始供应。您的输入内容并不需要与下方完全相同，您可以根据需求进行修改。
 
@@ -66,7 +66,7 @@ I would like to create an ERC-20 token called "KevinToken"
 with the symbol "KEV" and an initial supply of 40000000.
 ```
 
-![ChatGPT's 1st response](/images/tutorials/eth-api/chatgpt/chatgpt-4.png)
+![ChatGPT's 1st response](/images/tutorials/eth-api/chatgpt/chatgpt-4.webp)
 
 这是一个很好的开始。ChatGPT为我们生成了一个简单但实用的ERC-20 Token，它满足我们指定的所有参数。它还阐明了如何使用[OpenZeppelin标准](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol){target=_blank}创建ERC-20 Token合约，以及初始供应量的方向。最后，它提醒我们这只是一个开始，我们可能还希望实现其他考虑因素，例如铸币和销毁。
 
@@ -81,7 +81,7 @@ This looks great, but I'd really like my ERC-20 to be both mintable and burnable
 
 ChatGPT很乐意效劳。请注意它如何维护我们最初指定的参数，即Token名称和标志。
 
-![ChatGPT's 2nd response](/images/tutorials/eth-api/chatgpt/chatgpt-5.png)
+![ChatGPT's 2nd response](/images/tutorials/eth-api/chatgpt/chatgpt-5.webp)
 
 ## 准备部署指令 {: #preparing-deployment-instructions }
 
@@ -92,7 +92,7 @@ I would like to use Hardhat to compile and deploy
  this smart contract to the Moonbase Alpha network.  
 ```
 
-![ChatGPT's 3rd response](/images/tutorials/eth-api/chatgpt/chatgpt-6.png)
+![ChatGPT's 3rd response](/images/tutorials/eth-api/chatgpt/chatgpt-6.webp)
 
 意料之中，ChatGPT为我们提供了一系列详细的部署步骤，从安装说明到完整的部署脚本。请注意，它甚至会记住我们第一个提示中的小细节。在我们的初始提示中，我们要求Token的初始供应量为`400000000`，ChatGPT将此参数包含在它生成的部署脚本中。
 
@@ -115,14 +115,14 @@ ChatGPT输出的代码片段在此处被故意省略，以鼓励您自行尝试�
 Hey GPT4 can you help me write some tests for the smart contract above?  
 ```
 
-![ChatGPT's 4th response](/images/tutorials/eth-api/chatgpt/chatgpt-7.png)
+![ChatGPT's 4th response](/images/tutorials/eth-api/chatgpt/chatgpt-7.webp)
 
 ChatGPT为我们提供了大量测试用例，特别是围绕铸造和销毁功能。在它忙于编写测试用例时，但它似乎逐渐减弱并停止，在最后也没有通常会出现的总结评论。这次中断源于ChatGPT的500字限制。虽然500字的限制是一个硬性的停止，但ChatGPT的思路仍在继续，所以你可以简单地要求它继续，它会很高兴地答应。请注意，对于有限制消息数量的订阅方案，这将算作您分配的附加消息。
 
 !!! 注意事项
     ChatGPT具有大约500个字词或是4,000个字符的回复限制。然而，您可以通过简单的询问其跟进信息来获得之后的部分。
 
-![ChatGPT's 5th response](/images/tutorials/eth-api/chatgpt/chatgpt-8.png)
+![ChatGPT's 5th response](/images/tutorials/eth-api/chatgpt/chatgpt-8.webp)
 
 ChatGPT为我们完成了测试用例的编写，并通过告诉我们如何运行它们来结束。
 
@@ -148,7 +148,7 @@ function withdrawBalance() public {
 }
 ```
 
-![ChatGPT's 6th response](/images/tutorials/eth-api/chatgpt/chatgpt-9.png)
+![ChatGPT's 6th response](/images/tutorials/eth-api/chatgpt/chatgpt-9.webp)
 
 可以看到，ChatGPT发现了确切的错误，解释了问题的根源，并让我们知道如何修复它。
 

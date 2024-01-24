@@ -67,18 +67,18 @@ Moonbeam上的[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/m
 1. 切换至**Assets**标签
 2. 点击**Import tokens**
 
-![Import Tokens from Assets Tab in MetaMask](/images/builders/pallets-precompiles/precompiles/erc20/erc20-1.png)
+![Import Tokens from Assets Tab in MetaMask](/images/builders/pallets-precompiles/precompiles/erc20/erc20-1.webp)
 
 现在，您可以创建一个自定义Token：
 
 1. 为Token合约地址输入预编译地址：`{{networks.moonbase.precompiles.erc20 }}`。输入后，**Token Symbol**和**Token Decimal**将会自动填充。若未自动填充，请在Token符号一栏输入`DEV`，在小数位数一栏输入`18`
 2. 点击**Add Custom Token**
 
-![Add Custom Token](/images/builders/pallets-precompiles/precompiles/erc20/erc20-2.png)
+![Add Custom Token](/images/builders/pallets-precompiles/precompiles/erc20/erc20-2.webp)
 
 MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱包中查询token详情。
 
-![Confirm and Import Tokens](/images/builders/pallets-precompiles/precompiles/erc20/erc20-3.png)
+![Confirm and Import Tokens](/images/builders/pallets-precompiles/precompiles/erc20/erc20-3.webp)
 
 这样就意味着您已成功将DEV Token作为自定义ERC-20 Token添加至Moonbase Alpha测试网。
 
@@ -96,7 +96,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 1. 点击**Compile**标签（从上至下第二个图标）
 2. 点击**Compile IER20.sol**来编译接口
 
-![Compiling IERC20.sol](/images/builders/pallets-precompiles/precompiles/erc20/erc20-4.png)
+![Compiling IERC20.sol](/images/builders/pallets-precompiles/precompiles/erc20/erc20-4.webp)
 
 如果接口编译成功后，您将在**Compile**标签旁看到一个绿色的复选标记。
 
@@ -110,7 +110,7 @@ MetaMask将会提示您点击**导入Token**来导入DEV Token，您可以在钱
 4. 在**CONTRACT**下拉菜单中选择**IERC20 - IERC20.sol**。这是预编译合约，所以无需部署任何代码。但是您需要在**At Address**字段提供预编译地址
 5. 提供ERC-20预编译地址：`{{networks.moonbase.precompiles.erc20}}`并点击**At Address**
 
-![Access the address](/images/builders/pallets-precompiles/precompiles/erc20/erc20-5.png)
+![Access the address](/images/builders/pallets-precompiles/precompiles/erc20/erc20-5.webp)
 
 **IERC20**预编译将会显示在**Deployed Contracts**列表。
 
@@ -124,7 +124,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 4. 点击**symbol**以获取Token符号
 5. 点击**totalSupply**以获取在Moonbase Alpha存在的Token总供应量
 
-![Total Supply](/images/builders/pallets-precompiles/precompiles/erc20/erc20-6.png)
+![Total Supply](/images/builders/pallets-precompiles/precompiles/erc20/erc20-6.webp)
 
 每一次调用的回复将显示在对应的函数中。
 
@@ -136,7 +136,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 2. 在**owner**字段输入您想要查看余额的地址
 3. 点击**call**
 
-![Get Balance of an Account](/images/builders/pallets-precompiles/precompiles/erc20/erc20-7.png)
+![Get Balance of an Account](/images/builders/pallets-precompiles/precompiles/erc20/erc20-7.webp)
 
 该账户余额将会显示在`balanceOf`函数下。
 
@@ -151,7 +151,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 5. MetaMask将跳出弹窗，提示您检查交易详情。点击**View full transaction details**以检查发送给支出者的Token数量和支出者地址
 6. 如果信息无误，点击**Confirm**发送交易
 
-![Confirm Approve Transaction](/images/builders/pallets-precompiles/precompiles/erc20/erc20-8.png)
+![Confirm Approve Transaction](/images/builders/pallets-precompiles/precompiles/erc20/erc20-8.webp)
 
 交易成功发送后，您将发现您的账户余额未发生变化。因为您只批准支出给定数量的Token，而支出者尚未支出Token。在下一部分，您将使用`allowance`函数来验证支出者是否能够代表您支出1枚DEV Token。
 
@@ -164,7 +164,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 3. 输入在上一部分中您提供的**spender**地址
 4. 点击**call**
 
-![Get Allowance of Spender](/images/builders/pallets-precompiles/precompiles/erc20/erc20-9.png)
+![Get Allowance of Spender](/images/builders/pallets-precompiles/precompiles/erc20/erc20-9.webp)
 
 调用完成后，支出者的额度将会显示，应为等值1枚DEV Token（`1000000000000000000`）。
 
@@ -178,7 +178,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 4. 点击**transact**
 5. MetaMask将跳出弹窗，提示您检查交易详情。如果信息无误，请点击**Confirm**
 
-![Send Standard Transfer](/images/builders/pallets-precompiles/precompiles/erc20/erc20-10.png)
+![Send Standard Transfer](/images/builders/pallets-precompiles/precompiles/erc20/erc20-10.webp)
 
 交易完成后，您可以使用`balanceOf`函数或查看MetaMask来[查看您的余额](#get-account-balance)。您将会发现您的余额减少了1枚DEV Token。您也可以使用`balanceOf`函数以查看接收方余额已显示增加1枚DEV Token。
 
@@ -188,7 +188,7 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 
 首先，您需要在MetaMask切换支出者账户。切换成功后，目前在Remix的**Accounts**标签下选中的是支出者的地址：
 
-![Switch accounts Remix](/images/builders/pallets-precompiles/precompiles/erc20/erc20-11.png)
+![Switch accounts Remix](/images/builders/pallets-precompiles/precompiles/erc20/erc20-11.webp)
 
 接下来，您可以发起和发送转账。请执行以下步骤：
 
@@ -198,10 +198,10 @@ ERC-20接口允许您快速获取Token信息，包括Token总供应量、名称�
 4. 输入发送的DEV Token数量。同样地，目前只允许支出者发送1枚DEV Token，请输入`1000000000000000000`
 5. 点击**transact**
 
-![Send Standard Transfer](/images/builders/pallets-precompiles/precompiles/erc20/erc20-12.png)
+![Send Standard Transfer](/images/builders/pallets-precompiles/precompiles/erc20/erc20-12.webp)
 
 交易完成后，您可以使用`balanceOf`函数来[查看您的余额](#get-account-balance)。支出者余额应该增加了1枚DEV Token，且额度现已用尽。想要验证支出者不再拥有额度，您可以调用`allowance`函数，输入所有人和支出者地址，结果应为0。
 
-![Zero Allowance](/images/builders/pallets-precompiles/precompiles/erc20/erc20-13.png)
+![Zero Allowance](/images/builders/pallets-precompiles/precompiles/erc20/erc20-13.webp)
 
 这样就意味着您已成功使用MetaMask和Remix与ERC-20预编译交互！

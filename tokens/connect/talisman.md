@@ -21,7 +21,7 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 
 首先，下载并安装[Talisman插件](https://www.talisman.xyz/){target=_blank}。插件打开后，系统将提示您创建一个新钱包或导入现有钱包。出于本教程目的，我们将创建一个新的钱包。接下来，系统将提示您创建密码以保护新钱包。
 
-![Create a new wallet or import an existing one into Talisman.](/images/tokens/connect/talisman/talisman-1.png)
+![Create a new wallet or import an existing one into Talisman.](/images/tokens/connect/talisman/talisman-1.webp)
 
 !!! 请记住
     Talisman不会要求您备份助记词，但是会在屏幕底部提醒您。如果您不备份助记词，您可能会丢失所有的资产。
@@ -32,7 +32,7 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 2. 为您的Talisman钱包输入密码
 3. 点击**View Recovery Phrase**并将其存储在安全的地方
 
-![Back up your Talisman recovery phrase.](/images/tokens/connect/talisman/talisman-2.png)
+![Back up your Talisman recovery phrase.](/images/tokens/connect/talisman/talisman-2.webp)
 
 ## 配置Talisman连接至测试网 {: #setting-up-talisman-to-connect-to-testnets } 
 
@@ -43,7 +43,7 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 3. 选择**Ethereum Networks**
 4. 点击**Enable Testnets**
 
-![See your Moonbase Alpha testnet account balances in Talisman.](/images/tokens/connect/talisman/talisman-3.png)
+![See your Moonbase Alpha testnet account balances in Talisman.](/images/tokens/connect/talisman/talisman-3.webp)
 
 ## 将Talisman连接至Moonbeam和Polkadot.js Apps {: #connecting-talisman-to-moonbase-alpha-polkadot.js-apps }
 
@@ -55,15 +55,15 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 2. 设置您想要连接至Polkadot.js Apps的账户。在本示例中为**My Ethereum Account**。此为Talisman分配的默认名称，您可根据需求重命名
 3. 点击**Connect 1**。该数值将根据您连接的帐户数量而变化
 
-![Enable Ethereum/Moonbeam accounts in Talisman.](/images/tokens/connect/talisman/talisman-4.png)
+![Enable Ethereum/Moonbeam accounts in Talisman.](/images/tokens/connect/talisman/talisman-4.webp)
 
 您的Talisman钱包现已连接至Polkadot.js Apps。刷新Polkadot.js Apps后，您将在[Polkadot.js Apps的账户页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/accounts){target=_blank}看到Talisman账户。首次启动[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/accounts){target=_blank}的时候，可能会出现连接至其他网络的情况。您可通过点击左上角的logo将网络切换至Moonbase Alpha TestNet，将页面往下滑找到**Test Networks**部分，选择Moonbase Alpha后，再回到顶部点击**Switch**即可。
 
-![Connect to Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-5.png)
+![Connect to Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-5.webp)
 
 切换后，Polkadot.js网站将不仅会连接到Moonbase Alpha，还会更改其样式以完美匹配。
 
-![Switch to Moonbase Alpha in Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-6.png)
+![Switch to Moonbase Alpha in Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-6.webp)
 
 ## 添加新账户至Talisman {: #adding-a-new-account-to-talisman } 
 
@@ -76,7 +76,7 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 5. 设置账户名称
 6. 点击**Create**
 
-![Create a new Moonbeam account in Talisman.](/images/tokens/connect/talisman/talisman-7.png)
+![Create a new Moonbeam account in Talisman.](/images/tokens/connect/talisman/talisman-7.webp)
 
 即使新账户已成功创建，但是Polkadot.js App并未察觉到此账户。为此，请在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/accounts){target=_blank}执行以下步骤将新账户连接到Polkadot.js Apps：
 
@@ -84,7 +84,7 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 2. 确保勾选**Show Eth accounts**
 3. 选择想要连接的账户。选择后，账户右侧的小点会变亮
 
-![Connect Talisman account to Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-8.png)
+![Connect Talisman account to Polkadot.js Apps.](/images/tokens/connect/talisman/talisman-8.webp)
 
 ## 通过Substrate API发送交易 {: #sending-a-transaction-through-substrates-api } 
 
@@ -97,11 +97,11 @@ Talisman是一个原生支持Substrate（Polkadot）和以太坊账户的加密�
 3. 准备就绪后，点击**Make Transfer**按钮
 4. 在Talisman的弹窗中批准交易
 
-![Send a Moonbeam transaction through the Substrate API with Talisman.](/images/tokens/connect/talisman/talisman-9.png)
+![Send a Moonbeam transaction through the Substrate API with Talisman.](/images/tokens/connect/talisman/talisman-9.webp)
 
 交易确认后，您将在每个账户看到余额更新。
 
-![You can see your balances updated in Polkadot.js Apps after a successful transaction.](/images/tokens/connect/talisman/talisman-10.png)
+![You can see your balances updated in Polkadot.js Apps after a successful transaction.](/images/tokens/connect/talisman/talisman-10.webp)
 
 这样就可以了！这些步骤展示了使用Talisman在Polkadot.js Apps中与导入的H160账户进行交互的简便性和强大的安全性。这均归功于Moonbeam的统一账户结构，这是Moonbeam致力于最佳用户体验的很好展示。
 

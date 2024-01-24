@@ -46,7 +46,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 创建新钱包将生成可以派生多个以太坊和Substrate账户的助记词。默认情况下，SubWallet将生成一个以太坊账户和一个Substrate账户，但是您可以轻松从同一个助记词中生成更多的账户。要与Moonbeam交互，您可以使用以太坊账户。点击**Create a new account**开始创建新账户。
 
-![The main screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-1.png)
+![The main screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-1.webp)
 
 在下方页面中，您需要创建密码以保护您的新账户：
 
@@ -54,7 +54,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 2. 重新输入确认密码
 3. 点击**Continue**按钮继续操作
 
-![The create a password screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-2.png)
+![The create a password screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-2.webp)
 
 随后，系统将提示您备份助记词。此步骤对于后续要从该助记词中派生其他账户的人来说至关重要。
 
@@ -65,7 +65,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 2. 安全存储助记词后，点击**I have kept it somewhere safe**
 
-![Back up your seed phrase on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-3.png)
+![Back up your seed phrase on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-3.webp)
 
 !!! 注意事项
     如果您在移动端App创建一个新账户，您需要重新输入存储的助记词进行验证。请确保按照正确的顺序输入单词。
@@ -76,7 +76,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 要导入现有账户至SubWallet，您可以选择**Import an account**按钮。
 
-![The main screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-4.png)
+![The main screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-4.webp)
 
 在下方页面中，选择要导入现有账户的方式，包括**Import from seed phrase**（从助记词导入）、**Import from Polkadot.{js}**（从Polkadot.{js}导入）、**Import by MetaMask private key**（通过MetaMask私钥导入），以及**Import by QR code**（通过二维码导入）。
 
@@ -84,11 +84,11 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 如果您选择**Import from Polkadot.{js}**（从Polkadot.{js}导入），您需要确保该账号是通过私钥在Polkadot.js中创建的。如果该账户是通过助记词创建并且尝试将其导入SubWallet，您将会得到一个一样的公共地址。这是因为Polkadot.js使用的是[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=_blank}，而以太坊使用的是[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=_blank}或[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=_blank}。
 
-![Select the import option from the Import account screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-5.png)
+![Select the import option from the Import account screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-5.webp)
 
 如果您通过助记词导入账户，您将需要选择账户类型，即Substrate (Polkadot)或EVM (Ethereum)，或两者都是。Moonbeam使用的是以太坊格式的账户，因此您需要选择**Ethereum**为基于Moonbeam的网络导入账户。
 
-![Select the account type to import on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-6.png)
+![Select the account type to import on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-6.webp)
 
 当您完成导入流程后，系统将提示您输入密码以保护您的新账户：
 
@@ -96,7 +96,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 2. 重新输入确认密码
 3. 点击**Continue**按钮继续操作
 
-![The create a password screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-7.png)
+![The create a password screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-7.webp)
 
 接下来，您可以通过提供账户相关的助记词、私钥、JSON文件或二维码即可开始使用新账户。您可以随时[添加其他账户](#add-additional-accounts)。
 
@@ -107,7 +107,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 1. 点击账户下拉菜单
 2. 在页面底部选择选项，您可以选择第一个按钮**Create a new account**，重复上述步骤创建新账户；您也可以选择第二个按钮导入现有账户，或者第三个按钮附加现冷钱包或仅观看账户
 
-![View account details and create a new account, import one, or attach one.](/images/tokens/connect/subwallet/subwallet-8.png)
+![View account details and create a new account, import one, or attach one.](/images/tokens/connect/subwallet/subwallet-8.webp)
 
 如果您选择创建新账户，您可以选择**Create with new seed phrase**（使用新的助记词创建新账户）或**Derive from an existing account**（从现有账户衍生新账户）。如果您选择使用新的助记词创建新账户，您可以参考[创建新账户](#create-a-new-account)部分的步骤。如果您选择现有账户衍生新账户，系统将提示您选择用于衍生账户的现有账户。
 
@@ -119,30 +119,30 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 要为Moonbeam配置SubWallet，选择**Search a token**图标旁的**Customize your asset display**图标自定义资产显示。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-9.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-9.webp)
 
 您可以通过以下步骤添加Moonbeam：
 
 1. 在搜索栏中输入“Moon”将出现所有基于Moonbeam网络，或者您可以根据自己的需求输入指定网络名称
 2. 启动想要连接的网络的开关
 
-![The customize asset display screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-10.png)
+![The customize asset display screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-10.webp)
 
 如果您想要连接至[本地Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}，您可以点击页面左上角的菜单栏，进入设置页面。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-11.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-11.webp)
 
 在设置菜单栏点击**Manage networks**。
 
-![The settings screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-12.png)
+![The settings screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-12.webp)
 
 点击右上角的**+**图标，进入[网络配置](/builders/get-started/quick-start/#network-configurations){target=_blank}页面。你可以在此菜单栏管理和连接其他网络。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-13.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-13.webp)
 
 默认情况下，SubWallet中的所有余额均会被隐藏，点击**Show balance**图标即可显示余额。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-14.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-14.webp)
 
 ## 与网络交互 {: #interact-with-the-network }
 
@@ -158,22 +158,22 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 复制地址，点击**Get address**图标。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-15.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-15.webp)
 
 如果您有多个账户，并且从账户下拉菜单中选择了**All accounts**，您最好手动再次选择用于接收资产的地址。否则，请确认您当前连接的账户（显示在页面顶部）是正确的接收资产地址。**该账户是Moonbeam账户，即以太坊格式的地址。**
 
-![Select an account to receive tokens on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-16.png)
+![Select an account to receive tokens on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-16.webp)
 
 接下来，您可以搜索选择要接收的Token。在本示例中为DEV。
 
-![Search and choose desired token on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-17.png)
+![Search and choose desired token on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-17.webp)
 
 !!! 注意事项
     SubWallet支持接收跨链Token，因此请确保Token名称下的链logo是否与您想要选择的链相符。
 
 随后，您将看到一个二维码和链接到您账户的地址。**请再次检查显示的地址是否为以太坊格式的账户**。
 
-![QR code and address to receive tokens on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-18.png)
+![QR code and address to receive tokens on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-18.webp)
 
 现在您只需要向发送方展示二维码或地址即可。
 
@@ -181,7 +181,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 要在Moonbeam上将一个简单的Token转移到另一个账户，您可以点击**Send**图标。
 
-![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-19.png)
+![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-19.webp)
 
 接下来，执行以下步骤：
 
@@ -198,11 +198,11 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 3. 输入要发送的Token数量
 4. 查看交易详情，点击**Transfer**
 
-![The transfer screen on the SubWallet browser extension, where you can enter in the transaction details.](/images/tokens/connect/subwallet/subwallet-20.png)
+![The transfer screen on the SubWallet browser extension, where you can enter in the transaction details.](/images/tokens/connect/subwallet/subwallet-20.webp)
 
 在下一个页面，您需要检查交易详情并提交交易。如果交易无误，点击**Approve**发送交易。
 
-![The transfer confirmation screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-21.png)
+![The transfer confirmation screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-21.webp)
 
 交易发送后，您将能够看到交易详情。
 

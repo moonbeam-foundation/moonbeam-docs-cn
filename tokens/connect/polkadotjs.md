@@ -31,11 +31,11 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 
 选择正确的网络后，您可以滚动回到顶部并点击**Switch**。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-1.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-1.webp)
 
 成功切换后，Polkadot.js网站不仅会连接到所选网络，相应的图标和样式也会根据网络而改变。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-2.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-2.webp)
 
 ## 创建或导入H160账户至Polkadot.js Apps {: #creating-or-importing-an-h160-account }
 
@@ -48,14 +48,14 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 2. 在**in-browser account creation**标题下选择**Allow local in-browser account storage**
 3. 点击**Save**
 
-![Allow local in-browser account storage](/images/tokens/connect/polkadotjs/polkadotjs-3.png)
+![Allow local in-browser account storage](/images/tokens/connect/polkadotjs/polkadotjs-3.webp)
 
 您现在可以返回[Polkadot.js Apps的帐户页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/accounts){target=_blank}并继续执行后续步骤：
 
 1. 导航至**Accounts**部分
 2. 点击**Add account**按钮
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-4.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-4.webp)
 
 这将跳出弹窗，引导您根据指示完成在Polkadot.js Apps界面新增账户的整个流程：
 
@@ -65,7 +65,7 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 !!! 注意事项
     目前，您只能通过私钥在Polkadot.js创建或导入账户。如果通过助记词操作，稍后导入账户到MetaMask等以太坊钱包时就会出现不同的公共地址。这是因为Polkadot.js使用的是BIP39，而以太坊使用的是BIP32或BIP44。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-5.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-5.webp)
 
 接下来，如果要创建新账户，您要确保已储存好弹窗所显示的私钥。如果要导入现有账户，请输入MetaMask导出的私钥。
 
@@ -74,11 +74,11 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
     
 请确保输入私钥前缀，如`0x`等。如果输入正确的信息，窗口左上角就会出现相应公共地址，然后点击**Next**。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-6.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-6.webp)
 
 要完成向导弹窗步骤，您可以设置一个账户名称和密码。收到确认消息后，您会在**Accounts**标签中看到相应地址和余额（在本示例中为Bob的地址）。除此之外，我们还可以覆盖MetaMask扩展，可以看到两个余额是相同的。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-7.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-7.webp)
 
 ## 通过Substrate API发送交易 {: #sending-a-transaction-through-substrates-api }
 
@@ -90,11 +90,11 @@ description: 遵循此教程快速学习如何使用Moonbeam的标准以太坊H1
 2. 输入发送的**amount**（数量），在本示例中为1个DEV Token
 3. 一切就绪后，点击**Make Transfer**按钮
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-8.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-8.webp)
 
 随后，系统将提示您输入密码并签署和提交交易。交易确认后，您将看到每个账户的余额更新。
 
-![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-9.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/polkadotjs/polkadotjs-9.webp)
 
 这样就可以了！我们非常高兴Polkadot.js Apps能够支持H160账户。同时，我们相信这一升级将会大幅度改善Moonbeam网络的用户体验和以太坊兼容功能。
 

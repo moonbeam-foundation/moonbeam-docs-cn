@@ -21,7 +21,7 @@ Moonbeam的[统一账户](/learn/features/unified-accounts/){target=_blank}是Mo
 
 因此，以太坊有两种主要的账户类型，分别为用户拥有和合约拥有的。不论类型为何种，一个以太坊账户皆具有一个余额字段，代表该地址持有的Wei数量（Wei为ETH的面额单位，每个ETH为1*10^18 Wei）
 
-![Ethereum balances diagram](/images/builders/get-started/eth-compare/balances/balances-1.png)
+![Ethereum balances diagram](/images/builders/get-started/eth-compare/balances/balances-1.webp)
 
 ## Moonbeam账户余额 {: #moonbeam-account-balances }
 
@@ -35,11 +35,11 @@ Moonbeam上的账户是一个拥有Token余额（Token种类取决于网络）�
  - **Misc frozen** —— 指在提取资金时`free`余额可能不会低于的余额，交易费除外。 例如，用于对治理提案进行投票的资金会显示为`misc frozen`。 这些资金在被释放之前**不能**通过以太坊API访问
  - **Fee frozen** —— 指在专门支付交易费时`free`余额可能不会低于的余额。 这些资金在被释放之前**不能**通过以太坊API访问
 
-![Moonbeam balances diagram](/images/builders/get-started/eth-compare/balances/balances-2.png)
+![Moonbeam balances diagram](/images/builders/get-started/eth-compare/balances/balances-2.webp)
 
 您可以使用[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}查询您的余额，包括您的`free`余额（可转帐）和预留余额（如果存在）。
 
-![View balances on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-3.png)
+![View balances on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-3.webp)
 
 您还可以使用Polkadot.js Apps查看您的余额锁定。在开始之前，请确保Polkadot.js Apps连接到正确的网络。然后点击**Developer**标签，然后选择 **Chain State**，并执行以下步骤：
 
@@ -48,7 +48,7 @@ Moonbeam上的账户是一个拥有Token余额（Token种类取决于网络）�
 3. 输入您的地址
 4. 点击 **+** 按钮提交extrinsic
 
-![View locks on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-4.png)
+![View locks on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-4.webp)
 
 ## 主要区别 {: #main-differences }
 

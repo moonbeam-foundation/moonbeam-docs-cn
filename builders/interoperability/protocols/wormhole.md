@@ -11,7 +11,7 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 Wormhole由多个模块化的交换组件组成，这些组件可以独立使用并支持由多个团队构建的逐渐增加的可组合应用程序。在其协议之上构建xDapp允许快速进行跨链资产转移和跨链逻辑以提供最大的Web互操作性。Wormhole的架构包含签署Guardian网络、桥接智能合约和中继器。请查看技术栈图以获取更多信息。
 
-![Wormhole Technology Stack diagram](/images/builders/interoperability/protocols/wormhole/wormhole-1.png)
+![Wormhole Technology Stack diagram](/images/builders/interoperability/protocols/wormhole/wormhole-1.webp)
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
@@ -63,7 +63,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 3. 前往Remix的**Deploy & Run Transactions**标签
 4. 将环境设置为**Injected Web3**。这将使用MetaMask作为Web3提供商。确保您的MetaMask已连接至Moonbase Alpha网络
 
-![Set up smart contract deployment](/images/builders/interoperability/protocols/wormhole/wormhole-2.png)
+![Set up smart contract deployment](/images/builders/interoperability/protocols/wormhole/wormhole-2.webp)
 
 如需在每条链上部署，您将需要Wormhole核心桥接的本地实例以及每条对应链的chain ID。如下所示为选定的几个测试网提供了这些数据。您可以在Wormhole的[文档网站](https://book.wormhole.com/reference/contracts.html#testnet){target=_blank}找到其他网络的端点。请注意，为本文设计的智能合约和中继器仅支持EVM，因此在本次演示只能使用EVM。
 
@@ -118,7 +118,7 @@ zeros to add = 24
 3. 确保合约仍是**SimpleGeneralMessage**
 4. 最后，将目标合约的地址粘贴至**At Address**输入框
 
-![At address](/images/builders/interoperability/protocols/wormhole/wormhole-4.png)
+![At address](/images/builders/interoperability/protocols/wormhole/wormhole-4.webp)
 
 添加受信任的远程地址：
 
@@ -128,7 +128,7 @@ zeros to add = 24
 
 当您在另一个EVM测试网时，将**sender**设置为您在Moonbase Alpha部署合约的正确格式地址（即添加24个0的格式）。将**_chainId**设置为Moonbase Alpha的Wormhole chain ID (16)。最后，在MetaMask中交易并确认。 
 
-![Add trusted address](/images/builders/interoperability/protocols/wormhole/wormhole-5.png)
+![Add trusted address](/images/builders/interoperability/protocols/wormhole/wormhole-5.webp)
 
 在此部分中，您应该已经将两条链上的两笔交易发送到两个合约中的白名单地址。之后，您应该被允许在互连合约之间发送消息。
 
@@ -169,7 +169,7 @@ npm run testnet-spy
 
 首先，您应该能看到一些来自于Docker容器启动的日志。然后，很多日志应该会向控制台发送垃圾信息。这些都是通过Wormhole测试网的所有VAAs，可以看到其数量之庞大！但您无需解析任何日志，代码可以帮助我们完成此步骤。让它在后台运行并获取另一个终端实例以进行下一步。
 
-![Run the spy relayer](/images/builders/interoperability/protocols/wormhole/wormhole-6.png)
+![Run the spy relayer](/images/builders/interoperability/protocols/wormhole/wormhole-6.webp)
 
 ### 设置监听器组件 {:setting-up-the-listener-component}
 
@@ -394,7 +394,7 @@ npm run start
 
 您应该会在控制台中看到类似以下日志内容。
 
-![Run the relayer](/images/builders/interoperability/protocols/wormhole/wormhole-7.png)
+![Run the relayer](/images/builders/interoperability/protocols/wormhole/wormhole-7.webp)
 
 ### 通过Wormhole从Moonbase传送跨链消息 {: #send-message-from-moonbase }
 
@@ -409,11 +409,11 @@ npm run start
 5. 将目标链的Wormhole chain ID放入**sendMessage**部分的**destChainId**输入框中
 6. 当完成所有步骤后，请执行交易并在MetaMask中确认
 
-![Send a transaction](/images/builders/interoperability/protocols/wormhole/wormhole-8.png)
+![Send a transaction](/images/builders/interoperability/protocols/wormhole/wormhole-8.webp)
 
 几秒到一分钟后，跨链消息应该已经通过您在本地机器上托管的中继器正确中继。
 
-![Message relay in the logs](/images/builders/interoperability/protocols/wormhole/wormhole-9.png)
+![Message relay in the logs](/images/builders/interoperability/protocols/wormhole/wormhole-9.webp)
 
 ## Moonbeam路由流动性集成 {: #moonbeam-routed-liquidity-integration }
 

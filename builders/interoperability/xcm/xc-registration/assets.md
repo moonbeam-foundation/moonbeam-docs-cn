@@ -27,11 +27,11 @@ yarn
 
 收集社区成员的反馈后，您可以创建提案以打开通道并注册任何资产。有关打开通道的更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration/){target=_blank}指南。
 
-![Asset registration if XC channel doesn't exist](/images/builders/interoperability/xcm/xc-registration/assets/assets-1.png)
+![Asset registration if XC channel doesn't exist](/images/builders/interoperability/xcm/xc-registration/assets/assets-1.webp)
 
 如果链之间已经存在通道，您需要创建论坛帖子来注册资产，收集反馈，然后提交提案来注册资产。
 
-![Asset registration if XC channel exists](/images/builders/interoperability/xcm/xc-registration/assets/assets-2.png)
+![Asset registration if XC channel exists](/images/builders/interoperability/xcm/xc-registration/assets/assets-2.webp)
 
 ### 创建一个论坛帖子 {: #create-a-forum-post }
 
@@ -53,7 +53,7 @@ yarn
 
 有了这些信息，您就可以获取两个调用的编码调用数据，并将调用数据批处理到单个交易中。从那里，您可以开始治理流程，其中包括使用调用提交原像，然后使用原像创建提案。如果您还同时打开一个通道，则可以将与通道相关的调用数据添加到批量资产注册调用数据中，并为所有内容打开一个提案。Moonbeam上的资产和通道注册提案应分配至General Admin Track。
 
-![Overview of the proposal process](/images/builders/interoperability/xcm/xc-registration/assets/assets-3.png)
+![Overview of the proposal process](/images/builders/interoperability/xcm/xc-registration/assets/assets-3.webp)
 
 ### 计算资产的每秒单位 {: #calculate-units-per-second }
 

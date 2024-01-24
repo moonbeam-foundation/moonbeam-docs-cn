@@ -201,8 +201,8 @@ ws://localhost:8000
 3. 选择**Custom**端点并输入`ws://localhost:8000`
 4. 点击**Switch**按钮
 
-![Open WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-1.png)
-![Switch WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-2.png)
+![Open WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-1.webp)
+![Switch WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-2.webp)
 
 您现在应当在Polkadot.js Apps的托管版本并且能够与分叉交互。
 

@@ -57,7 +57,7 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
     cargo build --release
     ```
 
-![Compiling Binary](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-1.png)
+![Compiling Binary](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-1.webp)
 
 如果在窗口看到  _cargo not found error_ 错误，请手动将Rust添加至你的系统路径或重新启动系统：
 

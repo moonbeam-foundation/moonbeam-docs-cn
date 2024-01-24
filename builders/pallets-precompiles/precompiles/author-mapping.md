@@ -112,14 +112,14 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 1. 点击**File explorer**标签
 2. 将文件内容复制并粘贴至命名为`AuthorMappingInterface.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}
 
-![Copying and Pasting the Author Mapping Interface into Remix](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-1.png)
+![Copying and Pasting the Author Mapping Interface into Remix](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 编译接口，点击**Compile AuthorMappingInterface.sol**
 
-![Compiling AuthorMappingInterface.sol](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-2.png)
+![Compiling AuthorMappingInterface.sol](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-2.webp)
 
 ### 访问合约 {: #access-the-contract }
 
@@ -128,7 +128,7 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 3. 确保在**CONTRACT**下拉菜单中选择**AuthorMappingInterface.sol**。因为这是一个预编译合约，因此无需部署，相反，您需要在**At Address**字段中提供预编译的地址
 4. 提供Moonbase Alpha的作者映射预编译地址：`{{networks.moonbase.precompiles.author_mapping}}`并点击**At Address**
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-3.webp)
 
 作者映射预编译将出现在**Deployed Contracts**列表中。
 
@@ -146,6 +146,6 @@ Moonbeam上的作者映射预编译合约允许收集人候选人通过熟悉且
 4. 点击**transact**
 5. 点击**Confirm**确认跳出的MetaMask交易
 
-![Map your session keys](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-4.png)
+![Map your session keys](/images/builders/pallets-precompiles/precompiles/author-mapping/author-mapping-4.webp)
 
 要验证您的会话密钥是否映射成功，您可以使用`mappingWithDeposit`方法或[作者映射pallet](/node-operators/networks/collators/account-management/#author-mapping-interface){target=_blank}的`nimbusLookup`方法。详情您可以参考[收集人账户管理教程的查看映射部分](/node-operators/networks/collators/account-management/#check-the-mappings){target=_blank}。

@@ -161,7 +161,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 npm run build
 ```
 
-![Waffle compiler output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-1.png)
+![Waffle compiler output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-1.webp)
 
 编译合约后，Waffle将JSON输出存储在`build`目录中。本教程中的合约基于OpenZeppelin的 ERC-20模板，因此相关的ERC-20 JSON文件也会出现在`build`目录中。
 
@@ -370,7 +370,7 @@ describe('MyToken', () => {
     npm run build
     ```
 
-![Waffle and Mars compiler output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-2.png)
+![Waffle and Mars compiler output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-2.webp)
 
 如果您打开`build`目录，可以看到一个`artifacts.ts`文件，其中包含部署所需的工件数据。您需要编写部署脚本，才能继续进行部署。部署脚本将用于说明Mars部署哪个合约，部署到哪个网络，以及使用哪个帐户来触发部署。
 
@@ -436,11 +436,11 @@ describe('MyToken', () => {
 
 2. 在您的终端中，Mars会提示您点击`ENTER`发送您的交易
 
-    ![Mars confirm deployment](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-3.png)
+    ![Mars confirm deployment](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-3.webp)
 
 如果成功，您会看到有关您的交易的详细信息，包括哈希值、区块及地址。
 
-![Mars deployment output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-4.png)
+![Mars deployment output](/images/builders/build/eth-api/dev-env/waffle-mars/waffle-mars-4.webp)
 
 恭喜！您已经成功通过Waffle和Mars在Moonbase Alpha上部署合约了！
 

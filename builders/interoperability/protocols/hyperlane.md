@@ -11,7 +11,7 @@ description: 了解用于跨链资产转移的GMP协议Hyperlane，以及如何�
 
 Hyperlane使用一个称为[主权共识](https://docs.hyperlane.xyz/hyperlane-docs-1/protocol/security/sovereign-consensus){target=_blank}的方式，允许开发者通过配置该方式来跨链发送消息和验证消息。Hyperlane由验证人、中继器和瞭望塔（watchtowers）组成。验证人将监视并确认跨链消息。中继器支出gas，跨链发送消息。瞭望塔检查确保验证人是善意的参与者，从而保证协议的安全性。如需了解更多，请查看技术栈图及其他们的[协议文档](https://docs.hyperlane.xyz/hyperlane-docs-1/protocol/overview){target=_blank}。
 
-![Hyperlane Technology Stack diagram](/images/builders/interoperability/protocols/hyperlane/hyperlane-1.png)
+![Hyperlane Technology Stack diagram](/images/builders/interoperability/protocols/hyperlane/hyperlane-1.webp)
 
 Hyperlane API为开发Web3应用提供了丰富的套件，确保开发者拥有构建所需的工具。借助这些工具和API，开发者可以使用Hyperlane协议及其API，来编写可以轻松部署在与所有Hyperlane连接的生态系统的dApp。
 

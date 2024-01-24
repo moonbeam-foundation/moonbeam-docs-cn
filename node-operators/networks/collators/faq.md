@@ -139,11 +139,11 @@ description: 关于成为收集人和收集人活动的一些常见问题以及�
 
 当您的节点已经同步，您应该在您的日志中看到**Idle**，如下图所示：
 
-![In sync Relay chain and parachain](/images/node-operators/networks/collators/account-management/account-1.png)
+![In sync Relay chain and parachain](/images/node-operators/networks/collators/account-management/account-1.webp)
 
 通常会发生一种情况，在您的节点同步之前就加入了收集人池。这种情况下，您将无法生产任何区块或获得任何奖励。请耐心等待，直到您处于同步和空闲状态后再加入候选池。
 
-![Relay chain not in sync yet](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.png)
+![Relay chain not in sync yet](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.webp)
 
 中继链同步时间远远长于平行链。您将在中继链同步后才能看到最终区块。
 

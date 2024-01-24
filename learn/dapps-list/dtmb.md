@@ -11,7 +11,7 @@ description: 如何将您的Moonbeam或Moonriver项目收录在Downtown Moonbeam
 
 您可以根据网络筛选DApp，或通过网站首页查看不同分类的列表，包括最新更新的DApp、受欢迎的DeFi项目、受欢迎的NFT项目、受欢迎的游戏项目。在与Downtown Moonbeam集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/moonbeam-foundation/moonbeam-project-directory){target=_blank}处于维护阶段。目前，该登记口已被弃用，并由[Dapps List](/learn/dapps-list/){target=_blank}部分下面的收录平台所取代。
 
-![Downtown Moonbeam Home Page](/images/learn/dapps-list/dtmb/dtmb-1.png)
+![Downtown Moonbeam Home Page](/images/learn/dapps-list/dtmb/dtmb-1.webp)
 
 您可以提供您的项目背景，包括项目的简短和完整描述、网站URL和Logo向Downtown Moonbeam[提交您的项目](https://www.dtmb.xyz/submit){target=_blank}。只有部分字段是必填的，但建议您尽可能地提供全面的资料。
 
@@ -49,7 +49,7 @@ description: 如何将您的Moonbeam或Moonriver项目收录在Downtown Moonbeam
 
   8. 点击**Submit**
 
-![How to Submit your DApp](/images/learn/dapps-list/dtmb/dtmb-2.png)
+![How to Submit your DApp](/images/learn/dapps-list/dtmb/dtmb-2.webp)
 
 Downtown Moonbeam团队会审核您所提交的信息，若符合收录要求，该DApp将会发布在Downtown Moonbeam平台上。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam){target=_blank}.与我们联系。若您需要Downtown Moonbeam的支持，请通过[Downtown Moonbeam电报群](https://t.me/dtmb_xyz){target=_blank}取得联系。
 

@@ -178,11 +178,11 @@ interface TestInterface {
 
 创建文档及编译合约后，点击**Deploy and Run Transactions**标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击**At Address**。请确保已将**ENVIRONMENT**设置为**Injected Web3**，只有在该设置下才能与Moonbase Alpha连接。
 
-![Band Protocol Remix deploy](/images/builders/integrations/oracles/band/band-demo-1.png)
+![Band Protocol Remix deploy](/images/builders/integrations/oracles/band/band-demo-1.webp)
 
 通过这一方法，你将创建一个可以进行交互的合约实例。使用`getPrice()`和`getMultiPrices()`函数即可请求相应报价对的数据。
 
-![Band Protocol Remix check price](/images/builders/integrations/oracles/band/band-demo-2.png)
+![Band Protocol Remix check price](/images/builders/integrations/oracles/band/band-demo-2.webp)
 
 ## BandChain.js Javascript辅助库 {: #bandchainjs-javascript-helper-library }
 
@@ -246,7 +246,7 @@ queryData();
 
 这段代码可以通过节点来执行，其`dataQuery`输出值应该如下所示：
 
-![Band Protocol JavaScript Library](/images/builders/integrations/oracles/band/band-console.png)
+![Band Protocol JavaScript Library](/images/builders/integrations/oracles/band/band-console.webp)
 
 请注意，与通过智能合约获取报价相比，通过这种方法获得的返回结果将直接在正确的单位中显示。
 

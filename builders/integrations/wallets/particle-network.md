@@ -20,7 +20,7 @@ Particle通过标准EOA交互和原生[ERC-4337](https://eips.ethereum.org/EIPS/
 - Particle Network [Wallet-as-a-Service](https://docs.particle.network/getting-started/smart-wallet-as-a-service){target=_blank} - 这是一个由Particle Network提供的钱包即服务旗舰产品，支持由MPC-TSS支持的应用程序嵌入式钱包，从而实现无缝且类似Web2入门和交互的体验。
 - Particle Network Modular [AA Stack](https://docs.particle.network/developers/account-abstraction){target=_blank} - 除了以EOA为中心的基本交互之外（此交互默认情况下通过Particle的钱包即服务实现），Particle还具有原生模块化账户抽象堆栈，用于Moonbeam上ERC-4337账户抽象的实现。这意味着在构建支持账户抽象的应用程序时，您可以将智能账户、bundler和paymaster与Particle的钱包即服务结合使用，从而获得固有的灵活性
 
-![Particle Network Smart WaaS map](/images/builders/integrations/wallets/particle/particle-1.png)
+![Particle Network Smart WaaS map](/images/builders/integrations/wallets/particle/particle-1.webp)
 
 本教程中，我们将展示使用Particle Network的智能钱包即服务的分步教程。
 
@@ -30,23 +30,23 @@ Particle通过标准EOA交互和原生[ERC-4337](https://eips.ethereum.org/EIPS/
 
 1. 前往Particle Network数据面板，然后注册或登录
 
-    ![Dashboard login](/images/builders/integrations/wallets/particle/particle-2.png)
+    ![Dashboard login](/images/builders/integrations/wallets/particle/particle-2.webp)
 
 2. 登陆后，点击**Add New Project**创建新项目
 
-    ![Project creation](/images/builders/integrations/wallets/particle/particle-3.png)
+    ![Project creation](/images/builders/integrations/wallets/particle/particle-3.webp)
 
 3. 输入项目名称并点击**Save**保存
 
-    ![Application creation](/images/builders/integrations/wallets/particle/particle-4.png)
+    ![Application creation](/images/builders/integrations/wallets/particle/particle-4.webp)
 
 4. 在项目的数据面板处，往下滑动找到**Your Apps**部分，选择**iOS**、**Android**或**Web**并提供要求的信息以创建新的App
 
-    ![Application creation](/images/builders/integrations/wallets/particle/particle-5.png)
+    ![Application creation](/images/builders/integrations/wallets/particle/particle-5.webp)
 
 5. 最后，复制**Project ID**、**Client Key**和**App ID**
 
-    ![Application dashboard](/images/builders/integrations/wallets/particle/particle-6.png)
+    ![Application dashboard](/images/builders/integrations/wallets/particle/particle-6.webp)
 
 ## 安装依赖项 {: #install-dependencies }
 

@@ -19,7 +19,7 @@ Moonbeam完全启动后将拥有以下配置：
 - 拥有{{ networks.moonbeam.staking.max_candidates }}位收集人的活跃收集人集
 - 拥有提供商提供的[API端点](/builders/get-started/endpoints/){target=_blank}以连接到网络。项目也可以运行和访问[自己的私有节点](/node-operators/networks/run-a-node/){target=_blank}。
 
-![Moonbeam Diagram](/images/learn/platform/networks/moonbeam-diagram.png)
+![Moonbeam Diagram](/images/learn/platform/networks/moonbeam-diagram.webp)
 
 需要注意的重要变量/配置如下所示（仍会发生变化）：
 

@@ -143,7 +143,7 @@ docker ps #Containers Running
 docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 ```
 
-![Docker logs](/images/node-operators/oracle-nodes/chainlink/chainlink-node-1.png)
+![Docker logs](/images/node-operators/oracle-nodes/chainlink/chainlink-node-1.webp)
 
 ## 合约设置 {: #contract-setup }
 
@@ -151,14 +151,14 @@ docker logs --tail 50 {CONTAINER-ID} #Logs progressing
 
 1. 通过登录[Chainlink节点用户界面](http://localhost:6688/){target=_blank} (位于`http://localhost:6688/`)获取预言机节点地址，用于发送交易和写入链上数据。您将需要使用`.api`文档中的证书来获取地址。
 
-    ![Chainlink login](/images/node-operators/oracle-nodes/chainlink/chainlink-node-2.png)
+    ![Chainlink login](/images/node-operators/oracle-nodes/chainlink/chainlink-node-2.webp)
 
 2. 进入**Configuration Page**页面，并复制节点地址
 
 3. 注入资金。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
   
-    ![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
+    ![Chainlink address](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.webp)
 
 下一步，部署预言机合约，它是区块链和节点之间的中间件。合约将发送包含所有必要信息的事件信息，并被预言机节点读取。然后节点将完成请求，并将所请求的数据写入调用者的合约。
 
@@ -178,7 +178,7 @@ import "@chainlink/contracts/src/v0.6/Oracle.sol";
 4. 输入LINK Token地址，并点击**Deploy**以部署合约。MetaMask将弹出弹窗，您可以确认交易
 5. 部署完成后，在**Deployed Contracts**板块复制合约地址。
 
-![Deploy Oracle using Remix](/images/node-operators/oracle-nodes/chainlink/chainlink-node-4.png)
+![Deploy Oracle using Remix](/images/node-operators/oracle-nodes/chainlink/chainlink-node-4.webp)
 
 最后，绑定预言机节点和预言机智能合约。节点可以捕获发送到特定预言机合约的请求，但只有被授权（即绑定）的节点才能完成这一任务。请执行以下步骤以绑定预言机节点和智能合约：
 
@@ -187,7 +187,7 @@ import "@chainlink/contracts/src/v0.6/Oracle.sol";
 3. 点击**transact**发送请求。MetaMask将弹出弹窗，您可以确认交易
 4. 通过视图函数`getAuthorizationStatus()`检查预言机节点是否获得授权，传入预言机节点地址
 
-![Authorize Chainlink Oracle Node](/images/node-operators/oracle-nodes/chainlink/chainlink-node-5.png)
+![Authorize Chainlink Oracle Node](/images/node-operators/oracle-nodes/chainlink/chainlink-node-5.webp)
 
 ## 创建Job {: #creating-a-job }
 
@@ -200,7 +200,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 1. 进入[您节点的Job板块](http://localhost:6688/jobs){target=_blank}
 2. 点击**New Job**
 
-![Chainlink oracle New Job](/images/node-operators/oracle-nodes/chainlink/chainlink-node-6.png)
+![Chainlink oracle New Job](/images/node-operators/oracle-nodes/chainlink/chainlink-node-6.webp)
 
 下一步，您可以创建新的Job：
 
@@ -239,7 +239,7 @@ Chainlink预言机配置的最后一步就是创建Job。请参阅[Chainlink官�
 
 3. 点击**Create Job**以创建Job
 
-![Chainlink New Job JSON Blob](/images/node-operators/oracle-nodes/chainlink/chainlink-node-7.png)
+![Chainlink New Job JSON Blob](/images/node-operators/oracle-nodes/chainlink/chainlink-node-7.webp)
 
 成功！现在，Chainlink预言机节点已经设置成功，并且该节点已经在Moonbase Alpha上运行。
 

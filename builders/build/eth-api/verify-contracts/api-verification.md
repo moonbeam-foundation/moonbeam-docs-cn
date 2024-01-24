@@ -579,7 +579,7 @@ cast abi-encode "constructor(uint256)" 100
     --verifier sourcify INSERT_CONTRACT_ADDRESS src/MyToken.sol:MyToken 
     ```
 
-![Foundry Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-1.png)
+![Foundry Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-1.webp)
 
 如果您想同时部署示例合约并进行验证，则可以使用以下命令：
 
@@ -613,4 +613,4 @@ cast abi-encode "constructor(uint256)" 100
     src/MyToken.sol:MyToken    
     ```
 
-![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-2.png)
+![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/api-verification/api-2.webp)

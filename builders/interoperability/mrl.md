@@ -58,7 +58,7 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 
 中继器的唯一工作是将Wormhole Guardian节点批准的交易传递到目的地链。部分中继器已经支持MRL但任何人都可以独立运行专属中继器。此外，用户在通过Wormhole进行桥接时可以在目的地链上手动执行该交易，并完全避免使用中继器。
 
-![Transfering wormhole MRL](/images/builders/interoperability/mrl/mrl-1.png)
+![Transfering wormhole MRL](/images/builders/interoperability/mrl/mrl-1.webp)
 
 ### 通过Wormhole将代币从平行链发送回原链 {: #sending-tokens-back-through-wormhole }
 
@@ -81,7 +81,7 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 2. Guardian节点网络将拾取Wormhole交易并对其签名
 3. Wormhole中继器将代币中继到原链和目标账户
 
-![Transfering Wormhole MRL out](/images/builders/interoperability/mrl/mrl-2.png)
+![Transfering Wormhole MRL out](/images/builders/interoperability/mrl/mrl-2.webp)
 
 现在我们已对MRL有了大致的了解，接下来我们将通过实例实现上述功能。以下的示例将向您展示如何将资产从平行链转移到Moonbase Alpha，并通过Wormhole返回原链，本指南也同样适用于Moonbeam。
 

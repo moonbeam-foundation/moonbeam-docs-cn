@@ -35,7 +35,7 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 在Ledger Live app，您将在**Manager**页面的**Apps installed**标签下看到您所安装的Ethereum app和Moonriver app。app成功安装后，您可以关闭Ledger Live。
 
-<img src="/images/tokens/connect/ledger/moonriver/ledger-1.png" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+<img src="/images/tokens/connect/ledger/moonriver/ledger-1.webp" alt="Moonriver Ledger App Installed" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 
 ## 将您的Ledger账户导入MetaMask {: #import-your-ledger-account-to-metamask }
 
@@ -43,15 +43,15 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 --8<-- 'text/tokens/connect/ledger/import-ledger/step-1.md'
 
-![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-2.png)
+![MetaMask Connect Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-2.webp)
 
 --8<-- 'text/tokens/connect/ledger/import-ledger/step-2.md'
 
-![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-3.png)
+![MetaMask Select Ledger Hardware Wallet](/images/tokens/connect/ledger/moonriver/ledger-3.webp)
 
 --8<-- 'text/tokens/connect/ledger/import-ledger/step-3.md'
 
-![Ledger on Chrome](/images/tokens/connect/ledger/moonriver/ledger-4.png)
+![Ledger on Chrome](/images/tokens/connect/ledger/moonriver/ledger-4.webp)
 
 --8<-- 'text/tokens/connect/ledger/import-ledger/step-4.md'
 
@@ -59,11 +59,11 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 --8<-- 'text/tokens/connect/ledger/import-accounts.md'
 
-![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/moonriver/ledger-5.png)
+![MetaMask Select Ethereum Accounts to Import](/images/tokens/connect/ledger/moonriver/ledger-5.webp)
 
 如果您已成功导入您的Ledger账户，您将能够在MetaMask页面上看到您的账户以及余额，如下图所示：
 
-![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/moonriver/ledger-6.png)
+![MetaMask Successfully Imported Ledger Account](/images/tokens/connect/ledger/moonriver/ledger-6.webp)
 
 您可以在MetaMask随时切换账户以查看您导入的Ledger账户余额。
 
@@ -71,7 +71,7 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 --8<-- 'text/tokens/connect/ledger/receive-tokens.md'
 
-![MetaMask Copy Account](/images/tokens/connect/ledger/moonriver/ledger-7.png)
+![MetaMask Copy Account](/images/tokens/connect/ledger/moonriver/ledger-7.webp)
 
 接下来，您将需要获取一些MOVR Token并转入您所复制的账户地址。交易完成后，您将能看到余额更新。
 
@@ -79,21 +79,21 @@ Moonriver app依赖于Ethereum app，因此在安装Moonriver app之前您需要
 
 接着，您可以使用您的Ledger设备在Moonriver上发送和签署交易。如果您希望开始发送交易，点击**Send**按钮：
 
-![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/moonriver/ledger-8.png)
+![MetaMask Ledger Account Funded](/images/tokens/connect/ledger/moonriver/ledger-8.webp)
 
 --8<-- 'text/tokens/connect/ledger/send-tokens/set-of-steps-1.md'
 --8<-- 'text/tokens/connect/ledger/send-tokens/set-of-steps-2.md'
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/moonriver/ledger-9.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/moonriver/ledger-9.webp)
 
 在您通过交易之后，MetaMask会将此发送至网络上。当交易被成功确认后，将会被显示在MetaMask的**Activity**标签中的**Send**一栏。
 
-![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/moonriver/ledger-10.png)
+![MetaMask Ledger Transaction Wizard](/images/tokens/connect/ledger/moonriver/ledger-10.webp)
 
 这样就可以了！您已成功签署交易并使用您的Ledger硬件钱包发送了一些MOVR Token。
 
 --8<-- 'text/tokens/connect/ledger/blind-signing.md'
 
-![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/moonriver/ledger-11.png)
+![MetaMask Ledger Allow Contracts Tx](/images/tokens/connect/ledger/moonriver/ledger-11.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'

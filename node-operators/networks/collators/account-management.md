@@ -83,7 +83,7 @@ description: 学习如何管理您的收集人账户，包括生成会话密钥�
  4. 输入 **keys**。就是上一节通过RPC调用`author_rotateKeys`得到的响应，就是你的Nimbus ID和VRF会话密钥的串联公钥
  5. 点击**Submit Transaction**
 
-![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.png)
+![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/account-management/account-3.webp)
 
 !!! 注意事项
     如果您收到以下错误，您可能需要再次尝试轮换和映射您的密钥：`VRF PreDigest was not included in the digests (check rand key is in keystore)`。
@@ -111,7 +111,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 如果正确，则响应应返回`"result": true`。
 
-![Check Nimbus Key](/images/node-operators/networks/collators/account-management/account-4.png)
+![Check Nimbus Key](/images/node-operators/networks/collators/account-management/account-4.webp)
 
 从[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/assets){target=_blank}，点击页面上方的**Developer**，在下拉菜单中选择**Chain State**选项，然后执行以下步骤：
 
@@ -120,7 +120,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
  3. 提供Nimbus ID 进行查询。您也可以通过禁用滑块以检索所有链上的映射情况
  4. 点击**+**按钮传送PRC调用
 
-![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5.png)
+![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-5.webp)
 
 您应该能够看到与提供的Nimbus ID相关联的H160帐户。如果未包含Nimbus ID，这将返回存储在链上的所有映射。
 
@@ -135,7 +135,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
  3. 提供收集人地址进行查询。或者，您也可以禁用滑块以检索所有映射
  4. 点击**+**按钮传送PRC调用
 
-![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-6.png)
+![Nimbus ID Mapping Chain State](/images/node-operators/networks/collators/account-management/account-6.webp)
 
 您应该能够看到与所提供的H160帐户关联的Nimbus ID。 如果没有提供账户，这将返回存储在链上的所有映射。
 
@@ -151,7 +151,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 2. 选择**authorMapping** pallet和**removeKeys** extrinsic
 3. 点击**Submit Transaction**
 
-![Remove session keys on Polkadot.js Apps](/images/node-operators/networks/collators/account-management/account-7.png)
+![Remove session keys on Polkadot.js Apps](/images/node-operators/networks/collators/account-management/account-7.webp)
 
 交易进行后，映射保证金将返还给您。确保密钥已移除，您可以通过[检查映射](#checking-the-mappings)部分进行查看。
 

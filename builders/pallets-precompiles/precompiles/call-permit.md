@@ -110,7 +110,7 @@ contract SetMessage {
 2. 将`SetMessage.sol`合约粘贴至名为`SetMessage.sol`的Remix文件中
 3. 将`CallPermit.sol`合约粘贴至名为`CallPermit.sol`的Remix文件中
 
-![Copying and pasting the example contract into Remix](/images/builders/pallets-precompiles/precompiles/call-permit/call-1-new.png)
+![Copying and pasting the example contract into Remix](/images/builders/pallets-precompiles/precompiles/call-permit/call-1-new.webp)
 
 ### 编译和部署范例合约 {: #compile-deploy-example-contract }
 
@@ -119,7 +119,7 @@ contract SetMessage {
 1. 点击**Compile**标签（从上至下第二个）
 2. 接着点击**Compile SetMessage.sol**编译接口
 
-![Compiling SetMessage.sol](/images/builders/pallets-precompiles/precompiles/call-permit/call-2.png)
+![Compiling SetMessage.sol](/images/builders/pallets-precompiles/precompiles/call-permit/call-2.webp)
 
 其后您可以开始部署：
 
@@ -129,7 +129,7 @@ contract SetMessage {
 4. 点击**Deploy**
 5. MetaMask将跳出弹窗，要求您点击**Confirm**确认交易
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/call-permit/call-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/call-permit/call-3.webp)
 
 合约将会出现在左侧板块中**Deployed Contracts**的列表下。复制合约地址，用于下个部分生成调用许可的签名。
 
@@ -140,7 +140,7 @@ contract SetMessage {
 1. 点击**Compile**标签（从上至下第二个）
 2. 接着点击**Compile CallPermit.sol**编译接口
 
-![Compiling SetMessage.sol](/images/builders/pallets-precompiles/precompiles/call-permit/call-4.png)
+![Compiling SetMessage.sol](/images/builders/pallets-precompiles/precompiles/call-permit/call-4.webp)
 
 您无需接着部署合约，您仅需要访问给定的预编译地址：
 
@@ -150,7 +150,7 @@ contract SetMessage {
 4. 提供Moonbase Alpha调用许可预编译地址：`{{networks.moonbase.precompiles.call_permit}}`，接着点击**At Address**
 5. 调用许可的预编译将会出现在**Deployed Contracts**列表中
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/call-permit/call-5.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/call-permit/call-5.webp)
 
 ## 生产调用许可签名 {: #generate-call-permit-signature}
 
@@ -187,7 +187,7 @@ contract SetMessage {
 2. 在**nonces**函数旁输入签名者的地址并点击**nonces**
 3. 结果将会在函数下方显示
 
-![Get the nonce](/images/builders/pallets-precompiles/precompiles/call-permit/call-6.png)
+![Get the nonce](/images/builders/pallets-precompiles/precompiles/call-permit/call-6.webp)
 
 ### 使用浏览器 {: #use-the-browser }
 
@@ -199,7 +199,7 @@ contract SetMessage {
 
 Ethers.js的CDN应当在**Resources**下方的库列表出现
 
-![Add Ethers to JSFiddle](/images/builders/pallets-precompiles/precompiles/call-permit/call-7.png)
+![Add Ethers to JSFiddle](/images/builders/pallets-precompiles/precompiles/call-permit/call-7.webp)
 
 在**Javascript**代码框中复制并贴下方JavaScript代码段，确保取代`to`变量，或是任何您需要修改的变量：
 
@@ -209,11 +209,11 @@ Ethers.js的CDN应当在**Resources**下方的库列表出现
 
 要运行代码，在页面上方点击**Run**，或者您可以使用`control`和`s`。MetaMask应跳出弹窗要求您连接账户。确保您选择您希望用于签署消息的账户，接着签署消息。
 
-![Sign the message with MetaMask](/images/builders/pallets-precompiles/precompiles/call-permit/call-8.png)
+![Sign the message with MetaMask](/images/builders/pallets-precompiles/precompiles/call-permit/call-8.webp)
 
 当您成功签署消息后，回到JSFiddle，如果控制台尚未开启，请直接开启并查看签名数值（包含`v`、`r`和`s`数值）。复制这些数值，用于后续部分与调用许可预编译交互。
 
-![Signature values in the JSFiddle console](/images/builders/pallets-precompiles/precompiles/call-permit/call-9.png)
+![Signature values in the JSFiddle console](/images/builders/pallets-precompiles/precompiles/call-permit/call-9.webp)
 
 ### 使用MetaMask的JS签名库 {: #use-metamasks-signing-library }
 
@@ -253,7 +253,7 @@ node getSignature.js
 
 在控制台中，您应当看到签名串以及包含`v`、`r`和 `s`的签名数值。您可以复制这些数值，用于下个部分与调用许可预编译交互。
 
-![Signature values in the console](/images/builders/pallets-precompiles/precompiles/call-permit/call-10.png)
+![Signature values in the console](/images/builders/pallets-precompiles/precompiles/call-permit/call-10.webp)
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
@@ -279,7 +279,7 @@ node getSignature.js
 10. 点击**transact**传送交易
 11. MetaMask将跳出弹窗要求您确认交易
 
-![Dispatch the call permit](/images/builders/pallets-precompiles/precompiles/call-permit/call-11.png)
+![Dispatch the call permit](/images/builders/pallets-precompiles/precompiles/call-permit/call-11.webp)
 
 当交易成功进行，您可以确认消息是否更新为`hello world`。您可以跟随以下步骤验证：
 
@@ -287,6 +287,6 @@ node getSignature.js
 2. 点击**get**
 3. 结果将会在函数下显示，并显示为`hello world`
 
-![Verify the dispatch was executed as intended](/images/builders/pallets-precompiles/precompiles/call-permit/call-12.png)
+![Verify the dispatch was executed as intended](/images/builders/pallets-precompiles/precompiles/call-permit/call-12.webp)
 
 恭喜您！您已经成功生成一个调用许可签名并代表签名者调用！

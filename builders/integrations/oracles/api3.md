@@ -13,7 +13,7 @@ API3是一个去中心化解决方案，以易访问和可扩展的方式向智�
 
 一个链上智能合约能够在[RRP（请求响应协议）](https://docs.api3.org/reference/airnode/latest/concepts/){target=_blank}合约中发出请求（[`AirnodeRrpV0. sol`](https://github.com/api3dao/airnode/blob/v0.11/packages/airnode-protocol/contracts/rrp/AirnodeRrpV0.sol){target=_blank}）并将请求添加到事件日志。接着，由Airnode访问事件日志、获取API数据并使用请求的数据对请求者执行回调。
 
-![API3 Airnode](/images/builders/integrations/oracles/api3/api3-1.png)
+![API3 Airnode](/images/builders/integrations/oracles/api3/api3-1.webp)
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
@@ -26,7 +26,7 @@ API3是一个去中心化解决方案，以易访问和可扩展的方式向智�
 - 提交请求
 - 接收并解码响应
 
-![API3 Airnode](/images/builders/integrations/oracles/api3/api3-2.png)
+![API3 Airnode](/images/builders/integrations/oracles/api3/api3-2.webp)
 
 以下是一个从Airnode请求数据的基础请求者范例合约：
 
@@ -136,7 +136,7 @@ contract Requester is RrpRequesterV0 {
 
 由于第一方数据源的组成，dAPI在交钥匙（Turn-key）包中提供安全性、透明度、成本效益和可扩展性。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-3.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-3.webp)
 
 *要了解更多dAPI是如何运作的，您可以查看[API3的文档网站](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=_blank}。*
 
@@ -167,7 +167,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 3. 部署一个代理合约以访问数据源
 4. 从dAPI读取数据
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-4.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-4.webp)
 
 #### 从API3 Market中选取一个dAPI {: #select-a-dapi }
 
@@ -175,7 +175,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 根据以上信息，您可以自己决定使用自费或托管dAPI.
 
-![API3 Dapi Page](/images/builders/integrations/oracles/api3/api3-5.png)
+![API3 Dapi Page](/images/builders/integrations/oracles/api3/api3-5.webp)
 
 #### 资助一个赞助商钱包 {: #fund-sponsor-wallet }
 
@@ -186,11 +186,11 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 要资助dAPI，您需要点击**Fund Gas**按钮。根据代理合约是否已部署，您将看到不同的UI。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.webp)
 
 使用Gas预测器选取dAPI需要多少Gas。点击**Send DEV**发送您先前为指定dAPI输入的数量。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.webp)
 
 当交易完成并在区块链上确认后将会出现在屏幕上。
 
@@ -203,7 +203,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 如果您在资助过程中部署代理合约，则可以点击**Get Proxy**按钮将向您的钱包发起一笔交易，该交易将部署代理合约。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-8.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-8.webp)
 
 当交易完成并在区块链上确认后，代理合约地址将会在界面中显示。
 

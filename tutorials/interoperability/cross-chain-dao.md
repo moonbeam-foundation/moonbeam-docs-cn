@@ -29,7 +29,7 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 接下来让我们来深入了解像Compound Finance DAO这样的DAO中的提案流程：
 
-![Typical DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-1.png)
+![Typical DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-1.webp)
 
 1. **提案（Proposal）** — 用户提议DAO执行单个或多个交易
 2. **投票（Voting）** — 等待投票延迟期后，投票期将正式开启，允许用户使用其投票权重进行投票。投票权重通常由在提案开始和投票延迟期尾之间的某个时间的Token余额快照决定
@@ -40,7 +40,7 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 构建跨链DApp的方法有很多种。您可以创建一个更加分布式的系统，系统中的数据和逻辑分布到多条链，以扩大其使用率。另一方面，您可以使用中心辐射（hub-and-spoke）模式，其中主要逻辑和数据存储在单链上，跨链消息将与之交互。
 
-![Cross Chain DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-2.png)
+![Cross Chain DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-2.webp)
 
 我们将对以下步骤展开分析：
 
@@ -55,7 +55,7 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 此处显示的流程，允许任何持有DAO Token的人参与跨链投票。为了保存只读信息，我们将把其存储在一条链上。比较少见的一次性操作（例如提案、取消等）最好作为中心辐射（hub-and-spoke）模式来完成。关于投票逻辑的信息，由于用户将在多条链上进行投票，因此投票权重和投票总和将存储在每条spoke链上。由于跨链手续费相对偏贵，仅在投票结束后才将他们发送到hub链。
 
-![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.png)  
+![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.webp)  
 
 当然，这只是实现跨链DAO的一种方法，我们鼓励您考虑其他更好的方法。 在下一部分中，我们来看一个实现。
 
@@ -200,7 +200,7 @@ contract CrossChainDAOToken is OFTVotes {
 4. 为了计算法定人数（投票通过所需的最小投票权重），将**Quorum**设置为数字 (**#**) 1
 5. 禁用**Timelock**，因为Timelock时间段是一个可选项
 
-![OpenZeppelin Contract Wizard](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-4.png)
+![OpenZeppelin Contract Wizard](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-4.webp)
 
 您应该在OpenZeppelin的contract wizard中看到与下面类似的合约：
 
@@ -801,7 +801,7 @@ function _countVote(uint256 proposalId, address account, uint8 support, uint256 
 
 现在，每个智能合约都已经完成，可以开始如下所示的部署计划了。如果您想要继续往下操作，跨链DAO的[GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=_blank}允许您在测试网上进行部署。
 
-![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.png)  
+![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.webp)  
 
 请注意，**本教程中的智能合约未经测试，请勿将其用于生产环境**。
 
@@ -822,7 +822,7 @@ function _countVote(uint256 proposalId, address account, uint8 support, uint256 
 
 例如，hub链的`CrossChainDAO`可以由接收跨链数据的主合约和另外两个智能合约组成：`CrossChainExecutor`和`CrossChainProposer`。因此，当与`DAOSatellite`合约交互以向`CrossChainDAO`发送消息时，spoke链的智能合约可以将`CrossChainExecutor`作为目标来进行提案执行或将`CrossChainProposer`作为目标来进行提议。这将消除双重包装负载的需要，以及在跨链消息接收功能中包含函数选择逻辑的需要。它甚至可以帮助将单链DAO转换为具有跨链能力的DAO。
 
-![Single Responsibility Principle](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-5.png)  
+![Single Responsibility Principle](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-5.webp)  
 
 ### 分布式提案和执行 {: #distributed-proposal-and-execution }
 
@@ -869,7 +869,7 @@ spoke链的`DAOSatellite`智能合约中有一个经常被忽视的缺陷，当�
 
 第一种解决方案是最简单的，但如果您不打算运行额外的基础设施，它可能会增加从提议到执行的周转时间。类似于提案完成后任何人都可以运行`execute`函数的方式，将编写一个新函数以允许任何人将投票数据发送到hub链。最好，这还需要一个[收集阶段的超时限制](#collection-phase-time-out)。
 
-![Chained Execution](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-6.png)  
+![Chained Execution](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-6.webp)  
 
 第二种解决方案要复杂得多。 它需要一个设置来发送带有负载的Token，而不是像当前合约那样只发送负载，并且在目标链上发生兑换以得到原生Token以进行跨链交易。
 

@@ -43,7 +43,7 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 - **创建新钱包** - 您将完成一些步骤来获取新的助记词。请安全存储此助记词，切勿将其分享与他人
 - **导入现有钱包** - 您已存储助记词，并且想要从该助记词恢复账户
 
-![Metamask Setup Interface](/images/tokens/connect/metamask/metamask-1.png)
+![Metamask Setup Interface](/images/tokens/connect/metamask/metamask-1.webp)
 
 根据您的个人需求选择，然后遵循步骤进行操作，即可完成设置。
 
@@ -56,11 +56,11 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 
 在本示例中，您将从开发账户使用私钥。点击切换账户的按钮，使用私钥导入账户。此处显示的为**Account 1**。
 
-![Importing account from private key metamask menu](/images/tokens/connect/metamask/metamask-2.png)
+![Importing account from private key metamask menu](/images/tokens/connect/metamask/metamask-2.webp)
 
 接下来，点击**Import Account**。
 
-![Importing account from private key account switcher menu](/images/tokens/connect/metamask/metamask-3.png)
+![Importing account from private key account switcher menu](/images/tokens/connect/metamask/metamask-3.webp)
 
 最后，输入您要导入的账户私钥。举例来说，您可以使用在Moonbeam开发节点中预先提供资金的账户之一。本教程将使用Gerald的密钥。输入私钥后，点击**Import**。
 
@@ -68,11 +68,11 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-testing-account.md'
 
-![Paste your account key into MetaMask](/images/tokens/connect/metamask/metamask-4.png)
+![Paste your account key into MetaMask](/images/tokens/connect/metamask/metamask-4.webp)
 
 导入后将出现如下图所示的**Account 2**：
 
-![MetaMask displaying your new Account 2](/images/tokens/connect/metamask/metamask-5.png)
+![MetaMask displaying your new Account 2](/images/tokens/connect/metamask/metamask-5.webp)
 
 ## 将MetaMask连接至Moonbeam {: #connect-metamask-to-moonbeam }
 
@@ -81,11 +81,11 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 1. 点击页面左上角的网络选择菜单栏
 2. 选择**Add Network**添加网络
 
-![Add new network in Metamask menu](/images/tokens/connect/metamask/metamask-6.png)
+![Add new network in Metamask menu](/images/tokens/connect/metamask/metamask-6.webp)
 
 然后，前往页面底部，点击**Add a network manually**手动添加网络：
 
-![Add network manually in Metamask](/images/tokens/connect/metamask/metamask-7.png)
+![Add network manually in Metamask](/images/tokens/connect/metamask/metamask-7.webp)
 
 您可在此处使用以下网络为MetaMask进行配置：
 
@@ -134,11 +134,11 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 5. **Block Explorer** -（可选）[区块浏览器](/builders/get-started/explorers/){target=_blank}的URL
 6. 确认所有信息无误后，点击**Save**保存信息
 
-![Add network in Metamask](/images/tokens/connect/metamask/metamask-8.png)
+![Add network in Metamask](/images/tokens/connect/metamask/metamask-8.webp)
 
 随后，网络将跳出弹窗说明您已成功添加网络。此外，系统还会提示您**Switch to Moonbase Alpha**切换至Moonbase Alpha，即本示例中添加的网络。
 
-![Successfully added a network in Metamask](/images/tokens/connect/metamask/metamask-9.png)
+![Successfully added a network in Metamask](/images/tokens/connect/metamask/metamask-9.webp)
 
 ## 与网络交互 {: #interact-with-the-network }
 
@@ -158,26 +158,26 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 2. 确保您已选择即将用于转账的账户
 3. 在MetaMask钱包的主屏幕，点击**Send**按钮
 
-![Initiate balance transfer in Metamask](/images/tokens/connect/metamask/metamask-10.png)
+![Initiate balance transfer in Metamask](/images/tokens/connect/metamask/metamask-10.webp)
 
 接下来，您要输入发送Token的地址。在本示例中，我们将选择已经导入MetaMask的钱包，即**Bob**。
 
-![Select account to send tokens to in Metamask](/images/tokens/connect/metamask/metamask-11.png)
+![Select account to send tokens to in Metamask](/images/tokens/connect/metamask/metamask-11.webp)
 
 在下一个页面，执行以下步骤：
 
 1. 输入要发送的Token数量
 2. 确认所有信息无误后，点击**Next**按钮
 
-![Set the amount of tokens to send in Metamask](/images/tokens/connect/metamask/metamask-12.png)
+![Set the amount of tokens to send in Metamask](/images/tokens/connect/metamask/metamask-12.webp)
 
 最后，确认所有gas相关的参数和费用是否准确。如果一切信息无误后，点击**Confirm**按钮。随后，交易将发送至网络！
 
-![Confirming a transaction in Metamask](/images/tokens/connect/metamask/metamask-13.png)
+![Confirming a transaction in Metamask](/images/tokens/connect/metamask/metamask-13.webp)
 
 交易确认后，返回钱包主屏幕，您会看到交易处于**Pending**待处理状态。约一分钟后，交易应被**Confirmed**确认处理。如果您点击交易，可以在区块浏览器中查看更多详情。
 
-![Transaction confirmed in Metamask](/images/tokens/connect/metamask/metamask-14.png)
+![Transaction confirmed in Metamask](/images/tokens/connect/metamask/metamask-14.webp)
 
 ### 添加ERC-20 Token {: #add-an-erc20-token }
 
@@ -188,15 +188,15 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 3. 输入要导入的Token合约地址。**Token symbol**和**Token decimal**会自动填充，若需要您可以编辑**Token symbol**
 4. 点击**Next**
 
-![The tokens tab and the import tokens process in MetaMask, where the token address, symbol, and decimal are defined.](/images/tokens/connect/metamask/metamask-15.png)
+![The tokens tab and the import tokens process in MetaMask, where the token address, symbol, and decimal are defined.](/images/tokens/connect/metamask/metamask-15.webp)
 
 接下来，您需要确认Token导入的信息。确认信息无误后，点击**Import**。
 
-![Review the token details and finalize the import in MetaMask.](/images/tokens/connect/metamask/metamask-16.png)
+![Review the token details and finalize the import in MetaMask.](/images/tokens/connect/metamask/metamask-16.webp)
 
 在**Tokens**标签下，您能够看到Token和账户余额。
 
-![View the imported token in the list of assets on the tokens tab in MetaMask.](/images/tokens/connect/metamask/metamask-17.png)
+![View the imported token in the list of assets on the tokens tab in MetaMask.](/images/tokens/connect/metamask/metamask-17.webp)
 
 ### 添加ERC-721 Token {: #add-an-erc721-token }
 
@@ -207,10 +207,10 @@ description: 通过此教程学习如何将MetaMask（一个基于浏览器的�
 3. 输入要导入的NFT的**Address**地址以及**Token ID**
 4. 点击**Import**
 
-![The NFTs tab and the import NFT process in MetaMask, where the address and the token ID of the NFT are defined.](/images/tokens/connect/metamask/metamask-18.png)
+![The NFTs tab and the import NFT process in MetaMask, where the address and the token ID of the NFT are defined.](/images/tokens/connect/metamask/metamask-18.webp)
 
 导入NFT后，您可以在**NFTs**标签下查看NFT。点击NFT查看更多详情。
 
-![View the imported NFT in the list of NFTs on the NFTs tab in MetaMask.](/images/tokens/connect/metamask/metamask-19.png)
+![View the imported NFT in the list of NFTs on the NFTs tab in MetaMask.](/images/tokens/connect/metamask/metamask-19.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'

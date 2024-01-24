@@ -73,7 +73,7 @@ Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标
 
 如果您已有运行的节点，也会看到相似的终端日志：
 
-![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.png)
+![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.webp)
 
 ## 使用Debug API {: #using-the-debug-api }
 
@@ -91,7 +91,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 节点将返回交易从始至终的每一个步骤信息（因篇幅过长，此处返回内容有所删减）：
 
-![Trace Debug Node Running](/images/builders/build/eth-api/debug-trace/debug-trace-2.png)
+![Trace Debug Node Running](/images/builders/build/eth-api/debug-trace/debug-trace-2.webp)
 
 如果您使用的是 `debug_traceBlockByNumber` 或 `debug_traceBlockByHash` 方法，您需要在`"params"`中添加`{"tracer": "callTracer"}`。`callTracer` 会返回交易及其下属调用。否则tracer将会尝试使用`raw`为预设值，目前这个模式并不被支持因为它会占用太多资源。举例来说，使用`debug_traceBlockByHash`方法时，您可以在terminal使用以下JSON-RPC请求（例子中使用的区块哈希值为`0x2633b66050c99d80f65fe96de6485fd407b87f0f59b485c33ab8f119e2c6f255`）:
 
@@ -120,7 +120,7 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 节点将返回过滤后的追踪信息结果（因篇幅过长，此处返回内容有所删减）。
 
-![Trace Filter Node Running](/images/builders/build/eth-api/debug-trace/debug-trace-3.png)
+![Trace Filter Node Running](/images/builders/build/eth-api/debug-trace/debug-trace-3.webp)
 
 ## 使用Txpool API {: #using-the-txpool-api }
 
@@ -137,4 +137,4 @@ curl {{ networks.development.rpc_url }} -H "Content-Type:application/json;charse
 
 在本示例中，`txpool_status`方法将返回当前待定或排队的交易数。
 
-![Txpool Request and Response](/images/builders/build/eth-api/debug-trace/debug-trace-4.png)
+![Txpool Request and Response](/images/builders/build/eth-api/debug-trace/debug-trace-4.webp)

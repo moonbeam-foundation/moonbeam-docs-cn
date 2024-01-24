@@ -96,14 +96,14 @@ Conviction Voting Precompile位于以下地址：
 1. 点击**File explorer**标签
 2. 将[`ConvictionVoting.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/conviction-voting/ConvictionVoting.sol){target=_blank}复制粘贴至一个[Remix文件](https://remix.ethereum.org/){target=_blank}，命名为`ConvictionVoting.sol`
 
-![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-1.png)
+![Copy and paste the referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 然后在编译界面，点击**Compile ConvictionVoting.sol**
 
-![Compile the ConvictionVoting.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-2.png)
+![Compile the ConvictionVoting.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-2.webp)
 
 ### 获取合约 {: #access-the-contract }
 
@@ -113,7 +113,7 @@ Conviction Voting Precompile位于以下地址：
 4. 为Moonbase Alpha提供Conviction Voting Precompile的地址：`{{ networks.moonbase.precompiles.conviction_voting }}`并点击**At Address**
 5. Conviction Voting Precompile将会出现在**Deployed Contracts**列表当中
 
-![Access the ConvictionVoting.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-3.png)
+![Access the ConvictionVoting.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-3.webp)
 
 ### 参与公投 {: #vote-on-a-referendum }
 
@@ -125,7 +125,7 @@ Conviction Voting Precompile位于以下地址：
 2. 寻找您想要参与投票的公投。您可以通过点击三角形图标查看特定公投的更多详情。如果没有三角形图标，则说明未提交提案的原像，只有提案哈希
 3. 记录公投索引
 
-![View the list of referenda on Polkadot.js Apps.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-4.png)
+![View the list of referenda on Polkadot.js Apps.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-4.webp)
 
 现在，您可以通过Conviction Voting Precompile返回Remix对公投进行投票。您将使用两种方式参与投票：`voteYes`或`voteNo`。显而易见，如果您赞成公投则选择`voteYes`，如果您反对公投则选择`voteNo`。您将给出你想要跟着投票一起锁定的Token数量，以及您想要投票的信念值，即在[上述`Conviction` enum](#the-conviction-voting-solidity-interface)中的信念值索引。举例来说，如果您想要在投票成功后的长达两个生效等待期的时间锁定你的Token，您可以输入`2`，代表`Locked2x` Conviction。更多关于信念值的信息，请参考[Governance v2文档的信念乘数部分](/learn/features/governance/#conviction-multiplier-v2){target=_blank}。
 
@@ -138,7 +138,7 @@ Conviction Voting Precompile位于以下地址：
 5. 输入您想要投票的信念值
 6. 点击**transact**并在MetaMask确认交易
 
-![Vote on the proposal using the voteYes function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-5.png)
+![Vote on the proposal using the voteYes function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-5.webp)
 
 公投关闭后，您可以使用Conviction Voting Precompile移除投票并解锁Token。
 
@@ -155,7 +155,7 @@ Conviction Voting Precompile位于以下地址：
 5. 输入您想要投票的信念值
 6. 点击**transact**并在MetaMask确认交易
 
-![Delegate a vote using the delegate function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-6.png)
+![Delegate a vote using the delegate function of the Conviction Voting Precompile.](/images/builders/pallets-precompiles/precompiles/conviction-voting/conviction-voting-6.webp)
 
 现在委托账户可以代表您参与投票！如果您想要取消委托，您可以使用Conviction Voting Precompile的`undelegate`函数移除委托。
 
