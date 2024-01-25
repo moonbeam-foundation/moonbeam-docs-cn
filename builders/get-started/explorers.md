@@ -37,9 +37,8 @@ Moonscan其他功能如下：
 
 默认情况下，该浏览器连接至Moonbeam。您可通过以下步骤切换至Moonriver、Moonbase Alpha或连接至本地开发节点：
 
- 1. 点击网页右上角网络名称，这里您可以选择所有的网络，包括在`{{ networks.development.rpc_url }}`上运行的**Moonbeam Development Node**
-
-  2. 如果您想要连接至特定的PRC URL，选择**Add Custom Chain**，输入URL。例如：`http://localhost:9937`
+1. 点击网页右上角网络名称，这里您可以选择所有的网络，包括在`{{ networks.development.rpc_url }}`上运行的**Moonbeam Development Node**
+2. 如果您想要连接至特定的PRC URL，选择**Add Custom Chain**，输入URL。例如：`http://localhost:9937`
 
 ![Expedition Explorer](/images/builders/get-started/explorers/explorers-2.png)
 
@@ -60,4 +59,3 @@ Moonscan其他功能如下：
 要将其连接到 Moonbeam 开发节点，您可以按照 [将Polkadot.js应用程序连接到本地Moonbeam节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=\_blank}部分的[开始使用 Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank} 指南。默认端口为`9944`。
 
 ![Polkadot.js Local Node](/images/builders/get-started/explorers/explorers-5.png)
-
