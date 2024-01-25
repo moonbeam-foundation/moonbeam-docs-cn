@@ -7,7 +7,7 @@ description: 学习如何使用SubQuery为Moonbeam和Moonriver索引Substrate和
 
 ## 概览 {: #introduction }
 
-[SubQuery](https://subquery.network/){target=_blank}是一个数据聚合层，在Layer 1区块链（例如Moonbeam和波卡）和DApp之间运行。这项服务解锁区块链数据并转换至可查询状态，以便能够在直观的应用程序中使用。这允许DApp开发者聚焦于核心用例和前端，无需在构建为处理数据的自定义后端上浪费时间。
+[SubQuery](https://subquery.network/){target=\_blank}是一个数据聚合层，在Layer 1区块链（例如Moonbeam和波卡）和DApp之间运行。这项服务解锁区块链数据并转换至可查询状态，以便能够在直观的应用程序中使用。这允许DApp开发者聚焦于核心用例和前端，无需在构建为处理数据的自定义后端上浪费时间。
 
 SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substrate数据。使用SubQuery关键优势是您能够通过单一项目和工具跨Moonbeam的EVM和Substrate代码来灵活收集查询数据，随后使用GraphQL查询该数据。
 
@@ -21,15 +21,15 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 在本教程的后半部分，您可以选择将项目部署到本地运行的SubQuery节点。为此，您需要先在您的系统安装以下内容：
 
- - [Docker](https://docs.docker.com/get-docker/){target=_blank}
- - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
+ - [Docker](https://docs.docker.com/get-docker/){target=\_blank}
+ - [Docker Compose](https://docs.docker.com/compose/install/){target=\_blank}
 
 !!! 注意事项
-    如果Docker Compose是通过`sudo apt install docker-compose`命令为Linux安装的，您可能会在本教程后半部分遇到一些错误。请确保您遵循官方[Install Docker Compose](https://docs.docker.com/compose/install/){target=_blank}教程中关于Linux的说明。
+    如果Docker Compose是通过`sudo apt install docker-compose`命令为Linux安装的，您可能会在本教程后半部分遇到一些错误。请确保您遵循官方[Install Docker Compose](https://docs.docker.com/compose/install/){target=\_blank}教程中关于Linux的说明。
 
 ## 创建一个项目 {: #creating-a-project }
 
-首先，您将需要[创建一个SubQuery项目](https://academy.subquery.network/quickstart/quickstart.html){target=_blank}。您可以选择为Moonbeam、Moonriver或Moonbase Alpha创建项目。在本教程中，我们将选择Moonbeam创建项目。
+首先，您将需要[创建一个SubQuery项目](https://academy.subquery.network/quickstart/quickstart.html){target=\_blank}。您可以选择为Moonbeam、Moonriver或Moonbase Alpha创建项目。在本教程中，我们将选择Moonbeam创建项目。
 
 一般来说，您将需要：
 
@@ -74,11 +74,11 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 初始化设置完成后，您将拥有一个包含以下文件（以及其他文件）的基础SubQuery项目：
 
-- **[`project.yaml`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/project.yaml){target=_blank}** —— [Manifest File](https://academy.subquery.network/build/manifest/polkadot.html){target=_blank}，作为项目的入口点
-- **[`schema.graphql`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/schema.graphql){target=_blank}** —— [GraphQL Schema](https://academy.subquery.network/build/graphql.html){target=_blank}，定义数据形状。模板包括`Transaction` 和`Approval`实体
-- **[`src/mappings/mappingHandlers.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/mappings/mappingHandlers.ts){target=_blank}** —— 导出[Mapping](https://academy.subquery.network/build/mapping/polkadot.html){target=_blank}函数，用于定义如何将链数据转换为架构中定义的GraphQL实体
-- **[`src/chaintypes.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/chaintypes.ts){target=_blank}** —— 专为Moonbeam导出链的类型，便于索引Moonbeam数据
-- **[`erc20.abi.json`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/erc20.abi.json){target=_blank}** —— 包含标准ERC-20接口的ABI的JSON文件，将用于筛选ERC-20转移和批准数据
+- **[`project.yaml`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/project.yaml){target=\_blank}** —— [Manifest File](https://academy.subquery.network/build/manifest/polkadot.html){target=\_blank}，作为项目的入口点
+- **[`schema.graphql`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/schema.graphql){target=\_blank}** —— [GraphQL Schema](https://academy.subquery.network/build/graphql.html){target=\_blank}，定义数据形状。模板包括`Transaction` 和`Approval`实体
+- **[`src/mappings/mappingHandlers.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/mappings/mappingHandlers.ts){target=\_blank}** —— 导出[Mapping](https://academy.subquery.network/build/mapping/polkadot.html){target=\_blank}函数，用于定义如何将链数据转换为架构中定义的GraphQL实体
+- **[`src/chaintypes.ts`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/src/chaintypes.ts){target=\_blank}** —— 专为Moonbeam导出链的类型，便于索引Moonbeam数据
+- **[`erc20.abi.json`](https://github.com/subquery/tutorials-frontier-evm-starter/blob/moonriver/erc20.abi.json){target=\_blank}** —— 包含标准ERC-20接口的ABI的JSON文件，将用于筛选ERC-20转移和批准数据
 
 如果您查看`package.json`文件，您将会发现`chaintypes`已经导出在该文件中。如果未发现此情况，或者您正在扩展现有Substrate项目以添加Moonbeam网络支持，您将需要包含以下代码段：
 
@@ -133,20 +133,20 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
 您也需要更新`project.yaml`文件中的`dataSources`配置。数据源定义将被筛选以及抓取的数据，另外也定义了要应用的数据转换的映射函数，以及其处理程序的位置。
 
-SubQuery已经创建了专门用来和Moonbeam [Frontier](https://github.com/paritytech/frontier){target=blank}实现一起工作的数据处理器。这允许您参照处理器使用的特定ABI源以解析参数和事件来源或者调用的智能合约地址。概括来说，SubQuery作为中间件，能够提供额外筛选和数据转换。如果您使用的是示例模板，则Frontier EVM处理器已注入依赖项。如果您使用的是scratch，请确保您运行以下命令安装：
+SubQuery已经创建了专门用来和Moonbeam [Frontier](https://github.com/paritytech/frontier){target=\_blank}实现一起工作的数据处理器。这允许您参照处理器使用的特定ABI源以解析参数和事件来源或者调用的智能合约地址。概括来说，SubQuery作为中间件，能够提供额外筛选和数据转换。如果您使用的是示例模板，则Frontier EVM处理器已注入依赖项。如果您使用的是scratch，请确保您运行以下命令安装：
 
 ```bash
 yarn add @subql/frontier-evm-processor
 ```
 
-如果您使用的是示例模板，您将看到ERC-20 ABI已经显示在`dataSources.processor.options`下面。[Solarbeam (SOLAR) token](https://moonriver.moonscan.io/address/0x6bd193ee6d2104f14f94e2ca6efefae561a4334b){target=_blank}在Moonriver上的地址已经罗列出来。在本示例中，您可以在Moonbeam上使用[Wrapped GLMR (WGLMR) token](https://moonscan.io/address/0xAcc15dC74880C9944775448304B263D191c6077F){target=_blank}的地址：`0xAcc15dC74880C9944775448304B263D191c6077F`。
+如果您使用的是示例模板，您将看到ERC-20 ABI已经显示在`dataSources.processor.options`下面。[Solarbeam (SOLAR) token](https://moonriver.moonscan.io/address/0x6bd193ee6d2104f14f94e2ca6efefae561a4334b){target=\_blank}在Moonriver上的地址已经罗列出来。在本示例中，您可以在Moonbeam上使用[Wrapped GLMR (WGLMR) token](https://moonscan.io/address/0xAcc15dC74880C9944775448304B263D191c6077F){target=\_blank}的地址：`0xAcc15dC74880C9944775448304B263D191c6077F`。
 
 在`dataSources`配置中的字段可以拆分为以下几个部分：
 
 - **kind** —— *必填*，指定自定义Moonbeam数据处理器
 - **startBlock** —— 指定开始索引数据的区块
 - **processor.file** —— *必填*，引用数据处理器代码所在的文件
-- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://academy.subquery.network/build/substrate-evm.html#processor-options){target=_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
+- **processor.options** —— 包含指定Frontier EVM处理器的[处理器选项](https://academy.subquery.network/build/substrate-evm.html#processor-options){target=\_blank}，包括处理器用于解析参数的`abi`，以及合约事件来源或调用的`address`
 - **assets** —— 外部资产ABI文件的对象
 - **mapping** —— 映射规范。这包括映射条目的路径、映射函数以及任何其他映射筛选器所对应的处理器类型
 
@@ -184,14 +184,14 @@ yarn codegen
 
 ## 映射处理器 {: #mapping-handlers }
 
-映射规范包含定义链数据如何转换的[映射函数](https://academy.subquery.network/build/mapping/polkadot.html){target=_blank}。
+映射规范包含定义链数据如何转换的[映射函数](https://academy.subquery.network/build/mapping/polkadot.html){target=\_blank}。
 
 示例模板包含两个映射函数，可在`src/mappings/mappingHandlers.ts`目录下方找到。这些映射函数将转换成您定义的GraphQL实体。两个处理器如下所示：
 
-- **[Event handler](https://academy.subquery.network/build/substrate-evm.html#event-handlers){target=_blank}** —— 用于捕获新的区块发出特定事件的信息。由于该函数会在任意时间的事件发出时被调用，您可以使用映射筛选器来只处理您需要的事件。这可以改善性能并减少索引次数
-- **[Call handler](https://academy.subquery.network/build/substrate-evm.html#call-handlers){target=_blank}** —— 用于捕获特定extrinsics的信息
+- **[Event handler](https://academy.subquery.network/build/substrate-evm.html#event-handlers){target=\_blank}** —— 用于捕获新的区块发出特定事件的信息。由于该函数会在任意时间的事件发出时被调用，您可以使用映射筛选器来只处理您需要的事件。这可以改善性能并减少索引次数
+- **[Call handler](https://academy.subquery.network/build/substrate-evm.html#call-handlers){target=\_blank}** —— 用于捕获特定extrinsics的信息
 
-在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到`FrontierEvmEvent`和`FrontierEvmCall`。两者建立在Ether的[TransactionResponse](https://docs.ethers.org/v6/api/providers/#TransactionResponse){target=blank}或者[Log](https://docs.ethers.org/v6/api/providers/#Log){target=blank}种类的基础上。
+在一般的SubQuery项目中，传递给`handleEvent`映射函数的事件是`SubstrateEvent`。同样地，传递给`handleCall`映射函数的extrinsic是`SubstrateExtrinsic`。但在Moonbeam上，您的映射函数将收到`FrontierEvmEvent`和`FrontierEvmCall`。两者建立在Ether的[TransactionResponse](https://docs.ethers.org/v6/api/providers/#TransactionResponse){target=\_blank}或者[Log](https://docs.ethers.org/v6/api/providers/#Log){target=\_blank}种类的基础上。
 
 在本示例中，`FrontierEvmEvent`将用于处理和筛选`Transfer`事件，`FrontierEvmCall`将用于处理和筛选`approve`函数调用。您可根据自己的需求自行添加处理器。
 
@@ -231,7 +231,7 @@ yarn build
 
 ![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)
 
-接下来，使用Docker[发布您的项目](https://academy.subquery.network/run_publish/publish.html){target=_blank}至[SubQuery项目](https://project.subquery.network/){target=_blank}或[本地运行一个SubQuery节点](https://academy.subquery.network/run_publish/run.html){target=_blank}。为此，您可以运行以下命令：
+接下来，使用Docker[发布您的项目](https://academy.subquery.network/run_publish/publish.html){target=\_blank}至[SubQuery项目](https://project.subquery.network/){target=\_blank}或[本地运行一个SubQuery节点](https://academy.subquery.network/run_publish/run.html){target=\_blank}。为此，您可以运行以下命令：
 
 ```bash
 docker-compose pull && docker-compose up
@@ -246,7 +246,7 @@ docker-compose pull && docker-compose up
 
 ![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.png)
 
-现在您可以打开浏览器输入[http://localhost:3000](http://localhost:3000){target=_blank}查询您的项目，在该页面，您将找到GraphQL playground。在playground的右上角，点击**Docs**按钮可以打开文档。该文档自动生成，可协助寻找您可查询的实体或者函数。
+现在您可以打开浏览器输入[http://localhost:3000](http://localhost:3000){target=\_blank}查询您的项目，在该页面，您将找到GraphQL playground。在playground的右上角，点击**Docs**按钮可以打开文档。该文档自动生成，可协助寻找您可查询的实体或者函数。
 
 ![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.png)
 
@@ -254,12 +254,12 @@ docker-compose pull && docker-compose up
 
 ## 示例项目 {: #example-projects }
 
-如需查看与上述创建类似的在Moonriver上构建的完整示例项目，请至[live Moonriver EVM Starter Project on the SubQuery Explorer](https://explorer.subquery.network/subquery/subquery/moonriver-evm-starter-project){target=_blank}，或者在[SubQuery Explorer](https://explorer.subquery.network/){target=_blank}上查看其他项目。
+如需查看与上述创建类似的在Moonriver上构建的完整示例项目，请至[live Moonriver EVM Starter Project on the SubQuery Explorer](https://explorer.subquery.network/subquery/subquery/moonriver-evm-starter-project){target=\_blank}，或者在[SubQuery Explorer](https://explorer.subquery.network/){target=\_blank}上查看其他项目。
 
-如您有任何问题，您可查阅[SubQuery documentation for Substrate EVM Support](https://academy.subquery.network/build/substrate-evm.html){target=_blank}页面，或者在[SubQuery Discord](https://discord.com/invite/subquery){target=_blank}的#technical-support频道联系SubQuery团队。
+如您有任何问题，您可查阅[SubQuery documentation for Substrate EVM Support](https://academy.subquery.network/build/substrate-evm.html){target=\_blank}页面，或者在[SubQuery Discord](https://discord.com/invite/subquery){target=\_blank}的#technical-support频道联系SubQuery团队。
 
 ### Moonbuilders教程 {: #moonbuilders-tutorial }
 
-SubQuery于2021年12月参加了[Moonbuilders workshop](https://www.crowdcast.io/e/moonbuilders-ws/10){target=_blank}，向大家展示了如何创建一个简单的SubQuery项目。您可以自行尝试[生成范本项目](https://github.com/stwiname/moonbuilders-demo){target=_blank}。
+SubQuery于2021年12月参加了[Moonbuilders workshop](https://www.crowdcast.io/e/moonbuilders-ws/10){target=\_blank}，向大家展示了如何创建一个简单的SubQuery项目。您可以自行尝试[生成范本项目](https://github.com/stwiname/moonbuilders-demo){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

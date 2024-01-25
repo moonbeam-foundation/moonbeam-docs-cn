@@ -2,11 +2,10 @@ title: XCM互操作性
 nav:
   - index.md
   - '概览': 'overview.md'
-  - xc20
-  - xcm-sdk
+  - core-concepts
   - xc-registration
+  - xc20
+  - remote-execution
+  - xcm-sdk
   - '发送&执行XCM消息': 'send-execute-xcm.md'
-  - '远程执行': 'xcm-transactor.md'
-  - '远程EVM调用': 'remote-evm-calls.md'
-  - 'XCM执行费用': 'fees.md'
-  - 'XCM Utilities': '/builders/pallets-precompiles/precompiles/xcm-utils/'
+  - 'XCM Utilities': 'xcm-utils.md'

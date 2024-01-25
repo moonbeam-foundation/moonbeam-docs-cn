@@ -7,9 +7,9 @@ description: 学习如何直接通过Moonbeam上的Referenda Precompile的Solidi
 
 ## 概览 {: #introduction }
 
-作为波卡（Polkadot）平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。随着OpenGov（也称为Governance v2）的推出，Referenda Pallet允许Token持有者获取现有公投的信息，提交提案促使其进入公投阶段，管理与（提案进入公投所需的）决定保证金相关的操作。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、原则、机制等，请参考[Moonbeam上的治理](/learn/features/governance){target=_blank}页面。
+作为波卡（Polkadot）平行链和去中心化网络，Moonbeam具有原生链上治理功能，使利益相关者能够参与网络的发展方向。随着OpenGov（也称为Governance v2）的推出，Referenda Pallet允许Token持有者获取现有公投的信息，提交提案促使其进入公投阶段，管理与（提案进入公投所需的）决定保证金相关的操作。了解关于Moonbeam治理系统的更多信息，例如相关专业术语、原则、机制等，请参考[Moonbeam上的治理](/learn/features/governance){target=\_blank}页面。
 
-Referenda Precompile直接与Substrate的[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda/){target=_blank}交互。此pallet以Rust编码，通常不能从Moonbeam的以太坊端访问。然而，Referenda Precompile允许您直接从Solidity接口访问查看公投、提交公投和管理所需决定保证金的函数，所有这些函数均是Substrate Referenda Pallet的一部分。
+Referenda Precompile直接与Substrate的[Referenda Pallet](/builders/pallets-precompiles/pallets/referenda/){target=\_blank}交互。此pallet以Rust编码，通常不能从Moonbeam的以太坊端访问。然而，Referenda Precompile允许您直接从Solidity接口访问查看公投、提交公投和管理所需决定保证金的函数，所有这些函数均是Substrate Referenda Pallet的一部分。
 
 Referenda Precompile位于以下地址：
 
@@ -35,7 +35,7 @@ Referenda Precompile位于以下地址：
 
 ## Referenda Solidity接口 {: #the-referenda-solidity-interface }
 
-[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。具体函数如下所示：
+[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=\_blank}是一个Solidity接口，允许开发者使用预编译的函数交互。具体函数如下所示：
 
 - **referendumCount**() - 只读函数，返回公投总数
 - **submissionDeposit**() - 只读函数，返回每个公投所需的提交保证金
@@ -116,14 +116,14 @@ Referenda Precompile位于以下地址：
 
 以下示例为在Moonbase Alpha上演示，但是步骤也同样适用于Moonriver。开始操作之前，您需要准备以下内容：
 
- - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 拥有DEV Token的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ### Remix设置 {: #remix-set-up }
 
 1. 点击**File explorer**标签
-2. 将[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=_blank}，命名为`Referenda.sol`
+2. 将[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=\_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=\_blank}，命名为`Referenda.sol`
 
 ![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.png)
 
@@ -146,31 +146,31 @@ Referenda Precompile位于以下地址：
 
 ### 提交提案 {: #submit-a-proposal }
 
-要提交提案，您需要先提交该提案的原像。您可以通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档中的步骤完成此操作。提交提案将用到两个函数：`submitAt`和`submitAfter`。`submitAt`函数用于提交*在*给定区块执行的提案，而`submitAfter`函数用于提交在给定区块*之后*执行的提案。在本示例中将使用`submitAt`函数，但是步骤也同样适用于`submitAfter`函数。
+要提交提案，您需要先提交该提案的原像。您可以通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=\_blank}文档中的步骤完成此操作。提交提案将用到两个函数：`submitAt`和`submitAfter`。`submitAt`函数用于提交*在*给定区块执行的提案，而`submitAfter`函数用于提交在给定区块*之后*执行的提案。在本示例中将使用`submitAt`函数，但是步骤也同样适用于`submitAfter`函数。
 
-要提交提案，您需要先确定您的提案属于哪个Track以及Track的Track ID。具体请参考[治理概览页面的OpenGov部分](/learn/features/governance/#opengov){target=_blank}。
+要提交提案，您需要先确定您的提案属于哪个Track以及Track的Track ID。具体请参考[治理概览页面的OpenGov部分](/learn/features/governance/#opengov){target=\_blank}。
 
-请确保您已获取原像哈希和原像长度，这两者可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档中的操作步骤获取。另外，您也可以通过[Polkadot.js Apps的Preimage页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/preimages){target=_blank}复制原像哈希。要获取原像长度，您可在[Polkadot.js Apps Chain State页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=_blank}使用`preimage` pallet的`preimageFor`函数查询。
+请确保您已获取原像哈希和原像长度，这两者可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=\_blank}文档中的操作步骤获取。另外，您也可以通过[Polkadot.js Apps的Preimage页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/preimages){target=\_blank}复制原像哈希。要获取原像长度，您可在[Polkadot.js Apps Chain State页面](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=\_blank}使用`preimage` pallet的`preimageFor`函数查询。
 
 当您获取Track ID、原像哈希和原像长度后，您可以使用Referenda Precompile提交提案。在Remix，请执行以下步骤：
 
 1. 展开Referenda Precompile合约查看可用函数
 2. 找到**submitAt**函数，点击按钮展开此部分
 3. 输入提案的Track ID
-4. 输入原像哈希。您可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=_blank}文档的操作步骤获取
+4. 输入原像哈希。您可通过[Preimage Precompile](/builders/pallets-precompiles/precompiles/preimage){target=\_blank}文档的操作步骤获取
 5. 输入原像长度
 6. 输入执行原像的区块号
 7. 点击**transact**并在MetaMask确认交易
 
 ![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.png)
 
-交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.io/opengov){target=_blank}查看提案（Polkassembly根据Track来分类提案）。
+交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=\_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.io/opengov){target=\_blank}查看提案（Polkassembly根据Track来分类提案）。
 
 ### 提交决定保证金 {: #submit-decision-deposit }
 
-现在您已提交提案，接下来是提交决定保证金。决定保证金（Decision Deposit）是公投在带入期结束时进入决定期所需的最低保证金金额。关于决定保证金的更多信息，请参考[治理页面的OpenGov部分](/learn/features/governance/#opengov){target=_blank}。
+现在您已提交提案，接下来是提交决定保证金。决定保证金（Decision Deposit）是公投在带入期结束时进入决定期所需的最低保证金金额。关于决定保证金的更多信息，请参考[治理页面的OpenGov部分](/learn/features/governance/#opengov){target=\_blank}。
 
-您可以使用Referenda Precompile的`placeDecisionDeposit`函数提交决定保证金。您将需要用到公投的索引和足够的资金来完成此步骤。根据Track的不同决定保证金的金额也将不同，关于每个Track所需的最低保证金要求，请参考[治理页面的Track基本参数表格](/learn/features/governance/#general-parameters-by-track){target=_blank}。
+您可以使用Referenda Precompile的`placeDecisionDeposit`函数提交决定保证金。您将需要用到公投的索引和足够的资金来完成此步骤。根据Track的不同决定保证金的金额也将不同，关于每个Track所需的最低保证金要求，请参考[治理页面的Track基本参数表格](/learn/features/governance/#general-parameters-by-track){target=\_blank}。
 
 要提交保证金，请执行以下步骤：
 
@@ -182,7 +182,7 @@ Referenda Precompile位于以下地址：
 
 现在已存入决定保证金，距离公投进入决定期又更近了一步。接下来要确保在指定的Track中有足够的容量并且必须通过准备期才能进入决定期。
 
-要参与公投，请参考[Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=_blank}文档中的操作步骤。
+要参与公投，请参考[Conviction Voting Precompile](/builders/pallets-precompiles/precompiles/conviction-voting){target=\_blank}文档中的操作步骤。
 
 ### 退还决定保证金 {: #refund-decision-deposit }
 
@@ -196,4 +196,4 @@ Referenda Precompile位于以下地址：
 
 ![Refund the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-6.png)
 
-这样就可以了！您已经基本了解Referenda Precompile。在[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=_blank}文档中记录了更多的函数，如果您对这些函数或在Referenda Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=_blank}上联系我们。
+这样就可以了！您已经基本了解Referenda Precompile。在[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=\_blank}文档中记录了更多的函数，如果您对这些函数或在Referenda Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=\_blank}上联系我们。

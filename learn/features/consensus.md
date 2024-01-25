@@ -7,20 +7,20 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ## 概览 {: #introduction }
 
-波卡（Polkadot）依赖于一种[混合共识模型](https://wiki.polkadot.network/docs/learn-consensus){target=_blank}。根据这一方案，区块终结工具以及区块生产机制是分开的。因此，平行链只需要考虑区块生产即可，中继链则负责验证区块状态的转变。
+波卡（Polkadot）依赖于一种[混合共识模型](https://wiki.polkadot.network/docs/learn-consensus){target=\_blank}。根据这一方案，区块终结工具以及区块生产机制是分开的。因此，平行链只需要考虑区块生产即可，中继链则负责验证区块状态的转变。
 
-在平行链层面，区块生产者被称为“[收集人](https://wiki.polkadot.network/docs/learn-collator){target=_blank}”，他们通过从用户处收集交易，并向中继链[验证人](https://wiki.polkadot.network/docs/learn-validator){target=_blank}提供区块来维持平行链（如Moonbeam）的运行。
+在平行链层面，区块生产者被称为“[收集人](https://wiki.polkadot.network/docs/learn-collator){target=\_blank}”，他们通过从用户处收集交易，并向中继链[验证人](https://wiki.polkadot.network/docs/learn-validator){target=\_blank}提供区块来维持平行链（如Moonbeam）的运行。
 
 但是对于以下问题，平行链可能需要采取一个无信任且去中心化的方式来加以解决（若可行）：
 
  - 在网络所有的节点之中，哪些被允许生产区块？
  - 如果多个节点都可以生产区块，那么他们会同时生产区块吗？每次生产区块的节点只有一个，还是有多个？
 
-下面来介绍Nimbus。Nimbus是为基于[Cumulus](https://github.com/paritytech/polkadot-sdk/tree/master/cumulus){target=_blank}平行链上创建以插槽为基础的共识算法提供框架。Nimbus致力于为这些共识引擎提供组织管理部件的标准化部署，同时为研究开发人员希望定制的元素（过滤器）提供部署协助功能。这些过滤器经过定制后，可以定义区块生产插槽，也可以进行设置，通过几个步骤将区块生产者身份限定于一些「收集人子集」。
+下面来介绍Nimbus。Nimbus是为基于[Cumulus](https://github.com/paritytech/polkadot-sdk/tree/master/cumulus){target=\_blank}平行链上创建以插槽为基础的共识算法提供框架。Nimbus致力于为这些共识引擎提供组织管理部件的标准化部署，同时为研究开发人员希望定制的元素（过滤器）提供部署协助功能。这些过滤器经过定制后，可以定义区块生产插槽，也可以进行设置，通过几个步骤将区块生产者身份限定于一些「收集人子集」。
 
 例如，Moonbeam就使用了两层结构。第一层由平行链质押过滤器组成，根据质押量排名选择活跃的收集人池；第二层增加了一个过滤器，进一步缩小每一个插槽的「收集人子集」的规模。
 
-请注意，Nimbus只能选出在下一个可用插槽中有资格生产平行链区块的收集人。[Cumulus](https://wiki.polkadot.network/docs/build-pdk#cumulus){target=_blank}共识机制将进行最佳区块标记，而最终（中继链的）[BABE](https://wiki.polkadot.network/docs/learn-consensus#babe){target=_blank}和[GRANDPA](https://wiki.polkadot.network/docs/learn-consensus#grandpa-finality-gadget){target=_blank}混合共识模型会将这个平行链区块发送到中继链上，并最后终结。当中继链分叉在中继链层面完成以后，平行链区块就获得终结。
+请注意，Nimbus只能选出在下一个可用插槽中有资格生产平行链区块的收集人。[Cumulus](https://wiki.polkadot.network/docs/build-pdk#cumulus){target=\_blank}共识机制将进行最佳区块标记，而最终（中继链的）[BABE](https://wiki.polkadot.network/docs/learn-consensus#babe){target=\_blank}和[GRANDPA](https://wiki.polkadot.network/docs/learn-consensus#grandpa-finality-gadget){target=\_blank}混合共识模型会将这个平行链区块发送到中继链上，并最后终结。当中继链分叉在中继链层面完成以后，平行链区块就获得终结。
 
 下面两个小节将介绍Moonbeam目前所使用的过滤策略。
 
@@ -34,7 +34,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 这个池还将通过另外一个过滤器，为下一个区块生产插槽返回一个符合资格的「候选人子集」。
 
-如需了解更多质押相关的信息，请访问我们的[质押文档](/learn/features/staking/){target=_blank}。
+如需了解更多质押相关的信息，请访问我们的[质押文档](/learn/features/staking/){target=\_blank}。
 
 ## 固定规模子集过滤法 {: #fixed-size-subset-filtering }
 
@@ -46,7 +46,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 相反，如果合格率低，区块终结就会更快，区块生产在收集人之间的分布也会更加平均。然而，如果符合资格的收集人无法提案区块（无论是什么原因），网络都会跳过一个区块，从而影响其稳定性。
 
-子集的规模确定后，收集人就会通过熵源随机选出。目前网络内部采取了“抛硬币”算法，但不久后将转而使用中继链的[随机信标](https://wiki.polkadot.network/docs/learn-randomness){target=_blank}，因此每个中继链区块将对应一个新的且符合资格的「收集人子集」。以下图表描述了在某一轮的某个名为`XYZ`的区块上，其固定规模子集过滤的过程：
+子集的规模确定后，收集人就会通过熵源随机选出。目前网络内部采取了“抛硬币”算法，但不久后将转而使用中继链的[随机信标](https://wiki.polkadot.network/docs/learn-randomness){target=\_blank}，因此每个中继链区块将对应一个新的且符合资格的「收集人子集」。以下图表描述了在某一轮的某个名为`XYZ`的区块上，其固定规模子集过滤的过程：
 
 ![Nimbus Parachain Staking Filter](/images/learn/features/consensus/consensus-2.png)
 
@@ -64,7 +64,7 @@ description: 通过此教程学习了解Moonbeam的Nimbus共识框架以及其�
 
 ### 权重和冗余执行 {: #weight-and-extra-execution }
 
-Nimbus将生产者验证执行代码放在一个[Substrate模块](https://docs.substrate.io/reference/frame-pallets/){target=_blank}中，看上去似乎为一个区块增加了很多执行负担（和链下验证相比）。但如果从验证人的角度来考虑：
+Nimbus将生产者验证执行代码放在一个[Substrate模块](https://docs.substrate.io/reference/frame-pallets/){target=\_blank}中，看上去似乎为一个区块增加了很多执行负担（和链下验证相比）。但如果从验证人的角度来考虑：
 
 验证人也需要验证区块生产者的身份。通过将区块生产者验证的执行逻辑放在一个模块里，执行时间就可以进行对标，并根据相应的权重进行量化。如果这一执行时间没有计算在内，一个区块就有可能超出中继链的Wasm执行极限（目前为0.5秒）。
 
@@ -74,12 +74,12 @@ Nimbus将生产者验证执行代码放在一个[Substrate模块](https://docs.s
 
 将生产者验证执行放进一个模块里还有另一个好处。与定制的执行器不同，这个单一的执行器可以重新用于在Nimbus框架下的共识机制中。这就是基于插槽的签名算法。
 
-例如，[由中继链提供的共识算法](https://github.com/paritytech/polkadot-sdk/blob/master/cumulus/client/consensus/relay-chain/src/lib.rs){target=_blank}，[AuRa](https://crates.io/crates/sc-consensus-aura){target=_blank}和[BABE](https://crates.io/crates/sc-consensus-babe){target=_blank}都有他们自己的定制化执行器，而在Nimbus之中，这些共识机制可以重复使用同一个执行器。通过Nimbus实现的AuRa已经落地，其代码少于100行，充分体现了Nimbus强大的可重用性。
+例如，[由中继链提供的共识算法](https://github.com/paritytech/polkadot-sdk/blob/master/cumulus/client/consensus/relay-chain/src/lib.rs){target=\_blank}，[AuRa](https://crates.io/crates/sc-consensus-aura){target=\_blank}和[BABE](https://crates.io/crates/sc-consensus-babe){target=\_blank}都有他们自己的定制化执行器，而在Nimbus之中，这些共识机制可以重复使用同一个执行器。通过Nimbus实现的AuRa已经落地，其代码少于100行，充分体现了Nimbus强大的可重用性。
 
 ### 热插拔共识机制 {: #hot-swapping-consensus }
 
 平行链开发团队有时可能需要对共识机制进行修改、调整。如果没有Nimbus插拔共识机制，修改和调整可能需要通过客户端升级和硬分叉才能完成。
 
-而有了Nimbus框架后，编写共识引擎就像编写[Substrate](https://docs.substrate.io/reference/frame-pallets/){target=_blank}模块一样简单。因此，插拔共识机制也就像模块升级一样简单。
+而有了Nimbus框架后，编写共识引擎就像编写[Substrate](https://docs.substrate.io/reference/frame-pallets/){target=\_blank}模块一样简单。因此，插拔共识机制也就像模块升级一样简单。
 
 虽然热插拔仍与Nimbus内部的共识引擎（过滤器）绑定，但对于那些仍未选好长远共识机制的团队来说，它也会带来很大帮助。

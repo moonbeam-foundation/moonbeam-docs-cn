@@ -16,9 +16,9 @@ keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 
 衍生账户是使用索引从另一个账户衍生出来的账户。这使衍生账户能够派遣交易并使用原账户支付交易费用。由于此账户的私钥是未知的，因此交易必须由pallet的`asDerivative` extrinsic发起。举例来说，Alice有一个索引为`0`的衍生账户，如果她使用`asDerivative`函数转移任何余额，Alice仍将支付交易费，但转移的资金将从索引为`0`的衍生账户提取。
 
-衍生是通过计算`modlpy/utilisuba` + `originalAddress` + `index`的Blake2哈希来完成的。您可以[使用脚本来计算给定原账户和索引的衍生账户](https://github.com/albertov19/PolkaTools/blob/main/calculateDerivedAddress.ts){target=_blank}。
+衍生是通过计算`modlpy/utilisuba` + `originalAddress` + `index`的Blake2哈希来完成的。您可以[使用脚本来计算给定原账户和索引的衍生账户](https://github.com/albertov19/PolkaTools/blob/main/calculateDerivedAddress.ts){target=\_blank}。
 
-其中一个衍生账户的用例可在XCM Transactor Pallet找到。Pallet允许用户从主权账户的衍生账户执行远程跨链调用，这使调用可在单个交易中轻松执行。更多信息，请参考[使用XCM Transactor Pallet进行远程执行](/builders/interoperability/xcm/xcm-transactor/){target=_blank}教程。
+其中一个衍生账户的用例可在XCM Transactor Pallet找到。Pallet允许用户从主权账户的衍生账户执行远程跨链调用，这使调用可在单个交易中轻松执行。更多信息，请参考[使用XCM Transactor Pallet进行远程执行](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/){target=\_blank}教程。
 
 ## Utility Pallet接口 {: #utility-pallet-interface }
 
@@ -39,9 +39,9 @@ Utility Pallet包含以下只读函数来获取pallet常量：
 
 ## 使用Batch Extrinsics  {: #using-the-batch-extrinsics }
 
-您可以使用Polkadot.js Apps接口或通过Polkadot.js API获取batch extrinsics。此示例将向您展示如何从Polkadot.js Apps使用`batch` extrinsic。如果您使用Polkadot.js API，您可以通过`api.tx.utility.batch`接口获取Utility Pallet。更多关于使用API批量处理交易，请参考[Polkadot.js API Library](/builders/build/substrate-api/polkadot-js-api/#batching-transactions){target=_blank}页面。
+您可以使用Polkadot.js Apps接口或通过Polkadot.js API获取batch extrinsics。此示例将向您展示如何从Polkadot.js Apps使用`batch` extrinsic。如果您使用Polkadot.js API，您可以通过`api.tx.utility.batch`接口获取Utility Pallet。更多关于使用API批量处理交易，请参考[Polkadot.js API Library](/builders/build/substrate-api/polkadot-js-api/#batching-transactions){target=\_blank}页面。
 
-首先，您可以前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=_blank}并连接至Moonbase Alpha。此操作流程也同样适用于Moonbeam和Moonriver。
+首先，您可以前往[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics){target=\_blank}并连接至Moonbase Alpha。此操作流程也同样适用于Moonbeam和Moonriver。
 
 您可以发送任何调用的组合，如余额转账、民主、质押以及更多。
 
@@ -69,9 +69,9 @@ Utility Pallet包含以下只读函数来获取pallet常量：
 
 ![Send batch transaction](/images/builders/pallets-precompiles/pallets/utility/utility-1.png)
 
-接下来，您将需要输入您的密码并点击**Sign and Submit**。随后，您可以在[Subscan](https://moonbase.subscan.io/){target=_blank}上查看extrinsic。
+接下来，您将需要输入您的密码并点击**Sign and Submit**。随后，您可以在[Subscan](https://moonbase.subscan.io/){target=\_blank}上查看extrinsic。
 
 !!! 注意事项
-    作为参考，您可以[在Subscan上查看此示例的确切extrinsic](https://moonbase.subscan.io/extrinsic/2561364-6){target=_blank}。
+    作为参考，您可以[在Subscan上查看此示例的确切extrinsic](https://moonbase.subscan.io/extrinsic/2561364-6){target=\_blank}。
 
 如果您查看extrinsic页面底部的**Events**标签，您应该看到几个事件，包括2个`balances (Transfer)`事件、2个`utility (ItemCompleted)`事件和1个包含批量处理交易详细信息的`utility (BatchCompleted)`事件。

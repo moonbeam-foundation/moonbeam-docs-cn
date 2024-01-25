@@ -8,7 +8,7 @@ keywords: solidity、以太坊、调用许可、许可、无需Gas费交易、mo
 
 ## 概览 {: #introduction }
 
-Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的许可（一个签署的[EIP-712](https://eips.ethereum.org/EIPS/eip-712){target=_blank}消息）且该许可能够由任何人或任何智能合约调度。这与[ERC-20许可Solidity接口](/builders/interoperability/xcm/xc20/overview/#the-erc20-permit-interface){target=_blank}相似，但其适用于除了批准外的任何EVM调用。
+Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的许可（一个签署的[EIP-712](https://eips.ethereum.org/EIPS/eip-712){target=\_blank}消息）且该许可能够由任何人或任何智能合约调度。这与[ERC-20许可Solidity接口](/builders/interoperability/xcm/xc20/interact/#the-erc20-permit-interface){target=\_blank}相似，但其适用于除了批准外的任何EVM调用。
 
 调度调用许可时，代表签署此许可的用户且调度许可的用户或是合约将支付交易费用。因此，此预编译能够被用于执行无需Gas费用的交易。
 
@@ -38,7 +38,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 
 ## 调用许可Solidity接口 {: #the-call-permit-interface }
 
-[`CallPermit.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}为一个Solidity接口，让开发者能够与预编译的三个函数交互。
+[`CallPermit.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=\_blank}为一个Solidity接口，让开发者能够与预编译的三个函数交互。
 
 此接口包含以下函数：
 
@@ -54,17 +54,17 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
      - `s` - 签名串的第二个32个字节
 
 - **nonces**(*address* owner) - 回传当前随机数给指定所有者
-- **DOMAIN_SEPARATOR**() - 回传用于避免重复攻击的EIP-712域名分隔器，跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=_blank}实现执行
+- **DOMAIN_SEPARATOR**() - 回传用于避免重复攻击的EIP-712域名分隔器，跟随[EIP-2612](https://eips.ethereum.org/EIPS/eip-2612#specification){target=\_blank}实现执行
 
 --8<-- 'text/builders/pallets-precompiles/precompiles/call-permit/domain-separator.md'
 
-当已调用`dispatch`，此许可需要在该调用被调度前获得验证。首个步骤为[计算域名分隔器](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L138){target=_blank}，您可以在[Moonbeam的实现](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L112-L126){target=_blank}中找到计算过程，或是您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=_blank}中找到实际范例。
+当已调用`dispatch`，此许可需要在该调用被调度前获得验证。首个步骤为[计算域名分隔器](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L138){target=\_blank}，您可以在[Moonbeam的实现](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L112-L126){target=\_blank}中找到计算过程，或是您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84){target=\_blank}中找到实际范例。
 
-其中，[签名哈希以及给定参数](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L140-L151){target=_blank}因用于保证签名仅能够被用于调用许可而生成。它使用一个给定的随机数确保签名不会被重复攻击影响，这与[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=_blank}相似，除了`PERMIT_TYPEHASH`本身为一个调用许可，且其参数等于[调度函数](#:~:text=The interface includes the following functions)与随机数的综合。
+其中，[签名哈希以及给定参数](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L140-L151){target=\_blank}因用于保证签名仅能够被用于调用许可而生成。它使用一个给定的随机数确保签名不会被重复攻击影响，这与[OpenZeppelin的`ERC20Permit`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/token/ERC20/extensions/draft-ERC20Permit.sol#L52){target=\_blank}相似，除了`PERMIT_TYPEHASH`本身为一个调用许可，且其参数等于[调度函数](#:~:text=The interface includes the following functions)与随机数的综合。
 
-域名分隔器以及哈希结构能够被用于构建完全编码消息的[最终哈希](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L153-L157){target=_blank}，您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84)找到实际范例{target=_blank}。
+域名分隔器以及哈希结构能够被用于构建完全编码消息的[最终哈希](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L153-L157){target=\_blank}，您可以在[OpenZeppelin的EIP712合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/cryptography/draft-EIP712.sol#L70-L84)找到实际范例{target=\_blank}。
 
-签名能够通过最终哈希以及v、r和s数值[验证和恢复](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L211-L223){target=_blank}。如其成功被验证，随机数将会增加1且调用将会被调度。
+签名能够通过最终哈希以及v、r和s数值[验证和恢复](https://github.com/moonbeam-foundation/moonbeam/blob/ae705bb2e9652204ace66c598a00dcd92445eb81/precompiles/call-permit/src/lib.rs#L211-L223){target=\_blank}。如其成功被验证，随机数将会增加1且调用将会被调度。
 
 ## 设置合约 {: #setup-the-example-contract }
 
@@ -76,7 +76,7 @@ Moonbeam上的调用许可预编译能让用户签署一个为任何EVM调用的
 
 要跟随此教程，您需要准备以下内容：
 
-- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
 - 在Moonbase Alpha创建或是拥有两个账户以测试调用许可预编译的不同功能
 - 至少其中一个账户需要拥有`DEV` Token
    --8<-- 'text/_common/faucet/faucet-list-item.md'
@@ -104,7 +104,7 @@ contract SetMessage {
 
 ### Remix设置 {: #remix-set-up }
 
-您可以使用[Remix](https://remix.ethereum.org/){target=_blank}编译和部署范例合约。您需要一份[`SetMessage.sol`](#example-contract){target=_blank}和[`CallPermit.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=_blank}。要将合约添加到Remix，您可以执行以下步骤：
+您可以使用[Remix](https://remix.ethereum.org/){target=\_blank}编译和部署范例合约。您需要一份[`SetMessage.sol`](#example-contract){target=\_blank}和[`CallPermit.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/call-permit/CallPermit.sol){target=\_blank}。要将合约添加到Remix，您可以执行以下步骤：
 
 1. 点击**File explorer**标签
 2. 将`SetMessage.sol`合约粘贴至名为`SetMessage.sol`的Remix文件中
@@ -154,7 +154,7 @@ contract SetMessage {
 
 ## 生产调用许可签名 {: #generate-call-permit-signature}
 
-要与调用许可预编译交互，您需要拥有或是生成一个签名以调度调用许可。生成签名有多种方式，此教程将会包含两个方法：使用[MetaMask扩展程序](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn){target=_blank}和[JSFiddle](https://jsfiddle.net/){target=_blank}以及[使用MetaMask的`@metamask/eth-sig-util` npm包](https://www.npmjs.com/package/@metamask/eth-sig-util){target=_blank}。
+要与调用许可预编译交互，您需要拥有或是生成一个签名以调度调用许可。生成签名有多种方式，此教程将会包含两个方法：使用[MetaMask扩展程序](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn){target=\_blank}和[JSFiddle](https://jsfiddle.net/){target=\_blank}以及[使用MetaMask的`@metamask/eth-sig-util` npm包](https://www.npmjs.com/package/@metamask/eth-sig-util){target=\_blank}。
 
 不论您选择哪种方法生成签名，您均需要执行以下步骤：
 
@@ -162,7 +162,7 @@ contract SetMessage {
 2. 将组合用户需要签署数据的JSON结构并包含所有`dispatch`函数和随机数需要的种类。这将会得出`CallPermit`种类并将作为`primaryType`储存
 3. 域名分隔器将使用`"Call Permit Precompile"`创建，需要完全相同的名称、DApp或平台的版本、使用签名的网络的链ID以及将验证签名的合约地址
 4. 所有组合的数据，`types`、`domain`、`primaryType`以及`message`将会使用MetaMask签署（不论是在浏览器或是用过MetaMask的JavaScript签名库）
-5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.org/){target=_blank} [`Signature.from` 函数](https://docs.ethers.org/v6/api/crypto/#Signature_from){target=_blank}回传签名的`v`、`r`和`s`数值。
+5. 签名将被回传，接着您可以使用[Ethers.js](https://docs.ethers.org/){target=\_blank} [`Signature.from` 函数](https://docs.ethers.org/v6/api/crypto/#Signature_from){target=\_blank}回传签名的`v`、`r`和`s`数值。
 
 ### 调用许可参数 {: #call-permit-arguments }
 
@@ -191,7 +191,7 @@ contract SetMessage {
 
 ### 使用浏览器 {: #use-the-browser }
 
-开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
+开始之前，您可以打开[JSFiddle](https://jsfiddle.net/){target=\_blank}或在浏览器中打开其他JavaScript界面。首先，您需要新增[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}，因其需要用于获得签名的`v`、`r`和`s`数值：
 
 1. 点击**Resources**
 2. 接着输入`ethers`，下拉选单应当弹出符合的库。选择**ethers**
@@ -217,7 +217,7 @@ Ethers.js的CDN应当在**Resources**下方的库列表出现
 
 ### 使用MetaMask的JS签名库 {: #use-metamasks-signing-library }
 
-要使用JavaScript和[MetaMask的`@metamask/eth-sig-util` npm包](https://www.npmjs.com/package/@metamask/eth-sig-util){target=_blank}，您首先需要在本地创建项目。您可以通过以下命令创建：
+要使用JavaScript和[MetaMask的`@metamask/eth-sig-util` npm包](https://www.npmjs.com/package/@metamask/eth-sig-util){target=\_blank}，您首先需要在本地创建项目。您可以通过以下命令创建：
 
 ```bash
 mkdir call-permit-example && cd call-permit-example && touch getSignature.js
@@ -230,7 +230,7 @@ npm init -y
 "type": "module"
 ```
 
-接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.org/){target=_blank}：
+接下来，您可以安装MetaMask签名库和[Ethers.js](https://docs.ethers.org/){target=\_blank}：
 
 ```bash
 npm i @metamask/eth-sig-util ethers

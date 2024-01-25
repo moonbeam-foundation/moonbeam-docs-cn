@@ -11,7 +11,7 @@ description: 本文描述了以太坊开发者需要了解的Moonbeam在账户�
 
 Moonbeam的设计初衷之一是创建一个最大程度接近以太坊的环境，并提供一组兼容以太坊的Web3 RPC端点。作为基于Substrate的智能合约链，Moonbeam将公开Substrate RPC，且具有由Substrate提供支持的完整功能，例如质押、治理以及其他不属于以太坊API的功能。
 
-Moonbeam的[统一账户](/learn/features/unified-accounts/){target=_blank}是Moonbeam实现以太坊兼容性的一种方式，通过将协议的底层账户类型更改为以太坊式类型（即H160或以“0x”开头的20字节的地址）Substrate和以太坊API均使用统一账户，并在区块链上映射相同的底层数据存储。尽管如此，来自以太坊用户在通过以太坊API使用Moonbeam账户时仍需了解一些重要差异。
+Moonbeam的[统一账户](/learn/features/unified-accounts/){target=\_blank}是Moonbeam实现以太坊兼容性的一种方式，通过将协议的底层账户类型更改为以太坊式类型（即H160或以“0x”开头的20字节的地址）Substrate和以太坊API均使用统一账户，并在区块链上映射相同的底层数据存储。尽管如此，来自以太坊用户在通过以太坊API使用Moonbeam账户时仍需了解一些重要差异。
 
 本教程将概述关于账户余额的一些主要差异，以及首次使用Moonbeam时需要了解的事项。
 
@@ -27,7 +27,7 @@ Moonbeam的[统一账户](/learn/features/unified-accounts/){target=_blank}是Mo
 
 Moonbeam上的账户是一个拥有Token余额（Token种类取决于网络）的实体账户。 就像在以太坊上一样，账户持有者可以在他们连接的Moonbeam网络上发送Token交易。 此外，账户可以由用户（用私钥签署）或智能合约控制。
 
-与以太坊一样，Moonbeam有两种主要的账户类型：用户型账户及合约型账户。 在这两种帐户类型中，另外还有[代理帐户](https://wiki.polkadot.network/docs/learn-proxies){target=_blank}，用来代表另一个帐户执行有限数量的操作。 然而，在余额方面，所有Moonbeam账户都有以下五种不同的[余额类型](https://wiki.polkadot.network/docs/learn-accounts#balance-types){target=_blank}：
+与以太坊一样，Moonbeam有两种主要的账户类型：用户型账户及合约型账户。 在这两种帐户类型中，另外还有[代理帐户](https://wiki.polkadot.network/docs/learn-proxies){target=\_blank}，用来代表另一个帐户执行有限数量的操作。 然而，在余额方面，所有Moonbeam账户都有以下五种不同的[余额类型](https://wiki.polkadot.network/docs/learn-accounts#balance-types){target=\_blank}：
 
  - **Free** —— 指在Substrate API内可使用（未锁定/冻结）的余额。 `free`余额的概念取决于要执行的操作。 例如，民主投票不会从`free`余额中减少分配给投票的余额，但Token持有者将无法转移该余额
  - **Reducible** —— 指通过Moonbeam上的以太坊API可使用（未锁定/冻结）的余额。 例如，MetaMask显示的余额是真正的可支出余额，是所有可被民主治理锁定的余额（在Polkadot.js中显示为可转移）
@@ -37,7 +37,7 @@ Moonbeam上的账户是一个拥有Token余额（Token种类取决于网络）�
 
 ![Moonbeam balances diagram](/images/builders/get-started/eth-compare/balances/balances-2.png)
 
-您可以使用[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}查询您的余额，包括您的`free`余额（可转帐）和预留余额（如果存在）。
+您可以使用[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=\_blank}查询您的余额，包括您的`free`余额（可转帐）和预留余额（如果存在）。
 
 ![View balances on Polkadot.js Apps](/images/builders/get-started/eth-compare/balances/balances-3.png)
 

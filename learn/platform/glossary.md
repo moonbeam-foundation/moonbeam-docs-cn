@@ -13,7 +13,7 @@ description: 我们整理了与波卡相关的中英对照术语表，助您了�
 
 ### 委托人 (Delegators) {: #delegators }
 
-委托人是Moonbeam代币持有者，可选择其“支持”的平行链候选收集人节点。任何持有高于最低委托数量[free余额](https://wiki.polkadot.network/docs/learn-accounts#balance-types){target=_blank}的用户均可通过质押操作成为委托人。
+委托人是Moonbeam代币持有者，可选择其“支持”的平行链候选收集人节点。任何持有高于最低委托数量[free余额](https://wiki.polkadot.network/docs/learn-accounts#balance-types){target=\_blank}的用户均可通过质押操作成为委托人。
 
 ### 提名人 (Nominators) {: #nominators }
 
@@ -41,7 +41,7 @@ NPoS共识机制（提名权益证明）机制通过选择验证人集合，实�
 
 ### 智能合约 （Smart Contract） {: #smart-contract }
 
-智能合约是一种计算机程序或交易协议，旨在自动执行合约或协议的条款，控制或记录与法律相关的事件和动作。智能合约的总体目标是满足共同的合同条件（例如付款项、留置权、保密性，甚至强制执行），最大限度地减少异常以及对可信中介的需求。 相关的经济目标包括减少欺诈损失、仲裁、执行成本以及其他交易成本。[点击此处了解更多](https://zh.wikipedia.org/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6){target=_blank}。
+智能合约是一种计算机程序或交易协议，旨在自动执行合约或协议的条款，控制或记录与法律相关的事件和动作。智能合约的总体目标是满足共同的合同条件（例如付款项、留置权、保密性，甚至强制执行），最大限度地减少异常以及对可信中介的需求。 相关的经济目标包括减少欺诈损失、仲裁、执行成本以及其他交易成本。[点击此处了解更多](https://zh.wikipedia.org/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6){target=\_blank}。
 
 ### Substrate {: #substrate }
 

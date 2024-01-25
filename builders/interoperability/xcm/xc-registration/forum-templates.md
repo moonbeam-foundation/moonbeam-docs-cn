@@ -7,7 +7,7 @@ description: 学习如何在创建一个与Moonbeam的跨链集成时，撰写�
 
 ## 概览 {: #introduction }
 
-在Moonriver或Moonbeam主网上启动XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布两个初步帖子，以便投票社区能够拥有提供反馈的机会。这两个初步帖子是XCM公开帖子和XCM提案帖子。**连接到Moonbase Alpha时无需执行此步骤。**
+在Moonriver或Moonbeam主网上启动XCM集成时，必须在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}上发布两个初步帖子，以便投票社区能够拥有提供反馈的机会。这两个初步帖子是XCM公开帖子和XCM提案帖子。**连接到Moonbase Alpha时无需执行此步骤。**
 
 如果仅注册资产，则跨链通道必须已经建立，因此只需要发布XCM提案即可注册资产。
 
@@ -15,7 +15,7 @@ description: 学习如何在创建一个与Moonbeam的跨链集成时，撰写�
 
 ## XCM公开帖子 {: #xcm-disclosure }
 
-应发布的第一个帖子是[XCM公开类别](https://forum.moonbeam.foundation/c/xcm-hrmp/xcm-disclosures/15){target=_blank}中的关键信息，其中突出显示了关键内容对参与投票的社区成员的决定很重要的信息。仅在建立XCM集成时才需要这篇文章；如果集成已经存在并且您只需要注册资产，而不需要发布帖子。
+应发布的第一个帖子是[XCM公开类别](https://forum.moonbeam.foundation/c/xcm-hrmp/xcm-disclosures/15){target=\_blank}中的关键信息，其中突出显示了关键内容对参与投票的社区成员的决定很重要的信息。仅在建立XCM集成时才需要这篇文章；如果集成已经存在并且您只需要注册资产，而不需要发布帖子。
 
 当您点击**New Topic**按钮后，系统会提供一个模板，其中包含要填写的相关信息。请使用Moonbeam/Moonriver标签，具体使用取决于您要集成的网络。
 
@@ -37,7 +37,7 @@ description: 学习如何在创建一个与Moonbeam的跨链集成时，撰写�
 
 ## XCM提案帖子 {: #xcm-proposals }
 
-第二个帖子是[XCM提案类别](https://forum.moonbeam.foundation/c/xcm-hrmp/xcm-proposals/14){target=_blank}中提案的初步草案。一旦提案在链上提交并可供投票，您还必须在[Moonbeam Polkassembly](https://moonbeam.polkassembly.io/opengov){target=_blank}或[Moonriver Polkassembly](https://moonriver.polkassembly.io/opengov){target=_blank}中为其添加描述。
+第二个帖子是[XCM提案类别](https://forum.moonbeam.foundation/c/xcm-hrmp/xcm-proposals/14){target=\_blank}中提案的初步草案。一旦提案在链上提交并可供投票，您还必须在[Moonbeam Polkassembly](https://moonbeam.polkassembly.io/opengov){target=\_blank}或[Moonriver Polkassembly](https://moonriver.polkassembly.io/opengov){target=\_blank}中为其添加描述。
 
 点击**New Topic**按钮后，系统会提供一个模板，其中包含要填写的相关信息。请使用Moonbeam或Moonriver标签，具体取决于您要集成的网络。
 
