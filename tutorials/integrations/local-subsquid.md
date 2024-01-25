@@ -9,21 +9,21 @@ _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
 
-在开发dApp时，使用本地的开发环境而非如测试网或主网等实际运作的网络来开发智能合约是有益的。在本地进行开发，可以消除在实际网络开发时会遇到的一些麻烦，例如必须为开发账户提供资金和等待区块生成等等。在Moonbeam，开发者可以启动他们自己的本地[Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}以快速轻松地构建和测试应用。
+在开发dApp时，使用本地的开发环境而非如测试网或主网等实际运作的网络来开发智能合约是有益的。在本地进行开发，可以消除在实际网络开发时会遇到的一些麻烦，例如必须为开发账户提供资金和等待区块生成等等。在Moonbeam，开发者可以启动他们自己的本地[Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}以快速轻松地构建和测试应用。
 
-但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？[Subsquid](/builders/integrations/indexers/subsquid){target=_blank} 是一个为Moonbeam等基于Substrate区块链开发的数据网络。它包含了超过100种区块链的数据，开发者现在也可以用它在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
+但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？[Subsquid](/builders/integrations/indexers/subsquid){target=\_blank} 是一个为Moonbeam等基于Substrate区块链开发的数据网络。它包含了超过100种区块链的数据，开发者现在也可以用它在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
 
 本教程将带您了解使用Subsquid在本地Moonbeam开发节点上检索数据的过程。我们将会创建一个ERC-20合约并使用Subsquid来检索我们的ERC-20的转账记录。
 
-本教程基于Massimo Luraschi关于如何[通过本地检索提高dApp开发效率](https://medium.com/subsquid/boost-your-dapp-development-productivity-with-local-indexing-3936ba7a8cec)的教程{target=_blank}，但已针对Moonbeam开发节点进行了修改。
+本教程基于Massimo Luraschi关于如何[通过本地检索提高dApp开发效率](https://medium.com/subsquid/boost-your-dapp-development-productivity-with-local-indexing-3936ba7a8cec)的教程{target=\_blank}，但已针对Moonbeam开发节点进行了修改。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 要跟随此教程，您需要具备以下条件：
 
-- [完成安装Docker](https://docs.docker.com/get-docker/){target=_blank}
-- [完成安装Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
-- 一个空白的Hardhat项目。关于详细的步骤指示，请查看我们Hardhat文档页面的[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}部分
+- [完成安装Docker](https://docs.docker.com/get-docker/){target=\_blank}
+- [完成安装Docker Compose](https://docs.docker.com/compose/install/){target=\_blank}
+- 一个空白的Hardhat项目。关于详细的步骤指示，请查看我们Hardhat文档页面的[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}部分
 
 在后面的教程中我们将会配置Hardhat项目和创建Subsquid项目。
 
@@ -72,15 +72,15 @@ _作者：Erin Shaben_
 ??? note "开发账户地址和私钥"
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
-关于更多运行Moonbeam开发节点的信息，请查看[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}的教程。
+关于更多运行Moonbeam开发节点的信息，请查看[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}的教程。
 
 ## 设置一个Hardhat项目 {: #create-a-hardhat-project }
 
-你应该已经创建了一个空白的Hardhat项目，但如果你并没有创建Hardhat项目，你可以在我们的Hardhat文档页面查看[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating- a-hardhat-project){target=_blank}的教程。
+你应该已经创建了一个空白的Hardhat项目，但如果你并没有创建Hardhat项目，你可以在我们的Hardhat文档页面查看[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating- a-hardhat-project){target=\_blank}的教程。
 
 在本部分教程中，我们将为本地Moonbeam开发节点配置我们的Hardhat项目，创建ERC-20合约，并编写脚本以部署我们的合约并与之交互。
 
-在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
+在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=\_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
 
 === "npm"
 
@@ -307,7 +307,7 @@ npx hardhat compile
 
 ## 创建一个Subsquid项目 {: #create-subsquid-project }
 
-现在我们将开始创建Subsquid项目。首先，我们需要安装[Subsquid CLI](https://docs.subsquid.io/squid-cli/){target=_blank}：
+现在我们将开始创建Subsquid项目。首先，我们需要安装[Subsquid CLI](https://docs.subsquid.io/squid-cli/){target=\_blank}：
 
 ```bash
 npm i -g @subsquid/cli
@@ -597,7 +597,7 @@ sqd process
 sqd serve
 ```
 
-GraphQL服务器将被启动，您可以在[localhost:4350/graphql](http://localhost:4350/graphql){target=_blank}进行访问。接着您将能够检查数据库中的所有转账数据：
+GraphQL服务器将被启动，您可以在[localhost:4350/graphql](http://localhost:4350/graphql){target=\_blank}进行访问。接着您将能够检查数据库中的所有转账数据：
 
 ```gql
 query MyQuery {
@@ -616,7 +616,7 @@ query MyQuery {
 
 ![Query transfer data using the GraphQL server](/images/tutorials/integrations/local-subsquid/local-squid-8.png)
 
-就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=_blank}上查看完整的项目内容。
+就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=\_blank}上查看完整的项目内容。
 
 --8<-- 'text/_disclaimers/educational-tutorial.md'
 

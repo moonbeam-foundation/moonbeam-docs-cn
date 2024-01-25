@@ -11,7 +11,7 @@ Moonbeam XCM SDK使开发者能够在波卡/Kusama生态系统内轻松实现链
 
 XCM SDK提供帮助函数，该函数提供在波卡/Kusama生态中链之间执行XCM转移的简易接口。除外，XCM配置包允许平行链项目以标准方式添加信息，让他们能够被XCM SDK支持。
 
-关于Moonbeam XCM SDK中可用函数和接口的概览，请查看[相关参考](/builders/interoperability/xcm/xcm-sdk/v1/reference){target=_blank}页面。
+关于Moonbeam XCM SDK中可用函数和接口的概览，请查看[相关参考](/builders/interoperability/xcm/xcm-sdk/v1/reference){target=\_blank}页面。
 
 以下教程的范例中在Moonbeam中进行，但同样适用于Moonriver或Moonbase Alpha。
 
@@ -45,9 +45,9 @@ npm install @polkadot/api @polkadot/util-crypto
 
 ## 创建签署人 {: #create-signers }
 
-当在链之间转移资产时，您需要签署人来负责签署交易。如果您与之交互的是一个使用标准以太坊风格H160地址的EVM兼容链（如Moonbeam），您将需要一个以太坊签署人。更详细地说，它可以是一个[Ethers.js](https://docs.ethers.org/v5/){target=_blank}签署人，也可以是一个[viem钱包客户端](https://viem.sh/docs/clients/wallet.html){target=_blank}。要与中继链或其他平行链交互，您需要的是一个[Polkadot](https://polkadot.js.org/docs/api/)签署人。
+当在链之间转移资产时，您需要签署人来负责签署交易。如果您与之交互的是一个使用标准以太坊风格H160地址的EVM兼容链（如Moonbeam），您将需要一个以太坊签署人。更详细地说，它可以是一个[Ethers.js](https://docs.ethers.org/v5/){target=\_blank}签署人，也可以是一个[viem钱包客户端](https://viem.sh/docs/clients/wallet.html){target=\_blank}。要与中继链或其他平行链交互，您需要的是一个[Polkadot](https://polkadot.js.org/docs/api/)签署人。
 
-举例来说，您可以传送一个[浏览器钱包签署人进入Ethers](https://docs.ethers.org/v5/getting-started/#getting-started--connecting){target=_blank}或[viem](https://viem.sh/docs/clients/wallet.html#json-rpc-accounts){target=_blank}, 比如MetaMask。同样地，在波卡中，您可以[使用`@polkadot/extension-dapp`库传送一个兼容的钱包给签署人](https://polkadot.js.org/docs/extension/){target=_blank}。
+举例来说，您可以传送一个[浏览器钱包签署人进入Ethers](https://docs.ethers.org/v5/getting-started/#getting-started--connecting){target=\_blank}或[viem](https://viem.sh/docs/clients/wallet.html#json-rpc-accounts){target=\_blank}, 比如MetaMask。同样地，在波卡中，您可以[使用`@polkadot/extension-dapp`库传送一个兼容的钱包给签署人](https://polkadot.js.org/docs/extension/){target=\_blank}。
 
 要创建EVM和Polkadot.js创建签署人，您可以参考以下部分教程。
 
@@ -215,7 +215,7 @@ const evmSigner = new ethers.Wallet(privateKey, provider);
 
 ### 创建一个Polkadot签署人 {: #create-a-polkadot-signer }
 
-在本示例中，您可以使用[Polkadot.js Keyring](/builders/build/substrate-api/polkadot-js-api#keyrings){target=_blank}签署交易。请注意，此方法并不推荐用于生产应用之中。
+在本示例中，您可以使用[Polkadot.js Keyring](/builders/build/substrate-api/polkadot-js-api#keyrings){target=\_blank}签署交易。请注意，此方法并不推荐用于生产应用之中。
 
 ```js
 import { Keyring } from '@polkadot/api';
@@ -283,7 +283,9 @@ const sdkInstance = new Sdk();
 
     这将会返回`accounts`函数，用于定义源链和目标链地址以及各地址相关的签署人
 
+
 此资产和链对象在`@moonbeam-network/xcm-config`包中管理。您不需要直接与此包交互，因SDK已传达这些数据，但您仍然能够找到[资产](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/assets.ts){target=_blank}和[链数据](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/chains.ts){target=_blank}的列表。
+
 
 以下为构建从波卡中继链转移DOT至Moonbeam的转移数据的步骤范例：
 
@@ -327,7 +329,7 @@ fromPolkadot();
 ```
 
 !!! 注意事项
-    关于更多`Sdk().assets()`开发者函数的信息，包含参数和返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-builder-methods){target=_blank}。
+    关于更多`Sdk().assets()`开发者函数的信息，包含参数和返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-builder-methods){target=\_blank}。
 
 如果您不需要任何资产和链信息，您可以使用`getTransferData`函数：
 
@@ -352,7 +354,7 @@ fromPolkadot();
 ```
 
 !!! 注意事项
-    关于更多`Sdk().getTransferData()`开发者函数的信息，包含参数和返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#core-sdk-methods){target=_blank}。
+    关于更多`Sdk().getTransferData()`开发者函数的信息，包含参数和返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#core-sdk-methods){target=\_blank}。
 
 如同先前提及的，不论您使用那种函数构建您的转移数据，您都需要生产相同的输出。
 
@@ -500,7 +502,7 @@ fromPolkadot();
 
 ## 转移资产 {: #transfer-an-asset }
 
-现在您已经构建了转移数据，您可以继续将资产从源链转移到目标链。为此，您可以使用`transfer`功能，但首先您需要指定希望发送的金额。您可以以整数或小数的格式指定金额。例如，如果您想发送0.1 DOT，则可以使用`1000000000n`或`'0.1'`。您可以使用[资产转换函数](/builders/interoperability/xcm/xcm-sdk/v1/reference#utility-functions){target=_blank}，例如`toDecimal`将资产转换为十进制格式。
+现在您已经构建了转移数据，您可以继续将资产从源链转移到目标链。为此，您可以使用`transfer`功能，但首先您需要指定希望发送的金额。您可以以整数或小数的格式指定金额。例如，如果您想发送0.1 DOT，则可以使用`1000000000n`或`'0.1'`。您可以使用[资产转换函数](/builders/interoperability/xcm/xcm-sdk/v1/reference#utility-functions){target=\_blank}，例如`toDecimal`将资产转换为十进制格式。
 
 以此例子来说，您可以转移DOT最小所需数量的两倍：
 
@@ -516,7 +518,7 @@ console.log(`${data.source.chain.name} tx hash: ${hash}`);
 如同在以上代码片段中显示，`transfer`函数返回在源链的交易哈希。
 
 !!! 注意事项
-    关于更多参数信息以及`transfer`返回数据，请查看[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=_blank}。
+    关于更多参数信息以及`transfer`返回数据，请查看[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}。
 
 ## 兑换资产 {: #swap-an-asset}
 
@@ -670,7 +672,7 @@ console.log(`${swapData.source.chain.name} tx hash: ${hash}`);
     ```
 
 !!! 注意事项
-    关于更多参数信息和`swap`的返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=_blank}。
+    关于更多参数信息和`swap`的返回数据，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}。
 
 ## 获得在目标链上收到的资产预估数量 {: #get-estimate }
 
@@ -711,7 +713,7 @@ console.log(
     ```
 
 !!! 注意事项
-    关于更多参数信息和`getEstimate`的返回数据，请参考[XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=_blank}。
+    关于更多参数信息和`getEstimate`的返回数据，请参考[XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}。
 
 ## 获得转移的最小和最大数量 {: #transfer-min-max-amounts }
 
@@ -763,7 +765,7 @@ console.log(
     ```
 
 !!! 注意事项
-    关于更多资产和资产数量的信息，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=_blank}。
+    关于更多资产和资产数量的信息，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=\_blank}。
 
 ## 获得转移费用 {: #get-transfer-fees }
 
@@ -812,6 +814,6 @@ console.log(
     ```
 
 !!! 注意事项
-    关于更多资产、资产数量和费用的信息，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=_blank}。
+    关于更多资产、资产数量和费用的信息，请参考[XCM SDK参考页面](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

@@ -11,7 +11,7 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 为解决此问题，多重签名钱包（简称multisig）应运而生。多重签名钱包需要至少有两个及以上的所有者持有私钥。如果其中一人失了私钥，其他人仍然可以访问钱包和资金。此外，多重签名钱包可能需要阈值签名，只有获得一定数量的授权，提案才能通过并执行交易。这为资产创建了一个额外的安全层。
 
-为了帮助管理单签名钱包和多重签名钱包，[Gnosis Safe](https://gnosis-safe.io/){target=_blank}被fork创建了[Moonbeam Safe](https://multisig.moonbeam.network/){target=_blank}。Safe钱包可以配置为多重签名合约，允许两个或更多所有者持有资金并从Safe钱包转移资金。您还可以将Safe钱包配置为只有一个所有者的单签名合约。
+为了帮助管理单签名钱包和多重签名钱包，[Gnosis Safe](https://gnosis-safe.io/){target=\_blank}被fork创建了[Moonbeam Safe](https://multisig.moonbeam.network/){target=\_blank}。Safe钱包可以配置为多重签名合约，允许两个或更多所有者持有资金并从Safe钱包转移资金。您还可以将Safe钱包配置为只有一个所有者的单签名合约。
 
 本教程将引导您如何在Moonbase Alpha测试网上创建多重签名Safe钱包。您还将学习如何将DEV和ERC-20 Token发送至Safe钱包或从Safe钱包发送，以及如何使用Safe钱包与智能合约进行交互。本教程也适用于Moonbeam和Moonriver。
 
@@ -43,9 +43,9 @@ description: 学习如何通过Moonbeam Safe多签钱包使用和管理资金。
 
 ### 已部署的智能合约 {: #deployed-smart-contract }
 
-本教程的最后部分将引导您如何使用Safe钱包与智能合约进行交互。所以您将需要一个已部署的智能合约与其交互。详细的操作指南可参考[在Moonbeam上使用Remix部署合约](/builders/tools/remix/#deploying-a-contract-to-moonbeam){target=_blank}。
+本教程的最后部分将引导您如何使用Safe钱包与智能合约进行交互。所以您将需要一个已部署的智能合约与其交互。详细的操作指南可参考[在Moonbeam上使用Remix部署合约](/builders/tools/remix/#deploying-a-contract-to-moonbeam){target=\_blank}。
 
-您可以前往[Remix](https://remix.ethereum.org/){target=_blank}并为以下`SetText.sol`合约创建一个新文件：
+您可以前往[Remix](https://remix.ethereum.org/){target=\_blank}并为以下`SetText.sol`合约创建一个新文件：
 
 ```solidity
 pragma solidity ^0.8.0;
@@ -65,11 +65,11 @@ contract SetText {
 
 ## 创建一个Safe钱包 {: #create-a-safe }
 
-要创建一个Safe钱包，导航至[Moonbeam Safe](https://multisig.moonbeam.network/?chain=mbase){target=_blank}。本教程将引导您在Moonbase Alpha上创建一个Safe钱包，您也可以修改配置在[Moonbeam](https://multisig.moonbeam.network/?chain=mbeam){target=_blank}或[Moonriver](https://multisig.moonbeam.network/?chain=mriver){target=_blank}上创建一个Safe钱包。您可点击页面右上角的网络下拉菜单切换网络。
+要创建一个Safe钱包，导航至[Moonbeam Safe](https://multisig.moonbeam.network/?chain=mbase){target=\_blank}。本教程将引导您在Moonbase Alpha上创建一个Safe钱包，您也可以修改配置在[Moonbeam](https://multisig.moonbeam.network/?chain=mbeam){target=\_blank}或[Moonriver](https://multisig.moonbeam.network/?chain=mriver){target=\_blank}上创建一个Safe钱包。您可点击页面右上角的网络下拉菜单切换网络。
 
 ### 连接MetaMask {: #connect-metamask }
 
-进入[Moonbase Alpha](https://multisig.moonbeam.network/moonbase/){target=_blank}页面后，开始创建Safe钱包之前先连接您的钱包：
+进入[Moonbase Alpha](https://multisig.moonbeam.network/moonbase/){target=\_blank}页面后，开始创建Safe钱包之前先连接您的钱包：
 
  1. 点击**Connect Wallet**
 
@@ -245,7 +245,7 @@ contract SetText {
 
  3. 在输入框内粘贴Safe钱包地址
 
- 4. 输入需要发送的MYTOK数量。您应该已经跟随[使用Remix部署至Moonbeam](/builders/interact/remix/){target=_blank}操作教程铸造了8,000,000个MYTOK。所以在本示例中，您可以发送数量一栏输入1,000 MYTOK
+ 4. 输入需要发送的MYTOK数量。您应该已经跟随[使用Remix部署至Moonbeam](/builders/interact/remix/){target=\_blank}操作教程铸造了8,000,000个MYTOK。所以在本示例中，您可以发送数量一栏输入1,000 MYTOK
 
  5. 点击**Next**
 
@@ -297,7 +297,7 @@ contract SetText {
 
 ## 与智能合约交互  {: #interact-with-a-smart-contract }
 
-在这一部分，您将使用Safe钱包与智能合约交互。您应该已经使用Remix部署了`SetText.sol`合约。如果还没有，请返回查看先决条件，参考[已部署的智能合约](#deployed-smart-contract){target=_blank}部分。
+在这一部分，您将使用Safe钱包与智能合约交互。您应该已经使用Remix部署了`SetText.sol`合约。如果还没有，请返回查看先决条件，参考[已部署的智能合约](#deployed-smart-contract){target=\_blank}部分。
 
 在这一部分的教程中，您仍然需要连接至Alice的账户
 

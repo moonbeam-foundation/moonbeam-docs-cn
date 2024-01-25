@@ -7,7 +7,7 @@ description: 了解针对收集人的Moonbeam Orbiter计划，包含参与条件
 
 ## 概况 {: #introduction }
 
-Moonbeam基金会宣布orbiter计划将进入试验阶段。类似于[Kusama 1000验证人计划](https://thousand-validators.kusama.network/){target=_blank}，此计划允许收集人参与网络的多样性和安全性，无需其拥有特定的资金数量或是处在活跃收集人集中。此计划是基于社区意见进行开发。
+Moonbeam基金会宣布orbiter计划将进入试验阶段。类似于[Kusama 1000验证人计划](https://thousand-validators.kusama.network/){target=\_blank}，此计划允许收集人参与网络的多样性和安全性，无需其拥有特定的资金数量或是处在活跃收集人集中。此计划是基于社区意见进行开发。
 
 Moonbeam基金会将确保orbiter计划的收集人处于活跃收集人集，并赋予计划成员生产区块的权限，其又被称为orbiters。
 
@@ -105,9 +105,9 @@ Moonbeam基金会已为此计划创建一个私人的Discord群组，大部分�
 
 加入过程的步骤简单概括如下：
 
-- [准备您的节点并同步](/node-operators/networks/run-a-node/overview){target=_blank}
-- 完全同步后，您可以[生成会话密钥](/node-operators/networks/collators/account-management/#session-keys){target=_blank}
-- [注册会话密钥](/node-operators/networks/collators/account-management/#map-author-id-set-session-keys){target=_blank}并绑定相关[映射资金](#mapping-bond)#bond)
+- [准备您的节点并同步](/node-operators/networks/run-a-node/overview){target=\_blank}
+- 完全同步后，您可以[生成会话密钥](/node-operators/networks/collators/account-management/#session-keys){target=\_blank}
+- [注册会话密钥](/node-operators/networks/collators/account-management/#map-author-id-set-session-keys){target=\_blank}并绑定相关[映射资金](#mapping-bond)#bond)
 - 准备就绪后，通过`moonbeamorbiters.orbiterRegister()` extrinsic注册orbiter并绑定相关[orbiter资金](#bond)
 - orbiter将会进入等候列队，在插槽可用时被添加为orbiter计划收集人
 - 插槽开放后，您将开始在相应的网络生产区块并收到奖励
@@ -164,7 +164,7 @@ Orbiter的奖励将会与分配到同一个orbiter计划收集人池的其他orb
 
 ## 性能指标 {: #performance-metrics }
 
-每个orbiter的表现将会在一定期间内检测和衡量，以确保其运行顺利且能够正常生产区块。如果其表现处于所有Oribter计划收集人池的一定区间内，预期orbiter将利用最高级的装置以保持在区间内。关于更多硬件设备的需求，请查看[收集人要求页面](https://docs.moonbeam.network/node-operators/networks/collators/requirements/){target=_blank}。
+每个orbiter的表现将会在一定期间内检测和衡量，以确保其运行顺利且能够正常生产区块。如果其表现处于所有Oribter计划收集人池的一定区间内，预期orbiter将利用最高级的装置以保持在区间内。关于更多硬件设备的需求，请查看[收集人要求页面](https://docs.moonbeam.network/node-operators/networks/collators/requirements/){target=\_blank}。
 
 指标将会以7天的维度进行衡量，以下为用于评判的性能指标：
 

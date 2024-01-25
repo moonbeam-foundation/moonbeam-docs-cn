@@ -9,13 +9,13 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 在基于Moonbeam的网络运行一个全节点使您能够连接至网络，与bootnode节点同步，获得RPC端点的本地访问，在平行链上创建区块，以及更多其他不同的功能。
 
-在本指南中，您将学习如何使用[Docker](https://www.docker.com/){target=_blank}快速启动 一个Moonbeam节点，以及如何维护和清理您的节点。
+在本指南中，您将学习如何使用[Docker](https://www.docker.com/){target=\_blank}快速启动 一个Moonbeam节点，以及如何维护和清理您的节点。
 
 ## 检查先决条件 {: #checking-prerequisites }
 
 开始之前,您需要:
-- [安装Docker](https://docs.docker.com/get-docker/){target=_blank}。截止本文截稿, Docker使用的版本为24.0.6
-- 确保您的系统满足[基本要求](/node-operators/networks/run-a-node/overview#requirements){target=_blank}。连接至Kusama上的Moonriver或是Polkadot上的Moonbeam，通常需要几天时间来完成中继链内嵌的同步。
+- [安装Docker](https://docs.docker.com/get-docker/){target=\_blank}。截止本文截稿, Docker使用的版本为24.0.6
+- 确保您的系统满足[基本要求](/node-operators/networks/run-a-node/overview#requirements){target=\_blank}。连接至Kusama上的Moonriver或是Polkadot上的Moonbeam，通常需要几天时间来完成中继链内嵌的同步。
 
 ## 设置链数据的储存空间 {: #storage-chain-data }
 
@@ -82,7 +82,7 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
  - 将 `INSERT_YOUR_NODE_NAME` 改成您选择的节名名字。您需要在两个地方更改这个数值：平行链一个，中继链一次
  - 用服务器实际RAM的50%替换`INSERT_RAM_IN_MB`。例如服务器有32 GB RAM，这里则应配置为 `16000`. 内存配置最低值为 `2000`，但这将低于推荐配置
 
-了解更多初始命令的不同选项与其他常用选项，请参考文档的[Flags](/node-operators/networks/run-a-node/flags){target=_blank}页面。
+了解更多初始命令的不同选项与其他常用选项，请参考文档的[Flags](/node-operators/networks/run-a-node/flags){target=\_blank}页面。
 
 ### 全节点 {: #full-node }
 

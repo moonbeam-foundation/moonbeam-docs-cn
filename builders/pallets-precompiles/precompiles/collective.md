@@ -8,9 +8,9 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 ## 概览 {: #introduction }
 
-团体预编译能够使用户直接从Solidity接口与[Substrate的团体pallet](https://paritytech.github.io/substrate/master/pallet_collective/index.html){target=_blank}交互。
+团体预编译能够使用户直接从Solidity接口与[Substrate的团体pallet](https://paritytech.github.io/substrate/master/pallet_collective/index.html){target=\_blank}交互。
 
-团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。举例来说，Moonriver有四个团体：理事会团体、技术委员会团体，财政库委员会团体和OpenGov技术委员会团体（用于把OpenGov提案列入白名单）。因此，每个团体都有一个预编译。关于理事会，技术委员会和OpenGov技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=_blank}页面。
+团体是一个群组，其成员负责具体的民主相关行动，例如提议、投票、执行、结束提案。每位成员都能够执行不同来源的不同动作。因此，可以创建具有特定范围的团体。举例来说，Moonriver有四个团体：理事会团体、技术委员会团体，财政库委员会团体和OpenGov技术委员会团体（用于把OpenGov提案列入白名单）。因此，每个团体都有一个预编译。关于理事会，技术委员会和OpenGov技术委员会的更多信息，请参阅[Moonbeam治理](/learn/features/governance/){target=\_blank}页面，关于财政库委员会的更多信息，请参阅[Moonbeam财政库](/learn/features/treasury/){target=\_blank}页面。
 
 本教程将向您展示如何使用团体预编译进行提议、投票、结束提案。
 
@@ -43,7 +43,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 ## 团体Solidity接口 {: #the-call-permit-interface }
 
-[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}是一个Solidity接口，允许开发者与预编译的5个方式进行交互。
+[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=\_blank}是一个Solidity接口，允许开发者与预编译的5个方式进行交互。
 
 接口包含以下函数：
 
@@ -55,7 +55,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 其中需要提供的输入值可以定义为如下：
 
-- **proposal** - [SCALE编码的](https://docs.substrate.io/reference/scale-codec/){target=_blank}Substrate调用，此调用用于提议动作
+- **proposal** - [SCALE编码的](https://docs.substrate.io/reference/scale-codec/){target=\_blank}Substrate调用，此调用用于提议动作
 - **threshold** - 派送提案所需的成员数量
 - **proposalHash** - 提案的哈希
 - **proposalIndex** - 提案的索引
@@ -74,7 +74,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 此部分示例将向您展示如何使用财政库委员会团体预编译提交财政库提案。因此，该提案将需要满足财政库委员会的投票要求。财政库提案至少需要3/5的财政库委员会投票才能通过。另一方面，需要至少1/2的财政库委员会投票才能拒绝提案。另外请注意，您必须是财政库委员会的一员才能提议和投票提案。
 
-如果您不是Moonbeam、Moonriver或Moonbase Alpha财政库委员会的一员，您可以使用[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}测试团体预编译的功能。Moonbeam开发节点将会自带[10个预注资的账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=_blank}，其中Baltathar、Charleth和Dorothy被自动设置为财政库委员会团体的成员。您可以使用这三个账号的任何一个来完成以下教程。
+如果您不是Moonbeam、Moonriver或Moonbase Alpha财政库委员会的一员，您可以使用[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}测试团体预编译的功能。Moonbeam开发节点将会自带[10个预注资的账户](/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts){target=\_blank}，其中Baltathar、Charleth和Dorothy被自动设置为财政库委员会团体的成员。您可以使用这三个账号的任何一个来完成以下教程。
 
 ### 查看先决条件 {: #checking-prerequisites }
 
@@ -82,20 +82,20 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 开始操作之前，您将需要准备以下内容：
 
- - 安装MetaMask并[连接至基于Moonbeam的网络](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接至基于Moonbeam的网络](/tokens/connect/metamask/){target=\_blank}
  - 准备一个拥有资金的账户。如果使用的是Moonbeam开发节点，则开发账户已经注入资金。如果使用的是Moonbeam、Moonriver或Moonbase Alpha，您将需要充值一定资金到您的账户。
     --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 如果您使用的是Moonbeam开发节点和开发账户，您将需要完成以下操作：
 
 - 使用`--sealing 6000`标志将您的开发节点设置为按时间间隔封装区块，例如每6秒（6000毫秒）
-- [将Polkadot.js Apps连接至您的本地Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=_blank}
-- 将Baltathar、Charleth和/或Dorothy的账户导入到[Polkadot.js Apps](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}和[MetaMask](/tokens/connect/metamask/#import-accounts){target=_blank}
+- [将Polkadot.js Apps连接至您的本地Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=\_blank}
+- 将Baltathar、Charleth和/或Dorothy的账户导入到[Polkadot.js Apps](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=\_blank}和[MetaMask](/tokens/connect/metamask/#import-accounts){target=\_blank}
 
 ### Remix设置 {: #remix-set-up }
 
-1. 获取[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=_blank}的副本
-2. 将文件内容复制并粘贴至名为`Collective.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}
+1. 获取[`Collective.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=\_blank}的副本
+2. 将文件内容复制并粘贴至名为`Collective.sol`的[Remix文件](https://remix.ethereum.org/){target=\_blank}
 
 ![Copying and Pasting the Collective Interface into Remix](/images/builders/pallets-precompiles/precompiles/collective/collective-1.png)
 
@@ -120,7 +120,7 @@ keywords: solidity, ethereum, 团体, 提案, 理事会, 技术委员会, moonbe
 
 要提交需要通过财政库委员会团体投票的提案，您首先必须创建一个财政库提案。如果您想要投票的财政库提案已经存在且已经拥有提案的索引，您可以跳过此步骤直接进入下一部分。
 
-要提交财政库提案，您可以用过[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/treasury){target=_blank}的财政库页面来完成。在本示例中，您可以创建一个简单的提案，即向Alith发送10个DEV Token用于主办社群活动。为此，点击**Submit proposal**，并填写以下内容：
+要提交财政库提案，您可以用过[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/treasury){target=\_blank}的财政库页面来完成。在本示例中，您可以创建一个简单的提案，即向Alith发送10个DEV Token用于主办社群活动。为此，点击**Submit proposal**，并填写以下内容：
 
 1. 在**submit with account**下拉菜单中，选择您想要用于提交提案的账户。提案所需的保证金将从此账户提取
 2. 选择**beneficiary**，在本示例中为**Alith**

@@ -13,7 +13,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 您可以使用您的Ledger硬件钱包通过Moonbeam Ledger Live app与Moonbeam交互。在专用的Moonbeam app内，您无需设置chain ID即可连接至正确的网络。请注意您只能使用Moonbeam app连接至Moonbeam网络，此app无法连接至其他基于Moonbeam的网络。
 
-您也可以选择使用Ethereum app连接至Moonbeam。使用Moonbeam app和Ethereum app的主要区别在于当您使用Etheruem app时必须指定chain ID，Moonbeam的chain ID为1284。如果您想要在Moonbeam使用Ethereum app，您可以查看[使用Ledger和Ethereum App与Moonbeam交互](/tokens/connect/ledger/ethereum){target=_blank}的教程。
+您也可以选择使用Ethereum app连接至Moonbeam。使用Moonbeam app和Ethereum app的主要区别在于当您使用Etheruem app时必须指定chain ID，Moonbeam的chain ID为1284。如果您想要在Moonbeam使用Ethereum app，您可以查看[使用Ledger和Ethereum App与Moonbeam交互](/tokens/connect/ledger/ethereum){target=\_blank}的教程。
 
 在本教程中，您将学会如何使用Moonbeam app在Moonbeam开始使用您的Ledger硬件钱包。本教程以Ledger Nano X设备为例进行演示操作，但操作步骤也同样适用于Ledger Nano S。
 

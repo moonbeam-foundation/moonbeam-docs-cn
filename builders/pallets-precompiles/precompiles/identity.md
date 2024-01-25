@@ -9,7 +9,7 @@ description: 深入了解Identity Precompile相关内容，包括其地址、Sol
 
 Identity Precompile是一个Solidity接口，用于创建、管理和检索链上身份信息。身份与账户相关联，并包括个人信息，例如法定姓名、对外显示的名称、网站、Twitter名称、Riot（现为Element）名称等。您也可以通过填写自定义字段包含任何其他相关信息。
 
-Identity Precompile直接与Substrate的[Identity Pallet](/builders/pallets-precompiles/pallets/identity){target=_blank}交互，以提供创建和管理身份所需的功能。此Pallet以Rust编写，通常无法从Moonbeam的以太坊侧直接访问。然而，Identity Precompile允许您直接从Solidity接口访问此功能。
+Identity Precompile直接与Substrate的[Identity Pallet](/builders/pallets-precompiles/pallets/identity){target=\_blank}交互，以提供创建和管理身份所需的功能。此Pallet以Rust编写，通常无法从Moonbeam的以太坊侧直接访问。然而，Identity Precompile允许您直接从Solidity接口访问此功能。
 
 Identity Precompile只在Moonbase Alpha可用，它位于以下地址：
 
@@ -35,7 +35,7 @@ Identity Precompile只在Moonbase Alpha可用，它位于以下地址：
 
 ## Identity Precompile Solidity接口 {: #the-solidity-interface }
 
-[`Identity.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=_blank}是一个Solidity接口，允许开发者与预编译函数进行交互：
+[`Identity.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=\_blank}是一个Solidity接口，允许开发者与预编译函数进行交互：
 
 ??? code "Identity.sol"
 
@@ -68,7 +68,7 @@ Identity Precompile包含一些任何人都可以调用的函数，以及只能�
 
 ## 与Solidity接口交互 {: #interact-with-interface }
 
-以下部分将介绍如何使用[以太坊库](/builders/build/eth-api/libraries/){target=_blank}（例如 [Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}、[Web3.js](/builders/build/eth-api/libraries/web3js){target=_blank}和[Web3.py](/builders/build/eth-api/libraries/web3py){target=_blank}）与Identity Precompile交互。
+以下部分将介绍如何使用[以太坊库](/builders/build/eth-api/libraries/){target=\_blank}（例如 [Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}、[Web3.js](/builders/build/eth-api/libraries/web3js){target=\_blank}和[Web3.py](/builders/build/eth-api/libraries/web3py){target=\_blank}）与Identity Precompile交互。
 
 The examples in this guide will be on Moonbase Alpha. 本教程中的示例将在Moonbase Alpha上操作。
 --8<-- 'text/common/endpoint-examples.md'

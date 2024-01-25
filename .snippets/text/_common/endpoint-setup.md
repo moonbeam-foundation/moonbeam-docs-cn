@@ -1,1 +1,1 @@
-要为Moonbeam或Moonriver网络配置您的项目，您可以从受支持的[网络端点](/builders/get-started/endpoints/){target=_blank}提供商之一获取您自己的端点和API密钥。
+要为Moonbeam或Moonriver网络配置您的项目，您可以从受支持的[网络端点](/builders/get-started/endpoints/){target=\_blank}提供商之一获取您自己的端点和API密钥。

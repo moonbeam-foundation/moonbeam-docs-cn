@@ -14,7 +14,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 您可以使用您的Ledger硬件钱包通过Moonriver Ledger Live app与Moonriver交互。在专用的Moonriver app内，您无需设置chain ID即可连接至正确的网络。请注意您只能使用Moonriver app连接至Moonriver网络，此app无法连接至其他基于Moonbeam的网络。
 
-您也可以选择使用Ethereum app连接至Moonriver。使用Moonriver app和Ethereum app的主要区别在于当您使用Etheruem app时必须指定chain ID，Moonriver的chain ID为1285。如果您想要在Moonriver使用Ethereum app，您可以查看[使用Ledger和Ethereum App与Moonbeam交互](/tokens/connect/ledger/ethereum){target=_blank}的教程。
+您也可以选择使用Ethereum app连接至Moonriver。使用Moonriver app和Ethereum app的主要区别在于当您使用Etheruem app时必须指定chain ID，Moonriver的chain ID为1285。如果您想要在Moonriver使用Ethereum app，您可以查看[使用Ledger和Ethereum App与Moonbeam交互](/tokens/connect/ledger/ethereum){target=\_blank}的教程。
 
 在本教程中，您将学会如何使用Moonriver app在Moonriver开始使用您的Ledger硬件钱包。本教程以Ledger Nano X设备为例进行演示操作，但操作步骤也同样适用于Ledger Nano S。
 
@@ -22,9 +22,9 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过原�
 
 --8<-- 'text/tokens/connect/ledger/checking-prereqs.md'
 
-如果您更偏向使用MetaMask作为媒介来完成Ledger设备与Moonbeam之间的操作，请确保您的MetaMask[已连接至Moonbeam](/tokens/connect/metamask/){target=_blank}。
+如果您更偏向使用MetaMask作为媒介来完成Ledger设备与Moonbeam之间的操作，请确保您的MetaMask[已连接至Moonbeam](/tokens/connect/metamask/){target=\_blank}。
 
-自[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/){target=_blank}发布后，将Ledger设备连接至Chrome上的MetaMask操作变得相对简单，您只需要安装最新版本的MetaMask即可。
+自[MetaMask的10.5.0版本](https://consensys.net/blog/metamask/metamask-and-ledger-integration-fixed/){target=\_blank}发布后，将Ledger设备连接至Chrome上的MetaMask操作变得相对简单，您只需要安装最新版本的MetaMask即可。
 
 ## 安装Moonriver Ledger Live App {: install-the-ledger-live-app }
 

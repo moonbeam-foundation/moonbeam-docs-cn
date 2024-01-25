@@ -13,9 +13,9 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 
 许多DApp使用无限量的原因之一是用户无需在每次想要转移Token的时候持续签署授权交易。这是对实际兑换Token所需的第二次交易的附加操作。像以太坊这样的网络，手续费会很昂贵。然而，如果已授权的智能合约存在漏洞，则会被利用且用户的Token可能会在无需进一步的授权情况下随时被转移。此外，如果用户不再想要DApp合约继续访问其Token，则需要撤销Token授权，这需要发送另一笔交易。
 
-作为Moonbeam上的DApp开发者，可以轻松避免此流程，为用户提供更多对资产的掌控。这可以通过[批处理预编译](/builders/pallets-precompiles/precompiles/batch){target=_blank}将授权和兑换批处理至单个交易中来实现，从而无需通过两个交易流程。这允许授权金额为准确的兑换金额，而不是无限量地访问用户Token。
+作为Moonbeam上的DApp开发者，可以轻松避免此流程，为用户提供更多对资产的掌控。这可以通过[批处理预编译](/builders/pallets-precompiles/precompiles/batch){target=\_blank}将授权和兑换批处理至单个交易中来实现，从而无需通过两个交易流程。这允许授权金额为准确的兑换金额，而不是无限量地访问用户Token。
 
-在本教程中，我们将深入了解使用批处理预编译合约的`batchAll`函数将授权和兑换批处理至一个交易的操作流程。我们将使用[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}和[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}创建和部署一个ERC-20合约和一个简单的DEX合约，用于在[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=_blank}上兑换。
+在本教程中，我们将深入了解使用批处理预编译合约的`batchAll`函数将授权和兑换批处理至一个交易的操作流程。我们将使用[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=\_blank}和[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}创建和部署一个ERC-20合约和一个简单的DEX合约，用于在[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=\_blank}上兑换。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -23,15 +23,15 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 
 - 拥有资金的账户
   --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
+- 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}和[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=\_blank}部分
 - 
   --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 ### 安装依赖项 {: #install-dependencies }
 
-当您准备好[Hardhat项目](/builders/build/eth-api/dev-env/hardhat){target=_blank}后，您可以安装[Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与网络交互。
+当您准备好[Hardhat项目](/builders/build/eth-api/dev-env/hardhat){target=\_blank}后，您可以安装[Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}库与网络交互。
 
-您也可以安装[OpenZeppelin合约库](https://docs.openzeppelin.com/contracts/){target=_blank}，因为我们将在我们的合约中导入`ERC20.sol`合约和`IERC20.sol`接口。
+您也可以安装[OpenZeppelin合约库](https://docs.openzeppelin.com/contracts/){target=\_blank}，因为我们将在我们的合约中导入`ERC20.sol`合约和`IERC20.sol`接口。
 
 要安装必要依赖项，请运行以下命令：
 
@@ -43,8 +43,8 @@ npm install @nomicfoundation/hardhat-ethers ethers@6 @openzeppelin/contracts
 
 在本教程中，我们将使用以下合约：
 
-- `Batch.sol` - Moonbeam上的其中一个预编译合约，允许您将多个EVM调用结合到一个。您可通过[批处理（Batch） Solidity接口](/builders/pallets-precompiles/precompiles/batch/#the-batch-interface){target=_blank}文档获取可用函数的更多信息
-- `DemoToken.sol` - `DemoToken` (DTOK) token的ERC-20合约，在部署时铸造初始供应量并将其分配给合约所有者。这是一个标准ERC-20 Token，您可以查看[IERC20接口](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#IERC20){target=_blank}获取可用函数的更多信息
+- `Batch.sol` - Moonbeam上的其中一个预编译合约，允许您将多个EVM调用结合到一个。您可通过[批处理（Batch） Solidity接口](/builders/pallets-precompiles/precompiles/batch/#the-batch-interface){target=\_blank}文档获取可用函数的更多信息
+- `DemoToken.sol` - `DemoToken` (DTOK) token的ERC-20合约，在部署时铸造初始供应量并将其分配给合约所有者。这是一个标准ERC-20 Token，您可以查看[IERC20接口](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#IERC20){target=\_blank}获取可用函数的更多信息
 - `SimpleDex.sol` - DEX的一个简单示例，在部署时部署`DemoToken`合约，该合约铸造1000个DTOK，并允许您将DEV Token兑换成DTOK，反之亦然。**此合约仅供演示使用**。`SimpleDex`合约包含以下函数：
     - **token**() - 只读函数，返回`DemoToken`合约的地址
     - **swapDevForDemoToken**() - 支付函数，接收DEV Token以兑换DTOK Token。在转账前，此函数会检查以确保合约中有足够的DTOK Token。转账发起后，发出`Bought`事件
@@ -314,7 +314,7 @@ async function main() {
 }
 ```
 
-如果您将兑换的金额设置为0.2个DTOK，则DEX余额将会增加0.2个DTOK，并且签署账户的余额将会减少0.2个DTOK。兑换的交易哈希将显示在终端，您可以通过[Moonscan](https://moonbase.moonscan.io){target=_blank}查看交易的更多信息。
+如果您将兑换的金额设置为0.2个DTOK，则DEX余额将会增加0.2个DTOK，并且签署账户的余额将会减少0.2个DTOK。兑换的交易哈希将显示在终端，您可以通过[Moonscan](https://moonbase.moonscan.io){target=\_blank}查看交易的更多信息。
 
 ??? code "查看完整脚本"
 
@@ -346,7 +346,7 @@ npx hardhat run --network moonbase scripts/swap.js
 
 如上述示例所述，我们可以修改两个交易的过程，以使用批处理预编译将授权和`swapExactTokensForETH`函数批处理到单个交易中。
 
-此示例将基于[Uniswap V2在Moonbase Alpha上的部署](https://github.com/papermoonio/moonbeam-uniswap){target=_blank}。我们将授权路由器支付ERTH Token，然后将ERTH换成DEV Token。在深入此示例之前，请确保您已在[Moonbeam-swap DApp](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将一些DEV兑换成ERTH Token，从而您可以将一些ERTH授权并换回 DEV。
+此示例将基于[Uniswap V2在Moonbase Alpha上的部署](https://github.com/papermoonio/moonbeam-uniswap){target=\_blank}。我们将授权路由器支付ERTH Token，然后将ERTH换成DEV Token。在深入此示例之前，请确保您已在[Moonbeam-swap DApp](https://moonbeam-swap.netlify.app/#/swap){target=\_blank}上将一些DEV兑换成ERTH Token，从而您可以将一些ERTH授权并换回 DEV。
 
 同样，我们将使用批处理预编译的`batchAll`函数。因此，我们需要获取编码的调用数据用于授权和兑换。要获取编码的调用数据，我们将使用Ether的`interface.encodeFunctionData`函数并传入必要参数。
 
@@ -354,7 +354,7 @@ npx hardhat run --network moonbase scripts/swap.js
 
 对于`swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline)`函数，我们需要指定要发送的Token数量、必须接收的最小输出Token数量以使交易不会还原、兑换的Token地址、原生资产的接收方以及交易在之后将还原的截止日期。要将ERTH兑换成DEV，路径是从ERTH到WETH，因此路径数组将需要包括ERTH Token地址和WETH Token地址：`[0x08B40414525687731C23F430CEBb424b332b3d35, 0xD909178CC99d318e4D46e7E66a972955859670E1]`。
 
-除了ERTH和WETH地址，您也需要用到[路由器地址](https://github.com/papermoonio/moonbeam-uniswap/blob/f494f9a7a07bd3c5b94ac46484c9c7e6c781203f/uniswap-contracts-moonbeam/address.json#L14){target=_blank}创建路由器合约的合约实例，即`0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4`。
+除了ERTH和WETH地址，您也需要用到[路由器地址](https://github.com/papermoonio/moonbeam-uniswap/blob/f494f9a7a07bd3c5b94ac46484c9c7e6c781203f/uniswap-contracts-moonbeam/address.json#L14){target=\_blank}创建路由器合约的合约实例，即`0x8a1932D6E26433F3037bd6c3A40C816222a6Ccd4`。
 
 代码将与下方内容类似：
 
@@ -407,7 +407,7 @@ main();
 ```
 
 !!! 注意事项
-    如果您需要ABI为本示例中的任何合约创建合约实例，所有合约都已在[Moonscan](https://moonbase.moonscan.io){target=_blank}上进行了验证。因此，您可以在Moonscan上搜索合约地址并前往**Contract**标签获取**Contract ABI**。
+    如果您需要ABI为本示例中的任何合约创建合约实例，所有合约都已在[Moonscan](https://moonbase.moonscan.io){target=\_blank}上进行了验证。因此，您可以在Moonscan上搜索合约地址并前往**Contract**标签获取**Contract ABI**。
 
 这将导致授权和交换被批处理到单个交易中，交易哈希将显示在控制台。您现在可以修改此逻辑并应用到Uniswap V2风格的应用程序中！
 
