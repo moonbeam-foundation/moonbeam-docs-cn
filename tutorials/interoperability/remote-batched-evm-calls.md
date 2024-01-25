@@ -10,9 +10,9 @@ _作者：Kevin Neilson_
 
 ## 概览 {: #introduction }
 
-在本教程中，我们将使用波卡的通用消息传递协议[XCM](/builders/interoperability/xcm/overview/){target=_blank}从中继链（对于Moonbeam来说为Polkadot）发起一系列远程批量EVM调用。为此，我们将使用独特的XCM指令组合，允许您[通过XCM消息调用Moonbeam EVM](/builders/interoperability/xcm/remote-evm-calls/){target=_blank}。本教程的独特之处在于，我们将使用Moonbeam的[Batch Precompile](/builders/pallets-precompiles/precompiles/batch/){target=_blank}来将多个EVM调用组合成单个交易进行处理，而不是依次执行单个远程EVM合约调用。
+在本教程中，我们将使用波卡的通用消息传递协议[XCM](/builders/interoperability/xcm/overview/){target=\_blank}从中继链（对于Moonbeam来说为Polkadot）发起一系列远程批量EVM调用。为此，我们将使用独特的XCM指令组合，允许您[通过XCM消息调用Moonbeam EVM](/builders/interoperability/xcm/remote-evm-calls/){target=\_blank}。本教程的独特之处在于，我们将使用Moonbeam的[Batch Precompile](/builders/pallets-precompiles/precompiles/batch/){target=\_blank}来将多个EVM调用组合成单个交易进行处理，而不是依次执行单个远程EVM合约调用。
 
-要遵循本教程操纵之前，您需要先熟悉[通过XCM执行远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/){target=_blank}和Moonbeam的[Batch Precompile](/builders/pallets-precompiles/precompiles/batch/){target=_blank}。
+要遵循本教程操纵之前，您需要先熟悉[通过XCM执行远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/){target=\_blank}和Moonbeam的[Batch Precompile](/builders/pallets-precompiles/precompiles/batch/){target=\_blank}。
 
 **本教程的内容仅用于教育目的！**
 
@@ -22,8 +22,8 @@ _作者：Kevin Neilson_
 
 在本教程中，我们将通过XCM执行批量EVM调用的账户称为Alice。接下来，让我们来解析一下本教程的流程：
 
-1. Alice在中继链上有一个账户，她想要使用[Moonbase Minter](https://moonbase-minterc20.netlify.app/){target=_blank} mint Mars (MARS)和Neptune (NEPT) Token（即Moonbase Alpha上的ERC-20）。Alice需要从她的中继链账户发送XCM消息至Moonbase Alpha
-2. Moonbase Alpha将接收XCM消息并执行其指令。这些指令说明Alice想要在Moonbase Alph中购买一些块执行时间，并执行对Moonbase批量预编译的调用，该调用由两个不同的mint调用组成。批量EVM调用通过Alice在Moonbase Alpha上通过XCM消息控制的特殊账户进行调度。 此账户称为[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}。即使这是一个无密钥账户（私钥未知），公共地址也可以[以确定性方式计算](/builders/interoperability/xcm/remote-evm-calls/#calculate-multilocation-derivative){target=_blank}
+1. Alice在中继链上有一个账户，她想要使用[Moonbase Minter](https://moonbase-minterc20.netlify.app/){target=\_blank} mint Mars (MARS)和Neptune (NEPT) Token（即Moonbase Alpha上的ERC-20）。Alice需要从她的中继链账户发送XCM消息至Moonbase Alpha
+2. Moonbase Alpha将接收XCM消息并执行其指令。这些指令说明Alice想要在Moonbase Alph中购买一些块执行时间，并执行对Moonbase批量预编译的调用，该调用由两个不同的mint调用组成。批量EVM调用通过Alice在Moonbase Alpha上通过XCM消息控制的特殊账户进行调度。 此账户称为[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=\_blank}。即使这是一个无密钥账户（私钥未知），公共地址也可以[以确定性方式计算](/builders/interoperability/xcm/remote-evm-calls/#calculate-multilocation-derivative){target=\_blank}
 3. 成功的XCM执行将导致EVM执行mint命令，Alice将在她的特殊账户中收到她的MARS和NEPT Token
 4. 通过XCM的远程EVM执行将产生一些EVM日志，这些日志由浏览器收集。任何人都可以验证EVM交易和收据
 
@@ -37,7 +37,7 @@ _作者：Kevin Neilson_
 
 - 您需要在中继链上拥有UNIT，在发送XCM时用于支付交易费用。如果您有一个拥有DEV Token的Moonbase Alpha账户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=\_blank}将一些DEV Token兑换成xcUNIT。然后使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=\_blank}从Moonbase Alpha提取一些xcUNIT至[Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=\_blank}
   --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 您的[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=_blank}必须持有DEV Token以调用Batch Precompile，并支付XCM执行费用（虽然此费用将以xcUNIT形式的UNIT Token进行支付）。我们将在下一个部分计算multilocation衍生账户地址
+- 您的[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=\_blank}必须持有DEV Token以调用Batch Precompile，并支付XCM执行费用（虽然此费用将以xcUNIT形式的UNIT Token进行支付）。我们将在下一个部分计算multilocation衍生账户地址
 
 ## 计算您的Multilocation衍生账户 {: #calculating-your-multilocation-derivative-account }
 
@@ -56,7 +56,7 @@ _作者：Kevin Neilson_
 | Multilocation衍生账户（32字节） | `0xf0615483cbe76f5b2aa80a8ce2b2e9a8206deb65b8a1323270e25802f600f95c` |
 | Multilocation衍生账户（20字节） |             `0xf0615483cbe76f5b2aa80a8ce2b2e9a8206deb65`             |
 
-此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址：`0xf0615483cbe76f5b2aa80a8ce2b2e9a8206deb65`。您可以根据需求在[Moonscan](https://moonbase.moonscan.io/){target=_blank}上查看您的multilocation衍生账户。接下来，您可以为此账户充值DEV Token。
+此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址：`0xf0615483cbe76f5b2aa80a8ce2b2e9a8206deb65`。您可以根据需求在[Moonscan](https://moonbase.moonscan.io/){target=\_blank}上查看您的multilocation衍生账户。接下来，您可以为此账户充值DEV Token。
 
 --8<-- 'text/_common/faucet/faucet-sentence.md'
 
@@ -142,7 +142,7 @@ _作者：Kevin Neilson_
 
  2. 创建所需的提供商。其中一个为[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商，通过此提供商我们可以直接调用[Moonbeam pallets](/builders/pallets-precompiles/pallets/){target=\_blank}
  3. 为了简单起见，我们对gas限制进行了硬编码，并避免批量预编译导致的gas预估问题
- 4. [构建包含批量调用的远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-remove-evm-call-xcm){target=_blank}
+ 4. [构建包含批量调用的远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-remove-evm-call-xcm){target=\_blank}
  5. 创建对`transact`函数的Ethereum XCM pallet调用，提供上方指定的调用参数
  6. 获取特定交易参数的SCALE calldata，稍后我们需要将其提供给`Transact` XCM指令。请注意，在这个特定场景中，因为我们只需要交易参数的calldata，所以我们必须使用`tx.method.toHex()`
 
@@ -164,10 +164,10 @@ _作者：Kevin Neilson_
 
 我们即将构建的XCM消息由以下指令组成：
 
- - [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} — 从目标链中调度XCM的账户中提取资金，并将其存放在可用于后续操作的地方
- - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} — 购买一定数量的区块执行时间
- - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=_blank} — 使用前一条指令购买的部分区块执行时间来执行一些任意字节
- - [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} — 从持有的资产中提取资产并将其存入指定账户
+ - [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=\_blank} — 从目标链中调度XCM的账户中提取资金，并将其存放在可用于后续操作的地方
+ - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=\_blank} — 购买一定数量的区块执行时间
+ - [`Transact`](https://github.com/paritytech/xcm-format#transact){target=\_blank} — 使用前一条指令购买的部分区块执行时间来执行一些任意字节
+ - [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=\_blank} — 从持有的资产中提取资产并将其存入指定账户
 
 要构建XCM消息（该消息将通过XCM发起远程EVM调用）并获取其SCALE编码的calldata，您可以使用以下代码片段：
 
@@ -182,10 +182,10 @@ _作者：Kevin Neilson_
 
  1. 提供请求的输入数据。这包括：
 
-     - 创建提供商的[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=_blank}端点URL
-     - 从multilocation衍生账户提取的Token数量（以Wei为单位）。在本示例中，`0.01` Token已经足够了。想要了解如何获取此值，请参考[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}
-     - [DEV token的multilocation](/builders/interoperability/xcm/xc-registration/assets/#register-moonbeam-native-assets){target=_blank}，如Moonbase Alpha所见
-     - `transact` XCM指令的权重。这可以通过将`25000`乘以之前获得的gas限制来获得。建议在预估值的基础上增加10%左右。您可以在[通过XCM远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=_blank}的页面获取关于此值的更多信息
+     - 创建提供商的[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=\_blank}端点URL
+     - 从multilocation衍生账户提取的Token数量（以Wei为单位）。在本示例中，`0.01` Token已经足够了。想要了解如何获取此值，请参考[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}
+     - [DEV token的multilocation](/builders/interoperability/xcm/xc-registration/assets/#register-moonbeam-native-assets){target=\_blank}，如Moonbase Alpha所见
+     - `transact` XCM指令的权重。这可以通过将`25000`乘以之前获得的gas限制来获得。建议在预估值的基础上增加10%左右。您可以在[通过XCM远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=\_blank}的页面获取关于此值的更多信息
      - multilocation衍生账户，这将用于后续XCM指令
      - 我们上一部分计算的`transact` XCM指令的字节
 
@@ -195,8 +195,8 @@ _作者：Kevin Neilson_
  5. 第三个XCM指令`Transact`。该指令将使用购买的一部分权重（定义为`requireWeightAtMost`）并执行提供的任意字节（`transactBytes`）
  6. 第四个XCM指令`DepositAsset`。执行之前的操作后剩下的部分（在本例中，应该只是DEV Token）都会存入multilocation衍生账户，设置为`beneficiary`
  7. 通过连接`V3`数组内的指令来构建XCM消息
- 8. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}提供商
- 9. 使用目的地和XCM消息制作`xcmPallet.send` extrinsic。此方法会将[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank} XCM指令附加到我们的XCM消息中，该指令将提供计算multilocation衍生账户所需的信息
+ 8. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
+ 9. 使用目的地和XCM消息制作`xcmPallet.send` extrinsic。此方法会将[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=\_blank} XCM指令附加到我们的XCM消息中，该指令将提供计算multilocation衍生账户所需的信息
  10. 获取SCALE编码的calldata。请注意在此特殊场景中，由于我们需要完整的SCALE编码calldata，我们必须使用`tx.toHex()`。因此意味着我们将使用calldata提交此交易。
 
 代码设置完毕后，您可以使用`node`执行它。并且您将获取中继链XCM calldata：
@@ -230,7 +230,7 @@ _作者：Kevin Neilson_
 --8<-- 'code/tutorials/interoperability/remote-batched-evm-calls/send-xcm-message.js'
 ```
 
-代码设置完毕后，您可以使用`node`执行它，这将发送XCM消息以发起对Moonbase Alpha中的MARS和NEPT ERC-20 Token的批量预编译的调用。如果您看到`Abnormal Closure`错误提示，请不要担心。您可以通过在[Moonbase Moonscan](https://moonbase.moonscan.io/){target=_blank}上查找您的multilocation衍生账户来验证远程批量调用是否成功。
+代码设置完毕后，您可以使用`node`执行它，这将发送XCM消息以发起对Moonbase Alpha中的MARS和NEPT ERC-20 Token的批量预编译的调用。如果您看到`Abnormal Closure`错误提示，请不要担心。您可以通过在[Moonbase Moonscan](https://moonbase.moonscan.io/){target=\_blank}上查找您的multilocation衍生账户来验证远程批量调用是否成功。
 
 ![Sending the XCM message from the Relay Chain to Moonbase Alpha for the batch EVM call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-7.png)
 
@@ -241,7 +241,7 @@ _作者：Kevin Neilson_
  - `parachainSystem.DownwardMessagesReceived` — 表明收到了XCM消息
  - `evm.Log` — 不同合约调用发出的内部事件。结构相同，为：合约地址、主题、相关数据
  - `ethereum.Executed` — 包含有关`from`地址、`to`地址以及EVM调用完成的交易哈希的信息
- - `polkadotXcm.AssetsTrapped` — 标记某些资产已被持有且未存入给定地址。如果`Transact` XCM指令没有用完分配给它的Token，它将在处理XCM之后执行[`RefundSurplus`](https://github.com/paritytech/xcm-format#refundsurplus){target=_blank}。该指令将从购买的执行中取出所有剩余的Token并将其持有。我们可以通过调整提供给`Transact`指令的费用或在`Transact`之后添加指令来防止这种情况发生
+ - `polkadotXcm.AssetsTrapped` — 标记某些资产已被持有且未存入给定地址。如果`Transact` XCM指令没有用完分配给它的Token，它将在处理XCM之后执行[`RefundSurplus`](https://github.com/paritytech/xcm-format#refundsurplus){target=\_blank}。该指令将从购买的执行中取出所有剩余的Token并将其持有。我们可以通过调整提供给`Transact`指令的费用或在`Transact`之后添加指令来防止这种情况发生
  - `dmpQueue.ExecutedDownward` — 表示执行从中继链接收到的消息（DMP消息）的结果。在此情况下，`outcome`被标记为`Complete`
 
 XCM已成功被执行！如果您访问[Moonbase Alpha Moonscan](https://moonbase.moonscan.io/){target=\_blank}并搜索[交易哈希](https://moonbase.moonscan.io/tx/0xd5e855bc3ade42d040f3c29abe129bd8f488dee0014e731eba4617883aac3891){target=\_blank}，您将找到通过XCM消息执行的批量预编译调用。请注意，每个planet每小时只能调用一次`mint`命令。如果您想进一步操作并执行其他mint调用，只需在配置批量调用时将目标合约地址更改为不同的planet即可。

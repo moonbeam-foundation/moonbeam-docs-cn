@@ -335,7 +335,7 @@ moonChain: {
 }
 ```
 
-此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}中找到更多信息。
+此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}中找到更多信息。
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 

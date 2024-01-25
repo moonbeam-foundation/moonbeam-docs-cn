@@ -18,7 +18,7 @@ keywords: utility, batch, substrate, pallet, moonbeam, polkadot
 
 衍生是通过计算`modlpy/utilisuba` + `originalAddress` + `index`的Blake2哈希来完成的。您可以[使用脚本来计算给定原账户和索引的衍生账户](https://github.com/albertov19/PolkaTools/blob/main/calculateDerivedAddress.ts){target=\_blank}。
 
-其中一个衍生账户的用例可在XCM Transactor Pallet找到。Pallet允许用户从主权账户的衍生账户执行远程跨链调用，这使调用可在单个交易中轻松执行。更多信息，请参考[使用XCM Transactor Pallet进行远程执行](/builders/interoperability/xcm/xcm-transactor/){target=_blank}教程。
+其中一个衍生账户的用例可在XCM Transactor Pallet找到。Pallet允许用户从主权账户的衍生账户执行远程跨链调用，这使调用可在单个交易中轻松执行。更多信息，请参考[使用XCM Transactor Pallet进行远程执行](/builders/interoperability/xcm/xcm-transactor/){target=\_blank}教程。
 
 ## Utility Pallet接口 {: #utility-pallet-interface }
 
