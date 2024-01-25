@@ -10,24 +10,24 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 
 ## 概览 {: #introduction }
 
-[Remix](https://remix.ethereum.org/){target=_blank}是一个集成开发环境（IDE），用于在以太坊和以太坊兼容链上开发智能合约。它提供了一个易于使用的界面，供开发者编写、编译和部署智能合约。得益于Moonbeam的以太坊兼容性功能，您可以直接在任何Moonbeam网络中使用 Remix。
+[Remix](https://remix.ethereum.org/){target=\_blank}是一个集成开发环境（IDE），用于在以太坊和以太坊兼容链上开发智能合约。它提供了一个易于使用的界面，供开发者编写、编译和部署智能合约。得益于Moonbeam的以太坊兼容性功能，您可以直接在任何Moonbeam网络中使用 Remix。
 
-本教程将介绍使用Remix IDE在[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}上创建和部署基于Solidity智能合约的过程。此教程同时适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}和[Moonbase Alpha](/builders/get-started/networks/moonbase/){target=_blank}网络。
+本教程将介绍使用Remix IDE在[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}上创建和部署基于Solidity智能合约的过程。此教程同时适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}和[Moonbase Alpha](/builders/get-started/networks/moonbase/){target=\_blank}网络。
 
-如果您已熟悉Remix，你可以直接跳到[连接Remix至Moonbeam](#connect-remix-to-moonbeam){target=_blank}部分，学习如何将Remix与Moonbeam结合使用。
+如果您已熟悉Remix，你可以直接跳到[连接Remix至Moonbeam](#connect-remix-to-moonbeam){target=\_blank}部分，学习如何将Remix与Moonbeam结合使用。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 在开始之前，您将需要准备以下内容：
 
-- 本地运行的[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}
-- [安装且配置完毕的MetaMask](/tokens/connect/metamask/){target=_blank}以使用您的开发节点
+- 本地运行的[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}
+- [安装且配置完毕的MetaMask](/tokens/connect/metamask/){target=\_blank}以使用您的开发节点
 
 如果您已遵循上述教程，您将会拥有一个正在收集交易以生产区块的本地Moonbeam节点。
 
 ![The terminal logs of for a local Moonbeam development node that is producing blocks.](/images/builders/build/eth-api/dev-env/remix/remix-1.webp)
 
-您的开发节点具有10个拥有资金的账户，确保将MetaMask连接至您的Moonbeam开发节点并导入至少一个预注资的账户。您可以参考MetaMask文档的[导入账户](/tokens/connect/metamask#import-accounts){target=_blank}部分的分步教程，了解如何导入开发账户。
+您的开发节点具有10个拥有资金的账户，确保将MetaMask连接至您的Moonbeam开发节点并导入至少一个预注资的账户。您可以参考MetaMask文档的[导入账户](/tokens/connect/metamask#import-accounts){target=\_blank}部分的分步教程，了解如何导入开发账户。
 
 ![The main screen of MetaMask, which shows an account connected to a Moonbeam development node and its balance.](/images/builders/build/eth-api/dev-env/remix/remix-2.webp)
 
@@ -36,7 +36,7 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 
 ## 初步了解Remix {: #get-familiar-with-remix }
 
-前往[https://remix.ethereum.org/](https://remix.ethereum.org/){target=_blank}，可以看到页面分为四个部分：
+前往[https://remix.ethereum.org/](https://remix.ethereum.org/){target=\_blank}，可以看到页面分为四个部分：
 
 1. 插件面板
 2. 侧面板
@@ -51,11 +51,11 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 
 主面板会随着**主页**标签自动加载，其中包含各种渠道的链接。您可以随时关闭此选项卡，然后通过单击插件面板左上角的蓝色Remix图标重新打开它。您可以在主面板中查看正在使用的每个文件。举例来说，您可以双击**文件管理器**侧面板中的任何文件，它将在主面板中打开标签页。
 
-终端面板类似于操作系统上的标准终端；您可以从中执行脚本，并将日志打印到其中。所有交易和合约交互都会自动记录到终端。您还可以直接从终端与[Ethers](https://docs.ethers.org/v6/){target=_blank}和[Web3](https://web3js.org/#/){target=_blank}的JavaScript库交互。
+终端面板类似于操作系统上的标准终端；您可以从中执行脚本，并将日志打印到其中。所有交易和合约交互都会自动记录到终端。您还可以直接从终端与[Ethers](https://docs.ethers.org/v6/){target=\_blank}和[Web3](https://web3js.org/#/){target=\_blank}的JavaScript库交互。
 
 ## 添加智能合约至文件管理器 {: #add-a-smart-contract-to-the-file-explorer }
 
-在本示例中，您将创建一个包含ERC-20 Token合约的新文件。这是一个简单的ERC-20合约，基于现有的[OpenZeppelin ERC-20模板](https://docs.openzeppelin.com/contracts/4.x/erc20){target=_blank}创建。该合约将创建一个`MyToken` Token（带有`MYTOK`符号），该Token将向合约创建者铸造全部初始供应量。
+在本示例中，您将创建一个包含ERC-20 Token合约的新文件。这是一个简单的ERC-20合约，基于现有的[OpenZeppelin ERC-20模板](https://docs.openzeppelin.com/contracts/4.x/erc20){target=\_blank}创建。该合约将创建一个`MyToken` Token（带有`MYTOK`符号），该Token将向合约创建者铸造全部初始供应量。
 
 在插件面板的**File explorer**标签处，您可以通过执行以下步骤创建新文件：
 
@@ -76,11 +76,11 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 
 在编译合约前，确保您已从**File explorer**标签处选中合约的文件。然后从插件面板处选择**Solidity Compiler**。
 
-确保左上角的编译器版本符合您的合约中定义的版本以及[OpenZeppelin的`ERC20.sol`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol){target=_blank}中定义的版本。例如，`MyToken.sol`合约所需版本为Solidity ^0.8.0，但截至本文撰写时，OpenZeppelin的`ERC20.sol`合约所需版本为^0.8.20，因此编译器需要设置为0.8.20及以上的版本。
+确保左上角的编译器版本符合您的合约中定义的版本以及[OpenZeppelin的`ERC20.sol`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol){target=\_blank}中定义的版本。例如，`MyToken.sol`合约所需版本为Solidity ^0.8.0，但截至本文撰写时，OpenZeppelin的`ERC20.sol`合约所需版本为^0.8.20，因此编译器需要设置为0.8.20及以上的版本。
 
 Solidity编译器插件也允许您更改一些设置并应用编译器的高级配置。如果您计划迭代智能合约，可以通过勾选**Auto compile**来实现，每当您进行更改时，合约都会自动重新编译。
 
-此外，在**Advanced Configurations**菜单中，您可以更改EVM版本、启用优化功能，并设置预计在合约生命周期内运行字节码的次数（默认设置为200次）。有关合约优化的更多信息，请参考[Optimizer上的Solidity文档](https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options){target=_blank}。
+此外，在**Advanced Configurations**菜单中，您可以更改EVM版本、启用优化功能，并设置预计在合约生命周期内运行字节码的次数（默认设置为200次）。有关合约优化的更多信息，请参考[Optimizer上的Solidity文档](https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options){target=\_blank}。
 
 在本示例中，无需额外的配置。要编译`MyToken.sol`合约，只需点击**Compile MyToken.sol**合约。如果编译成功，您可以在**Solidity compiler**插件旁的插件面板中出现绿色的完成标记。
 
@@ -90,7 +90,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 如果您尝试编译智能合约，但是出现错误或警告时，您可以直接从Remix中的Solidity编译器插件通过ChatGPT轻松调试问题。
 
-举例来说，如果您仅提供了Token名称给ERC-20构造函数，但忘记提供Token符号，编译合约时侧面板将会出现错误提示。您可以往下滑动页面阅读错误提示，您会看到一个**ASK GPT**按钮。要调试编译错误，您可以点击**ASK GPT**按钮，Remix终端将返回响应，引导您操作并尝试解决问题。如果您需要其他帮助，可以直接前往来源并询问[ChatGPT](https://chat.openai.com/){target=_blank}。
+举例来说，如果您仅提供了Token名称给ERC-20构造函数，但忘记提供Token符号，编译合约时侧面板将会出现错误提示。您可以往下滑动页面阅读错误提示，您会看到一个**ASK GPT**按钮。要调试编译错误，您可以点击**ASK GPT**按钮，Remix终端将返回响应，引导您操作并尝试解决问题。如果您需要其他帮助，可以直接前往来源并询问[ChatGPT](https://chat.openai.com/){target=\_blank}。
 
 ![An error message shown in the side panel for the Solidity compiler plugin with an ASK GPT button for debugging.](/images/builders/build/eth-api/dev-env/remix/remix-7.webp)
 
@@ -118,7 +118,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 要部署智能合约至Moonbeam，您需要确保您已将钱包连接至Moonbeam开发节点或Moonbeam网络。然后，点击**Deploy and run transactions**标签，通过**ENVIRONMENT**下拉菜单的选择将Remix连接至您的钱包。例如，如果您已安装Trust Wallet，您可以在下拉菜单中看到**Injected Provider - TrustWallet**。除了injected providers，您也可以通过WalletConnect连接至Moonbeam。
 
-我们将以MetaMask为例。提前将MetaMask安装完毕并连接至本地Moonbeam开发节点。详细步骤请参考 [使用Moonbeam与MetaMask交互](/tokens/connect/metamask/){target=_blank}分步教程。
+我们将以MetaMask为例。提前将MetaMask安装完毕并连接至本地Moonbeam开发节点。详细步骤请参考 [使用Moonbeam与MetaMask交互](/tokens/connect/metamask/){target=\_blank}分步教程。
 
 在**ENVIRONMENT**下拉菜单处选择**Injected Provider - MetaMask**。
 
@@ -181,6 +181,6 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 ![The inputs for the approve function of the ERC-20 contract and the MetaMask pop-up for the approval.](/images/builders/build/eth-api/dev-env/remix/remix-14.webp)
 
-要查看您的账户余额/批准交易/转账MYTOKs，您可以将MYTOK添加到您的账户。关于如何将Token添加至MetaMask的更多信息，请参考[MetaMask文档网站](/tokens/connect/metamask){target=_blank}的[添加ERC-20 Token](/tokens/connect/metamask#add-erc20){target=_blank}部分。
+要查看您的账户余额/批准交易/转账MYTOKs，您可以将MYTOK添加到您的账户。关于如何将Token添加至MetaMask的更多信息，请参考[MetaMask文档网站](/tokens/connect/metamask){target=\_blank}的[添加ERC-20 Token](/tokens/connect/metamask#add-erc20){target=\_blank}部分。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

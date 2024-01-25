@@ -11,7 +11,7 @@ description: 本教程将引导您如何使用您的Ledger硬件钱包通过Ledg
 
 对于Moonbeam、Moonriver和Moonbase Alpha测试网，您可以通过设置chain ID在Ledger Live上使用Ethereum app。Moonbeam的chain ID为1284，Mioonriver的chain ID为1285，而Moonbase Alpha的chain ID为1287。
 
-对于Moonbeam和Moonriver，您也可以选择在Ledger Live上使用专用的[Moonbeam app](/tokens/connect/ledger/moonbeam/){target=_blank}或[Moonriver app](/tokens/connect/ledger/moonriver/){target=_blank}，此方式无需设置chain ID即可连接至正确的网络。请注意您只能使用Moonbeam app连接至Moonbeam网络，而Moonriver app只能用于连接Moonriver网络。这些专用app无法用于其他基于Moonbeam的网络。
+对于Moonbeam和Moonriver，您也可以选择在Ledger Live上使用专用的[Moonbeam app](/tokens/connect/ledger/moonbeam/){target=\_blank}或[Moonriver app](/tokens/connect/ledger/moonriver/){target=\_blank}，此方式无需设置chain ID即可连接至正确的网络。请注意您只能使用Moonbeam app连接至Moonbeam网络，而Moonriver app只能用于连接Moonriver网络。这些专用app无法用于其他基于Moonbeam的网络。
 
 在本教程中，您将学会如何使用Ethereum app在Moonbeam开始使用您的Ledger硬件钱包。本教程以Ledger Nano X设备为例进行演示操作，但操作步骤也同样适用于Ledger Nano S。
 

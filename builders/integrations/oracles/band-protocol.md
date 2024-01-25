@@ -25,7 +25,7 @@ description: 如何通过智能合约或者Javascript在Moonbeam以太坊DApp使
  - `BTC/ETH`
  - `ETH/EUR`
 
-您可通过此[Band标准数据集](https://data.bandprotocol.com){target=_blank}查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
+您可通过此[Band标准数据集](https://data.bandprotocol.com){target=\_blank}查看平台已支持的代币种类。撰写本文时，已有超过146对货币对可查询。
 
 ## 获取报价 {: #querying-prices }
 
@@ -174,7 +174,7 @@ interface TestInterface {
  - **getPrice**(*string* base, *string* quote) - 根据函数中对应输入的数据，提供单一基础货币/报价货币对喂价，即BTC/USD
  - **getMultiPrices**(*string[]* bases, *string[]* quotes) - 根据函数中对应输入的数据，提供多种基础货币/报价货币对喂价，即BTC/USD、ETH/USD、ETH/EUR
 
-例如，使用[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}接口可以方便地获取BTC/USD价格对。
+例如，使用[Remix](/builders/build/eth-api/dev-env/remix/){target=\_blank}接口可以方便地获取BTC/USD价格对。
 
 创建文档及编译合约后，点击**Deploy and Run Transactions**标签，输入合约地址（`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`）并点击**At Address**。请确保已将**ENVIRONMENT**设置为**Injected Web3**，只有在该设置下才能与Moonbase Alpha连接。
 

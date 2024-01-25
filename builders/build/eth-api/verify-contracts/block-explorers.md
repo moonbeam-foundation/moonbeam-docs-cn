@@ -79,7 +79,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 要验证由多个文件组成的智能合约，其过程与先前略微不同，并且需要一些前置步骤以将目标智能合约的所有依赖项合并至单一的Solidity文件。
 
-该预处理通常被称为智能合约扁平化。目前有部分工具可以用来扁平化多个部分的智能合约至单一的Solidity文件，如[Hardhat's Flatten task](https://hardhat.org/hardhat-runner/docs/advanced/flattening){target=_blank}。请参考各自智能合约扁平化工具的文档以获得更详细的说明。
+该预处理通常被称为智能合约扁平化。目前有部分工具可以用来扁平化多个部分的智能合约至单一的Solidity文件，如[Hardhat's Flatten task](https://hardhat.org/hardhat-runner/docs/advanced/flattening){target=\_blank}。请参考各自智能合约扁平化工具的文档以获得更详细的说明。
 
 扁平化多个部分的智能合约后，可以在区块浏览器上使用新的扁平化后的Solidity文件进行验证，其方式与本教程中所描述的验证单一文件智能合约的方式相同。
 

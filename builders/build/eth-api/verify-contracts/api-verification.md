@@ -13,13 +13,13 @@ description: 学习如何使用现有的基于API的验证函数在Moonbeam网�
 
 ## 使用Moonscan API {: #using-moonscan-api }
 
-[Moonscan](https://moonscan.io/){target=_blank}为Etherscan的官方分叉，用于浏览或是查询链上数据，因此成为一个适合与Moonbeam网络上数据交互并分析的开发者工具。
+[Moonscan](https://moonscan.io/){target=\_blank}为Etherscan的官方分叉，用于浏览或是查询链上数据，因此成为一个适合与Moonbeam网络上数据交互并分析的开发者工具。
 
-类似于[Etherscan API](https://docs.etherscan.io/){target=_blank}，Moonscan有一整套的REST API端点，可用于验证智能合约、获取验证合约的ABI和源代码以及与Moonbeam网络上受到验证的合约交互。
+类似于[Etherscan API](https://docs.etherscan.io/){target=\_blank}，Moonscan有一整套的REST API端点，可用于验证智能合约、获取验证合约的ABI和源代码以及与Moonbeam网络上受到验证的合约交互。
 
 ### 生成Moonscan API私钥 {: #generating-a-moonscan-api-key }
 
-在使用Moonscan API之前，您需要生成一个Moonscan API私钥。请跟随Etherscan嵌入页面中[生成私钥的部分教程](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=blank}，因其API私钥能够同时用于这两者。
+在使用Moonscan API之前，您需要生成一个Moonscan API私钥。请跟随Etherscan嵌入页面中[生成私钥的部分教程](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=\_blank}，因其API私钥能够同时用于这两者。
 
 ### Moonscan公共API URL {: #moonscan-public-api-url }
 
@@ -46,7 +46,7 @@ Moonbeam相关网络的Moonscan API URL如下：
 
 ### 验证源代码 {: #verify-source-code }
 
-要使用Moonscan API验证合约源代码，您需要拟定一个包含所有相关合约创建信息的POST请求，并将其请求传送至Moonscan的REST API。以下为使用JavaScript和[Axios](https://axios-http.com/docs/intro){target=_blank}（HTTP用户端）的范例代码：
+要使用Moonscan API验证合约源代码，您需要拟定一个包含所有相关合约创建信息的POST请求，并将其请求传送至Moonscan的REST API。以下为使用JavaScript和[Axios](https://axios-http.com/docs/intro){target=\_blank}（HTTP用户端）的范例代码：
 
 === "Moonbeam"
 
@@ -306,7 +306,7 @@ Moonbeam相关网络的Moonscan API URL如下：
 
 ## 使用Sourcify API {: #using-sourcify-api }
 
-[Sourcify](https://sourcify.dev/){target=_blank}是一个多链去中心化的自动合约验证服务，并维护公共合约元数据库。Sourcify同样提供公共服务器API供开发者进行验证、查看合约是否获得验证以及用于查看元数据文件的API库。
+[Sourcify](https://sourcify.dev/){target=\_blank}是一个多链去中心化的自动合约验证服务，并维护公共合约元数据库。Sourcify同样提供公共服务器API供开发者进行验证、查看合约是否获得验证以及用于查看元数据文件的API库。
 
 ### Sourcify公共服务器URL {: #sourcify-public-server-url }
 
@@ -445,7 +445,7 @@ Sourcify支持两种验证匹配结果。
     }
     ```
 
-同样的，您能够使用[Sourcify拥有的GUI](https://sourcify.dev/#/verifier){target=blank}提交合约验证。
+同样的，您能够使用[Sourcify拥有的GUI](https://sourcify.dev/#/verifier){target=\_blank}提交合约验证。
 
 ### 通过地址和链ID查看验证状态 {: #check-verification-status-by-address-and-chain-id } 
 
@@ -537,7 +537,7 @@ Sourcify提供开发者端点以同时查看多个EVM链上合约的验证状态
 
 ### 在Foundry中使用Sourcify {: #using-sourcify-with-foundry }
 
-Foundry的Forge工具内置了对Sourcify验证的支持，类似于[内置支持的Etherscan](/builders/build/eth-api/verify-contracts/etherscan-plugins#using-foundry-to-verify){target=_blank}。本指南部分中的示例将使用在[Foundry指南](/builders/build/eth-api/dev-env/foundry/){target=_blank}中创建的 `MyToken.sol` 合约。
+Foundry的Forge工具内置了对Sourcify验证的支持，类似于[内置支持的Etherscan](/builders/build/eth-api/verify-contracts/etherscan-plugins#using-foundry-to-verify){target=\_blank}。本指南部分中的示例将使用在[Foundry指南](/builders/build/eth-api/dev-env/foundry/){target=\_blank}中创建的 `MyToken.sol` 合约。
 
 使用Sourcify的Foundry项目必须让其编译器发出元数据文件。这可以在 `foundry.toml` 文件中配置：
 

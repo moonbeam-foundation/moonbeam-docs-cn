@@ -7,7 +7,7 @@ description: 在Moonscan上为部署在基于Moonbeam网络的ERC-20、ERC-721�
 
 ## 概览 {: #introduction }
 
-本教程将向您介绍为[Moonscan](https://moonscan.io){target=_blank}上的ERC-20、ERC-721和ERC-1155 Token新增Token简介的过程。
+本教程将向您介绍为[Moonscan](https://moonscan.io){target=\_blank}上的ERC-20、ERC-721和ERC-1155 Token新增Token简介的过程。
 
 Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moonscan经Moonbeam和Etherscan集成所推出，允许用户和开发者们访问开发者工具和网络统计数据，从而为Moonriver和Moonbeam的EVM提供深入的数据分析和洞察。
 
@@ -21,7 +21,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 在开始本教程之前，您将需要准备：
 
-- 一个[Moonscan账户](https://moonscan.io/register){target=_blank}
+- 一个[Moonscan账户](https://moonscan.io/register){target=\_blank}
 
 您将需要在本教程后半部分验证Token合约地址的所有权。您可以选择手动或自动操作此步骤，如果您选择自动操作，您需要执行以下步骤：
 
@@ -60,7 +60,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 ## 验证合约源代码 {: #verifying-contract-source-code }
 
-您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Foundry部署合约，您也可以使用其对应的[Etherscan整合](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}验证。
+您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Foundry部署合约，您也可以使用其对应的[Etherscan整合](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=\_blank}验证。
 
 要直接从Moonscan验证您的合约源代码，您可以点击**tool**链接。
 

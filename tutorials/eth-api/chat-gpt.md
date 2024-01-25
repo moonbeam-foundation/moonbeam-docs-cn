@@ -17,7 +17,7 @@ _作者：Kevin Neilson_
 
 ### 什么是 ChatGPT？ {: #what-is-chatgpt }
 
-[ChatGPT](https://chat.openai.com/){target=_blank}是由OpenAI公司创建的基于文本的大型语言模型（LLM）。根据OpenAI的说法，*“对话格式使ChatGPT能够回答后续问题、承认错误、挑战不正确的前提并拒绝不适当的请求。”*ChatGPT可以与您进行对话并记住您的聊天历史记录，直到新对话开始。要了解有关ChatGPT的更多信息，请查看[OpenAI博客上的ChatGPT简介](https://openai.com/blog/chatgpt){target=_blank}。
+[ChatGPT](https://chat.openai.com/){target=\_blank}是由OpenAI公司创建的基于文本的大型语言模型（LLM）。根据OpenAI的说法，*“对话格式使ChatGPT能够回答后续问题、承认错误、挑战不正确的前提并拒绝不适当的请求。”*ChatGPT可以与您进行对话并记住您的聊天历史记录，直到新对话开始。要了解有关ChatGPT的更多信息，请查看[OpenAI博客上的ChatGPT简介](https://openai.com/blog/chatgpt){target=\_blank}。
 
 ### GPT-4与ChatGPT的对比 {: #gpt-4-vs-chatgpt }
 
@@ -39,19 +39,19 @@ _作者：Kevin Neilson_
 
 要跟随本教程，您需要具备以下条件：
 
-- 能访问[ChatGPT的免费OpenAI账户](https://chat.openai.com/){target=_blank}
+- 能访问[ChatGPT的免费OpenAI账户](https://chat.openai.com/){target=\_blank}
 - 一个能够用于Moonbase Alpha测试网并拥有足够DEV Token的账户，协助您部署合约
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 注册一个OpenAI账户 {: #sign-up-for-an-openai-account }
 
-您可以访问[OpenAI 网站](https://chat.openai.com/auth/login){target=_blank}注册免费账户以访问ChatGPT。您需要提供电子邮件地址和电话号码。完成本教程不需要订阅ChatGPT Plus。
+您可以访问[OpenAI 网站](https://chat.openai.com/auth/login){target=\_blank}注册免费账户以访问ChatGPT。您需要提供电子邮件地址和电话号码。完成本教程不需要订阅ChatGPT Plus。
 
 ![Sign up for OpenAI account](/images/tutorials/eth-api/chatgpt/chatgpt-2.webp)
 
 ## 创建一个ERC-20 Token合约 {: #create-an-erc-20-token-contract }
 
-要开始与[ChatGPT](https://chat.openai.com/?model=gpt-4){target=_blank}交互，您可以跟随以下步骤：
+要开始与[ChatGPT](https://chat.openai.com/?model=gpt-4){target=\_blank}交互，您可以跟随以下步骤：
 
 1. 在左上角点击**New Chat**
 2. 选取您希望使用的模型，任何模型皆适用于此教程
@@ -68,7 +68,7 @@ with the symbol "KEV" and an initial supply of 40000000.
 
 ![ChatGPT's 1st response](/images/tutorials/eth-api/chatgpt/chatgpt-4.webp)
 
-这是一个很好的开始。ChatGPT为我们生成了一个简单但实用的ERC-20 Token，它满足我们指定的所有参数。它还阐明了如何使用[OpenZeppelin标准](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol){target=_blank}创建ERC-20 Token合约，以及初始供应量的方向。最后，它提醒我们这只是一个开始，我们可能还希望实现其他考虑因素，例如铸币和销毁。
+这是一个很好的开始。ChatGPT为我们生成了一个简单但实用的ERC-20 Token，它满足我们指定的所有参数。它还阐明了如何使用[OpenZeppelin标准](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol){target=\_blank}创建ERC-20 Token合约，以及初始供应量的方向。最后，它提醒我们这只是一个开始，我们可能还希望实现其他考虑因素，例如铸币和销毁。
 
 !!! 注意事项
     如果您并未获得您预期的输出，您可以点击**Regenerate Response**生成新的回答或重组您的要求。
@@ -85,7 +85,7 @@ ChatGPT很乐意效劳。请注意它如何维护我们最初指定的参数，�
 
 ## 准备部署指令 {: #preparing-deployment-instructions }
 
-此教程部分的命名非常谨慎，以避免暗示ChatGPT将为我们进行部署。ChatGPT无法访问互联网，无法直接与区块链网络交互，但它可以为我们提供详细的说明，解释我们如何自己做到这一点。现在让我们向ChatGPT询问有关部署最近创建的ERC20合约的说明。对于此示例，我们向ChatGPT询问[Hardhat部署说明](/builders/build/eth-api/dev-env/hardhat/){target=_blank}：
+此教程部分的命名非常谨慎，以避免暗示ChatGPT将为我们进行部署。ChatGPT无法访问互联网，无法直接与区块链网络交互，但它可以为我们提供详细的说明，解释我们如何自己做到这一点。现在让我们向ChatGPT询问有关部署最近创建的ERC20合约的说明。对于此示例，我们向ChatGPT询问[Hardhat部署说明](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}：
 
 ```text
 I would like to use Hardhat to compile and deploy
@@ -105,7 +105,7 @@ I would like to use Hardhat to compile and deploy
 !!! 注意事项
     ChatGPT的知识储备截止日期约为2021年9月。在此日期之后，它无法访问现今事件或其他数据。
 
-ChatGPT输出的代码片段在此处被故意省略，以鼓励您自行尝试！请记住，用完全相同的指令提示它至少会产生略有不同的结果 - 这是[大型语言模型的固有特色](https://blog.dataiku.com/large-language-model-chatgpt){target=_blank}。
+ChatGPT输出的代码片段在此处被故意省略，以鼓励您自行尝试！请记住，用完全相同的指令提示它至少会产生略有不同的结果 - 这是[大型语言模型的固有特色](https://blog.dataiku.com/large-language-model-chatgpt){target=\_blank}。
 
 ## 编写测试用例 {: #writing-test-cases }
 
@@ -134,7 +134,7 @@ ChatGPT为我们完成了测试用例的编写，并通过告诉我们如何运�
 
 如果您尝试了它建议的所有步骤，但问题仍然存在，您只需告知ChatGPT，它将继续帮助您排除故障。作为后续，它可能会要求您提供代码片段或系统配置信息，以更好地帮助您解决手头的问题。
 
-[重入错误](https://web.archive.org/web/20221121064906/https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/){target=_blank}是导致[2016年以太坊上的原始DAO崩溃](https://en.wikipedia.org/wiki/The_DAO_(organization)){target=_blank}。让我们向ChatGPT提示一个包含重入漏洞的错误函数，看看ChatGPT是否能够发现问题。我们继续将以下不安全的代码片段复制并粘贴到ChatGPT中，并询问它是否有任何问题。
+[重入错误](https://web.archive.org/web/20221121064906/https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/){target=\_blank}是导致[2016年以太坊上的原始DAO崩溃](https://en.wikipedia.org/wiki/The_DAO_(organization)){target=\_blank}。让我们向ChatGPT提示一个包含重入漏洞的错误函数，看看ChatGPT是否能够发现问题。我们继续将以下不安全的代码片段复制并粘贴到ChatGPT中，并询问它是否有任何问题。
 
 ```solidity
 // INSECURE
@@ -154,13 +154,13 @@ function withdrawBalance() public {
 
 ## 高级提示工程 {: #advanced-prompt-engineering }
 
-[提示工程](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/prompt-engineering){target=_blank}既是一门艺术，也是一门科学，掌握它可以帮助您充分利用ChatGPT等生成式AI工具。虽然不是详尽的列表，但以下是一些可以帮助您编写更好的提示的基本概念：
+[提示工程](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/prompt-engineering){target=\_blank}既是一门艺术，也是一门科学，掌握它可以帮助您充分利用ChatGPT等生成式AI工具。虽然不是详尽的列表，但以下是一些可以帮助您编写更好的提示的基本概念：
 
 - 具体并参数化您的请求。您向ChatGPT提供的详细信息越多，实际输出就越符合您的期望
 - 不要害怕修改！您不需要重复整个提示，您可以只要求更改，ChatGPT将相应地修改其之前的输出
 - 考虑重复或改写提示的关键部分。一些研究表明大型语言模型会强调您重复的部分。您可以通过重申您想要解决的最重要的概念来完成提示
 
-有关详细信息，请确保查看Microsoft的这篇关于[高级提示工程](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions){target=_blank}的文章。
+有关详细信息，请确保查看Microsoft的这篇关于[高级提示工程](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions){target=\_blank}的文章。
 
 ## 结论 {: #conclusion }
 

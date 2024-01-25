@@ -17,10 +17,10 @@ Moonbeam支持以太坊式事件的事件订阅。这允许您订阅事件并进
 
 本教程所使用的示例基于Ubuntu 18.04的环境。除此之外，还需要进行以下操作：
 
- - 安装MetaMask并[连接到Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接到Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 具有拥有一定数量资金的账户。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
- - 在Moonbase Alpha上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/){target=_blank}进行操作，但首先要确保MetaMask指向Moonbase Alpha
+ - 在Moonbase Alpha上部署您的ERC-20代币。您可以根据我们的[Remix教程](/builders/build/eth-api/dev-env/remix/){target=\_blank}进行操作，但首先要确保MetaMask指向Moonbase Alpha
 
 --8<-- 'text/_common/install-nodejs.md'
 
@@ -46,7 +46,7 @@ npm ls web3
 --8<-- 'code/builders/build/eth-api/pubsub/subscribe-to-event-logs.js'
 ```
 
-请注意，您需连接到Moonbase Alpha的WebSocket终端。调用`web3.eth.subscribe(‘logs’,  options [, callback])`方法订阅过滤后的事件日志。在本示例中，过滤选项有：事件发出的合约地址，以及用于描述事件的主题。更多关于事件主题的信息可以在[了解以太坊事件日志](https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378){target=_blank}这篇Medium文章中找到。如果事件没有主题，用户将订阅该合约发出的所有事件信息。如果仅过滤`Transfer`(代币转帐)事件，需要包含通过以下方式计算的事件签名：
+请注意，您需连接到Moonbase Alpha的WebSocket终端。调用`web3.eth.subscribe(‘logs’,  options [, callback])`方法订阅过滤后的事件日志。在本示例中，过滤选项有：事件发出的合约地址，以及用于描述事件的主题。更多关于事件主题的信息可以在[了解以太坊事件日志](https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378){target=\_blank}这篇Medium文章中找到。如果事件没有主题，用户将订阅该合约发出的所有事件信息。如果仅过滤`Transfer`(代币转帐)事件，需要包含通过以下方式计算的事件签名：
 
 ```js
 EventSignature = keccak256(Transfer(address,address,uint256))
@@ -72,13 +72,13 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 
 这里可以看到，`from`和`to`地址都包含在日志所返回的主题中。以太坊地址的长度为40 hex character（1 hex character等于4比特，所以为160比特或称为H160形式）。因此，要转换成64 hex character长度的H256地址，还需要加上24个0。
 
-无索引数据将显示在返回日志的`data`字段，但这一代码形式为bytes32/hex。您可以使用此[Web3类型串换工具](https://web3-type-converter.onbrn.com/){target=_blank}对其解码，并且验证这一`data`实际上等于1（加上18个0）。
+无索引数据将显示在返回日志的`data`字段，但这一代码形式为bytes32/hex。您可以使用此[Web3类型串换工具](https://web3-type-converter.onbrn.com/){target=\_blank}对其解码，并且验证这一`data`实际上等于1（加上18个0）。
 
 如果事件返回了多个无索引数据，这些数据将根据事件发出顺序，依次附在前一个数据之后。因此每个数据值都会被解码成32字节（或64 hex character长度）的小片段。
 
 ### 使用通配符和条件格式  {: #using-wildcards-and-conditional-formatting }
 
-考虑到通配符和条件格式的应用，v2版本新增的日志订阅功能在用于主题方面还有一些局限。但在[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/){target=_blank}版本中，这些局限已经得到解决。
+考虑到通配符和条件格式的应用，v2版本新增的日志订阅功能在用于主题方面还有一些局限。但在[Moonbase Alpha v3](https://moonbeam.network/announcements/moonbeam-network-upgrades-account-structure-to-match-ethereum/){target=\_blank}版本中，这些局限已经得到解决。
 
 延续上一小节的例子，我们将尝试通过以下代码订阅代币合约事件：
 
@@ -112,9 +112,9 @@ EventSignature = keccak256(Transfer(address,address,uint256))
 
 ## 检查节点是否与网络同步 {: #check-if-a-node-is-synchronized-with-the-network }
 
-通过发布/订阅功能，还可以检查某个订阅的特定节点是否与网络同步。可以调用[`web3.eth.subscribe(‘syncing' [, callback])`](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-subscribe.html#subscribe-syncing){target=_blank}方法，并通过相同的回调函数检查返回值。当节点没有在同步时，此订阅将返回一个为`false`的布尔值，或节点在同步时，则返回一个描述同步进度的对象，如下图所示。
+通过发布/订阅功能，还可以检查某个订阅的特定节点是否与网络同步。可以调用[`web3.eth.subscribe(‘syncing' [, callback])`](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-subscribe.html#subscribe-syncing){target=\_blank}方法，并通过相同的回调函数检查返回值。当节点没有在同步时，此订阅将返回一个为`false`的布尔值，或节点在同步时，则返回一个描述同步进度的对象，如下图所示。
 
 ![Subscribe to syncing response](/images/builders/build/eth-api/pubsub/pubsub-7.webp)
 
 !!! 注意事项
-    [Frontier](https://github.com/paritytech/frontier){target=_blank}的发布/订阅功能目前还在开发中。在此版本中，用户可以订阅特定的事件类型，但可能仍存在一些限制。
+    [Frontier](https://github.com/paritytech/frontier){target=\_blank}的发布/订阅功能目前还在开发中。在此版本中，用户可以订阅特定的事件类型，但可能仍存在一些限制。

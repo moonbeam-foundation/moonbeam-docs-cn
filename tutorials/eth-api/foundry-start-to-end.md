@@ -9,7 +9,7 @@ _作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction }
 
-Foundry已成为越来越受欢迎的用于开发智能合约的开发环境，因其只需要一种语言（Solidity）即可使用。建议您在开始使用Foundry之前，先阅读[在Moonbeam网络上使用Foundry的介绍文章](/builders/build/eth-api/dev-env/foundry){target=_blank}。在本教程中，我们将深入代码库，以全面了解如何正确开发、测试和部署。
+Foundry已成为越来越受欢迎的用于开发智能合约的开发环境，因其只需要一种语言（Solidity）即可使用。建议您在开始使用Foundry之前，先阅读[在Moonbeam网络上使用Foundry的介绍文章](/builders/build/eth-api/dev-env/foundry){target=\_blank}。在本教程中，我们将深入代码库，以全面了解如何正确开发、测试和部署。
 
 在本次操作演示中，我们将部署两个智能合约。一个是Token，另一个将基于此Token上。我们也将编写单元测试以确保合约如预期运作。要部署合约，我们要先编写脚本，Foundry将使用此脚本来决定部署逻辑。最后，我们要在Moonbeam网络的区块浏览器上验证智能合约。
 
@@ -21,8 +21,8 @@ Foundry已成为越来越受欢迎的用于开发智能合约的开发环境，�
     --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
 --8<-- 'text/_common/endpoint-examples.md'
- - [安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
- - 一个[Moonscan API密钥](/builders/build/eth-api/verify-contracts/api-verification/#generating-a-moonscan-api-key){target=_blank}
+ - [安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=\_blank}
+ - 一个[Moonscan API密钥](/builders/build/eth-api/verify-contracts/api-verification/#generating-a-moonscan-api-key){target=\_blank}
 
 ## 创建Foundry项目 {: #create-a-foundry-project }
 
@@ -34,7 +34,7 @@ forge init foundry && cd foundry
 
 这将使`forge`实用程序初始化一个名为`foundry`的新文件夹，并在其中初始化一个Foundry项目。`script`、`src`和`test`文件夹中可能已经有文件。请确保将其删除，因为我们会在之后编写自己的文件。
 
-在编写任何代码之前，您需要先做一些事情。首先，我们要添加对[OpenZeppelin的智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts){target=_blank}的依赖，因其包含一些有用的合约，将用于编写Token智能合约。为此，使用其GitHub代码库名称来完成添加:
+在编写任何代码之前，您需要先做一些事情。首先，我们要添加对[OpenZeppelin的智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts){target=\_blank}的依赖，因其包含一些有用的合约，将用于编写Token智能合约。为此，使用其GitHub代码库名称来完成添加:
 
 ```bash
 forge install OpenZeppelin/openzeppelin-contracts
@@ -206,7 +206,7 @@ contract MyTokenTest is Test {
 }
 ```
 
-我们来分析一下此处的代码：第一行是典型的Solidity文件：设置Solidity版本。接下来的两行是导入。`forge-std/Test.sol`是Forge（也就是Foundry）包含的用于帮助测试的标准库。这包括`Test`智能合约，某些断言（assertion）和[forge cheatcodes](https://book.getfoundry.sh/forge/cheatcodes){target=_blank}。
+我们来分析一下此处的代码：第一行是典型的Solidity文件：设置Solidity版本。接下来的两行是导入。`forge-std/Test.sol`是Forge（也就是Foundry）包含的用于帮助测试的标准库。这包括`Test`智能合约，某些断言（assertion）和[forge cheatcodes](https://book.getfoundry.sh/forge/cheatcodes){target=\_blank}。
 
 如果您查看`MyTokenTest`智能合约，您将看到两个函数。第一个是`setUp`，在每个测试之前运行。因此在此测试合约中，每次运行测试函数时都会部署`MyToken`新实例。如果函数以*"test"* 开头，则该函数为测试函数。所以第二个函数`testConstructorMint`是一个测试函数。
 
@@ -313,7 +313,7 @@ contract ContainerHarness is Container {
     }
 ```
 
-这些测试包含`uint256 amountToMint`作为输入，告知Foundry使用`uint256`输入进行模糊测试。默认情况下，Foundry将输入256个不同的输入，但可以使用[`FOUNDRY_FUZZ_RUNS`环境变量](https://book.getfoundry.sh/reference/config/testing#runs){target=_blank}配置。
+这些测试包含`uint256 amountToMint`作为输入，告知Foundry使用`uint256`输入进行模糊测试。默认情况下，Foundry将输入256个不同的输入，但可以使用[`FOUNDRY_FUZZ_RUNS`环境变量](https://book.getfoundry.sh/reference/config/testing#runs){target=\_blank}配置。
 
 此外，该函数的第一行使用`vm.assume`以仅使用小于等于1 ether的输入，如果有人试图一次铸造超过1 ether，则`mint`函数将返还。此cheatcode可以帮助您将模糊测试引导到正确的范围。
 
@@ -345,7 +345,7 @@ forge test
 在Foundry中，您可以在本地分叉网络，从而您可以测试合约如何在已部署合约的环境中运行。举例来说，如果有人在Moonbeam上已部署需要Token智能合约的智能合约`A`，您可以分叉Moonbeam网络并在分叉上部署您自己的Token以测试智能合约`A`如何反应。
 
 !!! 注意事项
-    Moonbeam的自定义预编译合约目前暂不可在Foundry分叉中使用，因为预编译是基于Substrate，而典型的合约是完全基于EVM。更多内容请参考：[Moonbeam上分叉](/builders/build/eth-api/dev-env/foundry#forking-with-anvil){target=_blank}和[Moonbeam和以太坊之间的异同之处](/builders/get-started/eth-compare){target=_blank}.
+    Moonbeam的自定义预编译合约目前暂不可在Foundry分叉中使用，因为预编译是基于Substrate，而典型的合约是完全基于EVM。更多内容请参考：[Moonbeam上分叉](/builders/build/eth-api/dev-env/foundry#forking-with-anvil){target=\_blank}和[Moonbeam和以太坊之间的异同之处](/builders/get-started/eth-compare){target=\_blank}.
 
 在本教程中，您将测试`Container`智能合约如何在Moonbase Alpha上与已部署的`MyToken`合约交互。
 
@@ -373,7 +373,7 @@ forge test
     }
 ```
 
-此函数的第一步（也是第一行）是让测试函数使用`vm.createFork`分叉网络。`vm`是由Forge标准库提供的cheatcode。创建分叉需要的是一个RPC URL或者存储在`foundry.toml`文件中的RPC URL别名。在本示例中，我们在[设置步骤](#setup-a-foundry-project){target=_blank}中为"moonbase"添加了一个RPC URL，因此在测试函数中我们将只需传递`"moonbase"`。此cheatcode函数返回创建分叉的ID，该ID存储在`uint256`中，是激活分叉所必需的。
+此函数的第一步（也是第一行）是让测试函数使用`vm.createFork`分叉网络。`vm`是由Forge标准库提供的cheatcode。创建分叉需要的是一个RPC URL或者存储在`foundry.toml`文件中的RPC URL别名。在本示例中，我们在[设置步骤](#setup-a-foundry-project){target=\_blank}中为"moonbase"添加了一个RPC URL，因此在测试函数中我们将只需传递`"moonbase"`。此cheatcode函数返回创建分叉的ID，该ID存储在`uint256`中，是激活分叉所必需的。
 
 在第二行中，即分叉创建后，将通过`vm.selectFork`在测试环境中选择和使用分叉。第三行只是为了证明当前的分叉，通过`vm.activeFork`检索，与Moonbase Alpha分叉相同。
 
@@ -387,7 +387,7 @@ forge test -vvvv
 
 ![Forking Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-4.webp)
 
-这就是测试的步骤！您可以在GitHub上查看完整的[`Container.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.t.sol){target=_blank}和[`MyToken.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/MyToken.t.sol){target=_blank}。
+这就是测试的步骤！您可以在GitHub上查看完整的[`Container.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.t.sol){target=\_blank}和[`MyToken.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/MyToken.t.sol){target=\_blank}。
 
 ## 使用Solidity脚本在Foundry中部署 {: #deploy-in-foundry-with-solidity-scripts }
 
@@ -451,7 +451,7 @@ MOONSCAN_API_KEY=YOUR_MOONSCAN_API_KEY
 ```
 
 !!! 注意事项
-    Foundry提供[用于处理私钥的其他选项](https://book.getfoundry.sh/reference/forge/forge-script#wallet-options---raw){target=_blank}。根据个人选择决定是否在控制台使用该私钥，私钥是否存储在设备环境中，是否使用硬件钱包或者使用keystore。
+    Foundry提供[用于处理私钥的其他选项](https://book.getfoundry.sh/reference/forge/forge-script#wallet-options---raw){target=\_blank}。根据个人选择决定是否在控制台使用该私钥，私钥是否存储在设备环境中，是否使用硬件钱包或者使用keystore。
 
 要添加这些环境变量，请运行以下命令：
 
@@ -473,7 +473,7 @@ forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --
 
 您应该能够看到您的合约已成功部署并且已在Moonscan上得到验证。可以查看我[部署`Container.sol`合约](https://moonbase.moonscan.io/address/0xe8bf2e654d7c1c1ba8f55fed280ddd241e46ced9#code)的地方。
 
-您可以在[GitHub](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.s.sol){target=_blank}上查看整个部署脚本。
+您可以在[GitHub](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.s.sol){target=\_blank}上查看整个部署脚本。
 
 ### 在Moonbeam主网上部署 {: #deploy-on-moonbeam-mainnet }
 
@@ -483,7 +483,7 @@ forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --
 forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --rpc-url moonbeam
 ```
 
-请注意，虽然这比较复杂，但是还有其他[在Foundry中处理私钥的方法](https://book.getfoundry.sh/reference/forge/forge-script#wallet-options---raw){target=_blank}。 其中一些方法可以被认为比将生产私钥存储在环境变量中更安全。
+请注意，虽然这比较复杂，但是还有其他[在Foundry中处理私钥的方法](https://book.getfoundry.sh/reference/forge/forge-script#wallet-options---raw){target=\_blank}。 其中一些方法可以被认为比将生产私钥存储在环境变量中更安全。
 
 这样就可以了！您已经从无到有，完成了一个完全经过测试、部署和验证的Foundry项目。现在您可以稍作调整将Foundry用于您自己的项目！
 

@@ -10,11 +10,11 @@ keywords: solidity, ethereum, proxy, moonbeam, precompiled, contracts, substrate
 
 Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有限数量的操作，例如治理、质押或余额转移。
 
-若一个用户想要为另一个用户提供执行有限数量操作的权限，传统方式只有将第一个账户的私钥提供给第二个账户才能实现。而Moonbeam包含了能够启用代理账户的[Substrate代理Pallet](/builders/pallets-precompiles/pallets/proxy){target=_blank}。代理帐户的作用是其提供了额外的安全层，可以为主帐户执行操作。举例来说，如果一个用户希望将其主账户安全存放于冷钱包中，同时仍想要访问钱包的部分功能（例如治理或质押），这是最好的选择。
+若一个用户想要为另一个用户提供执行有限数量操作的权限，传统方式只有将第一个账户的私钥提供给第二个账户才能实现。而Moonbeam包含了能够启用代理账户的[Substrate代理Pallet](/builders/pallets-precompiles/pallets/proxy){target=\_blank}。代理帐户的作用是其提供了额外的安全层，可以为主帐户执行操作。举例来说，如果一个用户希望将其主账户安全存放于冷钱包中，同时仍想要访问钱包的部分功能（例如治理或质押），这是最好的选择。
 
-**代理预编译仅可以从外部拥有账户（Externally Owned Account，EOA）或是[批量预编译](/builders/pallets-precompiles/precompiles/batch){target=_blank}调用。**
+**代理预编译仅可以从外部拥有账户（Externally Owned Account，EOA）或是[批量预编译](/builders/pallets-precompiles/precompiles/batch){target=\_blank}调用。**
 
-要了解关于代理账户的更多信息以及如何在无需使用代理预编译的情况下根据自身需求设置代理账户，请查看[设置代理账户](/tokens/manage/proxy-accounts){target=_blank}页面。
+要了解关于代理账户的更多信息以及如何在无需使用代理预编译的情况下根据自身需求设置代理账户，请查看[设置代理账户](/tokens/manage/proxy-accounts){target=\_blank}页面。
 
 代理预编译位于以下地址：
 
@@ -38,7 +38,7 @@ Moonbeam上代理预编译允许账户设置代理账户以作为代表执行有
 
 ## 代理Solidity接口 {: #the-proxy-solidity-interface }
 
-[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}是一个接口，通过Solidity合约可以与代理Pallet交互。您无需熟悉Substrate API，您可直接使用您所熟悉的以太坊接口与之交互。
+[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=\_blank}是一个接口，通过Solidity合约可以与代理Pallet交互。您无需熟悉Substrate API，您可直接使用您所熟悉的以太坊接口与之交互。
 
 接口包含以下函数：
 
@@ -77,24 +77,24 @@ enum ProxyType {
 
 ## 与Solidity接口交互 {: #interact-with-the-solidity-interface }
 
-以下部分将介绍如何与Remix中的代理预编译进行交互。请注意，**代理预编译仅可以从外部拥有账户（Externally Owned Account，EOA）或是[批量预编译](/builders/pallets-precompiles/precompiles/batch){target=_blank}调用。**
+以下部分将介绍如何与Remix中的代理预编译进行交互。请注意，**代理预编译仅可以从外部拥有账户（Externally Owned Account，EOA）或是[批量预编译](/builders/pallets-precompiles/precompiles/batch){target=\_blank}调用。**
 
 ### 查看先决条件 {: #checking-prerequisites }
 
 以下示例在Moonbase Alpha上演示，步骤也同样适用于Moonbeam和Moonriver。首先，您需要准备以下内容：
 
- - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 拥有DEV的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 第二个账户，将作为代理账户（资金可选）
 
 ### Remix设置 {: #remix-set-up }
 
-开始之前，获取[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=_blank}副本，并执行以下步骤：
+开始之前，获取[`Proxy.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/proxy/Proxy.sol){target=\_blank}副本，并执行以下步骤：
 
 1. 点击**File explorer**标签
 
-2. 复制文件内容并粘贴至名为`Proxy.sol`的[Remix文件](https://remix.ethereum.org/){target=_blank}
+2. 复制文件内容并粘贴至名为`Proxy.sol`的[Remix文件](https://remix.ethereum.org/){target=\_blank}
 
 ![Copying and Pasting the Proxy Interface into Remix](/images/builders/pallets-precompiles/precompiles/proxy/proxy-1.webp)
 
@@ -154,4 +154,4 @@ enum ProxyType {
 
 ![Call the removeProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-6.webp)
 
-这样就可以了！您已成功完成代理预编译。关于设置代理的其他参考资料可在[设置代理账户](/tokens/manage/proxy-accounts){target=_blank}页面和波卡文档库的[代理账户](https://wiki.polkadot.network/docs/learn-proxies){target=_blank}页面找到。若您有任何关于代理预编预方面的问题，欢迎随时在[Discord](https://discord.gg/moonbeam){target=_blank}上与我们取得联系。
+这样就可以了！您已成功完成代理预编译。关于设置代理的其他参考资料可在[设置代理账户](/tokens/manage/proxy-accounts){target=\_blank}页面和波卡文档库的[代理账户](https://wiki.polkadot.network/docs/learn-proxies){target=\_blank}页面找到。若您有任何关于代理预编预方面的问题，欢迎随时在[Discord](https://discord.gg/moonbeam){target=\_blank}上与我们取得联系。

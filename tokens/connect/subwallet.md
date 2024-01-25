@@ -7,9 +7,9 @@ description: 通过本教程学习如何将SubWallet（一款波卡、Substrate�
 
 ## 概览 {: #introduction }
 
-Moonbeam的开发者和用户在使用钱包时有多种选择。得益于Moonbeam与以太坊的无缝兼容性，Moonbeam支持[SubWallet](https://www.subwallet.app/zh/?lang=1){target=_blank}等多种常用钱包。
+Moonbeam的开发者和用户在使用钱包时有多种选择。得益于Moonbeam与以太坊的无缝兼容性，Moonbeam支持[SubWallet](https://www.subwallet.app/zh/?lang=1){target=\_blank}等多种常用钱包。
 
-SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包。尽管Moonbeam是一条基于Substrate的区块链，但是其有一个[统一的账户系统](/learn/features/unified-accounts){target=_blank}，用以太坊格式的账户和密钥替代了默认的Substrate格式的账户和密钥。由于Substrate支持以太坊格式的账户，因此您可以使用SubWallet与Moonbeam账户交互。
+SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包。尽管Moonbeam是一条基于Substrate的区块链，但是其有一个[统一的账户系统](/learn/features/unified-accounts){target=\_blank}，用以太坊格式的账户和密钥替代了默认的Substrate格式的账户和密钥。由于Substrate支持以太坊格式的账户，因此您可以使用SubWallet与Moonbeam账户交互。
 
 本教程将引导您如何从安装SubWallet到设置钱包，以及如何将其连接至Moonbeam并发送资金。
 
@@ -19,9 +19,9 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 与SubWallet交互有多种方式，例如**通过浏览器扩展程序、移动端App或网页端数据面板**。
 
-首先前往[SubWallet下载页面](https://www.subwallet.app/zh/download.html?lang=1){target=_blank}，根据个人使用习惯下载SubWallet。
+首先前往[SubWallet下载页面](https://www.subwallet.app/zh/download.html?lang=1){target=\_blank}，根据个人使用习惯下载SubWallet。
 
-如果您选择使用通过网页访问的数据面板，您无需下载任何东西，只需在[web.subwallet.app](https://web.subwallet.app/welcome){target=_blank}访问数据面板即可。
+如果您选择使用通过网页访问的数据面板，您无需下载任何东西，只需在[web.subwallet.app](https://web.subwallet.app/welcome){target=\_blank}访问数据面板即可。
 
 移动端App、浏览器扩展程序和网页端数据面板的界面类似，以下操作以浏览器扩展程序为例，您也可以针对移动端App和网页端数据面板调整以下步骤。
 
@@ -40,7 +40,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 以下部分将展开讲述如何使用SubWallet[创建新账户](#create-a-new-account-extension)和[导入现有账户](#import-an-account-extension)。
 
-如果您使用附加账户功能，您可以参考[SubWallet账户管理文档](https://docs.subwallet.app/main/extension-user-guide/account-management){target=_blank}的分步教程进行操作。同样地，如果您想要在网页端数据面板上连接钱包，您可以参考[SubWallet连接扩展程序文档](https://docs.subwallet.app/main/web-dashboard-user-guide/account-management/connect-extension){target=_blank}的教程。
+如果您使用附加账户功能，您可以参考[SubWallet账户管理文档](https://docs.subwallet.app/main/extension-user-guide/account-management){target=\_blank}的分步教程进行操作。同样地，如果您想要在网页端数据面板上连接钱包，您可以参考[SubWallet连接扩展程序文档](https://docs.subwallet.app/main/web-dashboard-user-guide/account-management/connect-extension){target=\_blank}的教程。
 
 ### 创建新钱包 {: #create-a-new-account }
 
@@ -82,7 +82,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 如果您选择**Import from seed phrase**（从助记词导入），从助记词导入账户时可能会出现一些不兼容问题。例如，Trust Wallet和SafePal钱包都与SubWallet不兼容。如果您遇到不兼容的问题SubWallet建议您创建一个新钱包。
 
-如果您选择**Import from Polkadot.{js}**（从Polkadot.{js}导入），您需要确保该账号是通过私钥在Polkadot.js中创建的。如果该账户是通过助记词创建并且尝试将其导入SubWallet，您将会得到一个一样的公共地址。这是因为Polkadot.js使用的是[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=_blank}，而以太坊使用的是[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=_blank}或[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=_blank}。
+如果您选择**Import from Polkadot.{js}**（从Polkadot.{js}导入），您需要确保该账号是通过私钥在Polkadot.js中创建的。如果该账户是通过助记词创建并且尝试将其导入SubWallet，您将会得到一个一样的公共地址。这是因为Polkadot.js使用的是[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki){target=\_blank}，而以太坊使用的是[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki){target=\_blank}或[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki){target=\_blank}。
 
 ![Select the import option from the Import account screen of the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-5.webp)
 
@@ -113,7 +113,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 如果您选择导入新账户，您需要选择使用助记词、JSON文件、MetaMask私钥或二维码进行导入，然后重复上述[导入账户](#import-an-account)部分的步骤进行操作。
 
-如果您选择附加账户，您可以参考[SubWallet账户管理文档](https://docs.subwallet.app/main/extension-user-guide/account-management){target=_blank}的分步教程进行操作。
+如果您选择附加账户，您可以参考[SubWallet账户管理文档](https://docs.subwallet.app/main/extension-user-guide/account-management){target=\_blank}的分步教程进行操作。
 
 ## 将SubWallet连接至Moonbeam {: #connect-subwallet-to-moonbeam }
 
@@ -128,7 +128,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 ![The customize asset display screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-10.webp)
 
-如果您想要连接至[本地Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}，您可以点击页面左上角的菜单栏，进入设置页面。
+如果您想要连接至[本地Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}，您可以点击页面左上角的菜单栏，进入设置页面。
 
 ![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-11.webp)
 
@@ -136,7 +136,7 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 ![The settings screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-12.webp)
 
-点击右上角的**+**图标，进入[网络配置](/builders/get-started/quick-start/#network-configurations){target=_blank}页面。你可以在此菜单栏管理和连接其他网络。
+点击右上角的**+**图标，进入[网络配置](/builders/get-started/quick-start/#network-configurations){target=\_blank}页面。你可以在此菜单栏管理和连接其他网络。
 
 ![The tokens screen on the SubWallet browser extension.](/images/tokens/connect/subwallet/subwallet-13.webp)
 
@@ -206,6 +206,6 @@ SubWallet是一款原生支持Substrate和以太坊账户的综合性Web3钱包�
 
 交易发送后，您将能够看到交易详情。
 
-这样就可以了。关于如何使用SubWallet的更多信息，请参考[SubWallet官方文档网站](https://docs.subwallet.app/main/){target=_blank}。
+这样就可以了。关于如何使用SubWallet的更多信息，请参考[SubWallet官方文档网站](https://docs.subwallet.app/main/){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

@@ -10,9 +10,9 @@ keywords: solidity, ethereum, randomness, VRF, moonbeam, precompiled, contracts
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种利用一些输入值并产生随机数的加密函数，并证明这些数值是由提交者生成。此证明可以由任何人验证，以确保准确计算生成的随机数计算。
 
-目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=_blank} Epoch随机数基于所有由中继链验证人在完整[Epoch](https://wiki.polkadot.network/docs/glossary#epoch){target=_blank}期间生产的VRF。
+目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=\_blank} Epoch随机数基于所有由中继链验证人在完整[Epoch](https://wiki.polkadot.network/docs/glossary#epoch){target=\_blank}期间生产的VRF。
 
-关于更多两种随机数来源的信息，如何请求和完成工作流程以及安全考虑，请查看[Moonbeam上的随机数](/learn/features/randomness){target=_blank}页面。
+关于更多两种随机数来源的信息，如何请求和完成工作流程以及安全考虑，请查看[Moonbeam上的随机数](/learn/features/randomness){target=\_blank}页面。
 
 Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者使用以太坊API通过本地VRF或BABE Epoch随机数来生成随机数。Moonbeam同样提供一个随机数消费者Solidity合约，您的合约必须继承此Solidity合约才能实现已完成的随机数请求。
 
@@ -42,7 +42,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数Solidity接口 {: #the-randomness-interface }
 
-[Randomness.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}为一个允许开发者与预编译方法交互的Solidity接口。
+[Randomness.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=\_blank}为一个允许开发者与预编译方法交互的Solidity接口。
 
 ??? code "Randomness.sol"
 
@@ -126,7 +126,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 ## 随机数消费者Solidity接口 {: #randomness-consumer-solidity-interface }
 
-[`RandomnessConsumer.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
+[`RandomnessConsumer.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/4e2a5785424be6faa01cd14e90155d9d2ec734ee/precompiles/randomness/RandomnessConsumer.sol){target=\_blank} Solidity接口使智能合约能够更简单地与随机数预编译交互。使用随机数消费者能确保完成来自随机数预编译。
 
 ??? code "RandomnessConsumer.sol"
 
@@ -159,7 +159,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 您合约的`fulfillRandomWords`回调将负责处理整个完成过程。举例来说，在彩票合约中，回调将会使用随机词选取赢家并支付奖品。
 
-如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
+如果一个请求已经过期，它可以通过预编译的[`purgeExpiredRequest`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=purgeExpiredRequest){target=\_blank}删除。当此函数被调用且请求费用已经被支付给调用者，保证金将被退还给原先的请求者。
 
 随机数请求的过程如下所示：
 
@@ -173,7 +173,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 跟随本指南，您需要准备以下内容：
 
-- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- [安装MetaMask并连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
 - 一个拥有`DEV` Token的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 
@@ -276,7 +276,7 @@ Moonbeam提供一个随机数预编译，其为一个允许智能合约开发者
 
 要将接口添加至Remix并跟随以下教程步骤，您将需要：
 
-1. 复制[`Randomness.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=_blank}
+1. 复制[`Randomness.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol){target=\_blank}
 2. 在Remix文件中粘贴文件内容并命名为**Randomness.sol**
 
 ![Add precompile to Remix](/images/builders/pallets-precompiles/precompiles/randomness/randomness-8.webp)

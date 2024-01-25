@@ -7,9 +7,9 @@ description: 学习如何使用Geth的Debug和Txpool API，以及OpenEthereum的
 
 ## 概览 {: #introduction }
 
-Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
+Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标准的RPC方法，用于获取更多关于交易处理的详细信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=\_blank}等项目仰赖这些方法检索区块链数据。
 
-要查看追踪RPC提供者，请查看[网络端点](/builders/get-started/endpoints#tracing-providers){target=_blank}页面。
+要查看追踪RPC提供者，请查看[网络端点](/builders/get-started/endpoints#tracing-providers){target=\_blank}页面。
 
 本教程将介绍Moonbeam上支持的RPC方法，以及如何通过使用curl命令对本地Moonbase Alpha追踪节点来调用这些方法。
 
@@ -17,21 +17,21 @@ Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标
 
 可用的RPC方法如下：
 
-  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=_blank}
-  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=_blank}
-  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=_blank}
-  - [`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=_blank}
-  - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=_blank}
-  - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=_blank}
-  - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=_blank}
+  - [`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=\_blank}
+  - [`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=\_blank}
+  - [`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=\_blank}
+  - [`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=\_blank}
+  - [`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=\_blank}
+  - [`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=\_blank}
+  - [`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=\_blank}
 
 ## Debug API {: #debug-api }
 
-有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug){target=_blank}：
+有关debug RPC的具体执行操作，请参考[Geth的debug API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug){target=\_blank}：
 
-  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=_blank}**  —— 需要追踪交易的哈希值
-  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=_blank}** —— 需要追踪区块的区块编号
-  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=_blank}** —— 需要追踪区块的哈希值
+  - **[`debug_traceTransaction`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtracetransaction){target=\_blank}**  —— 需要追踪交易的哈希值
+  - **[`debug_traceBlockByNumber`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbynumber){target=\_blank}** —— 需要追踪区块的区块编号
+  - **[`debug_traceBlockByHash`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug#debugtraceblockbyhash){target=\_blank}** —— 需要追踪区块的哈希值
 
 此外，还可提供以下*可选*参数：
 
@@ -43,13 +43,13 @@ Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标
 
 有关txpool RPC的具体执行操作，请参考[Geth的txpool API教程](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool)：
 
-  - **[`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=_blank}** —— 无需任何参数
-  - **[`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=_blank}** —— 无需任何参数
-  - **[`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=_blank}** —— 无需任何参数
+  - **[`txpool_content`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-content){target=\_blank}** —— 无需任何参数
+  - **[`txpool_inspect`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-inspect){target=\_blank}** —— 无需任何参数
+  - **[`txpool_status`](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool#txpool-status){target=\_blank}** —— 无需任何参数
 
 ## Trace模块 {: #trace-module }
 
-有关[`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=_blank} RPC的具体执行操作，请参考[OpenEthereum的Trace模块教程](https://openethereum.github.io/JSONRPC-trace-module){target=_blank}：
+有关[`trace_filter`](https://openethereum.github.io/JSONRPC-trace-module#trace_filter){target=\_blank} RPC的具体执行操作，请参考[OpenEthereum的Trace模块教程](https://openethereum.github.io/JSONRPC-trace-module){target=\_blank}：
 
  - **fromBlock**(*uint* blockNumber) —— 输入区块编号(`hex`)， 创世区块`earliest` ，或可用最佳区块`latest` （默认）。追踪第一个区块
  - **toBlock**(*uint* blockNumber) —— 输入区块编号(`hex`)，创世区块`earliest` ，或可用最佳区块`latest` （默认）。追踪最后一个区块
@@ -63,13 +63,13 @@ Geth的 debug 与 txpool API，以及OpenEthereum的 trace 模块均提供非标
  - `trace_filter`的单个请求允许返回的最大追踪条目数为`500`。超过此限制的请求将返回错误
  - 请求处理的区块会暂时存储在缓存中`300`秒，之后将被删除
 
-如需更改默认值，您可以在启动追踪节点时添加[附加标识](/node-operators/networks/tracing-node/#additional-flags){target=_blank}。
+如需更改默认值，您可以在启动追踪节点时添加[附加标识](/node-operators/networks/tracing-node/#additional-flags){target=\_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 本教程假设您有一个Moonbase Alpha追踪节点的本地运行实例，并启用`debug`、`txpool`和`tracing`命令行标识。对于Moonbeam和Moonriver，你也可以相应调整说明。
 
-如果您尚未运行追踪节点，您可以按照[运行追踪节点](/node-operators/networks/tracing-node/){target=_blank}上的指南进行操作。RPC HTTP终端为`{{ networks.development.rpc_url }}`。
+如果您尚未运行追踪节点，您可以按照[运行追踪节点](/node-operators/networks/tracing-node/){target=\_blank}上的指南进行操作。RPC HTTP终端为`{{ networks.development.rpc_url }}`。
 
 如果您已有运行的节点，也会看到相似的终端日志：
 

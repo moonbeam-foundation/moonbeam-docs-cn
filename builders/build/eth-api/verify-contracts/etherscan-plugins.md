@@ -9,7 +9,7 @@ description: 学习如何使用Hardhat和Foundry提供的Etherscan插件在Moonb
 
 验证智能合约是为部署在Moonbeam上的合约提供透明度和安全性的一种好方法。Hardhat和Foundry与Etherscan的合约验证服务集成，通过本地检测要验证的合约以及需要哪些Solidity库如果有来自动化合约验证过程。
 
-Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_blank}项目。[Foundry](https://github.com/foundry-rs/foundry){target=_blank}也具有Etherscan功能，但它们内置于其Forge工具中，而非包含在单独的插件中。
+Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=\_blank}项目。[Foundry](https://github.com/foundry-rs/foundry){target=\_blank}也具有Etherscan功能，但它们内置于其Forge工具中，而非包含在单独的插件中。
 
 本教程将向您展示如何使用两者插件验证部署至Moonbase Alpha的智能合约。本教程也同样适用于Moonbeam和Moonriver。
 
@@ -20,12 +20,12 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 - [安装MetaMask并将其连接至Moonbase Alpha](/tokens/connect/metamask/)测试网
 - 一个拥有`DEV` Token的账户
  --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 一个您将尝试验证合约网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥
+- 一个您将尝试验证合约网络的Moonscan API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您将需要一个[Moonbeam Moonscan](https://moonscan.io/){target=\_blank} API密钥；如果您选择在Moonriver上验证合约，您将需要一个[Moonriver Moonscan](https://moonriver.moonscan.io/){target=\_blank} API密钥
 - 安装和配置Git
 
 ## 生成Moonscan API密钥 {: generating-a-moonscan-api-key }
 
-要生成Moonscan API密钥，您需要先注册一个账号。这取决于您想要在哪个网络上验证合约，请确保您在Moonscan上选择正确的网络创建API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您可以前往[Moonbeam Moonscan](https://moonscan.io/){target=_blank}；如果您选择在Moonriver上验证合约，您可以前往[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank}。要注册一个账号，请遵循以下步骤：
+要生成Moonscan API密钥，您需要先注册一个账号。这取决于您想要在哪个网络上验证合约，请确保您在Moonscan上选择正确的网络创建API密钥。如果您选择在Moonbeam和Moonbase Alpha上验证合约，您可以前往[Moonbeam Moonscan](https://moonscan.io/){target=\_blank}；如果您选择在Moonriver上验证合约，您可以前往[Moonriver Moonscan](https://moonriver.moonscan.io/){target=\_blank}。要注册一个账号，请遵循以下步骤：
 
 1. 点击**Sign In**
 2. 选择**Click to sign up**后注册您的新账号
@@ -43,7 +43,7 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=_
 
 ## 使用Hardhat Etherscan插件 {: #using-the-hardhat-etherscan-plugin }
 
-本教程此部分将以[使用Hardhat部署至Moonbeam](/builders/build/eth-api/dev-env/hardhat/){target=_blank}所创建的`Box.sol`合约为例。
+本教程此部分将以[使用Hardhat部署至Moonbeam](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}所创建的`Box.sol`合约为例。
 
 开始使用Hardhat Etherscan插件之前，您需要先运行以下代码安装插件库：
 
@@ -54,7 +54,7 @@ npm install --save-dev @nomicfoundation/hardhat-verify
 !!! 注意事项
     `@nomicfoundation/hardhat-verify`的3.0.1版本中已添加对基于Moonbeam网络的支持。您可以通过查看`devDependencies`部分的`package.json`来确认所使用的版本并更新至3.0.1或以上的版本（若需要）。
 
-您可以将您的Moonscan API密钥与您的私钥一起添加到`hardhat.config.js`文件中。在本示例中，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
+您可以将您的Moonscan API密钥与您的私钥一起添加到`hardhat.config.js`文件中。在本示例中，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=\_blank} API密钥。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=\_blank} API密钥。
 
 从您的Hardhat项目中，打开`hardhat.config.js`文件，导入`hardhat-verify`插件和您的Moonscan API密钥，并添加Etherscan配置：
 
@@ -83,7 +83,7 @@ module.exports = {
 npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS
 ```
 
-在您的终端，您将看到您的合约源代码已成功提交验证。如果验证成功，您将在终端看到**Successfully verified contract**以及[Moonbase Alpha上的Moonscan](https://moonbase.moonscan.io/){target=_blank}的合约代码链接。
+在您的终端，您将看到您的合约源代码已成功提交验证。如果验证成功，您将在终端看到**Successfully verified contract**以及[Moonbase Alpha上的Moonscan](https://moonbase.moonscan.io/){target=\_blank}的合约代码链接。
 
 ![Successful verification using hardhat-verify plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-3.webp)
 
@@ -93,19 +93,19 @@ npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS
 npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS INSERT_CONSTRUCTOR_ARGS
 ```
 
-参考[Hardhat Verify文档网站](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify){target=_blank}获取其他如下所示用例：
+参考[Hardhat Verify文档网站](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify){target=\_blank}获取其他如下所示用例：
 
-- [complex函数](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#complex-arguments){target=_blank}
-- [无法检测到地址的库](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#libraries-with-undetectable-addresses){target=_blank}
-- 使用[多个API密钥](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#multiple-api-keys-and-alternative-block-explorers){target=_blank}
-- 使用[`verify`命令编程](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#using-programmatically){target=_blank}
-- [检测正确的constructor函数](https://info.etherscan.com/determine-correct-constructor-argument-during-source-code-verification-on-etherscan/){target=_blank}
+- [complex函数](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#complex-arguments){target=\_blank}
+- [无法检测到地址的库](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#libraries-with-undetectable-addresses){target=\_blank}
+- 使用[多个API密钥](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#multiple-api-keys-and-alternative-block-explorers){target=\_blank}
+- 使用[`verify`命令编程](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#using-programmatically){target=\_blank}
+- [检测正确的constructor函数](https://info.etherscan.com/determine-correct-constructor-argument-during-source-code-verification-on-etherscan/){target=\_blank}
 
 ## 使用Foundry验证 {: #using-foundry-to-verify }
 
-本教程此部分将以[使用Foundry部署合约至Moonbeam](/builders/build/eth-api/dev-env/foundry/){target=_blank}所创建的`MyToken.sol`合约为例。
+本教程此部分将以[使用Foundry部署合约至Moonbeam](/builders/build/eth-api/dev-env/foundry/){target=\_blank}所创建的`MyToken.sol`合约为例。
 
-除了Foundry项目，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=_blank} API密钥。此API密钥可用于Moonbeam和Moonbase Alpha网络。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=_blank} API密钥。
+除了Foundry项目，您将需要[Moonbeam Moonscan](https://moonscan.io/){target=\_blank} API密钥。此API密钥可用于Moonbeam和Moonbase Alpha网络。如果您想要在Moonriver上验证合约，您将需要[Moonriver Moonscan](https://moonriver.moonscan.io/){target=\_blank} API密钥。
 
 如果您已部署示例合约，您可以使用`verify-contract`命令行来验证。在验证合约之前，您将需要ABI编码constructor函数。为此，您可以运行以下命令：
 

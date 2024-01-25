@@ -11,7 +11,7 @@
 - **transferFrom**(*address* from, *address* to, *uint256* value) - 从一个指定地址转移Token至另一个指定地址，若成功则返回`true`
 
 !!! 注意事项
-    ERC-20标准没有明确多次调用`approve`的具体影响，但是使用此功能多次更改额度可能会开启攻击向量。为避免不正确或意外的交易排序，您可以先将`spender`额度减少至`0`，然后再设置一个预期的额度。更多关于攻击向量的详情，请参阅[ERC-20 API: An Attack Vector on Approve/TransferFrom Methods](https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit#){target=_blank}。
+    ERC-20标准没有明确多次调用`approve`的具体影响，但是使用此功能多次更改额度可能会开启攻击向量。为避免不正确或意外的交易排序，您可以先将`spender`额度减少至`0`，然后再设置一个预期的额度。更多关于攻击向量的详情，请参阅[ERC-20 API: An Attack Vector on Approve/TransferFrom Methods](https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit#){target=\_blank}。
 
 该接口也包含以下必要事件：
 

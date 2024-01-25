@@ -27,7 +27,7 @@ description: 如何通过智能合约在Moonbeam以太坊DApp使用Razor Network
 |   2    |      |       BTC        |
 |   3    |      | Microsoft Stocks |
 
-通过[Razor网络浏览器](https://razorscan.io/#/custom){target=_blank}可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档](https://docs.razor.network/){target=_blank}。
+通过[Razor网络浏览器](https://razorscan.io/#/custom){target=\_blank}可以查看喂价数据对应的Job ID（喂价每5分钟更新一次）。更多详情，请访问[Razor文档](https://docs.razor.network/){target=\_blank}。
 
 ## 从桥接合约获取数据 {: #get-data-from-bridge-contract } 
 

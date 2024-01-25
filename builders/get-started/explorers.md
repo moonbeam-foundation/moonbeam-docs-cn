@@ -19,21 +19,21 @@ Moonbeam现在提供两种不同的浏览器：一种用于查询以太坊API，
 
 ### Moonscan {: #Moonscan }
 
-[Moonscan](https://moonscan.io/){target=_blank}是Moonbeam主要的以太坊API区块浏览器。Moonscan由Etherscan团队创建，为用户提供强大、直观且功能丰富的体验。除了全面的交易和区块数据，Moonscan还提供一系列的[数据和图表](https://moonbeam.moonscan.io/charts){target=_blank}，如平均Gas价格、日交易量和区块大小图表。
+[Moonscan](https://moonscan.io/){target=\_blank}是Moonbeam主要的以太坊API区块浏览器。Moonscan由Etherscan团队创建，为用户提供强大、直观且功能丰富的体验。除了全面的交易和区块数据，Moonscan还提供一系列的[数据和图表](https://moonbeam.moonscan.io/charts){target=\_blank}，如平均Gas价格、日交易量和区块大小图表。
 
 Moonscan其他功能如下：
 
- - [收集人排行榜](https://moonbeam.moonscan.io/collators){target=_blank}，通过收集人的表现进行排名
- - [合约源码验证](/builders/build/eth-api/verify-contracts/block-explorers/){target=_blank}，可通过网页界面和API访问
+ - [收集人排行榜](https://moonbeam.moonscan.io/collators){target=\_blank}，通过收集人的表现进行排名
+ - [合约源码验证](/builders/build/eth-api/verify-contracts/block-explorers/){target=\_blank}，可通过网页界面和API访问
  - 能够读写已验证的智能合约的状态数据
- - [Token授权](https://moonscan.io/tokenapprovalchecker){target=_blank}，您可以查看和撤销任何之前的Token授权
- - [添加Token信息](/builders/get-started/token-profile/){target=_blank}，并为部署到基于Moonbeam的网络的ERC-20、ERC-721和ERC-1155创建资料页面。资料页面可以包括您的项目连接、社交媒体、价格数据和与代币有关的其他信息
+ - [Token授权](https://moonscan.io/tokenapprovalchecker){target=\_blank}，您可以查看和撤销任何之前的Token授权
+ - [添加Token信息](/builders/get-started/token-profile/){target=\_blank}，并为部署到基于Moonbeam的网络的ERC-20、ERC-721和ERC-1155创建资料页面。资料页面可以包括您的项目连接、社交媒体、价格数据和与代币有关的其他信息
 
 ![Moonbeam Moonscan](/images/builders/get-started/explorers/explorers-1.webp)
 
 ### Expedition {: #expedition }
 
-以Moonbeam为主题的[Expedition](https://github.com/xops/expedition){target=_blank}浏览器版可以在[此链接](https://moonbeam-explorer.netlify.app/){target=_blank}找到。它是一个简单的JSON-RPC浏览器。
+以Moonbeam为主题的[Expedition](https://github.com/xops/expedition){target=\_blank}浏览器版可以在[此链接](https://moonbeam-explorer.netlify.app/){target=\_blank}找到。它是一个简单的JSON-RPC浏览器。
 
 默认情况下，该浏览器连接至Moonbeam。您可通过以下步骤切换至Moonriver、Moonbase Alpha或连接至本地开发节点：
 
@@ -47,17 +47,17 @@ Moonscan其他功能如下：
 
 ### Subscan {: #subscan }
 
-[Subscan](https://moonbeam.subscan.io/){target=_blank} 是Moonbeam主要的Substrate API区块浏览器，它能够解析标准或自定义模块。举例而言，这个功能对展示关于质押、治理和EVM pallet（或是模块）非常有帮助。所有代码都是开源的，并且可以在[Subscan Essentials](https://github.com/subscan-explorer/subscan-essentials){target=_blank}找到。
+[Subscan](https://moonbeam.subscan.io/){target=\_blank} 是Moonbeam主要的Substrate API区块浏览器，它能够解析标准或自定义模块。举例而言，这个功能对展示关于质押、治理和EVM pallet（或是模块）非常有帮助。所有代码都是开源的，并且可以在[Subscan Essentials](https://github.com/subscan-explorer/subscan-essentials){target=\_blank}找到。
 
 ![Subscan Moonbeam](/images/builders/get-started/explorers/explorers-3.webp)
 
 ### Polkadot.js {: #polkadotjs }
 
-虽然Polkadot.js Apps不是功能齐全的区块浏览器，但是一个方便的选项，尤其是对于运行本地开发节点的用户，使其可以查看事件和查询交易哈希。Polkadot.js Apps使用WebSocket端点与网络进行交互。Polkadot.js Apps支持[Moonbeam](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=_blank}、[Moonriver](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbase.moonbeam.network#/explorer){target=_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=_blank}。
+虽然Polkadot.js Apps不是功能齐全的区块浏览器，但是一个方便的选项，尤其是对于运行本地开发节点的用户，使其可以查看事件和查询交易哈希。Polkadot.js Apps使用WebSocket端点与网络进行交互。Polkadot.js Apps支持[Moonbeam](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network#/explorer){target=\_blank}、[Moonriver](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbase.moonbeam.network#/explorer){target=\_blank}和[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer){target=\_blank}。
 
 ![Polkadot.js Moonbeam](/images/builders/get-started/explorers/explorers-4.webp)
 
-要将其连接到 Moonbeam 开发节点，您可以按照 [将Polkadot.js应用程序连接到本地Moonbeam节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=_blank}部分的[开始使用 Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank} 指南。默认端口为`9944`。
+要将其连接到 Moonbeam 开发节点，您可以按照 [将Polkadot.js应用程序连接到本地Moonbeam节点](/builders/get-started/networks/moonbeam-dev/#connecting-polkadot-js-apps-to-a-local-moonbeam-node){target=\_blank}部分的[开始使用 Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank} 指南。默认端口为`9944`。
 
 ![Polkadot.js Local Node](/images/builders/get-started/explorers/explorers-5.webp)
 

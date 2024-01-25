@@ -7,12 +7,12 @@ description:  通过此教程学习如何使用OpenZeppelin Defender在兼容以
 
 ## 概览 {: #introduction }
 
-[OpenZeppelin Defender](https://docs.openzeppelin.com/defender/){target=_blank}是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：
+[OpenZeppelin Defender](https://docs.openzeppelin.com/defender/){target=\_blank}是基于网络的应用程序，让开发者可以通过安全的方式实现智能合约运行的自动化。Defender提供以下不同的组件：
 
- - [**Admin**](https://docs.openzeppelin.com/defender/v1/admin){target=_blank} —— 实现所有智能合约运行过程的自动化，例如进入权限控制、升级、暂停等，并提供安全保障
- - [**Relay**](https://docs.openzeppelin.com/defender/v1/relay){target=_blank} —— 通过具备私有中继器部署、安全的私有交易基础设施进行构建
- - [**Autotasks**](https://docs.openzeppelin.com/defender/v1/autotasks){target=_blank} —— 创建自动化脚本，与智能合约交互
- - [**Sentinel**](https://docs.openzeppelin.com/defender/v1/sentinel){target=_blank} —— 监控智能合约的事件、功能及交易，并通过邮件接收通知
+ - [**Admin**](https://docs.openzeppelin.com/defender/v1/admin){target=\_blank} —— 实现所有智能合约运行过程的自动化，例如进入权限控制、升级、暂停等，并提供安全保障
+ - [**Relay**](https://docs.openzeppelin.com/defender/v1/relay){target=\_blank} —— 通过具备私有中继器部署、安全的私有交易基础设施进行构建
+ - [**Autotasks**](https://docs.openzeppelin.com/defender/v1/autotasks){target=\_blank} —— 创建自动化脚本，与智能合约交互
+ - [**Sentinel**](https://docs.openzeppelin.com/defender/v1/sentinel){target=\_blank} —— 监控智能合约的事件、功能及交易，并通过邮件接收通知
 
 OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网。本教程将介绍如何使用Defender，并演示如何通过Admin组件暂停部署于Moonbase Alpha的智能合约，也可适用于Moonbeam和Moonriver。
 
@@ -24,11 +24,11 @@ OpenZeppelin Defender现已上线Moonbeam、Moonriver和Moonbase Alpha测试网�
 
 ### 检查先决条件 {: #checking-prerequisites }
 
-请确保安装[MetaMask](https://metamask.io/){target=_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/builders/integrations/wallets/metamask/){target=_blank}进行操作。
+请确保安装[MetaMask](https://metamask.io/){target=\_blank}，并已连接至Moonbase Alpha测试网。如果您还没有将MetaMask连接到测试网，请根据我们的[MetaMask整合教程](/builders/integrations/wallets/metamask/){target=\_blank}进行操作。
 
-此外，您还需要登录[Defender](https://defender.openzeppelin.com/){target=_blank}网站并注册OpenZeppelin免费账户。
+此外，您还需要登录[Defender](https://defender.openzeppelin.com/){target=\_blank}网站并注册OpenZeppelin免费账户。
 
-本教程使用的合约是在[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=_blank}中的`Box.sol`合约的拓展，是OpenZeppelin文档中抽取的合约。此外，本合约可升级、[可暂停](https://docs.openzeppelin.com/contracts/4.x/api/security#Pausable){target=_blank}，能够充分发挥Admin组件的优势。您可以使用以下代码进行合约部署，并根据[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=_blank}进行操作：
+本教程使用的合约是在[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=\_blank}中的`Box.sol`合约的拓展，是OpenZeppelin文档中抽取的合约。此外，本合约可升级、[可暂停](https://docs.openzeppelin.com/contracts/4.x/api/security#Pausable){target=\_blank}，能够充分发挥Admin组件的优势。您可以使用以下代码进行合约部署，并根据[智能合约升级教程](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=\_blank}进行操作：
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -72,7 +72,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 ### 连接Defender {: #connecting-defender }
 
-注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/builders/get-started/networks/moonbase/#connect-metamask){target=_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
+注册了OpenZeppelin Defender账户以后，登录[Defender App](https://defender.openzeppelin.com/){target=\_blank}。在主屏幕中，您将看到[MetaMask已连接到Moonbase Alpha](/builders/get-started/networks/moonbase/#connect-metamask){target=\_blank}，点击右上角的**Connect wallet**（连接钱包）按钮：
 
 ![OpenZeppelin Defender Connect](/images/builders/build/eth-api/dev-env/openzeppelin/defender/oz-defender-1.webp)
 
@@ -89,7 +89,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. 设置合约名称（仅用于显示）
  2. 选择需管理合约所在的网络。如果该合约已经以相同地址部署到多个网络中，这一步将尤其有用。在这一示例中，输入`Moonbase Alpha`
  3. 输入合约地址
- 4. 粘贴合约ABI。可以通过[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}或者在编译过程（例如在Hardhat）中创建的`.json`文件中找到
+ 4. 粘贴合约ABI。可以通过[Remix](/builders/build/eth-api/dev-env/remix/){target=\_blank}或者在编译过程（例如在Hardhat）中创建的`.json`文件中找到
  5. 检查合约功能是否被正确识别
  6. 检查所有信息后，点击**Add**（添加）按钮
 
@@ -104,7 +104,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 提案指的是合约即将执行的行动。截至本文撰写时，该合约已产生三个主要提案/行动：
 
 - **Pause** —— 检测到暂停功能后可用。可暂停代币转移、铸造及销毁
-- **Upgrade** —— 检测到升级功能后可用。[可通过代理合约对合约进行升级](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=_blank}
+- **Upgrade** —— 检测到升级功能后可用。[可通过代理合约对合约进行升级](https://docs.openzeppelin.com/learn/upgrading-smart-contracts){target=\_blank}
 - **Admin action** —— 可调用受管理合约的任何函数
 
 在本示例中，我们创建了一个新提案，提案内容为暂停合约。为此，需要进行以下操作：

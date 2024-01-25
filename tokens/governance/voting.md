@@ -16,7 +16,7 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 本教程将分步概述如何在Moonbeam的OpenGov（Governance v2）对公投进行投票。此教程将展示如何在Moonbase Alpha上进行投票，这也同样适用于Moonbeam或Moonriver。
 
 !!! 注意事项
-    本教程将介绍如何在技术层面上投票的机制。Token持有者可以使用[Polkassembly](https://moonbeam.network/tutorial/participate-in-moonbeam-governance-with-polkassembly/){target=_blank}等用户友好性界面的平台进行投票。
+    本教程将介绍如何在技术层面上投票的机制。Token持有者可以使用[Polkassembly](https://moonbeam.network/tutorial/participate-in-moonbeam-governance-with-polkassembly/){target=\_blank}等用户友好性界面的平台进行投票。
 
 ## 定义 {: #definitions }
 
@@ -54,21 +54,21 @@ Token持有者可以使用持有的Token进行投票。影响投票权重的因�
 
 --8<-- 'text/learn/features/governance/delegation-definitions.md'
 
-关于Track的特定参数更多信息，例如决定期、确认期、生效等待期、批准和支持要求等，请参考[治理概览的OpenGov（Governance V2）的治理参数部分](/learn/features/governance/#governance-parameters-v2){target=_blank}。
+关于Track的特定参数更多信息，例如决定期、确认期、生效等待期、批准和支持要求等，请参考[治理概览的OpenGov（Governance V2）的治理参数部分](/learn/features/governance/#governance-parameters-v2){target=\_blank}。
 
 ## 提案步骤 {: #roadmap-of-a-proposal }
 
 本教程将涵盖如何对公投进行投票，如下面提案路线图中突出显示的步骤所示。您将了解如何对公投进行投票以及提案如何在带入期、决定期、确认期和生效等待期展开进展。
 
-您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=_blank}部分找到详细的解释。
+您可以在[治理概览页面的OpenGov提案步骤](/learn/features/governance/#roadmap-of-a-proposal-v2){target=\_blank}部分找到详细的解释。
 
 ![Proposal Roadmap](/images/tokens/governance/voting/proposal-roadmap.webp)
 
 ## 论坛讨论 {: #forum-discussion}
 
-民主公投的投票是一个二元结果。然而，Token持有者的意见往往不只是赞成/反对。因此建议您先在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}上发布有关提案详情的帖子。
+民主公投的投票是一个二元结果。然而，Token持有者的意见往往不只是赞成/反对。因此建议您先在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}上发布有关提案详情的帖子。
 
-Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在链上行动之前接收来自社区反馈的平台。正如[使用Moonbeam社区论坛](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=_blank}的教程中所述，在论坛上创建帖子非常简单且快速。每个提案类型都有对应的类别，包括治理、财政库和grant提案。此步骤可选择操作，但是解释提案的详情并且跟进提出的任何问题可能会增加社区赞成和提案通过的可能性。
+Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在链上行动之前接收来自社区反馈的平台。正如[使用Moonbeam社区论坛](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=\_blank}的教程中所述，在论坛上创建帖子非常简单且快速。每个提案类型都有对应的类别，包括治理、财政库和grant提案。此步骤可选择操作，但是解释提案的详情并且跟进提出的任何问题可能会增加社区赞成和提案通过的可能性。
 
 ![Moonbeam's Community Forum home](/images/tokens/governance/voting/vote-1.webp)
 
@@ -76,11 +76,11 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 此部分将介绍Moonbase Alpha上OpenGov（Governance v2）公投的投票流程。操作步骤也同样适用于Moonbeam或Moonriver。本教程使用已经创建的公投进行讲解，如果您想要参与目前已开放的公投， 您也可以同样使用这些步骤进行投票。
 
-要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
+要在网络中对提案进行投票，您需要使用Polkadot.js Apps界面。为此，您需要先导入以太坊格式的地址（H160地址），您可以通过[创建或导入H160账户](/tokens/connect/polkadotjs/#creating-or-importing-an-h160-account){target=\_blank}教程完成此步骤。在本示例中，我们导入了三个账户，并分别命名为Alice、Bob和Charlie。
 
 ![Accounts in Polkadot.js](/images/tokens/governance/proposals/proposals-3.webp)
 
-在Moonbeam上对提案进行投票非常简单。前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=_blank}，所有治理相关功能都在**Governance**标签下。在**Governance**下拉菜单中选择**Referenda**，您可以看到所有的公投。在**Referenda**页面，您可以看到每个Track的公投列表。要查看特定公投的详情，请点击描述旁边的箭头。提案和描述旁边的数字称为公投编号。
+在Moonbeam上对提案进行投票非常简单。前往[Moonbase Alpha的Polkadot.js Apps界面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbeam.network){target=\_blank}，所有治理相关功能都在**Governance**标签下。在**Governance**下拉菜单中选择**Referenda**，您可以看到所有的公投。在**Referenda**页面，您可以看到每个Track的公投列表。要查看特定公投的详情，请点击描述旁边的箭头。提案和描述旁边的数字称为公投编号。
 
 ### 如何通过贡献决定保证金支持提案 {: #submit-decision-deposit }
 
@@ -88,7 +88,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 
 举例来说，在General Admin Track中的公投需要在Moonbase Alpha上有{{ networks.moonbase.governance.tracks.general_admin.decision_deposit }}的决定保证金。
 
-从[Polkadot.js Apps的公投列表](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}中可以发现，有些提案已经处于**Preparing**状态。如果提交公投需要一笔决定保证金，您会看到**Decision deposit**的按钮。要提交保证金，您可以点击按钮进行操作。
+从[Polkadot.js Apps的公投列表](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=\_blank}中可以发现，有些提案已经处于**Preparing**状态。如果提交公投需要一笔决定保证金，您会看到**Decision deposit**的按钮。要提交保证金，您可以点击按钮进行操作。
 
 ![To start to submit a Decision Deposit for a referendum, click on the "Decision deposit" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-2.webp)
 
@@ -117,7 +117,7 @@ Moonbeam社区论坛的关键作用是为社区提供讨论并允许提议者在
 1. 在**vote with account**选择想要投票的账户
 2. 选择公投投票的形式。您可以选择**Aye**支持公投，或者选择**Nay**反对公投，如果您想要分别设置赞成票和反对票，则可以选择**Split**
 3. 输入投票的数值
-4. 设置投票的信念值，即决定投票权重（`vote_weight = tokens * conviction_multiplier`）。请参考[信念乘数](/learn/features/governance/#conviction-multiplier){target=_blank}文档获取更多信息
+4. 设置投票的信念值，即决定投票权重（`vote_weight = tokens * conviction_multiplier`）。请参考[信念乘数](/learn/features/governance/#conviction-multiplier){target=\_blank}文档获取更多信息
 5. 点击**Vote**并签署交易
 
 ![To submit a vote on a referendum, fill out the details of the vote and click on the "Vote" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-5.webp)
@@ -152,7 +152,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
 随着OpenGov（Governance v2）的推出，Token持有者甚至可以根据Track委托他们的投票，并为每个Track指定不同的委托，其称为多角色委托（Multirole Delegation）。
 
-前往[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}，点击**Delegate**开始操作。
+前往[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=\_blank}，点击**Delegate**开始操作。
 
 ![To submit a delegate vote on a referendum, click on the "Delegate" button on Polkadot.js Apps.](/images/tokens/governance/voting/vote-8.webp)
 
@@ -161,7 +161,7 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 1. 在**delegate from account**输入希望委托的账户
 2. 在**submission track**选择提交的Track类型，或者打开**apply delegation to all tracks**按钮允许其他账户代表您在任何Track上投票
 3. 在**delegated vote value**输入委托的数值
-4. 设置投票的信念值，即决定投票权重（`vote_weight = tokens * conviction_multiplier`）。请参考[信念乘数](/learn/features/governance/#conviction-multiplier){target=_blank}文档获取更多信息
+4. 设置投票的信念值，即决定投票权重（`vote_weight = tokens * conviction_multiplier`）。请参考[信念乘数](/learn/features/governance/#conviction-multiplier){target=\_blank}文档获取更多信息
 5. 点击**Next**
 6. 在下一个页面，在**delegate to address**选择您想要将投票委托给的账户
 7. 点击**Delegate**并签署交易
@@ -176,14 +176,14 @@ Token持有者可以选择将投票权委托给其它信任的账户。受委托
 
 1. 选择您委托的账户
 2. 选择**convictionVoting** pallet和**undelegate** extrinsic
-3. 在**class**输入Origin的值。在本示例中是General Admin Track级别，值为`2`。要获取完整的Track ID列表，请参考[治理概览页面的OpenGov部分](/learn/features/governance/#general-parameters-by-track){target=_blank}
+3. 在**class**输入Origin的值。在本示例中是General Admin Track级别，值为`2`。要获取完整的Track ID列表，请参考[治理概览页面的OpenGov部分](/learn/features/governance/#general-parameters-by-track){target=\_blank}
 4. 点击**Submit transaction**并签署交易
 
 ![Undelegate a vote on Polkadot.js Apps.](/images/tokens/governance/voting/vote-10.webp)
 
 ### 退还决定保证金 {: #refund-the-decision-deposit }
 
-如果公投被批准或拒绝，只要不是因为恶意提案被拒绝，则决定保证金将有资格被退还。恶意提案将导致保证金被没收。任何Token持有者可以触发保证金退还提交保证金的原始账户。要退还保证金，您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=_blank}执行以下操作。如果公投符合条件且保证金尚未退还，您将看到**Refund deposit**的按钮。点击此按钮开始操作。
+如果公投被批准或拒绝，只要不是因为恶意提案被拒绝，则决定保证金将有资格被退还。恶意提案将导致保证金被没收。任何Token持有者可以触发保证金退还提交保证金的原始账户。要退还保证金，您可以在[Polkadot.js Apps的公投页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/referenda){target=\_blank}执行以下操作。如果公投符合条件且保证金尚未退还，您将看到**Refund deposit**的按钮。点击此按钮开始操作。
 
 ![Get started refunding a Decision Deposit from a passed referendum on Polkadot.js Apps.](/images/tokens/governance/voting/vote-11.webp)
 

@@ -7,7 +7,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 ## 概览 {: #introduction }
 
-[Hardhat](https://hardhat.org/){target=_blank}是一个以太坊开发环境，可帮助开发人员管理和自动化构建智能合约和DApp所固有的重复性任务。Hardhat可以直接与Moonbeam的以太坊API交互，因此可以在部署智能合约至Moonbeam时使用。
+[Hardhat](https://hardhat.org/){target=\_blank}是一个以太坊开发环境，可帮助开发人员管理和自动化构建智能合约和DApp所固有的重复性任务。Hardhat可以直接与Moonbeam的以太坊API交互，因此可以在部署智能合约至Moonbeam时使用。
 
 本教程将涵盖如何使用Hardhat在Moonbase Alpha测试网上编译、部署和调试以太坊智能合约。本教程也同样适用于Moonbeam、Moonriver和Moonbeam开发节点。
 
@@ -15,7 +15,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 在开始之前，您将需要准备以下内容：
 
-- 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+- 安装MetaMask并[将其连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
 - 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 
@@ -58,7 +58,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 这将在您的项目目录中创建一个Hardhat配置文件（`hardhat.config.js`）。
 
-Hardhat项目创建完毕后，您可以安装[Ethers plugin](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将为使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
+Hardhat项目创建完毕后，您可以安装[Ethers plugin](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}。这将为使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}代码库与网络交互提供一种简便方式。您可以运行以下命令进行安装：
 
 ```sh
 npm install @nomicfoundation/hardhat-ethers ethers
@@ -292,11 +292,11 @@ await box.retrieve();
 
 ## 使用Hardhat进行分叉 {: #hardhat-forking }
 
-您可以使用Hardhat[分叉（fork）](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=_blank} 包括Moonbeam在内的任何EVM兼容链。分叉是在本地模拟实时Moonbeam网络，使您可以在本地测试环境中与已部署在Moonbeam上的合约交互。因为Hardhat的分叉是基于EVM实现，您可以通过[Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=_blank}和[Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=_blank}支持的标准以太坊JSON-RPC方法与分叉网络交互。
+您可以使用Hardhat[分叉（fork）](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks){target=\_blank} 包括Moonbeam在内的任何EVM兼容链。分叉是在本地模拟实时Moonbeam网络，使您可以在本地测试环境中与已部署在Moonbeam上的合约交互。因为Hardhat的分叉是基于EVM实现，您可以通过[Moonbeam](/builders/get-started/eth-compare/rpc-support/){target=\_blank}和[Hardhat](https://hardhat.org/hardhat-network/docs/reference#json-rpc-methods-support){target=\_blank}支持的标准以太坊JSON-RPC方法与分叉网络交互。
 
 您需要了解一些使用Hardhat进行分叉的注意事项。您无法与任何Moonbeam预编译合约及其函数交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。这将阻止您与Moonbeam上的跨链资产和基于Substrate的功能（例如质押和治理）进行交互。
 
-当前分叉Moonbeam存在一个问题，为了解决此问题，您需要先手动修补Hardhat。您可以通过[GitHub上的问题](https://github.com/NomicFoundation/hardhat/issues/2395#issuecomment-1043838164){target=_blank}和相关[PR](https://github.com/NomicFoundation/hardhat/pull/2313){target=_blank}获取更多信息。
+当前分叉Moonbeam存在一个问题，为了解决此问题，您需要先手动修补Hardhat。您可以通过[GitHub上的问题](https://github.com/NomicFoundation/hardhat/issues/2395#issuecomment-1043838164){target=\_blank}和相关[PR](https://github.com/NomicFoundation/hardhat/pull/2313){target=\_blank}获取更多信息。
 
 ### 修补Hardhat {: #patching-hardhat }
 
@@ -396,7 +396,7 @@ Errors: Invalid value null supplied to : RpcBlockWithTransactions | null/transac
   }
 ```
 
-然后，您可以通过运行以下命令使用[patch-package](https://www.npmjs.com/package/patch-package){target=_blank}自动应用代码包：
+然后，您可以通过运行以下命令使用[patch-package](https://www.npmjs.com/package/patch-package){target=\_blank}自动应用代码包：
 
 ```sh
 npx patch-package hardhat
@@ -406,7 +406,7 @@ npx patch-package hardhat
 
 ### 分叉Moonbeam {: #forking-moonbeam }
 
-您可以从命令行分叉Moonbeam或配置您的Hardhat项目以始终从您的`hardhat.config.js`文件运行此分叉。要分叉Moonbeam或Moonriver，需要用到您自己的端点和API密钥，您可以从[端点提供商](/builders/get-started/endpoints/){target=_blank}所支持的列表中获取。
+您可以从命令行分叉Moonbeam或配置您的Hardhat项目以始终从您的`hardhat.config.js`文件运行此分叉。要分叉Moonbeam或Moonriver，需要用到您自己的端点和API密钥，您可以从[端点提供商](/builders/get-started/endpoints/){target=\_blank}所支持的列表中获取。
 
 要从命令行分叉Moonbeam，您可以从您的Hardhat项目目录中运行以下命令：
 
@@ -482,7 +482,7 @@ npx patch-package hardhat
 curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
 ```
 
-如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=_blank}交叉查询区块号。
+如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=\_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=\_blank}交叉查询区块号。
 
 在这里，您可以部署新的合约到您的Moonbeam分叉实例，或者通过创建已部署合约的本地实例与已部署合约交互。
 

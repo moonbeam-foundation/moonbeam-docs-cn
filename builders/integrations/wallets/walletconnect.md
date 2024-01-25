@@ -7,7 +7,7 @@ description: 了解如何将WalletConnect集成到基于任何Moonbeam网络的D
 
 ## 概览 {: #introduction }
 
-[WalletConnect](https://walletconnect.com/){target=_blank}是一个供钱包和DApp之间安全交互的开源协议。
+[WalletConnect](https://walletconnect.com/){target=\_blank}是一个供钱包和DApp之间安全交互的开源协议。
 
 WalletConnect通过使用桥接服务器以中继负载在DApp和移动端钱包构建一个远端连接。通过DApp中的二维码即可发起连接，用户需要扫描二维码并在移动端钱包上通过。当连接成功建立后，DApp和钱包之间的负载将会通过共享私钥进行加密。
 
@@ -17,7 +17,7 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
 
 在本教程中，您将会了解如何将WalletConnect集成至在Moonbase Alpha测试网构建的简易DApp。本教程将会分为几个部分，第一个部分为将DApp连接至您手机上的MetaMask移动端钱包。当成功建立连接后，教程将会解释如何解除连接。如此以来，您将可以在测试您的DApp时随时连接或是取消连接您的MetaMask，以免您的MetaMask具有过多冗余的WalletConnect连接存在。接着，您将会了解在成功连接后如何显示网络、账户信息以及从您的DApp传送交易至MetaMask移动端钱包以进行确认。
 
-本教程为[WalletConnect Example Dapp](https://example.walletconnect.org/){target=_blank}（[source code](https://github.com/WalletConnect/walletconnect-example-dapp){target=_blank}）的修改和优化版本。如果您想查看最终结果，您可以前往[Moonbeam WalletConnect Demo app](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank}（[source code](https://github.com/papermoonio/moonbeam-walletconnect-demo){target=_blank}）
+本教程为[WalletConnect Example Dapp](https://example.walletconnect.org/){target=\_blank}（[source code](https://github.com/WalletConnect/walletconnect-example-dapp){target=\_blank}）的修改和优化版本。如果您想查看最终结果，您可以前往[Moonbeam WalletConnect Demo app](https://moonbeam-walletconnect-demo.netlify.app/){target=\_blank}（[source code](https://github.com/papermoonio/moonbeam-walletconnect-demo){target=\_blank}）
 
 ## 快速开始 {: #quick-start }
 
@@ -88,13 +88,13 @@ WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在本教程中，您将会使用以[React](https://reactjs.org/){target=_blank}构建的简易终端DApp通过WalletConnect连接至移动端钱包。因此，您将会需要一个React项目以及MetaMask移动端钱包以进行测试。目前已经有建立好的范本，其中包含需要的工具包、基础撰写模式以及需要加入逻辑和UI元素的占位符。然而，如果您要使用您自己的DApp进行测试，您将需要安装以下所需依赖项：
+在本教程中，您将会使用以[React](https://reactjs.org/){target=\_blank}构建的简易终端DApp通过WalletConnect连接至移动端钱包。因此，您将会需要一个React项目以及MetaMask移动端钱包以进行测试。目前已经有建立好的范本，其中包含需要的工具包、基础撰写模式以及需要加入逻辑和UI元素的占位符。然而，如果您要使用您自己的DApp进行测试，您将需要安装以下所需依赖项：
 
 ```bash
 npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 ```
 
-本教程将会使用MetaMask移动端钱包以进行测试。您可以前往[metamask.io/download/](https://metamask.io/download/){target=_blank}并切换**iOS**或**Android**标签下载MetaMask移动端钱包。
+本教程将会使用MetaMask移动端钱包以进行测试。您可以前往[metamask.io/download/](https://metamask.io/download/){target=\_blank}并切换**iOS**或**Android**标签下载MetaMask移动端钱包。
 
 最后，您需要一个拥有足够DEV Token的Moonbase Alpha测试网账户，您方能传送测试交易。
  --8<-- 'text/_common/faucet/faucet-sentence.md'
@@ -103,13 +103,13 @@ npm install ethers @walletconnect/client @walletconnect/qrcode-modal
 
 Moonbeam WalletConnect范本提供了所有您目前为止需要的内容，为了迅速开始进行测试，请跟随以下步骤：
 
-1. 复制[walletconnect-template GitHub repository](https://github.com/papermoonio/moonbeam-walletconnect-template){target=_blank}
+1. 复制[walletconnect-template GitHub repository](https://github.com/papermoonio/moonbeam-walletconnect-template){target=\_blank}
 2. 运行`npm install`以安装所需依赖项
 3. 运行`npm start`以启动DApp的本地实例
 
 为测试WalletConnect连接功能，您可以使用MetaMask移动端钱包。在本教程中，您将需要在您的MetaMask移动端钱包中连接至Moonbase Alpha测试网。接着，您将会了解如何查看连接网络是否为支持网络，并在用户连接至错误网络时显现连接错误并建议用户连接至支持的网络。
 
-目前有许多方式可以将MetaMask移动端钱包连接至Moonbase Alpha测试网。您可以在**Networks**部分的**Settings**菜单中手动添加Moonbase Alpha测试网配置。您也可以打开MetaMask移动端钱包的**Browser**页面并导向至[docs.moonbeam.network](https://docs.moonbeam.network){target=_blank}，接着点击页面上方的**Connect MetaMask**后在菜单中选择**Moonbase Alpha**。这将会跳出弹窗协助您自动添加Moonbase Alpha网络配置，这意味着您无需手动输入配置信息。
+目前有许多方式可以将MetaMask移动端钱包连接至Moonbase Alpha测试网。您可以在**Networks**部分的**Settings**菜单中手动添加Moonbase Alpha测试网配置。您也可以打开MetaMask移动端钱包的**Browser**页面并导向至[docs.moonbeam.network](https://docs.moonbeam.network){target=\_blank}，接着点击页面上方的**Connect MetaMask**后在菜单中选择**Moonbase Alpha**。这将会跳出弹窗协助您自动添加Moonbase Alpha网络配置，这意味着您无需手动输入配置信息。
 
 ## 将DApp连接至MetaMask移动端钱包 {: #connect-dapp-to-metamask-mobile }
 
@@ -141,7 +141,7 @@ const connect = async () => {
 };
 ```
 
-现在您已经成功设定了`connect`函数，您可以创建一个**Connect Wallet**按钮并称为`onClick`。您可以在[范本](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/App.js#L124){target=_blank}中使用以下按钮取代`{/* buttons and network details will go here */}`留言：
+现在您已经成功设定了`connect`函数，您可以创建一个**Connect Wallet**按钮并称为`onClick`。您可以在[范本](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/App.js#L124){target=\_blank}中使用以下按钮取代`{/* buttons and network details will go here */}`留言：
 
 ```js
 <Button onClick={connect}>Connect Wallet</Button>
@@ -206,7 +206,7 @@ const killSession = () => {
 };
 ```
 
-现在您已经具有了所有的逻辑以处理解除连接的操作，您将会需要一个**Disconnect**按纽包含`onClick` 以触发 `killSession` 函数。由于您仅希望在用户已连接时显示**Disconnect**按钮，您可以使用 [conditional renderering](https://reactjs.org/docs/conditional-rendering.html){target=_blank}。条件渲染（Conditional renderering）使您能够查看指定的参数，如果当前条件符合您的设定您将可以渲染一个元件或是其他元件。在此例当中，如果您获取的并不是先前连接和连接器的存在，您可以渲染**Disconnect**按钮，否则渲染**Connect Wallet**按钮。您可以使用以下部分取代已存在的`<Button>` ：
+现在您已经具有了所有的逻辑以处理解除连接的操作，您将会需要一个**Disconnect**按纽包含`onClick` 以触发 `killSession` 函数。由于您仅希望在用户已连接时显示**Disconnect**按钮，您可以使用 [conditional renderering](https://reactjs.org/docs/conditional-rendering.html){target=\_blank}。条件渲染（Conditional renderering）使您能够查看指定的参数，如果当前条件符合您的设定您将可以渲染一个元件或是其他元件。在此例当中，如果您获取的并不是先前连接和连接器的存在，您可以渲染**Disconnect**按钮，否则渲染**Connect Wallet**按钮。您可以使用以下部分取代已存在的`<Button>` ：
 
 ```js
 {
@@ -226,7 +226,7 @@ const killSession = () => {
 
 如前所述，用户仅仅可以在其移动端钱包解除和终止连接。如果用户发起解除连接，WalletConnect将会发出一个`disconnect`事件供DApp监听。当收到`disconnect`事件，DApp状态将会需要被重置回先前的状态。在此示例中，用户已经在其移动端钱包中解除了连接，因此我们不需要使用`killSession`在移动端钱包解除连接。
 
-您将会注意到在范本中，`disconnect`事件在[React Effect Hook](https://reactjs.org/docs/hooks-effect.html){target=_blank}中被监听。作用回调函数将会让您在函数组件中执行副作用操作，如获取数据和设置订阅。
+您将会注意到在范本中，`disconnect`事件在[React Effect Hook](https://reactjs.org/docs/hooks-effect.html){target=\_blank}中被监听。作用回调函数将会让您在函数组件中执行副作用操作，如获取数据和设置订阅。
 
 在`disconnect`获得响应后，您可以新增`resetApp`函数。如此一来，当任何`disconnect`事件被发出，您将能够重置您DApp的状态。
 
@@ -246,7 +246,7 @@ connector.on('disconnect', async (error) => {
 
 当连接和解除连接的逻辑已成功完成，您可以开始扩展用户连接至DApp时显示的内容。首先您需要检查网络是否为支持的网络，如果不是，则会显示提示要求您切换网络。
 
-范本包含了支持网络的列表，您可以在[`src/helpers/networks.js`](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/helpers/networks.js){target=_blank}中找到。由于本教程仅用于测试，您只能使用Moonbase Alpha进行测试。但欢迎您使用Moonbeam和Moonriver网络配置，以及根据需求新增其他支持的网络。
+范本包含了支持网络的列表，您可以在[`src/helpers/networks.js`](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/helpers/networks.js){target=\_blank}中找到。由于本教程仅用于测试，您只能使用Moonbase Alpha进行测试。但欢迎您使用Moonbeam和Moonriver网络配置，以及根据需求新增其他支持的网络。
 
 您可以在`onConnect`函数新增检查是否为支持网络的逻辑。`onConnect`函数将会在`connect`事件被发送时触发。当用户已连接至支持的网络，您可以显示如chain ID、网络名称和更多关于网络的信息。您可以新增以下的状态参数和函数：
 
@@ -341,7 +341,7 @@ useEffect(() => {
 
 范本当中已经包含`refreshData`函数，其将会在特定情况下被触发。如果`connector`存在且成功连接，但`chainId`或`account`并不存在，您将会需要调用`refreshData`函数并使用`connector`配置以更新状态并重新渲染页面上的变量。
 
-您可以使用以下内容取代`// check state variables here & if needed refresh the app`[留言](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/App.js#L84){target=_blank}：
+您可以使用以下内容取代`// check state variables here & if needed refresh the app`[留言](https://github.com/papermoonio/moonbeam-walletconnect-template/blob/main/src/App.js#L84){target=\_blank}：
 
 ```js
 // If any of these variables do not exist and the connector is connected, refresh the data
@@ -354,7 +354,7 @@ if ((!chainId || !account) && connector.connected) {
 
 ## 新增账户余额 {: #add-account-balance }
 
-根据您的需求，您或许会希望在连接的网络上显示账户余额，您可以使用[Ethers](https://docs.ethers.org/){target=_blank}创建一个提供者，用于获取连接账户的余额。
+根据您的需求，您或许会希望在连接的网络上显示账户余额，您可以使用[Ethers](https://docs.ethers.org/){target=\_blank}创建一个提供者，用于获取连接账户的余额。
 
 您可以通过为`balance`加入另一个状态变量开始进行操作：
 
@@ -498,15 +498,15 @@ const sendTransaction = async () => {
 
 ![Send Transaction](/images/builders/integrations/wallets/walletconnect/walletconnect-5.webp)
 
-同样您也可以在[Moonscan](https://moonbase.moonscan.io/){target=_blank}中搜寻您的账户地址以验证交易是否成功。
+同样您也可以在[Moonscan](https://moonbase.moonscan.io/){target=\_blank}中搜寻您的账户地址以验证交易是否成功。
 
 ## 最终结果 {: #final-result }
 
 ![DApp Final Result](/images/builders/integrations/wallets/walletconnect/walletconnect-6.webp)
 
-要一次性检查此教程中的代码，您可以前往[moonbeam-walletconnect-demo GitHub repository](https://github.com/papermoonio/moonbeam-walletconnect-demo){target=_blank}。
+要一次性检查此教程中的代码，您可以前往[moonbeam-walletconnect-demo GitHub repository](https://github.com/papermoonio/moonbeam-walletconnect-demo){target=\_blank}。
 
-要查看所有代码细节，您可以前往[Moonbeam WalletConnect Demo App](https://moonbeam-walletconnect-demo.netlify.app/){target=_blank}。
+要查看所有代码细节，您可以前往[Moonbeam WalletConnect Demo App](https://moonbeam-walletconnect-demo.netlify.app/){target=\_blank}。
 
 ## 其他注意事项 {: #additional-considerations }
 

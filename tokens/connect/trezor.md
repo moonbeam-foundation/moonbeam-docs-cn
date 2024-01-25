@@ -19,7 +19,7 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在您开始之前，请将您的[Trezor Suite](https://suite.trezor.io/){target=_blank}更新至最新的可用版本。 与此同时，请确认您的Trezor硬件钱包运行的是最新的固件。Trezor wiki有提供如何更新[Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1){target=_blank}和[Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware){target=_blank}设备固件的教程。
+在您开始之前，请将您的[Trezor Suite](https://suite.trezor.io/){target=\_blank}更新至最新的可用版本。 与此同时，请确认您的Trezor硬件钱包运行的是最新的固件。Trezor wiki有提供如何更新[Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1){target=\_blank}和[Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware){target=\_blank}设备固件的教程。
 
 截至本教程撰写时，使用的版本如下：
 
@@ -27,7 +27,7 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
  - Trezor One firmware v1.10.0
  - Trezor Model T firmware v2.4.0
 
-除此之外，您还需要MetaMask作为您Trezor设备与Moonbase Alpha之间的媒介，请确保您的[MetaMask已成功连接至Moonbase Alpha](/integrations/wallets/metamask/){target=_blank}。请注意，您的Trezor设备会在您连接至MetaMask的网络内签署交易。
+除此之外，您还需要MetaMask作为您Trezor设备与Moonbase Alpha之间的媒介，请确保您的[MetaMask已成功连接至Moonbase Alpha](/integrations/wallets/metamask/){target=\_blank}。请注意，您的Trezor设备会在您连接至MetaMask的网络内签署交易。
 
 ## 将您的Trezor账户导入MetaMask {: #importing-your-trezor-account-to-metamask }
 
@@ -61,7 +61,7 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
 
 ![Trezor Hardware Wallet Connect Wizard Allow Read Public Keys](/images/tokens/connect/trezor/trezor-5.webp)
 
-接着，您会被询问是否要导出您以太坊账户的公钥（如下图1）。点击之后，会跳出一个画面请您输入密码的选项（如下图2）。如果您想要使用默认钱包，可以直接点击**Enter**。相反地，请跟随[关于密码钱包的Trezor wiki文章](https://wiki.trezor.io/Passphrase){target=_blank}。
+接着，您会被询问是否要导出您以太坊账户的公钥（如下图1）。点击之后，会跳出一个画面请您输入密码的选项（如下图2）。如果您想要使用默认钱包，可以直接点击**Enter**。相反地，请跟随[关于密码钱包的Trezor wiki文章](https://wiki.trezor.io/Passphrase){target=\_blank}。
 
 ![Trezor Hardware Wallet Connect Wizard Allow Export and Passphrase](/images/tokens/connect/trezor/trezor-6.webp)
 
@@ -84,7 +84,7 @@ description: 学习如何将您的Trezor硬件钱包导入MetaMask，并使用Tr
 
 如果您已成功[将您的Trezor账户导入MetaMask](#将您的Trezor账户导入MetaMask)，并准备好使用您的Trezor设备在Moonbeam上签署交易。本教程将会带您了解如何在Moonbase Alpha测试网传送一个基础的交易，这些步骤同样适用于Moonbeam生态系统的其他网络。
 
-首先，确保您的Trezor账户[有足够的DEV Token](/builders/get-started/networks/moonbase/#get-tokens/){target=_blank}。接着，点击**Send**按钮。
+首先，确保您的Trezor账户[有足够的DEV Token](/builders/get-started/networks/moonbase/#get-tokens/){target=\_blank}。接着，点击**Send**按钮。
 
 ![MetaMask Trezor Account Funded](/images/tokens/connect/trezor/trezor-9.webp)
 

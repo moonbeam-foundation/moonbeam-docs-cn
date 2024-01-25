@@ -7,7 +7,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 ## 概览 {: #introduction }
 
-[Brownie](https://eth-brownie.readthedocs.io/){target=_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
+[Brownie](https://eth-brownie.readthedocs.io/){target=\_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
 
 本教程将会包含如何在Moonbase Alpha测试网使用Brownie与以太坊式智能合约进行编译、部署和交互。此教程也同样适用于Moonbeam、Moonriver以及Moonbeam开发节点。
 
@@ -15,7 +15,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 首先，您需要准备以下先决条件：
 
- - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 具有拥有一定数量资金的账户。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
@@ -23,7 +23,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 ## 创建Brownie项目 {: #creating-a-brownie-project }
 
-您将会需要安装Brownie并创建一个Brownie项目（如果您尚未创建）。您可以选择创建一个空白的项目或是使用[Brownie mix](https://eth-brownie.readthedocs.io/en/stable/init.html?highlight=brownie%20mix#creating-a-project-from-a-template){target=_blank}（基础的项目模板）创建项目。本教程将以创建一个空白的项目为例，您可以通过跟随以下步骤进行操作：
+您将会需要安装Brownie并创建一个Brownie项目（如果您尚未创建）。您可以选择创建一个空白的项目或是使用[Brownie mix](https://eth-brownie.readthedocs.io/en/stable/init.html?highlight=brownie%20mix#creating-a-project-from-a-template){target=\_blank}（基础的项目模板）创建项目。本教程将以创建一个空白的项目为例，您可以通过跟随以下步骤进行操作：
 
 1. 为您的项目创建目录
 
@@ -38,14 +38,14 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
     python3 -m pipx ensurepath
     ```
 
-3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
+3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=\_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
 
     ```bash
     pipx install eth-brownie
     ```
 
     !!! 注意事项
-        [`pipx`](https://github.com/pypa/pipx){target=_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
+        [`pipx`](https://github.com/pypa/pipx){target=\_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
 
 4. 创建项目
 
@@ -60,7 +60,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 - **build** —— 用于例如来自编译的合约代码的项目数据
 - **contracts** —— 用于储存智能合约文件
 - **interfaces** —— 用于项目所需的智能合约接口
-- **reports** —— 用于在[Brownie GUI](https://eth-brownie.readthedocs.io/en/stable/gui.html){target=_blank}使用的JSON报告文件
+- **reports** —— 用于在[Brownie GUI](https://eth-brownie.readthedocs.io/en/stable/gui.html){target=\_blank}使用的JSON报告文件
 - **scripts** —— 为Python脚本用于部署合约或是其他自动化事务存在的地方
 - **tests** —— 用于储存测试项目的Python脚本。Brownie将使用`pytest`框架进行单位测试
 

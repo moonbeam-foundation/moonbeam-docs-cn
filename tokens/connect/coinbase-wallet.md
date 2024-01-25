@@ -7,7 +7,7 @@ description: 本教程讲引导您如何为Moonbeam配置Coinbase Wallet扩展�
 
 ## 概览 {: #introduction }
 
-[Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}和[MetaMask](/tokens/connect/metamask/){target=_blank}一样是一个自托管（非托管）的钱包，目前支持iOS和安卓移动以及浏览器扩展程序。您现在可以在Coinbase Wallet上通过添加Moonbeam、Moonriver和Moonbase Alpha测试网为自定义网络并与其交互。
+[Coinbase Wallet](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=\_blank}和[MetaMask](/tokens/connect/metamask/){target=\_blank}一样是一个自托管（非托管）的钱包，目前支持iOS和安卓移动以及浏览器扩展程序。您现在可以在Coinbase Wallet上通过添加Moonbeam、Moonriver和Moonbase Alpha测试网为自定义网络并与其交互。
 
 请注意Coinbase Wallet和Coinbase Exchange是两个完全不同的产品，Coinbase Exchange是一个用于买卖加密货币的托管式平台。在Coinbase Wallet上持有的Token并不代表也能用于Coinbase Exchange。如果您想要从您的Coinbase Wallet发送一些Coinbase Exchange暂未支持的Token至交易平台，这意味着您将永远丢失这些资产。
 
@@ -17,7 +17,7 @@ description: 本教程讲引导您如何为Moonbeam配置Coinbase Wallet扩展�
 
 ## 安装Coinbase Wallet {: #install-coinbase-wallet }
 
-您可以从iOS App商店和Google Play商店[下载Coinbase Wallet App](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=_blank}或从Chrome商店安装浏览器扩展程序。
+您可以从iOS App商店和Google Play商店[下载Coinbase Wallet App](https://wallet.coinbase.com/?_branch_match_id=977295450874474909&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT8%2FXS07SLddLzs%2FVD8%2FJynFKSy02zE4CAFZ0JzQfAAAA){target=\_blank}或从Chrome商店安装浏览器扩展程序。
 
 移动端App和浏览器扩展程序基本相似，本教程以移动端App为例，但操作步骤也同样适用于浏览器扩展程序。主要区别在于，当您添加Moonbase Alpha作为自定义网络时，您可以在浏览器扩展程序上与网络交互，而移动端App尚未支持此功能。但此区别仅限于Moonbase Alpha。如果您连接的是Moonbeam或Moonriver，则您可以在移动端App或浏览器扩展程序进行连接。
 
@@ -128,12 +128,12 @@ description: 本教程讲引导您如何为Moonbeam配置Coinbase Wallet扩展�
 
 ## 限制 {: #limitations }
 
- - 目前，Coinbase Wallet仅在您App的交易记录中显示传出交易。您可以通过区块浏览器（如[Moonscan](https://moonscan.io/){target=_blank}）输入您的地址以查看您的完整交易记录，包括传入交易
+ - 目前，Coinbase Wallet仅在您App的交易记录中显示传出交易。您可以通过区块浏览器（如[Moonscan](https://moonscan.io/){target=\_blank}）输入您的地址以查看您的完整交易记录，包括传入交易
  - 在Coinbase Wallet移动端App上，您可以将Moonbase Alpha添加为自定义网络。但是，您不能从App端看到余额或传送的交易。如果您想查看这类信息，您需要使用浏览器扩展程序
 
 ## 参考资料 {: #additional-resources }
 
- - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/){target=_blank}
- - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile){target=_blank}
+ - [Coinbase Wallet常见问题](https://wallet.coinbase.com/faq/){target=\_blank}
+ - [Coinbase Wallet入门教程](https://www.coinbase.com/wallet/getting-started-mobile){target=\_blank}
 
 --8<-- 'text/_disclaimers/third-party-content.md'

@@ -7,9 +7,9 @@ description: 通过此教程学习如何使用Waffle和Mars在Moonbeam上编写�
 
 ## 概览 {: #introduction }
 
-[Waffle](https://getwaffle.io/){target=_blank}是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}或[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=_blank}。
+[Waffle](https://getwaffle.io/){target=\_blank}是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Moonbeam的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}或[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=\_blank}。
 
-Waffle使用最少的依赖项，具有易于学习和扩展的编写语法，并在编译和测试智能合约时提供快速的执行时间。此外，Waffle与[TypeScript](https://www.typescriptlang.org/){target=_blank}的兼容和[Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html){target=_blank}的使用使得检视和编写测试变得容易。
+Waffle使用最少的依赖项，具有易于学习和扩展的编写语法，并在编译和测试智能合约时提供快速的执行时间。此外，Waffle与[TypeScript](https://www.typescriptlang.org/){target=\_blank}的兼容和[Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html){target=\_blank}的使用使得检视和编写测试变得容易。
 
 Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级部署脚本并与状态更改保持同步。 Mars专注于「基础设施即代码」，允许开发人员指定该如何部署他们的智能合约，然后使用这些规范自动处理状态更改及部署。
 
@@ -19,7 +19,7 @@ Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级
 
 您将需要具备以下先决条件：
 
- - 已安装MetaMask并[连接到 Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 已安装MetaMask并[连接到 Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
@@ -173,7 +173,7 @@ npm run build
 
 --8<-- 'text/_common/endpoint-setup.md'
 
-由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Hardhat Network](https://hardhat.org/hardhat-network/docs/overview){target=_blank}可获得的快速迭代体验相似。
+由于您将针对测试网运行测试，因此可能需要花费几分钟才能运行所有测试。如果您想获得更有效的测试体验，您可以使用[`instant seal`](/builders/get-started/networks/moonbeam-dev/#node-options){target=\_blank}[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。运行具有`instant seal`功能的Moonbeam本地开发节点与使用[Hardhat Network](https://hardhat.org/hardhat-network/docs/overview){target=\_blank}可获得的快速迭代体验相似。
 
 1. 创建一个目录来包含您的测试，并创建一个文件来测试您的`MyToken`合约
 
@@ -446,6 +446,6 @@ describe('MyToken', () => {
 
 ## 示例项目 {: #example-project }
 
-如果您想在Moonbeam上查看Waffle和Mars项目的完整示例，请查看以下由EthWorks（Waffle和Mars背后的团队）成员创建的[moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example){target=_blank}。
+如果您想在Moonbeam上查看Waffle和Mars项目的完整示例，请查看以下由EthWorks（Waffle和Mars背后的团队）成员创建的[moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'
