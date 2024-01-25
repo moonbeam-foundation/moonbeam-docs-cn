@@ -14,7 +14,7 @@ Moonbeam路由流动性（MRL）是Moonbeam的多种用例之一：与Moonbeam�
 - **适配XCM的ERC-20代币** - 也称为[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}，是指Moonbeam EVM上原生的，已适配XCM的所有ERC-20代币。
 - [**GMP预编译合同**](/builders/pallets-precompiles/precompiles/gmp/){target=\_blank} - 是一个[预编译合同](/builders/pallets-precompiles/precompiles/overview/){target=\_blank}， 它是XCM与来自[Wormhole GMP 协议](/builders/interoperability/protocols/wormhole/){target=\_blank}信息的接口。
 
-通过组合这些组件，Web3的流动性能通过Moonbeam无缝导入其他平行链。流动性的传递既可以通过[GMP预编译](/builders/pallets-precompiles/precompiles/gmp){target=\_blank}也可以通过传统智能合约，Moonbeam支持智能合约与XCM预编译之间的互相交互，比如[X-Tokens](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile){target=\_blank}。
+通过组合这些组件，Web3的流动性能通过Moonbeam无缝导入其他平行链。流动性的传递既可以通过[GMP预编译](/builders/pallets-precompiles/precompiles/gmp){target=\_blank}也可以通过传统智能合约，Moonbeam支持智能合约与XCM预编译之间的互相交互，比如[X-Tokens](/builders/interoperability/xcm/xc20/xtokens#xtokens-precompile){target=\_blank}。
 
 GMP协议通常以锁定/铸造或销毁/铸造方式移动资产。这种流动性通常以ERC-20代币的形式存在于Moonbeam上。现在Moonbeam上所有ERC-20代币都已支持XCM，只要代币在其他平行链上注册过，它们就可以在平行链上被认证。Moonbeam上启用XCM的ERC-20代币被称为[本地XC-20代币](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}。
 
@@ -30,7 +30,7 @@ GMP协议通常以锁定/铸造或销毁/铸造方式移动资产。这种流动
 - [在您的平行链上注册Moonbeam的资产](/builders/interoperability/xcm/xc-registration/assets#register-moonbeam-native-assets){target=\_blank}。由于负责跨链资产传送的XCM message pallet的功能限制，我们只能使用Moonbeam的原生gas资产来支付信息回传的跨链费用。
 - [注册您要路由到您平行链的本地XC-20代币](/builders/interoperability/xcm/xc-registration/assets#register-local-xc20){target=\_blank}
     - 允许这些本地XC-20代币用于支付XCM费用
-- 允许用户发送`Transact`指令(通过`polkadotXcm.Send`或者[XCM Transactor Pallet](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/#xcm-transactor-pallet-interface){target=\_blank})，这将启用远程EVM调用，允许远程平行链上的账户与 Moonbeam上的Bridge智能合约交互。
+- 允许用户发送`Transact`指令(通过`polkadotXcm.Send`或者[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor#xcm-transactor-pallet-interface){target=\_blank})，这将启用远程EVM调用，允许远程平行链上的账户与 Moonbeam上的Bridge智能合约交互。
 
 ## Wormhole MRL {: #mrl-through-wormhole }
 
@@ -69,13 +69,13 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 - 本地XC-20（启用XCM的ERC-20）不能用于支付Moonbeam上的XCM执行费用。这是一个设计决策，因为XC-20代币的设计需要贴近传统的ERC-20代币，使用ERC-20接口中的transfer函数来转移资产。处理XC-20的XCM指令仅限于将资金从一个账户转移到另一个账户，而XCM流程中需要资产寄存机制，这两者并不兼容。
 - 目前，XCM相关pallet的限制让我们无法使用XCM来转移具有不同储备链的代币。这也导致了在发送XC-20时无法将费用代币设置为本地平行链代币。
 
-将来，[X-Tokens Pallet](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}将得到更新，允许使用本地gas货币为XCM付费。使用不同pallet的平行链需要自己实现在一个消息中转移储备与非储备资产的解决方案。
+将来，[X-Tokens Pallet](/builders/interoperability/xcm/xc20/xtokens#x-tokens-pallet-interface){target=\_blank}将得到更新，允许使用本地gas货币为XCM付费。使用不同pallet的平行链需要自己实现在一个消息中转移储备与非储备资产的解决方案。
 
 举个例子，下面是将MRL代币通过Wormhole从平行链发送回原链过程的简要概述：
 
 1. 使用[Utility Pallet](/builders/pallets-precompiles/pallets/utility){target=\_blank}的`batchAll`extrinsic发送一个批处理交易，其中包含以下两个调用：
-    - **`xTokens.transferMultiassets`** - 将xcGLMR和本地XC-20发送到用户的[Computed Origin账户](#calculate-computed-origin-account){target=\_blank}。Computed Origin账户是Moonbeam上的一个无密钥账户，另一个平行链上的账户可以通过XCM来控制该账户。
-    - **`polkadotXcm.send`** - 带有`Transact`指令。通过XCM向Moonbeam上的Batch预编译合同发送[远程EVM调用](/builders/interoperability/xcm/remote-execution/remote-evm-calls/){target=\_blank}，该Batch预编译使用 `ethereumXcm.transact`将以下两个调用批处理到一个远程EVM交易中：
+    - **`xTokens.transferMultiassets`** - 将xcGLMR和本地XC-20发送到用户的[Multilocation衍生账户（multilocation-derivative account）](#calculate-multilocation-derivative-account){target=\_blank}。Multilocation衍生账户是Moonbeam上的一个无密钥账户，另一个平行链上的账户可以通过XCM来控制该账户。
+    - **`polkadotXcm.send`** - 带有`Transact`指令。通过XCM向Moonbeam上的Batch预编译合同发送[远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/){target=\_blank}，该Batch预编译使用 `ethereumXcm.transact`将以下两个调用批处理到一个远程EVM交易中：
         - **`approve`**（本地 XC-20 合约）- 授权Wormhole中继器转移本地 XC-20
         - **`transferTokensWithRelay`**（中继器合约）- 调用Moonbeam上Wormhole TokenBridge智能合约上的`transferTokensWithPayload`函数来跨链转移代币，该函数广播消息供Wormhole Guardian节点拾取。
 2. Guardian节点网络将拾取Wormhole交易并对其签名
@@ -85,25 +85,23 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 
 现在我们已对MRL有了大致的了解，接下来我们将通过实例实现上述功能。以下的示例将向您展示如何将资产从平行链转移到Moonbase Alpha，并通过Wormhole返回原链，本指南也同样适用于Moonbeam。
 
-#### 计算Computed Origin账户 {: #calculate-computed-origin-account }
+#### 计算Multilocation衍生账户（Multilocation-Derivative Account） {: #calculate-multilocation-derivative-account }
 
-In order to send tokens back through Wormhole, you'll need to calculate the user's Computed Origin account (previously referred to as a multilocation-derivative account) on Moonbeam. This can be done off-chain using the [`calculate-multilocation-derivative-account.ts` script](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=\_blank} from the [xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}. For more details, you can refer to the [Computed Origins](/builders/interoperability/xcm/remote-execution/computed-origins){target=\_blank} guide.
+要通过Wormhole发送代币回原链，您需要计算用户在Moonbeam上的Multilocation衍生账户。您可以使用[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}中的[`calculate-multilocation-derivative-account.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=\_blank}在链外完成此步骤。有关更多详细信息，您可以参考远程EVM调用文档中的[计算Multilocation衍生账户](/builders/interoperability/xcm/remote-evm-calls/#calculate-multilocation-derivative){target=\_blank}部分。
 
-要通过Wormhole发送代币回原链，您需要计算用户在Moonbeam上的Computed Origin账户。您可以使用[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}中的[`calculate-multilocation-derivative-account.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=\_blank}在链外完成此步骤。有关更多详细信息，您可以参考远程EVM调用文档中的[计算Computed Origin账户](/builders/interoperability/xcm/remote-execution/remote-evm-calls/#calculate-multilocation-derivative){target=\_blank}部分。
-
-除此以外，您还可以使用[XCM Utilities 预编译](/builders/interoperability/xcm/xcm-utils/){target=\_blank}中的`multilocationToAddress`函数。
+除此以外，您还可以使用[XCM Utilities 预编译](/builders/pallets-precompiles/precompiles/xcm-utils)中的`multilocationToAddress`函数。
 
 #### 构建Transfer Multiassets Extrinsic {: #build-transfer-multiassets }
 
-当有了Computed Origin账户，您就可以开始构建`utility.batchAll`交易。开始之前，您需要确认以下包已被安装：
+当有了multilocation衍生账户，您就可以开始构建`utility.batchAll`交易。开始之前，您需要确认以下包已被安装：
 
 ```bash
 npm i @polkadot/api ethers
 ```
 
-现在您可以开始构建`xTokens.transferMultiassets`交易，该交易接受四个参数：`assets`, `feeItem`, `dest`, 和 `destWeightLimit`。您可以在[X-Tokens Pallet接口](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet#x-tokens-pallet-interface){target=\_blank}文档中找到这些参数的更多信息。
+现在您可以开始构建`xTokens.transferMultiassets`交易，该交易接受四个参数：`assets`, `feeItem`, `dest`, 和 `destWeightLimit`。您可以在[X-Tokens Pallet接口](/builders/interoperability/xcm/xc20/xtokens#x-tokens-pallet-interface){target=\_blank}文档中找到这些参数的更多信息。
 
-简而言之，`assets`参数定义了xcDEV（Moonbeam的xcGLMR）和本地XC-20的multilocation和数量，并将xcDEV定位为第一资产，本地XC-20定位为第二资产。`feeItem`被设置为xcDEV资产的索引，在本例中为`0`，`feeItem`用DEV来支付Moonbase Alpha的执行费用。`dest`是一个multilocation，它用于定义我们在前一小节里计算得到的Moonbase Alpha Computed Origin账户。
+简而言之，`assets`参数定义了xcDEV（Moonbeam的xcGLMR）和本地XC-20的multilocation和数量，并将xcDEV定位为第一资产，本地XC-20定位为第二资产。`feeItem`被设置为xcDEV资产的索引，在本例中为`0`，`feeItem`用DEV来支付Moonbase Alpha的执行费用。`dest`是一个multilocation，它用于定义我们在前一小节里计算得到的Moonbase Alpha multilocation衍生账户。
 
 此示例的`xTokens.transferMultiassets`如下所示：
 
@@ -157,7 +155,7 @@ npm i @polkadot/api ethers
 
 2. 使用Ethers的`encodeFunctionData`函数来encode batch交易中使用的`approve`交易和`transferTokensWithRelay`交易并得到encoded call data
 3. 将两个交易合并为一个batch交易，并再次使用Ethers的`encodeFunctionData`函数来encode该交易的call data
-4. 使用`ethereumXcm.transact`extrinsic为batch交易创建远程EVM调用，该extrinsic使用上一步得到的encoded call data作为`xcmTransaction`参数。有关更多信息，请参阅[远程EVM调用文档](/builders/interoperability/xcm/remote-execution/remote-evm-calls#ethereum-xcm-pallet-interface){target=\_blank}
+4. 使用`ethereumXcm.transact`extrinsic为batch交易创建远程EVM调用，该extrinsic使用上一步得到的encoded call data作为`xcmTransaction`参数。有关更多信息，请参阅[远程EVM调用文档](/builders/interoperability/xcm/remote-evm-calls#ethereum-xcm-pallet-interface){target=\_blank}
 
 ???+ code "创建远程EVM调用逻辑"
 
@@ -165,7 +163,7 @@ npm i @polkadot/api ethers
     --8<-- 'code/builders/interoperability/mrl/evm-tx.js'
     ```
 
-接下来，您需要创建extrinsic以将远程EVM调用发送到Moonbeam。您需要发送一个XCM消息来执行[`Transact`](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank}XCM指令。最常见的做法是通过`polkadotXcm.send`发送[`WithdrawAsset`](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=\_blank}, [`BuyExecution`](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=\_blank}, 和 [`Transact`](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank}指令。也可用[`RefundSurplus`](/builders/interoperability/xcm/core-concepts/instructions#refund-surplus){target=\_blank}和[`DepositAsset`](/builders/interoperability/xcm/core-concepts/instructions#deposit-asset){target=\_blank}来确保资产不会被锁，但技术上它们不是必须的。
+接下来，您需要创建extrinsic以将远程EVM调用发送到Moonbeam。您需要发送一个XCM消息来执行`Transact`XCM指令。最常见的做法是通过`polkadotXcm.send`发送`WithdrawAsset`, `BuyExecution`, 和 `Transact`指令。也可用 `RefundSurplus`和 `DepositAsset`来确保资产不会被锁，但技术上它们不是必须的。
 
 ???+ code "发送远程EVM调用逻辑"
 

@@ -32,7 +32,7 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 
 --8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 
-## XCM Utilities Solidity接口 {: #xcmutils-solidity-interface }
+## XCM Utilities Solidity接口 {: #xcmutils-solidity-interface } 
 
 [XcmUtils.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-utils/XcmUtils.sol){target=\_blank}是一个与预编译交互的接口：
 
@@ -41,21 +41,17 @@ XCM Utilities预编译合约为开发者提供了直接在EVM中与XCM相关的�
 
 此接口包含以下函数：
 
- - **multilocationToAddress**(*Multilocation memory* multilocation) — 只读函数，为给定multilocation返回Computed Origin账户
+ - **multilocationToAddress**(*Multilocation memory* multilocation) — 只读函数，为给定multilocation返回multilocation的衍生账户
  - **weightMessage**(*bytes memory* message) — 只读函数，返回XCM消息将在链上消耗的权重。消息参数必须为SCALE编码的XCM版本化的XCM消息
  - **getUnitsPerSecond**(*Multilocation memory* multilocation) — 只读函数，为以`Multilocation`形式给定的资产获取每秒单位数。multilocation必须描述一个可以支持作为费用支付的资产，例如[外部XC-20](/builders/interoperability/xcm/xc20/overview/#external-xc20s){target=\_blank}，否则此函数将回退当前调用(revert)
- - **xcmExecute**(*bytes memory* message, *uint64* maxWeight) - **available on Moonbase Alpha only** -  executes a custom XCM message given the SCALE encoded versioned message to be executed and the maximum weight to be consumed. This function *cannot* be called from a smart contract due to the nature of the `Transact` instruction
- - **xcmSend**(*Multilocation memory* dest, *bytes memory* message) - **available on Moonbase Alpha only** - sends a custom XCM message given the multilocation of the destination chain to send the message to and the SCALE encoded versioned message to be sent
 
-在XCM Utilities预编译中的`Multilocation`结构构建与[XCM Transactor预编译的Multilocation](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-precompile/#building-the-precompile-multilocation){target=\_blank}相同。
+在XCM Utilities预编译中的`Multilocation`结构构建与[XCM Transactor预编译的Multilocation](/builders/interoperability/xcm/xcm-transactor#building-the-precompile-multilocation){target=\_blank}相同。
 
 ## 使用XCM Utilities预编译 {: #using-the-xcmutils-precompile }
 
 XCM Utilities预编译允许用户无需前往波卡库即可通过Ethereum JSON-RPC读取数据。此功能更多的是带来了便利性，而不是为了智能合约用例。
 
-For `multilocationToAddress`, one example use case is being able to allow transactions that originate from other parachains by whitelisting their Computed Origin addresses. A user can whitelist a multilocation by calculating and storing an address. EVM transactions can originate from other parachains via [remote EVM calls](/builders/interoperability/xcm/remote-execution/remote-evm-calls){target=\_blank}.
-
-对于`multilocationToAddress`，一个示例用例是能够通过将其multilocation派生的地址加入白名单来允许来自其他平行链的交易。一个用户可以通过计算和存储地址来将multilocation加入白名单。EVM交易可以通过[远程EVM调用](/builders/interoperability/xcm/remote-execution/remote-evm-calls){target=\_blank}从其他平行链进行发起。
+对于`multilocationToAddress`，一个示例用例是能够通过将其multilocation派生的地址加入白名单来允许来自其他平行链的交易。一个用户可以通过计算和存储地址来将multilocation加入白名单。EVM交易可以通过[远程EVM调用](/builders/interoperability/xcm/remote-evm-calls){target=\_blank}从其他平行链进行发起。
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-only
