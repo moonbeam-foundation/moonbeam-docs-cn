@@ -38,7 +38,7 @@ GMP预编译位于以下地址：
 
 [`Gmp.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=\_blank}是一个允许开发者与预编译交互的Solidity接口：
 
-- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=\_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/core-concepts/multilocations){target=\_blank}。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
+- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=_blank}。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
 
 VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://book.wormhole.com/wormhole/6_relayers.html?search=#specialized-relayers){target=\_blank}发现。
 

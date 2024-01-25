@@ -1,6 +1,0 @@
-title: XC-20转账
-nav:
-  - index.md
-  - 'Overview': 'overview.md'
-  - 'Using the Substrate API': 'xtokens-pallet.md'
-  - 'Using the Ethereum API': 'xtokens-precompile.md'

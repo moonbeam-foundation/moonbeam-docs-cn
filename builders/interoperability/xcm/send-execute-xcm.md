@@ -7,13 +7,13 @@ description: 学习如何通过组合和试验不同的XCM指令来构建自定�
 
 ## 概览 {: #introduction }
 
-XCM消息由[一系列的指令](/builders/interoperability/xcm/core-concepts/instructions/){target=\_blank}组成，由跨共识虚拟机（XCVM）执行。这些指令的组合会执行预定的操作，例如跨链Token转移。您可以通过组合各种XCM指令创建自定义XCM消息。
+XCM消息由[一系列的指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}组成，由跨共识虚拟机（XCVM）执行。这些指令的组合会执行预定的操作，例如跨链Token转移。您可以通过组合各种XCM指令创建自定义XCM消息。
 
-[X-Tokens](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}和[XCM Transactor](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/){target=\_blank}等Pallet提供带有一组预定义的XCM指令的函数，用于发送[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=\_blank}或通过XCM在其他链上远程执行。然而，要更好地了解组合不同XCM指令的结果，您可以在Moonbeam（仅支持Moonbase Alpha）上本地构建和执行自定义XCM消息。你也可以发送自定义XCM消息至其他链（这将以[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=\_blank}指令开始）。但是，要成功执行XCM消息，目标链需要理解这些指令。
+[X-Tokens](/builders/interoperability/xcm/xc20/xtokens){target=_blank}和[XCM Transactor](/builders/interoperability/xcm/xcm-transactor/){target=_blank}等Pallet提供带有一组预定义的XCM指令的函数，用于发送[XC-20s](/builders/interoperability/xcm/xc20/overview/){target=_blank}或通过XCM在其他链上远程执行。然而，要更好地了解组合不同XCM指令的结果，您可以在Moonbeam上本地构建和执行自定义XCM消息。你也可以发送自定义XCM消息至其他链（这将以[`DescendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=_blank}指令开始）。但是，要成功执行XCM消息，目标链需要理解这些指令。
 
-要执行或发送自定义XCM消息，你可以直接使用[Polkadot XCM Pallet](#polkadot-xcm-pallet-interface)或者尝试通过带有[XCM Utilities预编译](/builders/interoperability/xcm/xcm-utils){target=\_blank}的以太坊API。在本教程中，您将学习如何使用这两种方式在Moonbase Alpha上本地执行和发送自定义的XCM消息。
+要执行或发送自定义XCM消息，你可以直接使用[Polkadot XCM Pallet](#polkadot-xcm-pallet-interface)或者尝试通过带有[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的以太坊API。在本教程中，您将学习如何使用这两种方式在Moonbase Alpha上本地执行和发送自定义的XCM消息。
 
-本教程假设您已熟悉XCM基本概念，例如[基本的XCM专业术语](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=\_blank}和[XCM指令](/builders/interoperability/xcm/core-concepts/instructions/){target=\_blank}。您可以访问[XCM概览](/builders/interoperability/xcm/overview){target=\_blank}文档获取更多信息。
+本教程假设您已熟悉XCM基本概念，例如[基本的XCM专业术语](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=_blank}和[XCM指令](/builders/interoperability/xcm/overview/#xcm-instructions){target=_blank}。您可以访问[XCM概览](/builders/interoperability/xcm/overview){target=_blank}文档获取更多信息。
 
 ## Polkadot XCM Pallet接口 {: #polkadot-xcm-pallet-interface }
 
@@ -21,89 +21,15 @@ XCM消息由[一系列的指令](/builders/interoperability/xcm/core-concepts/in
 
 Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
-???+ function "**execute**(message, maxWeight) — **supported on Moonbase Alpha only** - executes a custom XCM message on the source chain"
-
-    === "Parameters"
-
-        - `message` - the SCALE-encoded versioned XCM message to be executed
-        - `maxWeight` - the maximum weight allowed to be consumed, which is defined by specifying the:
-            - `refTime` - the amount of computational time that can be used for execution
-            - `proofSize` - the amount of storage in bytes that can be used
-
-    === "Polkadot.js API Example"
-        
-        ```js
-        --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/execute.js'
-        ```
-
-???+ function "**send**(dest, message) — **supported on Moonbase Alpha only** - sends a custom XCM message to a destination chain. For the XCM message to be successfully executed, the target chain needs to be able to understand the instructions in the message"
-
-    === "Parameters"
-
-        - `dest` - the XCM versioned multilocation representing a chain in the ecosystem where the XCM message is being sent to (the target chain)
-        - `message` - the SCALE-encoded versioned XCM message to be executed
-
-    === "Polkadot.js API Example"
-        
-        ```js
-        --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/send.js'
-        ```
+- **execute**(message, maxWeight) - **仅支持Moonbase Alpha** - 给定SCALE编码的XCM版本化的XCM消息和要消耗的最大权重，执行自定义XCM消息
+- **send**(dest, message) - **仅支持Moonbase Alpha** - 给定要发送消息的目标链的multilocation和要发送的SCALE编码的XCM版本化的XCM消息，发送自定义消息。要成功执行XCM消息，目标链需要理解消息中的指令
 
 ### 存储函数 {: #storage-methods }
 
 Polkadot XCM Pallet包含以下相关只读存储函数：
 
-???+ function "**assetsTrapped**(hash) — returns the existing number of times an asset has been trapped given a hash of the asset"
-
-    === "Parameters"
-
-        `hash` - (optional) the Blake2-256 hash of the [`MultiAsset`](https://github.com/paritytech/xcm-format#6-universal-asset-identifiers){target=\_blank}
-
-    === "Returns"
-
-        The number of times an asset has been trapped. If the hash was omitted, it returns an array of all of the hashes and the number of times each asset has been trapped.
-
-        ```js
-        // If using Polkadot.js API and calling toJSON() on the value
-        // If hash was provided:
-        10
-
-        // If hash was omitted:
-        [
-          [
-            0xf7d4341888be30c6a842a77c52617423e8109aa249e88779019cf731ed772fb7
-          ],
-          10
-        ],
-        ...
-        ```
-
-    === "Polkadot.js API Example"
-
-        ```js
-        --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/assets-trapped.js'
-        ```
-
-??? function "**palletVersion**() — returns current pallet version from storage"
-
-    === "Parameters"
-
-        None
-
-    === "Returns"
-
-        A number representing the current version of the pallet.
-
-        ```js
-        // If using Polkadot.js API and calling toJSON() on the unwrapped value
-        0
-        ```
-
-    === "Polkadot.js API Example"
-
-        ```js
-        --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/pallet-version.js'
-        ```
+- **assetTraps**(Option<H256>) - 给定`MultiAssets`对的Blake2-256哈希，返回中断资产的现有次数。如果哈希出现omitted的错误，则返回所有中断资产
+- **palletVersion**() - 提供正在使用的Polkadot XCM Pallet的版本
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -114,15 +40,15 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 ## 本地执行XCM消息 {: #execute-an-xcm-message-locally }
 
-这一部分涵盖了通过两种不同的方法来构建要在本地（即在Moonbeam中）执行的自定义XCM消息：Polkadot XCM Pallet的`execute`函数和[XCM Utilities预编译](/builders/interoperability/xcm/xcm-utils){target=\_blank}的`xcmExecute`函数。此功能为您提供了试验不同的XCM指令并直接查看这些试验结果的平台。这也有助于确定与Moonbeam上给定XCM消息相关联的[费用](/builders/interoperability/xcm/core-concepts/weights-fees){target=\_blank}。
+这一部分涵盖了通过两种不同的方法来构建要在本地（即在Moonbeam中）执行的自定义XCM消息：Polkadot XCM Pallet的`execute`函数和[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmExecute`函数。此功能为您提供了试验不同的XCM指令并直接查看这些试验结果的平台。这也有助于确定与Moonbeam上给定XCM消息相关联的[费用](/builders/interoperability/xcm/fees){target=_blank}。
 
 在以下示例中，您将在Moonbase Alpha上从一个账户转移DEV Token至另一个账户。为此，您需要构建一个XCM消息以包含以下XCM指令，这些指令将在本地执行（在本示例中为Moonbase Alpha）：
 
-- [`WithdrawAsset`](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=\_blank} - 移除资产并将其放入暂存处
-- [`DepositAsset`](/builders/interoperability/xcm/core-concepts/instructions#deposit-asset){target=\_blank} - 将资产从暂存处取出并存入等值资产至接收方账户中
+- [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 移除资产并将其放入暂存处
+- [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 将资产从暂存处取出并存入等值资产至接收方账户中
 
 !!! 注意事项
-    通常情况下，当您发送XCM消息跨链至目标链时，需要用到[`BuyExecution`指令](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=\_blank}用于支付远程执行。但是，对于本地执行，此指令非必要，因为您已通过extrinsic调用支付费用。
+    通常情况下，当您发送XCM消息跨链至目标链时，需要用到[`BuyExecution`指令](https://github.com/paritytech/xcm-format#buyexecution){target=_blank}用于支付远程执行。但是，对于本地执行，此指令非必要，因为您已通过extrinsic调用支付费用。
 
 ### 使用Polkadot.js API执行XCM消息 {: #execute-an-xcm-message-with-polkadotjs-api }
 
@@ -210,7 +136,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 ### 使用XCM Utilities预编译执行XCM交易 {: #execute-xcm-utils-precompile }
 
-在这一部分，您将使用[XCM Utilities预编译](/builders/interoperability/xcm/xcm-utils){target=\_blank}的`xcmExecute`函数（该函数仅支持Moonbase Alpha）以本地执行XCM消息。XCM Utilities预编译位于以下地址：
+在这一部分，您将使用[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmExecute`函数（该函数仅支持Moonbase Alpha）以本地执行XCM消息。XCM Utilities预编译位于以下地址：
 
 ```text
 {{ networks.moonbase.precompiles.xcm_utils }}
@@ -275,15 +201,15 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 
 ## 跨链发送XCM消息 {: #send-xcm-message }
 
-这一部分涵盖了通过两种不同的方法来跨链发送自定义XCM消息（即从Moonbeam到目标链，如中继链）：Polkadot XCM Pallet的`send`函数和[XCM Utilities预编译](/builders/interoperability/xcm/xcm-utils){target=\_blank}的`xcmSend`函数。
+这一部分涵盖了通过两种不同的方法来跨链发送自定义XCM消息（即从Moonbeam到目标链，如中继链）：Polkadot XCM Pallet的`send`函数和[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmSend`函数。
 
 要成功执行XCM消息，目标链需要理解消息中的指令。相反，您将在目标链上看到`Barrier`过滤器。为保证安全，XCM消息前会加上[`DecendOrigin`](https://github.com/paritytech/xcm-format#descendorigin){target=\_blank}指令以防止XCM代表源链的主权账户执行操作。**如上所述，此部分的示例仅用于演示目的**。
 
 在以下示例中，您将构建一个包含以下XCM指令的XCM消息，这些指令将在Alphanet中继链中执行：
 
- - [`WithdrawAsset`](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=\_blank} - 移除资产并将其放入暂存处
- - [`BuyExecution`](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=\_blank} - 从暂存处获取资产以支付执行费用。支付的费用由目标链决定
- - [`DepositAsset`](/builders/interoperability/xcm/core-concepts/instructions#deposit-asset){target=\_blank} - 将资产从暂存处取出并存入等值资产至接收方账户中
+ - [`WithdrawAsset`](https://github.com/paritytech/xcm-format#withdrawasset){target=_blank} - 移除资产并将其放入暂存处
+ - [`BuyExecution`](https://github.com/paritytech/xcm-format#buyexecution){target=_blank} - 从暂存处获取资产以支付执行费用。支付的费用由目标链决定
+ - [`DepositAsset`](https://github.com/paritytech/xcm-format#depositasset){target=_blank} - 将资产从暂存处取出并存入等值资产至接收方账户中
 
 这些指令的目的是将中继链的原生资产（即Alphanet中继链的UNIT）从Moonbase Alpha转移到中继链上的一个账户。此示例仅用于演示目的，以演示如何跨链发送自定义XCM消息。 请记住，目标链需要理解消息中的指令才可执行。
 
@@ -388,7 +314,7 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
 
 ### 使用XCM Utilities预编译发送XCM交易 {: #send-xcm-utils-precompile }
 
-在这一部分，您将使用[XCM Utilities预编译](/builders/interoperability/xcm/xcm-utils){target=\_blank}的`xcmSend`函数（该函数仅支持Moonbase Alpha）以跨链发送XCM消息。XCM Utilities预编译位于以下地址：
+在这一部分，您将使用[XCM Utilities预编译](/builders/pallets-precompiles/precompiles/xcm-utils){target=_blank}的`xcmSend`函数（该函数仅支持Moonbase Alpha）以跨链发送XCM消息。XCM Utilities预编译位于以下地址：
 
 === "Moonbase Alpha"
 

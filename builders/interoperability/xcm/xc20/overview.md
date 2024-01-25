@@ -15,7 +15,7 @@ XC-20为Moonbeam上独特的资产类别，其结合了Substrate资产的优点�
 
 ![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-3.png)
 
-此页面涵盖了XC-20的基本概念，如果您想要了解如何与之交互或转移XC-20，请参考[与XC-20交互](/builders/interoperability/xcm/xc20/interact){target=\_blank}或[使用X-Tokens Pallet发送XC-20](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}教程。
+此页面涵盖了XC-20的基本概念，如果您想要了解如何与之交互或转移XC-20，请参考[与XC-20交互](/builders/interoperability/xcm/xc20/interact){target=_blank}或[使用X-Tokens Pallet发送XC-20](/builders/interoperability/xcm/xc20/xtokens){target=_blank}教程。
 
 ## XC-20类型 {: #types-of-xc-20s }
 
@@ -43,7 +43,7 @@ function transfer(address _to, uint256 _value) public returns (bool success)
 
 两种资产类型的主要区别在于本地XC-20时EVM ERC-20，其具有XCM功能，然而外部XC-20是Substrate资产，顶部具有ERC-20接口。
 
-XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperability/xcm/xc20/xtokens/){target=\_blank}完成。要了解如何使用X-Tokens Pallet转移XC-20s，您可以参考[使用X-Tokens Pallet发送XC-20s](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}的教程。
+XC-20的跨链资产转移可以通过[X-Tokens Pallet](/builders/interoperability/xcm/xc20/xtokens/){target=_blank}完成。要了解如何使用X-Tokens Pallet转移XC-20s，您可以参考[使用X-Tokens Pallet发送XC-20s](/builders/interoperability/xcm/xc20/xtokens){target=_blank}的教程。
 
 ## 当前可用的外部XC-20列表 {: #current-xc20-assets }
 
