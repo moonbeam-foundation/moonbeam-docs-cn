@@ -11,11 +11,11 @@ _作者：Jeremy Boetticher_
 
 去中心化应用（DApp）重新定义了应用程序在Web3中的构建、管理和交互方式。通过利用区块链技术，DApp提供了一个安全、透明且无需信任的系统，在无需任何中央授权的情况下即可实现点对点交互。DApp架构的核心由几个主要组件组成，它们协同工作以创建一个强大且去中心化的生态系统。这些组件包括智能合约、节点、前端用户界面等。
 
-![DApp Architecture Diagram](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-1.png)
+![DApp Architecture Diagram](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-1.webp)
 
 在本教程中，您将通过编写一个用以铸造Token的完整DApp来面对面了解每个主要组件。我们还将探索DApp的其他可选组件，这些组件可以增强您未来项目的用户体验。您可以在[GitHub上的monorepo](https://github.com/jboetticher/complete-example-dapp){target=\_blank}中查看完整的项目内容。
 
-![DApp End Result](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-2.png)
+![DApp End Result](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-2.webp)
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -657,7 +657,7 @@ function App() {
 
 我们的前端现在显示正确数据！
 
-![Displaying data](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-3.png)
+![Displaying data](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-3.webp)
 
 !!! 挑战
     有一些附加信息可能有助于显示，例如连接账户当前拥有的Token数量：`balanceOf(address)`。您可以自己将其添加到前端吗？
@@ -872,7 +872,7 @@ function App() {
     export default App;
     ```
 
-![DApp with the Minting section](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-4.png)  
+![DApp with the Minting section](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-4.webp)  
 
 如果您尝试输入**0.1**的数值并按下按钮，则会出现MetaMask提示。
 
@@ -1103,7 +1103,7 @@ function App() {
 
 同时，如果您已完成了任何交易，您将会看见他们的弹窗！
 
-![Finished DApp](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-5.png)
+![Finished DApp](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-5.webp)
 
 现在您已经实现了DApp前端的三个主要组件：从存储中读取、发送交易和读取日志。有了这些构建模块以及您通过智能合约和节点获得的知识，您应该能够覆盖80%的DApp。
 

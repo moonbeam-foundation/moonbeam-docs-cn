@@ -23,7 +23,7 @@ Moonbase Alpha具有以下配置：
  - 中继链上会有验证者节点来决定中继链上的区块。其中一个会被选来最终确定每一个由Moonbeam收集者提交的区块。此设定为将来扩展为两个平行链配置提供了空间。
  - 拥有提供商提供的[API端点](/builders/get-started/endpoints/){target=\_blank}以连接到网络。项目也可以运行和访问[自己的私有节点](/node-operators/networks/run-a-node/){target=\_blank}。
 
-![TestNet Diagram](/images/learn/platform/networks/moonbase-diagram.png)
+![TestNet Diagram](/images/learn/platform/networks/moonbase-diagram.webp)
 
 需要注意的一些重要变量和配置包括：
 

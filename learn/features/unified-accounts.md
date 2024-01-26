@@ -21,7 +21,7 @@ description: Moonbeam取代了默认 Substrate账户系统，并原生支持基�
 
 以下图表阐释了这一配置。
 
-![Old account system diagram](/images/learn/features/unified-accounts/unified-accounts-1.png)
+![Old account system diagram](/images/learn/features/unified-accounts/unified-accounts-1.webp)
 
 然而这样一来，Alice的用户体验可能非常差。首先，她需要先将代币转移到H160映射的H256地址上才能进行交易，并通过EVM部署合约。其次，她还需要在另外一个H256地址（她有不同的私钥）上持有一定的余额，才能使用Substrate功能。简而言之，Alice需要至少两个私钥才能同时使用Substrate和EVM上的全部功能。
 
@@ -33,6 +33,6 @@ Moonbeam致力于在Polkadot上创造一个完全兼容以太坊的环境，并�
 
 以下图表阐释了这一新的配置。
 
-![New account system diagram](/images/learn/features/unified-accounts/unified-accounts-2.png)
+![New account system diagram](/images/learn/features/unified-accounts/unified-accounts-2.webp)
 
 可以看到，Bob仅有一个配对地址的私钥。他不需要在两个不同账户之间转移余额，只需通过一个账户和一个私钥就可以获取所有功能。Moonbeam对单一账户进行了标准化调整，以符合以太坊式H160地址和ECDSA密钥标准。

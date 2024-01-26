@@ -310,7 +310,7 @@ cargo run
 
 如果交易成功后，您将在终端看到交易详情以及地址余额。
 
-![Terminal logs from sending a transaction](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-1.png)
+![Terminal logs from sending a transaction](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-1.webp)
 
 ## 部署合约 {: #deploy-a-contract }
 
@@ -496,7 +496,7 @@ cargo run
 
 如果成功，您将在终端中看到已部署合约的地址和初始值（应为`5`）
 
-![Terminal logs from deploy the contract](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-2.png)
+![Terminal logs from deploy the contract](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-2.webp)
 
 ### 与合约交互（发送函数） {: #interact-with-contract }
 
@@ -557,7 +557,7 @@ cargo run
 
 如果成功，交易收据将会显示在终端显示。您可以在`main`函数中使用`read_number`函数，以确保数值按预期变化。如果您在递增后使用`read_number`函数，您也会看到递增的数字，该数值应为`10`。
 
-![Terminal logs from incrementing the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-3.png)
+![Terminal logs from incrementing the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-3.webp)
 
 接下来，您可以与`reset`函数进行交互：
 
@@ -606,7 +606,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 如果成功，交易收据将会显示在终端显示。您可以在`main`函数中使用`read_number`函数，以确保数值按预期变化。如果您在重置数值后使用`read_number`函数，您应在终端看到`0`。
 
-![Terminal logs from resetting the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-4.png)
+![Terminal logs from resetting the number](/images/builders/build/eth-api/libraries/ethersrs/ethersrs-4.webp)
 
 您可以[在GitHub上查看完整的脚本](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/build/eth-api/libraries/ethers-rs/deploy-contract/main.rs){target=\_blank}。
 

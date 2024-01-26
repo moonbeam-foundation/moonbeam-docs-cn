@@ -52,19 +52,19 @@ SubQuery支持索引任意Moonbeam网络的以太坊虚拟机（EVM）和Substra
 
     1. 关于**Select a network**，您可以选择**Substrate**
 
-        ![Select Moonbeam](/images/builders/integrations/indexers/subquery/subquery-1.png)
+        ![Select Moonbeam](/images/builders/integrations/indexers/subquery/subquery-1.webp)
 
     2. 系统将提示您**Select a network（选择网络）**。截至本教程撰写时，Moonriver是唯一选项。您可以继续操作，选择**Moonriver**，这也同样适用于Moonbeam和Moonbase Alpha
 
-        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2.png)
+        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-2.webp)
 
     3. 随后，系统将提示您**Select a template project（选择一个示例项目）**。您可以选择EVM启动项目或从git端点创建一个项目。本教程将基于Moonriver EVM启动项目操作，您可以选择**moonriver-evm-starter**
 
-        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-3.png)
+        ![Select moonbeam-starter](/images/builders/integrations/indexers/subquery/subquery-3.webp)
 
     4. 这将为您复制启动项目，随后根据提示回答一些额外的问题。您可以直接按回车键输入默认值或者根据需求输入自定义值
 
-        ![Create project](/images/builders/integrations/indexers/subquery/subquery-4.png)
+        ![Create project](/images/builders/integrations/indexers/subquery/subquery-4.webp)
 
 4. 这将为您的SubQuery项目自动创建一个目录。您只需要从项目目录中安装依赖项：
 
@@ -178,7 +178,7 @@ type Approval @entity {
 yarn codegen
 ```
 
-![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-5.png)
+![yarn codegen results](/images/builders/integrations/indexers/subquery/subquery-5.webp)
 
 这些模型将在下一部分介绍映射处理器中使用。
 
@@ -229,7 +229,7 @@ mapping:
 yarn build
 ```
 
-![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.png)
+![yarn build results](/images/builders/integrations/indexers/subquery/subquery-6.webp)
 
 接下来，使用Docker[发布您的项目](https://academy.subquery.network/run_publish/publish.html){target=\_blank}至[SubQuery项目](https://project.subquery.network/){target=\_blank}或[本地运行一个SubQuery节点](https://academy.subquery.network/run_publish/run.html){target=\_blank}。为此，您可以运行以下命令：
 
@@ -237,18 +237,18 @@ yarn build
 docker-compose pull && docker-compose up
 ```
 
-![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-7.png)
+![docker-compose logs](/images/builders/integrations/indexers/subquery/subquery-7.webp)
 
 !!! 注意事项
     第一次下载所需安装包可能会需要一些时间，但不久您便可以看到一个正在运行的SubQuery节点。
 
 启动您的数据库和同步节点可能会需要一些时间，但最终您将看到您的节点开始生产区块。
 
-![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.png)
+![fetching blocks logs](/images/builders/integrations/indexers/subquery/subquery-8.webp)
 
 现在您可以打开浏览器输入[http://localhost:3000](http://localhost:3000){target=\_blank}查询您的项目，在该页面，您将找到GraphQL playground。在playground的右上角，点击**Docs**按钮可以打开文档。该文档自动生成，可协助寻找您可查询的实体或者函数。
 
-![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.png)
+![GraphQL playground](/images/builders/integrations/indexers/subquery/subquery-9.webp)
 
 恭喜您！现在您已经拥有一个接受GraphQL API查询的Moonbeam SubQuery项目！请注意，根据您所配置的初始区块，索引Moonbeam可能需要几天时间。
 

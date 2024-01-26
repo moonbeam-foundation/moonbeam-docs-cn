@@ -59,13 +59,13 @@ Moonbeam采纳了由社区提出的[Interim Treasury Program提案](https://moon
 
 您可以在[财政库概览页面的财政库提案步骤](/learn/features/treasury/){target=\_blank}部分找到详细的解释。关于流程的更多信息，请查看[Interim Treasury Program社区财政库提案文章](https://moonbeam.foundation/news/proposal-treasury-program-approved/){target=\_blank}。
 
-![Proposal Roadmap](/images/tokens/governance/treasury-proposals/treasury-proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/treasury-proposals/treasury-proposal-roadmap.webp)
 
 ## 提交您的想法至论坛 {: #submitting-your-idea-to-the-forum }
 
 强烈建议您先在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}发布一条关于提案想法的帖子作为任何提案的开头。该帖子将会对外开放至少5天，以收集来自社区的反馈。这对于财政库提案特别重要，因为提交财政库支出提案需要提交不可撤销的保证金。您可以遵循[使用Moonbeam社区论坛提交财政库提案的教程](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=\_blank}提交财政库支出提案的想法。
 
-![Moonbeam Forum Home](/images/tokens/governance/treasury-proposals/treasury-proposal-1.png)
+![Moonbeam Forum Home](/images/tokens/governance/treasury-proposals/treasury-proposal-1.webp)
 
 ## 发起提案 {: #proposing-an-action } 
 
@@ -79,7 +79,7 @@ Moonbeam采纳了由社区提出的[Interim Treasury Program提案](https://moon
 
 3. 点击**Submit Proposal**
 
-![Treasury home](/images/tokens/governance/treasury-proposals/treasury-proposal-2.png)
+![Treasury home](/images/tokens/governance/treasury-proposals/treasury-proposal-2.webp)
 
 然后执行以下步骤：
 
@@ -91,7 +91,7 @@ Moonbeam采纳了由社区提出的[Interim Treasury Program提案](https://moon
 
 4. 检查所有填写信息的准确性，然后点击**Submit proposal**并签署交易
 
-![Submitting a Treasury spend proposal](/images/tokens/governance/treasury-proposals/treasury-proposal-3.png)
+![Submitting a Treasury spend proposal](/images/tokens/governance/treasury-proposals/treasury-proposal-3.webp)
 
 提交财政库提案后，刷新Polkadot.js Apps，您将看到您的提案已出现在列表中。如果您未看到您的提案出现，您的账号可能没有足够的资金支付所需保证金。
 
@@ -99,4 +99,4 @@ Moonbeam采纳了由社区提出的[Interim Treasury Program提案](https://moon
 
 提交链上提案后，您需要在[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}编辑提案，标题需要包含提案ID，状态更新为`Submitted`。关于编辑Moonbeam社区论坛提案的详细说明可以在[使用Moonbeam社区论坛的教程](https://moonbeam.network/blog/using-moonbeam-community-forum/){target=\_blank}中找到。
 
-![Polkassembly](/images/tokens/governance/treasury-proposals/treasury-proposal-4.png)
+![Polkassembly](/images/tokens/governance/treasury-proposals/treasury-proposal-4.webp)

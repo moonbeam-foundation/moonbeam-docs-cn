@@ -54,7 +54,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 5. 系统将会显示菜单，允许您创建新的项目或使用范本项目。在本示例中，您可以选择**Create an empty hardhat.config.js**
 
-![Hardhat Create Project](/images/builders/build/eth-api/dev-env/hardhat/hardhat-1.png)
+![Hardhat Create Project](/images/builders/build/eth-api/dev-env/hardhat/hardhat-1.webp)
 
 这将在您的项目目录中创建一个Hardhat配置文件（`hardhat.config.js`）。
 
@@ -187,7 +187,7 @@ module.exports = {
 npx hardhat compile
 ```
 
-![Hardhat Contract Compile](/images/builders/build/eth-api/dev-env/hardhat/hardhat-2.png)
+![Hardhat Contract Compile](/images/builders/build/eth-api/dev-env/hardhat/hardhat-2.webp)
 
 编译后，将会创建一个`artifacts`目录：这保存了合约的字节码和元数据，为`.json`文件。您可以将此目录添加至您的`.gitignore`。
 
@@ -244,7 +244,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 稍等片刻，合约将成功部署，您可以在终端看到合约地址。
 
-![Hardhat Contract Deploy](/images/builders/build/eth-api/dev-env/hardhat/hardhat-3.png)
+![Hardhat Contract Deploy](/images/builders/build/eth-api/dev-env/hardhat/hardhat-3.webp)
 
 恭喜您，您的合约已完成！请保存地址，用于后续与合约实例的交互。
 
@@ -278,7 +278,7 @@ npx hardhat console --network moonbase
 
 交易将通过您的Moonbase账户进行签署并传送至网络。后台输出将如下所示：
 
-![Transaction output](/images/builders/build/eth-api/dev-env/hardhat/hardhat-4.png)
+![Transaction output](/images/builders/build/eth-api/dev-env/hardhat/hardhat-4.webp)
 
 请注意您的地址将被标记为`from`，即合约地址，以及正在传送的`data`。现在，您可以通过运行以下命令来检索数值：
 
@@ -474,7 +474,7 @@ npx patch-package hardhat
 
 当您启动Hardhat分叉时，您会有20个预先注资10,000个测试Token的开发账户。分叉好的实例位于`http://127.0.0.1:8545/`。在您的终端中，将会显示类似以下输出：
 
-![Forking terminal screen](/images/builders/build/eth-api/dev-env/hardhat/hardhat-5.png)
+![Forking terminal screen](/images/builders/build/eth-api/dev-env/hardhat/hardhat-5.webp)
 
 要验证您是否已经分叉好网络，您可以查询最新区块号：
 

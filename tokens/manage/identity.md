@@ -68,14 +68,14 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 
 您应该已经有一个已连接网络的账户，所以您可以点击您的账户名称以确认实时的账户余额。在设置身份并传送交易之后，您提交的款项将会从您的可转账余额转移至您的储蓄账户。
 
-![Starting account balances](/images/tokens/manage/identity/identity-1.png)
+![Starting account balances](/images/tokens/manage/identity/identity-1.webp)
 
 您可以根据以下步骤设置您的身份：
 
 1. 点击您想设置身份账户旁边的三个垂直点按钮
 2. 在跳出的弹窗中选择**Set on-chain identity**
 
-![Set on-chain identity](/images/tokens/manage/identity/identity-2.png)
+![Set on-chain identity](/images/tokens/manage/identity/identity-2.webp)
 
 接着，将会跳出一个注册和设置身份的弹窗，您可以开始填写您的信息。您无需填写所有字段，可根据自身情况选择只填写其中一个或是全部。举例而言：
 
@@ -84,13 +84,13 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 3. 点击Twitter一栏的**include field**按钮并且输入您的Twitter用户名
 4. 完成填写信息并确认提交金额后，点击**Set Identity**
 
-![Set your identity](/images/tokens/manage/identity/identity-3.png)
+![Set your identity](/images/tokens/manage/identity/identity-3.webp)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击Sign and Submit以签署和发送本次交易。
 
 您将在页面右上角看到状态通知的弹窗。当交易成功确认后，您可以再次点击您的账户名称，操作面板将会从右侧弹出。您的余额将会改变，同时您也可以看到您的新身份信息。
 
-![Updated account balances](/images/tokens/manage/identity/identity-4.png)
+![Updated account balances](/images/tokens/manage/identity/identity-4.webp)
 
 如果身份信息与您输入的一致，则恭喜您以成功设置身份！
 
@@ -103,11 +103,11 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 1. 点击您希望清除身份信息账户旁的三个垂直点按钮
 2. 在跳出的弹窗中选择**Set on-chain identity**
 
-![Set on-chain identity](/images/tokens/manage/identity/identity-5.png)
+![Set on-chain identity](/images/tokens/manage/identity/identity-5.webp)
 
 接着，将跳出设置身份的弹窗，其中包含您曾经填写的信息。您需要点击**Clear Identity**。
 
-![Clear identity](/images/tokens/manage/identity/identity-6.png)
+![Clear identity](/images/tokens/manage/identity/identity-6.webp)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击**Sign and Submit**以签署和发送本次交易。
 
@@ -128,7 +128,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
     1. 选取数据格式。在此示例中，您可以使用**Raw**数据，但您仍可以选择以BlackTwo256、Sha256、Keccak256以及ShaThree256散列格式输入您的数据
     2. 以选定的格式输入数据
 
-![Set your identity using the Extrinsic UI](/images/tokens/manage/identity/identity-7.png)
+![Set your identity using the Extrinsic UI](/images/tokens/manage/identity/identity-7.webp)
 
 根据个人选择，如果您希望加入自定义字段，您可以跟随以下步骤操作：
 
@@ -140,11 +140,11 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
     1. 选取输入数值的数据格式，同样您也可以使用**Raw**数据
     2. 以选定的格式输入数值
 
-![Add custom fields](/images/tokens/manage/identity/identity-8.png)
+![Add custom fields](/images/tokens/manage/identity/identity-8.webp)
 
 最后，如果您添加了所有身份信息，您可以下滑页面并点击**Submit Transaction**。
 
-![Submit identity information](/images/tokens/manage/identity/identity-9.png)
+![Submit identity information](/images/tokens/manage/identity/identity-9.webp)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击**Sign and Submit**以签署和发送本次交易。
 
@@ -161,7 +161,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 3. 选取您的账户
 4. 点击**+**按钮获得您的身份信息
 
-![Request identity information](/images/tokens/manage/identity/identity-10.png)
+![Request identity information](/images/tokens/manage/identity/identity-10.webp)
 
 恭喜，现在您已经成功设置一个身份！当您清除您的身份，您储备余额的Token将会被重新转回至您的可转移余额当中。如果您需要更改您的身份，您可以重新操作设置身份的流程。请注意，即使您只需要改变或是覆盖其中一个字段，您还是需要重新输入所有字段信息。您将无需额外支付款项，除非您使用自定义字段，您仍需要支付gas费。
 
@@ -174,7 +174,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 3. 选取**clearIdentity()**函数
 4. 点击**Submit Transaction**
 
-![Clear an identity using the Extrinsics UI](/images/tokens/manage/identity/identity-11.png)
+![Clear an identity using the Extrinsics UI](/images/tokens/manage/identity/identity-11.webp)
 
 您将会需要签署本次交易。如果所有细节都已确认并无问题，您可以输入您的密码并点击**Sign and Submit**以签署和发送本次交易。
 
@@ -228,7 +228,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 2. 选择**registrars** extrinsic
 3. 点击**+**按钮
 
-![View registrar list](/images/tokens/manage/identity/identity-12.png)
+![View registrar list](/images/tokens/manage/identity/identity-12.webp)
 
 ### 请求身份判定 {: #request-judgement }
 
@@ -241,13 +241,13 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 5. 输入您愿意支付的最高费用（以Wei为单位）。这必须高于注册服务商设置的费用，否则交易将失败
 6. 点击**Submit Transaction**
 
-![Request identity judgement](/images/tokens/manage/identity/identity-13.png)
+![Request identity judgement](/images/tokens/manage/identity/identity-13.webp)
 
 一旦交易通过，费用将从您的可用余额中扣除并锁定，直到判定完成。
 
 判定完成并验证成功后，您的账户旁边会出现一个绿色的复选标记。如果成功，您的身份将被分配到以下三个信任级别之一：low quality（低质量）、reasonable（合理）或known good（已知良好）。在**账户**页面，您可以点击您的账户名查看您的身份信息和您的身份判定结果。
 
-![Identity verified](/images/tokens/manage/identity/identity-14.png)
+![Identity verified](/images/tokens/manage/identity/identity-14.webp)
 
 ### 取消身份判定请求 {: #cancel-judgement-request }
 
@@ -258,7 +258,7 @@ description: 学习如何在基于Moonbeam的网络上创建和管理链上身�
 3. 选取**cancelRequest()**函数
 4. 点击**Submit Transaction**
 
-![Cancel judgement request](/images/tokens/manage/identity/identity-15.png)
+![Cancel judgement request](/images/tokens/manage/identity/identity-15.webp)
 
 然后系统会提示您签署并发送交易。一旦通过，您锁定的资金将退还给您。
 

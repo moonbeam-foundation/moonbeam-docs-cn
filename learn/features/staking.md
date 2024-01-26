@@ -157,13 +157,13 @@ Moonbeam采用基于[波卡的权益证明（PoS）模型](https://wiki.polkadot
 
 从数学上来讲，对于收集人而言，每个区块预计获得以及最终获得的奖励分配应如下所示：
 
-![Staking Collator Reward](/images/learn/features/staking/staking-overview-1.png)
+![Staking Collator Reward](/images/learn/features/staking/staking-overview-1.webp)
 
 其中，`amount_due`为被分配至特定区块的相应通胀，`stake`对应由收集人绑定的Token数量，相对于该收集人的总质押量（包含委托数）。
 
 单个委托人的奖励分配（通过委托收集人在每个区块预计以及最终获得的奖励）应以下所示：
 
-![Staking Delegator Reward](/images/learn/features/staking/staking-overview-2.png)
+![Staking Delegator Reward](/images/learn/features/staking/staking-overview-2.webp)
 
 其中，`amount_due`为被分配至特定区块的相应通胀，`stake`对应由每个委托人在收集人中绑定的Token数量，相对于该收集人的总质押量。
 

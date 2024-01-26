@@ -96,14 +96,14 @@ enum ProxyType {
 
 2. 复制文件内容并粘贴至名为`Proxy.sol`的[Remix文件](https://remix.ethereum.org/){target=\_blank}
 
-![Copying and Pasting the Proxy Interface into Remix](/images/builders/pallets-precompiles/precompiles/proxy/proxy-1.png)
+![Copying and Pasting the Proxy Interface into Remix](/images/builders/pallets-precompiles/precompiles/proxy/proxy-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 然后编译接口，点击**Compile Proxy.sol**
 
-![Compiling Proxy.sol](/images/builders/pallets-precompiles/precompiles/proxy/proxy-2.png)
+![Compiling Proxy.sol](/images/builders/pallets-precompiles/precompiles/proxy/proxy-2.webp)
 
 ### 访问合约 {: #access-the-contract }
 
@@ -113,7 +113,7 @@ enum ProxyType {
 4. 为Moonbase Alpha提供代理预编译的地址：`{{networks.moonbase.precompiles.proxy}}`并点击**At Address**
 5. 代理预编译将出现在**Deployed Contracts**列表中
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/proxy/proxy-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/proxy/proxy-3.webp)
 
 ### 添加代理 {: #add-proxy }
 
@@ -127,7 +127,7 @@ enum ProxyType {
 !!! 注意事项
     在Remix中构建交易时，**proxyType**表示为`uint8`，而不是预期的`ProxyType`枚举。在Solidity中，枚举被编译为`uint8`，因此当您将**proxyType**设置为`5`时，这将指示`ProxyType`枚举中的第6个元素，即余额代理。
 
-![Call the addProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-4.png)
+![Call the addProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-4.webp)
 
 ### 查看代理是否成功添加 {: #check-proxy } 
 
@@ -139,7 +139,7 @@ enum ProxyType {
 
 若一切无误，后台将输出`true`。
 
-![Call the isProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-5.png)
+![Call the isProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-5.webp)
 
 ### 移除代理 {: #remove-proxy }
 
@@ -152,6 +152,6 @@ enum ProxyType {
 
 交易确认之后，如果您重复 [查看代理是否成功添加](#check-proxy)步骤，结果将显示`false`。
 
-![Call the removeProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-6.png)
+![Call the removeProxy function](/images/builders/pallets-precompiles/precompiles/proxy/proxy-6.webp)
 
 这样就可以了！您已成功完成代理预编译。关于设置代理的其他参考资料可在[设置代理账户](/tokens/manage/proxy-accounts){target=\_blank}页面和波卡文档库的[代理账户](https://wiki.polkadot.network/docs/learn-proxies){target=\_blank}页面找到。若您有任何关于代理预编预方面的问题，欢迎随时在[Discord](https://discord.gg/moonbeam){target=\_blank}上与我们取得联系。

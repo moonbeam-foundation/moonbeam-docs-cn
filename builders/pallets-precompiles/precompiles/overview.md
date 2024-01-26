@@ -15,7 +15,7 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 特定于Moonbeam的预编译可以通过以太坊API使用大家熟悉又简单易懂的Solidity接口来进行交互，它们最终被用于与底层Substrate接口进行交互。该流程如下图所示：
 
-![Precompiled Contracts Diagram](/images/builders/pallets-precompiles/precompiles/overview/overview-1.png)
+![Precompiled Contracts Diagram](/images/builders/pallets-precompiles/precompiles/overview/overview-1.webp)
 
 --8<-- 'text/builders/pallets-precompiles/precompiles/security.md'
 

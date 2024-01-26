@@ -46,7 +46,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 
 请前往[1RPC](https://1rpc.io/){target=\_blank}官方网站进行设置！
 
-![1RPC](/images/builders/get-started/endpoints/endpoints-1.png)
+![1RPC](/images/builders/get-started/endpoints/endpoints-1.webp)
 
 ### Blast {: #blast }
 
@@ -60,7 +60,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 4. 确认选择的网络并按**Activate**
 5. 您将可以在**Active Endpoints**下看到您选择的网络。单击此网络，您将在下一页看到您的自定义RPC和WSS端点
 
-![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.png)
+![Bware Labs](/images/builders/get-started/endpoints/endpoints-2.webp)
 
 ### Dwellir {: #dwellir }
 
@@ -71,7 +71,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 1. 进入[Dwellir](https://www.dwellir.com/contact){target=\_blank}页面
 2. 提交您的**邮箱地址**和节点要求
 
-![Dwellir](/images/builders/get-started/endpoints/endpoints-3.png)
+![Dwellir](/images/builders/get-started/endpoints/endpoints-3.webp)
 
 ### GetBlock {: #getblock }
 
@@ -85,7 +85,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 为您的API密钥输入一个名称
 3. 点击 **Create** 生成您的API密钥
 
-![GetBlock](/images/builders/get-started/endpoints/endpoints-4.png)
+![GetBlock](/images/builders/get-started/endpoints/endpoints-4.webp)
 
 ### OnFinality {: #onfinality }
 
@@ -97,7 +97,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 在下拉菜单中选择网络
 3. 您的自定义API端点将会自动生成
 
-![OnFinality](/images/builders/get-started/endpoints/endpoints-5.png)
+![OnFinality](/images/builders/get-started/endpoints/endpoints-5.webp)
 
 ### Pocket Network {: #pokt }
 
@@ -110,7 +110,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 3. 输入你的DApp名称，选择你对应的网络
 4. 您的新端点将生成并显示在以下应用程序屏幕中
 
-![Pocket Network](/images/builders/get-started/endpoints/endpoints-6.png)
+![Pocket Network](/images/builders/get-started/endpoints/endpoints-6.webp)
 
 您不必为每个端点生成一个新的DApp！您可以将新链添加到您现有的DApp中：
 
@@ -154,7 +154,7 @@ description: 使用支持的API提供商连接至公共端点或创建私有JSON
 2. 选择[Moonbeam网络](https://www.ankr.com/protocol/public/moonbeam/){target=\_blank}
 3. 复制提供的节点URL即可以开始发出请求；无需注册或KYC
 
-![Ankr](/images/builders/get-started/endpoints/endpoints-5.png) -->
+![Ankr](/images/builders/get-started/endpoints/endpoints-5.webp) -->
 
 ## 追踪RPC端点提供者 {: #tracing-providers }
 

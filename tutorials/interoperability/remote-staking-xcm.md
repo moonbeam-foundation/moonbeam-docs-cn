@@ -30,7 +30,7 @@ _作者：Kevin Neilson_
 
 此处，我们指定了父值为`1`，因为中继链是请求的来源（并且中继链被视为Moonbase Alpha平行链的父级）。 中继链没有平行链ID，因此该字段被省略。
 
-![Calculate Multi-Location Derivative Account](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-1.png)
+![Calculate Multi-Location Derivative Account](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-1.webp)
 
 此脚本将返回32字节和20字节的地址。我们将使用以太坊格式的地址，也就是20字节的地址。您可以在[Moonscan](https://moonbase.moonscan.io/){target=\_blank}上查看您的multilocation衍生账户。请注意，此账户为空白账户，您需要为此账户充值至少1.1个DEV Token。您可以通过[水龙头](https://faucet.moonbeam.network/){target=\_blank}获取DEV。如果您需要更多的DEV Token，您可以通过[Discord](https://discord.com/invite/amTRXQ9ZpW){target=\_blank}联系我们获取更多的DEV Token。
 
@@ -38,7 +38,7 @@ _作者：Kevin Neilson_
 
 首先也是最重要的，您需要有想要委托的收集人地址。如要找到该地址，请前往[Moonbase Alpha Staking dApp](https://apps.moonbeam.network/moonbase-alpha/staking){target=\_blank}。请确保您在正确的网络上，然后点击**Select a Collator**。在您想要的委托人旁边，点击**Copy**图标复制其地址。您还需要记下该委托人拥有的委托数量。下面显示的[PS-31收集人](https://moonbase.subscan.io/account/0x3A7D3048F3CB0391bb44B518e5729f07bCc7A45D){target=\_blank}在撰写本文时共有`64`个委托。
 
-![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.png)
+![Moonbeam Network Apps Dashboard](/images/tutorials/interoperability/remote-staking-via-xcm/xcm-stake-2.webp)
 
 ## 通过XCM在Polkadot.js API进行远程质押 {: #remote-staking-via-xcm-with-the-polkadot-api }
 

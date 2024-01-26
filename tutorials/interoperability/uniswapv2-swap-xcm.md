@@ -23,7 +23,7 @@ _作者：Alberto Viera_
 3. XCM执行将会导致兑换经由EVM执行，而Alice将会在其特别账户获得其`MARS` Token
 4. 经由XCM的远程EVM执行将会得到浏览器获取的一些EVM记录，有任何人皆能够查询验证的EVM交易和收据
 
-![Remote EVM Call Through XCM for Uniswap V2 Swap Diagram](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-1.png)
+![Remote EVM Call Through XCM for Uniswap V2 Swap Diagram](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-1.webp)
 
 如要执行上述列出的步骤，将需要满足一些先决条件，马上查看有哪些先决条件吧！
 
@@ -42,7 +42,7 @@ _作者：Alberto Viera_
 
 以我们的例子来说，我们将会通过Alice账户经由XCM传送远程EVM调用，也就是`5GKh9gMK5dn9SJp6qfMNcJiMMnY7LReYmgug2Fr5fKE64imn`，因此指令和获得的结果将会如同下方图示。
 
-![Calculating the multilocation-derivative account](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-2.png)
+![Calculating the multilocation-derivative account](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-2.webp)
 
 所有数值被整理成以下表格：
 
@@ -75,7 +75,7 @@ _作者：Alberto Viera_
  3. 在MetaMask中，点击**hex**标签，您将能看到编码的调用数据
  4. 点击**Copy raw transaction data**按钮，这将会复制编码的调用数据至剪贴板
 
-![Calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-3.png)
+![Calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-3.webp)
 
 !!! 注意事项
     其他钱包也提供在签署交易前查看编码调用数据的类似功能。
@@ -158,7 +158,7 @@ _作者：Alberto Viera_
 
 当您设定好代码，您可以通过`node`执行，您将会获得Moonbase Alpha远程EVM调用数据：
 
-![Getting the Moonbase Alpha remote EVM XCM calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-4.png)
+![Getting the Moonbase Alpha remote EVM XCM calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-4.webp)
 
 此处范例的编码调用数据如下：
 
@@ -214,7 +214,7 @@ _作者：Alberto Viera_
 
 当您设定好代码，您可以通过`node`执行，您将会获得中继链XCM调用数据：
 
-![Getting the Relay Chain XCM calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-5.png)
+![Getting the Relay Chain XCM calldata for Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-5.webp)
 
 此范例的编码调用数据如下：
 
@@ -242,7 +242,7 @@ _作者：Alberto Viera_
 
 当您设定好代码，您可以通过`node`执行，该XCM消息将会被发送以执行您在Moonbase Alpha上的Uniswap V2兑换：
 
-![Sending the XCM message from the Relay Chain to Moonbase Alpha for the Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-6.png)
+![Sending the XCM message from the Relay Chain to Moonbase Alpha for the Uniswap V2 swap](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-6.webp)
 
 就是这样！您发送了一条XCM消息，该消息通过XCM执行了远程EVM调用，并在Moonbase Alpha中产生了Uniswap V2格式的交换。但是，让我们来更详细地了解究竟发生什么事情。
 

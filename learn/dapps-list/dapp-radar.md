@@ -11,7 +11,7 @@ description: 如何在DappRadar上列出您的Moonbeam或Moonriver项目，这�
 
 Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappradar-now-tracking-dapps-on-moonbeam-moonriver){target=\_blank}。DappRadar为[优秀Moonbeam DApp](https://dappradar.com/rankings/protocol/moonbeam){target=\_blank}和[优秀Moonriver DApp](https://dappradar.com/rankings/protocol/moonriver){target=\_blank}保持首页展示位。在与DappRadar集成之前，Moonbeam官方资料库的[众包Moonbeam DApp List页面](https://github.com/moonbeam-foundation/moonbeam-project-directory){target=\_blank}处于维护阶段。目前，该登记口已被弃用并由[DApp列表](/learn/dapps-list/){target=\_blank}下的列表平台取代。
 
-![DappRadar Home Page](/images/learn/dapps-list/dapp-radar/dapp-radar-1.png)
+![DappRadar Home Page](/images/learn/dapps-list/dapp-radar/dapp-radar-1.webp)
 
 您可以提供您的项目背景，包括项目的简短和完整描述、网站URL和Logo向DappRadar[提交您的项目](https://dappradar.com/dashboard/submit-dapp){target=\_blank}。只有部分区域是必填的，但建议您尽可能地提供全面的资料。
 
@@ -45,7 +45,7 @@ Moonbeam和Moonriver[均已收录至DappRadar](https://dappradar.com/blog/dappra
  10. 此选项为可选项，但建议您提供DApp的屏幕截图。您也可以选择提供一个DApp演示视频的YouTube链接
  11. 阅读条款和条件，并点击**Submit a dapp**
 
-![How to Submit your DApp](/images/learn/dapps-list/dapp-radar/dapp-radar-2.png)
+![How to Submit your DApp](/images/learn/dapps-list/dapp-radar/dapp-radar-2.webp)
 
 DappRader团队会审核您所提交的信息，若符合收录要求，该DApp将会发布在DappRader平台上。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam){target=\_blank}与我们联系。若您需要DappRadar的支持，请联系[developers@dappradar.com](mailto:developers@dappradar.com)。
 

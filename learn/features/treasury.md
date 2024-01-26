@@ -76,4 +76,4 @@ description: 作为波卡（Polkadot）平行链，Moonbeam将使用由财政库
 
 财政库提案流程如下图所示：
 
-![Treasury Proposal Happy Path Diagram](/images/learn/features/treasury/treasury-proposal-roadmap.png)
+![Treasury Proposal Happy Path Diagram](/images/learn/features/treasury/treasury-proposal-roadmap.webp)

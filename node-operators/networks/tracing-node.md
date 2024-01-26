@@ -170,7 +170,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 如果您已经成功运行Moonbase Alpha追踪节点，您应当会见到如下图所示的终端日志：
 
-![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.png)
+![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.webp)
 
 ## 使用Systemd运行一个追踪节点 {: #run-a-tracing-node-with-systemd }
 
@@ -375,7 +375,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 --8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
-![Service Status](/images/node-operators/networks/tracing-node/tracing-1.png)
+![Service Status](/images/node-operators/networks/tracing-node/tracing-1.webp)
 
 您也可以运行以下命令查看启用的追踪节点的日志：
 
@@ -385,7 +385,7 @@ journalctl -f -u moonbeam.service
 
 您的终端将会显示如下图所示的日志：
 
-![Service logs of wasm rutime overrides being processed](/images/node-operators/networks/tracing-node/tracing-2.png)
+![Service logs of wasm rutime overrides being processed](/images/node-operators/networks/tracing-node/tracing-2.webp)
 
 ## 使用一个追踪节点 {: #using-a-tracing-node }
 

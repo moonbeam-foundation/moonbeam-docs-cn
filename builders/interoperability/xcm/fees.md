@@ -268,7 +268,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.transfer_glmr.wei_cost }} / 10^18
 3. 在**Option**下方输入资产ID或是关闭**include option**以移除所有资产的信息。在本教程中将会获得xcUNIT的信息，其资产ID为`42259045809535163221576417993425387648`
 4. 点击**+**按钮提交查询
 
-![Get the xcDOT asset multilocation](/images/builders/interoperability/xcm/fees/fees-1.png)
+![Get the xcDOT asset multilocation](/images/builders/interoperability/xcm/fees/fees-1.webp)
 
 您可以使用查询结果，并将其用于查询**assetTypeUnitesPerSecond** extrinsic：
 
@@ -281,7 +281,7 @@ XCM-GLMR-Cost = {{ networks.moonbeam.xcm.transfer_glmr.wei_cost }} / 10^18
 
 xcDOT的`UnitsPerSecond`数值为`{{ networks.moonbeam.xcm.units_per_second.xcdot.display }}`。
 
-![Get the xcDOT units per second value](/images/builders/interoperability/xcm/fees/fees-2.png)
+![Get the xcDOT units per second value](/images/builders/interoperability/xcm/fees/fees-2.webp)
 
 请记得，权重的单位定义为执行时间的一皮秒，以下为定义执行时间的公式：
 
@@ -347,7 +347,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.transfer_do
 6. 将**Parachain**设置为`888`
 7. 点击 **+**
 
-![Get the Transact Through Derivative Weight Info for another Parachain](/images/builders/interoperability/xcm/fees/fees-5.png)
+![Get the Transact Through Derivative Weight Info for another Parachain](/images/builders/interoperability/xcm/fees/fees-5.webp)
 
 在获得的回应中，您可以看到`transactExtraWeightSigned`为`{{ networks.moonbase_beta.xcm_message.transact.weight.display }}`。这是在该特定目标链中执行此远程调用的4个XCM指令所需的权重。接下来，您需要找到目标链每执行XCM权重收取的费用。通常，您会查看该特定链的`UnitsPerSecond`。但在这种情况下并不会销毁XC-20 Token。因此，`UnitsPerSecond`可以作为参考，但不能保证估算的Token数量是正确的。要获取`UnitsPerSecond`作为参考值，在同一个[Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network #/chainstate){target=\_blank}，设置以下选项：
 
@@ -361,7 +361,7 @@ Alice转移DOT至Alith账户的总花费为`{{ networks.moonbeam.xcm.transfer_do
 8. 将**PalletInstance**设置为`3`
 9. 点击 **+**
 
-![Get the Units Per Second for Transact Through Derivative for another Parachain](/images/builders/interoperability/xcm/fees/fees-6.png)
+![Get the Units Per Second for Transact Through Derivative for another Parachain](/images/builders/interoperability/xcm/fees/fees-6.webp)
 
 请注意，此`UnitsPerSecond`与[中继链XCM费用计算](/builders/interoperability/xcm/fees/#polkadot){target=\_blank}部分中的预估成本有关，如果目标是另一个平行链，将与[权重单位的Wei数值](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}部分中显示的成本有关。您需要找到正确的数值，以确保multilocation衍生账户持有的Token数量是正确的。如同先前，计算相关的XCM执行费用与`transactExtraWeight`乘以`UnitsPerSecond`一样简单明了（用于估算）：
 

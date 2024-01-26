@@ -15,11 +15,11 @@ _作者：Erin Shaben_
 
 一般的交易会有以下的流程：
 
-![Flow of a transaction](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-1.png)
+![Flow of a transaction](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-1.webp)
 
 而Gasless交易的运作流程则为：
 
-![Flow of a gasless transaction](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-2.png)
+![Flow of a gasless transaction](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-2.webp)
 
 Gasless交易尤其能够造福那些高频小额交易的用户，比如说如游戏dApp [Damned Pirates Society](https://damnedpiratessociety.io/){target=\_blank}（DPS）的玩家。在DPS中，用户在航程中寻找宝藏并增强他们的舰队。DPS游戏中有两种货币：Treasure Maps（TMAP）和Doubloons（DBL）。TMAP用于购买航程，而DBL用于维护设备以及购买支持航程，DBL可以在航程当中赚取。目前来说，如果用户希望启航，他们需要TMAP来购买航程和GLMR来支付交易费用。如果能够通过实现Gasless交易让用户无需担心TMAP和DBL之外的余额（GLMR）来降低门槛的话那不是更好吗？从dApp的角度来看，这将让平台保留用户，且用户不需要离开dApp来获得GLMR，他们能够持续进行游戏。
 
@@ -535,7 +535,7 @@ console.log(`Transaction hash: ${dispatch.hash}`);
 - 一个TMAP从用户账户中扣减：`0xa165c7970886d4064b6cec9ab1db9d03202bda37`
 - 一个ID为622646的航程被传送至用户账户
 
-![Review the transaction details](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-3.png)
+![Review the transaction details](/images/tutorials/eth-api/call-permit-gasless-txs/gasless-3.webp)
 
 就这样可以了！恭喜您，您已经了解如何在Moonbeam上使用调用许可预编译实现Gasless交易。您现在可以将此教程中的逻辑应用至您的dApp！
 

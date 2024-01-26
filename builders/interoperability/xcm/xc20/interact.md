@@ -106,14 +106,14 @@ address = '0xFFFFFFFF...' + DecimalToHex(AssetId)
 1. 获得[ERC20.sol](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/assets-erc20/ERC20.sol){target=\_blank}的副本
 2. 将文件内容贴至名称为**IERC20.sol**的Remix文件中
 
-![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/interact/interact-1.png)
+![Load the interface in Remix](/images/builders/interoperability/xcm/xc20/interact/interact-1.webp)
 
 当您已经在Remix中运行ERC-20接口，您将会需要编译它：
 
 1. 在页面上方第二个部分点击**Compile**标签
 2. 编译**IERC20.sol**文件
 
-![Compiling IERC20.sol](/images/builders/interoperability/xcm/xc20/interact/interact-2.png)
+![Compiling IERC20.sol](/images/builders/interoperability/xcm/xc20/interact/interact-2.webp)
 
 如果此接口成功的完成编译，您将能够在**Compile**标签看见绿色勾号。
 
@@ -127,13 +127,13 @@ address = '0xFFFFFFFF...' + DecimalToHex(AssetId)
 4. 确保在**CONTRACT**下拉选单中选取**IERC20 - IERC20.sol**。由于此为预编译合约，您不需要部署任何代码。相反地，您将会在**At Address**栏位提供预编译地址
 5. 提供XC-20的地址。对于本地XC-20资产，您应该已经在[计算外部XC-20预编译地址](#calculate-xc20-address){target=\_blank}部分中计算过。在此范例中，您可以使用`0xFFFFFFFF1FCACBD218EDC0EBA20FC2308C778080`并点击**At Address**
 
-![Access the address](/images/builders/interoperability/xcm/xc20/interact/interact-3.png)
+![Access the address](/images/builders/interoperability/xcm/xc20/interact/interact-3.webp)
 
 !!! 注意事项
     或者，您可以通过转到您选择的搜索引擎，并搜索对地址进行校验和的工具来对XC-20资产预编译地址进行校对。对地址进行校对后，您可以在**At Address**栏位中中使用它。
 
 XC-20资产的**IERC20**预编译将出现在**Deployed Contracts**列表中。现在您可以随意调用任何标准ERC-20函数来获取有关XC-20资产的信息或转移XC-20资产。
 
-![Interact with the precompile functions](/images/builders/interoperability/xcm/xc20/interact/interact-4.png)
+![Interact with the precompile functions](/images/builders/interoperability/xcm/xc20/interact/interact-4.webp)
 
 要了解如何与每个功能交互，您可以查看[ERC-20预编译](/builders/pallets-precompiles/precompiles/erc20/){target=\_blank}教程并修改它以便与XC-20预编译交互。

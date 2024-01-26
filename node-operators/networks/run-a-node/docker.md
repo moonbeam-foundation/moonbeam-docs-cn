@@ -361,11 +361,11 @@ description: 如何使用Docker为Moonbeam网络运行一个全平行链节点�
 
 在Docker拉取必要的镜像后，您的全节点将启动并显示许多信息，如区块链参数、节点名称、作用、创世状态等。
 
-![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-1.png)
+![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-1.webp)
 
 在同步过程中，您既会看到镶嵌中继链([Relaychain])的日志也会看到平行链([🌗])的日志。日志展示了目标区块(实时网络中的state)与最好区块（本地网络同步state）。
 
-![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.png)
+![Full Node Starting](/images/node-operators/networks/run-a-node/docker/full-node-docker-2.webp)
 
 如果您使用的是Moonbase Alpha的安装指南，在同步后您会得到一个本地运行的Moonbase Alpha测试网节点！如果是Moonbeam或Moonriver，如果您按照Moonriver或Moonbeam的节点教程操作，当同步完成，您将能够与同类节点连接并且能够看到在Moonriver/Moonbeam网络上生产的区块！
 

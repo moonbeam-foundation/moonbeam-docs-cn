@@ -414,7 +414,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 --8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
-![Service Status](/images/node-operators/networks/run-a-node/systemd/systemd-1.png)
+![Service Status](/images/node-operators/networks/run-a-node/systemd/systemd-1.webp)
 
 您也可以执行以下命令检查日志：
 
@@ -422,7 +422,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/node-operators/networks/run-a-node/systemd/systemd-2.png)
+![Service Logs](/images/node-operators/networks/run-a-node/systemd/systemd-2.webp)
 
 在同步过程中，您既会看到镶嵌中继链([Relaychain])的日志也会看到平行链([🌗])的日志。日志展示了目标区块(实时网络中的state)与最好区块（本地网络同步state）。
 

@@ -36,7 +36,7 @@ Tenderly平台提供以下功能：
 
 Tenderly数据面板提供对一站式Web3开发平台的访问。要开始使用数据面板，您将需要先[注册](https://dashboard.tenderly.co/register){target=\_blank}一个新账号。注册成功后，您将能够开始使用您的Tenderly数据面板。
 
-![Tenderly dashboard](/images/builders/build/eth-api/dev-env/tenderly/tenderly-1.png)
+![Tenderly dashboard](/images/builders/build/eth-api/dev-env/tenderly/tenderly-1.webp)
 
 如果您尚未设置账号，您也可以使用[Tenderly浏览器](https://dashboard.tenderly.co/explorer){target=\_blank}访问有限功能。在没有账户的情况下，您仍可以获取合约和交易的信息，然而，您将无法模拟交易或创建分叉的环境。
 
@@ -55,7 +55,7 @@ Tenderly数据面板提供对一站式Web3开发平台的访问。要开始使�
 
 如果您的代码包含部署合约或发送交易的逻辑，您将会在页面左下角的**Simulated Transactions**部分下方看到交易。
 
-![Tenderly Sandbox](/images/builders/build/eth-api/dev-env/tenderly/tenderly-2.png)
+![Tenderly Sandbox](/images/builders/build/eth-api/dev-env/tenderly/tenderly-2.webp)
 
 ### 添加合约 {: #add-a-contract }
 
@@ -69,11 +69,11 @@ Tenderly数据面板提供对一站式Web3开发平台的访问。要开始使�
 4. （可选）如果您要添加其他合约，您可以启动**Add more**滑块。这将允许您在添加初始合约后添加更多合约
 5. 最后点击**Add contract**将合约添加至数据面板
 
-![Add a contract](/images/builders/build/eth-api/dev-env/tenderly/tenderly-3.png)
+![Add a contract](/images/builders/build/eth-api/dev-env/tenderly/tenderly-3.webp)
 
 添加合约后，该合约将出现在**Contracts**数据面板的合约列表当中。如果合约尚未被验证，数据面板将会显示**Unverified**状态以及**Verify**按钮。
 
-![Contract in list of contracts](/images/builders/build/eth-api/dev-env/tenderly/tenderly-4.png)
+![Contract in list of contracts](/images/builders/build/eth-api/dev-env/tenderly/tenderly-4.webp)
 
 要充分利用Tenderly工具集，建议您验证您的智能合约，您可通过点击**Verify**按钮完成此操作。您可以通过上传合约的JSON、ABI或源代码验证您的合约。更多信息，请参考[Tenderly的文档](https://docs.tenderly.co/monitoring/smart-contract-verification/verifying-a-smart-contract#verifying-a-smart-contract){target=\_blank}
 
@@ -90,13 +90,13 @@ Tenderly使通过数据面板创建分叉变得非常简单。首先，点击左
 3. 如果您只需要特定区块前的数据，您可以关闭**Use Latest Block**滑块并指定区块号。反之，您可以保持滑块启动的状态以包含所有区块直到最新的区块
 4. 点击**Create**
 
-![Fork Moonbeam](/images/builders/build/eth-api/dev-env/tenderly/tenderly-5.png)
+![Fork Moonbeam](/images/builders/build/eth-api/dev-env/tenderly/tenderly-5.webp)
 
 创建分叉后，您可以通过向分叉部署合约或使用其创建交易模拟来开始使用。
 
 要部署合约至分叉，您可以点击**Deploy Contract**按钮，上传您的合约源代码，并设置编译器配置。提交部署后，您将看到部署的交易出现在**Simulated Transactions**标签下，并且可以点击simulation获取更多信息。
 
-![Fork simulations](/images/builders/build/eth-api/dev-env/tenderly/tenderly-6.png)
+![Fork simulations](/images/builders/build/eth-api/dev-env/tenderly/tenderly-6.webp)
 
 要创建额外的模拟，您可以点击**New Simulation**按钮并输入模拟的配置。更多关于模拟的信息，请参考[Tenderly的如何模拟交易的文档](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=\_blank}。
 

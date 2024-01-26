@@ -263,7 +263,7 @@ forge test
 
 测试时，您将看到以下输出：
 
-![Unit Testing in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-1.png)
+![Unit Testing in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-1.webp)
 
 ### Foundry中的测试套件（Test Harness） {: #test-harnesses-in-foundry }
 
@@ -295,7 +295,7 @@ contract ContainerHarness is Container {
 
 现在，当您用`forge test`运行测试时，您将看到`testIsOverflowingFalse`已经通过！
 
-![Test Harness in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-2.png)
+![Test Harness in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-2.webp)
 
 ### Foundry中的模糊测试 {: #fuzzing-tests-in-foundry}
 
@@ -338,7 +338,7 @@ forge test
 
 您将在控制台看到以下类似输出：
 
-![Fuzzing Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-3.png)
+![Fuzzing Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-3.webp)
 
 ### Foundry中的分叉测试 {: #forking-tests-in-foundry}
 
@@ -385,7 +385,7 @@ forge test
 forge test -vvvv
 ```
 
-![Forking Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-4.png)
+![Forking Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-4.webp)
 
 这就是测试的步骤！您可以在GitHub上查看完整的[`Container.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.t.sol){target=\_blank}和[`MyToken.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/MyToken.t.sol){target=\_blank}。
 
@@ -469,7 +469,7 @@ forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --
 
 您将看到类似以下输出：
 
-![Running a Script in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-5.png)
+![Running a Script in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-5.webp)
 
 您应该能够看到您的合约已成功部署并且已在Moonscan上得到验证。可以查看我[部署`Container.sol`合约](https://moonbase.moonscan.io/address/0xe8bf2e654d7c1c1ba8f55fed280ddd241e46ced9#code)的地方。
 

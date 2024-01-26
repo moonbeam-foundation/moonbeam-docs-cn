@@ -44,7 +44,7 @@ MetaFab为常用且流行的编程语言和框架提供了相应SDK。这些SDK�
 
 MetaFab数据面板是快速概览游戏、玩家、货币、物品、商店、战利品箱、合约等内容的大本营。提供开发者直观的管理功能，例如配置和创建等（以及更多）。但是，大多数开发者选择将他们的数据面板用作中心/枢纽并直接使用端点和代码开发。[创建数据面板并检索您的开发者密钥](https://dashboard.trymetafab.com/auth/register){target=\_blank}。
 
-![MetaFab's developer dashboard.](/images/builders/integrations/gaming/metafab/metafab-1.png)
+![MetaFab's developer dashboard.](/images/builders/integrations/gaming/metafab/metafab-1.webp)
 
 ## 玩家和钱包 {: #players-wallets }
 
@@ -58,7 +58,7 @@ MetaFab和基于MetaFab构建的游戏从不存储私钥信息。使用MetaFab�
 
 游戏可以使用MetaFab的开箱即用且可完全根据需求定制的玩家身份验证、注册和钱包连接流程进行品牌推广，或者根据需求从头开始构建自己的游戏验证和注册流程。
 
-![Register your game with MetaFab.](/images/builders/integrations/gaming/metafab/metafab-2.png)
+![Register your game with MetaFab.](/images/builders/integrations/gaming/metafab/metafab-2.webp)
 
 **白标身份验证和注册**：快速设计流程以匹配游戏的主题和域名，并自动处理玩家登录、注册和凭证中继，例如玩家ID和Token使用等。查看详细流程，请参考[我们的无品牌认证页面的演示](https://connect.trymetafab.com/?chain=MATIC&flow=register&game=880c664b-3ce4-40a2-bf61-83b174ce5f94&redirectUri=https://trymetafab.com){target=\_blank}。
 
@@ -68,7 +68,7 @@ MetaFab和基于MetaFab构建的游戏从不存储私钥信息。使用MetaFab�
 
 MetaFab支持具有一致且标准的SSO身份验证流程的游戏网络。游戏可以通过自有、投资组合或合作伙伴的游戏生态系统中高度可配置的组织结构，实现新高度的互操作性或是无摩擦玩家体验等。
 
-![MetaFab's instrastructure diagram.](/images/builders/integrations/gaming/metafab/metafab-3.png)
+![MetaFab's instrastructure diagram.](/images/builders/integrations/gaming/metafab/metafab-3.webp)
 
 **无缝加入新游戏和现有游戏**：将“使用（XYZ）登录”按钮或方法集成到任何游戏中，并与MetaFab的系统垂直集成，包括Gas和交易抽象化。
 
@@ -76,7 +76,7 @@ MetaFab生态系统产品允许统一的成就跟踪（以及更多）、许可�
 
 ## 配置和部署智能合约 {: #configure-deploy-smart-contracts }
 
-![Use MetaFab's template smart contracts: Digital Collectibles (ERC1155), Game Currencies (ERC20), Lootboxes, and Shops](/images/builders/integrations/gaming/metafab/metafab-4.png)
+![Use MetaFab's template smart contracts: Digital Collectibles (ERC1155), Game Currencies (ERC20), Lootboxes, and Shops](/images/builders/integrations/gaming/metafab/metafab-4.webp)
 
 **MetaFab智能合约**：配置MetaFab的预写智能合约，几行代码覆盖各种实现范式。其中包括部署游戏内货币来锻造新物品，以及通过商店和创造实现玩家对玩家的交易。
 

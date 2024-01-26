@@ -75,7 +75,7 @@ npm install @metamask/detect-provider
     };
     ```
 
-    ![Add accounts to MetaMask](/images/builders/integrations/wallets/metamask/metamask-1.png)
+    ![Add accounts to MetaMask](/images/builders/integrations/wallets/metamask/metamask-1.webp)
 
 3. 通过调用`wallet_addEthereumChain`函数将Moonbase Alpha添加为新的网络。这将提示用户提供将Moonbase Alpha添加为自定义网络的权限。成功添加网络后，将提示用户切换网络至Moonbase Alpha
 
@@ -112,7 +112,7 @@ npm install @metamask/detect-provider
     };
     ```
 
-    ![Add and switch networks in MetaMask](/images/builders/integrations/wallets/metamask/metamask-2.png)
+    ![Add and switch networks in MetaMask](/images/builders/integrations/wallets/metamask/metamask-2.webp)
 
 现在，您应该已经完成按钮创建，用户只需点击按钮，根据操作指示即可将MetaMask账户连接至Moonbase Alpha。
 

@@ -19,7 +19,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 在开始操作之前，您将需要创建一个Dapplooker账户。您可以[点击此处注册](https://dapplooker.com/signup){target=\_blank}并创建一个账户。如果您已注册，您可以直接[点击此处登录](https://dapplooker.com/login){target=\_blank}您的账户。
 
-![Login to Dapplooker](/images/builders/integrations/analytics/dapplooker/dapplooker-1.png)
+![Login to Dapplooker](/images/builders/integrations/analytics/dapplooker/dapplooker-1.webp)
 
 ## 连接智能合约 {: #connect-smart-contracts }
 
@@ -27,7 +27,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 在**Register Your Project**页面，点击**Connect Dapp**，然后选择**Connect Smart Contract**选项。您也可以从菜单栏中浏览和运行已编入索引的DApp分析。
 
-![Connect dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-2.png)
+![Connect dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-2.webp)
 
 随后，系统将提示您输入您项目和合约的详情：
 
@@ -45,7 +45,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 7. 点击**Register**后智能合约事务事件数据将开始同步。同步完整的数据可能需要一段时间
 
-![Register your dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-3.png)
+![Register your dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-3.webp)
 
 完成同步后，您将收到邮件通知。点击邮件中的链接将直接跳转至您的索引数据。
 
@@ -55,7 +55,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 在**Register Your Project**页面，点击**Connect Dapp**，然后选择**Connect Subgraph**选项。您也可以从菜单栏中浏览和运行已编入索引的DApp分析。
 
-![Connect dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-4.png)
+![Connect dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-4.webp)
 
 随后，系统将提示您输入您项目和subgraph的详情：
 
@@ -71,7 +71,7 @@ Dapplooker分析平台协助基于Moonbeam的网络，帮助用户无需依赖�
 
 6. 点击**Register**后subgraph实体数据将开始同步。同步完整的数据可能需要一段时间
 
-![Register your dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-5.png)
+![Register your dapp](/images/builders/integrations/analytics/dapplooker/dapplooker-5.webp)
 
 完成同步后，您将收到邮件通知。点击邮件中的链接将直接跳转至您的索引数据。
 

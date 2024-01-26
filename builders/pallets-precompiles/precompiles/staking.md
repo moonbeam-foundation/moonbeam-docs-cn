@@ -151,14 +151,14 @@ Solidity接口包含以下的函数：
 1. 点击**File explorer**标签
 2. 获得[`StakingInterface.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)的拷贝，并将文档内容复制并粘贴至名为`StakingInterface.sol`的Remix文档
 
-![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/staking-1.png)
+![Copying and Pasting the Staking Interface into Remix](/images/builders/pallets-precompiles/precompiles/staking/staking-1.webp)
 
 ### 编译合约 {: #compile-the-contract }  
 
 1. 点击（从上至下的）第二个**Compile**标签
 2. 点击**Compile StakingInterface.sol**编译该接口
 
-![Compiling StakingInteface.sol](/images/builders/pallets-precompiles/precompiles/staking/staking-2.png)
+![Compiling StakingInteface.sol](/images/builders/pallets-precompiles/precompiles/staking/staking-2.webp)
 
 ### 读取合约 {: #access-the-contract }
 
@@ -168,7 +168,7 @@ Solidity接口包含以下的函数：
 4. 为Moonbase Alpha提供质押预编译的地址：`{{networks.moonbase.precompiles.staking}}`并点击**At Address**
 5. 平行链质押预编译将出现在**Deployed Contracts**列表
 
-![Provide the address](/images/builders/pallets-precompiles/precompiles/staking/staking-3.png)
+![Provide the address](/images/builders/pallets-precompiles/precompiles/staking/staking-3.webp)
 
 ### 使用自动复合委托一个收集人 {: #delegate-a-collator }
 
@@ -185,7 +185,7 @@ Solidity接口包含以下的函数：
 3. 点击**call**
 4. 调用完成后，将会显示结果
 
-![Call collator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-4.png)
+![Call collator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-4.webp)
 
 自动复合委托计数是配置了自动复合的委托数量。要确定已设置自动复合的委托数量，您可以
 
@@ -194,7 +194,7 @@ Solidity接口包含以下的函数：
 3. 点击**call**
 4. 调用完成后，将会显示结果
 
-![Get candidate auto-compounding delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-5.png)
+![Get candidate auto-compounding delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-5.webp)
 
 您需要检索的最后一项是您的委托计数。如果您不知道现有的委托数量，您可以执行以下步骤获得：
 
@@ -203,7 +203,7 @@ Solidity接口包含以下的函数：
 3. 点击**call**
 4. 调用完成后，将会显示结果
 
-![Call delegator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-6.png)
+![Call delegator delegation count](/images/builders/pallets-precompiles/precompiles/staking/staking-6.webp)
 
 现在，您已获取[候选人的委托数量](#:~:text=获取候选人的委托数量)、[自动复合委托计数](#:~:text=要确定已设置自动复合的委托数量)和您的[现有委托数量](#:~:text=如果您不知道现有的委托数量)，您已拥有委托候选人和设置自动复合所需的所有信息。您可以开始：
 
@@ -217,7 +217,7 @@ Solidity接口包含以下的函数：
 8. 点击**transact**
 9. MetaMask将跳出弹窗，请查看详情并确认交易
 
-![Delegate a Collator](/images/builders/pallets-precompiles/precompiles/staking/staking-7.png)
+![Delegate a Collator](/images/builders/pallets-precompiles/precompiles/staking/staking-7.webp)
 
 如果您想在不设置自动复合的情况下进行委托，您可以按照前面的步骤操作，但您可以使用**delegate**函数而不是使用**delegateWithAutoCompound**。
 
@@ -231,7 +231,7 @@ Solidity接口包含以下的函数：
 2. 为账户提供一个昵称
 3. 点击**Save**
 
-![Add to Address Book](/images/builders/pallets-precompiles/precompiles/staking/staking-8.png)
+![Add to Address Book](/images/builders/pallets-precompiles/precompiles/staking/staking-8.webp)
 
 要验证您的委托是否成功，请前往[Polkadot.js 应用程序](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/chainstate){target=\_blank}并导航到**Developer**然后点击**Chain State**
 
@@ -244,7 +244,7 @@ Solidity接口包含以下的函数：
 !!! 注意事项
     如果您想要查看委托概述，无需在**blockhash to query at**字段中输入任何内容。
 
-![Verify delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-9.png)
+![Verify delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-9.webp)
 
 ### 确认自动复合百分比 {: #confirm-auto-compounding }
 
@@ -256,7 +256,7 @@ Solidity接口包含以下的函数：
 4. 点击**call**
 5. 回复会出现在**call**按钮下方
 
-![Verify auto-compound percentage](/images/builders/pallets-precompiles/precompiles/staking/staking-10.png)
+![Verify auto-compound percentage](/images/builders/pallets-precompiles/precompiles/staking/staking-10.webp)
 
 ### 设置或更改自动复合百分比 {: #set-or-change-auto-compounding }
 
@@ -274,7 +274,7 @@ Solidity接口包含以下的函数：
 6. 点击**transact**
 7. MetaMask将跳出弹窗，请查看详情并确认交易
 
-![Set or update auto-compound percentage](/images/builders/pallets-precompiles/precompiles/staking/staking-11.png)
+![Set or update auto-compound percentage](/images/builders/pallets-precompiles/precompiles/staking/staking-11.webp)
 
 ### 撤销一个委托 {: #revoking-a-delegation }
 
@@ -291,7 +291,7 @@ Solidity接口包含以下的函数：
 3. 点击**transact**
 4. MetaMask将跳出弹窗，请查看详情并点击**Confirm**
 
-![Revoke delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-12.png)
+![Revoke delegation](/images/builders/pallets-precompiles/precompiles/staking/staking-12.webp)
 
 当交易成功确认，您将会需要等待延迟时段后才能为您执行撤回委托的请求。如果您尝试在延迟时段前操作，该操作将会失败
 

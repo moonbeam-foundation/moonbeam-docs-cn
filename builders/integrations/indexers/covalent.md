@@ -20,7 +20,7 @@ description: 使用Covalent API查询Moonbeam上的区块链数据，例如余�
 
 Covalent的Unified API是一个功能强大且易于使用的REST API，它为所有区块链网络上的资产提供可见性。对应每一个网络它的请求和响应对象格式都是一致的。例如，一个用户想要获取同一个钱包地址在所有支持链上的不同Token余额，他只要通过改变请求URL中的唯一区块链名称或ID路径参数就能做到。Covalent的Unified API比JSON-RPC接口提供了更多的数据灵活性，后者通常仅限于特定区块上的数据查询。Covalent的Unified API也允许查询多个对象并批量导出数据。
 
-[![Example API response in JSON](/images/builders/integrations/indexers/covalent/covalent-1.png)](https://www.covalenthq.com/docs/api/balances/get-token-balances-for-address/?utm_source=moonbeam&utm_medium=partner-docs){target=\_blank} *点击上述图片亲自尝试请求。*
+[![Example API response in JSON](/images/builders/integrations/indexers/covalent/covalent-1.webp)](https://www.covalenthq.com/docs/api/balances/get-token-balances-for-address/?utm_source=moonbeam&utm_medium=partner-docs){target=\_blank} *点击上述图片亲自尝试请求。*
 
 ### 快速开始 {: #quick-start }
 
@@ -237,7 +237,7 @@ curl https://api.covalenthq.com/v1/1287/tokens/\
 
 balances端点返回所有ERC-20和NFT Token余额的列表，包括ERC-72和ERC-1155余额，及其当前的现货价格（若有）。
 
-![JavaScript Console Output](/images/builders/integrations/indexers/covalent/covalent-2.png)
+![JavaScript Console Output](/images/builders/integrations/indexers/covalent/covalent-2.webp)
 
 ### 使用Python {: #using-python }
 
@@ -267,7 +267,7 @@ fetch_wallet_balance("0xFEC4f9D5B322Aa834056E85946A32c35A3f5aDD8")
 
 [Increment](https://www.covalenthq.com/docs/increment/){target=\_blank}是一个无代码图表与报告生成工具，它让用户能够使用数据模型来构建动态、个性化的图表。该工具直接将业务逻辑（包括覆盖范围、留存率和收入）编码到一个SQL编译器中，然后由该编译器输出有效的SQL结果。Increment能够将使用SQL创建的任何图表转换并嵌入进一个标准化且开源的维度(dimension)和度量(measure)集合，其被称为模型。
 
-[![Example Increment chart](/images/builders/integrations/indexers/covalent/covalent-3.png)](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=\_blank} *点击上述图片尝试Increment。*
+[![Example Increment chart](/images/builders/integrations/indexers/covalent/covalent-3.webp)](https://www.covalenthq.com/platform/increment/#/?utm_source=moonbeam&utm_medium=partner-docs){target=\_blank} *点击上述图片尝试Increment。*
 
 ### 常见用例 {: #common-use-cases }
 
@@ -278,7 +278,7 @@ Increment可用于：
 - [分析NFT市场](https://www.covalenthq.com/docs/increment/data-models/jpeg-analysis/?utm_source=moonbeam&utm_medium=partner-docs){target=\_blank}
 - [追踪月度活跃钱包](https://www.covalenthq.com/docs/networks/moonbeam/?utm_source=moonbeam&utm_medium=partner-docs#network-status){target=\_blank}
 
-[![Example network status increment](/images/builders/integrations/indexers/covalent/covalent-4.png)](https://www.covalenthq.com/docs/networks/moonbeam/?utm_source=moonbeam&utm_medium=partner-docs#network-status){target=\_blank} *点击上图获取最新的Moonbeam网络活跃钱包数，交易笔数和Token数（可按日、周、月或年获取数据）。*
+[![Example network status increment](/images/builders/integrations/indexers/covalent/covalent-4.webp)](https://www.covalenthq.com/docs/networks/moonbeam/?utm_source=moonbeam&utm_medium=partner-docs#network-status){target=\_blank} *点击上图获取最新的Moonbeam网络活跃钱包数，交易笔数和Token数（可按日、周、月或年获取数据）。*
 
 ### Increment参考资料 {: #increment-resources }
 

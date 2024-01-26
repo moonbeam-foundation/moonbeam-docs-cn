@@ -19,7 +19,7 @@ description: 查看基于Moonbeam网络的喂价合约并学习如何使用智�
 
 终端用户可以通过Aggregator接口或通过代理合约的Consumer接口使用只读操作检索喂价。
 
-![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.png)
+![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.webp)
 
 ### 获取价格数据 {: #fetch-price-data }
 
@@ -176,14 +176,14 @@ interface AggregatorV3Interface {
         {{ networks.moonbase.chainlink.feed.proxy.btc_usd }}
         ```
 
-![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
+![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.webp)
 
 这将创建一个可以进行交互的Aggregator接口实例，并出现在Remix的**Deployed Contracts**部分。执行以下操作步骤获取最新价格数据：
 
 1. 展开`AggregatorV3Interface`合约获取可用函数
 2. 点击`latestRoundData()`请求相应喂价数据，在本示例中为BTC to USD
 
-![Interact with the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-3.png)
+![Interact with the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-3.webp)
 
 请注意，您必须用`decimals()`了解喂价的小数位数，才能获得实际价格。
 
@@ -380,7 +380,7 @@ interface ChainlinkInterface {
 
 6. 然后您可以使用查看函数`currentPrice()`查看价格
 
-![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.png)
+![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.webp)
 
 如果您想要添加其他特定的报价对，请直接通过[Discord](https://discord.com/invite/PfpUATX){target=\_blank}联系Moonbeam团队。
 

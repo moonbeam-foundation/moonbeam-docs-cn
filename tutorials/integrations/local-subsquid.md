@@ -65,7 +65,7 @@ _作者：Erin Shaben_
 
 这些指令将会启动我们的开发节点，您可以使用9944端口。
 
-![Spin up a Moonbeam development node](/images/tutorials/integrations/local-subsquid/local-squid-1.png)
+![Spin up a Moonbeam development node](/images/tutorials/integrations/local-subsquid/local-squid-1.webp)
 
 我们的开发节点具有10个预先拥有资金的账户。
 
@@ -165,7 +165,7 @@ contract MyTok is ERC20, Ownable {
 npx hardhat compile
 ```
 
-![Compile contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-2.png)
+![Compile contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-2.webp)
 
 此指令将会编译合约并为其产生一个包含`artifacts`和合约ABI的目录。
 
@@ -219,7 +219,7 @@ npx hardhat compile
 
 部署合约的地址应当在终端出现，请保存该地址，我们将在后面的教程中用于合约交互。
 
-![Deploy contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-3.png)
+![Deploy contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-3.webp)
 
 ### 转移ERC-20 {: #transfer-erc-20s }
 
@@ -301,7 +301,7 @@ npx hardhat compile
 
 当交易传送成功，您将会在终端中看到交易记录。
 
-![Send transactions using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-4.png)
+![Send transactions using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-4.webp)
 
 现在我们可以创建Squid以在本地开发节点检索数据。
 
@@ -423,7 +423,7 @@ sqd archive-up
 
 这将会在8080端口运行我们的Archive。
 
-![Spin up a local Subsquid EVM Archive](/images/tutorials/integrations/local-subsquid/local-squid-5.png)
+![Spin up a local Subsquid EVM Archive](/images/tutorials/integrations/local-subsquid/local-squid-5.webp)
 
 Archive的部分就是这样！现在我们需要更新我们的Squid项目来检索ERC-20`Transfer`事件，然后我们就可以运行检索器了！
 
@@ -461,7 +461,7 @@ sqd codegen
 sqd typegen ../artifacts/contracts/MyTok.sol/MyTok.json
 ```
 
-![Run Subsquid commands](/images/tutorials/integrations/local-subsquid/local-squid-6.png)
+![Run Subsquid commands](/images/tutorials/integrations/local-subsquid/local-squid-6.webp)
 
 这将在`src/abi/MyTok.ts`文件中生成相关的TypeScript接口类。在本教程中，我们将专门使用`events`。
 
@@ -567,7 +567,7 @@ processor.run(new TypeormDatabase(), async (ctx) => {
 
 在终端中，您应当能看见检索器在处理区块！
 
-![Spin up a Subsquid indexer](/images/tutorials/integrations/local-subsquid/local-squid-7.png)
+![Spin up a Subsquid indexer](/images/tutorials/integrations/local-subsquid/local-squid-7.webp)
 
 如果您的Squid没有正确地检索区块，请确保您的开发节点正在使用`--sealing`标志运行。以本教程例子来说，你应该将标志设置为`--sealing 4000`，这样每四秒就会产生一个区块。您也可以根据需要随意编辑时间间隔。在您尝试再次启动您的Squid之前，请运行以下指令来关闭本地Archive和Squid：
 
@@ -614,7 +614,7 @@ query MyQuery {
 
 所有转账数据都应当出现，包含转账至Alith账户的初始供应转账，以及Alith与Baltathar、Charleth、Dorothy和Ethan之间的转账。
 
-![Query transfer data using the GraphQL server](/images/tutorials/integrations/local-subsquid/local-squid-8.png)
+![Query transfer data using the GraphQL server](/images/tutorials/integrations/local-subsquid/local-squid-8.webp)
 
 就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=\_blank}上查看完整的项目内容。
 

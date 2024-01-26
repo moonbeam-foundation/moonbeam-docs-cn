@@ -50,7 +50,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 
 8. 测试XCM集成
 
-![Moonbase Alpha cross-chain integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-1.png)
+![Moonbase Alpha cross-chain integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-1.webp)
 
 完成这些步骤后，双方团队均已成功测试资产转移，您的平行链Token可添加至[Moonbeam DApp](https://apps.moonbeam.network/moonbase-alpha){target=\_blank}的**Cross Chain Assets**部分。若充值和提现按预期运行，则可以开始与Moonriver集成。
 
@@ -119,7 +119,7 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 下图描述了此过程的示例以及Moonbeam上的成功提案。
 
-![Moonbeam and Moonriver cross-chain integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-2.png)
+![Moonbeam and Moonriver cross-chain integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-2.webp)
 
 完成这些步骤后，便可以正常运作，Moonriver/Moonbeam上的新XC-20资产可添加至[Moonbeam DApp](https://apps.moonbeam.network/){target=\_blank}的**Cross Chain Assets**部分。
 
@@ -259,7 +259,7 @@ xcm-tools repository有一个用于HRMP交互的特定脚本，称为[`hrmp-chan
 
 下图描述了将所有交易批处理整合为一的过程。
 
-![Batch XCM integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-3.png)
+![Batch XCM integration process](/images/builders/interoperability/xcm/xc-registration/xc-integration/channels-3.webp)
 
 现在，您将使用编码的调用数据输出用于打开通道、接受通道和注册资产，并将它们插入到以下命令中以将批量提案发送给民主。
 

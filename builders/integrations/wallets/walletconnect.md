@@ -11,7 +11,7 @@ description: 了解如何将WalletConnect集成到基于任何Moonbeam网络的D
 
 WalletConnect通过使用桥接服务器以中继负载在DApp和移动端钱包构建一个远端连接。通过DApp中的二维码即可发起连接，用户需要扫描二维码并在移动端钱包上通过。当连接成功建立后，DApp和钱包之间的负载将会通过共享私钥进行加密。
 
-![WalletConnect flow](/images/builders/integrations/wallets/walletconnect/walletconnect-1.png)
+![WalletConnect flow](/images/builders/integrations/wallets/walletconnect/walletconnect-1.webp)
 
 WalletConnet同样也可以用于连接DApp和电脑钱包，但此教程仅包含移动端钱包的连接。
 
@@ -149,7 +149,7 @@ const connect = async () => {
 
 为了测试目前的代码运行是否顺利，如果您尚未完全准备完毕您可以运行 `npm start`以为您的DApp运行一个本地实例，并点击**Connect Wallet**，WalletConnect的二维码模型将会跳出。
 
-![Scan QR code from DApp](/images/builders/integrations/wallets/walletconnect/walletconnect-2.png)
+![Scan QR code from DApp](/images/builders/integrations/wallets/walletconnect/walletconnect-2.webp)
 
 要从MetaMask移动端钱包构建连接，您可以：
 
@@ -159,7 +159,7 @@ const connect = async () => {
 
 3. 如果您成功连接，您将在MetaMask看见跳出的弹窗显示**Connect to Moonbeam WalletConnect Demo App**
 
-![Connect WalletConnect on MetaMask mobile](/images/builders/integrations/wallets/walletconnect/walletconnect-3.png)
+![Connect WalletConnect on MetaMask mobile](/images/builders/integrations/wallets/walletconnect/walletconnect-3.webp)
 
 目前而言，您的DApp仍仅显示**Connect Wallet**按钮，因此下一步将会是在连接时显示**Disconnect**按钮。
 
@@ -177,7 +177,7 @@ const connect = async () => {
 
 4. 屏幕上将会跳出一个弹窗，点击**End**
 
-![End WalletConnect Session on MetaMask mobile](/images/builders/integrations/wallets/walletconnect/walletconnect-4.png)
+![End WalletConnect Session on MetaMask mobile](/images/builders/integrations/wallets/walletconnect/walletconnect-4.webp)
 
 虽然这对于开发而言很重要，此解除连接的方法也同样使用于终端用户。下一个部分教程将会解释如何处理您的DApp和MetaMask移动端钱包解除连接的逻辑。
 
@@ -496,13 +496,13 @@ const sendTransaction = async () => {
 1. 为签署和传送交易，点击**Confirm**
 2. 如果交易成功发送，您将会在MetaMask移动端钱包中看见通知
 
-![Send Transaction](/images/builders/integrations/wallets/walletconnect/walletconnect-5.png)
+![Send Transaction](/images/builders/integrations/wallets/walletconnect/walletconnect-5.webp)
 
 同样您也可以在[Moonscan](https://moonbase.moonscan.io/){target=\_blank}中搜寻您的账户地址以验证交易是否成功。
 
 ## 最终结果 {: #final-result }
 
-![DApp Final Result](/images/builders/integrations/wallets/walletconnect/walletconnect-6.png)
+![DApp Final Result](/images/builders/integrations/wallets/walletconnect/walletconnect-6.webp)
 
 要一次性检查此教程中的代码，您可以前往[moonbeam-walletconnect-demo GitHub repository](https://github.com/papermoonio/moonbeam-walletconnect-demo){target=\_blank}。
 

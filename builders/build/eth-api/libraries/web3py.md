@@ -153,7 +153,7 @@ python3 transaction.py
 
 您也可以使用`balances.py`脚本为发送地址和接收地址查看余额是否变化。整体操作流程如下所示：
 
-![Send Tx Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-1.png)
+![Send Tx Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-1.webp)
 
 ## 部署合约 {: #deploy-a-contract }
 
@@ -211,7 +211,7 @@ python3 deploy.py
 
 如果成功，合约地址将显示在终端。
 
-![Deploy Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-2.png)
+![Deploy Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-2.webp)
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -273,7 +273,7 @@ python3 increment.py
 
 如果成功，交易哈希将显示在终端。您可以在`increment.py`脚本旁边使用`get.py`脚本以确保数值如预期变化：
 
-![Increment Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-3.png)
+![Increment Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-3.webp)
 
 接下来，您可以打开`reset.py`文件并执行以下步骤以创建脚本：
 
@@ -297,6 +297,6 @@ python3 reset.py
 
 如果成功，交易哈希将显示在终端。您可以在`reset.py`脚本旁边使用`get.py`脚本以确保数值如预期变化：
 
-![Reset Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-4.png)
+![Reset Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-4.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'

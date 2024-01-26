@@ -46,7 +46,7 @@ git clone https://github.com/graphprotocol/graph-node/ \
 
 上一条指令的日志尾端应与以下内容相似：
 
-![Graph Node setup](/images/node-operators/indexer-nodes/the-graph/the-graph-node-1.png)
+![Graph Node setup](/images/node-operators/indexer-nodes/the-graph/the-graph-node-1.webp)
 
 设置好所有相关内容后，需要在`docker-compose.yml`文档中修改“Ethereum environment”，让其指向运行该Graph节点的节点终端。请注意，`setup.sh`文档会检测`Host IP`并写入一个值，因此您需要进行相应修改。
 
@@ -123,11 +123,11 @@ services:
 docker-compose up
 ```
 
-![Graph Node compose up](/images/node-operators/indexer-nodes/the-graph/the-graph-node-2.png)
+![Graph Node compose up](/images/node-operators/indexer-nodes/the-graph/the-graph-node-2.webp)
 
 稍后您就可以看到Graph节点与网络中最新可用区块同步的日志：
 
-![Graph Node logs](/images/node-operators/indexer-nodes/the-graph/the-graph-node-3.png)
+![Graph Node logs](/images/node-operators/indexer-nodes/the-graph/the-graph-node-3.webp)
 
 这就代表您已在Moonbase Alpha测试网成功部署并运行Graph节点。欢迎您随时对本示例进行调整，以适用于Moonbeam和Moonriver。
 

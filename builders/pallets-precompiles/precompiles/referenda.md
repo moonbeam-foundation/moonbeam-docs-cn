@@ -125,14 +125,14 @@ Referenda Precompile位于以下地址：
 1. 点击**File explorer**标签
 2. 将[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=\_blank}复制粘贴至[Remix文档](https://remix.ethereum.org/){target=\_blank}，命名为`Referenda.sol`
 
-![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.png)
+![Copy and paste the Referenda Solidity interface into Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-1.webp)
 
 ### 编译合约 {: #compile-the-contract }
 
 1. 点击**Compile**标签（从上至下第二个）
 2. 然后在编译界面，点击**Compile Referenda.sol**
 
-![Compile the Referenda.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-2.png)
+![Compile the Referenda.sol interface using Remix.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-2.webp)
 
 ### 获取合约 {: #access-the-contract }
 
@@ -142,7 +142,7 @@ Referenda Precompile位于以下地址：
 4. 为Moonbase Alpha提供Referenda Precompile的地址：`{{ networks.moonbase.precompiles.referenda }}`并点击**At Address**
 5. Referenda Precompile将会出现在**Deployed Contracts**列表当中
 
-![Access the Referenda.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-3.png)
+![Access the Referenda.sol interface by provide the precompile's address.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-3.webp)
 
 ### 提交提案 {: #submit-a-proposal }
 
@@ -162,7 +162,7 @@ Referenda Precompile位于以下地址：
 6. 输入执行原像的区块号
 7. 点击**transact**并在MetaMask确认交易
 
-![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.png)
+![Submit the proposal using the submitAt function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-4.webp)
 
 交易确认后，您将看到提案出现在[Polkadot.js Apps](https://polkadot.js.org/apps?rpc=wss://wss.api.moonbase.moonbeam.network%2Fpublic-ws#/referenda){target=\_blank}的**Referenda**页面中。您也可以前往[Polkassembly](https://moonbase.polkassembly.io/opengov){target=\_blank}查看提案（Polkassembly根据Track来分类提案）。
 
@@ -178,7 +178,7 @@ Referenda Precompile位于以下地址：
 2. 输入公投的索引
 3. 点击**transact**并在MetaMask确认交易
 
-![Place the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-5.png)
+![Place the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-5.webp)
 
 现在已存入决定保证金，距离公投进入决定期又更近了一步。接下来要确保在指定的Track中有足够的容量并且必须通过准备期才能进入决定期。
 
@@ -194,6 +194,6 @@ Referenda Precompile位于以下地址：
 2. 输入公投的索引
 3. 点击**transact**并在MetaMask确认交易
 
-![Refund the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-6.png)
+![Refund the Decision Deposit for a Referenda using the placeDecisionDeposit function of the Referenda Precompile.](/images/builders/pallets-precompiles/precompiles/referenda/referenda-6.webp)
 
 这样就可以了！您已经基本了解Referenda Precompile。在[`Referenda.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/referenda/Referenda.sol){target=\_blank}文档中记录了更多的函数，如果您对这些函数或在Referenda Precompile方面有任何问题，请随时在[Discord](https://discord.gg/moonbeam){target=\_blank}上联系我们。

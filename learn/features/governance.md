@@ -248,7 +248,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 下方图片显示了提案步骤：
 
-![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/proposal-roadmap.png)
+![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/proposal-roadmap.webp)
 
 ### 提案示例流程 {: #proposal-example-walkthrough }
 

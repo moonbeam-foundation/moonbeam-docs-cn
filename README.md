@@ -1,6 +1,6 @@
 # Moonbeam文档
 
-![Main Page Banner](/images/readme-contributing/readme-banner.png)
+![Main Page Banner](/images/readme-contributing/readme-banner.webp)
 
 此库包含波卡（Polkadot）网络上完全兼容以太坊的智能合约平行链Moonbeam的文档。在这里，您可以找到面向开发人员、收集人、终端用户和其他Moonbeam网络参与者的高阶和技术类型的信息。
 

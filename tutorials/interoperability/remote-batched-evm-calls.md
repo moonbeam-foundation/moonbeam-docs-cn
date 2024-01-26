@@ -29,7 +29,7 @@ _作者：Kevin Neilson_
 
 通过XCM调度的远程批量EVM调用的“满意路径”如下所示：
 
-![Remote batch EVM call via XCM diagram](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-1.png)
+![Remote batch EVM call via XCM diagram](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-1.webp)
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -45,7 +45,7 @@ _作者：Kevin Neilson_
 
 在本示例中，我们将通过XCM从Alice的账户（即`5Fe4nNwxJ9ai9hVkUubiy4e6BVs1tzJGDLXAdhUKuePq9CLp`）发送远程EVM调用。由于我们将从中继链发送XCM指令，因此命令中省略了平行链ID。父值`1`表示中继链为目标平行链父链。命令和响应如下图所示：
 
-![Calculating the multilocation-derivative account](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-2.png)
+![Calculating the multilocation-derivative account](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-2.webp)
 
 下方表格涵盖了所有值：
 
@@ -73,7 +73,7 @@ _作者：Kevin Neilson_
  3. 然后，MetaMask将跳出弹窗，但**请勿签署交易**。在MetaMask中，点击**hex**标签，随后将会出现编码的calldata
  4. 点击**Copy raw transaction data**按钮。这将复制编码的calldata至剪贴板：`0x2004ffd9`
 
-![Calldata for Minting action](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-3.png)
+![Calldata for Minting action](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-3.webp)
 
 !!! 注意事项
     其他钱包也提供相同的功能，可以在签署交易之前检查编码的calldata。
@@ -115,7 +115,7 @@ _作者：Kevin Neilson_
 7. MetaMask将跳出弹窗，但**请勿签署交易**。在MetaMask中，点击**hex**标签，随后将出现编码后的calldata
 8. 点击**Copy raw transaction data**按钮。这将批量调用的编码calldata复制到剪贴板
 
-![Generate batch calls using Batch Precompile](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-4.png)
+![Generate batch calls using Batch Precompile](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-4.webp)
 
 现在，我们已经完成了批量调用EVM calldata的准备工作。接下来，我们需要准备XCM指令，用于执行远程批量调用。
 
@@ -148,7 +148,7 @@ _作者：Kevin Neilson_
 
 代码设置完毕后，您可以使用`node`执行它。并且您将获取Moonbase Alpha远程EVM calldata：
 
-![Getting the Moonbeam calldata for the remote evm call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-5.png)
+![Getting the Moonbeam calldata for the remote evm call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-5.webp)
 
 本示例的编码calldata如下所示：
 
@@ -201,7 +201,7 @@ _作者：Kevin Neilson_
 
 代码设置完毕后，您可以使用`node`执行它。并且您将获取中继链XCM calldata：
 
-![Getting the Relay Chain XCM calldata for the Remote Batch call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-6.png)
+![Getting the Relay Chain XCM calldata for the Remote Batch call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-6.webp)
 
 本示例的编码calldata如下所示：
 
@@ -232,7 +232,7 @@ _作者：Kevin Neilson_
 
 代码设置完毕后，您可以使用`node`执行它，这将发送XCM消息以发起对Moonbase Alpha中的MARS和NEPT ERC-20 Token的批量预编译的调用。如果您看到`Abnormal Closure`错误提示，请不要担心。您可以通过在[Moonbase Moonscan](https://moonbase.moonscan.io/){target=\_blank}上查找您的multilocation衍生账户来验证远程批量调用是否成功。
 
-![Sending the XCM message from the Relay Chain to Moonbase Alpha for the batch EVM call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-7.png)
+![Sending the XCM message from the Relay Chain to Moonbase Alpha for the batch EVM call](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-7.webp)
 
 这样就可以了！您已成功发送一条XCM消息，这将通过XCM对批量预编译执行远程EVM调用并铸造 MARS和NEPT ERC-20 Token。接下来，让我们详细了解发生了什么。
 

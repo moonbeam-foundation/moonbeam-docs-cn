@@ -30,14 +30,14 @@ Hardhat插件可以无缝集成至您的[Hardhat](https://hardhat.org/){target=\
 1. 点击**Sign In**
 2. 选择**Click to sign up**后注册您的新账号
 
-![Sign up for Moonscan](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-1.png)
+![Sign up for Moonscan](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-1.webp)
 
 完成注册并登录新账号后，您将能够创建API密钥。
 
 1. 在左侧菜单中选择**API-KEYs**
 2. 点击**+ Add**按钮增加新的密钥
 
-![Add an API key](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-2.png)
+![Add an API key](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-2.webp)
 
 系统将提示您为您的API密钥输入**AppName**。随后，点击**Continue**，该密钥将会显示在您的API密钥列表中。
 
@@ -85,7 +85,7 @@ npx hardhat verify --network moonbase INSERT_CONTRACT_ADDRESS
 
 在您的终端，您将看到您的合约源代码已成功提交验证。如果验证成功，您将在终端看到**Successfully verified contract**以及[Moonbase Alpha上的Moonscan](https://moonbase.moonscan.io/){target=\_blank}的合约代码链接。
 
-![Successful verification using hardhat-verify plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-3.png)
+![Successful verification using hardhat-verify plugin](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-3.webp)
 
 如果您正在验证具有constructor函数的合约，您将需要运行上述命令并在命令末尾添加用于部署合约的constructor函数。例如：
 
@@ -145,7 +145,7 @@ cast abi-encode "constructor(uint256)" 100
     --etherscan-api-key INSERT_YOUR_MOONSCAN_API_KEY
     ```
 
-![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.png)
+![Foundry Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-4.webp)
 
 如果您想要部署示例合约的同时进行验证，您可以使用以下命令：
 
@@ -179,6 +179,6 @@ cast abi-encode "constructor(uint256)" 100
     src/MyToken.sol:MyToken
     ```
 
-![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-5.png)
+![Foundry Contract Deploy and Verify](/images/builders/build/eth-api/verify-contracts/etherscan-plugins/plugins-5.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'
