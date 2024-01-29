@@ -71,7 +71,7 @@ Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务
 ```js
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: '0.8.19',
+  solidity: '0.8.20',
 };
 ```
 
