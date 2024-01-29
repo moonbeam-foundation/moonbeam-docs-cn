@@ -283,7 +283,9 @@ const sdkInstance = new Sdk();
 
     这将会返回`accounts`函数，用于定义源链和目标链地址以及各地址相关的签署人
 
-此资产和链对象在`@moonbeam-network/xcm-config`包中管理。您不需要直接与此包交互，因SDK已传达这些数据，但您仍然能够找到[资产](https://github.com/PureStake/xcm-sdk/blob/main/packages/config/src/assets.ts){target=\_blank}和[链数据](https://github.com/PureStake/xcm-sdk/blob/main/packages/config/src/chains.ts){target=\_blank}的列表。
+
+此资产和链对象在`@moonbeam-network/xcm-config`包中管理。您不需要直接与此包交互，因SDK已传达这些数据，但您仍然能够找到[资产](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/assets.ts){target=\_blank}和[链数据](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/chains.ts){target=\_blank}的列表。
+
 
 以下为构建从波卡中继链转移DOT至Moonbeam的转移数据的步骤范例：
 
