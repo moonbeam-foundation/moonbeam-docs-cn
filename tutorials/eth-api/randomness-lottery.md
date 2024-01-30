@@ -11,11 +11,11 @@ _作者：Erin Shaben_
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种加密函数，它接受一些输入并产生随机值以及这些随机值是由提交者生成的真实性证明。此证明可以由任何人验证，以确保生成的随机数值计算正确。
 
-目前有两种可用随机数来源，他们基于区块生产者的VRF密钥以及过去的随机数结果提供随机输入：[本地VRF](/learn/features/randomness/#local-vrf){target=_blank}和[BABE Epoch随机数](/learn/features/randomness/#babe-epoch-randomness){target=_blank}。本地VRF直接在Moonbeam中使用区块收集人的VRF密钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=_blank} Epoch随机数是基于由中继链验证人在一个完整[Epoch](https://wiki.polkadot.network/docs/glossary#epoch){target=_blank}期间生产的所有VRF。
+目前有两种可用随机数来源，他们基于区块生产者的VRF密钥以及过去的随机数结果提供随机输入：[本地VRF](/learn/features/randomness/#local-vrf){target=\_blank}和[BABE Epoch随机数](/learn/features/randomness/#babe-epoch-randomness){target=\_blank}。本地VRF直接在Moonbeam中使用区块收集人的VRF密钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=\_blank} Epoch随机数是基于由中继链验证人在一个完整[Epoch](https://wiki.polkadot.network/docs/glossary#epoch){target=\_blank}期间生产的所有VRF。
 
-获取关于这两种随机数的更多信息，包括请求和履行流程如何工作，以及安全考量，请参考[Moonbeam上的随机数](/learn/features/randomness){target=_blank}页面。
+获取关于这两种随机数的更多信息，包括请求和履行流程如何工作，以及安全考量，请参考[Moonbeam上的随机数](/learn/features/randomness){target=\_blank}页面。
 
-Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/randomness){target=_blank}，这是一个Solidity接口，使智能合约开发者能够使用以太坊API通过本地VRF或BABE epoch随机数生成随机数。Moonbeam也提供一个[随机数消费者Solidity合约](/builders/pallets-precompiles/precompiles/randomness/#randomness-consumer-solidity-interface){target=_blank}，您的合约必须继承自该合约才能使用已履行的随机数请求。
+Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/randomness){target=\_blank}，这是一个Solidity接口，使智能合约开发者能够使用以太坊API通过本地VRF或BABE epoch随机数生成随机数。Moonbeam也提供一个[随机数消费者Solidity合约](/builders/pallets-precompiles/precompiles/randomness/#randomness-consumer-solidity-interface){target=\_blank}，您的合约必须继承自该合约才能使用已履行的随机数请求。
 
 本教程将向您展示如何使用随机数预编译和随机数消费者合约创建一个随机挑选获胜者的彩票合约。
 
@@ -26,8 +26,8 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 - 在Moonbase Alpha上创建/拥有三个账户，用于测试彩票合约
 - 所有账户必须拥有一些`DEV` Token
  --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 一个已配置Moonbase Alpha测试网的空白Hardhat项目。要获取分步操作教程，请参考[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}和我们Hardhat文档页面的[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=_blank}部分
-- 安装[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}库与Hardhat项目中的网络交互：
+- 一个已配置Moonbase Alpha测试网的空白Hardhat项目。要获取分步操作教程，请参考[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}和我们Hardhat文档页面的[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=\_blank}部分
+- 安装[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}。这将为您提供更简便的方式以使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}库与Hardhat项目中的网络交互：
 
     ```bash
     npm install @nomicfoundation/hardhat-ethers ethers@6
@@ -40,8 +40,8 @@ Moonbeam提供[随机数预编译](/builders/pallets-precompiles/precompiles/ran
 
 以下为我们本次操作指南中创建彩票合约会用到的合约：
 
-- `Randomness.sol` - [随机数预编译](/builders/pallets-precompiles/precompiles/randomness){target=_blank}，这是一个Solidity接口，允许您请求随机数、获取关于随机数请求的信息、并履行请求等
-- `RandomnessConsumer.sol` - [随机数消费者](/builders/pallets-precompiles/precompiles/randomness#randomness-consumer-solidity-interface){target=_blank}，是一个抽象的Solidity合约，用于与随机数预编译交互。此合约负责验证随机数请求的origin（来源），确保随机数预编译始终是origin，并履行请求
+- `Randomness.sol` - [随机数预编译](/builders/pallets-precompiles/precompiles/randomness){target=\_blank}，这是一个Solidity接口，允许您请求随机数、获取关于随机数请求的信息、并履行请求等
+- `RandomnessConsumer.sol` - [随机数消费者](/builders/pallets-precompiles/precompiles/randomness#randomness-consumer-solidity-interface){target=\_blank}，是一个抽象的Solidity合约，用于与随机数预编译交互。此合约负责验证随机数请求的origin（来源），确保随机数预编译始终是origin，并履行请求
 - `Lottery.sol` - 一个示例彩票合约，我们将在本教程中构建此合约。它将依靠随机数预编译和随机数消费者来请求用于挑选彩票获胜者的随机词
 
 如果您尚未在Hardhat项目中创建`contracts`目录，您需要创建一个新目录：
@@ -78,7 +78,7 @@ touch Randomness.sol RandomnessConsumer.sol Lottery.sol
 
 从更高层面来说，我们正在创建的彩票合约将定义彩票规则，允许参与并使用随机生成的词来公平挑选获胜者。我们将通过随机数预编译请求随机词。然后，我们将使用随机数消费者接口消费已完成请求的结果，以便我们的合约可以使用随机生成的词挑选获胜者并支付奖励。我们将会在构建彩票合约时演示分步流程。但是现在，您可以查看下图了解整个流程。
 
-![Diagram of the Lottery process.](/images/tutorials/eth-api/randomness-lottery/lottery-1.png)
+![Diagram of the Lottery process.](/images/tutorials/eth-api/randomness-lottery/lottery-1.webp)
 
 **此合约仅用于演示目的，不可用于生产环境。**
 
@@ -187,9 +187,9 @@ Randomness.RandomnessSource randomnessSource;
 
 现在，我们已经完成了彩票所需的所有变量的初始设置，接下来我们可以开始编写函数以设置彩票。首先，我们将从创建构造函数开始。
 
-构造函数接受一个*uint8*参数作为随机数来源，这对应位于随机数预编译中的[`RandomnessSource` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L44-L47){target=_blank}中定义的随机数类型的索引。因此，我们需要为本地VRF传入`0`或者为BABE epoch随机数传入`1`。此函数将是`payable`，因为我们需要在部署时提交保证金并在后续用于执行随机数请求
+构造函数接受一个*uint8*参数作为随机数来源，这对应位于随机数预编译中的[`RandomnessSource` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L44-L47){target=\_blank}中定义的随机数类型的索引。因此，我们需要为本地VRF传入`0`或者为BABE epoch随机数传入`1`。此函数将是`payable`，因为我们需要在部署时提交保证金并在后续用于执行随机数请求
 
-[保证金](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L17){target=_blank}在随机数预编译中定义，这是和执行费用一样必不可少的。在完成请求后，保证金将退还给初始请求者，在本示例中为合约的所有者。如果未完成请求，则该请求会过期且需要被清除。请求清除后，保证金将被退还。
+[保证金](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L17){target=\_blank}在随机数预编译中定义，这是和执行费用一样必不可少的。在完成请求后，保证金将退还给初始请求者，在本示例中为合约的所有者。如果未完成请求，则该请求会过期且需要被清除。请求清除后，保证金将被退还。
 
 ```solidity
 constructor(
@@ -217,7 +217,7 @@ constructor(
 
 `participate`函数将包含以下逻辑：
 
-- 使用随机数预编译的[`getRequestStatus`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L96-L99){target=_blank}检查彩票是否尚未开始。此函数将返回通过[`RequestStatus` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L34-L39){target=_blank}定义的状态。如果状态不是`DoesNotExist`，则表示彩票已开始
+- 使用随机数预编译的[`getRequestStatus`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L96-L99){target=\_blank}检查彩票是否尚未开始。此函数将返回通过[`RequestStatus` enum](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L34-L39){target=\_blank}定义的状态。如果状态不是`DoesNotExist`，则表示彩票已开始
 - 检查参与费是否满足要求
 - 如果上述两项都符合要求，则参与者将被添加至参与者列表当中，他们的参与费将被加入到奖池中
 
@@ -254,7 +254,7 @@ function participate() external payable {
 - 检查是否达到要求的参与者数量
 - 检查执行费用是否满足最低要求
 - 检查合约余额是否足够支付保证金。还记得构造函数是如何接受请求保证金的吗？保证金将存储于合约中直到此函数被调用
-- 如果上述条件均返回true，我们将通过随机数预编译连同履行费用一起提交随机数请求。根据随机数来源，随机数预编译的[`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L110-L167){target=_blank}将和以下参数一起被调用：
+- 如果上述条件均返回true，我们将通过随机数预编译连同履行费用一起提交随机数请求。根据随机数来源，随机数预编译的[`requestLocalVRFRandomWords`或`requestRelayBabeEpochRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L110-L167){target=\_blank}将和以下参数一起被调用：
     - 接收多余费用退款的地址
     - 履行费用
     - 履行请求的gas上限
@@ -325,7 +325,7 @@ modifier onlyOwner() {
 
 在这一部分，我们将添加履行请求和处理请求结果的两个函数：`fulfillRequest`和`fulfillRandomWords`。
 
-`fulfillRequest`函数将调用随机数预编译的[`fulfillRequest`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L173){target=_blank}。在调用此函数时，会在下面调用随机数消费者的[`rawFulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L114-L125){target=_blank}，这将验证调用来自随机数预编译。从那里，调用随机数消费者合约的[`fulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L107-L109){target=_blank}，并使用区块的随机数结果和给定的salt计算请求的随机词，然后将其返回。如果请求成功完成，将发出`FulfillmentSucceeded`事件；反之，将发出`FulfillmentFailed`事件。
+`fulfillRequest`函数将调用随机数预编译的[`fulfillRequest`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/Randomness.sol#L173){target=\_blank}。在调用此函数时，会在下面调用随机数消费者的[`rawFulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L114-L125){target=\_blank}，这将验证调用来自随机数预编译。从那里，调用随机数消费者合约的[`fulfillRandomWords`函数](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/randomness/RandomnessConsumer.sol#L107-L109){target=\_blank}，并使用区块的随机数结果和给定的salt计算请求的随机词，然后将其返回。如果请求成功完成，将发出`FulfillmentSucceeded`事件；反之，将发出`FulfillmentFailed`事件。
 
 对于已完成的请求，执行费用将从请求费用中退还给`fulfillRequest`的调用者。然后，任何多余的费用和请求保证金将转移给指定退款地址。
 
@@ -407,7 +407,7 @@ function pickWinners(uint256[] memory randomWords) internal {
 npx hardhat compile
 ```
 
-![Compile the contracts using Hardhat's compile command.](/images/tutorials/eth-api/randomness-lottery/lottery-2.png)
+![Compile the contracts using Hardhat's compile command.](/images/tutorials/eth-api/randomness-lottery/lottery-2.webp)
 
 编译后，将会创建`artifacts`目录：这将存放合约的字节码和元数据，即`.json`文件。建议您将此目录添加至`.gitignore`。
 
@@ -471,7 +471,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 
 几秒钟后，合约成功部署，您将在终端看到合约地址。保存合约地址，我们将在下一部分中用于合约实例交互。
 
-![Deploy the Lottery contract using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-3.png)
+![Deploy the Lottery contract using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-3.webp)
 
 ### 创建脚本以与彩票合约交互 {: #participate-in-lottery }
 
@@ -507,9 +507,9 @@ participate()
 npx hardhat run --network moonbase scripts/participate.js
 ```
 
-交易哈希将在后台显示。您可以使用哈希在[Moonscan](https://moonbase.moonscan.io){target=_blank}查看交易。
+交易哈希将在后台显示。您可以使用哈希在[Moonscan](https://moonbase.moonscan.io){target=\_blank}查看交易。
 
-![Run the partipation script using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-4.png)
+![Run the partipation script using Hardhat's run command.](/images/tutorials/eth-api/randomness-lottery/lottery-4.webp)
 
 这样就可以了！您可以继续创建另外的脚本来执行彩票的后续步骤，例如启动彩票抽奖和挑选获胜者。
 

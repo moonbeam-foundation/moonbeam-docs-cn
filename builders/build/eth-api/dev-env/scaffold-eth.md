@@ -7,7 +7,7 @@ description: 通过本教程学习如何使用Scaffold-ETH快速在Moonbeam上�
 
 ## 概览 {: #introduction }
 
-[Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth){target=_blank}是以太坊常用开发工具的集合，使开发人员能够快速部署Solidity智能合约，并上线带有React前端和已部署subgraph的DApp。目前有一些预制模板可供常见DApp类型，如NFT、ERC-20 Token、多签钱包、简易DEX等使用。
+[Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth){target=\_blank}是以太坊常用开发工具的集合，使开发人员能够快速部署Solidity智能合约，并上线带有React前端和已部署subgraph的DApp。目前有一些预制模板可供常见DApp类型，如NFT、ERC-20 Token、多签钱包、简易DEX等使用。
 
 Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。所有这些组件只需稍作修改就可在Moonbeam网络上使用。本教程将引导您如何在Moonbeam网络上使用Scaffold-ETH部署和运行默认示例合约和DApp。
 
@@ -15,9 +15,9 @@ Scaffold-ETH由一些子组件组成，包括Hardhat、The Graph和React UI。�
 
 要运行Scaffold-ETH的The Graph组件，您还需要在您的系统安装以下程序以从Docker运行本地The Graph节点：
 
- - [Docker](https://docs.docker.com/get-docker/){target=_blank}
- - [Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
- - [JQ](https://stedolan.github.io/jq/download/){target=_blank}
+ - [Docker](https://docs.docker.com/get-docker/){target=\_blank}
+ - [Docker Compose](https://docs.docker.com/compose/install/){target=\_blank}
+ - [JQ](https://stedolan.github.io/jq/download/){target=\_blank}
 
  --8<-- 'text/_common/endpoint-examples.md'
 
@@ -37,7 +37,7 @@ git clone https://github.com/scaffold-eth/scaffold-eth.git
 yarn install
 ```
 
-![Scaffold-ETH installation output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-1.png)
+![Scaffold-ETH installation output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-1.webp)
 
 当依赖项已安装且在控制台输出无任何错误（如上图所示），您可以继续修改Scaffold-ETH的不同组件。
 
@@ -77,7 +77,7 @@ yarn install
         defaultNetwork = 'moonbeamDevNode';
         ```
 
-2. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=_blank}部分。
+2. 在同一个文件的`module.exports/etherscan/apiKey`部分，为[Moonscan](https://moonscan.io/){target=\_blank}添加API密钥，用于验证已部署的智能合约。了解如何生成Moonscan API密钥，请查看[Etherscan Plugins](/builders/build/eth-api/verify-contracts/etherscan-plugins/#generating-a-moonscan-api-key){target=\_blank}部分。
 
 3. （可选）在`function mnemonic()`部分，注释当网络未设置为`localhost`时控制台发出警告
 
@@ -91,7 +91,7 @@ yarn install
 
 4. 在 `scaffold-eth/packages/hardhat/` 下创建一个名为 `mnemonic.txt` 的文件，然后将合约部署者账户的助记词复制粘贴到该文件中。
 
-关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
+关于如何在Moonbeam上使用Hardhat部署合约的更多资讯，请参考[Hardhat页面](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}。
 
 ### The Graph组件 {: #the-graph-component }
 
@@ -99,7 +99,7 @@ yarn install
 
 1. 首先，修改`servers/graph-node/environment/ethereum`下的`scaffold-eth/packages/services/graph-node/docker-compose.yaml`文件，将The Graph节点的RPC端点更改为索引。
 
-    对于Moonbeam或Moonriver，您可以使用私有的[RPC网络端点](/builders/get-started/endpoints/){target=_blank}和相应的网络前缀。对于Moonbase Alpha或Moonbeam开发节点，您可以使用以下端点：
+    对于Moonbeam或Moonriver，您可以使用私有的[RPC网络端点](/builders/get-started/endpoints/){target=\_blank}和相应的网络前缀。对于Moonbase Alpha或Moonbeam开发节点，您可以使用以下端点：
 
     === "Moonbase Alpha"
 
@@ -170,7 +170,7 @@ yarn install
     !!! 注意事项
         如果您不部署示例合约，此处的文件名将有所不同，但遵循相同的 `<网络前缀>_<合约文件名>` 格式。
 
-关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=_blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=_blank}。
+关于如何在Moonbeam上使用The Graph部署合约的更多资讯，请参考[The Graph页面](/builders/integrations/indexers/thegraph/){target=\_blank}。关于如何在Moonbeam上运行The Graph节点的更多资讯，请参考[The Graph Node页面](/node-operators/indexer-nodes/thegraph-node/){target=\_blank}。
 
 ### React组件 {: #react-component }
 
@@ -218,7 +218,7 @@ yarn install
 
     这将通过Docker镜像启动一个本地节点实例，并控制台输出将显示它正在索引其指向的网络区块
 
-    ![The Graph node output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-2.png)
+    ![The Graph node output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-2.webp)
 
 2. 在终端打开新的标签或窗口。然后，通过运行以下命令编译和部署智能合约：
 
@@ -226,7 +226,7 @@ yarn install
     yarn deploy
     ```
 
-    ![Contract deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-3.png)
+    ![Contract deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-3.webp)
 
     如果您要使用The Graph，请将部署的合约地址填入`subgraph.yaml`。如果不用The Graph，你可以跳到第5步来启动React 服务器
 
@@ -236,7 +236,7 @@ yarn install
     yarn graph-create-local
     ```
 
-    ![Create sub-graph output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-4.png)
+    ![Create sub-graph output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-4.webp)
 
 4. 接下来，部署sub-graph至本地graph节点：
 
@@ -266,7 +266,7 @@ yarn install
 
     系统将提示您为正在部署的sub-graph输入版本名称
 
-    ![Sub-graph deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-5.png)
+    ![Sub-graph deployment output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-5.webp)
 
 5. 最后，您可以通过输入以下命令启动React服务器：
 
@@ -276,11 +276,11 @@ yarn install
 
     这将默认在`http://localhost:3000/`启动基于React的DApp UI
 
-    ![React server output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-6.png)
+    ![React server output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-6.webp)
 
 6. 现在，您可以将您的浏览器指向`http://localhost:3000/`并与React前端交互
 
-    ![React UI](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-7.png)
+    ![React UI](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-7.webp)
 
 ### 验证合约 {: #Verifying-Contracts }
 
@@ -309,8 +309,8 @@ yarn install
 
 稍等片刻，控制台输出将显示验证结果。如果成功，则会显示Moonscan上已验证合约的 URL。
 
-![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.png)
+![Contract verify output](/images/builders/build/eth-api/dev-env/scaffold-eth/scaffold-eth-8.webp)
 
-关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=_blank}。
+关于如何在Moonbeam上使用Hardhat Etherscan插件验证智能合约，请参考[Etherscan Plugins页面](/builders/build/eth-api/verify-contracts/etherscan-plugins/#using-the-hardhat-etherscan-plugin){target=\_blank}。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

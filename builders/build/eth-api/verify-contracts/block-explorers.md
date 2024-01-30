@@ -40,9 +40,9 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 4. （可选）如果合约构造方法接受参数，记录构造函数的[ABI编码形式](https://docs.soliditylang.org/en/develop/abi-spec.html)
 5. 在部署后，记录智能合约部署的合约地址。合约的部署地址可以通过使用Hardhat或以太坊库等基于命令行的开发工具，在控制台输出中获得，也可以通过Remix IDE等工具中在GUI中复制获得
 
-![Example Compiler Options in Remix IDE](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-1.png)
+![Example Compiler Options in Remix IDE](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-1.webp)
 
-![Contract Address in Remix IDE](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-2.png)
+![Contract Address in Remix IDE](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-2.webp)
 
 ## 验证合约 {: #verifying-the-contract }
 
@@ -59,7 +59,7 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 5. 选取所使用的开源证照。在此`Incrementer.sol`示例中，选取**MIT License（MIT）**。如果未使用任何证照，选取**No License（None）**
 6. 在表格底下点击**Continue**按钮以进入下个页面
 
-![First Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-3.png)
+![First Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-3.webp)
 
 在第二个页面，**Contract Address**、**Compiler**和**Constructor Arguments**的输入框应该都已自动填写完毕，您只需填写以下信息：
 
@@ -69,17 +69,17 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 4. （可选）勾选任何可应用至您的合约的输入框，并根据指示填写信息
 5. 在页面底下点击CAPTCHA和**Verify and Publish**按钮以确认信息并开始验证
 
-![Second Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-4.png)
+![Second Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-4.webp)
 
 经过一段时间后，验证的结果将会显示在浏览器上，成功结果的页面将会显示合约的ABI编码构造函数、合约名称、字节码和ABI。
 
-​![Result Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-5.png)
+​![Result Page Screenshot](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-5.webp)
 
 ## 智能合约扁平化 {: #smart-contract-flattening }
 
 要验证由多个文件组成的智能合约，其过程与先前略微不同，并且需要一些前置步骤以将目标智能合约的所有依赖项合并至单一的Solidity文件。
 
-该预处理通常被称为智能合约扁平化。目前有部分工具可以用来扁平化多个部分的智能合约至单一的Solidity文件，如[Hardhat's Flatten task](https://hardhat.org/hardhat-runner/docs/advanced/flattening){target=_blank}。请参考各自智能合约扁平化工具的文档以获得更详细的说明。
+该预处理通常被称为智能合约扁平化。目前有部分工具可以用来扁平化多个部分的智能合约至单一的Solidity文件，如[Hardhat's Flatten task](https://hardhat.org/hardhat-runner/docs/advanced/flattening){target=\_blank}。请参考各自智能合约扁平化工具的文档以获得更详细的说明。
 
 扁平化多个部分的智能合约后，可以在区块浏览器上使用新的扁平化后的Solidity文件进行验证，其方式与本教程中所描述的验证单一文件智能合约的方式相同。
 
@@ -89,6 +89,6 @@ description: 学习如何使用区块浏览器在Moonbeam网络上验证智能�
 
 在**Compiler Type**（上述示例中的第三个步骤）选取**Solidity (Multi-part files)**。在下个页面，选取并上传所有组成其智能合约的不同Solidity文件，包含嵌入依赖项的合约文件。
 
-![Moonscan Multifile Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-6.png)
+![Moonscan Multifile Page](/images/builders/build/eth-api/verify-contracts/block-explorers/verify-contract-6.webp)
 
 除此之外，其余验证过程与在Moonscan上验证单一文件合约的过程相同。

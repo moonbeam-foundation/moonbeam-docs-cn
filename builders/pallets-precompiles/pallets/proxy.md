@@ -10,7 +10,7 @@ keywords: proxy, substrate, moonbeam, polkadot
 
 代理帐户可以代表用户执行有限数量的操作，并起到保护底层帐户安全的作用。这允许用户将其主账户进行安全冷存储，同时使代理能够主动执行功能并利用主账户中的Token权重参与网络。
 
-[Substrate的代理Pallet](https://wiki.polkadot.network/docs/learn-proxies){target=_blank}能够让用户创建代理账户、移除代理账户、作为代理账户执行调用以及宣布代理交易。要增加和移除代理账户，您可以使用代理预编译：一个能够通过以太坊API交互的Solidity接口。更多关于如何使用代理预编译合约交互的信息，请参考[如何与代理预编译交互](/builders/pallets-precompiles/precompiles/proxy){target=_blank}教程。
+[Substrate的代理Pallet](https://wiki.polkadot.network/docs/learn-proxies){target=\_blank}能够让用户创建代理账户、移除代理账户、作为代理账户执行调用以及宣布代理交易。要增加和移除代理账户，您可以使用代理预编译：一个能够通过以太坊API交互的Solidity接口。更多关于如何使用代理预编译合约交互的信息，请参考[如何与代理预编译交互](/builders/pallets-precompiles/precompiles/proxy){target=\_blank}教程。
 
 本文将概述代理pallet中可用pallet常量的extrinsics、存储方法和getters。
 

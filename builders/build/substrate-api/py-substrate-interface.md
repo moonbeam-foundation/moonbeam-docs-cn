@@ -7,7 +7,7 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
 
 ## 概览 {: #introduction }
 
-[Python Substrate Interface](https://github.com/polkascan/py-substrate-interface){target=_blank}库允许应用程序开发者查询Moonbeam节点并使用原生Python接口与节点的波卡或Substrate功能交互。您将在本文中找到可用功能的概述和一些常用代码示例以快速使用Python Substrate Interface与Moonbeam网络交互。
+[Python Substrate Interface](https://github.com/polkascan/py-substrate-interface){target=\_blank}库允许应用程序开发者查询Moonbeam节点并使用原生Python接口与节点的波卡或Substrate功能交互。您将在本文中找到可用功能的概述和一些常用代码示例以快速使用Python Substrate Interface与Moonbeam网络交互。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -17,7 +17,7 @@ description: 学习如何在Moonbeam网络上使用Python Substrate Interface库
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
  --8<-- 'text/_common/endpoint-examples-list-item.md'
- - 安装[`pip`](https://pypi.org/project/pip/){target=_blank}
+ - 安装[`pip`](https://pypi.org/project/pip/){target=\_blank}
 
 !!! 注意事项
     --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
@@ -90,9 +90,9 @@ pip install substrate-interface
 
 ### 访问Runtime常量 {: #accessing-runtime-constants }
 
-元数据中提供了所有的runtime常量，如`BlockWeights`、`DefaultBlocksPerRound`和`ExistentialDeposit`。您可以使用[`get_metadata_constants`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_metadata_constants){target=_blank}函数查看Moonbeam网络中元数据的可用runtime常数列表。
+元数据中提供了所有的runtime常量，如`BlockWeights`、`DefaultBlocksPerRound`和`ExistentialDeposit`。您可以使用[`get_metadata_constants`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_metadata_constants){target=\_blank}函数查看Moonbeam网络中元数据的可用runtime常数列表。
 
-元数据中的可用runtime常量可以通过[`get_constant`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_constant){target=_blank}函数查询。
+元数据中的可用runtime常量可以通过[`get_constant`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_constant){target=\_blank}函数查询。
 
 ```python
 # Imports
@@ -116,9 +116,9 @@ print(constant.value)
 
 您可以使用Python Substrate Interface API检索Moonbeam网络的基本信息，如区块和extrinsics。
 
-您可以使用[`get_block`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_block){target=_blank}函数检索区块。您也可以访问区块中的extrinsics和数据字段，这是一个Python字典。
+您可以使用[`get_block`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_block){target=\_blank}函数检索区块。您也可以访问区块中的extrinsics和数据字段，这是一个Python字典。
 
-您可以使用[`get_block_header`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_block_header){target=_blank}函数检索区块头。
+您可以使用[`get_block_header`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_block_header){target=\_blank}函数检索区块头。
 
 ```python
 # Imports
@@ -186,9 +186,9 @@ result = ws_provider.subscribe_block_headers(subscription_handler)
 
 ### 查询存储信息 {: #querying-for-storage-information }
 
-您可以使用[`get_metadata_storage_functions`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_metadata_storage_functions){target=_blank}查看Moonbeam网络中元数据的可用存储函数列表。
+您可以使用[`get_metadata_storage_functions`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.get_metadata_storage_functions){target=\_blank}查看Moonbeam网络中元数据的可用存储函数列表。
 
-通过[`query`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.query){target=_blank}函数可以查询通过存储函数在元数据中提供的链状态。
+通过[`query`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.query){target=\_blank}函数可以查询通过存储函数在元数据中提供的链状态。
 
 Substrate系统模块，如`System`、`Timestamp`和`Balances`，可以查询提供账户和余额等基本信息。因为可用存储函数是从元数据中动态读取，所以您还可以查询Moonbeam自定义模块的存储信息，如`ParachainStaking`和`Democracy`，以获取指定Moonbeam网络的状态信息。
 
@@ -250,11 +250,11 @@ keypair = Keypair.create_from_mnemonic(mnemonic, crypto_type=KeypairType.ECDSA)
 
 ### 发起和发送交易 {: #forming-and-sending-a-transaction }
 
-[`compose_call`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.compose_call){target=_blank}函数可以用于组成调用负载，以作为未签署的extrinsic或提案使用。
+[`compose_call`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.compose_call){target=\_blank}函数可以用于组成调用负载，以作为未签署的extrinsic或提案使用。
 
-通过[`create_signed_extrinsic`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.create_signed_extrinsic){target=_blank}函数使用密钥对签署负载。
+通过[`create_signed_extrinsic`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.create_signed_extrinsic){target=\_blank}函数使用密钥对签署负载。
 
-使用[`submit_extrinsic`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.submit_extrinsic){target=_blank}函数提交签署的extrinsic。
+使用[`submit_extrinsic`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.submit_extrinsic){target=\_blank}函数提交签署的extrinsic。
 
 此函数也将返回`ExtrinsicReceipt`，其中包含extrinsic的链上执行信息。如果您需要检查接收方信息，您可以在提交extrinsic时将`wait_for_inclusion`设置为`True`，等待extrinsic成功包含在区块中。
 
@@ -279,7 +279,7 @@ keypair = Keypair.create_from_private_key(privatekey, crypto_type=KeypairType.EC
 # Form a transaction call
 call = ws_provider.compose_call(
     call_module="Balances",
-    call_function="transfer",
+    call_function="transfer_allow_death",
     call_params={
         "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
         "value": 1 * 10**18,
@@ -301,7 +301,7 @@ try:
 
 ### 离线签署 {: #offline-signing }
 
-您可以通过[`sign`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.Keypair.sign){target=_blank}函数使用密钥对签署交易负载或任何数据。这方式可用于离线签署交易。
+您可以通过[`sign`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.Keypair.sign){target=\_blank}函数使用密钥对签署交易负载或任何数据。这方式可用于离线签署交易。
 
 1. 首先，在线上设备生成签名负载：
 
@@ -317,7 +317,7 @@ try:
     # Construct a transaction call
     call = ws_provider.compose_call(
         call_module="Balances",
-        call_function="transfer",
+        call_function="transfer_allow_death",
         call_params={
             "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
             "value": 1 * 10**18,
@@ -367,7 +367,7 @@ try:
     # Construct the same transaction call that was signed
     call = ws_provider.compose_call(
         call_module="Balances",
-        call_function="transfer",
+        call_function="transfer_allow_death",
         call_params={
             "dest": "0x44236223aB4291b93EEd10E4B511B37a398DEE55",
             "value": 1 * 10**18,
@@ -375,12 +375,12 @@ try:
     )
 
     # Construct the signed extrinsic with the generated signature
-    extrinsic = substrate.create_signed_extrinsic(
+    extrinsic = ws_provider.create_signed_extrinsic(
         call=call, keypair=keypair, signature=signature
     )
 
     # Submit the signed extrinsic
-    result = substrate.submit_extrinsic(extrinsic=extrinsic)
+    result = ws_provider.submit_extrinsic(extrinsic=extrinsic)
 
     # Print the execution result
     print(result.extrinsic_hash)
@@ -388,9 +388,9 @@ try:
 
 ## 自定义RPC请求 {: #custom-rpc-requests }
 
-您也可以使用[`rpc_request`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.rpc_request){target=_blank}函数创建自定义RPC请求。
+您也可以使用[`rpc_request`](https://polkascan.github.io/py-substrate-interface/#substrateinterface.SubstrateInterface.rpc_request){target=\_blank}函数创建自定义RPC请求。
 
-这对于与Moonbeam的[ETH JSON-RPC](/builders/get-started/eth-compare/rpc-support/){target=_blank}端点或Moonbeam的[自定义RPC](/builders/build/moonbeam-custom-api/){target=_blank}端点交互特别有效。
+这对于与Moonbeam的[ETH JSON-RPC](/builders/get-started/eth-compare/rpc-support/){target=\_blank}端点或Moonbeam的[自定义RPC](/builders/build/moonbeam-custom-api/){target=\_blank}端点交互特别有效。
 
 关于如何通过Python Substrate Interface使用自定义RPC调用以检查给定交易哈希的最终性，请参考[共识和确定性页面](/builders/get-started/eth-compare/consensus-finality/#checking-tx-finality-with-substrate-libraries)的示例。
 
