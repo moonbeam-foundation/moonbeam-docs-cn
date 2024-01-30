@@ -34,8 +34,8 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 ### Moonbeam特定预编译 {: #moonbeam-specific-precompiles }
 
 === "Moonbeam"
-    |                                                                           合约                                                                           |                                 地址                                 |
-    |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                                 地址                                 |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=\_blank}    |             {{ networks.moonbeam.precompiles.staking }}              |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=\_blank}   |            {{ networks.moonbeam.precompiles.crowdloan }}             |
     |           [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=\_blank}            |              {{ networks.moonbeam.precompiles.erc20 }}               |
@@ -59,10 +59,12 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=\_blank}        | {{networks.moonbeam.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=\_blank} |             {{networks.moonbeam.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=\_blank}                         |                {{networks.moonbeam.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=\_blank}   |         {{networks.moonbeam.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=\_blank}                 |              {{networks.moonbeam.precompiles.identity}}              |
 
 === "Moonriver"
-    |                                                                           合约                                                                           |                                 地址                                  |
-    |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                                 地址                                  |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=\_blank}    |              {{ networks.moonriver.precompiles.staking}}              |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=\_blank}   |            {{ networks.moonriver.precompiles.crowdloan }}             |
     |           [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=\_blank}            |              {{ networks.moonriver.precompiles.erc20 }}               |
@@ -86,10 +88,12 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
     |        [OpenGov Tech Committee](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/collective/Collective.sol){target=\_blank}        | {{networks.moonriver.precompiles.collective_opengov_tech_committee }} |
     | [Precompile Registry](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/precompile-registry/PrecompileRegistry.sol){target=\_blank} |             {{networks.moonriver.precompiles.registry }}              |
     |                        [GMP](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=\_blank}                         |                {{networks.moonriver.precompiles.gmp }}                |
+    |  [XCM Transactor V3](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/xcm-transactor/src/v3/XcmTransactorV3.sol){target=\_blank}   |         {{networks.moonriver.precompiles.xcm_transactor_v3}}          |
+    |                 [Identity](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/identity/Identity.sol){target=\_blank}                 |              {{networks.moonriver.precompiles.identity}}              |
 
 === "Moonbase Alpha"
-    |                                                                           合约                                                                           |                                 地址                                 |
-    |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+    |                                                                           合约                                                                            |                                 地址                                 |
+    |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
     |    [Parachain Staking](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol){target=\_blank}    |              {{ networks.moonbase.precompiles.staking}}              |
     |   [Crowdloan Rewards](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/crowdloan-rewards/CrowdloanInterface.sol){target=\_blank}   |            {{ networks.moonbase.precompiles.crowdloan }}             |
     |           [ERC-20 Interface](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/balances-erc20/ERC20.sol){target=\_blank}            |              {{ networks.moonbase.precompiles.erc20 }}               |
