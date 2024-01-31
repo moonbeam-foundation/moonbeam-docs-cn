@@ -60,7 +60,7 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 - **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - *从runtime 2400停止使用* - 请求为特定候选人（收集人）添加一定数额的委托。改为通过`delegateWithAutoCompound` extrinsic实现
 - **delegateWithAutoCompound**(candidate, amount, autoCompound, candidateDelegationCount, candidateAutoCompoundingDelegationCount, delegationCount) - 委托一个收集人候选人并用`amount`，一个0-100之间的整数（无小数）设置自动复合奖励百分比。如果调用者不是委托人，则此函数将它们添加到委托人集合中。如果调用者已经是委托人，则调整他们的委托数量。
 - **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
-- **enableMarkingOffline**(value) - 启用或停止收集人的离线标记（mark offline）功能。必须通过[治理](/learn/features/governance){target=_blank} 中的Root track来执行
+- **enableMarkingOffline**(value) - 启用或停止收集人的离线标记（mark offline）功能。必须通过[治理](/learn/features/governance){target=\_blank} 中的Root track来执行
 - **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
 - **executeDelegationRequest**(delegator, candidate) - 为提供候选人（收集人）的地址的特定委托人执行任何已计划的到期委托请求
 - **executeLeaveCandidates**(candidate, candidateDelegationCount) - 执行任何已计划的到期请求，以离开候选人（收集人）池
