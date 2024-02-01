@@ -11,7 +11,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务](https://hardhat.org/hardhat-runner/docs/advanced/create-task#creating-a-task){target=_blank}以执行特定操作。这些操作包括编译和部署合约、运行测试等等。这些任务的可配置性很高，您可以创建、自定义和执行不同任务来满足您的需求。
 
-您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=_blank}来扩展Hardhat的功能。 插件是外部扩展功能，可与Hardhat 集成以提供额外的功能和工具来支持您的工作流程。 例如有一些插件包括了常见的以太坊库，例如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}，[viem](/builders/build/eth-api/libraries/viem){target=_blank}与为Chai assertion库添加以太坊功能的插件以，等等。 所有这些插件都可以用于在Moonbeam上扩展您的Hardhat项目。
+您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=_blank}来扩展Hardhat的功能。插件是外部扩展应用，它们可与Hardhat集成以提供额外的功能与工具来简化工作流程。有些插件包括了常见的以太坊库，例如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}，[viem](/builders/build/eth-api/libraries/viem){target=_blank}和为Chai Assertion库添加以太坊功能的插件等等。 所有这些插件都可用于在Moonbeam上扩展您的Hardhat项目。
 
 本指南将简要介绍Hardhat，并向您展示如何使用Hardhat在Moonbase Alpha测试网上编译、部署和调试以太坊智能合约。本指南还适用于Moonbeam、Moonriver或 Moonbeam开发节点。
 
@@ -64,7 +64,7 @@ Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务
 
 ## Hardhat配置文件 {: #hardhat-configuration-file }
 
-设置Hardhat配置文件是您Hardhat项目的开始。它定义了您Hardhat项目的不同设定以及可选项。比如使用的Solidity编译器版本以及您将部署智能合约的网络目标。
+设置Hardhat配置文件是您Hardhat项目的开始。它定义了您Hardhat项目的不同设定以及可选项。比如使用的Solidity编译器版本以及您将部署智能合约的目标网络。
 
 第一步，您的 `hardhat.config.js` 应包含以下内容：
 
@@ -75,9 +75,9 @@ module.exports = {
 };
 ```
 
-在这个例子中，您会使用 `0.8.19` 版本的Solidity编译器版本；但是如果您的其他智能合约需要更新的版本，请记得在这里更改版本号。
+在这个例子中，您会使用 `0.8.20` 版本的Solidity编译器版本；但是如果您的其他智能合约需要更新的版本，请记得在这里更改版本号。
 
-下一步，您需要修改您的配置文件，在其中根据您想部署智能合约的网络添加网络配置。部署在Moonbeam网络需要配置一下这些选项：
+下一步，您需要修改您的配置文件，在其中依据您部署智能合约的目标网络来添加网络配置。部署在Moonbeam网络需要配置以下这些选项：
 
 - `url` - 节点的[RPC 端口](/builders/get-started/endpoints){target=_blank}
 - `chainId` - 链ID，来验证网络是否正确
@@ -89,7 +89,7 @@ module.exports = {
 
     ```js
     module.exports = {
-      solidity: '0.8.19',
+      solidity: '0.8.20',
       networks: {
         moonbeam: {
           url: '{{ networks.moonbeam.rpc_url }}', // 输入您的RPC URL
@@ -104,7 +104,7 @@ module.exports = {
 
     ```js
     module.exports = {
-      solidity: '0.8.19',
+      solidity: '0.8.20',
       networks: {
         moonriver: {
           url: '{{ networks.moonriver.rpc_url }}', // 输入您的RPC URL
@@ -119,7 +119,7 @@ module.exports = {
 
     ```js
     module.exports = {
-      solidity: '0.8.19',
+      solidity: '0.8.20',
       networks: {
         moonbase: {
           url: '{{ networks.moonbase.rpc_url }}', // 输入您的RPC URL
@@ -134,7 +134,7 @@ module.exports = {
 
     ```js
     module.exports = {
-      solidity: '0.8.19',
+      solidity: '0.8.20',
       networks: {
         dev: {
           url: '{{ networks.development.rpc_url }}', // Insert your RPC URL here
@@ -148,15 +148,15 @@ module.exports = {
 !!! 请记住
     以上代码只是示例，请千万不要在您的Javascript文件中储存私钥
 
-如果您想要在项目中使用插件，您需要安装插件并将通过`hardhat.config.js`文件将其导入。当一个插件导入后，它会成为[Hardhat Runtime Environment](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-runtime-environment){target=_blank}的一部分，您可以在人物，脚本或别的地方使用该插件。
+如果您想要在项目中使用插件，您需要安装插件并将通过`hardhat.config.js`文件将其导入。当一个插件导入后，它会成为[Hardhat Runtime Environment](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-runtime-environment){target=_blank}的一部分，您可以在任务，脚本或别的地方使用该插件。
 
-在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其倒入配置文件，这个插件为[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}代码库提供了一个方便的封装，用于网络交互。
+在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其导入配置文件，这个插件为[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}代码库提供了一个方便的封装，用于网络交互。
 
 ```bash
 npm install @nomicfoundation/hardhat-ethers ethers@6
 ```
 
-导入这个插件您需要使用以下在配置文件的顶端添加以下`require`语句：
+导入这个插件您需要在配置文件的开始添加以下`require`语句：
 
 ```js hl_lines="2"
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -165,7 +165,7 @@ require('@nomicfoundation/hardhat-ethers');
 const privateKey = 'INSERT_PRIVATE_KEY';
 
 module.exports = {
-  solidity: '0.8.19',
+  solidity: '0.8.20',
   networks: {
      moonbase: {
       url: 'https://rpc.api.moonbase.moonbeam.network',
@@ -246,7 +246,7 @@ npx hardhat compile
 mkdir scripts && touch scripts/deploy.js
 ```
 
-下一步您需要编写您的部署脚本文件。您不需要在脚本中直接导入任何库，因为您将使用Hardhat执行脚本，切已经将Ethers导入进`hardhat.config.js`文件中。但如果您想使用`node`运行脚本，您就需要在脚本中导入Ethers。
+下一步您需要编写您的部署脚本文件。您不需要在脚本中直接导入任何库，因为您将使用Hardhat执行脚本，并且已经在`hardhat.config.js`文件导入了Ethers插件。但如果您想使用`node`运行脚本，您就需要在脚本中导入Ethers。
 
 要开始操作，您可以执行以下步骤：
 
