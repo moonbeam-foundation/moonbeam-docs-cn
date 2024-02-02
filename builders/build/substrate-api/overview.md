@@ -25,7 +25,7 @@ Pallet用于制定和扩展基于Substrate区块链的功能。这些可以被�
 - **[Assets Pallet](https://crates.io/crates/pallet-assets){target=\_blank}** — 处理链上同质化资产的创建和管理
 - **Consensus Pallets** — 这些pallet为区块生产提供不同的共识机制，例如[AURA](https://crates.io/crates/pallet-aura){target=\_blank}和[BABE](https://crates.io/crates/pallet-babe){target=\_blank}
 - **Governance Pallets** — 这些pallet（例如[Referenda](https://crates.io/crates/pallet-referenda){target=\_blank}和[Collective](https://crates.io/crates/pallet-collective){target=\_blank}）提供链上治理机制
-- **[Frontier Pallets](https://paritytech.github.io/frontier/){target=\_blank}** — 以太坊兼容层pallet，允许基于Substrate的区块链与Moonbeam团队首创的基于以太坊的应用程序交互，包括[EVM Pallet](https://crates.io/crates/pallet-evm){target=\_blank}
+- **[Frontier Pallets](https://polkadot-evm.github.io/frontier/){target=\_blank}** — 以太坊兼容层pallet，允许基于Substrate的区块链与Moonbeam团队首创的基于以太坊的应用程序交互，包括[EVM Pallet](https://crates.io/crates/pallet-evm){target=\_blank}
 - **[Parachain Staking Pallet](/builders/pallets-precompiles/pallets/staking/){target=\_blank}** — Moonbeam创建的pallet，支持委托权益证明（DPoS）系统
 
 除了Polkadot Substrate提供的标准pallet之外，开发者还可以[创建自己的Pallet](https://docs.substrate.io/tutorials/collectibles-workshop/03-create-pallet/){target=\_blank}为自己的区块链添加自定义功能。
