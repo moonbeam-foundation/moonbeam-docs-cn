@@ -26,10 +26,10 @@ Moonbeam支持以下几点：
 
 ## Frontier {: #frontier }
 
-[Frontier](https://paritytech.github.io/frontier/){target=\_blank} 是Substrate的以太坊兼容层。Frontier的目标是让标准的以太坊DApp无需修改即可在基于Substrate的链上运行。Frontier通过提供一些可以插入Substrate运行时（runtime）的Substrate pallet使这成为可能。以下pallet可以根据需要单独使用，也可以根据链所需的功能一起使用：
+[Frontier](https://polkadot-evm.github.io/frontier/){target=\_blank} 是Substrate的以太坊兼容层。Frontier的目标是让标准的以太坊DApp无需修改即可在基于Substrate的链上运行。Frontier通过提供一些可以插入Substrate运行时（runtime）的Substrate pallet使这成为可能。以下pallet可以根据需要单独使用，也可以根据链所需的功能一起使用：
 
-- **[EVM pallet](#evm-pallet){target=\_blank}** - 处理EVM执行
-- **[Ethereum pallet](#ethereum-pallet){target=\_blank}** - 负责存储区块数据并提供RPC兼容性
+- **[EVM pallet](#evm-pallet)** - 处理EVM执行
+- **[Ethereum pallet](#ethereum-pallet)** - 负责存储区块数据并提供RPC兼容性
 - **基础费用pallet** - 添加对EIP-1559交易的支持并处理基本费用计算
 - **动态费用pallet** - 计算动态最低gas价格
 
@@ -37,7 +37,7 @@ Moonbeam使用EVM和Ethereum pallet来实现完全的以太坊兼容。Moonbeam�
 
 ### EVM Pallet {: #evm-pallet }
 
-[EVM pallet](https://paritytech.github.io/frontier/frame/evm.html){target=\_blank} 实现了沙盒虚拟堆栈机并使用[SputnikVM](https://github.com/rust-blockchain/evm){target=\_blank}作为底层EVM引擎。
+[EVM pallet](https://polkadot-evm.github.io/frontier/frame/evm.html){target=\_blank} 实现了沙盒虚拟堆栈机并使用[SputnikVM](https://github.com/rust-blockchain/evm){target=\_blank}作为底层EVM引擎。
 
 EVM执行以太坊智能合约字节码，其中通常使用Solidity等语言编写，然后将其编译为EVM字节码。EVM pallet的目标是在Substrate运行时模拟在以太坊上执行智能合约的功能。因此，它允许现有的EVM代码在基于Substrate的区块链中执行。
 
@@ -49,23 +49,23 @@ EVM内部是标准的H160以太坊式账户，并且它们具有关联数据，�
 
 如果区块链不需要以太坊模拟，只需要EVM执行，Substrate会完全使用其账户模型并代表EVM账户签署交易。 然而，在这个模型中，以太坊RPC不可用，DApps 必须使用Substrate API编写它们的前端。
 
-与以太坊相比，EVM pallet应该产生几乎相同的执行结果，例如gas费用和余额变化。但是，仍然存在一些差异。有关详细信息，请参阅Frontier EVM Pallet文档的[EVM module vs Ethereum network](https://paritytech.github.io/frontier/frame/evm.html#evm-module-vs-ethereum-network){target=\_blank}部分。
+与以太坊相比，EVM pallet应该产生几乎相同的执行结果，例如gas费用和余额变化。但是，仍然存在一些差异。有关详细信息，请参阅Frontier EVM Pallet文档的[EVM module vs Ethereum network](https://polkadot-evm.github.io/frontier/frame/evm.html#evm-module-vs-ethereum-network){target=\_blank}部分。
 
-还有一些[预编译](https://github.com/paritytech/frontier/tree/4c05c2b09e71336d6b11207e6d12e486b4d2705c#evm-pallet-precompiles){target=\_blank}可以与EVM pallet一起使用，扩展EVM的功能。Moonbeam使用以下EVM预编译：
+还有一些[预编译](https://github.com/polkadot-evm/frontier/tree/4c05c2b09e71336d6b11207e6d12e486b4d2705c#evm-pallet-precompiles){target=\_blank}可以与EVM pallet一起使用，扩展EVM的功能。Moonbeam使用以下EVM预编译：
 
-- **[pallet-evm-precompile-simple](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_simple/){target=\_blank}** - 包括五个基本预编译: ECRecover, ECRecoverPublicKey, Identity, RIPEMD160, SHA256
-- **[pallet-evm-precompile-blake2](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_blake2/struct.Blake2F.html){target=\_blank}** - 包括 BLAKE2 预编译
-- **[pallet-evm-precompile-bn128](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/index.html){target=\_blank}** - 包括三个 BN128 预编译: BN128Add、BN128Mul和BN128Pairing
-- **[pallet-evm-precompile-modexp](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_modexp/struct.Modexp.html){target=\_blank}** - 包括模幂预编译
-- **[pallet-evm-precompile-sha3fips](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_sha3fips/struct.Sha3FIPS256.html){target=\_blank}** - 包括标准SHA3预编译
-- **[pallet-evm-precompile-dispatch](https://paritytech.github.io/frontier/rustdocs/pallet_evm_precompile_dispatch/struct.Dispatch.html){target=\_blank}** - 包括调度（dispatch）预编译
+- **[pallet-evm-precompile-simple](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_simple/){target=\_blank}** - 包括五个基本预编译: ECRecover, ECRecoverPublicKey, Identity, RIPEMD160, SHA256
+- **[pallet-evm-precompile-blake2](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_blake2/struct.Blake2F.html){target=\_blank}** - 包括 BLAKE2 预编译
+- **[pallet-evm-precompile-bn128](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_bn128/index.html){target=\_blank}** - 包括三个 BN128 预编译: BN128Add、BN128Mul和BN128Pairing
+- **[pallet-evm-precompile-modexp](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_modexp/struct.Modexp.html){target=\_blank}** - 包括模幂预编译
+- **[pallet-evm-precompile-sha3fips](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_sha3fips/struct.Sha3FIPS256.html){target=\_blank}** - 包括标准SHA3预编译
+- **[pallet-evm-precompile-dispatch](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm_precompile_dispatch/struct.Dispatch.html){target=\_blank}** - 包括调度（dispatch）预编译
 
 您可以在[以太网主网预编译合约](/builders/pallets-precompiles/precompiles/eth-mainnet){target=\_blank}页面上找到大部分这些预编译的概述。
 
 ### Ethereum Pallet {: #ethereum-pallet}
 
-[Ethereum pallet](https://paritytech.github.io/frontier/frame/ethereum.html){target=\_blank} 负责处理区块，交易收据和状态。 它通过存储以太坊风格的区块和其在Substrate运行时中关联的交易哈希来实现向Moonbeam发送和接收以太坊格式的数据。
+[Ethereum pallet](https://polkadot-evm.github.io/frontier/frame/ethereum.html){target=\_blank} 负责处理区块，交易收据和状态。 它通过存储以太坊风格的区块和其在Substrate运行时中关联的交易哈希来实现向Moonbeam发送和接收以太坊格式的数据。
 
 当用户提交一个原始以太坊交易时，它会通过pallet Ethereum的`transact` extrinsic转换为一个Substrate交易。使用Ethereum pallet作为EVM pallet的唯一执行者，强制所有数据以与以太坊兼容的方式进行存储和交易。这使得由Etherscan构建的[Moonscan](/builders/get-started/explorers#moonscan){target=\_blank}等区块浏览器能够索引区块数据。
 
-除了支持以太坊风格的数据外，以Ethereum pallet与[RPC模块](https://github.com/paritytech/frontier/tree/master/client/rpc){target=\_blank}相结合还提供了RPC支持。这使得可以使用[基本的以太坊JSON-RPC方法](/builders/get-started/eth-compare/rpc-support#basic-ethereum-json-rpc-methods){target=\_blank}，最终允许现有的以太坊DApps以最少的更改部署到Moonbeam。
+除了支持以太坊风格的数据外，以Ethereum pallet与[RPC模块](https://github.com/polkadot-evm/frontier/tree/master/client/rpc){target=\_blank}相结合还提供了RPC支持。这使得可以使用[基本的以太坊JSON-RPC方法](/builders/get-started/eth-compare/rpc-support#basic-ethereum-json-rpc-methods){target=\_blank}，最终允许现有的以太坊DApps以最少的更改部署到Moonbeam。

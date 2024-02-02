@@ -24,7 +24,7 @@ description: Moonbeam和Moonriver上历史更新概览，包含应用于Moonbeam
 |   Moonriver    |   RT49   |  RT600   |   0 - 455106   |
 | Moonbase Alpha |   RT40   |  RT600   |   0 - 675175   |
 
-关于更多信息，您可以查看[GitHub上的相关Frontier PR](https://github.com/paritytech/frontier/pull/465){target=\_blank}。
+关于更多信息，您可以查看[GitHub上的相关Frontier PR](https://github.com/polkadot-evm/frontier/pull/465){target=\_blank}。
 
 ***
 
@@ -55,7 +55,7 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 |   Moonriver    |   RT49   |  RT1001  |  0 - 1052241   |
 | Moonbase Alpha |   RT40   |  RT1001  |  0 - 1285915   |
 
-关于更多信息，您可以在Github上查看[相关Frontier PR](https://github.com/paritytech/frontier/pull/509){target=\_blank}以及有关的[Substrate PR](https://github.com/paritytech/substrate/issues/10117){target=\_blank}。
+关于更多信息，您可以在Github上查看[相关Frontier PR](https://github.com/polkadot-evm/frontier/pull/509){target=\_blank}以及有关的[Substrate PR](https://github.com/paritytech/substrate/issues/10117){target=\_blank}。
 
 ***
 
@@ -158,7 +158,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |:--------------:|:--------:|:--------:|:-----------------:|
 | Moonbase Alpha |  RT1200  |  RT1201  | 1648994 - 1679618 |
 
-关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/paritytech/frontier/pull/570){target=\_blank}。
+关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/polkadot-evm/frontier/pull/570){target=\_blank}。
 
 ***
 
@@ -264,7 +264,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 
 被复制的交易属于第一个区块。因此，在Moonriver上的交易属于区块2077599，而在Moonbase Alpha上受影响的交易属于2285347。
 
-关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/paritytech/frontier/pull/638){target=\_blank}。
+关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/polkadot-evm/frontier/pull/638){target=\_blank}。
 
 ***
 
@@ -280,7 +280,7 @@ EIP-2612和以太坊区块以秒为单位处理时间戳，然而Moonbeam采用�
 |   Moonriver    |  RT1701  |  RT1802  | 2281723 - 2616189 |
 | Moonbase Alpha |  RT1700  |  RT1802  | 2529736 - 2879402 |
 
-关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/paritytech/frontier/pull/935){target=\_blank}。
+关于更多信息，您可以在[GitHub上查看相关Frontier PR](https://github.com/polkadot-evm/frontier/pull/935){target=\_blank}。
 
 ***
 

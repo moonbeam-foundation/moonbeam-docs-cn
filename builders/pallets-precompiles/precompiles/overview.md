@@ -9,7 +9,7 @@ description: Moonbeam上可用Solidity预编译的概述。预编译使您能够
 
 在Moonbeam上，预编译合约是拥有以太坊格式地址的原生Substrate代码，与其他智能合约一样能够可以使用以太坊API进行调用。预编译允许您直接调用Substrate runtime，其通常在Moonbeam的以太坊这端无法访问。
 
-用于实施预编译的Substrate代码可以在[EVM pallet](/learn/features/eth-compatibility/#evm-pallet){target=\_blank}中找到。EVM pallet包含了[以太坊上的标准预编译以及一些不特定于以太坊的预编译](https://github.com/paritytech/frontier/tree/master/frame/evm/precompile){target=\_blank}。它也包含了通过通用[`Precompiles` 特征](https://paritytech.github.io/frontier/rustdocs/pallet_evm/trait.Precompile.html){target=\_blank}创建和执行自定义预编译的能力。目前已经创建了好几个特定于Moonbeam的自定义预编译，您可以在[Moonbeam代码库](https://github.com/moonbeam-foundation/moonbeam/tree/master/precompiles){target=\_blank}中找到。
+用于实施预编译的Substrate代码可以在[EVM pallet](/learn/features/eth-compatibility/#evm-pallet){target=\_blank}中找到。EVM pallet包含了[以太坊上的标准预编译以及一些不特定于以太坊的预编译](https://github.com/polkadot-evm/frontier/tree/master/frame/evm/precompile){target=\_blank}。它也包含了通过通用[`Precompiles` 特征](https://polkadot-evm.github.io/frontier/rustdocs/pallet_evm/trait.Precompile.html){target=\_blank}创建和执行自定义预编译的能力。目前已经创建了好几个特定于Moonbeam的自定义预编译，您可以在[Moonbeam代码库](https://github.com/moonbeam-foundation/moonbeam/tree/master/precompiles){target=\_blank}中找到。
 
 以太坊预编译合约包含了带有大量计算的复杂功能，例如哈希和加密等。Moonbeam上自定义预编译合约提供对基于Substrate功能的访问，例如质押、治理、XCM相关函数等。
 

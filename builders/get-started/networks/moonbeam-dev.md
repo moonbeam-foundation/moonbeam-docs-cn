@@ -15,7 +15,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 如果您完整地遵循本教程操作，您将拥有一个在本地环境中运行的Moonbeam开发节点，其中包含10个[预注资的账户](#pre-funded-development-accounts)。
 
 !!! 注意事项
-    本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=\_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=\_blank}组件正处于积极开发阶段。
+    本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=\_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/polkadot-evm/frontier){target=\_blank}组件正处于积极开发阶段。
     --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 启动Moonbeam开发节点 {: #spin-up-a-node }
