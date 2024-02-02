@@ -7,7 +7,7 @@ description: 学习如何使用Wormhole桥接资产、设置中继器以及将Mo
 
 ## 概览
 
-[Wormhole](https://wormhole.com/){target=\_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://book.wormhole.com/wormhole/5_guardianNetwork.html){target=\_blank}赋能, Wormhole可以让dApps跨链传输任意消息.
+[Wormhole](https://wormhole.com/){target=\_blank}是一种通过称为VAAs（Verifiable Action Approvals）的消息来为Web3验证和保护跨链通信的协议。Wormhole的基础设施能够使dApp用户通过一键操作与任何链上的任意资产或应用程序交互。有一个多签协议和19个签署[Guardians](https://docs.wormhole.com/wormhole/explore-wormhole/guardian){target=\_blank}赋能, Wormhole可以让dApps跨链传输任意消息.
 
 Wormhole由多个模块化的交换组件组成，这些组件可以独立使用并支持由多个团队构建的逐渐增加的可组合应用程序。在其协议之上构建xDapp允许快速进行跨链资产转移和跨链逻辑以提供最大的Web互操作性。Wormhole的架构包含签署Guardian网络、桥接智能合约和中继器。请查看技术栈图以获取更多信息。
 
@@ -19,16 +19,16 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 开始使用Wormhole构建跨链应用程序可能所需的资源：
 
-- **[开发者文档](https://book.wormhole.com/introduction/introduction.html){target=\_blank}** - 技术性指南
+- **[开发者文档](https://docs.wormhole.com/wormhole/){target=\_blank}** - 技术性指南
 - **[门户网站](https://www.portalbridge.com/#/transfer){target=\_blank}** - 跨链转移资产的桥接UI
 
 ## 合约 {: #contracts }
 
 查看部署至Moonbeam的Wormhole合约列表，以及通过Wormhole连接至Moonbeam的网络。
 
-- **主网合约** - [Moonbeam](https://book.wormhole.com/reference/contracts.html#mainnet){target=\_blank}
+- **主网合约** - [Moonbeam](https://docs.wormhole.com/wormhole/blockchain-environments/evm#moonbeam){target=\_blank}
 
-- **测试网合约** - [Moonbase Alpha](https://book.wormhole.com/reference/contracts.html#testnet){target=\_blank}
+- **测试网合约** - [Moonbase Alpha](https://docs.wormhole.com/wormhole/blockchain-environments/evm#testnet-contracts-moonbase-alphanet-1287){target=\_blank}
 
 ## 使用Relayer Engine设置专用中继器 {: #setting-up-a-specialized-relayer-with-the-relayer-engine }
 
@@ -56,7 +56,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 本文中要部署的[智能合约](https://github.com/jboetticher/relayer-engine-docs-example/blob/main/SimpleGeneralMessage.sol){target=\_blank}储存在一个由Wormhole的Relayer Engine存储库分叉出来的Git存储库中。这将从一条链向另一条链发送字符串，并在通过Wormhole协议接收到字符串时进行存储。要部署脚本，将合约复制并粘贴至Remix或打开[Remix gist链接](https://remix.ethereum.org/?#gist=6aac8f954e245d6394f685af5d404b4b){target=\_blank}。
 
-首先，该智能合约中的代码是基于[Wormhole的最佳实践开发文档](https://book.wormhole.com/technical/evm/bestPractices.html){target=\_blank}，但某些方面（如安全性）已被简化。当您编写用于生产环境的智能合约时，请查阅文档以更好地了解其标准。需要明确的是，**不要在生产环境中使用以下智能合约**。
+首先，该智能合约中的代码是基于[Wormhole的最佳实践开发文档](https://docs.wormhole.com/wormhole/quick-start/cross-chain-dev){target=\_blank}，但某些方面（如安全性）已被简化。当您编写用于生产环境的智能合约时，请查阅文档以更好地了解其标准。需要明确的是，**不要在生产环境中使用以下智能合约**。
 
 1. 前往**Solidity Compiler**标签
 2. 点击**Compile**按钮
@@ -65,7 +65,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 ![Set up smart contract deployment](/images/builders/interoperability/protocols/wormhole/wormhole-2.webp)
 
-如需在每条链上部署，您将需要Wormhole核心桥接的本地实例以及每条对应链的chain ID。如下所示为选定的几个测试网提供了这些数据。您可以在Wormhole的[文档网站](https://book.wormhole.com/reference/contracts.html#testnet){target=\_blank}找到其他网络的端点。请注意，为本文设计的智能合约和中继器仅支持EVM，因此在本次演示只能使用EVM。
+如需在每条链上部署，您将需要Wormhole核心桥接的本地实例以及每条对应链的chain ID。如下所示为选定的几个测试网提供了这些数据。您可以在Wormhole的[文档网站](https://docs.wormhole.com/wormhole/blockchain-environments/evm#testnet-contracts-moonbase-alphanet-1287){target=\_blank}找到其他网络的端点。请注意，为本文设计的智能合约和中继器仅支持EVM，因此在本次演示只能使用EVM。
 
 |                                          网络 & 水龙头                                          |                 核心桥地址                 | Wormhole 链ID |
 |:-----------------------------------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
@@ -73,7 +73,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 |                  [Avalanche Fuji](https://faucet.avax.network/){target=\_blank}                  | 0x7bbcE28e64B3F8b84d876Ab298393c38ad7aac4C |       6       |
 |                 [Fantom TestNet](https://faucet.fantom.network/){target=\_blank}                 | 0x1BB3B4119b7BA9dfad76B0545fb3F531383c3bB7 |      10       |
 |                       [Goerli](https://goerlifaucet.com/){target=\_blank}                        | 0x706abc4E45D419950511e474C7B9Ed348A4a716c |       2       |
-| [Moonbase Alpha](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=\_blank} | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 |      16       |
+| [Moonbase Alpha](https://faucet.moonbeam.network/){target=\_blank} | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 |      16       |
 
 1. 确保选择的合约为**SimpleGeneralMessage**
 2. 点击箭头按钮打开部署菜单
@@ -82,7 +82,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 5. 点击**transact**按钮以开始部署交易
 6. 点击MetaMask中的**Confirm**按钮以开始部署
 
-当您在Moonbase Alpha上成功部署合约后，请确保复制其地址并使用连接到Wormhole的任何其他[EVM测试网](https://book.wormhole.com/reference/contracts.html#testnet){target=\_blank}重复该流程，以确保您可以跨链发送消息。注意您需要在MetaMask更改网络以部署至正确的网络。
+当您在Moonbase Alpha上成功部署合约后，请确保复制其地址并使用连接到Wormhole的任何其他[EVM测试网](https://docs.wormhole.com/wormhole/blockchain-environments/evm){target=\_blank}重复该流程，以确保您可以跨链发送消息。注意您需要在MetaMask更改网络以部署至正确的网络。
 
 ### 将Moonbase Alpha的互连合约列入白名单 {:whitelisting-moonbase-alpha-connected-contract}
 
@@ -90,7 +90,7 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 Wormhole建议在互连合约中包含一个白名单系统，您将在尝试发送跨链消息前用于`SimpleGeneralMessage`。
 
-要添加白名单合约，您必须调用`addTrustedAddress(bytes32 sender, uint16 _chainId)`函数，这需要一个*bytes32*格式的地址和一个chain ID。您可以在[上述表格](#deploying-the-wormhole-contract-with-remix-on-moonbase-alpha)中以及[Wormhole的文档网站](https://book.wormhole.com/reference/contracts.html#testnet){target=\_blank}中找到chain ID。
+要添加白名单合约，您必须调用`addTrustedAddress(bytes32 sender, uint16 _chainId)`函数，这需要一个*bytes32*格式的地址和一个chain ID。您可以在[上述表格](#deploying-the-wormhole-contract-with-remix-on-moonbase-alpha)中以及[Wormhole的文档网站](https://docs.wormhole.com/wormhole/blockchain-environments/evm){target=\_blank}中找到chain ID。
 
 ```sol
 function addTrustedAddress(bytes32 sender, uint16 _chainId) external {
@@ -369,7 +369,7 @@ await execute.onEVM({
 });
 ```
 
-最后一步就是检查`relayer-engine-config/common.json`。该配置文件控制着整个中继器的执行。请确保您在使用的TestNet EVM是列出在该文件中`supportedChains`对象内的。如果其未被列出，该插件不会正常运行。如果您在运行的一条链未被列出，您将需要以下列格式从[Wormhole的开发者文档](https://book.wormhole.com/reference/contracts.html#testnet){target=\_blank}导入数据至配置文件。
+最后一步就是检查`relayer-engine-config/common.json`。该配置文件控制着整个中继器的执行。请确保您在使用的TestNet EVM是列出在该文件中`supportedChains`对象内的。如果其未被列出，该插件不会正常运行。如果您在运行的一条链未被列出，您将需要以下列格式从[Wormhole的开发者文档](https://docs.wormhole.com/wormhole/blockchain-environments/evm){target=\_blank}导入数据至配置文件。
 
 该中继器还有许多其他配置。例如，`mode`字符串设置为`"BOTH"`以确保使用监听器和执行器插件，也可根据开发者需求选择只运行其中一个。此外，还有多个日志级别可供指定，如`"error"`可用来只记录错误消息。然而，在本次演示中只需保留配置设置即可。
 

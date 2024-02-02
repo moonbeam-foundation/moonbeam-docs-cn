@@ -38,9 +38,9 @@ GMP预编译位于以下地址：
 
 [`Gmp.sol`](https://github.com/moonbeam-foundation/moonbeam/blob/master/precompiles/gmp/Gmp.sol){target=\_blank}是一个允许开发者与预编译交互的Solidity接口：
 
-- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://book.wormhole.com/wormhole/4_vaa.html){target=\_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=\_blank}。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
+- **wormholeTransferERC20**(*bytes memory* vaa) - 接受一个Wormhole的桥接转账[VAA (Verified Action Approval)](https://docs.wormhole.com/wormhole/explore-wormhole/vaa){target=\_blank}，通过Wormhole Token桥铸造Token并将流动性转移至自定义的有效负载[multilocation](/builders/interoperability/xcm/overview/#general-xcm-definitions){target=\_blank}。有效负载被预计称为预编译专属的SCALE编码项目，如先前在此教程的[Wormhole部分](#building-the-payload-for-wormhole)解释一般
 
-VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://book.wormhole.com/wormhole/6_relayers.html?search=#specialized-relayers){target=\_blank}发现。
+VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护者网络间谍](https://docs.wormhole.com/wormhole/explore-wormhole/guardian){target=\_blank}发现。
 
 用户必须与预编译交互的最常见实例是在恢复的情况下，也就是中继器不完成MRL事务。举例来说，用户必须搜索其源链交易附带的VAA，然后手动调用`wormholeTransferERC20`函数。
 
@@ -48,7 +48,7 @@ VAA为在源链交易后生成的包含有效负载的包，由Wormhole[守护�
 
 目前GMP预编译仅支持使用Wormhole通过Moonbeam发送流动性以及发送到其他平行链。GMP预编译不协助从平行链返回Moonbeam以及其他Wormhole连接链的路线。
 
-要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://book.wormhole.com/technical/evm/tokenLayer.html#contract-controlled-transfer){target=\_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=\_blank}的[origin-chain部署](https://book.wormhole.com/reference/contracts.html#token-bridge){target=\_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=\_blank}中的SCALE编码multilocation对象。
+要从像以太坊这样的与Wormhole连接的源链发送流动性，用户必须调用[`transferTokensWithPayload`函数](https://docs.wormhole.com/wormhole/explore-wormhole/vaa#token--message){target=\_blank}在[WormholeTokenBridge智能合约](https://github.com/wormhole-foundation/wormhole/blob/main/ethereum/contracts/bridge/interfaces/ITokenBridge.sol){target=\_blank}的[origin-chain部署](https://docs.wormhole.com/wormhole/explore-wormhole/core-contracts#token-bridge){target=\_blank}。此函数需要一个字节有效负载，该有效负载必须格式化为包含在[另一个预编译特定版本类型](https://github.com/moonbeam-foundation/moonbeam/blob/{{ networks.moonbase.spec_version }}/precompiles/gmp/src/types.rs#L25-L48){target=\_blank}中的SCALE编码multilocation对象。
 
 如果您不熟悉波卡生态系统，您可能不熟悉SCALE编码和multilocation。[SCALE编码](https://docs.substrate.io/reference/scale-codec/){target=\_blank}是波卡使用的一种紧凑形式的编码。[`MultiLocation`类型](https://wiki.polkadot.network/docs/learn-xcvm){target=\_blank}用于定义波卡中的相对点，例如特定平行链上的特定账户（Polkadot区块链）。
 

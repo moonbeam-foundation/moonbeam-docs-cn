@@ -479,7 +479,7 @@ function requestCollections(uint256 proposalId) public payable {
 每个spoke链都有一个与之关联的`DAOSatellite`智能合约，它也可以接收和发送跨链消息。此函数在收集阶段向每个已注册spoke链的`DAOSatellite`发送跨链消息。该消息包含函数选择器、`1`和提案ID。函数选择器用于从目标`DAOSatellite`合约请求给定提案的投票数据，而不是其他一些操作（我们将在后续重新讨论[此概念](#receiving-votes-from-spoke-chains)）。
 
 !!! 注意事项
-    通过使用LayerZero，必须在单个交易中发送多条消息，以便每条spoke链都可以接收数据。LayerZero和其他跨链协议一样，[是**unicast（单播）**而不是**multicast（多播）**](https://layerzero.gitbook.io/docs/faq/messaging-properties#multicast){target=\_blank}。就像跨链消息只能到达一个目的地。在设计中心辐射（hub-and-spoke）架构时，研究一下您的[协议是否支持multicast消息传递](https://book.wormhole.com/wormhole/3_coreLayerContracts.html?highlight=multicast#multicasting){target=\_blank}，因为它更为简洁。
+    通过使用LayerZero，必须在单个交易中发送多条消息，以便每条spoke链都可以接收数据。LayerZero和其他跨链协议一样，[是**unicast（单播）**而不是**multicast（多播）**](https://layerzero.gitbook.io/docs/faq/messaging-properties#multicast){target=\_blank}。就像跨链消息只能到达一个目的地。在设计中心辐射（hub-and-spoke）架构时，研究一下您的[协议是否支持multicast消息传递](https://docs.wormhole.com/wormhole/explore-wormhole/core-contracts#multicast){target=\_blank}，因为它更为简洁。
 
 请求数据部分就到此为止了，因为之后的大部分逻辑将会在[DAO Satellite](#dao-satellite-contract)中。 
 
