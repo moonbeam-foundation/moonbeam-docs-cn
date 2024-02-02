@@ -1,7 +1,7 @@
 ### 以太坊主网预编译 {: #ethereum-mainnet-precompiles }
 
-|                                                             合约                                                              |                    地址                    |
-|:-----------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
+|                                                              合约                                                              |                    地址                    |
+|:------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------:|
 |  [ECRECOVER](/builders/build/canonical-contracts/precompiles/eth-mainnet/#verify-signatures-with-ecrecover/){target=\_blank}   | 0x0000000000000000000000000000000000000001 |
 |          [SHA256](/builders/build/canonical-contracts/precompiles/eth-mainnet/#hashing-with-sha256/){target=\_blank}           | 0x0000000000000000000000000000000000000002 |
 |       [RIPEMD160](/builders/build/canonical-contracts/precompiles/eth-mainnet/#hashing-with-ripemd-160/){target=\_blank}       | 0x0000000000000000000000000000000000000003 |
