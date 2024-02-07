@@ -60,12 +60,14 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 - **delegate**(candidate, amount, candidateDelegationCount, delegationCount) - *从runtime 2400停止使用* - 请求为特定候选人（收集人）添加一定数额的委托。改为通过`delegateWithAutoCompound` extrinsic实现
 - **delegateWithAutoCompound**(candidate, amount, autoCompound, candidateDelegationCount, candidateAutoCompoundingDelegationCount, delegationCount) - 委托一个收集人候选人并用`amount`，一个0-100之间的整数（无小数）设置自动复合奖励百分比。如果调用者不是委托人，则此函数将它们添加到委托人集合中。如果调用者已经是委托人，则调整他们的委托数量。
 - **delegatorBondMore**(candidate, more) - 请求增加委托人针对特定候选人（收集人）的委托数量
+- **enableMarkingOffline**(value) - 启用或停止收集人的离线标记（mark offline）功能。必须通过[治理](/learn/features/governance){target=\_blank} 中的Root track来执行
 - **executeCandidateBondLess**(candidate) - 执行任何已计划的到期请求，以减少候选人（收集人）自身绑定量
 - **executeDelegationRequest**(delegator, candidate) - 为提供候选人（收集人）的地址的特定委托人执行任何已计划的到期委托请求
 - **executeLeaveCandidates**(candidate, candidateDelegationCount) - 执行任何已计划的到期请求，以离开候选人（收集人）池
 - **goOffline**() - 无需解绑，允许收集人暂时离开池
 - **goOnline**() - 在之前调用`goOffline()`之后，允许收集人重新加入池
 - **joinCandidates**(bond, candidateCount) - 请求在特定绑定量并提供现有候选人（收集人）数量的情况下加入收集人池
+- **notifyInactiveCollator**(collator) - 将一个收集人标记为不活跃。这是根据其是否停止制造区块，并且没有在最大允许离线回合内恢复上线来决定的，最大允许离线回合使用[`maxOfflineRounds` pallet 参数](#constants)获取
 - **scheduleCandidateBondLess**(less) - 计划一个请求，以特定数量来减少候选人（收集人）自身绑定。这里有[退出生效期](#exit-delays)，即在您通过`executeCandidateBondLess` extrinsic执行请求之前必须等待
 - **scheduleDelegatorBondLess**(candidate, less) - 为委托人针对候选人（收集人）绑定更少的量计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeDelegationRequest` extrinsic执行请求之前必须等待
 - **scheduleLeaveCandidates**(candidateCount) - 为候选人（收集人）自行从池移出计划一个请求。这里有[退出生效期](#exit-delays)，即您通过`executeLeaveCandidates` extrinsic执行请求之前必须等待
@@ -95,7 +97,8 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 - **delayedPayouts**(u32) - 返回所有轮次或给定轮次的延迟支付
 - **delegationScheduledRequests**(AccountId20) - 返回所有收集人或给定收集人地址中未处理的已计划委托请求
 - **delegatorState**(AccountId20) - 为所有委托人或一个给定委托人地址返回委托人信息，如委托情况、委托状态，以及总委托量
-- **inflationConfig**() - returns the inflation configuration —— 返回通胀配置
+- **enabledMarkingOffline**() - 返回一个表明收集者离线标记功能是否开启的布尔值
+- **inflationConfig**() - 返回通胀配置
 - **nominatorState2**(AccountId20) - *运行时1200弃用*，现使用`delegatorState`代替
 - **palletVersion**() - 返回目前pallet版本
 - **parachainBondInfo**() - 返回平行链储备账户和年通胀的百分比
@@ -119,7 +122,9 @@ DPOS共识系统利用[平行链质押pallet](https://github.com/moonbeam-founda
 - **leaveCandidatesDelay**() - 在已计划的候选人（收集人）离开池的请求可以被执行之前，返回必须等待的轮次数
 - **leaveDelegatorsDelay**() - 在已计划的委托人离开委托人集的请求可以被执行之前，返回必须等待的轮次数
 - **maxBottomDelegationsPerCandidate**() - 返回每个候选人（收集人）最多的排名靠后的委托数
+- **maxCandidates**() - 返回一个候选人池允许的最大候选人数
 - **maxDelegationsPerDelegator**() - 返回每个委托人的最大委托数
+- **maxOfflineRounds**() - 返回在多少个回合之内，一个收集人如果不产出区块，它将被标记为不活跃
 - **maxTopDelegationsPerCandidate**() - 返回每个候选人（收集人）的最多的排名靠前的委托数
 - **minBlocksPerRound**() - 返回每个轮次的最低区块数
 - **minCandidateStk**() - 返回成为候选人（收集人）所需的最低质押
