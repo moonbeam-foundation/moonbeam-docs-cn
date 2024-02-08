@@ -81,8 +81,8 @@ Moonbeam配置为将保留账户最低存款（Existential Deposit）设置为0�
 
 该修补程序已应用于以下区块区间：
 
-|      网络      |                                                              区块区间                                                               |
-|:--------------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
+|      网络      |                                                               区块区间                                                               |
+|:--------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
 |    Moonbeam    | [1041355 - 1041358 和 1100752](https://moonbeam.subscan.io/extrinsic?module=evm&call=hotfix_inc_account_sufficients){target=\_blank} |
 |   Moonriver    |      [1835760 - 1835769](https://moonriver.subscan.io/extrinsic?module=evm&call=hotfix_inc_account_sufficients){target=\_blank}      |
 | Moonbase Alpha |  [2097782 - 2097974](https://moonbase.subscan.io/extrinsic?address=&module=evm&call=hotfix_inc_account_sufficients){target=\_blank}  |
