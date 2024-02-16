@@ -15,7 +15,7 @@ description: 查看基于Moonbeam网络的喂价合约并学习如何使用智�
 
 在介绍获取数据本身之前，您需要先了解喂价的基本情况。
 
-在标准配置下，每次喂价是由去中心化预言机网络进行数据更新。每个预言机节点向[Aggregator合约](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol){target=\_blank}发布价格数据，而后获得奖励。Aggregator合约从预言机网络定期接收最新数据更新，并将数据聚合并存储在链上，便于使用者轻松获取。但在每一轮聚合中，只有预言机节点收到超过最低数量门槛的响应才会更新数据。
+在标准配置下，每次喂价是由去中心化预言机网络进行数据更新。每个预言机节点向[Aggregator合约](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol){target=\_blank}发布价格数据，而后获得奖励。Aggregator合约从预言机网络定期接收最新数据更新，并将数据聚合并存储在链上，便于使用者轻松获取。但在每一轮聚合中，只有预言机节点收到超过最低数量门槛的响应才会更新数据。
 
 终端用户可以通过Aggregator接口或通过代理合约的Consumer接口使用只读操作检索喂价。
 
@@ -28,6 +28,7 @@ Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonba
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 interface AggregatorV3Interface {
@@ -58,7 +59,7 @@ interface AggregatorV3Interface {
 }
 ```
 
-如上述接口所示，有5个函数可获取价格：`decimal`、`description`、`version`、`getRoundData`和`latestRoundData`。
+如上述接口所示，有5个函数可获取价格：`decimals`、`description`、`version`、`getRoundData`和`latestRoundData`。
 
 目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=\_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=\_blank}和Moonbase Alpha提供以下报价对的数据喂价合约：
 
@@ -212,6 +213,7 @@ Moonbeam运行的预部署合约和预言机节点支持一组有限的job ID，
 部署在Moonbase Alpha的客户端合约如下：
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.6;
 
 import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
@@ -310,6 +312,7 @@ contract Client is ChainlinkClient {
 
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.6;
 
 /**
@@ -398,7 +401,7 @@ interface ChainlinkInterface {
 使用`ChainlinkClient`构建您自己的客户端合约前，首先您需要导入合约：
 
 ```solidity
-import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/ChainlinkClient.sol";
+import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
 ```
 
 您可以查阅[Chainlink documentation on ChainlinkClient API Reference](https://docs.chain.link/docs/chainlink-framework/){target=\_blank}以获得更多资讯。
