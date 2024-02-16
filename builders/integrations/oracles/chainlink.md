@@ -59,7 +59,7 @@ interface AggregatorV3Interface {
 }
 ```
 
-如上述接口所示，有5个函数可获取价格：`decimal`、`description`、`version`、`getRoundData`和`latestRoundData`。
+如上述接口所示，有5个函数可获取价格：`decimals`、`description`、`version`、`getRoundData`和`latestRoundData`。
 
 目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=\_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=\_blank}和Moonbase Alpha提供以下报价对的数据喂价合约：
 
