@@ -9,21 +9,21 @@ _作者：Erin Shaben_
 
 ## 概览 {: #introduction }
 
-在开发dApp时，使用本地的开发环境而非如测试网或主网等实际运作的网络来开发智能合约是有益的。在本地进行开发，可以消除在实际网络开发时会遇到的一些麻烦，例如必须为开发账户提供资金和等待区块生成等等。在Moonbeam，开发者可以启动他们自己的本地[Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}以快速轻松地构建和测试应用。
+在开发dApp时，使用本地的开发环境而非如测试网或主网等实际运作的网络来开发智能合约是有益的。在本地进行开发，可以消除在实际网络开发时会遇到的一些麻烦，例如必须为开发账户提供资金和等待区块生成等等。在Moonbeam，开发者可以启动他们自己的本地[Moonbeam 开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}以快速轻松地构建和测试应用。
 
-但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？[Subsquid](/builders/integrations/indexers/subsquid){target=_blank} 是一个为Moonbeam等基于Substrate区块链开发的数据网络。它包含了超过100种区块链的数据，开发者现在也可以用它在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
+但那些依赖检索器来检索区块链数据的dApp呢？这些应用的开发者该如何简化开发过程？[Subsquid](/builders/integrations/indexers/subsquid){target=\_blank} 是一个为Moonbeam等基于Substrate区块链开发的数据网络。它包含了超过100种区块链的数据，开发者现在也可以用它在本地开发环境（例如您的Moonbeam开发节点）上检索内容！
 
 本教程将带您了解使用Subsquid在本地Moonbeam开发节点上检索数据的过程。我们将会创建一个ERC-20合约并使用Subsquid来检索我们的ERC-20的转账记录。
 
-本教程基于Massimo Luraschi关于如何[通过本地检索提高dApp开发效率](https://medium.com/subsquid/boost-your-dapp-development-productivity-with-local-indexing-3936ba7a8cec)的教程{target=_blank}，但已针对Moonbeam开发节点进行了修改。
+本教程基于Massimo Luraschi关于如何[通过本地检索提高dApp开发效率](https://medium.com/subsquid/boost-your-dapp-development-productivity-with-local-indexing-3936ba7a8cec)的教程{target=\_blank}，但已针对Moonbeam开发节点进行了修改。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 要跟随此教程，您需要具备以下条件：
 
-- [完成安装Docker](https://docs.docker.com/get-docker/){target=_blank}
-- [完成安装Docker Compose](https://docs.docker.com/compose/install/){target=_blank}
-- 一个空白的Hardhat项目。关于详细的步骤指示，请查看我们Hardhat文档页面的[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}部分
+- [完成安装Docker](https://docs.docker.com/get-docker/){target=\_blank}
+- [完成安装Docker Compose](https://docs.docker.com/compose/install/){target=\_blank}
+- 一个空白的Hardhat项目。关于详细的步骤指示，请查看我们Hardhat文档页面的[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}部分
 
 在后面的教程中我们将会配置Hardhat项目和创建Subsquid项目。
 
@@ -65,22 +65,22 @@ _作者：Erin Shaben_
 
 这些指令将会启动我们的开发节点，您可以使用9944端口。
 
-![Spin up a Moonbeam development node](/images/tutorials/integrations/local-subsquid/local-squid-1.png)
+![Spin up a Moonbeam development node](/images/tutorials/integrations/local-subsquid/local-squid-1.webp)
 
 我们的开发节点具有10个预先拥有资金的账户。
 
 ??? note "开发账户地址和私钥"
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-accounts.md'
 
-关于更多运行Moonbeam开发节点的信息，请查看[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=_blank}的教程。
+关于更多运行Moonbeam开发节点的信息，请查看[设置Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev){target=\_blank}的教程。
 
 ## 设置一个Hardhat项目 {: #create-a-hardhat-project }
 
-你应该已经创建了一个空白的Hardhat项目，但如果你并没有创建Hardhat项目，你可以在我们的Hardhat文档页面查看[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating- a-hardhat-project){target=_blank}的教程。
+你应该已经创建了一个空白的Hardhat项目，但如果你并没有创建Hardhat项目，你可以在我们的Hardhat文档页面查看[创建一个Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating- a-hardhat-project){target=\_blank}的教程。
 
 在本部分教程中，我们将为本地Moonbeam开发节点配置我们的Hardhat项目，创建ERC-20合约，并编写脚本以部署我们的合约并与之交互。
 
-在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
+在开始创建项目之前，首先要安装一些需要的依赖项：[Hardhat Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}和[OpenZeppelin合约](https://docs.openzeppelin.com/contracts/4.x/){target=\_blank}。Hardhat Ethers插件提供了一种使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}库与网络交互的便捷方式。我们将使用OpenZeppelin的基础ERC-20实现来创建ERC-20。要安装这两个依赖项，您可以运行以下指令：
 
 === "npm"
 
@@ -165,7 +165,7 @@ contract MyTok is ERC20, Ownable {
 npx hardhat compile
 ```
 
-![Compile contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-2.png)
+![Compile contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-2.webp)
 
 此指令将会编译合约并为其产生一个包含`artifacts`和合约ABI的目录。
 
@@ -219,7 +219,7 @@ npx hardhat compile
 
 部署合约的地址应当在终端出现，请保存该地址，我们将在后面的教程中用于合约交互。
 
-![Deploy contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-3.png)
+![Deploy contracts using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-3.webp)
 
 ### 转移ERC-20 {: #transfer-erc-20s }
 
@@ -301,13 +301,13 @@ npx hardhat compile
 
 当交易传送成功，您将会在终端中看到交易记录。
 
-![Send transactions using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-4.png)
+![Send transactions using Hardhat](/images/tutorials/integrations/local-subsquid/local-squid-4.webp)
 
 现在我们可以创建Squid以在本地开发节点检索数据。
 
 ## 创建一个Subsquid项目 {: #create-subsquid-project }
 
-现在我们将开始创建Subsquid项目。首先，我们需要安装[Subsquid CLI](https://docs.subsquid.io/squid-cli/){target=_blank}：
+现在我们将开始创建Subsquid项目。首先，我们需要安装[Subsquid CLI](https://docs.subsquid.io/squid-cli/){target=\_blank}：
 
 ```bash
 npm i -g @subsquid/cli
@@ -423,7 +423,7 @@ sqd archive-up
 
 这将会在8080端口运行我们的Archive。
 
-![Spin up a local Subsquid EVM Archive](/images/tutorials/integrations/local-subsquid/local-squid-5.png)
+![Spin up a local Subsquid EVM Archive](/images/tutorials/integrations/local-subsquid/local-squid-5.webp)
 
 Archive的部分就是这样！现在我们需要更新我们的Squid项目来检索ERC-20`Transfer`事件，然后我们就可以运行检索器了！
 
@@ -461,7 +461,7 @@ sqd codegen
 sqd typegen ../artifacts/contracts/MyTok.sol/MyTok.json
 ```
 
-![Run Subsquid commands](/images/tutorials/integrations/local-subsquid/local-squid-6.png)
+![Run Subsquid commands](/images/tutorials/integrations/local-subsquid/local-squid-6.webp)
 
 这将在`src/abi/MyTok.ts`文件中生成相关的TypeScript接口类。在本教程中，我们将专门使用`events`。
 
@@ -567,7 +567,7 @@ processor.run(new TypeormDatabase(), async (ctx) => {
 
 在终端中，您应当能看见检索器在处理区块！
 
-![Spin up a Subsquid indexer](/images/tutorials/integrations/local-subsquid/local-squid-7.png)
+![Spin up a Subsquid indexer](/images/tutorials/integrations/local-subsquid/local-squid-7.webp)
 
 如果您的Squid没有正确地检索区块，请确保您的开发节点正在使用`--sealing`标志运行。以本教程例子来说，你应该将标志设置为`--sealing 4000`，这样每四秒就会产生一个区块。您也可以根据需要随意编辑时间间隔。在您尝试再次启动您的Squid之前，请运行以下指令来关闭本地Archive和Squid：
 
@@ -597,7 +597,7 @@ sqd process
 sqd serve
 ```
 
-GraphQL服务器将被启动，您可以在[localhost:4350/graphql](http://localhost:4350/graphql){target=_blank}进行访问。接着您将能够检查数据库中的所有转账数据：
+GraphQL服务器将被启动，您可以在[localhost:4350/graphql](http://localhost:4350/graphql){target=\_blank}进行访问。接着您将能够检查数据库中的所有转账数据：
 
 ```gql
 query MyQuery {
@@ -614,9 +614,9 @@ query MyQuery {
 
 所有转账数据都应当出现，包含转账至Alith账户的初始供应转账，以及Alith与Baltathar、Charleth、Dorothy和Ethan之间的转账。
 
-![Query transfer data using the GraphQL server](/images/tutorials/integrations/local-subsquid/local-squid-8.png)
+![Query transfer data using the GraphQL server](/images/tutorials/integrations/local-subsquid/local-squid-8.webp)
 
-就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=_blank}上查看完整的项目内容。
+就这样！您已经成功使用Subsquid在本地Moonbeam开发节点检索数据！您可以在[GitHub](https://github.com/eshaben/local-squid-demo){target=\_blank}上查看完整的项目内容。
 
 --8<-- 'text/_disclaimers/educational-tutorial.md'
 

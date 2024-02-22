@@ -9,11 +9,11 @@ _作者：Jeremy Boetticher_
 
 ## 概览 {: #introduction }
 
-Moonbeam致力于支持互操作性和跨链逻辑。其[互连合约（Connected Contracts）](https://moonbeam.network/builders/connected-contracts/){target=_blank}需要更新之前理解的智能合约概念，以适应跨链世界。虽然一些跨链原语（例如跨链Token）已经存在多年，但是其他的跨链原语（例如跨链swap、AMM和本教程中使用的DAO）现在才开始使用。
+Moonbeam致力于支持互操作性和跨链逻辑。其[互连合约（Connected Contracts）](https://moonbeam.network/builders/connected-contracts/){target=\_blank}需要更新之前理解的智能合约概念，以适应跨链世界。虽然一些跨链原语（例如跨链Token）已经存在多年，但是其他的跨链原语（例如跨链swap、AMM和本教程中使用的DAO）现在才开始使用。
 
-在本教程中，我们将演示为跨链DAO编写智能合约。本示例中的智能合约将基于OpenZeppelin的治理智能合约，展示从单链到跨链的演变，并突出了将DApp概念从单链到多链转换时所面临的一些不兼容性。本示例中使用的跨链协议为[LayerZero](/builders/interoperability/protocols/layerzero){target=_blank}，但是我们鼓励您将其概念调整为您认为合适的任何其他协议，因为跨链概念通常在Moonbeam上的协议之间会有重叠。
+在本教程中，我们将演示为跨链DAO编写智能合约。本示例中的智能合约将基于OpenZeppelin的治理智能合约，展示从单链到跨链的演变，并突出了将DApp概念从单链到多链转换时所面临的一些不兼容性。本示例中使用的跨链协议为[LayerZero](/builders/interoperability/protocols/layerzero){target=\_blank}，但是我们鼓励您将其概念调整为您认为合适的任何其他协议，因为跨链概念通常在Moonbeam上的协议之间会有重叠。
 
-本教程的目的不是对跨链DAO的最终定义，而是提供一个后续能够用于编写复杂跨链DApp的示例。本教程将聚焦于架构，尤其是跨链智能合约逻辑，而非部署和测试。**以下智能合约尚未测试，不建议用于生产环境**。也就是说，您可以从这些设计中获取灵感来编写自己的跨链DAO。[此GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=_blank}中提供了DAO的完整代码和演示，以及相关操作说明。
+本教程的目的不是对跨链DAO的最终定义，而是提供一个后续能够用于编写复杂跨链DApp的示例。本教程将聚焦于架构，尤其是跨链智能合约逻辑，而非部署和测试。**以下智能合约尚未测试，不建议用于生产环境**。也就是说，您可以从这些设计中获取灵感来编写自己的跨链DAO。[此GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=\_blank}中提供了DAO的完整代码和演示，以及相关操作说明。
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
@@ -25,11 +25,11 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 - **有自治能力** — 执行必须在不依赖于个人、治理或团队的情况下发生
 - **有组织性** — 必须设定一种方式来提出并采取行动：代码即法律
 
-最好的单链DAO之一是[Compound Finance的DAO](https://compound.finance/governance){target=_blank}。原因在于：智能合约允许用户以交易参数的形式提出要在链上采取的行动，这些行动随后作为origin和智能合约一起执行，这体现了**组织性**；提案的执行是无需许可的且无需依赖任何人或团队，这体现了**自治能力**；提案通过Compound Finance token的持有者投票决定，这体现了**去中心化**。
+最好的单链DAO之一是[Compound Finance的DAO](https://compound.finance/governance){target=\_blank}。原因在于：智能合约允许用户以交易参数的形式提出要在链上采取的行动，这些行动随后作为origin和智能合约一起执行，这体现了**组织性**；提案的执行是无需许可的且无需依赖任何人或团队，这体现了**自治能力**；提案通过Compound Finance token的持有者投票决定，这体现了**去中心化**。
 
 接下来让我们来深入了解像Compound Finance DAO这样的DAO中的提案流程：
 
-![Typical DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-1.png)
+![Typical DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-1.webp)
 
 1. **提案（Proposal）** — 用户提议DAO执行单个或多个交易
 2. **投票（Voting）** — 等待投票延迟期后，投票期将正式开启，允许用户使用其投票权重进行投票。投票权重通常由在提案开始和投票延迟期尾之间的某个时间的Token余额快照决定
@@ -40,7 +40,7 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 构建跨链DApp的方法有很多种。您可以创建一个更加分布式的系统，系统中的数据和逻辑分布到多条链，以扩大其使用率。另一方面，您可以使用中心辐射（hub-and-spoke）模式，其中主要逻辑和数据存储在单链上，跨链消息将与之交互。
 
-![Cross Chain DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-2.png)
+![Cross Chain DAO](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-2.webp)
 
 我们将对以下步骤展开分析：
 
@@ -55,17 +55,17 @@ DAO是去中心化自治组织，想要让智能合约成为DAO，其必须满�
 
 此处显示的流程，允许任何持有DAO Token的人参与跨链投票。为了保存只读信息，我们将把其存储在一条链上。比较少见的一次性操作（例如提案、取消等）最好作为中心辐射（hub-and-spoke）模式来完成。关于投票逻辑的信息，由于用户将在多条链上进行投票，因此投票权重和投票总和将存储在每条spoke链上。由于跨链手续费相对偏贵，仅在投票结束后才将他们发送到hub链。
 
-![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.png)  
+![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.webp)  
 
 当然，这只是实现跨链DAO的一种方法，我们鼓励您考虑其他更好的方法。 在下一部分中，我们来看一个实现。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-在我们开始编写整个项目之前，您可以在[跨链DAO GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=_blank}找到已完成的内容。它使用Hardhat，因此先决条件将有助于了解此代码库的工作原理。 本教程将不包含有关如何使用Hardhat的信息，仅关注智能合约部分。如果要遵循本教程操作，您需要准备以下内容：
+在我们开始编写整个项目之前，您可以在[跨链DAO GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=\_blank}找到已完成的内容。它使用Hardhat，因此先决条件将有助于了解此代码库的工作原理。 本教程将不包含有关如何使用Hardhat的信息，仅关注智能合约部分。如果要遵循本教程操作，您需要准备以下内容：
 
-- 一个新的Hardhat项目并[了解如何使用Hardhat](/builders/build/eth-api/dev-env/hardhat/){target=_blank}
-- [安装OpenZeppelin智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts){target=_blank}，将其作为依赖项
-- [安装LayerZero智能合约](https://github.com/LayerZero-Labs/solidity-examples){target=_blank}，将其作为依赖项
+- 一个新的Hardhat项目并[了解如何使用Hardhat](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}
+- [安装OpenZeppelin智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts){target=\_blank}，将其作为依赖项
+- [安装LayerZero智能合约](https://github.com/LayerZero-Labs/solidity-examples){target=\_blank}，将其作为依赖项
 
 要安装两个依赖项，您可以运行以下命令：
 
@@ -77,13 +77,13 @@ npm install @openzeppelin/contracts @layerzerolabs/solidity-examples
 
 首先，我们从基础部分开始，梳理一下用户将如何计算其投票权。
 
-在Compound Finance的DAO中，用户需要用到COMP Token投票，这实现了DAO的去中心化。OpenZeppelin的`Governor`智能合约也有此功能，将Token投票的功能抽象化为[`IVotes`接口](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/utils/IVotes.sol){target=_blank}。
+在Compound Finance的DAO中，用户需要用到COMP Token投票，这实现了DAO的去中心化。OpenZeppelin的`Governor`智能合约也有此功能，将Token投票的功能抽象化为[`IVotes`接口](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/utils/IVotes.sol){target=\_blank}。
 
-`IVotes`接口需要很多不同的函数来表示投票方案中的不同权重。幸运的是，OpenZeppelin提供了`IVotes`的ERC-20实现，称为[ERC20Votes](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Votes.sol){target=_blank}。
+`IVotes`接口需要很多不同的函数来表示投票方案中的不同权重。幸运的是，OpenZeppelin提供了`IVotes`的ERC-20实现，称为[ERC20Votes](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Votes.sol){target=\_blank}。
 
-如上述[想法和计划](#intuition-and-planning){target=_blank}部分所述，我们计划让用户在每条链上进行投票，并且只在收集阶段将投票数据发送到hub链。这意味着投票权重必须存储在每条链上。这很简单，因为我们只要确保将`ERC20Votes`合约部署在每条链上，也就是说，使DAO Token成为跨链Token。
+如上述[想法和计划](#intuition-and-planning){target=\_blank}部分所述，我们计划让用户在每条链上进行投票，并且只在收集阶段将投票数据发送到hub链。这意味着投票权重必须存储在每条链上。这很简单，因为我们只要确保将`ERC20Votes`合约部署在每条链上，也就是说，使DAO Token成为跨链Token。
 
-之前我们提到将LayerZero作本教程的跨链协议。选择LayerZero的原因在于其[OFT合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/token/oft/v1/OFT.sol){target=_blank}使ERC-20 Token跨链变得极其简单。但是，这并不代表您必须使用LayerZero，其他的跨链协议都有自己的方法和创建跨链资产的能力。
+之前我们提到将LayerZero作本教程的跨链协议。选择LayerZero的原因在于其[OFT合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/token/oft/v1/OFT.sol){target=\_blank}使ERC-20 Token跨链变得极其简单。但是，这并不代表您必须使用LayerZero，其他的跨链协议都有自己的方法和创建跨链资产的能力。
 
 我们将创建一个名为`OFTVotes.sol`的新文件：
 
@@ -132,7 +132,7 @@ function _creditTo(uint16, address _toAddress, uint _amount) internal virtual ov
 
 前几个函数只是确保与它们继承的智能合约的兼容性。
 
-`_debitFrom`函数包含销毁Token的逻辑，以便跨链桥可以运作。同样，`_creditTo`函数包含铸造Token的逻辑。`OFTCore`智能合约会用到这两个函数。想要知道为何跨链桥包装时会涉及铸造和销毁，因为OFT是[传送资产](/builders/interoperability/xcm/overview/#xcm-transport-protocols){target=_blank}而非包装资产（与XCM资产协议类似）。
+`_debitFrom`函数包含销毁Token的逻辑，以便跨链桥可以运作。同样，`_creditTo`函数包含铸造Token的逻辑。`OFTCore`智能合约会用到这两个函数。想要知道为何跨链桥包装时会涉及铸造和销毁，因为OFT是[传送资产](/builders/interoperability/xcm/overview/#xcm-transport-protocols){target=\_blank}而非包装资产（与XCM资产协议类似）。
 
 `OFTVotes`合约是抽象合约，所以让我们创建一个我们用于部署的最终版本的智能合约。在 `contracts`文件夹中，创建一个名为`CrossChainDAOToken.sol`的新智能合约并添加以下内容：
 
@@ -168,12 +168,12 @@ contract CrossChainDAOToken is OFTVotes {
 
 这个智能合约的作用是在构造函数中添加元数据并为用户创建初始Token。所有被覆盖的函数只是因为Solidity规则才存在，它们只是默认为父合约的实现。我们没有将元数据添加到`OFTVotes`的唯一原因是该智能合约理论上可以在其他地方重复使用。
 
-`CrossChainDAOToken`智能合约现在可以部署到spoke链和hub链上了。您可以在[示例代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainDAOToken.sol){target=_blank}查看完整版本。
+`CrossChainDAOToken`智能合约现在可以部署到spoke链和hub链上了。您可以在[示例代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainDAOToken.sol){target=\_blank}查看完整版本。
 
 
 ## 编写跨链DAO合约 {: #cross-chain-dao-contract }
 
-下面是本教程的核心部分：跨链DAO。需要明确的是，并非*所有*的跨链逻辑都将存储在跨链DAO智能合约中。相反，我们会将hub逻辑单独放到一个合约中，并将[spoke链逻辑放到另一个合约](#dao-satellite-contract){target=_blank}中。根据中心辐射（hub-and-spoke）模式，这样做是有道理的：一些逻辑存储在单条hub链上，而spoke链通过更简单的satellite合约与之交互。在spoke链上的逻辑不需要在hub链上。
+下面是本教程的核心部分：跨链DAO。需要明确的是，并非*所有*的跨链逻辑都将存储在跨链DAO智能合约中。相反，我们会将hub逻辑单独放到一个合约中，并将[spoke链逻辑放到另一个合约](#dao-satellite-contract){target=\_blank}中。根据中心辐射（hub-and-spoke）模式，这样做是有道理的：一些逻辑存储在单条hub链上，而spoke链通过更简单的satellite合约与之交互。在spoke链上的逻辑不需要在hub链上。
 
 我们可以从创建跨链DAO的基础开始，然后对其进行编辑使其成为跨链DAO。为此，请执行以下步骤：
 
@@ -188,9 +188,9 @@ contract CrossChainDAOToken is OFTVotes {
 
 ### 使用OpenZeppelin的Contract Wizard开始操作 {: #starting-with-the-openzeppelin-contract-wizard }
 
-在单链DAO的基础上可以考虑编写跨链DAO，但是存在很多不同的实现。我们将使用[OpenZeppelin](https://www.openzeppelin.com/contracts){target=_blank}的治理智能合约。这主要有两个原因，一方面是OpenZeppelin已经拥有一个普遍使用的智能合约代码库，另一方面是他们基于Compound Finance的DAO，我们已经在[上述部分](#intuition-and-planning)中深入了解了。
+在单链DAO的基础上可以考虑编写跨链DAO，但是存在很多不同的实现。我们将使用[OpenZeppelin](https://www.openzeppelin.com/contracts){target=\_blank}的治理智能合约。这主要有两个原因，一方面是OpenZeppelin已经拥有一个普遍使用的智能合约代码库，另一方面是他们基于Compound Finance的DAO，我们已经在[上述部分](#intuition-and-planning)中深入了解了。
 
-使用`Governor`智能合约配置的一个好方法是使用OpenZeppelin的contract wizard。前往[OpenZeppelin合约页面](https://www.openzeppelin.com/contracts){target=_blank}，往下滑动页面找到并点击**Governor**标签，您可以看到配置`Governor`智能合约的不同方式。
+使用`Governor`智能合约配置的一个好方法是使用OpenZeppelin的contract wizard。前往[OpenZeppelin合约页面](https://www.openzeppelin.com/contracts){target=\_blank}，往下滑动页面找到并点击**Governor**标签，您可以看到配置`Governor`智能合约的不同方式。
 
 出于演示目的，我们将尽可能地生成一个简单的基础智能合约。
 
@@ -200,7 +200,7 @@ contract CrossChainDAOToken is OFTVotes {
 4. 为了计算法定人数（投票通过所需的最小投票权重），将**Quorum**设置为数字 (**#**) 1
 5. 禁用**Timelock**，因为Timelock时间段是一个可选项
 
-![OpenZeppelin Contract Wizard](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-4.png)
+![OpenZeppelin Contract Wizard](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-4.webp)
 
 您应该在OpenZeppelin的contract wizard中看到与下面类似的合约：
 
@@ -244,7 +244,7 @@ contract CrossChainDAO is Governor, GovernorSettings, GovernorCountingSimple, Go
 
 ### 添加跨链支持 { #adding-cross-chain-support }
 
-下一个任务是支持跨链消息传递。对于此实现，我们将使用LayerZero提供的[`NonblockingLzApp`智能合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/lzApp/NonblockingLzApp.sol){target=_blank}，可以轻松接收和发送跨链消息。大多数跨链协议都会有一些智能合约可以继承以接收通用字节负载，因此您可以对不同的父智能合约使用类似的逻辑。
+下一个任务是支持跨链消息传递。对于此实现，我们将使用LayerZero提供的[`NonblockingLzApp`智能合约](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/lzApp/NonblockingLzApp.sol){target=\_blank}，可以轻松接收和发送跨链消息。大多数跨链协议都会有一些智能合约可以继承以接收通用字节负载，因此您可以对不同的父智能合约使用类似的逻辑。
 
 首先，请执行以下步骤：
 
@@ -276,7 +276,7 @@ contract CrossChainDAO is Governor, GovernorSettings, GovernorCountingSimple, Go
 
 我们将通过`_nonblockingLzReceive`接收跨链投票数据，但是如果没有存储或统计数据，此操作将毫无意义。该逻辑和数据将存放在`CrossChainDAO`的父合约中。所以让我们在开始编写`_nonblockinglzReceive`函数之前实现这个父合约。
 
-OpenZeppelin将DAO的许多方面分为多个智能合约，从而更容易替换一些逻辑部分且无需更改其他部分。我们无需了解OpenZeppelin的contract wizard产生的所有不同智能合约，但是必须了解[`GovernorCountingSimple`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/extensions/GovernorCountingSimple.sol){target=_blank}。
+OpenZeppelin将DAO的许多方面分为多个智能合约，从而更容易替换一些逻辑部分且无需更改其他部分。我们无需了解OpenZeppelin的contract wizard产生的所有不同智能合约，但是必须了解[`GovernorCountingSimple`合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/extensions/GovernorCountingSimple.sol){target=\_blank}。
 
 `GovernorCountingSimple`合约定义了如何统计票数以及投票详情。其存储每个提案的投票数量，投票选项（赞成、反对、弃权），以及是否达到法定人数。
 
@@ -322,7 +322,7 @@ abstract contract CrossChainGovernorCountingSimple is Governor {
 
     *提示：用映射替换数组。*
 
-`SpokeProposalVote`基于`GovernorCountingSimple`中的[`ProposalVote`结构](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/dfcc1d16c5efd0fd2a7abac56680810c861a9cd3/contracts/governance/extensions/GovernorCountingSimple.sol#L23){target=_blank}构建。主要有两个区别，一个是新结构包含一个名为`initialized`的`bool`，因此可以通过从`spokeVotes`映射中检索结构来检查是否从spoke链接收到数据。另一个是`SpokeProposalVote`不包括用户投票映射，因为该信息保留在spoke链上，这对于统计投票是否成功是非必要的。
+`SpokeProposalVote`基于`GovernorCountingSimple`中的[`ProposalVote`结构](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/dfcc1d16c5efd0fd2a7abac56680810c861a9cd3/contracts/governance/extensions/GovernorCountingSimple.sol#L23){target=\_blank}构建。主要有两个区别，一个是新结构包含一个名为`initialized`的`bool`，因此可以通过从`spokeVotes`映射中检索结构来检查是否从spoke链接收到数据。另一个是`SpokeProposalVote`不包括用户投票映射，因为该信息保留在spoke链上，这对于统计投票是否成功是非必要的。
 
 !!! 挑战
     新的`SpokeProposalVote`结构与`ProposalVote`结构非常相似。您可以挑战为智能合约想出一个只需要一个结构即可实现的更优化的数据结构吗？
@@ -358,7 +358,7 @@ function _voteSucceeded(uint256 proposalId) internal view virtual override retur
 }
 ```
 
-这应该就是对跨链投票的统计和存储的所有更改了。您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainGovernorCountingSimple.sol){target=_blank}中查看已完成状态的智能合约。
+这应该就是对跨链投票的统计和存储的所有更改了。您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainGovernorCountingSimple.sol){target=\_blank}中查看已完成状态的智能合约。
 
 现在，在子合约`CrossChainDAO`中，您可以导入`CrossChainGovernorCountingSimple`合约并用它替换`GovernorCountingSimple`：
 
@@ -433,7 +433,7 @@ function finishCollectionPhase(uint256 proposalId) public {
 }
 ```
 
-如果需要，您还可以在[IGovernor state machine](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4f4b6ab40315e2fbfc06e65d78f06c5b26d4646c/contracts/governance/IGovernor.sol#L15){target=_blank}中添加收集阶段。这将需要花费更多的时间和精力而不一定值得，它对于从头开始编写跨链DAO来说更可行，因此我们不会在本教程中这样做。
+如果需要，您还可以在[IGovernor state machine](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4f4b6ab40315e2fbfc06e65d78f06c5b26d4646c/contracts/governance/IGovernor.sol#L15){target=\_blank}中添加收集阶段。这将需要花费更多的时间和精力而不一定值得，它对于从头开始编写跨链DAO来说更可行，因此我们不会在本教程中这样做。
 
 #### 从Spoke链请求投票 {: #requesting-votes-from-spoke-chains }
 
@@ -479,7 +479,7 @@ function requestCollections(uint256 proposalId) public payable {
 每个spoke链都有一个与之关联的`DAOSatellite`智能合约，它也可以接收和发送跨链消息。此函数在收集阶段向每个已注册spoke链的`DAOSatellite`发送跨链消息。该消息包含函数选择器、`1`和提案ID。函数选择器用于从目标`DAOSatellite`合约请求给定提案的投票数据，而不是其他一些操作（我们将在后续重新讨论[此概念](#receiving-votes-from-spoke-chains)）。
 
 !!! 注意事项
-    通过使用LayerZero，必须在单个交易中发送多条消息，以便每条spoke链都可以接收数据。LayerZero和其他跨链协议一样，[是**unicast（单播）**而不是**multicast（多播）**](https://layerzero.gitbook.io/docs/faq/messaging-properties#multicast){target=_blank}。就像跨链消息只能到达一个目的地。在设计中心辐射（hub-and-spoke）架构时，研究一下您的[协议是否支持multicast消息传递](https://book.wormhole.com/wormhole/3_coreLayerContracts.html?highlight=multicast#multicasting){target=_blank}，因为它更为简洁。
+    通过使用LayerZero，必须在单个交易中发送多条消息，以便每条spoke链都可以接收数据。LayerZero和其他跨链协议一样，[是**unicast（单播）**而不是**multicast（多播）**](https://layerzero.gitbook.io/docs/faq/messaging-properties#multicast){target=\_blank}。就像跨链消息只能到达一个目的地。在设计中心辐射（hub-and-spoke）架构时，研究一下您的[协议是否支持multicast消息传递](https://docs.wormhole.com/wormhole/explore-wormhole/core-contracts#multicast){target=\_blank}，因为它更为简洁。
 
 请求数据部分就到此为止了，因为之后的大部分逻辑将会在[DAO Satellite](#dao-satellite-contract)中。 
 
@@ -529,7 +529,7 @@ if (option == 0) {
 我们尚未编写`onReceiveSpokeVotingData`函数。 为此，我们需要执行以下步骤：
 
 1. 创建接受`_srcChainId`和`payload`的`onReceiveSpokeVotingData`函数
-2. 存储外部投票数据以备后续使用。我们已经通过`SpokeProposalVote`结构在[`CrossChainGovernorCountingSimple`](#counting-votes-with-cross-chain-governor-counting-contract){target=_blank}中定义了我们想要从spoke链获得的信息类型。我们需要三个投票值：`forVotes`、`againstVotes`和`abstainVotes`。 另外，我们想知道收到的数据是针对哪个提案的，因此我们还需要一个提案ID
+2. 存储外部投票数据以备后续使用。我们已经通过`SpokeProposalVote`结构在[`CrossChainGovernorCountingSimple`](#counting-votes-with-cross-chain-governor-counting-contract){target=\_blank}中定义了我们想要从spoke链获得的信息类型。我们需要三个投票值：`forVotes`、`againstVotes`和`abstainVotes`。 另外，我们想知道收到的数据是针对哪个提案的，因此我们还需要一个提案ID
 
 ```solidity
 function onReceiveSpokeVotingData(uint16 _srcChainId, bytes memory payload) internal virtual {
@@ -569,7 +569,7 @@ OpenZeppelin的`Governor`智能合约带有`propose`函数，但它不能帮助�
 !!! 注意事项
     从技术层面上来讲，跨链消息应该在投票延迟期结束时发送，以便与获得投票权重快照（snapshot）时同步。在这种情况下，提案和快照是同时进行的。
 
-我们将`Governor`智能合约中包含的原始`propose`函数重命名为`crossCahinPropose`。然后将其修改为发送包含提案信息的跨链消息到每条spoke链，spoke链的ID存储在 [`CrossChainGovernorCountingSimple`合约](#counting-votes-with-cross-chain-governor-counting-contract){target=_blank}中：
+我们将`Governor`智能合约中包含的原始`propose`函数重命名为`crossCahinPropose`。然后将其修改为发送包含提案信息的跨链消息到每条spoke链，spoke链的ID存储在 [`CrossChainGovernorCountingSimple`合约](#counting-votes-with-cross-chain-governor-counting-contract){target=\_blank}中：
 
 ```solidity
 function crossChainPropose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) 
@@ -603,9 +603,9 @@ function crossChainPropose(address[] memory targets, uint256[] memory values, by
 }
 ```
 
-我们在设计`CrossChainDAO`智能合约的`_nonblockingLzReceive`函数时希望能够有函数选择器。同样，现在我们希望卫星智能合约也能实现这些功能。在这种情况下，我们将`0`定义为收到新提案。当从spoke链[请求投票信息](#requesting-votes-from-spoke-chains){target=_blank}时，我们做了同样的事情。
+我们在设计`CrossChainDAO`智能合约的`_nonblockingLzReceive`函数时希望能够有函数选择器。同样，现在我们希望卫星智能合约也能实现这些功能。在这种情况下，我们将`0`定义为收到新提案。当从spoke链[请求投票信息](#requesting-votes-from-spoke-chains){target=\_blank}时，我们做了同样的事情。
 
-至此，`CrossChainDAO.sol`智能合约就完成了！您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainDAO.sol){target=_blank}中查看已完成的智能合约。
+至此，`CrossChainDAO.sol`智能合约就完成了！您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/CrossChainDAO.sol){target=\_blank}中查看已完成的智能合约。
 
 ## 编写DAO卫星（Satellite）合约 {: #dao-satellite-contract }
 
@@ -750,7 +750,7 @@ proposals[proposalId].voteFinished = true;
 
 此处唯一的问题是必须含括跨链消息在hub链上交易的gas费用，除此之外没有其他简单的接收方式。[下方有能够避免这个问题的选项](#chained-cross-chain-message-fees)，但为了简单起见，卫星合约必须每隔一段时间发送一次原生Token。
 
-最后，需要添加允许用户投票的投票机制。该机制与[`GovernorCountingSimple`智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/extensions/GovernorCountingSimple.sol){target=_blank}中的机制近乎相同，可以复制大部分的代码：
+最后，需要添加允许用户投票的投票机制。该机制与[`GovernorCountingSimple`智能合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/governance/extensions/GovernorCountingSimple.sol){target=\_blank}中的机制近乎相同，可以复制大部分的代码：
 
 ```solidity
 function castVote(uint256 proposalId, uint8 support) public virtual returns (uint256 balance)
@@ -795,13 +795,13 @@ function _countVote(uint256 proposalId, address account, uint8 support, uint256 
 - 提案尚未结束
 - 提案存在，即有数据存储在`proposals`映射中
 
-事实上，`_countVote`函数是直接从hub链[复制](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4fb6833e325658946c2185862b8e57e32f3683bc/contracts/governance/extensions/GovernorCountingSimple.sol#L78){target=_blank}而来！单链dApp的大部分逻辑只需细微调整即可在跨链dApp中直接使用。
+事实上，`_countVote`函数是直接从hub链[复制](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4fb6833e325658946c2185862b8e57e32f3683bc/contracts/governance/extensions/GovernorCountingSimple.sol#L78){target=\_blank}而来！单链dApp的大部分逻辑只需细微调整即可在跨链dApp中直接使用。
 
-这基本上就是satellite合约的情况。它相对来说还是简单的，因为大部分逻辑只是对hub链上发生的事情的反映。您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/DAOSatellite.sol){target=_blank}中查看已完成的智能合约。
+这基本上就是satellite合约的情况。它相对来说还是简单的，因为大部分逻辑只是对hub链上发生的事情的反映。您可以在[GitHub代码库](https://github.com/jboetticher/cross-chain-dao/blob/main/contracts/DAOSatellite.sol){target=\_blank}中查看已完成的智能合约。
 
-现在，每个智能合约都已经完成，可以开始如下所示的部署计划了。如果您想要继续往下操作，跨链DAO的[GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=_blank}允许您在测试网上进行部署。
+现在，每个智能合约都已经完成，可以开始如下所示的部署计划了。如果您想要继续往下操作，跨链DAO的[GitHub代码库](https://github.com/jboetticher/cross-chain-dao){target=\_blank}允许您在测试网上进行部署。
 
-![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.png)  
+![Smart contracts overview](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-3.webp)  
 
 请注意，**本教程中的智能合约未经测试，请勿将其用于生产环境**。
 
@@ -822,7 +822,7 @@ function _countVote(uint256 proposalId, address account, uint8 support, uint256 
 
 例如，hub链的`CrossChainDAO`可以由接收跨链数据的主合约和另外两个智能合约组成：`CrossChainExecutor`和`CrossChainProposer`。因此，当与`DAOSatellite`合约交互以向`CrossChainDAO`发送消息时，spoke链的智能合约可以将`CrossChainExecutor`作为目标来进行提案执行或将`CrossChainProposer`作为目标来进行提议。这将消除双重包装负载的需要，以及在跨链消息接收功能中包含函数选择逻辑的需要。它甚至可以帮助将单链DAO转换为具有跨链能力的DAO。
 
-![Single Responsibility Principle](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-5.png)  
+![Single Responsibility Principle](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-5.webp)  
 
 ### 分布式提案和执行 {: #distributed-proposal-and-execution }
 
@@ -869,7 +869,7 @@ spoke链的`DAOSatellite`智能合约中有一个经常被忽视的缺陷，当�
 
 第一种解决方案是最简单的，但如果您不打算运行额外的基础设施，它可能会增加从提议到执行的周转时间。类似于提案完成后任何人都可以运行`execute`函数的方式，将编写一个新函数以允许任何人将投票数据发送到hub链。最好，这还需要一个[收集阶段的超时限制](#collection-phase-time-out)。
 
-![Chained Execution](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-6.png)  
+![Chained Execution](/images/tutorials/interoperability/cross-chain-dao/cross-chain-dao-6.webp)  
 
 第二种解决方案要复杂得多。 它需要一个设置来发送带有负载的Token，而不是像当前合约那样只发送负载，并且在目标链上发生兑换以得到原生Token以进行跨链交易。
 

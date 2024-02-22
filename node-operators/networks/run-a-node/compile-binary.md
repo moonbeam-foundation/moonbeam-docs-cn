@@ -11,7 +11,7 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
 
 本指南适用于有编译[Substrate](https://substrate.dev/)类区块链节点经验的人士。平行链节点与典型的Substrate节点类似，但也存在一些差异。一个Substrate平行链节点的构建会更大，因为它包含运行平行链本身需要的代码，以及同步中继链和建立两者之间通信的代码。因此，构建此类节点需要相当多的资源，可能需要超过30分钟并需要32GB的内存。
 
-如果您想快速开始，而无需自己编译二进制文件，可以使用 [The Release Binary](/node-operators/networks/run-a-node/systemd){target=_blank}。
+如果您想快速开始，而无需自己编译二进制文件，可以使用 [The Release Binary](/node-operators/networks/run-a-node/systemd){target=\_blank}。
 
 ## 编译二进制文件 {: #compile-the-binary }
 
@@ -32,7 +32,7 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
     git checkout tags/$(git describe --tags)
     ```
 
-3. 如果您已经安装Rust，您可以跳过以下两个步骤。否则请使用[Rust的推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust及其预装项
+3. 如果您已经安装Rust，您可以跳过以下两个步骤。否则请使用[Rust的推荐方式](https://www.rust-lang.org/tools/install){target=\_blank}安装Rust及其预装项
 
     ```bash
     --8<-- 'code/builders/get-started/networks/moonbeam-dev/installrust.md'
@@ -57,7 +57,7 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
     cargo build --release
     ```
 
-![Compiling Binary](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-1.png)
+![Compiling Binary](/images/node-operators/networks/run-a-node/compile-binary/full-node-binary-1.webp)
 
 如果在窗口看到  _cargo not found error_ 错误，请手动将Rust添加至你的系统路径或重新启动系统：
 
@@ -65,4 +65,4 @@ description: 学习如何手动编译二进制文件以运行完整的 Moonbeam 
 --8<-- 'code/builders/get-started/networks/moonbeam-dev/updatepath.md'
 ```
 
-现在您可以使用Moonbeam二进制文件运行Systemd服务。要设置和运行服务，请参考[使用Systemd在Moonbeam上运行节点](/node-operators/networks/run-a-node/systemd){target=_blank}教程.
+现在您可以使用Moonbeam二进制文件运行Systemd服务。要设置和运行服务，请参考[使用Systemd在Moonbeam上运行节点](/node-operators/networks/run-a-node/systemd){target=\_blank}教程.

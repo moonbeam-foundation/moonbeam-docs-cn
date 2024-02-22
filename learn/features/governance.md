@@ -9,9 +9,9 @@ description: 作为波卡平行链，Moonbeam使用链上治理系统来允许�
 
 Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同使命中，治理过程寻求包括所有Token持有者。关于协议的任何以及所有更改都必须通过公投，以便所有的Token持有者可以根据质押权重对决策提出建议。
 
-如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=_blank}和[Polkassembly](https://moonbeam.polkassembly.io/opengov){target=_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=_blank}将社区团结起来，共同完成推进协议的使命。
+如[Moonbeam社区论坛](https://forum.moonbeam.foundation/){target=\_blank}和[Polkassembly](https://moonbeam.polkassembly.io/opengov){target=\_blank}的社区治理论坛将开放讨论，并允许根据社区建议完善提案。自主生效和[无分叉升级](https://wiki.polkadot.network/docs/learn-runtime-upgrades#forkless-upgrades/){target=\_blank}将社区团结起来，共同完成推进协议的使命。
 
-随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=_blank}。
+随着波卡治理的第二个阶段OpenGov（初始定义为Gov2）的推出，对治理流程进行了几个修改。关于OpenGov所有修改的详细内容，请参考[OpenGov：什么是Polkadot Gov2](https://moonbeam.network/blog/opengov/){target=\_blank}。
 
 在Runtime 2400时，所有Moonbeam网络使用OpenGov作为他们的治理系统。
 
@@ -24,9 +24,9 @@ Moonbeam治理机制的目标是根据社区意愿推进协议。在这个共同
  - 承诺决策过程中的公开透明
  - 以生态利益为先，个人利益为后
  - 始终以道德作为行事的出发点
- - 与其他Token持有者的互动中始终保持耐心和慷慨的心态，但不代表容忍辱骂性或破坏性的语言、行动和行为，并遵守[Moonbeam的行为准则](https://github.com/moonbeam-foundation/code-of-conduct){target=_blank}
+ - 与其他Token持有者的互动中始终保持耐心和慷慨的心态，但不代表容忍辱骂性或破坏性的语言、行动和行为，并遵守[Moonbeam的行为准则](https://github.com/moonbeam-foundation/code-of-conduct){target=\_blank}
 
-以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，尤其是[如何以诚信（和礼貌）的方式参与区块链治理](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=blank}这篇Medium文章。
+以上原则很大程度上受到Vlad Zamfir先生关于区块链治理的著作的启发。如需了解更多详情，请参阅他撰写的文章，尤其是[如何以诚信（和礼貌）的方式参与区块链治理](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434){target=\_blank}这篇Medium文章。
 
 ## 链上治理机制 {: #on-chain-governance-mechanics }
 
@@ -39,7 +39,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
  - **Governance V1理事会 & 技术委员会** — 一个由社区成员组成的团体，成员在系统中拥有特殊投票权
  - **OpenGov技术委员会** — 一个由社区成员组成的团体，成员可以将特定提案列入Whitelisted Track中
 
-更多关于Substrate框架pallet如何实施链上治理的细节，请查阅[波卡治理概览](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=blank}博客文章以及[波卡治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=blank}。
+更多关于Substrate框架pallet如何实施链上治理的细节，请查阅[波卡治理概览](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=\_blank}博客文章以及[波卡治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=\_blank}。
 
 ## Governance v2: OpenGov {: #opengov }
 
@@ -232,7 +232,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 ### 提案步骤 {: #roadmap-of-a-proposal-v2 }
 
-在提交提案之前，提案的作者可以将其提案的想法提交到[Moonbeam治理论坛](https://forum.moonbeam.foundation/c/governance/2){target=_blank}的Democracy Proposals部分，以获得来自社区的至少五天的反馈。作者可以根据收集的反馈对提案进行调整。
+在提交提案之前，提案的作者可以将其提案的想法提交到[Moonbeam治理论坛](https://forum.moonbeam.foundation/c/governance/2){target=\_blank}的Democracy Proposals部分，以获得来自社区的至少五天的反馈。作者可以根据收集的反馈对提案进行调整。
 
 作者准备完毕后，便可以在链上提交提案。首先，需要提交提案原像。提交者必须绑定一笔费用以在链上存储原像。提交者取消注释原像后该保证金将被退还。接下来，提交者可以提交真实的提案并支付提交保证金，确保能够支付提案的链上存储费用。然后，将进入带入期，社区可以通过锁定Token为提案进行“赞成”或“反对”的投票。为了让公投从带入期进入决定期必须满足以下条件：
 
@@ -248,7 +248,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
 
 下方图片显示了提案步骤：
 
-![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/proposal-roadmap.png)
+![A happy path diagram of the proposal roadmap in OpenGov.](/images/learn/features/governance/proposal-roadmap.webp)
 
 ### 提案示例流程 {: #proposal-example-walkthrough }
 
@@ -299,8 +299,8 @@ OpenGov技术委员会由拥有基于Moonbeam网络方面技术知识和专业�
 
 关于如何使用OpenGov在Moonbeam上提交公投和投票，请查看以下指南：
 
- - [如何提交提案](/tokens/governance/proposals/){target=_blank}
- - [如何对提案投票](/tokens/governance/voting/){target=_blank}
- - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimage/){target=_blank}
- - [如何与公投预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/referenda/){target=_blank}
- - [如何与信念投票预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/conviction-voting/){target=_blank}
+ - [如何提交提案](/tokens/governance/proposals/){target=\_blank}
+ - [如何对提案投票](/tokens/governance/voting/){target=\_blank}
+ - [如何与原像预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/preimage/){target=\_blank}
+ - [如何与公投预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/referenda/){target=\_blank}
+ - [如何与信念投票预编译合约（Solidity接口）交互](/builders/pallets-precompiles/precompiles/conviction-voting/){target=\_blank}

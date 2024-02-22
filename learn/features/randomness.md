@@ -11,9 +11,9 @@ description: 学习Moonbeam上的VRF随机数来源，包含请求和完成过�
 
 Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成可以在链上验证的随机数。VRF是一种利用一些输入值并产生随机数的加密函数，并证明这些数值是由提交者生成。此证明可以由任何人验证，以确保生成的随机数值经过准确的运算。
 
-目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=_blank} Epoch随机数基于所有由中继链验证人在完整Epoch期间生产的VRF{target=_blank}。
+目前有两种提供随机输入的可用随机数来源，分别基于区块生产者的VRF私钥以及过去的随机数结果：[本地VRF](#local-vrf)和[BABE Epoch随机数](#babe-epoch-randomness)。本地VRF在Moonbeam中使用区块的VRF私钥以及最新区块的VRF输出值决定。而[BABE](https://wiki.polkadot.network/docs/learn-consensus#block-production-babe){target=\_blank} Epoch随机数基于所有由中继链验证人在完整Epoch期间生产的VRF{target=\_blank}。
 
-您可以使用随机数预编译合约，一个允许智能合约开发者通过以太坊API访问随机数功能的Solidity接口，访问和请求链上随机数。关于预编译合约的更多信息，请查看[与随机数预编译交互](/builders/pallets-precompiles/precompiles/randomness){target=_blank}教程。您同样可以查看[随机数Pallet](/builders/pallets-precompiles/pallets/randomness){target=_blank}页面，可用于获得当前的随机数请求和结果。
+您可以使用随机数预编译合约，一个允许智能合约开发者通过以太坊API访问随机数功能的Solidity接口，访问和请求链上随机数。关于预编译合约的更多信息，请查看[与随机数预编译交互](/builders/pallets-precompiles/precompiles/randomness){target=\_blank}教程。您同样可以查看[随机数Pallet](/builders/pallets-precompiles/pallets/randomness){target=\_blank}页面，可用于获得当前的随机数请求和结果。
 
 ## 一般定义 {: #general-definitions }
 
@@ -66,17 +66,17 @@ Moonbeam使用可验证随机函数（Verifiable Random Functions，VRF）生成
 
 本地VRF随机数是在区块开始时使用前一个区块的VRF输出值以及当前区块作者的VRF私钥的公钥逐块生成的。生成的随机数结果被存储并用于满足当前区块的所有随机数请求。
 
-您可以使用[随机数预编译](/builders/pallets-precompiles/precompiles/randomness/){target=_blank}的[`requestLocalVRFRandomWords`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=requestLocalVRFRandomWords){target=_blank}请求本地VRF随机数。
+您可以使用[随机数预编译](/builders/pallets-precompiles/precompiles/randomness/){target=\_blank}的[`requestLocalVRFRandomWords`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=requestLocalVRFRandomWords){target=\_blank}请求本地VRF随机数。
 
 如果您的合约能够打开并发请求，您可以使用从`requestLocalVRFRandomWords`方法获得的`requestId`来跟踪哪个获得的值与哪个随机请求相关。
 
 ## BABE Epoch随机数 {: #babe-epoch-randomness }
 
-BABE Epoch随机数基于上一个中继链Epoch中产生区块的VRF值的哈希。在波卡上，[Epoch 持续大约4小时](https://wiki.polkadot.network/docs/maintain-polkadot-parameters#periods-of-common-actions-and-attributes){target=_blank}，在Kusama上，[Epoch持续大约 1时](https://guide.kusama.network/docs/kusama-parameters/#periods-of-common-actions-and-attributes){target=_blank}。哈希将在中继链上完成，因此，Moonbeam上的收集人不可能影响随机数值，除非他们也是中继链上的验证者并负责生成包含在一个Epoch的最后一个输出之中。
+BABE Epoch随机数基于上一个中继链Epoch中产生区块的VRF值的哈希。在波卡上，[Epoch 持续大约4小时](https://wiki.polkadot.network/docs/maintain-polkadot-parameters#periods-of-common-actions-and-attributes){target=\_blank}，在Kusama上，[Epoch持续大约 1时](https://guide.kusama.network/docs/kusama-parameters/#periods-of-common-actions-and-attributes){target=\_blank}。哈希将在中继链上完成，因此，Moonbeam上的收集人不可能影响随机数值，除非他们也是中继链上的验证者并负责生成包含在一个Epoch的最后一个输出之中。
 
 随机数将会在一个Epoch中保持稳定，因此如果一个收集人人跳过区块生产，下个收集人能够使用同一个随机数完成它。
 
-您可以使用[随机数预编译](/builders/pallets-precompiles/precompiles/randomness/){target=_blank}的[`requestRelayBabeEpochRandomWords`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=requestRelayBabeEpochRandomWords){target=_blank}请求BABE Epoch随机数。要生产独特的随机数，您需要提供不同的salt给`requestRelayBabeEpochRandomWords`函数。
+您可以使用[随机数预编译](/builders/pallets-precompiles/precompiles/randomness/){target=\_blank}的[`requestRelayBabeEpochRandomWords`函数](/builders/pallets-precompiles/precompiles/randomness/#:~:text=requestRelayBabeEpochRandomWords){target=\_blank}请求BABE Epoch随机数。要生产独特的随机数，您需要提供不同的salt给`requestRelayBabeEpochRandomWords`函数。
 
 在每个中继链Epoch更换的开始时，前一个Epoch的随机数将会自中继链证明中读取，并用于完成在当前区块所有的随机数请求。
 
@@ -99,7 +99,7 @@ BABE Epoch随机数基于上一个中继链Epoch中产生区块的VRF值的哈�
 
 随机数请求的流程如下所示：
 
-![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.png)
+![Randomness request happy path diagram](/images/learn/features/randomness/randomness-1.webp)
 
 ## 安全考虑 {: #security-considerations }
 

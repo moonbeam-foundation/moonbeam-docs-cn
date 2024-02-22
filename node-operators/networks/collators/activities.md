@@ -7,7 +7,7 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
 
 ## 概览 {: #introduction }
 
-在基于Moonbeam的网络上成为收集人需要您满足[绑定要求](/node-operators/networks/collators/requirements/#bonding-requirements){target=_blank}并加入候选人池。在您加入候选人池后，您可以调整您的自身绑定数量或决定何时离开候选人池。
+在基于Moonbeam的网络上成为收集人需要您满足[绑定要求](/node-operators/networks/collators/requirements/#bonding-requirements){target=\_blank}并加入候选人池。在您加入候选人池后，您可以调整您的自身绑定数量或决定何时离开候选人池。
 
 如果您想要减少您的自身绑定数量或离开候选人池，您首先需要发起请求，在[退出生效期](#collator-timings)后才能执行请求。
 
@@ -51,7 +51,7 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
 
 ### 获取候选人池的大小 {: #get-the-size-of-the-candidate-pool } 
 
-首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=_blank}中运行以下JavaScript代码段：
+首先，您需要获取`candidatePool`的大小（可通过治理更改），该参数将用于后续交易中。为此，您必须从[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/js){target=\_blank}中运行以下JavaScript代码段：
 
 ```js
 // Simple script to get candidate pool size
@@ -65,33 +65,33 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  2. 点击运行图标，以执行编辑框内的代码
  3. 点击复制图标复制结果，将在加入候选人池时使用
 
-![Get Number of Candidates](/images/node-operators/networks/collators/activities/activities-1.png)
+![Get Number of Candidates](/images/node-operators/networks/collators/activities/activities-1.webp)
 
 ### 加入候选人池 {: #join-the-candidate-pool } 
 
-节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，点击**Developer**标签，从下拉菜单中选择**Extrinsics**，然后进行以下步骤：
+节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=\_blank}，点击**Developer**标签，从下拉菜单中选择**Extrinsics**，然后进行以下步骤：
 
-  1. 选择您想用于参与收集活动的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}，并有多余金额用于支付交易费
+  1. 选择您想用于参与收集活动的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}，并有多余金额用于支付交易费
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
   3. 打开下拉菜单，在质押相关的所有extrinsics中，选择**joinCandidates()**
-  4. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}（输入数量需以`Wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
+  4. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}（输入数量需以`Wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
   5. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
   6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Join candidate pool via Polkadot.js](/images/node-operators/networks/collators/activities/activities-2.png)
+![Join candidate pool via Polkadot.js](/images/node-operators/networks/collators/activities/activities-2.webp)
 
 !!! 注意事项
     函数名称和最低绑定数量要求可能会在未来发布新版本时有所调整。
 
-如上所述，只有质押量排名靠前的收集人才可以进入收集人有效集。每个网络候选人的具体排名数量和最低绑定数量请查看[最低收集人绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}部分。
+如上所述，只有质押量排名靠前的收集人才可以进入收集人有效集。每个网络候选人的具体排名数量和最低绑定数量请查看[最低收集人绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}部分。
 
 ## 停止参与收集活动 {: #stop-collating } 
 
-在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）{target=_blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
+在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）{target=\_blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
 想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求自动将您从收集人有效集中移除，因此您将不再有资格生产区块或获得奖励。您需要等待[退出生效期](#collator-timings)，才能够执行离开请求。在等待完退出生效期并执行请求后，您将从候选人池中移除。
 
-类似[Polkadot's `chill()`](https://wiki.polkadot.network/docs/maintain-guides-how-to-chill){target=_blank}功能，无需解绑您的Token，您可以[暂时离开候选人池](#temporarily-leave-the-candidate-pool)。
+类似[Polkadot's `chill()`](https://wiki.polkadot.network/docs/maintain-guides-how-to-chill){target=\_blank}功能，无需解绑您的Token，您可以[暂时离开候选人池](#temporarily-leave-the-candidate-pool)。
 
 ### 发起离开候选人的请求 {: #schedule-request-to-leave-candidates }
 
@@ -107,7 +107,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Schedule leave candidates request](/images/node-operators/networks/collators/activities/activities-3.png)
+![Schedule leave candidates request](/images/node-operators/networks/collators/activities/activities-3.webp)
 
 ### 执行离开候选人的请求 {: #execute-request-to-leave-candidates }
 
@@ -123,7 +123,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
   5. 复制**`delegationCount`**，之后用于执行离开候选人的请求
 
-![Get delegation count](/images/node-operators/networks/collators/activities/activities-4.png)
+![Get delegation count](/images/node-operators/networks/collators/activities/activities-4.webp)
 
 现在您有了委托数量，可以执行请求。回到**Extrinsics**标签，并执行以下步骤：
 
@@ -139,7 +139,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
  6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Execute leave candidates request](/images/node-operators/networks/collators/activities/activities-5.png)
+![Execute leave candidates request](/images/node-operators/networks/collators/activities/activities-5.webp)
 
 ### 取消离开候选人的请求 {: #cancel-request-to-leave-candidates }
 
@@ -151,7 +151,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
     4. 输入`candidateCount`（可从[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分获得）
     5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-6.png)
+![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-6.webp)
 
 ### 暂时离开候选人池 {: #temporarily-leave-the-candidate-pool }
 
@@ -166,7 +166,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   5. 选择**goOffline** extrinsic
   6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Temporarily leave candidates pool](/images/node-operators/networks/collators/activities/activities-7.png) 
+![Temporarily leave candidates pool](/images/node-operators/networks/collators/activities/activities-7.webp) 
 
 然后，无论何时只要您希望都可以通过`goOnline`重新加入，通过以上同样的步骤，在步骤5选择`goOnline`。请注意，只有在您已经调用过`goOffline`的情况下，才能够调用`goOnline`。
 
@@ -178,7 +178,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 增加自身绑定数量 {: #bond-more }
 
-作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network#/accounts)增加其绑定数量。导向至**Developer**标签，点击**Extrinsics**，并进行以下步骤：
+作为候选人，有两种增加质押量的选择。第一个，也是我们所推荐的选项是将要质押的资金发送到另一个您所拥有的地址，并[委托您的收集人](/tokens/staking/stake/#how-to-nominate-a-collator)。第二个，已经拥有[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}的收集人可以通过[Polkadot JS Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonriver.moonbeam.network#/accounts)增加其绑定数量。导向至**Developer**标签，点击**Extrinsics**，并进行以下步骤：
 
   1. 选择您的收集人账户（并验证该账户是否有足够资金可用于绑定）
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
@@ -186,11 +186,11 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   4. 在**more: BalanceOf**字段中输入要增加的绑定数量
   5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Collator Bond More](/images/node-operators/networks/collators/activities/activities-8.png)
+![Collator Bond More](/images/node-operators/networks/collators/activities/activities-8.webp)
 
 ### 减少自身绑定数量 {: #bond-less}
 
-在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=_blank}。
+在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}。
 
 想要减少绑定数量，您需要先发起请求并等待[退出生效期](#collator-timings)，随后执行请求。只要请求还未被执行，您仍可随时[取消请求](#cancel-bond-less-request)。
 
@@ -204,7 +204,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   4. 在**less: BalanceOf**字段中输入要减少的绑定数量
   5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Schedule Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-9.png)
+![Schedule Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-9.webp)
 
 当交易确认，您将需要等待退出生效期，然后才能为您执行减少绑定数量的请求。如果您尝试在退出生效期前操作，该extrinsic将会失败，并且您将看到来自Polkadot.js Apps的`parachainStaking.PendingDelegationRequest`错误。
 
@@ -218,7 +218,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   4. 选择目标候选人账户（在提交`scheduleCandidateBondLess`后，任何人都可以在退出生效期后执行请求）
   5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Execute Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-10.png)
+![Execute Candidate Bond Less](/images/node-operators/networks/collators/activities/activities-10.webp)
 
 交易确认后，您可以在**Accounts**标签处查看您的可用余额。请注意，请求已执行，您的余额已更新。
 
@@ -231,4 +231,4 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   3. 选择**cancelCandidateBondRequest** extrinsic
   4. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
-![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-11.png)
+![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-11.webp)

@@ -9,7 +9,7 @@ description: 通过本教程学习如何使用以太坊Web3 Python代码库在Mo
 
 [Web3.py](https://web3py.readthedocs.io/)是一组代码库，允许开发者使用Python，并通过HTTP、IPC或WebSocket协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Web3.py库与Moonbeam节点交互，与在以太坊操作相同。
 
-在本教程中，您将学习如何使用Web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+在本教程中，您将学习如何使用Web3.py库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -135,7 +135,7 @@ touch transaction.py
 1. 添加导入，包含Web3.py和`rpc_gas_price_strategy`，将会用于以下步骤以获得交易使用的Gas价格
 2. [设置Web3提供者](#setup-web3-with-moonbeam)
 3. 定义`account_from`，包括`private_key`和`address_to`变量。此处需要私钥以签署交易。**请注意：此处操作仅用于演示目的，请勿将您的私钥存储在Python文件中**
-4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
+4. 使用[Web3.py Gas Price API](https://web3py.readthedocs.io/en/stable/gas_price.html){target=\_blank}设置gas价格策略。在本示例中，您将使用导入的`rpc_gas_price_strategy`
 5. 使用`web3.eth.account.sign_transaction`函数创建和签署交易，传入交易的`nonce`、`gas`、`gasPrice`、`to`和`value`以及发送者的`private_key`。您可以通过`web3.eth.get_transaction_count`函数并传入发送者地址获取`nonce`。您可以通过`web3.eth.generate_gas_price`函数预设`gasPrice`。您可以通过`web3.to_wei`函数将数字格式化成以Wei为单位的易读数字
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
@@ -153,7 +153,7 @@ python3 transaction.py
 
 您也可以使用`balances.py`脚本为发送地址和接收地址查看余额是否变化。整体操作流程如下所示：
 
-![Send Tx Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-1.png)
+![Send Tx Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-1.webp)
 
 ## 部署合约 {: #deploy-a-contract }
 
@@ -211,7 +211,7 @@ python3 deploy.py
 
 如果成功，合约地址将显示在终端。
 
-![Deploy Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-2.png)
+![Deploy Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-2.webp)
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -273,7 +273,7 @@ python3 increment.py
 
 如果成功，交易哈希将显示在终端。您可以在`increment.py`脚本旁边使用`get.py`脚本以确保数值如预期变化：
 
-![Increment Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-3.png)
+![Increment Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-3.webp)
 
 接下来，您可以打开`reset.py`文件并执行以下步骤以创建脚本：
 
@@ -297,6 +297,6 @@ python3 reset.py
 
 如果成功，交易哈希将显示在终端。您可以在`reset.py`脚本旁边使用`get.py`脚本以确保数值如预期变化：
 
-![Reset Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-4.png)
+![Reset Contract Web3py](/images/builders/build/eth-api/libraries/web3py/web3py-4.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'

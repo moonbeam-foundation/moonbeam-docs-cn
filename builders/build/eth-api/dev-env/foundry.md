@@ -7,14 +7,14 @@ description: 学习如何使用以太坊部署环境Foundry在Moonbeam编译、�
 
 ## 概览 {: #introduction }
 
-[Foundry](https://github.com/foundry-rs/foundry){target=_blank}是一个用Rust语言编写的以太坊部署环境，能够帮助开发者管理依赖项、编译项目、运行测试、部署合约以及从命令行与区块链交互。Foundry可以直接与Moonbeam的以太坊API交互，所以可以直接用于将智能合约部署至Moonbeam。
+[Foundry](https://github.com/foundry-rs/foundry){target=\_blank}是一个用Rust语言编写的以太坊部署环境，能够帮助开发者管理依赖项、编译项目、运行测试、部署合约以及从命令行与区块链交互。Foundry可以直接与Moonbeam的以太坊API交互，所以可以直接用于将智能合约部署至Moonbeam。
 
 Foundry由四个工具组成：
 
-- **[Forge](https://book.getfoundry.sh/forge/){target=_blank}** - 编译、测试和部署合约
-- **[Cast](https://book.getfoundry.sh/cast/){target=_blank}** - 用于与合约交互的命令行界面
-- **[Anvil](https://book.getfoundry.sh/anvil/){target=_blank}** - 用于开发目的的本地测试节点，可分叉预先存在的网络
-- **[Chisel](https://book.getfoundry.sh/chisel/){target=_blank}** - 用于快速测试Solidity片段的Solidity REPL（交互式编程环境）
+- **[Forge](https://book.getfoundry.sh/forge/){target=\_blank}** - 编译、测试和部署合约
+- **[Cast](https://book.getfoundry.sh/cast/){target=\_blank}** - 用于与合约交互的命令行界面
+- **[Anvil](https://book.getfoundry.sh/anvil/){target=\_blank}** - 用于开发目的的本地测试节点，可分叉预先存在的网络
+- **[Chisel](https://book.getfoundry.sh/chisel/){target=\_blank}** - 用于快速测试Solidity片段的Solidity REPL（交互式编程环境）
 
 本教程将涵盖如何使用Foundry在Moonbase Alpha TestNet上编译、部署和调试以太坊智能合约。此教程同样适用于Moonbeam、Moonriver和Moonbeam开发节点。
 
@@ -26,7 +26,7 @@ Foundry由四个工具组成：
  --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
  --8<-- 'text/_common/endpoint-examples-list-item.md'
- - 提前[安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=_blank}
+ - 提前[安装Foundry](https://book.getfoundry.sh/getting-started/installation){target=\_blank}
 
 ## 创建Foundry项目 {: #creating-a-foundry-project }
 
@@ -99,7 +99,7 @@ forge install OpenZeppelin/openzeppelin-contracts
 forge build
 ```
 
-![Foundry Contract Compile](/images/builders/build/eth-api/dev-env/foundry/foundry-1.png)
+![Foundry Contract Compile](/images/builders/build/eth-api/dev-env/foundry/foundry-1.webp)
 
 编译完成后，将创建两个文件夹：`out`和`cache`。您合约的ABI和字节码将包含在`out`文件夹中。这两个文件夹已被默认Foundry项目初始化中包含的`.gitignore`忽略。
 
@@ -145,7 +145,7 @@ forge build
 
 几分钟后，合约完成部署，您将在终端看到地址。
 
-![Foundry Contract Deploy](/images/builders/build/eth-api/dev-env/foundry/foundry-2.png)
+![Foundry Contract Deploy](/images/builders/build/eth-api/dev-env/foundry/foundry-2.webp)
 
 恭喜您，您的合约已上线！保存地址，用于后续合约实例交互。
 
@@ -187,7 +187,7 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
 此数据非可读，但您可以使用cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ascii字符以查看“My Token”：
 
-![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.png)
+![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.webp)
 
 ```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
@@ -237,17 +237,17 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 交易将由您的Moonbase账户签署并传播到网络。输出应如下所示：
 
-![Foundry Contract Interaction](/images/builders/build/eth-api/dev-env/foundry/foundry-4.png)
+![Foundry Contract Interaction](/images/builders/build/eth-api/dev-env/foundry/foundry-4.webp)
 
 恭喜您！您已成功使用Foundry部署和交互合约！
 
 ## 使用Anvil进行分叉 {: #forking-with-cast-anvil }
 
-如上所述，[Anvil](https://book.getfoundry.sh/anvil/){target=_blank}是用于开发目的的本地测试网节点，可以分叉预先存在的网络。分叉Moonbeam允许用户与部署在网络上的实时合约交互。
+如上所述，[Anvil](https://book.getfoundry.sh/anvil/){target=\_blank}是用于开发目的的本地测试网节点，可以分叉预先存在的网络。分叉Moonbeam允许用户与部署在网络上的实时合约交互。
 
 使用Anvil分叉时需要注意一些限制。由于Anvil是基于EVM实现，因此您无法与任何Moonbeam已编译的合约及其功能交互。预编译是Substrate实现的一部分，因此无法在模拟的EVM环境中复制。从而，您无法与在Moonbeam上的跨链资产和基于Substrate的功能（如质押和治理）进行交互。
 
-要分叉Moonbeam或Moonriver，您将需要用到您的端点和API钥匙，您可通过支持的[端点提供商](/builders/get-started/endpoints/){target=_blank}获取。
+要分叉Moonbeam或Moonriver，您将需要用到您的端点和API钥匙，您可通过支持的[端点提供商](/builders/get-started/endpoints/){target=\_blank}获取。
 
 要从命令行分叉Moonbeam，您可以在Foundry项目的目录中运行以下命令：
 
@@ -271,7 +271,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 分叉的实例将拥有10个已经预先注资10,000测试Token的开发账户。分叉的实例位于`http://127.0.0.1:8545/`。终端输出应类似于以下内容：
 
-![Forking terminal screen](/images/builders/build/eth-api/dev-env/foundry/foundry-5.png)
+![Forking terminal screen](/images/builders/build/eth-api/dev-env/foundry/foundry-5.webp)
 
 要验证您是否已分叉了网络，您可以查询最新的区块号：
 
@@ -279,7 +279,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545 
 ```
 
-如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=_blank}交叉查询区块号。
+如果您已经将`result`[从16进制转换成十进制](https://www.rapidtables.com/convert/number/hex-to-decimal.html){target=\_blank}，您应该在分叉网络时获得了最新区块号。您可以[使用区块浏览器](/builders/get-started/explorers){target=\_blank}交叉查询区块号。
 
 从这里，您可以将新合约部署到您的Moonbeam的分叉实例或与已部署的合约进行交互。在本教程的上述示例的基础上，您可以使用Cast进行调用，来检查您部署合约的帐户中铸造的MYTOK Token的余额：
 
@@ -313,7 +313,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 `memdump`将显示当前会话中的所有数据。您可能会看到类似下面这样的内容。如果您不熟悉hex格式或者ABI编码的工作原理，那么您可能无法找到`myData`变量的存储位置。
 
-![memdump in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-6.png)
+![memdump in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-6.webp)
 
 幸运的是，Chisel会轻松帮您找到这些信息存储位置。使用`!rawstack`命令，您可以找到变量值在栈中的位置。
 
@@ -323,7 +323,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 在此情况下，因为字节的长度超过32个字节，因此将显示内存指针。这样您已经从`!memdump`命令了解了整个栈。
 
-![rawstack in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-7.png)
+![rawstack in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-7.webp)
 
 `!rawstack`命令显示`myData`变量存储在`0x80`中，与从`!memdump`命令检索到的内存内容对比时，看起来`myData`存储如下所示：
 
@@ -336,7 +336,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 [0x120:0x140]: 0x446576656c6f70206f6e204d6f6f6e6265616d00000000000000000000000000
 ```
 
-乍一看数据很合理，因为`0xa0`的值`0x64`等于100，`0xc0`的值`0x01`等于true。如果您想要了解ABI编码的工作原理，请参考[ABI的Solidity文档](https://docs.soliditylang.org/en/v0.8.18/abi-spec.html){target=_blank}。在本示例中，这种数据打包方式有很多个零，因此作为智能合约开发者，您可以尝试使用结构或者bitwise（按位）代码更有效地将数据打包在一起。
+乍一看数据很合理，因为`0xa0`的值`0x64`等于100，`0xc0`的值`0x01`等于true。如果您想要了解ABI编码的工作原理，请参考[ABI的Solidity文档](https://docs.soliditylang.org/en/v0.8.18/abi-spec.html){target=\_blank}。在本示例中，这种数据打包方式有很多个零，因此作为智能合约开发者，您可以尝试使用结构或者bitwise（按位）代码更有效地将数据打包在一起。
 
 由于您已经完成这段代码，您可以清除Chisel的状态，以防止其干扰您想要尝试的任何未来逻辑（在运行相同的Chisel实例时）：
 
@@ -352,7 +352,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 您应该看到如下所示输出：
 
-![Expressions in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-8.png)
+![Expressions in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-8.webp)
 
 虽然它没有以相同的方式显示数据，但您仍然可以获得数据的内容，并且它还进一步分解了信息的编码方式，例如让您知道`0xa0`值定义了数据长度。
 
@@ -396,7 +396,7 @@ abi.encode(100, true, "Develop on Moonbeam")
     !rawstack myNumber
     ```
 
-![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.png)
+![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.webp)
 
 您甚至可以在使用Chisel时分叉网络：
 
@@ -410,13 +410,13 @@ abi.encode(100, true, "Develop on Moonbeam")
 0x4c5A56ed5A4FF7B09aA86560AfD7d383F4831Cce.balance
 ```
 
-![Forking in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-10.png)
+![Forking in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-10.webp)
 
-如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=_blank}。
+如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=\_blank}。
 
 ## 通过Hardhat使用Foundry {: #foundry-with-hardhat }
 
-通常，您希望集成的项目的所有设置都在[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=_blank}来实现。
+通常，您希望集成的项目的所有设置都在[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=\_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=\_blank}来实现。
 
 要将预先存在的Foundry项目转换成混合项目，您需要先在同一个文件夹中安装Hardhat项目：
 
@@ -426,7 +426,7 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-foundry
 npx hardhat init
 ```
 
-更多信息，请参考[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=_blank}的文档。
+更多信息，请参考[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}的文档。
 
 初始化新的Hardhat项目后，将会出现一些新的文件夹和文件：`contracts`、`hardhat.config.js`、`scripts`和`test/Lock.js`。您只需稍微调整即可创建一个混合项目：
 

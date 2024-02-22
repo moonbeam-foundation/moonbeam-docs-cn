@@ -9,15 +9,15 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 在基于Moonbeam的网络运行一个全节点使您能够连接至网络，与bootnode节点同步，获得RPC端点的本地访问，在平行链上创建区块，以及更多其他不同的功能。
 
-在本指南中，您将学习如何使用[Systemd](https://systemd.io/){target=_blank}启动Moonbeam节点，以及如何维护和清理您的节点。
+在本指南中，您将学习如何使用[Systemd](https://systemd.io/){target=\_blank}启动Moonbeam节点，以及如何维护和清理您的节点。
 
-如果您有兴趣自己编译二进制文件（请注意这个过程可能需要超过30分钟并需要32GB内存）您可以查看[手动编译Moonbeam二进制文件](/node-operators/networks/run-a-node/compile-binary){target=_blank}指南。
+如果您有兴趣自己编译二进制文件（请注意这个过程可能需要超过30分钟并需要32GB内存）您可以查看[手动编译Moonbeam二进制文件](/node-operators/networks/run-a-node/compile-binary){target=\_blank}指南。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
 以下小节将介绍使用二进制以及作为systemd服务运行Moonbeam全节点的操作流程。开始之前，您需要：
 - 确认您的Ubuntu版本为18.04，20.04，或22.04。Moonbeam也可能与其他Linux版本相兼容，但目前我们仅测试了Ubuntu版本。
-- 确保您的系统满足[基本要求](/node-operators/networks/run-a-node/overview#requirements){target=_blank}。连接至Kusama上的Moonriver或是Polkadot上的Moonbeam，通常需要几天时间来完成中继链内嵌的同步。
+- 确保您的系统满足[基本要求](/node-operators/networks/run-a-node/overview#requirements){target=\_blank}。连接至Kusama上的Moonriver或是Polkadot上的Moonbeam，通常需要几天时间来完成中继链内嵌的同步。
 
 ## 下载最新版二进制文件 {: #the-release-binary }
 
@@ -158,7 +158,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
  - 再次检查确认二进制文件是否位于以下正确路径 (*ExecStart*)
  - 如果您使用不同目录，请再次检查基本路径
 
- 有关以下启动命令中使用的标志的概述，以及其他常用标志，请参阅我们文档的[Flags](/node-operators/networks/run-a-node/flags){target=_blank}页面。
+ 有关以下启动命令中使用的标志的概述，以及其他常用标志，请参阅我们文档的[Flags](/node-operators/networks/run-a-node/flags){target=\_blank}页面。
 
 ### 全节点 {: #full-node }
 
@@ -414,7 +414,7 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 
 --8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
-![Service Status](/images/node-operators/networks/run-a-node/systemd/systemd-1.png)
+![Service Status](/images/node-operators/networks/run-a-node/systemd/systemd-1.webp)
 
 您也可以执行以下命令检查日志：
 
@@ -422,12 +422,12 @@ description: 如何使用Systemd为Moonbeam网络运行一个平行链全节点�
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/node-operators/networks/run-a-node/systemd/systemd-2.png)
+![Service Logs](/images/node-operators/networks/run-a-node/systemd/systemd-2.webp)
 
 在同步过程中，您既会看到镶嵌中继链([Relaychain])的日志也会看到平行链([🌗])的日志。日志展示了目标区块(实时网络中的state)与最好区块（本地网络同步state）。
 
 !!! 注意事项
-    同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements){target=_blank}。
+    同步相应的内嵌中继链需要数天的时间，请注意您的系统符合[要求](/node-operators/networks/run-a-node/overview#requirements){target=\_blank}。
 
 如果出于任何原因需要停止服务，可以运行：
 
@@ -496,7 +496,7 @@ systemctl stop moonbeam.service
         ```
 
     !!! note
-        如果您使用的是[手动编译二进制文件](/node-operators/networks/run-a-node/compile-binary){target=_blank}，您需要将文件从 `./target/release/{{ networks.moonbeam.binary_name }}`移至数据目录。
+        如果您使用的是[手动编译二进制文件](/node-operators/networks/run-a-node/compile-binary){target=\_blank}，您需要将文件从 `./target/release/{{ networks.moonbeam.binary_name }}`移至数据目录。
 
 6. 更新权限：
 

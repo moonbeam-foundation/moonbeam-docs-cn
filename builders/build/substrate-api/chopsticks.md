@@ -7,13 +7,13 @@ description: 学习如何通过Chopsticks重放区块、解析状态更迭、测
 
 ## 概览 {: #introduction }
 
-[Chopsticks](https://github.com/AcalaNetwork/chopsticks){target=_blank}提供了一种开发者友好型方法，让其可以在本地分叉现有的基于Substrate的链。它允许重放区块以轻松检查extrinsics是如何影响状态，或是为XCM测试进行多个区块分叉等等。这允许开发者在本地开发环境中测试和试验他们自己的自定义区块链配置时，无需部署实时网络。
+[Chopsticks](https://github.com/AcalaNetwork/chopsticks){target=\_blank}提供了一种开发者友好型方法，让其可以在本地分叉现有的基于Substrate的链。它允许重放区块以轻松检查extrinsics是如何影响状态，或是为XCM测试进行多个区块分叉等等。这允许开发者在本地开发环境中测试和试验他们自己的自定义区块链配置时，无需部署实时网络。
 
 整体来说，Chopsticks旨在简化在Substrate上构建区块链应用的流程并让其能够普及至更多开发者。
 
 ## Forking Moonbeam用Chopsticks {: #forking-moonbeam }
 
-要使用Chopsticks，您可以通过[Node包管理器](https://nodejs.org/en){target=_blank}或 [Yarn](https://yarnpkg.com/){target=_blank}将其安装为包：
+要使用Chopsticks，您可以通过[Node包管理器](https://nodejs.org/en){target=\_blank}或 [Yarn](https://yarnpkg.com/){target=\_blank}将其安装为包：
 
 ```bash
 npm i @acala-network/chopsticks@latest
@@ -25,7 +25,7 @@ npm i @acala-network/chopsticks@latest
 npx @acala-network/chopsticks@latest
 ```
 
-要运行Chopsticks，您需要某种配置，通常为通过文件进行配置。Chopsticks的源库包含一组 [YAML](https://yaml.org/){target=_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以从[源库的`configs`文件夹](https://github.com/AcalaNetwork/chopsticks.git){target=_blank}下载配置文件。
+要运行Chopsticks，您需要某种配置，通常为通过文件进行配置。Chopsticks的源库包含一组 [YAML](https://yaml.org/){target=\_blank}配置文件，可用于创建各种Substrate链的本地副本。您可以从[源库的`configs`文件夹](https://github.com/AcalaNetwork/chopsticks.git){target=\_blank}下载配置文件。
 
 Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示例配置为Moonbeam网络当前使用的配置
 
@@ -151,7 +151,7 @@ Moonbeam、Moonriver和Moonbase Alpha都有可用的默认文件。下面的示�
     ```
 
 !!! 注意事项
-    如果使用文件路径，请确保您已下载[Moonbeam配置文件](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}，或已创建您自己的。
+    如果使用文件路径，请确保您已下载[Moonbeam配置文件](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=\_blank}，或已创建您自己的。
 
 然而，配置文件不是必需的。所有设置（除了`genesis`和`timestamp`）也可以作为标志传递，以在指令行中完全地配置环境。例如，以下指令为在区块100处分叉Moonbase Alpha：
 
@@ -192,22 +192,22 @@ npx @acala-network/chopsticks@latest --endpoint {{ networks.moonbase.wss_url }} 
 ws://localhost:8000
 ```
 
-您将能够通过[Polkadot.js](https://github.com/polkadot-js/common){target=blank}等库及其[它的用户界面Polkadot.js Apps](https://github.com/polkadot-js/apps){target=_blank}与平行链进行交互。
+您将能够通过[Polkadot.js](https://github.com/polkadot-js/common){target=\_blank}等库及其[它的用户界面Polkadot.js Apps](https://github.com/polkadot-js/apps){target=\_blank}与平行链进行交互。
 
-您可以通过[Polkadot.js Apps用户界面](https://polkadot.js.org/apps/#/explorer){target=_blank}与Chopsticks交互。为此，请访问该页面并执行以下步骤
+您可以通过[Polkadot.js Apps用户界面](https://polkadot.js.org/apps/#/explorer){target=\_blank}与Chopsticks交互。为此，请访问该页面并执行以下步骤
 
 1. 点击左上角的图标
 2. 在页面最底端打开**Development**
 3. 选择**Custom**端点并输入`ws://localhost:8000`
 4. 点击**Switch**按钮
 
-![Open WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-1.png)
-![Switch WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-2.png)
+![Open WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-1.webp)
+![Switch WSS](/images/builders/build/substrate-api/chopsticks/chopsticks-2.webp)
 
 您现在应当在Polkadot.js Apps的托管版本并且能够与分叉交互。
 
 !!! 注意事项
-    如果您的浏览器无法连接到Chopsticks提供的WebSocket端点，您可能需要允许Polkadot.js APPs URL的不安全连接。另一种解决方案是运行[Polkadot.js Apps的Docker版本](https://github.com/polkadot-js/apps#docker){target=_blank}。
+    如果您的浏览器无法连接到Chopsticks提供的WebSocket端点，您可能需要允许Polkadot.js APPs URL的不安全连接。另一种解决方案是运行[Polkadot.js Apps的Docker版本](https://github.com/polkadot-js/apps#docker){target=\_blank}。
 
 ## 重放区块 {: #replaying-blocks }
 
@@ -235,7 +235,7 @@ npx @acala-network/chopsticks@latest run-block  \
 
 ## XCM测试 {: #xcm-testing }
 
-要在网络间测试XCM消息，您可以在本地分叉多个平行链和中继链。举例来说，假设你已经从的源Github repository下载了[`configs`文件夹](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}，以下命令将会分叉Moonriver、Karura和Kusama：
+要在网络间测试XCM消息，您可以在本地分叉多个平行链和中继链。举例来说，假设你已经从的源Github repository下载了[`configs`文件夹](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=\_blank}，以下命令将会分叉Moonriver、Karura和Kusama：
 
 ```bash
 npx @acala-network/chopsticks@latest xcm \

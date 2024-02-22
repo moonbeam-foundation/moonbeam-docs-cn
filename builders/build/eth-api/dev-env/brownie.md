@@ -7,7 +7,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 ## 概览 {: #introduction }
 
-[Brownie](https://eth-brownie.readthedocs.io/){target=_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
+[Brownie](https://eth-brownie.readthedocs.io/){target=\_blank}是一个以太坊开发环境，用于协助Python开发者管理和自动化构建智能合约以及DApp所需的重复性任务。Brownie能够直接与Moonbeam的以太坊API交互，因此其可以用于在Moonbeam上部署智能合约。
 
 本教程将会包含如何在Moonbase Alpha测试网使用Brownie与以太坊式智能合约进行编译、部署和交互。此教程也同样适用于Moonbeam、Moonriver以及Moonbeam开发节点。
 
@@ -15,7 +15,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 首先，您需要准备以下先决条件：
 
- - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=_blank}
+ - 安装MetaMask并[连接至Moonbase Alpha](/tokens/connect/metamask/){target=\_blank}
  - 具有拥有一定数量资金的账户。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
  - 
@@ -23,7 +23,7 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 ## 创建Brownie项目 {: #creating-a-brownie-project }
 
-您将会需要安装Brownie并创建一个Brownie项目（如果您尚未创建）。您可以选择创建一个空白的项目或是使用[Brownie mix](https://eth-brownie.readthedocs.io/en/stable/init.html?highlight=brownie%20mix#creating-a-project-from-a-template){target=_blank}（基础的项目模板）创建项目。本教程将以创建一个空白的项目为例，您可以通过跟随以下步骤进行操作：
+您将会需要安装Brownie并创建一个Brownie项目（如果您尚未创建）。您可以选择创建一个空白的项目或是使用[Brownie mix](https://eth-brownie.readthedocs.io/en/stable/init.html?highlight=brownie%20mix#creating-a-project-from-a-template){target=\_blank}（基础的项目模板）创建项目。本教程将以创建一个空白的项目为例，您可以通过跟随以下步骤进行操作：
 
 1. 为您的项目创建目录
 
@@ -38,14 +38,14 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
     python3 -m pipx ensurepath
     ```
 
-3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
+3. [使用`pipx`安装Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html){target=\_blank}。如果您尚未安装`pipx` ，您可以跟随上个步骤进行安装
 
     ```bash
     pipx install eth-brownie
     ```
 
     !!! 注意事项
-        [`pipx`](https://github.com/pypa/pipx){target=_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
+        [`pipx`](https://github.com/pypa/pipx){target=\_blank}用于运行本地安装在您的项目中的可执行文件。Brownie将会被安装在一个虚拟环境中并可在命令行直接使用。
 
 4. 创建项目
 
@@ -53,14 +53,14 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
     brownie init
     ```
 
-![Create Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-1.png)
+    --8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/init.md'
 
 您的Brownie项目应包含以下空白目录：
 
 - **build** —— 用于例如来自编译的合约代码的项目数据
 - **contracts** —— 用于储存智能合约文件
 - **interfaces** —— 用于项目所需的智能合约接口
-- **reports** —— 用于在[Brownie GUI](https://eth-brownie.readthedocs.io/en/stable/gui.html){target=_blank}使用的JSON报告文件
+- **reports** —— 用于在[Brownie GUI](https://eth-brownie.readthedocs.io/en/stable/gui.html){target=\_blank}使用的JSON报告文件
 - **scripts** —— 为Python脚本用于部署合约或是其他自动化事务存在的地方
 - **tests** —— 用于储存测试项目的Python脚本。Brownie将使用`pytest`框架进行单位测试
 
@@ -70,13 +70,13 @@ description: 利用Moonbeam的EVM兼容性，使用以太坊开发环境Brownie�
 
 要部署至Moonbeam网络，您需要添加并配置网络。Brownie中的网络配置需通过命令行添加。Brownie可以被用于开发和生产环境。
 
-从版本1.18.2开始，Brownie开箱即可支持Moonbeam、Moonriver和Moonbase Alpha。要查看支持的网络的完整列表，您可以运行以下命令：
+从版本1.19.3开始，Brownie开箱即可支持Moonbeam、Moonriver和Moonbase Alpha。要查看支持的网络的完整列表，您可以运行以下命令：
 
 ```bash
 brownie networks list
 ```
 
-![Network list](/images/builders/build/eth-api/dev-env/brownie/brownie-2.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/list-networks.md'
 
 如果您希望将合约部署到Moonbeam开发节点，则需要添加网络配置。在后台，Brownie使用Ganache开发环境。但是，由于Moonbeam开发节点将充当您自己的个人开发环境，因此不需要Ganache。因此，您可以将开发节点配置为“live”网络。
 
@@ -159,7 +159,7 @@ brownie accounts new {INSERT_ACCOUNT_NAME}
 
 系统将跳出弹窗提示您输入私钥和加密账户密码。如果账户被成功配置，您将会在终端中看到您的账户地址。
 
-![Add account](/images/builders/build/eth-api/dev-env/brownie/brownie-3.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/new-account.md'
 
 ## 合约文件 {: #the-contract-file }
 
@@ -202,7 +202,7 @@ contract Box {
 brownie compile
 ```
 
-![Compile Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-4.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/compile.md'
 
 !!! 注意事项
     首次编译合约时需要安装`solc`二进制文件，因此可能需要较长的时间。
@@ -257,13 +257,13 @@ def main():
 === "Moonbeam"
 
     ```bash
-    brownie run scripts/deploy.py --network moonbeam-mainnet
+    brownie run scripts/deploy.py --network moonbeam-main
     ```
 
 === "Moonriver"
 
     ```bash
-    brownie run scripts/deploy.py --network moonriver-mainnet
+    brownie run scripts/deploy.py --network moonriver-main
     ```
 
 === "Moonbase Alpha"
@@ -280,7 +280,7 @@ def main():
 
 在数秒后，合约将会被部署且在终端中可见。
 
-![Deploy Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-5.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/deploy.md'
 
 恭喜您，您的合约已上线！您可以储存地址，您将会在下个步骤中使用该地址并与之交互。
 
@@ -295,13 +295,13 @@ def main():
 === "Moonbeam"
 
     ```bash
-    brownie console --network moonbeam-mainnet
+    brownie console --network moonbeam-main
     ```
 
 === "Moonriver"
 
     ```bash
-    brownie console --network moonriver-mainnet
+    brownie console --network moonriver-main
     ```
 
 === "Moonbase Alpha"
@@ -344,7 +344,7 @@ def main():
 
 您将会看见`5`或是任何您先前储存的数据。
 
-![Interact with Brownie project](/images/builders/build/eth-api/dev-env/brownie/brownie-6.png)
+--8<-- 'code/builders/build/eth-api/dev-env/brownie/terminal/interact.md'
 
 恭喜您！您已经成功通过Brownie部署合约并与之交互！
 
@@ -379,13 +379,13 @@ def main():
 === "Moonbeam"
 
     ```bash
-    brownie run scripts/store-and-retrieve.py --network moonbeam-mainnet
+    brownie run scripts/store-and-retrieve.py --network moonbeam-main
     ```
 
 === "Moonriver"
 
     ```bash
-    brownie run scripts/store-and-retrieve.py --network moonriver-mainnet
+    brownie run scripts/store-and-retrieve.py --network moonriver-main
     ```
 
 === "Moonbase Alpha"

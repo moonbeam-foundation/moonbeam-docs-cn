@@ -7,11 +7,11 @@ description: 本教程涵盖了Moonbeam上Identity Pallet的可用函数，可�
 
 ## 概览 {: #introduction }
 
-[Substrate](/learn/platform/technology/#substrate-framework){target=_blank} Identity Pallet是一个原装的可以直接使用的解决方案，它被用于添加个人信息至链上账户。个人信息包括法定姓名、对外显示的名称、网站、Twitter名称和Riot（现为Element）名称等默认字段。您也可以通过填写自定义字段来加入任何其他相关信息。
+[Substrate](/learn/platform/technology/#substrate-framework){target=\_blank} Identity Pallet是一个原装的可以直接使用的解决方案，它被用于添加个人信息至链上账户。个人信息包括法定姓名、对外显示的名称、网站、Twitter名称和Riot（现为Element）名称等默认字段。您也可以通过填写自定义字段来加入任何其他相关信息。
 
 此Pallet也包含供注册人使用的请求判决与验证链上身份功能。注册人账户需通过治理指定，他们负责验证提交的身份信息并根据调查结果提供判决，来收取一定费用。
 
-本教程将提供Moonbeam Identity Pallet内的extrinsics，存储函数和参数getter的概述。本教程假定您已熟悉与identity相关的术语，若您尚未了解相关内容，请查看[管理您的账户身份](/tokens/manage/identity){target=_blank}页面获取更多信息。
+本教程将提供Moonbeam Identity Pallet内的extrinsics，存储函数和参数getter的概述。本教程假定您已熟悉与identity相关的术语，若您尚未了解相关内容，请查看[管理您的账户身份](/tokens/manage/identity){target=\_blank}页面获取更多信息。
 
 ## Identity Pallet接口 {: #preimage-pallet-interface }
 

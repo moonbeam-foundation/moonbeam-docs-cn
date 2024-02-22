@@ -1,1 +1,1 @@
-您可以每24小时一次从[Moonbase Alpha水龙头](https://faucet.moonbeam.network/){target=_blank}上获取DEV代币以在Moonbase Alpha上进行测试
+您可以每24小时一次从[Moonbase Alpha水龙头](https://faucet.moonbeam.network/){target=\_blank}上获取DEV代币以在Moonbase Alpha上进行测试

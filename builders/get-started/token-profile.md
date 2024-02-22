@@ -7,13 +7,13 @@ description: 在Moonscan上为部署在基于Moonbeam网络的ERC-20、ERC-721�
 
 ## 概览 {: #introduction }
 
-本教程将向您介绍为[Moonscan](https://moonscan.io){target=_blank}上的ERC-20、ERC-721和ERC-1155 Token新增Token简介的过程。
+本教程将向您介绍为[Moonscan](https://moonscan.io){target=\_blank}上的ERC-20、ERC-721和ERC-1155 Token新增Token简介的过程。
 
 Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moonscan经Moonbeam和Etherscan集成所推出，允许用户和开发者们访问开发者工具和网络统计数据，从而为Moonriver和Moonbeam的EVM提供深入的数据分析和洞察。
 
 开发者能够为Moonriver和Moonbeam上的Token创建简介。该简介页面捕获Token背后的项目基本信息、社交媒体链接、价格数据链接以及与项目Token销售有关的其他信息。
 
-![Example token profile](/images/builders/get-started/token-profile/profile-1.png)
+![Example token profile](/images/builders/get-started/token-profile/profile-1.webp)
 
 本教程将向您展示如何为Moonscan上的ERC-20 Token范本创建简介。该ERC-20 Token范本部署在Moonriver上，称为DemoToken (DEMO)。本教程的操作步骤也同样适用于任何基于Moonbeam网络和ERC-721或ERC-1155 Token。
 
@@ -21,7 +21,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 在开始本教程之前，您将需要准备：
 
-- 一个[Moonscan账户](https://moonscan.io/register){target=_blank}
+- 一个[Moonscan账户](https://moonscan.io/register){target=\_blank}
 
 您将需要在本教程后半部分验证Token合约地址的所有权。您可以选择手动或自动操作此步骤，如果您选择自动操作，您需要执行以下步骤：
 
@@ -52,7 +52,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 在Social Profiles旁边，您可以点击**Update**。
 
-![Update token](/images/builders/get-started/token-profile/profile-2.png)
+![Update token](/images/builders/get-started/token-profile/profile-2.webp)
 
 您将被引导至**Token Update Application Form**页面。
 
@@ -60,11 +60,11 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 ## 验证合约源代码 {: #verifying-contract-source-code }
 
-您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Foundry部署合约，您也可以使用其对应的[Etherscan整合](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=_blank}验证。
+您有多种方式可以验证您的合约源代码。您可以直接从Moonscan验证，如果您是通过Hardhat或Foundry部署合约，您也可以使用其对应的[Etherscan整合](/builders/build/eth-api/verify-contracts/etherscan-plugins/){target=\_blank}验证。
 
 要直接从Moonscan验证您的合约源代码，您可以点击**tool**链接。
 
-![Token update application form](/images/builders/get-started/token-profile/profile-3.png)
+![Token update application form](/images/builders/get-started/token-profile/profile-3.webp)
 
 您将被引导至**Verify & Publish Contract Source Code**页面，您可以在此页面输入有关合约及其编译方式的详细信息。
 
@@ -80,7 +80,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 6. 点击**Continue**
 
-![Verify & publish contract - page 1](/images/builders/get-started/token-profile/profile-4.png)
+![Verify & publish contract - page 1](/images/builders/get-started/token-profile/profile-4.webp)
 
 接下来您将进入下一页面，您可以在此页面输入合约源代码并指定使用的其他设置和参数。
 
@@ -94,7 +94,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 5. 最后，点击**Verify and Publish**
 
-![Verify & publish contract - page 2](/images/builders/get-started/token-profile/profile-5.png)
+![Verify & publish contract - page 2](/images/builders/get-started/token-profile/profile-5.webp)
 
 现在，您的合约源代码已完成验证。您可以开始接下来的步骤，验证您是合约地址的所有者。
 
@@ -102,17 +102,17 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 在**Token Update Application Form**页面，您应该在屏幕上方看到您需要验证您是合约地址所有者的消息。在开始验证之前，您需要点击**tool**链接。
 
-![Token update application form](/images/builders/get-started/token-profile/profile-6.png)
+![Token update application form](/images/builders/get-started/token-profile/profile-6.webp)
 
 您将被引导至**Verify Address Ownership**页面，在此页面您可以选择手动或通过连接至Web3签署消息以验证您的所有权。如果您选择手动验证所有权，您将需要消息签名的哈希。如果您连接至Web3，则会自动为您计算哈希。
 
-![Verify address ownership](/images/builders/get-started/token-profile/profile-7.png)
+![Verify address ownership](/images/builders/get-started/token-profile/profile-7.webp)
 
 ### 手动签署信息 {: #sign-message-manually }
 
 如果您要手动验证所有权，您将需要消息签署的哈希。如果您自身已计算哈希，您可以点击**Sign Message Manually**，输入**Message Signature Hash**，然后点击**Verify Ownership**。
 
-![Manually verify address ownership](/images/builders/get-started/token-profile/profile-8.png)
+![Manually verify address ownership](/images/builders/get-started/token-profile/profile-8.webp)
 
 ### 连接至Web3 {: #connect-to-web3 }
 
@@ -122,7 +122,7 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 2. 连接账户
 
-![Connect MetaMask account](/images/builders/get-started/token-profile/profile-9.png)
+![Connect MetaMask account](/images/builders/get-started/token-profile/profile-9.webp)
 
 返回**Verify Address Ownership**页面，您可以完成以下步骤：
 
@@ -130,11 +130,11 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 2. MetaMask将跳出弹窗，点击**Sign**签署消息
 
-![Sign message on MetaMask to verify address ownership](/images/builders/get-started/token-profile/profile-10.png)
+![Sign message on MetaMask to verify address ownership](/images/builders/get-started/token-profile/profile-10.webp)
 
 消息签署完成后，您可以点击**Click to Proceed**。您将看到**Message Signature Hash**已经自动填充。随后，点击**Verify Ownership**。
 
-![Verify address ownership submission](/images/builders/get-started/token-profile/profile-11.png)
+![Verify address ownership submission](/images/builders/get-started/token-profile/profile-11.webp)
 
 ## 创建简介 {: #creating-the-profile }
 
@@ -153,6 +153,6 @@ Moonscan是一个适用于EVM兼容链的区块浏览器和分析平台。 Moons
 
 其他信息均为选填。完成所有信息填写后，您可以点击页面底部的**Submit**。
 
-![Create token profile](/images/builders/get-started/token-profile/profile-12.png)
+![Create token profile](/images/builders/get-started/token-profile/profile-12.webp)
 
 这样就可以了！您已成功在Moonscan上为您的Token创建并提交简介。Moonscan团队将尽快审核您所提交的内容，并根据需求为您提供进一步的说明。

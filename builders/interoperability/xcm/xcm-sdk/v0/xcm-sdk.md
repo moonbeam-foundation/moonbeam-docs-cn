@@ -11,9 +11,9 @@ Moonbeam XCM SDK使开发者能够轻松从波卡或Kusama生态系统中的中�
 
 XCM SDK提供简单的协助函数，如`deposit`和`withdraw`，提供非常简单的接口以在波卡和Kusama生态中进行两条链之间的XCM转移。除外，XCM的配置包允许任何平行链项目以标准方法添加信息，使他们能够被XCM SDK支持。
 
-关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/v0/reference){target=_blank}页面。
+关于Moonbeam XCM SDK中当前可用的函数和接口概览，请查看[参考](/builders/interoperability/xcm/xcm-sdk/v0/reference){target=\_blank}页面。
 
-如果您使用的是 v1.x，请参阅[v1 特定的 SDK 指南](/builders/interoperability/xcm/xcm-sdk/v1/){target=_blank}。
+如果您使用的是 v1.x，请参阅[v1 特定的 SDK 指南](/builders/interoperability/xcm/xcm-sdk/v1/){target=\_blank}。
 
 此教程中的示例将在Moonbeam中执行，但步骤也同样适用于Moonriver和Moonbase Alpha。
 
@@ -35,7 +35,7 @@ XCM配置包将用于获取每个支持资产类型的原资产和原链信息�
 npm install @moonbeam-network/xcm-sdk @moonbeam-network/xcm-config
 ```
 
-您将需要安装依赖项，如[Ethers.js](https://docs.ethers.org/){target=_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=_blank}。
+您将需要安装依赖项，如[Ethers.js](https://docs.ethers.org/){target=\_blank}和[Polkadot.js API](https://polkadot.js.org/docs/api/){target=\_blank}。
 
 您可以运行以下指令来安装它们：
 
@@ -44,13 +44,13 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 ```
 
 !!! 注意事项
-    目前将Moonbeam XCM包与Polkadot.js与 Node.js (JavaScript)一起使用时，存在[已知问题](https://github.com/polkadot-js/api/issues/4315){target=_blank}导致包冲突警告出现在控制台中。推荐您使用TypeScript。
+    目前将Moonbeam XCM包与Polkadot.js与 Node.js (JavaScript)一起使用时，存在[已知问题](https://github.com/polkadot-js/api/issues/4315){target=\_blank}导致包冲突警告出现在控制台中。推荐您使用TypeScript。
 
 ### 创建签署者 {: creating-signers }
 
-在与XCM SDK中的`deposit`和`withdraw`函数交互时，您将需要提供一个[Ethers.js](https://docs.ethers.org/){target=_blank}和[Polkadot.js](https://polkadot.js.org/docs/api/){target=_blank}签署者，用于签署和传送交易。Ethers签署者用于在Moonbeam上签署交易，波卡签署者将用于在您存入资产的原链上签署交易。
+在与XCM SDK中的`deposit`和`withdraw`函数交互时，您将需要提供一个[Ethers.js](https://docs.ethers.org/){target=\_blank}和[Polkadot.js](https://polkadot.js.org/docs/api/){target=\_blank}签署者，用于签署和传送交易。Ethers签署者用于在Moonbeam上签署交易，波卡签署者将用于在您存入资产的原链上签署交易。
 
-举例而言，您可以将一个[MetaMask签署者传递至Ethers](https://docs.ethers.org/v6/getting-started/#starting-connecting){target=_blank}或是其他兼容钱包。如同波卡，您可以[使用`@polkadot/extension-dapp` 库传递一个兼容钱包给签署者](https://polkadot.js.org/docs/extension/){target=_blank}。
+举例而言，您可以将一个[MetaMask签署者传递至Ethers](https://docs.ethers.org/v6/getting-started/#starting-connecting){target=\_blank}或是其他兼容钱包。如同波卡，您可以[使用`@polkadot/extension-dapp` 库传递一个兼容钱包给签署者](https://polkadot.js.org/docs/extension/){target=\_blank}。
 
 要为Ethers.js和Polkadot.js创建一个签署者，您可以查看以下的代码段。在本示例中，您可以使用一个Polkadot.js Keyring以在原链存款时签署交易。请注意，此方法并不被推荐用于生产应用。**请勿将您的私钥或是助记词存于JavaScript或TypeScript文件中**。
 
@@ -154,7 +154,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
     const { moonbase } = init();
     ```
 
-如果您希望支持某个特定钱包，您可以直接将签署者传递至`init`函数。否则，您仅能在为存款或提现构建转移数据时直接传递签署者。要为[Ethers](/builders/build/eth-api/libraries/ethersjs){target=_blank}和[波卡](/builders/build/substrate-api/polkadot-js-api){target=_blank}传递签署者，您可以使用以下代码段：
+如果您希望支持某个特定钱包，您可以直接将签署者传递至`init`函数。否则，您仅能在为存款或提现构建转移数据时直接传递签署者。要为[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}和[波卡](/builders/build/substrate-api/polkadot-js-api){target=\_blank}传递签署者，您可以使用以下代码段：
 
 === "Moonbeam"
 
@@ -188,7 +188,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 
 ## 使用SDK接口 {: #using-the-api }
 
-Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-interfaces){target=_blank}的API。
+Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-interfaces){target=\_blank}的API。
 
 请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initialization)。
 
@@ -266,7 +266,7 @@ assets: {
 
 ### Moonbeam原生资产数据 {: #native-assets }
 
-要获得Moonbeam网络上原生协议资产的信息，如[预编译合约地址](/builders/pallets-precompiles/precompiles/erc20){target=_blank}以及原符号，您可以访问`moonAsset`属性。
+要获得Moonbeam网络上原生协议资产的信息，如[预编译合约地址](/builders/pallets-precompiles/precompiles/erc20){target=\_blank}以及原符号，您可以访问`moonAsset`属性。
 
 === "Moonbeam"
 
@@ -335,11 +335,11 @@ moonChain: {
 }
 ```
 
-此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=_blank}中找到更多信息。
+此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}中找到更多信息。
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 
-Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-methods){target=_blank}。
+Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-methods){target=\_blank}。
 
 确保您已经[初始化](#initialization)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
 
@@ -426,7 +426,7 @@ from(polkadot);
 
 #### Get函数 {: #get-deposit }
 
-`get`需要输入在Moonbeam上的接受账户以及根据您如何设置您[波卡签署者](/builders/build/substrate-api/polkadot-js-api){target=_blank}，需要输入波卡的签署者或波卡上的传送账户，并获得需要用于存入函数的数据。
+`get`需要输入在Moonbeam上的接受账户以及根据您如何设置您[波卡签署者](/builders/build/substrate-api/polkadot-js-api){target=\_blank}，需要输入波卡的签署者或波卡上的传送账户，并获得需要用于存入函数的数据。
 
 如果您拥有波卡兼容的签署者，您可以在`init`函数中数据签署者，并在`get`函数中的第二个参数处输入波卡地址：
 
@@ -530,9 +530,9 @@ const response = await from(polkadot).get(
 |         数值         |                                                                                                                                            描述                                                                                                                                            |
 |:--------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |       `asset`        |                                                                                                                                  被转移的[资产](#assets)                                                                                                                                   |
-| `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
+| `existentialDeposit` | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=\_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
 |        `min`         |                                                                                                                                       最小可转移数量                                                                                                                                       |
-|    `moonChainFee`    |                                      支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/PureStake/xcm-sdk/releases/tag/v0.4.0){target=_blank}起)                                       |
+|    `moonChainFee`    |                                      支付Moonbeam的XCM费用所需的[资产](#assets)和金额。如果与要转移的`asset`不同，则费用将在要转移的`asset`之外发送到该资产中(自[v0.4.0](https://github.com/moonbeam-foundation/xcm-sdk/releases/tag/v0.4.0){target=\_blank}起)                                       |
 |       `native`       |                                                                                                                                原链上的原生[资产](#assets)                                                                                                                                 |
 |       `origin`       |                                                                                                                                    资产所属原链的链信息                                                                                                                                    |
 |       `source`       |                                                                                                                                被转移资产从哪里发送的链信息                                                                                                                                |
@@ -735,7 +735,7 @@ const response = await to(
 |       `destination`        |                                                                                                                                 资产被转移的目标链的链信息                                                                                                                                 |
 |    `destinationBalance`    |                                                                                                                                  目标链上账户中资产的余额                                                                                                                                  |
 |      `destinationFee`      |                                                                                                                                资产转移至目标链上所需的费用                                                                                                                                |
-|    `existentialDeposit`    | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
+|    `existentialDeposit`    | [当前存在的存款](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-#:~:text=On%20the%20Polkadot%20network%2C%20an,the%20Existential%20Deposit%20(ED).){target=\_blank}，或是一个地址需要持有 以被定义为存在的最小数量，否则将返回`0n` |
 |           `min`            |                                                                                                                                 被转让资产的最小可转移数量                                                                                                                                 |
 |      `minXcmFeeAsset`      |                                                                                                                        需要一起发送以支付费用的资产的最小可转移数量                                                                                                                        |
 |          `native`          |                                                                                                                                 原链的原生[资产](#assets)                                                                                                                                  |
@@ -888,7 +888,7 @@ console.log(isXcmSdkDeposit(deposit)); // Returns false
 
 #### 将余额转换为十进制或BigInt {: #decimals }
 
-要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以指示使用的最大小数位数，预设值为`6`；第四个参数指示了数字的[舍入方法](https://mikemcl.github.io/big.js/#rm){target=_blank}。
+要将余额转换为十进制格式，您可以使用`toDecimal`函数，根据提供的小数位数以十进制格式返回给定数字。您可以根据需求在第三个参数中输入数值以指示使用的最大小数位数，预设值为`6`；第四个参数指示了数字的[舍入方法](https://mikemcl.github.io/big.js/#rm){target=\_blank}。
 `toDecimal`函数返回一个Big数字类型，您可以使用其方法 `toNumber`、`toFixed`、`toPrecision`和`toExponential`将其转换为数字或字符串。 我们建议将它们用作字符串，因为在使用数字类型时，大数字或有很多小数的数字可能会失去精度。
 
 要将十进制数转换回BigInt，您可以使用`toBigInt`函数，该函数根据提供的小数位数返回BigInt格式的给定数字。

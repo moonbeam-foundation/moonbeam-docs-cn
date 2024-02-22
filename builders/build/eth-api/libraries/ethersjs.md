@@ -7,9 +7,9 @@ description: 通过本教程以学习如何使用以太坊EtherJS代码库在Moo
 
 ## 概览 {: #introduction }
 
-[Ethers.js](https://docs.ethers.org/){target=_blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于Web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Ethers.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在其[官方文档](https://docs.ethers.org/v6/){target=_blank}获取更多关于如何使用Ethers.js的信息。
+[Ethers.js](https://docs.ethers.org/){target=\_blank}代码库提供用户使用JavaScript与以太坊节点交互的多样工具，类似于Web3.js。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Ethers.js库与Moonbeam节点交互，与在以太坊操作相同。您可以在其[官方文档](https://docs.ethers.org/v6/){target=\_blank}获取更多关于如何使用Ethers.js的信息。
 
-在本教程中，您将学习如何使用Ethers.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}，[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}，或是[Moonbeam development node](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+在本教程中，您将学习如何使用Ethers.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}，[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}，或是[Moonbeam development node](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -47,7 +47,7 @@ mkdir ethers-examples && cd ethers-examples && npm init --y
 
 ## 设置Ethers提供商 {: #setting-up-the-ethers-provider }
 
-在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.org/v6/api/providers/){target=_blank}与网络交互。
+在本教程中，您将会创建提供不同功能的脚本，如发送交易、部署合约以及与一个已部署合约交互。在大部分的脚本中，您需要创建一个[Ethers提供者](https://docs.ethers.org/v6/api/providers/){target=\_blank}与网络交互。
 
 --8<-- 'text/_common/endpoint-setup.md'
 
@@ -268,7 +268,7 @@ node transaction.js
 
 您也可以使用`balances.js`脚本为发送地址和接收地址查看余额是否变化。整体操作流程如下所示：
 
-![Send Tx Etherjs](/images/builders/build/eth-api/libraries/ethers/ethers-1.png)
+![Send Tx Etherjs](/images/builders/build/eth-api/libraries/ethers/ethers-1.webp)
 
 ## 部署合约 {: #deploy-a-contract }
 
@@ -354,7 +354,7 @@ node deploy.js
 
 如果成功，合约地址将显示在终端。
 
-![Deploy Contract Etherjs](/images/builders/build/eth-api/libraries/ethers/ethers-2.png)
+![Deploy Contract Etherjs](/images/builders/build/eth-api/libraries/ethers/ethers-2.webp)
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -487,7 +487,7 @@ node increment.js
 
 如果成功，交易哈希将显示在终端。您可以在`increment.js`脚本旁边使用`get.js`脚本以确保数值如预期变化：
 
-![Increment Contract Ethers](/images/builders/build/eth-api/libraries/ethers/ethers-3.png)
+![Increment Contract Ethers](/images/builders/build/eth-api/libraries/ethers/ethers-3.webp)
 
 接下来，您可以打开`reset.js`文件并执行以下步骤以创建脚本：
 
@@ -550,6 +550,6 @@ node reset.js
 
 如果成功，交易哈希将显示在终端。您可以在`reset.js`脚本配合使用`get.js`脚本以确保数值如预期变化：
 
-![Reset Contract Ethers](/images/builders/build/eth-api/libraries/ethers/ethers-4.png)
+![Reset Contract Ethers](/images/builders/build/eth-api/libraries/ethers/ethers-4.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'
