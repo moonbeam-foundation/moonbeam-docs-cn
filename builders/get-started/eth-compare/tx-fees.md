@@ -257,6 +257,9 @@ contract SayHello {
     Transaction Fee = (GasPrice * TransactionWeight) / {{ networks.moonbase.tx_weight_to_gas_ratio }}
     ```
 
+!!! 请注意
+    EIP-1559在Moonbeam上的交易费用根据前个区块的基本费用计算得来。
+
 以下部分更详细地描述了计算交易费用的每个组成部分。
 
 ### 基础费用 {: #base-fee}
@@ -432,6 +435,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 ### 计算交易费用的示例代码 {: #sample-code }
 
 以下代码片段使用[Axios HTTP客户端](https://axios-http.com/){target=\_blank}来为最终区块查询[Sidecar端点`/blocks/head`](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=\_blank}。随后，根据交易类型（以太坊API：legacy、EIP-1559或EIP-2930标准以及Substrate API）计算区块中所有交易的交易费用，以及区块中的总交易费用。
+
+!!! 请注意
+    EIP-1559在Moonbeam上的交易费用根据前个区块的基本费用计算得来。
 
 以下代码示例仅用于演示目的，代码需进行修改并进一步测试后才可正式用于生产环境。
 
