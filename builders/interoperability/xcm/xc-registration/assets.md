@@ -142,7 +142,7 @@ The UnitsPerSecond needs to be set 34106412005
 - `--revert-code`或`--revert` - （可选） - 在EVM中注册资产预编译的恢复代码。如果已提供代码，脚本将为治理提案创建一个批量交易，该交易至少将注册资产并设置恢复代码。
 
     !!! 注意事项
-        **对于Moonbeam上的提案来说，此标志并非必需的**，因为它包含[OpenGov](/learn/features/governance#opengov) General Admin Origin无法执行的`system.setStorage`调用。稍后可以通过调用[预编译注册表预编译](/builders/pallets-precompiles/precompiles/registry){target=\_blank}来设置虚拟EVM字节码，您无需担心需通过治理设置恢复代码！
+        **对于Moonbeam上的提案来说，此标志并非必需的**，因为它包含[OpenGov](/learn/features/governance#opengov) General Admin Origin无法执行的`system.setStorage`调用。稍后可以通过调用[预编译注册表预编译](/builders/pallets-precompiles/precompiles/registry){target=\_blank}来设置虚拟EVM字节码，您无需担心需通过治理设置恢复代码！请参考 [设置XC-20 预编译字节码](#set-bytecode)部分，了解如何设置占位字节码。
 
 作为实际范例，以下命令将会生成编码调用数据以从具有一般密钥的`1`平行链888注册一个资产：
 
@@ -260,11 +260,51 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 如果您需要DEV Token（Moonbase Alpha的原生Token）来使用您的XC-20资产，您可以从[Moonbase Alpha水龙头](/builders/get-started/networks/moonbase/#moonbase-alpha-faucet){target=\_blank}，每24小时分配 {{networks.moonbase.website_faucet_amount }}。如果您需要更多信息，请随时通过 [Telegram](https://t.me/Moonbeam_Official){target=\_blank}或[Discord](https://discord.gg/PfpUATX){target=\_blank}与团队联系。
 
+### 设置 XC-20 预编译字节码 {: #set-bytecode }
+
+在您的XC-20在Moonbeam上注册后，您就可以设置XC-20的预编译字节码。这一步是必需的，因为预编译是在 Moonbeam的runtime内部实现的，且默认情况下没有字节码。在Solidity中调用合约时，会检查合约字节码不为空。将字节码设置为占位符可以绕过这些检查并允许调用预编译。
+
+您可以使用[Precompile Registry](/builders/pallets-precompiles/precompiles/registry){target=_blank}（这是一个Solidity接口）来更新XC-20预编译的字节码，以避免任何可能发生的问题并确保预编译可以被Solidity调用。为此，您需要使用Precompile Registry的[`updateAccountCode`函数](/builders/pallets-precompiles/precompiles/registry/#the-solidity-interface){target=\_blank}。
+
+开始之前，您需要[计算您的XC-20预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=\_blank} 并拥有预编译注册表的ABI。
+
+??? code "Precompile Registry ABI"
+
+    ```js
+    --8<-- 'code/builders/pallets-precompiles/precompiles/registry/abi.js'
+    ```
+
+然后，您可以使用以下脚本为您的XC-20的预编译设置虚拟代码。
+
+!!! 请记住
+以下代码片段仅用于演示目的。请勿将您的私钥存储在JavaScript或Python文件中。
+
+=== "Ethers.js"
+
+    ```js
+    --8<-- 'code/builders/interoperability/xcm/xc-registration/assets/ethers.js'
+    ```
+
+=== "Web3.js"
+
+    ```js
+    --8<-- 'code/builders/interoperability/xcm/xc-registration/assets/web3.js'
+    ```
+
+=== "Web3.py"
+
+    ```py
+    --8<-- 'code/builders/interoperability/xcm/xc-registration/assets/web3.py'
+    ```
+
+运行以上脚本设置字节码之后，您应该可以在terminal上看到 `The XC-20 precompile's bytecode is: 0x60006000fd`。
+
 ## 在其他链上注册Moonbeam资产 {: #register-moonbeam-assets-on-another-chain }
 
 为了实现Moonbeam资产（包括Moonbeam原生资产，GLMR、MOVR、DEV，和部署在Moonbeam上的本地XC-20资产，也就是支持XCM的ERC-20资产）在Moonbeam和另一条链之间进行跨链转移，您需要将资产注册到另一条链上。由于每个链存储跨链资产的方式不同，因此在另一个链上注册Moonbeam资产的具体步骤会根据链的不同而有所不同。至少，您需要了解Moonbeam上资产的元数据和multilocation。
 
 除了资产注册之外，还需要采取其他步骤来实现与Moonbeam的跨链集成。有关更多信息，请参阅[与Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=\_blank}教程。
+
 
 ### 在其他链上注册Moonbeam原生资产 {: #register-moonbeam-native-assets }
 
