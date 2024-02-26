@@ -126,6 +126,67 @@ description: 本教程讲引导您如何为Moonbeam配置Coinbase Wallet扩展�
 
 这样就可以了！您已成功设置您的Coinbase Wallet App，并将其连接至Moonbeam网络。另外，您也已成功学会如何发送和接收资金。
 
+## 订阅Moonbeam更新信息 {: #subscribe-to-updates-from-moonbeam }
+
+Coinbase钱包提供了一个基于[XMTP](https://xmtp.org/docs/introduction){target=\_blank}的信息交互与订阅功能，XMTP是一个链上消息传递网络，它实现了在钱包地址间完全加密的消息传递。除了向其他启用此功能的Coinbase钱包用户发送消息之外，您还可以通过它订阅Moonbeam基金会的更新信息。这些更新旨在传递Moonbeam基金会的紧急消息或重要信息，例如治理和协议升级通知。
+
+### 在移动设备上设置Coinbase钱包 {: #setting-up-coinbase-wallet-on-mobile }
+
+在Coinbase钱包应用程序中启用XMTP并订阅Moonbeam消息，您必须同时拥有浏览器扩展程序和钱包dApp。[Coinbase 钱包下载页面](https://www.coinbase.com/wallet/downloads){target=\_blank} 提供了这两个程序的链接。安装完成后，请确保两者使用相同的种子 (例如，不要为每个程序创建单独的种子短语)。要开始使用XMTP，请从Coinbase钱包应用程序的第一个选项卡（“Asset”选项卡）中执行以下步骤：
+
+1. 点击右上角消息图标
+2. 点击 **Start Messaging**
+
+![Sign up for XMTP.](/images/tokens/connect/coinbase-wallet/coinbase-8.webp)
+
+接下来，系统会提示您配置通知设置以允许推送通知。请执行以下步骤：
+
+1. 点击 **Enable Push Notifications**
+2. 在出现的提示中点击 **Allow**
+
+![Configure notifications.](/images/tokens/connect/coinbase-wallet/coinbase-9.webp)
+
+### 在Moonbeam dApp中订阅 {: #subscribing-in-the-moonbeam-dapp }
+
+温馨提示，您需要在计算机的浏览器上安装Coinbase钱包扩展程序，并且该扩展程序使用的种子应与手机上使用的种子相同。为了尽量减少错误风险，请确保Coinbase钱包扩展程序是浏览器中唯一激活的加密货币钱包扩展程序。您可以按照以下步骤暂时禁用其他钱包应用程序：
+
+1. 点击右上角的扩展程序图标
+2. 点击 **Manage Extensions**
+3. 禁用其他任何激活的钱包扩展程序
+
+!!! 注意
+    禁用MetaMask会完好保持您的私钥，但删除MetaMask则可能导致您丢失私钥。请小心操作，不要因为意外完全删除钱包。
+
+![Disable other active crypto extensions.](/images/tokens/connect/coinbase-wallet/coinbase-10.webp)
+
+然后，前往 [Moonbeam dApp](https://apps.moonbeam.network/moonbeam){target=\_blank}，并按照以下步骤连接Coinbase钱包扩展程序：
+
+1. 点击 **Connect wallet** 
+2. 从选项列表中选择 **Coinbase Wallet** 
+3. 当Coinbase钱包弹出窗口时，点击 **Connect**
+
+![Connect the Moonbeam dApp to Coinbase Wallet](/images/tokens/connect/coinbase-wallet/coinbase-11.webp)
+
+请执行以下步骤完成订阅：
+
+1. 点击右上角的邮箱图标
+2. 在弹出窗口中点击 **Subscribe**
+
+![Subscribe in the Moonbeam dApp](/images/tokens/connect/coinbase-wallet/coinbase-12.webp)
+
+1. 在出现的Coinbase弹窗中点击 **Connect your wallet**
+2. 接下来，您将在Coinbase钱包中收到两个签名请求。第一个请求您启用XTMP身份验证。点击 **Sign**
+3. 下一个签名请求是启用订阅Moonbeam基金会的消息。点击 **Sign**
+
+!!! 注意
+    如果您尚未在手机上启用XMTP，则上一步中您可能会收到三个签名请求。第三个签名请求将完成此操作，但是您仍然可能需要在手机上启用Coinbase钱包应用程序的通知，以确保您收到消息。
+
+![Confirm subscription](/images/tokens/connect/coinbase-wallet/coinbase-13.webp)
+
+完成后，您将看到以下确认屏幕。有关Coinbase钱包的问题，请参阅 [Coinbase 钱包帮助](https://help.coinbase.com/en/wallet/messaging/info#connecting-to-the-xmtp-network){target=\_blank}。
+
+![Finalized](/images/tokens/connect/coinbase-wallet/coinbase-14.webp)
+
 ## 限制 {: #limitations }
 
  - 目前，Coinbase Wallet仅在您App的交易记录中显示传出交易。您可以通过区块浏览器（如[Moonscan](https://moonscan.io/){target=\_blank}）输入您的地址以查看您的完整交易记录，包括传入交易
