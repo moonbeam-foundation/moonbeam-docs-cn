@@ -1,0 +1,6 @@
+title: Core Concepts
+nav:
+  - index.md
+  - 'XCM指令': 'instructions.md'
+  - 'Multilocations': 'multilocations.md'
+  - '权重和费用': 'weights-fees.md'

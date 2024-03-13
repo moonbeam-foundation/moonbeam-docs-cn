@@ -131,14 +131,14 @@ Sovereign Account Address on Moonbase Alpha: 0x7369626ce803000000000000000000000
 
 在任何消息可以从您的平行链发送到Moonbeam之前，必须打开一个HRMP通道。要创建HRMP通道，您需要向中继链发送XCM消息，请求通过中继链打开通道。该消息将需要**至少**包含以下XCM指令：
 
-1. [WithdrawAsset](https://github.com/paritytech/xcm-format#withdrawasset){target=\_blank} - 将资金从原始平行链的（在中继链中的）主权账户转移到持有状态
-2. [BuyExecution](https://github.com/paritytech/xcm-format#buyexecution){target=\_blank} - 从中继链购买执行时间来执行XCM消息
-3. [Transact](https://github.com/paritytech/xcm-format#transact){target=\_blank} - 提供要执行的中继链调用数据。在本示例中，将调用HRMP extrinsic
+1. [WithdrawAsset](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=\_blank} - 将资金从原始平行链的（在中继链中的）主权账户转移到持有状态
+2. [BuyExecution](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=\_blank} - 从中继链购买执行时间来执行XCM消息
+3. [Transact](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank} - 提供要执行的中继链调用数据。在本示例中，将调用HRMP extrinsic
 
 !!! 注意事项
-    您可以添加[DepositAsset](https://github.com/paritytech/xcm-format#depositasset){target=\_blank}以在执行后返还剩余资金。如果没有提供此函数，将无法退款。另外，你也可以在[Transact](https://github.com/paritytech/xcm-format#transact){target=\_blank}后添加[RefundSurplus](https://github.com/paritytech/xcm-format#refundsurplus){target=\_blank}，以获取未用于Transact的任何剩余资金。但是您必须计算是否值得支付额外XCM指令的执行成本。
+    您可以添加[DepositAsset](/builders/interoperability/xcm/core-concepts/instructions#deposit-asset){target=\_blank}以在执行后返还剩余资金。如果没有提供此函数，将无法退款。另外，你也可以在[Transact](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank}后添加[RefundSurplus](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank}，以获取未用于Transact的任何剩余资金。但是您必须计算是否值得支付额外XCM指令的执行成本。
 
-为了将这些XCM消息发送到中继链，*通常会调用*[Polkadot XCM Pallet](https://github.com/paritytech/polkadot-sdk/tree/master/polkadot/xcm/pallet-xcm){target=\_blank}。Moonbeam还有一个[XCM Transactor Pallet](/builders/interoperability/xcm/xcm-transactor){target=\_blank}，这将流程简化为一个抽象XCM消息传递构造函数的调用。
+为了将这些XCM消息发送到中继链，*通常会调用*[Polkadot XCM Pallet](https://github.com/paritytech/polkadot-sdk/tree/{{ polkadot_sdk }}/polkadot/xcm/pallet-xcm){target=\_blank}。Moonbeam还有一个[XCM Transactor Pallet](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet){target=\_blank}，这将流程简化为一个抽象XCM消息传递构造函数的调用。
 
 您可以使用Polkadot.js Apps为HRMP操作生成调用数据，但是[xcm-tools GitHub库](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}可以协助您构建，这是该过程的推荐工具。
 

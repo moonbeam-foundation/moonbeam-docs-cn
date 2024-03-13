@@ -221,9 +221,9 @@ Encoded calldata for tx is 0x0102081f0000010200e10d06240000000000000000013445786
 
 ### 在Moonbeam上测试资产注册 {: #test-asset-registration }
 
-您的资产注册后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/overview/#the-erc20-interface){target=\_blank}地址。
+您的资产注册后，团队将提供资产ID和[XC-20预编译](/builders/interoperability/xcm/xc20/interact/#the-erc20-interface){target=\_blank}地址。
 
-您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到获得40个十六进制字符（加上“0x”）地址。有关如何计算的更多信息，请参阅外部XC-20预编译地址的[计算外部XC-20资产预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=\_blank}部分的外部XC-20教程。
+您的XC-20预编译地址是通过将资产ID十进制数转换为十六进制数并在其前面加上F来计算的，直到获得40个十六进制字符（加上“0x”）地址。有关如何计算的更多信息，请参阅外部XC-20预编译地址的[计算外部XC-20资产预编译地址](/builders/interoperability/xcm/xc20/interact/#calculate-xc20-address){target=\_blank}部分的外部XC-20教程。
 
 资产成功注册后，您可以尝试将Token从平行链转移到您正在集成的基于Moonbeam的网络。
 

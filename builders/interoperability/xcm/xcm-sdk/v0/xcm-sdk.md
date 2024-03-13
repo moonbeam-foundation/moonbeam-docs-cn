@@ -190,7 +190,7 @@ npm i @polkadot/api-augment @polkadot/types @polkadot/util @polkadot/util-crypto
 
 Moonbeam SDK提供一个包含一系列获得支持资产信息、初始化网络的链信息以及启用存款、提现和查看余额函数的[接口](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-interfaces){target=\_blank}的API。
 
-请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initialization)。
+请确保您已经事先将您希望交互的Moonbeawm网络设置[初始化](#initializing)。
 
 ### 资产符号 {: #symbols }
 
@@ -335,13 +335,13 @@ moonChain: {
 }
 ```
 
-此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}中找到更多信息。
+此处每秒单位代表执行XCM消息每秒收费的Token单位（在本范例中为Wei）。您可以在[XCM费用页面](/builders/interoperability/xcm/core-concepts/weights-fees/#moonbeam-reserve-assets){target=\_blank}中找到更多信息。
 
 ## 使用SDK函数 {: #using-the-sdk-methods }
 
 Moonbeam SDK提供一个API，其中包含能够启用存款、提现和查看余额信息和其他功能性函数的[函数](/builders/interoperability/xcm/xcm-sdk/v0/reference/#core-sdk-methods){target=\_blank}。
 
-确保您已经[初始化](#initialization)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
+确保您已经[初始化](#initializing)您希望交互的Moonbeam网络。您同样需要确认您已经[创建签署者](#creating-signers)以签署和传送存入和取出的转移数据。
 
 ### 存入 {: #deposit }
 
