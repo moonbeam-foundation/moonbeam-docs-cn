@@ -25,10 +25,10 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
     === "Parameters"
 
-        - `message` - the SCALE-encoded versioned XCM message to be executed
-        - `maxWeight` - the maximum weight allowed to be consumed, which is defined by specifying the:
-            - `refTime` - the amount of computational time that can be used for execution
-            - `proofSize` - the amount of storage in bytes that can be used
+        - `message` - SCALE编码的待执行XCM消息
+        - `maxWeight` - 允许消耗的最大权重，由以下内容定义：
+            - `refTime` - 可用于执行的计算时间
+            - `proofSize` - 可用的存储空间（以字节为单位）
 
     === "Polkadot.js API Example"
         
