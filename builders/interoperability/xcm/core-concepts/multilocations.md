@@ -72,7 +72,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 - `OnlyChild` - 用于描述一个位置的子级，如果该位置父级和子级之间仅存在一对一关系。目前不使用它，除非作为衍生内容时的备选方案
 
-- `Plurality` - 描述满足特定条件或具有共同特征的多个元素。这需要您指定Junction代表的[Body ID](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v3/junction.rs#L121-L147){target=_blank}和[主体部分](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v3/junction.rs#L192-L221){target=_blank}
+- `Plurality` - 描述满足特定条件或具有共同特征的多个元素。这需要您指定Junction代表的[Body ID](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v3/junction.rs#L121-L147){target=\_blank}和[主体部分](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v3/junction.rs#L192-L221){target=\_blank}
 
     ```js
     { Plurality: { id: INSERT_BODY_ID, part: INSERT_BODY_PART } }

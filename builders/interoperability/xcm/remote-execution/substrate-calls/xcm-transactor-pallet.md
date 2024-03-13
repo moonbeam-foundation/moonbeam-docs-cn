@@ -7,9 +7,9 @@ description: 本教程将介绍XCM-Transactor Pallet，并解释如何使用一�
 
 ## 概览 {: #introduction }
 
-XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/interoperability/xcm/core-concepts/instructions/){target=_blank}组成。这些指令的组合会产生预先确定的操作，例如跨链Token转移，更有趣的是，远程跨链执行。远程执行涉及从另一个区块链在一个区块链上执行操作或操作，同时保持发送者身份和权限的完整性。
+XCM消息是由跨共识虚拟机（XCVM）执行的[一系列指令](/builders/interoperability/xcm/core-concepts/instructions/){target=\_blank}组成。这些指令的组合会产生预先确定的操作，例如跨链Token转移，更有趣的是，远程跨链执行。远程执行涉及从另一个区块链在一个区块链上执行操作或操作，同时保持发送者身份和权限的完整性。
 
-通常，XCM消息从根账户（即SUDO或通过民主投票）发送给生态系统中的其他参与者，这对于希望通过简单交易实现远程跨链调用的项目来说并不合适。[XCM Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=_blank}可以轻松通过[主权账户](/builders/interoperability/xcm/overview#general-xcm-definitions){target=_blank}（仅可通过治理允许操作）或通过来自源链简单交易的[Computed Origin账户](/builders/interoperability/xcm/remote-execution/computed-origins){target=_blank}在远程链上进行交易。
+通常，XCM消息从根账户（即SUDO或通过民主投票）发送给生态系统中的其他参与者，这对于希望通过简单交易实现远程跨链调用的项目来说并不合适。[XCM Transactor Pallet](https://github.com/moonbeam-foundation/moonbeam/blob/master/pallets/xcm-transactor/src/lib.rs){target=\_blank}可以轻松通过[主权账户](/builders/interoperability/xcm/overview#general-xcm-definitions){target=\_blank}（仅可通过治理允许操作）或通过来自源链简单交易的[Computed Origin账户](/builders/interoperability/xcm/remote-execution/computed-origins){target=\_blank}在远程链上进行交易。
 
 本教程将向您展示如何使用XCM Transactor Pallet从基于Moonbeam的网络发送XCM消息至生态系统中的其他链。此外，您还将学习到如何使用XCM Transactor Precompile通过以太坊API执行同样的操作。
 
@@ -34,9 +34,9 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
             - `currency` -  定义您如何指定用于支付费用的Token，可以为：
                 - `AsCurrencyId` - 用于支付费用的资产货币ID。货币ID可以为：
                     - `SelfReserve` - 使用原生资产
-                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}。这要求您指定本地XC-20的合约地址
+                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}。这要求您指定本地XC-20的合约地址
                 - `AsMultiLocation` - 用于支付费用资产的XCM版本化的multilocation
             - `feeAmount` - （可选）用于支付费用的数量
         - `weightInfo` - 要使用的权重信息。`weightInfo`结构包含以下内容：
@@ -117,7 +117,7 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
         --8<-- 'code/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/interface-examples/set-transact-info.js'
         ```
 
-??? function "**transactThroughSigned**(destination, fee, call, weightInfo, refund) — 发送包含在目标链中远程执行调用指令的XCM消息。远程调用可通过目标平行链必须计算的新账户签署和执行。基于Moonbeam的网络遵循[波卡制定的Computed Origins标准](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-builder/src/location_conversion.rs){target=_blank}"
+??? function "**transactThroughSigned**(destination, fee, call, weightInfo, refund) — 发送包含在目标链中远程执行调用指令的XCM消息。远程调用可通过目标平行链必须计算的新账户签署和执行。基于Moonbeam的网络遵循[波卡制定的Computed Origins标准](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-builder/src/location_conversion.rs){target=\_blank}"
 
     === "参数"
     
@@ -126,9 +126,9 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
             - `currency` -  定义您如何指定用于支付费用的Token，可以为以下任意一个：
                 - `AsCurrencyId` - 用于支付费用的资产货币ID。货币ID可以为：
                     - `SelfReserve` - 使用原生资产
-                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}。这要求您指定本地XC-20的合约地址
+                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}。这要求您指定本地XC-20的合约地址
                 - `AsMultiLocation` - 用于支付费用资产的XCM版本化的multilocation
             - `feeAmount` -（可选）用于支付费用的数量
         - `call` - 将在目标链中执行调用的编码调用数据
@@ -152,23 +152,23 @@ XCM Transactor Pallet提供以下extrinsics（函数）：
     !!! 注意事项
         在以下部分中，您将准确了解如何使用此extrinsic检索构建和发送XCM消息所需的所有参数。
 
-??? function "**transactThroughSovereign**(dest, feePayer, fee, call, originKind, weightInfo, refund) — 发送XCM消息，其中包含在给定目标链远程执行给定调用的指令。远程调用将由源平行链主权账户（该账户用于支付费用）签名，但交易是从给定源发送的。XCM Transactor Pallet计算远程执行的费用，并向给定账户收取相应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}的估计金额"
+??? function "**transactThroughSovereign**(dest, feePayer, fee, call, originKind, weightInfo, refund) — 发送XCM消息，其中包含在给定目标链远程执行给定调用的指令。远程调用将由源平行链主权账户（该账户用于支付费用）签名，但交易是从给定源发送的。XCM Transactor Pallet计算远程执行的费用，并向给定账户收取相应[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=\_blank}的估计金额"
 
     === "参数"
     
         - `dest` - 生态系统中链的XCM版本化multilocation，其中XCM消息将发送到（目标链）
-        - `feePayer` - 将在相应的[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=_blank}中支付远程XCM执行费用的地址
+        - `feePayer` - 将在相应的[XC-20 token](/builders/interoperability/xcm/xc20/overview/){target=\_blank}中支付远程XCM执行费用的地址
         - `fee` - 用于支付费用的资产。这包含`currency`和`feeAmount`：
             - `currency` -  定义您如何指定用于支付费用的Token，可以为：
                 - `AsCurrencyId` - 用于支付费用的资产货币ID。货币ID可以为：
                     - `SelfReserve` - 使用原生资产
-                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}。这要求您指定本地XC-20的合约地址
+                    - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+                     - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+                    - `Erc20` - 使用[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}。这要求您指定本地XC-20的合约地址
                 - `AsMultiLocation` - 用于支付费用资产的XCM版本化的multilocation
             - `feeAmount` -（可选）用于支付费用的数量
         - `call` - 将在目标链中执行调用的编码调用数据
-        - `originKind` — 目标链中远程调用的调度程序。目前有[四种类型的调度程序](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v2/mod.rs#L85){target=_blank}可用：`Native`、`SovereignAccount`、`Superuser`或`Xcm`
+        - `originKind` — 目标链中远程调用的调度程序。目前有[四种类型的调度程序](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/src/v2/mod.rs#L85){target=\_blank}可用：`Native`、`SovereignAccount`、`Superuser`或`Xcm`
         - `weightInfo` - 要使用的权重信息。`weightInfo`结构包含以下内容：
             - `transactRequiredWeightAtMost` — 执行`Transact`调用所需的权重。`transactRequiredWeightAtMost`结构包含以下内容：
                 - `refTime` - 可用于执行的计算时间量
@@ -297,12 +297,12 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ## 用于远程执行的XCM指令 {: #xcm-instructions-for-remote-execution }
 
-通过XCM进行远程执行的相关[XCM指令](/builders/interoperability/xcm/core-concepts/instructions/){target=_blank}，有但不限于：
+通过XCM进行远程执行的相关[XCM指令](/builders/interoperability/xcm/core-concepts/instructions/){target=\_blank}，有但不限于：
 
- - [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=_blank} - 在目标链中执行。改变目标链上的源以匹配源链上的源，确保目标链上的执行代表源链上发起XCM消息的同一实体进行
- - [`WithdrawAsset`](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=_blank} - 在目标链中执行。删除资产并将其放于存放处
- - [`BuyExecution`](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=_blank} - 在目标链中执行。从持有资产中提取用于支付执行费用。支付的费用取决于目标链
- - [`Transact`](/builders/interoperability/xcm/core-concepts/instructions#transact){target=_blank} - 在目标链中执行。从给定原始链分配编码的调用数据，用于执行特定操作或函数
+ - [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank} - 在目标链中执行。改变目标链上的源以匹配源链上的源，确保目标链上的执行代表源链上发起XCM消息的同一实体进行
+ - [`WithdrawAsset`](/builders/interoperability/xcm/core-concepts/instructions#withdraw-asset){target=\_blank} - 在目标链中执行。删除资产并将其放于存放处
+ - [`BuyExecution`](/builders/interoperability/xcm/core-concepts/instructions#buy-execution){target=\_blank} - 在目标链中执行。从持有资产中提取用于支付执行费用。支付的费用取决于目标链
+ - [`Transact`](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank} - 在目标链中执行。从给定原始链分配编码的调用数据，用于执行特定操作或函数
 
 ## 通过Computed Origin账户进行交易 {: #xcmtransactor-transact-through-signed }
 
@@ -317,8 +317,8 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 要在此部分发送extrinsics，您需要准备以下内容：
 
-- 在源链上的账户拥有一定[资金](/builders/get-started/networks/moonbase/#get-tokens){target=_blank}
-- 资金在目标链上的Computed Origin账户中。要了解如何计算Computed Origin账户的地址，请参考[如何计算Computed Origin](/builders/interoperability/xcm/remote-execution/computed-origins){target=_blank}文档
+- 在源链上的账户拥有一定[资金](/builders/get-started/networks/moonbase/#get-tokens){target=\_blank}
+- 资金在目标链上的Computed Origin账户中。要了解如何计算Computed Origin账户的地址，请参考[如何计算Computed Origin](/builders/interoperability/xcm/remote-execution/computed-origins){target=\_blank}文档
 
 在本示例中，使用的账户如下：
 
@@ -364,7 +364,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
         };
         ```
     
-3. 定义将在目标链中执行的`call`。这里需要pallet、函数和输入值的编码调用数据。它可以在[Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank}中构建（必须连接至目标链），或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}。对于本示例而言，内部调用是将目标链的1个Token余额简单转移到Alice的账户：
+3. 定义将在目标链中执行的`call`。这里需要pallet、函数和输入值的编码调用数据。它可以在[Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank}中构建（必须连接至目标链），或使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}。对于本示例而言，内部调用是将目标链的1个Token余额简单转移到Alice的账户：
 
     ```js
     const call =
@@ -384,7 +384,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     ```
     
     !!! 注意事项
-        要准确预估`transactRequiredAtMost`的`refTime`和`proofSize`数字，您可以使用[Polkadot.js API的`paymentInfo`函数](/builders/build/substrate-api/polkadot-js-api#fees){target=_blank}。
+        要准确预估`transactRequiredAtMost`的`refTime`和`proofSize`数字，您可以使用[Polkadot.js API的`paymentInfo`函数](/builders/build/substrate-api/polkadot-js-api#fees){target=\_blank}。
     
 5. 要退还任何剩余的XCM费用，您可以将`refund`值设置为`true`。 否则，将其设置为`false`
 
@@ -401,7 +401,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
      - 用于创建提供商的Moonbase Alpha端点URL
 - `transactThroughSigned`函数的每个参数的值
   2. 创建一个用于发送交易的Keyring实例
-  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}提供商
+  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
   4. 使用`dest`、`fee`、`call`、`weightInfo`和`refund`值制作`xcmTransactor.transactThroughSigned` extrinsic
   5. 使用`signAndSend` extrinsic和在第二个步骤创建的Keyring实例发送交易
 
@@ -413,11 +413,11 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010001){target=_blank}上查看上述脚本的示例，该脚本将1个Token发送给平行链888上Alice的Computed Origin账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010001`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010001){target=\_blank}上查看上述脚本的示例，该脚本将1个Token发送给平行链888上Alice的Computed Origin账户：`0x210603010100e10d00017576e5e612ff054915d426c546b1b21a010000c52ebca2b10000000000000000007c030044236223ab4291b93eed10e4b511b37a398dee5513000064a7b3b6e00d02286bee02710200010001`。
 
 ### 通过Computed Origin费用进行XCM交易 {: #transact-through-computed-origin-fees }
 
-当[通过Computed Origin账户进行交易](#xcmtransactor-transact-through-signed){target=_blank}时，交易费用由分配调用的同一账户支付，该账户为目标链的Computed Origin账户。因此，Computed Origin账户必须持有必要的资金来支付整个执行过程的费用。请注意，支付费用的目标Token不需要在源链中注册为XC-20。
+当[通过Computed Origin账户进行交易](#xcmtransactor-transact-through-signed){target=\_blank}时，交易费用由分配调用的同一账户支付，该账户为目标链的Computed Origin账户。因此，Computed Origin账户必须持有必要的资金来支付整个执行过程的费用。请注意，支付费用的目标Token不需要在源链中注册为XC-20。
 
 要预估Alice的Computed Origin账户执行远程调用所需的Token数量，您需要检查特定于目标链的交易信息。您可以使用以下脚本获取平行链888的交易信息：
 
@@ -431,7 +431,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 --8<-- 'code/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/destination-asset-fee-per-second.js'
 ```
 
-请注意，每秒单位值与[中继链XCM费用计算](/builders/interoperability/xcm/core-concepts/weights-fees/#polkadot){target=_blank}部分中预估的成本相关，或者如果目标是另一条平行链，则与[重量单位](/builders/interoperability/xcm/core-concepts/weights-fees/#moonbeam-reserve-assets){target=_blank}部分中显示的成本相关。您需要找到正确的值以确保Computed Origin账户持有的Token数量正确。计算相关的XCM执行费用非常简单，只需`transactExtraWeightSigned`乘以`unitsPerSecond`，可以获取预估值：
+请注意，每秒单位值与[中继链XCM费用计算](/builders/interoperability/xcm/core-concepts/weights-fees/#polkadot){target=\_blank}部分中预估的成本相关，或者如果目标是另一条平行链，则与[重量单位](/builders/interoperability/xcm/core-concepts/weights-fees/#moonbeam-reserve-assets){target=\_blank}部分中显示的成本相关。您需要找到正确的值以确保Computed Origin账户持有的Token数量正确。计算相关的XCM执行费用非常简单，只需`transactExtraWeightSigned`乘以`unitsPerSecond`，可以获取预估值：
 
 ```text
 XCM-Wei-Token-Cost = transactExtraWeightSigned * unitsPerSecond

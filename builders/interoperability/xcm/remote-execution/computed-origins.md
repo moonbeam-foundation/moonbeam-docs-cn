@@ -11,15 +11,15 @@ Computed Origin，之前被称为Multilocation衍生账户，是通过XCM执行�
 
 计算的来源是无密钥的（私钥未知）。因此，Computed Origin只能通过原始账户的XCM外部访问。换句话说，源账户是唯一可以在您的Computed Origin账户上发起交易的账户，如果您失去对源账户的访问权限，您也将失去对Computed Origin账户的访问权限。
 
-Computed Origin是根据用于在目标链中执行XCM的源计算的。默认情况下，这是目标链中源链的主权账户。此源可以通过[`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=_blank}XCM指令进行转换。然而，目标链可以决定是否使用新转换的源来执行XCM。在Moonbeam上，Computed Origin账户用于执行XCM。
+Computed Origin是根据用于在目标链中执行XCM的源计算的。默认情况下，这是目标链中源链的主权账户。此源可以通过[`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank}XCM指令进行转换。然而，目标链可以决定是否使用新转换的源来执行XCM。在Moonbeam上，Computed Origin账户用于执行XCM。
 
-基于Moonbeam的网络遵循[Polkadot制定的Computed Origin标准](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-builder/src/location_conversion.rs ){target=_blank}，即通过依赖于XCM消息来源的数据结构的`blake2`哈希。然而，由于Moonbeam使用以太坊格式的账户，Computed Origin被截断为20字节。
+基于Moonbeam的网络遵循[Polkadot制定的Computed Origin标准](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-builder/src/location_conversion.rs ){target=\_blank}，即通过依赖于XCM消息来源的数据结构的`blake2`哈希。然而，由于Moonbeam使用以太坊格式的账户，Computed Origin被截断为20字节。
 
 ## 来源转换 {: #origin-conversion }
 
-当一个远程调用中的`Transact`指令被执行时，[源转换](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L553){target=_blank}就会启用。目标链上转换后的新源支付目标链上的XCM执行费用。
+当一个远程调用中的`Transact`指令被执行时，[源转换](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L553){target=\_blank}就会启用。目标链上转换后的新源支付目标链上的XCM执行费用。
 
-例如，在中继链中， [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=_blank}指令由[XCM Pallet](https: //github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/pallet-xcm/src/lib.rs){target=_blank}原生注入。以Moonbase Alpha的中继链（基于Westend）为例，它具有以下格式（Multilocation连接）：
+例如，在中继链中， [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank}指令由[XCM Pallet](https: //github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/pallet-xcm/src/lib.rs){target=\_blank}原生注入。以Moonbase Alpha的中继链（基于Westend）为例，它具有以下格式（Multilocation连接）：
 
 ```js
 {
@@ -61,7 +61,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 
 ## 如何计算Computed Origin {: #calculate-computed-origin }
 
-您可以通过[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=_blank}库中的`calculate-multilocation-derivative-account`或`calculate-remote-origin` 脚本轻松计算Computed Origin账户。
+您可以通过[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}库中的`calculate-multilocation-derivative-account`或`calculate-remote-origin` 脚本轻松计算Computed Origin账户。
 
 该脚本接受以下输入：
 
@@ -86,7 +86,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
     --parents INSERT_PARENTS_VALUE_IF_APPLIES
     ```
 
-您还可以使用[XCM Utilities Precompile](/builders/interoperability/xcm/xcm-utils/){target=_blank}的`multilocationToAddress`函数计算Computed Origin账户。
+您还可以使用[XCM Utilities Precompile](/builders/interoperability/xcm/xcm-utils/){target=\_blank}的`multilocationToAddress`函数计算Computed Origin账户。
 
 ### 在基于Moonbeam的网络计算Computed Origin {: #calculate-the-computed-origin-on-moonbeam }
 
@@ -100,7 +100,7 @@ yarn calculate-multilocation-derivative-account \
 ```
 
 !!! 注意事项
-    对于Moonbeam或Moonriver，您需要拥有自己的端点和API密钥，您可以从支持的[端点提供商](/builders/get-started/endpoints/){target=_blank}之一获取。
+    对于Moonbeam或Moonriver，您需要拥有自己的端点和API密钥，您可以从支持的[端点提供商](/builders/get-started/endpoints/){target=\_blank}之一获取。
 
 获取的输出包含以下数值：
 

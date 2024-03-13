@@ -8,9 +8,9 @@ description: 本教程介绍了X-Tokens Pallet，并解释了如何使用Pallet�
 
 ## 概览 {: #introduction }
 
-构建用于同质化资产转移的XCM消息并非一件易事。因此，开发者可以通过利用wrapper函数和Pallet在Polkadot和Kusama上使用XCM功能。此类包装器的一个示例是[X-Tokens](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/master/xtokens){target=_blank} Pallet，用于提供通过XCM转移同质化资产的不同方法。
+构建用于同质化资产转移的XCM消息并非一件易事。因此，开发者可以通过利用wrapper函数和Pallet在Polkadot和Kusama上使用XCM功能。此类包装器的一个示例是[X-Tokens](https://github.com/moonbeam-foundation/open-runtime-module-library/tree/master/xtokens){target=\_blank} Pallet，用于提供通过XCM转移同质化资产的不同方法。
 
-本教程将向您展示如何利用X-Tokens Pallet将[XC-20资产](/builders/interoperability/xcm/xc20/overview/){target=_blank}从基于Moonbeam的网络发送至生态系统中的其他链（中继链/平行链）。
+本教程将向您展示如何利用X-Tokens Pallet将[XC-20资产](/builders/interoperability/xcm/xc20/overview/){target=\_blank}从基于Moonbeam的网络发送至生态系统中的其他链（中继链/平行链）。
 
 **开发者须知若发送不正确的XCM消息可能会导致资金丢失。**因此，XCM功能需先在测试网上进行测试后才可移至生产环境。
 
@@ -26,9 +26,9 @@ X-Tokens Pallet提供以下extrinsics（函数）：
     
         - `currencyId` - 将通过XCM转移的货币ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例，货币可以被定义为：
             - `SelfReserve` - 使用原生资产
-            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}的合约地址
+            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}的合约地址
         - `amount` - 要通过XCM发送的Token数量
         - `dest` - 通过XCM发送Token目标地址的multilocation。它支持不同的地址格式，例如20或32字节地址（以太坊或Substrate格式）
         - `destWeightLimit` - 为支付目标链上XCM执行而购买的权重，将从转移的资产中扣除。权重限制可以定义为：
@@ -105,9 +105,9 @@ X-Tokens Pallet提供以下extrinsics（函数）：
     
         - `currencies` - 将通过XCM转移的货币ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例，货币可以被定义为：
             - `SelfReserve` - 使用原生资产
-            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}的合约地址
+            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}的合约地址
         - `feeItem` — 一个索引，定义正在发送资产数组的资产位置，用于支付目标链中XCM的执行费用。例如，如果仅发送一项资产，则`feeItem`将为`0`
         - `dest` - 通过XCM发送的Token目标地址的multilocation。它支持不同的地址格式，例如20或32字节地址（以太坊或Substrate格式）
         - `destWeightLimit` - 为支付目标链上XCM执行而购买的权重，将从转移的资产中扣除。权重限制可以定义为：
@@ -128,9 +128,9 @@ X-Tokens Pallet提供以下extrinsics（函数）：
     
         - `currencyId` - 将通过XCM转移的货币ID。不同runtime有不同的方法定义ID。以基于Moonbeam的网络为例，货币可以被定义为：
             - `SelfReserve` - 使用原生资产
-            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=_blank}。这需要您指定XC-20的资产ID
-             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=_blank}
-            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=_blank}的合约地址
+            - `ForeignAsset` - 使用[外部XC-20](/builders/interoperability/xcm/xc20/overview#external-xc20s){target=\_blank}。这需要您指定XC-20的资产ID
+             - `LocalAssetReserve` - *已弃用* - 通过`Erc20`货币类型使用[本地XC-20](/builders/interoperability/xcm/xc20/overview/#local-xc20s){target=\_blank}
+            - `Erc20`以及[本地XC-20](/builders/interoperability/xcm/xc20/overview#local-xc20s){target=\_blank}的合约地址
         - `amount` - 需要通过XCM发送的Token数量
         - `fee` — 支付目标链中XCM执行所需的金额。如果这个值低于执行成本，资产将被锁在目标链中
         - `dest` - 通过XCM发送的Token目标地址的multilocation。它支持不同的地址格式，例如20或32字节地址（以太坊或Substrate格式）
@@ -216,7 +216,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 !!! 注意事项
     每条平行链皆能够通过pallet允许/禁止特定函数。因此，开发者需要确认使用的函数是被平行链允许的。相反来说，如果使用了被禁止的函数，交易将会如同`system.CallFiltered`显示一般失败。
 
-本教程将以转移xcUNIT Token为例。xcUNIT是Alphanet中继链Token的[XC-20](/builders/interoperability/xcm/xc20/overview){target=_blank}形式。本教程也同样适用于其他XC-20 Token。
+本教程将以转移xcUNIT Token为例。xcUNIT是Alphanet中继链Token的[XC-20](/builders/interoperability/xcm/xc20/overview){target=\_blank}形式。本教程也同样适用于其他XC-20 Token。
 
 ### 查看先决条件 {: #xtokens-check-prerequisites}
 
@@ -224,14 +224,14 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 - 一个拥有资金的账户
  --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 一些xcUNIT Token。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=_blank}上将DEV Token（Moonbase Alpha的原生Token）兑换成xcUNIT。Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议
+- 一些xcUNIT Token。您可以在[Moonbeam-Swap](https://moonbeam-swap.netlify.app/#/swap){target=\_blank}上将DEV Token（Moonbase Alpha的原生Token）兑换成xcUNIT。Moonbeam-Swap是Moonbase Alpha上的Uniswap-V2版本的示范协议
 
     !!! 注意事项
-        本教程也同样适用于其他的[外部XC-20或本地XC-20](/builders/interoperability/xcm/xc20/overview){target=_blank}。对于外部XC-20，您将需要资产ID和拥有资产的小数位数。对于本地XC-20，您将需要合约地址
+        本教程也同样适用于其他的[外部XC-20或本地XC-20](/builders/interoperability/xcm/xc20/overview){target=\_blank}。对于外部XC-20，您将需要资产ID和拥有资产的小数位数。对于本地XC-20，您将需要合约地址
 
     ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.png)
 
-要查看您的xcUNIT余额，您可以使用以下地址将其XC-20的[预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=_blank}添加至MetaMask：
+要查看您的xcUNIT余额，您可以使用以下地址将其XC-20的[预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=\_blank}添加至MetaMask：
 
 ```text
 0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080
@@ -239,30 +239,30 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 ### 确定XCM执行所需的权重 {: #determining-weight }
 
-要确定目标链上XCM执行所需的权重，您需要知道目标链上执行了哪些XCM指令。您可以在[通过X-Token进行转账的XCM指令](/builders/interoperability/xcm/xc20/send-xc20s/overview/#xcm-instructions-for-asset-transfers){target=_blank}教程中找到关于XCM指令的介绍。
+要确定目标链上XCM执行所需的权重，您需要知道目标链上执行了哪些XCM指令。您可以在[通过X-Token进行转账的XCM指令](/builders/interoperability/xcm/xc20/send-xc20s/overview/#xcm-instructions-for-asset-transfers){target=\_blank}教程中找到关于XCM指令的介绍。
 
 在本示例中，您要将xcUNIT从Moonbase Alpha转移到Alphanet中继链，在Alphanet上执行的指令为：
 
 |                             指令                             |                             权重                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=_blank} | {{ networks.alphanet.xcm_instructions.withdraw.total_weight }} |
-| [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=_blank} | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }} |
-| [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=_blank} | {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }} |
-| [`DepositAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=_blank} | {{ networks.alphanet.xcm_instructions.deposit_asset.total_weight }} |
+| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=\_blank} | {{ networks.alphanet.xcm_instructions.withdraw.total_weight }} |
+| [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }} |
+| [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=\_blank} | {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }} |
+| [`DepositAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.deposit_asset.total_weight }} |
 |                           **总计**                           | **{{ networks.alphanet.xcm_message.transfer.weight.display }}** |
 
 !!! 注意事项
     一些权重包括数据库读写。举例来说，`WithdrawAsset`和`DepositAsset`指令同时包含一次数据库读取和一次写入。要获得总权重，您需要将任何所需的数据库读写的权重添加到给定指令的基础权重中。
 
-    对于基于Westend的中继链，例如Alphanet，您可以在GitHub的[polkadot-sdk](https://github.com/paritytech/polkadot-sdk){target=_blank}库中获取[Rocks DB](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/constants/src/weights/rocksdb_weights.rs#L27-L31){target=_blank}（默认数据库）数据库读写操作的权重成本。
+    对于基于Westend的中继链，例如Alphanet，您可以在GitHub的[polkadot-sdk](https://github.com/paritytech/polkadot-sdk){target=\_blank}库中获取[Rocks DB](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/constants/src/weights/rocksdb_weights.rs#L27-L31){target=\_blank}（默认数据库）数据库读写操作的权重成本。
 
-由于Alphanet是基于Westend的中继链，因此您可以参考[Westend runtime代码](https://github.com/paritytech/polkadot-sdk/tree/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend){target=_blank}中定义的指令权重，这些指令权重分为两种类型的指令：[同质化指令](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs){target=_blank}和[通用指令](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs){target=_blank}。
+由于Alphanet是基于Westend的中继链，因此您可以参考[Westend runtime代码](https://github.com/paritytech/polkadot-sdk/tree/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend){target=\_blank}中定义的指令权重，这些指令权重分为两种类型的指令：[同质化指令](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs){target=\_blank}和[通用指令](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs){target=\_blank}。
 
-请注意每条链条都定义了权重要求。要确定给定链上每条XCM指令所需的权重，请参考每条链的文档网站或联系团队成员。要了解如何查找Moonbeam、Polkadot或Kusama所需的权重，您可以参考我们的文档网站关于[权重和费用](/builders/interoperability/xcm/core-concepts/weights-fees){target=_blank}部分。
+请注意每条链条都定义了权重要求。要确定给定链上每条XCM指令所需的权重，请参考每条链的文档网站或联系团队成员。要了解如何查找Moonbeam、Polkadot或Kusama所需的权重，您可以参考我们的文档网站关于[权重和费用](/builders/interoperability/xcm/core-concepts/weights-fees){target=\_blank}部分。
 
 ### X-Tokens转移函数 {: #xtokens-transfer-function}
 
-在本示例中，您将会构建一个XCM消息，通过X-Tokens Pallet的`transfer`函数将xcUNIT从Moonbase Alpha转移回Alphanet中继链上。为此，您需要使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=_blank}。
+在本示例中，您将会构建一个XCM消息，通过X-Tokens Pallet的`transfer`函数将xcUNIT从Moonbase Alpha转移回Alphanet中继链上。为此，您需要使用[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api){target=\_blank}。
 
 由于您将使用`transfer`函数进行交互，您可以执行以下步骤来获取`currencyId`、`amount`、`dest`和`destWeightLimit`的参数：
 
@@ -332,7 +332,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
      - 用于创建提供商的Moonbase Alpha端点URL 
 - `transfer`函数的每个参数值
   2. 创建Keyring实例，这将用于发送交易
-  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}提供商
+  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
   4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transfer` extrinsic
   5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
 
@@ -344,7 +344,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送到中继链上Alice的账户：`0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300){target=\_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送到中继链上Alice的账户：`0x1e00018080778c30c20fa2ebc0ed18d2cbca1f0010a5d4e800000000000000000000000301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300`。
 
 交易被处理后，中继链上的目标账户应该收到转账金额减去在目标链上执行XCM时扣除的一小笔费用。
 
@@ -443,7 +443,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
      - 用于创建提供商的Moonbase Alpha端点URL 
 - `transferMultiasset`函数的每个参数值
   2. 创建Keyring实例，这将用于发送交易
-  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=_blank}提供商
+  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
   4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transferMultiasset` extrinsic
   5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
 
@@ -455,7 +455,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 ```
 
 !!! 注意事项
-    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1e010300010000070010a5d4e80301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300){target=_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送到中继链上Alice的账户：`0x1e010300010000070010a5d4e80301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300`。
+    您可以使用以下编码的调用数据在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/extrinsics/decode/0x1e010300010000070010a5d4e80301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300){target=\_blank}上查看上述脚本的示例，该脚本将1个xcUNIT发送到中继链上Alice的账户：`0x1e010300010000070010a5d4e80301010100c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300`。
 
 交易被处理后，中继链上的目标账户应该收到转账金额减去在目标链上执行XCM时扣除的一小笔费用。
 
