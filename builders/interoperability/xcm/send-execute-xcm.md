@@ -40,8 +40,8 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
     === "Parameters"
 
-        - `dest` - the XCM versioned multilocation representing a chain in the ecosystem where the XCM message is being sent to (the target chain)
-        - `message` - the SCALE-encoded versioned XCM message to be executed
+        - `dest` - 表示XCM消息目标链在生态系统中的multilocation（XCM 版本）
+        - `message` - SCALE编码的待执行XCM消息
 
     === "Polkadot.js API Example"
         
