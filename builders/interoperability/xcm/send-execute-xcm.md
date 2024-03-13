@@ -57,7 +57,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
     === "Parameters"
 
-        `hash` - (optional) the Blake2-256 hash of the [`MultiAsset`](https://github.com/paritytech/xcm-format#6-universal-asset-identifiers){target=\_blank}
+        `hash` - (可选)[`MultiAsset`](https://github.com/paritytech/xcm-format#6-universal-asset-identifiers){target=\_blank}  Blake2-256  哈希
 
     === "Returns"
 
