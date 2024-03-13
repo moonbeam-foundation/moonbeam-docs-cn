@@ -21,7 +21,7 @@ Moonbeam和以太坊的交易费计算模型有一些主要差异，开发者在
 
   - 与EVM不同，除gas之外Moonbeam交易还包含一些其他指标，其中很重要的一个就是proof size。Proof size是中继链验证节点验证Moonbeam state变换时所需的存储空间。当一个交易的proof size超过限制（区块proof size的25%）时，该交易将抛出“Out of Gas”错误（即便 gasometer 中还有剩余gas）。此附加指标还会影响交易的退款（refund）。Moonbeam的退款是根据交易执行后使用最多的资源计算得出，如果一个交易消耗的proof size大于残留的gas，则退款数额将基于proof size计算。
 
-  - Moonbeam实现了[MBIP-5](https://github.com/moonbeam-foundation/moonbeam/blob/master/MBIPS/MBIP-5.md){target=\_blank}中定义的一个新机制，该机制限制了区块能使用的存储上限，并且如果一个交易会造成存储数据增加，那它将需要支付更多gas。此功能目前仅在Moonriver与Moonbase Alpha上启用。
+  - Moonbeam实现了[MBIP-5](https://github.com/moonbeam-foundation/moonbeam/blob/master/MBIPS/MBIP-5.md){target=\_blank}中定义的一个新机制，该机制限制了区块能使用的存储上限，并且如果一个交易会造成存储数据增加，那它将需要支付更多gas
 
 ## MBIP-5概述 {: #overview-of-mbip-5 }
 
@@ -30,6 +30,12 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 这个提案将影响以下三类交易：合约部署（导致链上state增加）；创建新存储条目的交易；以及创建新帐户的预编译合约调用。
 
 区块存储上限限制了单个区块中所有交易造成储存量增长的总和，对应不同网络这个值为：
+
+=== "Moonbeam"
+
+    ```text
+    {{ networks.moonbeam.mbip_5.block_storage_limit }}KB
+    ```
 
 === "Moonriver"
 
@@ -51,6 +57,12 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 
 不同网络对应的区块gas上限为：
 
+=== "Moonbeam"
+
+    ```text
+    {{ networks.moonbeam.gas_block }}
+    ```
+
 === "Moonriver"
 
     ```text
@@ -64,6 +76,13 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
     ```
 
 已知区块的gas与储存上限，我们可以利用以下公式来计算gas与储存的比率：
+
+=== "Moonbeam"
+
+    ```text
+    比率 = {{ networks.moonbeam.gas_block_numbers_only }} / ({{ networks.moonbeam.mbip_5.block_storage_limit }} * 1024)
+    比率 = {{ networks.moonbeam.mbip_5.gas_storage_ratio }} 
+    ```
 
 === "Moonriver"
 
@@ -81,6 +100,13 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 
 然后，您可以用交易的实际存储增长（以byte为单位）乘以gas与存储的比率，来计算该交易实际需要额外支付的gas单位。例如，如果执行交易使存储增加了 {{ networks.moonbase.mbip_5.example_storage }} byte，则可以使用以下公式来计算额外gas
 
+=== "Moonbeam"
+
+    ```text
+    额外Gas = {{ networks.moonbeam.mbip_5.example_storage }} * {{ networks.moonbeam.mbip_5.gas_storage_ratio }}
+    额外Gas = {{ networks.moonbeam.mbip_5.example_addtl_gas }}
+    ```
+
 === "Moonriver"
 
     ```text
@@ -96,7 +122,6 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
     ```
 
 我们可以通过在以太坊与Moonbeam分别部署两个不同的合约并且对比他们的gas预算来感受这个MBIP造成的主要影响，部署的两个合约一个修改链上的储存状态，另一个不修改。例如下面这个合约会在链上存储一个名字，然后使用这个名字来发送一个消息。
-
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -228,7 +253,6 @@ contract SayHello {
     |:----------:|:------------:|
     |  `setName` |     21520    |
     | `sayHello` |     21064    |
-
 
 您会看到在Sepolia上，这两个调用的gas估计值非常相似，而在Moonbase Alpha上，这两个调用之间存在明显的差异，并且修改存储的`setName`调用比`sayHello`调用使用更多的 gas。
 
@@ -503,4 +527,5 @@ pallet: "transactionPayment", method: "TransactionFeePaid"
 ```text
 extrinsics[extrinsic_number].events[event_number].data[1]
 ```
+
 --8<-- 'text/_disclaimers/third-party-content.md'
