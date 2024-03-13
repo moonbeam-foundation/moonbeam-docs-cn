@@ -53,7 +53,7 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
 Polkadot XCM Pallet包含以下相关只读存储函数：
 
-???+ function "**assetsTrapped**(hash) — returns the existing number of times an asset has been trapped given a hash of the asset"
+???+ function "**assetsTrapped**(hash) — 根据给定资产的哈希值返回当前被圈套次数
 
     === "Parameters"
 
