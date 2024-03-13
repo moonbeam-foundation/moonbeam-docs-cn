@@ -26,17 +26,17 @@ GMP协议通常以锁定/铸造或销毁/铸造方式移动资产。这种流动
 
 要开始与您的平行链进行MRL集成，您首先需要：
 
-- [通过HRMP通道建立与Moonbeam的跨链集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=\_blank}以便资产可以从Moonbeam发送到您的平行链。
-- [在您的平行链上注册Moonbeam的资产](/builders/interoperability/xcm/xc-registration/assets#register-moonbeam-native-assets){target=\_blank}。由于负责跨链资产传送的XCM message pallet的功能限制，我们只能使用Moonbeam的原生gas资产来支付信息回传的跨链费用。
+- [通过HRMP通道建立与Moonbeam的跨链集成](/builders/interoperability/xcm/xc-registration/xc-integration){target=\_blank}以便资产可以从Moonbeam发送到您的平行链
+- [在您的平行链上注册Moonbeam的资产](/builders/interoperability/xcm/xc-registration/assets#register-moonbeam-native-assets){target=\_blank}。由于负责跨链资产传送的XCM message pallet的功能限制，我们只能使用Moonbeam的原生gas资产来支付信息回传的跨链费用
 - [注册您要路由到您平行链的本地XC-20代币](/builders/interoperability/xcm/xc-registration/assets#register-local-xc20){target=\_blank}
     - 允许这些本地XC-20代币用于支付XCM费用
-- 允许用户发送`Transact`指令(通过`polkadotXcm.Send`或者[XCM Transactor Pallet](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/#xcm-transactor-pallet-interface){target=\_blank})，这将启用远程EVM调用，允许远程平行链上的账户与 Moonbeam上的Bridge智能合约交互。
+- 允许用户发送`Transact`指令(通过`polkadotXcm.Send`或者[XCM Transactor Pallet](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/#xcm-transactor-pallet-interface){target=\_blank})，这将启用远程EVM调用，允许远程平行链上的账户与 Moonbeam上的Bridge智能合约交互
 
 ## Wormhole MRL {: #mrl-through-wormhole }
 
 Wormhole是第一个为公众搭建的GMP平台，虽然MRL计划支持多种不同GMP提供商，但现在仍以Wormhole为主。在完成所有[先决条件](#prerequisites)之后，您还需要完成以下步骤来通过Wormhole接收流动性：
 
-- 通知Moonbeam团队您希望加入MRL计划，以便我们为您提供技术实施方面的帮助。
+- 通知Moonbeam团队您希望加入MRL计划，以便我们为您提供技术实施方面的帮助
 - 与Wormhole团队和其他依赖MRL的前端联系以敲定技术细节并同步公告。他们可能会需要以下信息：
     - 平行链ID
     - 平行链使用的账户类型（例如，AccountId32 或 AccountKey20）
@@ -66,18 +66,18 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 
 批处理能提供一个一键式解决方案。然而目前而言，这个操作需要用户在平行链上拥有xcGLMR（GLMR的外部代币）。这主要是因为两个原因：
 
-- 本地XC-20（启用XCM的ERC-20）不能用于支付Moonbeam上的XCM执行费用。这是一个设计决策，因为XC-20代币的设计需要贴近传统的ERC-20代币，使用ERC-20接口中的transfer函数来转移资产。处理XC-20的XCM指令仅限于将资金从一个账户转移到另一个账户，而XCM流程中需要资产寄存机制，这两者并不兼容。
-- 目前，XCM相关pallet的限制让我们无法使用XCM来转移具有不同储备链的代币。这也导致了在发送XC-20时无法将费用代币设置为本地平行链代币。
+- 本地XC-20（启用XCM的ERC-20）不能用于支付Moonbeam上的XCM执行费用。这是一个设计决策，因为XC-20代币的设计需要贴近传统的ERC-20代币，使用ERC-20接口中的transfer函数来转移资产。处理XC-20的XCM指令仅限于将资金从一个账户转移到另一个账户，而XCM流程中需要资产寄存机制，这两者并不兼容
+- 目前，XCM相关pallet的限制让我们无法使用XCM来转移具有不同储备链的代币。这也导致了在发送XC-20时无法将费用代币设置为本地平行链代币
 
 将来，[X-Tokens Pallet](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}将得到更新，允许使用本地gas货币为XCM付费。使用不同pallet的平行链需要自己实现在一个消息中转移储备与非储备资产的解决方案。
 
 举个例子，下面是将MRL代币通过Wormhole从平行链发送回原链过程的简要概述：
 
 1. 使用[Utility Pallet](/builders/pallets-precompiles/pallets/utility){target=\_blank}的`batchAll`extrinsic发送一个批处理交易，其中包含以下两个调用：
-    - **`xTokens.transferMultiassets`** - 将xcGLMR和本地XC-20发送到用户的[Computed Origin账户](#calculate-computed-origin-account){target=\_blank}。Computed Origin账户是Moonbeam上的一个无密钥账户，另一个平行链上的账户可以通过XCM来控制该账户。
+    - **`xTokens.transferMultiassets`** - 将xcGLMR和本地XC-20发送到用户的[Computed Origin账户](#calculate-computed-origin-account){target=\_blank}。Computed Origin账户是Moonbeam上的一个无密钥账户，另一个平行链上的账户可以通过XCM来控制该账户
     - **`polkadotXcm.send`** - 带有`Transact`指令。通过XCM向Moonbeam上的Batch预编译合同发送[远程EVM调用](/builders/interoperability/xcm/remote-execution/remote-evm-calls/){target=\_blank}，该Batch预编译使用 `ethereumXcm.transact`将以下两个调用批处理到一个远程EVM交易中：
         - **`approve`**（本地 XC-20 合约）- 授权Wormhole中继器转移本地 XC-20
-        - **`transferTokensWithRelay`**（中继器合约）- 调用Moonbeam上Wormhole TokenBridge智能合约上的`transferTokensWithPayload`函数来跨链转移代币，该函数广播消息供Wormhole Guardian节点拾取。
+        - **`transferTokensWithRelay`**（中继器合约）- 调用Moonbeam上Wormhole TokenBridge智能合约上的`transferTokensWithPayload`函数来跨链转移代币，该函数广播消息供Wormhole Guardian节点拾取
 2. Guardian节点网络将拾取Wormhole交易并对其签名
 3. Wormhole中继器将代币中继到原链和目标账户
 
@@ -113,11 +113,11 @@ npm i @polkadot/api ethers
 
 在Moonbeam上使用，您需要修改以下参数:
 
-|              参数               |   值  |
-|:------------------------------:|:-----:|
-|          Parachain ID          | 2004  |
-|     Balances Pallet Index      |  10   |
-| ERC-20 XCM Bridge Pallet Index |  110  |
+|              参数              |  值  |
+|:------------------------------:|:----:|
+|          Parachain ID          | 2004 |
+|     Balances Pallet Index      |  10  |
+| ERC-20 XCM Bridge Pallet Index | 110  |
 
 #### 构建远程EVM调用 {: #build-the-remote-evm-call }
 
@@ -197,20 +197,20 @@ npm i @polkadot/api ethers
 
 === "Moonbeam"
 
-    |     代币名称   |                      地址                     |
-    |:----------:|:------------------------------------------:|
-    |   WMATIC   | 0x82DbDa803bb52434B1f4F41A6F0Acb1242A7dFa3 |
-    |   WGLMR    | 0xAcc15dC74880C9944775448304B263D191c6077F |
-    |    WFTM    | 0x609AedD990bf45926bca9E4eE988b4Fb98587D3A |
-    |    WETH    | 0xab3f0245B83feB11d15AAffeFD7AD465a59817eD |
-    |    WBTC    | 0xE57eBd2d67B462E9926e04a8e33f01cD0D64346D |
-    |   wTBTC    | 0xeCd65E4B89495Ae63b4f11cA872a23680A7c419c |
-    |    WBNB    | 0xE3b841C3f96e647E6dc01b468d6D0AD3562a9eeb |
-    |   WAVAX    | 0xd4937A95BeC789CC1AE1640714C61c160279B22F |
-    |    USDT    | 0xc30E9cA94CF52f3Bf5692aaCF81353a27052c46f |
-    |    USDC    | 0x931715FEE2d06333043d11F658C8CE934aC61D0c |
-    |    SUI     | 0x484eCCE6775143D3335Ed2C7bCB22151C53B9F49 |
-    |    CELO    | 0xc1a792041985F65c17Eb65E66E254DC879CF380b |
+    | 代币名称 |                    地址                    |
+    |:--------:|:------------------------------------------:|
+    |  WMATIC  | 0x82DbDa803bb52434B1f4F41A6F0Acb1242A7dFa3 |
+    |  WGLMR   | 0xAcc15dC74880C9944775448304B263D191c6077F |
+    |   WFTM   | 0x609AedD990bf45926bca9E4eE988b4Fb98587D3A |
+    |   WETH   | 0xab3f0245B83feB11d15AAffeFD7AD465a59817eD |
+    |   WBTC   | 0xE57eBd2d67B462E9926e04a8e33f01cD0D64346D |
+    |  wTBTC   | 0xeCd65E4B89495Ae63b4f11cA872a23680A7c419c |
+    |   WBNB   | 0xE3b841C3f96e647E6dc01b468d6D0AD3562a9eeb |
+    |  WAVAX   | 0xd4937A95BeC789CC1AE1640714C61c160279B22F |
+    |   USDT   | 0xc30E9cA94CF52f3Bf5692aaCF81353a27052c46f |
+    |   USDC   | 0x931715FEE2d06333043d11F658C8CE934aC61D0c |
+    |   SUI    | 0x484eCCE6775143D3335Ed2C7bCB22151C53B9F49 |
+    |   CELO   | 0xc1a792041985F65c17Eb65E66E254DC879CF380b |
 
 使用前请花时间用[Wormhole资产验证器](https://www.portalbridge.com/#/token-origin-verifier){target=\_blank}验证这些代币在Moonbeam上仍然是有效的Wormhole资产。
 

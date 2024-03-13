@@ -7,7 +7,7 @@ description: 了解Computed Origin账户，如何用它通过简单交易执行�
 
 ## 概览 {: #introduction }
 
-Computed Origin，之前被称为Multilocation衍生账户，是通过XCM执行远程调用时被计算的账户。
+Computed Origin，之前被称为multilocation衍生账户，是通过XCM执行远程调用时被计算的账户。
 
 计算的来源是无密钥的（私钥未知）。因此，Computed Origin只能通过原始账户的XCM外部访问。换句话说，源账户是唯一可以在您的Computed Origin账户上发起交易的账户，如果您失去对源账户的访问权限，您也将失去对Computed Origin账户的访问权限。
 
@@ -19,7 +19,7 @@ Computed Origin是根据用于在目标链中执行XCM的源计算的。默认�
 
 当一个远程调用中的`Transact`指令被执行时，[源转换](https://github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/xcm-executor/src/lib.rs#L553){target=\_blank}就会启用。目标链上转换后的新源支付目标链上的XCM执行费用。
 
-例如，在中继链中， [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank}指令由[XCM Pallet](https: //github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/pallet-xcm/src/lib.rs){target=\_blank}原生注入。以Moonbase Alpha的中继链（基于Westend）为例，它具有以下格式（Multilocation连接）：
+例如，在中继链中， [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank}指令由[XCM Pallet](https: //github.com/paritytech/polkadot-sdk/blob/{{ polkadot_sdk }}/polkadot/xcm/pallet-xcm/src/lib.rs){target=\_blank}原生注入。以Moonbase Alpha的中继链（基于Westend）为例，它具有以下格式（multilocation连接）：
 
 ```js
 {
@@ -41,7 +41,7 @@ import { decodeAddress } from '@polkadot/util-crypto';
 const decodedAddress = decodeAddress('INSERT_ADDRESS');
 ```
 
-当XCM指令在Moonbeam（本例中为Moonbase Alpha）中执行时，来源将转换为以下Multilocation：
+当XCM指令在Moonbeam（本例中为Moonbase Alpha）中执行时，来源将转换为以下multilocation：
 
 ```js
 {
@@ -73,9 +73,7 @@ const decodedAddress = decodeAddress('INSERT_ADDRESS');
 要使用脚本，您可以跟随以下步骤：
 
 1. 复制[xcm-tools](https://github.com/Moonsong-Labs/xcm-tools){target_blank}库
-
 2. 运行`yarn`以安装必要包
-
 3. 运行脚本
 
     ```bash

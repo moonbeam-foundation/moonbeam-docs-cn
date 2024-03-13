@@ -12,14 +12,10 @@ XCM消息包含一系列的[操作和指令](https://github.com/paritytech/xcm-f
 举例来说，一个将DOT从波卡转移到Moonbeam的XCM消息会包含以下XCM指令（按顺序排序），其中一些指令在波卡执行，一些指令在Moonbeam执行：
 
  1. [TransferReserveAsset](#transfer-reserve-asset) — 该指令在波卡执行
-
  2. [ReserveAssetDeposited](#reserve-asset-deposited) — 该指令在Moonbeam执行
-
  3. [ClearOrigin](#clear-origin) — 该指令在Moonbeam执行
-
  4. [BuyExecution](#buy-execution) — 该指令在Moonbeam执行
-
-  5. [DepositAsset](#deposit-asset) — 该指令在Moonbeam执行
+ 5. [DepositAsset](#deposit-asset) — 该指令在Moonbeam执行
 
 从头开始构建XCM消息的指令并非是件容易的事情。因此开发者可以利用包装函数和pallet来使用XCM功能。[X-Tokens](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}和[XCM Transactor](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/){target=\_blank} Pallet提供具有预定义XCM指令集的函数，用于发送[XC-20](/builders/interoperability/xcm/xc20/overview/){target=\_blank}或通过XCM在其他链上远程执行。
 

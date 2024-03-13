@@ -32,8 +32,6 @@ Moonbeam的EVM仅能通过[Ethereum Pallet](https://github.com/paritytech/fronti
 
 一个常规的EVM调用有一个明显的发送者使用其私钥签署以太坊交易。该签名，也就是ECDSA类型的签名，可以通过签名消息和签名算法生成的`r-s`值进行验证。而以太坊签名使用一个额外的变量，称为`v`，为恢复标识符。
 
-With remote EVM calls, the signer signs an XCM transaction in another chain. Moonbeam receives that XCM message, which follows the conventional remote execution via XCM form:
-
 通过远程EVM调用，签名者在另一条链中签署XCM交易。Moonbeam接收到后，必须使用以下指令构建的XCM消息如下：
 
 - [`DescendOrigin`](/builders/interoperability/xcm/core-concepts/instructions#descend-origin){target=\_blank} (optional)

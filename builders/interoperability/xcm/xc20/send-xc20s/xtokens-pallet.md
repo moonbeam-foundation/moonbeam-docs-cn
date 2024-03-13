@@ -1,4 +1,3 @@
-
 ---
 title: 发送XC-20资产至其他链
 description: 本教程介绍了X-Tokens Pallet，并解释了如何使用Pallet的一些extrinsic将XC-20资产发送到另一个链。
@@ -243,13 +242,13 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 
 在本示例中，您要将xcUNIT从Moonbase Alpha转移到Alphanet中继链，在Alphanet上执行的指令为：
 
-|                             指令                             |                             权重                             |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=\_blank} | {{ networks.alphanet.xcm_instructions.withdraw.total_weight }} |
-| [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }} |
-| [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=\_blank} | {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }} |
+|                                                                                                         指令                                                                                                         |                                权重                                 |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------:|
+| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=\_blank}  |   {{ networks.alphanet.xcm_instructions.withdraw.total_weight }}    |
+|  [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=\_blank}  | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }}  |
+|  [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=\_blank}   |   {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }}    |
 | [`DepositAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.deposit_asset.total_weight }} |
-|                           **总计**                           | **{{ networks.alphanet.xcm_message.transfer.weight.display }}** |
+|                                                                                                       **总计**                                                                                                       |   **{{ networks.alphanet.xcm_message.transfer.weight.display }}**   |
 
 !!! 注意事项
     一些权重包括数据库读写。举例来说，`WithdrawAsset`和`DepositAsset`指令同时包含一次数据库读取和一次写入。要获得总权重，您需要将任何所需的数据库读写的权重添加到给定指令的基础权重中。
@@ -271,15 +270,15 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     === "外部XC-20"
 
         ```js
-    const currencyId = { 
-          ForeignAsset: { 
-        ForeignAsset: 42259045809535163221576417993425387648n 
-          } 
+        const currencyId = {
+          ForeignAsset: {
+            ForeignAsset: 42259045809535163221576417993425387648n
+          }
         };
         ```
-    
+
     === "本地XC-20"
-    
+
         ```js
     const currencyId = { Erc20: { contractAddress: 'INSERT_ERC_20_ADDRESS' } };
         ```
@@ -289,7 +288,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     ```js
     const amount = 1000000000000n;
     ```
-    
+
 3. 定义目标multilocation，这将定位来自Moonbase Alpha的中继链上的账户。请注意，中继链可以接收的唯一资产是它自己的：
 
     ```js
@@ -300,10 +299,10 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
       } 
     };
     ```
-    
+
     !!! 注意事项
         对于`AccountId32`、`AccountIndex64`或`AccountKey20`，您可以选择指定`network`参数。如果不指定，则默认为`None`。
-    
+
 4. 设置`destWeightLimit`。由于执行XCM消息所需的权重取决于链的不同而有所不同，因此您可以将权重限制设置为`Unlimited`，或者如果您对所需的权重有个预估值，则可以使用`Limited`，但请注意，如果设置低于要求，执行可能会失败
 
     === "Unlimited"
@@ -311,7 +310,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
         ```js
         const destWeightLimit = { Unlimited: null };
         ```
-    
+
     === "Limited"
 
         ```js
@@ -328,13 +327,12 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 现在您已经有了每个参数的值，您可以编写转移脚本了。为此，您将执行以下步骤：
 
  1. 提供调用的输入数据，这包含：
-
-     - 用于创建提供商的Moonbase Alpha端点URL 
-- `transfer`函数的每个参数值
-  2. 创建Keyring实例，这将用于发送交易
-  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
-  4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transfer` extrinsic
-  5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
+     - 用于创建提供商的Moonbase Alpha端点URL
+     - `transfer`函数的每个参数值
+ 2. 创建Keyring实例，这将用于发送交易
+ 3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
+ 4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transfer` extrinsic
+ 5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
 
 !!! 请注意
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
@@ -374,9 +372,9 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
           },
         };
         ```
-    
+
     === "本地XC-20"
-    
+
         ```js
         // Multilocation for a local XC-20 on Moonbeam
         const asset = {
@@ -400,7 +398,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
         ```
         
         有关本地XC-20传输的默认Gas限制以及如何重写默认值的信息，请参阅以下部分：[重写本地XC-20 Gas限制](#override-local-xc20-gas-limits)。
-    
+
 2. 定义`dest`的XCM目标multilocation，这将以Moonbase Alpha中继链中的一个账户为起点：
 
     ```js
@@ -411,10 +409,10 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
       },
     };
     ```
-    
+
     !!! 注意事项
         对于`AccountId32`、`AccountIndex64`或`AccountKey20`，您可以选择指定`network`参数。如果不指定，则默认为`None`。
-    
+
 3. 设置`destWeightLimit`。由于执行XCM消息所需的权重取决于链的不同而有所不同，因此您可以将权重限制设置为`Unlimited`，或者如果您对所需的权重有个预估值，则可以使用`Limited`，但请注意，如果设置低于要求，执行可能会失败
 
     === "Unlimited"
@@ -422,7 +420,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
         ```js
         const destWeightLimit = { Unlimited: null };
         ```
-    
+
     === "Limited"
 
         ```js
@@ -439,13 +437,12 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 现在您已经有了每个参数的值，您可以编写转移脚本了。为此，您将执行以下步骤：
 
  1. 提供调用的输入数据，这包含：
-
-     - 用于创建提供商的Moonbase Alpha端点URL 
-- `transferMultiasset`函数的每个参数值
-  2. 创建Keyring实例，这将用于发送交易
-  3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
-  4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transferMultiasset` extrinsic
-  5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
+     - 用于创建提供商的Moonbase Alpha端点URL
+     - `transferMultiasset`函数的每个参数值
+ 2. 创建Keyring实例，这将用于发送交易
+ 3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
+ 4. 使用`asset`、`dest`和`destWeightLimit`创建`xTokens.transferMultiasset` extrinsic
+ 5. 使用`signAndSend` extrinsic和第二步创建的Keyring实例发送交易
 
 !!! 请注意
     本教程仅用于演示目的，请勿将您的私钥存储在JavaScript文件中。
@@ -486,11 +483,8 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
 举例来说，要将gas限制设置为`300000`，您需要将`length`设置为`32`，对于`data`，您需要传入`gas_limit: 300000`。但是，您不能简单地以文本形式传入`data`的值； 您需要将其正确格式化为32字节的十六进制字符串，其中Gas限制的值采用小端格式。要正确格式化`data`，您可以执行以下步骤：
 
 1. 将`gas_limit:``gas_limit:`转换为字节表示形式
-
 2. 将Gas限制的值转换为小端格式的表示形式
-
 3. 将两个字节表示形式连接成一个填充为32字节的值
-
 4. 将字节转换为十六进制字符串
 
 使用`@polkadot/util`库，步骤具体如下所示：

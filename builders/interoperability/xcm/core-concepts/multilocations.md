@@ -1,6 +1,6 @@
 ---
 title: XCM Multilocations
-description: 学习任何关于Multilocation的内容，包含他们在XCM中扮演的角色，以及如何设计一个Multilocation来定位生态中一个特定的点。
+description: 学习任何关于multilocation的内容，包含他们在XCM中扮演的角色，以及如何设计一个multilocation来定位生态中一个特定的点。
 ---
 
 # Multilocations
@@ -15,7 +15,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ## 定义一个Multilocation {: #defining-a-multilocation }
 
-一个Multilocation包含两个参数：
+一个multilocation包含两个参数：
 
 - `parents` - 指的是您需要从给定源向上进行多少次“hops”进入父区块链。从中继链生态系统中平行链的角度来看，只能有一个父级，因此`parents`的值只能是`0`来代表平行链，或者`1`来代表中继链。在定义考虑以太坊等其他共识系统的通用位置时，`parents`可以具有更高的数值
 - `interior` - 指的是需要定义目标点的字段数量。从中继链中，您可以向下追溯以定位特定的平行链，账户，资产或该平行链上的pallet。由于这种向下移动可能更加复杂，因此[Junctions](#junctions)用于表示到达目标位置所需的步骤，并由`XN`定义，其中`N`是所需的Junctions数量。如果不需要Junction来定义目标点，则其值将为`Here`而不是`X1`
@@ -96,7 +96,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从其他平行链定位Moonbeam {: #target-moonbeam-from-parachain }
 
-要从其他平行链定位基于Moonbeam的链，您将需要使用以下Multilocation：
+要从其他平行链定位基于Moonbeam的链，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -133,7 +133,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从其他平行链定位Moonbeam账户 {: #target-account-moonbeam-from-parachain }
 
-要从其他平行链定位基于Moonbeam链的账户，您将需要使用以下Multilocation：
+要从其他平行链定位基于Moonbeam链的账户，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -179,7 +179,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从其他平行链定位Moonbeam原生资产 {: #target-moonbeam-native-asset-from-parachain }
 
-要从其他平行链定位基于Moonbeam链的原生资产，您将需要使用以下Multilocation：
+要从其他平行链定位基于Moonbeam链的原生资产，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -225,7 +225,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从中继链定位Moonbeam {: #target-moonbeam-from-relay }
 
-要从中继链定位基于Moonbeam的链，您将需要使用以下Multilocation：
+要从中继链定位基于Moonbeam的链，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -262,7 +262,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从Moonbeam定位中继链 {: #target-relay-from-moonbeam }
 
-要基于Moonbeam的链定位中继链，您将需要使用以下Multilocation：
+要基于Moonbeam的链定位中继链，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -293,7 +293,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从Moonbeam定位中继链账户 {: #target-account-relay-from-moonbeam }
 
-要从基于Moonbeam的链定位中继链特定账户，您将需要使用以下Multilocation：
+要从基于Moonbeam的链定位中继链特定账户，您将需要使用以下multilocation：
 
 === "Moonbeam"
 
@@ -324,7 +324,7 @@ Multilocation遵循分层结构，其中某些位置封装在其他位置内。�
 
 ### 从Moonbeam定位其他平行链 {: #target-parachain-from-moonbeam }
 
-要从基于Moonbeam的链定位其他平行链（举例来说，一个ID为1234的平行链），您将需要使用以下Multilocation：
+要从基于Moonbeam的链定位其他平行链（举例来说，一个ID为1234的平行链），您将需要使用以下multilocation：
 
 === "Moonbeam"
 

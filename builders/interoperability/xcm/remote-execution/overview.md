@@ -13,7 +13,7 @@ description: 了解通过XCM消息进行远程执行的基础知识。远程执�
 
 本页面介绍了XCM远程执行的基础知识。如果您想了解如何通过XCM进行远程执行，请参阅[通过Substrate API远程执行](/builders/interoperability/xcm/remote-execution/substrate-calls/xcm-transactor-pallet/){target=\_blank}或[通过以太坊API远程执行](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}教程。
 
-## 执行来源 {: #execution-origin } 
+## 执行来源 {: #execution-origin }
 
 一般来说，所有的交易都有一个来源，也就是调用的来源。以太坊交易只有一种来源类型，即`msg.sender`，它是发起交易的账户。
 
@@ -25,7 +25,7 @@ description: 了解通过XCM消息进行远程执行的基础知识。远程执�
 
 根据目标链的配置，包括`DescendOrigin` XCM指令可以转换执行XCM消息的来源。此属性对于远程XCM执行非常重要，因为当前执行的操作使用的是新转换的来源，而不是源链的主权账户。
 
-## 远程执行的XCM指令 {: xcm-instructions-remote-execution } 
+## 远程执行的XCM指令 {: xcm-instructions-remote-execution }
 
 通过XCM在Moonbeam（作为示例）上执行远程执行所需的核心XCM指令如下：
 

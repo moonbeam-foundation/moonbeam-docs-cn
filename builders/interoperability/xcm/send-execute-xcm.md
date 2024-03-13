@@ -23,14 +23,14 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
 ???+ function "**execute**(message, maxWeight) — **仅支持Moonbase Alpha** - 在链上执行一个自定义 XCM 消息"
 
-    === "Parameters"
+    === "参数"
 
         - `message` - SCALE编码的待执行XCM消息
         - `maxWeight` - 允许消耗的最大权重，由以下内容定义：
             - `refTime` - 可用于执行的计算时间
             - `proofSize` - 可用的存储空间（以字节为单位）
 
-    === "Polkadot.js API Example"
+    === "Polkadot.js API示例"
         
         ```js
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/execute.js'
@@ -38,12 +38,12 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
 ???+ function "**send**(dest, message) — **仅支持Moonbase Alpha** - 发送一个自定义 XCM 消息至目标链。目标链必须能够解读消息中的指令以成功执行该 XCM 消息"
 
-    === "Parameters"
+    === "参数"
 
         - `dest` - 表示XCM消息目标链在生态系统中的multilocation（XCM 版本）
         - `message` - SCALE编码的待执行XCM消息
 
-    === "Polkadot.js API Example"
+    === "Polkadot.js API示例"
         
         ```js
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/send.js'
@@ -55,11 +55,11 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 ???+ function "**assetsTrapped**(hash) — 根据给定资产的哈希值返回当前被圈套次数
 
-    === "Parameters"
+    === "参数"
 
-        `hash` - (可选)[`MultiAsset`](https://github.com/paritytech/xcm-format#6-universal-asset-identifiers){target=\_blank}  Blake2-256  哈希
+        `hash` - (可选)[`MultiAsset`](https://github.com/paritytech/xcm-format#6-universal-asset-identifiers){target=\_blank} Blake2-256 哈希
 
-    === "Returns"
+    === "返回"
 
         资产被圈套的次数。如果hash值为空，返回值为一个数组，其中包含了所有哈希以及其对应资产的被圈套次数。
 
@@ -78,7 +78,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
         ...
         ```
 
-    === "Polkadot.js API Example"
+    === "Polkadot.js API示例"
 
         ```js
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/assets-trapped.js'
@@ -86,11 +86,11 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 ??? function "**palletVersion**() — 从storage返回当前pallet版本"
 
-    === "Parameters"
+    === "参数"
 
         无
 
-    === "Returns"
+    === "返回"
 
         一个代表目前pallet版本的数值。
 
@@ -99,7 +99,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
         0
         ```
 
-    === "Polkadot.js API Example"
+    === "Polkadot.js API示例"
 
         ```js
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/pallet-version.js'
@@ -109,7 +109,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
 开始操作本教程之前，请先准备以下内容：
 
-- 您的账户必须拥有一些DEV Token
+- 您的账户必须拥有一些DEV Token。
   --8<-- 'text/_common/faucet/faucet-list-item.md'
 
 ## 本地执行XCM消息 {: #execute-an-xcm-message-locally }
@@ -131,7 +131,6 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight`。您可以执行以下步骤组装这些参数：
 
 1. 构建`WithdrawAsset`指令，其将要求您定义：
-
     - Moonbase Alpha上DEV token的multilocation
     - 要转移的DEV token数量
 
@@ -147,7 +146,6 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     ```
 
 2. 构建`DepositAsset`指令，其将要求您定义：
-
     - DEV token的多资产标识符。您可以使用允许通配符匹配的[`WildMultiAsset` format](https://github.com/paritytech/xcm-format/blob/master/README.md#6-universal-asset-identifiers){target=\_blank}来识别资产
     - Moonbase Alpha上接收账户的multilocation
 
@@ -175,8 +173,7 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
     const message = { V3: [instr1, instr2] };
     ```
 
-4. 指定`maxWeight`，其中包括您需要定义的`refTime`和`proofSize`值
-
+4. 指定`maxWeight`，其中包括您需要定义的`refTime`和`proofSize`值：
     - `refTime`是可用于执行的计算时间量。在本示例中，您可以设置为`400000000n`，这是因为 [`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L38){target=\_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L60){target=\_blank}的`refTime` 分别为`200000000`
     - `proofSize`是可使用的存储量（以字节为单位）。在本示例中，您可以设置为`14484n`，这是因为[`WithdrawAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L38){target=\_blank}与[`DepositAsset`](https://github.com/moonbeam-foundation/moonbeam/blob/{{networks.moonbase.spec_version}}/pallets/moonbeam-xcm-benchmarks/src/weights/fungible.rs#L60){target=\_blank}的`proofSize`分别为`7242`
 
@@ -187,10 +184,8 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您需要执行以下步骤：
 
 1. 提供调用的输入数据，这包含：
-
      - 用于创建提供商的Moonbase Alpha端点URL
      - `execute`函数的每个参数的值
-
 2. 创建一个用于发送交易的Keyring实例
 3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
 4. 使用`message`和`maxWeight`值制作`polkadotXcm.execute` extrinsic
@@ -227,10 +222,8 @@ Polkadot XCM Pallet的`execute`函数接受两个参数：`message`和`maxWeight
 要获取XCM消息的编码调用数据，您可以创建一个类似于在[使用Polkadot.js API执行XCM消息](#execute-an-xcm-message-with-polkadotjs-api)部分创建的脚本。您将构建消息来获取编码的调用数据，而不是构建消息并发送交易。为此，您需要执行以下步骤：
 
  1. 提供调用的输入数据，这包含：
-
      - 用于创建提供商的Moonbase Alpha端点URL
      - [使用Polkadot.js API执行XCM消息](#execute-an-xcm-message-with-polkadotjs-api)部分定义的`execute`函数的每个参数的值
-
  2. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
  3. 使用`message`和`maxWeight`值制作`polkadotXcm.execute` extrinsic
  4. 使用交易获取编码的调用数据
@@ -316,7 +309,6 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
     ```
 
 3. 构建`BuyExecution`指令，这将要求您定义：
-
     - 中继链上UNIT token的multilocation
     - 用于执行的UNIT token数量
     - 权重限制
@@ -334,7 +326,6 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
     ```
 
 4. 构建`DepositAsset`指令，这将要求您定义：
-
     - UNIT token的多资产标识符。您可以使用允许通配符匹配的[`WildMultiAsset` format](https://github.com/paritytech/xcm-format/blob/master/README.md#6-universal-asset-identifiers){target=\_blank}来识别资产
     - 中继链上接收账户的multilocation
 
@@ -365,10 +356,8 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
 现在，您已经有了每个参数的值，您可以为交易编写脚本了。为此，您需要执行以下步骤：
 
 1. 提供调用的输入数据，这包含：
-
      - 用于创建提供商的Moonbase Alpha端点URL
      - `send`函数的每个参数的值
-
 2. 创建用于发送交易的Keyring实例
 3. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
 4. 使用`dest`和`message`值制作`polkadotXcm.execute` extrinsic
@@ -407,10 +396,8 @@ Polkadot XCM Pallet的`send`函数接受两个参数：`dest`和`message`。您�
 要获取XCM消息的编码调用数据，您可以创建一个类似于在[使用Polkadot.js API执行XCM消息](#send-xcm-message-with-polkadotjs-api)部分创建的脚本。您将构建消息来获取编码的调用数据，而不是构建消息并发送交易。为此，您需要执行以下步骤：
 
  1. 提供调用的输入数据，这包含：
-
      - 用于创建提供商的Moonbase Alpha端点URL
      - [使用Polkadot.js API执行XCM消息](#send-xcm-message-with-polkadotjs-api)部分定义的`send`函数的每个参数的值
-
  2. 创建[Polkadot.js API](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}提供商
  3. 使用`message`和`maxWeight`值制作`polkadotXcm.execute` extrinsic
  4. 使用交易获取编码的调用数据

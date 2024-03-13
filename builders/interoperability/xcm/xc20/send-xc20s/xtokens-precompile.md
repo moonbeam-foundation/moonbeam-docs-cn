@@ -170,13 +170,13 @@ Multilocation需要以预编译可以理解的特定方式进行格式化，这�
 
 在本示例中，您要将xcUNIT从Moonbase Alpha转移到Alphanet中继链，在Alphanet上执行的指令为：
 
-|                             指令                             |                             权重                             |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=\_blank} | {{ networks.alphanet.xcm_instructions.withdraw.total_weight }} |
-| [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }} |
-| [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=\_blank} | {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }} |
+|                                                                                                         指令                                                                                                         |                                权重                                 |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------:|
+| [`WithdrawAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L54-L62){target=\_blank}  |   {{ networks.alphanet.xcm_instructions.withdraw.total_weight }}    |
+|  [`ClearOrigin`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L134-L140){target=\_blank}  | {{ networks.alphanet.xcm_instructions.clear_origin.total_weight }}  |
+|  [`BuyExecution`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_generic.rs#L75-L81){target=\_blank}   |   {{ networks.alphanet.xcm_instructions.buy_exec.total_weight }}    |
 | [`DepositAsset`](https://github.com/paritytech/polkadot-sdk/blob/polkadot-{{ networks.alphanet.spec_version }}/polkadot/runtime/westend/src/weights/xcm/pallet_xcm_benchmarks_fungible.rs#L132-L140){target=\_blank} | {{ networks.alphanet.xcm_instructions.deposit_asset.total_weight }} |
-|                          **TOTAL**                           | **{{ networks.alphanet.xcm_message.transfer.weight.display }}** |
+|                                                                                                      **TOTAL**                                                                                                       |   **{{ networks.alphanet.xcm_message.transfer.weight.display }}**   |
 
 !!! 注意事项
     一些权重包括数据库读写。举例来说，`WithdrawAsset`和`DepositAsset`指令同时包含一次数据库读取和一次写入。要获得总权重，您需要将任何所需的数据库读写的权重添加到给定指令的基础权重中。
