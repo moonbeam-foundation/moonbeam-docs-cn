@@ -84,7 +84,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/assets-trapped.js'
         ```
 
-??? function "**palletVersion**() — returns current pallet version from storage"
+??? function "**palletVersion**() — 从storage返回当前pallet版本"
 
     === "Parameters"
 
