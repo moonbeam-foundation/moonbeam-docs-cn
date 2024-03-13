@@ -36,7 +36,7 @@ Polkadot XCM Pallet包含以下相关extrinsics（函数）：
         --8<-- 'code/builders/interoperability/xcm/send-execute-xcm/interface-examples/execute.js'
         ```
 
-???+ function "**send**(dest, message) — **supported on Moonbase Alpha only** - sends a custom XCM message to a destination chain. For the XCM message to be successfully executed, the target chain needs to be able to understand the instructions in the message"
+???+ function "**send**(dest, message) — **仅支持Moonbase Alpha** - 发送一个自定义 XCM 消息至目标链。目标链必须能够解读消息中的指令以成功执行该 XCM 消息"
 
     === "Parameters"
 
