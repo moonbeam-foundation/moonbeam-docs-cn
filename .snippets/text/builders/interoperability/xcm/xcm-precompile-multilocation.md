@@ -17,7 +17,7 @@ The normal values you would see for the `parents` element are:
 | Parachain A | Relay Chain |       1       |
 | Parachain A | Parachain B |       1       |
 
-For the `interior` element, the number of fields you need to drill down to in the target chain to reach the exact location of the target, such as the specific asset or account, represents the size of the bytes array:
+对于 `interior` 元素，字节数组的大小代表了在目标链中到达目标确切位置（例如特定资产或账户）所需的字段数量：
 
 字节阵列（`bytes[]`）定义了内部参数以及其在multilocation的内容。阵列的大小则根据以下定义`interior`数值：
 
