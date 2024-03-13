@@ -45,7 +45,7 @@ Each field required to reach the exact location of the target needs to be define
 |    0x05    |  GeneralIndex  | u128      |
 |    0x06    |   GeneralKey   | bytes[]   |
 
-Next, depending on the selector and its data type, the following bytes correspond to the actual data being provided. Note that for `AccountId32`, `AccountIndex64`, and `AccountKey20`, the optional `network` field is appended at the end. For example:
+接下来，根据选择器及其数据类型，以下字节对应了实际提供的数据。请注意，对于  `AccountId32`, `AccountIndex64` 和 `AccountKey20`，可选的 `network` 字段会附加在结尾。例如：
 
 接着，根据选择器及其数据类型，以下字节对应于提供的实际数据。请注意在Polkadot.js Apps示例中出现的`AccountId32`，`AccountIndex64`和`AccountKey20`，`network`将会在最后添加。如下所示：
 
