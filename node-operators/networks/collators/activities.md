@@ -25,24 +25,27 @@ description: 关于深入了解并学习成为Moonbeam网络中收集人相关�
     |           撤销委托           | {{ networks.moonbeam.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonbeam.delegator_timings.revoke_delegations.hours }}小时） |
     |        减少自身委托量         |       {{ networks.moonbeam.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonbeam.collator_timings.can_bond_less.hours }}小时）       |
     | 奖励发放（在本轮结束后） |    {{ networks.moonbeam.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbeam.delegator_timings.rewards_payouts.hours }}小时）    |
+    |         最大离线轮次          |         {{ networks.moonbeam.collator_timings.max_offline.rounds }} rounds ({{ networks.moonbeam.collator_timings.max_offline.hours }} hours)         |    
 
 === "Moonriver"
     |               变量                |                                                                          值                                                                          |
     |:-------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
     |            轮次时长             |                        {{ networks.moonriver.staking.round_blocks }}区块（{{ networks.moonriver.staking.round_hours }}小时）                        |
     |           离开候选人            |    {{ networks.moonriver.collator_timings.leave_candidates.rounds }}轮次{{ networks.moonriver.collator_timings.leave_candidates.hours }}小时）    |
-    |           撤销委托           | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时） |
-    |        减少自身委托量         |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时）       |
-    | 奖励发放（在本轮结束后） |    {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时）    |
+    |            撤销委托             | {{ networks.moonriver.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonriver.delegator_timings.revoke_delegations.hours }}小时） |
+    |          减少自身委托量          |       {{ networks.moonriver.collator_timings.can_bond_less.rounds }}轮次（{{ networks.moonriver.collator_timings.can_bond_less.hours }}小时）       |
+    |      奖励发放（在本轮结束后）      |    {{ networks.moonriver.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonriver.delegator_timings.rewards_payouts.hours }}小时）    |
+    |           最大离线轮次           |         {{ networks.moonbeam.collator_timings.max_offline.rounds }} rounds ({{ networks.moonbeam.collator_timings.max_offline.hours }} hours)         |        
 
 === "Moonbase Alpha"
     |               变量                |                                                                         值                                                                         |
     |:-------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-    |            轮次时长             |                        {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时）                        |
-    |           离开候选人            |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时）    |
+    |            轮次时长          |                        {{ networks.moonbase.staking.round_blocks }}区块（{{ networks.moonbase.staking.round_hours }}小时）                        |
+    |          离开候选人          |    {{ networks.moonbase.collator_timings.leave_candidates.rounds }}轮次（{{ networks.moonbase.collator_timings.leave_candidates.hours }}小时）    |
     |           撤销委托           | {{ networks.moonbase.delegator_timings.revoke_delegations.rounds }}轮次（{{ networks.moonbase.delegator_timings.revoke_delegations.hours }}小时） |
-    |      减少自身委托量      |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）      |
-    | 奖励发放（在本轮结束后） |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时）    |
+    |        减少自身委托量         |      {{ networks.moonbase.delegator_timings.del_bond_less.rounds }}轮次（{{ networks.moonbase.delegator_timings.del_bond_less.hours }}小时）      |
+    |     奖励发放（在本轮结束后）    |    {{ networks.moonbase.delegator_timings.rewards_payouts.rounds }}轮次（{{ networks.moonbase.delegator_timings.rewards_payouts.hours }}小时）    |
+    |         最大离线轮次          |         {{ networks.moonbeam.collator_timings.max_offline.rounds }} rounds ({{ networks.moonbeam.collator_timings.max_offline.hours }} hours)         |    
 
 !!! 注意事项
     上表所列值可能会在未来发布新版本时有所调整。
@@ -69,11 +72,11 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 加入候选人池 {: #join-the-candidate-pool } 
 
-节点开始运行并同步网络后，您将成为候选人（并加入候选人池）。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=\_blank}，点击**Developer**标签，从下拉菜单中选择**Extrinsics**，然后进行以下步骤：
+节点开始运行并同步网络后，您将成为候选人并加入候选人池。根据您所连接的网络，前往[Polkadot.js](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=\_blank}，点击**Developer**标签，从下拉菜单中选择**Extrinsics**，然后进行以下步骤：
 
-  1. 选择您想用于参与收集活动的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}，并有多余金额用于支付交易费
+  1. 选择您想作为收集人的账户。确认您的收集人账户已充值[所需的最低质押量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}，并有多余金额用于支付交易费
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
-  3. 打开下拉菜单，在质押相关的所有extrinsics中，选择**joinCandidates()**
+  3. 打开下拉菜单，在质押相关的所有extrinsics中，选择**joinCandidates**
   4. 将绑定数量设置为成为候选人的[最低数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}（输入数量需以`Wei`为单位）。例如，在Moonbase Alpha的最低绑定数量为{{ networks.moonbase.staking.min_can_stk }}枚DEV，以wei为单位应输入`{{ networks.moonbase.staking.min_can_stk_wei }}`（即{{ networks.moonbase.staking.min_can_stk }}再额外加18个0）。这里仅考虑候选人的绑定数量，其他委托量将不计入统计
   5. 设置候选人数量即候选人池大小。如何设置该数值请查看[获取候选人池的大小](#get-the-size-of-the-candidate-pool)部分
   6. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
@@ -86,8 +89,6 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 如上所述，只有质押量排名靠前的收集人才可以进入收集人有效集。每个网络候选人的具体排名数量和最低绑定数量请查看[最低收集人绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}部分。
 
 ## 停止参与收集活动 {: #stop-collating } 
-
-在runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）{target=\_blank}中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。
 
 想要停止参与收集活动并离开候选人池，您必须先发起请求。发起请求自动将您从收集人有效集中移除，因此您将不再有资格生产区块或获得奖励。您需要等待[退出生效期](#collator-timings)，才能够执行离开请求。在等待完退出生效期并执行请求后，您将从候选人池中移除。
 
@@ -172,7 +173,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ## 更改自身绑定数量 {: #change-self-bond-amount }
 
-作为候选人，更改您的自身绑定数量将略有不同，具体取决于您要增加绑定数量还是减少绑定数量。如果您想要增加绑定数量，过程颇为简单，您可直接通过`candidateBondMore()` extrinsic增加质押量，无需等待退出生效期，也无需发起和执行请求，您的请求将会即刻自动被执行。
+作为候选人，更改您的自身绑定数量将略有不同，具体取决于您要增加绑定数量还是减少绑定数量。如果您想要增加绑定数量，过程颇为简单，您可直接通过`candidateBondMore` extrinsic增加质押量，无需等待退出生效期，也无需发起和执行请求，您的请求将会即刻自动被执行。
 
 如果您想要减少绑定数量，您需要发起请求并等待[退出生效期](#collator-timings)，随后您将能够执行请求，减少绑定部分的Token将返回至您的账户。换句话说，发起请求并不会即刻或自动减少绑定数量，只有在请求被执行后才会减少绑定数量。
 
@@ -182,7 +183,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
   1. 选择您的收集人账户（并验证该账户是否有足够资金可用于绑定）
   2. 在**submit the following extrinsic**菜单中选择**parachainStaking** pallet
-  3. 打开下拉菜单，在质押相关的所有extrinsics中，选择**candidateBondMore()**函数
+  3. 打开下拉菜单，在质押相关的所有extrinsics中，选择**candidateBondMore**函数
   4. 在**more: BalanceOf**字段中输入要增加的绑定数量
   5. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
@@ -190,7 +191,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ### 减少自身绑定数量 {: #bond-less}
 
-在最新的runtime升级（[runtime version 1001](https://moonbeam.network/announcements/staking-changes-moonriver-runtime-upgrade/)）中，用户与质押功能的交互方式进行了重大升级，其中包含取消质押的方式。作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}。
+作为收集人或候选收集人，您可能想要减少您的绑定数量，确保您所绑定的数量在减少后仍超过[最低自身绑定数量](/node-operators/networks/collators/requirements/#minimum-collator-bond){target=\_blank}。
 
 想要减少绑定数量，您需要先发起请求并等待[退出生效期](#collator-timings)，随后执行请求。只要请求还未被执行，您仍可随时[取消请求](#cancel-bond-less-request)。
 
@@ -232,3 +233,31 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
   4. 提交交易。根据向导指引使用创建账户时的密码进行交易签名
 
 ![Cancel leave candidates request](/images/node-operators/networks/collators/activities/activities-11.webp)
+
+## 将收集人标记为非活动状态 {: #mark-collator-as-inactive }
+
+如果某个收集人连续多轮未生产区块，您可以将其标记为非活动状态。收集人允许离线而不被标记为非活动状态的最大轮数如下：
+
+=== "Moonbeam"
+
+    {{ networks.moonbeam.collator_timings.max_offline.rounds }} round ({{ networks.moonbeam.collator_timings.max_offline.hours }} hours)
+
+=== "Moonriver"
+
+    {{ networks.moonriver.collator_timings.max_offline.rounds }} rounds ({{ networks.moonriver.collator_timings.max_offline.hours }} hours)
+
+=== "Moonbase Alpha"
+
+    {{ networks.moonbase.collator_timings.max_offline.rounds }} rounds ({{ networks.moonbase.collator_timings.max_offline.hours }} hours)
+
+要将验证人标记为非活动状态，您可以使用 `notifyInactiveCollator` 指令，该指令将在收集人非活动时通知Runtime，并默认将该收集人标记为离线。您可以前往 [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/accounts){target=_blank}，首先确保您连接的是正确的网络，然后单击 **Developer** 页，从下拉菜单中选择 **Extrinsics**，并执行以下步骤：
+
+ 1. 选择您的账户
+ 2. 在 **submit the following extrinsic** 菜单中选择  **parachainStaking** 
+ 3. 选择 **notifyInactiveCollator**
+ 4. 指定要标记为非活动状态的收集人
+ 5. 提交交易。跟着向导使用您为账户设置的密码签署交易
+
+![Mark a collator as inactive](/images/node-operators/networks/collators/activities/activities-12.png)
+
+收集人将暂时从候选池中移除，且他们可以通过调用 `goOnline` 指令随时重新加入。
