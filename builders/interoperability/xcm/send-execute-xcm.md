@@ -88,7 +88,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
     === "Parameters"
 
-        None
+        无
 
     === "Returns"
 
