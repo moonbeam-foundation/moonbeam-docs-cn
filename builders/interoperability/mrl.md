@@ -87,8 +87,6 @@ Guardian节点的签名与消息组合成为一个叫做[已验证操作批准�
 
 #### 计算Computed Origin账户 {: #calculate-computed-origin-account }
 
-In order to send tokens back through Wormhole, you'll need to calculate the user's Computed Origin account (previously referred to as a multilocation-derivative account) on Moonbeam. This can be done off-chain using the [`calculate-multilocation-derivative-account.ts` script](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=\_blank} from the [xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}. For more details, you can refer to the [Computed Origins](/builders/interoperability/xcm/remote-execution/computed-origins){target=\_blank} guide.
-
 要通过Wormhole发送代币回原链，您需要计算用户在Moonbeam上的Computed Origin账户。您可以使用[xcm-tools repository](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}中的[`calculate-multilocation-derivative-account.ts`脚本](https://github.com/Moonsong-Labs/xcm-tools/blob/main/scripts/calculate-multilocation-derivative-account.ts){target=\_blank}在链外完成此步骤。有关更多详细信息，您可以参考远程EVM调用文档中的[计算Computed Origin账户](/builders/interoperability/xcm/remote-execution/remote-evm-calls/#calculate-multilocation-derivative){target=\_blank}部分。
 
 除此以外，您还可以使用[XCM Utilities 预编译](/builders/interoperability/xcm/xcm-utils/){target=\_blank}中的`multilocationToAddress`函数。
