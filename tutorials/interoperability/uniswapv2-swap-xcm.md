@@ -42,7 +42,7 @@ _作者：Alberto Viera_
 
 以我们的例子来说，我们将会通过Alice账户经由XCM传送远程EVM调用，也就是`5GKh9gMK5dn9SJp6qfMNcJiMMnY7LReYmgug2Fr5fKE64imn`，因此指令和获得的结果将会如同下方图示。
 
-![Calculating the Computed Origin account](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-2.png)
+![Calculating the Computed Origin account](/images/tutorials/interoperability/uniswapv2-swap-xcm/uniswapv2-swap-xcm-2.webp)
 
 所有数值被整理成以下表格：
 

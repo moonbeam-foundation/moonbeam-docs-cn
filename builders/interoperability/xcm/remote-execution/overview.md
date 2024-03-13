@@ -48,4 +48,4 @@ XCM消息到达目标链并由目标链执行。默认情况下，它是使用�
 
 最后，[`Transact`](/builders/interoperability/xcm/core-concepts/instructions#transact){target=\_blank}执行与目标链中的pallet和函数相对应的任意字节集。您必须指定要使用的来源类型（通常是`SovereignAccount`）以及执行字节所需的权重（类似于以太坊的gas）。
 
-![Diagram of the XCM instructions executed on the destination chain for remote execution.](/images/builders/interoperability/xcm/remote-execution/overview/overview-1.png)
+![Diagram of the XCM instructions executed on the destination chain for remote execution.](/images/builders/interoperability/xcm/remote-execution/overview/overview-1.webp)

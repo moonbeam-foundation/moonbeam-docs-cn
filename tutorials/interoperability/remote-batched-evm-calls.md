@@ -45,7 +45,7 @@ _作者：Kevin Neilson_
 
 在本示例中，我们将通过XCM从Alice的账户（即`5Fe4nNwxJ9ai9hVkUubiy4e6BVs1tzJGDLXAdhUKuePq9CLp`）发送远程EVM调用。由于我们将从中继链发送XCM指令，因此命令中省略了平行链ID。父值`1`表示中继链为目标平行链父链。命令和响应如下图所示：
 
-![Calculating the Computed Origin account](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-2.png)
+![Calculating the Computed Origin account](/images/tutorials/interoperability/remote-batched-evm-calls/remote-batched-evm-calls-2.webp)
 
 下方表格涵盖了所有值：
 

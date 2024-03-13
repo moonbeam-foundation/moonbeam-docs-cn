@@ -13,7 +13,7 @@ XCM指令的正确组合可用于将资产从一个平行链转移到另一个�
 
 远程转移包括通过原始链中的中间账户将资产从一个区块链转移到另一个区块链，该中间账户由目标链以免信任方式拥有。这个中间账户被称为“主权”账户。在这种情况下，原始链资产不会被销毁，而是由主权账户持有。目标链中的 XCM执行将包装（也称为“虚拟”或“跨链”资产）表示形式铸造到目标地址。包装资产始终可以与原生资产以 1:1 的比例互换。这类似于锁定-铸造和销毁-解锁桥接机制。资产原始的链称为储备链。
 
-![Asset Teleporting and Remote Transfers](/images/builders/interoperability/xcm/xc20/send-xc20s/overview/overview-1.png)
+![Asset Teleporting and Remote Transfers](/images/builders/interoperability/xcm/xc20/send-xc20s/overview/overview-1.webp)
 
 目前，Moonbeam通过XCM使用远程转移的方式进行XC-20转移。
 

@@ -39,7 +39,7 @@ XCM实现了两个跨共识或传输协议，用于作为其组成平行链之�
 !!! 注意事项
     目前，XCMP仍在开发当中。当前暂时使用称为水平中继路由信息传递（HRMP）进行传递，消息将会在中继链存储和读取，此协议将会在XCMP完整部署后弃用
 
-![Vertical Message Passing and Cross-chain Message Passing Overview](/images/builders/interoperability/xcm/overview/overview-1.png)
+![Vertical Message Passing and Cross-chain Message Passing Overview](/images/builders/interoperability/xcm/overview/overview-1.webp)
 
 ## 建立跨链通信 {: #channel-registration }
 
@@ -51,7 +51,7 @@ XCM实现了两个跨共识或传输协议，用于作为其组成平行链之�
 
 要了解更多关于通道注册的流程，请参考[如何使用Moonbeam建立XC集成](/builders/interoperability/xcm/xc-registration/xc-integration/){target=\_blank}教程。
 
-![XCM Channel Registration Overview](/images/builders/interoperability/xcm/overview/overview-2.png)
+![XCM Channel Registration Overview](/images/builders/interoperability/xcm/overview/overview-2.webp)
 
 通道建立后，便可以在平行链之间发送跨链消息。对于资产传输，在通过XCM传输之前注册资产，可通过将其作为常量插入到运行时中，也可以通过pallet进行注册。Moonbeam中包括了Substrate pallet，在无需runtime升级的情况下即可处理资产注册，从而简化流程。
 
@@ -65,7 +65,7 @@ Moonbeam作为波卡生态系统中的平行链，其中最重要的XCM实现是
 
 另外，部署至Moonbeam的ERC-20可以通过XCM发送至波卡生态中的其他链。因此， 从开发者的角度来看，XC-20是具有作为XCM跨链资产额外优势的ERC-20 Token，且dApp可以通过熟悉的ERC-20界面轻松支持它们。
 
-![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-3.png)
+![Moonbeam XC-20 XCM Integration With Polkadot](/images/builders/interoperability/xcm/overview/overview-3.webp)
 
 要将XC-20从波卡生态发送到Moonbeam，开发者需要通过Substrate API使用[X-Tokens Pallet](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/){target=\_blank}并通过以太坊API使用[X-Tokens Precompile](/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/){target=\_blank}进行传输。
 
@@ -83,7 +83,7 @@ Alice（波卡）希望从波卡转移一定数量的DOT至Moonbeam上的账户�
 
 Moonbeam将会原地执行XCM消息内包含的指定动作。在此例子中为铸造和转账同样数量的_xcDOT_ （跨链DOT）至Alice指定的账户，也就是Alith。在目标区块链上执行XCM的费用已经在转移资产时使用部分资产支付（在此示例中为_xcDOT_ ）。
 
-![Transfers from the Relay Chain to Moonbeam](/images/builders/interoperability/xcm/overview/overview-4.png)
+![Transfers from the Relay Chain to Moonbeam](/images/builders/interoperability/xcm/overview/overview-4.webp)
 
 请注意以下重点：
 
@@ -97,7 +97,7 @@ Alith将其_xcDOT_存入流动性池中。接着，Charleth需要更多_xcDOT_�
 
 波卡将会原地执行XCM消息内包含的指定动作。在此示例中将从Moonbeam主权账户转移与销毁的_xcDOT_数量相同的DOT至Charleth指定的账户，在此示例中被称为Charley。
 
-![Transfers Back from Moonbeam to the Relay Chain](/images/builders/interoperability/xcm/overview/overview-5.png)
+![Transfers Back from Moonbeam to the Relay Chain](/images/builders/interoperability/xcm/overview/overview-5.webp)
 
 ### Moonbeam和其他平行链之间的XCM传输 {: #transfers-moonbeam-other-parachains }
 
@@ -109,7 +109,7 @@ Moonbeam作为波卡生态中的平行链，XCM + XCMP的组合使资产能够�
 
 由于XCM消息是在目标平行链上执行，因此将会铸造并转移同样数量的_xcGLMR_（跨链GLMR）至Alith指定的地址，在此示例中为Alice。XCM消息在目标平行链的执行费用以在转移资产时使用部分资产支付（此示例为_xcGLMR_）。
 
-![Transfers from Moonbeam to another Parachain](/images/builders/interoperability/xcm/overview/overview-6.png)
+![Transfers from Moonbeam to another Parachain](/images/builders/interoperability/xcm/overview/overview-6.webp)
 
 将_xcGLMR_转回Moonbeam的流程与上述流程相似。首先，XCM消息执行将会销毁返回至Moonbeam的_xcGLMR_数量。当成功销毁后，XCM消息剩余的部分将会通过中继链传送至Moonbeam。Moonbeam将会原地执行XCM消息并转移GLMR（销毁的_xcGLMR_数量）从目标链的主权账户至指定地址。
 

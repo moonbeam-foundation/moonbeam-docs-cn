@@ -153,7 +153,7 @@ Multilocation需要以预编译可以理解的特定方式进行格式化，这�
     !!! 注意事项
         本教程也同样适用于传输其他的[外部XC-20或本地XC-20](/builders/interoperability/xcm/xc20/overview){target=\_blank}。对于外部XC-20，您将需要资产ID和资产的小数位数。对于本地XC-20，您将需要合约地址。
 
-    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.png)
+    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.webp)
 
     要查看您的xcUNIT余额，您可以使用以下地址将XC-20的[预编译地址](/builders/interoperability/xcm/xc20/interact/#calculate-xc20-address){target=\_blank}添加至MetaMask：
 

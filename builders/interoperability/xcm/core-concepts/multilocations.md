@@ -11,7 +11,7 @@ Multilocation定义了相对于给定起始，某个点在整个中继链/平行
 
 Multilocation遵循分层结构，其中某些位置封装在其他位置内。例如，中继链封装了与其连接的所有平行链。同样，平行链封装了其中存在的所有pallet、账户和资产。
 
-![Hierarchy of multilocations](/images/builders/interoperability/xcm/core-concepts/multilocations/multilocations-1.png)
+![Hierarchy of multilocations](/images/builders/interoperability/xcm/core-concepts/multilocations/multilocations-1.webp)
 
 ## 定义一个Multilocation {: #defining-a-multilocation }
 

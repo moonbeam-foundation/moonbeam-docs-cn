@@ -228,7 +228,7 @@ XCM Transactor Pallet包含以下只读函数以获取pallet常量：
     !!! 注意事项
         本教程也同样适用于其他的[外部XC-20或本地XC-20](/builders/interoperability/xcm/xc20/overview){target=\_blank}。对于外部XC-20，您将需要资产ID和拥有资产的小数位数。对于本地XC-20，您将需要合约地址
 
-    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.png)
+    ![Moonbeam Swap xcUNIT](/images/builders/interoperability/xcm/xc20/send-xc20s/xtokens-pallet/xtokens-1.webp)
 
 要查看您的xcUNIT余额，您可以使用以下地址将其XC-20的[预编译地址](/builders/interoperability/xcm/xc20/overview/#calculate-xc20-address){target=\_blank}添加至MetaMask：
 
