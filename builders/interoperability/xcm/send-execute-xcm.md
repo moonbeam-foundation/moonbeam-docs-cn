@@ -21,7 +21,7 @@ XCM消息由[一系列的指令](/builders/interoperability/xcm/core-concepts/in
 
 Polkadot XCM Pallet包含以下相关extrinsics（函数）：
 
-???+ function "**execute**(message, maxWeight) — **supported on Moonbase Alpha only** - executes a custom XCM message on the source chain"
+???+ function "**execute**(message, maxWeight) — **仅支持Moonbase Alpha** - 在链上执行一个自定义 XCM 消息"
 
     === "Parameters"
 
