@@ -61,7 +61,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
     === "Returns"
 
-        The number of times an asset has been trapped. If the hash was omitted, it returns an array of all of the hashes and the number of times each asset has been trapped.
+        资产被圈套的次数。如果hash值为空，返回值为一个数组，其中包含了所有哈希以及其对应资产的被圈套次数。
 
         ```js
         // If using Polkadot.js API and calling toJSON() on the value
