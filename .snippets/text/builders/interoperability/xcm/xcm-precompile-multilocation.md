@@ -31,7 +31,7 @@ For the `interior` element, the number of fields you need to drill down to in th
 !!! 注意事项
     内部值`Here`通常用于中继链（作为目标链或以中继链资产为目标）。
 
-Each field required to reach the exact location of the target needs to be defined as a hex string. The first byte (2 hexadecimal characters) corresponds to the selector of the field. For example:
+到达目标的确切位置，每一个需要的字段都必须定义为一个十六进制字符串。第一个字节（2*十六进制字符）对应于字段的选择器。例如：
 
 假设所有字节阵列包含数据。所有元素的首个字节（2个十六进制数值）与`XN`部分的选择器相关，举例来说：
 
