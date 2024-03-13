@@ -92,7 +92,7 @@ Polkadot XCM Pallet包含以下相关只读存储函数：
 
     === "Returns"
 
-        A number representing the current version of the pallet.
+        一个代表目前pallet版本的数值。
 
         ```js
         // If using Polkadot.js API and calling toJSON() on the unwrapped value
