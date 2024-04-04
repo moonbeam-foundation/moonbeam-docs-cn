@@ -13,9 +13,9 @@ Tenderly平台提供以下功能：
 
 - **[Contract Verification](https://docs.tenderly.co/monitoring/smart-contract-verification/){target=\_blank}** - 充分利用Tenderly的所有功能以验证智能合约非常重要，Tenderly提供了多种验证方法。您可以通过[Tenderly数据面板](https://docs.tenderly.co/monitoring/smart-contract-verification/verifying-a-smart-contract#verifying-a-smart-contract){target=\_blank}、[Tenderly CLI](https://docs.tenderly.co/monitoring/smart-contract-verification/verifying-contracts-using-cli){target=\_blank}或[Tenderly Hardhat插件](https://docs.tenderly.co/monitoring/smart-contract-verification/verifying-contracts-using-the-tenderly-hardhat-plugin){target=\_blank}验证智能合约
 
-- **[Debugger](https://docs.tenderly.co/debugger/how-to-use-tenderly-debugger){target=\_blank}** - 使用可视化调试器检查交易并更好地了解代码。通过debugger，您可以查看交易的堆栈追踪，查看交易中的调用，识别合约并查看编码输入、输出和状态变量。您可以在Tenderly数据面板或[Tenderly Debugger谷歌扩展程序](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=\_blank}使用debugger
+- **[Debugger](https://docs.tenderly.co/debugger){target=\_blank}** - 使用可视化调试器检查交易并更好地了解代码。通过debugger，您可以查看交易的堆栈追踪，查看交易中的调用，识别合约并查看编码输入、输出和状态变量。您可以在Tenderly数据面板或[Tenderly Debugger谷歌扩展程序](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=\_blank}使用debugger
 
-- **[Gas Profiler](https://docs.tenderly.co/debugger/how-to-use-tenderly-debugger#gas-profiler){target=\_blank}** - 查看您更细化的gas花费情况，从而您可以优化您的智能合约并减少交易gas成本
+- **[Gas Profiler](https://docs.tenderly.co/debugger#gas-profiler){target=\_blank}** - 查看您更细化的gas花费情况，从而您可以优化您的智能合约并减少交易gas成本
 
 - **[Simulator](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=\_blank}** - 在分叉的开发环境中模拟交易，以在无需将交易传送至链上的情况下了解其如何运作。通过这种方式，您可以了解交易的结果并确保在将其发送至网络前按预期运作。您可以尝试不同的参数，模拟历史和当前交易，并编辑合约源代码。您可以从Tenderly数据面板访问模拟器，或用[Tenderly Simulation API](https://docs.tenderly.co/simulations-and-forks/simulation-api){target=\_blank}以编程的方式来利用模拟器
 

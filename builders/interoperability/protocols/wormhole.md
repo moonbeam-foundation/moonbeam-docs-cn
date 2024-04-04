@@ -67,13 +67,13 @@ Wormhole由多个模块化的交换组件组成，这些组件可以独立使用
 
 如需在每条链上部署，您将需要Wormhole核心桥接的本地实例以及每条对应链的chain ID。如下所示为选定的几个测试网提供了这些数据。您可以在Wormhole的[文档网站](https://docs.wormhole.com/wormhole/blockchain-environments/evm#testnet-contracts-moonbase-alphanet-1287){target=\_blank}找到其他网络的端点。请注意，为本文设计的智能合约和中继器仅支持EVM，因此在本次演示只能使用EVM。
 
-|                                          网络 & 水龙头                                          |                 核心桥地址                 | Wormhole 链ID |
-|:-----------------------------------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
-|               [Polygon Mumbai](https://faucet.polygon.technology/){target=\_blank}               | 0x0CBE91CF822c73C2315FB05100C2F714765d5c20 |       5       |
-|                  [Avalanche Fuji](https://faucet.avax.network/){target=\_blank}                  | 0x7bbcE28e64B3F8b84d876Ab298393c38ad7aac4C |       6       |
-|                 [Fantom TestNet](https://faucet.fantom.network/){target=\_blank}                 | 0x1BB3B4119b7BA9dfad76B0545fb3F531383c3bB7 |      10       |
-|                       [Goerli](https://goerlifaucet.com/){target=\_blank}                        | 0x706abc4E45D419950511e474C7B9Ed348A4a716c |       2       |
-| [Moonbase Alpha](https://faucet.moonbeam.network/){target=\_blank} | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 |      16       |
+|                            网络 & 水龙头                             |                 核心桥地址                 | Wormhole 链ID |
+|:--------------------------------------------------------------------:|:------------------------------------------:|:-------------:|
+| [Polygon Mumbai](https://faucet.polygon.technology/){target=\_blank} | 0x0CBE91CF822c73C2315FB05100C2F714765d5c20 |       5       |
+|    [Avalanche Fuji](https://faucet.avax.network/){target=\_blank}    | 0x7bbcE28e64B3F8b84d876Ab298393c38ad7aac4C |       6       |
+|   [Fantom TestNet](https://faucet.fantom.network/){target=\_blank}   | 0x1BB3B4119b7BA9dfad76B0545fb3F531383c3bB7 |      10       |
+|       [Sepolia](https://www.sepoliafaucet.io/){target=\_blank}       | 0x4a8bc80Ed5a4067f1CCf107057b8270E0cC11A78 |     10002     |
+|  [Moonbase Alpha](https://faucet.moonbeam.network/){target=\_blank}  | 0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901 |      16       |
 
 1. 确保选择的合约为**SimpleGeneralMessage**
 2. 点击箭头按钮打开部署菜单

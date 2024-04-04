@@ -128,7 +128,7 @@ Tenderly同样为您的分叉生成一个自定义的RPC url，类似于`https:/
 
 ## 调试 {: #debugging }
 
-[调试器](https://docs.tenderly.co/debugger/how-to-use-tenderly-debugger){target=\_blank}是Tenderly最强大、最受好评的功能之一。它的速度相当快，并且仅需要最少的设置。事实上，如果您正在研究的合约已经在链上进行了验证，那么启动调试器就像在Tenderly上搜索交易哈希一样简单。让我们尝试一下。
+[调试器](https://docs.tenderly.co/debugger){target=\_blank}是Tenderly最强大、最受好评的功能之一。它的速度相当快，并且仅需要最少的设置。事实上，如果您正在研究的合约已经在链上进行了验证，那么启动调试器就像在Tenderly上搜索交易哈希一样简单。让我们尝试一下。
 
 在上方的搜索栏中，您可以粘贴合约地址或交易哈希。请注意Tenderly支持Moonbeam和Moonriver，但目前不支持Moonbase Alpha。以下是StellaSwap上GLMR/FRAX交易对的交易哈希示例：
 
@@ -156,7 +156,7 @@ Tenderly同样为您的分叉生成一个自定义的RPC url，类似于`https:/
 
 ![Debugger 4](/images/tutorials/eth-api/using-tenderly/tenderly-13.webp)
 
-要更详细地了解如何使用Tenderly调试器，请查看[Tenderly调试器指南](https://docs.tenderly.co/debugger/how-to-use-tenderly-debugger){target=\_blank}。就是这样！您已顺利掌握Tenderly，这肯定会节省您的时间并简化您在Moonbeam上构建dApp的开发体验。
+要更详细地了解如何使用Tenderly调试器，请查看[Tenderly调试器指南](https://docs.tenderly.co/debugger){target=\_blank}。就是这样！您已顺利掌握Tenderly，这肯定会节省您的时间并简化您在Moonbeam上构建dApp的开发体验。
 
 --8<-- 'text/_disclaimers/educational-tutorial.md'
 
