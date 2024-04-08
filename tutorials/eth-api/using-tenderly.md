@@ -60,7 +60,7 @@ Tenderly提供的大多数服务都是免费使用的，但您需要订阅付费
 
 ![Simulate a transaction against Moonbeam](/images/tutorials/eth-api/using-tenderly/tenderly-3.webp)
 
-显然，这个模拟交易将会失败，因为我们试图发送我们没有的10,000 FRAX。但是，使用[Tenderly模拟器](https://docs.tenderly.co/simulations-and-forks/how-to-simulate-a-transaction){target=\_blank}，我们可以修改区块链状态并运行假设不同条件的模拟。例如，我们假设Baltathar实际上持有10,000 FRAX的余额来运行模拟。点击右上角的**Re-Simulate**，然后执行以下步骤：
+显然，这个模拟交易将会失败，因为我们试图发送我们没有的10,000 FRAX。但是，使用[Tenderly模拟器](https://docs.tenderly.co/simulator-ui){target=\_blank}，我们可以修改区块链状态并运行假设不同条件的模拟。例如，我们假设Baltathar实际上持有10,000 FRAX的余额来运行模拟。点击右上角的**Re-Simulate**，然后执行以下步骤：
 
 1. 展开**State Overrides**部分
 2. 点击**Add State Override**
@@ -78,13 +78,13 @@ Tenderly提供的大多数服务都是免费使用的，但您需要订阅付费
 
 ![Transaction simulation with state override success](/images/tutorials/eth-api/using-tenderly/tenderly-5.webp)
 
-您也可以通过[Tenderly模拟API](https://docs.tenderly.co/simulations-and-forks/simulation-api){target=\_blank}来访问Tenderly的交易模拟器。
+您也可以通过[Tenderly模拟API](https://docs.tenderly.co/reference/api#tag/Simulations){target=\_blank}来访问Tenderly的交易模拟器。
 
 ## 分叉链 {: #fork-the-chain }
 
 ### 创建一个分叉 {: #create-a-fork }
 
-模拟非常适合一次性测试，但如果您想测试一系列相互依赖的交易怎么办？在这种情况下，分叉是更好的选择，因为分叉是有状态的。此外，当您想要在链上私有环境中与合约交互而无需重新部署现有智能合约时，[Tenderly forks](https://docs.tenderly.co/simulations-and-forks/forks){target=\_blank}是一个绝佳的选择。
+模拟非常适合一次性测试，但如果您想测试一系列相互依赖的交易怎么办？在这种情况下，分叉是更好的选择，因为分叉是有状态的。此外，当您想要在链上私有环境中与合约交互而无需重新部署现有智能合约时，[Tenderly forks](https://docs.tenderly.co/forks){target=\_blank}是一个绝佳的选择。
 
 !!! 注意事项
     使用Tenderly的分叉功能时需要注意一些限制。您无法与任何[Moonbeam预编译合约](/builders/pallets-precompiles/precompiles/){target=\_blank}或其函数进行交互。预编译是Substrate实现的一部分，因此无法在模拟EVM环境中复制。这会阻止您在Moonbeam和基于Substrate的功能（例如质押和治理）上与跨链资产进行交互。
