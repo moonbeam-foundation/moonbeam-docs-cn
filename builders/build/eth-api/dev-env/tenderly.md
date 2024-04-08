@@ -11,13 +11,13 @@ description: 学习如何使用以太坊开发平台Tenderly在Moonbeam上构建
 
 Tenderly平台提供以下功能：
 
-- **[Contract Verification](https://docs.tenderly.co/monitoring/smart-contract-verification/){target=\_blank}** - 充分利用Tenderly的所有功能以验证智能合约非常重要，Tenderly提供了多种验证方法。您可以通过[Tenderly数据面板](https://docs.tenderly.co/contract-verification/dashboard){target=\_blank}、[Tenderly CLI或Foundry](https://docs.tenderly.co/contract-verification/foundry){target=\_blank}或[Tenderly Hardhat插件](https://docs.tenderly.co/contract-verification/hardhat){target=\_blank}验证智能合约
+- **[Contract Verification](https://docs.tenderly.co/contract-verification){target=\_blank}** - 充分利用Tenderly的所有功能以验证智能合约非常重要，Tenderly提供了多种验证方法。您可以通过[Tenderly数据面板](https://docs.tenderly.co/contract-verification/dashboard){target=\_blank}、[Tenderly CLI或Foundry](https://docs.tenderly.co/contract-verification/foundry){target=\_blank}或[Tenderly Hardhat插件](https://docs.tenderly.co/contract-verification/hardhat){target=\_blank}验证智能合约
 
 - **[Debugger](https://docs.tenderly.co/debugger){target=\_blank}** - 使用可视化调试器检查交易并更好地了解代码。通过debugger，您可以查看交易的堆栈追踪，查看交易中的调用，识别合约并查看编码输入、输出和状态变量。您可以在Tenderly数据面板或[Tenderly Debugger谷歌扩展程序](https://docs.tenderly.co/debugger/tenderly-debugger-extension){target=\_blank}使用debugger
 
 - **[Gas Profiler](https://docs.tenderly.co/debugger#gas-profiler){target=\_blank}** - 查看您更细化的gas花费情况，从而您可以优化您的智能合约并减少交易gas成本
 
-- **[Simulator](https://docs.tenderly.co/simulator-ui){target=\_blank}** - 在分叉的开发环境中模拟交易，以在无需将交易传送至链上的情况下了解其如何运作。通过这种方式，您可以了解交易的结果并确保在将其发送至网络前按预期运作。您可以尝试不同的参数，模拟历史和当前交易，并编辑合约源代码。您可以从Tenderly数据面板访问模拟器，或用[Tenderly Simulation API](https://docs.tenderly.co/simulations-and-forks/simulation-api){target=\_blank}以编程的方式来利用模拟器
+- **[Simulator](https://docs.tenderly.co/simulator-ui){target=\_blank}** - 在分叉的开发环境中模拟交易，以在无需将交易传送至链上的情况下了解其如何运作。通过这种方式，您可以了解交易的结果并确保在将其发送至网络前按预期运作。您可以尝试不同的参数，模拟历史和当前交易，并编辑合约源代码。您可以从Tenderly数据面板访问模拟器，或用[Tenderly Simulation API](https://docs.tenderly.co/reference/api#tag/Simulations){target=\_blank}以编程的方式来利用模拟器
 
 - **[Forks](https://docs.tenderly.co/forks){target=\_blank}** - 此功能在隔离环境中模拟实时Moonbeam网络，这使您可以与部署的合约和实时链上数据进行交互。分叉还使交易模拟更进了一步，它使您能够按时间顺序将多个模拟链接在一起。Forks允许复杂的交易测试场景，当出现一个交易依赖于另一个交易，并具有使用实时链上数据的好处。使用Tenderly分叉功能的时候需要注意一些限制。您不能与任何[Moonbeam预编译的合约](/builders/pallets-precompiles/precompiles/){target=\_blank}及其函数交互。预编译是Substrate实施的一部分，因此不能在模拟的EVM环境中复制。这禁止您在Moonbeam上与跨链资产交互和使用基于Substrate的功能（如质押和治理）
 
