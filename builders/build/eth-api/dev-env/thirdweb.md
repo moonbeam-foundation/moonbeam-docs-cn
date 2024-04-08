@@ -120,7 +120,7 @@ thirdweb提供适用于多种编程语言的SDK，例如React、React Native、T
 
 ## 与合约交互 {: #interact-with-a-contract }
 
-thirdweb provides several SDKs to allow you to interact with your contract including: thirdweb提供多个SDK，允许您与合约交互，包括[React](https://portal.thirdweb.com/react){target=\_blank}、[React Native](https://portal.thirdweb.com/react-native){target=\_blank}、[TypeScript](https://portal.thirdweb.com/typescript){target=\_blank}、[Python](https://portal.thirdweb.com/python){target=\_blank}、[Go](https://portal.thirdweb.com/go){target=\_blank}和[Unity](https://portal.thirdweb.com/unity){target=\_blank}。
+thirdweb provides several SDKs to allow you to interact with your contract including: thirdweb提供多个SDK，允许您与合约交互，包括[React](https://portal.thirdweb.com/react){target=\_blank}、[React Native](https://portal.thirdweb.com/react-native){target=\_blank}、[TypeScript](https://portal.thirdweb.com/typescript){target=\_blank}和[Unity](https://portal.thirdweb.com/unity){target=\_blank}。
 
 本文档将向您展示如何使用React与部署至Moonbeam的合约交互。您可以在thirdweb文档网站查看[完整React SDK参考](https://portal.thirdweb.com/react){target=\_blank}。
 

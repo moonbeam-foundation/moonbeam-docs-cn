@@ -39,7 +39,7 @@ Moonbeam的“硬性”治理流程将由链上流程驱动，该方式能够确
  - **Governance V1理事会 & 技术委员会** — 一个由社区成员组成的团体，成员在系统中拥有特殊投票权
  - **OpenGov技术委员会** — 一个由社区成员组成的团体，成员可以将特定提案列入Whitelisted Track中
 
-更多关于Substrate框架pallet如何实施链上治理的细节，请查阅[波卡治理概览](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=\_blank}博客文章以及[波卡治理Wiki](https://wiki.polkadot.network/docs/learn-governance){target=\_blank}。
+更多关于Substrate框架pallet如何实施链上治理的细节，请查阅[波卡治理概览](https://polkadot.network/a-walkthrough-of-polkadots-governance/){target=\_blank}博客文章以及[波卡治理Wiki](https://wiki.polkadot.network/docs/learn-polkadot-opengov){target=\_blank}。
 
 ## Governance v2: OpenGov {: #opengov }
 

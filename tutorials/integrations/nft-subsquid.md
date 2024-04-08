@@ -117,7 +117,7 @@ sqd typegen
 
 ## 定义和绑定事件处理器 {: #define-event-handlers }
 
-Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.io/substrate-indexing/){target=\_blank}。其实例连接指定区块链的[Subsquid archives](https://docs.subsquid.io/archives/overview/){target=\_blank}以访问链数据并进行自定义转换。索引从起始区块开始，并在达到最高值之后与最新区块保持一致。
+Subsquid SDK为用户提供[`SubstrateBatchProcessor`类](https://docs.subsquid.io/substrate-indexing/){target=\_blank}。其实例连接指定区块链的[Subsquid archives](https://docs.subsquid.io/glossary/#archives/){target=\_blank}以访问链数据并进行自定义转换。索引从起始区块开始，并在达到最高值之后与最新区块保持一致。
 
 `SubstrateBatchProcessor`[公开函数](https://docs.subsquid.io/substrate-indexing/configuration/){target=\_blank}以“订阅”指定数据，包括Substrate事件、extrinsics、存储项、或者EVM的日志和交易。然后，通过调用`.run()`函数开始实际数据处理。这将开始为配置中指定数据的[*batches*](https://docs.subsquid.io/basics/batch-processing/){target=\_blank}生成对Archive的请求，并在每次由Archive返回一个batch时触发回调函数或*batch handler*（作为第二个参数传递给`.run()`）。
 

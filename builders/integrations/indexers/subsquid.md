@@ -58,7 +58,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
-3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=\_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
+3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/glossary/#archives/){target=\_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
     === "Moonbeam"
 
@@ -138,7 +138,7 @@ Subsquid为以太坊虚拟机（EVM）和Substrate数据均提供原生的完整
         "specVersions": "https://moonbase.archive.subsquid.io/graphql",
         ```
 
-3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/archives/overview/){target=\_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
+3. 修改`src/processor.ts`文件，squid在该文件中实例化处理器、配置处理器并附加处理函数。处理器从[Archive](https://docs.subsquid.io/glossary/#archives/){target=\_blank}（一个专门的数据湖）中获取历史链上数据。您需要将处理器配置为从与您索引数据的网络相对应的Archive（存档）中提取数据：
 
     === "Moonbeam"
 
