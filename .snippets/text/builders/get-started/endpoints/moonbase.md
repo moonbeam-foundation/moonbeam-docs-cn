@@ -18,6 +18,6 @@
 
 连接Moonbase Alpha中继链, 您可以使用以下WS端点:
 
-|  供应商   |                                    RPC URL                                    |
-|:---------:|:-----------------------------------------------------------------------------:|
-| PureStake | <pre>```wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network```</pre> |
+|  供应商  |                                    RPC URL                                    |
+|:--------:|:-----------------------------------------------------------------------------:|
+| OpsLayer | <pre>```wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network```</pre> |
