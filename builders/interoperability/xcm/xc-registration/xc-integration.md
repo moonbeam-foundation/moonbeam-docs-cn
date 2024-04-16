@@ -66,7 +66,7 @@ Moonriver/Moonbeam XCM集成的第一步是通过Alphanet中继链与Moonbase Al
 
 您可以使用[xcm-tools库的脚本](https://github.com/Moonsong-Labs/xcm-tools){target=\_blank}计算主权账户信息。要运行脚本，您可以提供平行链ID和关联中继链的名称。
 
-您可以在[中继链的Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/parachains){target=\_blank}找到已经使用的平行链ID。
+您可以在[中继链的Polkadot.js Apps页面](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/parachains){target=\_blank}找到已经使用的平行链ID。
 
 中继链可接受的值为`polkadot`（默认）、`kusama`和`moonbase`。
 
@@ -189,7 +189,7 @@ xcm-tools repository有一个用于HRMP交互的特定脚本，称为[`hrmp-chan
     ```bash
     yarn hrmp-manipulator --target-para-id YOUR_PARACHAIN_ID \
     --parachain-ws-provider wss://wss.api.moonbase.moonbeam.network  \
-    --relay-ws-provider wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network \
+    --relay-ws-provider wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network \
     --hrmp-action accept
     ```
 
@@ -237,7 +237,7 @@ xcm-tools repository有一个用于HRMP交互的特定脚本，称为[`hrmp-chan
     ```bash
     yarn hrmp-manipulator --target-para-id YOUR_PARACHAIN_ID \
     --parachain-ws-provider wss://wss.api.moonbase.moonbeam.network  \
-    --relay-ws-provider wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network \
+    --relay-ws-provider wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network \
     --max-capacity 1000 --max-message-size 102400 \
     --hrmp-action open
     ```

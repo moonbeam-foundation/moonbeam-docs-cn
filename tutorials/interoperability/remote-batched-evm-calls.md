@@ -16,7 +16,7 @@ _作者：Kevin Neilson_
 
 **本教程的内容仅用于教育目的！**
 
-在本示例中，我们将在Moonbase Alpha（Moonbeam TestNet）上进行操作，其拥有自己的中继链，称为[Moonbase relay](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=\_blank}（类似于波卡中继链）。中继链Token为UNIT，而Moonbase Alpha的Token为DEV。请注意，**发送错误的XCM消息可能导致资金丢失。**因此，XCM功能需要先在测试网上进行测试后再将其移到生产环境。
+在本示例中，我们将在Moonbase Alpha（Moonbeam TestNet）上进行操作，其拥有自己的中继链，称为[Moonbase relay](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/accounts){target=\_blank}（类似于波卡中继链）。中继链Token为UNIT，而Moonbase Alpha的Token为DEV。请注意，**发送错误的XCM消息可能导致资金丢失。**因此，XCM功能需要先在测试网上进行测试后再将其移到生产环境。
 
 本教程的目的展示[批量预编译](/builders/pallets-precompiles/precompiles/batch/){target=\_blank}如何与[波卡的XCM](/builders/interoperability/xcm/overview/){target=\_blank}允许您在Moonbeam上触发远程批量EVM调用。为了简化本教程的复杂性，我们实际操作的批量EVM调用将非常简单。我们将在[Moonbase Alpha上发行多个planet ERC-20测试token](https://moonbase-minterc20.netlify.app/){target=\_blank}。尽管我们选择了简单的合约调用来进行演示，但您可能希望模拟更多现实生活中的DeFi示例，例如Token批准和兑换、从多个池中领取奖励，或者兑换并存入LP池。
 
@@ -35,7 +35,7 @@ _作者：Kevin Neilson_
 
 根据[概览](#introduction)中总结的所有步骤，需要考虑以下先决条件：
 
-- 您需要在中继链上拥有UNIT，在发送XCM时用于支付交易费用。如果您有一个拥有DEV Token的Moonbase Alpha账户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=\_blank}将一些DEV Token兑换成xcUNIT。然后使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=\_blank}从Moonbase Alpha提取一些xcUNIT至[Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=\_blank}
+- 您需要在中继链上拥有UNIT，在发送XCM时用于支付交易费用。如果您有一个拥有DEV Token的Moonbase Alpha账户，您可以在[Moonbeam Swap](https://moonbeam-swap.netlify.app/#/swap){target=\_blank}将一些DEV Token兑换成xcUNIT。然后使用[apps.moonbeam.network](https://apps.moonbeam.network/moonbase-alpha/){target=\_blank}从Moonbase Alpha提取一些xcUNIT至[Moonbase中继链上的账户](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/accounts){target=\_blank}
   --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 您的[multilocation衍生账户](/builders/interoperability/xcm/xcm-transactor/#general-xcm-definitions){target=\_blank}必须持有DEV Token以调用Batch Precompile，并支付XCM执行费用（虽然此费用将以xcUNIT形式的UNIT Token进行支付）。我们将在下一个部分计算multilocation衍生账户地址
 
@@ -176,13 +176,13 @@ _作者：Kevin Neilson_
 ```
 
 !!! 注意事项
-    您也可以通过在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/extrinsics){target=\_blank}中手动构建extrinsic来获取SCALE编码的calldata。
+    您也可以通过在[Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/extrinsics){target=\_blank}中手动构建extrinsic来获取SCALE编码的calldata。
 
 接下来，让我们看一下上面显示的代码片段的每个主要组件：
 
  1. 提供请求的输入数据。这包括：
 
-     - 创建提供商的[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/accounts){target=\_blank}端点URL
+     - 创建提供商的[Moonbase中继链](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/accounts){target=\_blank}端点URL
      - 从multilocation衍生账户提取的Token数量（以Wei为单位）。在本示例中，`0.01` Token已经足够了。想要了解如何获取此值，请参考[XCM费用页面](/builders/interoperability/xcm/fees/#moonbeam-reserve-assets){target=\_blank}
      - [DEV token的multilocation](/builders/interoperability/xcm/xc-registration/assets/#register-moonbeam-native-assets){target=\_blank}，如Moonbase Alpha所见
      - `transact` XCM指令的权重。这可以通过将`25000`乘以之前获得的gas限制来获得。建议在预估值的基础上增加10%左右。您可以在[通过XCM远程EVM调用](/builders/interoperability/xcm/remote-evm-calls/#build-xcm-remote-evm){target=\_blank}的页面获取关于此值的更多信息
@@ -236,7 +236,7 @@ _作者：Kevin Neilson_
 
 这样就可以了！您已成功发送一条XCM消息，这将通过XCM对批量预编译执行远程EVM调用并铸造 MARS和NEPT ERC-20 Token。接下来，让我们详细了解发生了什么。
 
-此操作将发出不同的事件。第一个仅与[中继链](https://polkadot.js.org/apps/?rpc=wss://frag-moonbase-relay-rpc-ws.g.moonbase.moonbeam.network#/explorer/query/10936471){target=\_blank}相关，其名称为 `xcmPallet.Sent`，来自于`xcmPallet.send` extrinsic。在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/4626493){target=\_blank}中，以下事件将由`parachainSystem.setValidationData` extrinsic发出，此外部函数将处理所有的入站XCM消息：
+此操作将发出不同的事件。第一个仅与[中继链](https://polkadot.js.org/apps/?rpc=wss://fro-moon-rpc-1-moonbase-relay-rpc-1.moonbase.ol-infra.network#/explorer/query/10936471){target=\_blank}相关，其名称为 `xcmPallet.Sent`，来自于`xcmPallet.send` extrinsic。在[Moonbase Alpha](https://polkadot.js.org/apps/?rpc=wss://wss.api.moonbase.moonbeam.network#/explorer/query/4626493){target=\_blank}中，以下事件将由`parachainSystem.setValidationData` extrinsic发出，此外部函数将处理所有的入站XCM消息：
 
  - `parachainSystem.DownwardMessagesReceived` — 表明收到了XCM消息
  - `evm.Log` — 不同合约调用发出的内部事件。结构相同，为：合约地址、主题、相关数据
