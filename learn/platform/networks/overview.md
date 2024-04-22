@@ -11,7 +11,7 @@ description: 基于Moonbeam的所有MainNet和TestNet部署概述；Moonbeam是�
 
  - Moonbeam: 部署于Polkadot上（2021 十二月）
  - Moonriver: 部署于Kusama上（2021 六月）
- - Moonbase Alpha: PureStake主导平行链测试网(2020 九月)
+ - Moonbase Alpha: Moonbeam 和 Moonriver 的平行链测试网(2020 九月)
 
 这个策略能让我们在保持适当的更新速度同时，降低Polkadot 主网上Moonbeam软件升级的风险。同时，我们会在网络开放的时候提供更多关于如何使用不同以Moonbeam为基础的网络细节。
 
@@ -25,7 +25,7 @@ Moonbeam的生产环境主网自2021年12月17日起以平行链的形式部署�
 
 ## Moonriver {: #moonriver }
 
-在部署于Polkadot主网之前，Moonbeam以平行链的形式发布在Kusama的网络上（[更多细节](https://www.purestake.com/news/moonbeam-on-kusama/)）。Kusama网的平行链功能已经开通。
+在部署于Polkadot主网之前，Moonbeam以平行链的形式发布在Kusama的网络上（[更多细节](https://moonbeam.network/announcements/moonriver-launch-kusama/)）。Kusama网的平行链功能已经开通。
 
 随着平行链功能的开通，Moonriver将会支持[XCMP](https://wiki.polkadot.network/docs/learn-crosschain)和[SPREE](https://wiki.polkadot.network/docs/learn-crosschain)等相关功能。
 
@@ -33,6 +33,6 @@ Moonbeam的生产环境主网自2021年12月17日起以平行链的形式部署�
 
 ## Moonbase Alpha {: #moonbase-alpha }
 
-这个测试网由PureStake所主导，其特色是使用平行链以及中继链方案。目标是让开发者在不用运行自己的节点或是网络的前提下，能够在一个共享平行链的环境中，测试Moonbeam与以太坊的兼容性。
+这个测试网由OpsLayer所主导，其特色是使用平行链以及中继链方案。目标是让开发者在不用运行自己的节点或是网络的前提下，能够在一个共享平行链的环境中，测试Moonbeam与以太坊的兼容性。
 
 [在这里了解更多Moonbase Alpha的资讯](/networks/moonbase/)。
