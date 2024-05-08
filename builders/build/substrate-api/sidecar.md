@@ -84,7 +84,7 @@ node_modules/.bin/substrate-api-sidecar
 
 如果安装和配置成功后，您应该在后台看到以下输出：
 
-![Successful Output](/images/builders/build/substrate-api/sidecar/sidecar-1.webp)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/sidecar.md'
 
 ## Substrate API Sidecar端点 {: #substrate-api-sidecar-endpoints }
 
