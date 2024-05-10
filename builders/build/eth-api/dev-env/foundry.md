@@ -46,10 +46,10 @@ Foundry由四个工具组成：
     cargo install --git https://github.com/foundry-rs/foundry foundry-cli anvil --bins --locked
     ```
 
-2. 创建项目，这将创建一个文件夹，其中包含三个文件夹：
+2. 创建项目，这将创建一个文件夹并打开它，其中包含三个文件夹,：
 
     ```bash
-    forge init foundry
+    forge init foundry && cd foundry
     ```
 
 创建默认项目后，您将看到以下三个文件夹：
@@ -72,20 +72,10 @@ touch MyToken.sol
 打开文件并添加以下合约：
 
 ```solidity
-pragma solidity ^0.8.0;
-
-// Import OpenZeppelin Contract
-import "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
-
-// This ERC-20 contract mints the specified amount of tokens to the contract creator
-contract MyToken is ERC20 {
-  constructor(uint256 initialSupply) ERC20("MyToken", "MYTOK") {
-    _mint(msg.sender, initialSupply);
-  }
-}
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/ERC20.sol'
 ```
 
-在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin Github repo的名称。
+在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin GitHub repository的名称。
 
 ```bash
 forge install OpenZeppelin/openzeppelin-contracts
@@ -178,7 +168,7 @@ Solidity脚本是一种比 [`forge create`](#deploying-the-contract) 更强大�
 您可以使用以下命令部署 `MyToken.sol` 合约。请记住它将按顺序执行所有相关步骤。对于此示例，Foundry将首先尝试本地模拟和利用提供的 RPC进行模拟，然后才部署合约。如果任何模拟失败，Foundry都不会继续部署。
 
 ```bash
-forge script script/MyToken.s.sol --rpc-url https://rpc.api.moonbase.moonbeam.network --broadcast
+forge script script/MyToken.s.sol --rpc-url {{ networks.moonbase.rpc_url }} --broadcast
 ```
 
 如果您的脚本执行成功，您的终端应展示一下内容：
@@ -191,7 +181,7 @@ forge script script/MyToken.s.sol --rpc-url https://rpc.api.moonbase.moonbeam.ne
 
 Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
-尝试使用cast检索Token名称，其中`YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
+尝试使用Cast检索Token名称，其中`YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
 
 === "Moonbeam"
 
@@ -223,9 +213,9 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
 ```
 
-此数据非可读，但您可以使用cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ASCII字符以查看“My Token”：
+此数据非可读，但您可以使用Cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ASCII字符以查看“My Token”：
 
-![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/cast.md'
 
 ```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
@@ -434,7 +424,7 @@ abi.encode(100, true, "Develop on Moonbeam")
     !rawstack myNumber
     ```
 
-![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/save-state.md'
 
 您甚至可以在使用Chisel时分叉网络：
 
@@ -445,7 +435,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 然后，例如，您可以查询其中一个Moonbase Alpha收集人的余额：
 
 ```text
-0x4c5A56ed5A4FF7B09aA86560AfD7d383F4831Cce.balance
+{{ networks.moonbase.staking.candidates.address1 }}.balance
 ```
 
 --8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/query-balance.md'
