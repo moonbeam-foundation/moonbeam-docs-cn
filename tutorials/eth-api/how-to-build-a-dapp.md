@@ -11,11 +11,11 @@ _作者：Jeremy Boetticher_
 
 去中心化应用（DApp）重新定义了应用程序在Web3中的构建、管理和交互方式。通过利用区块链技术，DApp提供了一个安全、透明且无需信任的系统，在无需任何中央授权的情况下即可实现点对点交互。DApp架构的核心由几个主要组件组成，它们协同工作以创建一个强大且去中心化的生态系统。这些组件包括智能合约、节点、前端用户界面等。
 
-![DApp Architecture Diagram](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-1.png)
+![DApp Architecture Diagram](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-1.webp)
 
-在本教程中，您将通过编写一个用以铸造Token的完整DApp来面对面了解每个主要组件。我们还将探索DApp的其他可选组件，这些组件可以增强您未来项目的用户体验。您可以在[GitHub上的monorepo](https://github.com/jboetticher/complete-example-dapp){target=_blank}中查看完整的项目内容。
+在本教程中，您将通过编写一个用以铸造Token的完整DApp来面对面了解每个主要组件。我们还将探索DApp的其他可选组件，这些组件可以增强您未来项目的用户体验。您可以在[GitHub上的monorepo](https://github.com/jboetticher/complete-example-dapp){target=\_blank}中查看完整的项目内容。
 
-![DApp End Result](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-2.png)
+![DApp End Result](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-2.webp)
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -23,17 +23,17 @@ _作者：Jeremy Boetticher_
 
  - 一个拥有DEV的Moonbase Alpha账户
     --8<-- 'text/_common/faucet/faucet-list-item.md'
- - 已安装版本16或是以上的[Node.js](https://nodejs.org/en/download/){target=_blank}
- - [VS Code](https://code.visualstudio.com/){target=_blank}与Juan Blanco的[Solidity扩展](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=_blank}是推荐的IDE
+ - 已安装版本16或是以上的[Node.js](https://nodejs.org/en/download/){target=\_blank}
+ - [VS Code](https://code.visualstudio.com/){target=\_blank}与Juan Blanco的[Solidity扩展](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=\_blank}是推荐的IDE
  - JavaScript和React的相关背景知识
- - 对于Solidity的基础了解。如果您并不熟悉Solidity，网络上有很多相关资源，包含[Solidity范例教程](https://solidity-by-example.org/){target=_blank}。大约15分钟的快速学习即可用于本教程之中
- - 已安装类似于[MetaMask](/tokens/connect/metamask){target=_blank}的钱包
+ - 对于Solidity的基础了解。如果您并不熟悉Solidity，网络上有很多相关资源，包含[Solidity范例教程](https://solidity-by-example.org/){target=\_blank}。大约15分钟的快速学习即可用于本教程之中
+ - 已安装类似于[MetaMask](/tokens/connect/metamask){target=\_blank}的钱包
 
 ## 节点和JSON-RPC端点 {: #nodes-and-json-rpc-endpoints }
 
 一般来说，JSON-RPC是一种利用JSON对数据进行编码的远程过程调用（RPC）协议。在Web3产业中，它们指的是DApp开发者用来发送请求和接收来自区块链节点响应的特定JSON-RPC，这让它成为与智能合约交互的关键元素。它们允许前端用户界面与智能合约无缝交互，并为用户提供有关其操作的实时反馈。它们还允许开发者先部署他们的智能合约！
 
-要让JSON-RPC与Moonbeam区块链进行通信，您需要运行一个节点。但这可能是昂贵、复杂且麻烦的。幸运的是，只要您有权*访问*节点，就可以与区块链进行交互。Moonbase Alpha有[一些免费和付费节点选项](/learn/platform/networks/moonbase/#network-endpoints){target=_blank}。在本教程中，我们将使用Moonbeam基金会的Moonbase Alpha公共节点，但建议您获取自己的[私有端点](/builders/get-started/endpoints/#endpoint-providers){target=_blank}。
+要让JSON-RPC与Moonbeam区块链进行通信，您需要运行一个节点。但这可能是昂贵、复杂且麻烦的。幸运的是，只要您有权*访问*节点，就可以与区块链进行交互。Moonbase Alpha有[一些免费和付费节点选项](/learn/platform/networks/moonbase/#network-endpoints){target=\_blank}。在本教程中，我们将使用Moonbeam基金会的Moonbase Alpha公共节点，但建议您获取自己的[私有端点](/builders/get-started/endpoints/#endpoint-providers){target=\_blank}。
 
 ```text
 {{ networks.moonbase.rpc_url }}
@@ -54,12 +54,12 @@ _作者：Jeremy Boetticher_
 
 - `jsonrpc` — JSON-RPC APR版本，通常为“2.0”
 - `id` — 用于定义请求回应的常数值，通常可以保持为
-- `method` — 特定从/至区块链读/写数据的函数。您可以在[我们的文档网站查看许多不同的RPC函数](/builders/get-started/eth-compare/rpc-support){target=_blank}
+- `method` — 特定从/至区块链读/写数据的函数。您可以在[我们的文档网站查看许多不同的RPC函数](/builders/get-started/eth-compare/rpc-support){target=\_blank}
 - `params` — 根据特定`method`的输入参数阵列
 
 事实上还有其他额外的元素会被加入至JSON-RPC请求中，但这四个最为常见。
 
-在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/builders/build/eth-api/libraries){target=_blank}，我们将在本教程中使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
+在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/builders/build/eth-api/libraries){target=\_blank}，我们将在本教程中使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
 
 ## 智能合约 {: #smart-contracts }
 
@@ -69,7 +69,7 @@ _作者：Jeremy Boetticher_
 
 当您将智能合约部署到Moonbeam上时，您会上传一系列EVM或以太坊虚拟机可以理解的指令。每当有人与智能合约交互时，EVM都会执行这些透明、防篡改且不可变的指令来更改区块链的状态。在智能合约中正确编写指令非常重要，因为区块链的状态定义了有关DApp的最关键信息，例如谁拥有多少资金金额。
 
-由于指令在低（组合）级别上很难编写和理解，因此我们使用Solidity等智能合约语言来简化它们的编写。为了帮助编写、调试、测试和编译这些智能合约语言，以太坊社区的开发者创建了开发者环境，例如[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=_blank}和[Foundry](/builders/build/eth-api/dev-env/foundry){target=_blank}。Moonbeam的开发者网站提供了有关[大量开发者环境](/builders/build/eth-api/dev-env){target=_blank}的信息。
+由于指令在低（组合）级别上很难编写和理解，因此我们使用Solidity等智能合约语言来简化它们的编写。为了帮助编写、调试、测试和编译这些智能合约语言，以太坊社区的开发者创建了开发者环境，例如[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=\_blank}和[Foundry](/builders/build/eth-api/dev-env/foundry){target=\_blank}。Moonbeam的开发者网站提供了有关[大量开发者环境](/builders/build/eth-api/dev-env){target=\_blank}的信息。
 
 本教程将会使用Hardhat管理智能合约。
 
@@ -81,7 +81,7 @@ _作者：Jeremy Boetticher_
 npx hardhat init
 ```
 
-创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox#hardhat-toolbox){target=_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
+创建JavaScript或TypeScript Hardhat项目时，系统会询问您是否要安装示例项目的依赖项，即为安装Hardhat和[Hardhat Toolbox插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox#hardhat-toolbox){target=\_blank}。您不需要工具箱中包含的所有插件，因此您可以安装Hardhat、Ethers和Hardhat Ethers插件，这就是本教程所需的全部内容：
 
 ```bash
 npm install --save-dev hardhat @nomicfoundation/hardhat-ethers ethers@6
@@ -114,7 +114,7 @@ module.exports = {
 
 Token的标准称为ERC-20，其中ERC代表“*以太坊请求评论*”。很久以前，这个标准就被定义了，现在大多数与Token配合使用的智能合约都期望Token具有ERC-20定义的所有功能。幸运的是，您不必凭记忆知道它，因为OpenZeppelin智能合约团队为我们提供了可供使用的智能合约基础。
 
-安装[OpenZeppelin智能合约](https://docs.openzeppelin.com/contracts/4.x/){target=_blank}：
+安装[OpenZeppelin智能合约](https://docs.openzeppelin.com/contracts/4.x/){target=\_blank}：
 
 ```bash
 npm install @openzeppelin/contracts
@@ -228,7 +228,7 @@ npx hardhat compile
 
 ### 部署智能合约 {: #deploying-smart-contracts }
 
-从本质上讲，Harhat是一个Node项目，它使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}库与区块链进行交互。您还可以将Ethers.js与Hardhat的工具结合使用来创建脚本执行部署合约等操作。
+从本质上讲，Harhat是一个Node项目，它使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}库与区块链进行交互。您还可以将Ethers.js与Hardhat的工具结合使用来创建脚本执行部署合约等操作。
 
 您的Hardhat项目应当在文件夹中包含`scripts`脚本，被称为`deploy.js`。让我们以一个更加简单的脚本取代他。
 
@@ -264,11 +264,11 @@ npx hardhat run scripts/deploy.js --network moonbase
 您应当能见到展示Token地址的输出，确保您将其**保存下来用于之后的教程中**！
 
 !!! 挑战
-    Hardhat的内置智能合约部署解决方案并不优秀，它不会自动保存与部署相关的交易和地址！这就是创建[hardhat-deploy](https://www.npmjs.com/package/hardhat-deploy#1-hardhat-deploy){target=_blank}包的原因。您能自己实现吗？或者您可以切换到不同的开发环境，例如[Foundry](https://github.com/foundry-rs/foundry){target=_blank}？
+    Hardhat的内置智能合约部署解决方案并不优秀，它不会自动保存与部署相关的交易和地址！这就是创建[hardhat-deploy](https://www.npmjs.com/package/hardhat-deploy#1-hardhat-deploy){target=\_blank}包的原因。您能自己实现吗？或者您可以切换到不同的开发环境，例如[Foundry](https://github.com/foundry-rs/foundry){target=\_blank}？
 
 ## 创建一个DApp前端 {: #creating-a-dapp-frontend }
 
-前端为用户提供与基于区块链应用交互的界面。 React是一种用于构建用户界面的流行JavaScript库，由于其基于组件的架构，可促进可重用代码和高效渲染，因此通常用于开发DApp前端。 [useDApp包](https://usedapp.io/){target=_blank}是一个为DApp设计基于Ethers.js的React框架，通过提供一套全面的钩子和组件来简化构建DApp前端的过程以及以太坊区块链功能的集成。
+前端为用户提供与基于区块链应用交互的界面。 React是一种用于构建用户界面的流行JavaScript库，由于其基于组件的架构，可促进可重用代码和高效渲染，因此通常用于开发DApp前端。 [useDApp包](https://usedapp.io/){target=\_blank}是一个为DApp设计基于Ethers.js的React框架，通过提供一套全面的钩子和组件来简化构建DApp前端的过程以及以太坊区块链功能的集成。
 
 !!! 注意事项
     一般来说，一个大型项目需要为他们的前端和智能合约在GitHub创建单独的库，但有些小型项目能够创建一个monorepo。
@@ -283,7 +283,7 @@ cd frontend
 npm install ethers@5.6.9 @usedapp/core @mui/material @mui/system @emotion/react @emotion/styled
 ```
 
-如果您还记得的话，[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=_blank}是一个协助JSON-RPC通信的库。useDApp包是一个类似的库，它使用Ethers.js并将其格式化为React hooks，以便它们在前端项目中更好地工作。我们还添加了两个用于样式和组件的[MUI](https://mui.com/){target=_blank}包。
+如果您还记得的话，[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}是一个协助JSON-RPC通信的库。useDApp包是一个类似的库，它使用Ethers.js并将其格式化为React hooks，以便它们在前端项目中更好地工作。我们还添加了两个用于样式和组件的[MUI](https://mui.com/){target=\_blank}包。
 
 接下来，让我们设置位于`frontend/src`目录中的`App.js`文件以添加一些视觉结构：
 
@@ -327,7 +327,7 @@ npm run start
 !!! 注意事项
     此时，您可能会看到几个编译警告，但随着我们继续构建DApp，我们将进行更改以解决这些警告。
 
-您的前端将在[localhost:3000](http://localhost:3000){target=_blank}上可用。
+您的前端将在[localhost:3000](http://localhost:3000){target=\_blank}上可用。
 
 至此，我们的前端项目已经设置得足够好，可以开始处理功能代码了！
 
@@ -449,7 +449,7 @@ function App() {
 
 只要我们知道我们想要读取什么，读取合约非常容易。对于我们的应用，我们将读取可以铸造的最大Token数量以及已铸造的Token数量。通过这种方式，我们可以向用户显示仍然可以铸造多少Token，并希望引起一些FOMO的注意……
 
-如果您只是使用JSON-RPC，您可以使用`eth_call`来获取此数据，但这样做非常困难，因为您必须[对您的请求进行编码](https://docs.soliditylang.org/en/latest/abi-spec.html){target=_blank}采用称为ABI编码的非直接方法。幸运的是，Ethers.js允许我们轻松创建以人类可读的方式表示合约的对象，只要我们拥有合约的ABI。我们在Hardhat项目的`artifacts`目录中拥有`MintableERC20.sol`合约的ABI、`MintableERC20.json`！
+如果您只是使用JSON-RPC，您可以使用`eth_call`来获取此数据，但这样做非常困难，因为您必须[对您的请求进行编码](https://docs.soliditylang.org/en/latest/abi-spec.html){target=\_blank}采用称为ABI编码的非直接方法。幸运的是，Ethers.js允许我们轻松创建以人类可读的方式表示合约的对象，只要我们拥有合约的ABI。我们在Hardhat项目的`artifacts`目录中拥有`MintableERC20.sol`合约的ABI、`MintableERC20.json`！
 
 因此，让我们首先将`MintableERC20.json`文件移动到我们的前端目录中。每次更改并重新编译智能合约时，您还必须更新前端中的ABI。有些项目的开发者设置会自动从同一源提取ABI，但在这种情况下，我们只需将其复制过来：
 
@@ -657,7 +657,7 @@ function App() {
 
 我们的前端现在显示正确数据！
 
-![Displaying data](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-3.png)
+![Displaying data](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-3.webp)
 
 !!! 挑战
     有一些附加信息可能有助于显示，例如连接账户当前拥有的Token数量：`balanceOf(address)`。您可以自己将其添加到前端吗？
@@ -872,7 +872,7 @@ function App() {
     export default App;
     ```
 
-![DApp with the Minting section](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-4.png)  
+![DApp with the Minting section](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-4.webp)  
 
 如果您尝试输入**0.1**的数值并按下按钮，则会出现MetaMask提示。
 
@@ -1103,11 +1103,11 @@ function App() {
 
 同时，如果您已完成了任何交易，您将会看见他们的弹窗！
 
-![Finished DApp](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-5.png)
+![Finished DApp](/images/tutorials/eth-api/how-to-build-a-dapp/how-to-build-a-dapp-5.webp)
 
 现在您已经实现了DApp前端的三个主要组件：从存储中读取、发送交易和读取日志。有了这些构建模块以及您通过智能合约和节点获得的知识，您应该能够覆盖80%的DApp。
 
-您可以在[GitHub上查看完整的范例DApp](https://github.com/jboetticher/complete-example-dapp){target=_blank}。
+您可以在[GitHub上查看完整的范例DApp](https://github.com/jboetticher/complete-example-dapp){target=\_blank}。
 
 ## 结论 {: #conclusion }
 
@@ -1118,10 +1118,10 @@ function App() {
 当然，有更多进阶但不一定必要的DApp组件在教程中出现：
 
 - 去中心化存储协议 — 以去中心化模式存储网站和文件的系统
-- [预言机](/builders/integrations/oracles/){target=_blank} — 在区块链中为智能合约提供外部数据的第三方服务
-- [检索协议](/builders/integrations/indexers/){target=_blank} — 用于处理和组织区块链数据的中间件，允许进行有效率的检索
+- [预言机](/builders/integrations/oracles/){target=\_blank} — 在区块链中为智能合约提供外部数据的第三方服务
+- [检索协议](/builders/integrations/indexers/){target=\_blank} — 用于处理和组织区块链数据的中间件，允许进行有效率的检索
 
-如果您有兴趣深入了解从Web2到Web3的内容，您可以阅读关于[Web2与Web3开发的不同之处](https://moonbeam.network/blog/web2-vs-web3-development-heres-what-you-need-to-know-to-make-the-leap-to-blockchain/){target=_blank}的博客文章。
+如果您有兴趣深入了解从Web2到Web3的内容，您可以阅读关于[Web2与Web3开发的不同之处](https://moonbeam.network/blog/web2-vs-web3-development-heres-what-you-need-to-know-to-make-the-leap-to-blockchain/){target=\_blank}的博客文章。
 
 希望通过阅读本指南，您能够顺利在Moonbeam上创建新颖的DApp！
 

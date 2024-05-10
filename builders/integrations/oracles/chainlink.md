@@ -7,7 +7,7 @@ description: 查看基于Moonbeam网络的喂价合约并学习如何使用智�
 
 ## 概览 {: #introduction }
 
-开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。
+开发人员现在可以使用[Chainlink的去中心化预言机网络](https://chain.link/){target=\_blank} 从基于Moonbeam的网络中获取数据。它有两种主要的架构：[喂价（Price Feeds）](https://docs.chain.link/docs/architecture-decentralized-model){target=\_blank} 和[基本请求模型](https://docs.chain.link/architecture-overview/architecture-request-model?parent=gettingStarted){target=\_blank}。喂价包含由预言机运营商在智能合约中不断更新的实时价格数据，以便其他智能合约可以获取和使用它。基本请求模型描述了一种链上架构，用于从单个预言机源请求数据。 本指南将介绍如何使用这两种架构获取最新的价格数据。
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
@@ -15,11 +15,11 @@ description: 查看基于Moonbeam网络的喂价合约并学习如何使用智�
 
 在介绍获取数据本身之前，您需要先了解喂价的基本情况。
 
-在标准配置下，每次喂价是由去中心化预言机网络进行数据更新。每个预言机节点向[Aggregator合约](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol){target=_blank}发布价格数据，而后获得奖励。Aggregator合约从预言机网络定期接收最新数据更新，并将数据聚合并存储在链上，便于使用者轻松获取。但在每一轮聚合中，只有预言机节点收到超过最低数量门槛的响应才会更新数据。
+在标准配置下，每次喂价是由去中心化预言机网络进行数据更新。每个预言机节点向[Aggregator合约](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol){target=\_blank}发布价格数据，而后获得奖励。Aggregator合约从预言机网络定期接收最新数据更新，并将数据聚合并存储在链上，便于使用者轻松获取。但在每一轮聚合中，只有预言机节点收到超过最低数量门槛的响应才会更新数据。
 
 终端用户可以通过Aggregator接口或通过代理合约的Consumer接口使用只读操作检索喂价。
 
-![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.png)
+![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.webp)
 
 ### 获取价格数据 {: #fetch-price-data }
 
@@ -28,6 +28,7 @@ Moonbeam网咯均有Data Feed合约，以简化请求喂价的流程。在Moonba
 数据储存在一系列智能合约中（每个喂价储存在一个智能合约中），可以通过Aggregator接口获取：
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 interface AggregatorV3Interface {
@@ -58,9 +59,9 @@ interface AggregatorV3Interface {
 }
 ```
 
-如上述接口所示，有5个函数可获取价格：`decimal`、`description`、`version`、`getRoundData`和`latestRoundData`。
+如上述接口所示，有5个函数可获取价格：`decimals`、`description`、`version`、`getRoundData`和`latestRoundData`。
 
-目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=_blank}和Moonbase Alpha提供以下报价对的数据喂价合约：
+目前[Moonbeam](https://docs.chain.link/docs/data-feeds-moonbeam/){target=\_blank}、[Moonriver](https://docs.chain.link/docs/data-feeds-moonriver/){target=\_blank}和Moonbase Alpha提供以下报价对的数据喂价合约：
 
 === "Moonbeam"
     | 基础报价对  |                     数据喂价合约                      |
@@ -142,9 +143,9 @@ interface AggregatorV3Interface {
     | USDT to USD  | {{ networks.moonbase.chainlink.feed.proxy.usdt_usd }}  |
     |  YFI to USD  |  {{ networks.moonbase.chainlink.feed.proxy.yfi_usd }}  |
 
-举例而言，您可以通过[Remix](https://remix.ethereum.org/){target=_blank}使用Aggregator接口获取`BTC to USD`喂价。如果您需要加载合约至Remix，请参考[使用Remix](/builders/build/eth-api/dev-env/remix/)文档。
+举例而言，您可以通过[Remix](https://remix.ethereum.org/){target=\_blank}使用Aggregator接口获取`BTC to USD`喂价。如果您需要加载合约至Remix，请参考[使用Remix](/builders/build/eth-api/dev-env/remix/)文档。
 
-您需要将您的MetaMask账户连接至Remix，请确保您已安装MetaMask并已连接至相应的网络。若您还未设置MetaMask，请参考[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/#install-the-metamask-extension){target=_blank}教程。
+您需要将您的MetaMask账户连接至Remix，请确保您已安装MetaMask并已连接至相应的网络。若您还未设置MetaMask，请参考[使用MetaMask与Moonbeam交互](/tokens/connect/metamask/#install-the-metamask-extension){target=\_blank}教程。
 
 创建文件和编译合约后，您将需要执行以下步骤：
 
@@ -176,18 +177,18 @@ interface AggregatorV3Interface {
         {{ networks.moonbase.chainlink.feed.proxy.btc_usd }}
         ```
 
-![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
+![Load the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-2.webp)
 
 这将创建一个可以进行交互的Aggregator接口实例，并出现在Remix的**Deployed Contracts**部分。执行以下操作步骤获取最新价格数据：
 
 1. 展开`AggregatorV3Interface`合约获取可用函数
 2. 点击`latestRoundData()`请求相应喂价数据，在本示例中为BTC to USD
 
-![Interact with the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-3.png)
+![Interact with the Chainlink Price Feed Aggregator Interface on Moonriver](/images/builders/integrations/oracles/chainlink/chainlink-3.webp)
 
 请注意，您必须用`decimals()`了解喂价的小数位数，才能获得实际价格。
 
-如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX){target=_blank}联系我们。
+如果您希望更多报价对出现在上述表格，请随时通过[Discord server](https://discord.com/invite/PfpUATX){target=\_blank}联系我们。
 
 ## 基本请求模型 {: #basic-request-model }
 
@@ -212,6 +213,7 @@ Moonbeam运行的预部署合约和预言机节点支持一组有限的job ID，
 部署在Moonbase Alpha的客户端合约如下：
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.6;
 
 import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
@@ -310,6 +312,7 @@ contract Client is ChainlinkClient {
 
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.6;
 
 /**
@@ -366,7 +369,7 @@ interface ChainlinkInterface {
 | USDT to USD  | {{ networks.moonbase.chainlink.basic.usdt_usd }}  |
 |  YFI to USD  |  {{ networks.moonbase.chainlink.basic.yfi_usd }}  |
 
-在此例中，您可以继续使用在[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}中使用带有`BTC to USD`的job ID的接口合约。在创建文档和编译合约之后，您可以执行以下步骤：
+在此例中，您可以继续使用在[Remix](/builders/build/eth-api/dev-env/remix/){target=\_blank}中使用带有`BTC to USD`的job ID的接口合约。在创建文档和编译合约之后，您可以执行以下步骤：
 
 1. 进入**Deploy and Run Transactions**标签
 
@@ -380,9 +383,9 @@ interface ChainlinkInterface {
 
 6. 然后您可以使用查看函数`currentPrice()`查看价格
 
-![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.png)
+![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.webp)
 
-如果您想要添加其他特定的报价对，请直接通过[Discord](https://discord.com/invite/PfpUATX){target=_blank}联系Moonbeam团队。
+如果您想要添加其他特定的报价对，请直接通过[Discord](https://discord.com/invite/PfpUATX){target=\_blank}联系Moonbeam团队。
 
 ### 创建自定义客户端合约 {: #create-a-custom-client-contract }
 
@@ -398,20 +401,20 @@ interface ChainlinkInterface {
 使用`ChainlinkClient`构建您自己的客户端合约前，首先您需要导入合约：
 
 ```solidity
-import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.8/ChainlinkClient.sol";
+import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/ChainlinkClient.sol";
 ```
 
-您可以查阅[Chainlink documentation on ChainlinkClient API Reference](https://docs.chain.link/docs/chainlink-framework/){target=_blank}以获得更多资讯。
+您可以查阅[Chainlink documentation on ChainlinkClient API Reference](https://docs.chain.link/docs/chainlink-framework/){target=\_blank}以获得更多资讯。
 
 请注意LINK Token支付设置为0。
 
 ### 使用您自己的预言机节点以创建自定义合约 {: #create-custom-contracts-using-your-own-oracle-node }  
 
-开始您自己的设置，包括您自己的客户端合约、预言机合约和预言机节点前，需要开始运行预言机节点。您可以根据[在Moonbeam上运行Chainlink预言机节点](/node-operators/oracle-nodes/node-chainlink/){target=_blank}教程启动您自己的预言机节点。您也可以了解如何设置您预言机合约以及创建Job。
+开始您自己的设置，包括您自己的客户端合约、预言机合约和预言机节点前，需要开始运行预言机节点。您可以根据[在Moonbeam上运行Chainlink预言机节点](/node-operators/oracle-nodes/node-chainlink/){target=\_blank}教程启动您自己的预言机节点。您也可以了解如何设置您预言机合约以及创建Job。
 
-如果您[创建一个可与任何API一起使用的Job](/node-operators/oracle-nodes/node-chainlink/#using-any-api){target=_blank}，接着您可以创建一个客户端合约，设置API终端URL以执行GET请求。
+如果您[创建一个可与任何API一起使用的Job](/node-operators/oracle-nodes/node-chainlink/#using-any-api){target=\_blank}，接着您可以创建一个客户端合约，设置API终端URL以执行GET请求。
 
-请注意，客户端合约必须有用LINK Token余额，才可以支付请求。因此，您需要在`ChainlinkClient.sol`合约中设置LINK值为0。另外需要确保您预言机节点有一个`0`的 `MINIMUM_CONTRACT_PAYMENT`。您可以通过查看[您节点的**配置**部分](http://localhost:6688/config){target=_blank}验证是否设置为0。
+请注意，客户端合约必须有用LINK Token余额，才可以支付请求。因此，您需要在`ChainlinkClient.sol`合约中设置LINK值为0。另外需要确保您预言机节点有一个`0`的 `MINIMUM_CONTRACT_PAYMENT`。您可以通过查看[您节点的**配置**部分](http://localhost:6688/config){target=\_blank}验证是否设置为0。
 
 下方客户端合约是关于如何使用在您客户端合约中的任何API的举例：
 
@@ -482,6 +485,6 @@ contract Client is ChainlinkClient {
 !!! 注意事项
     上述举例使用预部署的LINK Token合约地址。您也可以部署自己的LINK Token合约并使用。
 
-一旦您已经在Remix上部署合约，您可以开始请求容量数据。在发出请求之后，您可以通过[您节点的**Job**](http://localhost:6688/jobs){target=_blank}查看Job的状态。
+一旦您已经在Remix上部署合约，您可以开始请求容量数据。在发出请求之后，您可以通过[您节点的**Job**](http://localhost:6688/jobs){target=\_blank}查看Job的状态。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

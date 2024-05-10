@@ -7,7 +7,7 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 ## 概览 {: #introduction }
 
-与Moonbeam上[用于发送转账的以太坊和Substrate API](/builders/get-started/eth-compare/transfers-api/){target=_blank}类似，Moonbeam上的Substrate和EVM也有不同的交易费用模型，开发者应知道何时需要计算和继续追踪其交易的交易费用。
+与Moonbeam上[用于发送转账的以太坊和Substrate API](/builders/get-started/eth-compare/transfers-api/){target=\_blank}类似，Moonbeam上的Substrate和EVM也有不同的交易费用模型，开发者应知道何时需要计算和继续追踪其交易的交易费用。
 
 首先，以太坊上的交易都会消耗gas，gas是根据交易的复杂性和数据存储需求计算得出的。与之相对，Substrate交易使用“weight”这个概念来计算交易费用。在本教程中，您将学习如何计算Substrate和以太坊的交易费用。在以太坊的部分您还会学到Moonbeam与以太坊在交易费计算上的关键差异。
 
@@ -15,13 +15,13 @@ description: 学习在Moonbeam上的交易费用模型以及开发者需要知�
 
 Moonbeam和以太坊的交易费计算模型有一些主要差异，开发者在开发Moonbeam时应当注意这些不同：
 
-  - [动态交易费机制{](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}与[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}类似，但实现方式不同。
+  - [动态交易费机制{](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=\_blank}与[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=\_blank}类似，但实现方式不同。
 
   - Moonbeam交易费计算模型中使用的gas是通过Substrate extrinsic weight计算得来。首先将Substrate extrinsic weight数值映射为 {{ networks.moonbase.tx_weight_to_gas_ratio }} 的固定因子，计算得出交易的gas unit; 然后将该值与单位价格相乘来计算总gas费用。这个费用模型意味着通过以太坊API实现基本交易，比如转账，可能会比通过Substrate API更便宜。
 
   - 与EVM不同，除gas之外Moonbeam交易还包含一些其他指标，其中很重要的一个就是proof size。Proof size是中继链验证节点验证Moonbeam state变换时所需的存储空间。当一个交易的proof size超过限制（区块proof size的25%）时，该交易将抛出“Out of Gas”错误（即便 gasometer 中还有剩余gas）。此附加指标还会影响交易的退款（refund）。Moonbeam的退款是根据交易执行后使用最多的资源计算得出，如果一个交易消耗的proof size大于残留的gas，则退款数额将基于proof size计算。
 
-  - Moonbeam实现了[MBIP-5](https://github.com/moonbeam-foundation/moonbeam/blob/master/MBIPS/MBIP-5.md){target=_blank}中定义的一个新机制，该机制限制了区块能使用的存储上限，并且如果一个交易会造成存储数据增加，那它将需要支付更多gas。此功能目前仅在Moonriver与Moonbase Alpha上启用。
+  - Moonbeam实现了[MBIP-5](https://github.com/moonbeam-foundation/moonbeam/blob/master/MBIPS/MBIP-5.md){target=\_blank}中定义的一个新机制，该机制限制了区块能使用的存储上限，并且如果一个交易会造成存储数据增加，那它将需要支付更多gas
 
 ## MBIP-5概述 {: #overview-of-mbip-5 }
 
@@ -30,6 +30,12 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 这个提案将影响以下三类交易：合约部署（导致链上state增加）；创建新存储条目的交易；以及创建新帐户的预编译合约调用。
 
 区块存储上限限制了单个区块中所有交易造成储存量增长的总和，对应不同网络这个值为：
+
+=== "Moonbeam"
+
+    ```text
+    {{ networks.moonbeam.mbip_5.block_storage_limit }}KB
+    ```
 
 === "Moonriver"
 
@@ -51,6 +57,12 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 
 不同网络对应的区块gas上限为：
 
+=== "Moonbeam"
+
+    ```text
+    {{ networks.moonbeam.gas_block }}
+    ```
+
 === "Moonriver"
 
     ```text
@@ -64,6 +76,13 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
     ```
 
 已知区块的gas与储存上限，我们可以利用以下公式来计算gas与储存的比率：
+
+=== "Moonbeam"
+
+    ```text
+    比率 = {{ networks.moonbeam.gas_block_numbers_only }} / ({{ networks.moonbeam.mbip_5.block_storage_limit }} * 1024)
+    比率 = {{ networks.moonbeam.mbip_5.gas_storage_ratio }} 
+    ```
 
 === "Moonriver"
 
@@ -81,6 +100,13 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
 
 然后，您可以用交易的实际存储增长（以byte为单位）乘以gas与存储的比率，来计算该交易实际需要额外支付的gas单位。例如，如果执行交易使存储增加了 {{ networks.moonbase.mbip_5.example_storage }} byte，则可以使用以下公式来计算额外gas
 
+=== "Moonbeam"
+
+    ```text
+    额外Gas = {{ networks.moonbeam.mbip_5.example_storage }} * {{ networks.moonbeam.mbip_5.gas_storage_ratio }}
+    额外Gas = {{ networks.moonbeam.mbip_5.example_addtl_gas }}
+    ```
+
 === "Moonriver"
 
     ```text
@@ -96,7 +122,6 @@ MBIP-5 是一个为了更好应对网络存储增长而提出的关于Moonbeam�
     ```
 
 我们可以通过在以太坊与Moonbeam分别部署两个不同的合约并且对比他们的gas预算来感受这个MBIP造成的主要影响，部署的两个合约一个修改链上的储存状态，另一个不修改。例如下面这个合约会在链上存储一个名字，然后使用这个名字来发送一个消息。
-
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -229,7 +254,6 @@ contract SayHello {
     |  `setName` |     21520    |
     | `sayHello` |     21064    |
 
-
 您会看到在Sepolia上，这两个调用的gas估计值非常相似，而在Moonbase Alpha上，这两个调用之间存在明显的差异，并且修改存储的`setName`调用比`sayHello`调用使用更多的 gas。
 
 ## 以太坊API交易费用 {: #ethereum-api-transaction-fees }
@@ -261,7 +285,7 @@ contract SayHello {
 
 ### 基础费用 {: #base-fee}
 
-`BaseFee`是在传送交易时被收取的最小费用，数值由网络本身设置。[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=_blank}计算基础费用，它是根据区块拥塞情况来进行调整。从runtime 2300（运行时2300）开始，动态费用机制已推广到所有基于Moonbeam的网络。
+`BaseFee`是在传送交易时被收取的最小费用，数值由网络本身设置。[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=\_blank}中引入的`Base Fee`是由网络自设的一个值。Moonbeam有自己的[动态费用机制](https://forum.moonbeam.foundation/t/proposal-status-idea-dynamic-fee-mechanism-for-moonbeam-and-moonriver/241){target=\_blank}计算基础费用，它是根据区块拥塞情况来进行调整。从runtime 2300（运行时2300）开始，动态费用机制已推广到所有基于Moonbeam的网络。
 
 每个网络的最低gas价格（Minimum Gas Price）如下：
 
@@ -306,7 +330,7 @@ contract SayHello {
 GET /pallets/transaction-payment/storage/nextFeeMultiplier?at={blockId}
 ```
 
-Sidecar的pallet端点返回与pallet相关的数据，例如pallet存储中的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-pallets){target=_blank}中阅读更多关于pallet端点的信息。需要从存储中获取的手头数据是`nextFeeMultiplier`，它可以在`transaction-payment` pallet中找到。存储的`nextFeeMultiplier`值可以直接从Sidecar存储结构中读取。读取结果为JSON对象，相关嵌套结构如下：
+Sidecar的pallet端点返回与pallet相关的数据，例如pallet存储中的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-pallets){target=\_blank}中阅读更多关于pallet端点的信息。需要从存储中获取的手头数据是`nextFeeMultiplier`，它可以在`transaction-payment` pallet中找到。存储的`nextFeeMultiplier`值可以直接从Sidecar存储结构中读取。读取结果为JSON对象，相关嵌套结构如下：
 
 ```text
 RESPONSE JSON Storage Object:
@@ -324,13 +348,13 @@ RESPONSE JSON Storage Object:
 
 ### GasPrice，MaxFeePerGas和MaxPriorityFeePerGas {: #gasprice-maxfeepergas-maxpriorityfeepergas }
 
-`GasPrice`为用于指定在[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}前遗留交易的Gas价格。`MaxFeePerGas`和`MaxPriorityFeePerGas`在EIP-1559与`BaseFee`一同出现。`MaxFeePerGas`定义了允许支付以Gas为单位的最大费用，为`BaseFee`和`MaxPriorityFeePerGas`的总和。`MaxPriorityFeePerGas`为由交易的传送者配置的最大优先费用，用于在区块中激励优先处理该交易。
+`GasPrice`为用于指定在[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=\_blank}前遗留交易的Gas价格。`MaxFeePerGas`和`MaxPriorityFeePerGas`在EIP-1559与`BaseFee`一同出现。`MaxFeePerGas`定义了允许支付以Gas为单位的最大费用，为`BaseFee`和`MaxPriorityFeePerGas`的总和。`MaxPriorityFeePerGas`为由交易的传送者配置的最大优先费用，用于在区块中激励优先处理该交易。
 
 尽管Moonbeam与以太坊兼容，但它的核心还是基于Substrate的链，并且优先级在Substrate中的工作方式与在以太坊中不同。在Substrate中，交易并不按Gas价格确定优先顺序。为了解决这个问题，Moonbeam使用了修改后的优先级系统，该系统使用以太坊优先的解决方案重新确定Substrate交易的优先级。Substrate交易仍会经历有效性过程，在此过程中会为其分配交易标签、寿命和优先级。然后，原始优先级将被基于每Gas交易费用的新优先级覆盖，该费用源自交易的小费和权重。如果交易是以太坊交易，则根据优先费设置优先级。
 
 值得注意的是，优先级并不是负责确定区块中交易顺序的唯一组件。其他组件（例如交易的寿命）也在排序过程中发挥作用。
 
-适用交易类型的`GasPrice`, `MaxFeePerGas`和`MaxPriorityFeePerGas`的值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=_blank}描述的结构从Block JSON对象读取，特定区块中以太坊交易的数据可以从以下区块端点中提取：
+适用交易类型的`GasPrice`, `MaxFeePerGas`和`MaxPriorityFeePerGas`的值可以根据[Sidecar API页面](/builders/build/substrate-api/sidecar/#evm-fields-mapping-in-block-json-object){target=\_blank}描述的结构从Block JSON对象读取，特定区块中以太坊交易的数据可以从以下区块端点中提取：
 
 ```text
 GET /blocks/{blockId}
@@ -431,7 +455,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 ### 计算交易费用的示例代码 {: #sample-code }
 
-以下代码片段使用[Axios HTTP客户端](https://axios-http.com/){target=_blank}来为最终区块查询[Sidecar端点`/blocks/head`](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}。随后，根据交易类型（以太坊API：legacy、EIP-1559或EIP-2930标准以及Substrate API）计算区块中所有交易的交易费用，以及区块中的总交易费用。
+以下代码片段使用[Axios HTTP客户端](https://axios-http.com/){target=\_blank}来为最终区块查询[Sidecar端点`/blocks/head`](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=\_blank}。随后，根据交易类型（以太坊API：legacy、EIP-1559或EIP-2930标准以及Substrate API）计算区块中所有交易的交易费用，以及区块中的总交易费用。
 
 以下代码示例仅用于演示目的，代码需进行修改并进一步测试后才可正式用于生产环境。
 
@@ -443,9 +467,9 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 
 ## Substrate API交易费用 {: #substrate-api-transaction-fees }
 
-本教程假设您通过[Substrate API Sidecar](/builders/build/substrate-api/sidecar/){target=_blank}服务与Moonbeam区块交互。也有其他与Moonbeam区块交互的方式，例如使用[Polkadot.js API library](/builders/build/substrate-api/polkadot-js-api/){target=_blank}。检索区块后，两种方式的逻辑都是相同的。
+本教程假设您通过[Substrate API Sidecar](/builders/build/substrate-api/sidecar/){target=\_blank}服务与Moonbeam区块交互。也有其他与Moonbeam区块交互的方式，例如使用[Polkadot.js API library](/builders/build/substrate-api/polkadot-js-api/){target=\_blank}。检索区块后，两种方式的逻辑都是相同的。
 
-您可以参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=_blank}获取关于安装和运行自己的Sidecar服务实例，以及如何为Moonbeam交易编码Sidecar区块的更多细节。
+您可以参考[Substrate API Sidecar页面](/builders/build/substrate-api/sidecar/){target=\_blank}获取关于安装和运行自己的Sidecar服务实例，以及如何为Moonbeam交易编码Sidecar区块的更多细节。
 
 **请注意，此页面信息假定您运行的是版本{{ networks.moonbase.substrate_api_sidecar.stable_version }} 的Substrate Sidecar REST API。**
 
@@ -455,7 +479,7 @@ Moonbeam网络实施[`eth_feeHistory`](https://docs.alchemy.com/reference/eth-fe
 GET /blocks/{blockId}
 ```
 
-区块端点将返回与一个或多个区块相关的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=_blank}上阅读有关区块端点的更多信息。读取结果为JSON对象，相关嵌套结构如下所示：
+区块端点将返回与一个或多个区块相关的数据。您可以在[Sidecar官方文档](https://paritytech.github.io/substrate-api-sidecar/dist/#operations-tag-blocks){target=\_blank}上阅读有关区块端点的更多信息。读取结果为JSON对象，相关嵌套结构如下所示：
 
 ```text
 RESPONSE JSON Block Object:
@@ -503,4 +527,5 @@ pallet: "transactionPayment", method: "TransactionFeePaid"
 ```text
 extrinsics[extrinsic_number].events[event_number].data[1]
 ```
+
 --8<-- 'text/_disclaimers/third-party-content.md'

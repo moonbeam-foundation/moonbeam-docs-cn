@@ -9,9 +9,9 @@ description: 如何在State of the DApps上列出您的Moonbeam或Moonriver项�
 
 [State of the DApps](https://www.stateofthedapps.com/)由Joris Bontje于2016年创建，旨在为所有部署在以太坊上的智能合约或去中心化应用提供便捷入口。从那时起，它便有了巨大的发展，支持多链并展示了大量的信息。用他们的话说，*“无论您是在寻找新的用户、测试人员、概念反馈、合作伙伴或投资伙伴，通过DApp项目的权威入口处登记，为您的项目获得吸引力。”*
 
-State of the DApps根据活跃用户、交易量、开发者活动和项目背景对项目进行排名。Moonriver现已上线State of the DApps。此前，众包DApp在[Moonbeam官方资料库的List页面](/learn/dapps-list/)进行维护。目前，该登记口已被弃用并由[DApp列表](/learn/dapps-list/){target=_blank}下的列表平台取代。
+State of the DApps根据活跃用户、交易量、开发者活动和项目背景对项目进行排名。Moonriver现已上线State of the DApps。此前，众包DApp在[Moonbeam官方资料库的List页面](/learn/dapps-list/)进行维护。目前，该登记口已被弃用并由[DApp列表](/learn/dapps-list/){target=\_blank}下的列表平台取代。
 
-![State of the DApps Home Page](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-1.png)
+![State of the DApps Home Page](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-1.webp)
 
 您可以通过提供您的项目背景，包括DApp的描述、截屏、社交媒体链接和项目状态（如Live、Beta、Prototype等）向State of the DApps[提交您的项目](https://www.stateofthedapps.com/dapps/submit/new)。我们欢迎处于产品生命周期任何阶段的DApps，包括处于构思阶段的DApps。只有部分区域是必填的，但建议您尽可能地提供更多全面的资料，这将有助于您提高项目排名。
 
@@ -63,7 +63,7 @@ State of the DApps根据活跃用户、交易量、开发者活动和项目背�
 
   14. 阅读条款和条件，并点击**提交**
 
-![How to Submit your DApp](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-2.png)
+![How to Submit your DApp](/images/learn/dapps-list/state-of-the-dapps/state-of-the-dapps-2.webp)
 
 State of the DApps团队通常会在一个工作日内审核您提交的信息。若您有任何与Moonbeam相关的问题，请在[Discord](https://discord.gg/moonbeam)与我们联系。若您需要State of the DApps的支持，请联系support@stateofthedapps.com
 

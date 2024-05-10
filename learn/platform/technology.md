@@ -49,7 +49,7 @@ Moonbeam上的智能合约可以使用Solidity、Vyper和任何能够将智能�
 
 在Moonbeam上的执行智能合约，将尽量做到与以太坊 Layer 1接近。Moonbeam是单分片，因此跨合约调用与以太坊 Layer 1相同。
 
-![Diagram showing the interactions made possible through Moonbeam's Ethereum compatibility](/images/learn/platform/technology-diagram.png)
+![Diagram showing the interactions made possible through Moonbeam's Ethereum compatibility](/images/learn/platform/technology-diagram.webp)
 
 上图展示了更高维度的交互流。DApp或现有以太坊开发者工具发出Web3 RPC调用指令，例如Hardhat等，并被Moonbeam节点接收。节点同时可使用Web3 RPC和Substrate RPC，即可使用以太坊工具或Substrate工具和Moonbeam节点交互。RPC调用指令将被相关的Substrate运行时间功能进行处理，对签名进行检查，并处理所有的外部请求。对智能合约的调用指令最终会被发送到EVM，由EVM来执行状态的转移。
 

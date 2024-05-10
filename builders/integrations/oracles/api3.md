@@ -9,11 +9,11 @@ description: 学习如何使用API3在Moonbeam网络上通过API3 Airnodes和dAP
 
 API3是一个去中心化解决方案，以易访问和可扩展的方式向智能合约平台提供传统API服务。它由去中心化自治组织（DAO）——API3 DAO负责管理。API3让开发者能够在无需担心安全问题前提下，从智能合约中访问链下资源。API3通过第一方预言机——Airnodes，以及源自预言机的链上数据源使这一切成为可能。
 
-开发者可以使用[Airnode](https://docs.api3.org/explore/airnode/what-is-airnode.html){target=_blank}在Moonbeam网络上的智能合约内请求链下数据。Airnode是一个第一方预言机，可将链下API数据推送到链上合约。Airnode让API提供商能够轻松运行自身的第一方预言机节点。如此一来，他们就可以在无需中介的情况下，向任何对其服务感兴趣的链上dApp提供数据。
+开发者可以使用[Airnode](https://docs.api3.org/explore/airnode/what-is-airnode.html){target=\_blank}在Moonbeam网络上的智能合约内请求链下数据。Airnode是一个第一方预言机，可将链下API数据推送到链上合约。Airnode让API提供商能够轻松运行自身的第一方预言机节点。如此一来，他们就可以在无需中介的情况下，向任何对其服务感兴趣的链上dApp提供数据。
 
-一个链上智能合约能够在[RRP（请求响应协议）](https://docs.api3.org/reference/airnode/latest/concepts/){target=_blank}合约中发出请求（[`AirnodeRrpV0. sol`](https://github.com/api3dao/airnode/blob/v0.11/packages/airnode-protocol/contracts/rrp/AirnodeRrpV0.sol){target=_blank}）并将请求添加到事件日志。接着，由Airnode访问事件日志、获取API数据并使用请求的数据对请求者执行回调。
+一个链上智能合约能够在[RRP（请求响应协议）](https://docs.api3.org/reference/airnode/latest/concepts/){target=\_blank}合约中发出请求（[`AirnodeRrpV0. sol`](https://github.com/api3dao/airnode/blob/v0.11/packages/airnode-protocol/contracts/rrp/AirnodeRrpV0.sol){target=\_blank}）并将请求添加到事件日志。接着，由Airnode访问事件日志、获取API数据并使用请求的数据对请求者执行回调。
 
-![API3 Airnode](/images/builders/integrations/oracles/api3/api3-1.png)
+![API3 Airnode](/images/builders/integrations/oracles/api3/api3-1.webp)
 
 --8<-- 'text/_disclaimers/third-party-content-intro.md'
 
@@ -26,7 +26,7 @@ API3是一个去中心化解决方案，以易访问和可扩展的方式向智�
 - 提交请求
 - 接收并解码响应
 
-![API3 Airnode](/images/builders/integrations/oracles/api3/api3-2.png)
+![API3 Airnode](/images/builders/integrations/oracles/api3/api3-2.webp)
 
 以下是一个从Airnode请求数据的基础请求者范例合约：
 
@@ -85,11 +85,11 @@ contract Requester is RrpRequesterV0 {
 }
 ```
 
-您也可以尝试在[Remix上部署范例合约](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/Requester.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js){target=_blank}。
+您也可以尝试在[Remix上部署范例合约](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/Requester.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js){target=\_blank}。
 
 ### 合约地址 {: #contract-addresses }
 
-`_rrpAddress`是主要的`airnodeRrpAddress`。RRP合约已经被部署在链上。以下为Moonbeam网络中的[`_rrpcAddress`地址列表](https://docs.api3.org/reference/airnode/latest/){target=_blank}：
+`_rrpAddress`是主要的`airnodeRrpAddress`。RRP合约已经被部署在链上。以下为Moonbeam网络中的[`_rrpcAddress`地址列表](https://docs.api3.org/reference/airnode/latest/){target=\_blank}：
 
 === "Moonbeam"
 
@@ -113,16 +113,16 @@ contract Requester is RrpRequesterV0 {
 
 `makeRequest()`函数需要以下参数以成为一个可用的请求：
 
-- [**`airnode`**](https://docs.api3.org/reference/airnode/latest/concepts/airnode.html){target=_blank} - 指定Airnode地址
-- [**`endpointId`**](https://docs.api3.org/reference/airnode/latest/concepts/endpoint.html){target=_blank} - 指定使用端点
-- [**`sponsor`**](https://docs.api3.org/reference/airnode/latest/concepts/sponsor.html){target=_blank} and [**`sponsorWallet`**](https://docs.api3.org/reference/airnode/latest/concepts/sponsor.html#sponsorwallet){target=_blank} - 指定用于完成请求的钱包
-- [**`parameters`**](https://docs.api3.org/reference/ois/latest/reserved-parameters.html){target=_blank} - 指定API和保留参数（详细内容请看[Airnode ABI列表](https://docs.api3.org/reference/ois/latest/){target=_blank}了解这些是如何编码的）。参数将使用`@airnode-abi`在链下编码
+- [**`airnode`**](https://docs.api3.org/reference/airnode/latest/concepts/airnode.html){target=\_blank} - 指定Airnode地址
+- [**`endpointId`**](https://docs.api3.org/reference/airnode/latest/concepts/endpoint.html){target=\_blank} - 指定使用端点
+- [**`sponsor`**](https://docs.api3.org/reference/airnode/latest/concepts/sponsor.html){target=\_blank} and [**`sponsorWallet`**](https://docs.api3.org/reference/airnode/latest/concepts/sponsor.html#sponsorwallet){target=\_blank} - 指定用于完成请求的钱包
+- [**`parameters`**](https://docs.api3.org/reference/ois/latest/reserved-parameters.html){target=\_blank} - 指定API和保留参数（详细内容请看[Airnode ABI列表](https://docs.api3.org/reference/ois/latest/){target=\_blank}了解这些是如何编码的）。参数将使用`@airnode-abi`在链下编码
 
 ### 响应参数 {: #response-params }
 
 请求者合约的调用响应包含以下两个参数：
 
-- [**`requestId`**](https://docs.api3.org/reference/airnode/latest/concepts/request.html#requestid){target=_blank} - 首个在发起请求时获取并作为响应请求时参考的请求ID。
+- [**`requestId`**](https://docs.api3.org/reference/airnode/latest/concepts/request.html#requestid){target=\_blank} - 首个在发起请求时获取并作为响应请求时参考的请求ID。
 - **`data`** - 如果成功获得响应，这将是已编码的请求数据，还包含时间戳和其响应数据。这将使用`abi`对象中的`decode()`函数对其进行解码
 
 !!! 注意事项
@@ -130,33 +130,33 @@ contract Requester is RrpRequesterV0 {
 
 ## 使用dAPIs - API3数据源 {: #dapis }
 
-[dAPI](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=_blank}为不断更新的链下数据流，如最新的加密货币、股票和商品价格。它们可以为各种去中心化应用程序提供支持，例如DeFi借贷、合成资产、稳定币、衍生品、NFT等。
+[dAPI](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=\_blank}为不断更新的链下数据流，如最新的加密货币、股票和商品价格。它们可以为各种去中心化应用程序提供支持，例如DeFi借贷、合成资产、稳定币、衍生品、NFT等。
 
-[第一方预言机](https://docs.api3.org/explore/introduction/first-party.html){target=_blank}使用签名数据不断更新数据源。DApp所有者可以实时读取任何dAPI的链上价值。
+[第一方预言机](https://docs.api3.org/explore/introduction/first-party.html){target=\_blank}使用签名数据不断更新数据源。DApp所有者可以实时读取任何dAPI的链上价值。
 
 由于第一方数据源的组成，dAPI在交钥匙（Turn-key）包中提供安全性、透明度、成本效益和可扩展性。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-3.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-3.webp)
 
-*要了解更多dAPI是如何运作的，您可以查看[API3的文档网站](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=_blank}。*
+*要了解更多dAPI是如何运作的，您可以查看[API3的文档网站](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=\_blank}。*
 
 ### dAPI类型 {: #types-of-dapis }
 
-dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}与[托管](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}. 托管DAPI仅部署在主网上, 自费dAPI在主网和测试网都有部署。利用dAPI代理来读取自费或托管dAPI数据流程是一样的.
+dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=\_blank}与[托管](https://docs.api3.org/reference/dapis/understand/managed.html){target=\_blank}. 托管DAPI仅部署在主网上, 自费dAPI在主网和测试网都有部署。利用dAPI代理来读取自费或托管dAPI数据流程是一样的.
 
 #### 自费dAPIs {: #self-funded-dapis }
 
-[自费dAPI](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=_blank}是用户自己付费订阅的单源数据推送. 它们为开发者提供了以最少的前期付出体验数据源的机会，在使用托管dAPI之前提供了低风险的选择。
+[自费dAPI](https://docs.api3.org/reference/dapis/understand/self-funded.html){target=\_blank}是用户自己付费订阅的单源数据推送. 它们为开发者提供了以最少的前期付出体验数据源的机会，在使用托管dAPI之前提供了低风险的选择。
 
 通过自费的dAPI，您可以用自己的资金为dAPI提供资金。您提供的Gas数量将决定您dAPI的可用时间。如果您的Gas耗尽，您可以再次为dAPI提供资金以使其可供使用。
 
-您可以在[API3的自费dAPI文档](https://docs.api3.org/guides/dapis/subscribing-self-funded-dapis/){target=_blank}中获取更多关于它的知识。
+您可以在[API3的自费dAPI文档](https://docs.api3.org/guides/dapis/subscribing-self-funded-dapis/){target=\_blank}中获取更多关于它的知识。
 
 #### 托管dAPIs {: #managed-dapis }
 
-[托管dAPI](https://docs.api3.org/reference/dapis/understand/managed.html)的数据由多个不同[一手](https://docs.api3.org/explore/airnode/why-first-party-oracles.html){target=_blank}数据提供商通过Airnode提供。数据提供商的数据会经过Airnode的median函数集成并签名。Gas费用与dAPI的可靠性由[API3 DAO](https://docs.api3.org/explore/dao-members/){target=_blank}管理.
+[托管dAPI](https://docs.api3.org/reference/dapis/understand/managed.html)的数据由多个不同[一手](https://docs.api3.org/explore/airnode/why-first-party-oracles.html){target=\_blank}数据提供商通过Airnode提供。数据提供商的数据会经过Airnode的median函数集成并签名。Gas费用与dAPI的可靠性由[API3 DAO](https://docs.api3.org/explore/dao-members/){target=\_blank}管理.
 
-您可以在[API3的托管dAPI文档页面](https://docs.api3.org/reference/dapis/understand/managed.html){target=_blank}获取更多关于它的知识。
+您可以在[API3的托管dAPI文档页面](https://docs.api3.org/reference/dapis/understand/managed.html){target=\_blank}获取更多关于它的知识。
 
 ### 访问自费的dAPI {: #access-self-funded-dapis}
 
@@ -167,30 +167,30 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 3. 部署一个代理合约以访问数据源
 4. 从dAPI读取数据
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-4.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-4.webp)
 
 #### 从API3 Market中选取一个dAPI {: #select-a-dapi }
 
-[API3 Market](https://market.api3.org/dapis){target=_blank}使用户能够连接到dAPI并访问相关的数据馈送服务。它提供了跨多个链（包括测试网）可用的所有dAPI的列表。您可以按链和数据提供商过滤列表。您还可以根据名称搜索特定的dAPI。点击dAPI进入详细信息页面，获取有关dAPI的更多信息。
+[API3 Market](https://market.api3.org/dapis){target=\_blank}使用户能够连接到dAPI并访问相关的数据馈送服务。它提供了跨多个链（包括测试网）可用的所有dAPI的列表。您可以按链和数据提供商过滤列表。您还可以根据名称搜索特定的dAPI。点击dAPI进入详细信息页面，获取有关dAPI的更多信息。
 
 根据以上信息，您可以自己决定使用自费或托管dAPI.
 
-![API3 Dapi Page](/images/builders/integrations/oracles/api3/api3-5.png)
+![API3 Dapi Page](/images/builders/integrations/oracles/api3/api3-5.webp)
 
 #### 资助一个赞助商钱包 {: #fund-sponsor-wallet }
 
-选择中意的dAPI后，您可以使用[API3 Market](https://market.api3.org/){target=_blank}激活它，将资金（DEV、MOVR或GLMR）发送到`sponsorWallet `。确保您的：
+选择中意的dAPI后，您可以使用[API3 Market](https://market.api3.org/){target=\_blank}激活它，将资金（DEV、MOVR或GLMR）发送到`sponsorWallet `。确保您的：
 
 - 钱包连接至市场以及与您资助的dAPI为相同网络
 - 您钱包中的余额需要大于您发送至`sponsorWallet`的Token数量
 
 要资助dAPI，您需要点击**Fund Gas**按钮。根据代理合约是否已部署，您将看到不同的UI。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-6.webp)
 
 使用Gas预测器选取dAPI需要多少Gas。点击**Send DEV**发送您先前为指定dAPI输入的数量。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-7.webp)
 
 当交易完成并在区块链上确认后将会出现在屏幕上。
 
@@ -203,7 +203,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 如果您在资助过程中部署代理合约，则可以点击**Get Proxy**按钮将向您的钱包发起一笔交易，该交易将部署代理合约。
 
-![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-8.png)
+![API3 Remix deploy](/images/builders/integrations/oracles/api3/api3-8.webp)
 
 当交易完成并在区块链上确认后，代理合约地址将会在界面中显示。
 
@@ -211,7 +211,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 
 如果您想使用托管dAPI，在选择dAPI后，会有两个选项供您选择：**Managed**或**Self-funded**. 选择**Managed dAPIs**.
 
-托管dAPI提供给用户配置dAPI参数的选项，其中包括[偏差临界](https://docs.api3.org/reference/dapis/understand/deviations.html){target=_blank}和[heartbeat](https://docs.api3.org/reference/dapis/understand/deviations.html#heartbeat){target=_blank}. 您会有以下选项来配置托管dAPI:
+托管dAPI提供给用户配置dAPI参数的选项，其中包括[偏差临界](https://docs.api3.org/reference/dapis/understand/deviations.html){target=\_blank}和[heartbeat](https://docs.api3.org/reference/dapis/understand/deviations.html#heartbeat){target=\_blank}. 您会有以下选项来配置托管dAPI:
 
 |    偏差    | Heartbeat |
 | --------- | ---------  |
@@ -221,7 +221,7 @@ dAPI有两种类型: [自费](https://docs.api3.org/reference/dapis/understand/s
 | 1%        | 24 小时    |
 
 !!! 注意事项
-    根据资产和链的不同，并不是所有dAPI都支持全部配置选项。访问[API3市场](https://market.api3.org){target=_blank} 获取更多信息。
+    根据资产和链的不同，并不是所有dAPI都支持全部配置选项。访问[API3市场](https://market.api3.org){target=\_blank} 获取更多信息。
 
 在选择偏差临界值和heartbeat之后，检查最后的价格，然后选择**Add to Cart**。您可以添加同一个网络上的多个dAPI进购物车。选择完成后点**Checkout**。请在付款页面确认最后的订单信息和价格。当您检查完后，连接您的钱包并付款。
 
@@ -265,13 +265,13 @@ contract DataFeedReaderExample is Ownable {
 - `setProxy()` - 用于设置dAPI代理合约的地址
 - `readDataFeed()` - 返回设定dAPI最新价格的`view`函数
 
-[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/DataFeedReader.sol&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.18+commit.87f61d96.js){target=_blank}
+[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/DataFeedReader.sol&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.18+commit.87f61d96.js){target=\_blank}
 
-另外，您可以在[API3的官方文档网站](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/){target=_blank}中获取更多资讯。
+另外，您可以在[API3的官方文档网站](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/){target=\_blank}中获取更多资讯。
 
 ## API3 QRNG {: #api3-qrng }
 
-[API3 QRNG](https://docs.api3.org/explore/qrng/){target=_blank}是由澳大利亚国立大学（ANU）提供的公共实用程序。它由ANU Quantum Random Numbers托管的Airnode提供支持，意味着它是第一方服务。它是一种公共产品，无需付费即可使用（除了Gas成本），并且当需要RNG上链时，它通过易于使用的解决方案提供“真正的”量子随机性。
+[API3 QRNG](https://docs.api3.org/explore/qrng/){target=\_blank}是由澳大利亚国立大学（ANU）提供的公共实用程序。它由ANU Quantum Random Numbers托管的Airnode提供支持，意味着它是第一方服务。它是一种公共产品，无需付费即可使用（除了Gas成本），并且当需要RNG上链时，它通过易于使用的解决方案提供“真正的”量子随机性。
 
 为了请求链上的随机性，请求者向AirnodeRrpV0提交随机数请求。ANU Airnode从AirnodeRrpV0协议合约收集请求，检索链下随机数，并将其发送回AirnodeRrpV0。收到后，它会使用随机数对请求者执行回调。
 
@@ -357,7 +357,7 @@ contract RemixQrngExample is RrpRequesterV0 {
 !!! 注意事项
     您可以从下面的[QRNG提供商](#qrng-providers)部分获取`airnode`地址和`endpointIdUint256`。
 
-[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/QrngRequesterUpdated.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js&lang=en){target=_blank}。
+[您可以尝试在Remix上部署](https://remix.ethereum.org/#url=https://github.com/api3-ecosystem/remix-contracts/blob/master/contracts/QrngRequesterUpdated.sol&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.9+commit.e5eed63a.js&lang=en){target=\_blank}。
 
 ### QRNG Airnode和端点提供者 {: #qrng-providers }
 
@@ -390,17 +390,17 @@ contract RemixQrngExample is RrpRequesterV0 {
     |  Nodary Endpoint ID (uint256)  |   `{{ networks.moonbase.api3.nodaryqrnguint256 }}`    |
     | Nodary Endpoint ID (uint256[]) | `{{ networks.moonbase.api3.nodaryqrnguint256array }}` |
 
-*关于完整的QRNG提供者列表，您可以查看[API3的官方文档网站](https://docs.api3.org/reference/qrng/providers.html){target=_blank}。*
+*关于完整的QRNG提供者列表，您可以查看[API3的官方文档网站](https://docs.api3.org/reference/qrng/providers.html){target=\_blank}。*
 
 ## Additional Resources - 参考资料 {: #additional-resources }
 
 以下为一些额外的开发者资源：
 
-- [API3 Docs](https://docs.api3.org/){target=_blank}
-    - [dAPI Docs](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=_blank}
-    - [QRNG Docs](https://docs.api3.org/explore/qrng/){target=_blank}
-- [API3 DAO GitHub](https://github.com/api3dao/){target=_blank}
-- [API3 Medium](https://medium.com/api3){target=_blank}
-- [API3 YouTube](https://www.youtube.com/API3DAO){target=_blank}
+- [API3 Docs](https://docs.api3.org/){target=\_blank}
+    - [dAPI Docs](https://docs.api3.org/explore/dapis/what-are-dapis.html){target=\_blank}
+    - [QRNG Docs](https://docs.api3.org/explore/qrng/){target=\_blank}
+- [API3 DAO GitHub](https://github.com/api3dao/){target=\_blank}
+- [API3 Medium](https://medium.com/api3){target=\_blank}
+- [API3 YouTube](https://www.youtube.com/API3DAO){target=\_blank}
 
 --8<-- 'text/_disclaimers/third-party-content.md'

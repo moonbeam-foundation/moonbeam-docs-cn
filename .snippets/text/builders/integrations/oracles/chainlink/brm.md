@@ -2,7 +2,7 @@
 
 1. 客户合约创建并向Chainlink预言机发出数据请求
 
-2. 请求通过LINK Token合约的`transferAndCall`函数发出。LINK Token是一个符合[ERC-677](https://github.com/ethereum/EIPs/issues/677){target=_blank}的Token，即允许转移Token并将请求传输给预言机合约
+2. 请求通过LINK Token合约的`transferAndCall`函数发出。LINK Token是一个符合[ERC-677](https://github.com/ethereum/EIPs/issues/677){target=\_blank}的Token，即允许转移Token并将请求传输给预言机合约
 
 3. 转移Token后，LINK合约将调用预言机合约的`onTokenTransfer`函数
 
@@ -10,7 +10,7 @@
 
 5. 预言机节点完成请求后，节点使用预言机合约的`fulfillOracleRequest`函数，通过在原始请求中定义的回调函数将结果返回给客户合约
 
-![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.png)
+![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.webp)
 
 当通过客户合约创建数据请求后，需要传入以下参数以确保交易能够进行并返回正确信息：
 

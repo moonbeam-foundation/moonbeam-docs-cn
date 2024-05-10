@@ -7,9 +7,9 @@ description: 通过本教程学习如何使用以太坊web3.js JavaScript代码�
 
 ## 概览 {: #introduction }
 
-[Web3.js](https://web3js.readthedocs.io/){target=_blank}是一组代码库，允许开发者使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Web3.js库与Moonbeam节点交互，与在以太坊操作相同。
+[Web3.js](https://web3js.readthedocs.io/){target=\_blank}是一组代码库，允许开发者使用JavaScript，并通过HTTP、IPC或WebSocker协议与以太坊节点交互。Moonbeam拥有与以太坊相似的API供用户使用，其与以太坊风格的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容特性并使用Web3.js库与Moonbeam节点交互，与在以太坊操作相同。
 
-在本教程中，您将学习如何使用Web3.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=_blank}。
+在本教程中，您将学习如何使用Web3.js库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于[Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}或[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -233,7 +233,7 @@ node transaction.js
 
 您也可以使用`balances.js`脚本为发送地址和接收地址查看余额是否变化。整体操作流程如下所示：
 
-![Send Tx Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-1.png)
+![Send Tx Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-1.webp)
 
 ## 部署合约 {: #deploy-a-contract }
 
@@ -335,7 +335,7 @@ node deploy.js
 
 如果成功，合约地址将显示在终端。
 
-![Deploy Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-2.png)
+![Deploy Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-2.webp)
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -482,7 +482,7 @@ node increment.js
 
 如果成功，交易哈希将显示在终端。您可以在`increment.js`脚本旁边使用`get.js`脚本以确保数值如预期变化：
 
-![Increment Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-3.png)
+![Increment Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-3.webp)
 
 接下来，您可以打开`reset.js`文件并执行以下步骤以创建脚本：
 
@@ -559,6 +559,6 @@ node reset.js
 
 如果成功，交易哈希将显示在终端。您可以在`reset.js`脚本旁边使用`get.js`脚本以确保数值如预期变化：
 
-![Reset Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-4.png)
+![Reset Contract Web3js](/images/builders/build/eth-api/libraries/web3js/web3js-4.webp)
 
 --8<-- 'text/_disclaimers/third-party-content.md'

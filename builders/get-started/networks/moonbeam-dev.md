@@ -15,12 +15,12 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 如果您完整地遵循本教程操作，您将拥有一个在本地环境中运行的Moonbeam开发节点，其中包含10个[预注资的账户](#pre-funded-development-accounts)。
 
 !!! 注意事项
-    本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/paritytech/frontier){target=_blank}组件正处于积极开发阶段。
+    本教程使用[Moonbase Alpha](https://github.com/moonbeam-foundation/moonbeam/releases/tag/{{ networks.development.build_tag }}){target=\_blank}的{{ networks.development.build_tag }}标签创建。为实现与以太坊的全面兼容，基于Substrate的Moonbeam平台和[Frontier](https://github.com/polkadot-evm/frontier){target=\_blank}组件正处于积极开发阶段。
     --8<-- 'text/_common/assumes-mac-or-ubuntu-env.md'
 
 ## 启动Moonbeam开发节点 {: #spin-up-a-node }
 
-目前有两种方式运行Moonbeam节点：使用[Docker来执行预构建的二进制文件](#getting-started-with-docker)，或[在本地编译二进制文件](#getting-started-with-the-binary-file)然后自行设置开发节点。使用Docker更为快速便捷，您无需安装Substrate和所有依赖项，并且可以跳过构建节点的过程。但您必须[安装Docker](https://docs.docker.com/get-docker/){target=_blank}。另一方面，如果您决定要完成构建自己的开发节点的过程，则需要大约30分钟或更长时间才能完成，具体情况取决于您的硬件设备。
+目前有两种方式运行Moonbeam节点：使用[Docker来执行预构建的二进制文件](#getting-started-with-docker)，或[在本地编译二进制文件](#getting-started-with-the-binary-file)然后自行设置开发节点。使用Docker更为快速便捷，您无需安装Substrate和所有依赖项，并且可以跳过构建节点的过程。但您必须[安装Docker](https://docs.docker.com/get-docker/){target=\_blank}。另一方面，如果您决定要完成构建自己的开发节点的过程，则需要大约30分钟或更长时间才能完成，具体情况取决于您的硬件设备。
 
 ## 使用Docker启动节点 {: #getting-started-with-docker }
 
@@ -34,7 +34,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
     控制台日志的结尾应如下所示：
 
-    ![Docker - imaged pulled](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-1.png)
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/docker-pull.md'
 
 2. 通过运行以下Docker命令启动Moonbeam开发节点，该命令将以即时封装模式启动节点以进行本地测试，以便在收到交易时立即创建区块：
 
@@ -67,7 +67,7 @@ Moonbeam开发节点是您自己的个人开发环境，用于在Moonbeam上构�
 
 如果节点已经启动，您将看到显示区块待创建的空闲状态界面：
 
-![Docker - output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-2.png)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/docker-run.md'
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -82,18 +82,18 @@ moonbeamfoundation/moonbeam \
 ## 使用二进制文件启动节点 {: #getting-started-with-the-binary-file }
 
 !!! 注意事项
-    如果您了解目前所在执行的操作，您可以直接在[Moonbeam版本发布页面](https://github.com/moonbeam-foundation/moonbeam/releases){target=_blank}上下载每个版本附带的预编译二进制文件。但这并不适用于所有系统，例如：二进制文件仅适用于具有特定依赖项版本的x86-64 Linux。确保兼容性的最安全方法是在运行二进制文件的系统中编译二进制文件。
+    如果您了解目前所在执行的操作，您可以直接在[Moonbeam版本发布页面](https://github.com/moonbeam-foundation/moonbeam/releases){target=\_blank}上下载每个版本附带的预编译二进制文件。但这并不适用于所有系统，例如：二进制文件仅适用于具有特定依赖项版本的x86-64 Linux。确保兼容性的最安全方法是在运行二进制文件的系统中编译二进制文件。
 
 要构建二进制文件，您可以执行以下步骤：
 
-1. 克隆Moonbeam代码库的特定标签，你可以在[Moonbeam GitHub代码库](https://github.com/moonbeam-foundation/moonbeam/){target=_blank}上找到它：
+1. 克隆Moonbeam代码库的特定标签，你可以在[Moonbeam GitHub代码库](https://github.com/moonbeam-foundation/moonbeam/){target=\_blank}上找到它：
 
     ```bash
     git clone -b {{ networks.development.build_tag }} https://github.com/moonbeam-foundation/moonbeam
     cd moonbeam
     ```
 
-2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=_blank}安装Rust和其先决条件：
+2. 如果您已安装Rust，您可跳过以下两个步骤。如果您未安装Rust，请执行以下命令[通过Rust推荐方式](https://www.rust-lang.org/tools/install){target=\_blank}安装Rust和其先决条件：
 
     !!! 注意事项
         安装路径包含空格会造成编译错误
@@ -130,7 +130,7 @@ moonbeamfoundation/moonbeam \
 
     构建输出的末尾应如下所示：
 
-    ![End of build output](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-3.png)
+    --8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/compile.md'
 
 !!! 注意事项
     初始构建将会需要一些时间。取决于您的硬件设备，构建过程大约需要30分钟。
@@ -146,7 +146,7 @@ moonbeamfoundation/moonbeam \
 
 您将看到显示区块待创建的空闲状态界面：
 
-![Output shows blocks being produced](/images/builders/get-started/networks/moonbeam-dev/moonbeam-dev-4.png)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/run-binary.md'
 
 您可点击常用[标志](#node-flags)及[选项](#node-options)来查阅更多用于示例的标志及选项。如果要查看所有标志、选项和子命令的完整列表，请通过运行以下命令打开帮助菜单：
 
@@ -181,9 +181,9 @@ moonbeamfoundation/moonbeam \
 - **`-l <log pattern>` or `--log <log pattern>`** - 设置自定义日志记录筛选器。日志模式的语法为`<target>=<level>`。例如，要打印所有JSON-RPC日志，命令应如下所示：`-l json=trace`
 - **`--sealing <interval>`** - 什么时候区块需要被封装在开发服务中。可接受的时间间隔参数为：`instant`、`manual`、或一个代表计时器间隔（以毫秒为单位）的数字（例如，`6000`是指节点每6秒产生一次区块）。默认设置是`instant`。请参阅下面的[配置区块生产](#configure-block-production)部分以获取更多信息
 - **`--rpc-port <port>`** - 用来配置HTTP与WS连接的统一端口。接收一个port作为参数，默认为{{ networks.parachain.rpc }}
-- **`--ws-port <port>`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=_blank}开始使用，用来设置HTTP与WS连接的统一端口. 接收一个port作为参数
+- **`--ws-port <port>`** - *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=\_blank}开始已弃用，HTTP与WS连接改为统一使用`--rpc-port`来配置* 设置WebSockets RPC服务器的TCP端口。从[v0.30.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.30.0){target=\_blank}开始使用，用来设置HTTP与WS连接的统一端口. 接收一个port作为参数
 - **`--rpc-max-connections <connections>`** - 配置HTTP与WS连接的上限总和. 默认连接数为100
-- **`--ws-max-connections <connections>`** - * *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
+- **`--ws-max-connections <connections>`** - * *从[v0.33.0客户端版本](https://github.com/moonbeam-foundation/moonbeam/releases/tag/v0.33.0){target=\_blank}开始已弃用, 改为使用`--rpc-max-connections`参数来限制 HTTP与WS连接数量上线* - 配置HTTP与WS连接的上限总和. 默认连接数为100
 - **`--rpc-cors <origins>`** - 指定允许浏览器源头访问HTTP和WS RPC服务器。该源头可以是允许访问的以逗号分隔的来源列表，或者您也可以指定`null`。当运行一个开发节点时，预设为允许所有源头
 
 如需命令行标志和选项的完整列表，请在命令末尾添加`--help`来启动Moonbeam开发节点。
@@ -210,7 +210,7 @@ moonbeamfoundation/moonbeam \
 engine_createBlock(createEmpty: *bool*, finalize: *bool*, parentHash?: *BlockHash*)
 ```
 
-例如，您可以使用以下代码片段使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}（一个可以轻松地与JSON-RPC方法进行交互的以太坊库）手动创建区块：
+例如，您可以使用以下代码片段使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}（一个可以轻松地与JSON-RPC方法进行交互的以太坊库）手动创建区块：
 
 ```js
 import { ethers } from 'ethers';
@@ -238,11 +238,11 @@ produceBlock();
 ```
 
 !!! 注意事项
-    如果您不熟悉Ethers，请参阅[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=_blank}文档页面以了解更多信息。
+    如果您不熟悉Ethers，请参阅[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}文档页面以了解更多信息。
 
 ## 预注资的开发账户 {: #pre-funded-development-accounts }
 
-Moonbeam拥有[统一账户](/learn/features/unified-accounts){target=_blank}系统，使用户能够拥有可以与Substrate API和以太坊API交互的以太坊格式H160账户。因此，您可以通过[Polkadot.js Apps](#connecting-polkadot-js-apps-to-a-local-moonbeam-node)或[MetaMask](/tokens/connect/metamask){target=_blank}（或者任何其他[EVM钱包](/tokens/connect/){target=_blank}）与您的账户交互。此外，您还可以使用其他[开发工具](/builders/build/eth-api/dev-env/){target=_blank}，例如[Remix](/builders/build/eth-api/dev-env/remix/){target=_blank}和[Hardhat](/builders/build/eth-api/dev-env/hardhat/){target=_blank}。
+Moonbeam拥有[统一账户](/learn/features/unified-accounts){target=\_blank}系统，使用户能够拥有可以与Substrate API和以太坊API交互的以太坊格式H160账户。因此，您可以通过[Polkadot.js Apps](#connecting-polkadot-js-apps-to-a-local-moonbeam-node)或[MetaMask](/tokens/connect/metamask){target=\_blank}（或者任何其他[EVM钱包](/tokens/connect/){target=\_blank}）与您的账户交互。此外，您还可以使用其他[开发工具](/builders/build/eth-api/dev-env/){target=\_blank}，例如[Remix](/builders/build/eth-api/dev-env/remix/){target=\_blank}和[Hardhat](/builders/build/eth-api/dev-env/hardhat/){target=\_blank}。
 
 您的Moonbeam开发节点带有十个预注资的以太坊风格的开发帐户。这些地址源自于Substrate的规范开发助记词：
 
@@ -258,7 +258,7 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 
 --8<-- 'code/builders/get-started/networks/moonbeam-dev/dev-testing-account.md'
 
-你可以将这些帐户中的任何一个通过使用他们的私钥连接到[MetaMask](/tokens/connect/metamask/){target=_blank}、[Talisman](/tokens/connect/talisman/){target=_blank}、[Polkadot.js Apps](/tokens/connect/polkadotjs/){target=_blank}等。
+你可以将这些帐户中的任何一个通过使用他们的私钥连接到[MetaMask](/tokens/connect/metamask/){target=\_blank}、[Talisman](/tokens/connect/talisman/){target=\_blank}、[Polkadot.js Apps](/tokens/connect/polkadotjs/){target=\_blank}等。
 
 ## 开发节点端点 {: #access-your-development-node }
 
@@ -280,14 +280,14 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 
 您可以使用以下任一区块浏览器来浏览Moonbeam开发节点:
 
- - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:9944#/explorer){target=_blank}在WS端口`{{ networks.parachain.ws }}`
- - **基于JSON-RPC的以太坊API** — [Moonbeam Basic浏览器](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=_blank}在HTTP端口`{{ networks.parachain.ws }}`
+ - **Substrate API** — [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:9944#/explorer){target=\_blank}在WS端口`{{ networks.parachain.ws }}`
+ - **基于JSON-RPC的以太坊API** — [Moonbeam Basic浏览器](https://moonbeam-explorer.netlify.app/?network=MoonbeamDevNode){target=\_blank}在HTTP端口`{{ networks.parachain.ws }}`
 
 ## 调试（Debug）、追踪（Trace）、和TxPool API {: #debug-trace-txpool-apis }
 
 您也可以通过运行追踪节点访问一些非标准的RPC方法，这将允许开发者在runtime期间检查和调试交易。追踪节点使用的是与标准Moonbeam开发节点不同的Docker镜像。
 
-想要学习如何运行Moonbeam开发追踪节点，请查看[运行追踪节点](/node-operators/networks/tracing-node){target=_blank}的操作指南并确保在操作过程中已切换至**Moonbeam Development Node**标签。随后，通过您的追踪节点访问非标准的RPC方法，详情请查看[Debug & Trace](/builders/build/eth-api/debug-trace){target=_blank}操作指南。
+想要学习如何运行Moonbeam开发追踪节点，请查看[运行追踪节点](/node-operators/networks/tracing-node){target=\_blank}的操作指南并确保在操作过程中已切换至**Moonbeam Development Node**标签。随后，通过您的追踪节点访问非标准的RPC方法，详情请查看[Debug & Trace](/builders/build/eth-api/debug-trace){target=\_blank}操作指南。
 
 ### 清除开发节点 {: #purging-your-node }
 
@@ -315,4 +315,4 @@ sudo docker stop `CONTAINER_ID` && docker rm `CONTAINER_ID`
 ./target/release/moonbeam purge-chain --dev -y
 ```
 
-这将删除数据文件夹。请注意，所有链数据均已丢失。想要了解所有可用`purge-chain`命令，您可以查看我们文档的[清除二进制数据](/node-operators/networks/run-a-node/systemd/#purging-compiled-binary){target=_blank}部分。
+这将删除数据文件夹。请注意，所有链数据均已丢失。想要了解所有可用`purge-chain`命令，您可以查看我们文档的[清除二进制数据](/node-operators/networks/run-a-node/systemd/#purging-compiled-binary){target=\_blank}部分。

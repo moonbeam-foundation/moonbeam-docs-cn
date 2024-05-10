@@ -7,7 +7,7 @@ description: 学习如何运用Geth的Debug和Txpool API，以及OpenEthereum的
 
 ## 概览 {: #introduction }
 
-Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非标准RPC方法以获得交易处理的深度信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=_blank}等项目仰赖这些方法检索区块链数据。
+Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非标准RPC方法以获得交易处理的深度信息。作为Moonbeam为开发者提供无缝以太坊开发体验目标的其中一部分，Moonbeam支持部分非标准RPC方法。支持这些RPC方法是个重要的里程碑，因为如[The Graph](https://thegraph.com/){target=\_blank}等项目仰赖这些方法检索区块链数据。
 
 想要使用支持的RPC方法，您需要运行一个追踪节点。与运行一个全节点略有不同，追踪节点使用一个不同的Docker镜像，名为`moonbeamfoundation/moonbeam-tracing`，运用其来实现追踪功能。同时，也需使用额外的标志来告诉节点需要支持哪个非标准功能。
 
@@ -15,11 +15,11 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 ## 查看先决条件 {: #checking-prerequisites }
 
-与运行常规节点相似，您可以使用Docker或Systemd启动追踪节点。如果您选择使用Docker，您必须先[安装Docker](https://docs.docker.com/get-docker/){target=_blank}。撰写本教程时，使用的Docker版本为19.03.6。
+与运行常规节点相似，您可以使用Docker或Systemd启动追踪节点。如果您选择使用Docker，您必须先[安装Docker](https://docs.docker.com/get-docker/){target=\_blank}。撰写本教程时，使用的Docker版本为19.03.6。
 
 ## 追踪节点标志 {: #tracing-node-flags }
 
-运行一个`debug`、`txpool`和`tracing`节点类似于[运行一个全节点](/node-operators/networks/run-a-node/overview/){target=_blank}。另外，您可以根据您启用的特定追踪功能使用以下标志：
+运行一个`debug`、`txpool`和`tracing`节点类似于[运行一个全节点](/node-operators/networks/run-a-node/overview/){target=\_blank}。另外，您可以根据您启用的特定追踪功能使用以下标志：
 
   - **`--ethapi=debug`** —— 选择性标志，启用`debug_traceTransaction`、`debug_traceBlockByNumber`和`debug_traceBlockByHash`
   - **`--ethapi=trace`** —— 选择性标志，启用`trace_filter`
@@ -87,7 +87,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
     sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
     ```
 
-您将需要使用`moonbeamfoundation/moonbeam-tracing`图像替代`moonbeamfoundation/moonbeam` docker图像。您可在[Docker Hub的`moonbeam-tracing`图像](https://hub.docker.com/r/moonbeamfoundation/moonbeam-tracing/tags){target=_blank}中找到最新的支持版本。
+您将需要使用`moonbeamfoundation/moonbeam-tracing`图像替代`moonbeamfoundation/moonbeam` docker图像。您可在[Docker Hub的`moonbeam-tracing`图像](https://hub.docker.com/r/moonbeamfoundation/moonbeam-tracing/tags){target=\_blank}中找到最新的支持版本。
 
 下一步，执行Docker运行的命令。注意，您需要替换：
 
@@ -170,25 +170,25 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 如果您已经成功运行Moonbase Alpha追踪节点，您应当会见到如下图所示的终端日志：
 
-![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.png)
+![Debug API](/images/builders/build/eth-api/debug-trace/debug-trace-1.webp)
 
 ## 使用Systemd运行一个追踪节点 {: #run-a-tracing-node-with-systemd }
 
-当您使用Systemd运行一个节点时，您需要先设置Moonbeam二进制文件。您可遵循[使用Systemd在Moonbeam上运行一个节点](/node-operators/networks/run-a-node/systemd/){target=_blank}的操作说明进行操作。一般来说，您将需要：
+当您使用Systemd运行一个节点时，您需要先设置Moonbeam二进制文件。您可遵循[使用Systemd在Moonbeam上运行一个节点](/node-operators/networks/run-a-node/systemd/){target=\_blank}的操作说明进行操作。一般来说，您将需要：
 
-1. 通过[已发布的二进制文件](/node-operators/networks/run-a-node/systemd/#the-release-binary){target=_blank}说明设置Moonbeam二进制文件。您也可以遵循[编译二进制文件](/node-operators/networks/run-a-node/systemd/#compile-the-binary){target=_blank}的说明自行编译二进制文件
+1. 通过[已发布的二进制文件](/node-operators/networks/run-a-node/systemd/#the-release-binary){target=\_blank}说明设置Moonbeam二进制文件。您也可以遵循[编译二进制文件](/node-operators/networks/run-a-node/systemd/#compile-the-binary){target=\_blank}的说明自行编译二进制文件
 
-2. 遵循[设置服务器](/node-operators/networks/run-a-node/systemd/#setup-the-service){target=_blank}的说明进行操作
+2. 遵循[设置服务器](/node-operators/networks/run-a-node/systemd/#setup-the-service){target=\_blank}的说明进行操作
 
 当您完成操作说明中的特定部分，您可以继续执行以下操作。
 
 ### 设置Wasm Overrides {: #setup-the-wasm-overrides }
 
-您将需要为Wasm runtime overrides创建一个目录，并从GitHub上的[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=_blank}中获取。
+您将需要为Wasm runtime overrides创建一个目录，并从GitHub上的[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=\_blank}中获取。
 
 您可以将代码库复制到本地计算机上的任何位置。简单来说，您可以使用存储链上数据的目录。要设置Wasm override文件，您可以执行以下步骤：
 
-1. 复制[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=_blank}
+1. 复制[Moonbeam Runtime Overrides repository](https://github.com/moonbeam-foundation/moonbeam-runtime-overrides){target=\_blank}
 
     ```bash
     git clone https://github.com/moonbeam-foundation/moonbeam-runtime-overrides.git
@@ -375,7 +375,7 @@ Geth的`debug`和`txpool` API以及OpenEthereum的`trace`模块提供一个非�
 
 --8<-- 'text/node-operators/networks/run-a-node/systemd/run-service.md'
 
-![Service Status](/images/node-operators/networks/tracing-node/tracing-1.png)
+![Service Status](/images/node-operators/networks/tracing-node/tracing-1.webp)
 
 您也可以运行以下命令查看启用的追踪节点的日志：
 
@@ -385,7 +385,7 @@ journalctl -f -u moonbeam.service
 
 您的终端将会显示如下图所示的日志：
 
-![Service logs of wasm rutime overrides being processed](/images/node-operators/networks/tracing-node/tracing-2.png)
+![Service logs of wasm rutime overrides being processed](/images/node-operators/networks/tracing-node/tracing-2.webp)
 
 ## 使用一个追踪节点 {: #using-a-tracing-node }
 

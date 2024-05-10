@@ -7,9 +7,9 @@ description:  通过此教程学习如何利用Moonbeam以太坊兼容性功能�
 
 ## 概览 {: #introduction } 
 
-[OpenZeppelin](https://openzeppelin.com/){target=_blank}在以太坊开发者社群中极为出名，因其经过审核的智能合约和库代表着产业标准。举例而言，几乎所有关于开发者如何部署ERC-20代币的教程都是使用OpenZeppelin合约作为范例。
+[OpenZeppelin](https://openzeppelin.com/){target=\_blank}在以太坊开发者社群中极为出名，因其经过审核的智能合约和库代表着产业标准。举例而言，几乎所有关于开发者如何部署ERC-20代币的教程都是使用OpenZeppelin合约作为范例。
 
-您可以在OpenZeppelin的[官方文档网站](https://docs.openzeppelin.com/openzeppelin/){target=_blank}获得更多资讯。
+您可以在OpenZeppelin的[官方文档网站](https://docs.openzeppelin.com/openzeppelin/){target=\_blank}获得更多资讯。
 
 因为同样具有以太坊兼容性的特色，OpenZeppelin的产品可以无缝在Moonbeam使用。本页面将会提供不同OpenZeppelin解决方案的相关资讯供您测试。
 

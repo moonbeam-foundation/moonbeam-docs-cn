@@ -22,6 +22,7 @@ Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务
 在开始之前，您将需要准备以下内容：
 
 - 安装[MetaMask](/tokens/connect/metamask#install-the-metamask-extension){target=\_blank}并[将其连接至Moonbase Alpha](/tokens/connect/metamask#connect-metamask-to-moonbeam){target=\_blank}
+
 - 具有拥有一定数量资金的账户。
  --8<-- 'text/_common/faucet/faucet-list-item.md'
 - 

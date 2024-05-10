@@ -7,7 +7,7 @@ description: 本教程向您展示如何将MetaMask集成到DApp中，并通过�
 
 ## 概览 {: #introduction }
 
-随着MetaMask的[自定义网络API](https://consensys.net/blog/metamask/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api/){target=_blank}的发布，现在可以提示用户添加Moonbeam的测试网Moonbase Alpha。
+随着MetaMask的[自定义网络API](https://consensys.net/blog/metamask/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api/){target=\_blank}的发布，现在可以提示用户添加Moonbeam的测试网Moonbase Alpha。
 
 本教程将引导您添加“连接Moonbase Alpha”按钮以提示用户将其MetaMask账户连接至Moonbase Alpha。用户无需获取Moonbase Alpha的网络配置，并将其以自定义网络添加至MetaMask。想要从您的DApp与Moonbeam进行交互，用户只需简单的几个点击按钮的步骤即可连接至Moonbase Alpha，并开始交互。
 
@@ -57,7 +57,7 @@ npm install @metamask/detect-provider
     };
     ```
 
-2. 通过调用`eth_requestAccounts`函数来请求获取用户的账户。这将提示MetaMask跳出弹窗，要求用户选择想要连接的账户。在后台，通过调用`wallet_requestPermissions`函数来检查账户的权限。目前仅限于`eth_accounts`可用于连接。因此，您最终要验证您是否有权访问从`eth_accounts`返回的用户地址。如果您有兴趣了解更多权限系统的相关信息，请查看[EIP-2255](https://eips.ethereum.org/EIPS/eip-2255){target=_blank}
+2. 通过调用`eth_requestAccounts`函数来请求获取用户的账户。这将提示MetaMask跳出弹窗，要求用户选择想要连接的账户。在后台，通过调用`wallet_requestPermissions`函数来检查账户的权限。目前仅限于`eth_accounts`可用于连接。因此，您最终要验证您是否有权访问从`eth_accounts`返回的用户地址。如果您有兴趣了解更多权限系统的相关信息，请查看[EIP-2255](https://eips.ethereum.org/EIPS/eip-2255){target=\_blank}
 
     ```javascript
     import detectEthereumProvider from '@metamask/detect-provider';
@@ -75,7 +75,7 @@ npm install @metamask/detect-provider
     };
     ```
 
-    ![Add accounts to MetaMask](/images/builders/integrations/wallets/metamask/metamask-1.png)
+    ![Add accounts to MetaMask](/images/builders/integrations/wallets/metamask/metamask-1.webp)
 
 3. 通过调用`wallet_addEthereumChain`函数将Moonbase Alpha添加为新的网络。这将提示用户提供将Moonbase Alpha添加为自定义网络的权限。成功添加网络后，将提示用户切换网络至Moonbase Alpha
 
@@ -112,7 +112,7 @@ npm install @metamask/detect-provider
     };
     ```
 
-    ![Add and switch networks in MetaMask](/images/builders/integrations/wallets/metamask/metamask-2.png)
+    ![Add and switch networks in MetaMask](/images/builders/integrations/wallets/metamask/metamask-2.webp)
 
 现在，您应该已经完成按钮创建，用户只需点击按钮，根据操作指示即可将MetaMask账户连接至Moonbase Alpha。
 

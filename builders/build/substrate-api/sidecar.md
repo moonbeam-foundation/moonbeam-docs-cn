@@ -84,7 +84,7 @@ node_modules/.bin/substrate-api-sidecar
 
 如果安装和配置成功后，您应该在后台看到以下输出：
 
-![Successful Output](/images/builders/build/substrate-api/sidecar/sidecar-1.png)
+--8<-- 'code/builders/get-started/networks/moonbeam-dev/terminal/sidecar.md'
 
 ## Substrate API Sidecar端点 {: #substrate-api-sidecar-endpoints }
 
@@ -195,7 +195,7 @@ Moonbeam EVM目前支持3种交易标准：`legacy`、 `eip1559`和`eip2930`。�
         ...
     ```
 
-想要获取关于新的[EIP1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank}和[EIP2930](https://eips.ethereum.org/EIPS/eip-2930){target=_blank}交易类型更多信息，及其每个字段的含义，请参考各自的官方以太坊提案。
+想要获取关于新的[EIP1559](https://eips.ethereum.org/EIPS/eip-1559){target=\_blank}和[EIP2930](https://eips.ethereum.org/EIPS/eip-2930){target=\_blank}交易类型更多信息，及其每个字段的含义，请参考各自的官方以太坊提案。
 
 ### 交易字段映射 {: #transaction-field-mappings }
 
@@ -291,7 +291,7 @@ RESPONSE JSON Block Object:
 
 ```
 
-Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=_blank}事件，可解码如下：
+Moonbeam ERC-20代币转账所发出的[`Transfer`](https://eips.ethereum.org/EIPS/eip-20){target=\_blank}事件，可解码如下：
 
 |    交易信息    |                             对应JSON字段                              |
 |:--------------:|:---------------------------------------------------------------------:|
@@ -308,10 +308,10 @@ EVM智能合约发出的其他事件也可以以类似的方式进行解码，�
 
 ## 监听原生代币转帐示例代码 { #sample-code-for-monitoring-native-token-transfers }
 
-[转帐API页面](/builders/get-started/eth-compare/transfers-api/#using-substrate-api-sidecar){target=_blank}有一段代码片段演示了如何使用Substrate API Sidecar监听和解码使用Substrate或Ethereum API发送的原生代币转帐。您可以将其作为起点来构建基于Sidecar API的后端。
+[转帐API页面](/builders/get-started/eth-compare/transfers-api/#using-substrate-api-sidecar){target=\_blank}有一段代码片段演示了如何使用Substrate API Sidecar监听和解码使用Substrate或Ethereum API发送的原生代币转帐。您可以将其作为起点来构建基于Sidecar API的后端。
 
 ## 计算交易费用 {: #calculating-transaction-fees }
 
-有关如何使用Substrate Sidecar API计算交易费用的更多详细信息和示例代码，请查看[计算 交易费用](/builders/get-started/eth-compare/tx-fees/){target=_blank}页。
+有关如何使用Substrate Sidecar API计算交易费用的更多详细信息和示例代码，请查看[计算 交易费用](/builders/get-started/eth-compare/tx-fees/){target=\_blank}页。
 
 --8<-- 'text/_disclaimers/third-party-content.md'

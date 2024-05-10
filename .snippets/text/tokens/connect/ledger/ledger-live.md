@@ -15,7 +15,7 @@
 3. 随后出现一个下拉菜单，搜索GLMR后会出现**Moonbeam (GLMR)**供您选择
 4. 点击**Continue**
 
-![Add account to Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-12.png)
+![Add account to Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-12.webp)
 
 接下来，您需要输入账号名称并点击**Add account**。如果您的账号成功添加后，您可以点击**Done**，然后您的账号会出现在账号列表中。
 
@@ -27,7 +27,7 @@
 2. 随后会跳出弹窗，您可以在**Account to credit**下拉菜单中选择您想要用于接收Token的Moonbeam账号
 3. 点击**Continue**
 
-![Verify receiving address in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-13.png)
+![Verify receiving address in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-13.webp)
 
 接下来，您的地址应该会出现在Ledger Live上，并提示您在Ledger上验证地址。在您的设备上执行以下步骤：
 
@@ -35,7 +35,7 @@
 2. 在下一个显示屏幕中，您应该会看到您的地址。将您设备上的地址与Ledger Live上显示的地址进行比较，并验证其是否匹配。同时，您需要从Ledger Live复制地址用于发送交易。点击右侧按钮继续下一步
 3. 现在，您应该会看到**Approve**的屏幕。如果地址匹配，您可以点击设备上的两个按钮来通过验证。否则，您可以再次点击右侧按钮进入**Reject**屏幕，点击设备上的两个按钮来拒绝验证
 
-![Verify receiving address on Ledger device](/images/tokens/connect/ledger/moonbeam/ledger-14.png)
+![Verify receiving address on Ledger device](/images/tokens/connect/ledger/moonbeam/ledger-14.webp)
 
 在Ledger Live上，您将看地址已安全共享，您可以点击**Done**。现在，您可以发送一些GLMR到您的Ledger账号。
 
@@ -48,11 +48,11 @@
 3. 在**Receipient address**输入框中输入地址
 4. 点击**Continue**
 
-![Send transaction in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-15.png)
+![Send transaction in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-15.webp)
 
 下一个屏幕中，您可以输入您想要发送的GLMR数量，然后点击**Continue**。
 
-![Enter amount to send in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-16.png)
+![Enter amount to send in Ledger Live](/images/tokens/connect/ledger/moonbeam/ledger-16.webp)
 
 在Ledger Live上的最后一步是验证交易信息是否正确。如果一切无误后，您可以点击**Continue**，然后您会在Ledger设备上收到提示要求您确认交易：
 
@@ -63,7 +63,7 @@
 5. 查看**Max Fees**，并点击右侧按钮进入下一步
 6. 如果一切无误后，您可以点击两个按钮来**Accept and send**交易。否则，您可以点击右侧按钮进入**Reject**屏幕，点击设备上的两个按钮来拒绝验证
 
-![Send transaction from Ledger device](/images/tokens/connect/ledger/moonbeam/ledger-17.png)
+![Send transaction from Ledger device](/images/tokens/connect/ledger/moonbeam/ledger-17.webp)
 
 在Ledger Live上，您应该看到您的交易已成功发送，您可以查看交易详情。交易确认发送后，您的GLMR余额将会更新。
 
