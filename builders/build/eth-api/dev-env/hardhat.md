@@ -295,8 +295,8 @@ module.exports = buildModule("BoxModule", (m) => {
 npx hardhat ignition deploy ./ignition/modules/Box.js --network moonbase
 ```
 
-!!! 注意
-  如果您正在使用另一个Moonbeam网络，请确保您已指定正确的网络。网络名称需要与`hardhat.config.js`中所定义的网络相匹配。
+!!! 注意事项
+    如果您正在使用另一个Moonbeam网络，请确保您已指定正确的网络。网络名称需要与`hardhat.config.js`中所定义的网络相匹配。
 
 您将会收到提示确认要部署到的网络。在您确认后几秒钟合约就会被部署,您将在终端中看到合约地址。
 
