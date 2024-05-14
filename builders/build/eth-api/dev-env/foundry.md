@@ -181,7 +181,7 @@ forge script script/MyToken.s.sol --rpc-url {{ networks.moonbase.rpc_url }} --br
 
 Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
-尝试使用Cast检索Token名称，其中`YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
+尝试使用Cast检索Token名称，其中`INSERT_YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
 
 === "Moonbeam"
 
