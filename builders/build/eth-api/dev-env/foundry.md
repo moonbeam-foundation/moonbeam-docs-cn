@@ -46,10 +46,10 @@ Foundry由四个工具组成：
     cargo install --git https://github.com/foundry-rs/foundry foundry-cli anvil --bins --locked
     ```
 
-2. 创建项目，这将创建一个文件夹，其中包含三个文件夹：
+2. 创建项目，这将创建一个文件夹并打开它，其中包含三个文件夹,：
 
     ```bash
-    forge init foundry
+    forge init foundry && cd foundry
     ```
 
 创建默认项目后，您将看到以下三个文件夹：
@@ -72,20 +72,10 @@ touch MyToken.sol
 打开文件并添加以下合约：
 
 ```solidity
-pragma solidity ^0.8.0;
-
-// Import OpenZeppelin Contract
-import "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
-
-// This ERC-20 contract mints the specified amount of tokens to the contract creator
-contract MyToken is ERC20 {
-  constructor(uint256 initialSupply) ERC20("MyToken", "MYTOK") {
-    _mint(msg.sender, initialSupply);
-  }
-}
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/ERC20.sol'
 ```
 
-在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin Github repo的名称。
+在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin GitHub repository的名称。
 
 ```bash
 forge install OpenZeppelin/openzeppelin-contracts
@@ -99,13 +89,17 @@ forge install OpenZeppelin/openzeppelin-contracts
 forge build
 ```
 
-![Foundry Contract Compile](/images/builders/build/eth-api/dev-env/foundry/foundry-1.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/compile.md'
 
 编译完成后，将创建两个文件夹：`out`和`cache`。您合约的ABI和字节码将包含在`out`文件夹中。这两个文件夹已被默认Foundry项目初始化中包含的`.gitignore`忽略。
 
 ## 部署合约 {: #deploying-the-contract }
 
-使用Forge部署合约需要一个命令，但您将需要包含一个RPC端点、一个拥有资金的私钥和构造函数参数。`MyToken.sol`要求在其构造函数中提供Token初始供应量，因此以下每个命令将包含100作为构造函数。您可以为正确的网络使用命令部署`MyToken.sol`合约。
+Foundry提供两种主要合约部署方式。第一种方法比较直接，是使用命令`forge create`；第二种更为灵活和强大，是使用Foundry脚本，该脚本会在任何部署之前运行模拟。以下部分将分别介绍`forge create`和 Foundry脚本这两种方法。
+
+### 使用 Forge Create {: #using-forge-create }
+
+使用`forge create`来部署合约只需一个命令，但您必须包含一个RPC端点、一个拥有资产的私钥和构造函数参数。`MyToken.sol`在其构造函数中要求提供初始代币供应量，因此以下的命令都包含100作做为一个构造参数。您可以使用以下命令部署`MyToken.sol`合约至正确网络的：
 
 === "Moonbeam"
 
@@ -143,40 +137,74 @@ forge build
     src/MyToken.sol:MyToken
     ```
 
-几分钟后，合约完成部署，您将在终端看到地址。
+部署合约后几秒钟，您应该会在终端看到合约地址。
 
-![Foundry Contract Deploy](/images/builders/build/eth-api/dev-env/foundry/foundry-2.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/deploy.md'
 
-恭喜您，您的合约已上线！保存地址，用于后续合约实例交互。
+恭喜！您的合约已部署成功！请保存该地址，您将在下一步中使用它与该合约实例进行交互。
+
+### 使用Solidity脚本部署 {: #deploying-via-solidity-scripting }  
+
+Solidity脚本是一种比 [`forge create`](#deploying-the-contract) 更强大、更灵活的合约部署方式。 编写Solidity脚本与编写普通的Solidity智能合约相同，但您永远不会部署此脚本。
+
+您可以使用各种参数定制`forge script`的行为。除了本地模拟（这是每次运行的必要部分）之外，所有组件都是可选的。`forge script`命令将按照以下顺序尝试执行所有步骤：
+
+1. **Local simulation** - 在本地EVM中模拟交易
+2. **Onchain simulation** - 通过提供的RPC URL模拟交易
+3. **Broadcasting** - 当提供 `--broadcast` 标志并且模拟成功时，交易将被发送
+4. **Verification** - 当提供 `--verify` 标志和有效API密钥时，进行基于API的智能合约验证
+
+现在开始编写脚本。在脚本文件夹中，创建一个名为 `MyToken.s.sol` 的文件。复制并粘贴以下文件的内容：
+
+```solidity
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/MyToken-script.sol'
+```
+
+!!! 请记住
+    请记住永远不要像上面那样将生产私钥存储在文件中。 这个例子仅用于演示目的。
+
+请注意，即使上述脚本不会被部署，它仍需要符合典型Solidity合约的所有格式，例如pragma语句。
+
+您可以使用以下命令部署 `MyToken.sol` 合约。请记住它将按顺序执行所有相关步骤。对于此示例，Foundry将首先尝试本地模拟和利用提供的 RPC进行模拟，然后才部署合约。如果任何模拟失败，Foundry都不会继续部署。
+
+```bash
+forge script script/MyToken.s.sol --rpc-url {{ networks.moonbase.rpc_url }} --broadcast
+```
+
+如果您的脚本执行成功，您的终端应展示一下内容：
+
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/script.md'
+
+这样就成了。有关使用Foundry进行Solidity脚本编写的更多信息，请查看[Foundry文档](https://book.getfoundry.sh/tutorials/solidity-scripting){target=_blank}。
 
 ## 与合约交互 {: #interacting-with-the-contract }
 
 Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
-尝试使用cast检索Token名称，其中`YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
+尝试使用Cast检索Token名称，其中`INSERT_YOUR_CONTRACT_ADDRESS`是您在上一部分部署合约的地址：
 
 === "Moonbeam"
 
     ```bash
-    cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbeam.rpc_url }}
+    cast call INSERT_YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbeam.rpc_url }}
     ```
 
 === "Moonriver"
 
     ```bash
-    cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonriver.rpc_url }}
+    cast call INSERT_YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonriver.rpc_url }}
     ```
 
 === "Moonbase Alpha"
 
     ```bash
-    cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbase.rpc_url }}
+    cast call INSERT_YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.moonbase.rpc_url }}
     ```
 
 === "Moonbeam开发节点"
 
     ```bash
-    cast call YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.development.rpc_url }}
+    cast call INSERT_YOUR_CONTRACT_ADDRESS "name()" --rpc-url {{ networks.development.rpc_url }}
     ```
 
 您需要获取此数据的hex格式：
@@ -185,9 +213,9 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
 ```
 
-此数据非可读，但您可以使用cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ascii字符以查看“My Token”：
+此数据非可读，但您可以使用Cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ASCII字符以查看“My Token”：
 
-![Foundry Contract View](/images/builders/build/eth-api/dev-env/foundry/foundry-3.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/cast.md'
 
 ```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
@@ -237,7 +265,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 交易将由您的Moonbase账户签署并传播到网络。输出应如下所示：
 
-![Foundry Contract Interaction](/images/builders/build/eth-api/dev-env/foundry/foundry-4.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/burn.md'
 
 恭喜您！您已成功使用Foundry部署和交互合约！
 
@@ -271,7 +299,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 分叉的实例将拥有10个已经预先注资10,000测试Token的开发账户。分叉的实例位于`http://127.0.0.1:8545/`。终端输出应类似于以下内容：
 
-![Forking terminal screen](/images/builders/build/eth-api/dev-env/foundry/foundry-5.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/fork-anvil.md'
 
 要验证您是否已分叉了网络，您可以查询最新的区块号：
 
@@ -313,7 +341,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 `memdump`将显示当前会话中的所有数据。您可能会看到类似下面这样的内容。如果您不熟悉hex格式或者ABI编码的工作原理，那么您可能无法找到`myData`变量的存储位置。
 
-![memdump in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-6.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/memdump.md'
 
 幸运的是，Chisel会轻松帮您找到这些信息存储位置。使用`!rawstack`命令，您可以找到变量值在栈中的位置。
 
@@ -323,7 +351,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 在此情况下，因为字节的长度超过32个字节，因此将显示内存指针。这样您已经从`!memdump`命令了解了整个栈。
 
-![rawstack in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-7.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/rawstack.md'
 
 `!rawstack`命令显示`myData`变量存储在`0x80`中，与从`!memdump`命令检索到的内存内容对比时，看起来`myData`存储如下所示：
 
@@ -344,7 +372,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 !clear
 ```
 
-测试Chisel还有一个更简单的方式。当编写以分号`;`结尾的代码时，Chisel将其作为一个语句来运行，并将其值存储在Chisel的Runtime（运行时）状态中。但是，如果您真的只需要查看ABI编码数据的表示方式，那么您可以将代码作为表达式运行。要使用相同的`abi`示例进行尝试，请在Chisel shell中编写以下内容：
+测试Chisel还有一个更简单的方式。当编写以分号（`;`）结尾的代码时，Chisel将其作为一个语句来运行，并将其值存储在Chisel的Runtime（运行时）状态中。但是，如果您真的只需要查看ABI编码数据的表示方式，那么您可以将代码作为表达式运行。要使用相同的`abi`示例进行尝试，请在Chisel shell中编写以下内容：
 
 ```bash
 abi.encode(100, true, "Develop on Moonbeam")
@@ -352,7 +380,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 您应该看到如下所示输出：
 
-![Expressions in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-8.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/expression.md'
 
 虽然它没有以相同的方式显示数据，但您仍然可以获得数据的内容，并且它还进一步分解了信息的编码方式，例如让您知道`0xa0`值定义了数据长度。
 
@@ -387,7 +415,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 2. 加载存储的状态
 
     ```bash
-    chisel load
+    chisel load 1
     ```
 
 3. 查看上一组步骤中保存在Chisel中的`uint256`
@@ -396,7 +424,7 @@ abi.encode(100, true, "Develop on Moonbeam")
     !rawstack myNumber
     ```
 
-![Saving state in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-9.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/save-state.md'
 
 您甚至可以在使用Chisel时分叉网络：
 
@@ -407,10 +435,10 @@ abi.encode(100, true, "Develop on Moonbeam")
 然后，例如，您可以查询其中一个Moonbase Alpha收集人的余额：
 
 ```text
-0x4c5A56ed5A4FF7B09aA86560AfD7d383F4831Cce.balance
+{{ networks.moonbase.staking.candidates.address1 }}.balance
 ```
 
-![Forking in Chisel](/images/builders/build/eth-api/dev-env/foundry/foundry-10.webp)
+--8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/query-balance.md'
 
 如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=\_blank}。
 
