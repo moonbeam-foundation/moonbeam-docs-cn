@@ -1,8 +1,0 @@
-title: 开发
-hide: false
-nav:
-  - index.md
-  - '标准合约': 'canonical-contracts.md'
-  - eth-api
-  - substrate-api
-  - 'Moonbeam自定义API': 'moonbeam-custom-api.md'

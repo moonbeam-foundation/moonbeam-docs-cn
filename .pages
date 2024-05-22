@@ -1,8 +1,9 @@
 nav:
  - index.md
  - builders
- - node-operators
- - tokens
- - learn
+#  - builders
+#  - node-operators
+#  - tokens
+#  - learn
  - tutorials
- - '活动': 'https://moonbeam.network/events'
+#  - '活动': 'https://moonbeam.network/events'

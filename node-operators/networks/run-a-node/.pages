@@ -1,7 +1,0 @@
-title: 运行节点
-nav:
-  - index.md
-  - '概览': 'overview.md'
-  - '使用Docker': 'docker.md'
-  - '使用Systemd': 'systemd.md'
-  - '标志': 'flags.md'

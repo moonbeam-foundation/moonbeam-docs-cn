@@ -1,8 +1,0 @@
-title: 索引
-hide: false
-nav:
-  - index.md
-  - 'The Graph': 'thegraph.md'
-  - 'Covalent API': 'covalent.md'
-  - 'SubQuery': 'subquery.md'
-  - 'Subsquid': 'subsquid.md'

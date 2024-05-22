@@ -1,7 +1,0 @@
-title: OpenZeppelin
-hide: false
-nav:
-  - index.md
-  - '概览': 'overview.md'
-  - '合约向导': 'contracts.md'
-  - 'Defender': 'defender.md'
