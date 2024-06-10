@@ -1,9 +1,0 @@
-title: Moonbeam vs 以太坊
-nav:
-  - index.md
-  - '账户余额': 'balances.md'
-  - '转账API': 'transfers-api.md'
-  - '计算交易费用': 'tx-fees.md'
-  - '共识和确定性': 'consensus-finality.md'
-  - 'RPC支持': 'rpc-support.md'
-  - '安全注意事项': 'security.md'

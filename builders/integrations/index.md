@@ -1,7 +1,6 @@
 ---
-title: Moonbeam上的集成
-description: 了解Moonbeam上可用于DApp开发的集成，包括桥接器、索引器、预言机和钱包。
-dropdown_description: 工具和协议集成
+title: 将钱包集成添加到DApp
+description: 了解如何将MetaMask和WalletConnect等钱包集成添加到Moonbeam上的DApp，以便用户可以自动连接到他们的钱包。
 template: subsection-index-page.html
 hide:
   - toc

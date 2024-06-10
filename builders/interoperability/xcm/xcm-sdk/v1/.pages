@@ -1,5 +1,0 @@
-title: v1
-nav:
-  - index.md
-  - '参考': 'reference.md'
-  - '使用 SDK': 'xcm-sdk.md'
