@@ -64,7 +64,7 @@ description: 本教程将向您展示thirdweb的一些功能，可用于开发�
 
 1. 前往[thirdweb Explore页面](https://thirdweb.com/explore){target=\_blank}
 
-    ![thirdweb Explore](/images/builders/build/eth-api/dev-env/thirdweb/thirdweb-1.webp)
+    ![thirdweb Explore](/images/builders/ethereum/dev-env/thirdweb/thirdweb-1.webp)
 
 2. 从可用选项中选择您要部署的合约类型，例如：NFT、Token、市场等
 3. 遵循屏幕上方的提示配置和部署您的合约
