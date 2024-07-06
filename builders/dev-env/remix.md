@@ -25,11 +25,11 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 
 如果您已遵循上述教程，您将会拥有一个正在收集交易以生产区块的本地Moonbeam节点。
 
-![The terminal logs of for a local Moonbeam development node that is producing blocks.](/images/builders/build/eth-api/dev-env/remix/remix-1.webp)
+![The terminal logs of a local Moonbeam development node that is producing blocks.](/images/builders/ethereum/dev-env/remix/remix-1.webp)
 
 您的开发节点具有10个拥有资金的账户，确保将MetaMask连接至您的Moonbeam开发节点并导入至少一个预注资的账户。您可以参考MetaMask文档的[导入账户](/tokens/connect/metamask#import-accounts){target=\_blank}部分的分步教程，了解如何导入开发账户。
 
-![The main screen of MetaMask, which shows an account connected to a Moonbeam development node and its balance.](/images/builders/build/eth-api/dev-env/remix/remix-2.webp)
+![The main screen of MetaMask, which shows an account connected to a Moonbeam development node and its balance.](/images/builders/ethereum/dev-env/remix/remix-2.webp)
 
 如果您正在Moonbeam、Moonriver或是Moonbase Alpha网络上跟随此教程进行操作，请确保您连接的是正确的网络并拥有具有一定资金的账户。
 --8<-- 'text/_common/faucet/faucet-sentence.md'
@@ -43,7 +43,7 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 3. 主面板
 4. 终端面板
 
-![The layout of Remix IDE and its four sections.](/images/builders/build/eth-api/dev-env/remix/remix-3.webp)
+![The layout of Remix IDE and its four sections.](/images/builders/ethereum/dev-env/remix/remix-3.webp)
 
 插件面板显示每个预加载插件的图标、插件管理器和设置菜单。您将看到每个预加载插件的一些图标，分别是**文件管理器**、**搜索**、**Solidity编译器**以及**部署和运行交易**插件。其他插件被激活时，其图标将出现在该操作面板中。
 
@@ -62,7 +62,7 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 1. 点击文件图标
 2. 输入合约名称：`MyToken.sol`
 
-![Create a new file using the File explorer plugin in Remix.](/images/builders/build/eth-api/dev-env/remix/remix-4.webp)
+![Create a new file using the File explorer plugin in Remix.](/images/builders/ethereum/dev-env/remix/remix-4.webp)
 
 主面板将切换至一个空白文件，您可以在此处为合约添加Solidity代码。将`MyToken.sol`智能合约粘贴至新的文件中：
 
@@ -70,7 +70,7 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 --8<-- 'code/builders/build/eth-api/dev-env/remix/MyToken.sol'
 ```
 
-![Add the contract code to the newly created file in the main panel of Remix.](/images/builders/build/eth-api/dev-env/remix/remix-5.webp)
+![Add the contract code to the newly created file in the main panel of Remix.](/images/builders/ethereum/dev-env/remix/remix-5.webp)
 
 ## 编译Solidity智能合约 {: #compile-a-solidity-smart-contract }
 
@@ -84,7 +84,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 在本示例中，无需额外的配置。要编译`MyToken.sol`合约，只需点击**Compile MyToken.sol**合约。如果编译成功，您可以在**Solidity compiler**插件旁的插件面板中出现绿色的完成标记。
 
-![The Solidity compiler plugin shown in the side panel in Remix.](/images/builders/build/eth-api/dev-env/remix/remix-6.webp)
+![The Solidity compiler plugin shown in the side panel in Remix.](/images/builders/ethereum/dev-env/remix/remix-6.webp)
 
 ### 调试编译错误 {: #debug-compilation-errors }
 
@@ -92,11 +92,11 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 举例来说，如果您仅提供了Token名称给ERC-20构造函数，但忘记提供Token符号，编译合约时侧面板将会出现错误提示。您可以往下滑动页面阅读错误提示，您会看到一个**ASK GPT**按钮。要调试编译错误，您可以点击**ASK GPT**按钮，Remix终端将返回响应，引导您操作并尝试解决问题。如果您需要其他帮助，可以直接前往来源并询问[ChatGPT](https://chat.openai.com/){target=\_blank}。
 
-![An error message shown in the side panel for the Solidity compiler plugin with an ASK GPT button for debugging.](/images/builders/build/eth-api/dev-env/remix/remix-7.webp)
+![An error message shown in the side panel for the Solidity compiler plugin with an ASK GPT button for debugging.](/images/builders/ethereum/dev-env/remix/remix-7.webp)
 
 当您成功解决错误并重新编译合约，您将在**Solidity compiler**插件旁的插件面板中出现绿色的完成标记。
 
-![The green check mark next to the Solidity compiler plugin in the plugin panel.](/images/builders/build/eth-api/dev-env/remix/remix-8.webp)
+![The green check mark next to the Solidity compiler plugin in the plugin panel.](/images/builders/ethereum/dev-env/remix/remix-8.webp)
 
 ## 部署Solidity智能合约 {: #deploy-a-solidity-smart-contract }
 
@@ -122,7 +122,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 在**ENVIRONMENT**下拉菜单处选择**Injected Provider - MetaMask**。
 
-![The environment dropdown on the Deploy and run transactions side panel expanded to reveal all of the available options.](/images/builders/build/eth-api/dev-env/remix/remix-9.webp)
+![The environment dropdown on the Deploy and run transactions side panel expanded to reveal all of the available options.](/images/builders/ethereum/dev-env/remix/remix-9.webp)
 
 随后，MetaMask将跳出弹窗并提示您将其连接至Remix。
 
@@ -130,11 +130,11 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 2. 点击**Next**
 3. 点击**Connect**将账户连接至Remix
 
-![Two MetaMask screens that you must go through to connect to Remix: one that prompts you to choose an account to connect to and another that grants Remix permissions.](/images/builders/build/eth-api/dev-env/remix/remix-10.webp)
+![Two MetaMask screens that you must go through to connect to Remix: one that prompts you to choose an account to connect to and another that grants Remix permissions.](/images/builders/ethereum/dev-env/remix/remix-10.webp)
 
 当您将MetaMask连接至Remix后，侧面板将更新显示您所连接的网络和账户。以Moonbeam开发节点为例，您将看到**Custom (1281) network**。
 
-![The Deploy and run transactions side panel in Remix showing the environment connected to MetaMask, the connected network as 1281, and the connected account address.](/images/builders/build/eth-api/dev-env/remix/remix-11.webp)
+![The Deploy and run transactions side panel in Remix showing the environment connected to MetaMask, the connected network as 1281, and the connected account address.](/images/builders/ethereum/dev-env/remix/remix-11.webp)
 
 ### 部署合约至Moonbeam {: #deploy-the-contract-to-moonbeam }
 
@@ -150,7 +150,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 8. 点击**transact**发送部署交易
 9. MetaMask将跳出弹窗，要求您点击**Confirm**确认部署合约
 
-![The Deploy and run transactions side panel completely filled out to perform a contract deployment.](/images/builders/build/eth-api/dev-env/remix/remix-12.webp)
+![The Deploy and run transactions side panel completely filled out to perform a contract deployment.](/images/builders/ethereum/dev-env/remix/remix-12.webp)
 
 交易部署后，您将在Remix终端看到部署交易的详情。此外，合约将出现在侧面板的**Deployed Contracts**部分下方。
 
@@ -170,7 +170,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 
 例如，如果您想要调用`tokenSupply`函数，您无需签署交易，即可获得及时响应。
 
-![A view of the functions available in the deployed ERC-20 contract and the response from calling the tokenSupply function.](/images/builders/build/eth-api/dev-env/remix/remix-13.webp)
+![A view of the functions available in the deployed ERC-20 contract and the response from calling the tokenSupply function.](/images/builders/ethereum/dev-env/remix/remix-13.webp)
 
 另一方面，如果您调用`approve`函数，该函数将批准一个账户作为给定数量的MYTOK Token的支出者，您需要在MetaMask中提交批准。您可以执行以下步骤进行测试：
 
@@ -179,7 +179,7 @@ Solidity编译器插件也允许您更改一些设置并应用编译器的高级
 3. 点击**transact**
 4. MetaMask将跳出弹窗，您需要查看交易详情并提交批准
 
-![The inputs for the approve function of the ERC-20 contract and the MetaMask pop-up for the approval.](/images/builders/build/eth-api/dev-env/remix/remix-14.webp)
+![The inputs for the approve function of the ERC-20 contract and the MetaMask pop-up for the approval.](/images/builders/ethereum/dev-env/remix/remix-14.webp)
 
 要查看您的账户余额/批准交易/转账MYTOKs，您可以将MYTOK添加到您的账户。关于如何将Token添加至MetaMask的更多信息，请参考[MetaMask文档网站](/tokens/connect/metamask){target=\_blank}的[添加ERC-20 Token](/tokens/connect/metamask#add-erc20){target=\_blank}部分。
 
