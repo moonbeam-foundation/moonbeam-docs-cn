@@ -61,11 +61,11 @@ openzeppelin-contracts/=lib/openzeppelin-contracts/
 src = 'src'
 out = 'out'
 libs = ['lib']
-solc_version = '0.8.17'
+solc_version = '0.8.20'
 
 [rpc_endpoints]
-moonbase = "https://rpc.api.moonbase.moonbeam.network"
-moonbeam = "https://rpc.api.moobeam.network"
+moonbase = "{{ networks.moonbase.rpc_url }}"
+moonbeam = "{{ networks.moonbeam.rpc_url }}"
 
 [etherscan]
 moonbase = { key = "${MOONSCAN_API_KEY}" }
@@ -85,24 +85,7 @@ touch MyToken.sol
 打开文件并添加以下内容：
 
 ```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-// Import OpenZeppelin Contract
-import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
-
-// This ERC-20 contract mints the specified amount of tokens to the contract creator
-contract MyToken is ERC20 {
-  constructor(uint256 initialSupply) ERC20("MyToken", "MYTOK") {
-    _mint(msg.sender, initialSupply);
-  }
-
-  // An external minting function allows anyone to mint as many tokens as they want
-  function mint(uint256 toMint, address to) external {
-    require(toMint <= 1 ether);
-    _mint(to, toMint);
-  }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/ERC20.sol'
 ```
 
 如您所见，OpenZeppelin `ERC20`智能合约是通过`remappings.txt`中定义的映射导入的。
@@ -116,47 +99,7 @@ touch Container.sol
 打开文件并添加以下内容：
 
 ```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-// Import OpenZeppelin Contract
-import {MyToken} from "./MyToken.sol";
-
-enum ContainerStatus {
-    Unsatisfied,
-    Full,
-    Overflowing
-}
-
-contract Container {
-    MyToken token;
-    uint256 capacity;
-    ContainerStatus public status;
-
-    constructor(MyToken _token, uint256 _capacity) {
-        token = _token;
-        capacity = _capacity;
-        status = ContainerStatus.Unsatisfied;
-    }
-
-    // Updates the status value based on the number of tokens that this contract has
-    function updateStatus() public {
-        address container = address(this);
-        uint256 balance = token.balanceOf(container);
-        if (balance < capacity) {
-            status = ContainerStatus.Unsatisfied;
-        } else if (balance == capacity) {
-            status = ContainerStatus.Full;
-        } else if (_isOverflowing(balance)) {
-            status = ContainerStatus.Overflowing;
-        }
-    }
-
-    // Returns true if the contract should be in an overflowing state, false if otherwise
-    function _isOverflowing(uint256 balance) internal view returns (bool) {
-        return balance > capacity;
-    }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/Container.sol'
 ```
 
 `Container`智能合约可以根据其持有的Token数量及其设置的初始容量值来更新其状态。如果只有的Token数量大于其容量，则状态可以更新为`Overflowing`。如果持有的Token数量等于容量，则状态可以更新为`Full`。否则，合约将开始并保持`Unsatisfied`状态。
@@ -186,24 +129,7 @@ touch MyToken.t.sol
 接下来，开始为Token智能合约编写测试。打开`MyToken.t.sol`并添加以下内容：
 
 ```solidity
-pragma solidity ^0.8.0;
-
-import "forge-std/Test.sol";
-import "../src/MyToken.sol";
-
-contract MyTokenTest is Test {
-    MyToken public token;
-
-    // Runs before each test
-    function setUp() public {
-        token = new MyToken(100);
-    }
-
-    // Tests if minting during the constructor happens properly
-    function testConstructorMint() public {
-        assertEq(token.balanceOf(address(this)), 100);
-    }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/MyToken-initial-test.sol'
 ```
 
 我们来分析一下此处的代码：第一行是典型的Solidity文件：设置Solidity版本。接下来的两行是导入。`forge-std/Test.sol`是Forge（也就是Foundry）包含的用于帮助测试的标准库。这包括`Test`智能合约，某些断言（assertion）和[forge cheatcodes](https://book.getfoundry.sh/forge/cheatcodes){target=\_blank}。
@@ -219,40 +145,7 @@ touch Container.t.sol
 然后添加以下内容：
 
 ```solidity
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
-
-import "forge-std/Test.sol";
-import {MyToken} from "../src/MyToken.sol";
-import {Container, ContainerStatus} from "../src/Container.sol";
-
-contract ContainerTest is Test {
-    MyToken public token;
-    Container public container;
-
-    uint256 constant CAPACITY = 100;
-
-    // Runs before each test
-    function setUp() public {
-        token = new MyToken(1000);
-        container = new Container(token, CAPACITY);
-    }
-
-    // Tests if the container is unsatisfied right after constructing
-    function testInitialUnsatisfied() public {
-        assertEq(token.balanceOf(address(container)), 0);
-        assertTrue(container.status() == ContainerStatus.Unsatisfied);
-    }
-
-    // Tests if the container will be "full" once it reaches its capacity
-    function testContainerFull() public {
-        token.transfer(address(container), CAPACITY);
-        container.updateStatus();
-
-        assertEq(token.balanceOf(address(container)), CAPACITY);
-        assertTrue(container.status() == ContainerStatus.Full);
-    }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/Container-initial-test.sol'
 ```
 
 此测试合约有两个测试，所以在运行测试时，会有`MyToken`和`Container`的两次部署，总共为4个智能合约。您可以运行以下命令来查看测试结果：
@@ -263,7 +156,7 @@ forge test
 
 测试时，您将看到以下输出：
 
-![Unit Testing in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-1.webp)
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/terminal/test.md'
 
 ### Foundry中的测试套件（Test Harness） {: #test-harnesses-in-foundry }
 
@@ -272,30 +165,18 @@ forge test
 举例来说，在`Container`中有一个名为`_isOverflowing`的内部函数，用于检查智能合约是否有比容量更多的Token。要测试此函数，请添加以下测试套件智能合约至`Container.t.sol`文件中：
 
 ```solidity
-contract ContainerHarness is Container {
-    constructor(MyToken _token, uint256 _capacity) Container(_token, _capacity) {}
-
-    function exposed_isOverflowing(uint256 balance) external view returns(bool) {
-        return _isOverflowing(balance);
-    }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/ContainerHarness.sol'
 ```
 
 在`ContainerTest`智能合约里面，您可以添加一个新测试，用于测试之前不可读取的`_isOverflowing`合约：
 
 ```solidity
-    // Tests for negative cases of the internal _isOverflowing function
-    function testIsOverflowingFalse() public {
-        ContainerHarness harness = new ContainerHarness(token , CAPACITY);
-        assertFalse(harness.exposed_isOverflowing(CAPACITY - 1));
-        assertFalse(harness.exposed_isOverflowing(CAPACITY));
-        assertFalse(harness.exposed_isOverflowing(0));
-    }
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/IsOverflowing.sol'
 ```
 
 现在，当您用`forge test`运行测试时，您将看到`testIsOverflowingFalse`已经通过！
 
-![Test Harness in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-2.webp)
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/terminal/test2.md'
 
 ### Foundry中的模糊测试 {: #fuzzing-tests-in-foundry}
 
@@ -304,13 +185,7 @@ contract ContainerHarness is Container {
 开发者可以测试很多输入的最佳方式之一是通过模糊测试（fuzzing或fuzz测试）。当测试函数中包含输入时，Foundry会自动进行模糊测试。为了说明这一点，将以下测试添加到`MyToken.t.sol`中的`MyTokenTest`合约。
 
 ```solidity
-    // Fuzz tests for success upon minting tokens one ether or below
-    function testMintOneEtherOrBelow(uint256 amountToMint) public {
-        vm.assume(amountToMint <= 1 ether);
-
-        token.mint(amountToMint, msg.sender);
-        assertEq(token.balanceOf(msg.sender), amountToMint);
-    }
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/Fuzz-test.sol'
 ```
 
 这些测试包含`uint256 amountToMint`作为输入，告知Foundry使用`uint256`输入进行模糊测试。默认情况下，Foundry将输入256个不同的输入，但可以使用[`FOUNDRY_FUZZ_RUNS`环境变量](https://book.getfoundry.sh/reference/config/testing#runs){target=\_blank}配置。
@@ -320,12 +195,7 @@ contract ContainerHarness is Container {
 我们来看一下另一个放入`MyTokenTest`合约中的模糊测试，但是我们预计会失败：
 
 ```solidity
-    // Fuzz tests for failure upon minting tokens above one ether
-    function testFailMintAboveOneEther(uint256 amountToMint) public {
-        vm.assume(amountToMint > 1 ether);
-        
-        token.mint(amountToMint, msg.sender);
-    }
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/Fuzz-test2.sol'
 ```
 
 在Foundry中，当你预想到测试会失败，您无需以*"test"*开始，可以直接以*"testFail"*开始测试函数名。在此测试中，我们假设`amountToMint`超过1 ether（即结果会失败）。
@@ -338,7 +208,7 @@ forge test
 
 您将在控制台看到以下类似输出：
 
-![Fuzzing Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-3.webp)
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/terminal/test3.md'
 
 ### Foundry中的分叉测试 {: #forking-tests-in-foundry}
 
@@ -352,25 +222,7 @@ forge test
 将名为`testAlternateTokenOnMoonbaseFork`的新测试函数添加至`Container.t.sol`中的`ContainerTest`智能合约。
 
 ```solidity
-    // Fork tests in the Moonbase Alpha environment
-    function testAlternateTokenOnMoonbaseFork() public {
-        // Creates and selects a fork, returns a fork ID
-        uint256 moonbaseFork = vm.createFork("moonbase");
-        vm.selectFork(moonbaseFork);
-        assertEq(vm.activeFork(), moonbaseFork);
-
-        // Get token that's already deployed & deploys a container instance
-        token = MyToken(0x359436610E917e477D73d8946C2A2505765ACe90);
-        container = new Container(token, CAPACITY);
-
-        // Mint tokens to the container & update container status
-        token.mint(CAPACITY, address(container));
-        container.updateStatus();
-
-        // Assert that the capacity is full, just like the rest of the time
-        assertEq(token.balanceOf(address(container)), CAPACITY);
-        assertTrue(container.status() == ContainerStatus.Full);
-    }
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/TestAlternateTokenOnMoonbaseFork.sol'
 ```
 
 此函数的第一步（也是第一行）是让测试函数使用`vm.createFork`分叉网络。`vm`是由Forge标准库提供的cheatcode。创建分叉需要的是一个RPC URL或者存储在`foundry.toml`文件中的RPC URL别名。在本示例中，我们在[设置步骤](#setup-a-foundry-project){target=\_blank}中为"moonbase"添加了一个RPC URL，因此在测试函数中我们将只需传递`"moonbase"`。此cheatcode函数返回创建分叉的ID，该ID存储在`uint256`中，是激活分叉所必需的。
@@ -385,7 +237,21 @@ forge test
 forge test -vvvv
 ```
 
-![Forking Tests in Foundry](/images/tutorials/eth-api/foundry-start-to-end/foundry-4.webp)
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/terminal/test4.md'
+
+That's it for testing! You can find the complete `Container.t.sol` and `MyToken.t.sol` files below:
+
+??? code "Container.t.sol"
+
+    ```solidity
+    --8<-- 'code/tutorials/eth-api/foundry-start-to-end/Container.t.sol'
+    ```
+
+??? code "MyToken.t.sol"
+
+    ```solidity
+    --8<-- 'code/tutorials/eth-api/foundry-start-to-end/MyToken.t.sol'
+    ```
 
 这就是测试的步骤！您可以在GitHub上查看完整的[`Container.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.t.sol){target=\_blank}和[`MyToken.t.sol`文件](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/MyToken.t.sol){target=\_blank}。
 
@@ -407,28 +273,7 @@ touch Container.s.sol
 在脚本中，添加以下内容：
 
 ```solidity
-pragma solidity ^0.8.0;
-
-import "forge-std/Script.sol";
-import {MyToken} from "../src/MyToken.sol";
-import {Container} from "../src/Container.sol";
-
-contract ContainerDeployScript is Script {
-    // Runs the script; deploys MyToken and Container
-    function run() public {
-        // Get the private key from the .env
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        vm.startBroadcast(deployerPrivateKey);
-
-        // Make a new token
-        MyToken token = new MyToken(1000);
-
-        // Make a new container
-        new Container(token, 500);
-
-        vm.stopBroadcast();
-    }
-}
+--8<-- 'code/tutorials/eth-api/foundry-start-to-end/ContainerDeployScript.sol'
 ```
 
 我们来分析一下此处的代码。第一行是标配：说明Solidity版本。导入内容包含之前添加的两个智能合约，我们即将部署这两个合约。导入`Script`合约包括了在脚本中使用的附加功能。
@@ -462,10 +307,11 @@ source .env
 现在，您的脚本和项目已经可以准备部署了！使用以下命令进行操作：
 
 ```bash
-forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --rpc-url moonbase
+forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --legacy --rpc-url moonbase
+
 ```
 
-此命令将`ContainerDeployScript`合约作为脚本运行。`--broadcast`选项告知Forge允许交易播报，`--verify`选项告知Forge在部署时向Moonscan验证，`-vvvv`使命令输出更详细，`--rpc-url moonbase`将网络设置为在`foundry.toml`中设置的`moonbase`。
+此命令将`ContainerDeployScript`合约作为脚本运行。`--broadcast`选项告知Forge允许交易播报，`--verify`选项告知Forge在部署时向Moonscan验证，`-vvvv`使命令输出更详细，`--rpc-url moonbase`将网络设置为在`foundry.toml`中设置的`moonbase`。 `--legacy`选项让Foundry绕过EIP-1559相关功能。虽然Moonbeam网络全都支持EIP-1559交易，但是如果不添加`--legacy`选项Foundry还是会拒绝发送相关交易并仅使用本地模拟运行。
 
 您将看到类似以下输出：
 
@@ -473,14 +319,19 @@ forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --
 
 您应该能够看到您的合约已成功部署并且已在Moonscan上得到验证。可以查看我[部署`Container.sol`合约](https://moonbase.moonscan.io/address/0xe8bf2e654d7c1c1ba8f55fed280ddd241e46ced9#code)的地方。
 
-您可以在[GitHub](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/tutorials/eth-api/foundry-start-to-end/Container.s.sol){target=\_blank}上查看整个部署脚本。
+一下为完整部署脚本。
 
+??? code "Container.s.sol"
+
+    ```solidity
+    --8<-- 'code/tutorials/eth-api/foundry-start-to-end/Container.s.sol'
+    ```
 ### 在Moonbeam主网上部署 {: #deploy-on-moonbeam-mainnet }
 
 现在您对您的智能合约已经感到满意，并且想在Moonbeam主网上进行部署。此过程的操作与上述操作类似，因为您已在`foundry.toml`文件中添加了Moonbeam主网的信息，您只需将rpc-url从`moonbase`改成`moonbeam`即可：
 
 ```bash
-forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --rpc-url moonbeam
+forge script Container.s.sol:ContainerDeployScript --broadcast --verify -vvvv --legacy --rpc-url moonbeam
 ```
 
 请注意，虽然这比较复杂，但是还有其他[在Foundry中处理私钥的方法](https://book.getfoundry.sh/reference/forge/forge-script#wallet-options---raw){target=\_blank}。 其中一些方法可以被认为比将生产私钥存储在环境变量中更安全。
