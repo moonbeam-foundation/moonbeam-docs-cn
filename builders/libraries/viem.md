@@ -245,7 +245,7 @@ npx ts-node balances.ts
 
 如果成功，发送地址和接收地址的余额将以DEV为单位显示在终端。
 
-![The result of running the balances script in the terminal](/images/builders/ethereum/libraries/viem/viem-1.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/balances.md'
 
 ### 发送交易脚本 {: #send-transaction-script }
 
@@ -280,7 +280,7 @@ npx ts-node transaction.ts
 
 您也可以使用`balances.ts`脚本查看发送和接收账户更改的余额。整个工作流程如下：
 
-![The result of running the transaction and balances scripts in the terminal](/images/builders/ethereum/libraries/viem/viem-2.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/transaction.md'
 
 ## 部署合约 {: #deploy-contract }
 
@@ -326,7 +326,7 @@ npx ts-node deploy.ts
 
 如果成功，您将在终端看到合约地址。
 
-![The result of running the deploy script in the terminal](/images/builders/ethereum/libraries/viem/viem-3.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/deploy.md'
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -359,7 +359,7 @@ npx ts-node get.ts
 
 如果成功，您将在终端看到值。
 
-![The result of running the get script in the terminal](/images/builders/ethereum/libraries/viem/viem-4.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/get.md'
 
 ### 与合约交互（发送函数） {: #interact-with-contract }
 
@@ -392,7 +392,7 @@ npx ts-node increment.ts
 
 如果成功，您将在终端看到交易哈希。 您可以一同使用`get.ts`脚本和`increment.ts`脚本，以确保该值按预期更改。
 
-![The result of running the increment and get scripts in the terminal](/images/builders/ethereum/libraries/viem/viem-5.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/increment.md'
 
 接下来，您可以打开`reset.ts`文件，并执行以下步骤创建脚本：
 
@@ -417,6 +417,6 @@ npx ts-node reset.ts
 
 如果成功，您将在终端看到交易哈希。 您可以一同使用`get.ts`脚本和`reset.ts`脚本，以确保该值按预期更改。
 
-![The result of running the reset and get scripts in the terminal](/images/builders/ethereum/libraries/viem/viem-6.webp)
+--8<-- 'code/builders/ethereum/libraries/viem/terminal/reset.md'
 
 --8<-- 'text/_disclaimers/third-party-content.md'
