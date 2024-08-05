@@ -234,7 +234,7 @@ touch balances.ts
 6. 最后，运行`balances`函数
 
 ```ts
---8<-- 'code/builders/build/eth-api/libraries/viem/balances.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/balances.ts'
 ```
 
 要运行脚本和获取账户余额，您可以运行以下命令：
@@ -267,7 +267,7 @@ touch transaction.ts
 8. 最后，运行`send`函数
 
 ```ts
---8<-- 'code/builders/build/eth-api/libraries/viem/transaction.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/transaction.ts'
 ```
 
 要运行脚本，您可以在终端运行以下命令：
@@ -284,15 +284,15 @@ npx ts-node transaction.ts
 
 ## 部署合约 {: #deploy-contract }
 
---8<-- 'text/builders/build/eth-api/libraries/contract.md'
+--8<-- 'text/builders/ethereum/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
---8<-- 'text/builders/build/eth-api/libraries/compile-ts.md'
---8<-- 'text/builders/build/eth-api/libraries/compile.md'
+--8<-- 'text/builders/ethereum/libraries/compile-ts.md'
+--8<-- 'text/builders/ethereum/libraries/compile.md'
 
 ```js
---8<-- 'code/builders/build/eth-api/libraries/compile.ts'
+--8<-- 'code/builders/ethereum/libraries/compile.ts'
 ```
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -315,7 +315,7 @@ touch deploy.ts
 8. 最后，运行`deploy`函数
 
 ```ts
---8<-- 'code/builders/build/eth-api/libraries/viem/deploy.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/deploy.ts'
 ```
 
 要运行脚本，您可以在终端运行以下命令：
@@ -348,7 +348,7 @@ touch get.ts
 6. 最后，调用`get`函数
 
 ```ts
---8<-- 'code/builders/build/eth-api/libraries/viem/get.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/get.ts'
 ```
 
 要运行脚本，您可以在终端运行以下命令：
@@ -381,7 +381,7 @@ touch increment.ts reset.ts
 8. 最后，调用`increment`函数
 
 ```js
---8<-- 'code/builders/build/eth-api/libraries/viem/increment.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/increment.ts'
 ```
 
 要运行脚本，您可以在终端运行以下命令：
@@ -406,7 +406,7 @@ npx ts-node increment.ts
 8. 最后，调用`reset`函数
 
 ```ts
---8<-- 'code/builders/build/eth-api/libraries/viem/reset.ts'
+--8<-- 'code/builders/ethereum/libraries/viem/reset.ts'
 ```
 
 要运行脚本，您可以在终端运行以下命令：

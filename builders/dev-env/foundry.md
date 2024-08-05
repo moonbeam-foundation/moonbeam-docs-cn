@@ -72,7 +72,7 @@ touch MyToken.sol
 打开文件并添加以下合约：
 
 ```solidity
---8<-- 'code/builders/build/eth-api/dev-env/foundry/ERC20.sol'
+--8<-- 'code/builders/ethereum/dev-env/foundry/ERC20.sol'
 ```
 
 在尝试编译合约之前，您需要安装OpenZeppelin合约作为依赖项。您可能需要先将以前的更改提交到git。默认情况下，Foundry使用git子模块而非npm程序包，因此没有使用传统的npm导入路径和命令。相反，使用OpenZeppelin GitHub repository的名称。
@@ -89,7 +89,7 @@ forge install OpenZeppelin/openzeppelin-contracts
 forge build
 ```
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/compile.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/compile.md'
 
 编译完成后，将创建两个文件夹：`out`和`cache`。您合约的ABI和字节码将包含在`out`文件夹中。这两个文件夹已被默认Foundry项目初始化中包含的`.gitignore`忽略。
 
@@ -139,7 +139,7 @@ Foundry提供两种主要合约部署方式。第一种方法比较直接，是�
 
 部署合约后几秒钟，您应该会在终端看到合约地址。
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/deploy.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/deploy.md'
 
 恭喜！您的合约已部署成功！请保存该地址，您将在下一步中使用它与该合约实例进行交互。
 
@@ -157,7 +157,7 @@ Solidity脚本是一种比 [`forge create`](#deploying-the-contract) 更强大�
 现在开始编写脚本。在脚本文件夹中，创建一个名为 `MyToken.s.sol` 的文件。复制并粘贴以下文件的内容：
 
 ```solidity
---8<-- 'code/builders/build/eth-api/dev-env/foundry/MyToken-script.sol'
+--8<-- 'code/builders/ethereum/dev-env/foundry/MyToken-script.sol'
 ```
 
 !!! 请记住
@@ -173,7 +173,7 @@ forge script script/MyToken.s.sol --rpc-url {{ networks.moonbase.rpc_url }} --br
 
 如果您的脚本执行成功，您的终端应展示一下内容：
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/script.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/script.md'
 
 这样就成了。有关使用Foundry进行Solidity脚本编写的更多信息，请查看[Foundry文档](https://book.getfoundry.sh/tutorials/solidity-scripting){target=_blank}。
 
@@ -215,7 +215,7 @@ Foundry包括cast，一个用于执行以太坊RPC调用的CLI。
 
 此数据非可读，但您可以使用Cast将其转换成您想要的格式。在这种情况下，数据是文本，因此您可以将其转换为ASCII字符以查看“My Token”：
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/cast.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/cast.md'
 
 ```bash
 cast --to-ascii 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000074d79546f6b656e00000000000000000000000000000000000000000000000000
@@ -265,7 +265,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 交易将由您的Moonbase账户签署并传播到网络。输出应如下所示：
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/burn.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/burn.md'
 
 恭喜您！您已成功使用Foundry部署和交互合约！
 
@@ -299,7 +299,7 @@ cast --to-ascii 0x00000000000000000000000000000000000000000000000000000000000000
 
 分叉的实例将拥有10个已经预先注资10,000测试Token的开发账户。分叉的实例位于`http://127.0.0.1:8545/`。终端输出应类似于以下内容：
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/fork-anvil.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/fork-anvil.md'
 
 要验证您是否已分叉了网络，您可以查询最新的区块号：
 
@@ -341,7 +341,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 `memdump`将显示当前会话中的所有数据。您可能会看到类似下面这样的内容。如果您不熟悉hex格式或者ABI编码的工作原理，那么您可能无法找到`myData`变量的存储位置。
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/memdump.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/memdump.md'
 
 幸运的是，Chisel会轻松帮您找到这些信息存储位置。使用`!rawstack`命令，您可以找到变量值在栈中的位置。
 
@@ -351,7 +351,7 @@ bytes memory myData = abi.encode(100, true, "Develop on Moonbeam");
 
 在此情况下，因为字节的长度超过32个字节，因此将显示内存指针。这样您已经从`!memdump`命令了解了整个栈。
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/rawstack.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/rawstack.md'
 
 `!rawstack`命令显示`myData`变量存储在`0x80`中，与从`!memdump`命令检索到的内存内容对比时，看起来`myData`存储如下所示：
 
@@ -380,7 +380,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 您应该看到如下所示输出：
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/expression.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/expression.md'
 
 虽然它没有以相同的方式显示数据，但您仍然可以获得数据的内容，并且它还进一步分解了信息的编码方式，例如让您知道`0xa0`值定义了数据长度。
 
@@ -424,7 +424,7 @@ abi.encode(100, true, "Develop on Moonbeam")
     !rawstack myNumber
     ```
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/save-state.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/save-state.md'
 
 您甚至可以在使用Chisel时分叉网络：
 
@@ -438,13 +438,13 @@ abi.encode(100, true, "Develop on Moonbeam")
 {{ networks.moonbase.staking.candidates.address1 }}.balance
 ```
 
---8<-- 'code/builders/build/eth-api/dev-env/foundry/terminal/query-balance.md'
+--8<-- 'code/builders/ethereum/dev-env/foundry/terminal/query-balance.md'
 
 如果您想要获取关于Chisel的更多信息，请下载Foundry并参考其[官方页面](https://book.getfoundry.sh/reference/chisel/){target=\_blank}。
 
 ## 通过Hardhat使用Foundry {: #foundry-with-hardhat }
 
-通常，您希望集成的项目的所有设置都在[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=\_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=\_blank}来实现。
+通常，您希望集成的项目的所有设置都在[Hardhat](/builders/dev-env/hardhat/){target=\_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=\_blank}来实现。
 
 要将预先存在的Foundry项目转换成混合项目，您需要先在同一个文件夹中安装Hardhat项目：
 
@@ -454,7 +454,7 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-foundry
 npx hardhat init
 ```
 
-更多信息，请参考[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}的文档。
+更多信息，请参考[创建Hardhat项目](/builders/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}的文档。
 
 初始化新的Hardhat项目后，将会出现一些新的文件夹和文件：`contracts`、`hardhat.config.js`、`scripts`和`test/Lock.js`。您只需稍微调整即可创建一个混合项目：
 

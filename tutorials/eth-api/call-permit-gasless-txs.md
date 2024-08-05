@@ -40,7 +40,7 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
 - 拥有资金的账户
   --8<-- 'text/_common/faucet/faucet-list-item.md'
   
-- 已安装[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}的项目
+- 已安装[Ethers](/builders/libraries/ethersjs){target=\_blank}的项目
 
     ```bash
     npm i ethers
@@ -283,7 +283,7 @@ const message = {
 
 #### 为购买航程获得编码调用数据 {: #encoded-call-data-buying-voyage }
 
-我们将从计算`data`值开始。我们可以通过创建Cartographer V1合约的接口并使用`interface.encodeFunctionData`函数，以编程方式使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}计算`data`值。
+我们将从计算`data`值开始。我们可以通过创建Cartographer V1合约的接口并使用`interface.encodeFunctionData`函数，以编程方式使用[Ethers](/builders/libraries/ethersjs){target=\_blank}计算`data`值。
 
 如果您查看[`DPSCartographer.sol`合约的代码](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code){target=\_blank}，您会看到[`buyVoyages`函数](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code#F1#L75){target=\_blank}。`buyVoyages`函数接受三个参数：
 

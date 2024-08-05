@@ -67,7 +67,7 @@ description: 学习如何使用最受欢迎的以太坊开发工具之一Remix I
 主面板将切换至一个空白文件，您可以在此处为合约添加Solidity代码。将`MyToken.sol`智能合约粘贴至新的文件中：
 
 ```solidity
---8<-- 'code/builders/build/eth-api/dev-env/remix/MyToken.sol'
+--8<-- 'code/builders/ethereum/dev-env/remix/MyToken.sol'
 ```
 
 ![Add the contract code to the newly created file in the main panel of Remix.](/images/builders/ethereum/dev-env/remix/remix-5.webp)

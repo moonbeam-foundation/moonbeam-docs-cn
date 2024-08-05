@@ -53,7 +53,7 @@ Contracts Wizard由以下环节组成：
 请确保安装[MetaMask](https://metamask.io/){target=\_blank}，并已连接至Moonbase Alpha测试网。如果您想在Moonbeam或Moonriver网络部署，请连接到相应的网络。我们将在**Injected Web3**环境下使用[Remix IDE](https://remix.ethereum.org/){target=\_blank}进行合约部署。相关指引请点击以下链接：
 
  - [使用MetaMask与Moonbeam进行交互](/builders/integrations/wallets/metamask/){target=\_blank}
- - [使用Remix与Moonbeam进行交互](/builders/build/eth-api/dev-env/remix/){target=\_blank}
+ - [使用Remix与Moonbeam进行交互](/builders/dev-env/remix/){target=\_blank}
 
 ### 部署ERC-20代币 {: #deploying-an-erc20-token }
 
@@ -122,7 +122,7 @@ contract MyToken is ERC20, Ownable {
 
 可铸造的ERC-721 OpenZeppelin代币合约有一个`mint`函数，只有合约持有者可以调用这一函数。默认设置下，合约所有者即为合约的部署者地址。
 
-和[ERC-20合约](/builders/build/eth-api/dev-env/openzeppelin/contracts/#deploying-an-erc20-token){target=\_blank}的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=\_blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
+和[ERC-20合约](#deploying-an-erc20-token){target=\_blank}的部署一样，第一步也是进入[Remix](https://remix.ethereum.org/){target=\_blank}并创建新文档。在本示例中，文档名称将被设为`ERC721.sol`。
 
 下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
@@ -189,7 +189,7 @@ OpenZeppelin的ERC-1155代币合约提供只能在`constructor`函数中调用�
 
 第一步是进入[Remix](https://remix.ethereum.org/){target=\_blank}并创建新文档。在本示例中，文档命名为`ERC1155.sol`。
 
-和[ERC-20](/builders/build/eth-api/dev-env/openzeppelin/contracts/#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
+和[ERC-20](#deploying-an-erc20-token)代币部署一样，下一步需要编写智能合约并进行编译。在本示例中，我们使用了以下代码：
 
 ```solidity
 pragma solidity ^0.8.0;

@@ -111,7 +111,7 @@ touch balances.py
 3. 使用`web3.eth.get_balance`函数获取账户余额并使用`web3.from_wei`格式化结果
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/balances.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/balances.py'
 ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -140,7 +140,7 @@ touch transaction.py
 6. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/transaction.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/transaction.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -157,7 +157,7 @@ python3 transaction.py
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/builders/build/eth-api/libraries/contract.md'
+--8<-- 'text/builders/ethereum/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
@@ -175,7 +175,7 @@ touch compile.py
 4. 导出合约的ABI和字节码
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/compile.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/compile.py'
 ```
 
 !!! 注意事项
@@ -200,7 +200,7 @@ touch deploy.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/deploy.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/deploy.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -232,7 +232,7 @@ touch get.py
 5. 使用合约实例，您随后可以调用`number`函数
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/get.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/get.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -262,7 +262,7 @@ touch increment.py reset.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/increment.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/increment.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -286,7 +286,7 @@ python3 increment.py
 7. 使用`web3.eth.send_raw_transaction`函数发送已签署交易，然后使用`web3.eth.wait_for_transaction_receipt`函数等待获取交易回执
 
 ```python
---8<-- 'code/builders/build/eth-api/libraries/web3-py/reset.py'
+--8<-- 'code/builders/ethereum/libraries/web3-py/reset.py'
 ```
 
 您可以在终端运行以下命令以运行脚本：
