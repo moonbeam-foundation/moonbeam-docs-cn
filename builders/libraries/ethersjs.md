@@ -190,7 +190,7 @@ balances();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/balances.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/balances.js'
     ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -255,7 +255,7 @@ send();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/transaction.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/transaction.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -268,19 +268,19 @@ node transaction.js
 
 您也可以使用`balances.js`脚本为发送地址和接收地址查看余额是否变化。整体操作流程如下所示：
 
-![Send Tx Etherjs](/images/builders/ethereum/libraries/ethers/ethers-1.webp)
+--8<-- 'code/builders/ethereum/libraries/ethers-js/terminal/transaction.md'
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/builders/build/eth-api/libraries/contract.md'
+--8<-- 'text/builders/ethereum/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
---8<-- 'text/builders/build/eth-api/libraries/compile-js.md'
---8<-- 'text/builders/build/eth-api/libraries/compile.md'
+--8<-- 'text/builders/ethereum/libraries/compile-js.md'
+--8<-- 'text/builders/ethereum/libraries/compile.md'
 
 ```js
---8<-- 'code/builders/build/eth-api/libraries/compile.js'
+--8<-- 'code/builders/ethereum/libraries/compile.js'
 ```
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -343,7 +343,7 @@ deploy();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/deploy.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/deploy.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -354,7 +354,7 @@ node deploy.js
 
 如果成功，合约地址将显示在终端。
 
-![Deploy Contract Etherjs](/images/builders/ethereum/libraries/ethers/ethers-2.webp)
+--8<-- 'code/builders/ethereum/libraries/ethers-js/terminal/deploy.md'
 
 ### 读取合约数据（调用函数） {: #read-contract-data }
 
@@ -406,7 +406,7 @@ get();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/get.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/get.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -476,7 +476,7 @@ increment();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/increment.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/increment.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -487,7 +487,7 @@ node increment.js
 
 如果成功，交易哈希将显示在终端。您可以在`increment.js`脚本旁边使用`get.js`脚本以确保数值如预期变化：
 
-![Increment Contract Ethers](/images/builders/ethereum/libraries/ethers/ethers-3.webp)
+--8<-- 'code/builders/ethereum/libraries/ethers-js/terminal/increment.md'
 
 接下来，您可以打开`reset.js`文件并执行以下步骤以创建脚本：
 
@@ -539,7 +539,7 @@ reset();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/reset.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/reset.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -550,6 +550,6 @@ node reset.js
 
 如果成功，交易哈希将显示在终端。您可以在`reset.js`脚本配合使用`get.js`脚本以确保数值如预期变化：
 
-![Reset Contract Ethers](/images/builders/ethereum/libraries/ethers/ethers-4.webp)
+--8<-- 'code/builders/ethereum/libraries/ethers-js/terminal/reset.md'
 
 --8<-- 'text/_disclaimers/third-party-content.md'
