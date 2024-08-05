@@ -444,7 +444,7 @@ abi.encode(100, true, "Develop on Moonbeam")
 
 ## 通过Hardhat使用Foundry {: #foundry-with-hardhat }
 
-通常，您希望集成的项目的所有设置都在[Hardhat](/builders/dev-env/hardhat/){target=\_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=\_blank}来实现。
+通常，您希望集成的项目的所有设置都在[Hardhat](/cn/builders/dev-env/hardhat/){target=\_blank}中，因此将整个项目转换为Foundry是一项艰巨的任务。通过创建同时使用Hardhat和Foundry功能的混合项目，可以避免这项额外的工作。这可以通过Hardhat的[hardhat-foundry插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-foundry){target=\_blank}来实现。
 
 要将预先存在的Foundry项目转换成混合项目，您需要先在同一个文件夹中安装Hardhat项目：
 
@@ -454,7 +454,7 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-foundry
 npx hardhat init
 ```
 
-更多信息，请参考[创建Hardhat项目](/builders/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}的文档。
+更多信息，请参考[创建Hardhat项目](/cn/builders/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}的文档。
 
 初始化新的Hardhat项目后，将会出现一些新的文件夹和文件：`contracts`、`hardhat.config.js`、`scripts`和`test/Lock.js`。您只需稍微调整即可创建一个混合项目：
 

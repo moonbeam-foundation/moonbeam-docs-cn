@@ -7,7 +7,7 @@ description: 学习如何使用EthersRS以太坊库，通过Rust语言发送交�
 
 ## 概览 {: #introduction }
 
-[Ethers.rs](https://ethers.rs){target=\_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/builders/libraries/ethersjs){target=\_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=\_blank}获取更多关于如何使用Ethers.rs的信息。
+[Ethers.rs](https://ethers.rs){target=\_blank}库提供一套工具，通过Rust编程语言与以太坊节点交互，其运作方式与[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}相似。Moonbeam拥有类似以太坊的API，能够与以太坊式的JSON-RPC调用完全兼容。因此，开发者可以利用此兼容性并使用Ethers.rs库如同与以太坊一样与Moonbeam节点交互。您可以在其[官方文档](https://docs.rs/crate/ethers/latest/){target=\_blank}获取更多关于如何使用Ethers.rs的信息。
 
 在本教程中，您将学习如何使用Ethers.rs库在Moonbase Alpha上发送交易和部署合约。本教程也同样适用于 [Moonbeam](/builders/get-started/networks/moonbeam/){target=\_blank}、[Moonriver](/builders/get-started/networks/moonriver/){target=\_blank}和[Moonbeam开发节点](/builders/get-started/networks/moonbeam-dev/){target=\_blank}。
 

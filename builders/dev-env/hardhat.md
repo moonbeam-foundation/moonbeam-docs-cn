@@ -11,7 +11,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务](https://hardhat.org/hardhat-runner/docs/advanced/create-task#creating-a-task){target=\_blank}以执行特定操作。这些操作包括编译和部署合约、运行测试等等。这些任务的可配置性很高，您可以创建、自定义和执行不同任务来满足您的需求。
 
-您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=\_blank}来扩展Hardhat的功能。插件是外部扩展应用，它们可与Hardhat集成以提供额外的功能与工具来简化工作流程。有些插件包括了常见的以太坊库，例如[Ethers.js](/builders/libraries/ethersjs){target=\_blank}，[viem](/builders/libraries/viem){target=\_blank}和为Chai Assertion库添加以太坊功能的插件等等。 所有这些插件都可用于在Moonbeam上扩展您的Hardhat项目。
+您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=\_blank}来扩展Hardhat的功能。插件是外部扩展应用，它们可与Hardhat集成以提供额外的功能与工具来简化工作流程。有些插件包括了常见的以太坊库，例如[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}，[viem](/cn/builders/libraries/viem){target=\_blank}和为Chai Assertion库添加以太坊功能的插件等等。 所有这些插件都可用于在Moonbeam上扩展您的Hardhat项目。
 
 本指南将简要介绍Hardhat，并向您展示如何使用Hardhat在Moonbase Alpha测试网上编译、部署和调试以太坊智能合约。本指南还适用于Moonbeam、Moonriver或 Moonbeam开发节点。
 
@@ -151,7 +151,7 @@ module.exports = {
 
 如果您想要在项目中使用插件，您需要安装插件并将通过`hardhat.config.js`文件将其导入。当一个插件导入后，它会成为[Hardhat Runtime Environment](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-runtime-environment){target=\_blank}的一部分，您可以在任务，脚本或别的地方使用该插件。
 
-在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其导入配置文件，这个插件为[Ethers.js](/builders/libraries/ethersjs/){target=\_blank}代码库提供了一个方便的封装，用于网络交互。
+在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其导入配置文件，这个插件为[Ethers.js](/cn/builders/libraries/ethersjs/){target=\_blank}代码库提供了一个方便的封装，用于网络交互。
 
 ```bash
 npm install @nomicfoundation/hardhat-ethers ethers

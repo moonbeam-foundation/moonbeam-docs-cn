@@ -59,7 +59,7 @@ _作者：Jeremy Boetticher_
 
 事实上还有其他额外的元素会被加入至JSON-RPC请求中，但这四个最为常见。
 
-在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/builders/libraries){target=\_blank}，我们将在本教程中使用[Ethers.js](/builders/libraries/ethersjs){target=\_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
+在当前，这些JSON-RPC请求非常有用，但是在编写代码时，一遍又一遍地创建JSON对象可能会很麻烦。这就是为什么存在有助于抽象和促进这些请求的使用的库。Moonbeam提供了[许多库的文档](/cn/builders/libraries){target=\_blank}，我们将在本教程中使用[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}。您仅需要了解，每当我们通过Ethers.js包与区块链交互时，我们实际上是在使用 JSON-RPC！
 
 ## 智能合约 {: #smart-contracts }
 
@@ -69,7 +69,7 @@ _作者：Jeremy Boetticher_
 
 当您将智能合约部署到Moonbeam上时，您会上传一系列EVM或以太坊虚拟机可以理解的指令。每当有人与智能合约交互时，EVM都会执行这些透明、防篡改且不可变的指令来更改区块链的状态。在智能合约中正确编写指令非常重要，因为区块链的状态定义了有关DApp的最关键信息，例如谁拥有多少资金金额。
 
-由于指令在低（组合）级别上很难编写和理解，因此我们使用Solidity等智能合约语言来简化它们的编写。为了帮助编写、调试、测试和编译这些智能合约语言，以太坊社区的开发者创建了开发者环境，例如[Hardhat](/builders/dev-env/hardhat){target=\_blank}和[Foundry](/builders/dev-env/foundry){target=\_blank}。Moonbeam的开发者网站提供了有关[大量开发者环境](/builders/dev-env){target=\_blank}的信息。
+由于指令在低（组合）级别上很难编写和理解，因此我们使用Solidity等智能合约语言来简化它们的编写。为了帮助编写、调试、测试和编译这些智能合约语言，以太坊社区的开发者创建了开发者环境，例如[Hardhat](/cn/builders/dev-env/hardhat){target=\_blank}和[Foundry](/cn/builders/dev-env/foundry){target=\_blank}。Moonbeam的开发者网站提供了有关[大量开发者环境](/cn/builders/dev-env){target=\_blank}的信息。
 
 本教程将会使用Hardhat管理智能合约。
 
@@ -228,7 +228,7 @@ npx hardhat compile
 
 ### 部署智能合约 {: #deploying-smart-contracts }
 
-从本质上讲，Harhat是一个Node项目，它使用[Ethers.js](/builders/libraries/ethersjs){target=\_blank}库与区块链进行交互。您还可以将Ethers.js与Hardhat的工具结合使用来创建脚本执行部署合约等操作。
+从本质上讲，Harhat是一个Node项目，它使用[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}库与区块链进行交互。您还可以将Ethers.js与Hardhat的工具结合使用来创建脚本执行部署合约等操作。
 
 您的Hardhat项目应当在文件夹中包含`scripts`脚本，被称为`deploy.js`。让我们以一个更加简单的脚本取代他。
 
@@ -283,7 +283,7 @@ cd frontend
 npm install ethers@5.6.9 @usedapp/core @mui/material @mui/system @emotion/react @emotion/styled
 ```
 
-如果您还记得的话，[Ethers.js](/builders/libraries/ethersjs/){target=\_blank}是一个协助JSON-RPC通信的库。useDApp包是一个类似的库，它使用Ethers.js并将其格式化为React hooks，以便它们在前端项目中更好地工作。我们还添加了两个用于样式和组件的[MUI](https://mui.com/){target=\_blank}包。
+如果您还记得的话，[Ethers.js](/cn/builders/libraries/ethersjs/){target=\_blank}是一个协助JSON-RPC通信的库。useDApp包是一个类似的库，它使用Ethers.js并将其格式化为React hooks，以便它们在前端项目中更好地工作。我们还添加了两个用于样式和组件的[MUI](https://mui.com/){target=\_blank}包。
 
 接下来，让我们设置位于`frontend/src`目录中的`App.js`文件以添加一些视觉结构：
 
