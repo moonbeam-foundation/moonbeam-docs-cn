@@ -11,7 +11,7 @@ description: 了解如何使用Hardhat在Moonbeam上编译、部署和调试以�
 
 Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务](https://hardhat.org/hardhat-runner/docs/advanced/create-task#creating-a-task){target=\_blank}以执行特定操作。这些操作包括编译和部署合约、运行测试等等。这些任务的可配置性很高，您可以创建、自定义和执行不同任务来满足您的需求。
 
-您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=\_blank}来扩展Hardhat的功能。插件是外部扩展应用，它们可与Hardhat集成以提供额外的功能与工具来简化工作流程。有些插件包括了常见的以太坊库，例如[Ethers.js](/builders/build/eth-api/libraries/ethersjs){target=\_blank}，[viem](/builders/build/eth-api/libraries/viem){target=\_blank}和为Chai Assertion库添加以太坊功能的插件等等。 所有这些插件都可用于在Moonbeam上扩展您的Hardhat项目。
+您还可以通过使用[插件](https://hardhat.org/hardhat-runner/plugins){target=\_blank}来扩展Hardhat的功能。插件是外部扩展应用，它们可与Hardhat集成以提供额外的功能与工具来简化工作流程。有些插件包括了常见的以太坊库，例如[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}，[viem](/cn/builders/libraries/viem){target=\_blank}和为Chai Assertion库添加以太坊功能的插件等等。 所有这些插件都可用于在Moonbeam上扩展您的Hardhat项目。
 
 本指南将简要介绍Hardhat，并向您展示如何使用Hardhat在Moonbase Alpha测试网上编译、部署和调试以太坊智能合约。本指南还适用于Moonbeam、Moonriver或 Moonbeam开发节点。
 
@@ -61,7 +61,7 @@ Hardhat采用基于任务的开发方式，开发者可以定义和执行[任务
 
 5. 系统将会显示菜单，允许您创建新的项目或使用范本项目。在本示例中，您可以选择**Create an empty hardhat.config.js**，这会为您的项目创建一个Hardhat配置文件。
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/hardhat-create.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/hardhat-create.md'
 
 ## Hardhat配置文件 {: #hardhat-configuration-file }
 
@@ -151,7 +151,7 @@ module.exports = {
 
 如果您想要在项目中使用插件，您需要安装插件并将通过`hardhat.config.js`文件将其导入。当一个插件导入后，它会成为[Hardhat Runtime Environment](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-runtime-environment){target=\_blank}的一部分，您可以在任务，脚本或别的地方使用该插件。
 
-在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其导入配置文件，这个插件为[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}代码库提供了一个方便的封装，用于网络交互。
+在这个范例中，您可以安装 `hardhat-ethers` 插件并且将其导入配置文件，这个插件为[Ethers.js](/cn/builders/libraries/ethersjs/){target=\_blank}代码库提供了一个方便的封装，用于网络交互。
 
 ```bash
 npm install @nomicfoundation/hardhat-ethers ethers
@@ -239,7 +239,7 @@ module.exports = {
 npx hardhat compile
 ```
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/compile.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/compile.md'
 
 编译后，将会创建一个`artifacts`目录：这保存了合约的字节码和元数据，为`.json`文件。您可以将此目录添加至您的`.gitignore`。
 
@@ -300,7 +300,7 @@ npx hardhat ignition deploy ./ignition/modules/Box.js --network moonbase
 
 您将会收到提示确认要部署到的网络。在您确认后几秒钟合约就会被部署,您将在终端中看到合约地址。
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/deploy-moonbase.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/deploy-moonbase.md'
 
 恭喜您，您的合约已完成！请保存地址，用于后续与合约实例的交互。
 
@@ -340,7 +340,7 @@ npx hardhat console --network moonbase
 
 交易将通过您在`hardhat.config.js`中定义的账户进行签署并传送至网络。后台输出将如下所示：
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/interact.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/interact.md'
 
 请注意您的地址将被标记为`from`，即合约地址，以及正在传送的`data`。现在，您可以通过运行以下命令来检索数值：
 
@@ -391,7 +391,7 @@ npx hardhat run --network moonbase scripts/set-value.js
 
 这个脚本应当返回`2`这个数值。
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/run.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/run.md'
 
 ## 使用Hardhat进行分叉 {: #hardhat-forking }
 
@@ -577,7 +577,7 @@ npx patch-package hardhat
 
 当您启动Hardhat分叉时，您会有20个预先注资10,000个测试Token的开发账户。分叉好的实例位于`http://127.0.0.1:8545/`。在您的终端中，将会显示类似以下输出：
 
---8<-- 'code/builders/build/eth-api/dev-env/hardhat/terminal/private-keys.md'
+--8<-- 'code/builders/ethereum/dev-env/hardhat/terminal/private-keys.md'
 
 要验证您是否已经分叉好网络，您可以查询最新区块号：
 
