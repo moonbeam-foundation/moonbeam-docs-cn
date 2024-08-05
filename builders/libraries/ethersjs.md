@@ -190,7 +190,7 @@ balances();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/balances.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/balances.js'
     ```
 
 您可以运行以下命令以运行脚本并获取账户余额：
@@ -255,7 +255,7 @@ send();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/transaction.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/transaction.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -272,15 +272,15 @@ node transaction.js
 
 ## 部署合约 {: #deploy-a-contract }
 
---8<-- 'text/builders/build/eth-api/libraries/contract.md'
+--8<-- 'text/builders/ethereum/libraries/contract.md'
 
 ### 编译合约脚本 {: #compile-contract-script }
 
---8<-- 'text/builders/build/eth-api/libraries/compile-js.md'
---8<-- 'text/builders/build/eth-api/libraries/compile.md'
+--8<-- 'text/builders/ethereum/libraries/compile-js.md'
+--8<-- 'text/builders/ethereum/libraries/compile.md'
 
 ```js
---8<-- 'code/builders/build/eth-api/libraries/compile.js'
+--8<-- 'code/builders/ethereum/libraries/compile.js'
 ```
 
 ### 部署合约脚本 {: #deploy-contract-script }
@@ -343,7 +343,7 @@ deploy();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/deploy.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/deploy.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -406,7 +406,7 @@ get();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/get.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/get.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -476,7 +476,7 @@ increment();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/increment.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/increment.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
@@ -539,7 +539,7 @@ reset();
 ??? code "查看完整脚本"
 
     ```js
-    --8<-- 'code/builders/build/eth-api/libraries/ethers-js/reset.js'
+    --8<-- 'code/builders/ethereum/libraries/ethers-js/reset.js'
     ```
 
 您可以在终端运行以下命令以运行脚本：
