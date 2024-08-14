@@ -1,6 +1,0 @@
-title: DApp列表
-hide: false
-nav:
-  - index.md
-  - 'State of the DApps': 'state-of-the-dapps.md'
-  - 'DappRadar': 'dapp-radar.md'

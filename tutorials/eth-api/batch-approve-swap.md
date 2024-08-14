@@ -15,7 +15,7 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 
 作为Moonbeam上的DApp开发者，可以轻松避免此流程，为用户提供更多对资产的掌控。这可以通过[批处理预编译](/builders/pallets-precompiles/precompiles/batch){target=\_blank}将授权和兑换批处理至单个交易中来实现，从而无需通过两个交易流程。这允许授权金额为准确的兑换金额，而不是无限量地访问用户Token。
 
-在本教程中，我们将深入了解使用批处理预编译合约的`batchAll`函数将授权和兑换批处理至一个交易的操作流程。我们将使用[Hardhat](/builders/build/eth-api/dev-env/hardhat){target=\_blank}和[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}创建和部署一个ERC-20合约和一个简单的DEX合约，用于在[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=\_blank}上兑换。
+在本教程中，我们将深入了解使用批处理预编译合约的`batchAll`函数将授权和兑换批处理至一个交易的操作流程。我们将使用[Hardhat](/cn/builders/dev-env/hardhat){target=\_blank}和[Ethers](/cn/builders/libraries/ethersjs){target=\_blank}创建和部署一个ERC-20合约和一个简单的DEX合约，用于在[Moonbase Alpha测试网](/builders/get-started/networks/moonbase){target=\_blank}上兑换。
 
 ## 查看先决条件 {: #checking-prerequisites }
 
@@ -23,13 +23,13 @@ Token授权对于安全地与智能合约交互非常重要，能够防止智能
 
 - 拥有资金的账户
   --8<-- 'text/_common/faucet/faucet-list-item.md'
-- 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/builders/build/eth-api/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}和[Hardhat配置文件](/builders/build/eth-api/dev-env/hardhat/#hardhat-configuration-file){target=\_blank}部分
+- 为Moonbase Alpha TestNet配置一个空白的Hardhat项目。关于详细教程，请参考Hardhat文档页面的[创建Hardhat项目](/cn/builders/dev-env/hardhat/#creating-a-hardhat-project){target=\_blank}和[Hardhat配置文件](/cn/builders/dev-env/hardhat/#hardhat-configuration-file){target=\_blank}部分
 - 
   --8<-- 'text/_common/endpoint-examples-list-item.md'
 
 ### 安装依赖项 {: #install-dependencies }
 
-当您准备好[Hardhat项目](/builders/build/eth-api/dev-env/hardhat){target=\_blank}后，您可以安装[Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/builders/build/eth-api/libraries/ethersjs/){target=\_blank}库与网络交互。
+当您准备好[Hardhat项目](/cn/builders/dev-env/hardhat){target=\_blank}后，您可以安装[Ethers插件](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-ethers){target=\_blank}。这将提供一种便捷的方式，以便使用[Ethers.js](/cn/builders/libraries/ethersjs/){target=\_blank}库与网络交互。
 
 您也可以安装[OpenZeppelin合约库](https://docs.openzeppelin.com/contracts/){target=\_blank}，因为我们将在我们的合约中导入`ERC20.sol`合约和`IERC20.sol`接口。
 

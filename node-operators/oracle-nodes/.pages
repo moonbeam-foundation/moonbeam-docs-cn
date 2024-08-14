@@ -1,5 +1,0 @@
-title: 预言机节点
-hide: false
-nav:
-  - index.md
-  - 'Chainlink节点': 'node-chainlink.md'

@@ -40,7 +40,7 @@ EIP-712通过要求开发者为消息数据定义一个JSON架构和指定一个
 - 拥有资金的账户
   --8<-- 'text/_common/faucet/faucet-list-item.md'
   
-- 已安装[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}的项目
+- 已安装[Ethers](/cn/builders/libraries/ethersjs){target=\_blank}的项目
 
     ```bash
     npm i ethers
@@ -283,7 +283,7 @@ const message = {
 
 #### 为购买航程获得编码调用数据 {: #encoded-call-data-buying-voyage }
 
-我们将从计算`data`值开始。我们可以通过创建Cartographer V1合约的接口并使用`interface.encodeFunctionData`函数，以编程方式使用[Ethers](/builders/build/eth-api/libraries/ethersjs){target=\_blank}计算`data`值。
+我们将从计算`data`值开始。我们可以通过创建Cartographer V1合约的接口并使用`interface.encodeFunctionData`函数，以编程方式使用[Ethers](/cn/builders/libraries/ethersjs){target=\_blank}计算`data`值。
 
 如果您查看[`DPSCartographer.sol`合约的代码](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code){target=\_blank}，您会看到[`buyVoyages`函数](https://moonscan.io/address/0xD1A9bA3e61Ac676f58B29EA0a09Cf5D7f4f35138#code#F1#L75){target=\_blank}。`buyVoyages`函数接受三个参数：
 
@@ -361,7 +361,7 @@ const message = {
 
 最后，我们需要获取`from`帐户的`nonce`。如前所述，我们可以使用调用许可预编译的`nonce`函数来获取该值。为此，您需要为调用许可预编译创建一个合约实例：
 
-1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/pallets-precompiles/precompiles/call-permit/abi.js){target=\_blank}
+1. 在项目中创建一个新文件，其中包含调用许可预编译的ABI。您可以在GitHub上找到[ABI](https://raw.githubusercontent.com/moonbeam-foundation/moonbeam-docs/master/.snippets/code/builders/ethereum/precompiles/ux/call-permit/abi.js){target=\_blank}
 2. 将ABI导入您的Ethers文件中
 3. 使用预编译的地址和预编译的ABI创建调用许可预编译的实例。您可以使用提供商或签名者。由于我们稍后将在本教程中发送许可证，因此我们将使用与第三方帐户关联的签名者来支付交易费用，但如果您只需要访问`nonces`函数，则可以使用提供商
 4. 调用`nonces`函数并输入用户的`signer.account` ，与`from`账户相同
