@@ -239,7 +239,7 @@ forge test -vvvv
 
 --8<-- 'code/tutorials/eth-api/foundry-start-to-end/terminal/test4.md'
 
-That's it for testing! You can find the complete `Container.t.sol` and `MyToken.t.sol` files below:
+测试完成！完整的 `Container.t.sol` 和 `MyToken.t.sol` 文件如下：
 
 ??? code "Container.t.sol"
 
