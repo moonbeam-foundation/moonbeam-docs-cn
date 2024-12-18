@@ -9,7 +9,7 @@ description: 学习如何将Particle Network的智能钱包即服务集成至Moo
 
 [Particle Network](https://particle.network/){target=\_blank}是一个[智能钱包即服务](https://docs.particle.network/getting-started/smart-wallet-as-a-service){target=\_blank}提供商，它允许开发者通过使用可定制的模块化外部拥有账户（Externally Owned Account，简称EOA）和[账户抽象（Account Abstraction，简称AA）](https://docs.particle.network/developers/account-abstraction){target=\_blank}嵌入式钱包组件来提升用户体验。
 
-Particle智能钱包即服务堆栈的其中一个重要组件是[Particle Auth](https://docs.particle.network/developers/auth-service){target=\_blank}，该组件可通过用户熟悉的Web2账户（例如谷歌账户、邮箱地址和电话号码）简化用户入门流程。这是通过使用[基于多方计算的阈值签名方案（MPC-TSS）](https://docs.article.network/developers/auth-service){target=\_blank}技术进行密钥管理来实现的。
+Particle智能钱包即服务堆栈的其中一个重要组件是[Particle Auth](https://docs.particle.network/developers/auth-service){target=\_blank}，该组件可通过用户熟悉的Web2账户（例如谷歌账户、邮箱地址和电话号码）简化用户入门流程。这是通过使用[基于多方计算的阈值签名方案（MPC-TSS）](https://docs.particle.network/developers/auth-service){target=\_blank}技术进行密钥管理来实现的。
 
 想要了解关于Particle堆栈的完整版介绍，请参考Particle的博客文章：[介绍Particle智能钱包即服务模块化堆栈](https://blog.particle.network/announcing-our-smart-wallet-as-a-service-modular-stack-upgrading-waas-with-erc-4337/){target=\_blank}。
 
