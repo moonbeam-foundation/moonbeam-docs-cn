@@ -450,6 +450,6 @@ npx thirdweb deploy --app
 
 通过运行此命令，您的应用程序将构建为生产环境，利用[Storage](https://portal.thirdweb.com/infrastructure/storage/overview){target=\_blank}，此类thirdweb的去中心化文件管理解决方案进行存储。构建的应用程序上传到去中心化存储网络IPFS，并为您的应用程序生成唯一的URL。此URL用作您的应用程序在网络上的永久托管位置。
 
-如果您还有任何疑问或在操作过程中遇到任何问题，请通过[support.thirdweb.com](http://support.thirdweb.com)](http://support.thirdweb.com){target=\_blank}联系thirdweb客服。
+如果您还有任何疑问或在操作过程中遇到任何问题，请通过[support.thirdweb.com](http://support.thirdweb.com){target=\_blank}联系thirdweb客服。
 
 --8<-- 'text/_disclaimers/third-party-content.md'
