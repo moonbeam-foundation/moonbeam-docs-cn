@@ -138,7 +138,7 @@ contract SimpleDex {
 npx hardhat compile
 ```
 
-![Compile contracts](/images/tutorials/eth-api/batch-approve-swap/batch-1.webp)
+--8<-- 'code/tutorials/batch-approve-swap/terminal/compile.md'
 
 编译完成后，将创建一个`artifacts`目录：其包含合约的字节码和元数据，即`.json`文件。建议将此目录添加至`.gitignore`文件中。
 
@@ -187,7 +187,7 @@ npx hardhat run --network moonbase scripts/deploy.js
 !!! 注意事项
     如果你想要使用`node <script>`以独立方式运行脚本，您需要在`deploy.js`文件中使用`const hre = require('hardhat');`显式要求Hardhat运行环境（Runtime Environment）。
 
-![Deploy contracts](/images/tutorials/eth-api/batch-approve-swap/batch-2.webp)
+--8<-- 'code/tutorials/batch-approve-swap/terminal/deploy.md'
 
 几分钟后，合约将被部署，您会在终端看到地址。我们需要在以下部分与合约交互时用到该地址，请确保您已保存该地址。
 
@@ -334,7 +334,7 @@ npx hardhat run --network moonbase scripts/swap.js
 - 批处理授权和兑换后DEX上的DTOK余额
 - 批处理授权和兑换后您账户的DTOK余额
 
-![Swap tokens](/images/tutorials/eth-api/batch-approve-swap/batch-3.webp)
+--8<-- 'code/tutorials/batch-approve-swap/terminal/swap.md'
 
 这样就可以了！您已成功使用批处理预编译合约将授权和兑换批处理至单个交易，并允许授权金额为准确的兑换金额。
 
