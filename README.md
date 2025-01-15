@@ -1,7 +1,6 @@
 # Moonbeam文档
 
-![Main Page Banner](<img width="750" alt="Screenshot 2025-01-14 at 4 30 12 PM" src="https://github.com/user-attachments/assets/d0585ade-e187-4e18-bf29-cd53457ecae0" />
-)
+![Main Page Banner](https://github.com/user-attachments/assets/c012d225-de25-4e33-966b-7e93b5d2cc40 "Main Page Banner")
 
 此库包含波卡（Polkadot）网络上完全兼容以太坊的智能合约平行链Moonbeam的文档。在这里，您可以找到面向开发人员、收集人、终端用户和其他Moonbeam网络参与者的高阶和技术类型的信息。
 
