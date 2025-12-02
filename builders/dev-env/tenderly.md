@@ -50,7 +50,7 @@ Tenderly数据面板提供对一站式Web3开发平台的访问。要开始使�
 
 1. 在左手边的Solidity编辑器中输入您的智能合约
 2. 从**Network**菜单中选择**Moonbeam**或**Moonriver**，调整任何编译设置，并在需要时指定要在之上运行代码的区块
-3. 为合约更新右侧的JavaScript编辑器。[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}和[Web3.js](/cn/builders/libraries/web3js){target=\_blank}默认包含在Sandbox中，并可分别用`ethers`和`web3`实例化。另外需要注意的是Sandbox包含[global variables](https://docs.tenderly.co/tenderly-sandbox#available-javascript-global-variables){target=\_blank}以简化开发，因此您无需更新Moonbeam的RPC URL
+3. 为合约更新右侧的JavaScript编辑器。[Ethers.js](/cn/builders/libraries/ethersjs){target=\_blank}默认包含在Sandbox中，并可直接用`ethers`实例化。另外需要注意的是Sandbox包含[global variables](https://docs.tenderly.co/tenderly-sandbox#available-javascript-global-variables){target=\_blank}以简化开发，因此您无需更新Moonbeam的RPC URL
 4. 一切准备就绪后，点击**RUN**开始编译合约并执行代码
 
 如果您的代码包含部署合约或发送交易的逻辑，您将会在页面左下角的**Simulated Transactions**部分下方看到交易。
