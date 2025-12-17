@@ -3,6 +3,5 @@ nav:
   - index.md
   - 'Foundry': 'foundry.md'
   - 'Hardhat': 'hardhat.md'
-  - 'OpenZeppelin Contracts': 'oz-contracts.md'
   - 'Remix': 'remix.md'
   - 'Tenderly': 'tenderly.md'
