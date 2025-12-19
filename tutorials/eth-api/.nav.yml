@@ -2,6 +2,3 @@ title: 以太坊API
 hide: false
 nav:
   - index.md
-  - '如何构建一个DApp': 'how-to-build-a-dapp.md'
-  - '在单一交易里批准和兑换Token': 'batch-approve-swap.md'
-  - '发送Gasless交易': 'call-permit-gasless-txs.md'
